@@ -1,4 +1,4 @@
-# wp-leaflet-map-codesnippets
+# wp-leaflet-extensions
 Plugin to extend the Wordpress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>, see Bozdoz <a href="https://github.com/bozdoz/wp-plugin-leaflet-map#how-can-i-add-another-leaflet-plugin">FAQ</a>.
 
 <h3>Display a track with elevation profile</h3>
