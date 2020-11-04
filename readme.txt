@@ -14,8 +14,20 @@ Plugin to extend the Wordpress Plugin Leaflet Map
 
 Plugin to extend the Wordpress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>, see Bozdoz <a href="https://github.com/bozdoz/wp-plugin-leaflet-map#how-can-i-add-another-leaflet-plugin">FAQ</a>.
 
+== Installation ==
+
+1. Upload the plugin files to the `/wp-content/plugins/wp-leaflet-extensions` directory or use the https://github.com/afragen/github-updater
+2. Activate the plugin through the 'Plugins' screen in WordPress
+3. Go to Settings - Leaflet Extensions and select the theme for elevation.
+4. Read Readme.md for using it.
+
+== Frequently Asked Questions ==
+
+= Is this running alone ? =
+
+No, you need to install the plugin "Leaflet Map"
+
 == Changelog ==
 
 = 0.0.1 =
-* in Arbeit
-* im Prinzip funktioniert es, ich mach es nur noch schoen.
+* First Release (Test)
