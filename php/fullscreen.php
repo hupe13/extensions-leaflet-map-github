@@ -11,7 +11,7 @@ function fc_function(){
 		array('leaflet_js'));
 	// my
 	wp_enqueue_script('myfullscreen',
-		plugins_url('js/fullscreen.js',CODESNIPPETS__PLUGIN_FILE), array('leaflet.fullscreen'), '1.0', true);
+		plugins_url('js/fullscreen.js',LEAFEXT__PLUGIN_FILE), array('leaflet.fullscreen'), '1.0', true);
 }
 add_shortcode('fullscreen', 'fc_function' );
 ?>

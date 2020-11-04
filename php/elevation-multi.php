@@ -13,7 +13,7 @@ function elevation_function( $atts ){
 	array('leaflet_stylesheet'));
 	// custom js
 	wp_enqueue_script('myelevation',
-		plugins_url('js/markercluster.js',CODESNIPPETS__PLUGIN_FILE),array('elevation_js'), '1.0', true);
+		plugins_url('js/markercluster.js',LEAFEXT__PLUGIN_FILE),array('elevation_js'), '1.0', true);
 	//
 	$track = shortcode_atts( array('gpx' => false, 'summary' => false), $atts);
 	if ( ! $track['gpx'] ) wp_die();

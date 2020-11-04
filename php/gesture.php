@@ -6,7 +6,7 @@ function gestures_leaflet_loaded() {
 	wp_enqueue_script('gestures_leaflet', 'https://unpkg.com/leaflet-gesture-handling', array('wp_leaflet_map'), '1.0', true);
 	wp_enqueue_style('gestures_leaflet_styles', 'https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css');
 	// custom js
-	wp_enqueue_script('gestures_leaflet_custom', plugins_url('js/gesture.js',CODESNIPPETS__PLUGIN_FILE), array('gestures_leaflet'), '1.0', true);
+	wp_enqueue_script('gestures_leaflet_custom', plugins_url('js/gesture.js',LEAFEXT__PLUGIN_FILE), array('gestures_leaflet'), '1.0', true);
 }
 
 // Enqueue if shortcode exists

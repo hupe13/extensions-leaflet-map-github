@@ -16,7 +16,7 @@ function cluster_function(){
 			array('leaflet_js'),null );
 	// custom js
 	wp_enqueue_script('my_markercluster',
-		plugins_url('js/markercluster.js',CODESNIPPETS__PLUGIN_FILE), array('markercluster'),null);
+		plugins_url('js/markercluster.js',LEAFEXT__PLUGIN_FILE), array('markercluster'),null);
 }
 add_shortcode('cluster', 'cluster_function' );
 ?>

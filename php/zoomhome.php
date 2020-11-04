@@ -17,10 +17,10 @@ function home_function(){
 	global $post;
 	if ( ! is_page() ) return;
 	wp_enqueue_script('zoomhome',
-		plugins_url('leaflet-plugins/zoomhome.torfsen/leaflet.zoomhome.min.js',CODESNIPPETS__PLUGIN_FILE),
+		plugins_url('leaflet-plugins/zoomhome.torfsen/leaflet.zoomhome.min.js',LEAFEXT__PLUGIN_FILE),
 			array('wp_leaflet_map'), '1.0', true);
 	wp_enqueue_style('zoomhome',
-		plugins_url('leaflet-plugins/zoomhome.torfsen/leaflet.zoomhome.css',CODESNIPPETS__PLUGIN_FILE),
+		plugins_url('leaflet-plugins/zoomhome.torfsen/leaflet.zoomhome.css',LEAFEXT__PLUGIN_FILE),
 			array('leaflet_stylesheet'));
 	// Font awesome
 	$font_awesome = array('font-awesome', 'fontawesome');
@@ -29,7 +29,7 @@ function home_function(){
 	}
 	// custom js
 	wp_enqueue_script('myzoomhome',
-		plugins_url('js/zoomhome.js',CODESNIPPETS__PLUGIN_FILE), array('zoomhome'), '1.0', true);
+		plugins_url('js/zoomhome.js',LEAFEXT__PLUGIN_FILE), array('zoomhome'), '1.0', true);
 	return "";
 }
 add_shortcode('zoomhomemap', 'home_function' );
