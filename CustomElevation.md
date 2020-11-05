@@ -1,6 +1,6 @@
 # Custom elevation
 
-If you want use a own style, you can it do so:
+If you want use an own style, you can it do so:
 
 Select other theme in the Options Page and give it a name.
 
