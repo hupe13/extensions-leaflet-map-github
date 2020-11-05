@@ -1,12 +1,13 @@
 === wp-leaflet-extensions ===
-Contributors: hupe13
-Tags: wordpress, leaflet-map, fullscreen, elevation, markercluster, zoomhome
-Requires at least: 5.5.3
-Tested up to: 5.5.3
-Stable tag: 0.0.1
-Requires PHP: 7.4
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+**Contributors:** hupe13 \
+**Tags:** wordpress, leaflet-map, fullscreen, elevation, markercluster, zoomhome  \
+**Requires at least:** 5.5.3 \
+**Tested up to:** 5.5.3 \
+**Stable tag:** 0.0.1 \
+**Requires PHP:** 7.4 \
+**License:** GPLv2 or later \
+**License URI:** https://www.gnu.org/licenses/gpl-2.0.html
 
 Plugin to extend the Wordpress Plugin Leaflet Map
 
@@ -19,7 +20,12 @@ Plugin to extend the Wordpress Plugin <a href="https://wordpress.org/plugins/lea
 1. Upload the plugin files to the `/wp-content/plugins/wp-leaflet-extensions` directory or use the https://github.com/afragen/github-updater
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. Go to Settings - Leaflet Extensions and select the theme for elevation.
-4. Read Readme.md for using it.
+
+== Changelog ==
+
+= 0.0.1 =
+
+* First Release (Test)
 
 == Frequently Asked Questions ==
 
@@ -44,18 +50,18 @@ Leaflet Plugin: <a href="https://github.com/Raruto/leaflet-elevation">leaflet-el
 [elevation gpx="url_gpx_file" summary=1]
 </pre>
 
-<h3>Fullscreen</h3>
+= Fullscreen =
 
 Leaflet Plugin: <a href="https://github.com/brunob/leaflet.fullscreen">leaflet.fullscreen</a>
 
 <pre>[fullscreen]</pre>
 
-<h3>GestureHandling</h3>
+= GestureHandling =
 
 Leaflet Plugin: <a href="https://github.com/elmarquis/Leaflet.GestureHandling">Leaflet.GestureHandling</a>. Use it for a map whose options are
 <pre>dragging</pre> and/or <pre>scrollwheel</pre>
 
-<h3>Hide Markers</h3>
+= Hide Markers =
 
 Use it when a track in a GPX file contains some markers and you don't want to display them on the map.
 <pre>
@@ -64,7 +70,7 @@ Use it when a track in a GPX file contains some markers and you don't want to di
 [hidemarkers]
 </pre>
 
-<h3>hovergeojson</h3>
+= hovergeojson =
 
 Use it to highlight a geojson area on mouse over.
 <pre>
@@ -73,7 +79,7 @@ Use it to highlight a geojson area on mouse over.
 [hover]
 </pre>
 
-<h3>Leaflet.markercluster</h3>
+= Leaflet.markercluster =
 
 Leaflet Plugin: <a href="https://github.com/Leaflet/Leaflet.markercluster">Leaflet.markercluster</a>.
 <pre>
@@ -86,7 +92,7 @@ Leaflet Plugin: <a href="https://github.com/Leaflet/Leaflet.markercluster">Leafl
 [markercluster]
 </pre>
 
-<h3>leaflet.zoomhome</h3>
+= leaflet.zoomhome =
 
 Leaflet Plugin: <a href="https://github.com/torfsen/leaflet.zoomhome">leaflet.zoomhome</a>, the Code is in the directory leflet-plugins.
 
