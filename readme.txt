@@ -1,6 +1,6 @@
 === wp-leaflet-extensions ===
 Contributors: hupe13
-Tags: wordpress, leaflet-map, fullscreen, elevation, markercluster, zoomhome
+Tags: wordpress, leaflet-map, elevation, fullscreen, markercluster, zoomhome
 Requires at least: 5.5.3
 Tested up to: 5.5.3
 Stable tag: 0.0.1
@@ -52,8 +52,10 @@ You need to install the plugin "Leaflet Map".
 
 <pre>
 [leaflet-map dragging ... ]
-</pre> and/or <pre>
+// or
 [leaflet-map scrollwheel ... ]
+// or
+[leaflet-map dragging scrollwheel ... ]
 </pre>
 
 * Leaflet.markercluster
@@ -88,7 +90,7 @@ You need to install the plugin "Leaflet Map".
 
 <pre>
 [leaflet-map ...]
-[leaflet-geojson src= "//url/to/file.geojson" color="..."]...[/leaflet-geojson]
+[leaflet-geojson src="//url/to/file.geojson" color="..."]...[/leaflet-geojson]
 [hover]
 </pre>
 
