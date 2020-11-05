@@ -80,7 +80,7 @@ You need to install the plugin "Leaflet Map".
 
 <pre>
 [leaflet-map ...]
-[leaflet-gpx src="..." ... ]
+[leaflet-gpx src="//url/to/file.gpx" ... ]
 [hidemarkers]
 </pre>
 
@@ -88,7 +88,7 @@ You need to install the plugin "Leaflet Map".
 
 <pre>
 [leaflet-map ...]
-[leaflet-geojson src="...." color="..."]...[/leaflet-geojson]
+[leaflet-geojson src= "//url/to/file.geojson" color="..."]...[/leaflet-geojson]
 [hover]
 </pre>
 
