@@ -16,9 +16,23 @@ Plugin to extend the Wordpress Plugin <a href="https://wordpress.org/plugins/lea
 
 No, you need to install the plugin "Leaflet Map".
 
-= Display a track with elevation profile =
+= used Leaflet-Plugins =
 
-Leaflet Plugin: <a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>.
+*   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation)
+*   [leaflet.fullscreen](https://github.com/brunob/leaflet.fullscreen)
+*   [Leaflet.GestureHandling](https://github.com/elmarquis/Leaflet.GestureHandling)
+*   [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster)
+*   [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome)
+
+= Other functions
+
+*   hovergeojson: Use it to highlight a geojson area on mouse over.
+*   Hide Markers: Use it when a track in a GPX file contains some markers and you don't want to display them on the map.
+
+= Shortcodes =
+
+* Display a track with elevation profile
+
 <pre>
 [leaflet-map ....]
 // at least one marker if you use it with zoomehomemap
@@ -28,38 +42,31 @@ Leaflet Plugin: <a href="https://github.com/Raruto/leaflet-elevation">leaflet-el
 [elevation gpx="url_gpx_file" summary=1]
 </pre>
 
-= Fullscreen =
-
-Leaflet Plugin: <a href="https://github.com/brunob/leaflet.fullscreen">leaflet.fullscreen</a>
+* Fullscreen
 
 <pre>[fullscreen]</pre>
 
-= GestureHandling =
+* GestureHandling
+<pre>[leaflet-map dragging ... ]</pre> and/or <pre>[leaflet-map scrollwheel ... ]</pre>
 
-Leaflet Plugin: <a href="https://github.com/elmarquis/Leaflet.GestureHandling">Leaflet.GestureHandling</a>. Use it for a map whose options are
-<pre>dragging</pre> and/or <pre>scrollwheel</pre>
+* Hide Markers
 
-= Hide Markers =
-
-Use it when a track in a GPX file contains some markers and you don't want to display them on the map.
 <pre>
 [leaflet-map ...]
 [leaflet-gpx src="..." ... ]
 [hidemarkers]
 </pre>
 
-= hovergeojson =
+* hovergeojson
 
-Use it to highlight a geojson area on mouse over.
 <pre>
 [leaflet-map ...]
 [leaflet-geojson src="...." color="..."]...[/leaflet-geojson]
 [hover]
 </pre>
 
-= Leaflet.markercluster =
+* Leaflet.markercluster
 
-Leaflet Plugin: <a href="https://github.com/Leaflet/Leaflet.markercluster">Leaflet.markercluster</a>.
 <pre>
 [leaflet-map ....]
 // many markers
@@ -70,9 +77,7 @@ Leaflet Plugin: <a href="https://github.com/Leaflet/Leaflet.markercluster">Leafl
 [markercluster]
 </pre>
 
-= leaflet.zoomhome =
-
-Leaflet Plugin: <a href="https://github.com/torfsen/leaflet.zoomhome">leaflet.zoomhome</a>, the Code is in the directory leflet-plugins.
+* leaflet.zoomhome
 
 <pre>
 [leaflet-map ....]
