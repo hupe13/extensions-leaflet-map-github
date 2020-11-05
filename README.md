@@ -1,12 +1,12 @@
 # wp-leaflet-extensions
 
-**Contributors:** hupe13 \
-**Tags:** wordpress, leaflet-map, fullscreen, elevation, markercluster, zoomhome  \
-**Requires at least:** 5.5.3 \
-**Tested up to:** 5.5.3 \
-**Stable tag:** 0.0.1 \
-**Requires PHP:** 7.4 \
-**License:** GPLv2 or later \
+**Contributors:** hupe13
+**Tags:** wordpress, leaflet-map, fullscreen, elevation, markercluster, zoomhome
+**Requires at least:** 5.5.3
+**Tested up to:** 5.5.3
+**Stable tag:** 0.0.1
+**Requires PHP:** 7.4
+**License:** GPLv2 or later
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html
 
 ## Description
