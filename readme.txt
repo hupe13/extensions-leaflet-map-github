@@ -33,11 +33,6 @@ Plugin to extend the Wordpress Plugin <a href="https://wordpress.org/plugins/lea
 
 No, you need to install the plugin "Leaflet Map"
 
-== Changelog ==
-
-= 0.0.1 =
-* First Release (Test)
-
 <h3>Display a track with elevation profile</h3>
 
 Leaflet Plugin: <a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>.
