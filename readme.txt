@@ -49,6 +49,7 @@ You need to install the plugin "Leaflet Map".
 </pre>
 
 * GestureHandling
+
 <pre>
 [leaflet-map dragging ... ]
 </pre> and/or <pre>
