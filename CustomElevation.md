@@ -24,5 +24,5 @@ add_filter('pre_do_shortcode_tag', function ( $output, $shortcode ) {
 }, 10, 2);
 </pre>
 
-In your elevation.css change the styles like the theme styles in
+In your elevation.css put the styles like the theme styles in
 https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css
