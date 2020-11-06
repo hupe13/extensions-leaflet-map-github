@@ -16,7 +16,7 @@ Plugin to extend the Wordpress Plugin <a href="https://wordpress.org/plugins/lea
 
 You need to install the plugin "Leaflet Map".
 
-= used Leaflet Plugins =
+= Involved Leaflet Plugins =
 
 *   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation)
 *   [leaflet.fullscreen](https://github.com/brunob/leaflet.fullscreen)
@@ -106,4 +106,5 @@ Mehr <a href="https://phw-web.de/doku/leaflet/">Dokumentation</a> auf deutsch.
 
 = 0.0.1 =
 
-* First Release (Test)
+* First Release 
+  Is running on my website
