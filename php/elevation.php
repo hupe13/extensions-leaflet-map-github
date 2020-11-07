@@ -28,10 +28,10 @@ function elevation_function( $atts ){
 	$options = get_option('wp_leaflet_ext');
 	if (!is_array($options )) {
 		$theme = "lime-theme";
-	} else if ($options[theme] == "other") {
+	} else if ($options['theme'] == "other") {
 		$theme=$options['othertheme'];
 	} else {
-		$theme=$options[theme].'-theme';
+		$theme=$options['theme'].'-theme';
 	}
 
 	wp_localize_script( 'myelevation', 'track', array(
