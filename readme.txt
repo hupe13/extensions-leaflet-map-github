@@ -8,6 +8,9 @@ Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
+
+
+
 == Description ==
 
 Plugin to extend the Wordpress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>, see Bozdoz <a href="https://github.com/bozdoz/wp-plugin-leaflet-map#how-can-i-add-another-leaflet-plugin">FAQ</a>.
@@ -96,11 +99,17 @@ You need to install the plugin "Leaflet Map".
 
 Mehr <a href="https://phw-web.de/doku/leaflet/">Dokumentation</a> auf deutsch.
 
+
+
+
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/wp-leaflet-extensions` directory or use https://github.com/afragen/github-updater
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. (Optionally) Go to Settings - Leaflet Extensions and select a theme for elevation.
+
+
+
 
 == Changelog ==
 
