@@ -98,4 +98,4 @@ Mehr <a href="https://phw-web.de/doku/leaflet/">Dokumentation</a> auf deutsch.
 
 ### 0.0.1
 
-* First Release (Test)
+* First Version
