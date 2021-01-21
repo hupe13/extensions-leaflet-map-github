@@ -74,7 +74,12 @@
 				if (bounds.isValid()) {
 					zoomHome.addTo(map);
 					zoomHome.setHomeBounds(bounds);
+					console.log(map.getZoom());
 					map.fitBounds(bounds);
+					if (map.getZoom() > 14 && zoom == 1) {
+						map.setZoom(14);
+					}
+
 				}
 			}
 		}
