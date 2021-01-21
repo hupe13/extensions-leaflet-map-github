@@ -96,6 +96,10 @@ Mehr <a href="https://phw-web.de/doku/leaflet/">Dokumentation</a> auf deutsch.
 
 ## Changelog
 
+### 0.0.2
+
+* Zoomhome gefixt.
+
 ### 0.0.1
 
 * First Release (Test)
