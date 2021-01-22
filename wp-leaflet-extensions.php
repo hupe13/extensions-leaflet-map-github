@@ -34,7 +34,7 @@ include_once LEAFEXT__PLUGIN_DIR . '/php/elevation.php';
 include_once LEAFEXT__PLUGIN_DIR . '/php/fullscreen.php';
 
 include_once LEAFEXT__PLUGIN_DIR . '/php/gesture.php';
-//include_once LEAFEXT__PLUGIN_DIR . '/php/gestures.php';
+//include_once LEAFEXT__PLUGIN_DIR . '/php/gestures.php';    // Test
 
 include_once LEAFEXT__PLUGIN_DIR . '/php/hide-markers.php';
 include_once LEAFEXT__PLUGIN_DIR . '/php/hovergeojson.php';
