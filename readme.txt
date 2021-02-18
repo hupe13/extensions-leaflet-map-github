@@ -104,6 +104,10 @@ Mehr <a href="https://phw-web.de/doku/leaflet/">Dokumentation</a> auf deutsch.
 
 == Changelog ==
 
+= 0.0.3 =
+
+* Bump version of fullscreen plugin to v2.0.0. Thanks to davidkopp
+
 = 0.0.2 =
 
 * Zoomhome gefixt.
