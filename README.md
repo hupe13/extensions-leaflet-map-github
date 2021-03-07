@@ -18,7 +18,7 @@ You need to install the plugin "Leaflet Map".
 
 ### Other functions
 
-*   hovergeojson: Use it to highlight a geojson area on mouse over.
+*   hovergeojson: Use it to highlight a geojson area or line on mouse over.
 *   Hide Markers: Use it when a track in a GPX file contains some markers and you don't want to display them on the map.
 
 ### Shortcodes
@@ -100,7 +100,7 @@ Mehr <a href="https://phw-web.de/doku/leaflet/">Dokumentation</a> auf deutsch.
 
 ## Changelog
 
-### 0.0.4 =
+### 0.0.4
 
 * More hover functions
 
