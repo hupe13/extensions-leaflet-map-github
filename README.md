@@ -83,9 +83,9 @@ You need to install the plugin "Leaflet Map".
 <pre>
 [leaflet-map ...]
 [leaflet-geojson src="//url/to/file.geojson" color="..."]...[/leaflet-geojson]
-#or / and
+//or / and
 [leaflet-gpx src="//url/to/file.gpx" color="..."]...[/leaflet-gpx]
-#or / and
+//or / and
 [leaflet-kml src="//url/to/file.kml" color="..."]...[/leaflet-kml]
 [hover]
 </pre>
