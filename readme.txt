@@ -128,3 +128,9 @@ Do you have a question?
 
 * First Release 
   is running on my website
+  
+== Upgrade Notice ==
+
+= 0.0.4 =
+
+* More hover functions
