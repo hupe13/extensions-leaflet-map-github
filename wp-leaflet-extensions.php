@@ -30,12 +30,8 @@ if ( ! is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
 
 if (is_admin()) include_once LEAFEXT__PLUGIN_DIR . 'admin.php';
 include_once LEAFEXT__PLUGIN_DIR . '/php/elevation.php';
-//include_once LEAFEXT__PLUGIN_DIR . '/elevation-multi.php';  // noch zu testen
 include_once LEAFEXT__PLUGIN_DIR . '/php/fullscreen.php';
-
 include_once LEAFEXT__PLUGIN_DIR . '/php/gesture.php';
-//include_once LEAFEXT__PLUGIN_DIR . '/php/gestures.php';    // Test
-
 include_once LEAFEXT__PLUGIN_DIR . '/php/hide-markers.php';
 include_once LEAFEXT__PLUGIN_DIR . '/php/hovergeojson.php';
 include_once LEAFEXT__PLUGIN_DIR . '/php/markercluster.php';

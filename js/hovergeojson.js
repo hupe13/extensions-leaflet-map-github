@@ -13,11 +13,18 @@ window.WPLeafletMapPlugin.push(function () {
 				this.setStyle({
 					fillOpacity: 0.4
 				});
+				this.setStyle({
+					'weight': 5
+				});
+				this.bringToFront();
 			});
 			geojson.layer.on('mouseout', function () {
 				//console.log("out");
 				this.setStyle({
 					fillOpacity: 0.2
+				});
+				this.setStyle({
+					'weight': 3
 				});
 			});
 		}
