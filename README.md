@@ -83,6 +83,10 @@ You need to install the plugin "Leaflet Map".
 <pre>
 [leaflet-map ...]
 [leaflet-geojson src="//url/to/file.geojson" color="..."]...[/leaflet-geojson]
+#or / and
+[leaflet-gpx src="//url/to/file.gpx" color="..."]...[/leaflet-gpx]
+#or / and
+[leaflet-kml src="//url/to/file.kml" color="..."]...[/leaflet-kml]
 [hover]
 </pre>
 
@@ -95,6 +99,10 @@ Mehr <a href="https://phw-web.de/doku/leaflet/">Dokumentation</a> auf deutsch.
 3. (Optionally) Go to Settings - Leaflet Extensions and select a theme for elevation.
 
 ## Changelog
+
+### 0.0.4 =
+
+* More hover functions
 
 ### 0.0.3
 
