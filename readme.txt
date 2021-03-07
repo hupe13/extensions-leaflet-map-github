@@ -106,10 +106,6 @@ Mehr <a href="https://phw-web.de/doku/leaflet/">Dokumentation</a> auf deutsch.
 2. Activate the plugin through the 'Plugins' screen in WordPress
 3. (Optionally) Go to Settings - Leaflet Extensions and select a theme for elevation.
 
-== Frequently Asked Questions ==
-
-Do you have a question?
-
 == Changelog ==
 
 = 0.0.4 =
