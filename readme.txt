@@ -110,7 +110,7 @@ Mehr <a href="https://phw-web.de/doku/leaflet/">Dokumentation</a> auf deutsch.
 
 = 0.0.4 =
 
-More hover functions
+* More hover functions
 
 = 0.0.3 =
 
