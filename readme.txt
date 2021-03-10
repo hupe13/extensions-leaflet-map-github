@@ -2,7 +2,7 @@
 Contributors: hupe13
 Tags: wordpress, leaflet-map, elevation, fullscreen, markercluster, zoomhome
 Requires at least: 5.5.3
-Tested up to: 5.6.2
+Tested up to: 5.7
 Stable tag: 0.0.4
 Requires PHP: 7.4
 License: GPLv2 or later
