@@ -114,4 +114,10 @@ Mehr <a href="https://phw-web.de/doku/leaflet/">Dokumentation</a> auf deutsch.
 
 ### 0.0.1
 
-* First Release (Test)
+* First Release is running on my website
+
+## Upgrade Notice
+
+### 0.0.4
+
+* More hover functions
