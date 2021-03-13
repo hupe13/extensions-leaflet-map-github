@@ -1,4 +1,4 @@
-# wp-leaflet-extensions
+# Leaflet Map Extensions
 
 ## Description
 
