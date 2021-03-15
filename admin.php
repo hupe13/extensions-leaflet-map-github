@@ -34,7 +34,7 @@ function wp_leaflet_ext_do_page() {
 			<?php
 			echo '<select name="wp_leaflet_ext[theme]">';
 			foreach ($colors as $color) {
-				if ($color == $options[theme]) {
+				if ($color == $options['theme']) {
 					echo '<option selected ';
 				} else {
 					echo '<option ';
