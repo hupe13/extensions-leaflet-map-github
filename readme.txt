@@ -1,4 +1,4 @@
-=== Leaflet Map Extensions ===
+=== Extensions for Leaflet Map ===
 Contributors: hupe13
 Tags: wordpress, leaflet-map, elevation, fullscreen, markercluster, zoomhome
 Requires at least: 5.5.3

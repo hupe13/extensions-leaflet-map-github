@@ -1,4 +1,4 @@
-# Leaflet Map Extensions
+# Extensions for Leaflet Map
 
 ## Description
 
