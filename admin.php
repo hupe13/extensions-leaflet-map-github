@@ -11,7 +11,7 @@ function wp_leaflet_ext_init(){
 
 // Add menu page
 function wp_leaflet_ext_add_page() {
-	add_options_page('Leaflet Extensions Options', 'Leaflet Extensions', 'manage_options', 'wp_leaflet_ext_opts', 'wp_leaflet_ext_do_page');
+	add_options_page('Extensions for Leaflet Map Options', 'Extensions for Leaflet Map', 'manage_options', 'wp_leaflet_ext_opts', 'wp_leaflet_ext_do_page');
 }
 
 // Draw the menu page itself
@@ -20,7 +20,7 @@ function wp_leaflet_ext_do_page() {
 	$colors = array("lime","steelblue","purple","yellow","red","magenta","lightblue","other");
 	?>
 	<div class="wrap">
-	<h2>Leaflet Extensions Options</h2>
+	<h2>Extensions for Leaflet Map Options</h2>
 	<h3>Elevation Theme</h3>
 	<form method="post" action="options.php">
 		<?php
