@@ -26,6 +26,11 @@ function wp_leaflet_ext_do_page() {
 		<?php
 		settings_fields('wp_leaflet_ext_options');
 		$options = get_option('wp_leaflet_ext');
+		if ( ! $options ) {
+			$options = array(
+				"theme" => "lime",
+				"othertheme" => "" );
+			}
 		?>
 		<table class="form-table">
 		<tr valign="top"><th scope="row">Theme</th>
