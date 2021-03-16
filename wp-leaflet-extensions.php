@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Leaflet Map Extensions
+ * Plugin Name: Extensions for Leaflet Map
  * Description: Extensions of the Wordpress plugin Leaflet Map
  * Version: 0.0.4
  * Author: hupe13
@@ -21,7 +21,7 @@ if ( ! function_exists( 'is_plugin_active' ) )
 if ( ! is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
   function require_leaflet_map_plugin(){?>
     <div class="notice notice-error" >
-      <p> Please enable Leaflet-Map Plugin before using wp-leaflet-extensions.</p>
+      <p> Please enable Leaflet-Map Plugin before using Extensions for Leaflet Map.</p>
     </div><?php
   }
   add_action('admin_notices','require_leaflet_map_plugin');
