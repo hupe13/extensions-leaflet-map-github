@@ -59,7 +59,7 @@ You need to install the plugin "Leaflet Map".
 [leaflet-marker lat=... lng=... ...]poi2[/leaflet-marker]
  ...
 [leaflet-marker lat=... lng=... ...]poixx[/leaflet-marker]
-[markercluster]
+[cluster]
 </pre>
 
 * leaflet.zoomhome
