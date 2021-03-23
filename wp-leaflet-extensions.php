@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Extensions for Leaflet Map
  * Description: Extensions of the Wordpress plugin Leaflet Map
- * Version: 0.0.4
+ * Version: 0.0.5
  * Author: hupe13
  * Plugin URI: https://github.com/hupe13/wp-leaflet-extensions
  * GitHub Plugin URI: https://github.com/hupe13/wp-leaflet-extensions
