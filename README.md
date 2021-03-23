@@ -1,3 +1,7 @@
+Deprecated! Now an official Wordpress Plugin exists!
+
+<a href="https://wordpress.org/plugins/extensions-leaflet-map/">https://wordpress.org/plugins/extensions-leaflet-map/</a>
+
 # Extensions for Leaflet Map
 
 ## Description
