@@ -94,6 +94,8 @@ You need to install the plugin "Leaflet Map".
 
 Mehr <a href="https://phw-web.de/doku/leaflet/">Dokumentation</a> auf deutsch.
 
+Maybe new functions are <a href="https://wordpress.org/plugins/extensions-leaflet-map-testing/">here</a>.
+
 ## Installation
 
 You can install the plugin through the WordPress installer under Plugins → Add New by searching for "extensions-leaflet-map".
