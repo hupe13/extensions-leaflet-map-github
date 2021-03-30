@@ -38,7 +38,6 @@ function leafext_do_page() {
 		<table class="form-table">
 		<tr valign="top"><th scope="row">Theme</th>
 			<td>
-			<form method="post" action="options.php">
 			<?php
 			echo '<select name="leafext_values[theme]">';
 			foreach ($colors as $color) {
