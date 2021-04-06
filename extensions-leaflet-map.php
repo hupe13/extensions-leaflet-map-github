@@ -5,6 +5,8 @@
  * Version: 1.0
  * Author: hupe13
  * Plugin URI: https://wordpress.org/plugins/extensions-leaflet-map
+ * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map
+ * GitHub Branch: main
 **/
 
 // Direktzugriff auf diese Datei verhindern:
