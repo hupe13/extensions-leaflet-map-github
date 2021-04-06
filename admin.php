@@ -6,7 +6,33 @@ add_action('admin_menu', 'leafext_add_page', 99);
 
 // Init plugin options to white list our options
 function leafext_init(){
-	register_setting( 'leafext_options', 'leafext_values', 'leafext_validate' );
+	add_option( 'leafext_values' );
+	register_setting( 'leafext_options', 'leafext_values', 'leafext_validate_elevationtheme' );
+	add_option( 'leafext_maps' );
+	register_setting( 'leafext_options', 'leafext_maps', 'leafext_validate_mapswitch' );
+}
+
+// Sanitize and validate input. Accepts an array, return a sanitized array.
+function leafext_validate_elevationtheme($input) {
+	// Say our second option must be safe text with no HTML tags
+	$input['othertheme'] =  wp_filter_nohtml_kses($input['othertheme']);
+	return $input;
+}
+function leafext_validate_mapswitch($options) {
+	//
+	$maps = array();
+	foreach ($options as $option) {
+		if ( $option['mapid'] !="" && $option['attr'] !="" && $option['tile'] != "" ) {
+			$map=array();
+			$map['mapid'] = sanitize_text_field ( $option['mapid'] );
+			$map['attr'] = sanitize_text_field ( $option['attr'] );
+			$map['tile'] = sanitize_text_field ( $option['tile'] );
+			$maps[]=$map;
+		}
+	}
+	//echo '<pre>';var_dump($return);echo '</pre>';
+	//wp_die();
+	return $maps;
 }
 
 // Add menu page
@@ -14,7 +40,7 @@ function leafext_add_page() {
 	//add_options_page('Extensions for Leaflet Map Options', 'Extensions for Leaflet Map', 'manage_options', 'extensions-leaflet-map', 'leafext_do_page');
 	//Add Submenu
 	add_submenu_page( 'leaflet-map', 'Extensions for Leaflet Map Options', 'Extensions for Leaflet Map',
-    'manage_options', 'extensions-leaflet-map', 'leafext_do_page');
+    'manage_options', 'extensions-leaflet-map-main', 'leafext_do_page');
 }
 
 // Draw the menu page itself
@@ -59,7 +85,7 @@ function leafext_do_page() {
 		<p class="submit">
 		<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
 		</p>
-	</form>
+
 	<?php
 	echo "
 <p>If you want use an own style, you can it do so:</p>
@@ -103,7 +129,7 @@ In your elevation.css put the styles like the theme styles in
 			"tile" => "");
 		$options[]=$map;
 		?>
-<form method="post" action="options.php">
+
 		<table class="form-table">
 			<?php
 			$i=0;
@@ -122,28 +148,4 @@ In your elevation.css put the styles like the theme styles in
 	</form>
 	</div>
 	<?php
-}
-
-// Sanitize and validate input. Accepts an array, return a sanitized array.
-function leafext_validate($input) {
-	// safe text with no HTML tags
-	$input['othertheme'] =  wp_filter_nohtml_kses($input['othertheme']);
-	return $input;
-}
-
-// Sanitize and validate input. Accepts an array, return a sanitized array.
-function testleafext_validate($options) {
-	$maps = array();
-	foreach ($options as $option) {
-		if ( $option['mapid'] !="" && $option['attr'] !="" && $option['tile'] != "" ) {
-			$map=array();
-			$map['mapid'] = sanitize_text_field ( $option['mapid'] );
-			$map['attr'] = sanitize_text_field ( $option['attr'] );
-			$map['tile'] = sanitize_text_field ( $option['tile'] );
-			$maps[]=$map;
-		}
-	}
-	//echo '<pre>';var_dump($return);echo '</pre>';
-	//wp_die();
-	return $maps;
 }
