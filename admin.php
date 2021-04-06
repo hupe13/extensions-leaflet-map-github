@@ -88,12 +88,62 @@ In your elevation.css put the styles like the theme styles in
 <a href='https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css'>https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a>
 ";?>
 	</div>
+
+	<div class="wrap">
+	<h3>Tilelayers</h3>
+
+		<?php
+		settings_fields('leafext_options');
+		$options = get_option('leafext_maps');
+		//echo '<pre>';var_dump($options);echo '</pre>';
+		if ( ! $options ) $options = array();
+		$map=array(
+			"mapid" => "",
+			"attr" => "" ,
+			"tile" => "");
+		$options[]=$map;
+		?>
+<form method="post" action="options.php">
+		<table class="form-table">
+			<?php
+			$i=0;
+			foreach ($options as $option) {
+				echo '<tr><td>mapid:</td><td><input class="full-width" type="text" placeholder="mapid" name="leafext_maps['.$i.'][mapid]" value="'.$option['mapid'].'" /></td></tr>';
+				echo '<tr><td>Attribution:</td><td><input type="text" size="80" placeholder="Copyright" name="leafext_maps['.$i.'][attr]" value="'.$option['attr'].'" /></td></tr>';
+				echo '<tr><td>Tile server:</td><td><input type="url"  size="80" placeholder="https://{s}.tile.server.tld/{z}/{x}/{y}.png" name="leafext_maps['.$i.'][tile]" value="'.$option['tile'].'" /></td></tr>';
+				$i++;
+			}
+			?>
+		</table>
+
+		<p class="submit">
+		<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
+		</p>
+	</form>
+	</div>
 	<?php
 }
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function leafext_validate($input) {
-	// Say our second option must be safe text with no HTML tags
+	// safe text with no HTML tags
 	$input['othertheme'] =  wp_filter_nohtml_kses($input['othertheme']);
 	return $input;
+}
+
+// Sanitize and validate input. Accepts an array, return a sanitized array.
+function testleafext_validate($options) {
+	$maps = array();
+	foreach ($options as $option) {
+		if ( $option['mapid'] !="" && $option['attr'] !="" && $option['tile'] != "" ) {
+			$map=array();
+			$map['mapid'] = sanitize_text_field ( $option['mapid'] );
+			$map['attr'] = sanitize_text_field ( $option['attr'] );
+			$map['tile'] = sanitize_text_field ( $option['tile'] );
+			$maps[]=$map;
+		}
+	}
+	//echo '<pre>';var_dump($return);echo '</pre>';
+	//wp_die();
+	return $maps;
 }
