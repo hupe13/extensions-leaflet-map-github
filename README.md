@@ -2,7 +2,7 @@
 
 # Extensions for Leaflet Map
 
-(Maybe not working in the moment, for a stable version see above.)
+(Maybe not working in the moment, for a stable version see <a href="https://wordpress.org/plugins/extensions-leaflet-map/">here</a> or <a href="https://github.com/hupe13/extensions-leaflet-map/releases">here</a>.)
 
 ## Description
 
