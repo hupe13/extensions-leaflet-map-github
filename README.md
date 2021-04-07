@@ -2,6 +2,8 @@
 
 # Extensions for Leaflet Map
 
+(Maybe not working in the moment, for a stable version see above.)
+
 ## Description
 
 Plugin to extend the Wordpress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>, see Bozdoz <a href="https://github.com/bozdoz/wp-plugin-leaflet-map#how-can-i-add-another-leaflet-plugin">FAQ</a>.
