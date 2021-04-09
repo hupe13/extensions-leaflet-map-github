@@ -32,10 +32,10 @@ function leafext_do_page() {
 
 	echo '<h3 class="nav-tab-wrapper">';
 
-	echo '<a href="?page='.$leafext_plugin_name.'&tab=elevation" class="nav-tab ';
+	echo '<a href="?page='.$leafext_plugin_name.'&tab=elevation" class="nav-tab';
 	echo $active_tab == 'elevation' ? 'nav-tab-active' : '';
 	echo '">Elevation Theme</a>';
-  echo '<a href="?page='.$leafext_plugin_name.'&tab=tilelayers" class="nav-tab ';
+  echo '<a href="?page='.$leafext_plugin_name.'&tab=tilelayers" class="nav-tab';
 	echo $active_tab == 'tilelayers' ? 'nav-tab-active' : '';
 	echo '">Switching Tilelayers</a>';
 
