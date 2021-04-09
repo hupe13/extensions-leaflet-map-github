@@ -11,12 +11,15 @@ function clustergroup_function( $atts ){
 		plugins_url('leaflet-plugins/leaflet.markercluster-1.5.0/js/leaflet.markercluster.js',LEAFEXT_PLUGIN_FILE),
 		array('wp_leaflet_map'),null );
 	wp_enqueue_script('leaflet.subgroup',
-		plugins_url('../js/leaflet.featuregroup.subgroup.js',__FILE__),
+		plugins_url(
+		'leaflet-plugins\Leaflet.FeatureGroup.SubGroup-1.0.2/leaflet.featuregroup.subgroup.js',
+		LEAFEXT_PLUGIN_FILE),
 		array('markercluster'),null);
 
 	// custom js
-	wp_enqueue_script('featuregroup_custom', esc_url( plugins_url( 'js/featuregroup.js',
-  		dirname(__FILE__) ) ), Array('leaflet.subgroup'), null);
+	wp_enqueue_script('featuregroup_custom',
+		plugins_url('js/featuregroup.js',LEAFEXT_PLUGIN_FILE), 
+		array('leaflet.subgroup'),null);
 
 	$featuregroups = shortcode_atts( array('feat' => false, 'strings' => false, 'groups' => false), $atts);
 	//feat="iconUrl" strings="red green" groups="rot gruen"
@@ -32,7 +35,6 @@ function clustergroup_function( $atts ){
 			'groups' => array_combine($cl_strings, $cl_groups),
 		)
 	);
-
 }
 add_shortcode('markerClusterGroup', 'clustergroup_function' );
 ?>
