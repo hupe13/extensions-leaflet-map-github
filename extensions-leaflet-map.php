@@ -38,7 +38,7 @@ if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . '/php/markercluster.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/zoomhome.php';
   //
-  include_once LEAFEXT_PLUGIN_DIR . '/php/layerswitch.php');
+  include_once LEAFEXT_PLUGIN_DIR . '/php/layerswitch.php';
   //include_once LEAFEXT_PLUGIN_DIR . '/php/featuregroup.php');
   //include_once LEAFEXT_PLUGIN_DIR . '/php/elevation_inline.php');
 }
