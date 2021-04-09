@@ -9,17 +9,17 @@ add_action('admin_menu', 'leafext_add_page', 99);
 // Add menu page
 function leafext_add_page() {
   $leafext_plugin_name = basename(dirname(  __FILE__  ));
-	//Add Submenu
-	$leafext_admin_page =
+  //Add Submenu
+  $leafext_admin_page =
 		add_submenu_page( 'leaflet-map',
       'Extensions for Leaflet Map Options',
       'Extensions for Leaflet Map',
       'manage_options',
       $leafext_plugin_name,
       'leafext_do_page');
-	// Adds my_help_tab when my_admin_page loads
-	add_action( 'load-'.$leafext_admin_page, 'leafext_elevation_help' );
-	add_action( 'load-'.$leafext_admin_page, 'leafext_tilelayer_help' );
+  // Adds my_help_tab when my_admin_page loads
+  add_action( 'load-'.$leafext_admin_page, 'leafext_elevation_help' );
+  add_action( 'load-'.$leafext_admin_page, 'leafext_tilelayer_help' );
 }
 
 // Draw the menu page itself
