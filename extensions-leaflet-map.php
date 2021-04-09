@@ -1,10 +1,9 @@
 <?php
 /**
- * Plugin Name: Extensions for Leaflet Map
+ * Plugin Name: Extensions for Leaflet Map Test
  * Description: Extensions for the Wordpress plugin Leaflet Map
  * Version: 1.0
  * Author: hupe13
- * Plugin URI: https://wordpress.org/plugins/extensions-leaflet-map
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map
  * GitHub Branch: main
 **/
@@ -39,7 +38,7 @@ if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . '/php/markercluster.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/zoomhome.php';
   //
-  //include_once LEAFEXT_PLUGIN_DIR . '/php/layerswitch.php');
+  include_once LEAFEXT_PLUGIN_DIR . '/php/layerswitch.php');
   //include_once LEAFEXT_PLUGIN_DIR . '/php/featuregroup.php');
   //include_once LEAFEXT_PLUGIN_DIR . '/php/elevation_inline.php');
 }
