@@ -1,5 +1,5 @@
-<?php 
- 
+<?php
+
 include 'admin/elevation.php';
 include 'admin/switching_tilelayer.php';
 
@@ -8,10 +8,16 @@ add_action('admin_menu', 'leafext_add_page', 99);
 
 // Add menu page
 function leafext_add_page() {
+  $leafext_plugin_name = basename(dirname(  __FILE__  ));
 	//Add Submenu
-	$leafext_admin_page = 
-		add_submenu_page( 'leaflet-map', 'Extensions for Leaflet Map Options', 'Extensions for Leaflet Map', 'manage_options', 'extensions-leaflet-map-main', 'leafext_do_page');
-	// Adds my_help_tab when my_admin_page loads 
+	$leafext_admin_page =
+		add_submenu_page( 'leaflet-map',
+      'Extensions for Leaflet Map Options',
+      'Extensions for Leaflet Map',
+      'manage_options',
+      $leafext_plugin_name,
+      'leafext_do_page');
+	// Adds my_help_tab when my_admin_page loads
 	add_action( 'load-'.$leafext_admin_page, 'leafext_elevation_help' );
 	add_action( 'load-'.$leafext_admin_page, 'leafext_tilelayer_help' );
 }
@@ -25,14 +31,14 @@ function leafext_do_page() {
 	$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'elevation';
 
 	echo '<h3 class="nav-tab-wrapper">';
-	
+
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=elevation" class="nav-tab ';
 	echo $active_tab == 'elevation' ? 'nav-tab-active' : '';
 	echo '">Elevation Theme</a>';
-    echo '<a href="?page='.$leafext_plugin_name.'&tab=tilelayers" class="nav-tab ';
+  echo '<a href="?page='.$leafext_plugin_name.'&tab=tilelayers" class="nav-tab ';
 	echo $active_tab == 'tilelayers' ? 'nav-tab-active' : '';
 	echo '">Switching Tilelayers</a>';
-	
+
 	echo '</h3>';
 
 	echo '<form method="post" action="options.php">';
@@ -43,7 +49,7 @@ function leafext_do_page() {
 		} else if ( $active_tab == 'tilelayers' ) {
 			settings_fields('leafext_settings_maps');
 			do_settings_sections( 'leafext_settings_maps' );
-		} 
+		}
 	echo '<p class="submit">';
 	echo '<input type="submit" class="button-primary" value="';
 	_e('Save Changes');
