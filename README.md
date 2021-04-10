@@ -19,11 +19,13 @@ You need to install the plugin "Leaflet Map".
 *   [Leaflet.GestureHandling](https://github.com/elmarquis/Leaflet.GestureHandling)
 *   [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster)
 *   [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome)
+*   [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup)
 
 ### Other functions
 
 *   hovergeojson: Use it to highlight a geojson area or line on mouse over.
 *   Hide Markers: Use it when a track in a GPX file contains some markers and you don't want to display them on the map.
+*   Switch tile layers with L.control.layers.
 
 ### Shortcodes
 
@@ -93,6 +95,33 @@ You need to install the plugin "Leaflet Map".
 [leaflet-kml src="//url/to/file.kml" color="..."]...[/leaflet-kml]
 [hover]
 </pre>
+
+* Switching Tile Layers
+
+First go to Settings -> Leaflet Map -> Extensions Test and configure tilelayers.
+
+<pre>
+[leaflet-map mapid="..." ...]
+[layerswitch]
+</pre>
+
+* Leaflet.FeatureGroup.SubGroup
+
+https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup
+
+Parameter:
+* feat - possible meaningful values: iconUrl, title, (other???)
+* strings - comma separated strings to distinguish the markers, e.g. an unique string in iconUrl or title
+* groups - comma separated labels appear in the selection menu
+* The number of strings and groups must match.
+
+<pre>
+[leaflet-marker title="..." iconUrl="...red..." ... ] ... [/leaflet-marker]
+[leaflet-marker title="..." iconUrl="...green..." ... ] ... [/leaflet-marker]
+//many markers
+[markerClusterGroup feat="iconUrl" strings="red,green" groups="rot,gruen"]';
+</pre>
+Here the groups are differentiated according to the color of the markers.
 
 Mehr <a href="https://phw-web.de/doku/leaflet/">Dokumentation</a> auf deutsch.
 
