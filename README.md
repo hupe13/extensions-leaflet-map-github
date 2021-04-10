@@ -107,8 +107,6 @@ First go to Settings -> Leaflet Map -> Extensions Test and configure tilelayers.
 
 * Leaflet.FeatureGroup.SubGroup
 
-https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup
-
 Parameter:
 * feat - possible meaningful values: iconUrl, title, (other???)
 * strings - comma separated strings to distinguish the markers, e.g. an unique string in iconUrl or title
