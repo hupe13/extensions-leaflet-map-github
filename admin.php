@@ -1,5 +1,4 @@
 <?php
-
 include 'admin/elevation.php';
 include 'admin/switching_tilelayer.php';
 
@@ -17,9 +16,6 @@ function leafext_add_page() {
 		'manage_options',
 		$leafext_plugin_name,
 		'leafext_do_page');
-	// Adds my_help_tab when my_admin_page loads
-	add_action( 'load-'.$leafext_admin_page, 'leafext_elevation_help' );
-	add_action( 'load-'.$leafext_admin_page, 'leafext_tilelayer_help' );
 }
 
 // Draw the menu page itself
@@ -56,6 +52,9 @@ function leafext_do_page() {
 	echo '" />';
 	echo '</p>';
 	echo '</form>';
+	if( $active_tab == 'elevation' ) {
+		echo leafext_elevation_help_text();
+	}
 }
 
 ?>

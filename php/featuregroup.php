@@ -1,6 +1,6 @@
 <?php
 //Shortcode: [markerClusterGroup]
-function clustergroup_function( $atts ){
+function leafext_clustergroup_function( $atts ){
 	wp_enqueue_style( 'markercluster.default',
 		plugins_url('leaflet-plugins/leaflet.markercluster-1.5.0/css/MarkerCluster.Default.min.css',LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
@@ -36,5 +36,5 @@ function clustergroup_function( $atts ){
 		)
 	);
 }
-add_shortcode('markerClusterGroup', 'clustergroup_function' );
+add_shortcode('markerClusterGroup', 'leafext_clustergroup_function' );
 ?>

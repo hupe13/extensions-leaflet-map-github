@@ -37,7 +37,7 @@ function leafext_form_other_theme() {
 			"theme" => "lime",
 			"othertheme" => "" );
 	}
-	echo '<input type="text" name="leafext_values[othertheme]" value="'.$options['othertheme'].'" />  (see help)';
+	echo '<input type="text" name="leafext_values[othertheme]" placeholder="my-theme" value="'.$options['othertheme'].'" />';
 }
 
 // Erklaerung
@@ -53,15 +53,11 @@ function leafext_validate_elevationtheme($input) {
 }
 
 // Helptext
-function leafext_elevation_help () {
-    $screen = get_current_screen();
-    // Add my_help_tab if current screen is My Admin Page
-    $screen->add_help_tab( array(
-        'id'    => 'elevation',
-        'title' => __('Elevation Theme'),
-        'content'   => "<p>".__('If you want use an own style, you can it do so:</p>
-				<p>Select other theme in the Options Page and give it a name.</p>
-				<p>Put in your functions.php following code:',"extensions-leaflet-map")."</p>
+function leafext_elevation_help_text () {
+    $text = 
+	"<p>".__('If you want use an own style, 
+	select "other" theme and give it a name. 
+	Put in your functions.php following code:',"extensions-leaflet-map")."</p>
 <pre>
 //Shortcode: [elevation]
 function leafext_custom_elevation_function() {
@@ -75,8 +71,9 @@ add_filter('pre_do_shortcode_tag', function ( &#36;output, &#36;shortcode ) {
 	}
 	return &#36;output;
 }, 10, 2);
-</pre>".
-				__("In your elevation.css put the styles like the theme styles in
-				<a href='https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css'>https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a>","extensions-leaflet-map")
-    ) );
+</pre>"
+	.'<p>'.
+	__("In your elevation.css put the styles like the theme styles in <a href='https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css'>https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a>","extensions-leaflet-map")
+	.'</p>';
+	return $text;
 }

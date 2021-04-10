@@ -1,6 +1,6 @@
 <?php
 //Shortcode: [layerswitch]
-function layerswitch_function(){
+function leafext_layerswitch_function(){
 	$options = get_option('leafext_maps');
 	//var_dump($options);
 	if (!is_array($options )) return;
@@ -12,5 +12,5 @@ function layerswitch_function(){
 	//Uebergabe der php Variablen an Javascript
 	wp_localize_script( 'layerswitch_custom', 'mylayers', $options);
 }
-add_shortcode('layerswitch', 'layerswitch_function' );
+add_shortcode('layerswitch', 'leafext_layerswitch_function' );
 ?>
