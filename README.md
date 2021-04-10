@@ -68,6 +68,22 @@ You need to install the plugin "Leaflet Map".
 [cluster]
 </pre>
 
+#### Leaflet.FeatureGroup.SubGroup
+
+Parameter:
+* feat - possible meaningful values: iconUrl, title, (other???)
+* strings - comma separated strings to distinguish the markers, e.g. an unique string in iconUrl or title
+* groups - comma separated labels appear in the selection menu
+* The number of strings and groups must match.
+
+<pre>
+[leaflet-marker title="..." iconUrl="...red..." ... ] ... [/leaflet-marker]
+[leaflet-marker title="..." iconUrl="...green..." ... ] ... [/leaflet-marker]
+//many markers
+[markerClusterGroup feat="iconUrl" strings="red,green" groups="rot,gruen"]';
+</pre>
+Here the groups are differentiated according to the color of the markers.
+
 #### leaflet.zoomhome
 
 <pre>
@@ -104,22 +120,6 @@ First go to Settings -> Leaflet Map -> Leaflet Map Extensions and configure tile
 [leaflet-map mapid="..." ...]
 [layerswitch]
 </pre>
-
-#### Leaflet.FeatureGroup.SubGroup
-
-Parameter:
-* feat - possible meaningful values: iconUrl, title, (other???)
-* strings - comma separated strings to distinguish the markers, e.g. an unique string in iconUrl or title
-* groups - comma separated labels appear in the selection menu
-* The number of strings and groups must match.
-
-<pre>
-[leaflet-marker title="..." iconUrl="...red..." ... ] ... [/leaflet-marker]
-[leaflet-marker title="..." iconUrl="...green..." ... ] ... [/leaflet-marker]
-//many markers
-[markerClusterGroup feat="iconUrl" strings="red,green" groups="rot,gruen"]';
-</pre>
-Here the groups are differentiated according to the color of the markers.
 
 #### More
 
