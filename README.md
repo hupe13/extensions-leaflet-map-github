@@ -140,6 +140,7 @@ Alternatively you can download the file from here, unzip it and move the unzippe
 ## Changelog
 
 ### 1.0.1
+(Plan 1.1)
 News functions:
 * markerClusterGroup
 * Switching Tile Layers
