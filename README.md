@@ -123,7 +123,7 @@ Here the groups are differentiated according to the color of the markers.
 
 #### More
 
-Mehr <a href="https://phw-web.de/doku/leaflet/">Dokumentation</a> auf deutsch.
+<a href="https://phw-web.de/doku/leaflet/">Dokumentation</a> auf deutsch.
 
 Maybe new functions are <a href="https://wordpress.org/plugins/extensions-leaflet-map-testing/">here</a>.
 
@@ -152,5 +152,5 @@ News functions:
 
 ## Upgrade Notice
 	
-### 1.0.1 =
+### 1.0.1
 Elevation profile on smartphone works now.
