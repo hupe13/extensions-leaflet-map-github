@@ -29,7 +29,7 @@ You need to install the plugin "Leaflet Map".
 
 ### Shortcodes
 
-* Display a track with elevation profile
+#### Display a track with elevation profile
 
 <pre>
 [leaflet-map ....]
@@ -40,13 +40,13 @@ You need to install the plugin "Leaflet Map".
 [elevation gpx="url_gpx_file" summary=1]
 </pre>
 
-* Fullscreen
+#### Fullscreen
 
 <pre>
 [fullscreen]
 </pre>
 
-* GestureHandling
+#### GestureHandling
 
 <pre>
 [leaflet-map dragging ... ]
@@ -56,7 +56,7 @@ You need to install the plugin "Leaflet Map".
 [leaflet-map dragging scrollwheel ... ]
 </pre>
 
-* Leaflet.markercluster
+#### Leaflet.markercluster
 
 <pre>
 [leaflet-map ....]
@@ -68,7 +68,7 @@ You need to install the plugin "Leaflet Map".
 [cluster]
 </pre>
 
-* leaflet.zoomhome
+#### leaflet.zoomhome
 
 <pre>
 [leaflet-map ....]
@@ -76,7 +76,7 @@ You need to install the plugin "Leaflet Map".
 [zoomhomemap]
 </pre>
 
-* Hide Markers
+#### Hide Markers
 
 <pre>
 [leaflet-map ...]
@@ -84,7 +84,7 @@ You need to install the plugin "Leaflet Map".
 [hidemarkers]
 </pre>
 
-* hovergeojson
+#### hovergeojson
 
 <pre>
 [leaflet-map ...]
@@ -96,16 +96,16 @@ You need to install the plugin "Leaflet Map".
 [hover]
 </pre>
 
-* Switching Tile Layers
+#### Switching Tile Layers
 
-First go to Settings -> Leaflet Map -> Extensions Test and configure tilelayers.
+First go to Settings -> Leaflet Map -> Leaflet Map Extensions and configure tile layers.
 
 <pre>
 [leaflet-map mapid="..." ...]
 [layerswitch]
 </pre>
 
-* Leaflet.FeatureGroup.SubGroup
+#### Leaflet.FeatureGroup.SubGroup
 
 Parameter:
 * feat - possible meaningful values: iconUrl, title, (other???)
@@ -121,6 +121,8 @@ Parameter:
 </pre>
 Here the groups are differentiated according to the color of the markers.
 
+#### More
+
 Mehr <a href="https://phw-web.de/doku/leaflet/">Dokumentation</a> auf deutsch.
 
 Maybe new functions are <a href="https://wordpress.org/plugins/extensions-leaflet-map-testing/">here</a>.
@@ -131,10 +133,24 @@ You can install the plugin through the WordPress installer under Plugins → Add
 
 Alternatively you can download the file from here, unzip it and move the unzipped contents to the wp-content/plugins folder of your WordPress installation. You will then be able to activate the plugin.
 
-(Optionally) Go to Settings - Leaflet Map - Extensions for Leaflet Map and select a theme for elevation.
+(Optionally) Go to Settings - Leaflet Map - Extensions for Leaflet Map and 
+* select a theme for elevation.
+* configure tile layer(s) if you want to switch tile layers.
 
 ## Changelog
 
-### 1.0
+### 1.0.1
+News functions:
+* markerClusterGroup
+* Switching Tile Layers
 
+### 1.0.1
+* leaflet-elevation v1.6.7
+
+### 1.0
 * First Release
+
+## Upgrade Notice
+	
+### 1.0.1 =
+Elevation profile on smartphone works now.
