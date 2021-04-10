@@ -148,7 +148,7 @@ Alternatively you can download the file from here, unzip it and move the unzippe
 
 ### 1.0.1
 (Plan 1.1)
-News functions:
+New functions:
 * markerClusterGroup
 * Switching Tile Layers
 
