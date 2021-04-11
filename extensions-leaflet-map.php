@@ -5,7 +5,7 @@
  * Version: 1.0
  * Author: hupe13
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map
- * GitHub Branch: main
+ * Primary Branch: main
 **/
 
 // Direktzugriff auf diese Datei verhindern:
