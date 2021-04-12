@@ -29,3 +29,5 @@ Used by <pre>[elevation gpx="url_gpx_file"]</pre>
 https://github.com/elmarquis/Leaflet.GestureHandling
 
 Used by nearly any leaflet map, see documentation
+
+https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup

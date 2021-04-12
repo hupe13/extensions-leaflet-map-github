@@ -2,7 +2,7 @@
 
 # Extensions for Leaflet Map
 
-(Maybe not working in the moment, for a stable version see <a href="https://wordpress.org/plugins/extensions-leaflet-map/">here</a>.)
+This version is scheduled for release, you can test it.
 
 ## Description
 
@@ -140,14 +140,13 @@ You can install the plugin through the WordPress installer under Plugins → Add
 
 Alternatively you can download the file from here, unzip it and move the unzipped contents to the wp-content/plugins folder of your WordPress installation. You will then be able to activate the plugin.
 
-(Optionally) Go to Settings - Leaflet Map - Extensions for Leaflet Map and 
+(Optionally) Go to Settings - Leaflet Map - Extensions for Leaflet Map and
 * select a theme for elevation.
 * configure tile layer(s) if you want to switch tile layers.
 
 ## Changelog
 
-### 1.0.1
-(Plan 1.1)
+### 1.1
 New functions:
 * markerClusterGroup
 * Switching Tile Layers
@@ -159,6 +158,6 @@ New functions:
 * First Release
 
 ## Upgrade Notice
-	
+
 ### 1.0.1
 Elevation profile on smartphone works now.
