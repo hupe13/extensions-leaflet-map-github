@@ -132,7 +132,7 @@ First go to Settings -> Leaflet Map -> Leaflet Map Extensions and configure tile
 
 <a href="https://phw-web.de/doku/leaflet/">Dokumentation</a> auf deutsch.
 
-Maybe new functions are <a href="https://wordpress.org/plugins/extensions-leaflet-map-testing/">here</a>.
+Maybe new functions are <a href="https://github.com/hupe13/extensions-leaflet-map-testing">here</a>.
 
 ## Installation
 
