@@ -125,7 +125,7 @@ First go to Settings -> Leaflet Map -> Leaflet Map Extensions and configure tile
 
 1. Track with elevation profile and Switching Tile Layers<br>![Track with elevation profile](.wordpress-org/screenshot-1.png)
 2. Hover a Geojson area<br>![Hover a Geojson area](.wordpress-org/screenshot-2.png)
-3. Markercluster and groups<br>![Markercluster](.wordpress-org/screenshot-3.png)
+3. Markercluster and Groups<br>![Markercluster](.wordpress-org/screenshot-3.png)
 4. GestureHandling<br>![GestureHandling](.wordpress-org/screenshot-4.png)
 
 #### More
