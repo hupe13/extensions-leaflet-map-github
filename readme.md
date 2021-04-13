@@ -40,22 +40,6 @@ You need to install the plugin "Leaflet Map".
 [elevation gpx="url_gpx_file" summary=1]
 </pre>
 
-#### Fullscreen
-
-<pre>
-[fullscreen]
-</pre>
-
-#### GestureHandling
-
-<pre>
-[leaflet-map dragging ... ]
-// or
-[leaflet-map scrollwheel ... ]
-// or
-[leaflet-map dragging scrollwheel ... ]
-</pre>
-
 #### Leaflet.markercluster
 
 <pre>
@@ -92,6 +76,22 @@ Here the groups are differentiated according to the color of the markers.
 [zoomhomemap]
 </pre>
 
+#### Fullscreen
+
+<pre>
+[fullscreen]
+</pre>
+
+#### GestureHandling
+
+<pre>
+[leaflet-map dragging ... ]
+// or
+[leaflet-map scrollwheel ... ]
+// or
+[leaflet-map dragging scrollwheel ... ]
+</pre>
+
 #### Hide Markers
 
 <pre>
@@ -125,7 +125,7 @@ First go to Settings -> Leaflet Map -> Leaflet Map Extensions and configure tile
 
 1. Track with elevation profile<br>![Track with elevation profile](.wordpress-org/screenshot-1.png)
 2. Hover a Geojson area<br>![Hover a Geojson area](.wordpress-org/screenshot-2.png)
-3. Markercluster<br>![Markercluster](.wordpress-org/screenshot-3.png)
+3. Markercluster and groups<br>![Markercluster](.wordpress-org/screenshot-3.png)
 4. GestureHandling<br>![GestureHandling](.wordpress-org/screenshot-4.png)
 
 #### More
