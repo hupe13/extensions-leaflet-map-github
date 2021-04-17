@@ -2,7 +2,13 @@
 
 # Extensions for Leaflet Map
 
-This version is scheduled for release, you can test it.
+Stable tag: 1.1
+Requires at least: 5.5.3
+Tested up to: 5.7
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Tags: leaflet-map, elevation, markercluster, zoomhome, hover, fullscreen
+Contributors: hupe13
 
 ## Description
 
@@ -42,6 +48,8 @@ You need to install the plugin "Leaflet Map".
 
 #### Leaflet.markercluster
 
+Many markers on a map become confusing. That is why they are clustered.
+
 <pre>
 [leaflet-map ....]
 // many markers
@@ -54,6 +62,7 @@ You need to install the plugin "Leaflet Map".
 
 #### Leaflet.FeatureGroup.SubGroup
 
+dynamically add/remove groups of markers from Marker Cluster.
 Parameter:
 * feat - possible meaningful values: iconUrl, title, (other???)
 * strings - comma separated strings to distinguish the markers, e.g. an unique string in iconUrl or title
@@ -69,6 +78,8 @@ Parameter:
 Here the groups are differentiated according to the color of the markers.
 
 #### leaflet.zoomhome
+
+"Home" button to reset the view.
 
 <pre>
 [leaflet-map ....]
@@ -101,6 +112,8 @@ Here the groups are differentiated according to the color of the markers.
 </pre>
 
 #### hovergeojson
+
+Use it to highlight a geojson area or line on mouse over.
 
 <pre>
 [leaflet-map ...]
