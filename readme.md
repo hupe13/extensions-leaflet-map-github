@@ -2,12 +2,12 @@
 
 # Extensions for Leaflet Map
 
-Stable tag: 1.1
-Requires at least: 5.5.3
-Tested up to: 5.7
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Tags: leaflet-map, elevation, markercluster, zoomhome, hover, fullscreen
+Stable tag: 1.1  
+Requires at least: 5.5.3  
+Tested up to: 5.7  
+License: GPLv2 or later  
+License URI: https://www.gnu.org/licenses/gpl-2.0.html  
+Tags: leaflet-map, elevation, markercluster, zoomhome, hover, fullscreen  
 Contributors: hupe13
 
 ## Description
