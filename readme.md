@@ -58,6 +58,7 @@ Many markers on a map become confusing. That is why they are clustered.
  ...
 [leaflet-marker lat=... lng=... ...]poixx[/leaflet-marker]
 [cluster]
+[zoomhomemap]
 </pre>
 
 #### Leaflet.FeatureGroup.SubGroup
@@ -79,7 +80,7 @@ Here the groups are differentiated according to the color of the markers.
 
 #### leaflet.zoomhome
 
-"Home" button to reset the view.
+"Home" button to reset the view. A must for clustering markers.
 
 <pre>
 [leaflet-map ....]
