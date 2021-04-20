@@ -27,8 +27,16 @@ if ( ! is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
   register_activation_hook(__FILE__, 'leafext_require_leaflet_map_plugin');
 }
 
+/**
+ * Load plugin textdomain.
+ */
+function leafext_translations() {
+  load_plugin_textdomain( 'extensions-leaflet-map', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
+}
+
 if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . 'admin.php';
+  add_action( 'init', 'leafext_translations' );
 } else {
   include_once LEAFEXT_PLUGIN_DIR . '/php/elevation.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/fullscreen.php';
@@ -37,10 +45,8 @@ if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . '/php/hovergeojson.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/markercluster.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/zoomhome.php';
-  //
   include_once LEAFEXT_PLUGIN_DIR . '/php/layerswitch.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/featuregroup.php';
-  //include_once LEAFEXT_PLUGIN_DIR . '/php/elevation_inline.php';
 }
 
 // Add settings to plugin page

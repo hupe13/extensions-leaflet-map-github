@@ -42,7 +42,7 @@ function leafext_form_other_theme() {
 
 // Erklaerung
 function leafext_theme_text() {
-    echo '<p>Here you can switch colors for an elevation theme.</p>';
+    echo '<p>'.__('Here you can switch colors for an elevation theme.',"extensions-leaflet-map").'</p>';
 }
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
@@ -54,10 +54,8 @@ function leafext_validate_elevationtheme($input) {
 
 // Helptext
 function leafext_elevation_help_text () {
-    $text = 
-	"<p>".__('If you want use an own style, 
-	select "other" theme and give it a name. 
-	Put in your functions.php following code:',"extensions-leaflet-map")."</p>
+    $text =
+	"<p>".__('If you want use an own style, select "other" theme and give it a name. Put in your functions.php following code:',"extensions-leaflet-map")."</p>
 <pre>
 //Shortcode: [elevation]
 function leafext_custom_elevation_function() {
