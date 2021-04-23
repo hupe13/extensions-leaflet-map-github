@@ -74,7 +74,7 @@ Parameter:
 [leaflet-marker title="..." iconUrl="...red..." ... ] ... [/leaflet-marker]
 [leaflet-marker title="..." iconUrl="...green..." ... ] ... [/leaflet-marker]
 //many markers
-[markerClusterGroup feat="iconUrl" strings="red,green" groups="rot,gruen"]';
+[markerClusterGroup feat="iconUrl" strings="red,green" groups="rot,gruen"]
 </pre>
 Here the groups are differentiated according to the color of the markers.
 
