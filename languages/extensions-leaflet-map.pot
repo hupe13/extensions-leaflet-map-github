@@ -1,33 +1,57 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Extensions for Leaflet Map\n"
-"POT-Creation-Date: 2021-04-20 08:18+0200\n"
-"PO-Revision-Date: 2021-04-20 07:48+0200\n"
-"Last-Translator: \n"
+"Project-Id-Version: Extensions for Leaflet Map Github\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-23 11:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
-"X-Poedit-Basepath: ../admin\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: en\n"
-"X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.5.2; wp-5.7.1\n"
+"X-Domain: extensions-leaflet-map"
 
-#: elevation.php:58
-msgid "If you want use an own style, select \"other\" theme and give it a name. Put in your functions.php following code:"
+#: admin/switching_tilelayer.php:47
+msgid ""
+"Configure a short name, attribution and a tile url for each tile service. "
+"The name appears in the switching control. To delete a service simply clear "
+"the values."
 msgstr ""
 
-#: elevation.php:74
-msgid "In your elevation.css put the styles like the theme styles in <a href='https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css'>https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a>"
+#. Name of the plugin
+msgid "Extensions for Leaflet Map Github"
 msgstr ""
 
-#: switching_tilelayer.php:44
+#. Description of the plugin
+msgid "Extensions for the Wordpress plugin Leaflet Map"
+msgstr ""
+
+#: admin/switching_tilelayer.php:44
 msgid "Here you can define one or more tile server."
 msgstr ""
 
-#: switching_tilelayer.php:47
-msgid "Configure a short name, attribution and a tile url for each tile service. The name appears in the switching control. To delete a service simply clear the values."
+#: admin/elevation.php:45
+msgid "Here you can switch colors for an elevation theme."
+msgstr ""
+
+#. Author of the plugin
+msgid "hupe13"
+msgstr ""
+
+#: admin/elevation.php:58
+msgid ""
+"If you want use an own style, select \"other\" theme and give it a name. Put "
+"in your functions.php following code:"
+msgstr ""
+
+#: admin/elevation.php:74
+msgid ""
+"In your elevation.css put the styles like the theme styles in <a href='https:"
+"//unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css'>https:"
+"//unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a>"
 msgstr ""
