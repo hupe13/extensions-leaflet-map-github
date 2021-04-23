@@ -65,10 +65,10 @@ Many markers on a map become confusing. That is why they are clustered.
 
 dynamically add/remove groups of markers from Marker Cluster.
 Parameter:
-* feat - possible meaningful values: iconUrl, title, (other???)
-* strings - comma separated strings to distinguish the markers, e.g. an unique string in iconUrl or title
-* groups - comma separated labels appear in the selection menu
-* The number of strings and groups must match.
+*   feat - possible meaningful values: iconUrl, title, (other???)
+*   strings - comma separated strings to distinguish the markers, e.g. an unique string in iconUrl or title
+*   groups - comma separated labels appear in the selection menu
+*   The number of strings and groups must match.
 
 <pre>
 [leaflet-marker title="..." iconUrl="...red..." ... ] ... [/leaflet-marker]

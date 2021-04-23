@@ -34,9 +34,12 @@ function leafext_do_page() {
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=tilelayers" class="nav-tab';
 	echo $active_tab == 'tilelayers' ? ' nav-tab-active' : '';
 	echo '">Switching Tilelayers</a>';
+	echo '<a href="?page='.$leafext_plugin_name.'&tab=help" class="nav-tab';
+	echo $active_tab == 'help' ? ' nav-tab-active' : '';
+	echo '">Hilfe!</a>';
 
 	echo '</h3>';
-
+	if( $active_tab != 'help' ) {
 	echo '<form method="post" action="options.php">';
 	if( $active_tab == 'elevation' ) {
 		settings_fields('leafext_settings_theme');
@@ -48,8 +51,13 @@ function leafext_do_page() {
 	}
 	submit_button();
 	echo '</form>';
+	}
 	if( $active_tab == 'elevation' ) {
 		echo leafext_elevation_help_text();
+	}
+	if( $active_tab == 'help' ) {
+		include "admin/help.php";
+		echo leafext_help();
 	}
 }
 
