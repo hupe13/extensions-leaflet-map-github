@@ -38,19 +38,15 @@ function leafext_do_page() {
 	echo '</h3>';
 
 	echo '<form method="post" action="options.php">';
-		if( $active_tab == 'elevation' ) {
-			settings_fields('leafext_settings_theme');
-			do_settings_sections( 'leafext_settings_theme' );
-			//
-		} else if ( $active_tab == 'tilelayers' ) {
-			settings_fields('leafext_settings_maps');
-			do_settings_sections( 'leafext_settings_maps' );
-		}
-	echo '<p class="submit">';
-	echo '<input type="submit" class="button-primary" value="';
-	_e('Save Changes');
-	echo '" />';
-	echo '</p>';
+	if( $active_tab == 'elevation' ) {
+		settings_fields('leafext_settings_theme');
+		do_settings_sections( 'leafext_settings_theme' );
+		//
+	} else if ( $active_tab == 'tilelayers' ) {
+		settings_fields('leafext_settings_maps');
+		do_settings_sections( 'leafext_settings_maps' );
+	}
+	submit_button();
 	echo '</form>';
 	if( $active_tab == 'elevation' ) {
 		echo leafext_elevation_help_text();
