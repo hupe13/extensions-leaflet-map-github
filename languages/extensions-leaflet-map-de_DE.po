@@ -1,11 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map\n"
-"POT-Creation-Date: 2021-04-20 10:08+0200\n"
-"PO-Revision-Date: 2021-04-23 11:52+0000\n"
+"POT-Creation-Date: 2021-04-24 14:24+0200\n"
+"PO-Revision-Date: 2021-04-24 12:55+0000\n"
 "Last-Translator: \n"
-"Language-Team: German\n"
-"Language: de\n"
+"Language-Team: Deutsch\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,6 +14,25 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: .\n"
+"Report-Msgid-Bugs-To: \n"
+"X-Loco-Version: 2.5.2; wp-5.7.1"
+
+#: admin/help.php:44
+#| msgid "to reset the view. A must for clustering markers"
+msgid "button to reset the view. A must for clustering markers"
+msgstr "Button um die Ansicht zurückzusetzen. Ein Muss für Markercluster"
+
+#: admin/help.php:33
+msgid "comma separated labels appear in the selection menu"
+msgstr "durch Komma getrennte Beschriftungen werden im Auswahlmenü angezeigt"
+
+#: admin/help.php:32
+msgid ""
+"comma separated strings to distinguish the markers, e.g. an unique string in "
+"iconUrl or title"
+msgstr ""
+"durch Komma getrennte Zeichenketten zur Unterscheidung der Marker, z. B. "
+"eine eindeutige Zeichenkette in iconUrl oder title"
 
 #: admin/switching_tilelayer.php:47
 msgid ""
@@ -25,17 +44,42 @@ msgstr ""
 "Tileserver. Der Name erscheint im Menü. Um einen Tileserver zu löschen, "
 "lösche den Text in den Feldern."
 
+#: admin/help.php:6
+msgid "Display a track with elevation profile"
+msgstr "Anzeige eines Tracks mit Höhenprofil"
+
+#: admin/help.php:28
+msgid "dynamically add/remove groups of markers from Marker Cluster"
+msgstr "Dynamisches Hinzufügen/Entfernen von Markergruppen aus Marker Cluster"
+
 #. Name of the plugin
 msgid "Extensions for Leaflet Map Github"
-msgstr "Erweiterungen für Leaflet Map"
+msgstr "Erweiterungen für Leaflet Map Github"
 
 #. Description of the plugin
-msgid "Extensions for the Wordpress plugin Leaflet Map"
-msgstr "Erweiterungen für das Wordpress Plugin Leaflet Map"
+msgid "Extensions for the Wordpress plugin Leaflet Map Github"
+msgstr "Erweiterungen für das Wordpress Plugin Leaflet Map Github"
+
+#: admin/help.php:80
+msgid ""
+"First go to Settings -&gt; Leaflet Map -&gt; Leaflet Map Extensions and "
+"configure tile layers"
+msgstr ""
+"Gehe zu Einstellungen -&gt; Leaflet Map -&gt; Leaflet Map Extensions und "
+"konfiguriere die Tileserver"
+
+#: admin.php:39
+msgid "Help"
+msgstr "Hilfe"
+
+#: admin/help.php:42
+msgid ""
+"Here the groups are differentiated according to the color of the markers"
+msgstr "Hier werden die Gruppen nach der Farbe der Marker unterschieden"
 
 #: admin/switching_tilelayer.php:44
 msgid "Here you can define one or more tile server."
-msgstr "Hier kannst du einen oder mehrere Tileserver definieren."
+msgstr "Hier kannst du einen oder mehrere Tileserver konfigurieren."
 
 #: admin/elevation.php:45
 msgid "Here you can switch colors for an elevation theme."
@@ -63,3 +107,27 @@ msgstr ""
 "CSS von <a href='https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-"
 "elevation.css'>https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-"
 "elevation.css</a>"
+
+#: admin/help.php:16
+msgid "Many markers on a map become confusing. That is why they are clustered"
+msgstr ""
+"Viele Marker auf einer Karte werden unübersichtlich. Deshalb werden sie "
+"geclustert"
+
+#: admin/help.php:31
+msgid "possible meaningful values"
+msgstr "mögliche sinnvolle Werte"
+
+#: admin/help.php:79
+msgid "Switching Tile Layers"
+msgstr "Umschalten von Tilelayers"
+
+#: admin/help.php:34
+msgid "The number of strings and groups must match"
+msgstr "Die Anzahl von strings und groups muss übereinstimmen"
+
+#: admin/help.php:69
+msgid "Use it to highlight a geojson area or line on mouse over"
+msgstr ""
+"Verwende diese Option, um einen Geojson-Bereich oder einen Track beim "
+"Überfahren mit der Maus hervorzuheben"

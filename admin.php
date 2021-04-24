@@ -36,7 +36,7 @@ function leafext_do_page() {
 	echo '">Switching Tilelayers</a>';
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=help" class="nav-tab';
 	echo $active_tab == 'help' ? ' nav-tab-active' : '';
-	echo '">Hilfe!</a>';
+	echo '">'.__('Help',"extensions-leaflet-map").'</a>';
 
 	echo '</h3>';
 	if( $active_tab != 'help' ) {

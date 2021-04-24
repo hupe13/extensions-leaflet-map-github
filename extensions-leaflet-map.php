@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Extensions for Leaflet Map Github
- * Description: Extensions for the Wordpress plugin Leaflet Map
+ * Description: Extensions for the Wordpress plugin Leaflet Map Github
  * Version: 1.1
  * Author: hupe13
  * Text Domain: extensions-leaflet-map

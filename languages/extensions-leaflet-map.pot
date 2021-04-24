@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map Github\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-23 11:44+0000\n"
+"POT-Creation-Date: 2021-04-24 12:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,6 +16,20 @@ msgstr ""
 "X-Loco-Version: 2.5.2; wp-5.7.1\n"
 "X-Domain: extensions-leaflet-map"
 
+#: admin/help.php:44
+msgid "button to reset the view. A must for clustering markers"
+msgstr ""
+
+#: admin/help.php:33
+msgid "comma separated labels appear in the selection menu"
+msgstr ""
+
+#: admin/help.php:32
+msgid ""
+"comma separated strings to distinguish the markers, e.g. an unique string in "
+"iconUrl or title"
+msgstr ""
+
 #: admin/switching_tilelayer.php:47
 msgid ""
 "Configure a short name, attribution and a tile url for each tile service. "
@@ -23,12 +37,35 @@ msgid ""
 "the values."
 msgstr ""
 
+#: admin/help.php:6
+msgid "Display a track with elevation profile"
+msgstr ""
+
+#: admin/help.php:28
+msgid "dynamically add/remove groups of markers from Marker Cluster"
+msgstr ""
+
 #. Name of the plugin
 msgid "Extensions for Leaflet Map Github"
 msgstr ""
 
 #. Description of the plugin
-msgid "Extensions for the Wordpress plugin Leaflet Map"
+msgid "Extensions for the Wordpress plugin Leaflet Map Github"
+msgstr ""
+
+#: admin/help.php:80
+msgid ""
+"First go to Settings -&gt; Leaflet Map -&gt; Leaflet Map Extensions and "
+"configure tile layers"
+msgstr ""
+
+#: admin.php:39
+msgid "Help"
+msgstr ""
+
+#: admin/help.php:42
+msgid ""
+"Here the groups are differentiated according to the color of the markers"
 msgstr ""
 
 #: admin/switching_tilelayer.php:44
@@ -54,4 +91,24 @@ msgid ""
 "In your elevation.css put the styles like the theme styles in <a href='https:"
 "//unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css'>https:"
 "//unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a>"
+msgstr ""
+
+#: admin/help.php:16
+msgid "Many markers on a map become confusing. That is why they are clustered"
+msgstr ""
+
+#: admin/help.php:31
+msgid "possible meaningful values"
+msgstr ""
+
+#: admin/help.php:79
+msgid "Switching Tile Layers"
+msgstr ""
+
+#: admin/help.php:34
+msgid "The number of strings and groups must match"
+msgstr ""
+
+#: admin/help.php:69
+msgid "Use it to highlight a geojson area or line on mouse over"
 msgstr ""
