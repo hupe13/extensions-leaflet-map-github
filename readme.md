@@ -106,6 +106,8 @@ Here the groups are differentiated according to the color of the markers.
 
 #### Hide Markers
 
+If a GPX track contains waypoints that you do not want to display.
+
 <pre>
 [leaflet-map ...]
 [leaflet-gpx src="//url/to/file.gpx" ... ]
