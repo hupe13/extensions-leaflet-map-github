@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map\n"
 "POT-Creation-Date: 2021-04-24 14:24+0200\n"
-"PO-Revision-Date: 2021-04-24 13:15+0000\n"
+"PO-Revision-Date: 2021-04-24 18:45+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -17,16 +17,24 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "X-Loco-Version: 2.5.2; wp-5.7.1"
 
-#: admin/help.php:44
+#: admin/help.php:91
+msgid "and configure tile layers"
+msgstr "und konfiguriere die Tileserver"
+
+#: admin/help.php:10
+msgid "and select a color theme"
+msgstr "und wähle ein Farbthema aus"
+
+#: admin/help.php:51
 #| msgid "to reset the view. A must for clustering markers"
 msgid "button to reset the view. A must for clustering markers"
 msgstr "Button um die Ansicht zurückzusetzen. Ein Muss für Markercluster"
 
-#: admin/help.php:33
+#: admin/help.php:39
 msgid "comma separated labels appear in the selection menu"
 msgstr "durch Komma getrennte Beschriftungen werden im Auswahlmenü angezeigt"
 
-#: admin/help.php:32
+#: admin/help.php:38
 msgid ""
 "comma separated strings to distinguish the markers, e.g. an unique string in "
 "iconUrl or title"
@@ -44,11 +52,11 @@ msgstr ""
 "Tileserver. Der Name erscheint im Menü. Um einen Tileserver zu löschen, "
 "lösche den Text in den Feldern."
 
-#: admin/help.php:6
+#: admin/help.php:7
 msgid "Display a track with elevation profile"
 msgstr "Anzeige eines Tracks mit Höhenprofil"
 
-#: admin/help.php:28
+#: admin/help.php:34
 msgid "dynamically add/remove groups of markers from Marker Cluster"
 msgstr "Dynamisches Hinzufügen/Entfernen von Markergruppen aus Marker Cluster"
 
@@ -60,19 +68,15 @@ msgstr "Erweiterungen für Leaflet Map Github"
 msgid "Extensions for the Wordpress plugin Leaflet Map Github"
 msgstr "Erweiterungen für das Wordpress Plugin Leaflet Map Github"
 
-#: admin/help.php:80
-msgid ""
-"First go to Settings -&gt; Leaflet Map -&gt; Leaflet Map Extensions and "
-"configure tile layers"
-msgstr ""
-"Gehe zu Einstellungen -&gt; Leaflet Map -&gt; Leaflet Map Extensions und "
-"konfiguriere die Tileserver"
+#: admin/help.php:91
+msgid "First go to"
+msgstr "Gehe zuerst zu"
 
-#: admin.php:39
+#: admin.php:33
 msgid "Help"
 msgstr "Hilfe"
 
-#: admin/help.php:42
+#: admin/help.php:48
 msgid ""
 "Here the groups are differentiated according to the color of the markers"
 msgstr "Hier werden die Gruppen nach der Farbe der Marker unterschieden"
@@ -88,6 +92,11 @@ msgstr "Hier kannst du die Farbe für das Höhenprofil wählen."
 #. Author of the plugin
 msgid "hupe13"
 msgstr "hupe13"
+
+#: admin/help.php:71
+msgid "If a GPX track contains waypoints that you do not want to display"
+msgstr ""
+"Falls ein GPX-Track Wegpunkte enthält, die man nicht anzeigen lassen möchte"
 
 #: admin/elevation.php:58
 msgid ""
@@ -108,30 +117,38 @@ msgstr ""
 "elevation.css'>https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-"
 "elevation.css</a>"
 
-#: admin/help.php:16
+#: admin/help.php:21
 msgid "Many markers on a map become confusing. That is why they are clustered"
 msgstr ""
 "Viele Marker auf einer Karte werden unübersichtlich. Deshalb werden sie "
 "geclustert"
 
-#: admin/help.php:31
+#: admin/help.php:37
 msgid "other"
 msgstr "weitere"
 
-#: admin/help.php:31
+#: admin/help.php:37
 msgid "possible meaningful values"
 msgstr "mögliche sinnvolle Werte"
 
-#: admin/help.php:79
+#: admin/help.php:10 admin/help.php:91
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: admin/help.php:89
 msgid "Switching Tile Layers"
 msgstr "Umschalten von Tilelayers"
 
-#: admin/help.php:34
+#: admin/help.php:40
 msgid "The number of strings and groups must match"
 msgstr "Die Anzahl von strings und groups muss übereinstimmen"
 
-#: admin/help.php:69
+#: admin/help.php:79
 msgid "Use it to highlight a geojson area or line on mouse over"
 msgstr ""
 "Verwende diese Option, um einen Geojson-Bereich oder einen Track beim "
 "Überfahren mit der Maus hervorzuheben"
+
+#: admin/help.php:10
+msgid "You may go to"
+msgstr "Gehe zu"

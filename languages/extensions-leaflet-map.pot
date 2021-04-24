@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map Github\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 13:14+0000\n"
+"POT-Creation-Date: 2021-04-24 18:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,15 +16,23 @@ msgstr ""
 "X-Loco-Version: 2.5.2; wp-5.7.1\n"
 "X-Domain: extensions-leaflet-map"
 
-#: admin/help.php:44
+#: admin/help.php:91
+msgid "and configure tile layers"
+msgstr ""
+
+#: admin/help.php:10
+msgid "and select a color theme"
+msgstr ""
+
+#: admin/help.php:51
 msgid "button to reset the view. A must for clustering markers"
 msgstr ""
 
-#: admin/help.php:33
+#: admin/help.php:39
 msgid "comma separated labels appear in the selection menu"
 msgstr ""
 
-#: admin/help.php:32
+#: admin/help.php:38
 msgid ""
 "comma separated strings to distinguish the markers, e.g. an unique string in "
 "iconUrl or title"
@@ -37,11 +45,11 @@ msgid ""
 "the values."
 msgstr ""
 
-#: admin/help.php:6
+#: admin/help.php:7
 msgid "Display a track with elevation profile"
 msgstr ""
 
-#: admin/help.php:28
+#: admin/help.php:34
 msgid "dynamically add/remove groups of markers from Marker Cluster"
 msgstr ""
 
@@ -53,17 +61,15 @@ msgstr ""
 msgid "Extensions for the Wordpress plugin Leaflet Map Github"
 msgstr ""
 
-#: admin/help.php:80
-msgid ""
-"First go to Settings -&gt; Leaflet Map -&gt; Leaflet Map Extensions and "
-"configure tile layers"
+#: admin/help.php:91
+msgid "First go to"
 msgstr ""
 
-#: admin.php:39
+#: admin.php:33
 msgid "Help"
 msgstr ""
 
-#: admin/help.php:42
+#: admin/help.php:48
 msgid ""
 "Here the groups are differentiated according to the color of the markers"
 msgstr ""
@@ -80,6 +86,10 @@ msgstr ""
 msgid "hupe13"
 msgstr ""
 
+#: admin/help.php:71
+msgid "If a GPX track contains waypoints that you do not want to display"
+msgstr ""
+
 #: admin/elevation.php:58
 msgid ""
 "If you want use an own style, select \"other\" theme and give it a name. Put "
@@ -93,26 +103,34 @@ msgid ""
 "//unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a>"
 msgstr ""
 
-#: admin/help.php:16
+#: admin/help.php:21
 msgid "Many markers on a map become confusing. That is why they are clustered"
 msgstr ""
 
-#: admin/help.php:31
+#: admin/help.php:37
 msgid "other"
 msgstr ""
 
-#: admin/help.php:31
+#: admin/help.php:37
 msgid "possible meaningful values"
 msgstr ""
 
-#: admin/help.php:79
+#: admin/help.php:10 admin/help.php:91
+msgid "Settings"
+msgstr ""
+
+#: admin/help.php:89
 msgid "Switching Tile Layers"
 msgstr ""
 
-#: admin/help.php:34
+#: admin/help.php:40
 msgid "The number of strings and groups must match"
 msgstr ""
 
-#: admin/help.php:69
+#: admin/help.php:79
 msgid "Use it to highlight a geojson area or line on mouse over"
+msgstr ""
+
+#: admin/help.php:10
+msgid "You may go to"
 msgstr ""
