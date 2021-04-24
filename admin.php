@@ -24,19 +24,19 @@ function leafext_do_page() {
 	echo '<div class="wrap">
 	<h2>Extensions for Leaflet Map Options</h2>';
 
-	$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'elevation';
+	$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'help';
 
 	echo '<h3 class="nav-tab-wrapper">';
 
+	echo '<a href="?page='.$leafext_plugin_name.'&tab=help" class="nav-tab';
+	echo $active_tab == 'help' ? ' nav-tab-active' : '';
+	echo '">'.__('Help',"extensions-leaflet-map").'</a>';
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=elevation" class="nav-tab';
 	echo $active_tab == 'elevation' ? ' nav-tab-active' : '';
 	echo '">Elevation Theme</a>';
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=tilelayers" class="nav-tab';
 	echo $active_tab == 'tilelayers' ? ' nav-tab-active' : '';
 	echo '">Switching Tilelayers</a>';
-	echo '<a href="?page='.$leafext_plugin_name.'&tab=help" class="nav-tab';
-	echo $active_tab == 'help' ? ' nav-tab-active' : '';
-	echo '">'.__('Help',"extensions-leaflet-map").'</a>';
 
 	echo '</h3>';
 	if( $active_tab != 'help' ) {
