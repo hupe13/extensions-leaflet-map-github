@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map Github\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-24 18:41+0000\n"
+"POT-Creation-Date: 2021-04-26 13:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -22,6 +22,10 @@ msgstr ""
 
 #: admin/help.php:10
 msgid "and select a color theme"
+msgstr ""
+
+#: admin/markercluster.php:27
+msgid "At this zoom level and below, markers will not be clustered. See"
 msgstr ""
 
 #: admin/help.php:51
@@ -51,6 +55,10 @@ msgstr ""
 
 #: admin/help.php:34
 msgid "dynamically add/remove groups of markers from Marker Cluster"
+msgstr ""
+
+#: admin/markercluster.php:27
+msgid "Example"
 msgstr ""
 
 #. Name of the plugin
@@ -86,6 +94,13 @@ msgstr ""
 msgid "hupe13"
 msgstr ""
 
+#: admin/markercluster.php:57
+msgid ""
+"I found it useful to change these values for my website. If you want to "
+"change <a href=\"https://github.com/Leaflet/Leaflet.markercluster#options\">"
+"other options</a>, please tell me"
+msgstr ""
+
 #: admin/help.php:71
 msgid "If a GPX track contains waypoints that you do not want to display"
 msgstr ""
@@ -111,6 +126,10 @@ msgstr ""
 msgid "other"
 msgstr ""
 
+#: admin/markercluster.php:27
+msgid "Plugins Default"
+msgstr ""
+
 #: admin/help.php:37
 msgid "possible meaningful values"
 msgstr ""
@@ -123,8 +142,18 @@ msgstr ""
 msgid "Switching Tile Layers"
 msgstr ""
 
+#: admin/markercluster.php:35
+msgid ""
+"The maximum radius that a cluster will cover from the central marker (in "
+"pixels). Decreasing will make more, smaller clusters. Default"
+msgstr ""
+
 #: admin/help.php:40
 msgid "The number of strings and groups must match"
+msgstr ""
+
+#: admin/markercluster.php:58
+msgid "To reset all values to their defaults, simply clear the values"
 msgstr ""
 
 #: admin/help.php:79

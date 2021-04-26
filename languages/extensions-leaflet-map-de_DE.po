@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map\n"
 "POT-Creation-Date: 2021-04-24 14:24+0200\n"
-"PO-Revision-Date: 2021-04-24 18:45+0000\n"
+"PO-Revision-Date: 2021-04-26 13:20+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -24,6 +24,11 @@ msgstr "und konfiguriere die Tileserver"
 #: admin/help.php:10
 msgid "and select a color theme"
 msgstr "und wähle ein Farbthema aus"
+
+#: admin/markercluster.php:27
+msgid "At this zoom level and below, markers will not be clustered. See"
+msgstr ""
+"Ab dieser Zoomstufe und darunter werden die Marker nicht geclustert. Siehe"
 
 #: admin/help.php:51
 #| msgid "to reset the view. A must for clustering markers"
@@ -60,6 +65,10 @@ msgstr "Anzeige eines Tracks mit Höhenprofil"
 msgid "dynamically add/remove groups of markers from Marker Cluster"
 msgstr "Dynamisches Hinzufügen/Entfernen von Markergruppen aus Marker Cluster"
 
+#: admin/markercluster.php:27
+msgid "Example"
+msgstr "Beispiel"
+
 #. Name of the plugin
 msgid "Extensions for Leaflet Map Github"
 msgstr "Erweiterungen für Leaflet Map Github"
@@ -92,6 +101,16 @@ msgstr "Hier kannst du die Farbe für das Höhenprofil wählen."
 #. Author of the plugin
 msgid "hupe13"
 msgstr "hupe13"
+
+#: admin/markercluster.php:57
+msgid ""
+"I found it useful to change these values for my website. If you want to "
+"change <a href=\"https://github.com/Leaflet/Leaflet.markercluster#options\">"
+"other options</a>, please tell me"
+msgstr ""
+"Ich fand es sinnvoll, diese Werte für meine Website zu ändern. Wenn du <a "
+"href=\"https://github.com/Leaflet/Leaflet.markercluster#options\">andere "
+"Parameter</a> ändern möchtest, teil es mir bitte mit"
 
 #: admin/help.php:71
 msgid "If a GPX track contains waypoints that you do not want to display"
@@ -127,6 +146,10 @@ msgstr ""
 msgid "other"
 msgstr "weitere"
 
+#: admin/markercluster.php:27
+msgid "Plugins Default"
+msgstr "Plugins Standard"
+
 #: admin/help.php:37
 msgid "possible meaningful values"
 msgstr "mögliche sinnvolle Werte"
@@ -139,9 +162,23 @@ msgstr "Einstellungen"
 msgid "Switching Tile Layers"
 msgstr "Umschalten von Tilelayers"
 
+#: admin/markercluster.php:35
+msgid ""
+"The maximum radius that a cluster will cover from the central marker (in "
+"pixels). Decreasing will make more, smaller clusters. Default"
+msgstr ""
+"Der maximale Radius, den ein Cluster vom zentralen Marker aus abdeckt (in "
+"Pixel). Je kleiner er ist, desto mehr und kleinere Cluster werden gebildet. "
+"Standard"
+
 #: admin/help.php:40
 msgid "The number of strings and groups must match"
 msgstr "Die Anzahl von strings und groups muss übereinstimmen"
+
+#: admin/markercluster.php:58
+msgid "To reset all values to their defaults, simply clear the values"
+msgstr ""
+"Um alle Werte auf ihre Standardwerte zurückzusetzen, lösche einfach die Werte"
 
 #: admin/help.php:79
 msgid "Use it to highlight a geojson area or line on mouse over"
