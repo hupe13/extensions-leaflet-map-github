@@ -37,6 +37,9 @@ function leafext_do_page() {
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=tilelayers" class="nav-tab';
 	echo $active_tab == 'tilelayers' ? ' nav-tab-active' : '';
 	echo '">Switching Tilelayers</a>';
+	echo '<a href="?page='.$leafext_plugin_name.'&tab=cluster" class="nav-tab';
+	echo $active_tab == 'cluster' ? ' nav-tab-active' : '';
+	echo '">Markercluster</a>';
 
 	echo '</h3>';
 	if( $active_tab != 'help' ) {
@@ -44,10 +47,12 @@ function leafext_do_page() {
 	if( $active_tab == 'elevation' ) {
 		settings_fields('leafext_settings_theme');
 		do_settings_sections( 'leafext_settings_theme' );
-		//
 	} else if ( $active_tab == 'tilelayers' ) {
 		settings_fields('leafext_settings_maps');
 		do_settings_sections( 'leafext_settings_maps' );
+	} else if( $active_tab == 'cluster' ) {
+			settings_fields('leafext_settings_cluster');
+			do_settings_sections( 'leafext_settings_cluster' );
 	}
 	submit_button();
 	echo '</form>';
