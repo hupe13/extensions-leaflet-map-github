@@ -18,8 +18,10 @@ __('You may go to','extensions-leaflet-map').' <a href="admin.php?page=extension
 </pre>
 <h4 id="leaflet.markercluster">Leaflet.markercluster</h4>
 <img src="'.$leafext_picts.'cluster.png">
-<p>'.__('Many markers on a map become confusing. That is why they are clustered','extensions-leaflet-map').'.</p>
-<pre>
+<p>'.__('Many markers on a map become confusing. That is why they are clustered','extensions-leaflet-map').'.</p>'.__('
+You can define radius (maxClusterRadius) and zoom (disableClusteringAtZoom) in <a href="admin.php?page=extensions-leaflet-map&tab=cluster">Settings</a> or per map.'
+,'extensions-leaflet-map').
+'<pre>
 [leaflet-map ....]
 // many markers
 [leaflet-marker lat=... lng=... ...]poi1[/leaflet-marker]
@@ -27,6 +29,8 @@ __('You may go to','extensions-leaflet-map').' <a href="admin.php?page=extension
  ...
 [leaflet-marker lat=... lng=... ...]poixx[/leaflet-marker]
 [cluster]
+// or
+[cluster radius="..." zoom="..."]
 [zoomhomemap]
 </pre>
 <h4 id="leaflet.featuregroup.subgroup">Leaflet.FeatureGroup.SubGroup</h4>

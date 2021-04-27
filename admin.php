@@ -1,6 +1,7 @@
 <?php
 include 'admin/elevation.php';
 include 'admin/switching_tilelayer.php';
+include 'admin/markercluster.php';
 
 // Admin Menu
 add_action('admin_menu', 'leafext_add_page', 99);
@@ -42,6 +43,7 @@ function leafext_do_page() {
 	echo '">Markercluster</a>';
 
 	echo '</h3>';
+
 	if( $active_tab != 'help' ) {
 	echo '<form method="post" action="options.php">';
 	if( $active_tab == 'elevation' ) {
