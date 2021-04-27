@@ -6,6 +6,7 @@
  * Author: hupe13
  * Text Domain: extensions-leaflet-map
  * Domain Path: /languages/
+ * Plugin URI: https://github.com/hupe13/extensions-leaflet-map
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map
  * Primary Branch: main
 **/
