@@ -2,10 +2,11 @@
 /**
  * Plugin Name: Extensions for Leaflet Map Github
  * Description: Extensions for the Wordpress plugin Leaflet Map Github
- * Version: 1.1
+ * Version: 1.1.01
  * Author: hupe13
  * Text Domain: extensions-leaflet-map
  * Domain Path: /languages/
+ * Plugin URI: https://github.com/hupe13/extensions-leaflet-map
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map
  * Primary Branch: main
 **/
