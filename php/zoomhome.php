@@ -30,25 +30,29 @@ function leafext_plugin_zoomhome_function($atts){
 	// custom js
 	wp_enqueue_script('myzoomhome',
 		plugins_url('js/zoomhome.min.js',LEAFEXT_PLUGIN_FILE), array('zoomhome'), null);
-  foreach ($atts as $attribute => $value) {
-    if (is_int($attribute)) {
-      $atts[strtolower($value)] = true;
-      unset($atts[$attribute]);
-    }
-  }
-  $fit=true;
-  if ( array_key_exists('!fit', $atts) ) {
-    $fit = false;
-  } else if ( array_key_exists('fit', $atts) ) {
-    if ( $atts['fit'] != "" ) {
-      $fit = (bool)$atts['fit'];
-    } else {
-      $fit = true;
-    }
-  }
 
-  $params=array('fit'=> $fit);
-  // Uebergabe der php Variablen an Javascript
-  wp_localize_script( 'myzoomhome', 'zoomhomemap', $params);
+	if (is_array($atts)) {
+		foreach ($atts as $attribute => $value) {
+			if (is_int($attribute)) {
+				$atts[strtolower($value)] = true;
+				unset($atts[$attribute]);
+			}
+		}
+	$fit=true;
+	if ( array_key_exists('!fit', $atts) ) {
+		$fit = false;
+	} else if ( array_key_exists('fit', $atts) ) {
+		if ( $atts['fit'] != "" ) {
+			$fit = (bool)$atts['fit'];
+		} else {
+			$fit = true;
+		}
+	}
+	} else {
+		$fit=true;
+	}
+	$params=array('fit'=> $fit);
+	// Uebergabe der php Variablen an Javascript
+	wp_localize_script( 'myzoomhome', 'zoomhomemap', $params);
 }
 add_shortcode('zoomhomemap', 'leafext_plugin_zoomhome_function' );
