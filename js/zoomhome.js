@@ -39,7 +39,7 @@
 				}
 				var group = L.featureGroup(markerArray);
 				bounds.extend(group.getBounds());
-				map.fitBounds(bounds);
+				//map.fitBounds(bounds);
 			}
 			//
 			var geojsons = window.WPLeafletMapPlugin.geojsons;
@@ -54,7 +54,7 @@
  						bounds.extend(this.getBounds());
 						if (bounds.isValid()) {
 							zoomHome.setHomeBounds(bounds);
-							map.fitBounds(bounds);
+							//map.fitBounds(bounds);
 						}
  					});
  				}
@@ -69,13 +69,13 @@
 				if (bounds.isValid()) {
 					zoomHome.addTo(map);
 					zoomHome.setHomeBounds(bounds);
-					console.log(map.getZoom());
 					map.options.maxZoom = 19;
+					if (zoomhomemap.fit) {
 					map.fitBounds(bounds);
-					// if (map.getZoom() > 14 && zoom == 1) {
-						// map.setZoom(14);
-					// }
-
+						if (map.getZoom() > 14 && zoom == 1) {
+							map.setZoom(14);
+						}
+					}
 				}
 			}
 		}
