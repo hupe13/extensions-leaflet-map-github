@@ -71,10 +71,12 @@
 					zoomHome.setHomeBounds(bounds);
 					map.options.maxZoom = 19;
 					if (zoomhomemap.fit) {
-					map.fitBounds(bounds);
-						if (map.getZoom() > 14 && zoom == 1) {
-							map.setZoom(14);
-						}
+						console.log("fit true");
+						console.log(map.getZoom());
+						map.fitBounds(bounds);
+						//if (map.getZoom() > 14 && zoom == 1) {
+						//	map.setZoom(14);
+						//}
 					}
 				}
 			}
