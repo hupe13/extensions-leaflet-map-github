@@ -39,9 +39,10 @@
 				}
 				var group = L.featureGroup(markerArray);
 				bounds.extend(group.getBounds());
-				//map.fitBounds(bounds);
+				if (zoomhomemap.fit) map.fitBounds(bounds);
 			}
 			//
+      		//geojson asynchron
 			var geojsons = window.WPLeafletMapPlugin.geojsons;
 			if (geojsons.length > 0) {
 				zoom++;
@@ -54,7 +55,7 @@
  						bounds.extend(this.getBounds());
 						if (bounds.isValid()) {
 							zoomHome.setHomeBounds(bounds);
-							//map.fitBounds(bounds);
+							if (zoomhomemap.fit) map.fitBounds(bounds);
 						}
  					});
  				}
