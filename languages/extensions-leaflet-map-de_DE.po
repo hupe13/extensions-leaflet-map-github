@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map\n"
 "POT-Creation-Date: 2021-04-24 14:24+0200\n"
-"PO-Revision-Date: 2021-04-27 12:17+0000\n"
+"PO-Revision-Date: 2021-04-28 06:44+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "X-Loco-Version: 2.5.2; wp-5.7.1"
 
-#: admin/help.php:21
+#: admin/help.php:20
 msgid ""
 "\n"
 "You can define radius (maxClusterRadius) and zoom (disableClusteringAtZoom) "
@@ -28,7 +28,7 @@ msgstr ""
 "(disableClusteringAtZoom) in den <a href=\"admin.php?page=extensions-leaflet-"
 "map&tab=cluster\">Einstellungen</a> oder pro Karte festlegen."
 
-#: admin/help.php:95
+#: admin/help.php:92
 msgid "and configure tile layers"
 msgstr "und konfiguriere die Tileserver"
 
@@ -41,16 +41,16 @@ msgid "At this zoom level and below, markers will not be clustered. See"
 msgstr ""
 "Ab dieser Zoomstufe und darunter werden die Marker nicht geclustert. Siehe"
 
-#: admin/help.php:55
+#: admin/help.php:52
 #| msgid "to reset the view. A must for clustering markers"
 msgid "button to reset the view. A must for clustering markers"
 msgstr "Button um die Ansicht zurückzusetzen. Ein Muss für Markercluster"
 
-#: admin/help.php:43
+#: admin/help.php:41
 msgid "comma separated labels appear in the selection menu"
 msgstr "durch Komma getrennte Beschriftungen werden im Auswahlmenü angezeigt"
 
-#: admin/help.php:42
+#: admin/help.php:40
 msgid ""
 "comma separated strings to distinguish the markers, e.g. an unique string in "
 "iconUrl or title"
@@ -72,7 +72,7 @@ msgstr ""
 msgid "Display a track with elevation profile"
 msgstr "Anzeige eines Tracks mit Höhenprofil"
 
-#: admin/help.php:38
+#: admin/help.php:36
 msgid "dynamically add/remove groups of markers from Marker Cluster"
 msgstr "Dynamisches Hinzufügen/Entfernen von Markergruppen aus Marker Cluster"
 
@@ -88,7 +88,7 @@ msgstr "Erweiterungen für Leaflet Map Github"
 msgid "Extensions for the Wordpress plugin Leaflet Map Github"
 msgstr "Erweiterungen für das Wordpress Plugin Leaflet Map Github"
 
-#: admin/help.php:95
+#: admin/help.php:92
 msgid "First go to"
 msgstr "Gehe zuerst zu"
 
@@ -96,7 +96,7 @@ msgstr "Gehe zuerst zu"
 msgid "Help"
 msgstr "Hilfe"
 
-#: admin/help.php:52
+#: admin/help.php:49
 msgid ""
 "Here the groups are differentiated according to the color of the markers"
 msgstr "Hier werden die Gruppen nach der Farbe der Marker unterschieden"
@@ -127,7 +127,7 @@ msgstr ""
 "href=\"https://github.com/Leaflet/Leaflet.markercluster#options\">andere "
 "Parameter</a> ändern möchtest, teil es mir bitte mit"
 
-#: admin/help.php:75
+#: admin/help.php:74
 msgid "If a GPX track contains waypoints that you do not want to display"
 msgstr ""
 "Falls ein GPX-Track Wegpunkte enthält, die man nicht anzeigen lassen möchte"
@@ -151,13 +151,17 @@ msgstr ""
 "elevation.css'>https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-"
 "elevation.css</a>"
 
-#: admin/help.php:21
+#: admin/help.php:20
 msgid "Many markers on a map become confusing. That is why they are clustered"
 msgstr ""
 "Viele Marker auf einer Karte werden unübersichtlich. Deshalb werden sie "
 "geclustert"
 
-#: admin/help.php:41
+#: admin/help.php:58
+msgid "or"
+msgstr "oder"
+
+#: admin/help.php:39
 msgid "other"
 msgstr "weitere"
 
@@ -165,15 +169,15 @@ msgstr "weitere"
 msgid "Plugins Default"
 msgstr "Plugins Standard"
 
-#: admin/help.php:41
+#: admin/help.php:39
 msgid "possible meaningful values"
 msgstr "mögliche sinnvolle Werte"
 
-#: admin/help.php:10 admin/help.php:95
+#: admin/help.php:10 admin/help.php:92
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: admin/help.php:93
+#: admin/help.php:90
 msgid "Switching Tile Layers"
 msgstr "Umschalten von Tilelayers"
 
@@ -186,7 +190,7 @@ msgstr ""
 "Pixel). Je kleiner er ist, desto mehr und kleinere Cluster werden gebildet. "
 "Standard"
 
-#: admin/help.php:44
+#: admin/help.php:42
 msgid "The number of strings and groups must match"
 msgstr "Die Anzahl von strings und groups muss übereinstimmen"
 
@@ -195,11 +199,19 @@ msgid "To reset all values to their defaults, simply clear the values"
 msgstr ""
 "Um alle Werte auf ihre Standardwerte zurückzusetzen, lösche einfach die Werte"
 
-#: admin/help.php:83
+#: admin/help.php:81
 msgid "Use it to highlight a geojson area or line on mouse over"
 msgstr ""
 "Verwende diese Option, um einen Geojson-Bereich oder einen Track beim "
 "Überfahren mit der Maus hervorzuheben"
+
+#: admin/help.php:53
+msgid ""
+"You can define wether zoomhomemap should zoom to all objects when calling "
+"the map."
+msgstr ""
+"Du kannst festlegen, ob zoomhomemap beim Aufruf der Karte auf alle Objekte "
+"zoomen soll."
 
 #: admin/help.php:10
 msgid "You may go to"

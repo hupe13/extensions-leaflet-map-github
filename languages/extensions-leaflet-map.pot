@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map Github\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-27 12:15+0000\n"
+"POT-Creation-Date: 2021-04-28 06:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Loco-Version: 2.5.2; wp-5.7.1\n"
 "X-Domain: extensions-leaflet-map"
 
-#: admin/help.php:21
+#: admin/help.php:20
 msgid ""
 "\n"
 "You can define radius (maxClusterRadius) and zoom (disableClusteringAtZoom) "
@@ -24,7 +24,7 @@ msgid ""
 " or per map."
 msgstr ""
 
-#: admin/help.php:95
+#: admin/help.php:92
 msgid "and configure tile layers"
 msgstr ""
 
@@ -36,15 +36,15 @@ msgstr ""
 msgid "At this zoom level and below, markers will not be clustered. See"
 msgstr ""
 
-#: admin/help.php:55
+#: admin/help.php:52
 msgid "button to reset the view. A must for clustering markers"
 msgstr ""
 
-#: admin/help.php:43
+#: admin/help.php:41
 msgid "comma separated labels appear in the selection menu"
 msgstr ""
 
-#: admin/help.php:42
+#: admin/help.php:40
 msgid ""
 "comma separated strings to distinguish the markers, e.g. an unique string in "
 "iconUrl or title"
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Display a track with elevation profile"
 msgstr ""
 
-#: admin/help.php:38
+#: admin/help.php:36
 msgid "dynamically add/remove groups of markers from Marker Cluster"
 msgstr ""
 
@@ -77,7 +77,7 @@ msgstr ""
 msgid "Extensions for the Wordpress plugin Leaflet Map Github"
 msgstr ""
 
-#: admin/help.php:95
+#: admin/help.php:92
 msgid "First go to"
 msgstr ""
 
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: admin/help.php:52
+#: admin/help.php:49
 msgid ""
 "Here the groups are differentiated according to the color of the markers"
 msgstr ""
@@ -113,7 +113,7 @@ msgid ""
 "other options</a>, please tell me"
 msgstr ""
 
-#: admin/help.php:75
+#: admin/help.php:74
 msgid "If a GPX track contains waypoints that you do not want to display"
 msgstr ""
 
@@ -130,11 +130,15 @@ msgid ""
 "//unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a>"
 msgstr ""
 
-#: admin/help.php:21
+#: admin/help.php:20
 msgid "Many markers on a map become confusing. That is why they are clustered"
 msgstr ""
 
-#: admin/help.php:41
+#: admin/help.php:58
+msgid "or"
+msgstr ""
+
+#: admin/help.php:39
 msgid "other"
 msgstr ""
 
@@ -142,15 +146,15 @@ msgstr ""
 msgid "Plugins Default"
 msgstr ""
 
-#: admin/help.php:41
+#: admin/help.php:39
 msgid "possible meaningful values"
 msgstr ""
 
-#: admin/help.php:10 admin/help.php:95
+#: admin/help.php:10 admin/help.php:92
 msgid "Settings"
 msgstr ""
 
-#: admin/help.php:93
+#: admin/help.php:90
 msgid "Switching Tile Layers"
 msgstr ""
 
@@ -160,7 +164,7 @@ msgid ""
 "pixels). Decreasing will make more, smaller clusters. Default"
 msgstr ""
 
-#: admin/help.php:44
+#: admin/help.php:42
 msgid "The number of strings and groups must match"
 msgstr ""
 
@@ -168,8 +172,14 @@ msgstr ""
 msgid "To reset all values to their defaults, simply clear the values"
 msgstr ""
 
-#: admin/help.php:83
+#: admin/help.php:81
 msgid "Use it to highlight a geojson area or line on mouse over"
+msgstr ""
+
+#: admin/help.php:53
+msgid ""
+"You can define wether zoomhomemap should zoom to all objects when calling "
+"the map."
 msgstr ""
 
 #: admin/help.php:10
