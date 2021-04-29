@@ -1,4 +1,4 @@
-<a href="https://wordpress.org/plugins/extensions-leaflet-map/">Official Wordpress Plugin</a>
+<a href="https://wordpress.org/plugins/extensions-leaflet-map/">Official WordPress Plugin</a>
 
 In the Github version not everything works currently.
 
@@ -14,9 +14,9 @@ Contributors: hupe13
 
 ## Description
 
-Plugin to extend the Wordpress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>, see Bozdoz <a href="https://github.com/bozdoz/wp-plugin-leaflet-map#how-can-i-add-another-leaflet-plugin">FAQ</a>.
+Plugin to extend the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>, see Bozdoz <a href="https://github.com/bozdoz/wp-plugin-leaflet-map#how-can-i-add-another-leaflet-plugin">FAQ</a>.
 
-### Wordpress Plugin
+### WordPress Plugin
 
 You need to install the plugin "Leaflet Map".
 
