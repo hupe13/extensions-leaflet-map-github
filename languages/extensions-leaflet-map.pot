@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map Github\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-28 06:43+0000\n"
+"POT-Creation-Date: 2021-04-29 13:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Loco-Version: 2.5.2; wp-5.7.1\n"
 "X-Domain: extensions-leaflet-map"
 
-#: admin/help.php:20
+#: admin/help/cluster.php:4
 msgid ""
 "\n"
 "You can define radius (maxClusterRadius) and zoom (disableClusteringAtZoom) "
@@ -24,11 +24,11 @@ msgid ""
 " or per map."
 msgstr ""
 
-#: admin/help.php:92
+#: admin/help/tilelayers.php:4
 msgid "and configure tile layers"
 msgstr ""
 
-#: admin/help.php:10
+#: admin/help/elevation.php:5
 msgid "and select a color theme"
 msgstr ""
 
@@ -36,15 +36,15 @@ msgstr ""
 msgid "At this zoom level and below, markers will not be clustered. See"
 msgstr ""
 
-#: admin/help.php:52
+#: admin/help/zoomhome.php:4
 msgid "button to reset the view. A must for clustering markers"
 msgstr ""
 
-#: admin/help.php:41
+#: admin/help/markergroup.php:9
 msgid "comma separated labels appear in the selection menu"
 msgstr ""
 
-#: admin/help.php:40
+#: admin/help/markergroup.php:8
 msgid ""
 "comma separated strings to distinguish the markers, e.g. an unique string in "
 "iconUrl or title"
@@ -57,11 +57,11 @@ msgid ""
 "the values."
 msgstr ""
 
-#: admin/help.php:7
+#: admin/help/elevation.php:2
 msgid "Display a track with elevation profile"
 msgstr ""
 
-#: admin/help.php:36
+#: admin/help/markergroup.php:4
 msgid "dynamically add/remove groups of markers from Marker Cluster"
 msgstr ""
 
@@ -77,7 +77,7 @@ msgstr ""
 msgid "Extensions for the Wordpress plugin Leaflet Map Github"
 msgstr ""
 
-#: admin/help.php:92
+#: admin/help/tilelayers.php:4
 msgid "First go to"
 msgstr ""
 
@@ -85,7 +85,7 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: admin/help.php:49
+#: admin/help/markergroup.php:17
 msgid ""
 "Here the groups are differentiated according to the color of the markers"
 msgstr ""
@@ -113,7 +113,7 @@ msgid ""
 "other options</a>, please tell me"
 msgstr ""
 
-#: admin/help.php:74
+#: admin/help/hidemarkers.php:3
 msgid "If a GPX track contains waypoints that you do not want to display"
 msgstr ""
 
@@ -130,15 +130,15 @@ msgid ""
 "//unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a>"
 msgstr ""
 
-#: admin/help.php:20
+#: admin/help/cluster.php:4
 msgid "Many markers on a map become confusing. That is why they are clustered"
 msgstr ""
 
-#: admin/help.php:58
+#: admin/help/zoomhome.php:12
 msgid "or"
 msgstr ""
 
-#: admin/help.php:39
+#: admin/help/markergroup.php:7
 msgid "other"
 msgstr ""
 
@@ -146,15 +146,15 @@ msgstr ""
 msgid "Plugins Default"
 msgstr ""
 
-#: admin/help.php:39
+#: admin/help/markergroup.php:7
 msgid "possible meaningful values"
 msgstr ""
 
-#: admin/help.php:10 admin/help.php:92
+#: admin/help/elevation.php:5 admin/help/tilelayers.php:4
 msgid "Settings"
 msgstr ""
 
-#: admin/help.php:90
+#: admin/help/tilelayers.php:2
 msgid "Switching Tile Layers"
 msgstr ""
 
@@ -164,7 +164,7 @@ msgid ""
 "pixels). Decreasing will make more, smaller clusters. Default"
 msgstr ""
 
-#: admin/help.php:42
+#: admin/help/markergroup.php:10
 msgid "The number of strings and groups must match"
 msgstr ""
 
@@ -172,16 +172,19 @@ msgstr ""
 msgid "To reset all values to their defaults, simply clear the values"
 msgstr ""
 
-#: admin/help.php:81
+#: admin/help/hovergeojson.php:4
 msgid "Use it to highlight a geojson area or line on mouse over"
 msgstr ""
 
-#: admin/help.php:53
+#: admin/help/zoomhome.php:5
 msgid ""
 "You can define wether zoomhomemap should zoom to all objects when calling "
-"the map."
+"the map. But this is valid for synchron loaded objects like markers only.\n"
+"For asynchron loaded object, like geojsons, use the leaflet-map attribute "
+"fitbounds. If you use the elevation shortcode,\n"
+"please use at least one marker (e.g. starting point)."
 msgstr ""
 
-#: admin/help.php:10
+#: admin/help/elevation.php:5
 msgid "You may go to"
 msgstr ""
