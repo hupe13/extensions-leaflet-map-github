@@ -44,7 +44,7 @@ if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . '/php/elevation.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/fullscreen.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/gesture.php';
-  include_once LEAFEXT_PLUGIN_DIR . '/php/hide-markers.php';
+  include_once LEAFEXT_PLUGIN_DIR . '/php/hidemarkers.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/hovergeojson.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/markercluster.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/zoomhome.php';
