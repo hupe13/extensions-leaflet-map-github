@@ -6,7 +6,7 @@ function leafext_layerswitch_function(){
 	if (!is_array($options )) return;
 
 	// custom js
-	wp_enqueue_script('layerswitch_custom', esc_url( plugins_url( 'js/layerswitch.js',
+	wp_enqueue_script('layerswitch_custom', esc_url( plugins_url( 'js/layerswitch.min.js',
 		dirname(__FILE__) ) ), Array('wp_leaflet_map'), null);
 
 	//Uebergabe der php Variablen an Javascript

@@ -18,7 +18,7 @@ function leafext_clustergroup_function( $atts ){
 
 	// custom js
 	wp_enqueue_script('featuregroup_custom',
-		plugins_url('js/featuregroup.js',LEAFEXT_PLUGIN_FILE), 
+		plugins_url('js/featuregroup.min.js',LEAFEXT_PLUGIN_FILE), 
 		array('leaflet.subgroup'),null);
 
 	$featuregroups = shortcode_atts( array('feat' => false, 'strings' => false, 'groups' => false), $atts);
