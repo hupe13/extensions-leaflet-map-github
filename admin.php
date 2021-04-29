@@ -1,7 +1,7 @@
 <?php
-include 'admin/elevation.php';
-include 'admin/switching_tilelayer.php';
-include 'admin/markercluster.php';
+include_once LEAFEXT_PLUGIN_DIR . '/admin/elevation.php';
+include_once LEAFEXT_PLUGIN_DIR . '/admin/layerswitch.php';
+include_once LEAFEXT_PLUGIN_DIR . '/admin/markercluster.php';
 
 // Admin Menu
 add_action('admin_menu', 'leafext_add_page', 99);
