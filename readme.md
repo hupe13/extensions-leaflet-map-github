@@ -35,113 +35,83 @@ You need to install the plugin "Leaflet Map".
 *   Hide Markers: Use it when a track in a GPX file contains some markers and you don't want to display them on the map.
 *   Switch tile layers with L.control.layers.
 
-### Shortcodes
 
-#### Display a track with elevation profile
-
-<pre>
-[leaflet-map ....]
+<h3>Shortcodes</h3><h4>Display a track with elevation profile</h4>
+<p>You may go to Settings -> Leaflet Map -> Leaflet Map Extensions and select a color theme.</p>
+<pre><code>[leaflet-map ....]
 // at least one marker if you use it with zoomehomemap
 [leaflet-marker lat=... lng=... ...]Start[/leaflet-marker]
 [elevation gpx="url_gpx_file"]
 // or
 [elevation gpx="url_gpx_file" summary=1]
-</pre>
-
-#### Leaflet.markercluster
-
-Many markers on a map become confusing. That is why they are clustered.
-
-<pre>
-[leaflet-map ....]
+</code></pre><h4>Switching Tile Layers</h4>
+<p>
+<p>First go to Settings -> Leaflet Map -> Leaflet Map Extensions and configure tile layers.</p>
+<pre><code>[leaflet-map mapid="..." ...]
+[layerswitch]
+</code></pre><h4>Leaflet.markercluster</h4>
+<p>Many markers on a map become confusing. That is why they are clustered.</p>
+You can define radius (maxClusterRadius) and zoom (disableClusteringAtZoom) in Settings -> Leaflet Map -> Leaflet Map Extensions or per map.<pre><code>[leaflet-map ....]
 // many markers
 [leaflet-marker lat=... lng=... ...]poi1[/leaflet-marker]
 [leaflet-marker lat=... lng=... ...]poi2[/leaflet-marker]
  ...
 [leaflet-marker lat=... lng=... ...]poixx[/leaflet-marker]
 [cluster]
+// or
+[cluster radius="..." zoom="..."]
 [zoomhomemap]
-</pre>
-
-#### Leaflet.FeatureGroup.SubGroup
-
-dynamically add/remove groups of markers from Marker Cluster.
-Parameter:
-*   feat - possible meaningful values: iconUrl, title, (other???)
-*   strings - comma separated strings to distinguish the markers, e.g. an unique string in iconUrl or title
-*   groups - comma separated labels appear in the selection menu
-*   The number of strings and groups must match.
-
-<pre>
-[leaflet-marker title="..." iconUrl="...red..." ... ] ... [/leaflet-marker]
+</code></pre><h4>Leaflet.FeatureGroup.SubGroup</h4>
+<p>dynamically add/remove groups of markers from Marker Cluster.
+Parameter:</p>
+<ul>
+<li>feat - possible meaningful values: iconUrl, title, (other???)</li>
+<li>strings - comma separated strings to distinguish the markers, e.g. an unique string in iconUrl or title</li>
+<li>groups - comma separated labels appear in the selection menu</li>
+<li>The number of strings and groups must match.</li>
+</ul>
+<pre><code>[leaflet-marker title="..." iconUrl="...red..." ... ] ... [/leaflet-marker]
 [leaflet-marker title="..." iconUrl="...green..." ... ] ... [/leaflet-marker]
 //many markers
 [markerClusterGroup feat="iconUrl" strings="red,green" groups="rot,gruen"]
-</pre>
-Here the groups are differentiated according to the color of the markers.
-
-#### leaflet.zoomhome
-
-"Home" button to reset the view. A must for clustering markers.
-
+</code></pre>
+<p>Here the groups are differentiated according to the color of the markers.</p><h4>leaflet.zoomhome</h4>
+<p>
+&quot;Home&quot; button to reset the view. A must for clustering markers.</p><p>You can define wether zoomhomemap should zoom to all objects when calling the map. But this is valid for synchron loaded objects like markers only.
+For asynchron loaded object, like geojsons, use the leaflet-map attribute fitbounds. If you use the elevation shortcode,
+please use at least one marker (e.g. starting point).</p>
 <pre>
-[leaflet-map ....]
+<code>[leaflet-map lat=... lng=... zoom=... !fitbounds !zoomcontrol]
+[leaflet-marker ....]
+[zoomhomemap !fit]</code>
+</pre>or
+<pre><code>[leaflet-map !zoomcontrol ....]
   ...
 [zoomhomemap]
-</pre>
-
-#### Fullscreen
-
-<pre>
-[fullscreen]
-</pre>
-
-#### GestureHandling
-
-<pre>
-[leaflet-map dragging ... ]
-// or
-[leaflet-map scrollwheel ... ]
-// or
-[leaflet-map dragging scrollwheel ... ]
-</pre>
-
-#### Hide Markers
-
-If a GPX track contains waypoints that you do not want to display.
-
-<pre>
-[leaflet-map ...]
-[leaflet-gpx src="//url/to/file.gpx" ... ]
-[hidemarkers]
-</pre>
-
-#### hovergeojson
-
-Use it to highlight a geojson area or line on mouse over.
-
-<pre>
-[leaflet-map ...]
+</code></pre><h4>Fullscreen</h4>
+<pre><code>[fullscreen]</code></pre><h4 >hovergeojson</h4>
+<p>Use it to highlight a geojson area or line on mouse over.</p>
+<pre><code>[leaflet-map ...]
 [leaflet-geojson src="//url/to/file.geojson" color="..."]...[/leaflet-geojson]
 //or / and
 [leaflet-gpx src="//url/to/file.gpx" color="..."]...[/leaflet-gpx]
 //or / and
 [leaflet-kml src="//url/to/file.kml" color="..."]...[/leaflet-kml]
 [hover]
-</pre>
-
-#### Switching Tile Layers
-
-First go to Settings -> Leaflet Map -> Leaflet Map Extensions and configure tile layers.
-
-<pre>
-[leaflet-map mapid="..." ...]
-[layerswitch]
-</pre>
+</code></pre><h4 >GestureHandling</h4>
+<pre><code>[leaflet-map dragging ... ]
+// or
+[leaflet-map scrollwheel ... ]
+// or
+[leaflet-map dragging scrollwheel ... ]
+</code></pre><h4>Hide Markers</h4>
+<p>If a GPX track contains waypoints that you do not want to display.</p>
+<pre><code>[leaflet-map ...]
+[leaflet-gpx src="//url/to/file.gpx" ... ]
+[hidemarkers]
+</code></pre>
 
 ### More
-
-<a href="https://phw-web.de/doku/leaflet/">Dokumentation</a> auf deutsch.
 
 Maybe new functions are <a href="https://github.com/hupe13/extensions-leaflet-map-testing">here</a>.
 
@@ -159,10 +129,17 @@ You can install the plugin through the WordPress installer under Plugins → Add
 Alternatively you can download the file from here, unzip it and move the unzipped contents to the wp-content/plugins folder of your WordPress installation. You will then be able to activate the plugin.
 
 (Optionally) Go to Settings - Leaflet Map - Extensions for Leaflet Map and
-* select a theme for elevation.
-* configure tile layer(s) if you want to switch tile layers.
+get documentation and settings options.
 
 ## Changelog
+
+### 1.2
+
+* documentation on a help page
+* prepare for translation
+* new setting options for <code>[markercluster]</code>
+* new setting options for <code>[zoomhomemap]</code>
+
 
 ### 1.1
 New functions:
