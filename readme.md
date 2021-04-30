@@ -77,7 +77,7 @@ Parameter:</p>
 </code></pre>
 <p>Here the groups are differentiated according to the color of the markers.</p><h4>leaflet.zoomhome</h4>
 <p>
-&quot;Home&quot; button to reset the view. A must for clustering markers.</p><p>You can define wether zoomhomemap should zoom to all objects when calling the map. But this is valid for synchron loaded objects like markers only.
+&quot;Home&quot; button to reset the view. A must have for clustering markers.</p><p>You can define wether zoomhomemap should zoom to all objects when calling the map. But this is valid for synchron loaded objects like markers only.
 For asynchron loaded object, like geojsons, use the leaflet-map attribute fitbounds. If you use the elevation shortcode,
 please use at least one marker (e.g. starting point).</p>
 <pre>
