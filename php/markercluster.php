@@ -13,11 +13,8 @@ function leafext_cluster_function( $atts ){
 		plugins_url('leaflet-plugins/leaflet.markercluster-1.5.0/js/leaflet.markercluster.js',LEAFEXT_PLUGIN_FILE),
 		array('wp_leaflet_map'),null );
 	// custom js
-	// wp_enqueue_script('my_markercluster',
-	// 	plugins_url('js/markercluster.min.js',LEAFEXT_PLUGIN_FILE), array('markercluster'),null);
 	wp_enqueue_script('my_markercluster',
-		plugins_url('js/markercluster.min.js',LEAFEXT_PLUGIN_FILE),
-		array('wp_leaflet_map'), null);
+		plugins_url('js/markercluster.min.js',LEAFEXT_PLUGIN_FILE), array('markercluster'),null);
 
 	$defaults = get_option('leafext_cluster');
 	if ( ! $defaults ) $defaults = array();
@@ -25,13 +22,31 @@ function leafext_cluster_function( $atts ){
 	if (!array_key_exists('zoom', $defaults)) $defaults['zoom'] = "17";
 	if (!array_key_exists('radius', $defaults)) $defaults['radius'] = "80";
 	if (!array_key_exists('spiderfy', $defaults)) $defaults['spiderfy'] = "1";
-	//$defaults['zoom'] = ($defaults['zoom'] == "0") ? (bool)false : $defaults['zoom'];
-
-	$cluster_options = shortcode_atts( array('zoom' => $defaults['zoom'], 'radius' => $defaults['radius']), $atts);
-	//var_dump($cluster_options); wp_die();
-
+	
+	if (is_array($atts)) {
+		foreach ($atts as $attribute => $value) {
+			if (is_int($attribute)) {
+				$atts[strtolower($value)] = true;
+				unset($atts[$attribute]);
+			}
+		}
+		if ( array_key_exists('!spiderfy', $atts) ) {
+			$atts['spiderfy'] = false;
+			unset($atts['!spiderfy']);
+		} else if ( array_key_exists('spiderfy', $atts) ) {
+			if ( $atts['spiderfy'] != "" ) {
+				$atts['spiderfy'] = (bool)$atts['spiderfy'];
+			} else {
+				$atts['spiderfy'] = true;
+			}
+		}
+	}
+	
+	if (!array_key_exists('zoom', $atts)) $atts['zoom'] = $defaults['zoom'];
+	if (!array_key_exists('radius', $atts)) $atts['radius'] = $defaults['radius'];
+	if (!array_key_exists('spiderfy', $atts)) $atts['spiderfy'] = $defaults['spiderfy'];
 	// Uebergabe der php Variablen an Javascript
-	wp_localize_script( 'my_markercluster', 'cluster', $cluster_options);
+	wp_localize_script( 'my_markercluster', 'cluster', $atts);
 }
 add_shortcode('cluster', 'leafext_cluster_function' );
 ?>

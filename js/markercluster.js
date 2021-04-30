@@ -1,4 +1,7 @@
 // For use with only one map on a webpage
+console.log("cluster.radius "+cluster.radius);
+console.log("cluster.spiderfy "+cluster.spiderfy);
+
 window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 window.WPLeafletMapPlugin.push(function () {
 	var map = window.WPLeafletMapPlugin.getCurrentMap();
