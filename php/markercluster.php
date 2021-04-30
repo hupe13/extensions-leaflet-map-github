@@ -23,7 +23,9 @@ function leafext_cluster_function( $atts ){
 	if ( ! $defaults ) $defaults = array();
 	//var_dump($defaults);
 	if (!array_key_exists('zoom', $defaults)) $defaults['zoom'] = "17";
-	if (!array_key_exists('radius', $defaults)) $defaults['radius'] = "50";
+	if (!array_key_exists('radius', $defaults)) $defaults['radius'] = "80";
+	if (!array_key_exists('spiderfy', $defaults)) $defaults['spiderfy'] = "1";
+	//$defaults['zoom'] = ($defaults['zoom'] == "0") ? (bool)false : $defaults['zoom'];
 
 	$cluster_options = shortcode_atts( array('zoom' => $defaults['zoom'], 'radius' => $defaults['radius']), $atts);
 	//var_dump($cluster_options); wp_die();

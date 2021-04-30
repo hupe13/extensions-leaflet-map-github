@@ -42,7 +42,7 @@
 				if (zoomhomemap.fit) map.fitBounds(bounds);
 			}
 			//
-      		//geojson asynchron
+      //geojson asynchron
 			var geojsons = window.WPLeafletMapPlugin.geojsons;
 			if (geojsons.length > 0) {
 				zoom++;
