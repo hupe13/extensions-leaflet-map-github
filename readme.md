@@ -1,6 +1,6 @@
 <a href="https://wordpress.org/plugins/extensions-leaflet-map/">Official WordPress Plugin</a>
 
-In the Github version not everything works currently.
+Ready to be the new version. (?)
 
 # Extensions for Leaflet Map
 
