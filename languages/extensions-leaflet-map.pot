@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map Github\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-29 13:27+0000\n"
+"POT-Creation-Date: 2021-04-30 11:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Loco-Version: 2.5.2; wp-5.7.1\n"
 "X-Domain: extensions-leaflet-map"
 
-#: admin/help/cluster.php:4
+#: admin/help/markercluster.php:4
 msgid ""
 "\n"
 "You can define radius (maxClusterRadius) and zoom (disableClusteringAtZoom) "
@@ -24,7 +24,7 @@ msgid ""
 " or per map."
 msgstr ""
 
-#: admin/help/tilelayers.php:4
+#: admin/help/layerswitch.php:4
 msgid "and configure tile layers"
 msgstr ""
 
@@ -32,8 +32,8 @@ msgstr ""
 msgid "and select a color theme"
 msgstr ""
 
-#: admin/markercluster.php:27
-msgid "At this zoom level and below, markers will not be clustered. See"
+#: admin/markercluster.php:28
+msgid "At this zoom level and below, markers will not be clustered, see"
 msgstr ""
 
 #: admin/help/zoomhome.php:4
@@ -50,11 +50,19 @@ msgid ""
 "iconUrl or title"
 msgstr ""
 
-#: admin/switching_tilelayer.php:47
+#: admin/layerswitch.php:47
 msgid ""
 "Configure a short name, attribution and a tile url for each tile service. "
 "The name appears in the switching control. To delete a service simply clear "
 "the values."
+msgstr ""
+
+#: admin/markercluster.php:42
+msgid "Default:"
+msgstr ""
+
+#: admin/markercluster.php:52
+msgid "Default: true. You can change it for each map:"
 msgstr ""
 
 #: admin/help/elevation.php:2
@@ -65,7 +73,7 @@ msgstr ""
 msgid "dynamically add/remove groups of markers from Marker Cluster"
 msgstr ""
 
-#: admin/markercluster.php:27
+#: admin/markercluster.php:29
 msgid "Example"
 msgstr ""
 
@@ -77,7 +85,7 @@ msgstr ""
 msgid "Extensions for the Wordpress plugin Leaflet Map Github"
 msgstr ""
 
-#: admin/help/tilelayers.php:4
+#: admin/help/layerswitch.php:4
 msgid "First go to"
 msgstr ""
 
@@ -90,7 +98,7 @@ msgid ""
 "Here the groups are differentiated according to the color of the markers"
 msgstr ""
 
-#: admin/switching_tilelayer.php:44
+#: admin/layerswitch.php:44
 msgid "Here you can define one or more tile server."
 msgstr ""
 
@@ -106,11 +114,8 @@ msgstr ""
 msgid "hupe13"
 msgstr ""
 
-#: admin/markercluster.php:57
-msgid ""
-"I found it useful to change these values for my website. If you want to "
-"change <a href=\"https://github.com/Leaflet/Leaflet.markercluster#options\">"
-"other options</a>, please tell me"
+#: admin/markercluster.php:31
+msgid "If 0, it is disabled."
 msgstr ""
 
 #: admin/help/hidemarkers.php:3
@@ -130,7 +135,7 @@ msgid ""
 "//unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a>"
 msgstr ""
 
-#: admin/help/cluster.php:4
+#: admin/help/markercluster.php:4
 msgid "Many markers on a map become confusing. That is why they are clustered"
 msgstr ""
 
@@ -142,7 +147,14 @@ msgstr ""
 msgid "other"
 msgstr ""
 
-#: admin/markercluster.php:27
+#: admin/markercluster.php:78
+msgid ""
+"Please see the <a href=\"https://github.com/Leaflet/Leaflet."
+"markercluster#options\">authors page</a> for options. If you want to change "
+"other ones, please tell me"
+msgstr ""
+
+#: admin/markercluster.php:30
 msgid "Plugins Default"
 msgstr ""
 
@@ -150,30 +162,40 @@ msgstr ""
 msgid "possible meaningful values"
 msgstr ""
 
-#: admin/help/elevation.php:5 admin/help/tilelayers.php:4
+#: admin/help/elevation.php:5 admin/help/layerswitch.php:4
 msgid "Settings"
 msgstr ""
 
-#: admin/help/tilelayers.php:2
+#: admin/help/layerswitch.php:2
 msgid "Switching Tile Layers"
 msgstr ""
 
-#: admin/markercluster.php:35
+#: admin/markercluster.php:41
 msgid ""
 "The maximum radius that a cluster will cover from the central marker (in "
-"pixels). Decreasing will make more, smaller clusters. Default"
+"pixels). Decreasing will make more, smaller clusters."
 msgstr ""
 
 #: admin/help/markergroup.php:10
 msgid "The number of strings and groups must match"
 msgstr ""
 
-#: admin/markercluster.php:58
+#: admin/markercluster.php:79
 msgid "To reset all values to their defaults, simply clear the values"
 msgstr ""
 
 #: admin/help/hovergeojson.php:4
 msgid "Use it to highlight a geojson area or line on mouse over"
+msgstr ""
+
+#: admin/markercluster.php:51
+msgid ""
+"When you click a cluster at the bottom zoom level we spiderfy it so you can "
+"see all of its markers."
+msgstr ""
+
+#: admin/markercluster.php:32 admin/markercluster.php:43
+msgid "You can change it for each map:"
 msgstr ""
 
 #: admin/help/zoomhome.php:5

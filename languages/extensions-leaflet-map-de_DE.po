@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map\n"
 "POT-Creation-Date: 2021-04-24 14:24+0200\n"
-"PO-Revision-Date: 2021-04-29 13:33+0000\n"
+"PO-Revision-Date: 2021-04-30 11:30+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "X-Loco-Version: 2.5.2; wp-5.7.1"
 
-#: admin/help/cluster.php:4
+#: admin/help/markercluster.php:4
 msgid ""
 "\n"
 "You can define radius (maxClusterRadius) and zoom (disableClusteringAtZoom) "
@@ -28,7 +28,7 @@ msgstr ""
 "(disableClusteringAtZoom) in den <a href=\"admin.php?page=extensions-leaflet-"
 "map&tab=cluster\">Einstellungen</a> oder pro Karte festlegen."
 
-#: admin/help/tilelayers.php:4
+#: admin/help/layerswitch.php:4
 msgid "and configure tile layers"
 msgstr "und konfiguriere die Tileserver"
 
@@ -36,8 +36,9 @@ msgstr "und konfiguriere die Tileserver"
 msgid "and select a color theme"
 msgstr "und wähle ein Farbthema aus"
 
-#: admin/markercluster.php:27
-msgid "At this zoom level and below, markers will not be clustered. See"
+#: admin/markercluster.php:28
+#| msgid "At this zoom level and below, markers will not be clustered. See"
+msgid "At this zoom level and below, markers will not be clustered, see"
 msgstr ""
 "Ab dieser Zoomstufe und darunter werden die Marker nicht geclustert. Siehe"
 
@@ -58,7 +59,7 @@ msgstr ""
 "durch Komma getrennte Zeichenketten zur Unterscheidung der Marker, z. B. "
 "eine eindeutige Zeichenkette in iconUrl oder title"
 
-#: admin/switching_tilelayer.php:47
+#: admin/layerswitch.php:47
 msgid ""
 "Configure a short name, attribution and a tile url for each tile service. "
 "The name appears in the switching control. To delete a service simply clear "
@@ -68,6 +69,14 @@ msgstr ""
 "Tileserver. Der Name erscheint im Menü. Um einen Tileserver zu löschen, "
 "lösche den Text in den Feldern."
 
+#: admin/markercluster.php:42
+msgid "Default:"
+msgstr "Standard:"
+
+#: admin/markercluster.php:52
+msgid "Default: true. You can change it for each map:"
+msgstr "Standard: true. Du kannst den Wert für jede Karte einzeln angeben."
+
 #: admin/help/elevation.php:2
 msgid "Display a track with elevation profile"
 msgstr "Anzeige eines Tracks mit Höhenprofil"
@@ -76,7 +85,7 @@ msgstr "Anzeige eines Tracks mit Höhenprofil"
 msgid "dynamically add/remove groups of markers from Marker Cluster"
 msgstr "Dynamisches Hinzufügen/Entfernen von Markergruppen aus Marker Cluster"
 
-#: admin/markercluster.php:27
+#: admin/markercluster.php:29
 msgid "Example"
 msgstr "Beispiel"
 
@@ -88,7 +97,7 @@ msgstr "Erweiterungen für Leaflet Map Github"
 msgid "Extensions for the Wordpress plugin Leaflet Map Github"
 msgstr "Erweiterungen für das Wordpress Plugin Leaflet Map Github"
 
-#: admin/help/tilelayers.php:4
+#: admin/help/layerswitch.php:4
 msgid "First go to"
 msgstr "Gehe zuerst zu"
 
@@ -101,7 +110,7 @@ msgid ""
 "Here the groups are differentiated according to the color of the markers"
 msgstr "Hier werden die Gruppen nach der Farbe der Marker unterschieden"
 
-#: admin/switching_tilelayer.php:44
+#: admin/layerswitch.php:44
 msgid "Here you can define one or more tile server."
 msgstr "Hier kannst du einen oder mehrere Tileserver konfigurieren."
 
@@ -117,15 +126,9 @@ msgstr "https://github.com/hupe13/extensions-leaflet-map"
 msgid "hupe13"
 msgstr "hupe13"
 
-#: admin/markercluster.php:57
-msgid ""
-"I found it useful to change these values for my website. If you want to "
-"change <a href=\"https://github.com/Leaflet/Leaflet.markercluster#options\">"
-"other options</a>, please tell me"
-msgstr ""
-"Ich fand es sinnvoll, diese Werte für meine Website zu ändern. Wenn du <a "
-"href=\"https://github.com/Leaflet/Leaflet.markercluster#options\">andere "
-"Parameter</a> ändern möchtest, teil es mir bitte mit"
+#: admin/markercluster.php:31
+msgid "If 0, it is disabled."
+msgstr "Wenn der Wert 0 ist, ist es nicht aktiv (disabled)."
 
 #: admin/help/hidemarkers.php:3
 msgid "If a GPX track contains waypoints that you do not want to display"
@@ -151,7 +154,7 @@ msgstr ""
 "elevation.css'>https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-"
 "elevation.css</a>"
 
-#: admin/help/cluster.php:4
+#: admin/help/markercluster.php:4
 msgid "Many markers on a map become confusing. That is why they are clustered"
 msgstr ""
 "Viele Marker auf einer Karte werden unübersichtlich. Deshalb werden sie "
@@ -165,7 +168,17 @@ msgstr "oder"
 msgid "other"
 msgstr "weitere"
 
-#: admin/markercluster.php:27
+#: admin/markercluster.php:78
+msgid ""
+"Please see the <a href=\"https://github.com/Leaflet/Leaflet."
+"markercluster#options\">authors page</a> for options. If you want to change "
+"other ones, please tell me"
+msgstr ""
+"Sieh dir die <a href=\"https://github.com/Leaflet/Leaflet."
+"markercluster#options\">Autoren-Seite</a> für Optionen an. Wenn du weitere "
+"ändern möchte, poste es ins Forum"
+
+#: admin/markercluster.php:30
 msgid "Plugins Default"
 msgstr "Plugins Standard"
 
@@ -173,28 +186,30 @@ msgstr "Plugins Standard"
 msgid "possible meaningful values"
 msgstr "mögliche sinnvolle Werte"
 
-#: admin/help/elevation.php:5 admin/help/tilelayers.php:4
+#: admin/help/elevation.php:5 admin/help/layerswitch.php:4
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: admin/help/tilelayers.php:2
+#: admin/help/layerswitch.php:2
 msgid "Switching Tile Layers"
 msgstr "Umschalten von Tilelayers"
 
-#: admin/markercluster.php:35
+#: admin/markercluster.php:41
+#| msgid ""
+#| "The maximum radius that a cluster will cover from the central marker (in "
+#| "pixels). Decreasing will make more, smaller clusters. Default"
 msgid ""
 "The maximum radius that a cluster will cover from the central marker (in "
-"pixels). Decreasing will make more, smaller clusters. Default"
+"pixels). Decreasing will make more, smaller clusters."
 msgstr ""
 "Der maximale Radius, den ein Cluster vom zentralen Marker aus abdeckt (in "
-"Pixel). Je kleiner er ist, desto mehr und kleinere Cluster werden gebildet. "
-"Standard"
+"Pixel). Je kleiner er ist, desto mehr und kleinere Cluster werden gebildet."
 
 #: admin/help/markergroup.php:10
 msgid "The number of strings and groups must match"
 msgstr "Die Anzahl von strings und groups muss übereinstimmen"
 
-#: admin/markercluster.php:58
+#: admin/markercluster.php:79
 msgid "To reset all values to their defaults, simply clear the values"
 msgstr ""
 "Um alle Werte auf ihre Standardwerte zurückzusetzen, lösche einfach die Werte"
@@ -204,6 +219,18 @@ msgid "Use it to highlight a geojson area or line on mouse over"
 msgstr ""
 "Verwende diese Option, um einen Geojson-Bereich oder einen Track beim "
 "Überfahren mit der Maus hervorzuheben"
+
+#: admin/markercluster.php:51
+msgid ""
+"When you click a cluster at the bottom zoom level we spiderfy it so you can "
+"see all of its markers."
+msgstr ""
+"Wenn man ein Cluster in der untersten Zoomstufe anklickt, wird es gespidert, "
+"so dass man alle seine Marker sehen kann."
+
+#: admin/markercluster.php:32 admin/markercluster.php:43
+msgid "You can change it for each map:"
+msgstr "Du kannst es für jede Karte einzeln einstellen:"
 
 #: admin/help/zoomhome.php:5
 msgid ""
