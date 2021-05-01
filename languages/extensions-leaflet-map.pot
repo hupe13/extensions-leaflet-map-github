@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map Github\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-30 11:21+0000\n"
+"POT-Creation-Date: 2021-05-01 16:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -19,9 +19,8 @@ msgstr ""
 #: admin/help/markercluster.php:4
 msgid ""
 "\n"
-"You can define radius (maxClusterRadius) and zoom (disableClusteringAtZoom) "
-"in <a href=\"admin.php?page=extensions-leaflet-map&tab=cluster\">Settings</a>"
-" or per map."
+"You can define some options in <a href=\"admin.php?page=extensions-leaflet-"
+"map&tab=cluster\">Settings</a> or per map."
 msgstr ""
 
 #: admin/help/layerswitch.php:4
@@ -78,11 +77,11 @@ msgid "Example"
 msgstr ""
 
 #. Name of the plugin
-msgid "Extensions for Leaflet Map Github"
+msgid "Extensions for Leaflet Map"
 msgstr ""
 
 #. Description of the plugin
-msgid "Extensions for the Wordpress plugin Leaflet Map Github"
+msgid "Extensions for the Wordpress plugin Leaflet Map"
 msgstr ""
 
 #: admin/help/layerswitch.php:4
@@ -107,7 +106,7 @@ msgid "Here you can switch colors for an elevation theme."
 msgstr ""
 
 #. URI of the plugin
-msgid "https://github.com/hupe13/extensions-leaflet-map"
+msgid "https://wordpress.org/plugins/extensions-leaflet-map/"
 msgstr ""
 
 #. Author of the plugin

@@ -40,6 +40,8 @@ function leafext_cluster_function( $atts ){
 				$atts['spiderfy'] = true;
 			}
 		}
+	} else {
+		$atts = array();
 	}
 	
 	if (!array_key_exists('zoom', $atts)) $atts['zoom'] = $defaults['zoom'];

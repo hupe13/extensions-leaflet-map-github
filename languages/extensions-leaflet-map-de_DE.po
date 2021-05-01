@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map\n"
 "POT-Creation-Date: 2021-04-24 14:24+0200\n"
-"PO-Revision-Date: 2021-04-30 18:16+0000\n"
+"PO-Revision-Date: 2021-05-01 16:56+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -20,13 +20,11 @@ msgstr ""
 #: admin/help/markercluster.php:4
 msgid ""
 "\n"
-"You can define radius (maxClusterRadius) and zoom (disableClusteringAtZoom) "
-"in <a href=\"admin.php?page=extensions-leaflet-map&tab=cluster\">Settings</a>"
-" or per map."
+"You can define some options in <a href=\"admin.php?page=extensions-leaflet-"
+"map&tab=cluster\">Settings</a> or per map."
 msgstr ""
-"Du kannst den Radius (maxClusterRadius) und den Zoom "
-"(disableClusteringAtZoom) in den <a href=\"admin.php?page=extensions-leaflet-"
-"map&tab=cluster\">Einstellungen</a> oder pro Karte festlegen."
+"Du kannst einige <a href=\"admin.php?page=extensions-leaflet-"
+"map&tab=cluster\">Einstellungen</a> anpassen oder pro Karte definieren."
 
 #: admin/help/layerswitch.php:4
 msgid "and configure tile layers"
@@ -90,12 +88,14 @@ msgid "Example"
 msgstr "Beispiel"
 
 #. Name of the plugin
-msgid "Extensions for Leaflet Map Github"
-msgstr "Erweiterungen für Leaflet Map Github"
+#| msgid "Extensions for Leaflet Map Github"
+msgid "Extensions for Leaflet Map"
+msgstr "Extensions for Leaflet Map"
 
 #. Description of the plugin
-msgid "Extensions for the Wordpress plugin Leaflet Map Github"
-msgstr "Erweiterungen für das Wordpress Plugin Leaflet Map Github"
+#| msgid "Extensions for the Wordpress plugin Leaflet Map Github"
+msgid "Extensions for the Wordpress plugin Leaflet Map"
+msgstr "Erweiterungen für das Wordpress Plugin Leaflet Map"
 
 #: admin/help/layerswitch.php:4
 msgid "First go to"
@@ -119,8 +119,8 @@ msgid "Here you can switch colors for an elevation theme."
 msgstr "Hier kannst du die Farbe für das Höhenprofil wählen."
 
 #. URI of the plugin
-msgid "https://github.com/hupe13/extensions-leaflet-map"
-msgstr "https://github.com/hupe13/extensions-leaflet-map"
+msgid "https://wordpress.org/plugins/extensions-leaflet-map/"
+msgstr "https://wordpress.org/plugins/extensions-leaflet-map/"
 
 #. Author of the plugin
 msgid "hupe13"
