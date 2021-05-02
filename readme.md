@@ -1,7 +1,5 @@
 <a href="https://wordpress.org/plugins/extensions-leaflet-map/">Official WordPress Plugin</a>
 
-Ready to be the new version.
-
 # Extensions for Leaflet Map
 
 Stable tag: 1.2
@@ -45,13 +43,13 @@ You need to install the plugin "Leaflet Map".
 // or
 [elevation gpx="url_gpx_file" summary=1]
 </code></pre><h4>Switching Tile Layers</h4>
-<p>
 <p>First go to Settings -> Leaflet Map -> Leaflet Map Extensions and configure tile layers.</p>
 <pre><code>[leaflet-map mapid="..." ...]
 [layerswitch]
 </code></pre><h4>Leaflet.markercluster</h4>
 <p>Many markers on a map become confusing. That is why they are clustered.</p>
-You can define some parameters in Settings -> Leaflet Map -> Leaflet Map Extensions or per map.<pre><code>[leaflet-map ....]
+You can define some parameters in Settings -> Leaflet Map -> Leaflet Map Extensions or per map.
+<pre><code>[leaflet-map ....]
 // many markers
 [leaflet-marker lat=... lng=... ...]poi1[/leaflet-marker]
 [leaflet-marker lat=... lng=... ...]poi2[/leaflet-marker]
@@ -61,7 +59,8 @@ You can define some parameters in Settings -> Leaflet Map -> Leaflet Map Extensi
 // or
 [cluster radius="..." zoom="..." spiderfy=0]
 [zoomhomemap]
-</code></pre><h4>Leaflet.FeatureGroup.SubGroup</h4>
+</code></pre>
+<h4>Leaflet.FeatureGroup.SubGroup</h4>
 <p>dynamically add/remove groups of markers from Marker Cluster.
 Parameter:</p>
 <ul>
@@ -75,7 +74,8 @@ Parameter:</p>
 //many markers
 [markerClusterGroup feat="iconUrl" strings="red,green" groups="rot,gruen"]
 </code></pre>
-<p>Here the groups are differentiated according to the color of the markers.</p><h4>leaflet.zoomhome</h4>
+<p>Here the groups are differentiated according to the color of the markers.</p>
+<h4>leaflet.zoomhome</h4>
 <p>
 &quot;Home&quot; button to reset the view. A must have for clustering markers.</p><p>You can define wether zoomhomemap should zoom to all objects when calling the map. But this is valid for synchron loaded objects like markers only.
 For asynchron loaded object, like geojsons, use the leaflet-map attribute fitbounds. If you use the elevation shortcode,
@@ -117,10 +117,10 @@ Maybe new functions are <a href="https://github.com/hupe13/extensions-leaflet-ma
 
 ## Screenshots
 
-1. Track with elevation profile and Switching Tile Layers<br>![Track with elevation profile](.wordpress-org/screenshot-1.png)
-2. Hover a Geojson area<br>![Hover a Geojson area](.wordpress-org/screenshot-2.png)
-3. Markercluster and Groups<br>![Markercluster](.wordpress-org/screenshot-3.png)
-4. GestureHandling<br>![GestureHandling](.wordpress-org/screenshot-4.png)
+1. Track with elevation profile and Switching Tile Layers <br>![Track with elevation profile](.wordpress-org/screenshot-1.png)
+2. Hover a Geojson area <br>![Hover a Geojson area](.wordpress-org/screenshot-2.png)
+3. Markercluster and Groups <br>![Markercluster](.wordpress-org/screenshot-3.png)
+4. GestureHandling <br>![GestureHandling](.wordpress-org/screenshot-4.png)
 
 ## Installation
 
@@ -128,8 +128,7 @@ You can install the plugin through the WordPress installer under Plugins → Add
 
 Alternatively you can download the file from here, unzip it and move the unzipped contents to the wp-content/plugins folder of your WordPress installation. You will then be able to activate the plugin.
 
-(Optionally) Go to Settings - Leaflet Map - Extensions for Leaflet Map and
-get documentation and settings options.
+(Optionally) Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documentation and settings options.
 
 ## Changelog
 
