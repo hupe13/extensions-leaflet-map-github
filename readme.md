@@ -51,7 +51,7 @@ You need to install the plugin "Leaflet Map".
 [layerswitch]
 </code></pre><h4>Leaflet.markercluster</h4>
 <p>Many markers on a map become confusing. That is why they are clustered.</p>
-You can define radius (maxClusterRadius) and zoom (disableClusteringAtZoom) in Settings -> Leaflet Map -> Leaflet Map Extensions or per map.<pre><code>[leaflet-map ....]
+You can define some parameters in Settings -> Leaflet Map -> Leaflet Map Extensions or per map.<pre><code>[leaflet-map ....]
 // many markers
 [leaflet-marker lat=... lng=... ...]poi1[/leaflet-marker]
 [leaflet-marker lat=... lng=... ...]poi2[/leaflet-marker]
@@ -59,7 +59,7 @@ You can define radius (maxClusterRadius) and zoom (disableClusteringAtZoom) in S
 [leaflet-marker lat=... lng=... ...]poixx[/leaflet-marker]
 [cluster]
 // or
-[cluster radius="..." zoom="..."]
+[cluster radius="..." zoom="..." spiderfy=0]
 [zoomhomemap]
 </code></pre><h4>Leaflet.FeatureGroup.SubGroup</h4>
 <p>dynamically add/remove groups of markers from Marker Cluster.
