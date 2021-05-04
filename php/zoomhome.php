@@ -32,26 +32,23 @@ function leafext_plugin_zoomhome_function($atts){
 		plugins_url('js/zoomhome.min.js',LEAFEXT_PLUGIN_FILE), array('zoomhome'), null);
 
 	if (is_array($atts)) {
-		foreach ($atts as $attribute => $value) {
-			if (is_int($attribute)) {
-				$atts[strtolower($value)] = true;
-				unset($atts[$attribute]);
+		for ($i = 0; $i < count($atts); $i++) {
+			if (isset($atts[$i])) {
+				if ( strpos($atts[$i],"!") === false ) {
+					$atts[$atts[$i]] = 1;
+				} else {
+					$atts[substr($atts[$i],1)] = 0;
+				}
 			}
 		}
-	$fit=true;
-	if ( array_key_exists('!fit', $atts) ) {
-		$fit = false;
-	} else if ( array_key_exists('fit', $atts) ) {
-		if ( $atts['fit'] != "" ) {
-			$fit = (bool)$atts['fit'];
-		} else {
-			$fit = true;
-		}
 	}
-	} else {
-		$fit=true;
-	}
-	$params=array('fit'=> $fit);
+	//
+	$defaults = array(
+		'fit' => 1,
+	);
+	$params = shortcode_atts($defaults, $atts);
+	$params['fit'] = (bool)$params['fit'];
+
 	// Uebergabe der php Variablen an Javascript
 	wp_localize_script( 'myzoomhome', 'zoomhomemap', $params);
 }

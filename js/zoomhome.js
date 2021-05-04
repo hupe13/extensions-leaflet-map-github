@@ -4,6 +4,7 @@
 		// iterate any of these: `maps`, `markers`, `markergroups`, `lines`, `circles`, `geojsons`
 		var maps = window.WPLeafletMapPlugin.maps;
 		console.log("maps "+maps.length);
+		console.log("fit "+zoomhomemap.fit);
 
 		for (var i = 0, mapslen = maps.length; i < mapslen; i++) {
 			var map = maps[i];

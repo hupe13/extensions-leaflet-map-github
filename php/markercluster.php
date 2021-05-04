@@ -16,39 +16,18 @@ function leafext_cluster_function( $atts ){
 	wp_enqueue_script('my_markercluster',
 		plugins_url('js/markercluster.min.js',LEAFEXT_PLUGIN_FILE), array('markercluster'),null);
 
-	$defaults = get_option('leafext_cluster');
-	if ( ! $defaults ) $defaults = array();
-	//var_dump($defaults);
-	if (!array_key_exists('zoom', $defaults)) $defaults['zoom'] = "17";
-	if (!array_key_exists('radius', $defaults)) $defaults['radius'] = "80";
-	if (!array_key_exists('spiderfy', $defaults)) $defaults['spiderfy'] = "1";
+	$defaults = array(
+		'zoom'     => "17",
+		'radius'   => "80",
+		'spiderfy' => 1,
+	);
+	$def_settings = get_option('leafext_cluster');
+	$params = shortcode_atts($defaults, $def_settings);
+	$params = shortcode_atts($params, $atts);
+	$params['spiderfy'] = ((bool)$params['spiderfy']) ? "true" : "false";
 	
-	if (is_array($atts)) {
-		foreach ($atts as $attribute => $value) {
-			if (is_int($attribute)) {
-				$atts[strtolower($value)] = true;
-				unset($atts[$attribute]);
-			}
-		}
-		if ( array_key_exists('!spiderfy', $atts) ) {
-			$atts['spiderfy'] = false;
-			unset($atts['!spiderfy']);
-		} else if ( array_key_exists('spiderfy', $atts) ) {
-			if ( $atts['spiderfy'] != "" ) {
-				$atts['spiderfy'] = (bool)$atts['spiderfy'];
-			} else {
-				$atts['spiderfy'] = true;
-			}
-		}
-	} else {
-		$atts = array();
-	}
-	
-	if (!array_key_exists('zoom', $atts)) $atts['zoom'] = $defaults['zoom'];
-	if (!array_key_exists('radius', $atts)) $atts['radius'] = $defaults['radius'];
-	if (!array_key_exists('spiderfy', $atts)) $atts['spiderfy'] = $defaults['spiderfy'];
 	// Uebergabe der php Variablen an Javascript
-	wp_localize_script( 'my_markercluster', 'cluster', $atts);
+	wp_localize_script( 'my_markercluster', 'cluster', $params);
 }
 add_shortcode('cluster', 'leafext_cluster_function' );
 ?>
