@@ -14,15 +14,14 @@ function leafext_elevation_function( $atts ){
 	if ( strlen( $lang ) > 0 ) {
 		$lang = explode( '_', $lang )[0];
 	}
-	if( file_exists( LEAFEXT_PLUGIN_DIR . 'locale/elevation_'.$lang.'.js') ) {
-		wp_enqueue_script('elevation_lang',
-			plugins_url('locale/elevation_'.$lang.'.js',LEAFEXT_PLUGIN_FILE),
-			array('elevation_js'), null);
-	}
+
 	// custom js
 	wp_enqueue_script('myelevation',
-		plugins_url('js/elevation.min.js',LEAFEXT_PLUGIN_FILE),
-		array('elevation_js'), null);
+		plugins_url('js/elevation.js',LEAFEXT_PLUGIN_FILE),
+		['elevation_js','wp-i18n'] );
+	wp_set_script_translations( 'myelevation', 'extensions-leaflet-map', LEAFEXT_PLUGIN_DIR . '/languages/' );
+	//wp_set_script_translations( 'myelevation', 'extensions-leaflet-map');
+	
 	//
 	$track = shortcode_atts( array('gpx' => false, 'summary' => false), $atts);
 	if ( ! $track['gpx'] ) wp_die("No gpx track!");

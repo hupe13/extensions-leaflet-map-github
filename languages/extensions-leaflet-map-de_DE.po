@@ -1,21 +1,21 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map\n"
-"POT-Creation-Date: 2021-04-24 14:24+0200\n"
-"PO-Revision-Date: 2021-05-01 16:56+0000\n"
+"Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: Deutsch\n"
-"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2021-04-24 14:24+0200\n"
+"PO-Revision-Date: 2021-05-05 11:27+0000\n"
+"Language: de_DE\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Poedit-Basepath: ../admin\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: .\n"
-"Report-Msgid-Bugs-To: \n"
-"X-Loco-Version: 2.5.2; wp-5.7.1"
+"X-Loco-Version: 2.5.2; wp-5.7.1\n"
 
 #: admin/help/markercluster.php:4
 msgid ""
@@ -26,6 +26,10 @@ msgstr ""
 "Du kannst einige <a href=\"admin.php?page=extensions-leaflet-"
 "map&tab=cluster\">Einstellungen</a> anpassen oder pro Karte definieren."
 
+#: js/elevation.js:24
+msgid "Altitude"
+msgstr "Höhe"
+
 #: admin/help/layerswitch.php:4
 msgid "and configure tile layers"
 msgstr "und konfiguriere die Tileserver"
@@ -35,13 +39,11 @@ msgid "and select a color theme"
 msgstr "und wähle ein Farbthema aus"
 
 #: admin/markercluster.php:28
-#| msgid "At this zoom level and below, markers will not be clustered. See"
 msgid "At this zoom level and below, markers will not be clustered, see"
 msgstr ""
 "Ab dieser Zoomstufe und darunter werden die Marker nicht geclustert. Siehe"
 
 #: admin/help/zoomhome.php:4
-#| msgid "to reset the view. A must for clustering markers"
 msgid "button to reset the view. A must for clustering markers"
 msgstr "Button um die Ansicht zurückzusetzen. Ein Muss für Markercluster"
 
@@ -88,12 +90,10 @@ msgid "Example"
 msgstr "Beispiel"
 
 #. Name of the plugin
-#| msgid "Extensions for Leaflet Map Github"
 msgid "Extensions for Leaflet Map"
 msgstr "Extensions for Leaflet Map"
 
 #. Description of the plugin
-#| msgid "Extensions for the Wordpress plugin Leaflet Map Github"
 msgid "Extensions for the Wordpress plugin Leaflet Map"
 msgstr "Erweiterungen für das Wordpress Plugin Leaflet Map"
 
@@ -119,8 +119,8 @@ msgid "Here you can switch colors for an elevation theme."
 msgstr "Hier kannst du die Farbe für das Höhenprofil wählen."
 
 #. URI of the plugin
-msgid "https://wordpress.org/plugins/extensions-leaflet-map/"
-msgstr "https://wordpress.org/plugins/extensions-leaflet-map/"
+msgid "https://wordpress.org/plugins/extensions-leaflet-map"
+msgstr "https://wordpress.org/plugins/extensions-leaflet-map"
 
 #. Author of the plugin
 msgid "hupe13"
@@ -160,6 +160,22 @@ msgstr ""
 "Viele Marker auf einer Karte werden unübersichtlich. Deshalb werden sie "
 "geclustert"
 
+#: js/elevation.js:26
+msgid "Max Elevation"
+msgstr "Maximale Höhe"
+
+#: js/elevation.js:31
+msgid "Max Slope"
+msgstr "max. Steigung"
+
+#: js/elevation.js:27
+msgid "Min Elevation"
+msgstr "Minimale Höhe"
+
+#: js/elevation.js:30
+msgid "Min Slope"
+msgstr "max. Gefälle"
+
 #: admin/help/zoomhome.php:12
 msgid "or"
 msgstr "oder"
@@ -195,9 +211,6 @@ msgid "Switching Tile Layers"
 msgstr "Umschalten von Tilelayers"
 
 #: admin/markercluster.php:41
-#| msgid ""
-#| "The maximum radius that a cluster will cover from the central marker (in "
-#| "pixels). Decreasing will make more, smaller clusters. Default"
 msgid ""
 "The maximum radius that a cluster will cover from the central marker (in "
 "pixels). Decreasing will make more, smaller clusters."
@@ -213,6 +226,19 @@ msgstr "Die Anzahl von strings und groups muss übereinstimmen"
 msgid "To reset all values to their defaults, simply clear the values"
 msgstr ""
 "Um alle Werte auf ihre Standardwerte zurückzusetzen, lösche einfach die Werte"
+
+#: js/elevation.js:28
+msgid "Total Ascent"
+msgstr "Gesamtanstieg"
+
+#: js/elevation.js:29
+msgid "Total Descent"
+msgstr "Gesamtabstieg"
+
+#: js/elevation.js:25
+#| msgid "Total Length: "
+msgid "Total Length"
+msgstr "Gesamtstrecke"
 
 #: admin/help/hovergeojson.php:4
 msgid "Use it to highlight a geojson area or line on mouse over"
