@@ -38,8 +38,11 @@ function leafext_form_cluster_maxClusterRadius() {
 	//echo "leafext_form_cluster_maxClusterRadius";
 	$options = leafext_form_cluster_get_options();
 	//var_dump($options);
-	echo '<p>'.__('The maximum radius that a cluster will cover from the central marker (in pixels). Decreasing will make more, smaller clusters.','extensions-leaflet-map')
-	.'</p><p>'.__('Default:','extensions-leaflet-map').' 80. ';
+	echo '<p>'.
+	__('The maximum radius that a cluster will cover from the central marker (in pixels). Decreasing will make more, smaller clusters.',
+	'extensions-leaflet-map')
+	.'</p><p>'.
+	__('Default:','extensions-leaflet-map').' 80. ';
 	echo __('You can change it for each map:','extensions-leaflet-map').'</p><pre><code>[cluster radius=80]</code></pre>';
 	echo '<input type="number" class="small-text" name="leafext_cluster[radius]" value="'.$options['radius'].'" min="10" />';
 }
@@ -48,8 +51,10 @@ function leafext_form_cluster_spiderfyOnMaxZoom() {
 	//echo "leafext_form_cluster_spiderfyOnMaxZoom";
 	//boolean
 	$options = leafext_form_cluster_get_options();
-	echo '<p>'.__('When you click a cluster at the bottom zoom level we spiderfy it so you can see all of its markers.','extensions-leaflet-map').'</p>';
-	echo '<p>'.__('Default: true. You can change it for each map:','extensions-leaflet-map').'.</p>';
+	echo '<p>'.
+	__('When you click a cluster at the bottom zoom level we spiderfy it so you can see all of its markers.','extensions-leaflet-map').'</p>';
+	echo '<p>'.
+	__('Default: true. You can change it for each map:','extensions-leaflet-map').'</p>';
 	echo '<pre><code>[cluster spiderfy=1]</code></pre>';
 	echo '<input type="checkbox" name="leafext_cluster[spiderfy]" ';
 	echo $options['spiderfy'] ? 'checked' : '' ;
@@ -75,6 +80,10 @@ function leafext_validate_cluster($input) {
 
 // Erklaerung
 function leafext_cluster_text() {
-  echo '<p>'.__('Please see the <a href="https://github.com/Leaflet/Leaflet.markercluster#options">authors page</a> for options. If you want to change other ones, please tell me','extensions-leaflet-map').'.</p>';
-	echo '<p>'.__('To reset all values to their defaults, simply clear the values','extensions-leaflet-map').'.</p>';
+  echo '<p>'.
+  __('Please see the <a href="https://github.com/Leaflet/Leaflet.markercluster#options">Leaflet.markercluster</a> page for options. If you want to change other ones, please tell me',
+  'extensions-leaflet-map').'.</p>';
+	echo '<p>'.
+	__('To reset all values to their defaults, simply clear the values',
+	'extensions-leaflet-map').'.</p>';
 }
