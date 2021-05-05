@@ -2,7 +2,7 @@
 
 # Extensions for Leaflet Map
 
-Stable tag: 1.2
+Stable tag: 1.2  
 Requires at least: 5.5.3  
 Tested up to: 5.7  
 License: GPLv2 or later  
