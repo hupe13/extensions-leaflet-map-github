@@ -2,6 +2,7 @@
 //Shortcode: [hidemarkers]
 // For use with more than one map on a webpage
 function leafext_hidemarkers_function(){
+	include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
 	$text = '
 	<script>
 		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -20,6 +21,7 @@ function leafext_hidemarkers_function(){
 		});
 	</script>
 	';
+	$text = \JShrink\Minifier::minify($text);
 	return $text;
 }
 add_shortcode('hidemarkers', 'leafext_hidemarkers_function' );

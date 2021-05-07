@@ -1,5 +1,52 @@
 <?php
 //Shortcode: [markerClusterGroup]
+
+function leafext_clustergroup_script($featuregroups){
+	include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
+	$text = '
+	<script>
+		//console.log(featuregroups);
+		var feat  = '.json_encode($featuregroups['feat']).';
+		var groups= '.json_encode($featuregroups['groups']).';
+
+		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
+		window.WPLeafletMapPlugin.push(function () {
+			var map = window.WPLeafletMapPlugin.getCurrentMap();
+			if ( WPLeafletMapPlugin.markers.length > 0 ) {
+				var alle = new L.markerClusterGroup();
+				var featGroups = [];
+				let key;
+				for (key in groups) {
+					featGroups[key] = new L.featureGroup.subGroup(alle);
+				}
+				var control = new L.control.layers(null, null, { collapsed: false });
+				for (var i = 0; i < WPLeafletMapPlugin.markers.length; i++) {
+					var a = WPLeafletMapPlugin.markers[i];
+					//console.log(a.options);
+					for (key in groups) {
+						if (a.getIcon().options[feat].match (key))
+						a.addTo(featGroups[key]);
+					}
+					map.removeLayer(a);
+				}
+				for (key in groups) {
+					control.addOverlay(featGroups[key], groups[key]);
+				}
+				control.addTo(map);
+				alle.addTo(map);
+				for (key in groups) {
+					featGroups[key].addTo(map);
+				}
+			}
+		});
+		// title *
+		// alt *
+		// iconUrl *
+		</script>';
+		$text = \JShrink\Minifier::minify($text);
+		return "\n".$text."\n";
+}
+
 function leafext_clustergroup_function( $atts ){
 	wp_enqueue_style( 'markercluster.default',
 		plugins_url('leaflet-plugins/leaflet.markercluster-1.5.0/css/MarkerCluster.Default.min.css',LEAFEXT_PLUGIN_FILE),
@@ -16,11 +63,6 @@ function leafext_clustergroup_function( $atts ){
 		LEAFEXT_PLUGIN_FILE),
 		array('markercluster'),null);
 
-	// custom js
-	wp_enqueue_script('featuregroup_custom',
-		plugins_url('js/featuregroup.min.js',LEAFEXT_PLUGIN_FILE), 
-		array('leaflet.subgroup'),null);
-
 	$featuregroups = shortcode_atts( array('feat' => false, 'strings' => false, 'groups' => false), $atts);
 	//feat="iconUrl" strings="red green" groups="rot gruen"
 
@@ -28,13 +70,11 @@ function leafext_clustergroup_function( $atts ){
 	$cl_groups = array_map('trim', explode( ',', $featuregroups['groups'] ));
 	if ( count( $cl_strings ) != count( $cl_groups ) ) wp_die("strings and groups do not match.");
 
-	//Uebergabe der php Variablen an Javascript
-	wp_localize_script( 'featuregroup_custom', 'featuregroups',
-		array(
-			'feat' => sanitize_text_field($featuregroups['feat']),
-			'groups' => array_combine($cl_strings, $cl_groups),
-		)
+	$featuregroups = array(
+		'feat' => sanitize_text_field($featuregroups['feat']),
+		'groups' => array_combine($cl_strings, $cl_groups),
 	);
+	return leafext_clustergroup_script($featuregroups);
 }
 add_shortcode('markerClusterGroup', 'leafext_clustergroup_function' );
 ?>

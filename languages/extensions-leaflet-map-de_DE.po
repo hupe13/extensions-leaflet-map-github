@@ -8,7 +8,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2021-04-24 14:24+0200\n"
-"PO-Revision-Date: 2021-05-05 11:27+0000\n"
+"PO-Revision-Date: 2021-05-07 09:25+0000\n"
 "Language: de_DE\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Poedit-Basepath: ../admin\n"
@@ -17,16 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Loco-Version: 2.5.2; wp-5.7.1\n"
 
-#: admin/help/markercluster.php:4
-msgid ""
-"\n"
-"You can define some options in <a href=\"admin.php?page=extensions-leaflet-"
-"map&tab=cluster\">Settings</a> or per map."
-msgstr ""
-"Du kannst einige <a href=\"admin.php?page=extensions-leaflet-"
-"map&tab=cluster\">Einstellungen</a> anpassen oder pro Karte definieren."
-
-#: js/elevation.js:24
+#: php/elevation.php:26 js/elevation.js:23
 msgid "Altitude"
 msgstr "Höhe"
 
@@ -34,7 +25,7 @@ msgstr "Höhe"
 msgid "and configure tile layers"
 msgstr "und konfiguriere die Tileserver"
 
-#: admin/help/elevation.php:5
+#: admin/help/elevation.php:7
 msgid "and select a color theme"
 msgstr "und wähle ein Farbthema aus"
 
@@ -47,11 +38,11 @@ msgstr ""
 msgid "button to reset the view. A must for clustering markers"
 msgstr "Button um die Ansicht zurückzusetzen. Ein Muss für Markercluster"
 
-#: admin/help/markergroup.php:9
+#: admin/help/markergroup.php:12
 msgid "comma separated labels appear in the selection menu"
 msgstr "durch Komma getrennte Beschriftungen werden im Auswahlmenü angezeigt"
 
-#: admin/help/markergroup.php:8
+#: admin/help/markergroup.php:9
 msgid ""
 "comma separated strings to distinguish the markers, e.g. an unique string in "
 "iconUrl or title"
@@ -69,11 +60,11 @@ msgstr ""
 "Tileserver. Der Name erscheint im Menü. Um einen Tileserver zu löschen, "
 "lösche den Text in den Feldern."
 
-#: admin/markercluster.php:42
+#: admin/markercluster.php:45
 msgid "Default:"
 msgstr "Standard:"
 
-#: admin/markercluster.php:52
+#: admin/markercluster.php:57
 msgid "Default: true. You can change it for each map:"
 msgstr "Standard: true. Du kannst den Wert für jede Karte einzeln angeben."
 
@@ -90,12 +81,14 @@ msgid "Example"
 msgstr "Beispiel"
 
 #. Name of the plugin
-msgid "Extensions for Leaflet Map"
-msgstr "Extensions for Leaflet Map"
+#| msgid "Extensions for Leaflet Map"
+msgid "Extensions for Leaflet Map Github"
+msgstr "Extensions for Leaflet Map Github"
 
 #. Description of the plugin
-msgid "Extensions for the Wordpress plugin Leaflet Map"
-msgstr "Erweiterungen für das Wordpress Plugin Leaflet Map"
+#| msgid "Extensions for the Wordpress plugin Leaflet Map"
+msgid "Extensions for the Wordpress plugin Leaflet Map Github"
+msgstr "Erweiterungen für das Wordpress Plugin Leaflet Map Github"
 
 #: admin/help/layerswitch.php:4
 msgid "First go to"
@@ -105,7 +98,7 @@ msgstr "Gehe zuerst zu"
 msgid "Help"
 msgstr "Hilfe"
 
-#: admin/help/markergroup.php:17
+#: admin/help/markergroup.php:21
 msgid ""
 "Here the groups are differentiated according to the color of the markers"
 msgstr "Hier werden die Gruppen nach der Farbe der Marker unterschieden"
@@ -119,8 +112,8 @@ msgid "Here you can switch colors for an elevation theme."
 msgstr "Hier kannst du die Farbe für das Höhenprofil wählen."
 
 #. URI of the plugin
-msgid "https://wordpress.org/plugins/extensions-leaflet-map"
-msgstr "https://wordpress.org/plugins/extensions-leaflet-map"
+msgid "https://github.com/hupe13/extensions-leaflet-map"
+msgstr "https://github.com/hupe13/extensions-leaflet-map"
 
 #. Author of the plugin
 msgid "hupe13"
@@ -160,19 +153,19 @@ msgstr ""
 "Viele Marker auf einer Karte werden unübersichtlich. Deshalb werden sie "
 "geclustert"
 
-#: js/elevation.js:26
+#: php/elevation.php:28 js/elevation.js:25
 msgid "Max Elevation"
 msgstr "Maximale Höhe"
 
-#: js/elevation.js:31
+#: php/elevation.php:33 js/elevation.js:30
 msgid "Max Slope"
 msgstr "max. Steigung"
 
-#: js/elevation.js:27
+#: php/elevation.php:29 js/elevation.js:26
 msgid "Min Elevation"
 msgstr "Minimale Höhe"
 
-#: js/elevation.js:30
+#: php/elevation.php:32 js/elevation.js:29
 msgid "Min Slope"
 msgstr "max. Gefälle"
 
@@ -184,11 +177,15 @@ msgstr "oder"
 msgid "other"
 msgstr "weitere"
 
-#: admin/markercluster.php:78
+#: admin/markercluster.php:84
+#| msgid ""
+#| "Please see the <a href=\"https://github.com/Leaflet/Leaflet."
+#| "markercluster#options\">authors page</a> for options. If you want to "
+#| "change other ones, please tell me"
 msgid ""
 "Please see the <a href=\"https://github.com/Leaflet/Leaflet."
-"markercluster#options\">authors page</a> for options. If you want to change "
-"other ones, please tell me"
+"markercluster#options\">Leaflet.markercluster</a> page for options. If you "
+"want to change other ones, please tell me"
 msgstr ""
 "Sieh dir die <a href=\"https://github.com/Leaflet/Leaflet."
 "markercluster#options\">Seite von Leaflet.markercluster</a> für Optionen an. "
@@ -202,7 +199,7 @@ msgstr "Plugins Standard"
 msgid "possible meaningful values"
 msgstr "mögliche sinnvolle Werte"
 
-#: admin/help/elevation.php:5 admin/help/layerswitch.php:4
+#: admin/help/elevation.php:6 admin/help/layerswitch.php:4
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -210,7 +207,7 @@ msgstr "Einstellungen"
 msgid "Switching Tile Layers"
 msgstr "Umschalten von Tilelayers"
 
-#: admin/markercluster.php:41
+#: admin/markercluster.php:42
 msgid ""
 "The maximum radius that a cluster will cover from the central marker (in "
 "pixels). Decreasing will make more, smaller clusters."
@@ -218,24 +215,24 @@ msgstr ""
 "Der maximale Radius, den ein Cluster vom zentralen Marker aus abdeckt (in "
 "Pixel). Je kleiner er ist, desto mehr und kleinere Cluster werden gebildet."
 
-#: admin/help/markergroup.php:10
+#: admin/help/markergroup.php:14
 msgid "The number of strings and groups must match"
 msgstr "Die Anzahl von strings und groups muss übereinstimmen"
 
-#: admin/markercluster.php:79
+#: admin/markercluster.php:87
 msgid "To reset all values to their defaults, simply clear the values"
 msgstr ""
 "Um alle Werte auf ihre Standardwerte zurückzusetzen, lösche einfach die Werte"
 
-#: js/elevation.js:28
+#: php/elevation.php:30 js/elevation.js:27
 msgid "Total Ascent"
 msgstr "Gesamtanstieg"
 
-#: js/elevation.js:29
+#: php/elevation.php:31 js/elevation.js:28
 msgid "Total Descent"
 msgstr "Gesamtabstieg"
 
-#: js/elevation.js:25
+#: php/elevation.php:27 js/elevation.js:24
 #| msgid "Total Length: "
 msgid "Total Length"
 msgstr "Gesamtstrecke"
@@ -246,7 +243,7 @@ msgstr ""
 "Verwende diese Option, um einen Geojson-Bereich oder einen Track beim "
 "Überfahren mit der Maus hervorzuheben"
 
-#: admin/markercluster.php:51
+#: admin/markercluster.php:55
 msgid ""
 "When you click a cluster at the bottom zoom level we spiderfy it so you can "
 "see all of its markers."
@@ -254,9 +251,21 @@ msgstr ""
 "Wenn man ein Cluster in der untersten Zoomstufe anklickt, wird es gespidert, "
 "so dass man alle seine Marker sehen kann."
 
-#: admin/markercluster.php:32 admin/markercluster.php:43
+#: admin/markercluster.php:32 admin/markercluster.php:46
 msgid "You can change it for each map:"
 msgstr "Du kannst es für jede Karte einzeln einstellen:"
+
+#: admin/help/markercluster.php:5
+#| msgid ""
+#| "\n"
+#| "You can define some options in <a href=\"admin.php?page=extensions-"
+#| "leaflet-map&tab=cluster\">Settings</a> or per map."
+msgid ""
+"You can define some options in <a href=\"admin.php?page=extensions-leaflet-"
+"map&tab=cluster\">Settings</a> or per map."
+msgstr ""
+"Du kannst einige <a href=\"admin.php?page=extensions-leaflet-"
+"map&tab=cluster\">Einstellungen</a> anpassen oder pro Karte definieren."
 
 #: admin/help/zoomhome.php:5
 msgid ""

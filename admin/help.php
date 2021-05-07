@@ -1,6 +1,6 @@
 <?php
 function leafext_help () {
-	$leafext_picts = WP_PLUGIN_URL.'/extensions-leaflet-map/pict/';
+	$leafext_picts = WP_PLUGIN_URL . '/' . basename (LEAFEXT_PLUGIN_DIR) . '/pict/';
     $text = '<h3 id="shortcodes">Shortcodes</h3>';
 		include 'help/elevation.php';
 		include 'help/layerswitch.php';

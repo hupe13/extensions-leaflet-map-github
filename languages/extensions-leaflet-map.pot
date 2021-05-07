@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map Github\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 11:25+0000\n"
+"POT-Creation-Date: 2021-05-07 09:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,14 +16,7 @@ msgstr ""
 "X-Loco-Version: 2.5.2; wp-5.7.1\n"
 "X-Domain: extensions-leaflet-map"
 
-#: admin/help/markercluster.php:4
-msgid ""
-"\n"
-"You can define some options in <a href=\"admin.php?page=extensions-leaflet-"
-"map&tab=cluster\">Settings</a> or per map."
-msgstr ""
-
-#: js/elevation.js:24
+#: php/elevation.php:26 js/elevation.js:23
 msgid "Altitude"
 msgstr ""
 
@@ -31,7 +24,7 @@ msgstr ""
 msgid "and configure tile layers"
 msgstr ""
 
-#: admin/help/elevation.php:5
+#: admin/help/elevation.php:7
 msgid "and select a color theme"
 msgstr ""
 
@@ -43,11 +36,11 @@ msgstr ""
 msgid "button to reset the view. A must for clustering markers"
 msgstr ""
 
-#: admin/help/markergroup.php:9
+#: admin/help/markergroup.php:12
 msgid "comma separated labels appear in the selection menu"
 msgstr ""
 
-#: admin/help/markergroup.php:8
+#: admin/help/markergroup.php:9
 msgid ""
 "comma separated strings to distinguish the markers, e.g. an unique string in "
 "iconUrl or title"
@@ -60,11 +53,11 @@ msgid ""
 "the values."
 msgstr ""
 
-#: admin/markercluster.php:42
+#: admin/markercluster.php:45
 msgid "Default:"
 msgstr ""
 
-#: admin/markercluster.php:52
+#: admin/markercluster.php:57
 msgid "Default: true. You can change it for each map:"
 msgstr ""
 
@@ -81,11 +74,11 @@ msgid "Example"
 msgstr ""
 
 #. Name of the plugin
-msgid "Extensions for Leaflet Map"
+msgid "Extensions for Leaflet Map Github"
 msgstr ""
 
 #. Description of the plugin
-msgid "Extensions for the Wordpress plugin Leaflet Map"
+msgid "Extensions for the Wordpress plugin Leaflet Map Github"
 msgstr ""
 
 #: admin/help/layerswitch.php:4
@@ -96,7 +89,7 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
-#: admin/help/markergroup.php:17
+#: admin/help/markergroup.php:21
 msgid ""
 "Here the groups are differentiated according to the color of the markers"
 msgstr ""
@@ -110,7 +103,7 @@ msgid "Here you can switch colors for an elevation theme."
 msgstr ""
 
 #. URI of the plugin
-msgid "https://wordpress.org/plugins/extensions-leaflet-map"
+msgid "https://github.com/hupe13/extensions-leaflet-map"
 msgstr ""
 
 #. Author of the plugin
@@ -142,19 +135,19 @@ msgstr ""
 msgid "Many markers on a map become confusing. That is why they are clustered"
 msgstr ""
 
-#: js/elevation.js:26
+#: php/elevation.php:28 js/elevation.js:25
 msgid "Max Elevation"
 msgstr ""
 
-#: js/elevation.js:31
+#: php/elevation.php:33 js/elevation.js:30
 msgid "Max Slope"
 msgstr ""
 
-#: js/elevation.js:27
+#: php/elevation.php:29 js/elevation.js:26
 msgid "Min Elevation"
 msgstr ""
 
-#: js/elevation.js:30
+#: php/elevation.php:32 js/elevation.js:29
 msgid "Min Slope"
 msgstr ""
 
@@ -166,11 +159,11 @@ msgstr ""
 msgid "other"
 msgstr ""
 
-#: admin/markercluster.php:78
+#: admin/markercluster.php:84
 msgid ""
 "Please see the <a href=\"https://github.com/Leaflet/Leaflet."
-"markercluster#options\">authors page</a> for options. If you want to change "
-"other ones, please tell me"
+"markercluster#options\">Leaflet.markercluster</a> page for options. If you "
+"want to change other ones, please tell me"
 msgstr ""
 
 #: admin/markercluster.php:30
@@ -181,7 +174,7 @@ msgstr ""
 msgid "possible meaningful values"
 msgstr ""
 
-#: admin/help/elevation.php:5 admin/help/layerswitch.php:4
+#: admin/help/elevation.php:6 admin/help/layerswitch.php:4
 msgid "Settings"
 msgstr ""
 
@@ -189,29 +182,29 @@ msgstr ""
 msgid "Switching Tile Layers"
 msgstr ""
 
-#: admin/markercluster.php:41
+#: admin/markercluster.php:42
 msgid ""
 "The maximum radius that a cluster will cover from the central marker (in "
 "pixels). Decreasing will make more, smaller clusters."
 msgstr ""
 
-#: admin/help/markergroup.php:10
+#: admin/help/markergroup.php:14
 msgid "The number of strings and groups must match"
 msgstr ""
 
-#: admin/markercluster.php:79
+#: admin/markercluster.php:87
 msgid "To reset all values to their defaults, simply clear the values"
 msgstr ""
 
-#: js/elevation.js:28
+#: php/elevation.php:30 js/elevation.js:27
 msgid "Total Ascent"
 msgstr ""
 
-#: js/elevation.js:29
+#: php/elevation.php:31 js/elevation.js:28
 msgid "Total Descent"
 msgstr ""
 
-#: js/elevation.js:25
+#: php/elevation.php:27 js/elevation.js:24
 msgid "Total Length"
 msgstr ""
 
@@ -219,14 +212,20 @@ msgstr ""
 msgid "Use it to highlight a geojson area or line on mouse over"
 msgstr ""
 
-#: admin/markercluster.php:51
+#: admin/markercluster.php:55
 msgid ""
 "When you click a cluster at the bottom zoom level we spiderfy it so you can "
 "see all of its markers."
 msgstr ""
 
-#: admin/markercluster.php:32 admin/markercluster.php:43
+#: admin/markercluster.php:32 admin/markercluster.php:46
 msgid "You can change it for each map:"
+msgstr ""
+
+#: admin/help/markercluster.php:5
+msgid ""
+"You can define some options in <a href=\"admin.php?page=extensions-leaflet-"
+"map&tab=cluster\">Settings</a> or per map."
 msgstr ""
 
 #: admin/help/zoomhome.php:5

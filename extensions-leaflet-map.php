@@ -36,10 +36,10 @@ if ( ! is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
 function leafext_translations() {
   load_plugin_textdomain( 'extensions-leaflet-map', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
+add_action( 'init', 'leafext_translations' );
 
 if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . 'admin.php';
-  add_action( 'init', 'leafext_translations' );
 } else {
   include_once LEAFEXT_PLUGIN_DIR . '/php/elevation.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/fullscreen.php';
@@ -50,7 +50,6 @@ if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . '/php/zoomhome.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/layerswitch.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/featuregroup.php';
-  //add_action( 'init', 'leafext_translations' );
 }
 
 // Add settings to plugin page
