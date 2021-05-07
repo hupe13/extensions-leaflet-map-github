@@ -10,12 +10,10 @@ add_action('admin_init', 'leafext_elevation_init' );
 
 // Baue Abfrage Standardthema
 function leafext_form_theme() {
-	$options = get_option('leafext_values');
-	if ( ! $options ) {
-		$options = array(
-			"theme" => "lime",
-			"othertheme" => "" );
-		}
+	$defaults = array(
+		"theme" => "lime",
+		"othertheme" => "" );
+	$options = shortcode_atts($defaults, get_option('leafext_values') );
 	echo '<select name="leafext_values[theme]">';
 	$colors = array("lime","steelblue","purple","yellow","red","magenta","lightblue","other");
 	foreach ($colors as $color) {
@@ -31,12 +29,10 @@ function leafext_form_theme() {
 
 // Baue Abfrage eigenes Thema
 function leafext_form_other_theme() {
-	$options = get_option('leafext_values');
-	if ( ! $options ) {
-		$options = array(
-			"theme" => "lime",
-			"othertheme" => "" );
-	}
+	$defaults = array(
+		"theme" => "lime",
+		"othertheme" => "" );
+	$options = shortcode_atts($defaults, get_option('leafext_values') );
 	echo '<input type="text" name="leafext_values[othertheme]" placeholder="my-theme" value="'.$options['othertheme'].'" />';
 }
 

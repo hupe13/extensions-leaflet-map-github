@@ -2,6 +2,7 @@
 include_once LEAFEXT_PLUGIN_DIR . '/admin/elevation.php';
 include_once LEAFEXT_PLUGIN_DIR . '/admin/layerswitch.php';
 include_once LEAFEXT_PLUGIN_DIR . '/admin/markercluster.php';
+include_once LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
 
 // Admin Menu
 add_action('admin_menu', 'leafext_add_page', 99);
@@ -41,6 +42,9 @@ function leafext_do_page() {
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=cluster" class="nav-tab';
 	echo $active_tab == 'cluster' ? ' nav-tab-active' : '';
 	echo '">Markercluster</a>';
+	echo '<a href="?page='.$leafext_plugin_name.'&tab=gesture" class="nav-tab';
+	echo $active_tab == 'gesture' ? ' nav-tab-active' : '';
+	echo '">Gesture Handling</a>';
 
 	echo '</h3>';
 
@@ -53,8 +57,11 @@ function leafext_do_page() {
 		settings_fields('leafext_settings_maps');
 		do_settings_sections( 'leafext_settings_maps' );
 	} else if( $active_tab == 'cluster' ) {
-			settings_fields('leafext_settings_cluster');
-			do_settings_sections( 'leafext_settings_cluster' );
+		settings_fields('leafext_settings_cluster');
+		do_settings_sections( 'leafext_settings_cluster' );
+	} else if( $active_tab == 'gesture' ) {
+		settings_fields('leafext_settings_gesture');
+		do_settings_sections( 'leafext_settings_gesture' );
 	}
 	submit_button();
 	echo '</form>';
