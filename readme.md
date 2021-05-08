@@ -21,11 +21,11 @@ You need to install the plugin "Leaflet Map".
 ### Involved Leaflet Plugins
 
 *   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation)
+*   [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster)
+*   [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup)
+*   [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome)
 *   [leaflet.fullscreen](https://github.com/brunob/leaflet.fullscreen)
 *   [Leaflet.GestureHandling](https://github.com/elmarquis/Leaflet.GestureHandling)
-*   [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster)
-*   [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome)
-*   [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup)
 
 ### Other functions
 
@@ -132,7 +132,7 @@ Brings the basic functionality of Gesture Handling into Leaflet Map.
 Prevents users from getting trapped on the map when scrolling a long page.
 You can enable it for all maps or for particular maps. It becomes active 
 only when dragging or scrollWheelZoom is enabled.
-You can define the options in Settings -> Leaflet Map -> Leaflet Map Extensions.</p>';
+You can define the options in Settings -> Leaflet Map -> Leaflet Map Extensions.</p>
 
 ### Hide Markers
 
