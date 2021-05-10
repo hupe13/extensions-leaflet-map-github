@@ -1,11 +1,10 @@
 <?php
-include_once LEAFEXT_PLUGIN_DIR . '/admin/elevation.php';
-include_once LEAFEXT_PLUGIN_DIR . '/admin/layerswitch.php';
-include_once LEAFEXT_PLUGIN_DIR . '/admin/markercluster.php';
-include_once LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
-
-// Admin Menu
-add_action('admin_menu', 'leafext_add_page', 99);
+$init = true;
+include LEAFEXT_PLUGIN_DIR . '/admin/elevation.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/layerswitch.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/markercluster.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
+$init = false;
 
 // Add menu page
 function leafext_add_page() {
@@ -15,10 +14,11 @@ function leafext_add_page() {
 		add_submenu_page( 'leaflet-map',
 			'Extensions for Leaflet Map Options',
 			'Extensions for Leaflet Map',
-		'manage_options',
-		$leafext_plugin_name,
-		'leafext_do_page');
+			'manage_options',
+			$leafext_plugin_name,
+			'leafext_do_page');
 }
+add_action('admin_menu', 'leafext_add_page', 99);
 
 // Draw the menu page itself
 function leafext_do_page() {
@@ -35,44 +35,30 @@ function leafext_do_page() {
 	echo '">'.__('Help',"extensions-leaflet-map").'</a>';
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=elevation" class="nav-tab';
 	echo $active_tab == 'elevation' ? ' nav-tab-active' : '';
-	echo '">Elevation Theme</a>';
+	echo '">Elevation Profile</a>';
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=tilelayers" class="nav-tab';
 	echo $active_tab == 'tilelayers' ? ' nav-tab-active' : '';
 	echo '">Switching Tilelayers</a>';
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=cluster" class="nav-tab';
 	echo $active_tab == 'cluster' ? ' nav-tab-active' : '';
-	echo '">Markercluster</a>';
+	echo '">Markercluster and Grouping</a>';
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=gesture" class="nav-tab';
 	echo $active_tab == 'gesture' ? ' nav-tab-active' : '';
 	echo '">Gesture Handling</a>';
 
 	echo '</h3>';
 
-	if( $active_tab != 'help' ) {
-	echo '<form method="post" action="options.php">';
 	if( $active_tab == 'elevation' ) {
-		settings_fields('leafext_settings_theme');
-		do_settings_sections( 'leafext_settings_theme' );
+		include LEAFEXT_PLUGIN_DIR . '/admin/elevation.php';
 	} else if ( $active_tab == 'tilelayers' ) {
-		settings_fields('leafext_settings_maps');
-		do_settings_sections( 'leafext_settings_maps' );
+		include LEAFEXT_PLUGIN_DIR . '/admin/layerswitch.php';
 	} else if( $active_tab == 'cluster' ) {
-		settings_fields('leafext_settings_cluster');
-		do_settings_sections( 'leafext_settings_cluster' );
+		include LEAFEXT_PLUGIN_DIR . '/admin/markercluster.php';
 	} else if( $active_tab == 'gesture' ) {
-		settings_fields('leafext_settings_gesture');
-		do_settings_sections( 'leafext_settings_gesture' );
-	}
-	submit_button();
-	echo '</form>';
-	}
-	if( $active_tab == 'elevation' ) {
-		echo leafext_elevation_help_text();
-	}
-	if( $active_tab == 'help' ) {
+		include LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
+	} else if( $active_tab == 'help' ) {
 		include "admin/help.php";
 		echo leafext_help();
 	}
 }
-
 ?>

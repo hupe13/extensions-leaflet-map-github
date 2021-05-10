@@ -16,6 +16,8 @@ defined( 'ABSPATH' ) or die();
 
 define('LEAFEXT_PLUGIN_FILE', __FILE__);
 define('LEAFEXT_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('LEAFEXT_PLUGIN_PICTS', WP_PLUGIN_URL . '/' . basename (LEAFEXT_PLUGIN_DIR) . '/pict/');
+define('LEAFEXT_PLUGIN_SETTINGS', dirname( plugin_basename( __FILE__ ) ) );
 
 if ( ! function_exists( 'is_plugin_active' ) )
     require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
@@ -54,8 +56,7 @@ if (is_admin()) {
 
 // Add settings to plugin page
 function leafext_add_action_links ( $actions ) {
-	$setting_page = dirname( plugin_basename( __FILE__ ) );
-	$actions[] = '<a href="'. esc_url( get_admin_url(null, 'admin.php?page='.$setting_page) ) .'">'. esc_html__( "Settings").'</a>';
+	$actions[] = '<a href="'. esc_url( get_admin_url(null, 'admin.php?page='.LEAFEXT_PLUGIN_SETTINGS) ) .'">'. esc_html__( "Settings").'</a>';
   return $actions;
 }
 add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'leafext_add_action_links' );

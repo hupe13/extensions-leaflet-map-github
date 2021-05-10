@@ -1,6 +1,6 @@
 <?php
 $text=$text.'<h4 id="leaflet.zoomhome">leaflet.zoomhome</h4>
-<img src="'.$leafext_picts.'home.png"><p>
+<img src="'.LEAFEXT_PLUGIN_PICTS.'home.png"><p>
 &quot;Home&quot; '.__('button to reset the view. A must for clustering markers','extensions-leaflet-map').'.</p><p>'.
 __('You can define wether zoomhomemap should zoom to all objects when calling the map. But this is valid for synchron loaded objects like markers only.
 For asynchron loaded object, like geojsons, use the leaflet-map attribute fitbounds. If you use the elevation shortcode,

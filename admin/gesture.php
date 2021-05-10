@@ -1,12 +1,15 @@
 <?php
+global $init;
+if ($init) {
 // init settings fuer gesture
 function leafext_gesture_init(){
-	add_settings_section( 'gesture_settings', 'Gesture Handling', 'leafext_gesture_text', 'leafext_settings_gesture' );
+	add_settings_section( 'gesture_settings', 'Gesture Handling', 'leafext_gesture_help_text', 'leafext_settings_gesture' );
 	add_settings_field( 'leafext_gesture_on', 'gesture_on', 'leafext_form_gesture', 'leafext_settings_gesture', 'gesture_settings' );
 	register_setting( 'leafext_settings_gesture', 'leafext_gesture', 'leafext_validate_gesture' );
 }
 add_action('admin_init', 'leafext_gesture_init' );
 
+} else {
 function leafext_form_gesture() {
 	//boolean
 	$defaults = array ('on' => true );
@@ -31,6 +34,19 @@ function leafext_validate_gesture($input) {
 }
 
 // Erklaerung
-function leafext_gesture_text() {
+function leafext_gesture_help_text() {
   //echo '<p>'.__('Hilfetext','extensions-leaflet-map').'.</p>';
+	//echo '<h4 id="gesturehandling">GestureHandling</h4>
+	echo '<img src="'.LEAFEXT_PLUGIN_PICTS.'gesture.png">
+	<p>Brings the basic functionality of Gesture Handling into Leaflet Map.
+	Prevents users from getting trapped on the map when scrolling a long page.
+	You can enable it for all maps or for particular maps. It becomes active
+	only when dragging or scrollWheelZoom is enabled.</p>';
+}
+
+echo '<form method="post" action="options.php">';
+settings_fields('leafext_settings_gesture');
+do_settings_sections( 'leafext_settings_gesture' );
+submit_button();
+echo '</form>';
 }

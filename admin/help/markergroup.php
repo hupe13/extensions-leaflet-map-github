@@ -1,6 +1,6 @@
 <?php
 $text=$text.'<h4 id="leaflet.featuregroup.subgroup">Leaflet.FeatureGroup.SubGroup</h4>
-<img src="'.$leafext_picts.'clustergroup.png"><p>'.
+<img src="'.LEAFEXT_PLUGIN_PICTS.'clustergroup.png"><p>'.
 __('dynamically add/remove groups of markers from Marker Cluster','extensions-leaflet-map').
 '. Parameter:</p>
 <ul>
