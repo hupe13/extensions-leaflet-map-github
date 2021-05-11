@@ -1,4 +1,7 @@
 <?php
+// Direktzugriff auf diese Datei verhindern:
+defined( 'ABSPATH' ) or die();
+
 //Shortcode: [cluster]
 
 function leafext_cluster_script($params){

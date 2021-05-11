@@ -1,4 +1,7 @@
 <?php
+// Direktzugriff auf diese Datei verhindern:
+defined( 'ABSPATH' ) or die();
+
 // For use with any map on a webpage
 function leafext_gestures_script(){
 	include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';

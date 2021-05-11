@@ -1,4 +1,7 @@
 <?php
+// Direktzugriff auf diese Datei verhindern:
+defined( 'ABSPATH' ) or die();
+
 $init = true;
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/layerswitch.php';

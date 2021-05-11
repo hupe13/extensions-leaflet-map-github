@@ -1,4 +1,7 @@
 <?php
+// Direktzugriff auf diese Datei verhindern:
+defined( 'ABSPATH' ) or die();
+
 //Shortcode: [elevation gpx="...url..."]
 
 function leafext_elevation_script($gpx,$summary,$slope,$theme){

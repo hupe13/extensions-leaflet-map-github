@@ -1,4 +1,7 @@
 <?php
+// Direktzugriff auf diese Datei verhindern:
+defined( 'ABSPATH' ) or die();
+
 //[leaflet-map mapid=" "]
 //Shortcode: [layerswitch]
 

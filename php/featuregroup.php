@@ -1,4 +1,7 @@
 <?php
+// Direktzugriff auf diese Datei verhindern:
+defined( 'ABSPATH' ) or die();
+
 //Shortcode: [markerClusterGroup]
 
 function leafext_clustergroup_script($featuregroups){

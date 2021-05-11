@@ -36,10 +36,10 @@ function leafext_validate_gesture($input) {
 // Erklaerung
 function leafext_gesture_help_text() {
 	echo '<img src="'.LEAFEXT_PLUGIN_PICTS.'gesture.png">
-	<p>Brings the basic functionality of Gesture Handling into Leaflet Map.
+	<p>'.__('Brings the basic functionality of Gesture Handling into Leaflet Map.
 	Prevents users from getting trapped on the map when scrolling a long page.
 	You can enable it for all maps or for particular maps. It becomes active
-	only when dragging or scrollWheelZoom is enabled.</p>';
+	only when dragging or scrollWheelZoom is enabled.','extensions-leaflet-map').'</p>';
 }
 
 echo '<form method="post" action="options.php">';

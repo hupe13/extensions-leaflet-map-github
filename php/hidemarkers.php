@@ -1,6 +1,8 @@
 <?php
+// Direktzugriff auf diese Datei verhindern:
+defined( 'ABSPATH' ) or die();
+
 //Shortcode: [hidemarkers]
-// For use with more than one map on a webpage
 function leafext_hidemarkers_function(){
 	include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
 	$text = '

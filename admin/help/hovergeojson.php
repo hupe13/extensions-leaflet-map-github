@@ -1,4 +1,7 @@
 <?php
+// Direktzugriff auf diese Datei verhindern:
+defined( 'ABSPATH' ) or die();
+
 $text=$text.'<h4 id="hovergeojson">hovergeojson</h4>
 <img src="'.LEAFEXT_PLUGIN_PICTS.'hover.png">
 <p>'.__('Use it to highlight a geojson area or line on mouse over','extensions-leaflet-map').'.</p>
