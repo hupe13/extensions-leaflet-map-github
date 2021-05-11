@@ -30,7 +30,7 @@ function leafext_plugin_zoomhome_function($atts){
 	// custom js
 	wp_enqueue_script('myzoomhome',
 		plugins_url('js/zoomhome.min.js',LEAFEXT_PLUGIN_FILE), array('zoomhome'), null);
-
+    //plugins_url('js/zoomhome.js',LEAFEXT_PLUGIN_FILE), array('zoomhome'), null);
 	if (is_array($atts)) {
 		for ($i = 0; $i < count($atts); $i++) {
 			if (isset($atts[$i])) {

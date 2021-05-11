@@ -38,12 +38,11 @@ function leafext_form_other_theme() {
 	$options = shortcode_atts($defaults, get_option('leafext_values') );
 	if ($options['theme'] == "other") {
 		echo '<input type="text" name="leafext_values[othertheme]" placeholder="my-theme"
-		pattern=".+-theme" title="'.__("must end with ",'extensions-leaflet-map').'\'-theme\'"
+		pattern=".+-theme" title="'.__("must end with",'extensions-leaflet-map').' \'-theme\'"
 		value="'.$options['othertheme'].'" />';
 	} else {
 		echo '<input type="text" name="leafext_values[othertheme]" placeholder="my-theme"
-		readonly
-		value="" />';
+		readonly value="" />';
 	}
 }
 

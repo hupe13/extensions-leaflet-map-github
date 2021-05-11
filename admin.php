@@ -58,7 +58,6 @@ function leafext_do_page() {
 		include LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
 	} else if( $active_tab == 'help' ) {
 		include "admin/help.php";
-		echo leafext_help();
 	}
 }
 ?>

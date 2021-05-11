@@ -35,8 +35,6 @@ function leafext_validate_gesture($input) {
 
 // Erklaerung
 function leafext_gesture_help_text() {
-  //echo '<p>'.__('Hilfetext','extensions-leaflet-map').'.</p>';
-	//echo '<h4 id="gesturehandling">GestureHandling</h4>
 	echo '<img src="'.LEAFEXT_PLUGIN_PICTS.'gesture.png">
 	<p>Brings the basic functionality of Gesture Handling into Leaflet Map.
 	Prevents users from getting trapped on the map when scrolling a long page.

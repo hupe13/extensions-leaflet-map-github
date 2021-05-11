@@ -8,6 +8,9 @@
 
 		for (var i = 0, mapslen = maps.length; i < mapslen; i++) {
 			var map = maps[i];
+			if(typeof map.zoomControl !== "undefined"){
+				map.zoomControl.remove();
+			}
 			var zoom = 0;
 			var bounds = new L.latLngBounds();
 			var zoomHome = L.Control.zoomHome();

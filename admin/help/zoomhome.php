@@ -6,11 +6,11 @@ __('You can define wether zoomhomemap should zoom to all objects when calling th
 For asynchron loaded object, like geojsons, use the leaflet-map attribute fitbounds. If you use the elevation shortcode,
 please use at least one marker (e.g. starting point).','extensions-leaflet-map').'</p>
 <pre>
-<code>[leaflet-map lat=... lng=... zoom=... !fitbounds !zoomcontrol]
+<code>[leaflet-map lat=... lng=... zoom=... !fitbounds]
 [leaflet-marker ....]
 [zoomhomemap !fit]</code>
 </pre>'.__('or','extensions-leaflet-map').'
-<pre><code>[leaflet-map !zoomcontrol ....]
+<pre><code>[leaflet-map ....]
   ...
 [zoomhomemap]
 </code></pre>';

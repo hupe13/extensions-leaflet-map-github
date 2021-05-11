@@ -15,13 +15,13 @@ add_action('admin_init', 'leafext_cluster_init' );
 
 //get Options
 function leafext_form_cluster_get_options($reset=false) {
-	if ( ! $reset) $options = get_option('leafext_cluster');
-	if ( ! $options ) $options = array();
-	//var_dump($options);
-	if (!array_key_exists('zoom', $options)) $options['zoom'] = "17";
-	if (!array_key_exists('radius', $options)) $options['radius'] = "80";
-	if (!array_key_exists('spiderfy', $options)) $options['spiderfy'] = true;
-	//var_dump($options);
+	$defaults = array(
+		'zoom' => "17",
+		'radius' => "80",
+		'spiderfy' => true,
+	);
+	if ( $reset ) return $defaults;
+	$options = shortcode_atts($defaults, get_option('leafext_cluster') );
 	return $options;
 }
 
@@ -85,7 +85,8 @@ function leafext_validate_cluster($input) {
 // Erklaerung
 function leafext_cluster_help_text() {
 	//echo '<h4 id="leaflet.markercluster">Leaflet.markercluster and Leaflet.FeatureGroup.SubGroup</h4>
-	echo '<img src="'.LEAFEXT_PLUGIN_PICTS.'cluster.png"><img src="'.LEAFEXT_PLUGIN_PICTS.'clustergroup.png">
+	echo '<img src="'.LEAFEXT_PLUGIN_PICTS.'cluster.png">
+	<img src="'.LEAFEXT_PLUGIN_PICTS.'clustergroup.png">
 	<p>'.__('Many markers on a map become confusing. That is why they are clustered','extensions-leaflet-map').'.</p>
 	<p>'.__('You may be interested in dynamically add/remove groups of markers from Marker Cluster with Leaflet.FeatureGroup.SubGroup, see below.','extensions-leaflet-map').
 	'</p>

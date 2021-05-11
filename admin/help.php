@@ -1,5 +1,4 @@
 <?php
-function leafext_help () {
 	$text = '';
 	//		include 'help/elevation.php';
 	$text=$text.'<h4 id="display-a-track-with-elevation-profile">'.__('Display a track with elevation profile','extensions-leaflet-map').'</h4>
@@ -27,9 +26,9 @@ function leafext_help () {
 	</p>';
 	//
 	// include 'help/markergroup.php';
-		include 'help/zoomhome.php';
-		include 'help/fullscreen.php';
-		include 'help/hovergeojson.php';
+	include 'help/zoomhome.php';
+	include 'help/fullscreen.php';
+	include 'help/hovergeojson.php';
 	//
 	//include 'help/gesture.php';
 	$text=$text.'<h4 id="gesturehandling">GestureHandling</h4>
@@ -38,6 +37,6 @@ function leafext_help () {
 	<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=gesture">'.
 	__('Help and Settings','extensions-leaflet-map').'</a>
 	</p>';
-		include 'help/hidemarkers.php';
-	return $text;
-}
+	//
+	include 'help/hidemarkers.php';
+	echo $text;

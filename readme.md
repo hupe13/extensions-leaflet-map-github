@@ -101,11 +101,11 @@ Parameter:</p>
 For asynchron loaded object, like geojsons, use the leaflet-map attribute fitbounds. If you use the elevation shortcode,
 please use at least one marker (e.g. starting point).</p>
 <pre>
-<code>[leaflet-map lat=... lng=... zoom=... !fitbounds !zoomcontrol]
+<code>[leaflet-map lat=... lng=... zoom=... !fitbounds]
 [leaflet-marker ....]
 [zoomhomemap !fit]</code>
 </pre>or
-<pre><code>[leaflet-map !zoomcontrol ....]
+<pre><code>[leaflet-map ....]
   ...
 [zoomhomemap]
 </code></pre>
@@ -130,7 +130,7 @@ please use at least one marker (e.g. starting point).</p>
 
 Brings the basic functionality of Gesture Handling into Leaflet Map.
 Prevents users from getting trapped on the map when scrolling a long page.
-You can enable it for all maps or for particular maps. It becomes active 
+You can enable it for all maps or for particular maps. It becomes active
 only when dragging or scrollWheelZoom is enabled.
 You can define the options in Settings -> Leaflet Map -> Leaflet Map Extensions.</p>
 
