@@ -25,10 +25,16 @@ function leafext_clustergroup_script($featuregroups){
 				var control = new L.control.layers(null, null, { collapsed: false });
 				for (var i = 0; i < WPLeafletMapPlugin.markers.length; i++) {
 					var a = WPLeafletMapPlugin.markers[i];
-					//console.log(a.options);
-					for (key in groups) {
-						if (a.getIcon().options[feat].match (key))
-						a.addTo(featGroups[key]);
+					if (feat == "iconUrl") {
+						for (key in groups) {
+							if (a.getIcon().options[feat].match (key))
+								a.addTo(featGroups[key]);
+						}
+					} else if (a.options.title !== undefined) {
+						for (key in groups) {
+							if (a.options.title.match(key))
+								a.addTo(featGroups[key]);
+							}
 					}
 					map.removeLayer(a);
 				}
@@ -43,7 +49,7 @@ function leafext_clustergroup_script($featuregroups){
 			}
 		});
 		// title *
-		// alt *
+		// alt * (no)
 		// iconUrl *
 		</script>';
 		$text = \JShrink\Minifier::minify($text);
