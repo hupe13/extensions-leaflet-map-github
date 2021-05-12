@@ -34,8 +34,8 @@ $text='<h2 id="leaflet.zoomhome">leaflet.zoomhome</h2>
 </li>
 
 <li>'.
-__('You can define wether <code>[zoomhomemap]</code> should zoom to all objects when calling the map.','extensions-leaflet-map').' '.
-__('If you are using the <code>!fit</code> attribute, you have to define how the map should fit, e.g.','extensions-leaflet-map').'
+__('You can define wether <code>[zoomhomemap]</code> should zoom to all objects when calling the map.','extensions-leaflet-map').'
+If you are using the <code>!fit</code> attribute, you have to define how the map should fit, e.g.
 
 <pre>
 <code>[leaflet-map lat=... lng=... zoom=... !fitbounds]
@@ -59,9 +59,8 @@ __('If you are using the <code>!fit</code> attribute, you have to define how the
 </pre>
 </li>
 
-<li>'.
-__('There are certainly more examples. Test it yourself with the parameters <code>fitbounds</code> (leaflet-) or <code>fit</code> (zoomhomemap).
-','extensions-leaflet-map').'
+<li>
+There are certainly more examples. Test it yourself with the parameters <code>fitbounds</code> (leaflet-) or <code>fit</code> (zoomhomemap).
 </li>
 
 </ul>

@@ -48,6 +48,9 @@ function leafext_do_page() {
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=gesture" class="nav-tab';
 	echo $active_tab == 'gesture' ? ' nav-tab-active' : '';
 	echo '">Gesture Handling</a>';
+	echo '<a href="?page='.$leafext_plugin_name.'&tab=zoomhome" class="nav-tab';
+	echo $active_tab == 'zoomhome' ? ' nav-tab-active' : '';
+	echo '">leaflet.zoomhome</a>';
 
 	echo '</h3>';
 
@@ -59,6 +62,8 @@ function leafext_do_page() {
 		include LEAFEXT_PLUGIN_DIR . '/admin/markercluster.php';
 	} else if( $active_tab == 'gesture' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
+	} else if( $active_tab == 'zoomhome' ) {
+		include LEAFEXT_PLUGIN_DIR . '/admin/help/zoomhome.php';
 	} else if( $active_tab == 'help' ) {
 		include "admin/help.php";
 	}

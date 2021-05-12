@@ -29,7 +29,15 @@ defined( 'ABSPATH' ) or die();
 	</p>';
 	//
 	// include 'help/markergroup.php';
-	include 'help/zoomhome.php';
+	//
+	//include 'help/zoomhome.php';
+	$text=$text.'<h4 id="leaflet.zoomhome">leaflet.zoomhome</h4>
+	<img src="'.LEAFEXT_PLUGIN_PICTS.'home.png">
+	<p>
+	<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=zoomhome">'.
+	__('Help','extensions-leaflet-map').'</a>
+	</p>';
+	//
 	include 'help/fullscreen.php';
 	include 'help/hovergeojson.php';
 	//
