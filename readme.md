@@ -158,9 +158,11 @@ Alternatively you can download the file from here, unzip it and move the unzippe
 
 ### 1.3 (geplant)
 
-* Shortcode can now be used on more than one map per page. 
-* Parameter for GestureHandling
-* ready for Polyglots translation (I hope)
+* Shortcodes can be used on more than one map per page, except zoomhomemap.  
+* Parameter for GestureHandling  
+* fixed markerClusterGroup  
+* ready for Polyglots translation (I hope)  
+* Documentation
 
 ### 1.2
 

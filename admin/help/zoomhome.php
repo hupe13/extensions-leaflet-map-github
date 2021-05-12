@@ -45,7 +45,7 @@ __('If you are using the <code>!fit</code> attribute, you have to define how the
 
 </li>
 
-<li> You can also define to zoom at the first call to a geojson:
+<li>'.__('You can also define to zoom at the first call to a geojson:','extensions-leaflet-map').'
 
 <pre>
 <code>[leaflet-map fitbounds]
