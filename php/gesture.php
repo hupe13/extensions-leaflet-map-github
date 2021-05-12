@@ -52,7 +52,10 @@ return "\n".$text."\n";
 }
 
 function leafext_gestures_function() {
-	$options = get_option('leafext_gesture');
+	$defaults = array(
+		'on'     => true,
+	);
+	$options = shortcode_atts($defaults, get_option('leafext_gesture'));
 	if ( (bool) $options['on'] ) {
 		wp_enqueue_script('gestures_leaflet',
 			plugins_url('leaflet-plugins/leaflet-gesture-handling-1.2.1/js/leaflet-gesture-handling.min.js',LEAFEXT_PLUGIN_FILE),

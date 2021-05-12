@@ -26,7 +26,8 @@ function leafext_zoomhome_script($fit){
     console.log("fit "+'.json_encode($fit).');
 
     if(typeof map.zoomControl !== "undefined"){
-      map.zoomControl.remove();
+      map.zoomControl._zoomOutButton.remove();
+	  map.zoomControl._zoomInButton.remove();
     }
       var zoom = 0;
       var bounds = new L.latLngBounds();
