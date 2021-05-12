@@ -152,7 +152,7 @@ You can install the plugin through the WordPress installer under Plugins → Add
 
 Alternatively you can download the file from here, unzip it and move the unzipped contents to the wp-content/plugins folder of your WordPress installation. You will then be able to activate the plugin.
 
-(Optionally) Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documentation and settings options.
+Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documentation and settings options.
 
 ## Changelog
 
@@ -162,7 +162,7 @@ Alternatively you can download the file from here, unzip it and move the unzippe
 * Parameter for GestureHandling  
 * fixed markerClusterGroup  
 * ready for Polyglots translation (I hope)  
-* Documentation
+* documentation
 
 ### 1.2
 
