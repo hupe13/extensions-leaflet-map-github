@@ -60,8 +60,7 @@ __('If you are using the <code>!fit</code> attribute, you have to define how the
 </li>
 
 <li>'.
-__('There are certainly more examples. Test it yourself with the parameters <code>fitbounds</code> (leaflet-) or <code>fit</code> (zoomhomemap).
-','extensions-leaflet-map').'
+__('There are certainly more examples. Test it yourself with the parameters <code>fitbounds</code> (leaflet-) or <code>fit</code> (zoomhomemap).','extensions-leaflet-map').'
 </li>
 
 </ul>

@@ -2,7 +2,7 @@
 
 # Extensions for Leaflet Map
 
-Stable tag: 1.2  
+Stable tag: 1.3  
 Requires at least: 5.5.3  
 Tested up to: 5.7  
 License: GPLv2 or later  
@@ -102,9 +102,7 @@ or
 
 <p>
 &quot;Home&quot; button to reset the view. A must have for clustering markers.</p>
-<p>You can define wether zoomhomemap should zoom to all objects when calling the map. But this is valid for synchron loaded objects like markers only.
-For asynchron loaded object, like geojsons, use the leaflet-map attribute fitbounds. If you use the elevation shortcode,
-please use at least one marker (e.g. starting point).</p>
+<p>There are several usage possibilities, see the help in Settings -> Leaflet Map -> Leaflet Map Extensions.</p>
 <pre>
 <code>[leaflet-map lat=... lng=... zoom=... !fitbounds]
 [leaflet-marker ....]
@@ -166,7 +164,7 @@ Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documenta
 * Shortcodes can be used on more than one map per page, except zoomhomemap.  
 * Parameter for GestureHandling  
 * fixed markerClusterGroup  
-* ready for Polyglots translation 
+* prepare for translation 
 * documentation
 
 ### 1.2

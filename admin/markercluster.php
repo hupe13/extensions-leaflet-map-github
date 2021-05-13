@@ -129,8 +129,7 @@ __('The number of strings and groups must match.','extensions-leaflet-map').'
 </code></pre>
 <h2>Options for Leaflet.markercluster</h2>';
 echo '<p>'.
-  __('Please see the <a href="https://github.com/Leaflet/Leaflet.markercluster#options"
-	>Leaflet.markercluster</a> page for options. If you want to change other ones, please post it to the forum.',
+  __('Please see the <a href="https://github.com/Leaflet/Leaflet.markercluster#options">Leaflet.markercluster</a> page for options. If you want to change other ones, please post it to the forum.',
   'extensions-leaflet-map').' ';
 	echo __('To reset all values to their defaults, simply clear the values',
 	'extensions-leaflet-map').'.</p>';
