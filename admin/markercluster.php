@@ -123,7 +123,7 @@ echo '</form>';
 echo '<h2 id="leaflet.featuregroup.subgroup">Leaflet.FeatureGroup.SubGroup</h2>
 <p>'.
 __('dynamically add/remove groups of markers from Marker Cluster','extensions-leaflet-map').
-'. Parameter:</p>
+'.<br>Parameter:</p>
 <ul>
 <li>feat - '.__('possible meaningful values','extensions-leaflet-map').': iconUrl, title</li>
 <li>strings - '.
@@ -134,12 +134,15 @@ __('comma separated labels appear in the selection menu','extensions-leaflet-map
 <li>'.
 __('The number of strings and groups must match.','extensions-leaflet-map').'
 </li></ul>
-<pre>
-<code>//many markers
-[leaflet-marker title="..." iconUrl="...red..." ... ] ... [/leaflet-marker]
-[leaflet-marker title="..." iconUrl="...green..." ... ] ... [/leaflet-marker]
+<pre><code>[leaflet-marker iconUrl="...red..." ... ] ... [/leaflet-marker]
+[leaflet-marker iconUrl="...green..." ... ] ... [/leaflet-marker]
+//many markers
 [markerClusterGroup feat="iconUrl" strings="red,green" groups="rot,gruen"]
 </code></pre>
-<p>'.__('Here the groups are differentiated according to the color of the markers','extensions-leaflet-map').'.</p>';
-
+'.__('or','extensions-leaflet-map').'
+<pre><code>[leaflet-marker title="first ..."  ... ] ... [/leaflet-marker]
+[leaflet-marker title="second ..." ... ] ... [/leaflet-marker]
+//many markers
+[markerClusterGroup feat="title" strings="first,second" groups="First Group,Second Group"]
+</code></pre>';
 }
