@@ -78,7 +78,7 @@ You can define some parameters in Settings -> Leaflet Map -> Leaflet Map Extensi
 
 ### Leaflet.FeatureGroup.SubGroup
 
-<p>dynamically add/remove groups of markers from Marker Cluster.
+<p>dynamically add/remove groups of markers from Marker Cluster.   
 Parameter:</p>
 <ul>
 <li>feat - possible values: iconUrl, title</li>
@@ -86,12 +86,17 @@ Parameter:</p>
 <li>groups - comma separated labels appear in the selection menu</li>
 <li>The number of strings and groups must match.</li>
 </ul>
-<pre><code>[leaflet-marker title="..." iconUrl="...red..." ... ] ... [/leaflet-marker]
-[leaflet-marker title="..." iconUrl="...green..." ... ] ... [/leaflet-marker]
+<pre><code>[leaflet-marker iconUrl="...red..." ... ] ... [/leaflet-marker]
+[leaflet-marker iconUrl="...green..." ... ] ... [/leaflet-marker]
 //many markers
 [markerClusterGroup feat="iconUrl" strings="red,green" groups="rot,gruen"]
 </code></pre>
-<p>Here the groups are differentiated according to the color of the markers.</p>
+or
+<pre><code>[leaflet-marker title="first ..."  ... ] ... [/leaflet-marker]
+[leaflet-marker title="second ..." ... ] ... [/leaflet-marker]
+//many markers
+[markerClusterGroup feat="title" strings="first,second" groups="First Group,Second Group"]
+</code></pre>
 
 ### leaflet.zoomhome
 
