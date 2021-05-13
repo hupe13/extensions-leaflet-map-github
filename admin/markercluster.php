@@ -2,8 +2,6 @@
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
-global $init;
-if ($init) {
 // init settings fuer cluster
 function leafext_cluster_init(){
 	add_settings_section( 'cluster_settings', 'Leaflet.markercluster and Leaflet.FeatureGroup.SubGroup', 'leafext_cluster_help_text', 'leafext_settings_cluster' );
@@ -13,8 +11,6 @@ function leafext_cluster_init(){
 	register_setting( 'leafext_settings_cluster', 'leafext_cluster', 'leafext_validate_cluster' );
 }
 add_action('admin_init', 'leafext_cluster_init' );
-
-} else {
 
 //get Options
 function leafext_form_cluster_get_options($reset=false) {
@@ -91,7 +87,7 @@ function leafext_cluster_help_text() {
 	echo '<img src="'.LEAFEXT_PLUGIN_PICTS.'cluster.png">
 	<img src="'.LEAFEXT_PLUGIN_PICTS.'clustergroup.png">
 	<p>'.__('Many markers on a map become confusing. That is why they are clustered','extensions-leaflet-map').'.</p>
-	<p>'.__('You may be interested in dynamically add/remove groups of markers from Marker Cluster with Leaflet.FeatureGroup.SubGroup, see below.','extensions-leaflet-map').
+	<p>'.__('You may be interested in dynamically add/remove groups of markers from Marker Cluster with Leaflet.FeatureGroup.SubGroup.','extensions-leaflet-map').
 	'</p>
 	<h2>Leaflet.markercluster</h2>
 	<pre><code>[leaflet-map ....]
@@ -105,22 +101,8 @@ function leafext_cluster_help_text() {
 [cluster radius="..." zoom="..." spiderfy=0]
 [zoomhomemap]
 </code></pre>';
-
-  echo '<p>'.
-  __('Please see the <a href="https://github.com/Leaflet/Leaflet.markercluster#options"
-	>Leaflet.markercluster</a> page for options. If you want to change other ones, please post it to the forum.',
-  'extensions-leaflet-map').' ';
-	echo __('To reset all values to their defaults, simply clear the values',
-	'extensions-leaflet-map').'.</p>';
-}
-
-echo '<form method="post" action="options.php">';
-settings_fields('leafext_settings_cluster');
-do_settings_sections( 'leafext_settings_cluster' );
-submit_button();
-echo '</form>';
-
-echo '<h2 id="leaflet.featuregroup.subgroup">Leaflet.FeatureGroup.SubGroup</h2>
+	
+	echo '<h2 id="leaflet.featuregroup.subgroup">Leaflet.FeatureGroup.SubGroup</h2>
 <p>'.
 __('dynamically add/remove groups of markers from Marker Cluster','extensions-leaflet-map').
 '.<br>Parameter:</p>
@@ -144,5 +126,12 @@ __('The number of strings and groups must match.','extensions-leaflet-map').'
 [leaflet-marker title="second ..." ... ] ... [/leaflet-marker]
 //many markers
 [markerClusterGroup feat="title" strings="first,second" groups="First Group,Second Group"]
-</code></pre>';
+</code></pre>
+<h2>Options for Leaflet.markercluster</h2>';
+echo '<p>'.
+  __('Please see the <a href="https://github.com/Leaflet/Leaflet.markercluster#options"
+	>Leaflet.markercluster</a> page for options. If you want to change other ones, please post it to the forum.',
+  'extensions-leaflet-map').' ';
+	echo __('To reset all values to their defaults, simply clear the values',
+	'extensions-leaflet-map').'.</p>';
 }

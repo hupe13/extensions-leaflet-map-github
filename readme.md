@@ -161,12 +161,12 @@ Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documenta
 
 ## Changelog
 
-### 1.3 (geplant)
+### 1.3
 
 * Shortcodes can be used on more than one map per page, except zoomhomemap.  
 * Parameter for GestureHandling  
 * fixed markerClusterGroup  
-* ready for Polyglots translation (I hope)  
+* ready for Polyglots translation 
 * documentation
 
 ### 1.2

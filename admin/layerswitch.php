@@ -2,8 +2,6 @@
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
-global $init;
-if ($init) {
 	// init settings fuer tile switching
 	function leafext_maps_init(){
 		add_settings_section( 'maps_settings', 'Switching Tilelayers', 'leafext_maps_help_text', 'leafext_settings_maps' );
@@ -11,8 +9,6 @@ if ($init) {
 		register_setting( 'leafext_settings_maps', 'leafext_maps', 'leafext_validate_mapswitch' );
 	}
 	add_action('admin_init', 'leafext_maps_init' );
-} else {
-
 
 // Baue Abfrage der Tiles // Wie geht das besser?
 function leafext_form_maps() {
@@ -70,14 +66,7 @@ function leafext_maps_help_text() {
 [layerswitch]
 </code></pre>';
 	echo '<p>'.
-		__("Configure a short name, attribution and a tile url for each tile service.","extensions-leaflet-map").
+		__("Configure a mapid, attribution and a tile url for each tile service.","extensions-leaflet-map").
 		' mapid '.__("appears in the switching control. To delete a service simply clear the values.","extensions-leaflet-map")
 		.'</p>';
-}
-
-echo '<form method="post" action="options.php">';
-settings_fields('leafext_settings_maps');
-do_settings_sections( 'leafext_settings_maps' );
-submit_button();
-echo '</form>';
 }
