@@ -38,6 +38,7 @@ function leafext_zoomhome_script($fit){
         bounds.extend(e.layer.getBounds());
         zoomHome.setHomeBounds(bounds);
         map.fitBounds(bounds);
+        zoom = -99;
       });
 
       //
