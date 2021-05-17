@@ -15,11 +15,12 @@ console.log("cluster.zoom "+'.$params['zoom'].');
 window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 window.WPLeafletMapPlugin.push(function () {
 	var map = window.WPLeafletMapPlugin.getCurrentMap();
+	var map_id = map._leaflet_id;
 	if ( WPLeafletMapPlugin.markers.length > 0 ) {
 		map.options.maxZoom = 19;
 		var myzoom = '.$params['zoom'].';
 		if ( '.$params['zoom'].' == "0" ) myzoom = false;
-		clmarkers = L.markerClusterGroup({
+		var clmarkers = L.markerClusterGroup({
 			maxClusterRadius: function(radius)
 			//	{ return 60; },
 			//	{return ((radius <= 13) ? 50 : 30);},
@@ -28,10 +29,15 @@ window.WPLeafletMapPlugin.push(function () {
 			// ab welcher Zoomstufe es nicht mehr tiefer geht, dann wird gespidert.
 			disableClusteringAtZoom: myzoom,
 		});
+		console.log("WPLeafletMapPlugin.markers.length "+WPLeafletMapPlugin.markers.length);
 		for (var i = 0; i < WPLeafletMapPlugin.markers.length; i++) {
-			var a = WPLeafletMapPlugin.markers[i];
-			clmarkers.addLayer(a);
-			map.removeLayer(a);
+			if ( WPLeafletMapPlugin.markers[i]._map !== null ) {
+				if (map_id == WPLeafletMapPlugin.markers[i]._map._leaflet_id) {
+					var a = WPLeafletMapPlugin.markers[i];
+					clmarkers.addLayer(a);
+					map.removeLayer(a);
+				}
+			}
 		}
 		clmarkers.addTo( map );
 		WPLeafletMapPlugin.markers.push( clmarkers );

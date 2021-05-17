@@ -15,6 +15,7 @@ function leafext_clustergroup_script($featuregroups){
 		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 		window.WPLeafletMapPlugin.push(function () {
 			var map = window.WPLeafletMapPlugin.getCurrentMap();
+			var map_id = map._leaflet_id;
 			if ( WPLeafletMapPlugin.markers.length > 0 ) {
 				var alle = new L.markerClusterGroup();
 				var featGroups = [];
@@ -24,19 +25,26 @@ function leafext_clustergroup_script($featuregroups){
 				}
 				var control = new L.control.layers(null, null, { collapsed: false });
 				for (var i = 0; i < WPLeafletMapPlugin.markers.length; i++) {
-					var a = WPLeafletMapPlugin.markers[i];
-					if (feat == "iconUrl") {
-						for (key in groups) {
-							if (a.getIcon().options[feat].match (key))
-								a.addTo(featGroups[key]);
-						}
-					} else if (a.options.title !== undefined) {
-						for (key in groups) {
-							if (a.options.title.match(key))
-								a.addTo(featGroups[key]);
+					if ( WPLeafletMapPlugin.markers[i]._map !== null ) {
+						if (map_id == WPLeafletMapPlugin.markers[i]._map._leaflet_id) {
+							//console.log("valid");
+							var a = WPLeafletMapPlugin.markers[i];
+							if (feat == "iconUrl") {
+								for (key in groups) {
+									//console.log("iconUrl");
+									if (a.getIcon().options[feat].match (key))
+										a.addTo(featGroups[key]);
+								}
+							} else if (a.options.title !== undefined) {
+								for (key in groups) {
+									//console.log("title");
+									if (a.options.title.match(key))
+										a.addTo(featGroups[key]);
+								}
 							}
+							map.removeLayer(a);
+						}
 					}
-					map.removeLayer(a);
 				}
 				for (key in groups) {
 					control.addOverlay(featGroups[key], groups[key]);
