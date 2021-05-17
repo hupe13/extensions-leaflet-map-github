@@ -16,6 +16,7 @@ function leafext_plugin_stylesheet_installed($array_css) {
     return 0;
 }
 
+// iterate any of these: `maps`, `markers`, `markergroups`, `lines`, `circles`, `geojsons`
 function leafext_zoomhome_script($fit){
 	include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
 	$text = '
@@ -23,92 +24,113 @@ function leafext_zoomhome_script($fit){
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
-    console.log("fit "+'.json_encode($fit).');
+		//console.log(map);
+		console.log(map._leaflet_id);
+		var map_id = map._leaflet_id;
+		console.log("fit "+'.json_encode($fit).');
 
-    if(typeof map.zoomControl !== "undefined"){
-      map.zoomControl._zoomOutButton.remove();
-	  map.zoomControl._zoomInButton.remove();
-    }
-      var zoom = 0;
-      var bounds = new L.latLngBounds();
-      var zoomHome = L.Control.zoomHome();
+		if(typeof map.zoomControl !== "undefined") {
+			map.zoomControl._zoomOutButton.remove();
+			map.zoomControl._zoomInButton.remove();
+		}
+		var zoom = 0;
+		var bounds = new L.latLngBounds();
+		var zoomHome = L.Control.zoomHome();
 
-      map.on("eledata_loaded", function(e) {
-        console.log("elevation loaded");
-        bounds.extend(e.layer.getBounds());
-        zoomHome.setHomeBounds(bounds);
-        map.fitBounds(bounds);
-        zoom = -99;
-      });
-
-      //
-      var lines = window.WPLeafletMapPlugin.lines;
-      if (lines.length > 0) {
-        zoom++;
-        console.log("lines "+lines.length);
-        for (var k = 0, len = lines.length; k < len; k++) {
-          var line = lines[k];
-          bounds.extend(line.getBounds());
-        }
-      }
-      //
-      var markers = window.WPLeafletMapPlugin.markers;
-      if (markers.length > 0) {
-        console.log("markers "+markers.length);
-        zoom++;
-        var markerArray = [];
-        for (var m = 0, len = markers.length; m < len; m++) {
-          markerArray.push(markers[m]);
-        }
-        var group = L.featureGroup(markerArray);
-        bounds.extend(group.getBounds());
-        if ('.json_encode($fit).') map.fitBounds(bounds);
-      }
-      //
-      //geojson asynchron
-      var geojsons = window.WPLeafletMapPlugin.geojsons;
-      if (geojsons.length > 0) {
-        zoom++;
-        console.log("geojsons "+geojsons.length);
-        var geocount = geojsons.length;
-        zoomHome.addTo(map);
-        for (var j = 0, len = geocount; j < len; j++) {
-          var geojson = geojsons[j];
-          geojson.on("ready", function () {
-            bounds.extend(this.getBounds());
-            if (bounds.isValid()) {
-              zoomHome.setHomeBounds(bounds);
-              if ('.json_encode($fit).') map.fitBounds(bounds);
-            }
-          });
-        }
-      }
-      //
-      var markergroups = window.WPLeafletMapPlugin.markergroups;
-      if (markergroups.length > 0) {
-        console.log("markergroups "+markergroups.length);
-      }
-      //
-      if ( zoom > 0 ) {
-        if (bounds.isValid()) {
-          zoomHome.addTo(map);
-          zoomHome.setHomeBounds(bounds);
-          map.options.maxZoom = 19;
-          if ('.json_encode($fit).') {
-            //console.log("fit true");
-            console.log(map.getZoom());
-            map.fitBounds(bounds);
-            //if (map.getZoom() > 14 && zoom == 1) {
-            //	map.setZoom(14);
-            //}
-          }
-        }
-      }
-    window.addEventListener("load", main);
-  });
-  </script>';
-  $text = \JShrink\Minifier::minify($text);
-  return "\n".$text."\n";
+		map.on("eledata_loaded", function(e) {
+			console.log("elevation loaded");
+			bounds.extend(e.layer.getBounds());
+			zoomHome.setHomeBounds(bounds);
+			map.fitBounds(bounds);
+			zoom = -99;
+		});
+		//
+		var lines = window.WPLeafletMapPlugin.lines;
+		if (lines.length > 0) {
+			zoom++;
+			console.log("lines "+lines.length);
+			for (var k = 0, len = lines.length; k < len; k++) {
+				if (map_id == lines[k]._map._leaflet_id) {
+					var line = lines[k];
+					bounds.extend(line.getBounds());
+				}
+			}
+		}
+		//
+		var markers = window.WPLeafletMapPlugin.markers;
+		if (markers.length > 0) {
+			console.log("markers "+markers.length);
+			zoom++;
+			var markerArray = [];
+			for (var m = 0, len = markers.length; m < len; m++) {
+				if (map_id == markers[m]._map._leaflet_id)
+					markerArray.push(markers[m]);
+			}
+			var group = L.featureGroup(markerArray);
+			bounds.extend(group.getBounds());
+			if ('.json_encode($fit).') map.fitBounds(bounds);
+		}
+		//
+		//geojson asynchron
+		var geojsons = window.WPLeafletMapPlugin.geojsons;
+		if (geojsons.length > 0) {
+			zoom++;
+			console.log("geojsons "+geojsons.length);
+			var geocount = geojsons.length;
+			zoomHome.addTo(map);
+			for (var j = 0, len = geocount; j < len; j++) {
+				var geojson = geojsons[j];
+				if (map_id == geojsons[j]._map._leaflet_id) {
+					geojson.on("ready", function () {
+						console.log(this._map._leaflet_id);
+						bounds.extend(this.getBounds());
+						if (bounds.isValid()) {
+							zoomHome.setHomeBounds(bounds);
+							if ('.json_encode($fit).') map.fitBounds(bounds);
+						}
+					});
+				}
+			}
+		}
+		//
+		var markergroups = window.WPLeafletMapPlugin.markergroups;
+		if (markergroups.length > 0) {
+			console.log("markergroups "+markergroups.length);
+		}
+		//
+		var circles = window.WPLeafletMapPlugin.circles;
+		if (circles.length > 0) {
+			console.log("circles "+circles.length);
+			zoom++;
+			for (var c = 0, len = circles.length; c < len; c++) {
+				if (map_id == circles[c]._map._leaflet_id) {
+					var circle = circles[c];
+					bounds.extend(circle.getBounds());
+				}
+			}
+		}
+		//
+		//
+		if ( zoom > 0 ) {
+			if (bounds.isValid()) {
+				zoomHome.addTo(map);
+				zoomHome.setHomeBounds(bounds);
+				map.options.maxZoom = 19;
+				if ('.json_encode($fit).') {
+					//console.log("fit true");
+					console.log(map.getZoom());
+					map.fitBounds(bounds);
+					//if (map.getZoom() > 14 && zoom == 1) {
+						//	map.setZoom(14);
+					//}
+				}
+			}
+		}
+		window.addEventListener("load", main);
+		});
+	</script>';
+	$text = \JShrink\Minifier::minify($text);
+	return "\n".$text."\n";
 }
 
 function leafext_plugin_zoomhome_function($atts){
