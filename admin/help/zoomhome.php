@@ -17,12 +17,9 @@ $text='<h2 id="leaflet.zoomhome">leaflet.zoomhome</h2>
 <h2>Howto</h2>
 
 <ul>
-<li>
-'.__('This Shortcode works only on one map per page. It could work on multiple maps per page, you can test it for your application.','extensions-leaflet-map').'
-</li>
 
 <li>
-'.__('It zooms to markers (leaflet-marker), geojsons (leaflet-geojson, leaflet-gpx, leaflet-kml), lines (leaflet-line).','extensions-leaflet-map').'
+'.__('It zooms to markers (leaflet-marker), lines (leaflet-line), circles (leaflet-circle), geojsons (leaflet-geojson, leaflet-gpx, leaflet-kml) and a track (elevation).','extensions-leaflet-map').'
 </li>
 
 <li>
@@ -34,7 +31,7 @@ $text='<h2 id="leaflet.zoomhome">leaflet.zoomhome</h2>
 </li>
 
 <li>'.
-__('You can define wether <code>[zoomhomemap]</code> should zoom to all objects when calling the map.','extensions-leaflet-map').' '.
+__('You can define whether <code>[zoomhomemap]</code> should zoom to all objects when calling the map.','extensions-leaflet-map').' '.
 __('If you are using the <code>!fit</code> attribute, you have to define how the map should fit, e.g.','extensions-leaflet-map').'
 
 <pre>
