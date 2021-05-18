@@ -32,17 +32,20 @@ function leafext_clustergroup_script($featuregroups){
 							if (feat == "iconUrl") {
 								for (key in groups) {
 									//console.log("iconUrl");
-									if (a.getIcon().options[feat].match (key))
+									if (a.getIcon().options[feat].match (key)) {
 										a.addTo(featGroups[key]);
+										map.removeLayer(a);
+									}
 								}
 							} else if (a.options.title !== undefined) {
 								for (key in groups) {
 									//console.log("title");
-									if (a.options.title.match(key))
+									if (a.options.title.match(key)) {
 										a.addTo(featGroups[key]);
+										map.removeLayer(a);
+									}
 								}
 							}
-							map.removeLayer(a);
 						}
 					}
 				}
