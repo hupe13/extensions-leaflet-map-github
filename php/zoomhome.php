@@ -58,22 +58,6 @@ function leafext_zoomhome_script($fit){
 			// console.log("circles "+circles.length);
 		// }
 
-		// //
-		// var lines = window.WPLeafletMapPlugin.lines;
-		// if (lines.length > 0) {
-			// console.log("lines "+lines.length);
-		// }
-		// //
-		// var markers = window.WPLeafletMapPlugin.markers;
-		// if (markers.length > 0) {
-			// console.log("markers "+markers.length);
-		// }
-		// //
-		// var circles = window.WPLeafletMapPlugin.circles;
-		// if (circles.length > 0) {
-			// console.log("circles "+circles.length);
-		// }
-		
 		//
 		var markergroups = window.WPLeafletMapPlugin.markergroups;
 		var mapmarkers = 0;
@@ -99,13 +83,8 @@ function leafext_zoomhome_script($fit){
 							//console.log("is_Circle");
 							mapcircles++;
 							bounds[map_id].extend(layer._latlng);
-<<<<<<< Updated upstream
-						} else {
-							console.log(layer);
-=======
 						// } else {
 						// 	console.log(layer);
->>>>>>> Stashed changes
 						}
 					});
 				}
@@ -137,8 +116,6 @@ function leafext_zoomhome_script($fit){
 			}
 		}
 
-<<<<<<< Updated upstream
-=======
     //elevation asynchron
 		maps[map_id].on("eledata_loaded", function(e) {
 			console.log("elevation loaded");
@@ -148,7 +125,6 @@ function leafext_zoomhome_script($fit){
 			zoom = -99;
 		});
 
->>>>>>> Stashed changes
 		//
 		if ( zoom > 0 ) {
 			if (bounds[map_id].isValid()) {
