@@ -117,7 +117,7 @@ function leafext_zoomhome_script($fit){
 		}
 
     //elevation asynchron
-		maps[map_id].on("eledata_loaded", function(e) {
+    maps[map_id].on("eledata_loaded", function(e) {
 			console.log("elevation loaded");
 			bounds[map_id].extend(e.layer.getBounds());
 			zoomHome[map_id].setHomeBounds(bounds[map_id]);
