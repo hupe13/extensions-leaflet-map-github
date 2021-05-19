@@ -12,11 +12,23 @@ add_action('admin_init', 'leafext_elevation_init' );
 
 // Baue Abfrage Standardthema
 function leafext_form_theme() {
+	?>
+	<script>
+		function leafext_EnableDisableOtherTheme(leafext_elecolor) {
+			var selectedValue = leafext_elecolor.options[leafext_elecolor.selectedIndex].value;
+			var leafext_eleother = document.getElementById("leafext_eleother");
+			leafext_eleother.disabled = selectedValue == "other" ? false : true;
+			if (!leafext_eleother.disabled) {
+				leafext_eleother.removeAttribute('readonly');
+			}
+		}
+	</script>
+	<?php
 	$defaults = array(
 		"theme" => "lime",
 		"othertheme" => "" );
 	$options = shortcode_atts($defaults, get_option('leafext_values') );
-	echo '<select name="leafext_values[theme]">';
+	echo '<select id="leafext_elecolor" name="leafext_values[theme]" onchange = "leafext_EnableDisableOtherTheme(this)">';
 	$colors = array("lime","steelblue","purple","yellow","red","magenta","lightblue","other");
 	foreach ($colors as $color) {
 		if ($color == $options['theme']) {
@@ -35,25 +47,20 @@ function leafext_form_other_theme() {
 		"theme" => "lime",
 		"othertheme" => "" );
 	$options = shortcode_atts($defaults, get_option('leafext_values') );
-	if ($options['theme'] == "other") {
-		echo '<input type="text" name="leafext_values[othertheme]" placeholder="my-theme"
+	echo '<input id="leafext_eleother" type="text" name="leafext_values[othertheme]" placeholder="my-theme"
 		pattern=".+-theme" title="'.__("must end with",'extensions-leaflet-map').' \'-theme\'"
-		value="'.$options['othertheme'].'" />';
-	} else {
-		echo '<input type="text" name="leafext_values[othertheme]" placeholder="my-theme"
-		readonly value="" />';
-	}
+		value="'.$options['othertheme'].'" ';
+	echo ($options['theme'] == "other") ? "" : " readonly ";
+	echo '/>';
 }
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function leafext_validate_elevationtheme($input) {
-	// Say our second option must be safe text with no HTML tags
-	$input['othertheme'] =  wp_filter_nohtml_kses($input['othertheme']);
+	$input['othertheme'] =  sanitize_text_field($input['othertheme']);
 	return $input;
 }
 
 // Helptext
-
 function leafext_elevation_help_text () {
 	$text =  '
 	<img src="'.LEAFEXT_PLUGIN_PICTS.'elevation.png">
@@ -68,7 +75,7 @@ function leafext_elevation_help_text () {
 echo $text;
 //do_settings_sections( 'leafext_settings_theme' );
 //submit_button();
-    $text = 
+    $text =
 	"<p>".__('If you want use an own style, select "other" theme and give it a name. Put in your functions.php following code:',"extensions-leaflet-map")."</p>
 <pre>
 //Shortcode: [elevation]

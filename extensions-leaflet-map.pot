@@ -1,9 +1,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Extensions for Leaflet Map Github\n"
+"Project-Id-Version: Extensions for Leaflet Map\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-12 13:28+0000\n"
+"POT-Creation-Date: 2021-05-19 10:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -13,24 +13,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.5.2; wp-5.7.1\n"
+"X-Loco-Version: 2.5.2; wp-5.7.2\n"
 "X-Domain: extensions-leaflet-map"
 
 #: php/elevation.php:29
 msgid "Altitude"
 msgstr ""
 
-#: admin/layerswitch.php:74
+#: admin/layerswitch.php:70
 msgid ""
 "appears in the switching control. To delete a service simply clear the "
 "values."
 msgstr ""
 
-#: admin/markercluster.php:35
+#: admin/markercluster.php:31
 msgid "At this zoom level and below, markers will not be clustered, see"
 msgstr ""
 
-#: admin/gesture.php:39
+#: admin/gesture.php:36
 msgid ""
 "Brings the basic functionality of Gesture Handling into Leaflet Map.\n"
 "\tPrevents users from getting trapped on the map when scrolling a long page."
@@ -43,71 +43,69 @@ msgstr ""
 msgid "button to reset the view. A must for clustering markers"
 msgstr ""
 
-#: admin/markercluster.php:133
+#: admin/markercluster.php:115
 msgid "comma separated labels appear in the selection menu"
 msgstr ""
 
-#: admin/markercluster.php:130
+#: admin/markercluster.php:112
 msgid ""
 "comma separated strings to distinguish the markers, e.g. an unique string in "
 "iconUrl or title"
 msgstr ""
 
-#: admin/layerswitch.php:73
-msgid ""
-"Configure a short name, attribution and a tile url for each tile service."
+#: admin/layerswitch.php:69
+msgid "Configure a mapid, attribution and a tile url for each tile service."
 msgstr ""
 
-#: admin/markercluster.php:52
+#: admin/markercluster.php:48
 msgid "Default:"
 msgstr ""
 
-#: admin/markercluster.php:64
+#: admin/markercluster.php:60
 msgid "Default: true. You can change it for each map:"
 msgstr ""
 
-#: admin/help.php:7
+#: admin/help.php:9
 msgid "Display a track with elevation profile"
 msgstr ""
 
-#: admin/markercluster.php:125
+#: admin/markercluster.php:107
 msgid "dynamically add/remove groups of markers from Marker Cluster"
 msgstr ""
 
-#: admin/markercluster.php:36
+#: admin/markercluster.php:32
 msgid "Example"
 msgstr ""
 
 #. Name of the plugin
-msgid "Extensions for Leaflet Map Github"
+msgid "Extensions for Leaflet Map"
 msgstr ""
 
 #. Description of the plugin
-msgid "Extensions for the Wordpress plugin Leaflet Map Github"
+msgid "Extensions for the Wordpress plugin Leaflet Map"
 msgstr ""
 
-#: admin.php:38 admin/help.php:38
+#: admin/help.php:6
+msgid "Found an issue?"
+msgstr ""
+
+#: admin.php:36 admin/help.php:35
 msgid "Help"
 msgstr ""
 
-#: admin/help.php:11 admin/help.php:19 admin/help.php:28 admin/help.php:49
+#: admin/help.php:13 admin/help.php:20 admin/help.php:28 admin/help.php:45
 msgid "Help and Settings"
 msgstr ""
 
-#: admin/markercluster.php:143
-msgid ""
-"Here the groups are differentiated according to the color of the markers"
-msgstr ""
-
 #. URI of the plugin
-msgid "https://github.com/hupe13/extensions-leaflet-map"
+msgid "https://wordpress.org/plugins/extensions-leaflet-map"
 msgstr ""
 
 #. Author of the plugin
 msgid "hupe13"
 msgstr ""
 
-#: admin/markercluster.php:38
+#: admin/markercluster.php:34
 msgid "If 0, it is disabled."
 msgstr ""
 
@@ -115,44 +113,45 @@ msgstr ""
 msgid "If a GPX track contains waypoints that you do not want to display"
 msgstr ""
 
-#: admin/gesture.php:18
+#: admin/gesture.php:15
 msgid ""
 "If it is true, it is valid for any map and you can't change it. If it is "
 "false, you can change it for each map:"
 msgstr ""
 
-#: admin/help/zoomhome.php:38
+#: admin/help/zoomhome.php:27
 msgid ""
-"If you are using the <code>!fit</code> attribute, you have to define how the "
-"map should fit, e.g."
+"If you are using <code>!fit</code>, you have to define how the map should "
+"fit, e.g."
 msgstr ""
 
-#: admin/help/zoomhome.php:29
+#: admin/help/zoomhome.php:59
 msgid ""
 "If you use the <code>elevation</code> shortcode, please use at least one "
 "marker (e.g. starting point)."
 msgstr ""
 
-#: admin/elevation.php:63
+#: admin/elevation.php:79
 msgid ""
 "If you want use an own style, select \"other\" theme and give it a name. Put "
 "in your functions.php following code:"
 msgstr ""
 
-#: admin/elevation.php:79
+#: admin/elevation.php:95
 msgid ""
 "In your elevation.css put the styles like the theme styles in <a href='https:"
 "//unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css'>https:"
 "//unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a>"
 msgstr ""
 
-#: admin/help/zoomhome.php:25
+#: admin/help/zoomhome.php:8
 msgid ""
-"It zooms to markers (leaflet-marker), geojsons (leaflet-geojson, leaflet-gpx,"
-" leaflet-kml), lines (leaflet-line)."
+"It resets the view to all markers (leaflet-marker), lines (leaflet-line), "
+"circles (leaflet-circle), geojsons (leaflet-geojson, leaflet-gpx, leaflet-"
+"kml) and a track (elevation)."
 msgstr ""
 
-#: admin/markercluster.php:93
+#: admin/markercluster.php:89
 msgid "Many markers on a map become confusing. That is why they are clustered"
 msgstr ""
 
@@ -172,53 +171,54 @@ msgstr ""
 msgid "Min Slope"
 msgstr ""
 
-#: admin/elevation.php:44
+#: admin/elevation.php:51
 msgid "must end with"
 msgstr ""
 
-#: admin/markercluster.php:110
-msgid ""
-"Please see the <a href=\"https://github.com/Leaflet/Leaflet."
-"markercluster#options\"\n"
-"\t>Leaflet.markercluster</a> page for options. If you want to change other "
-"ones, please post it to the forum."
+#: admin/markercluster.php:124
+msgid "or"
 msgstr ""
 
-#: admin/markercluster.php:37
+#: admin/markercluster.php:132
+msgid ""
+"Please see the <a href=\"https://github.com/Leaflet/Leaflet."
+"markercluster#options\">Leaflet.markercluster</a> page for options. If you "
+"want to change other ones, please post it to the forum."
+msgstr ""
+
+#: admin/markercluster.php:33
 msgid "Plugins Default"
 msgstr ""
 
-#: admin/markercluster.php:128
+#: admin/markercluster.php:110
 msgid "possible meaningful values"
 msgstr ""
 
-#: admin/help.php:15
+#: admin/help.php:8
+msgid "Post it to the support forum"
+msgstr ""
+
+#: admin/help.php:16
 msgid "Switching Tile Layers"
 msgstr ""
 
-#: admin/markercluster.php:49
+#: admin/markercluster.php:45
 msgid ""
 "The maximum radius that a cluster will cover from the central marker (in "
 "pixels). Decreasing will make more, smaller clusters."
 msgstr ""
 
-#: admin/markercluster.php:135
+#: admin/markercluster.php:117
 msgid "The number of strings and groups must match."
 msgstr ""
 
-#: admin/help/zoomhome.php:63
+#: admin/help/zoomhome.php:53
 msgid ""
 "There are certainly more examples. Test it yourself with the parameters "
-"<code>fitbounds</code> (leaflet-) or <code>fit</code> (zoomhomemap).\n"
+"<code>fitbounds</code> (leaflet-) or <code>fit</code> (zoomhomemap)."
 msgstr ""
 
-#: admin/help/zoomhome.php:21
-msgid ""
-"This Shortcode works only on one map per page. It could work on multiple "
-"maps per page, you can test it for your application."
-msgstr ""
-
-#: admin/markercluster.php:113
+#: admin/markercluster.php:134
 msgid "To reset all values to their defaults, simply clear the values"
 msgstr ""
 
@@ -238,24 +238,31 @@ msgstr ""
 msgid "Use it to highlight a geojson area or line on mouse over"
 msgstr ""
 
-#: admin/markercluster.php:62
+#: admin/help/zoomhome.php:24
+msgid "When the map is loaded, it zooms to all objects by default."
+msgstr ""
+
+#: admin/markercluster.php:58
 msgid ""
 "When you click a cluster at the bottom zoom level we spiderfy it so you can "
 "see all of its markers."
 msgstr ""
 
-#: admin/markercluster.php:39 admin/markercluster.php:53
+#: admin/help/zoomhome.php:38
+msgid "You can also define to zoom at the first call to a geojson:"
+msgstr ""
+
+#: admin/markercluster.php:35 admin/markercluster.php:49
 msgid "You can change it for each map:"
 msgstr ""
 
-#: admin/help/zoomhome.php:37
+#: admin/help/zoomhome.php:26
 msgid ""
-"You can define wether <code>[zoomhomemap]</code> should zoom to all objects "
-"when calling the map."
+"You can change this with the attribute <code>fit</code> / <code>!fit</code>."
 msgstr ""
 
-#: admin/markercluster.php:94
+#: admin/markercluster.php:90
 msgid ""
 "You may be interested in dynamically add/remove groups of markers from "
-"Marker Cluster with Leaflet.FeatureGroup.SubGroup, see below."
+"Marker Cluster with Leaflet.FeatureGroup.SubGroup."
 msgstr ""

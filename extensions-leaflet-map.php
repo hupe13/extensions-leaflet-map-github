@@ -1,14 +1,11 @@
 <?php
 /**
  * Plugin Name: Extensions for Leaflet Map Github
- * Description: Extensions for the Wordpress plugin Leaflet Map Github
+ * Description: Extensions for the WordPress plugin Leaflet Map Github
  * Version: 1.3
  * Author: hupe13
  * Text Domain: extensions-leaflet-map
- * Domain Path: /languages/
  * Plugin URI: https://github.com/hupe13/extensions-leaflet-map
- * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map
- * Primary Branch: main
 **/
 
 // Direktzugriff auf diese Datei verhindern:
@@ -31,14 +28,6 @@ if ( ! is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
   add_action('admin_notices','leafext_require_leaflet_map_plugin');
   register_activation_hook(__FILE__, 'leafext_require_leaflet_map_plugin');
 }
-
-/**
- * Load plugin textdomain.
- */
-function leafext_translations() {
-  load_plugin_textdomain( 'extensions-leaflet-map', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-}
-add_action( 'init', 'leafext_translations' );
 
 if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . 'admin.php';
