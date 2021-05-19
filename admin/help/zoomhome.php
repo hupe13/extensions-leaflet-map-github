@@ -45,14 +45,14 @@ __('If you are using the <code>!fit</code> attribute, you have to define how the
 <li>'.__('You can also define to zoom at the first call to a geojson:','extensions-leaflet-map').'
 
 <pre>
-<code>[leaflet-map fitbounds]
+<code>[leaflet-map !fitbounds]
 [leaflet-geojson src="//url/to/file.geojson" fitbounds]Name[/leaflet-geojson]
 [leaflet-marker lat=... lng=... ]Name 1[/leaflet-marker]
 [leaflet-marker lat=... lng=... ]Name 2[/leaflet-marker]
 ...
 [leaflet-marker lat=... lng=... ]Name n[/leaflet-marker]
 [cluster]
-[zoomhomemap]</code>
+[zoomhomemap !fit]</code>
 </pre>
 </li>
 
