@@ -27,10 +27,10 @@ __('You can change this with the attribute <code>fit</code> / <code>!fit</code>.
 __('If you are using <code>!fit</code>, you have to define how the map should fit, e.g.','extensions-leaflet-map').'
 
 <pre>
-<code>[leaflet-map lat=... lng=... zoom=... <span style="color: green">!fitbounds</span>]
+<code>[leaflet-map lat=... lng=... zoom=... <span style="color: #d63638">!fitbounds</span>]
 [leaflet-marker ....]
 ...
-[zoomhomemap <span style="color: green">!fit]</span></code>
+[zoomhomemap <span style="color: #d63638">!fit]</span></code>
 </pre>
 
 </li>
@@ -38,14 +38,14 @@ __('If you are using <code>!fit</code>, you have to define how the map should fi
 <li>'.__('You can also define to zoom at the first call to a geojson:','extensions-leaflet-map').'
 
 <pre>
-<code>[leaflet-map <span style="color: green">!fitbounds</span>]
-[leaflet-geojson src="//url/to/file.geojson" <span style="color: green">fitbounds</span>]Name[/leaflet-geojson]
+<code>[leaflet-map <span style="color: #d63638">!fitbounds</span>]
+[leaflet-geojson src="//url/to/file.geojson" <span style="color: #d63638">fitbounds</span>]Name[/leaflet-geojson]
 [leaflet-marker lat=... lng=... ]Name 1[/leaflet-marker]
 [leaflet-marker lat=... lng=... ]Name 2[/leaflet-marker]
 ...
 [leaflet-marker lat=... lng=... ]Name n[/leaflet-marker]
 [cluster]
-[zoomhomemap <span style="color: green">!fit]</span></code>
+[zoomhomemap <span style="color: #d63638">!fit]</span></code>
 </pre>
 </li>
 
