@@ -169,7 +169,7 @@ Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documenta
 * Shortcodes can be used on more than one map per page, except zoomhomemap.  
 * Parameter for GestureHandling  
 * fixed markerClusterGroup  
-* prepare for translation 
+* prepare for translation
 * documentation
 
 ### 1.2
@@ -192,6 +192,10 @@ New functions:
 * First Release
 
 ## Upgrade Notice
+
+### 1.4
+Please check the pages where you use zoomhomemap, if it still works as it should.
+Check the help at /wp-admin/admin.php?page=extensions-leaflet-map&tab=zoomhome
 
 ### 1.0.1
 Elevation profile on smartphone works now.
