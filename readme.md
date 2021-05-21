@@ -159,7 +159,7 @@ Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documenta
 
 ## Changelog
 
-### 1.4 (Plan)
+### 1.4
 
 * zoomhomemap works on multiple maps on a page now.
 * fixing markercluster and markerClusterGroup for this.
