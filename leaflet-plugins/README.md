@@ -26,7 +26,8 @@ Used by <pre>[elevation gpx="url_gpx_file"]</pre>
 
 <h4>leaflet-gesture-handling</h4>
 
-https://github.com/elmarquis/Leaflet.GestureHandling
+https://github.com/elmarquis/Leaflet.GestureHandling   
+https://github.com/Raruto/leaflet-gesture-handling
 
 Used by nearly any leaflet map, see documentation
 
