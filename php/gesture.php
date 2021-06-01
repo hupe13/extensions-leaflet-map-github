@@ -68,7 +68,15 @@ function leafext_gestures_function() {
 		wp_add_inline_script( 'gestures_leaflet', leafext_gestures_script(), 'after' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'leafext_gestures_function' );
+//add_action( 'wp_enqueue_scripts', 'leafext_gestures_function' );
+
+add_filter('pre_do_shortcode_tag', function ( $output, $shortcode ) {
+  if ( 'leaflet-map' == $shortcode ) {
+    //add_action( 'wp_enqueue_scripts', 'leafext_gestures_function' );
+	leafext_gestures_function();
+  }
+  return $output;
+}, 10, 2);
 
 function leafext_gesture_shortcode(){
 	wp_enqueue_script('gestures_leaflet',
