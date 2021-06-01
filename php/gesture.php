@@ -58,11 +58,9 @@ function leafext_gestures_function() {
 	$options = shortcode_atts($defaults, get_option('leafext_gesture'));
 	if ( (bool) $options['on'] ) {
 		wp_enqueue_script('gestures_leaflet',
-			//plugins_url('leaflet-plugins/leaflet-gesture-handling-1.2.1/js/leaflet-gesture-handling.min.js',LEAFEXT_PLUGIN_FILE),
 			plugins_url('leaflet-plugins/leaflet-gesture-handling-raruto/js/leaflet-gesture-handling.js',LEAFEXT_PLUGIN_FILE),
 			array('wp_leaflet_map'), null);
 		wp_enqueue_style('gestures_leaflet_styles',
-			//plugins_url('leaflet-plugins/leaflet-gesture-handling-1.2.1/css/leaflet-gesture-handling.min.css',LEAFEXT_PLUGIN_FILE),
 			plugins_url('leaflet-plugins/leaflet-gesture-handling-raruto/css/leaflet-gesture-handling.min.css',LEAFEXT_PLUGIN_FILE),
 			array('leaflet_stylesheet'),null);
 		wp_add_inline_script( 'gestures_leaflet', leafext_gestures_script(), 'after' );
