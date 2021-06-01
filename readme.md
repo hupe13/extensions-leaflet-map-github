@@ -159,6 +159,13 @@ Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documenta
 
 ## Changelog
 
+### 1.5 (Plan)
+
+* leaflet-elevation 1.6.8
+* https://github.com/Raruto/leaflet-gesture-handling (is newer)
+* fixed gesture to load only with leaflet-map
+* deal with safari bug
+
 ### 1.4
 
 * zoomhomemap works on multiple maps on a page now.
