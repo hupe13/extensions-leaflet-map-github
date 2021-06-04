@@ -32,8 +32,8 @@ function leafext_elevation_script($gpx,$summary,$slope,$theme){
 			"Min Elevation: "	: "'.__("Min Elevation", "extensions-leaflet-map").': ",
 			"Total Ascent: "	: "'.__("Total Ascent", "extensions-leaflet-map").': ",
 			"Total Descent: "	: "'.__("Total Descent", "extensions-leaflet-map").': ",
-			"Min Slope: "			: "'.__("Min Slope", "extensions-leaflet-map").': ",
-			"Max Slope: "			: "'.__("Max Slope", "extensions-leaflet-map").': ",
+			"Min Slope: "		: "'.__("Min Slope", "extensions-leaflet-map").': ",
+			"Max Slope: "		: "'.__("Max Slope", "extensions-leaflet-map").': ",
 		};
 		L.registerLocale("wp", mylocale);
 		L.setLocale("wp");
@@ -59,6 +59,19 @@ function leafext_elevation_function( $atts ) {
 		plugins_url('leaflet-plugins/leaflet-elevation-1.6.8/css/leaflet-elevation.min.css',LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
 	//
+
+	if (is_array($atts)) {
+		for ($i = 0; $i < count($atts); $i++) {
+			if (isset($atts[$i])) {
+				if ( strpos($atts[$i],"!") === false ) {
+					$atts[$atts[$i]] = 1;
+				} else {
+					$atts[substr($atts[$i],1)] = 0;
+				}
+			}
+		}
+	}
+
 	$track = shortcode_atts( array('gpx' => false, 'summary' => false), $atts);
 	if ( ! $track['gpx'] ) wp_die("No gpx track!");
 
@@ -71,10 +84,11 @@ function leafext_elevation_function( $atts ) {
 		$slope = "summary";
 	}
 
-	$options = get_option('leafext_values');
-	if (!is_array($options )) {
-		$theme = "lime-theme";
-	} else if ($options['theme'] == "other") {
+	$defaults = array(
+		"theme" => "lime",
+		"othertheme" => "" );
+	$options = shortcode_atts($defaults, get_option('leafext_values') );
+	if ($options['theme'] == "other") {
 		$theme=$options['othertheme'];
 	} else {
 		$theme=$options['theme'].'-theme';
