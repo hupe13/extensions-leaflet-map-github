@@ -151,7 +151,7 @@ Maybe new functions are <a href="https://github.com/hupe13/extensions-leaflet-ma
 
 ## Installation
 
-You can install the plugin through the WordPress installer under Plugins ? Add New by searching for "extensions-leaflet-map".
+You can install the plugin through the WordPress installer under Plugins. Add this by searching for "extensions-leaflet-map".
 Please see https://wordpress.org/support/article/managing-plugins/#installing-plugins.
 
 Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documentation and settings options.
