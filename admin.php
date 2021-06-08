@@ -25,7 +25,7 @@ add_action('admin_menu', 'leafext_add_page', 99);
 function leafext_do_page() {
 	$leafext_plugin_name = basename(dirname(  __FILE__  ));
 	echo '<div class="wrap">
-	<h2>Extensions for Leaflet Map Options</h2>';
+	<h2>Extensions for Leaflet Map Options and Help</h2>';
 
 	$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'help';
 
