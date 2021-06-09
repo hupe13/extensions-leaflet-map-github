@@ -30,7 +30,7 @@ https://github.com/mpetazzoni/leaflet-gpx
 
 <pre>[elevation-tracks ...]</pre>
 
-(Changed see https://github.com/mpetazzoni/leaflet-gpx/issues/112)
+(Changed, see https://github.com/mpetazzoni/leaflet-gpx/issues/112)
 
 <h3>leaflet-gesture-handling</h3>
 
