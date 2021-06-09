@@ -14,7 +14,6 @@ https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup
 <pre>[cluster]
 [markerClusterGroup ...]</pre>
 
-
 <h4>leaflet.zoomhome</h4>
 
 https://github.com/torfsen/leaflet.zoomhome
@@ -33,5 +32,3 @@ https://github.com/elmarquis/Leaflet.GestureHandling
 https://github.com/Raruto/leaflet-gesture-handling
 
 Used by nearly any leaflet map, see documentation
-
-

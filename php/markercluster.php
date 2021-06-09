@@ -50,10 +50,10 @@ return "\n".$text."\n";
 
 function leafext_cluster_function( $atts ){
 	wp_enqueue_style( 'markercluster.default',
-		plugins_url('leaflet-plugins/leaflet.markercluster-1.5.0/css/MarkerCluster.Default.min.css',LEAFEXT_PLUGIN_FILE),
+		plugins_url('leaflet-plugins/leaflet.markercluster-1.5.0/css/MarkerCluster.Default.css',LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
 	wp_enqueue_style( 'markercluster',
-		plugins_url('leaflet-plugins/leaflet.markercluster-1.5.0/css/MarkerCluster.min.css',LEAFEXT_PLUGIN_FILE),
+		plugins_url('leaflet-plugins/leaflet.markercluster-1.5.0/css/MarkerCluster.css',LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
 	wp_enqueue_script('markercluster',
 		plugins_url('leaflet-plugins/leaflet.markercluster-1.5.0/js/leaflet.markercluster.js',LEAFEXT_PLUGIN_FILE),
