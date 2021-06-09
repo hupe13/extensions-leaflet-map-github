@@ -1,12 +1,12 @@
 # Leaflet Plugins
 
-<h4>leaflet.fullscreen</h4>
+<h3>leaflet.fullscreen</h3>
 
 https://github.com/brunob/leaflet.fullscreen
 
 <pre>[fullscreen]</pre>
 
-<h4>Markercluster and Grouping</h4>
+<h3>Markercluster and Grouping</h3>
 
 https://github.com/Leaflet/Leaflet.markercluster   
 https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup
@@ -14,13 +14,13 @@ https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup
 <pre>[cluster]
 [markerClusterGroup ...]</pre>
 
-<h4>leaflet.zoomhome</h4>
+<h3>leaflet.zoomhome</h3>
 
 https://github.com/torfsen/leaflet.zoomhome
 
 <pre>[zoomhomemap]</pre>
 
-<h4>leaflet-elevation / leaflet-gpxgroup</h4>
+<h3>leaflet-elevation / leaflet-gpxgroup</h3>
 
 https://github.com/Raruto/leaflet-elevation
 
@@ -32,7 +32,7 @@ https://github.com/mpetazzoni/leaflet-gpx
 
 (Changed see https://github.com/mpetazzoni/leaflet-gpx/issues/112)
 
-<h4>leaflet-gesture-handling</h4>
+<h3>leaflet-gesture-handling</h3>
 
 https://github.com/Raruto/leaflet-gesture-handling
 
