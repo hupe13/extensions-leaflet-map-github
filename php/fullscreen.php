@@ -26,7 +26,7 @@ function leafext_fullscreen_function(){
 		plugins_url('leaflet-plugins/leaflet.fullscreen-2.0.0/Control.FullScreen.css',LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
 	wp_enqueue_script('leaflet.fullscreen',
-		plugins_url('leaflet-plugins/leaflet.fullscreen-2.0.0/Control.FullScreen.min.js',LEAFEXT_PLUGIN_FILE),
+		plugins_url('leaflet-plugins/leaflet.fullscreen-2.0.0/Control.FullScreen.js',LEAFEXT_PLUGIN_FILE),
 		array('wp_leaflet_map'),null);
 	return leafext_fullscreen_script();
 }
