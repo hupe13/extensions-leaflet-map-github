@@ -20,15 +20,22 @@ https://github.com/torfsen/leaflet.zoomhome
 
 <pre>[zoomhomemap]</pre>
 
-<h4>leaflet-elevation</h4>
+<h4>leaflet-elevation / leaflet-gpxgroup</h4>
 
 https://github.com/Raruto/leaflet-elevation
 
 <pre>[elevation gpx="url_gpx_file"]</pre>
 
+https://github.com/mpetazzoni/leaflet-gpx
+
+<pre>[elevation-tracks ...]</pre>
+
+(Changed see https://github.com/mpetazzoni/leaflet-gpx/issues/112)
+
 <h4>leaflet-gesture-handling</h4>
 
-https://github.com/elmarquis/Leaflet.GestureHandling   
 https://github.com/Raruto/leaflet-gesture-handling
+
+(Changed to deal with Safari bug marker popup)
 
 Used by nearly any leaflet map, see documentation

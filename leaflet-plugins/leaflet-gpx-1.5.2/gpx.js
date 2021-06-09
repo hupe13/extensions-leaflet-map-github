@@ -307,11 +307,6 @@ L.GPX = L.FeatureGroup.extend({
     var name = xml.getElementsByTagName('name');
     if (name.length > 0) {
       this._info.name = name[0].textContent;
-      for (var i = 0; i < name.length; i++) {
-        if (name[i].parentElement.nodeName == "trk") {
-          this._info.name=name[i].textContent;
-        }
-      }
     }
     var desc = xml.getElementsByTagName('desc');
     if (desc.length > 0) {
@@ -416,10 +411,9 @@ L.GPX = L.FeatureGroup.extend({
         }
 
         if (!symIcon) {
-          // wptIcon and wptIconUrls seems to be a bug, if configured, elevation chart doesn't appear
-          //console.log(
-          //  'No waypoint icon could be matched for symKey=%s,typeKey=%s,name=%s on waypoint %o',
-          //  symKey, typeKey, name, el[i]);
+          console.log(
+            'No waypoint icon could be matched for symKey=%s,typeKey=%s,name=%s on waypoint %o',
+            symKey, typeKey, name, el[i]);
           continue;
         }
 
