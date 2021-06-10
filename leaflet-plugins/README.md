@@ -30,12 +30,12 @@ https://github.com/mpetazzoni/leaflet-gpx
 
 <pre>[elevation-tracks ...]</pre>
 
-(Changed, see https://github.com/mpetazzoni/leaflet-gpx/issues/112)
+(Changed gpx.js, see https://github.com/mpetazzoni/leaflet-gpx/issues/112)
 
 <h3>leaflet-gesture-handling</h3>
 
 https://github.com/Raruto/leaflet-gesture-handling
 
-(Changed to deal with Safari bug marker popup)
+(Changed leaflet-gesture-handling.js to deal with Safari bug marker popup)
 
 Used by nearly any leaflet map, see documentation
