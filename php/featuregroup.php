@@ -68,15 +68,7 @@ function leafext_clustergroup_script($featuregroups){
 }
 
 function leafext_clustergroup_function( $atts ){
-	wp_enqueue_style( 'markercluster.default',
-		plugins_url('leaflet-plugins/leaflet.markercluster-1.5.0/css/MarkerCluster.Default.css',LEAFEXT_PLUGIN_FILE),
-		array('leaflet_stylesheet'),null);
-	wp_enqueue_style( 'markercluster',
-		plugins_url('leaflet-plugins/leaflet.markercluster-1.5.0/css/MarkerCluster.css',LEAFEXT_PLUGIN_FILE),
-		array('leaflet_stylesheet'),null);
-	wp_enqueue_script('markercluster',
-		plugins_url('leaflet-plugins/leaflet.markercluster-1.5.0/js/leaflet.markercluster.js',LEAFEXT_PLUGIN_FILE),
-		array('wp_leaflet_map'),null );
+	leafext_enqueue_markercluster ();
 	wp_enqueue_script('leaflet.subgroup',
 		plugins_url(
 		'leaflet-plugins\Leaflet.FeatureGroup.SubGroup-1.0.2/leaflet.featuregroup.subgroup.js',
