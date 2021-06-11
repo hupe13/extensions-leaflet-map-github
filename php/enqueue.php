@@ -12,6 +12,7 @@ function leafext_plugin_stylesheet_installed($array_css) {
     return 0;
 }
 
+if (!function_exists('leafext_enqueue_zoomhome')) {
 function leafext_enqueue_zoomhome () {
   wp_enqueue_script('zoomhome',
     plugins_url('leaflet-plugins/leaflet.zoomhome/leaflet.zoomhome.min.js',LEAFEXT_PLUGIN_FILE),
@@ -77,5 +78,6 @@ function leafext_elevation_theme() {
 		$theme=$options['theme'].'-theme';
 	}
   return($theme);
+}
 }
  ?>

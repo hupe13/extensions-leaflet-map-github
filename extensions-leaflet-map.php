@@ -12,7 +12,8 @@
 defined( 'ABSPATH' ) or die();
 
 define('LEAFEXT_PLUGIN_FILE', __FILE__);
-define('LEAFEXT_PLUGIN_DIR', plugin_dir_path(__FILE__));
+if (!defined('LEAFEXT_PLUGIN_DIR'))
+	define('LEAFEXT_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('LEAFEXT_PLUGIN_PICTS', WP_PLUGIN_URL . '/' . basename (LEAFEXT_PLUGIN_DIR) . '/pict/');
 define('LEAFEXT_PLUGIN_SETTINGS', dirname( plugin_basename( __FILE__ ) ) );
 
