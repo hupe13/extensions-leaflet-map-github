@@ -44,7 +44,6 @@ function leafext_elevation_script($gpx,$summary,$slope,$theme){
 		controlElevation.addTo(map);
 		// Load track from url (allowed data types: "*.geojson", "*.gpx")
 		controlElevation.load(track_options.url);
-		window.addEventListener("load", main);
 	});
 	</script>';
 	$text = \JShrink\Minifier::minify($text);

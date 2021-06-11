@@ -4,12 +4,12 @@ defined( 'ABSPATH' ) or die();
 
 //Shortcode: [zoomhomemap]
 
-//https://stackoverflow.com/questions/43228007/check-if-font-awesome-exists-before-enqueueing-to-wordpress/43229715
+// Check to load awesome (Home character)
 function leafext_plugin_stylesheet_installed($array_css) {
     global $wp_styles;
     foreach( $wp_styles->queue as $style ) {
         foreach ($array_css as $css) {
-            if (false !== strpos( $wp_styles->registered[$style]->src, $css ))
+            if (false !== strpos( $style, $css ))
                 return 1;
         }
     }
@@ -141,7 +141,6 @@ function leafext_zoomhome_script($fit){
 				}
 			}
 		}
-		window.addEventListener("load", main);
 		});
 	</script>';
 	$text = \JShrink\Minifier::minify($text);

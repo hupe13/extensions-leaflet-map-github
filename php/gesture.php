@@ -44,7 +44,6 @@ function leafext_gesture_script(){
 				//console.log("enabled");
 				map.gestureHandling.enable();
 			}
-		window.addEventListener("load", main);
 	});
 	</script>';
 $text = \JShrink\Minifier::minify($text);
