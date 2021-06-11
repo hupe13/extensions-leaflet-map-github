@@ -415,7 +415,7 @@
 			this._map.dragging.enable();
 			this._map.scrollWheelZoom.enable();
 			if (this._map.tap) this._map.tap.enable();
-      // hupe13: deal with safari bug 
+      // hupe13: deal with safari bug
       var is_chrome = navigator.userAgent.indexOf("Chrome") > -1;
       var is_safari = navigator.userAgent.indexOf("Safari") > -1;
       if ( !is_chrome && is_safari ) {
