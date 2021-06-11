@@ -5,7 +5,6 @@ defined( 'ABSPATH' ) or die();
 //Shortcode: [elevation gpx="...url..."]
 
 function leafext_elevation_script($gpx,$summary,$slope,$theme){
-	include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
 	$text = '
 	<script>
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -51,25 +50,9 @@ function leafext_elevation_script($gpx,$summary,$slope,$theme){
 }
 
 function leafext_elevation_function( $atts ) {
-	wp_enqueue_script( 'elevation_js',
-		plugins_url('leaflet-plugins/leaflet-elevation-1.6.8/js/leaflet-elevation.min.js',LEAFEXT_PLUGIN_FILE),
-		array('wp_leaflet_map'),null);
-	wp_enqueue_style( 'elevation_css',
-		plugins_url('leaflet-plugins/leaflet-elevation-1.6.8/css/leaflet-elevation.min.css',LEAFEXT_PLUGIN_FILE),
-		array('leaflet_stylesheet'),null);
+	leafext_enqueue_elevation ();
 	//
-
-	if (is_array($atts)) {
-		for ($i = 0; $i < count($atts); $i++) {
-			if (isset($atts[$i])) {
-				if ( strpos($atts[$i],"!") === false ) {
-					$atts[$atts[$i]] = 1;
-				} else {
-					$atts[substr($atts[$i],1)] = 0;
-				}
-			}
-		}
-	}
+	$atts=leafext_clear_params($atts);
 
 	$track = shortcode_atts( array('gpx' => false, 'summary' => false), $atts);
 	if ( ! $track['gpx'] ) wp_die("No gpx track!");
@@ -83,15 +66,8 @@ function leafext_elevation_function( $atts ) {
 		$slope = "summary";
 	}
 
-	$defaults = array(
-		"theme" => "lime",
-		"othertheme" => "" );
-	$options = shortcode_atts($defaults, get_option('leafext_values') );
-	if ($options['theme'] == "other") {
-		$theme=$options['othertheme'];
-	} else {
-		$theme=$options['theme'].'-theme';
-	}
+	$theme = leafext_elevation_theme();
+	
 	return leafext_elevation_script($track['gpx'],$summary,$slope,$theme);
 }
 add_shortcode('elevation', 'leafext_elevation_function' );

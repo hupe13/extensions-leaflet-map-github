@@ -5,7 +5,6 @@ defined( 'ABSPATH' ) or die();
 //Shortcode: [cluster]
 
 function leafext_cluster_script($params){
-	include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
 	$text = '
 	<script>
 console.log("cluster.radius "+'.$params['radius'].');
@@ -49,15 +48,7 @@ return "\n".$text."\n";
 }
 
 function leafext_cluster_function( $atts ){
-	wp_enqueue_style( 'markercluster.default',
-		plugins_url('leaflet-plugins/leaflet.markercluster-1.5.0/css/MarkerCluster.Default.css',LEAFEXT_PLUGIN_FILE),
-		array('leaflet_stylesheet'),null);
-	wp_enqueue_style( 'markercluster',
-		plugins_url('leaflet-plugins/leaflet.markercluster-1.5.0/css/MarkerCluster.css',LEAFEXT_PLUGIN_FILE),
-		array('leaflet_stylesheet'),null);
-	wp_enqueue_script('markercluster',
-		plugins_url('leaflet-plugins/leaflet.markercluster-1.5.0/js/leaflet.markercluster.js',LEAFEXT_PLUGIN_FILE),
-		array('wp_leaflet_map'),null );
+	leafext_enqueue_markercluster ();
 
 	$defaults = array(
 		'zoom'     => "17",

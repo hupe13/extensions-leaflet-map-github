@@ -32,6 +32,9 @@ if ( ! is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
 if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . 'admin.php';
 } else {
+  if (! function_exists('leafext_plugin_stylesheet_installed'))
+    include_once LEAFEXT_PLUGIN_DIR . '/php/enqueue.php';
+  include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/elevation.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/fullscreen.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/gesture.php';

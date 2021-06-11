@@ -6,7 +6,6 @@ defined( 'ABSPATH' ) or die();
 //Shortcode: [layerswitch]
 
 function leafext_layerswitch_script($mylayers){
-	include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
 	$text = '
 	<script>
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];

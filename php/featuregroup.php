@@ -5,7 +5,6 @@ defined( 'ABSPATH' ) or die();
 //Shortcode: [markerClusterGroup]
 
 function leafext_clustergroup_script($featuregroups){
-	include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
 	$text = '
 	<script>
 		//console.log(featuregroups);

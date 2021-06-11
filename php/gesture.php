@@ -4,7 +4,6 @@ defined( 'ABSPATH' ) or die();
 
 // For use with any map on a webpage
 function leafext_gestures_script(){
-	include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
 	$text = '
 	// For use with any map on a webpage
 	//GestureHandling disables the following map attributes.
@@ -34,7 +33,6 @@ return "\n".$text."\n";
 
 // For use with one map on a webpage
 function leafext_gesture_script(){
-	include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
 	$text = '
 	<script>
 		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];

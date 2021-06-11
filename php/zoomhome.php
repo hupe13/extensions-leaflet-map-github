@@ -4,21 +4,8 @@ defined( 'ABSPATH' ) or die();
 
 //Shortcode: [zoomhomemap]
 
-// Check to load awesome (Home character)
-function leafext_plugin_stylesheet_installed($array_css) {
-    global $wp_styles;
-    foreach( $wp_styles->queue as $style ) {
-        foreach ($array_css as $css) {
-            if (false !== strpos( $style, $css ))
-                return 1;
-        }
-    }
-    return 0;
-}
-
 // iterate any of these: `maps`, `markers`, `markergroups`, `lines`, `circles`, `geojsons`
 function leafext_zoomhome_script($fit){
-	include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
 	$text = '
 	<script>
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -148,35 +135,12 @@ function leafext_zoomhome_script($fit){
 }
 
 function leafext_plugin_zoomhome_function($atts){
-	wp_enqueue_script('zoomhome',
-		plugins_url('leaflet-plugins/leaflet.zoomhome/leaflet.zoomhome.min.js',LEAFEXT_PLUGIN_FILE),
-			array('wp_leaflet_map'), null);
-	wp_enqueue_style('zoomhome',
-		plugins_url('leaflet-plugins/leaflet.zoomhome/leaflet.zoomhome.css',LEAFEXT_PLUGIN_FILE),
-			array('leaflet_stylesheet'), null);
-	// Font awesome
-	$font_awesome = array('font-awesome', 'fontawesome');
-	if (leafext_plugin_stylesheet_installed($font_awesome) === 0) {
-			wp_enqueue_style('font-awesome',
-        plugins_url('css/font-awesome.min.css',LEAFEXT_PLUGIN_FILE),
-          array('zoomhome'), null);
-	}
-
-	if (is_array($atts)) {
-		for ($i = 0; $i < count($atts); $i++) {
-			if (isset($atts[$i])) {
-				if ( strpos($atts[$i],"!") === false ) {
-					$atts[$atts[$i]] = 1;
-				} else {
-					$atts[substr($atts[$i],1)] = 0;
-				}
-			}
-		}
-	}
+	leafext_enqueue_zoomhome ();
 	//
 	$defaults = array(
 		'fit' => 1,
 	);
+	$atts = leafext_clear_params($atts);
 	$params = shortcode_atts($defaults, $atts);
 	$params['fit'] = (bool)$params['fit'];
 
