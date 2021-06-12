@@ -74,11 +74,17 @@ add_filter('pre_do_shortcode_tag', function ( $output, $shortcode ) {
 }, 10, 2);
 
 function leafext_gesture_shortcode(){
-	wp_enqueue_script('gestures_leaflet',	plugins_url('leaflet-plugins/leaflet-gesture-handling-1.3.4/js/leaflet-gesture-handling-leafext.min.js',LEAFEXT_PLUGIN_FILE),
+	$defaults = array(
+		'on'     => true,
+	);
+	$options = shortcode_atts($defaults, get_option('leafext_gesture'));
+	if ( ! (bool) $options['on'] ) {
+		wp_enqueue_script('gestures_leaflet',	plugins_url('leaflet-plugins/leaflet-gesture-handling-1.3.4/js/leaflet-gesture-handling-leafext.min.js',	LEAFEXT_PLUGIN_FILE),
 		array('wp_leaflet_map'), null);
-	wp_enqueue_style('gestures_leaflet_styles',	plugins_url('leaflet-plugins/leaflet-gesture-handling-1.3.4/css/leaflet-gesture-handling.min.css',LEAFEXT_PLUGIN_FILE),
+		wp_enqueue_style('gestures_leaflet_styles',	plugins_url('leaflet-plugins/leaflet-gesture-handling-1.3.4/css/leaflet-gesture-handling.min.css',LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
-	return leafext_gesture_script();
+		return leafext_gesture_script();
+	}
 }
 add_shortcode('gestures', 'leafext_gesture_shortcode' );
 ?>

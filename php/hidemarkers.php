@@ -18,7 +18,6 @@ function leafext_hidemarkers_function(){
 					}; // layer.options
 				}; // if
 			}); //map.eachLayer
-			window.addEventListener("load", main);
 		});
 	</script>
 	';
