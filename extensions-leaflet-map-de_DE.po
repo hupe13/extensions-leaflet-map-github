@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Extensions for Leaflet Map - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-05-19 10:28+0000\n"
+"PO-Revision-Date: 2021-06-12 18:29+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Last-Translator: \n"
 "X-Loco-Version: 2.5.2; wp-5.7.2"
 
-#: php/elevation.php:29
+#: php/elevation.php:28
 msgid "Altitude"
 msgstr "Höhe"
 
@@ -90,12 +90,14 @@ msgid "Example"
 msgstr "Beispiel"
 
 #. Name of the plugin
-msgid "Extensions for Leaflet Map"
-msgstr "Extensions for Leaflet Map"
+#| msgid "Extensions for Leaflet Map"
+msgid "Extensions for Leaflet Map Github"
+msgstr "Extensions for Leaflet Map Github"
 
 #. Description of the plugin
-msgid "Extensions for the Wordpress plugin Leaflet Map"
-msgstr "Erweiterungen für das WordPress Plugin Leaflet Map"
+#| msgid "Extensions for the Wordpress plugin Leaflet Map"
+msgid "Extensions for the WordPress plugin Leaflet Map Github"
+msgstr "Erweiterungen für das WordPress Plugin Leaflet Map Github"
 
 #: admin/help.php:6
 msgid "Found an issue?"
@@ -110,8 +112,8 @@ msgid "Help and Settings"
 msgstr "Hilfe und Einstellungen"
 
 #. URI of the plugin
-msgid "https://wordpress.org/plugins/extensions-leaflet-map"
-msgstr "https://wordpress.org/plugins/extensions-leaflet-map"
+msgid "https://github.com/hupe13/extensions-leaflet-map"
+msgstr "https://github.com/hupe13/extensions-leaflet-map"
 
 #. Author of the plugin
 msgid "hupe13"
@@ -188,19 +190,19 @@ msgstr ""
 "Viele Marker auf einer Karte werden unübersichtlich. Deshalb werden sie "
 "geclustert"
 
-#: php/elevation.php:31
+#: php/elevation.php:30
 msgid "Max Elevation"
 msgstr "Maximale Höhe"
 
-#: php/elevation.php:36
+#: php/elevation.php:35
 msgid "Max Slope"
 msgstr "max. Steigung"
 
-#: php/elevation.php:32
+#: php/elevation.php:31
 msgid "Min Elevation"
 msgstr "Minimale Höhe"
 
-#: php/elevation.php:35
+#: php/elevation.php:34
 msgid "Min Slope"
 msgstr "max. Gefälle"
 
@@ -264,15 +266,15 @@ msgid "To reset all values to their defaults, simply clear the values"
 msgstr ""
 "Um alle Werte auf ihre Standardwerte zurückzusetzen, lösche einfach die Werte"
 
-#: php/elevation.php:33
+#: php/elevation.php:32
 msgid "Total Ascent"
 msgstr "Gesamtanstieg"
 
-#: php/elevation.php:34
+#: php/elevation.php:33
 msgid "Total Descent"
 msgstr "Gesamtabstieg"
 
-#: php/elevation.php:30
+#: php/elevation.php:29
 msgid "Total Length"
 msgstr "Gesamtstrecke"
 

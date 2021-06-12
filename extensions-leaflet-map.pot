@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-19 10:28+0000\n"
+"POT-Creation-Date: 2021-06-12 18:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Loco-Version: 2.5.2; wp-5.7.2\n"
 "X-Domain: extensions-leaflet-map"
 
-#: php/elevation.php:29
+#: php/elevation.php:28
 msgid "Altitude"
 msgstr ""
 
@@ -78,11 +78,11 @@ msgid "Example"
 msgstr ""
 
 #. Name of the plugin
-msgid "Extensions for Leaflet Map"
+msgid "Extensions for Leaflet Map Github"
 msgstr ""
 
 #. Description of the plugin
-msgid "Extensions for the Wordpress plugin Leaflet Map"
+msgid "Extensions for the WordPress plugin Leaflet Map Github"
 msgstr ""
 
 #: admin/help.php:6
@@ -98,7 +98,7 @@ msgid "Help and Settings"
 msgstr ""
 
 #. URI of the plugin
-msgid "https://wordpress.org/plugins/extensions-leaflet-map"
+msgid "https://github.com/hupe13/extensions-leaflet-map"
 msgstr ""
 
 #. Author of the plugin
@@ -155,19 +155,19 @@ msgstr ""
 msgid "Many markers on a map become confusing. That is why they are clustered"
 msgstr ""
 
-#: php/elevation.php:31
+#: php/elevation.php:30
 msgid "Max Elevation"
 msgstr ""
 
-#: php/elevation.php:36
+#: php/elevation.php:35
 msgid "Max Slope"
 msgstr ""
 
-#: php/elevation.php:32
+#: php/elevation.php:31
 msgid "Min Elevation"
 msgstr ""
 
-#: php/elevation.php:35
+#: php/elevation.php:34
 msgid "Min Slope"
 msgstr ""
 
@@ -222,15 +222,15 @@ msgstr ""
 msgid "To reset all values to their defaults, simply clear the values"
 msgstr ""
 
-#: php/elevation.php:33
+#: php/elevation.php:32
 msgid "Total Ascent"
 msgstr ""
 
-#: php/elevation.php:34
+#: php/elevation.php:33
 msgid "Total Descent"
 msgstr ""
 
-#: php/elevation.php:30
+#: php/elevation.php:29
 msgid "Total Length"
 msgstr ""
 
