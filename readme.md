@@ -162,7 +162,7 @@ Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documenta
 
 * leaflet-elevation 1.6.8
 * https://github.com/Raruto/leaflet-gesture-handling (is newer)
-* fixed gesture to load only with leaflet-map
+* fixed some mistakes in gestures and other
 * deal with safari bug on markers popup
 
 ### 1.4
