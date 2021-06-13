@@ -12,8 +12,7 @@
 defined( 'ABSPATH' ) or die();
 
 define('LEAFEXT_PLUGIN_FILE', __FILE__);
-if (!defined('LEAFEXT_PLUGIN_DIR'))
-	define('LEAFEXT_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('LEAFEXT_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('LEAFEXT_PLUGIN_PICTS', WP_PLUGIN_URL . '/' . basename (LEAFEXT_PLUGIN_DIR) . '/pict/');
 define('LEAFEXT_PLUGIN_SETTINGS', dirname( plugin_basename( __FILE__ ) ) );
 
@@ -33,8 +32,7 @@ if ( ! is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
 if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . 'admin.php';
 } else {
-  if (! function_exists('leafext_plugin_stylesheet_installed'))
-    include_once LEAFEXT_PLUGIN_DIR . '/php/enqueue.php';
+  include_once LEAFEXT_PLUGIN_DIR . '/php/functions.php';
   include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/elevation.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/fullscreen.php';
