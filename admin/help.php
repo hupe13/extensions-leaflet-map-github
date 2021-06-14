@@ -1,15 +1,16 @@
 <?php
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
-
 	$text = '<h4>'.
 	__('Found an issue?','extensions-leaflet-map').'</h4>
     <p>'.
 	__('Post it to the support forum','extensions-leaflet-map').': <a href="https://wordpress.org/support/plugin/extensions-leaflet-map/" target="_blank">Leaflet Map Extensions</a></p>';
-	$text=$text.'<h4 id="display-a-track-with-elevation-profile">'.__('Display a track with elevation profile','extensions-leaflet-map').'</h4>
+	//
+	$text=$text.'<h4 id="display-a-track-with-elevation-profile">'.__('Elevation profiles','extensions-leaflet-map').'</h4>
 	<img src="'.LEAFEXT_PLUGIN_PICTS.'elevation.png">
+	<img src="'.LEAFEXT_PLUGIN_PICTS.'multielevation.png">
 	<p>
-	<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">'.
+	<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=multielevation">'.
 	__('Help and Settings','extensions-leaflet-map').'</a>
 	</p>';
 	//
@@ -36,7 +37,7 @@ defined( 'ABSPATH' ) or die();
 	</p>';
 	//
 	include 'help/fullscreen.php';
-	include 'help/hovergeojson.php';
+	//include 'help/hovergeojson.php';
 	//
 	$text=$text.'<h4 id="gesturehandling">GestureHandling</h4>
 	<img src="'.LEAFEXT_PLUGIN_PICTS.'gesture.png">

@@ -1,0 +1,39 @@
+/*
+.leaflet-right .leaflet-control-layers-list {
+	max-width: 250px;
+	max-height: 25vh;
+	overflow: auto;
+}
+*/
+
+/*
+.leaflet-tooltip {
+	font-weight: 700;
+}
+*/
+
+#elevation-div {
+	height: 25%;
+/*	font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif; */
+	width: 100%;
+	padding: 0px;
+/*	margin: 0px; */
+}
+
+.chart-placeholder {
+	top: 20%;
+	position: absolute;
+	text-align: center;
+	left: 0;
+	right: 0;
+/*	font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+	font-style: italic; */
+	opacity: 0.5;
+	font-size: 0.9rem;
+}
+
+.leaflet-control-layers-list {
+	max-width: 250px;
+	max-height: 25vh;
+	overflow: auto;
+}

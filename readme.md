@@ -26,10 +26,15 @@ You need to install the plugin "Leaflet Map".
 *   [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome)
 *   [leaflet.fullscreen](https://github.com/brunob/leaflet.fullscreen)
 *   [Leaflet.GestureHandling](https://github.com/elmarquis/Leaflet.GestureHandling)
+*   [leaflet-gpx](https://github.com/mpetazzoni/leaflet-gpx)
+
+### Involved Scripts
+
+*   [leaflet-gpxgroup](https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js)
 
 ### Other functions
 
-*   hovergeojson: Use it to highlight a geojson area or line on mouse over.
+*   hovergeojson: Use it to highlight a geojson or marker on mouse over.
 *   Hide Markers: Use it when a track in a GPX file contains some markers and you don't want to display them on the map.
 *   Switch tile layers with L.control.layers.
 
@@ -39,6 +44,7 @@ You need to install the plugin "Leaflet Map".
 2. Hover a Geojson area <br>![Hover a Geojson area](.wordpress-org/screenshot-2.png)
 3. Markercluster and Groups <br>![Markercluster](.wordpress-org/screenshot-3.png)
 4. GestureHandling <br>![GestureHandling](.wordpress-org/screenshot-4.png)
+5. Multiple Tracks with elevation profile<br>![Multiple Tracks with elevation profile](.wordpress-org/screenshot-5.png)
 
 ## Frequently Asked Questions
 
@@ -52,6 +58,8 @@ You need to install the plugin "Leaflet Map".
 // or
 [elevation gpx="url_gpx_file" summary=1]
 </code></pre>
+
+It is possible to display multiple tracks with their elevation profiles also, see help.
 
 ### Switching Tile Layers
 
@@ -119,13 +127,15 @@ or
 
 ### hovergeojson
 
-<p>Use it to highlight a geojson area or line on mouse over.</p>
+<p>Use it to highlight a geojson or marker on mouse over.</p>
 <pre><code>[leaflet-map ...]
 [leaflet-geojson src="//url/to/file.geojson" color="..."]...[/leaflet-geojson]
 //or / and
 [leaflet-gpx src="//url/to/file.gpx" color="..."]...[/leaflet-gpx]
 //or / and
 [leaflet-kml src="//url/to/file.kml" color="..."]...[/leaflet-kml]
+//or / and
+[leaflet-marker ... ]...[/leaflet-marker]
 [hover]
 </code></pre>
 
