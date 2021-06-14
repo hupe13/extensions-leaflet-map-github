@@ -174,6 +174,8 @@ Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documenta
 * https://github.com/Raruto/leaflet-gesture-handling (is newer)
 * fixed some mistakes in gestures and other
 * deal with safari bug on markers popup
+* hovering on all geojsons and markers
+* multielevation
 
 ### 1.4
 
