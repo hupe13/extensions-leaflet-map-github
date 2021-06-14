@@ -25,7 +25,7 @@ You need to install the plugin "Leaflet Map".
 *   [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup)
 *   [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome)
 *   [leaflet.fullscreen](https://github.com/brunob/leaflet.fullscreen)
-*   [Leaflet.GestureHandling](https://github.com/elmarquis/Leaflet.GestureHandling)
+*   [Leaflet.GestureHandling](https://github.com/Raruto/leaflet-gesture-handling)
 *   [leaflet-gpx](https://github.com/mpetazzoni/leaflet-gpx)
 
 ### Involved Scripts
