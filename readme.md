@@ -18,25 +18,21 @@ Plugin to extend the WordPress Plugin <a href="https://wordpress.org/plugins/lea
 
 You need to install the plugin "Leaflet Map".
 
-### Involved Leaflet Plugins
+### Involved Leaflet Plugins and Elements
 
-*   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation)
-*   [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster)
-*   [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup)
-*   [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome)
-*   [leaflet.fullscreen](https://github.com/brunob/leaflet.fullscreen)
-*   [Leaflet.GestureHandling](https://github.com/Raruto/leaflet-gesture-handling)
-*   [leaflet-gpx](https://github.com/mpetazzoni/leaflet-gpx)
-
-### Involved Scripts
-
-*   [leaflet-gpxgroup](https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js)
+*   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation): GPX-Track with Elevation Profile 
+*   [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster): Marker Cluster
+*   [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup):  add/remove groups of markers from Marker Cluster.
+*   [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome): Reset the view
+*   [leaflet.fullscreen](https://github.com/brunob/leaflet.fullscreen): Fullscreen mode
+*   [Leaflet.GestureHandling](https://github.com/Raruto/leaflet-gesture-handling): Gesture Handling
+*   [leaflet-gpx](https://github.com/mpetazzoni/leaflet-gpx) and [leaflet-gpxgroup](https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js): Multiple tracks with elevation profiles on one map 
+*   [L.control.layers](https://leafletjs.com/examples/layers-control/): Switching Tilelayers
 
 ### Other functions
 
 *   hovergeojson: Use it to highlight a geojson or marker on mouse over.
 *   Hide Markers: Use it when a track in a GPX file contains some markers and you don't want to display them on the map.
-*   Switch tile layers with L.control.layers.
 
 ## Screenshots
 
