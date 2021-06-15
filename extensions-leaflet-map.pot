@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-12 18:27+0000\n"
+"POT-Creation-Date: 2021-06-14 17:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -16,7 +16,7 @@ msgstr ""
 "X-Loco-Version: 2.5.2; wp-5.7.2\n"
 "X-Domain: extensions-leaflet-map"
 
-#: php/elevation.php:28
+#: php/elevation.php:28 php/multielevation.php:70
 msgid "Altitude"
 msgstr ""
 
@@ -65,15 +65,15 @@ msgstr ""
 msgid "Default: true. You can change it for each map:"
 msgstr ""
 
-#: admin/help.php:9
-msgid "Display a track with elevation profile"
-msgstr ""
-
 #: admin/markercluster.php:107
 msgid "dynamically add/remove groups of markers from Marker Cluster"
 msgstr ""
 
-#: admin/markercluster.php:32
+#: admin/help.php:9
+msgid "Elevation profiles"
+msgstr ""
+
+#: admin/markercluster.php:32 admin/help/multielevation.php:27
 msgid "Example"
 msgstr ""
 
@@ -85,15 +85,15 @@ msgstr ""
 msgid "Extensions for the WordPress plugin Leaflet Map Github"
 msgstr ""
 
-#: admin/help.php:6
+#: admin/help.php:5
 msgid "Found an issue?"
 msgstr ""
 
-#: admin.php:36 admin/help.php:35
+#: admin.php:36 admin/help.php:36
 msgid "Help"
 msgstr ""
 
-#: admin/help.php:13 admin/help.php:20 admin/help.php:28 admin/help.php:45
+#: admin/help.php:14 admin/help.php:21 admin/help.php:29 admin/help.php:46
 msgid "Help and Settings"
 msgstr ""
 
@@ -131,17 +131,18 @@ msgid ""
 "marker (e.g. starting point)."
 msgstr ""
 
-#: admin/elevation.php:79
+#: admin/help/elevation.php:15
 msgid ""
 "If you want use an own style, select \"other\" theme and give it a name. Put "
 "in your functions.php following code:"
 msgstr ""
 
-#: admin/elevation.php:95
+#: admin/help/elevation.php:31
 msgid ""
-"In your elevation.css put the styles like the theme styles in <a href='https:"
-"//unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css'>https:"
-"//unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a>"
+"In your elevation.css put the styles like the theme styles in <a "
+"href=\"https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation."
+"css\"\n"
+">https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a>"
 msgstr ""
 
 #: admin/help/zoomhome.php:8
@@ -151,27 +152,36 @@ msgid ""
 "kml) and a track (elevation)."
 msgstr ""
 
+#: admin/help/hovergeojson.php:8
+msgid ""
+"It works on leaflet-geojson, leaflet-gpx, leaflet-kml and leaflet-marker."
+msgstr ""
+
 #: admin/markercluster.php:89
 msgid "Many markers on a map become confusing. That is why they are clustered"
 msgstr ""
 
-#: php/elevation.php:30
+#: php/elevation.php:30 php/multielevation.php:72
 msgid "Max Elevation"
 msgstr ""
 
-#: php/elevation.php:35
+#: php/elevation.php:35 php/multielevation.php:77
 msgid "Max Slope"
 msgstr ""
 
-#: php/elevation.php:31
+#: php/elevation.php:31 php/multielevation.php:73
 msgid "Min Elevation"
 msgstr ""
 
-#: php/elevation.php:34
+#: php/elevation.php:34 php/multielevation.php:76
 msgid "Min Slope"
 msgstr ""
 
-#: admin/elevation.php:51
+#: php/multielevation.php:163
+msgid "move mouse over a track ..."
+msgstr ""
+
+#: admin/elevationswitch.php:70
 msgid "must end with"
 msgstr ""
 
@@ -194,11 +204,15 @@ msgstr ""
 msgid "possible meaningful values"
 msgstr ""
 
-#: admin/help.php:8
+#: admin/help.php:7
 msgid "Post it to the support forum"
 msgstr ""
 
-#: admin/help.php:16
+#: admin/help/multielevation.php:16
+msgid "Put in your functions.php following code:"
+msgstr ""
+
+#: admin/help.php:17
 msgid "Switching Tile Layers"
 msgstr ""
 
@@ -212,30 +226,44 @@ msgstr ""
 msgid "The number of strings and groups must match."
 msgstr ""
 
+#: admin/help/hovergeojson.php:24
+msgid ""
+"The parameter <code>exclude</code> is a very special case. I would like to "
+"exclude some leaflet-geojson with a specific string in the src url from "
+"changing its style on hovering. If the url to the geojson file is e.g. "
+"\"//url/to/special.geojson\" url-substring should be \"special\"."
+msgstr ""
+
 #: admin/help/zoomhome.php:53
 msgid ""
 "There are certainly more examples. Test it yourself with the parameters "
 "<code>fitbounds</code> (leaflet-) or <code>fit</code> (zoomhomemap)."
 msgstr ""
 
+#: admin/help/multielevation.php:28
+msgid ""
+"This example is a very special application. gpx-files with tracks in a "
+"region are in a directory."
+msgstr ""
+
 #: admin/markercluster.php:134
 msgid "To reset all values to their defaults, simply clear the values"
 msgstr ""
 
-#: php/elevation.php:32
+#: php/elevation.php:32 php/multielevation.php:74
 msgid "Total Ascent"
 msgstr ""
 
-#: php/elevation.php:33
+#: php/elevation.php:33 php/multielevation.php:75
 msgid "Total Descent"
 msgstr ""
 
-#: php/elevation.php:29
+#: php/elevation.php:29 php/multielevation.php:71
 msgid "Total Length"
 msgstr ""
 
 #: admin/help/hovergeojson.php:7
-msgid "Use it to highlight a geojson area or line on mouse over"
+msgid "Use it to highlight a geojson or marker on mouse over."
 msgstr ""
 
 #: admin/help/zoomhome.php:24
