@@ -47,28 +47,34 @@ You need to install the plugin <a href="https://wordpress.org/plugins/leaflet-ma
 ### Display a track with elevation profile
 
 <p>You may go to Settings -> Leaflet Map -> Leaflet Map Extensions and select a color theme.</p>
-<pre><code>[leaflet-map ....]
+
+```php
+[leaflet-map ....]
 // at least one marker if you use it with zoomehomemap
 [leaflet-marker lat=... lng=... ...]Start[/leaflet-marker]
 [elevation gpx="url_gpx_file"]
 // or
 [elevation gpx="url_gpx_file" summary=1]
-</code></pre>
+```
 
 It is possible to display multiple tracks with their elevation profiles also, see help.
 
 ### Switching Tile Layers
 
 <p>First go to Settings -> Leaflet Map -> Leaflet Map Extensions and configure tile layers.</p>
-<pre><code>[leaflet-map mapid="..." ...]
+
+```php
+[leaflet-map mapid="..." ...]
 [layerswitch]
-</code></pre>
+```
 
 ### Leaflet.markercluster
 
 <p>Many markers on a map become confusing. That is why they are clustered.</p>
 You can define some parameters in Settings -> Leaflet Map -> Leaflet Map Extensions or per map.
-<pre><code>[leaflet-map ....]
+
+```php
+[leaflet-map ....]
 // many markers
 [leaflet-marker lat=... lng=... ...]poi1[/leaflet-marker]
 [leaflet-marker lat=... lng=... ...]poi2[/leaflet-marker]
@@ -78,7 +84,7 @@ You can define some parameters in Settings -> Leaflet Map -> Leaflet Map Extensi
 // or
 [cluster radius="..." zoom="..." spiderfy=0]
 [zoomhomemap]
-</code></pre>
+```
 
 ### Leaflet.FeatureGroup.SubGroup
 
@@ -90,41 +96,52 @@ Parameter:</p>
 <li>groups - comma separated labels appear in the selection menu</li>
 <li>The number of strings and groups must match.</li>
 </ul>
-<pre><code>[leaflet-marker iconUrl="...red..." ... ] ... [/leaflet-marker]
+
+```php
+[leaflet-marker iconUrl="...red..." ... ] ... [/leaflet-marker]
 [leaflet-marker iconUrl="...green..." ... ] ... [/leaflet-marker]
 //many markers
 [markerClusterGroup feat="iconUrl" strings="red,green" groups="rot,gruen"]
-</code></pre>
+```
 or
-<pre><code>[leaflet-marker title="first ..."  ... ] ... [/leaflet-marker]
+
+```php
+[leaflet-marker title="first ..."  ... ] ... [/leaflet-marker]
 [leaflet-marker title="second ..." ... ] ... [/leaflet-marker]
 //many markers
 [markerClusterGroup feat="title" strings="first,second" groups="First Group,Second Group"]
-</code></pre>
+```
 
 ### leaflet.zoomhome
 
 <p>
 &quot;Home&quot; button to reset the view. A must have for clustering markers.</p>
 <p>There are several usage possibilities, see the help in Settings -> Leaflet Map -> Leaflet Map Extensions.</p>
-<pre>
-<code>[leaflet-map lat=... lng=... zoom=... !fitbounds]
+
+```php
+[leaflet-map lat=... lng=... zoom=... !fitbounds]
 [leaflet-marker ....]
-[zoomhomemap !fit]</code>
-</pre>or
-<pre><code>[leaflet-map ....]
+[zoomhomemap !fit]
+```
+or
+```php
+[leaflet-map ....]
   ...
 [zoomhomemap]
-</code></pre>
+```
 
 ### Fullscreen
 
-<pre><code>[fullscreen]</code></pre>
+```php
+[fullscreen]
+```
 
 ### hover
 
 <p>Use it to highlight a geojson element or marker on mouse over.</p>
-<pre><code>[leaflet-map ...]
+
+```php
+[leaflet-map ...]
 [leaflet-geojson src="//url/to/file.geojson" color="..."]{title}[/leaflet-geojson]
 //or / and
 [leaflet-gpx src="//url/to/file.gpx" color="..."]{title}[/leaflet-gpx]
@@ -133,7 +150,7 @@ or
 //or / and
 [leaflet-marker ... ]...[/leaflet-marker]
 [hover]
-</code></pre>
+```
 
 ### GestureHandling
 
@@ -146,10 +163,12 @@ You can define the options in Settings -> Leaflet Map -> Leaflet Map Extensions.
 ### Hide Markers
 
 <p>If a GPX track contains waypoints that you do not want to display.</p>
-<pre><code>[leaflet-map ...]
+
+```php
+[leaflet-map ...]
 [leaflet-gpx src="//url/to/file.gpx" ... ]
 [hidemarkers]
-</code></pre>
+```
 
 ### More
 
