@@ -58,24 +58,26 @@ function leafext_geojsonhover_script($url){
 								}
 							}
 						});
-';
-if ( $url )
-	$text=$text.'
+						';
+						if ( $url ) $text=$text.'
 						//console.log(geojson._url);
 						if ( !geojson._url.match (/'.$url.'/)) {
 							//console.log("url not matches");
-';
-$text=$text.'
+							';
+							$text=$text.'
 							e.target.eachLayer(function(layer) {
-								layer.setStyle({
-									fillOpacity: 0.4,
-									weight: 5
-								});
-								layer.bringToFront();
+								//console.log("style3");
+								//console.log(layer);
+								if (typeof layer.options.style != "undefined") {
+									layer.setStyle({
+										fillOpacity: 0.4,
+										weight: 5
+									});
+									layer.bringToFront();
+								}
 							});
 							';
-							if ( $url )
-								$text=$text.'
+							if ( $url ) $text=$text.'
 						}
 						';
 						$text=$text.'
@@ -94,10 +96,12 @@ $text=$text.'
 						//resetStyle is only working with a geoJSON Group.
 						e.target.eachLayer(function(layer) {
 							//console.log(layer);
-							layer.setStyle({
-								fillOpacity: 0.2,
-								weight: 3
-							});
+							if (typeof layer.options.style != "undefined") {
+								layer.setStyle({
+									fillOpacity: 0.2,
+									weight: 3
+								});
+							}
 						});
 					}
 				});
@@ -106,8 +110,10 @@ $text=$text.'
 				geojson.layer.on("click", function (e) {
 					//console.log("click");
 					e.target.eachLayer(function(layer) {
-						if (layer.getPopup().isOpen())
-							layer.unbindTooltip();
+						if (typeof layer.getPopup() != "undefined") {
+							if (layer.getPopup().isOpen())
+								layer.unbindTooltip();
+						}
 					});
 				});
 
@@ -138,14 +144,16 @@ $text=$text.'
 						}
 					} else {
 						e.target.eachLayer(function(layer) {
-							if ( !layer.getPopup().isOpen() && !marker_popup_open) {
-								map.closePopup();
-								if ( typeof layer.getTooltip() == "undefined") {
-									var content = layer.getPopup().getContent();
-									//console.log(content);
-									layer.bindTooltip(content);
+							if (typeof layer.getPopup() != "undefined") {
+								if ( !layer.getPopup().isOpen() && !marker_popup_open) {
+									map.closePopup();
+									if ( typeof layer.getTooltip() == "undefined") {
+										var content = layer.getPopup().getContent();
+										//console.log(content);
+										layer.bindTooltip(content);
+									}
+									layer.openTooltip(e.latlng);
 								}
-								layer.openTooltip(e.latlng);
 							}
 						});
 					}
