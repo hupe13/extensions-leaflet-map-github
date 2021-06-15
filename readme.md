@@ -20,8 +20,8 @@ You need to install the plugin <a href="https://wordpress.org/plugins/leaflet-ma
 
 ### Used Leaflet Plugins and Elements
 
-*   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation): GPX-Track with Elevation Profile 
-*   [leaflet-gpx](https://github.com/mpetazzoni/leaflet-gpx) and [leaflet-gpxgroup](https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js): Multiple tracks with elevation profiles on one map 
+*   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation): GPX-Track with Elevation Profile
+*   [leaflet-gpx](https://github.com/mpetazzoni/leaflet-gpx) and [leaflet-gpxgroup](https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js): Multiple tracks with elevation profiles on one map
 *   [L.control.layers](https://leafletjs.com/examples/layers-control/): Switching Tilelayers
 *   [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster): Marker Cluster
 *   [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup):  add/remove groups of markers from Marker Cluster.
@@ -142,11 +142,11 @@ or
 
 ```php
 [leaflet-map ...]
-[leaflet-geojson src="//url/to/file.geojson" color="..."]{title}[/leaflet-geojson]
+[leaflet-geojson src="//url/to/file.geojson" color="..."]{name}[/leaflet-geojson]
 //or / and
-[leaflet-gpx src="//url/to/file.gpx" color="..."]{title}[/leaflet-gpx]
+[leaflet-gpx src="//url/to/file.gpx" color="..."]{name}[/leaflet-gpx]
 //or / and
-[leaflet-kml src="//url/to/file.kml" color="..."]{title}[/leaflet-kml]
+[leaflet-kml src="//url/to/file.kml" color="..."]{name}[/leaflet-kml]
 //or / and
 [leaflet-marker ... ]...[/leaflet-marker]
 [hover]

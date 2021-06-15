@@ -48,6 +48,14 @@ function leafext_geojsonhover_script($url){
 							if ( marker_popup_open ) {
 								//console.log("mouseover handle marker popup");
 								layer.unbindTooltip();
+							} else {
+								if (typeof layer.getPopup() != "undefined") {
+									if (!layer.getPopup().isOpen() && layer.getTooltip() === null) {
+										//console.log("need tooltip");
+										var content = layer.getPopup().getContent();
+										layer.bindTooltip(content);
+									}
+								}
 							}
 						});
 ';
