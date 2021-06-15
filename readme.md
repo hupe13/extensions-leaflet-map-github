@@ -16,22 +16,22 @@ Plugin to extend the WordPress Plugin <a href="https://wordpress.org/plugins/lea
 
 ### WordPress Plugin
 
-You need to install the plugin "Leaflet Map".
+You need to install the plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>.
 
-### Involved Leaflet Plugins and Elements
+### Used Leaflet Plugins and Elements
 
 *   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation): GPX-Track with Elevation Profile 
+*   [leaflet-gpx](https://github.com/mpetazzoni/leaflet-gpx) and [leaflet-gpxgroup](https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js): Multiple tracks with elevation profiles on one map 
+*   [L.control.layers](https://leafletjs.com/examples/layers-control/): Switching Tilelayers
 *   [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster): Marker Cluster
 *   [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup):  add/remove groups of markers from Marker Cluster.
 *   [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome): Reset the view
 *   [leaflet.fullscreen](https://github.com/brunob/leaflet.fullscreen): Fullscreen mode
 *   [Leaflet.GestureHandling](https://github.com/Raruto/leaflet-gesture-handling): Gesture Handling
-*   [leaflet-gpx](https://github.com/mpetazzoni/leaflet-gpx) and [leaflet-gpxgroup](https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js): Multiple tracks with elevation profiles on one map 
-*   [L.control.layers](https://leafletjs.com/examples/layers-control/): Switching Tilelayers
 
 ### Other functions
 
-*   hovergeojson: Use it to highlight a geojson or marker on mouse over.
+*   hover: Use it to highlight a geojson element or marker on mouse over.
 *   Hide Markers: Use it when a track in a GPX file contains some markers and you don't want to display them on the map.
 
 ## Screenshots
@@ -121,15 +121,15 @@ or
 
 <pre><code>[fullscreen]</code></pre>
 
-### hovergeojson
+### hover
 
-<p>Use it to highlight a geojson or marker on mouse over.</p>
+<p>Use it to highlight a geojson element or marker on mouse over.</p>
 <pre><code>[leaflet-map ...]
-[leaflet-geojson src="//url/to/file.geojson" color="..."]...[/leaflet-geojson]
+[leaflet-geojson src="//url/to/file.geojson" color="..."]{title}[/leaflet-geojson]
 //or / and
-[leaflet-gpx src="//url/to/file.gpx" color="..."]...[/leaflet-gpx]
+[leaflet-gpx src="//url/to/file.gpx" color="..."]{title}[/leaflet-gpx]
 //or / and
-[leaflet-kml src="//url/to/file.kml" color="..."]...[/leaflet-kml]
+[leaflet-kml src="//url/to/file.kml" color="..."]{title}[/leaflet-kml]
 //or / and
 [leaflet-marker ... ]...[/leaflet-marker]
 [hover]
