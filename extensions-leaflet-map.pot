@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-14 17:36+0000\n"
+"POT-Creation-Date: 2021-06-16 16:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -138,11 +138,7 @@ msgid ""
 msgstr ""
 
 #: admin/help/elevation.php:31
-msgid ""
-"In your elevation.css put the styles like the theme styles in <a "
-"href=\"https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation."
-"css\"\n"
-">https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a>"
+msgid "In your elevation.css put the styles like the theme styles in"
 msgstr ""
 
 #: admin/help/zoomhome.php:8
@@ -232,6 +228,10 @@ msgid ""
 "exclude some leaflet-geojson with a specific string in the src url from "
 "changing its style on hovering. If the url to the geojson file is e.g. "
 "\"//url/to/special.geojson\" url-substring should be \"special\"."
+msgstr ""
+
+#: admin/help/multielevation.php:44
+msgid "The theme is the same as the"
 msgstr ""
 
 #: admin/help/zoomhome.php:53

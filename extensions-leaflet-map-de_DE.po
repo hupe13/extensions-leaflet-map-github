@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Extensions for Leaflet Map - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-06-14 17:45+0000\n"
+"PO-Revision-Date: 2021-06-16 16:08+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -164,21 +164,10 @@ msgstr ""
 "Thema „other“ und benenne es. Trage in die functions.php folgenden Code ein:"
 
 #: admin/help/elevation.php:31
-#| msgid ""
-#| "In your elevation.css put the styles like the theme styles in <a "
-#| "href='https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation."
-#| "css'>https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation."
-#| "css</a>"
-msgid ""
-"In your elevation.css put the styles like the theme styles in <a "
-"href=\"https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation."
-"css\"\n"
-">https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a>"
+msgid "In your elevation.css put the styles like the theme styles in"
 msgstr ""
 "Definiere die Styles in deinem elevation.css. Nimm als Vorlage das Original "
-"CSS von <a href='https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-"
-"elevation.css'>https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-"
-"elevation.css</a>"
+"CSS von"
 
 #: admin/help/zoomhome.php:8
 msgid ""
@@ -284,6 +273,10 @@ msgstr ""
 "bestimmtes leaflet-geojson davon ausschließen, seinen Stil beim Hovern zu "
 "ändern. Wenn die URL zur Geojson-Datei z.B. \"//url/to/special.geojson\" ist,"
 " sollte url-substring \"special\" sein.\n"
+
+#: admin/help/multielevation.php:44
+msgid "The theme is the same as the"
+msgstr "Das Thema ist das selbe wie das"
 
 #: admin/help/zoomhome.php:53
 msgid ""

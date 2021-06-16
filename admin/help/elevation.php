@@ -28,8 +28,8 @@ add_filter('pre_do_shortcode_tag', function ( &#36;output, &#36;shortcode ) {
 }, 10, 2);
 </pre>"
 .'<p>'.
-__('In your elevation.css put the styles like the theme styles in <a href="https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css"
->https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a>',"extensions-leaflet-map")
-.'</p>';
+__('In your elevation.css put the styles like the theme styles in',"extensions-leaflet-map")
+.' <a href="https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css"
+>https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a></p>';
 
 echo $text;
