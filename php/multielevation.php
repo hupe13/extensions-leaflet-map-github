@@ -159,8 +159,8 @@ function leafext_elevation_tracks( $atts ){
 	}
 
 	$text = leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summary, $slope);
-	$text = $text.'<div id="elevation-div" class="leaflet-control elevation"><p class="chart-placeholder">';
-	$text = $text.__("move mouse over a track ...", "extensions-leaflet-map").'</p></div>';
+	$text = $text.'<div class="has-text-align-center"><div id="elevation-div" class="leaflet-control elevation"><p class="chart-placeholder">';
+	$text = $text.__("move mouse over a track ...", "extensions-leaflet-map").'</p></div></div>';
 	return $text;
 }
 add_shortcode('elevation-tracks', 'leafext_elevation_tracks' );

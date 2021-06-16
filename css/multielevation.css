@@ -1,39 +1,32 @@
-/*
 .leaflet-right .leaflet-control-layers-list {
-	max-width: 250px;
-	max-height: 25vh;
-	overflow: auto;
-}
-*/
+	 max-width: 250px;
+	 max-height: 25vh;
+	 overflow: auto;
+ }
 
 /*
 .leaflet-tooltip {
-	font-weight: 700;
-}
+	 font-weight: 700;
+ }
 */
 
 #elevation-div {
-	height: 25%;
-/*	font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif; */
+	height: auto;
 	width: 100%;
-	padding: 0px;
-/*	margin: 0px; */
+	padding: 50px 10px;
+	margin: 0 0px;
+	margin-left: auto;
+	margin-right: auto;
+	font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 .chart-placeholder {
-	top: 20%;
-	position: absolute;
-	text-align: center;
-	left: 0;
-	right: 0;
-/*	font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
-	font-style: italic; */
+	height: auto;
+ 	width: 100%;
+ 	padding: 50px;
+ 	margin: 0 0px;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
+	font-style: italic;
 	opacity: 0.5;
 	font-size: 0.9rem;
-}
-
-.leaflet-control-layers-list {
-	max-width: 250px;
-	max-height: 25vh;
-	overflow: auto;
-}
+ }

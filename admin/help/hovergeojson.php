@@ -8,11 +8,11 @@ $text='<h2 id="hovergeojson">hovering</h2>
 __('It works on leaflet-geojson, leaflet-gpx, leaflet-kml and leaflet-marker.','extensions-leaflet-map').'</p>
 <h2>Shortcode</h2>
 <pre><code>[leaflet-map ...]
-[leaflet-geojson src="//url/to/file.geojson" color="..."]...[/leaflet-geojson]
+[leaflet-geojson src="//url/to/file.geojson" color="..."]{name}[/leaflet-geojson]
 //or / and
-[leaflet-gpx src="//url/to/file.gpx" color="..."]...[/leaflet-gpx]
+[leaflet-gpx src="//url/to/file.gpx" color="..."]{name}[/leaflet-gpx]
 //or / and
-[leaflet-kml src="//url/to/file.kml" color="..."]...[/leaflet-kml]
+[leaflet-kml src="//url/to/file.kml" color="..."]{name}[/leaflet-kml]
 //or / and
 [leaflet-marker ....]Marker ....[/leaflet-marker]
 
