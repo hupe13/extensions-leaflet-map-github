@@ -11,14 +11,13 @@ function leafext_geojsonhover_script($url){
 		if ( WPLeafletMapPlugin.geojsons.length > 0 ) {
 			var geojsons = window.WPLeafletMapPlugin.geojsons;
 			var geocount = geojsons.length;
-
 			for (var j = 0, len = geocount; j < len; j++) {
 				var geojson = geojsons[j];
 
 				//mouseover
 				geojson.layer.on("mouseover", function (e) {
-					let i = 0;
-					e.target.eachLayer(function(){ i += 1; });
+					//let i = 0;
+					//e.target.eachLayer(function(){ i += 1; });
 					//console.log("mouseover has", i, "layers.");
 					var marker_popup_open = false;
 					e.target._map.eachLayer(function(layer){
@@ -87,8 +86,8 @@ function leafext_geojsonhover_script($url){
 
 				//mouseout
 				geojson.layer.on("mouseout", function (e) {
-					let i = 0;
-					e.target.eachLayer(function(){ i += 1; });
+					//let i = 0;
+					//e.target.eachLayer(function(){ i += 1; });
 					//console.log("mouseout has", i, "layers.");
 					if (i > 1) {
 						geojson.resetStyle();
@@ -107,6 +106,7 @@ function leafext_geojsonhover_script($url){
 				});
 				//mouseout end
 
+				//mouse click
 				geojson.layer.on("click", function (e) {
 					//console.log("click");
 					e.target.eachLayer(function(layer) {
@@ -116,11 +116,12 @@ function leafext_geojsonhover_script($url){
 						}
 					});
 				});
+				//mouse click end
 
 				//mousemove
 				geojson.layer.on("mousemove", function (e) {
-				 	let i = 0;
-					e.target.eachLayer(function(){ i += 1; });
+				 	//let i = 0;
+					//e.target.eachLayer(function(){ i += 1; });
 					//console.log("mousemove has", i, "layers.");
 					marker_popup_open = false;
 					e.target._map.eachLayer(function(layer){
@@ -192,7 +193,6 @@ function leafext_geojsonhover_script($url){
 }
 
 function leafext_geojsonhover_function($atts){
-
 	$exclude = shortcode_atts( array('exclude' => false), $atts);
 	$exclude['exclude']= str_replace ( '/' , '\/' , $exclude['exclude'] );
 	$text=leafext_geojsonhover_script($exclude['exclude']);
