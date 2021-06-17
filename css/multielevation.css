@@ -1,13 +1,13 @@
 .leaflet-right .leaflet-control-layers-list {
-	 max-width: 250px;
-	 max-height: 25vh;
-	 overflow: auto;
- }
+	max-width: 250px;
+	max-height: 25vh;
+	overflow: auto;
+}
 
 /*
 .leaflet-tooltip {
-	 font-weight: 700;
- }
+	font-weight: 700;
+}
 */
 
 #elevation-div {
@@ -23,10 +23,10 @@
 .chart-placeholder {
 	height: auto;
  	width: 100%;
- 	padding: 50px;
+	padding: 50px;
  	margin: 0 0px;
 	font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
 	font-style: italic;
 	opacity: 0.5;
 	font-size: 0.9rem;
- }
+}

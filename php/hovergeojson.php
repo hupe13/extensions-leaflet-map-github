@@ -32,12 +32,24 @@ function leafext_geojsonhover_script($url){
 					});
 					if (i > 1) {
 						if (typeof e.sourceTarget.options.style != "undefined") {
-							//console.log("style1 defined");
-							e.sourceTarget.setStyle({
-								fillOpacity: 0.4,
-								weight: 5
-							});
-							e.sourceTarget.bringToFront();
+							';
+							if ( $url ) $text=$text.'
+								//console.log(geojson._url);
+								if ( !geojson._url.match (/'.$url.'/)) {
+									//console.log("url not matches");
+									';
+									$text=$text.'
+									console.log("style1 defined");
+									e.sourceTarget.setStyle({
+										fillOpacity: 0.4,
+										weight: 5
+									});
+									e.sourceTarget.bringToFront();
+									';
+									if ( $url ) $text=$text.'
+								}
+							';
+							$text=$text.'
 						// } else {
 							// console.log("nostyle");
 						}
