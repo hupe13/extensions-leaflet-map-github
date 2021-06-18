@@ -187,10 +187,10 @@ Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documenta
 
 * leaflet-elevation 1.6.8
 * https://github.com/Raruto/leaflet-gesture-handling (is newer)
-* fixed some mistakes in gestures and other
+* fixed some mistakes in gestures and others
 * deal with safari bug on markers popup
 * hovering on all geojsons and markers
-* multielevation
+* multielevation (gpx-groups)
 
 ### 1.4
 
