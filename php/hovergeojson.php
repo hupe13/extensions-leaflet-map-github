@@ -16,8 +16,8 @@ function leafext_geojsonhover_script($url){
 
 				//mouseover
 				geojson.layer.on("mouseover", function (e) {
-					//let i = 0;
-					//e.target.eachLayer(function(){ i += 1; });
+					let i = 0;
+					e.target.eachLayer(function(){ i += 1; });
 					//console.log("mouseover has", i, "layers.");
 					var marker_popup_open = false;
 					e.target._map.eachLayer(function(layer){
@@ -39,7 +39,7 @@ function leafext_geojsonhover_script($url){
 									//console.log("url not matches");
 									';
 									$text=$text.'
-									console.log("style1 defined");
+									//console.log("style1 defined");
 									e.sourceTarget.setStyle({
 										fillOpacity: 0.4,
 										weight: 5
@@ -79,13 +79,13 @@ function leafext_geojsonhover_script($url){
 							e.target.eachLayer(function(layer) {
 								//console.log("style3");
 								//console.log(layer);
-								if (typeof layer.options.style != "undefined") {
+								//if (typeof layer.options.style != "undefined") {
 									layer.setStyle({
 										fillOpacity: 0.4,
 										weight: 5
 									});
 									layer.bringToFront();
-								}
+								//}
 							});
 							';
 							if ( $url ) $text=$text.'
@@ -98,8 +98,8 @@ function leafext_geojsonhover_script($url){
 
 				//mouseout
 				geojson.layer.on("mouseout", function (e) {
-					//let i = 0;
-					//e.target.eachLayer(function(){ i += 1; });
+					let i = 0;
+					e.target.eachLayer(function(){ i += 1; });
 					//console.log("mouseout has", i, "layers.");
 					if (i > 1) {
 						geojson.resetStyle();
@@ -132,8 +132,8 @@ function leafext_geojsonhover_script($url){
 
 				//mousemove
 				geojson.layer.on("mousemove", function (e) {
-				 	//let i = 0;
-					//e.target.eachLayer(function(){ i += 1; });
+				 	let i = 0;
+					e.target.eachLayer(function(){ i += 1; });
 					//console.log("mousemove has", i, "layers.");
 					marker_popup_open = false;
 					e.target._map.eachLayer(function(layer){
