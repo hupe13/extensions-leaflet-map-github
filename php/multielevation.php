@@ -29,7 +29,7 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summ
 		var points = '.json_encode($all_points).';
 		var tracks = '.json_encode($all_files).';
 		var theme =  '.json_encode($theme).';
-		console.log(points);
+		//console.log(points);
 		//console.log(tracks);
 
 		var opts = {

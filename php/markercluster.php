@@ -7,9 +7,9 @@ defined( 'ABSPATH' ) or die();
 function leafext_cluster_script($params){
 	$text = '
 	<script>
-console.log("cluster.radius "+'.$params['radius'].');
-console.log("cluster.spiderfy "+'.$params['spiderfy'].');
-console.log("cluster.zoom "+'.$params['zoom'].');
+//console.log("cluster.radius "+'.$params['radius'].');
+//console.log("cluster.spiderfy "+'.$params['spiderfy'].');
+//console.log("cluster.zoom "+'.$params['zoom'].');
 
 window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 window.WPLeafletMapPlugin.push(function () {
@@ -28,7 +28,7 @@ window.WPLeafletMapPlugin.push(function () {
 			// ab welcher Zoomstufe es nicht mehr tiefer geht, dann wird gespidert.
 			disableClusteringAtZoom: myzoom,
 		});
-		console.log("WPLeafletMapPlugin.markers.length "+WPLeafletMapPlugin.markers.length);
+		//console.log("WPLeafletMapPlugin.markers.length "+WPLeafletMapPlugin.markers.length);
 		for (var i = 0; i < WPLeafletMapPlugin.markers.length; i++) {
 			if ( WPLeafletMapPlugin.markers[i]._map !== null ) {
 				if (map_id == WPLeafletMapPlugin.markers[i]._map._leaflet_id) {

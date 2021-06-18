@@ -16,8 +16,8 @@ function leafext_zoomhome_script($fit){
 		var maps=[];
 		maps[map_id] = map;
 		maps[map_id].options.maxZoom = 19;
-		console.log("map_id* "+map_id);
-		console.log("fit "+'.json_encode($fit).');
+		//console.log("map_id* "+map_id);
+		//console.log("fit "+'.json_encode($fit).');
 
 		if(typeof maps[map_id].zoomControl !== "undefined") {
 			maps[map_id].zoomControl._zoomOutButton.remove();
@@ -78,15 +78,15 @@ function leafext_zoomhome_script($fit){
 				}
 			}
 		});
-		console.log("markers "+mapmarkers);
-		console.log("lines "+maplines);
-		console.log("circles "+mapcircles);
+		//console.log("markers "+mapmarkers);
+		//console.log("lines "+maplines);
+		//console.log("circles "+mapcircles);
 
 		//geojson asynchron
 		var geojsons = window.WPLeafletMapPlugin.geojsons;
 		if (geojsons.length > 0) {
 			zoom++;
-			console.log("geojsons "+geojsons.length);
+			//console.log("geojsons "+geojsons.length);
 			var geocount = geojsons.length;
 			zoomHome[map_id].addTo(map);
 			for (var j = 0, len = geocount; j < len; j++) {
@@ -106,7 +106,7 @@ function leafext_zoomhome_script($fit){
 
 		//elevation asynchron
 		maps[map_id].on("eledata_loaded", function(e) {
-			console.log("elevation loaded");
+			//console.log("elevation loaded");
 			bounds[map_id].extend(e.layer.getBounds());
 			zoomHome[map_id].setHomeBounds(bounds[map_id]);
 			maps[map_id].fitBounds(bounds[map_id]);
@@ -120,7 +120,7 @@ function leafext_zoomhome_script($fit){
 				zoomHome[map_id].setHomeBounds(bounds[map_id]);
 				if ('.json_encode($fit).') {
 					//console.log("fit true");
-					console.log("zoom "+maps[map_id].getZoom());
+					//console.log("zoom "+maps[map_id].getZoom());
 					maps[map_id].fitBounds(bounds[map_id]);
 					//if (maps[map_id].getZoom() > 14 && zoom == 1) {
 						//	maps[map_id].setZoom(14);
