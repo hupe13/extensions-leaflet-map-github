@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-16 16:07+0000\n"
+"POT-Creation-Date: 2021-06-18 06:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -174,7 +174,7 @@ msgid "Min Slope"
 msgstr ""
 
 #: php/multielevation.php:163
-msgid "move mouse over a track ..."
+msgid "move mouse over a track or select one in control panel ..."
 msgstr ""
 
 #: admin/elevationswitch.php:70

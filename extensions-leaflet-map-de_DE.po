@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Extensions for Leaflet Map - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-06-16 16:08+0000\n"
+"PO-Revision-Date: 2021-06-18 06:07+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -209,8 +209,9 @@ msgid "Min Slope"
 msgstr "max. Gefälle"
 
 #: php/multielevation.php:163
-msgid "move mouse over a track ..."
-msgstr "Bewege die Maus über einen Track ..."
+msgid "move mouse over a track or select one in control panel ..."
+msgstr ""
+"Bewege die Maus über einen Track oder wähle einen im Control Panel aus ..."
 
 #: admin/elevationswitch.php:70
 msgid "must end with"
