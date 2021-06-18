@@ -37,10 +37,10 @@ You need to install the plugin <a href="https://wordpress.org/plugins/leaflet-ma
 ## Screenshots
 
 1. Track with elevation profile and Switching Tile Layers <br>![Track with elevation profile](.wordpress-org/screenshot-1.png)
-2. Hover a Geojson area <br>![Hover a Geojson area](.wordpress-org/screenshot-2.png)
-3. Markercluster and Groups <br>![Markercluster](.wordpress-org/screenshot-3.png)
-4. GestureHandling <br>![GestureHandling](.wordpress-org/screenshot-4.png)
-5. Multiple Tracks with elevation profile<br>![Multiple Tracks with elevation profile](.wordpress-org/screenshot-5.png)
+2. Multiple Tracks with elevation profile<br>![Multiple Tracks with elevation profile](.wordpress-org/screenshot-2.png)
+3. Hover a Geojson area <br>![Hover a Geojson area](.wordpress-org/screenshot-3.png)
+4. Markercluster and Groups <br>![Markercluster](.wordpress-org/screenshot-4.png)
+5. GestureHandling <br>![GestureHandling](.wordpress-org/screenshot-5.png)
 
 ## Frequently Asked Questions
 
