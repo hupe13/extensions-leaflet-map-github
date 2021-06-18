@@ -1,7 +1,7 @@
 (function() {
   function main() {
     var maps = window.WPLeafletMapPlugin.maps;
-    console.log("safaritest");
+    //console.log("safaritest");
     for (var i = 0, len = maps.length; i < len; i++) {
       var map = maps[i];
       if (typeof map.tap !== 'undefined') {
