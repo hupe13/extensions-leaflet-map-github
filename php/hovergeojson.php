@@ -194,7 +194,7 @@ window.WPLeafletMapPlugin.push(function () {
     $javascript = ob_get_clean();
 	$text = $text . $javascript . '</script>';
 	//var_dump($text); wp_die();
-	//$text = \JShrink\Minifier::minify($text);
+	$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }
 
