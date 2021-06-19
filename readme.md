@@ -183,7 +183,7 @@ Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documenta
 
 ## Changelog
 
-### 1.5 (Plan)
+### 1.5
 
 * leaflet-elevation 1.6.8
 * https://github.com/Raruto/leaflet-gesture-handling (is newer)
