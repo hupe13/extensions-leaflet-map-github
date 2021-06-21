@@ -26,7 +26,7 @@ if ( ! is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
     </div><?php
   }
   add_action('admin_notices','leafext_require_leaflet_map_plugin');
-  register_activation_hook(__FILE__, 'leafext_require_leaflet_map_plugin');
+  //register_activation_hook(__FILE__, 'leafext_require_leaflet_map_plugin');
 }
 
 if (is_admin()) {
