@@ -6,7 +6,7 @@ Contributors: hupe13
 Tags: leaflet-map, elevation, markercluster, zoomhome, hover, fullscreen  
 Requires at least: 5.5.3  
 Tested up to: 5.7  
-Stable tag: 1.4  
+Stable tag: 1.5  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -31,7 +31,7 @@ You need to install the plugin <a href="https://wordpress.org/plugins/leaflet-ma
 
 ### Other functions
 
-*   hover: Use it to highlight a geojson element or marker on mouse over.
+*   hover: Use it to highlight a geojson element or get a tooltip on mouse over.
 *   Hide Markers: Use it when a track in a GPX file contains some markers and you don't want to display them on the map.
 
 ## Screenshots
