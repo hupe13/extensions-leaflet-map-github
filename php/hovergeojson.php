@@ -8,11 +8,11 @@ function leafext_geojsonhover_script($url){
 	ob_start();
     ?>/*<script>*/
 
-var highlightstyle = {
+var leafext_highlightstyle = {
 	"fillOpacity" : 0.4,
 	"weight" : 5
 };
-var normalstyle = {
+var leafext_normalstyle = {
 	"fillOpacity" : 0.2,
 	"weight" : 3
 };
@@ -20,16 +20,21 @@ var normalstyle = {
 window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 window.WPLeafletMapPlugin.push(function () {
 	var map = window.WPLeafletMapPlugin.getCurrentMap();
-	var map_id = map._leaflet_id;
 
 	if ( WPLeafletMapPlugin.geojsons.length > 0 ) {
 		var geojsons = window.WPLeafletMapPlugin.geojsons;
 		var geocount = geojsons.length;
 		for (var j = 0, len = geocount; j < len; j++) {
 			var geojson = geojsons[j];
-			//console.log(map_id,geojsons[j]._map._leaflet_id);
-			if (map_id == geojsons[j]._map._leaflet_id) {
+			//console.log(geojson);
+			
 			//mouseover
+			let excludeurl = new RegExp(".*" + "<?php echo $url; ?>" + ".*")
+			console.log("excludeurl", excludeurl,geojson._url);
+			
+			if ( "<?php echo $url; ?>" == ""  || ( "<?php echo $url; ?>" != "" && !geojson._url.match (excludeurl)) ) {
+				//console.log("layer event mouseover not matches");
+			
 			geojson.layer.on("mouseover", function (e) {
 				let i = 0;
 				e.target.eachLayer(function(){ i += 1; });
@@ -48,10 +53,11 @@ window.WPLeafletMapPlugin.push(function () {
 				if (i > 1) {
 					if (typeof e.sourceTarget.setStyle != "undefined") {
 						//console.log(geojson._url,<?php echo $url; ?>);
-						let excludeurl = new RegExp(".*" + <?php echo $url; ?> + ".*")
+						let excludeurl = new RegExp(".*" + "<?php echo $url; ?>" + ".*");
+						console.log ( "i>1", excludeurl );
 						if ( "<?php echo $url; ?>" == ""  || ( "<?php echo $url; ?>" != "" && !geojson._url.match (excludeurl)) ) {
 							//console.log("url 1 not matches");
-							e.sourceTarget.setStyle(highlightstyle);
+							e.sourceTarget.setStyle(leafext_highlightstyle);
 							e.sourceTarget.bringToFront();
 						}
 					// } else {
@@ -73,18 +79,16 @@ window.WPLeafletMapPlugin.push(function () {
 							}
 						}
 					});
-					//console.log(geojson._url,<?php echo $url; ?>);
-					let excludeurl = new RegExp(".*" + <?php echo $url; ?> + ".*")
-					if ( "<?php echo $url; ?>" == ""  || ( "<?php echo $url; ?>" != "" && !geojson._url.match (excludeurl)) ) {
-						//console.log("url 3 not matches");
-						e.target.eachLayer(function(layer) {
-								//console.log("style3");
-							if (typeof layer.setStyle != "undefined") {
-								layer.setStyle(highlightstyle);
-								layer.bringToFront();
-							}
-						});
-					}
+					
+					e.target.eachLayer(function(layer) {
+						//console.log("style3");
+						//console.log(layer);
+						if (typeof layer.setStyle != "undefined") {
+							layer.setStyle(leafext_highlightstyle);
+							layer.bringToFront();
+						}
+					});
+
 				}
 			});
 			//mouseover end
@@ -101,7 +105,7 @@ window.WPLeafletMapPlugin.push(function () {
 					e.target.eachLayer(function(layer) {
 						//console.log(layer);
 						if (typeof layer.setStyle != "undefined") {
-							layer.setStyle(normalstyle);
+							layer.setStyle(leafext_normalstyle);
 						}
 					});
 				}
@@ -162,7 +166,14 @@ window.WPLeafletMapPlugin.push(function () {
 				}
 			});
 			//mousemove end
-		}//map_id
+		} else {
+			//excludeurl
+			console.log("url exclude");
+			//console.log(geojson);
+			geojson.layer.on('mouseover', function () {
+				this.bringToBack();
+			});	
+		}
 		}//geojson foreach
 	}
 	//geojson end
@@ -200,7 +211,7 @@ window.WPLeafletMapPlugin.push(function () {
 
 function leafext_geojsonhover_function($atts){
 	$exclude = shortcode_atts( array('exclude' => false), $atts);
-	$exclude['exclude']= str_replace ( '/' , '\/' , $exclude['exclude'] );
+	//$exclude['exclude'] = str_replace ( '/' , '\/' , $exclude['exclude'] );
 	$text=leafext_geojsonhover_script($exclude['exclude']);
 	return $text;
 }
