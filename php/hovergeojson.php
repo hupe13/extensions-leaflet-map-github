@@ -28,9 +28,40 @@ window.WPLeafletMapPlugin.push(function () {
 			var geojson = geojsons[j];
 			//console.log(geojson);
 			
+			//mouse click
+			geojson.layer.on("click", function (e) {
+				//console.log("click");
+				e.target.eachLayer(function(layer) {
+					if (typeof layer.getPopup() != "undefined") {
+						if (layer.getPopup().isOpen())
+							layer.unbindTooltip();
+					}
+				});
+			});
+			//mouse click end
+			
+			//mouseout
+			geojson.layer.on("mouseout", function (e) {
+				let i = 0;
+				e.target.eachLayer(function(){ i += 1; });
+				//console.log("mouseout has", i, "layers.");
+				if (i > 1) {
+					geojson.resetStyle();
+				} else {
+					//resetStyle is only working with a geoJSON Group.
+					e.target.eachLayer(function(layer) {
+						//console.log(layer);
+						if (typeof layer.setStyle != "undefined") {
+							layer.setStyle(leafext_normalstyle);
+						}
+					});
+				}
+			});
+			//mouseout end
+			
 			//mouseover
 			let excludeurl = new RegExp(".*" + "<?php echo $url; ?>" + ".*")
-			console.log("excludeurl", excludeurl,geojson._url);
+			//console.log("excludeurl", excludeurl,geojson._url);
 			
 			if ( "<?php echo $url; ?>" == ""  || ( "<?php echo $url; ?>" != "" && !geojson._url.match (excludeurl)) ) {
 				//console.log("layer event mouseover not matches");
@@ -52,14 +83,8 @@ window.WPLeafletMapPlugin.push(function () {
 				});
 				if (i > 1) {
 					if (typeof e.sourceTarget.setStyle != "undefined") {
-						//console.log(geojson._url,<?php echo $url; ?>);
-						let excludeurl = new RegExp(".*" + "<?php echo $url; ?>" + ".*");
-						console.log ( "i>1", excludeurl );
-						if ( "<?php echo $url; ?>" == ""  || ( "<?php echo $url; ?>" != "" && !geojson._url.match (excludeurl)) ) {
-							//console.log("url 1 not matches");
-							e.sourceTarget.setStyle(leafext_highlightstyle);
-							e.sourceTarget.bringToFront();
-						}
+						e.sourceTarget.setStyle(leafext_highlightstyle);
+						e.sourceTarget.bringToFront();
 					// } else {
 						//console.log("nostyle");
 					}
@@ -92,37 +117,6 @@ window.WPLeafletMapPlugin.push(function () {
 				}
 			});
 			//mouseover end
-
-			//mouseout
-			geojson.layer.on("mouseout", function (e) {
-				let i = 0;
-				e.target.eachLayer(function(){ i += 1; });
-				//console.log("mouseout has", i, "layers.");
-				if (i > 1) {
-					geojson.resetStyle();
-				} else {
-					//resetStyle is only working with a geoJSON Group.
-					e.target.eachLayer(function(layer) {
-						//console.log(layer);
-						if (typeof layer.setStyle != "undefined") {
-							layer.setStyle(leafext_normalstyle);
-						}
-					});
-				}
-			});
-			//mouseout end
-
-			//mouse click
-			geojson.layer.on("click", function (e) {
-				//console.log("click");
-				e.target.eachLayer(function(layer) {
-					if (typeof layer.getPopup() != "undefined") {
-						if (layer.getPopup().isOpen())
-							layer.unbindTooltip();
-					}
-				});
-			});
-			//mouse click end
 
 			//mousemove
 			geojson.layer.on("mousemove", function (e) {
@@ -168,11 +162,39 @@ window.WPLeafletMapPlugin.push(function () {
 			//mousemove end
 		} else {
 			//excludeurl
-			console.log("url exclude");
+			//console.log("url exclude");
 			//console.log(geojson);
 			geojson.layer.on('mouseover', function () {
 				this.bringToBack();
-			});	
+			});
+			
+			geojson.layer.on('mouseover', function (e) {
+				e.target.eachLayer(function(layer) {
+					//console.log(layer);
+					if (typeof layer.getPopup() != "undefined") {
+						//console.log("popup defined");
+						//console.log(layer.getPopup().isOpen());
+						//console.log(layer.getTooltip());
+						if (!layer.getPopup().isOpen()) {
+							//console.log("need tooltip");
+							var content = layer.getPopup().getContent();
+							layer.bindTooltip(content);
+						}
+					}
+				});
+			});
+			
+			geojson.layer.on("mousemove", function (e) {
+				e.target.eachLayer(function(layer) {
+					if (typeof layer.getPopup() != "undefined") {
+						if ( !layer.getPopup().isOpen() ) {
+							map.closePopup();
+							layer.openTooltip(e.latlng);
+						}
+					}
+				});
+			});
+			
 		}
 		}//geojson foreach
 	}
@@ -204,14 +226,12 @@ window.WPLeafletMapPlugin.push(function () {
 <?php
     $javascript = ob_get_clean();
 	$text = $text . $javascript . '</script>';
-	//var_dump($text); wp_die();
 	$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }
 
 function leafext_geojsonhover_function($atts){
 	$exclude = shortcode_atts( array('exclude' => false), $atts);
-	//$exclude['exclude'] = str_replace ( '/' , '\/' , $exclude['exclude'] );
 	$text=leafext_geojsonhover_script($exclude['exclude']);
 	return $text;
 }
