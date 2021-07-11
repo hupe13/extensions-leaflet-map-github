@@ -75,8 +75,12 @@ function leafext_form_other_theme() {
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function leafext_validate_elevationtheme($input) {
-	$input['othertheme'] =  sanitize_text_field($input['othertheme']);
-	return $input;
+	if (isset($_POST['submit'])) {
+		$input['othertheme'] =  sanitize_text_field($input['othertheme']);
+		return $input;
+	}
+	if (isset($_POST['delete'])) delete_option('leafext_values');
+	return false;
 }
 
 // Helptext

@@ -32,4 +32,8 @@ __('In your elevation.css put the styles like the theme styles in',"extensions-l
 .' <a href="https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css"
 >https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a></p>';
 
+$theme = get_option('leafext_values');
+if (!is_array($theme))
+	$text = $text.__("Please change this only, if you want to use your own theme.","extensions-leaflet-map");
+
 echo $text;

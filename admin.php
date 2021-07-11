@@ -64,6 +64,7 @@ function leafext_do_page() {
 		settings_fields('leafext_settings_theme');
 		do_settings_sections( 'leafext_settings_theme' );
 		submit_button();
+		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		echo '</form>';
 //	} else if( $active_tab == 'multielevation' ) {
 //		include LEAFEXT_PLUGIN_DIR . '/admin/help/multielevation.php';
