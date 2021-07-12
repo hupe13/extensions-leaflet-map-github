@@ -41,6 +41,6 @@ foreach (glob($pfad."/*.gpx") as $file)
 echo \'[elevation-tracks summary=1]\';
 </code></pre>
 <h2>Theme</h2>'.
-__('The theme is the same as the','extensions-leaflet-map').' <a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">Elevation Theme</a>.
+__('The theme is the same as the','extensions-leaflet-map').' <a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevationoptions">Elevation Theme</a>.
 ';
 echo $text;

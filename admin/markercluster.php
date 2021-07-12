@@ -77,8 +77,10 @@ function leafext_validate_cluster($input) {
 			$input = array();
 			$input = leafext_form_cluster_get_options(1);
 		}
+		return $input;
 	}
-	return $input;
+	if (isset($_POST['delete'])) delete_option('leafext_cluster');
+	return false;
 }
 
 // Erklaerung
@@ -101,7 +103,7 @@ function leafext_cluster_help_text() {
 [cluster radius="..." zoom="..." spiderfy=0]
 [zoomhomemap]
 </code></pre>';
-	
+
 	echo '<h2 id="leaflet.featuregroup.subgroup">Leaflet.FeatureGroup.SubGroup</h2>
 <p>'.
 __('dynamically add/remove groups of markers from Marker Cluster','extensions-leaflet-map').
@@ -131,6 +133,6 @@ __('The number of strings and groups must match.','extensions-leaflet-map').'
 echo '<p>'.
   __('Please see the <a href="https://github.com/Leaflet/Leaflet.markercluster#options">Leaflet.markercluster</a> page for options. If you want to change other ones, please post it to the forum.',
   'extensions-leaflet-map').' ';
-	echo __('To reset all values to their defaults, simply clear the values',
+	echo __('To reset all values to their defaults, simply click the Reset button',
 	'extensions-leaflet-map').'.</p>';
 }

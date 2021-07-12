@@ -68,16 +68,18 @@ function leafext_clear_params($atts) {
 }
 
 function leafext_elevation_theme() {
-  $defaults = array(
-		"theme" => "lime",
-		"othertheme" => "" );
-	$options = shortcode_atts($defaults, get_option('leafext_values') );
-	if ($options['theme'] == "other") {
-		$theme=$options['othertheme'];
+	$ownoptions = get_option('leafext_values');
+	if (is_array($ownoptions)) {
+		if ( $ownoptions['theme'] == 'other' ) {
+			$theme = $ownoptions['othertheme'];
+		} else {
+			$theme=$ownoptions['theme'].'-theme';
+		}
 	} else {
-		$theme=$options['theme'].'-theme';
+		$newoptions=leafext_elevation_settings();
+		$theme = $newoptions['theme'];
 	}
-  return($theme);
+	return($theme);
 }
 }
  ?>
