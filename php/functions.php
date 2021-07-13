@@ -45,7 +45,7 @@ function leafext_enqueue_markercluster () {
 function leafext_enqueue_elevation () {
   wp_enqueue_script( 'elevation_js',
 		//plugins_url('leaflet-plugins/leaflet-elevation-1.6.9/js/leaflet-elevation.min.js',
-    plugins_url('leaflet-plugins/leaflet-elevation-1.6.9/js/leaflet-elevation.js',
+    plugins_url('leaflet-plugins/leaflet-elevation-1.6.9/js/leaflet-elevation.min.js',
 		LEAFEXT_PLUGIN_FILE),
 	array('wp_leaflet_map'),null);
 	wp_enqueue_style( 'elevation_css',
