@@ -5,7 +5,7 @@
 Contributors: hupe13  
 Tags: leaflet-map, elevation, markercluster, zoomhome, hover, fullscreen  
 Requires at least: 5.5.3  
-Tested up to: 5.7  
+Tested up to: 5.8  
 Stable tag: 1.5  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
@@ -173,6 +173,7 @@ You can define the options in Settings -> Leaflet Map -> Leaflet Map Extensions.
 ### More
 
 Maybe new functions are <a href="https://github.com/hupe13/extensions-leaflet-map-testing">here</a>.
+Detailed <a href="https://leafext.de/">documentation</a> in german.
 
 ## Installation
 
@@ -182,6 +183,12 @@ Please see https://wordpress.org/support/article/managing-plugins/#installing-pl
 Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documentation and settings options.
 
 ## Changelog
+
+### 2.0 (Plan)
+
+* many new parameters for elevation
+* leaflet-gesture-handling 1.3.5
+* Bugfix hover
 
 ### 1.5
 

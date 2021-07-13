@@ -25,21 +25,24 @@ function leafext_form_theme() {
 		}
 	</script>
 	<?php
+	$colors = array();
+	$newoptions=leafext_elevation_settings();
+	$options = array(
+		"theme" => $newoptions['theme'],
+		"othertheme" => "" ,
+	);
+	$colors[] = $newoptions['theme'];
 	$ownoptions = get_option('leafext_values');
 	if (is_array($ownoptions)) {
-		$options = array(
-			"theme" => $ownoptions['theme'],
-			"othertheme" => $ownoptions['othertheme'],
-		);
-	} else {
-		$newoptions=leafext_elevation_settings();
-		$options = array(
-			"theme" => $newoptions['theme'],
-			"othertheme" => "" ,
-		);
+		if ( $ownoptions['theme'] != $newoptions['theme']) {
+			$options = $ownoptions;
+			if ( $ownoptions['theme'] != 'other') {
+				$colors[] = $ownoptions['theme'];
+			}
+		}
 	}
 	echo '<select id="leafext_elecolor" name="leafext_values[theme]" onchange = "leafext_EnableDisableOtherTheme(this)">';
-	$colors = array("lime","steelblue","purple","yellow","red","magenta","lightblue","other");
+	$colors[] = "other";
 	foreach ($colors as $color) {
 		if ($color == $options['theme']) {
 			echo '<option selected ';
@@ -53,31 +56,30 @@ function leafext_form_theme() {
 
 // Baue Abfrage eigenes Thema
 function leafext_form_other_theme() {
+	$othertheme = "";
 	$ownoptions = get_option('leafext_values');
 	if (is_array($ownoptions)) {
-		$options = array(
-			"theme" => $ownoptions['theme'],
-			"othertheme" => $ownoptions['othertheme'],
-		);
-	} else {
-		$newoptions=leafext_elevation_settings();
-		$options = array(
-			"theme" => $newoptions['theme'],
-			"othertheme" => "" ,
-		);
+		if ( $ownoptions['theme'] == 'other') {
+			$othertheme = $ownoptions['othertheme'];
+		}
 	}
 	echo '<input id="leafext_eleother" type="text" name="leafext_values[othertheme]" placeholder="my-theme"
 		pattern=".+-theme" title="'.__("must end with",'extensions-leaflet-map').' \'-theme\'"
-		value="'.$options['othertheme'].'" ';
-	echo ($options['theme'] == "other") ? "" : " readonly ";
+		value="'.$othertheme.'" ';
+	echo ($othertheme != "") ? "" : " readonly ";
 	echo '/>';
 }
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function leafext_validate_elevationtheme($input) {
 	if (isset($_POST['submit'])) {
-		$input['othertheme'] =  sanitize_text_field($input['othertheme']);
-		return $input;
+		if ( $input['theme'] == 'other' ) {
+			$input['othertheme'] =  sanitize_text_field($input['othertheme']);
+			return $input;
+		} else {
+			delete_option('leafext_values');
+			return false;
+		}
 	}
 	if (isset($_POST['delete'])) delete_option('leafext_values');
 	return false;
@@ -85,7 +87,7 @@ function leafext_validate_elevationtheme($input) {
 
 // Helptext
 function leafext_elevation_help_text () {
-	echo __("These are old settings respectively your own theme. Please reset these settings, if you are not using an own theme!","extensions-leaflet-map");
+
 $text = '
 <h2>Theme</h2><p>'.__('If you want use an own style, select "other" theme and give it a name. Put in your functions.php following code:',"extensions-leaflet-map").
 "</p><pre>
@@ -108,8 +110,12 @@ __('In your elevation.css put the styles like the theme styles in',"extensions-l
 >https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a></p>';
 
 $theme = get_option('leafext_values');
-if (!is_array($theme))
+if (!is_array($theme)) {
 	$text = $text.__("Please change this only, if you want to use your own theme.","extensions-leaflet-map");
-
+} else {
+	$text = $text.'<span style="color: #d63638">';
+	$text = $text.__("Please reset these settings, if you are not using an own theme!","extensions-leaflet-map");
+	$text = $text.'</span>';
+}
 echo $text;
 }

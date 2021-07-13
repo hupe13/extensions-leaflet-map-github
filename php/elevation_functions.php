@@ -81,7 +81,7 @@ function leafext_elevation_params() {
 
 		// Toggle chart ruler filter.
 		//ruler: true,
-		//array('ruler', __('Toggle chart ruler filter.',"extensions-leaflet-map"), true, 1),
+		array('ruler', __('Toggle chart ruler filter.',"extensions-leaflet-map"), true, 1),
 
 		// Toggle chart legend filter.
 		//legend: true,

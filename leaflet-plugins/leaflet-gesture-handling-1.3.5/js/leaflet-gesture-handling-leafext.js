@@ -104,8 +104,8 @@
 		//French
 		fr: {
 			touch: "Utilisez deux\u00a0doigts pour d\u00e9placer la carte",
-			scroll: "Vous pouvez zoomer sur la carte \u00e0 l'aide de CTRL+Molette de d\u00e9filement",
-			scrollMac: "Vous pouvez zoomer sur la carte \u00e0 l'aide de \u2318+Molette de d\u00e9filement"
+			scroll: "Vous pouvez zoomer sur la carte \u00e0 l'aide de CTRL + Molette de d\u00e9filement",
+			scrollMac: "Vous pouvez zoomer sur la carte \u00e0 l'aide de \u2318 + Molette de d\u00e9filement"
 		},
 		//Galician
 		gl: {
@@ -415,14 +415,14 @@
 			this._map.dragging.enable();
 			this._map.scrollWheelZoom.enable();
 			if (this._map.tap) this._map.tap.enable();
-      // hupe13: deal with safari bug
-      var is_chrome = navigator.userAgent.indexOf("Chrome") > -1;
-      var is_safari = navigator.userAgent.indexOf("Safari") > -1;
-      if ( !is_chrome && is_safari ) {
-        console.log("Safari");
-        this._map.tap.disable();
-      }
-      // end
+			// hupe13: deal with safari bug
+			var is_chrome = navigator.userAgent.indexOf("Chrome") > -1;
+			var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+			if ( !is_chrome && is_safari ) {
+				console.log("Safari");
+				this._map.tap.disable();
+			}
+			// end
 		},
 
 		_enableWarning: function(gesture) {

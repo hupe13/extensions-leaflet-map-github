@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) or die();
 	<img src="'.LEAFEXT_PLUGIN_PICTS.'elevation.png">
 	<img src="'.LEAFEXT_PLUGIN_PICTS.'multielevation.png">
 	<p>
-	<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=multielevation">'.
+	<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">'.
 	__('Help and Settings','extensions-leaflet-map').'</a>
 	</p>';
 	//
@@ -37,7 +37,6 @@ defined( 'ABSPATH' ) or die();
 	</p>';
 	//
 	include 'help/fullscreen.php';
-	//include 'help/hovergeojson.php';
 	//
 	$text=$text.'<h4 id="gesturehandling">GestureHandling</h4>
 	<img src="'.LEAFEXT_PLUGIN_PICTS.'gesture.png">

@@ -8,8 +8,9 @@ $text = '
 <pre><code>[leaflet-map ....]
 // at least one marker if you use it with zoomehomemap
 [leaflet-marker lat=... lng=... ...]Start[/leaflet-marker]
-[elevation gpx="url_gpx_file" option=option ...]
-</code></pre>'.
-__("For options see the Elevation Charts Options tab.",'extensions-leaflet-map');
+[elevation gpx="url_gpx_file" option1=value1 option2 !option3 ...]
+</code></pre>';
+$text = $text . __('For options see the','extensions-leaflet-map');
+$text = $text . ' <a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevationoptions">Elevation Charts Options tab</a>.';
 
 echo $text;

@@ -42,25 +42,38 @@ function leafext_do_page() {
 	}
 	echo '">Elevation Settings</a>'."\n";
 	//
-	echo '<a href="?page='.$leafext_plugin_name.'&tab=tilelayers" class="nav-tab';
-	echo $active_tab == 'tilelayers' ? ' nav-tab-active' : '';
-	echo '">Switching Tilelayers</a>'."\n";
-	//
-	echo '<a href="?page='.$leafext_plugin_name.'&tab=cluster" class="nav-tab';
-	echo $active_tab == 'cluster' ? ' nav-tab-active' : '';
-	echo '">Markercluster and Grouping</a>'."\n";
-	//
-	echo '<a href="?page='.$leafext_plugin_name.'&tab=hover" class="nav-tab';
-	echo $active_tab == 'hover' ? ' nav-tab-active' : '';
-	echo '">Hovering</a>'."\n";
-	//
-	echo '<a href="?page='.$leafext_plugin_name.'&tab=gesture" class="nav-tab';
-	echo $active_tab == 'gesture' ? ' nav-tab-active' : '';
-	echo '">Gesture Handling</a>'."\n";
-	//
-	echo '<a href="?page='.$leafext_plugin_name.'&tab=zoomhome" class="nav-tab';
-	echo $active_tab == 'zoomhome' ? ' nav-tab-active' : '';
-	echo '">leaflet.zoomhome</a>'."\n";
+	$tabs = array (
+		array (
+			'tab' => 'tilelayers',
+			'title' => 'Switching Tilelayers',
+		),
+		array (
+			'tab' => 'cluster',
+			'title' => 'Markercluster and Grouping',
+		),
+		array (
+			'tab' => 'hover',
+			'title' => 'Hovering',
+		),
+		array (
+			'tab' => 'gesture',
+			'title' => 'Gesture Handling',
+		),
+		array (
+			'tab' => 'zoomhome',
+			'title' => 'leaflet.zoomhome',
+		),
+		// array (
+		// 	'tab' => '',
+		// 	'title' => '',
+		// ),
+	);
+	foreach ( $tabs as $tab) {
+		echo '<a href="?page='.$leafext_plugin_name.'&tab='.$tab['tab'].'" class="nav-tab';
+		$active = ( $active_tab == $tab['tab'] ) ? ' nav-tab-active' : '' ;
+		echo $active;
+		echo '">'.$tab['title'].'</a>'."\n";
+	}
 	//
 	echo '</h3>';
 

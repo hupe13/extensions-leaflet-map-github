@@ -66,8 +66,10 @@ function leafext_ele_help_text () {
 		if ($theme['theme'] == "other") {
 			echo __("You have installed your own theme. The settings for <code>theme</code> on this page are not valid for you.","extensions-leaflet-map");
 		} else {
+			echo '<span style="color: #d63638">';
 			echo __('Your theme is','extensions-leaflet-map').' '.$theme['theme'].'. ';
 			echo __('Please delete <a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevationtheme">these</a> <code>theme</code> settings, these are valid as long as they are not deleted.',"extensions-leaflet-map");
+			echo '</span>';
 		}
 		echo '</p>';
 	}

@@ -16,17 +16,32 @@ function leafext_elevation_script($gpx,$theme,$settings){
 		//lime-theme (default), magenta-theme, steelblue-theme, purple-theme, yellow-theme, lightblue-theme
 			theme: '.json_encode($theme).',
 		';
-	
+
 	if ( $settings['summary'] == "1" ) {
 		//old settings
 		$text = $text . '
 			summary: "inline",
 			slope: "summary",
+			speed: false,
+			acceleration: false,
+			time: false,
+			downloadLink: false,
 			';
 	} else {
 		foreach ($settings as $k => $v) {
 			$text = $text. "$k: ";
-			$value = $v == "0" ? "false" : ($v == "1" ? "true" : ( $k == "polyline" ? $v : '"'.$v.'"'));
+			var_dump($k,$v); 
+			switch ($v) {
+				case "false":
+				case "0": $value = "false"; break;
+				case "true":
+				case "1": $value = "true"; break;
+				case "null": $value = "null"; break;
+				default: $value = '"'.$v.'"';
+			}
+			switch ($k) {
+				case "polyline": $value = $v; break;
+			}
 			$text = $text.$value;
 			$text = $text.",\n";
 		}
@@ -80,6 +95,7 @@ function leafext_elevation_function( $atts ) {
 		$theme = leafext_elevation_theme();
 	}
 	unset($options['theme']);
+
 	return leafext_elevation_script($track,$theme,$options);
 }
 add_shortcode('elevation', 'leafext_elevation_function' );

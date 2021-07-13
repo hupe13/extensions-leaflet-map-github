@@ -11,10 +11,10 @@
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
-define('LEAFEXT_PLUGIN_FILE', __FILE__);
-define('LEAFEXT_PLUGIN_DIR', plugin_dir_path(__FILE__));
-define('LEAFEXT_PLUGIN_PICTS', WP_PLUGIN_URL . '/' . basename (LEAFEXT_PLUGIN_DIR) . '/pict/');
-define('LEAFEXT_PLUGIN_SETTINGS', dirname( plugin_basename( __FILE__ ) ) );
+define('LEAFEXT_PLUGIN_FILE', __FILE__); // /pfad/wp-content/plugins/extensions-leaflet-map/extensions-leaflet-map.php
+define('LEAFEXT_PLUGIN_DIR', plugin_dir_path(__FILE__)); // /pfad/wp-content/plugins/extensions-leaflet-map-github/
+define('LEAFEXT_PLUGIN_PICTS', WP_PLUGIN_URL . '/' . basename (LEAFEXT_PLUGIN_DIR) . '/pict/'); // https://url/wp-content/plugins/extensions-leaflet-map-github/pict/
+define('LEAFEXT_PLUGIN_SETTINGS', dirname( plugin_basename( __FILE__ ) ) ); // extensions-leaflet-map
 
 if ( ! function_exists( 'is_plugin_active' ) )
     require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
