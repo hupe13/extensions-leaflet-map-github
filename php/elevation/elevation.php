@@ -16,37 +16,41 @@ function leafext_elevation_script($gpx,$theme,$settings){
 		//lime-theme (default), magenta-theme, steelblue-theme, purple-theme, yellow-theme, lightblue-theme
 			theme: '.json_encode($theme).',
 		';
-
+		//old settings
+		if ( $settings['summary'] == "1" ) {
+			$text = $text.'
+				summary: "inline",
+				slope: "summary",
+				speed:  false,
+				acceleration:  false,
+				time: false,
+				downloadLink: false,
+				polyline:  { weight: 3, },
+				';
+				//old settings end
+		} else {
 		foreach ($settings as $k => $v) {
 			$text = $text. "$k: ";
-			var_dump($k,$v);
-			switch ($v) {
-				case "false":
-				case "0": $value = "false"; break;
-				case "true":
-				case "1": $value = "true"; break;
-				case "null": $value = "null"; break;
-				default: $value = '"'.$v.'"';
+			switch (gettype($v)) {
+				case "string":
+					switch ($v) {
+						case "0": $value = "false"; break;
+						case "1": $value = "true"; break;
+						default: $value = '"'.$v.'"';break;
+					}
+					break;
+				case "boolean":
+					$value = $v ? "true" : "false"; break;
+				default:
 			}
 			switch ($k) {
 				case "polyline": $value = $v; break;
 			}
-			//old settings
-			if ( $settings['summary'] == "1" ) {
-				switch ($k) {
-					case "summary": $value = '"inline"'; break;
-					case "slope": $value = '"summary"'; break;
-					case "speed": $value = "false"; break;
-					case "acceleration": $value = "false"; break;
-					case "time": $value = "false"; break;
-					case "downloadLink": $value = "false"; break;
-					case "polyline": $value = "{ weight: 3, }"; break;
-				}
-			}
-			//old settings end
+
 			$text = $text.$value;
 			$text = $text.",\n";
 		}
+		}//old settings end
 
 	$text = $text.'	};
 		var mylocale = {
@@ -88,6 +92,7 @@ function leafext_elevation_function( $atts ) {
 	//
 	$atts1=leafext_elevation_case(leafext_clear_params($atts));
 	$options = shortcode_atts( array_merge(array('gpx' => false),leafext_elevation_settings()), $atts1);
+
 	if ( ! $options['gpx'] ) wp_die("No gpx track!");
 	$track = $options['gpx'];
 	unset($options['gpx']);

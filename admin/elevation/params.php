@@ -22,11 +22,16 @@ function leafext_form_elevation($field) {
 	$settings = leafext_elevation_settings();
 	$setting = $settings[$field];
 
-	if ($setting != $option[2] ) {
-		echo __("Plugins Default:", "extensions-leaflet-map").' '.$option[2]. '<br>';
-	}
-	echo __("You can change it for every map with", "extensions-leaflet-map").' <code>'.$option[0]. '</code></br>';
+	echo __("You can change it for every map with", "extensions-leaflet-map").' <code>'.$option[0]. '</code><br>';
 	if (!is_array($option[3])) {
+
+		if ($setting != $option[2] ) {
+			//var_dump($setting,$option[2]);
+			echo __("Plugins Default:", "extensions-leaflet-map").' ';
+			echo $option[2] ? "1" : "0";
+			echo '<br>';
+		}
+
 		echo '<input type="radio" name="leafext_eleparams['.$option[0].']" value="1" ';
 		echo $setting ? 'checked' : '' ;
 		echo '> true &nbsp;&nbsp; ';
@@ -34,11 +39,17 @@ function leafext_form_elevation($field) {
 		echo (!$setting) ? 'checked' : '' ;
 		echo '> false ';
 	} else {
+		$plugindefault = is_string($option[2]) ? $option[2] : ($option[2] ? "1" : "0");
+		$setting = is_string($setting) ? $setting : ($setting ? "1" : "0");
+		if ($setting != $plugindefault ) {
+			//var_dump("Option: ",$option[2],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
+			echo __("Plugins Default:", "extensions-leaflet-map").' '. $plugindefault . '<br>';
+		}
 		echo '<select name="leafext_eleparams['.$option[0].']">';
 		foreach ( $option[3] as $para) {
 			echo '<option ';
-			if ($para === $setting) echo ' selected="selected" ';
 			if (is_bool($para)) $para = ($para ? "1" : "0");
+			if ($para === $setting) echo ' selected="selected" ';
 			echo 'value="'.$para.'" >'.$para.'</option>';
 		}
 		echo '</select>';
