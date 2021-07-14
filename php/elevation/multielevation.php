@@ -35,7 +35,7 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summ
 		var opts = {
 			points: {
 				icon: {
-					iconUrl: "'.plugin_dir_url(__DIR__).'" + "/leaflet-plugins/leaflet-elevation-1.6.9/images/elevation-poi.png",
+					iconUrl: "'.LEAFEXT_PLUGIN_URL.'" + "/leaflet-plugins/leaflet-elevation-1.6.9/images/elevation-poi.png",
 					iconSize: [12, 12],
 				},
 			},
@@ -131,14 +131,13 @@ function leafext_elevation_tracks( $atts ){
 	leafext_enqueue_zoomhome();
 
 	wp_enqueue_script('leaflet.gpx',
-		plugins_url('leaflet-plugins/leaflet-gpx-1.5.2/gpx-leafext.js',
-		LEAFEXT_PLUGIN_FILE),
+		plugins_url('leaflet-plugins/leaflet-gpx-1.5.2/gpx-leafext.js',LEAFEXT_PLUGIN_FILE),
 		array('elevation_js'),null);
 	wp_enqueue_script('leaflet.gpxgroup',
 		plugins_url('leaflet-plugins/leaflet-elevation-1.6.9/libs/leaflet-gpxgroup.min.js',LEAFEXT_PLUGIN_FILE),
 		array('leaflet.gpx'),null);
 	wp_enqueue_style( 'my_elevation_css',
-	 	plugins_url('css/multielevation.css',dirname(__FILE__)),
+	 	plugins_url('css/multielevation.css',LEAFEXT_PLUGIN_FILE),
 	 	array('elevation_css'), null);
 
 	global $all_files;

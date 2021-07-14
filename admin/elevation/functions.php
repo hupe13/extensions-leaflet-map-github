@@ -6,6 +6,45 @@ function leafext_elevation_admin_init() {
 	include LEAFEXT_PLUGIN_DIR . '/admin/elevation/owntheme.php';
 }
 
+function leafext_elevation_tab() {
+	$tabs = array (
+		array (
+			'tab' => 'elevation',
+			'title' => 'Elevation Profile',
+			),
+		array (
+			'tab' => 'elevationoptions',
+			'title' => 'Elevation Chart Options',
+		),
+		array (
+			'tab' => 'multielevation',
+			'title' => 'Multiple hoverable tracks',
+		),
+		array (
+			'tab' => 'elevationtheme',
+			'title' => 'Own theme',
+		),
+		// array (
+			// 'tab' => '',
+			// 'title' => '',
+		// ),
+	);
+
+	$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : '';
+	$textheader = '<div class="nav-tab-wrapper">';
+
+	foreach ( $tabs as $tab) {
+		$textheader = $textheader. '<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab='.$tab['tab'].'" class="nav-tab';
+		$active = ( $active_tab == $tab['tab'] ) ? ' nav-tab-active' : '' ;
+		$textheader = $textheader. $active;
+		$textheader = $textheader. '">'.$tab['title'].'</a>'."\n";
+	}
+
+	//
+	$textheader = $textheader. '</div>';
+	return $textheader;
+}
+
 function leafext_admin_elevation($active_tab) {
 	if( $active_tab == 'elevation') {
 		echo '<h2>'.leafext_elevation_tab().'</h2>';
@@ -28,45 +67,5 @@ function leafext_admin_elevation($active_tab) {
 		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		echo '</form>';
 	}
-}
-
-function leafext_elevation_tab() {
-	$tabs = array (
-		array (
-			'tab' => 'elevation',
-			'title' => 'Elevation Profile',
-			),
-		array (
-			'tab' => 'elevationoptions',
-			'title' => 'Elevation Chart Options',
-		),
-		array (
-			'tab' => 'multielevation',
-			'title' => 'Multiple hoverable tracks',
-		),		
-		array (
-			'tab' => 'elevationtheme',
-			'title' => 'Own theme',
-		),
-		// array (
-			// 'tab' => '',
-			// 'title' => '',
-		// ),
-	);
-	$leafext_plugin_name = LEAFEXT_PLUGIN_SETTINGS;
-	
-	$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : '';
-	$textheader = '<div class="nav-tab-wrapper">';
-	
-	foreach ( $tabs as $tab) {
-		$textheader = $textheader. '<a href="?page='.$leafext_plugin_name.'&tab='.$tab['tab'].'" class="nav-tab';
-		$active = ( $active_tab == $tab['tab'] ) ? ' nav-tab-active' : '' ;
-		$textheader = $textheader. $active;
-		$textheader = $textheader. '">'.$tab['title'].'</a>'."\n";
-	}
-	
-	//
-	$textheader = $textheader. '</div>';
-	return $textheader;
 }
 ?>

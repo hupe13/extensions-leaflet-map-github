@@ -13,7 +13,8 @@ defined( 'ABSPATH' ) or die();
 
 define('LEAFEXT_PLUGIN_FILE', __FILE__); // /pfad/wp-content/plugins/extensions-leaflet-map/extensions-leaflet-map.php
 define('LEAFEXT_PLUGIN_DIR', plugin_dir_path(__FILE__)); // /pfad/wp-content/plugins/extensions-leaflet-map-github/
-define('LEAFEXT_PLUGIN_PICTS', WP_PLUGIN_URL . '/' . basename (LEAFEXT_PLUGIN_DIR) . '/pict/'); // https://url/wp-content/plugins/extensions-leaflet-map-github/pict/
+define('LEAFEXT_PLUGIN_URL', WP_PLUGIN_URL . '/' . basename (LEAFEXT_PLUGIN_DIR)); // https://url/wp-content/plugins/extensions-leaflet-map-github/
+define('LEAFEXT_PLUGIN_PICTS', LEAFEXT_PLUGIN_URL . '/pict/'); // https://url/wp-content/plugins/extensions-leaflet-map-github/pict/
 define('LEAFEXT_PLUGIN_SETTINGS', dirname( plugin_basename( __FILE__ ) ) ); // extensions-leaflet-map
 
 if ( ! function_exists( 'is_plugin_active' ) )
@@ -34,8 +35,7 @@ if (is_admin()) {
 } else {
   include_once LEAFEXT_PLUGIN_DIR . '/php/functions.php';
   include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
-  include_once LEAFEXT_PLUGIN_DIR . '/php/elevation.php';
-  include_once LEAFEXT_PLUGIN_DIR . '/php/multielevation.php';
+  include_once LEAFEXT_PLUGIN_DIR . '/php/elevation/elevation_functions.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/fullscreen.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/gesture.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/hidemarkers.php';

@@ -1,6 +1,42 @@
 <?php
-//Parameter and Values
 
+include_once LEAFEXT_PLUGIN_DIR . '/php/elevation/elevation.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/elevation/multielevation.php';
+
+function leafext_elevation_case ($array) {
+	$params=array_keys(leafext_elevation_settings());
+	foreach ($params as $param) {
+		if (strtolower($param) != $param) {
+			if (isset($array[strtolower($param)])) {
+				$array[$param] = $array[strtolower($param)];
+				unset($array[strtolower($param)]);
+			}
+		}
+	}
+	return $array;
+}
+
+function leafext_elevation_settings() {
+	$defaults=array();
+	$params = leafext_elevation_params();
+	foreach($params as $param) {
+		$defaults[$param[0]] = $param[2];
+	}
+	$options = shortcode_atts($defaults, get_option('leafext_eleparams'));
+	return $options;
+}
+
+function leafext_array_find($needle, $haystack) {
+	foreach ($haystack as $item) {
+		//var_dump($item[0]);
+		if ($item[0] == $needle) {
+			return $item;
+			break;
+		}
+	}
+}
+
+//Parameter and Values
 function leafext_elevation_params() {
 	$params = array(
 
@@ -81,7 +117,7 @@ function leafext_elevation_params() {
 
 		// Toggle chart ruler filter.
 		//ruler: true,
-		array('ruler', __('Toggle chart ruler filter.',"extensions-leaflet-map"), true, 1),
+		//array('ruler', __('Toggle chart ruler filter.',"extensions-leaflet-map"), true, 1),
 
 		// Toggle chart legend filter.
 		//legend: true,
@@ -101,37 +137,4 @@ function leafext_elevation_params() {
 
 	);
 	return $params;
-}
-
-function leafext_elevation_case ($array) {
-	$params=array_keys(leafext_elevation_settings());
-	foreach ($params as $param) {
-		if (strtolower($param) != $param) {
-			if (isset($array[strtolower($param)])) {
-				$array[$param] = $array[strtolower($param)];
-				unset($array[strtolower($param)]);
-			}
-		}
-	}
-	return $array;
-}
-
-function leafext_array_find($needle, $haystack) {
-	foreach ($haystack as $item) {
-		//var_dump($item[0]);
-		if ($item[0] == $needle) {
-			return $item;
-			break;
-		}
-	}
-}
-
-function leafext_elevation_settings() {
-	$defaults=array();
-	$params = leafext_elevation_params();
-	foreach($params as $param) {
-		$defaults[$param[0]] = $param[2];
-	}
-	$options = shortcode_atts($defaults, get_option('leafext_eleparams'));
-	return $options;
 }

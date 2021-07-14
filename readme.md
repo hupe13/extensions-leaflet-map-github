@@ -172,7 +172,6 @@ You can define the options in Settings -> Leaflet Map -> Leaflet Map Extensions.
 
 ### More
 
-Maybe new functions are <a href="https://github.com/hupe13/extensions-leaflet-map-testing">here</a>.
 Detailed <a href="https://leafext.de/">documentation</a> in german.
 
 ## Installation
@@ -186,9 +185,11 @@ Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documenta
 
 ### 2.0 (Plan)
 
-* many new parameters for elevation
+* WordPress 5.8 tested
+* elevation now full configurable - many new options
 * leaflet-gesture-handling 1.3.5
-* Bugfix hover
+* leaflet-elevation-1.6.9
+* bug fix hover
 
 ### 1.5
 
