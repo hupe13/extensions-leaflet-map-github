@@ -52,10 +52,9 @@ You need to install the plugin <a href="https://wordpress.org/plugins/leaflet-ma
 [leaflet-map ....]
 // at least one marker if you use it with zoomehomemap
 [leaflet-marker lat=... lng=... ...]Start[/leaflet-marker]
-[elevation gpx="url_gpx_file"]
-// or
-[elevation gpx="url_gpx_file" summary=1]
+[elevation gpx="url_gpx_file" option1=value1 option2 !option3 ...]
 ```
+For options see the Elevation Charts Options tab in the admin settings or <a href="https://leafext.de/">here</a> (tbd).
 
 It is possible to display multiple tracks with their elevation profiles also, see help.
 
