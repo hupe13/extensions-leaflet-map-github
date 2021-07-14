@@ -17,20 +17,9 @@ function leafext_elevation_script($gpx,$theme,$settings){
 			theme: '.json_encode($theme).',
 		';
 
-	if ( $settings['summary'] == "1" ) {
-		//old settings
-		$text = $text . '
-			summary: "inline",
-			slope: "summary",
-			speed: false,
-			acceleration: false,
-			time: false,
-			downloadLink: false,
-			';
-	} else {
 		foreach ($settings as $k => $v) {
 			$text = $text. "$k: ";
-			var_dump($k,$v); 
+			var_dump($k,$v);
 			switch ($v) {
 				case "false":
 				case "0": $value = "false"; break;
@@ -42,10 +31,23 @@ function leafext_elevation_script($gpx,$theme,$settings){
 			switch ($k) {
 				case "polyline": $value = $v; break;
 			}
+			//old settings
+			if ( $settings['summary'] == "1" ) {
+				switch ($k) {
+					case "summary": $value = '"inline"'; break;
+					case "slope": $value = '"summary"'; break;
+					case "speed": $value = "false"; break;
+					case "acceleration": $value = "false"; break;
+					case "time": $value = "false"; break;
+					case "downloadLink": $value = "false"; break;
+					case "polyline": $value = "{ weight: 3, }"; break;
+				}
+			}
+			//old settings end
 			$text = $text.$value;
 			$text = $text.",\n";
 		}
-	}
+
 	$text = $text.'	};
 		var mylocale = {
 			"Altitude"	: "'.__("Altitude", "extensions-leaflet-map").'",
