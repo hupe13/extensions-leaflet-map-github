@@ -40,8 +40,9 @@ function leafext_elevation_script($gpx,$theme,$settings){
 					}
 					break;
 				case "boolean":
+				case "integer":
 					$value = $v ? "true" : "false"; break;
-				default:
+				default: //var_dump(gettype($v)); wp_die();
 			}
 			switch ($k) {
 				case "polyline": $value = $v; break;
@@ -92,7 +93,6 @@ function leafext_elevation_function( $atts ) {
 	//
 	$atts1=leafext_elevation_case(leafext_clear_params($atts));
 	$options = shortcode_atts( array_merge(array('gpx' => false),leafext_elevation_settings()), $atts1);
-
 	if ( ! $options['gpx'] ) wp_die("No gpx track!");
 	$track = $options['gpx'];
 	unset($options['gpx']);
