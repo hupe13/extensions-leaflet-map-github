@@ -2,7 +2,7 @@
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
-include LEAFEXT_PLUGIN_DIR . '/php/elevation_functions.php';
+include LEAFEXT_PLUGIN_DIR . '/php/elevation/elevation_functions.php';
 
 //Shortcode: [elevation gpx="...url..."]
 

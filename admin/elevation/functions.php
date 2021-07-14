@@ -1,7 +1,7 @@
 <?php
 
 function leafext_elevation_admin_init() {
-	include LEAFEXT_PLUGIN_DIR . '/php/elevation_functions.php';
+	include LEAFEXT_PLUGIN_DIR . '/php/elevation/elevation_functions.php';
 	include LEAFEXT_PLUGIN_DIR . '/admin/elevation/params.php';
 	include LEAFEXT_PLUGIN_DIR . '/admin/elevation/owntheme.php';
 }
