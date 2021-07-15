@@ -40,24 +40,24 @@ function leafext_do_page() {
 	if ( strpos( $active_tab, 'elevation' ) !== false ) {
 		echo ' nav-tab-active';
 	}
-	echo '">Elevation Settings</a>'."\n";
+	echo '">'. __('Elevation Settings','extensions-leaflet-map'). '</a>'."\n";
 	//
 	$tabs = array (
 		array (
 			'tab' => 'tilelayers',
-			'title' => 'Switching Tilelayers',
+			'title' => __('Switching Tile Layers','extensions-leaflet-map'),
 		),
 		array (
 			'tab' => 'cluster',
-			'title' => 'Markercluster and Grouping',
+			'title' => __('Markercluster and Grouping','extensions-leaflet-map'),
 		),
 		array (
 			'tab' => 'hover',
-			'title' => 'Hovering',
+			'title' => __('Hovering','extensions-leaflet-map'),
 		),
 		array (
 			'tab' => 'gesture',
-			'title' => 'Gesture Handling',
+			'title' => __('Gesture Handling','extensions-leaflet-map'),
 		),
 		array (
 			'tab' => 'zoomhome',

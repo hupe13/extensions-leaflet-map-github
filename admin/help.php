@@ -6,7 +6,7 @@ defined( 'ABSPATH' ) or die();
     <p>'.
 	__('Post it to the support forum','extensions-leaflet-map').': <a href="https://wordpress.org/support/plugin/extensions-leaflet-map/" target="_blank">Leaflet Map Extensions</a></p>';
 	//
-	$text=$text.'<h4 id="display-a-track-with-elevation-profile">'.__('Elevation profiles','extensions-leaflet-map').'</h4>
+	$text=$text.'<h4 id="display-a-track-with-elevation-profile">'.__('Elevation Profiles','extensions-leaflet-map').'</h4>
 	<img src="'.LEAFEXT_PLUGIN_PICTS.'elevation.png">
 	<img src="'.LEAFEXT_PLUGIN_PICTS.'multielevation.png">
 	<p>

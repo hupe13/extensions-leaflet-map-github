@@ -22,12 +22,12 @@ function leafext_form_elevation($field) {
 	$settings = leafext_elevation_settings();
 	$setting = $settings[$field];
 
-	echo __("You can change it for every map with", "extensions-leaflet-map").' <code>'.$option[0]. '</code><br>';
+	echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option[0]. '</code><br>';
 	if (!is_array($option[3])) {
 
 		if ($setting != $option[2] ) {
 			//var_dump($setting,$option[2]);
-			echo __("Plugins Default:", "extensions-leaflet-map").' ';
+			echo __("Plugins Default", "extensions-leaflet-map").': ';
 			echo $option[2] ? "1" : "0";
 			echo '<br>';
 		}
@@ -66,7 +66,7 @@ function leafext_validate_ele_options($options) {
 // Helptext
 function leafext_ele_help_text () {
 	echo '<p>';
-	echo __('For boolean values', "extensions-leaflet-map").':<br>';
+	echo __('For boolean values applies', "extensions-leaflet-map").':<br>';
 	echo '<code>false</code> = <code>!parameter</code> || <code>parameter="0"</code> || <code>parameter=0</code></br>';
 	echo '<code>true</code> = <code>parameter</code> || <code>parameter="1"</code> || <code>parameter=1</code>';
 	echo '</p>';
@@ -79,7 +79,13 @@ function leafext_ele_help_text () {
 		} else {
 			echo '<span style="color: #d63638">';
 			echo __('Your theme is','extensions-leaflet-map').' '.$theme['theme'].'. ';
-			echo __('Please delete <a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevationtheme">these</a> <code>theme</code> settings, these are valid as long as they are not deleted.',"extensions-leaflet-map");
+			echo sprintf(
+				__(
+				'Please delete %s these %stheme%s settings, these are valid as long as they are not deleted.',
+				"extensions-leaflet-map"),
+				'<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevationtheme">',
+				'<code>',
+				'</code></a>');
 			echo '</span>';
 		}
 		echo '</p>';

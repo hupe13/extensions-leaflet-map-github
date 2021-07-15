@@ -10,19 +10,19 @@ function leafext_elevation_tab() {
 	$tabs = array (
 		array (
 			'tab' => 'elevation',
-			'title' => 'Elevation Profile',
+			'title' => __('Elevation Profile','extensions-leaflet-map'),
 			),
 		array (
 			'tab' => 'elevationoptions',
-			'title' => 'Elevation Chart Options',
+			'title' => __('Elevation Chart Options','extensions-leaflet-map'),
 		),
 		array (
 			'tab' => 'multielevation',
-			'title' => 'Multiple hoverable tracks',
+			'title' => __('Multiple hoverable tracks','extensions-leaflet-map'),
 		),
 		array (
 			'tab' => 'elevationtheme',
-			'title' => 'Own theme',
+			'title' => __('Own theme','extensions-leaflet-map'),
 		),
 		// array (
 			// 'tab' => '',
