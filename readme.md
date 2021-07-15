@@ -184,8 +184,8 @@ Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documenta
 
 ### 2.0 (Plan)
 
-* WordPress 5.8 tested
-* elevation now full configurable - many new options
+* Tested on WordPress 5.8
+* enhancement of elevation and introduction of many parameters
 * leaflet-gesture-handling 1.3.5
 * leaflet-elevation-1.6.9
 * bug fix hover
