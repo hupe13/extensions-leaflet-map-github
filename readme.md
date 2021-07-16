@@ -6,7 +6,7 @@ Contributors: hupe13
 Tags: leaflet-map, elevation, markercluster, zoomhome, hover, fullscreen  
 Requires at least: 5.5.3  
 Tested up to: 5.8  
-Stable tag: 1.5  
+Stable tag: 2.0  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -182,7 +182,7 @@ Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documenta
 
 ## Changelog
 
-### 2.0 (Plan)
+### 2.0
 
 * Tested on WordPress 5.8
 * enhancement of elevation and introduction of many parameters
