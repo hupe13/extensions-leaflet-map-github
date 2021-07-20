@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extensions-leaflet-map-testing\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-15 07:16+0000\n"
+"POT-Creation-Date: 2021-07-16 19:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "[Lat, Long] vs [Long, Lat] points. (leaflet default: [Lat, Long])"
 msgstr ""
 
-#: php/elevation/elevation.php:70
+#: php/elevation/elevation.php:61
 msgid "Acceleration"
 msgstr ""
 
@@ -50,11 +50,11 @@ msgstr ""
 msgid "Autoupdate map center on chart mouseover."
 msgstr ""
 
-#: php/elevation/elevation.php:73
+#: php/elevation/elevation.php:74
 msgid "Avg Acceleration"
 msgstr ""
 
-#: php/elevation/elevation.php:69
+#: php/elevation/elevation.php:71
 msgid "Avg Speed"
 msgstr ""
 
@@ -127,6 +127,10 @@ msgstr ""
 
 #: admin/help.php:9
 msgid "Elevation Profiles"
+msgstr ""
+
+#: admin.php:43
+msgid "Elevation Settings"
 msgstr ""
 
 #: admin/markercluster.php:32 admin/elevation/multi.php:27
@@ -233,35 +237,35 @@ msgstr ""
 msgid "Markercluster and Grouping"
 msgstr ""
 
-#: php/elevation/elevation.php:72
+#: php/elevation/elevation.php:73
 msgid "Max Acceleration"
 msgstr ""
 
-#: php/elevation/elevation.php:60 php/elevation/multielevation.php:72
+#: php/elevation/elevation.php:63 php/elevation/multielevation.php:72
 msgid "Max Elevation"
 msgstr ""
 
-#: php/elevation/elevation.php:65 php/elevation/multielevation.php:77
+#: php/elevation/elevation.php:68 php/elevation/multielevation.php:77
 msgid "Max Slope"
 msgstr ""
 
-#: php/elevation/elevation.php:68
+#: php/elevation/elevation.php:70
 msgid "Max Speed"
 msgstr ""
 
-#: php/elevation/elevation.php:71
+#: php/elevation/elevation.php:72
 msgid "Min Acceleration"
 msgstr ""
 
-#: php/elevation/elevation.php:61 php/elevation/multielevation.php:73
+#: php/elevation/elevation.php:64 php/elevation/multielevation.php:73
 msgid "Min Elevation"
 msgstr ""
 
-#: php/elevation/elevation.php:64 php/elevation/multielevation.php:76
+#: php/elevation/elevation.php:67 php/elevation/multielevation.php:76
 msgid "Min Slope"
 msgstr ""
 
-#: php/elevation/elevation.php:67
+#: php/elevation/elevation.php:69
 msgid "Min Speed"
 msgstr ""
 
@@ -340,11 +344,15 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
+#: php/elevation/elevation.php:59
+msgid "Slope"
+msgstr ""
+
 #: php/elevation/elevation_functions.php:91
 msgid "Slope chart profile"
 msgstr ""
 
-#: php/elevation/elevation.php:66
+#: php/elevation/elevation.php:60
 msgid "Speed"
 msgstr ""
 
@@ -414,15 +422,15 @@ msgstr ""
 msgid "Toggle chart legend filter."
 msgstr ""
 
-#: php/elevation/elevation.php:62 php/elevation/multielevation.php:74
+#: php/elevation/elevation.php:65 php/elevation/multielevation.php:74
 msgid "Total Ascent"
 msgstr ""
 
-#: php/elevation/elevation.php:63 php/elevation/multielevation.php:75
+#: php/elevation/elevation.php:66 php/elevation/multielevation.php:75
 msgid "Total Descent"
 msgstr ""
 
-#: php/elevation/elevation.php:59 php/elevation/multielevation.php:71
+#: php/elevation/elevation.php:62 php/elevation/multielevation.php:71
 msgid "Total Length"
 msgstr ""
 
