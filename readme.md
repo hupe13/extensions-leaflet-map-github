@@ -3,7 +3,7 @@
 # Extensions for Leaflet Map
 
 Contributors: hupe13  
-Tags: leaflet-map, elevation, markercluster, zoomhome, hover, fullscreen  
+Tags: leaflet, elevation, markercluster, zoomhome, hover, fullscreen  
 Requires at least: 5.5.3  
 Tested up to: 5.8  
 Stable tag: 2.0  
@@ -45,8 +45,6 @@ You need to install the plugin <a href="https://wordpress.org/plugins/leaflet-ma
 ## Frequently Asked Questions
 
 ### Display a track with elevation profile
-
-<p>You may go to Settings -> Leaflet Map -> Leaflet Map Extensions and select a color theme.</p>
 
 ```php
 [leaflet-map ....]
@@ -137,7 +135,7 @@ or
 
 ### hover
 
-<p>Use it to highlight a geojson element or marker on mouse over.</p>
+<p>Use it to highlight a geojson element or get a tooltip on mouse over.</p>
 
 ```php
 [leaflet-map ...]
@@ -181,6 +179,10 @@ Please see https://wordpress.org/support/article/managing-plugins/#installing-pl
 Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documentation and settings options.
 
 ## Changelog
+
+### 2.0.1
+
+* Works with Elementor now
 
 ### 2.0
 
