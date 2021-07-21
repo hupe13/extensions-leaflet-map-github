@@ -30,11 +30,12 @@ if ( ! is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
   //register_activation_hook(__FILE__, 'leafext_require_leaflet_map_plugin');
 }
 
-include_once LEAFEXT_PLUGIN_DIR . '/php/functions.php';
 if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . 'admin.php';
 } //else {
-//  include_once LEAFEXT_PLUGIN_DIR . '/php/functions.php';
+
+if (!is_admin() || is_plugin_active( 'elementor/elementor.php' ) ) {
+  include_once LEAFEXT_PLUGIN_DIR . '/php/functions.php';
   include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/elevation/elevation_functions.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/fullscreen.php';
@@ -46,7 +47,7 @@ if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . '/php/layerswitch.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/featuregroup.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/safari.php';
-//}
+}
 
 // Add settings to plugin page
 function leafext_add_action_links ( $actions ) {
