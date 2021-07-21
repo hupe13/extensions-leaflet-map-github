@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name: Extensions for Leaflet Map Github
- * Plugin URI:  https://github.com/hupe13/extensions-leaflet-map
- * Description: Extensions for the WordPress plugin Leaflet Map Github
+ * Plugin Name: Extensions for Leaflet Map
+ * Plugin URI:  https://wordpress.org/plugins/extensions-leaflet-map
+ * Description: Extensions for the WordPress plugin Leaflet Map
  * Version:     2.0
  * Author:      hupe13
  * Text Domain: extensions-leaflet-map
@@ -30,10 +30,11 @@ if ( ! is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
   //register_activation_hook(__FILE__, 'leafext_require_leaflet_map_plugin');
 }
 
+include_once LEAFEXT_PLUGIN_DIR . '/php/functions.php';
 if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . 'admin.php';
-} else {
-  include_once LEAFEXT_PLUGIN_DIR . '/php/functions.php';
+} //else {
+//  include_once LEAFEXT_PLUGIN_DIR . '/php/functions.php';
   include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/elevation/elevation_functions.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/fullscreen.php';
@@ -45,7 +46,7 @@ if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . '/php/layerswitch.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/featuregroup.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/safari.php';
-}
+//}
 
 // Add settings to plugin page
 function leafext_add_action_links ( $actions ) {

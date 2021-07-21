@@ -10,9 +10,9 @@ $text = '
 [leaflet-marker lat=... lng=... ...]Start[/leaflet-marker]
 [elevation gpx="url_gpx_file" option1=value1 option2 !option3 ...]
 </code></pre>';
-$text = $text . __('For options see the','extensions-leaflet-map');
+$text = $text . __('For options see ','extensions-leaflet-map');
 $text = $text . ' <a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevationoptions">';
 $text = $text . __('Elevation Chart Options','extensions-leaflet-map');
-$text = $text . 'tab</a>.';
+$text = $text . '</a>.';
 
 echo $text;

@@ -1,11 +1,5 @@
 <?php
 
-function leafext_elevation_admin_init() {
-	include_once LEAFEXT_PLUGIN_DIR . '/php/elevation/elevation_functions.php';
-	include LEAFEXT_PLUGIN_DIR . '/admin/elevation/params.php';
-	include LEAFEXT_PLUGIN_DIR . '/admin/elevation/owntheme.php';
-}
-
 function leafext_elevation_tab() {
 	$tabs = array (
 		array (
@@ -24,10 +18,6 @@ function leafext_elevation_tab() {
 			'tab' => 'elevationtheme',
 			'title' => __('Own theme','extensions-leaflet-map'),
 		),
-		// array (
-			// 'tab' => '',
-			// 'title' => '',
-		// ),
 	);
 
 	$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : '';

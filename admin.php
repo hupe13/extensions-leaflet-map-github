@@ -3,7 +3,8 @@
 defined( 'ABSPATH' ) or die();
 //
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/functions.php';
-leafext_elevation_admin_init();
+include LEAFEXT_PLUGIN_DIR . '/admin/elevation/params.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/elevation/owntheme.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/layerswitch.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/markercluster.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';

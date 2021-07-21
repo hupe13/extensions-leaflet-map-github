@@ -56,9 +56,6 @@ function leafext_elevation_script($gpx,$theme,$settings){
 	$text = $text.'	};
 		var mylocale = {
 			"Altitude"	: "'.__("Altitude", "extensions-leaflet-map").'",
-			"Slope"	: "'.__("Slope", "extensions-leaflet-map").'",
-			"Speed"	: "'.__("Speed", "extensions-leaflet-map").'",
-			"Acceleration"	: "'.__("Acceleration", "extensions-leaflet-map").'",
 			"Total Length: "	: "'.__("Total Length", "extensions-leaflet-map").': ",
 			"Max Elevation: "	: "'.__("Max Elevation", "extensions-leaflet-map").': ",
 			"Min Elevation: "	: "'.__("Min Elevation", "extensions-leaflet-map").': ",
@@ -66,9 +63,11 @@ function leafext_elevation_script($gpx,$theme,$settings){
 			"Total Descent: "	: "'.__("Total Descent", "extensions-leaflet-map").': ",
 			"Min Slope: "	: "'.__("Min Slope", "extensions-leaflet-map").': ",
 			"Max Slope: "	: "'.__("Max Slope", "extensions-leaflet-map").': ",
+			"Speed: "	: "'.__("Speed", "extensions-leaflet-map").': ",
 			"Min Speed: "	: "'.__("Min Speed", "extensions-leaflet-map").': ",
 			"Max Speed: "	: "'.__("Max Speed", "extensions-leaflet-map").': ",
 			"Avg Speed: "	: "'.__("Avg Speed", "extensions-leaflet-map").': ",
+			"Acceleration: "	: "'.__("Acceleration", "extensions-leaflet-map").': ",
 			"Min Acceleration: "	: "'.__("Min Acceleration", "extensions-leaflet-map").': ",
 			"Max Acceleration: "	: "'.__("Max Acceleration", "extensions-leaflet-map").': ",
 			"Avg Acceleration: "	: "'.__("Avg Acceleration", "extensions-leaflet-map").': ",
