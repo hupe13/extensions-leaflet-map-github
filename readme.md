@@ -6,7 +6,7 @@ Contributors: hupe13
 Tags: leaflet, elevation, markercluster, zoomhome, hover, fullscreen  
 Requires at least: 5.5.3  
 Tested up to: 5.8  
-Stable tag: 2.0  
+Stable tag: 2.0.1  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -52,7 +52,7 @@ You need to install the plugin <a href="https://wordpress.org/plugins/leaflet-ma
 [leaflet-marker lat=... lng=... ...]Start[/leaflet-marker]
 [elevation gpx="url_gpx_file" option1=value1 option2 !option3 ...]
 ```
-For options see the Elevation Charts Options tab in the admin settings or <a href="https://leafext.de/">here</a> (tbd).
+For options see the Elevation Charts Options tab in the admin settings or <a href="https://leafext.de/doku/elevation/">here</a>.
 
 It is possible to display multiple tracks with their elevation profiles also, see help.
 

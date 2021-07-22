@@ -2,6 +2,7 @@
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 //
+include LEAFEXT_PLUGIN_DIR . 'php/elevation/elevation_functions.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/functions.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/params.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/owntheme.php';

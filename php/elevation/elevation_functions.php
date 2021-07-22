@@ -16,16 +16,6 @@ function leafext_elevation_case ($array) {
 	return $array;
 }
 
-function leafext_elevation_settings() {
-	$defaults=array();
-	$params = leafext_elevation_params();
-	foreach($params as $param) {
-		$defaults[$param[0]] = $param[2];
-	}
-	$options = shortcode_atts($defaults, get_option('leafext_eleparams'));
-	return $options;
-}
-
 function leafext_array_find($needle, $haystack) {
 	foreach ($haystack as $item) {
 		//var_dump($item[0]);
@@ -137,4 +127,14 @@ function leafext_elevation_params() {
 
 	);
 	return $params;
+}
+
+function leafext_elevation_settings() {
+	$defaults=array();
+	$params = leafext_elevation_params();
+	foreach($params as $param) {
+		$defaults[$param[0]] = $param[2];
+	}
+	$options = shortcode_atts($defaults, get_option('leafext_eleparams'));
+	return $options;
 }
