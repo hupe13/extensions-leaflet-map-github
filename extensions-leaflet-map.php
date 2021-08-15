@@ -34,7 +34,7 @@ if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . 'admin.php';
 } //else {
 
-if (!is_admin() || is_plugin_active( 'elementor/elementor.php' ) ) {
+//if (!is_admin() || is_plugin_active( 'elementor/elementor.php' ) ) {
   include_once LEAFEXT_PLUGIN_DIR . '/php/functions.php';
   include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/elevation/elevation_functions.php';
@@ -47,7 +47,7 @@ if (!is_admin() || is_plugin_active( 'elementor/elementor.php' ) ) {
   include_once LEAFEXT_PLUGIN_DIR . '/php/layerswitch.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/featuregroup.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/safari.php';
-}
+//}
 
 // Add settings to plugin page
 function leafext_add_action_links ( $actions ) {
