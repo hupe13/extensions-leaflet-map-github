@@ -59,7 +59,7 @@ var _DEFAULT_MARKER_OPTS = {
     '': 'pin-icon-wpt.png',
   },
   pointMatchers: [],
-  iconSize: [33, 45],
+  iconSize: [33, 50],
   shadowSize: [50, 50],
   iconAnchor: [16, 45],
   shadowAnchor: [16, 47],
@@ -461,10 +461,6 @@ L.GPX = L.FeatureGroup.extend({
       _ = el[i].getElementsByTagName('ele');
       if (_.length > 0) {
         ll.meta.ele = parseFloat(_[0].textContent);
-      } else {
-        // If the point doesn't have an <ele> tag, assume it has the same
-        // elevation as the point before it (if it had one).
-        ll.meta.ele = last.meta.ele;
       }
 
       _ = el[i].getElementsByTagName('name');
