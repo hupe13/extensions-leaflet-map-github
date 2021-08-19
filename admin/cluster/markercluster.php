@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die();
 
 // init settings fuer cluster
 function leafext_cluster_init(){
-	add_settings_section( 'cluster_settings', 'Leaflet.markercluster and Leaflet.FeatureGroup.SubGroup', 'leafext_cluster_help_text', 'leafext_settings_cluster' );
+	add_settings_section( 'cluster_settings', leafext_cluster_tab(), 'leafext_cluster_help_text', 'leafext_settings_cluster' );
 	add_settings_field( 'leafext_cluster_disableClusteringAtZoom', 'disableClusteringAtZoom', 'leafext_form_cluster_disableClusteringAtZoom', 'leafext_settings_cluster', 'cluster_settings' );
 	add_settings_field( 'leafext_cluster_maxClusterRadius', 'maxClusterRadius', 'leafext_form_cluster_maxClusterRadius', 'leafext_settings_cluster', 'cluster_settings' );
 	add_settings_field( 'leafext_cluster_spiderfyOnMaxZoom', 'spiderfyOnMaxZoom', 'leafext_form_cluster_spiderfyOnMaxZoom', 'leafext_settings_cluster', 'cluster_settings' );
@@ -85,13 +85,12 @@ function leafext_validate_cluster($input) {
 
 // Erklaerung
 function leafext_cluster_help_text() {
-	//echo '<h4 id="leaflet.markercluster">Leaflet.markercluster and Leaflet.FeatureGroup.SubGroup</h4>
-	echo '<img src="'.LEAFEXT_PLUGIN_PICTS.'cluster.png">
-	<img src="'.LEAFEXT_PLUGIN_PICTS.'clustergroup.png">
-	<p>'.__('Many markers on a map become confusing. That is why they are clustered','extensions-leaflet-map').'.</p>
-	<p>'.__('You may be interested in dynamically add/remove groups of markers from Marker Cluster with Leaflet.FeatureGroup.SubGroup.','extensions-leaflet-map').
-	'</p>
+	echo '
 	<h2>Leaflet.markercluster</h2>
+	<img src="'.LEAFEXT_PLUGIN_PICTS.'cluster.png">
+	<p>'.__('Many markers on a map become confusing. That is why they are clustered','extensions-leaflet-map').'.</p>
+	
+	<h3>Shortcode</h3>
 	<pre><code>[leaflet-map ....]
 // many markers
 [leaflet-marker lat=... lng=... ...]poi1[/leaflet-marker]
@@ -102,34 +101,9 @@ function leafext_cluster_help_text() {
 // or
 [cluster radius="..." zoom="..." spiderfy=0]
 [zoomhomemap]
-</code></pre>';
+</code></pre>
 
-	echo '<h2 id="leaflet.featuregroup.subgroup">Leaflet.FeatureGroup.SubGroup</h2>
-<p>'.
-__('dynamically add/remove groups of markers from Marker Cluster','extensions-leaflet-map').
-'.<br>Parameter:</p>
-<ul>
-<li>feat - '.__('possible meaningful values','extensions-leaflet-map').': iconUrl, title</li>
-<li>strings - '.
-__('comma separated strings to distinguish the markers, e.g. an unique string in iconUrl or title',
-'extensions-leaflet-map').'</li>
-<li>groups - '.
-__('comma separated labels appear in the selection menu','extensions-leaflet-map').'</li>
-<li>'.
-__('The number of strings and groups must match.','extensions-leaflet-map').'
-</li></ul>
-<pre><code>[leaflet-marker iconUrl="...red..." ... ] ... [/leaflet-marker]
-[leaflet-marker iconUrl="...green..." ... ] ... [/leaflet-marker]
-//many markers
-[markerClusterGroup feat="iconUrl" strings="red,green" groups="rot,gruen"]
-</code></pre>
-'.__('or','extensions-leaflet-map').'
-<pre><code>[leaflet-marker title="first ..."  ... ] ... [/leaflet-marker]
-[leaflet-marker title="second ..." ... ] ... [/leaflet-marker]
-//many markers
-[markerClusterGroup feat="title" strings="first,second" groups="First Group,Second Group"]
-</code></pre>
-<h2>Options for Leaflet.markercluster</h2>';
+<h3>Options</h3>';
 echo '<p>'.
   __('Please see the <a href="https://github.com/Leaflet/Leaflet.markercluster#options">Leaflet.markercluster</a> page for options. If you want to change other ones, please post it to the forum.',
   'extensions-leaflet-map').' ';

@@ -17,44 +17,32 @@ defined( 'ABSPATH' ) or die();
 			'</a>');
 	$text=$text.'.</p>';
 	//
-	$text=$text.'<h4 id="display-a-track-with-elevation-profile">'.__('Elevation Profiles','extensions-leaflet-map').'</h4>
-	<img src="'.LEAFEXT_PLUGIN_PICTS.'elevation.png">
-	<img src="'.LEAFEXT_PLUGIN_PICTS.'multielevation.png">
-	<p>
-	<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">'.
-	__('Help and Settings','extensions-leaflet-map').'</a>
-	</p>';
-	//
-	$text=$text.'<h4 id="switching-tile-layers">'.__('Switching Tile Layers','extensions-leaflet-map').'</h4>
-	<img src="'.LEAFEXT_PLUGIN_PICTS.'layerswitch.png">
-	<p>
-	<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=tilelayers">'.
-	__('Help and Settings','extensions-leaflet-map').'</a>
-	</p>';
-	//
-	$text=$text.'<h4 id="leaflet.markercluster">Leaflet.markercluster and Leaflet.FeatureGroup.SubGroup</h4>
-	<img src="'.LEAFEXT_PLUGIN_PICTS.'cluster.png">
-	<img src="'.LEAFEXT_PLUGIN_PICTS.'clustergroup.png">
-	<p>
-	<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=cluster">'.
-	__('Help and Settings','extensions-leaflet-map').'</a>
-	</p>';
-	//
-	$text=$text.'<h4 id="leaflet.zoomhome">leaflet.zoomhome</h4>
-	<img src="'.LEAFEXT_PLUGIN_PICTS.'home.png">
-	<p>
-	<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=zoomhome">'.
-	__('Help','extensions-leaflet-map').'</a>
-	</p>';
-	//
-	include 'help/fullscreen.php';
-	//
-	$text=$text.'<h4 id="gesturehandling">GestureHandling</h4>
-	<img src="'.LEAFEXT_PLUGIN_PICTS.'gesture.png">
-	<p>
-	<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=gesture">'.
-	__('Help and Settings','extensions-leaflet-map').'</a>
-	</p>';
-	//
-	include 'help/hidemarkers.php';
+	$text=$text.'<figure>
+	<table cellpadding="5" cellspacing="5" border="1" class="display">
+	<thead><tr><th>Function</th><th>Shortcode(s)</th><th>Leaflet Plugins and Elements</th></tr></thead>
+	<tbody>
+	
+	<tr><td>'.__('track with an elevation profile','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=elevation">elevation</a></td><td><a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a></td></tr>
+	
+	<tr><td>'.__('multiple tracks with elevation profiles','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=multielevation">elevation-track, elevation-tracks</a></td><td><a href="https://github.com/mpetazzoni/leaflet-gpx">leaflet-gpx</a>, <a href="https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js">leaflet-gpxgroup</a></td></tr>
+	
+	<tr><td>'.__('switching tile servers','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=tilelayers">layerswitch</a></td><td><a href="https://leafletjs.com/examples/layers-control/">L.control.layers</a></td></tr>
+	
+	<tr><td>'.__('marker clustering','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=markercluster">cluster</a></td><td><a href="https://github.com/Leaflet/Leaflet.markercluster">Leaflet.markercluster</a></td></tr>
+	
+	<tr><td>'.__('clustering and grouping of markers','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=clustergroup">markerClusterGroup</a></td><td><a href="https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup">Leaflet.FeatureGroup.SubGroup</a></td></tr>
+	
+	<tr><td>'.__('styling markercluster','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=clusterplacementstrategies">placementstrategies</a></td><td><a href="https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies">Leaflet.MarkerCluster.PlacementStrategies</a></td></tr>
+	
+	<tr><td>'.__('reset the map','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=zoomhome">zoomhomemap</a></td><td><a href="https://github.com/torfsen/leaflet.zoomhome">leaflet.zoomhome</a></td></tr>
+	
+	<tr><td>fullscreen</td><td><a href="?page='.$leafext_plugin_name.'&tab=other">fullscreen</a></td><td><a href="https://github.com/brunob/leaflet.fullscreen">leaflet.fullscreen</a></td></tr>
+	
+	<tr><td>'.__('gesture handling','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=gesture" >gestures</a></td><td><a href="https://github.com/Raruto/leaflet-gesture-handling">Leaflet.GestureHandling</a></td></tr>
+	
+	<tr><td>'.__('Hovering and Tooltips','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=hover" >hover</a></td><td></td></tr>
+	
+	<tr><td>'.__('hide markers','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=other">hidemarkers</a></td><td></td></tr>
+	
+	</tbody></table></figure>';
 	echo $text;

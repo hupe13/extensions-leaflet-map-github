@@ -7,7 +7,9 @@ include LEAFEXT_PLUGIN_DIR . '/admin/elevation/functions.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/params.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/owntheme.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/layerswitch.php';
-include LEAFEXT_PLUGIN_DIR . '/admin/markercluster.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/cluster/cluster.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/cluster/markercluster.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/cluster/placementstrategies.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
 
 // Add menu page
@@ -44,14 +46,16 @@ function leafext_do_page() {
 	}
 	echo '">'. __('Elevation Settings','extensions-leaflet-map'). '</a>'."\n";
 	//
+	echo '<a href="?page='.$leafext_plugin_name.'&tab=markercluster" class="nav-tab';
+	if ( strpos( $active_tab, 'cluster' ) !== false ) {
+		echo ' nav-tab-active';
+	}
+	echo '">'. __('Markercluster','extensions-leaflet-map'). '</a>'."\n";
+	//
 	$tabs = array (
 		array (
 			'tab' => 'tilelayers',
 			'title' => __('Switching Tile Layers','extensions-leaflet-map'),
-		),
-		array (
-			'tab' => 'cluster',
-			'title' => __('Markercluster and Grouping','extensions-leaflet-map'),
 		),
 		array (
 			'tab' => 'hover',
@@ -64,6 +68,10 @@ function leafext_do_page() {
 		array (
 			'tab' => 'zoomhome',
 			'title' => 'leaflet.zoomhome',
+		),
+		array (
+			'tab' => 'other',
+			'title' => 'Other functions',
 		),
 		// array (
 		// 	'tab' => '',
@@ -81,18 +89,13 @@ function leafext_do_page() {
 
 	if ( strpos( $active_tab,  'elevation' ) !== false ) {
 		leafext_admin_elevation($active_tab);
+	} else if ( strpos( $active_tab, 'cluster' ) !== false ) {
+		leafext_admin_cluster($active_tab);
 	} else if ( $active_tab == 'tilelayers' ) {
 		echo '<form method="post" action="options.php">';
 		settings_fields('leafext_settings_maps');
 		do_settings_sections( 'leafext_settings_maps' );
 		submit_button();
-		echo '</form>';
-	} else if( $active_tab == 'cluster' ) {
-		echo '<form method="post" action="options.php">';
-		settings_fields('leafext_settings_cluster');
-		do_settings_sections( 'leafext_settings_cluster' );
-		submit_button();
-		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		echo '</form>';
 	} else if( $active_tab == 'hover' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/help/hovergeojson.php';
@@ -106,5 +109,7 @@ function leafext_do_page() {
 		include LEAFEXT_PLUGIN_DIR . '/admin/help/zoomhome.php';
 	} else if( $active_tab == 'help' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/help.php';
+	} else if( $active_tab == 'other' ) {
+		include LEAFEXT_PLUGIN_DIR . '/admin/other.php';
 	}
 }
