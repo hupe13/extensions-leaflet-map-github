@@ -212,6 +212,7 @@ window.WPLeafletMapPlugin.push(function () {
 			var a = WPLeafletMapPlugin.markers[i];
 			a.on("mouseover", function (e) {
 				//console.log("marker mouseover");
+				if (typeof e.sourceTarget.getPopup() != "undefined") {
 				if ( ! e.sourceTarget.getPopup().isOpen()) {
 					map.closePopup();
 					var content = e.sourceTarget.getPopup().getContent();
@@ -219,7 +220,7 @@ window.WPLeafletMapPlugin.push(function () {
 					e.sourceTarget.openTooltip(e.latlng);
 				// } else {
 					//
-				}
+				}}
 			});
 			a.on("click", function (e) {
 				//console.log("click");
