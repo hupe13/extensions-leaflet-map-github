@@ -3,7 +3,7 @@
 # Extensions for Leaflet Map
 
 Contributors: hupe13  
-Tags: leaflet, elevation, markercluster, zoomhome, hover, fullscreen  
+Tags: leaflet, elevation, markercluster, zoomhome, hover, fullscreen, gpx,  
 Requires at least: 5.5.3  
 Tested up to: 5.8  
 Stable tag: 2.0.3  
