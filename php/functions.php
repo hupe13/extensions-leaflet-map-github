@@ -81,4 +81,27 @@ function leafext_clear_params($atts) {
 	return($atts);
 }
 
+function leafext_elevation_case ($array) {
+	$params=array_keys(leafext_elevation_settings());
+	foreach ($params as $param) {
+		if (strtolower($param) != $param) {
+			if (isset($array[strtolower($param)])) {
+				$array[$param] = $array[strtolower($param)];
+				unset($array[strtolower($param)]);
+			}
+		}
+	}
+	return $array;
+}
+
+function leafext_array_find($needle, $haystack) {
+	foreach ($haystack as $item) {
+		//var_dump($item[0]);
+		if ($item[0] == $needle) {
+			return $item;
+			break;
+		}
+	}
+}
+
 ?>

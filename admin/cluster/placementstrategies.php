@@ -90,6 +90,8 @@ function leafext_placement_help_text () {
 ...
 [leaflet-marker lat=... lng=... ...]poixx[/leaflet-marker]
 [placementstrategies ...]
+//optional
+[hover]
 [zoomhomemap]
 </code></pre>
 <h3>Options</h3>';
