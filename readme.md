@@ -25,6 +25,7 @@ You need to install the plugin <a href="https://wordpress.org/plugins/leaflet-ma
 *   [L.control.layers](https://leafletjs.com/examples/layers-control/): Switching Tilelayers
 *   [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster): Marker Cluster
 *   [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup):  add/remove groups of markers from Marker Cluster.
+*	[Leaflet.MarkerCluster.PlacementStrategies](https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies): subplugin for the Leaflet.MarkerCluster that implements new possibilities how to place clustered chidren markers
 *   [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome): Reset the view
 *   [leaflet.fullscreen](https://github.com/brunob/leaflet.fullscreen): Fullscreen mode
 *   [Leaflet.GestureHandling](https://github.com/Raruto/leaflet-gesture-handling): Gesture Handling
@@ -108,6 +109,10 @@ or
 //many markers
 [markerClusterGroup feat="title" strings="first,second" groups="First Group,Second Group"]
 ```
+
+### Leaflet.MarkerCluster.PlacementStrategies
+
+see admin interface 
 
 ### leaflet.zoomhome
 
