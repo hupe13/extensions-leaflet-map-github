@@ -165,6 +165,12 @@ function leafext_placementstrategies_settings() {
 	return $options;
 }
 
+function leafext_enqueue_placementstrategies () {
+	wp_enqueue_script('placementstrategies',
+		plugins_url('leaflet-plugins/Leaflet.MarkerCluster.PlacementStrategies/leaflet-markercluster.placementstrategies.js',LEAFEXT_PLUGIN_FILE),
+		array('markercluster'),null );
+}
+
 function leafext_placementstrategies_function( $atts ){
 	leafext_enqueue_markercluster ();
 	leafext_enqueue_placementstrategies ();

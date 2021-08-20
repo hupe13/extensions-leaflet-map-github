@@ -7,10 +7,6 @@ function leafext_elevation_tab() {
 			'title' => __('Elevation Profile','extensions-leaflet-map'),
 			),
 		array (
-			'tab' => 'elevationoptions',
-			'title' => __('Elevation Chart Options','extensions-leaflet-map'),
-		),
-		array (
 			'tab' => 'multielevation',
 			'title' => __('Multiple hoverable tracks','extensions-leaflet-map'),
 		),
@@ -36,10 +32,7 @@ function leafext_elevation_tab() {
 }
 
 function leafext_admin_elevation($active_tab) {
-	if( $active_tab == 'elevation') {
-		echo '<h2>'.leafext_elevation_tab().'</h2>';
-		include LEAFEXT_PLUGIN_DIR . '/admin/elevation/elevation.php';
-	} else if( $active_tab == 'multielevation') {
+	if( $active_tab == 'multielevation') {
 		echo '<h2>'.leafext_elevation_tab().'</h2>';
 		include LEAFEXT_PLUGIN_DIR . '/admin/elevation/multi.php';
 	} else if( $active_tab == 'elevationtheme') {
@@ -49,7 +42,7 @@ function leafext_admin_elevation($active_tab) {
 		submit_button();
 		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		echo '</form>';
-	} else if( $active_tab == 'elevationoptions' ) {
+	} else if( $active_tab == 'elevation' ) {
 		echo '<form method="post" action="options.php">';
 		settings_fields('leafext_settings_eleparams');
 		do_settings_sections( 'leafext_settings_eleparams' );

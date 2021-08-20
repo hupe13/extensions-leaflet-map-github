@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die();
 //
 include LEAFEXT_PLUGIN_DIR . 'php/elevation/elevation_functions.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/functions.php';
-include LEAFEXT_PLUGIN_DIR . '/admin/elevation/params.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/elevation/elevation.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/owntheme.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/layerswitch.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/cluster/cluster.php';
@@ -44,7 +44,7 @@ function leafext_do_page() {
 	if ( strpos( $active_tab, 'elevation' ) !== false ) {
 		echo ' nav-tab-active';
 	}
-	echo '">'. __('Elevation Settings','extensions-leaflet-map'). '</a>'."\n";
+	echo '">'. __('Elevation Profiles','extensions-leaflet-map'). '</a>'."\n";
 	//
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=markercluster" class="nav-tab';
 	if ( strpos( $active_tab, 'cluster' ) !== false ) {
