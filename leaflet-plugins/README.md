@@ -6,13 +6,15 @@ https://github.com/brunob/leaflet.fullscreen
 
 <pre>[fullscreen]</pre>
 
-<h3>Markercluster and Grouping</h3>
+<h3>Markercluster</h3>
 
 https://github.com/Leaflet/Leaflet.markercluster   
 https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup
+https://raw.githubusercontent.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies/master/dist/leaflet-markercluster.placementstrategies.js
 
 <pre>[cluster]
-[markerClusterGroup ...]</pre>
+[markerClusterGroup ...]
+[placementstrategies ...]</pre>
 
 <h3>leaflet.zoomhome</h3>
 
