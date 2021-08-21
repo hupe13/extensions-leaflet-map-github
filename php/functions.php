@@ -29,7 +29,7 @@ function leafext_enqueue_zoomhome () {
 }
 
 function leafext_enqueue_markercluster () {
-  wp_enqueue_style( 'markercluster.default',
+	wp_enqueue_style( 'markercluster.default',
 		plugins_url('leaflet-plugins/leaflet.markercluster-1.5.0/css/MarkerCluster.Default.css',LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
 	wp_enqueue_style( 'markercluster',
@@ -41,14 +41,18 @@ function leafext_enqueue_markercluster () {
 }
 
 function leafext_enqueue_elevation () {
-  wp_enqueue_script( 'elevation_js',
+	wp_enqueue_script( 'elevation_js',
 		plugins_url('leaflet-plugins/leaflet-elevation-1.6.9/js/leaflet-elevation.min.js',
 		LEAFEXT_PLUGIN_FILE),
-	array('wp_leaflet_map'),null);
+		array('wp_leaflet_map'),null);
 	wp_enqueue_style( 'elevation_css',
 		plugins_url('leaflet-plugins/leaflet-elevation-1.6.9/css/leaflet-elevation.min.css',
 		LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
+	wp_enqueue_style( 'elevation_leafext_css',
+		plugins_url('css/elevation.css',
+		LEAFEXT_PLUGIN_FILE),
+		array('elevation_css'),null);
 }
 
 function leafext_elevation_theme() {

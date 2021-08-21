@@ -104,7 +104,7 @@ function leafext_elevation_params() {
 		
 		// https://github.com/Raruto/leaflet-elevation/issues/86#issuecomment-735274347
 		// marker: "elevation-line" || "position-marker" || false
-		array('Marker', __('position/height indicator marker drawn onto the map',"extensions-leaflet-map"), 'elevation-line', array("elevation-line", "position-marker",false)),
+		array('marker', __('position/height indicator marker drawn onto the map',"extensions-leaflet-map"), 'elevation-line', array("elevation-line", "position-marker",false)),
 
 	);
 	return $params;
