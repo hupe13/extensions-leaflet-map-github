@@ -12,11 +12,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 ## Description
 
-Plugin to extend the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with functions of some Leaflet Plugins.
-
-### WordPress Plugin
-
-You need to install the plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>.
+Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and functions.
 
 ### Used Leaflet Plugins and Elements
 
@@ -44,17 +40,16 @@ You need to install the plugin <a href="https://wordpress.org/plugins/leaflet-ma
 5. Markercluster PlacementStrategies <br>![PlacementStrategies](.wordpress-org/screenshot-5.png)
 6. GestureHandling <br>![GestureHandling](.wordpress-org/screenshot-6.png)
 
-
 ## Documentation
 
 Detailed documentation and examples in <a href="https://leafext.de/">German</a> and <a href="https://leafext.de/en/">English</a>.
 
 ## Installation
 
-You can install the plugin through the WordPress installer under Plugins. Add this by searching for "extensions-leaflet-map".
-Please see https://wordpress.org/support/article/managing-plugins/#installing-plugins.
-
-Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documentation and settings options.
+* Please see https://wordpress.org/support/article/managing-plugins/#installing-plugins.
+* First you need to install the plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>.
+* Then install this plugin.
+* Go to Settings - Leaflet Map - Extensions for Leaflet Map and get documentation and settings options.
 
 ## Changelog
 
@@ -67,16 +62,16 @@ Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documenta
 * Trouble in releasing 2.0.2
 
 ### 2.0.2
-* 210816 
+* 210816
 * Bugfix https://wordpress.org/support/topic/leafext_enqueue_elevation-unknown/
 * New elevation parameter: marker
 
 ### 2.0.1
-* 210722 
+* 210722
 * Works with Elementor now
 
 ### 2.0
-* 210715 	
+* 210715
 * Tested on WordPress 5.8
 * enhancement of elevation and introduction of many parameters
 * leaflet-gesture-handling 1.3.5
@@ -93,7 +88,7 @@ Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documenta
 * multielevation (gpx-groups)
 
 ### 1.4
-* 210521 
+* 210521
 * zoomhomemap works on multiple maps on a page now.
 * fixing markercluster and markerClusterGroup for this.
 
@@ -106,7 +101,7 @@ Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documenta
 * documentation
 
 ### 1.2
-* 210502 
+* 210502
 * documentation on a help page
 * prepare for translation
 * new setting options for <code>[markercluster]</code>
@@ -120,11 +115,11 @@ Go to Settings - Leaflet Map - Extensions for Leaflet Map and get some documenta
 * Switching Tile Layers
 
 ### 1.0.1
-* 210409 	
+* 210409
 * leaflet-elevation v1.6.7
 
 ### 1.0 
-* 210323 	
+* 210323
 * First Release
 
 ## Upgrade Notice

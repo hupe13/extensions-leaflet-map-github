@@ -79,7 +79,7 @@ function leafext_validate_placement_options($options) {
 function leafext_placement_help_text () {
 	echo '<h2>Leaflet.MarkerCluster.PlacementStrategies</h2>';
 	echo '<p>';
-	echo '<a href=https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies">'.__('Demo and Documentation','extensions-leaflet-map').'</a>';
+	echo '<a href="https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies">'.__('Demo and Documentation','extensions-leaflet-map').'</a>';
   echo ' - '.__('Not all parameters are implemented in the plugin.','extensions-leaflet-map').'';
 	echo '</p>';
 	echo '<h3>Shortcode</h3>
