@@ -12,7 +12,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 ## Description
 
-Plugin to extend the WordPress Plugin Leaflet Map with functions of some Leaflet Plugins.
+Plugin to extend the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with functions of some Leaflet Plugins.
 
 ### WordPress Plugin
 
