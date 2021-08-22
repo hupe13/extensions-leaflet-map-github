@@ -53,33 +53,24 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.1
-* 2108xx
+### 2.1 / 2108xx
 * Leaflet.MarkerCluster.PlacementStrategies
 
-### 2.0.3
-* 210816
-* Trouble in releasing 2.0.2
-
-### 2.0.2
-* 210816
+### 2.0.2 - 2.0.3 / 210816
 * Bugfix https://wordpress.org/support/topic/leafext_enqueue_elevation-unknown/
 * New elevation parameter: marker
 
-### 2.0.1
-* 210722
+### 2.0.1 / 210722
 * Works with Elementor now
 
-### 2.0
-* 210715
+### 2.0 / 210715
 * Tested on WordPress 5.8
 * enhancement of elevation and introduction of many parameters
 * leaflet-gesture-handling 1.3.5
 * leaflet-elevation-1.6.9
 * bug fix hover
 
-### 1.5
-* 210620
+### 1.5 / 210620
 * leaflet-elevation 1.6.8
 * https://github.com/Raruto/leaflet-gesture-handling (is newer)
 * fixed some mistakes in gestures and others
@@ -87,39 +78,33 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * hovering on all geojsons and markers
 * multielevation (gpx-groups)
 
-### 1.4
-* 210521
+### 1.4 / 210521
 * zoomhomemap works on multiple maps on a page now.
 * fixing markercluster and markerClusterGroup for this.
 
-### 1.3
-* 210513
+### 1.3 / 210513
 * Shortcodes can be used on more than one map per page, except zoomhomemap.  
 * Parameter for GestureHandling  
 * fixed markerClusterGroup  
 * prepare for translation
 * documentation
 
-### 1.2
-* 210502
+### 1.2 / 210502
 * documentation on a help page
 * prepare for translation
 * new setting options for <code>[markercluster]</code>
 * new setting options for <code>[zoomhomemap]</code>
 
 
-### 1.1
-* 210417
+### 1.1 / 210417
 * New functions:
 * markerClusterGroup
 * Switching Tile Layers
 
-### 1.0.1
-* 210409
+### 1.0.1 / 210409
 * leaflet-elevation v1.6.7
 
-### 1.0 
-* 210323
+### 1.0 / 210323
 * First Release
 
 ## Upgrade Notice
