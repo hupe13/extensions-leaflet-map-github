@@ -1,13 +1,13 @@
 <?php
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
-	$text = '<h4>'.
-	__('Found an issue?','extensions-leaflet-map').'</h4>
+	$text = '<h3>'.
+	__('Found an issue?','extensions-leaflet-map').'</h3>
     <p>'.
 	__('Post it to the support forum','extensions-leaflet-map').': <a href="https://wordpress.org/support/plugin/extensions-leaflet-map/" target="_blank">Extensions for Leaflet Map</a></p>';
 	//
-	$text=$text.'<h4>'.
-	__('Documentation','extensions-leaflet-map').'</h4><p>';
+	$text=$text.'<h3>'.
+	__('Documentation','extensions-leaflet-map').'</h3><p>';
 	$text=$text.sprintf(
 		__('Detailed documentation and examples in %sGerman%s and %sEnglish%s',
 			"extensions-leaflet-map"),
