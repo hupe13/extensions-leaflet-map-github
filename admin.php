@@ -71,7 +71,7 @@ function leafext_do_page() {
 		),
 		array (
 			'tab' => 'other',
-			'title' => 'Other functions',
+			'title' => __('Other functions','extensions-leaflet-map'),
 		),
 		// array (
 		// 	'tab' => '',

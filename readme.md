@@ -52,7 +52,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.1 / 2108xx
+### 2.1 / 210823
 * Leaflet.MarkerCluster.PlacementStrategies
 
 ### 2.0.2 - 2.0.3 / 210816
