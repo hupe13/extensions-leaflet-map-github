@@ -46,7 +46,6 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Installation
 
-* Please see https://wordpress.org/support/article/managing-plugins/#installing-plugins.
 * First you need to install the plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>.
 * Then install this plugin.
 * Go to Settings - Leaflet Map - Extensions for Leaflet Map and get documentation and settings options.
