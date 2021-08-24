@@ -99,8 +99,6 @@ window.WPLeafletMapPlugin.push(function () {
 			maxClusterRadius: function(radius)
 				{ return '.$params['maxClusterRadius'].'; },
 			spiderfyOnMaxZoom: '.$params['spiderfyOnMaxZoom'].',
-			//disableClusteringAtZoom: '.$params['disableClusteringAtZoom'].',
-
 		});
 
 		for (var i = 0; i < WPLeafletMapPlugin.markers.length; i++) {
