@@ -6,13 +6,13 @@ Contributors: hupe13
 Tags: leaflet, elevation, markercluster, zoomhome, hover, fullscreen, gpx,  
 Requires at least: 5.5.3  
 Tested up to: 5.8  
-Stable tag: 2.1  
+Stable tag: 2.1.1  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
 ## Description
 
-Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and functions.
+Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
 
 ### Used Leaflet Plugins and Elements
 
@@ -51,6 +51,9 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * Go to Settings - Leaflet Map - Extensions for Leaflet Map and get documentation and settings options.
 
 ## Changelog
+
+### 2.1 / 210824
+* Bugs in placementstrategies and cluster
 
 ### 2.1 / 210823
 * Leaflet.MarkerCluster.PlacementStrategies
@@ -93,7 +96,6 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * prepare for translation
 * new setting options for <code>[markercluster]</code>
 * new setting options for <code>[zoomhomemap]</code>
-
 
 ### 1.1 / 210417
 * New functions:

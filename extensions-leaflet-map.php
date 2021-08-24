@@ -3,7 +3,7 @@
  * Plugin Name: Extensions for Leaflet Map Github
  * Plugin URI:  https://github.com/hupe13/extensions-leaflet-map
  * Description: Extensions for the WordPress plugin Leaflet Map
- * Version:     2.1  
+ * Version:     2.1.1 
  * Author:      hupe13
  * Text Domain: extensions-leaflet-map
 **/
@@ -43,6 +43,7 @@ if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . '/php/hidemarkers.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/hovergeojson.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/markercluster.php';
+  include_once LEAFEXT_PLUGIN_DIR . '/php/placementstrategies.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/zoomhome.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/layerswitch.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/featuregroup.php';

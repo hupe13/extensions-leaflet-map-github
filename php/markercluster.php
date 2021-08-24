@@ -16,9 +16,13 @@ window.WPLeafletMapPlugin.push(function () {
 	var map = window.WPLeafletMapPlugin.getCurrentMap();
 	var map_id = map._leaflet_id;
 	if ( WPLeafletMapPlugin.markers.length > 0 ) {
-		map.options.maxZoom = 19;
+		//console.log(map.options.maxZoom);
+		if (typeof map.options.maxZoom == "undefined")
+			map.options.maxZoom = 19;
 		var myzoom = '.$params['zoom'].';
-		if ( '.$params['zoom'].' == "0" ) myzoom = false;
+		if (myzoom > map.options.maxZoom) myzoom = map.options.maxZoom;
+		//console.log(myzoom);
+		if ( '.$params['zoom'].' == 0 ) myzoom = false;
 		var clmarkers = L.markerClusterGroup({
 			maxClusterRadius: function(radius)
 			//	{ return 60; },
