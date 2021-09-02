@@ -54,6 +54,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ### 2.1.2
 * taking care of parameter max-zoom from leaflet-map
+* Leaflet.markercluster V 1.5.1
 * changing the parameter names for cluster to those of the Leaflet.markercluster (old names are still valid)
 * cluster parameters are valid for placementstrategies also
 * bug in gestures corrected
