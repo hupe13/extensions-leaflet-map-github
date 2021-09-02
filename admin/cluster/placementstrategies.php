@@ -2,9 +2,6 @@
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
-//
-include_once LEAFEXT_PLUGIN_DIR . '/php/placementstrategies.php';
-
 function leafext_admin_placementstrategies() {
 		echo '<form method="post" action="options.php">';
 		settings_fields('leafext_settings_placementparams');

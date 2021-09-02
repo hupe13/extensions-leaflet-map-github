@@ -54,12 +54,7 @@ function leafext_gestures_function() {
 	);
 	$options = shortcode_atts($defaults, get_option('leafext_gesture'));
 	if ( (bool) $options['on'] ) {
-		wp_enqueue_script('gestures_leaflet',
-			plugins_url('leaflet-plugins/leaflet-gesture-handling-1.3.5/js/leaflet-gesture-handling-leafext.min.js',LEAFEXT_PLUGIN_FILE),
-			array('wp_leaflet_map'), null);
-		wp_enqueue_style('gestures_leaflet_styles',
-			plugins_url('leaflet-plugins/leaflet-gesture-handling-1.3.5/css/leaflet-gesture-handling.min.css',LEAFEXT_PLUGIN_FILE),
-			array('leaflet_stylesheet'),null);
+		leafext_enqueue_gestures();
 		wp_add_inline_script( 'gestures_leaflet', leafext_gestures_script(), 'after' );
 	}
 }
@@ -75,16 +70,11 @@ add_filter('pre_do_shortcode_tag', function ( $output, $shortcode ) {
 
 function leafext_gesture_shortcode(){
 	$defaults = array(
-		'on'     => true,
+		'on' => true,
 	);
 	$options = shortcode_atts($defaults, get_option('leafext_gesture'));
 	if ( ! (bool) $options['on'] ) {
-		wp_enqueue_script('gestures_leaflet',
-		plugins_url('leaflet-plugins/leaflet-gesture-handling-1.3.4/js/leaflet-gesture-handling-leafext.min.js',	LEAFEXT_PLUGIN_FILE),
-		array('wp_leaflet_map'), null);
-		wp_enqueue_style('gestures_leaflet_styles',
-		plugins_url('leaflet-plugins/leaflet-gesture-handling-1.3.4/css/leaflet-gesture-handling.min.css',LEAFEXT_PLUGIN_FILE),
-		array('leaflet_stylesheet'),null);
+		leafext_enqueue_gestures();
 		return leafext_gesture_script();
 	}
 }

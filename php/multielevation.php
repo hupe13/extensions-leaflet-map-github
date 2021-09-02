@@ -104,7 +104,8 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summ
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 	  var map = window.WPLeafletMapPlugin.getCurrentMap();
-		map.options.maxZoom = 19;
+		if (typeof map.options.maxZoom == "undefined")
+			map.options.maxZoom = 19;
 		var bounds = [];
 		bounds = new L.latLngBounds();
 		var zoomHome = [];
@@ -128,18 +129,9 @@ return "\n".$text."\n";
 
 function leafext_elevation_tracks( $atts ){
 	leafext_enqueue_elevation ();
+	leafext_enqueue_multielevation ();
 	leafext_enqueue_zoomhome();
-
-	wp_enqueue_script('leaflet.gpx',
-		plugins_url('leaflet-plugins/leaflet-gpx-1.5.2/gpx-leafext.js',LEAFEXT_PLUGIN_FILE),
-		array('elevation_js'),null);
-	wp_enqueue_script('leaflet.gpxgroup',
-		plugins_url('leaflet-plugins/leaflet-elevation-1.6.9/libs/leaflet-gpxgroup.min.js',LEAFEXT_PLUGIN_FILE),
-		array('leaflet.gpx'),null);
-	wp_enqueue_style( 'my_elevation_css',
-	 	plugins_url('css/multielevation.css',LEAFEXT_PLUGIN_FILE),
-	 	array('elevation_css'), null);
-
+	
 	global $all_files;
 	global $all_points;
 

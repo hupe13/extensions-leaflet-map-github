@@ -1,16 +1,13 @@
 <?php
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
-//
-include LEAFEXT_PLUGIN_DIR . 'php/elevation/elevation_functions.php';
-include LEAFEXT_PLUGIN_DIR . '/admin/elevation/functions.php';
-include LEAFEXT_PLUGIN_DIR . '/admin/elevation/elevation.php';
-include LEAFEXT_PLUGIN_DIR . '/admin/elevation/owntheme.php';
-include LEAFEXT_PLUGIN_DIR . '/admin/layerswitch.php';
-include LEAFEXT_PLUGIN_DIR . '/admin/cluster/cluster.php';
-include LEAFEXT_PLUGIN_DIR . '/admin/cluster/markercluster.php';
-include LEAFEXT_PLUGIN_DIR . '/admin/cluster/placementstrategies.php';
+
+include LEAFEXT_PLUGIN_DIR . '/admin/elevation/main.php';
+
+include LEAFEXT_PLUGIN_DIR . '/admin/cluster/main.php';
+
 include LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/layerswitch.php';
 
 // Add menu page
 function leafext_add_page() {

@@ -3,8 +3,7 @@
 defined( 'ABSPATH' ) or die();
 
 //Shortcode: [markerClusterGroup]
-
-function leafext_clustergroup_script($featuregroups){
+function leafext_clustergroup_script($featuregroups,$params){
 	$text = '
 	<script>
 		//console.log(featuregroups);
@@ -16,7 +15,11 @@ function leafext_clustergroup_script($featuregroups){
 			var map = window.WPLeafletMapPlugin.getCurrentMap();
 			var map_id = map._leaflet_id;
 			if ( WPLeafletMapPlugin.markers.length > 0 ) {
-				var alle = new L.markerClusterGroup();
+				var alle = new L.markerClusterGroup({';
+					$text=$text.leafext_java_params ($params);
+					$text = $text.'
+				});
+				
 				var featGroups = [];
 				let key;
 				for (key in groups) {
@@ -68,12 +71,7 @@ function leafext_clustergroup_script($featuregroups){
 
 function leafext_clustergroup_function( $atts ){
 	leafext_enqueue_markercluster ();
-	wp_enqueue_script('leaflet.subgroup',
-		plugins_url(
-		'leaflet-plugins\Leaflet.FeatureGroup.SubGroup-1.0.2/leaflet.featuregroup.subgroup.js',
-		LEAFEXT_PLUGIN_FILE),
-		array('markercluster'),null);
-
+	leafext_enqueue_clustergroup ();
 	$featuregroups = shortcode_atts( array('feat' => false, 'strings' => false, 'groups' => false), $atts);
 	//feat="iconUrl" strings="red green" groups="rot gruen"
 
@@ -85,7 +83,11 @@ function leafext_clustergroup_function( $atts ){
 		'feat' => sanitize_text_field($featuregroups['feat']),
 		'groups' => array_combine($cl_strings, $cl_groups),
 	);
-	return leafext_clustergroup_script($featuregroups);
+	
+	$atts1=leafext_case(array_keys(leafext_cluster_settings()),leafext_clear_params($atts));
+	$options = shortcode_atts(leafext_cluster_settings(), $atts1);
+	
+	return leafext_clustergroup_script($featuregroups,$options);
 }
 add_shortcode('markerClusterGroup', 'leafext_clustergroup_function' );
 ?>

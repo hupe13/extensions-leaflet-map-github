@@ -1,4 +1,6 @@
 <?php
+include LEAFEXT_PLUGIN_DIR . '/admin/elevation/elevation.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/elevation/owntheme.php';
 
 function leafext_elevation_tab() {
 	$tabs = array (

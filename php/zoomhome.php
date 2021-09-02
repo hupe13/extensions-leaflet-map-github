@@ -15,7 +15,8 @@ function leafext_zoomhome_script($fit){
 		var map_id = map._leaflet_id;
 		var maps=[];
 		maps[map_id] = map;
-		maps[map_id].options.maxZoom = 19;
+		if (typeof map.options.maxZoom == "undefined")
+			maps[map_id].options.maxZoom = 19;
 		//console.log("map_id* "+map_id);
 		//console.log("fit "+'.json_encode($fit).');
 
@@ -120,7 +121,7 @@ function leafext_zoomhome_script($fit){
 				zoomHome[map_id].setHomeBounds(bounds[map_id]);
 				if ('.json_encode($fit).') {
 					//console.log("fit true");
-					//console.log("zoom "+maps[map_id].getZoom());
+					console.log("zoom "+maps[map_id].getZoom());
 					maps[map_id].fitBounds(bounds[map_id]);
 					//if (maps[map_id].getZoom() > 14 && zoom == 1) {
 						//	maps[map_id].setZoom(14);

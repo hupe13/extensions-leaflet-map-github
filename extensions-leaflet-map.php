@@ -3,7 +3,7 @@
  * Plugin Name: Extensions for Leaflet Map Github
  * Plugin URI:  https://github.com/hupe13/extensions-leaflet-map
  * Description: Extensions for the WordPress plugin Leaflet Map
- * Version:     2.1.1 
+ * Version:     2.1.1
  * Author:      hupe13
  * Text Domain: extensions-leaflet-map
 **/
@@ -34,21 +34,26 @@ if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . 'admin.php';
 } //else {
 
-//if (!is_admin() || is_plugin_active( 'elementor/elementor.php' ) ) {
+  include_once LEAFEXT_PLUGIN_DIR . '/php/enqueue-leafletplugins.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/functions.php';
   include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
-  include_once LEAFEXT_PLUGIN_DIR . '/php/elevation/elevation_functions.php';
+
+  include_once LEAFEXT_PLUGIN_DIR . '/php/elevation.php';
+  include_once LEAFEXT_PLUGIN_DIR . '/php/multielevation.php';
+
   include_once LEAFEXT_PLUGIN_DIR . '/php/fullscreen.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/gesture.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/hidemarkers.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/hovergeojson.php';
+
   include_once LEAFEXT_PLUGIN_DIR . '/php/markercluster.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/placementstrategies.php';
+  include_once LEAFEXT_PLUGIN_DIR . '/php/clustergroup.php';
+
   include_once LEAFEXT_PLUGIN_DIR . '/php/zoomhome.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/layerswitch.php';
-  include_once LEAFEXT_PLUGIN_DIR . '/php/featuregroup.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/safari.php';
-//}
+
 
 // Add settings to plugin page
 function leafext_add_action_links ( $actions ) {

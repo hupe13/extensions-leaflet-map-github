@@ -5,7 +5,7 @@
 	<img src="'.LEAFEXT_PLUGIN_PICTS.'clustergroup.png">
 	
 <p>'.
-__('dynamically add/remove groups of markers from Marker Cluster','extensions-leaflet-map').
+__('Dynamically add/remove groups of markers from Marker Cluster','extensions-leaflet-map').
 '.</p><h3>Options and Shortcode</h3>
 <ul>
 <li>feat - '.__('possible meaningful values','extensions-leaflet-map').': iconUrl, title</li>
@@ -28,4 +28,8 @@ __('The number of strings and groups must match.','extensions-leaflet-map').'
 //many markers
 [markerClusterGroup feat="title" strings="first,second" groups="First Group,Second Group"]
 </code></pre>
-';
+
+<p>';
+echo sprintf ( __('The parameter and settings for %s are valid also.','extensions-leaflet-map'),
+	'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=markercluster">Leaflet.markercluster</a>');
+echo '</p>';
