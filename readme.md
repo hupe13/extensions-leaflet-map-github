@@ -52,7 +52,12 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.1 / 210824
+### 2.1.2
+* taking care of parameter max-zoom from leaflet-map
+* changing the parameter names for cluster to those of the Leaflet.markercluster (old names are still valid)
+* cluster parameters are valid for placementstrategies also
+
+### 2.1.1 / 210824
 * Bugs in placementstrategies and cluster
 
 ### 2.1 / 210823
