@@ -36,7 +36,7 @@ function leafext_elevation_tab() {
 function leafext_admin_elevation($active_tab) {
 	if( $active_tab == 'multielevation') {
 		echo '<h2>'.leafext_elevation_tab().'</h2>';
-		include LEAFEXT_PLUGIN_DIR . '/admin/elevation/multi.php';
+		include LEAFEXT_PLUGIN_DIR . '/admin/elevation/multielevation.php';
 	} else if( $active_tab == 'elevationtheme') {
 		echo '<form method="post" action="options.php">';
 		settings_fields('leafext_settings_theme');

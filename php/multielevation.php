@@ -35,7 +35,7 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summ
 		var opts = {
 			points: {
 				icon: {
-					iconUrl: "'.LEAFEXT_PLUGIN_URL.'" + "/leaflet-plugins/leaflet-elevation-1.6.9/images/elevation-poi.png",
+					iconUrl: "'.LEAFEXT_ELEVATION_URL.'" + "/images/elevation-poi.png",
 					iconSize: [12, 12],
 				},
 			},
@@ -131,7 +131,7 @@ function leafext_elevation_tracks( $atts ){
 	leafext_enqueue_elevation ();
 	leafext_enqueue_multielevation ();
 	leafext_enqueue_zoomhome();
-	
+
 	global $all_files;
 	global $all_points;
 
