@@ -1,4 +1,8 @@
 <?php
+/**
+ * Functions for markerClusterGroup shortcode
+ * extensions-leaflet-map
+ */
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 

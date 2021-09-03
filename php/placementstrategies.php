@@ -1,4 +1,8 @@
 <?php
+/**
+ * Functions for placementstrategies shortcode
+ * extensions-leaflet-map
+ */
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
@@ -135,7 +139,7 @@ window.WPLeafletMapPlugin.push(function () {
 	}
 });
 </script>';
-//$text = \JShrink\Minifier::minify($text);
+$text = \JShrink\Minifier::minify($text);
 return "\n".$text."\n";
 }
 

@@ -1,4 +1,11 @@
 <?php
+/**
+ * Admin for Leaflet.gesture
+ * extensions-leaflet-map
+ */
+// Direktzugriff auf diese Datei verhindern:
+defined( 'ABSPATH' ) or die();
+
 // init settings fuer gesture
 function leafext_gesture_init(){
 	add_settings_section( 'gesture_settings', 'Gesture Handling', 'leafext_gesture_help_text', 'leafext_settings_gesture' );

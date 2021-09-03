@@ -1,14 +1,18 @@
 <?php
+/**
+ * Admin for layerswitch
+ * extensions-leaflet-map
+ */
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
-	// init settings fuer tile switching
-	function leafext_maps_init(){
-		add_settings_section( 'maps_settings', 'Switching Tilelayers', 'leafext_maps_help_text', 'leafext_settings_maps' );
-		add_settings_field( 'leafext_form_maps_id', 'mapid:', 'leafext_form_maps', 'leafext_settings_maps', 'maps_settings', 'mapid' );
-		register_setting( 'leafext_settings_maps', 'leafext_maps', 'leafext_validate_mapswitch' );
-	}
-	add_action('admin_init', 'leafext_maps_init' );
+// init settings fuer tile switching
+function leafext_maps_init(){
+	add_settings_section( 'maps_settings', 'Switching Tilelayers', 'leafext_maps_help_text', 'leafext_settings_maps' );
+	add_settings_field( 'leafext_form_maps_id', 'mapid:', 'leafext_form_maps', 'leafext_settings_maps', 'maps_settings', 'mapid' );
+	register_setting( 'leafext_settings_maps', 'leafext_maps', 'leafext_validate_mapswitch' );
+}
+add_action('admin_init', 'leafext_maps_init' );
 
 // Baue Abfrage der Tiles // Wie geht das besser?
 function leafext_form_maps() {

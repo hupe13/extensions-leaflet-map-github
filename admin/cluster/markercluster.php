@@ -1,4 +1,8 @@
 <?php
+/**
+ * Admin for Leaflet.markercluster
+ * extensions-leaflet-map
+ */
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 

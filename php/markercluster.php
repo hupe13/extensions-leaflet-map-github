@@ -1,4 +1,8 @@
 <?php
+/**
+ * Functions for cluster and placementstrategies shortcode
+ * extensions-leaflet-map
+ */
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
@@ -88,7 +92,7 @@ function leafext_cluster_script($params){
 	}
 });
 </script>';
-//$text = \JShrink\Minifier::minify($text);
+$text = \JShrink\Minifier::minify($text);
 return "\n".$text."\n";
 }
 
@@ -101,8 +105,8 @@ function leafext_cluster_settings() {
 	$options = shortcode_atts($defaults, 
 		leafext_array_replace_keys(get_option('leafext_cluster'), 
 			['zoom' => 'disableClusteringAtZoom', 
-				'radius' => 'maxClusterRadius',
-				'spiderfy' => 'spiderfyOnMaxZoom']));
+			'radius' => 'maxClusterRadius',
+			'spiderfy' => 'spiderfyOnMaxZoom']));
 	return $options;
 }
 
@@ -110,8 +114,8 @@ function leafext_cluster_function( $atts ){
 	leafext_enqueue_markercluster ();
 	$atts1 = leafext_array_replace_keys(leafext_clear_params($atts), 
 		['zoom' => 'disableClusteringAtZoom', 
-			'radius' => 'maxClusterRadius',
-			'spiderfy' => 'spiderfyOnMaxZoom']);
+		'radius' => 'maxClusterRadius',
+		'spiderfy' => 'spiderfyOnMaxZoom']);
 	$atts2=leafext_case(array_keys(leafext_cluster_settings()),$atts1);
 	$options = shortcode_atts(leafext_cluster_settings(), $atts2);
 	return leafext_cluster_script($options);

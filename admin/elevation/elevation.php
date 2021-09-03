@@ -1,4 +1,8 @@
 <?php
+/**
+ * Admin for Leaflet.elevation
+ * extensions-leaflet-map
+ */
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 

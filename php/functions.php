@@ -1,4 +1,11 @@
 <?php
+/**
+ * Functions for parameter handling
+ * extensions-leaflet-map
+ */
+// Direktzugriff auf diese Datei verhindern:
+defined( 'ABSPATH' ) or die();
+
 //Behandlung von !parameter und parameter als false und true
 function leafext_clear_params($atts) {
 	if (is_array($atts)) {

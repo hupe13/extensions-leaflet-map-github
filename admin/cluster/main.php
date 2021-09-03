@@ -1,4 +1,10 @@
 <?php
+/**
+ * main admin page for cluster functions
+ * extensions-leaflet-map
+ */
+// Direktzugriff auf diese Datei verhindern:
+defined( 'ABSPATH' ) or die();
 
 include LEAFEXT_PLUGIN_DIR . '/admin/cluster/markercluster.php';
 //include LEAFEXT_PLUGIN_DIR . '/admin/cluster/markerclusterold.php';

@@ -1,8 +1,14 @@
 <?php
+/**
+ * Help for Leaflet.FeatureGroup.SubGroup
+ * extensions-leaflet-map
+ */
+// Direktzugriff auf diese Datei verhindern:
+defined( 'ABSPATH' ) or die();
 
-	echo '
-	<h2 id="leaflet.featuregroup.subgroup">Leaflet.FeatureGroup.SubGroup</h2>
-	<img src="'.LEAFEXT_PLUGIN_PICTS.'clustergroup.png">
+echo '
+<h2 id="leaflet.featuregroup.subgroup">Leaflet.FeatureGroup.SubGroup</h2>
+<img src="'.LEAFEXT_PLUGIN_PICTS.'clustergroup.png">
 	
 <p>'.
 __('Dynamically add/remove groups of markers from Marker Cluster','extensions-leaflet-map').

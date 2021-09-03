@@ -1,4 +1,8 @@
 <?php
+/**
+ * Functions for hover shortcode
+ * extensions-leaflet-map
+ */
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 

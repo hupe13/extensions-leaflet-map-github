@@ -1,4 +1,10 @@
 <?php
+/**
+ * Functions for enqueuing Leaflet plugins
+ * extensions-leaflet-map
+ */
+// Direktzugriff auf diese Datei verhindern:
+defined( 'ABSPATH' ) or die();
 
 // For checking to load awesome (Home character)
 function leafext_plugin_stylesheet_installed($array_css) {

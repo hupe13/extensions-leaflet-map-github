@@ -1,6 +1,11 @@
 <?php
+/**
+ * Admin page for elevation theme
+ * extensions-leaflet-map
+ */
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
+
 // init settings fuer elevation
 function leafext_elevation_init(){
 //	add_settings_section( 'theme_settings', 'Elevation Profile', 'leafext_elevation_help_text', 'leafext_settings_theme' );

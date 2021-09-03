@@ -1,4 +1,11 @@
 <?php
+/**
+ * map.tap.disable() for Safari (bug)
+ * extensions-leaflet-map
+ */
+// Direktzugriff auf diese Datei verhindern:
+defined( 'ABSPATH' ) or die();
+
 add_filter('pre_do_shortcode_tag', function ( $output, $shortcode ) {
 	if ( 'leaflet-map' == $shortcode ) {
 		wp_enqueue_script('safari_leaflet',

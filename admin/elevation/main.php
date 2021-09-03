@@ -1,4 +1,11 @@
 <?php
+/**
+ * main admin page for elevation functions
+ * extensions-leaflet-map
+ */
+// Direktzugriff auf diese Datei verhindern:
+defined( 'ABSPATH' ) or die();
+
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/elevation.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/owntheme.php';
 

@@ -1,4 +1,11 @@
 <?php
+/**
+ * Functions for multielevation
+ * extensions-leaflet-map
+ */
+// Direktzugriff auf diese Datei verhindern:
+defined( 'ABSPATH' ) or die();
+
 //Shortcode:
 //[elevation-track file="'.$file.'" lat="'.$startlat.'" lng="'.$startlon.'" name="'.basename($file).'"]
 //[elevation-tracks summary=1]
