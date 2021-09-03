@@ -40,7 +40,7 @@ function leafext_enqueue_markercluster () {
 		array('wp_leaflet_map'),null );
 }
 
-define('LEAFEXT_ELEVATION_URL', LEAFEXT_PLUGIN_URL . 'leaflet-plugins/leaflet-elevation-1.6.9/';
+define('LEAFEXT_ELEVATION_URL', LEAFEXT_PLUGIN_URL . '/leaflet-plugins/leaflet-elevation-1.6.9/');
 function leafext_enqueue_elevation () {
 	wp_enqueue_script( 'elevation_js',
 		plugins_url('leaflet-plugins/leaflet-elevation-1.6.9/js/leaflet-elevation.min.js',
