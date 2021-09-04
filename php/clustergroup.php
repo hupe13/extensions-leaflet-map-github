@@ -69,7 +69,7 @@ function leafext_clustergroup_script($featuregroups,$params){
 		// alt * (no)
 		// iconUrl *
 		</script>';
-		$text = \JShrink\Minifier::minify($text);
+		//$text = \JShrink\Minifier::minify($text);
 		return "\n".$text."\n";
 }
 
@@ -88,8 +88,8 @@ function leafext_clustergroup_function( $atts ){
 		'groups' => array_combine($cl_strings, $cl_groups),
 	);
 	
-	$atts1=leafext_case(array_keys(leafext_cluster_settings()),leafext_clear_params($atts));
-	$options = shortcode_atts(leafext_cluster_settings(), $atts1);
+	$atts2=leafext_case(array_keys(leafext_cluster_settings()),$atts);
+	$options = shortcode_atts(leafext_cluster_settings(), $atts2);
 	
 	return leafext_clustergroup_script($featuregroups,$options);
 }

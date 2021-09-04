@@ -12,9 +12,9 @@ function leafext_clear_params($atts) {
 		for ($i = 0; $i < count($atts); $i++) {
 			if (isset($atts[$i])) {
 				if ( strpos($atts[$i],"!") === false ) {
-					$atts[$atts[$i]] = 1;
+					$atts[$atts[$i]] = true;
 				} else {
-					$atts[substr($atts[$i],1)] = 0;
+					$atts[substr($atts[$i],1)] = false;
 				}
 			}
 		}
@@ -50,25 +50,39 @@ function leafext_array_find($needle, $haystack) {
 function leafext_java_params ($params) {
 	$text = "";
 	foreach ($params as $k => $v) {
+		//var_dump($v,gettype($v));
 		$text = $text. "$k: ";
 		switch (gettype($v)) {
 			case "string":
 				switch ($v) {
 					case "false":
-					case "0": $value = "false"; break;
+					case "0": $value = false; break;
 					case "true":
-					case "1": $value = "true"; break;
-					default: $value = '"'.$v.'"';break;
+					case "1": $value = true; break;
+					default: 
+						if (is_numeric($v)) {
+							$value = $v;
+						} else {
+							$value = '"'.$v.'"';
+						}
+					break;
 				}
 				break;
 			case "boolean":
+				$value = $v ? true : false; break;
 			case "integer":
-				$value = $v ? "true" : "false"; break;
-			default: var_dump(gettype($v)); wp_die();
+				switch ($v) {
+					//case 0: $value = "false"; break;
+					//case 1: $value = "true"; break;
+					default: $value = $v; break;
+				}
+				break;
+			default: var_dump($k, $v, gettype($v)); wp_die("Type");
 		}
 		$text = $text.$value;
 		$text = $text.",\n";
 	}
+	//var_dump($text); wp_die();
 	return $text;
 }
 

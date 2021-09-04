@@ -116,7 +116,12 @@ function leafext_markercluster_help_text () {
 		array_key_exists('radius',$defaults) || 
 		array_key_exists('spiderfy',$defaults) ) {
 			echo '<p>';
-			echo __('The parameters zoom, radius and spiderfy have been renamed, but they are still valid.', "extensions-leaflet-map").'</p>';
+			echo __('The parameters zoom, radius and spiderfy have been renamed to disableClusteringAtZoom, maxClusterRadius and spiderfyOnMaxZoom, but they are still valid. Your settings:', "extensions-leaflet-map");
+			echo '<pre>'.substr(substr(print_r(get_option('leafext_cluster'),true),8),0,-3).'</pre>';
+			echo __('Before you click the submit button, please compare your settings with the new ones and change them if they are different.', "extensions-leaflet-map");
+			echo '</p>';
 		}
+		
+		
 	}
 }

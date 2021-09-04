@@ -7,7 +7,7 @@
 defined( 'ABSPATH' ) or die();
 
 include LEAFEXT_PLUGIN_DIR . '/admin/cluster/markercluster.php';
-//include LEAFEXT_PLUGIN_DIR . '/admin/cluster/markerclusterold.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/cluster/markerclusterold.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/cluster/placementstrategies.php';
 
 function leafext_cluster_tab() {
@@ -16,10 +16,10 @@ function leafext_cluster_tab() {
 			'tab' => 'markercluster',
 			'title' => __('Leaflet.markercluster','extensions-leaflet-map'),
 		),
-//		array (
-//			'tab' => 'markerclusterold',
-//			'title' => __('Leaflet.markercluster old settings','extensions-leaflet-map'),
-//		),
+		array (
+			'tab' => 'markerclusterold',
+			'title' => __('Leaflet.markercluster old settings','extensions-leaflet-map'),
+		),
 		array (
 			'tab' => 'clustergroup',
 			'title' => __('Leaflet.FeatureGroup.SubGroup','extensions-leaflet-map'),
