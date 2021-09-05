@@ -6,23 +6,24 @@
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
-//Behandlung von !parameter und parameter als false und true
+//Interpretiere !parameter und parameter als false und true
 function leafext_clear_params($atts) {
 	if (is_array($atts)) {
 		for ($i = 0; $i < count($atts); $i++) {
 			if (isset($atts[$i])) {
 				if ( strpos($atts[$i],"!") === false ) {
-					$atts[$atts[$i]] = true;
+					$atts[$atts[$i]] = 1;
 				} else {
-					$atts[substr($atts[$i],1)] = false;
+					$atts[substr($atts[$i],1)] = 0;
 				}
+				unset($atts[$i]);
 			}
 		}
 	}
 	return($atts);
 }
 
-//shortcode_atts gibt nur Kleinbuchstaben zurueck, ich brauche aber gross und klein
+//shortcode_atts gibt nur Kleinbuchstaben zurueck, Javascript braucht aber gross und klein
 //Parameter: array mit keys wie es sein soll, array mit keys in klein von shortcode_atts
 function leafext_case ($params,$array) {
 	foreach ($params as $param) {
@@ -46,8 +47,32 @@ function leafext_array_find($needle, $haystack) {
 	}
 }
 
+//setze bool value
+//Parameter: shortcode, atts
+function leafext_boolparams($shortcode,$atts) {
+	switch ($shortcode) {
+		case 'cluster': $params = leafext_cluster_params(); break;
+		//case 'placementstrategies': leafext_placementstrategies_params(); break;
+		default: return $atts;
+	}
+	$newatts=array();
+	foreach ($atts as $k => $v) {
+		foreach ($params as $param) {
+			if ($param[0] == $k ) {
+				if (!is_array($param[3])) {
+					$newatts[$k] = (bool) $v;
+				} else {
+					$newatts[$k] = $v;
+				}
+			}
+		}
+	}
+	return $newatts;
+}
+
 //Trage php array keys und values in javascript script ein.
 function leafext_java_params ($params) {
+	///var_dump($params); wp_die();
 	$text = "";
 	foreach ($params as $k => $v) {
 		//var_dump($v,gettype($v));
@@ -56,9 +81,9 @@ function leafext_java_params ($params) {
 			case "string":
 				switch ($v) {
 					case "false":
-					case "0": $value = false; break;
+					case "0": $value = "false"; break;
 					case "true":
-					case "1": $value = true; break;
+					case "1": $value = "true"; break;
 					default: 
 						if (is_numeric($v)) {
 							$value = $v;
@@ -69,7 +94,7 @@ function leafext_java_params ($params) {
 				}
 				break;
 			case "boolean":
-				$value = $v ? true : false; break;
+				$value = $v ? "true" : "false"; break;
 			case "integer":
 				switch ($v) {
 					//case 0: $value = "false"; break;

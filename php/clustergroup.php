@@ -88,9 +88,7 @@ function leafext_clustergroup_function( $atts ){
 		'groups' => array_combine($cl_strings, $cl_groups),
 	);
 	
-	$atts2=leafext_case(array_keys(leafext_cluster_settings()),$atts);
-	$options = shortcode_atts(leafext_cluster_settings(), $atts2);
-	
+	$options = leafext_cluster_atts ($atts);
 	return leafext_clustergroup_script($featuregroups,$options);
 }
 add_shortcode('markerClusterGroup', 'leafext_clustergroup_function' );

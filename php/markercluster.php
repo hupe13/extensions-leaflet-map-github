@@ -63,9 +63,7 @@ function leafext_cluster_params() {
 function leafext_cluster_script($params){
 	$text = '
 	<script>
-
 	console.log("cluster.zoom "+'.$params['disableClusteringAtZoom'].');
-
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 	var map = window.WPLeafletMapPlugin.getCurrentMap();
@@ -112,19 +110,25 @@ function leafext_cluster_settings() {
 	return $options;
 }
 
-function leafext_cluster_function( $atts ){
-	leafext_enqueue_markercluster ();
-	//var_dump("1",$atts);
+function leafext_cluster_atts ($atts) {
+	//Ersetze alt - neu, vorher interpretiere "parameter" als true und "!parameter" als false
 	$atts1 = leafext_array_replace_keys(leafext_clear_params($atts), 
 		['zoom' => 'disableClusteringAtZoom', 
 		'radius' => 'maxClusterRadius',
 		'spiderfy' => 'spiderfyOnMaxZoom']);
-	//var_dump("2",$atts1);
+	//bereinige die nur Kleinbuchstaben vom Shortcode zu gross und klein wie der Java-Parameter ist
 	$atts2=leafext_case(array_keys(leafext_cluster_settings()),$atts1);
-	//var_dump("3",$atts2);
+	//gleiche mit eigenen settings und Plugin defaults ab
 	$options = shortcode_atts(leafext_cluster_settings(), $atts2);
-	//var_dump("options",$options);wp_die();
-	return leafext_cluster_script($options);
+	//behandle boolsche Parameter 
+	$options1 = leafext_boolparams("cluster",$options);
+	return($options1);
+}
+
+function leafext_cluster_function( $atts ){
+	leafext_enqueue_markercluster ();
+	//erzeuge Javascript
+	return leafext_cluster_script(leafext_cluster_atts ($atts));
 }
 add_shortcode('cluster', 'leafext_cluster_function' );
 ?>
