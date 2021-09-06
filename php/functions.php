@@ -47,29 +47,6 @@ function leafext_array_find($needle, $haystack) {
 	}
 }
 
-//setze bool value
-//Parameter: shortcode, atts
-function leafext_boolparams($shortcode,$atts) {
-	switch ($shortcode) {
-		case 'cluster': $params = leafext_cluster_params(); break;
-		//case 'placementstrategies': leafext_placementstrategies_params(); break;
-		default: return $atts;
-	}
-	$newatts=array();
-	foreach ($atts as $k => $v) {
-		foreach ($params as $param) {
-			if ($param[0] == $k ) {
-				if (!is_array($param[3])) {
-					$newatts[$k] = (bool) $v;
-				} else {
-					$newatts[$k] = $v;
-				}
-			}
-		}
-	}
-	return $newatts;
-}
-
 //Trage php array keys und values in javascript script ein.
 function leafext_java_params ($params) {
 	///var_dump($params); wp_die();
@@ -84,7 +61,7 @@ function leafext_java_params ($params) {
 					case "0": $value = "false"; break;
 					case "true":
 					case "1": $value = "true"; break;
-					default: 
+					default:
 						if (is_numeric($v)) {
 							$value = $v;
 						} else {
