@@ -57,8 +57,9 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * Leaflet.markercluster V 1.5.1
 * leaflet-gpx V 1.6.0
 * changing the parameter names for cluster to those of the Leaflet.markercluster (old names are still valid)
-* cluster parameters are valid for placementstrategies also
-* bug in gestures corrected
+* cluster parameters are valid for markerClusterGroup also
+* bug in gestures fixed
+* setting in [elevation] preferCanvas to false as default, see https://github.com/Raruto/leaflet-elevation/issues/123
 * and more
 
 ### 2.1.1 / 210824

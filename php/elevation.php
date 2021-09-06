@@ -54,7 +54,8 @@ function leafext_elevation_params() {
 
 		// Acceleration chart profile: true || "summary" || "disabled" || false
 		//acceleration: false,
-		array('acceleration', __('Acceleration chart profile',"extensions-leaflet-map"), false, array(true,"summary","disabled",false)),
+		//array('acceleration', __('Acceleration chart profile',"extensions-leaflet-map"), false, array(true,"summary","disabled",false)),
+		array('acceleration', __('Acceleration chart profile',"extensions-leaflet-map"), false, array("summary","disabled",false)),
 
 		// Slope chart profile: true || "summary" || "disabled" || false
 		//slope: false,
@@ -74,7 +75,9 @@ function leafext_elevation_params() {
 
 		// Display altitude info: true || "summary"
 		//altitude: true,
-		array('altitude', __('Display altitude info',"extensions-leaflet-map"), true, array(true,"summary")),
+		//array('altitude', __('Display altitude info',"extensions-leaflet-map"), true, array(true,"summary")),
+		//grepping "altitude:" Rarutos files shows only this:
+		array('altitude', __('Display altitude info',"extensions-leaflet-map"), true, array(true,"disabled")),
 
 		// Summary track info style: "line" || "multiline" || false
 		//Is this an error: line/inline ?
@@ -103,7 +106,9 @@ function leafext_elevation_params() {
 
 		// Render chart profiles as Canvas or SVG Paths
 		//preferCanvas: true
-		array('preferCanvas', __('Render chart profiles as Canvas or SVG Paths',"extensions-leaflet-map"), true, 1),
+		array('preferCanvas', __('Render chart profiles as Canvas or SVG Paths. Due to a bug in MacOS and iOS, see https://github.com/Raruto/leaflet-elevation/issues/123, you should it set to false.',"extensions-leaflet-map"),
+		//true, 1),
+		false, 1),
 
 		// https://github.com/Raruto/leaflet-elevation/issues/86#issuecomment-735274347
 		// marker: "elevation-line" || "position-marker" || false
