@@ -52,14 +52,13 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.1.2 / This version is not stable yet!
+### 2.1.2 / This version may not stable yet!
 * taking care of parameter max-zoom from leaflet-map
 * Leaflet.markercluster V 1.5.1
 * leaflet-gpx V 1.6.0
 * changing the parameter names for cluster to those of the Leaflet.markercluster (old names are still valid)
 * cluster parameters are valid for markerClusterGroup also
 * bug in gestures fixed
-* setting in [elevation] preferCanvas to false as default, see https://github.com/Raruto/leaflet-elevation/issues/123
 * and more
 
 ### 2.1.1 / 210824
@@ -119,6 +118,9 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * First Release
 
 ## Upgrade Notice
+
+### 2.1.2
+Please set in [elevation] preferCanvas to false due to a bug in MacOS and iOS, see https://github.com/Raruto/leaflet-elevation/issues/123
 
 ### 1.4
 Please check the pages where you use zoomhomemap, if it still works as it should.

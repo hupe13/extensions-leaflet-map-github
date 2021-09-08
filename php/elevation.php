@@ -106,10 +106,9 @@ function leafext_elevation_params() {
 
 		// Render chart profiles as Canvas or SVG Paths
 		//preferCanvas: true
-		array('preferCanvas', __('Render chart profiles as Canvas or SVG Paths. Due to a bug in MacOS and iOS, see https://github.com/Raruto/leaflet-elevation/issues/123, you should it set to false.',"extensions-leaflet-map"),
-		//true, 1),
-		false, 1),
-
+		array('preferCanvas', __('Render chart profiles as Canvas or SVG Paths.',"extensions-leaflet-map"),
+		true, 1),
+		
 		// https://github.com/Raruto/leaflet-elevation/issues/86#issuecomment-735274347
 		// marker: "elevation-line" || "position-marker" || false
 		array('marker', __('position/height indicator marker drawn onto the map',"extensions-leaflet-map"), 'elevation-line', array("elevation-line", "position-marker",false)),

@@ -26,13 +26,15 @@ function leafext_form_elevation($field) {
 	$settings = leafext_elevation_settings();
 	$setting = $settings[$field];
 
+	if ( $option[0] == "preferCanvas") echo '<p>'.sprintf ( __('Due to a bug in MacOS and iOS, see %shere%s, you should it set to false.',"extensions-leaflet-map"), '<a href="https://github.com/Raruto/leaflet-elevation/issues/123">','</a>').'</p>';
+
 	echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option[0]. '</code><br>';
 	if (!is_array($option[3])) {
 
 		if ($setting != $option[2] ) {
 			//var_dump($setting,$option[2]);
 			echo __("Plugins Default", "extensions-leaflet-map").': ';
-			echo $option[2] ? "1" : "0";
+			echo $option[2] ? "true" : "false";
 			echo '<br>';
 		}
 
