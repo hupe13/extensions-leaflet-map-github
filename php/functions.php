@@ -12,9 +12,9 @@ function leafext_clear_params($atts) {
 		for ($i = 0; $i < count($atts); $i++) {
 			if (isset($atts[$i])) {
 				if ( strpos($atts[$i],"!") === false ) {
-					$atts[$atts[$i]] = 1;
+					$atts[$atts[$i]] = "true";
 				} else {
-					$atts[substr($atts[$i],1)] = 0;
+					$atts[substr($atts[$i],1)] = "false";
 				}
 				unset($atts[$i]);
 			}
