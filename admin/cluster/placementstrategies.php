@@ -35,6 +35,9 @@ function leafext_form_placement($field) {
 	$settings = leafext_placementstrategies_settings();
 	$setting = $settings[$field];
 
+	if ( $option[0] == "elementsPlacementStrategy") echo '<p>'. __('"default" means: one-circle strategy (up to 8 elements, else spiral strategy)',"extensions-leaflet-map").'</p>';
+
+
 	echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option[0]. '</code><br>';
 	if (!is_array($option[3])) {
 
@@ -95,5 +98,7 @@ function leafext_placement_help_text () {
 [hover]
 [zoomhomemap]
 </code></pre>
-<h3>Options</h3>';
+<h3>Options</h3>
+
+<p>'.sprintf(__('The parameter maxZoom has been removed, please use %s instead.',"extensions-leaflet-map"),'<code>[leaflet-map max_zoom="xx" ...]</code>').'</p>';
 }

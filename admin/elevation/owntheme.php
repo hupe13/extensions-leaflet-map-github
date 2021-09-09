@@ -103,12 +103,13 @@ function leafext_custom_elevation_function() {
 		'url/to/css/elevation.css', array('elevation_css'));
 }
 add_filter('pre_do_shortcode_tag', function ( &#36;output, &#36;shortcode ) {
-	if ( 'elevation' == &#36;shortcode ) {
+	if ( 'elevation' == &#36;shortcode || 'elevation-tracks' == &#36;shortcode ) {
 		leafext_custom_elevation_function();
 	}
 	return &#36;output;
 }, 10, 2);
-</pre>"
+</pre>
+"
 .'<p>'.
 __('In your elevation.css put the styles like the theme styles in',"extensions-leaflet-map")
 .' <a href="https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css"

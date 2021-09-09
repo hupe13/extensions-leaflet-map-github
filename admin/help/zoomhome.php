@@ -22,9 +22,9 @@ $text='<h2 id="leaflet.zoomhome">leaflet.zoomhome</h2>
 <ul>
 <li>
 '.__('When the map is loaded, it zooms to all objects by default.','extensions-leaflet-map').'
- '.
-__('You can change this with the attribute <code>fit</code> / <code>!fit</code>.','extensions-leaflet-map').' '.
-__('If you are using <code>!fit</code>, you have to define how the map should fit, e.g.','extensions-leaflet-map').'
+ '.sprintf(
+__('You can change this with the attribute %s.','extensions-leaflet-map'),"<code>fit</code> / <code>!fit</code>").' '.
+sprintf(__('If you are using %s, you have to define how the map should fit, e.g.','extensions-leaflet-map'),"<code>!fit</code>").'
 
 <pre>
 <code>[leaflet-map lat=... lng=... zoom=... <span style="color: #d63638">!fitbounds</span>]
@@ -49,14 +49,14 @@ __('If you are using <code>!fit</code>, you have to define how the map should fi
 </pre>
 </li>
 
-<li>'.
-__('There are certainly more examples. Test it yourself with the parameters <code>fitbounds</code> (leaflet-) or <code>fit</code> (zoomhomemap).','extensions-leaflet-map').'
+<li>'.sprintf(
+__('There are certainly more examples. Test it yourself with the parameters %s or %s.','extensions-leaflet-map'),"<code>fitbounds</code> (leaflet-)","<code>fit</code> (zoomhomemap)").'
 </li>
 </ul>
 <h3>Elevation Profile</h3>
 <ul>
-<li>
-'.__('If you use the <code>elevation</code> shortcode, please use at least one marker (e.g. starting point).','extensions-leaflet-map').'
+<li>'.
+sprintf(__('If you use the %s shortcode, please use at least one marker (e.g. starting point).','extensions-leaflet-map'),"<code>elevation</code>").'
 <pre><code>[leaflet-map ....]
 [leaflet-marker lat=... lng=... ...]Start[/leaflet-marker]
 [elevation gpx="url_gpx_file" ...]

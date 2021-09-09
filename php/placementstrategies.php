@@ -12,7 +12,7 @@ function leafext_placementstrategies_params() {
 
 		//elementsPlacementStrategy (default value 'clock-concentric') - defines the strategy for placing markers in cluster
 		array('elementsPlacementStrategy',
-			__('Strategy for placing markers in cluster: default - one-circle strategy (up to 8 elements, else spiral strategy)',
+			__('Strategy for placing markers in cluster',
 				"extensions-leaflet-map"),
 			"default",
 			array("default","spiral","one-circle","clock","clock-concentric","concentric","original-locations")),
@@ -53,9 +53,9 @@ function leafext_placementstrategies_params() {
 		array('maxClusterRadius', __('The maximum radius that a cluster will cover from the central marker (in pixels). Decreasing will make more, smaller clusters.',"extensions-leaflet-map"), "80",
 			array("20","30","40","50","60","70","80","100","120","150")),
 
-		//Sonstiges
-		array('maxZoom', __('Max zoom of the map',"extensions-leaflet-map"), "10",
-			array("18","17","16","15","14","13","12","11","10","9","8","7","6")),
+		//Sonstiges removed, use leaflet-map max-zoom=xx
+		//array('maxZoom', __('Max zoom of the map',"extensions-leaflet-map"), "10",
+		//	array("18","17","16","15","14","13","12","11","10","9","8","7","6")),
 
 	);
 
@@ -73,7 +73,6 @@ window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 window.WPLeafletMapPlugin.push(function () {
 	var map = window.WPLeafletMapPlugin.getCurrentMap();
 	//console.log(map);
-	map.options.maxZoom = '.$params['maxZoom'].';
 	var map_id = map._leaflet_id;
 
 	function getRandomColor() {

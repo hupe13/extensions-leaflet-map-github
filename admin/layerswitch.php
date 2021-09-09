@@ -35,7 +35,7 @@ function leafext_form_maps() {
 		echo '</tr>';
 
 		echo '<tr><th scope="row">Attribution:</th>';
-		echo '<td><input type="text" size="80" placeholder="Copyright" name="leafext_maps['.$i.'][attr]" value="'.$option['attr'].'" /></td>';
+		echo '<td><input type="text" size="80" placeholder="Copyright" name="leafext_maps['.$i.'][attr]" value="'.esc_attr($option['attr']).'" /></td>';
 		echo '</tr>';
 
 		echo '<tr><th scope="row">Tile server:</th>';
@@ -53,7 +53,10 @@ function leafext_validate_mapswitch($options) {
 		if ( $option['mapid'] !="" && $option['attr'] !="" && $option['tile'] != "" ) {
 			$map=array();
 			$map['mapid'] = sanitize_text_field ( $option['mapid'] );
-			$map['attr'] = sanitize_text_field ( $option['attr'] );
+			$map['attr'] = 
+			//sanitize_text_field 
+			wp_kses_normalize_entities
+			( $option['attr'] );
 			$map['tile'] = sanitize_text_field ( $option['tile'] );
 			$maps[]=$map;
 		}

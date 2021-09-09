@@ -53,12 +53,13 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 ## Changelog
 
 ### 2.1.2 / This version may not stable yet!
-* taking care of parameter max-zoom from leaflet-map
+* taking care of parameter max_zoom from leaflet-map
 * Leaflet.markercluster V 1.5.1
 * leaflet-gpx V 1.6.0
 * changing the parameter names for cluster to those of the Leaflet.markercluster (old names are still valid)
 * cluster parameters are valid for markerClusterGroup also
 * bug in gestures fixed
+* bug in layerswitch option attribution fixed
 * and more
 
 ### 2.1.1 / 210824

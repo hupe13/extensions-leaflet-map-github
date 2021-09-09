@@ -89,7 +89,7 @@ function leafext_ele_help_text () {
 	if (is_array($theme)) {
 		echo '<p>';
 		if ($theme['theme'] == "other") {
-			echo __("You have installed your own theme. The settings for <code>theme</code> on this page are not valid for you.","extensions-leaflet-map");
+			echo sprintf(__("You have installed your own theme. The settings for %s on this page are not valid for you.","extensions-leaflet-map"),"<code>theme</code>");
 		} else {
 			echo '<span style="color: #d63638">';
 			echo __('Your theme is','extensions-leaflet-map').' '.$theme['theme'].'. ';

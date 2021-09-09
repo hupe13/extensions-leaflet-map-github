@@ -16,19 +16,7 @@ $text='
 [elevation-<span style="color: #d63638">track</span> file="..." lat="..." lng="..." name="..."]
 [elevation-<span style="color: #d63638">tracks</span> summary=1]  // like in [elevation]
 </code></pre>
-
-'.__('Put in your functions.php following code:','extensions-leaflet-map').
-"<pre>
-add_filter('pre_do_shortcode_tag', function ( &#36;output, &#36;shortcode ) {
-	if ( 'elevation' == &#36;shortcode ||
-		'elevation-tracks' == &#36;shortcode ) {
-		custom_elevation_function();
-	}
-	return &#36;output;
-}, 10, 2);
-</pre>".
-
-'<h2>'.__('Example','extensions-leaflet-map').'</h2>
+<h2>'.__('Example','extensions-leaflet-map').'</h2>
 '.__('This example is a very special application. gpx-files with tracks in a region are in a directory.','extensions-leaflet-map').'
 <pre>
 <code>&lt;?php

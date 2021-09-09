@@ -14,14 +14,14 @@ echo '
 __('Dynamically add/remove groups of markers from Marker Cluster','extensions-leaflet-map').
 '.</p><h3>Options and Shortcode</h3>
 <ul>
-<li>feat - '.__('possible meaningful values','extensions-leaflet-map').': iconUrl, title</li>
-<li>strings - '.
-__('comma separated strings to distinguish the markers, e.g. an unique string in iconUrl or title',
-'extensions-leaflet-map').'</li>
-<li>groups - '.
+<li><code>feat</code> - '.__('possible meaningful values','extensions-leaflet-map').': iconUrl, title</li>
+<li><code>strings</code> - '.sprintf(
+__('comma separated strings to distinguish the markers, e.g. an unique string in %s or %s',
+'extensions-leaflet-map'),"<code>iconUrl</code>","<code>title</code>").'</li>
+<li><code>groups</code> - '.
 __('comma separated labels appear in the selection menu','extensions-leaflet-map').'</li>
-<li>'.
-__('The number of strings and groups must match.','extensions-leaflet-map').'
+<li>'.sprintf(
+__('The number of %s and %s must match.','extensions-leaflet-map'),"<code>strings</code>","<code>groups</code>").'
 </li></ul>
 <pre><code>[leaflet-marker iconUrl="...red..." ... ] ... [/leaflet-marker]
 [leaflet-marker iconUrl="...green..." ... ] ... [/leaflet-marker]
@@ -36,6 +36,6 @@ __('The number of strings and groups must match.','extensions-leaflet-map').'
 </code></pre>
 
 <p>';
-echo sprintf ( __('The parameter and settings for %s are valid also.','extensions-leaflet-map'),
+echo sprintf ( __('The parameter and settings for %s are valid too.','extensions-leaflet-map'),
 	'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=markercluster">Leaflet.markercluster</a>');
 echo '</p>';

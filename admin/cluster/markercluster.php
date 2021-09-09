@@ -99,8 +99,8 @@ function leafext_markercluster_help_text () {
 <h3>Options</h3>
 
 <p>'.
-  __('Please see the <a href="https://github.com/Leaflet/Leaflet.markercluster#options">Leaflet.markercluster</a> page for options. If you want to change other ones, please post it to the forum.',
-  'extensions-leaflet-map').' ';
+  sprintf(__('Please see the %s page for options. If you want to change other ones, please post it to the forum.',
+  'extensions-leaflet-map'),'<a href="https://github.com/Leaflet/Leaflet.markercluster#options">Leaflet.markercluster</a>').' ';
 	echo __('To reset all values to their defaults, simply click the Reset button',
 	'extensions-leaflet-map').'.</p>';
 

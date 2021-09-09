@@ -11,16 +11,16 @@ function leafext_cluster_params() {
 	$params = array(
 
 		//showCoverageOnHover: When you mouse over a cluster it shows the bounds of its markers.
-		array('showCoverageOnHover', __('showCoverageOnHover: When you mouse over a cluster it shows the bounds of its markers.',"extensions-leaflet-map"), true, 1),
+		array('showCoverageOnHover', __('When you mouse over a cluster it shows the bounds of its markers.',"extensions-leaflet-map"), true, 1),
 
 		//zoomToBoundsOnClick: When you click a cluster we zoom to its bounds.
-		array('zoomToBoundsOnClick', __('zoomToBoundsOnClick: When you click a cluster we zoom to its bounds.',"extensions-leaflet-map"), true, 1),
+		array('zoomToBoundsOnClick', __('When you click a cluster we zoom to its bounds.',"extensions-leaflet-map"), true, 1),
 
 		//spiderfyOnMaxZoom: When you click a cluster at the bottom zoom level we spiderfy it so you can see all of its markers. (Note: the spiderfy occurs at the current zoom level if all items within the cluster are still clustered at the maximum zoom level or at zoom specified by disableClusteringAtZoom option).
-		array('spiderfyOnMaxZoom', __('spiderfyOnMaxZoom: When you click a cluster at the bottom zoom level we spiderfy it so you can see all of its markers.',"extensions-leaflet-map"), true, 1),
+		array('spiderfyOnMaxZoom', __('When you click a cluster at the bottom zoom level we spiderfy it so you can see all of its markers.',"extensions-leaflet-map"), true, 1),
 
 		//removeOutsideVisibleBounds: Clusters and markers too far from the viewport are removed from the map for performance.
-		array('removeOutsideVisibleBounds', __('removeOutsideVisibleBounds: Clusters and markers too far from the viewport are removed from the map for performance.',"extensions-leaflet-map"), true, 1),
+		array('removeOutsideVisibleBounds', __('Clusters and markers too far from the viewport are removed from the map for performance.',"extensions-leaflet-map"), true, 1),
 
 		//animate: Smoothly split / merge cluster children when zooming and spiderfying. If L.DomUtil.TRANSITION is false, this option has no effect (no animation is possible).
 		//array('animate', __('Smoothly split / merge cluster children when zooming and spiderfying.',"extensions-leaflet-map"), true, 1),
@@ -31,12 +31,12 @@ function leafext_cluster_params() {
 
 
 		//disableClusteringAtZoom: If set, at this zoom level and below, markers will not be clustered. This defaults to disabled.
-		array('disableClusteringAtZoom', __('disableClusteringAtZoom: If set, at this zoom level and below, markers will not be clustered. If 0, it is disabled.',"extensions-leaflet-map"), "17",
+		array('disableClusteringAtZoom', __('If set, at this zoom level and below, markers will not be clustered. If 0, it is disabled.',"extensions-leaflet-map"), "17",
 			//array("18","17","16","15","14","13","12","11","10","9","8","7","6","0")),
 			array(18,17,16,15,14,13,12,11,10,9,8,7,6,0)),
 
 		//maxClusterRadius: The maximum radius that a cluster will cover from the central marker (in pixels). Default 80. Decreasing will make more, smaller clusters. You can also use a function that accepts the current map zoom and returns the maximum cluster radius in pixels.
-		array('maxClusterRadius', __('maxClusterRadius: The maximum radius that a cluster will cover from the central marker (in pixels). Decreasing will make more, smaller clusters.',"extensions-leaflet-map"), "80",
+		array('maxClusterRadius', __('The maximum radius that a cluster will cover from the central marker (in pixels). Decreasing will make more, smaller clusters.',"extensions-leaflet-map"), "80",
 			//array("20","30","40","50","60","70","80","100","120","150")),
 			array(20,30,40,50,60,70,80,100,120,150)),
 
