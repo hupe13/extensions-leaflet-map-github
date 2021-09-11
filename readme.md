@@ -56,11 +56,11 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * taking care of parameter max_zoom from leaflet-map
 * Leaflet.markercluster V 1.5.1
 * leaflet-gpx V 1.6.0
-* changing the parameter names for cluster to those of the Leaflet.markercluster (old names are still valid)
-* cluster parameters are valid for markerClusterGroup also
-* bug in gestures fixed
-* bug in layerswitch option attribution fixed
-* zoomhomemap works for any (I hope) [leaflet-*] object and [elevation] without marker necessary until now
+* changing the parameter names for [cluster] to those of the Leaflet.markercluster (old names are still valid)
+* [cluster] parameters are valid for [markerClusterGroup] also
+* bug in [gestures] fixed
+* bug in [layerswitch] option attribution fixed
+* [zoomhomemap] works for any [leaflet-*] object. [elevation] no longer needs a marker for [zoomhomemap].
 * and more
 
 ### 2.1.1 / 210824
