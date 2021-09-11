@@ -60,6 +60,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * cluster parameters are valid for markerClusterGroup also
 * bug in gestures fixed
 * bug in layerswitch option attribution fixed
+* zoomhomemap works for any (I hope) [leaflet-*] object and [elevation] without marker necessary until now
 * and more
 
 ### 2.1.1 / 210824

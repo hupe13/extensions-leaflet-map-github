@@ -19,6 +19,7 @@ function leafext_zoomhome_script($fit){
 		var map_id = map._leaflet_id;
 		var maps=[];
 		maps[map_id] = map;
+		//console.log("map zoom* "+maps[map_id].options.maxZoom);
 		if (typeof maps[map_id].options.maxZoom == "undefined")
 			maps[map_id].options.maxZoom = 19;
 		//console.log("map_id* "+map_id);
@@ -71,13 +72,13 @@ function leafext_zoomhome_script($fit){
 						} else if (layer instanceof L.Polyline){
 							//console.log("is_Line");
 							maplines++;
-							bounds[map_id].extend(layer._latlng);
+							bounds[map_id].extend(layer.getBounds());
 						} else if (layer instanceof L.Circle){
 							//console.log("is_Circle");
 							mapcircles++;
-							bounds[map_id].extend(layer._latlng);
-						// } else {
-						// 	console.log(layer);
+							bounds[map_id].extend(layer.getBounds());
+//						} else {
+//						 	console.log(layer);
 						}
 					});
 				}
@@ -112,9 +113,16 @@ function leafext_zoomhome_script($fit){
 		//elevation asynchron
 		maps[map_id].on("eledata_loaded", function(e) {
 			//console.log("elevation loaded");
-			bounds[map_id].extend(e.layer.getBounds());
-			zoomHome[map_id].setHomeBounds(bounds[map_id]);
-			maps[map_id].fitBounds(bounds[map_id]);
+			var bounds = [];
+			bounds = new L.latLngBounds();
+			var zoomHome = [];
+			zoomHome = L.Control.zoomHome();
+			
+			maps[map_id].on("zoomend", function(e) {
+				//console.log("zoomend ele");
+				zoomHome.addTo(maps[map_id]);
+				zoomHome.setHomeBounds(maps[map_id].getBounds());
+			});
 			zoom = -99;
 		});
 
@@ -127,17 +135,14 @@ function leafext_zoomhome_script($fit){
 					//console.log("fit true");
 					//console.log("zoom "+maps[map_id].getZoom());
 					maps[map_id].fitBounds(bounds[map_id]);
-					//if (maps[map_id].getZoom() > 14 && zoom == 1) {
-						//	maps[map_id].setZoom(14);
-					//}
 				}
 			}
 		}
 		//
-		// maps[map_id].on("zoomend", function() {
-			// console.log("zoomend "+map_id+" "+maps[map_id].getZoom());
-			// console.log("homezoom "+map_id+" "+zoomHome[map_id].getHomeZoom());
-		// });
+//		maps[map_id].on("zoomend", function() {
+//			console.log("zoomend last "+map_id+" "+maps[map_id].getZoom());
+//			console.log("homezoom "+map_id+" "+zoomHome[map_id].getHomeZoom());
+//		});
 	});
 	</script>';
 	$text = \JShrink\Minifier::minify($text);
