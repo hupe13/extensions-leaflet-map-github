@@ -53,17 +53,6 @@ sprintf(__('If you are using %s, you have to define how the map should fit, e.g.
 __('There are certainly more examples. Test it yourself with the parameters %s or %s.','extensions-leaflet-map'),"<code>fitbounds</code> (leaflet-)","<code>fit</code> (zoomhomemap)").'
 </li>
 </ul>
-<h3>Elevation Profile</h3>
-<ul>
-<li>'.
-sprintf(__('If you use the %s shortcode, please use at least one marker (e.g. starting point).','extensions-leaflet-map'),"<code>elevation</code>").'
-<pre><code>[leaflet-map ....]
-[leaflet-marker lat=... lng=... ...]Start[/leaflet-marker]
-[elevation gpx="url_gpx_file" ...]
-</code></pre>
-</li>
-
-</ul>
 ';
 
 echo $text;
