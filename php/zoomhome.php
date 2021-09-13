@@ -77,8 +77,8 @@ function leafext_zoomhome_script($fit){
 							//console.log("is_Circle");
 							mapcircles++;
 							bounds[map_id].extend(layer.getBounds());
-//						} else {
-//						 	console.log(layer);
+						//} else {
+						 	//console.log(layer);
 						}
 					});
 				}
@@ -113,39 +113,37 @@ function leafext_zoomhome_script($fit){
 		//elevation asynchron
 		maps[map_id].on("eledata_loaded", function(e) {
 			//console.log("elevation loaded");
-			var bounds = [];
-			bounds = new L.latLngBounds();
-			var zoomHome = [];
-			zoomHome = L.Control.zoomHome();
-			
-			maps[map_id].on("zoomend", function(e) {
-				//console.log("zoomend ele");
-				zoomHome.addTo(maps[map_id]);
-				zoomHome.setHomeBounds(maps[map_id].getBounds());
-			});
+			//console.log(zoomHome);
+			bounds[map_id].extend(e.layer.getBounds());
+			//console.log(Object.keys(zoomHome[map_id]));
+			//console.log(Object.keys(zoomHome[map_id]).includes("_zoomHomeButton"));
+			if (Object.keys(zoomHome[map_id]).includes("_zoomHomeButton")) {
+				//console.log("includes");
+				zoomHome[map_id].setHomeBounds(bounds[map_id]);
+			} else {
+				//console.log("not includes");
+				zoomHome[map_id].addTo(map);
+				zoomHome[map_id].setHomeBounds(bounds[map_id]);
+			}
+			maps[map_id].fitBounds(bounds[map_id]);
 			zoom = -99;
 		});
 
-		//
+		//console.log(zoomHome[map_id]);
 		if ( zoom > 0 ) {
 			if (bounds[map_id].isValid()) {
 				zoomHome[map_id].addTo(map);
 				zoomHome[map_id].setHomeBounds(bounds[map_id]);
 				if ('.json_encode($fit).') {
-					//console.log("fit true");
+					console.log("fit true");
 					//console.log("zoom "+maps[map_id].getZoom());
 					maps[map_id].fitBounds(bounds[map_id]);
 				}
 			}
 		}
-		//
-//		maps[map_id].on("zoomend", function() {
-//			console.log("zoomend last "+map_id+" "+maps[map_id].getZoom());
-//			console.log("homezoom "+map_id+" "+zoomHome[map_id].getHomeZoom());
-//		});
 	});
 	</script>';
-	$text = \JShrink\Minifier::minify($text);
+	//$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }
 
@@ -155,10 +153,13 @@ function leafext_plugin_zoomhome_function($atts){
 	$defaults = array(
 		'fit' => 1,
 	);
-	$atts = leafext_clear_params($atts);
-	$params = shortcode_atts($defaults, $atts);
-	$params['fit'] = (bool)$params['fit'];
-
+	$atts1 = leafext_clear_params($atts);
+	$params = shortcode_atts($defaults, $atts1);
+	switch ($params['fit']) {
+		case "false":
+		case "0": $params['fit'] = false; break;
+		default: $params['fit'] = true;
+	}
 	return leafext_zoomhome_script($params['fit']);
 }
 add_shortcode('zoomhomemap', 'leafext_plugin_zoomhome_function' );
