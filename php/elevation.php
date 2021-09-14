@@ -137,6 +137,8 @@ function leafext_elevation_script($gpx,$theme,$settings){
 				acceleration:  false,
 				time: false,
 				downloadLink: false,
+				preferCanvas: false,
+				legend: false,
 				polyline:  { weight: 3, },
 				';
 				//old settings end

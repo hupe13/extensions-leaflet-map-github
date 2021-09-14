@@ -10,6 +10,8 @@ defined( 'ABSPATH' ) or die();
 
 // iterate any of these: `maps`, `markers`, `markergroups`, `lines`, `circles`, `geojsons`
 function leafext_zoomhome_script($fit){
+	$maxzoom=get_option('leaflet_default_zoom');
+	if ($maxzoom == 20) $maxzoom = 19;
 	$text = '
 	<script>
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -21,7 +23,7 @@ function leafext_zoomhome_script($fit){
 		maps[map_id] = map;
 		//console.log("map zoom* "+maps[map_id].options.maxZoom);
 		if (typeof maps[map_id].options.maxZoom == "undefined")
-			maps[map_id].options.maxZoom = 19;
+			maps[map_id].options.maxZoom = '.$maxzoom.';
 		//console.log("map_id* "+map_id);
 		//console.log("fit "+'.json_encode($fit).');
 
@@ -117,16 +119,12 @@ function leafext_zoomhome_script($fit){
 			bounds[map_id].extend(e.layer.getBounds());
 			//console.log(Object.keys(zoomHome[map_id]));
 			//console.log(Object.keys(zoomHome[map_id]).includes("_zoomHomeButton"));
-			if (Object.keys(zoomHome[map_id]).includes("_zoomHomeButton")) {
-				//console.log("includes");
-				zoomHome[map_id].setHomeBounds(bounds[map_id]);
-			} else {
-				//console.log("not includes");
+			if ( ! Object.keys(zoomHome[map_id]).includes("_zoomHomeButton")) {
+				console.log("Lade Control");
 				zoomHome[map_id].addTo(map);
-				zoomHome[map_id].setHomeBounds(bounds[map_id]);
 			}
+			zoomHome[map_id].setHomeBounds(bounds[map_id]);
 			maps[map_id].fitBounds(bounds[map_id]);
-			zoom = -99;
 		});
 
 		//console.log(zoomHome[map_id]);
