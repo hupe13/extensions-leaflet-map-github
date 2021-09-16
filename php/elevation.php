@@ -112,6 +112,10 @@ function leafext_elevation_params() {
 		// marker: "elevation-line" || "position-marker" || false
 		array('marker', __('position/height indicator marker drawn onto the map',"extensions-leaflet-map"), 'elevation-line', array("elevation-line", "position-marker",false)),
 
+		//https://github.com/Raruto/leaflet-elevation/issues/120#issuecomment-916958969
+		// Display track waypoints: (true || false) - waypoints: false,
+		array('waypoints', __('Display track waypoints.',"extensions-leaflet-map"), false, 1),
+
 	);
 	return $params;
 }

@@ -46,16 +46,17 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Installation
 
-* First you need to install the plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>.
+* First you need to install and configure the plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>.
 * Then install this plugin.
 * Go to Settings - Leaflet Map - Extensions for Leaflet Map and get documentation and settings options.
 
 ## Changelog
 
 ### 2.1.2 / This version may not stable yet!
-* taking care of parameter max_zoom from leaflet-map
 * Leaflet.markercluster V 1.5.1
 * leaflet-gpx V 1.6.0
+* leaflet-elevation V 1.7.0; new parameter waypoints
+* taking care of parameter max_zoom from leaflet-map
 * changing the parameter names for [cluster] to those of the Leaflet.markercluster (old names are still valid)
 * [cluster] parameters are valid for [markerClusterGroup] also
 * bug in [gestures] fixed

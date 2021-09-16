@@ -32,8 +32,6 @@ https://github.com/mpetazzoni/leaflet-gpx
 
 <pre>[elevation-tracks ...]</pre>
 
-(Changed gpx.js, see https://github.com/mpetazzoni/leaflet-gpx/issues/112)
-
 <h3>leaflet-gesture-handling</h3>
 
 https://github.com/Raruto/leaflet-gesture-handling
