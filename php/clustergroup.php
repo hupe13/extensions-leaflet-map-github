@@ -69,7 +69,7 @@ function leafext_clustergroup_script($featuregroups,$params){
 		// alt * (no)
 		// iconUrl *
 		</script>';
-		//$text = \JShrink\Minifier::minify($text);
+		$text = \JShrink\Minifier::minify($text);
 		return "\n".$text."\n";
 }
 

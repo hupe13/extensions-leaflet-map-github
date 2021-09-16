@@ -71,10 +71,22 @@ function leafext_validate_ele_options($options) {
 
 // Helptext
 function leafext_ele_help_text () {
-	echo '
-	<img src="'.LEAFEXT_PLUGIN_PICTS.'elevation.png">
-	<h2>Shortcode</h2>
+	echo '<img src="'.LEAFEXT_PLUGIN_PICTS.'elevation.png">
+	<h2>Note</h2>';
+	echo sprintf(
+				__(
+				'%s and %s are two different things, they use different technologies. If you want to display a GPX track only, use %s. If you want to display a GPX track with an elevation profile use %s.',"extensions-leaflet-map"),
+				"<code>[leaflet-gpx]</code>",
+				"<code>[elevation]</code>",
+				"<code>[leaflet-gpx]</code>",
+				"<code>[elevation]</code>");
+	echo '<h2>Shortcode</h2>
 	<pre><code>[leaflet-map ....]
+[elevation gpx="url_gpx_file" option1=value1 option2 !option3 ...]</code></pre>
+'.
+__('You can set a marker on Start, but this is not necessary any more.',"extensions-leaflet-map").'
+<pre><code>[leaflet-map ....]
+[leaflet-marker lat=... lng=... ...]Start[/leaflet-marker]
 [elevation gpx="url_gpx_file" option1=value1 option2 !option3 ...]</code></pre>
 	<h3>Options</h3>
 	<p>';

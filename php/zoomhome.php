@@ -144,7 +144,7 @@ function leafext_zoomhome_script($fit){
 		}
 	});
 	</script>';
-	//$text = \JShrink\Minifier::minify($text);
+	$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }
 
