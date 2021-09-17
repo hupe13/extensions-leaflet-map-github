@@ -114,7 +114,8 @@ function leafext_elevation_params() {
 
 		//https://github.com/Raruto/leaflet-elevation/issues/120#issuecomment-916958969
 		// Display track waypoints: (true || false) - waypoints: false,
-		array('waypoints', __('Display track waypoints.',"extensions-leaflet-map"), false, 1),
+		// plugins default true
+		array('waypoints', __('Display track waypoints.',"extensions-leaflet-map"), true, 1),
 
 	);
 	return $params;
