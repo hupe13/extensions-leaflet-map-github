@@ -33,7 +33,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 ## Screenshots
 
-1. Track with elevation ans other profiles and Switching Tile Layers<br>![Track with elevation profile](.wordpress-org/screenshot-1.png)
+1. Track with elevation and other profiles and Switching Tile Layers<br>![Track with elevation profile](.wordpress-org/screenshot-1.png)
 1. Track with elevation profile only and Switching Tile Layers<br>![Track with elevation profile](.wordpress-org/screenshot-2.png)
 2. Multiple Tracks with elevation profile<br>![Multiple Tracks with elevation profile](.wordpress-org/screenshot-3.png)
 3. Hover a Geojson area <br>![Hover a Geojson area](.wordpress-org/screenshot-4.png)
