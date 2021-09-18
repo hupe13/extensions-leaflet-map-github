@@ -233,7 +233,8 @@ function leafext_elevation_function( $atts ) {
 	leafext_enqueue_elevation ();
 	$atts1=leafext_case(array_keys(leafext_elevation_settings()),leafext_clear_params($atts));
 	$options = shortcode_atts( array_merge(array('gpx' => false),leafext_elevation_settings()), $atts1);
-	if ( ! $options['gpx'] ) wp_die("No gpx track!");
+	//if ( ! $options['gpx'] ) wp_die("No gpx track!");
+	if ( ! $options['gpx'] ) return "";
 	$track = $options['gpx'];
 	unset($options['gpx']);
 	if ( array_key_exists('theme', $atts) ) {
