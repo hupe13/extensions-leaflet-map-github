@@ -53,9 +53,9 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.1.2 / This version may not stable yet!
+### 2.1.2 / 21091x / Last Tests
 * Leaflet.markercluster V 1.5.1
-* leaflet-gpx V 1.6.0
+* leaflet-gpx V 1.7.0
 * leaflet-elevation V 1.7.0; new parameter waypoints
 * taking care of parameter max_zoom from leaflet-map
 * changing the parameter names for [cluster] to those of the Leaflet.markercluster (old names are still valid)

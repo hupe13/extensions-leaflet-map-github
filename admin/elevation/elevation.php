@@ -75,7 +75,7 @@ function leafext_ele_help_text () {
 	<h2>Note</h2>';
 	echo sprintf(
 				__(
-				'%s and %s are two different things, they use different technologies. If you want to display a GPX track only, use %s. If you want to display a GPX track with an elevation profile use %s.',"extensions-leaflet-map"),
+				'%s and %s are different. If you want to display a GPX track only, use %s. If you want to display a GPX track with an elevation profile use %s.',"extensions-leaflet-map"),
 				"<code>[leaflet-gpx]</code>",
 				"<code>[elevation]</code>",
 				"<code>[leaflet-gpx]</code>",
