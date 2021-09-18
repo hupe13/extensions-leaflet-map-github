@@ -234,7 +234,14 @@ function leafext_elevation_function( $atts ) {
 	$atts1=leafext_case(array_keys(leafext_elevation_settings()),leafext_clear_params($atts));
 	$options = shortcode_atts( array_merge(array('gpx' => false),leafext_elevation_settings()), $atts1);
 	//if ( ! $options['gpx'] ) wp_die("No gpx track!");
-	if ( ! $options['gpx'] ) return "";
+	if ( ! $options['gpx'] ) {
+		$text = "[elevation ";
+		foreach ($atts as $key=>$item){
+			$text = $text. "$key = $item ";
+		}
+		$text = $text. "]";
+		return $text;
+	}
 	$track = $options['gpx'];
 	unset($options['gpx']);
 	if ( array_key_exists('theme', $atts) ) {
