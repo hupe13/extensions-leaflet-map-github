@@ -230,11 +230,7 @@ function leafext_elevation_theme() {
 }
 
 function leafext_elevation_function( $atts ) {
-	leafext_enqueue_elevation ();
-	$atts1=leafext_case(array_keys(leafext_elevation_settings()),leafext_clear_params($atts));
-	$options = shortcode_atts( array_merge(array('gpx' => false),leafext_elevation_settings()), $atts1);
-	//if ( ! $options['gpx'] ) wp_die("No gpx track!");
-	if ( ! $options['gpx'] ) {
+	if ( ! $atts['gpx'] ) {
 		$text = "[elevation ";
 		foreach ($atts as $key=>$item){
 			$text = $text. "$key = $item ";
@@ -242,8 +238,12 @@ function leafext_elevation_function( $atts ) {
 		$text = $text. "]";
 		return $text;
 	}
-	$track = $options['gpx'];
-	unset($options['gpx']);
+	leafext_enqueue_elevation ();
+	$atts1=leafext_case(array_keys(leafext_elevation_settings()),leafext_clear_params($atts));
+	$options = shortcode_atts(leafext_elevation_settings(), $atts1);
+
+	$track = $atts['gpx'];
+	
 	if ( array_key_exists('theme', $atts) ) {
 		$theme = $atts['theme'];
 	} else {

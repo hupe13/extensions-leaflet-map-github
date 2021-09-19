@@ -35,7 +35,7 @@ function leafext_form_placement($field) {
 	$settings = leafext_placementstrategies_settings();
 	$setting = $settings[$field];
 
-	if ( $option[0] == "elementsPlacementStrategy") echo '<p>'. __('"default" means: one-circle strategy (up to 8 elements, else spiral strategy)',"extensions-leaflet-map").'</p>';
+	if ( $option[0] == "elementsPlacementStrategy") echo '<p>'. __('"default" means: one-circle strategy up to 8 elements, else spiral strategy',"extensions-leaflet-map").'</p>';
 
 
 	echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option[0]. '</code><br>';
