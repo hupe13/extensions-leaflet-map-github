@@ -63,6 +63,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * bug in [gestures] fixed
 * bug in [layerswitch] option attribution fixed
 * [zoomhomemap] works for any [leaflet-*] object. [elevation] no longer needs a marker for [zoomhomemap].
+* hide markers in gpxgroup (multielevation)
 * and more
 
 ### 2.1.1 / 210824
