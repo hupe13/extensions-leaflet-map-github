@@ -108,8 +108,8 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 ### 1.2 / 210502
 * documentation on a help page
 * prepare for translation
-* new setting options for <code>[markercluster]</code>
-* new setting options for <code>[zoomhomemap]</code>
+* new setting options for [markercluster]
+* new setting options for [zoomhomemap]
 
 ### 1.1 / 210417
 * New functions:
