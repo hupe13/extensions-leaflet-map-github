@@ -6,7 +6,7 @@ Contributors: hupe13
 Tags: leaflet, elevation, markercluster, zoomhome, hover, fullscreen, gpx,  
 Requires at least: 5.5.3  
 Tested up to: 5.8  
-Stable tag: 2.1.1  
+Stable tag: 2.1.2  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -53,7 +53,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.1.2 / 21091x / Last Tests
+### 2.1.2 / 210922
 * Leaflet.markercluster V 1.5.1
 * leaflet-gpx V 1.7.0
 * leaflet-elevation V 1.7.0; new parameter waypoints
