@@ -26,7 +26,7 @@ function leafext_zoomhome_script($fit){
 			maps[map_id].options.maxZoom = '.$maxzoom.';
 		if (maps[map_id].options.maxZoom == 20) 
 			maps[map_id].options.maxZoom = 19;
-		console.log(maps[map_id].options.maxZoom);
+		//console.log(maps[map_id].options.maxZoom);
 		//console.log("map_id* "+map_id);
 		//console.log("fit "+'.json_encode($fit).');
 

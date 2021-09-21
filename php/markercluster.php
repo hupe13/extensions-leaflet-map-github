@@ -63,13 +63,13 @@ function leafext_cluster_params() {
 function leafext_cluster_script($params){
 	$text = '
 	<script>
-	console.log("cluster.zoom "+'.$params['disableClusteringAtZoom'].');
+	//console.log("cluster.zoom "+'.$params['disableClusteringAtZoom'].');
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 	var map = window.WPLeafletMapPlugin.getCurrentMap();
 	var map_id = map._leaflet_id;
 	if ( WPLeafletMapPlugin.markers.length > 0 ) {
-		console.log("map.options.maxZoom "+map.options.maxZoom);
+		//console.log("map.options.maxZoom "+map.options.maxZoom);
 		if (typeof map.options.maxZoom == "undefined")
 			map.options.maxZoom = 19;
 		var clmarkers = L.markerClusterGroup({';
