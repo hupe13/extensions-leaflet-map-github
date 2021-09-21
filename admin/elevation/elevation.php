@@ -72,7 +72,7 @@ function leafext_validate_ele_options($options) {
 // Helptext
 function leafext_ele_help_text () {
 	echo '<img src="'.LEAFEXT_PLUGIN_PICTS.'elevation.png">
-	<h2>Note</h2>';
+	<h2>'.__('Note','extensions-leaflet-map').'</h2>';
 	echo sprintf(
 				__(
 				'%s and %s are different. If you want to display a GPX track only, use %s. If you want to display a GPX track with an elevation profile use %s.',"extensions-leaflet-map"),

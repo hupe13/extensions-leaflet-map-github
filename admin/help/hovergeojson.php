@@ -7,7 +7,7 @@ $text='<h2 id="hovergeojson">hovering</h2>
 <p>'.__('Use it to highlight a geojson or marker and get a tooltip on mouse over.','extensions-leaflet-map').' '.
 sprintf(
 __('It works on %s and %s.','extensions-leaflet-map'),"leaflet-geojson, leaflet-gpx, leaflet-kml","leaflet-marker");
-echo '</p>
+$text = $text. '</p>
 <h2>Shortcode</h2>
 <pre><code>[leaflet-map ...]
 [leaflet-geojson src="//url/to/file.geojson" color="..."]{name}[/leaflet-geojson]
