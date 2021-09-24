@@ -24,7 +24,7 @@ function leafext_zoomhome_script($fit){
 		//console.log("map zoom* "+maps[map_id].options.maxZoom);
 		if (typeof maps[map_id].options.maxZoom == "undefined")
 			maps[map_id].options.maxZoom = '.$maxzoom.';
-		if (maps[map_id].options.maxZoom == 20) 
+		if (maps[map_id].options.maxZoom == 20)
 			maps[map_id].options.maxZoom = 19;
 		//console.log(maps[map_id].options.maxZoom);
 		//console.log("map_id* "+map_id);
@@ -82,8 +82,18 @@ function leafext_zoomhome_script($fit){
 							//console.log("is_Circle");
 							mapcircles++;
 							bounds[map_id].extend(layer.getBounds());
-						//} else {
-						 	//console.log(layer);
+						} else {
+							console.log("weder noch");
+						 	console.log(layer);
+							layer.on("ready", function () {
+								console.log("ready");
+								console.log(this);
+								// bounds[map_id].extend(this.getBounds());
+								// if (bounds[map_id].isValid()) {
+								// 	zoomHome[map_id].setHomeBounds(bounds[map_id]);
+								// 	if ('.json_encode($fit).') maps[map_id].fitBounds(bounds[map_id]);
+								// }
+							});
 						}
 					});
 				}
