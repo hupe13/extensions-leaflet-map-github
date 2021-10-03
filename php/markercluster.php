@@ -32,13 +32,11 @@ function leafext_cluster_params() {
 
 		//disableClusteringAtZoom: If set, at this zoom level and below, markers will not be clustered. This defaults to disabled.
 		array('disableClusteringAtZoom', __('If set, at this zoom level and below, markers will not be clustered. If 0, it is disabled.',"extensions-leaflet-map"), "17",
-			//array("18","17","16","15","14","13","12","11","10","9","8","7","6","0")),
-			array(18,17,16,15,14,13,12,11,10,9,8,7,6,0)),
+			array("18","17","16","15","14","13","12","11","10","9","8","7","6","0")),
 
 		//maxClusterRadius: The maximum radius that a cluster will cover from the central marker (in pixels). Default 80. Decreasing will make more, smaller clusters. You can also use a function that accepts the current map zoom and returns the maximum cluster radius in pixels.
 		array('maxClusterRadius', __('The maximum radius that a cluster will cover from the central marker (in pixels). Decreasing will make more, smaller clusters.',"extensions-leaflet-map"), "80",
-			//array("20","30","40","50","60","70","80","100","120","150")),
-			array(20,30,40,50,60,70,80,100,120,150)),
+			array("20","30","40","50","60","70","80","100","120","150")),
 
 		//polygonOptions: Options to pass when creating the L.Polygon(points, options) to show the bounds of a cluster. Defaults to empty, which lets Leaflet use the default Path options.
 
