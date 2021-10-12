@@ -72,6 +72,12 @@ function leafext_elevation_params() {
 		//legend: true,
 		array('legend', __('Toggle chart legend filter.',"extensions-leaflet-map"), true, 1),
 		
+//
+
+		// Toggle chart. https://github.com/Raruto/leaflet-elevation/discussions/139
+		//chart: true, 
+		array('chart', __('Display / Hide chart.',"extensions-leaflet-map"), true, array(true, "on", "off")),
+		
 // Zusaetze
 
 		//hupe13: Download Link
@@ -131,7 +137,7 @@ function leafext_elevation_params() {
 
 //Shortcode: [elevation gpx="...url..."]
 
-function leafext_elevation_script($gpx,$theme,$settings){
+function leafext_elevation_script($gpx,$theme,$settings,$chart){
 	$text = '
 	<script>
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -194,10 +200,35 @@ function leafext_elevation_script($gpx,$theme,$settings){
 		// Instantiate elevation control.
 		var controlElevation = L.control.elevation(elevation_options);
 		var track_options= { url: "'.$gpx.'" };
-		controlElevation.addTo(map);
+		controlElevation.addTo(map);';
+		
+		if ($chart != "1") {
+		$text=$text.'var controlButton = L.easyButton(
+			"<i class=\"fa fa-area-chart\" aria-hidden=\"true\"></i>",
+			function(btn, map) { 
+				controlElevation._toggle(); },
+				"Elevation",
+				{ position: "topright" }
+				).addTo( map );';
+		}
+		
+		$text=$text.'
 		// Load track from url (allowed data types: "*.geojson", "*.gpx")
-		controlElevation.load(track_options.url);
+		controlElevation.load(track_options.url);';
 
+		if (is_string($chart)) {
+		$text=$text.'map.on("eledata_added", function(e) {
+			//console.log("eledata_added");
+			//Ja 2x!!! Koennte man als Parameter setzen
+			controlElevation._toggle();';
+			if ($chart == "off") {
+				$text=$text.'
+				controlElevation._toggle();';
+			}
+			$text=$text.'
+		});';
+		}
+	$text=$text.'	
 	});
 	</script>';
 	$text = \JShrink\Minifier::minify($text);
@@ -227,7 +258,7 @@ function leafext_elevation_theme() {
 		$theme = $newoptions['theme'];
 	}
 	return($theme);
-}
+}	
 
 function leafext_elevation_function( $atts ) {
 	if ( ! $atts['gpx'] ) {
@@ -239,6 +270,7 @@ function leafext_elevation_function( $atts ) {
 		return $text;
 	}
 	leafext_enqueue_elevation ();
+	
 	$atts1=leafext_case(array_keys(leafext_elevation_settings()),leafext_clear_params($atts));
 	$options = shortcode_atts(leafext_elevation_settings(), $atts1);
 
@@ -250,6 +282,13 @@ function leafext_elevation_function( $atts ) {
 		$theme = leafext_elevation_theme();
 	}
 	unset($options['theme']);
-	return leafext_elevation_script($track,$theme,$options);
+	
+	$chart = $options['chart'];
+	if ( $chart != "1" ) {
+		leafext_enqueue_easybutton();
+	}
+	unset($options['chart']);
+	
+	return leafext_elevation_script($track,$theme,$options,$chart);
 }
 add_shortcode('elevation', 'leafext_elevation_function' );

@@ -6,7 +6,7 @@
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
-// For checking to load awesome (Home character)
+// For checking to load awesome (Home character, graph character)
 function leafext_plugin_stylesheet_installed($array_css) {
     global $wp_styles;
     foreach( $wp_styles->queue as $style ) {
@@ -18,6 +18,16 @@ function leafext_plugin_stylesheet_installed($array_css) {
     return 0;
 }
 
+function leafext_enqueue_awesome() {
+	// Font awesome
+	$font_awesome = array('font-awesome', 'fontawesome');
+	if (leafext_plugin_stylesheet_installed($font_awesome) === 0) {
+		wp_enqueue_style('font-awesome',
+			plugins_url('css/font-awesome.min.css',LEAFEXT_PLUGIN_FILE),
+			array('elevation_css'), null);
+	}
+}
+
 function leafext_enqueue_zoomhome () {
 	wp_enqueue_script('zoomhome',
 		plugins_url('leaflet-plugins/leaflet.zoomhome/leaflet.zoomhome.min.js',LEAFEXT_PLUGIN_FILE),
@@ -25,13 +35,7 @@ function leafext_enqueue_zoomhome () {
 	wp_enqueue_style('zoomhome',
 		plugins_url('leaflet-plugins/leaflet.zoomhome/leaflet.zoomhome.css',LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'), null);
-	// Font awesome
-	$font_awesome = array('font-awesome', 'fontawesome');
-	if (leafext_plugin_stylesheet_installed($font_awesome) === 0) {
-		wp_enqueue_style('font-awesome',
-        plugins_url('css/font-awesome.min.css',LEAFEXT_PLUGIN_FILE),
-		array('zoomhome'), null);
-	}
+	leafext_enqueue_awesome();
 }
 
 function leafext_enqueue_markercluster () {
@@ -105,4 +109,17 @@ function leafext_enqueue_gestures() {
 	wp_enqueue_style('gestures_leaflet_styles',
 		plugins_url('leaflet-plugins/leaflet-gesture-handling-1.3.5/css/leaflet-gesture-handling.min.css',LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
+}
+
+function leafext_enqueue_easybutton() {
+	wp_enqueue_style( 'easybutton_css',
+		plugins_url('leaflet-plugins/Leaflet.EasyButton/easy-button.css',LEAFEXT_PLUGIN_FILE),
+		array('elevation_css'),null);
+	wp_enqueue_script('easybutton',
+		plugins_url('leaflet-plugins/Leaflet.EasyButton/easy-button.js',LEAFEXT_PLUGIN_FILE),
+		array('elevation_js'),null );
+	wp_enqueue_style( 'easybutton_mycss',
+		plugins_url('css/easy-button.css',LEAFEXT_PLUGIN_FILE),
+		array('easybutton_css'),null);
+	leafext_enqueue_awesome();
 }
