@@ -1,0 +1,29 @@
+<svg viewBox="0 0 300 14" xmlns="http://www.w3.org/2000/svg">
+  <!-- lime -->
+
+    <circle cx="6" cy="6" r="4" fill="#9CC222" stroke="#566B13"/>
+  <!-- steelblue -->
+    <circle cx="16" cy="6" r="4" fill="#4682B4"/>
+    <!-- purple -->
+    <circle cx="26" cy="6" r="4" fill="#732C7B"/>
+    <!-- yellow -->
+    <circle cx="36" cy="6" r="4" fill="#FF0"/>
+    <!-- red -->
+    <circle cx="46" cy="6" r="4" fill="#F00"/>
+    <!--  magenta -->
+    <circle cx="56" cy="6" r="4" fill="#FF005E"/>
+  <!-- lightblue -->
+  <circle cx="66" cy="6" r="4" fill='#3366CC' stroke='#3366CC'/>
+</svg>
+
+<!--
+export const Colors = {
+	'lightblue': { area: '#3366CC', alpha: 0.45, stroke: '#3366CC' },
+	'magenta'  : { area: '#FF005E' },
+	'yellow'   : { area: '#FF0' },
+	'purple'   : { area: '#732C7B' },
+	'steelblue': { area: '#4682B4' },
+	'red'      : { area: '#F00' },
+	'lime'     : { area: '#9CC222', line: '#566B13' }
+};
+-->

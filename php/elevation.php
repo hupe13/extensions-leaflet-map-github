@@ -14,105 +14,265 @@ function leafext_elevation_params() {
 
 		// Default chart colors: theme lime-theme, magenta-theme, ...
 		//theme: "lightblue-theme",
-		array('theme', __('Theme Colors',"extensions-leaflet-map"), "lime-theme",
-			array("lime-theme","steelblue-theme","purple-theme","yellow-theme","red-theme","magenta-theme","lightblue-theme")),
+		array(
+			'param' => 'theme',
+			'shortdesc' => __('Theme Colors',"extensions-leaflet-map"),
+			'desc' => '<p>
+				lime - <img src="'.LEAFEXT_ELEVATION_URL.'/images/elevation-lime.svg" alt="lime" />
+				steelblue - <img width=26px height=26px src="'.LEAFEXT_ELEVATION_URL.'/images/elevation-steelblue.svg" alt="steelblue" />
+				purple - <img src="'.LEAFEXT_ELEVATION_URL.'/images/elevation-purple.svg" alt="purple" />
+				yellow - <img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-yellow.svg" alt="yellow" />
+				red - <img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-red.svg" alt="red" />
+				magenta - <img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-magenta.svg" alt="magenta" />
+				lightblue - <img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-lightblue.svg" alt="lightblue" />
+				</p>',
+			'default' => "lime-theme",
+			'values' => array("lime-theme","steelblue-theme","purple-theme","yellow-theme","red-theme","magenta-theme","lightblue-theme"),
+			'next' => "3",
+		),
 
 		//Default hupe13 polyline: { weight: 3, }, Default Raruto 5
-		array('polyline', __('Polyline weight',"extensions-leaflet-map"), "{ weight: 3, }", array("{ weight: 3, }","{ weight: 4, }","{ weight: 5, }")),
+		array(
+			'param' => 'polyline',
+			'shortdesc' => __('Polyline weight',"extensions-leaflet-map"),
+			'desc' => '',
+			'default' => "{ weight: 3, }",
+			'values' => array("{ weight: 3, }","{ weight: 4, }","{ weight: 5, }"),
+		),
 
 		// https://github.com/Raruto/leaflet-elevation/issues/86#issuecomment-735274347
 		// marker: "elevation-line" || "position-marker" || false
-		array('marker', __('position/height indicator marker drawn onto the map',"extensions-leaflet-map"), 'elevation-line', array("elevation-line", "position-marker",false)),
+		array(
+			'param' => 'marker',
+			'shortdesc' => __('position/height indicator marker drawn onto the map',"extensions-leaflet-map"),
+			'desc' => '<p>elevation-line <img src="'.LEAFEXT_PLUGIN_PICTS.'vert-line.svg" alt="line" align="middle"/> / position-marker
+				<img src="'.LEAFEXT_ELEVATION_URL.'/images/elevation-position.svg" alt="elevation-position" align="middle"/> / '.__('Nothing',"extensions-leaflet-map").' </p>',
+			'default' => 'elevation-line',
+			'values' => array("elevation-line", "position-marker",false),
+		),
 
 		//https://github.com/Raruto/leaflet-elevation/issues/120#issuecomment-916958969
 		// Display track waypoints: (true || false) - waypoints: false,
 		// plugins default true
-		array('waypoints', __('Display track waypoints.',"extensions-leaflet-map"), true, 1),
-		
+		array(
+			'param' => 'waypoints',
+			'shortdesc' => __('Display track waypoints.',"extensions-leaflet-map"),
+			'desc' => '',
+			'default' => true,
+			'values' => 1,
+		),
+
 		// Toggle "leaflet-distance-markers" integration
 		//distanceMarkers: false,
-		array('distanceMarkers', __('Toggle "leaflet-distance-markers" integration',"extensions-leaflet-map"), false, 1),
-
-// Graphen
-
-		// Acceleration chart profile: true || "summary" || "disabled" || false
-		//acceleration: false,
-		//array('acceleration', __('Acceleration chart profile',"extensions-leaflet-map"), false, array(true,"summary","disabled",false)),
-		array('acceleration', __('Acceleration chart profile',"extensions-leaflet-map"), false, array("summary","disabled",false)),
-
-		// Slope chart profile: true || "summary" || "disabled" || false
-		//slope: false,
-		array('slope', __('Slope chart profile',"extensions-leaflet-map"), false, array(true,"summary","disabled",false)),
-
-		// Speed chart profile: true || "summary" || "disabled" || false
-		//speed: false,
-		array('speed', __('Speed chart profile',"extensions-leaflet-map"), false, array(true,"summary","disabled",false)),
-		
-// Informationen
-
-		// Display time info: true || "summary" || false
-		//time: false,
-		array('time', __('Display time info',"extensions-leaflet-map"), false, array(true,"summary",false)),
-
-		// Display distance info: true || "summary"
-		//distance: true,
-		array('distance', __('Display distance info',"extensions-leaflet-map"), true, array(true,"summary")),
-
-		// Display altitude info: true || "summary"
-		//altitude: true,
-		array('altitude', __('Display altitude info',"extensions-leaflet-map"), true, array(true,"summary")),
-		
-		// Summary track info style: "line" || "multiline" || false
-		//Is this an error: line/inline ?
-		//summary: 'multiline',
-		//hupe13: true historical
-		array('summary', __('Summary track info style:',"extensions-leaflet-map"), 'multiline', array(true, "inline","multiline",false)),
-
-		// Toggle chart legend filter.
-		//legend: true,
-		array('legend', __('Toggle chart legend filter.',"extensions-leaflet-map"), true, 1),
-		
-//
-
-		// Toggle chart. https://github.com/Raruto/leaflet-elevation/discussions/139
-		//chart: true, 
-		array('chart', __('Display / Hide chart.',"extensions-leaflet-map"), true, array(true, "on", "off")),
+		array(
+			'param' => 'distanceMarkers',
+			'shortdesc' => __('Toggle "leaflet-distance-markers" integration',"extensions-leaflet-map"),
+			'desc' => '',
+			'default' => false,
+			'values' => 1,
+		),
 		
 // Zusaetze
 
 		//hupe13: Download Link
-		array('downloadLink', __('downloadLink',"extensions-leaflet-map"), false, 1),
+		array(
+			'param' => 'downloadLink',
+			'shortdesc' => __('downloadLink',"extensions-leaflet-map"),
+			'desc' => '',
+			'default' => false,
+			'values' => 1,
+		),
+
+//Welche Infos?
+
+		// Summary track info style: "line" || "multiline" || false
+		//Is this an error: line/inline ?
+		//summary: 'multiline',
+		//hupe13: true historical
+		array(
+			'param' => 'summary',
+			'shortdesc' => __('Summary track info style',"extensions-leaflet-map"),
+			'desc' => '<p>'.
+				__('Plugin Predefined settings / Summary on one line / Summary on multiple lines / Without Summary',"extensions-leaflet-map").
+				'</p><p>'.
+				__('If it is disabled, settings for summary below are without function.',"extensions-leaflet-map").'</p>',
+			'default' => 'multiline',
+			'values' => array(true, "inline","multiline",false),
+			'next' => "3",
+		),
+
+		// Toggle chart legend filter.
+		//legend: true,
+		array(
+			'param' => 'legend',
+			'shortdesc' => __('Toggle chart legend filter.',"extensions-leaflet-map"),
+			'desc' => '<img src="'.LEAFEXT_PLUGIN_PICTS.'on.png" alt="on"/>
+				<p>'.
+				__('If it is disabled, you can\'t toggle the initial state of graphs.',"extensions-leaflet-map").'</p>',
+			'default' => true,
+			'values' => 1,
+		),
 		
+// Graphen
+
+		// Display altitude info: true || "summary"
+		//altitude: true,
+		array(
+			'param' => 'altitude',
+			'shortdesc' => __('Display altitude graph',"extensions-leaflet-map"),
+			'desc' => '<p>'.
+				__('Show Altitude Data in Graph and Summary / Show Altitude Data in Summary only / Graph initial state hidden and Data in Summary',"extensions-leaflet-map").'</p>',
+			'default' => true,
+			//'values' => array(true,"summary"),
+			'values' => array(true,"summary","disabled"),
+			'next' => "1",
+		),
+
+		// Acceleration chart profile: true || "summary" || "disabled" || false
+		//acceleration: false,
+		//array('acceleration', __('Acceleration chart profile',"extensions-leaflet-map"), false, array(true,"summary","disabled",false)),
+		array(
+			'param' => 'acceleration',
+			'shortdesc' => __('Acceleration chart profile',"extensions-leaflet-map"),
+			'desc' => '<p>'.__('Graph initial state displayed and Data in Summary / Data in Summary only / Graph initial state hidden and Data in Summary / Nothing',"extensions-leaflet-map").'</p>',
+			'default' => false,
+			'values' => array(true,"summary","disabled",false),
+		),
+
+		// Slope chart profile: true || "summary" || "disabled" || false
+		//slope: false,
+		array(
+			'param' => 'slope',
+			'shortdesc' => __('Slope chart profile',"extensions-leaflet-map"),
+			'desc' => '<p>'.
+				__('Graph initial state displayed and Data in Summary / Data in Summary only / Graph initial state hidden and Data in Summary / Nothing',"extensions-leaflet-map").'</p>',
+			'default' => false,
+			'values' => array(true,"summary","disabled",false),
+		),
+
+		// Speed chart profile: true || "summary" || "disabled" || false
+		//speed: false,
+		array(
+			'param' => 'speed',
+			'shortdesc' => __('Speed chart profile',"extensions-leaflet-map"),
+			'desc' => '<p>'.
+				__('Graph initial state displayed and Data in Summary / Data in Summary only / Graph initial state hidden and Data in Summary / Nothing',"extensions-leaflet-map").'</p>',
+			'default' => false,
+			'values' => array(true,"summary","disabled",false),
+		),
+
+// Informationen
+
+		// Display time info: true || "summary" || false
+		//time: false,
+		array(
+			'param' => 'time',
+			'shortdesc' => __('Display time info',"extensions-leaflet-map"),
+			'desc' => '<p>'.
+				__('Show Time Data in Graph and Summary / Show Time Data in Summary only / Nothing',"extensions-leaflet-map").'</p>',
+			'default' => false,
+			'values' => array(true,"summary",false),
+			'next' => "1",
+		),
+
+		// Display distance info: true || "summary"
+		//distance: true,
+		array(
+			'param' => 'distance',
+			'shortdesc' => __('Display distance info',"extensions-leaflet-map"),
+			'desc' => '<p>'.
+				__('Show Distance Data in Graph and Summary / Show Distance Data in Summary only',"extensions-leaflet-map").'</p>',
+			'default' => true,
+			'values' => array(true,"summary"),
+		),
+
+//
+
+		// Toggle chart. https://github.com/Raruto/leaflet-elevation/discussions/139
+		//chart: true,
+		array(
+			'param' => 'chart',
+			'shortdesc' => __('Toggle diagram and summary block',"extensions-leaflet-map"),
+			'desc' => '<p>'.
+				__('Show always the block / Show the block and toggle to hide / Hide the block and toggle to show',"extensions-leaflet-map").
+				'</p>',
+			'default' => true,
+			'values' => array(true, "on", "off"),
+		),
+
 // Verhalten u.a.
-		
+
 		// Autoupdate map center on chart mouseover.
 		//followMarker: true,
-		array('followMarker', __('Autoupdate map center on chart mouseover.',"extensions-leaflet-map"), true, 1),
+		array(
+			'param' => 'followMarker',
+			'shortdesc' => __('Autoupdate map center on chart mouseover.',"extensions-leaflet-map"),
+			'desc' => '',
+			'default' => true,
+			'values' => 1,
+			'next' => "3",
+		),
 
 		// Autoupdate map bounds on chart update.
 		//autofitBounds: true,
-		array('autofitBounds', __('Autoupdate map bounds on chart update.',"extensions-leaflet-map"), true, 1),
+		array(
+			'param' => 'autofitBounds',
+			'shortdesc' => __('Autoupdate map bounds on chart update.',"extensions-leaflet-map"),
+			'desc' => '',
+			'default' => true,
+			'values' => 1,
+		),
 
 		// Chart distance/elevation units.
 		//imperial: false,
-		array('imperial', __('Chart distance/elevation units.',"extensions-leaflet-map"), false, 1),
+		array(
+			'param' => 'imperial',
+			'shortdesc' => __('Chart distance/elevation units.',"extensions-leaflet-map"),
+			'desc' => '',
+			'default' => false,
+			'values' => 1,
+		),
 
 		// [Lat, Long] vs [Long, Lat] points. (leaflet default: [Lat, Long])
 		//reverseCoords: false,
-		array('reverseCoords', __('[Lat, Long] vs [Long, Lat] points. (leaflet default: [Lat, Long])',"extensions-leaflet-map"), false, 1),
+		array(
+			'param' => 'reverseCoords',
+			'shortdesc' => __('[Lat, Long] vs [Long, Lat] points. (leaflet default: [Lat, Long])',"extensions-leaflet-map"),
+			'desc' => '',
+			'default' => false,
+			'values' => 1,
+		),
 
 		// Toggle chart ruler filter.
 		//ruler: true,
 		//array('ruler', __('Toggle chart ruler filter.',"extensions-leaflet-map"), true, 1),
+		// array(
+			// 'param' => 'ruler',
+			// 'shortdesc' => __('Toggle chart ruler filter.',"extensions-leaflet-map"),
+			// 'default' => true,
+			// 'values' => 1,
+		// ),
 
 		// Toggle "leaflet-almostover" integration
 		//almostOver: true,
-		array('almostOver', __('Toggle "leaflet-almostover" integration',"extensions-leaflet-map"), true, 1),
+		array(
+			'param' => 'almostOver',
+			'shortdesc' => __('Toggle "leaflet-almostover" integration',"extensions-leaflet-map"),
+			'desc' => '',
+			'default' => true,
+			'values' => 1,
+		),
 
 		// Render chart profiles as Canvas or SVG Paths
 		//preferCanvas: true
-		array('preferCanvas', __('Render chart profiles as Canvas or SVG Paths.',"extensions-leaflet-map"), true, 1),
-		
+		array(
+			'param' => 'preferCanvas',
+			'shortdesc' =>  __('Render chart profiles as Canvas or SVG Paths.',"extensions-leaflet-map"),
+			'desc' => sprintf ( __('Due to a bug in MacOS and iOS, see %shere%s, you should it set to false.',"extensions-leaflet-map"), '<a href="https://github.com/Raruto/leaflet-elevation/issues/123">','</a>'),
+			'default' => true,
+			'values' => 1,
+		),
+
 		// Chart container outside/inside map container
 		//detached: true,
 		//array('detached', 'Chart container outside/inside map container', true, 1),
@@ -201,17 +361,17 @@ function leafext_elevation_script($gpx,$theme,$settings,$chart){
 		var controlElevation = L.control.elevation(elevation_options);
 		var track_options= { url: "'.$gpx.'" };
 		controlElevation.addTo(map);';
-		
+
 		if ($chart != "1") {
 		$text=$text.'var controlButton = L.easyButton(
 			"<i class=\"fa fa-area-chart\" aria-hidden=\"true\"></i>",
-			function(btn, map) { 
+			function(btn, map) {
 				controlElevation._toggle(); },
 				"Elevation",
 				{ position: "topright" }
 				).addTo( map );';
 		}
-		
+
 		$text=$text.'
 		// Load track from url (allowed data types: "*.geojson", "*.gpx")
 		controlElevation.load(track_options.url);';
@@ -219,7 +379,7 @@ function leafext_elevation_script($gpx,$theme,$settings,$chart){
 		if (is_string($chart)) {
 		$text=$text.'map.on("eledata_added", function(e) {
 			//console.log("eledata_added");
-			//Ja 2x!!! Koennte man als Parameter setzen
+			//Ja 2x!!!
 			controlElevation._toggle();';
 			if ($chart == "off") {
 				$text=$text.'
@@ -228,7 +388,7 @@ function leafext_elevation_script($gpx,$theme,$settings,$chart){
 			$text=$text.'
 		});';
 		}
-	$text=$text.'	
+	$text=$text.'
 	});
 	</script>';
 	$text = \JShrink\Minifier::minify($text);
@@ -239,7 +399,7 @@ function leafext_elevation_settings() {
 	$defaults=array();
 	$params = leafext_elevation_params();
 	foreach($params as $param) {
-		$defaults[$param[0]] = $param[2];
+		$defaults[$param['param']] = $param['default'];
 	}
 	$options = shortcode_atts($defaults, get_option('leafext_eleparams'));
 	return $options;
@@ -258,7 +418,7 @@ function leafext_elevation_theme() {
 		$theme = $newoptions['theme'];
 	}
 	return($theme);
-}	
+}
 
 function leafext_elevation_function( $atts ) {
 	if ( ! $atts['gpx'] ) {
@@ -270,25 +430,25 @@ function leafext_elevation_function( $atts ) {
 		return $text;
 	}
 	leafext_enqueue_elevation ();
-	
+
 	$atts1=leafext_case(array_keys(leafext_elevation_settings()),leafext_clear_params($atts));
 	$options = shortcode_atts(leafext_elevation_settings(), $atts1);
 
 	$track = $atts['gpx'];
-	
+
 	if ( array_key_exists('theme', $atts) ) {
 		$theme = $atts['theme'];
 	} else {
 		$theme = leafext_elevation_theme();
 	}
 	unset($options['theme']);
-	
+
 	$chart = $options['chart'];
 	if ( $chart != "1" ) {
 		leafext_enqueue_easybutton();
 	}
 	unset($options['chart']);
-	
+
 	return leafext_elevation_script($track,$theme,$options,$chart);
 }
 add_shortcode('elevation', 'leafext_elevation_function' );

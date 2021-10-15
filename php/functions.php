@@ -46,6 +46,15 @@ function leafext_array_find($needle, $haystack) {
 		}
 	}
 }
+//Suche bestimmten Wert in array im admin interface
+function leafext_array_find2($needle, $haystack) {
+	foreach ($haystack as $item) {
+		if ($item['param'] == $needle) {
+			return $item;
+			break;
+		}
+	}
+}
 
 //Trage php array keys und values in javascript script ein.
 function leafext_java_params ($params) {

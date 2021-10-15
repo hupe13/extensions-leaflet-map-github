@@ -10,7 +10,9 @@ function leafext_eleparams_init(){
 	add_settings_section( 'eleparams_settings', leafext_elevation_tab(), 'leafext_ele_help_text', 'leafext_settings_eleparams' );
 	$fields = leafext_elevation_params();
 	foreach($fields as $field) {
-		add_settings_field("leafext_eleparams[".$field[0]."]", $field[1], 'leafext_form_elevation','leafext_settings_eleparams', 'eleparams_settings', $field[0]);
+		$trenn = "";
+		if ( isset ($field['next']) ) $trenn = '<div style="border-top: '.$field['next'].'px solid #646970"></div>';
+		add_settings_field("leafext_eleparams[".$field['param']."]", $trenn.$field['shortdesc'], 'leafext_form_elevation','leafext_settings_eleparams', 'eleparams_settings', $field['param']);
 	}
 	register_setting( 'leafext_settings_eleparams', 'leafext_eleparams', 'leafext_validate_ele_options' );
 }
@@ -21,38 +23,38 @@ function leafext_form_elevation($field) {
 	//var_dump($field);
 	$options = leafext_elevation_params();
 	//var_dump($options);
-	$option = leafext_array_find($field, $options);
+	$option = leafext_array_find2($field, $options);
 	//var_dump($option);echo '<br>';
 	$settings = leafext_elevation_settings();
 	$setting = $settings[$field];
+	if ( isset ($option['next']) ) echo '<div style="border-top: '.$option['next'].'px solid #646970"></div>';
+	if ( $option['desc'] != "" ) echo '<p>'.$option['desc'].'</p>';
 
-	if ( $option[0] == "preferCanvas") echo '<p>'.sprintf ( __('Due to a bug in MacOS and iOS, see %shere%s, you should it set to false.',"extensions-leaflet-map"), '<a href="https://github.com/Raruto/leaflet-elevation/issues/123">','</a>').'</p>';
+	echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option['param']. '</code><br>';
+	if (!is_array($option['values'])) {
 
-	echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option[0]. '</code><br>';
-	if (!is_array($option[3])) {
-
-		if ($setting != $option[2] ) {
-			//var_dump($setting,$option[2]);
+		if ($setting != $option['default'] ) {
+			//var_dump($setting,$option['default']);
 			echo __("Plugins Default", "extensions-leaflet-map").': ';
-			echo $option[2] ? "true" : "false";
+			echo $option['default'] ? "true" : "false";
 			echo '<br>';
 		}
 
-		echo '<input type="radio" name="leafext_eleparams['.$option[0].']" value="1" ';
+		echo '<input type="radio" name="leafext_eleparams['.$option['param'].']" value="1" ';
 		echo $setting ? 'checked' : '' ;
 		echo '> true &nbsp;&nbsp; ';
-		echo '<input type="radio" name="leafext_eleparams['.$option[0].']" value="0" ';
+		echo '<input type="radio" name="leafext_eleparams['.$option['param'].']" value="0" ';
 		echo (!$setting) ? 'checked' : '' ;
 		echo '> false ';
 	} else {
-		$plugindefault = is_string($option[2]) ? $option[2] : ($option[2] ? "1" : "0");
+		$plugindefault = is_string($option['default']) ? $option['default'] : ($option['default'] ? "1" : "0");
 		$setting = is_string($setting) ? $setting : ($setting ? "1" : "0");
 		if ($setting != $plugindefault ) {
-			//var_dump("Option: ",$option[2],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
+			//var_dump("Option: ",$option['default'],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
 			echo __("Plugins Default:", "extensions-leaflet-map").' '. $plugindefault . '<br>';
 		}
-		echo '<select name="leafext_eleparams['.$option[0].']">';
-		foreach ( $option[3] as $para) {
+		echo '<select name="leafext_eleparams['.$option['param'].']">';
+		foreach ( $option['values'] as $para) {
 			echo '<option ';
 			if (is_bool($para)) $para = ($para ? "1" : "0");
 			if ($para === $setting) echo ' selected="selected" ';
@@ -75,9 +77,7 @@ function leafext_ele_help_text () {
 	<h2>'.__('Note','extensions-leaflet-map').'</h2>';
 	echo sprintf(
 				__(
-				'%s and %s are different. If you want to display a track only, use %s or %s. If you want to display a track with an elevation profile use %s.',"extensions-leaflet-map"),
-				"<code>[leaflet-gpx]</code>",
-				"<code>[elevation]</code>",
+				'If you want to display a track only, use %s or %s. If you want to display a track with an elevation profile use %s.',"extensions-leaflet-map"),
 				"<code>[leaflet-gpx]</code>",
 				"<code>[leaflet-kml]</code>",
 				"<code>[elevation]</code>");
@@ -86,6 +86,9 @@ function leafext_ele_help_text () {
 				__(
 				'%s works also with tcx and geojson files.',"extensions-leaflet-map"),
 				"<code>[elevation]</code>");
+	echo "<p>";
+	echo __('The leaflet-elevation plugin has many configuration options. The more I look into it, the more I discover. Some things are not trivial. If you can\'t configure something, ask in the forum.',"extensions-leaflet-map");
+	echo "</p>";
 	echo '<h2>Shortcode</h2>
 	<pre><code>[leaflet-map ....]
 [elevation gpx="url_gpx_file" option1=value1 option2 !option3 ...]</code></pre>

@@ -3,7 +3,7 @@
 # Extensions for Leaflet Map
 
 Contributors: hupe13  
-Tags: leaflet, elevation, markercluster, zoomhome, hover, fullscreen, gpx, gps, garmin, openstreetmap, altitude
+Tags: leaflet, elevation, markercluster, zoomhome, hover, fullscreen, gpx, gps, garmin, altitude  
 Requires at least: 5.5.3  
 Tested up to: 5.8  
 Stable tag: 2.1.2  
@@ -52,6 +52,9 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * Go to Settings - Leaflet Map - Extensions for Leaflet Map and get documentation and settings options.
 
 ## Changelog
+
+### 2.1.3 / unstable
+* new parameter for elevation: show / hide chart
 
 ### 2.1.2 / 210922
 * Leaflet.markercluster V 1.5.1
