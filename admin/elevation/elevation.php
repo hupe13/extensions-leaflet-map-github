@@ -77,15 +77,15 @@ function leafext_ele_help_text () {
 	<h2>'.__('Note','extensions-leaflet-map').'</h2>';
 	echo sprintf(
 				__(
-				'If you want to display a track only, use %s or %s. If you want to display a track with an elevation profile use %s.',"extensions-leaflet-map"),
-				"<code>[leaflet-gpx]</code>",
-				"<code>[leaflet-kml]</code>",
+				'If you want to display a track only, use %s functions. If you want to display a track with an elevation profile use %s.',"extensions-leaflet-map"),
+				"<code>[leaflet-...]</code>",
 				"<code>[elevation]</code>");
 	echo " ";
 	echo sprintf(
 				__(
-				'%s works also with tcx and geojson files.',"extensions-leaflet-map"),
-				"<code>[elevation]</code>");
+				'The %s parameter is called %s, but it works with gpx, kml, geojson and tcx files.',"extensions-leaflet-map"),
+				"<code>[elevation]</code>",
+				"<code>gpx</code>");
 	echo "<p>";
 	echo __('The leaflet-elevation plugin has many configuration options. Some things are not trivial. If you can\'t configure something, ask in the forum.',"extensions-leaflet-map");
 	echo "</p>";

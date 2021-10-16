@@ -46,12 +46,11 @@ function leafext_elevation_params() {
 			'param' => 'marker',
 			'shortdesc' => __('position/height indicator marker drawn onto the map',"extensions-leaflet-map"),
 			'desc' => '<p>elevation-line <img src="'.LEAFEXT_PLUGIN_PICTS.'vert-line.svg" alt="line" align="middle"/> / position-marker
-				<img src="'.LEAFEXT_ELEVATION_URL.'/images/elevation-position.svg" alt="elevation-position" align="middle"/> / '.__('Nothing',"extensions-leaflet-map").' </p>',
+				<img src="'.LEAFEXT_ELEVATION_URL.'/images/elevation-position.svg" alt="elevation-position" align="middle"/> / '.__('nothing',"extensions-leaflet-map").' </p>',
 			'default' => 'elevation-line',
 			'values' => array("elevation-line", "position-marker",false),
 		),
 
-		//https://github.com/Raruto/leaflet-elevation/issues/120#issuecomment-916958969
 		// Display track waypoints: (true || false) - waypoints: false,
 		// plugins default true
 		array(
@@ -74,26 +73,24 @@ function leafext_elevation_params() {
 		
 // Zusaetze
 
-		//hupe13: Download Link
+		// Download link: "link" || false || "modal"
 		array(
 			'param' => 'downloadLink',
 			'shortdesc' => __('downloadLink',"extensions-leaflet-map"),
 			'desc' => '',
 			'default' => false,
-			'values' => 1,
+			'values' => array("link", false, "modal"),
 		),
 
 //Welche Infos?
 
-		// Summary track info style: "line" || "multiline" || false
-		//Is this an error: line/inline ?
-		//summary: 'multiline',
-		//hupe13: true historical
+		// Summary track info style: "inline" || "multiline" || false
+		// hupe13: true historical
 		array(
 			'param' => 'summary',
 			'shortdesc' => __('Summary track info style',"extensions-leaflet-map"),
 			'desc' => '<p>'.
-				__('Plugin Predefined settings / Summary on one line / Summary on multiple lines / Without Summary',"extensions-leaflet-map").
+				__('some predefined settings / summary on one line / summary on multiple lines / without summary',"extensions-leaflet-map").
 				'</p><p>'.
 				__('If it is disabled, settings for summary below are without function.',"extensions-leaflet-map").'</p>',
 			'default' => 'multiline',
@@ -121,7 +118,7 @@ function leafext_elevation_params() {
 			'param' => 'altitude',
 			'shortdesc' => __('Display altitude graph',"extensions-leaflet-map"),
 			'desc' => '<p>'.
-				__('Show Altitude Data in Graph and Summary / Show Altitude Data in Summary only / Graph initial state hidden and Data in Summary',"extensions-leaflet-map").'</p>',
+				__('graph initial state displayed and data in summary / data in summary only / graph initial state hidden and data in summary',"extensions-leaflet-map").'</p>',
 			'default' => true,
 			//'values' => array(true,"summary"),
 			'values' => array(true,"summary","disabled"),
@@ -130,11 +127,10 @@ function leafext_elevation_params() {
 
 		// Acceleration chart profile: true || "summary" || "disabled" || false
 		//acceleration: false,
-		//array('acceleration', __('Acceleration chart profile',"extensions-leaflet-map"), false, array(true,"summary","disabled",false)),
 		array(
 			'param' => 'acceleration',
 			'shortdesc' => __('Acceleration chart profile',"extensions-leaflet-map"),
-			'desc' => '<p>'.__('Graph initial state displayed and Data in Summary / Data in Summary only / Graph initial state hidden and Data in Summary / Nothing',"extensions-leaflet-map").'</p>',
+			'desc' => '<p>'.__('graph initial state displayed and data in summary / data in summary only / graph initial state hidden and data in summary / nothing',"extensions-leaflet-map").'</p>',
 			'default' => false,
 			'values' => array(true,"summary","disabled",false),
 		),
@@ -145,7 +141,7 @@ function leafext_elevation_params() {
 			'param' => 'slope',
 			'shortdesc' => __('Slope chart profile',"extensions-leaflet-map"),
 			'desc' => '<p>'.
-				__('Graph initial state displayed and Data in Summary / Data in Summary only / Graph initial state hidden and Data in Summary / Nothing',"extensions-leaflet-map").'</p>',
+				__('graph initial state displayed and data in summary / data in summary only / graph initial state hidden and data in summary / nothing',"extensions-leaflet-map").'</p>',
 			'default' => false,
 			'values' => array(true,"summary","disabled",false),
 		),
@@ -156,7 +152,7 @@ function leafext_elevation_params() {
 			'param' => 'speed',
 			'shortdesc' => __('Speed chart profile',"extensions-leaflet-map"),
 			'desc' => '<p>'.
-				__('Graph initial state displayed and Data in Summary / Data in Summary only / Graph initial state hidden and Data in Summary / Nothing',"extensions-leaflet-map").'</p>',
+				__('graph initial state displayed and data in summary / data in summary only / graph initial state hidden and data in summary / nothing',"extensions-leaflet-map").'</p>',
 			'default' => false,
 			'values' => array(true,"summary","disabled",false),
 		),
@@ -169,7 +165,7 @@ function leafext_elevation_params() {
 			'param' => 'time',
 			'shortdesc' => __('Display time info',"extensions-leaflet-map"),
 			'desc' => '<p>'.
-				__('Show Time Data in Graph and Summary / Show Time Data in Summary only / Nothing',"extensions-leaflet-map").'</p>',
+				__('show time data in graph and summary / show time data in summary only / nothing',"extensions-leaflet-map").'</p>',
 			'default' => false,
 			'values' => array(true,"summary",false),
 			'next' => "1",
@@ -181,7 +177,7 @@ function leafext_elevation_params() {
 			'param' => 'distance',
 			'shortdesc' => __('Display distance info',"extensions-leaflet-map"),
 			'desc' => '<p>'.
-				__('Show Distance Data in Graph and Summary / Show Distance Data in Summary only',"extensions-leaflet-map").'</p>',
+				__('show distance data in graph and summary / show distance data in summary only',"extensions-leaflet-map").'</p>',
 			'default' => true,
 			'values' => array(true,"summary"),
 		),
@@ -194,7 +190,7 @@ function leafext_elevation_params() {
 			'param' => 'chart',
 			'shortdesc' => __('Toggle diagram and summary block',"extensions-leaflet-map"),
 			'desc' => '<p>'.
-				__('Show always the block / Show the block and toggle to hide / Hide the block and toggle to show',"extensions-leaflet-map").
+				__('show always the block / show the block and toggle to hide / hide the block and toggle to show',"extensions-leaflet-map").
 				'</p>',
 			'default' => true,
 			'values' => array(true, "on", "off"),
@@ -245,10 +241,10 @@ function leafext_elevation_params() {
 
 		// Toggle chart ruler filter.
 		//ruler: true,
-		//array('ruler', __('Toggle chart ruler filter.',"extensions-leaflet-map"), true, 1),
 		// array(
 			// 'param' => 'ruler',
 			// 'shortdesc' => __('Toggle chart ruler filter.',"extensions-leaflet-map"),
+			// 'desc' => '',
 			// 'default' => true,
 			// 'values' => 1,
 		// ),
