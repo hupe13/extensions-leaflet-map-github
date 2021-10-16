@@ -24,7 +24,7 @@ function leafext_enqueue_awesome() {
 	if (leafext_plugin_stylesheet_installed($font_awesome) === 0) {
 		wp_enqueue_style('font-awesome',
 			plugins_url('css/font-awesome.min.css',LEAFEXT_PLUGIN_FILE),
-			array('elevation_css'), null);
+			null, null);
 	}
 }
 

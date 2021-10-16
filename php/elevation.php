@@ -190,7 +190,7 @@ function leafext_elevation_params() {
 			'param' => 'chart',
 			'shortdesc' => __('Toggle diagram and summary block',"extensions-leaflet-map"),
 			'desc' => '<p>'.
-				__('show always the block / show the block and toggle to hide / hide the block and toggle to show',"extensions-leaflet-map").
+				sprintf(__('show always the block / show the block and toggle %s to hide / hide the block and toggle %s to show',"extensions-leaflet-map"),"<i class=\"fa fa-area-chart\" aria-hidden=\"true\"></i>","<i class=\"fa fa-area-chart\" aria-hidden=\"true\"></i>").
 				'</p>',
 			'default' => true,
 			'values' => array(true, "on", "off"),

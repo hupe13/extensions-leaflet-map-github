@@ -73,6 +73,7 @@ function leafext_validate_ele_options($options) {
 
 // Helptext
 function leafext_ele_help_text () {
+	leafext_enqueue_awesome();
 	echo '<img src="'.LEAFEXT_PLUGIN_PICTS.'elevation.png">
 	<h2>'.__('Note','extensions-leaflet-map').'</h2>';
 	echo sprintf(
