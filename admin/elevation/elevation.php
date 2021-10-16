@@ -87,7 +87,7 @@ function leafext_ele_help_text () {
 				'%s works also with tcx and geojson files.',"extensions-leaflet-map"),
 				"<code>[elevation]</code>");
 	echo "<p>";
-	echo __('The leaflet-elevation plugin has many configuration options. The more I look into it, the more I discover. Some things are not trivial. If you can\'t configure something, ask in the forum.',"extensions-leaflet-map");
+	echo __('The leaflet-elevation plugin has many configuration options. Some things are not trivial. If you can\'t configure something, ask in the forum.',"extensions-leaflet-map");
 	echo "</p>";
 	echo '<h2>Shortcode</h2>
 	<pre><code>[leaflet-map ....]
