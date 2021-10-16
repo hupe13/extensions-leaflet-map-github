@@ -54,7 +54,9 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 ## Changelog
 
 ### 2.1.3 / unstable
-* new parameter for elevation: show / hide chart
+* bug fix in parameters for markercluster
+* new parameter for elevation: show / hide chart and summary block as whole
+* revision of the elevation admin page
 
 ### 2.1.2 / 210922
 * Leaflet.markercluster V 1.5.1
