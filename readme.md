@@ -6,7 +6,7 @@ Contributors: hupe13
 Tags: leaflet, elevation, markercluster, zoomhome, hover, fullscreen, gpx, gps, garmin, altitude  
 Requires at least: 5.5.3  
 Tested up to: 5.8  
-Stable tag: 2.1.2  
+Stable tag: 2.1.3  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -53,7 +53,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.1.3 / unstable
+### 2.1.3 / 211016
 * bug fix in parameters for markercluster
 * new parameter for elevation: show / hide chart and summary block as whole
 * revision of the elevation admin page
