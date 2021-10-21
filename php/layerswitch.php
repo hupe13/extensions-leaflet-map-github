@@ -20,29 +20,26 @@ function leafext_layerswitch_script($mylayers){
 		//console.log(String(attributions));
 		var defaultAttr = String(attributions);
 		map.attributionControl._attributions = {};
-		var layers = [];
+		var baselayers = {};
 		map.eachLayer(function(layer) {
 			if( layer instanceof L.TileLayer ) {
 				map.removeLayer(layer);
 				layer.options.attribution = defaultAttr;
-				layers.push(layer);
 				map.addLayer(layer);
+				if(typeof layer.options.id !== "undefined") {
+					var defaultname = layer.options.id;
+				} else {
+					var defaultname = "Default";
+				}
+				baselayers[defaultname] = layer;
 			}
 	 	});
 
 		var mylayers = '.json_encode($mylayers).'
+		//console.log(mylayers);
 		mylayers.forEach(extralayer => {
-			//console.log(extralayer);
-			layers.push(L.tileLayer(extralayer.tile, {attribution: extralayer.attr, id: extralayer.mapid}));
+			baselayers[extralayer.mapid] = L.tileLayer(extralayer.tile, {attribution: extralayer.attr, id: extralayer.mapid});
 		});
-
-		var baselayers = {};
-		layers.forEach(function(layer) {
-			//console.log(layer);
-			var id = layer.options.id;
-			baselayers[id] = layer;
-		});
-		//console.log(baselayers);
 		L.control.layers(baselayers).addTo(map);
 	});
 	</script>';
