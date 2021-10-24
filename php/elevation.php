@@ -292,7 +292,7 @@ function leafext_elevation_params() {
 		array(
 			'param' => 'sgpx',
 			'shortdesc' => __('Yes, I want to switch from sgpx (wp-gpx-maps) to elevation!',"extensions-leaflet-map"),
-			'desc' => __("You can't switch it for every map, only for all maps on a page or post!","extensions-leaflet-map"),
+			'desc' => __("You can't switch it!","extensions-leaflet-map"),
 			'default' => false,
 			'values' => 1,
 			'next' => "1",
