@@ -286,7 +286,17 @@ function leafext_elevation_params() {
 
 		// if (!detached) control position on one of map corners
 		//position: "topright",
-
+		
+// Extras
+		//  Switch from sgpx
+		array(
+			'param' => 'sgpx',
+			'shortdesc' => __('Yes, I want to switch from sgpx (wp-gpx-maps) to elevation!',"extensions-leaflet-map"),
+			'desc' => __("You can't switch it for every map, only for all maps on a page or post!","extensions-leaflet-map"),
+			'default' => false,
+			'values' => 1,
+			'next' => "1",
+		),
 	);
 	return $params;
 }

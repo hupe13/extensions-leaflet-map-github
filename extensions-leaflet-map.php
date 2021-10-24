@@ -39,6 +39,7 @@ if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
 
   include_once LEAFEXT_PLUGIN_DIR . '/php/elevation.php';
+  include_once LEAFEXT_PLUGIN_DIR . '/php/sgpx.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/multielevation.php';
 
   include_once LEAFEXT_PLUGIN_DIR . '/php/fullscreen.php';
