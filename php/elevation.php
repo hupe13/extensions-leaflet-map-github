@@ -70,7 +70,7 @@ function leafext_elevation_params() {
 			'default' => false,
 			'values' => 1,
 		),
-		
+
 // Zusaetze
 
 		// Download link: "link" || false || "modal"
@@ -109,7 +109,7 @@ function leafext_elevation_params() {
 			'default' => true,
 			'values' => 1,
 		),
-		
+
 // Graphen
 
 		// Display altitude info: true || "summary"
@@ -286,15 +286,15 @@ function leafext_elevation_params() {
 
 		// if (!detached) control position on one of map corners
 		//position: "topright",
-		
+
 // Extras
 		//  Switch from sgpx
 		array(
 			'param' => 'sgpx',
-			'shortdesc' => __('Yes, I want to switch from sgpx (wp-gpx-maps) to elevation!',"extensions-leaflet-map"),
-			'desc' => __("You can't switch it!","extensions-leaflet-map"),
+			'shortdesc' => __('Replace <code>sgpx</code> (wp-gpx-maps) with <code>elevation</code>.',"extensions-leaflet-map"),
+			'desc' => __("Yes / No / Only, when ".'<code>[leaflet-map height="1"]</code>'." is used, e.g. for testing. - You can't change this parameter.","extensions-leaflet-map"),
 			'default' => false,
-			'values' => 1,
+			'values' => array(true, false, "leaflet"),
 			'next' => "1",
 		),
 	);
@@ -349,6 +349,7 @@ function leafext_elevation_script($gpx,$theme,$settings,$chart){
 			"Min Elevation: "	: "'.__("Min Elevation", "extensions-leaflet-map").': ",
 			"Total Ascent: "	: "'.__("Total Ascent", "extensions-leaflet-map").': ",
 			"Total Descent: "	: "'.__("Total Descent", "extensions-leaflet-map").': ",
+			"Slope"	: "'.__("Slope", "extensions-leaflet-map").'",
 			"Min Slope: "	: "'.__("Min Slope", "extensions-leaflet-map").': ",
 			"Max Slope: "	: "'.__("Max Slope", "extensions-leaflet-map").': ",
 			"Speed: "	: "'.__("Speed", "extensions-leaflet-map").': ",

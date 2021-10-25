@@ -53,6 +53,10 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
+### 2.1.4a / xxx
+* Integration shortcode sgpx from WordPress plugin wp-gpx-map (some parameters)
+* see https://leafext.de/en/sgpx/
+
 ### 2.1.3 / 211016
 * bug fix in parameters for markercluster
 * new parameter for elevation: show / hide chart and summary block as whole
