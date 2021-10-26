@@ -55,7 +55,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 ## Changelog
 
 ### 2.2 / 211xxx
-* Integration shortcode sgpx from WordPress plugin wp-gpx-map (some parameters)
+* Integration shortcode sgpx from WordPress plugin wp-gpx-maps (some parameters)
 
 ### 2.1.3 / 211016
 * bug fix in parameters for markercluster
