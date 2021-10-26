@@ -70,7 +70,7 @@ function leafext_elevation_params() {
 			'default' => false,
 			'values' => 1,
 		),
-
+		
 // Zusaetze
 
 		// Download link: "link" || false || "modal"
@@ -286,6 +286,7 @@ function leafext_elevation_params() {
 
 		// if (!detached) control position on one of map corners
 		//position: "topright",
+
 	);
 	return $params;
 }
