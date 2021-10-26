@@ -235,10 +235,8 @@ function leafext_sgpx_function( $atts ) {
 				$eletext = $eletext.' imperial=0 '; break;
 		}
 
-		//$text = '[leaflet-map][elevation gpx="'.$atts['gpx'].'"]';
-		//return do_shortcode('[leaflet-map zoomcontrol][elevation gpx="'.$atts['gpx'].'"]');
 		$text = '[leaflet-map zoomcontrol '.$maptext.'][elevation gpx="'.$atts['gpx'].'" marker="position-marker" '.$eletext.'][fullscreen]';
-		return $text.do_shortcode($text);
+		return "\n".'<script>// '.$text." </script>\n".do_shortcode($text);
 	}
 }
 //add_shortcode('sgpx', 'leafext_sgpx_function' );
