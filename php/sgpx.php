@@ -6,8 +6,19 @@
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
+function leafext_sgpx_unclean_db() {
+  global $wpdb;
+  $option_names = $wpdb->get_results( "SELECT option_name FROM $wpdb->options WHERE option_name LIKE 'wpgpxmaps_%' " );
+  if (empty($option_names)) return false;
+  return true;
+}
+
+define('LEAFEXT_SGPX_ACTIVE', is_plugin_active( "wp-gpx-maps/wp-gpx-maps.php" ));
+define('LEAFEXT_SGPX_UNCLEAN_DB', leafext_sgpx_unclean_db());
+define('LEAFEXT_SGPX_SGPX', is_array(get_option('leafext_sgpxparams')));
+
 // Erstmal alles von wp-gpx-map entfernen
-if ( is_plugin_active( 'wp-gpx-maps/wp-gpx-maps.php' ) ) {
+if ( LEAFEXT_SGPX_ACTIVE ) {
 
 	function leafext_dequeue_sgpx() {
 		wp_dequeue_script('leaflet');
@@ -42,25 +53,7 @@ if ( is_plugin_active( 'wp-gpx-maps/wp-gpx-maps.php' ) ) {
 	}
 	add_action( 'init', 'leafext_remove_sgpx_shortcode',20 );
 
-} //is_plugin_active( 'wp-gpx-maps/wp-gpx-maps.php' )
-
-// from wp-gpx-maps
-function leafext_wpgpxmaps_findValue( $attr, $attributeName, $optionName, $defaultValue ) {
-	$val = '';
-	if ( isset( $attr[$attributeName] ) ) {
-		$val = $attr[$attributeName];
-	}
-	if ( $val == '' ) {
-		$val = get_option( $optionName );
-	}
-	if ( $val == '' && isset( $_GET[$attributeName] ) && $attributeName != 'download' ) {
-		$val = $_GET[$attributeName];
-	}
-	if ( $val == '' ) {
-		$val = $defaultValue;
-	}
-	return $val;
-}
+} //if ( LEAFEXT_SGPX_ACTIVE )
 
 	// $folder         = wpgpxmaps_findValue( $attr, 'folder', '', '' );
 	// $pointsoffset   = wpgpxmaps_findValue( $attr, 'pointsoffset', 'wpgpxmaps_pointsoffset', 10 );
@@ -132,17 +125,41 @@ function leafext_wpgpxmaps_findValue( $attr, $attributeName, $optionName, $defau
 	// $pointsoffset   = wpgpxmaps_findValue( $attr, 'pointsoffset', 'wpgpxmaps_pointsoffset', 10 );
 	// $donotreducegpx = wpgpxmaps_findValue( $attr, 'donotreducegpx', 'wpgpxmaps_donotreducegpx', false );
 
+function leafext_sgpx_params() {
+	$params = array(
+		//  Switch from sgpx
+		array(
+			'param' => 'sgpx',
+			'shortdesc' => __('Replace <code>sgpx</code> (wp-gpx-maps) with <code>elevation</code>.',"extensions-leaflet-map"),
+			'desc' => __("Yes / No / Only, when ".'<code>[leaflet-map height="1"]</code>'." is used, e.g. for testing.","extensions-leaflet-map"),
+			'default' => false,
+			'values' => array(true, false, "leaflet"),
+			'next' => "0",
+		),
+	);
+	return $params;
+}
+
+function leafext_sgpx_settings() {
+	$defaults=array();
+	$params = leafext_sgpx_params();
+	foreach($params as $param) {
+		$defaults[$param['param']] = $param['default'];
+	}
+	$options = shortcode_atts($defaults, get_option('leafext_sgpxparams'));
+	return $options;
+}
 
 function leafext_sgpx_function( $atts ) {
-	$options=get_option('leafext_eleparams');
-	if ( $options['sgpx'] == "leaflet" && is_plugin_active( 'wp-gpx-maps/wp-gpx-maps.php' ) && ! wp_script_is( "wp_leaflet_map", 'enqueued' ) ) {
-			enqueue_WP_GPX_Maps_scripts();
-			wp_dequeue_style('leaflet.Photo');
-			wp_dequeue_script('leaflet.Photo');
-			$text = handle_WP_GPX_Maps_Shortcodes( $atts ) ;
-			return $text;
-	} else if ( ! $options['sgpx'] ) {
-		$text = __("You are using the sgpx shortcode from plugin wp-gpx-maps. wp-gpx-maps and leaflet-map don't work at the same page or post. See admin settings page.","extensions-leaflet-map");
+	$options=get_option('leafext_sgpxparams');
+	if ( LEAFEXT_SGPX_SGPX && $options['sgpx'] == "leaflet" && LEAFEXT_SGPX_ACTIVE && ! wp_script_is( "wp_leaflet_map", 'enqueued' ) ) {
+		enqueue_WP_GPX_Maps_scripts();
+		wp_dequeue_style('leaflet.Photo');
+		wp_dequeue_script('leaflet.Photo');
+		$text = handle_WP_GPX_Maps_Shortcodes( $atts ) ;
+		return $text;
+	} else if ( LEAFEXT_SGPX_ACTIVE && ( ( LEAFEXT_SGPX_SGPX && ! $options['sgpx'] ) || ! LEAFEXT_SGPX_SGPX ) ) {
+		$text = __("You are using the sgpx shortcode from plugin wp-gpx-maps. wp-gpx-maps and leaflet-map don't work together. See admin settings page.","extensions-leaflet-map");
 		$text = $text."<p>[sgpx ";
 		foreach ($atts as $key=>$item){
 			$text = $text. "$key = $item ";
@@ -152,9 +169,10 @@ function leafext_sgpx_function( $atts ) {
 	} else {
 		//
 		$elemap = array();
-		$elemap['width'] = leafext_wpgpxmaps_findValue( $atts, 'width', 'wpgpxmaps_width', '100%' );
-		$elemap['height'] = leafext_wpgpxmaps_findValue( $atts, 'mheight', 'wpgpxmaps_height', '450px' );
-		$elemap['scrollwheel'] = leafext_wpgpxmaps_findValue( $atts, 'zoomonscrollwheel', 'wpgpxmaps_zoomonscrollwheel', false );
+
+		$elemap['width'] = isset( $atts['width'] ) ? $atts['width'] : "";
+		$elemap['height'] = isset( $atts['mheight'] ) ? $atts['mheight'] : "";
+		$elemap['scrollwheel'] = isset( $atts['mheight'] ) ? $atts['zoomonscrollwheel'] : "";
 
 		$maptext = "";
 		foreach ($elemap as $k => $v) {
@@ -162,10 +180,11 @@ function leafext_sgpx_function( $atts ) {
 		}
 		//
 		$eleele = array();
-		$eleele['waypoints'] = leafext_wpgpxmaps_findValue( $atts, 'waypoints', 'wpgpxmaps_show_waypoint', false );
-		$eleele['downloadLink'] = leafext_wpgpxmaps_findValue( $atts, 'download', 'wpgpxmaps_download', '' );
-		$eleele['slope'] = leafext_wpgpxmaps_findValue( $atts, 'showgrade', 'wpgpxmaps_show_grade', false );
-		$eleele['speed'] = leafext_wpgpxmaps_findValue( $atts, 'showspeed', 'wpgpxmaps_show_speed', false );
+
+		$eleele['waypoints'] =  isset( $atts['waypoints'] ) ? $atts['waypoints'] : "";
+		$eleele['downloadLink'] =  isset( $atts['download'] ) ? $atts['download'] : "";
+		$eleele['slope'] = isset( $atts['showgrade'] ) ? $atts['showgrade'] : "";
+		$eleele['speed'] = isset( $atts['showspeed'] ) ? $atts['showspeed'] : "";
 
 		$eletext = "";
 		foreach ($eleele as $k => $v) {
@@ -203,8 +222,9 @@ function leafext_sgpx_function( $atts ) {
 		}
 
 		//
-		$uom = leafext_wpgpxmaps_findValue( $atts, 'uom', 'wpgpxmaps_unit_of_measure', '0' );
+		$uom = isset( $atts['uom'] ) ? $atts['uom'] : "";
 		switch ($uom) {
+			case  "": break;
 			case '1': /* miles and feet */
 			case '5':	/* meters / kilometers / nautical miles and feet */
 				$eletext = $eletext.' imperial=1 '; break;
@@ -224,7 +244,7 @@ function leafext_sgpx_function( $atts ) {
 //add_shortcode('sgpx', 'leafext_sgpx_function' );
 
 function leafext_change_sgpx_shortcode() {
-	if (is_plugin_active( 'wp-gpx-maps/wp-gpx-maps.php')) {
+	if ( LEAFEXT_SGPX_ACTIVE ) {
 		remove_shortcode( 'sgpx' );
 	}
 	add_shortcode('sgpx', 'leafext_sgpx_function' );
