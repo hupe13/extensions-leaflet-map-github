@@ -108,7 +108,5 @@ function leafext_do_page() {
 		include LEAFEXT_PLUGIN_DIR . '/admin/help.php';
 	} else if( $active_tab == 'other' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/other.php';
-	} else {
-		echo "Error";
 	}
 }

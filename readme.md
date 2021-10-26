@@ -6,7 +6,7 @@ Contributors: hupe13
 Tags: leaflet, elevation, markercluster, zoomhome, hover, fullscreen, gpx, gps, garmin, altitude  
 Requires at least: 5.5.3  
 Tested up to: 5.8  
-Stable tag: 2.1.3  
+Stable tag: 2.2  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -30,6 +30,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 *   hover: Use it to highlight a geojson element or get a tooltip on mouse over.
 *   Hide Markers: Use it when a track in a GPX file contains some markers and you don't want to display them on the map.
+*	Switch from wp-gpx-maps
 
 ## Screenshots
 
@@ -53,9 +54,8 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.1.4a / xxx
+### 2.2 / 211xxx
 * Integration shortcode sgpx from WordPress plugin wp-gpx-map (some parameters)
-* see https://leafext.de/en/sgpx/
 
 ### 2.1.3 / 211016
 * bug fix in parameters for markercluster
