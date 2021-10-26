@@ -65,16 +65,16 @@ function leafext_form_sgpx($field) {
 function leafext_validate_sgpx_options($options) {
 	if (isset($_POST['submit'])) return $options;
 	if (isset($_POST['delete'])) {
-    if ( $_POST['delete'] == 'Delete all settings from wp-gpx-maps!' ) {
-      global $wpdb;
-      $option_names = $wpdb->get_results( "SELECT option_name FROM $wpdb->options WHERE option_name LIKE 'wpgpxmaps_%' " );
-      foreach ( $option_names as $key=>$value ) {
-        delete_option($value->option_name);
-      }
-    } else {
-      leafext_delete_sgpx();
-    }
-  }
+		if ( $_POST['delete'] == 'Delete all settings from wp-gpx-maps!' ) {
+			global $wpdb;
+			$option_names = $wpdb->get_results( "SELECT option_name FROM $wpdb->options WHERE option_name LIKE 'wpgpxmaps_%' " );
+			foreach ( $option_names as $key=>$value ) {
+				delete_option($value->option_name);
+			}
+		} else {
+			leafext_delete_sgpx();
+		}
+	}
 	return false;
 }
 
@@ -83,22 +83,22 @@ function leafext_sgpx_help_text () {
 	echo '
 	<h2>'.__('Help','extensions-leaflet-map').'</h2>';
 	echo __("This site will help you to switch from wp-gpx-maps.","extensions-leaflet-map");
-  echo '<ul><li>';
-  echo __('Configure your default <a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">elevation settings</a>, especially the theme.',"extensions-leaflet-map");
-  echo '</li><li>';
-  echo __('You can first test it: select "leaflet", but write in your test page / post <code>[leaflet-map height="1"]</code>.',"extensions-leaflet-map");
-  echo '</li><li>';
-  echo __('Select "1" to interpret the parameters elevation-like.',"extensions-leaflet-map");
-  echo '</li><li>';
-  echo __("Deactivate and delete the plugin wp-gpx-maps.","extensions-leaflet-map");
-  echo '</li><li>';
-  echo __("Not all settings may be deleted, delete them here.","extensions-leaflet-map");
-  echo '</li><li>';
-  echo __("If wp-gpx-maps exists anymore, sgpx parameters will interpreted elevation-like always. You can delete all settings on this page.","extensions-leaflet-map");
-  // echo '</li><li>';
-  // echo __(".","extensions-leaflet-map");
-  echo '</li></ul>';
-  echo sprintf(
+	echo '<ul><li>';
+	echo __('Configure your default <a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">elevation settings</a>, especially the theme.',"extensions-leaflet-map");
+	echo '</li><li>';
+	echo __('You can first test it: select "leaflet", but write in your test page / post <code>[leaflet-map height="1"]</code>.',"extensions-leaflet-map");
+	echo '</li><li>';
+	echo __('Select "1" to interpret the parameters elevation-like.',"extensions-leaflet-map");
+	echo '</li><li>';
+	echo __("Deactivate and delete the plugin wp-gpx-maps.","extensions-leaflet-map");
+	echo '</li><li>';
+	echo __("Not all settings may be deleted, delete them here.","extensions-leaflet-map");
+	echo '</li><li>';
+	echo __("If wp-gpx-maps exists anymore, sgpx parameters will interpreted elevation-like always. You can delete all settings on this page.","extensions-leaflet-map");
+	// echo '</li><li>';
+	// echo __(".","extensions-leaflet-map");
+	echo '</li></ul>';
+	echo sprintf(
 		__('See documentation and examples in %shere%s.',
 			"extensions-leaflet-map"),
 			'<a href="https://leafext.de/en/doku/elevation/sgpx/">',
