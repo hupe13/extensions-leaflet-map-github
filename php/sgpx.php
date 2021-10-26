@@ -155,7 +155,7 @@ function leafext_sgpx_function( $atts ) {
 		$elemap['width'] = leafext_wpgpxmaps_findValue( $atts, 'width', 'wpgpxmaps_width', '100%' );
 		$elemap['height'] = leafext_wpgpxmaps_findValue( $atts, 'mheight', 'wpgpxmaps_height', '450px' );
 		$elemap['scrollwheel'] = leafext_wpgpxmaps_findValue( $atts, 'zoomonscrollwheel', 'wpgpxmaps_zoomonscrollwheel', false );
-		
+
 		$maptext = "";
 		foreach ($elemap as $k => $v) {
 			if ( $v != "" ) $maptext = $maptext." ".$k."=".$v." ";
@@ -169,7 +169,37 @@ function leafext_sgpx_function( $atts ) {
 
 		$eletext = "";
 		foreach ($eleele as $k => $v) {
-			if ( $v != "" ) $eletext = $eletext." ".$k."=".$v." ";
+			$eletext = $eletext. " $k=";
+			switch (gettype($v)) {
+			case "string":
+				switch ($v) {
+					case "false":
+					case "0": $value = '"0"'; break;
+					case "true":
+					case "1": $value = '"1"'; break;
+					default:
+						if (is_numeric($v)) {
+							$value = $v;
+						} else {
+							$value = '"'.$v.'"';
+						}
+					break;
+				}
+				break;
+			case "boolean":
+				$value = $v ? '"1"' : '"0"'; break;
+			case "integer":
+				switch ($v) {
+					//case 0: $value = "false"; break;
+					//case 1: $value = "true"; break;
+					default: $value = $v; break;
+				}
+				break;
+			default: var_dump($k, $v, gettype($v)); wp_die("Type");
+			}
+			$eletext = $eletext.$value;
+			//$eletext = $eletext.",\n";
+			//if ( $v != "" ) $eletext = $eletext." ".$k."=".$v." ";
 		}
 
 		//
