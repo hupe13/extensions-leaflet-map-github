@@ -67,7 +67,7 @@ function leafext_admin_elevation($active_tab) {
 		submit_button();
 
 		if ( ! LEAFEXT_SGPX_ACTIVE && LEAFEXT_SGPX_UNCLEAN_DB ) {
-			echo '<p>'.__("You have wp-gpx-maps uninstalled, but some of its options exist in the database. You should delete them.").'</p>';
+			echo '<p>'.__("You have wp-gpx-maps uninstalled, but some of its options exist in the database. You should delete them.","extensions-leaflet-map").'</p>';
 			submit_button( __( 'Delete all settings from wp-gpx-maps!', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		}
 		if ( ! LEAFEXT_SGPX_UNCLEAN_DB && LEAFEXT_SGPX_SGPX ) {
