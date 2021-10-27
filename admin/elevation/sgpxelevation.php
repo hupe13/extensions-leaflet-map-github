@@ -72,7 +72,7 @@ function leafext_validate_sgpx_options($options) {
 				delete_option($value->option_name);
 			}
 		} else {
-			leafext_delete_sgpx();
+			delete_option('leafext_sgpxparams');
 		}
 	}
 	return false;
