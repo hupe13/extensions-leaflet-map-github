@@ -56,6 +56,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ### 2.2 / 211xxx
 * Integration shortcode sgpx from WordPress plugin wp-gpx-maps (some parameters)
+* leaflet.markercluster 1.5.3
 
 ### 2.1.3 / 211016
 * bug fix in parameters for markercluster
