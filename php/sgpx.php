@@ -153,10 +153,24 @@ function leafext_sgpx_settings() {
 function leafext_sgpx_function( $atts ) {
 	$options=get_option('leafext_sgpxparams');
 	if ( LEAFEXT_SGPX_SGPX && $options['sgpx'] == "leaflet" && LEAFEXT_SGPX_ACTIVE && ! wp_script_is( "wp_leaflet_map", 'enqueued' ) ) {
-		enqueue_WP_GPX_Maps_scripts();
-		wp_dequeue_style('leaflet.Photo');
-		wp_dequeue_script('leaflet.Photo');
-		$text = handle_WP_GPX_Maps_Shortcodes( $atts ) ;
+		if (function_exists('enqueue_WP_GPX_Maps_scripts')) {
+      enqueue_WP_GPX_Maps_scripts();
+      wp_dequeue_style('leaflet.Photo');
+  		wp_dequeue_script('leaflet.Photo');
+  		$text = handle_WP_GPX_Maps_Shortcodes( $atts ) ;
+    } else if (function_exists('wpgpxmaps_enqueue_scripts')) {
+      wpgpxmaps_enqueue_scripts();
+      wp_dequeue_style('leaflet.Photo');
+  		wp_dequeue_script('leaflet.Photo');
+  		$text = wpgpxmaps_handle_shortcodes( $atts ) ;
+    } else {
+      $text = __("You are using the sgpx shortcode from plugin wp-gpx-maps. But the script cannot detect how to handle it. Please ask in the forum.","extensions-leaflet-map");
+  		$text = $text."<p>[sgpx ";
+  		foreach ($atts as $key=>$item){
+  			$text = $text. "$key = $item ";
+  		}
+  		$text = $text. "]</p>";
+    }
 		return $text;
 	} else if ( LEAFEXT_SGPX_ACTIVE && ( ( LEAFEXT_SGPX_SGPX && ! $options['sgpx'] ) || ! LEAFEXT_SGPX_SGPX ) ) {
 		$text = __("You are using the sgpx shortcode from plugin wp-gpx-maps. wp-gpx-maps and leaflet-map don't work together. See admin settings page.","extensions-leaflet-map");
@@ -188,11 +202,11 @@ function leafext_sgpx_function( $atts ) {
 
 		$eletext = "";
 		foreach ($eleele as $k => $v) {
-			$eletext = $eletext. " $k=";
 			switch (gettype($v)) {
 			case "string":
 				switch ($v) {
-					case "false":
+          case ""; break;
+          case "false":
 					case "0": $value = '"0"'; break;
 					case "true":
 					case "1": $value = '"1"'; break;
@@ -216,9 +230,7 @@ function leafext_sgpx_function( $atts ) {
 				break;
 			default: var_dump($k, $v, gettype($v)); wp_die("Type");
 			}
-			$eletext = $eletext.$value;
-			//$eletext = $eletext.",\n";
-			//if ( $v != "" ) $eletext = $eletext." ".$k."=".$v." ";
+			if ( $value != "" ) $eletext = $eletext." ".$k."=".$value;
 		}
 
 		//
@@ -235,8 +247,8 @@ function leafext_sgpx_function( $atts ) {
 				$eletext = $eletext.' imperial=0 '; break;
 		}
 
-		$text = '[leaflet-map zoomcontrol '.$maptext.'][elevation gpx="'.$atts['gpx'].'" marker="position-marker" '.$eletext.'][fullscreen]';
-		return "\n".'<script>// '.$text." </script>\n".do_shortcode($text);
+		$text = '[leaflet-map zoomcontrol '.$maptext.'][elevation gpx="'.$atts['gpx'].'" marker="position-marker"'.$eletext.'][fullscreen]';
+		return "<script>console.log(".json_encode( $text )." )</script>".do_shortcode($text);
 	}
 }
 //add_shortcode('sgpx', 'leafext_sgpx_function' );
