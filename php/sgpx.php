@@ -144,7 +144,7 @@ function leafext_sgpx_params() {
 		array(
 			'param' => 'sgpx',
 			'shortdesc' => __('Replace <code>sgpx</code> (wp-gpx-maps) with <code>elevation</code>.',"extensions-leaflet-map"),
-			'desc' => __("No / Yes / Only, when ".'<code>[leaflet-map height="1"]</code>'." is used, e.g. for testing.","extensions-leaflet-map"),
+			'desc' => sprintf(__("No / Yes / Only, when %s is used, e.g. for testing.","extensions-leaflet-map"),'<code>[leaflet-map height="1"]</code>'),
 			'default' => false,
 			'values' => array(false, true, "leaflet"),
 			'next' => "0",

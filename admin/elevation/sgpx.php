@@ -81,8 +81,7 @@ function leafext_validate_sgpx_options($options) {
 // Helptext
 function leafext_sgpx_help_text () {
 	echo '<h2>WP GPX Maps</h2>';
-	echo sprintf(__("Many thanks to %s for his %sexcellent plugin%s, which I used myself for a long time.
-		Unfortunately it needed some rework, especially to make it and leaflet-map work together. At some point it didn't work for me at all. Some of its features are included in the shortcode %s. Since version 2.2. it interprets the shortcode %s.","extensions-leaflet-map"),
+	echo sprintf(__("Many thanks to %s for his %sexcellent plugin%s, which I used myself for a long time. Unfortunately it needed some rework, especially to make it and leaflet-map work together. At some point it didn't work for me at all. Some of its features are included in the shortcode %s. Since version 2.2. it interprets the shortcode %s.","extensions-leaflet-map"),
 		'<a href="https://profiles.wordpress.org/bastianonm/">Bastianon Massimo</a>',
 		'<a href="https://wordpress.org/plugins/wp-gpx-maps/">','</a>',
 		'<code>elevation</code>',
@@ -90,7 +89,7 @@ function leafext_sgpx_help_text () {
 	echo '<h2>'.__('Help','extensions-leaflet-map').'</h2>';
 	echo sprintf(__("This page helps you to switch from %s to %s.","extensions-leaflet-map"),'<code>sgpx</code>','<code>elevation</code>');
 	echo '<ul><li>';
-	echo sprintf(__('Configure your default %s  settings.',"extensions-leaflet-map"),'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">elevation</a>');
+	echo sprintf(__('Configure your default %s settings.',"extensions-leaflet-map"),'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">elevation</a>');
 	echo '</li><li>';
 	echo sprintf(__('Select %s to interpret the %s parameters as %s.',"extensions-leaflet-map"),'"1"','sgpx','elevation');
 	echo '</li><li>';

@@ -50,14 +50,14 @@ function leafext_enqueue_markercluster () {
 		array('wp_leaflet_map'),null );
 }
 
-define('LEAFEXT_ELEVATION_URL', LEAFEXT_PLUGIN_URL . '/leaflet-plugins/leaflet-elevation-1.7.0/');
+define('LEAFEXT_ELEVATION_URL', LEAFEXT_PLUGIN_URL . '/leaflet-plugins/leaflet-elevation-1.7.2/');
 function leafext_enqueue_elevation () {
 	wp_enqueue_script( 'elevation_js',
-		plugins_url('leaflet-plugins/leaflet-elevation-1.7.0/js/leaflet-elevation.min.js',
+		plugins_url('leaflet-plugins/leaflet-elevation-1.7.2/js/leaflet-elevation.min.js',
     LEAFEXT_PLUGIN_FILE),
 		array('wp_leaflet_map'),null);
 	wp_enqueue_style( 'elevation_css',
-		plugins_url('leaflet-plugins/leaflet-elevation-1.7.0/css/leaflet-elevation.min.css',
+		plugins_url('leaflet-plugins/leaflet-elevation-1.7.2/css/leaflet-elevation.min.css',
 		LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
 	wp_enqueue_style( 'elevation_leafext_css',
@@ -71,8 +71,8 @@ function leafext_enqueue_multielevation () {
     plugins_url('leaflet-plugins/leaflet-gpx-1.7.0/gpx.js',LEAFEXT_PLUGIN_FILE),
 		array('elevation_js'),null);
 	wp_enqueue_script('leaflet.gpxgroup',
-		//plugins_url('leaflet-plugins/leaflet-elevation-1.7.0/libs/leaflet-gpxgroup.min.js',LEAFEXT_PLUGIN_FILE),
-		plugins_url('leaflet-plugins/leaflet-elevation-1.7.0/libs/leaflet-gpxgroup.js',LEAFEXT_PLUGIN_FILE),
+		//plugins_url('leaflet-plugins/leaflet-elevation-1.7.2/libs/leaflet-gpxgroup.min.js',LEAFEXT_PLUGIN_FILE),
+		plugins_url('leaflet-plugins/leaflet-elevation-1.7.2/libs/leaflet-gpxgroup.js',LEAFEXT_PLUGIN_FILE),
 		array('leaflet.gpx'),null);
 	wp_enqueue_style( 'my_elevation_css',
 	 	plugins_url('css/multielevation.css',LEAFEXT_PLUGIN_FILE),
@@ -95,10 +95,10 @@ function leafext_enqueue_placementstrategies () {
 
 function leafext_enqueue_fullscreen () {
 	wp_enqueue_style( 'leaflet.fullscreen',
-		plugins_url('leaflet-plugins/leaflet.fullscreen-2.0.0/Control.FullScreen.css',LEAFEXT_PLUGIN_FILE),
+		plugins_url('leaflet-plugins/leaflet.fullscreen-2.1.0/Control.FullScreen.css',LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
 	wp_enqueue_script('leaflet.fullscreen',
-		plugins_url('leaflet-plugins/leaflet.fullscreen-2.0.0/Control.FullScreen.js',LEAFEXT_PLUGIN_FILE),
+		plugins_url('leaflet-plugins/leaflet.fullscreen-2.1.0/Control.FullScreen.js',LEAFEXT_PLUGIN_FILE),
 		array('wp_leaflet_map'),null);
 }
 
