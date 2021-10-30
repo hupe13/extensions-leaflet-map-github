@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) or die();
 
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/elevation.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/owntheme.php';
-include LEAFEXT_PLUGIN_DIR . '/admin/elevation/sgpxelevation.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/elevation/sgpx.php';
 
 function leafext_elevation_tab() {
 	$tabs = array (

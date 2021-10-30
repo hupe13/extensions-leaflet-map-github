@@ -80,21 +80,29 @@ function leafext_validate_sgpx_options($options) {
 
 // Helptext
 function leafext_sgpx_help_text () {
-	echo '
-	<h2>'.__('Help','extensions-leaflet-map').'</h2>';
-	echo __("This site will help you to switch from wp-gpx-maps.","extensions-leaflet-map");
+	echo '<h2>WP GPX Maps</h2>';
+	echo sprintf(__("Many thanks to %s for his %sexcellent plugin%s, which I used myself for a long time.
+		Unfortunately it needed some rework, especially to make it and leaflet-map work together. At some point it didn't work for me at all. Some of its features are included in the shortcode %s. Since version 2.2. it interprets the shortcode %s.","extensions-leaflet-map"),
+		'<a href="https://profiles.wordpress.org/bastianonm/">Bastianon Massimo</a>',
+		'<a href="https://wordpress.org/plugins/wp-gpx-maps/">','</a>',
+		'<code>elevation</code>',
+		'<code>sgpx</code>');
+	echo '<h2>'.__('Help','extensions-leaflet-map').'</h2>';
+	echo sprintf(__("This page helps you to switch from %s to %s.","extensions-leaflet-map"),'<code>sgpx</code>','<code>elevation</code>');
 	echo '<ul><li>';
-	echo sprintf(__('Configure your defaults %s  settings, especially the theme.',"extensions-leaflet-map"),'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">elevation</a>');
+	echo sprintf(__('Configure your default %s  settings.',"extensions-leaflet-map"),'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">elevation</a>');
 	echo '</li><li>';
-	echo __('You can first test it: select "leaflet", but write in your test page / post <code>[leaflet-map height="1"]</code>.',"extensions-leaflet-map");
+	echo sprintf(__('Select %s to interpret the %s parameters as %s.',"extensions-leaflet-map"),'"1"','sgpx','elevation');
 	echo '</li><li>';
-	echo __('Select "1" to interpret the parameters elevation-like.',"extensions-leaflet-map");
+	echo sprintf(__('If you want to test it first: select %s and write in your test page / post %s.',"extensions-leaflet-map"),'"leaflet"','<code>[leaflet-map height="1"]</code>');
 	echo '</li><li>';
-	echo __("Deactivate and delete the plugin wp-gpx-maps.","extensions-leaflet-map");
+	echo sprintf(__("If you are happy with it and if you don't use its track management, you can deactivate and delete the plugin %s.","extensions-leaflet-map"),'wp-gpx-maps');
+	echo ' ';
+	echo sprintf(__('(It could be, that %s will manage the tracks at some point.)',"extensions-leaflet-map"),'extensions-leaflet-map');
 	echo '</li><li>';
-	echo __("If not all settings have been deleted, delete them here.","extensions-leaflet-map");
+	echo __("Maybe some orphaned options exist, that you can delete here.","extensions-leaflet-map");
 	echo '</li><li>';
-	echo __("If wp-gpx-maps exists anymore, sgpx parameters will interpreted elevation-like always. You can delete all settings on this page.","extensions-leaflet-map");
+	echo __("If wp-gpx-maps exists anymore, sgpx parameters will interpreted with elevation. You can delete all settings on this page.","extensions-leaflet-map");
 	// echo '</li><li>';
 	// echo __(".","extensions-leaflet-map");
 	echo '</li></ul>';
