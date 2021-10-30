@@ -64,17 +64,7 @@ function leafext_form_sgpx($field) {
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function leafext_validate_sgpx_options($options) {
 	if (isset($_POST['submit'])) return $options;
-	if (isset($_POST['delete'])) {
-		if ( $_POST['delete'] == __( 'Delete all settings from wp-gpx-maps!', 'extensions-leaflet-map' ) ) {
-			global $wpdb;
-			$option_names = $wpdb->get_results( "SELECT option_name FROM $wpdb->options WHERE option_name LIKE 'wpgpxmaps_%' " );
-			foreach ( $option_names as $key=>$value ) {
-				delete_option($value->option_name);
-			}
-		} else {
-			delete_option('leafext_sgpxparams');
-		}
-	}
+	if (isset($_POST['delete'])) delete_option('leafext_sgpxparams');
 	return false;
 }
 
@@ -100,13 +90,10 @@ function leafext_validate_sgpx_unclean_db($input) {
 			foreach ( $option_names as $key=>$value ) {
 				delete_option($value->option_name);
 			}
-		} else {
-			delete_option('leafext_sgpxparams');
 		}
 	}
 	return false;
 }
-
 
 // Helptext
 function leafext_sgpx_help_text () {
