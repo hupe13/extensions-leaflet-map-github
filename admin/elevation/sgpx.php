@@ -147,8 +147,6 @@ function leafext_sgpx_help_text () {
 			echo '<li>'.__("You have wp-gpx-maps uninstalled, but some of its options exist in the database. You should delete them.","extensions-leaflet-map").'</li>';
 		} else if ( LEAFEXT_SGPX_SGPX ) { 
 			echo '<li>'.__("You can delete all settings on this page.","extensions-leaflet-map").'</li>';
-		} else {
-			echo __('wp-gpx-maps is not installed and nothing is configured.',"extensions-leaflet-map");
 		}
 	}
 	echo '</ul>';
