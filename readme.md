@@ -54,7 +54,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.2 / 211xxx
+### 2.2 / 211031
 * Integration shortcode sgpx from WordPress plugin wp-gpx-maps (some parameters)
 * leaflet.markercluster 1.5.3
 * leaflet.fullscreen 2.1.0
