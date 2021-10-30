@@ -29,7 +29,7 @@ function leafext_elevation_tab() {
 	if ( LEAFEXT_SGPX_ACTIVE || LEAFEXT_SGPX_UNCLEAN_DB || LEAFEXT_SGPX_SGPX ) {
 		$tabs[] = array (
 			'tab' => 'sgpxelevation',
-			'title' => __('Switching from wp-gpx-maps','extensions-leaflet-map'),
+			'title' => __('Migrate from wp-gpx-maps','extensions-leaflet-map'),
 		);
 	}
 
@@ -60,21 +60,27 @@ function leafext_admin_elevation($active_tab) {
 		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		echo '</form>';
 	} else if( $active_tab == 'sgpxelevation' ) {
-
+		
 		echo '<form method="post" action="options.php">';
-		settings_fields('leafext_settings_sgpxparams');
-		do_settings_sections( 'leafext_settings_sgpxparams' );
-		submit_button();
-
-		if ( ! LEAFEXT_SGPX_ACTIVE && LEAFEXT_SGPX_UNCLEAN_DB ) {
-			echo '<p>'.__("You have wp-gpx-maps uninstalled, but some of its options exist in the database. You should delete them.","extensions-leaflet-map").'</p>';
+		if ( LEAFEXT_SGPX_ACTIVE ) {
+			settings_fields('leafext_settings_sgpxparams');
+			do_settings_sections( 'leafext_settings_sgpxparams' );
+			submit_button();
+		} else if ( LEAFEXT_SGPX_UNCLEAN_DB ) {
+			settings_fields('leafext_settings_sgpx_unclean_db');
+			do_settings_sections( 'leafext_settings_sgpx_unclean_db' );
 			submit_button( __( 'Delete all settings from wp-gpx-maps!', 'extensions-leaflet-map' ), 'delete', 'delete', false);
-		}
-		if ( ! LEAFEXT_SGPX_UNCLEAN_DB && LEAFEXT_SGPX_SGPX ) {
+		} else if ( LEAFEXT_SGPX_SGPX ) {
+			settings_fields('leafext_settings_sgpxparams');
+			do_settings_sections( 'leafext_settings_sgpxparams' );
 			submit_button( __( "I don't need this anymore. sgpx is always interpreted as elevation.", 'extensions-leaflet-map' ), 'delete', 'delete', false);
+		} else {
+			echo '<h2>'.leafext_elevation_tab().'</h2>';
+			echo __('wp-gpx-maps is not installed and nothing is configured.',"extensions-leaflet-map");
 		}
 		echo '</form>';
-
+		
+		
 	} else if( $active_tab == 'elevation' ) {  //Last tab!!!
 		echo '<form method="post" action="options.php">';
 		settings_fields('leafext_settings_eleparams');

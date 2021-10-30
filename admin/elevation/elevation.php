@@ -94,7 +94,7 @@ function leafext_ele_help_text () {
 	<pre><code>[leaflet-map ....]
 [elevation gpx="url_gpx_file" option1=value1 option2 !option3 ...]</code></pre>
 '.
-__('You can set a marker on Start, but this is not necessary any more.',"extensions-leaflet-map").'
+__('You can optionally set a marker on Start.',"extensions-leaflet-map").'
 <pre><code>[leaflet-map ....]
 [leaflet-marker lat=... lng=... ...]Start[/leaflet-marker]
 [elevation gpx="url_gpx_file" option1=value1 option2 !option3 ...]</code></pre>
