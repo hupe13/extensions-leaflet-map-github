@@ -8,6 +8,7 @@ defined( 'ABSPATH' ) or die();
 
 //Shortcode:
 //[elevation-track file="'.$file.'" lat="'.$startlat.'" lng="'.$startlon.'" name="'.basename($file).'"]
+// lat lng name optional
 //[elevation-tracks summary=1]
 
 function leafext_elevation_track( $atts ){
@@ -17,11 +18,27 @@ function leafext_elevation_track( $atts ){
 	//
 	global $all_points;
 	if (!is_array($all_points)) $all_points = array();
+	if ( ! $atts['lat'] || ! $atts['lng'] || $atts['name'] ) {
+		$gpx = simplexml_load_file($atts['file']);
+	}
+	if ( ! $atts['lat'] || ! $atts['lng'] ) {
+		$latlng = array(
+			(float)$gpx->trk->trkseg->trkpt[0]->attributes()->lat,
+			(float)$gpx->trk->trkseg->trkpt[0]->attributes()->lon,
+		);
+	} else {
+		$latlng = array($atts['lat'],$atts['lng']);
+	}
+	if ( ! $atts['name'] ) {
+		$name = (string) $gpx->trk->name;
+	} else {
+		$name = $atts['name'];
+	}
 	$point = array(
-		'latlng' => array($atts['lat'],$atts['lng']),
-		'name' => $atts['name'],
+		'latlng' => $latlng,
+		'name' 	 => $name,
 	);
-	$all_points[]=$point;
+	$all_points[] = $point;
 }
 add_shortcode('elevation-track', 'leafext_elevation_track' );
 
