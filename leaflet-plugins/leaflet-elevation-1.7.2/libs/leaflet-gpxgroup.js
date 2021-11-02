@@ -222,6 +222,7 @@ L.GpxGroup = L.Class.extend({
 
   _onRouteAddLine: function(route, e) {
     var polyline = e.line;
+
     route.on('selected', L.bind(this._onRouteSelected, this, route, polyline));
 
     polyline.on('mouseover', L.bind(this._onRouteMouseOver, this, route, polyline));
