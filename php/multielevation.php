@@ -60,7 +60,8 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summ
 				slope: '.json_encode($slope).',
 			},
 			markers: {
-				startIconUrl: null, // "http://mpetazzoni.github.io/leaflet-gpx/pin-icon-start.png",
+				//startIconUrl: null, // "http://mpetazzoni.github.io/leaflet-gpx/pin-icon-start.png",
+				startIconUrl: "'.LEAFEXT_ELEVATION_URL.'" + "../leaflet-gpx-1.7.0/pin-icon-start.png",
 				endIconUrl: null, // "http://mpetazzoni.github.io/leaflet-gpx/pin-icon-end.png",
 				shadowUrl: null, // "http://mpetazzoni.github.io/leaflet-gpx/pin-shadow.png",
 			},
@@ -131,8 +132,9 @@ return "\n".$text."\n";
 }
 
 function leafext_elevation_tracks( $atts ){
-	leafext_enqueue_elevation ();
-	leafext_enqueue_multielevation ();
+	//leafext_enqueue_elevation ();
+	//leafext_enqueue_multielevation ();
+	leafext_enqueue_multielevation_test();
 	leafext_enqueue_zoomhome();
 
 	global $all_files;
