@@ -54,6 +54,11 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
+### 2.2.1 / 2111xx
+
+* multielevation fixed
+* leaflet-elevation 1.7.3
+
 ### 2.2 / 211031
 * Integration shortcode sgpx from WordPress plugin wp-gpx-maps (some parameters)
 * leaflet.markercluster 1.5.3
