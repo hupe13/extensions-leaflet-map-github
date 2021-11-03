@@ -1,12 +1,12 @@
 <a href="https://wordpress.org/plugins/extensions-leaflet-map/">Official WordPress Plugin</a>
 
-# Extensions for Leaflet Map
+# Extensions for Leaflet Map Github Version
 
 Contributors: hupe13  
 Tags: leaflet, elevation, markercluster, zoomhome, hover, fullscreen, gpx, gps, garmin, altitude  
 Requires at least: 5.5.3  
 Tested up to: 5.8  
-Stable tag: 2.2  
+Stable tag: 2.2.1 (beta)  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -16,12 +16,12 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 ### Used Leaflet Plugins and Elements
 
-*   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation): Track with Elevation Profile
-*   [leaflet-gpx](https://github.com/mpetazzoni/leaflet-gpx) and [leaflet-gpxgroup](https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js): Multiple tracks with elevation profiles on one map
+*   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation), [Leaflet.EasyButton](https://github.com/CliffCloud/Leaflet.EasyButton): Track with Elevation Profile
+*   [leaflet-gpxgroup](https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js): Multiple tracks with elevation profiles on one map
 *   [L.control.layers](https://leafletjs.com/examples/layers-control/): Switching Tilelayers
 *   [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster): Marker Cluster
 *   [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup):  add/remove groups of markers from Marker Cluster.
-*	[Leaflet.MarkerCluster.PlacementStrategies](https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies):  implements new possibilities how to place clustered children markers
+*   [Leaflet.MarkerCluster.PlacementStrategies](https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies):  implements new possibilities how to place clustered children markers
 *   [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome): Reset the view
 *   [leaflet.fullscreen](https://github.com/brunob/leaflet.fullscreen): Fullscreen mode
 *   [Leaflet.GestureHandling](https://github.com/Raruto/leaflet-gesture-handling): Gesture Handling
@@ -58,7 +58,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * Integration shortcode sgpx from WordPress plugin wp-gpx-maps (some parameters)
 * leaflet.markercluster 1.5.3
 * leaflet.fullscreen 2.1.0
-* leaflet-elevation 1.7.2 
+* leaflet-elevation 1.7.2
 
 ### 2.1.3 / 211016
 * bug fix in parameters for markercluster

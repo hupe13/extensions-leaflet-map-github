@@ -18,10 +18,10 @@ function leafext_elevation_track( $atts ){
 	//
 	global $all_points;
 	if (!is_array($all_points)) $all_points = array();
-	if ( ! $atts['lat'] || ! $atts['lng'] || $atts['name'] ) {
+	if ( ! array_key_exists('lat', $atts) || ! array_key_exists('lng',$atts) || ! array_key_exists('name', $atts) ) {
 		$gpx = simplexml_load_file($atts['file']);
 	}
-	if ( ! $atts['lat'] || ! $atts['lng'] ) {
+	if ( ! array_key_exists('lat', $atts) || ! array_key_exists('lng', $atts ) ) {
 		$latlng = array(
 			(float)$gpx->trk->trkseg->trkpt[0]->attributes()->lat,
 			(float)$gpx->trk->trkseg->trkpt[0]->attributes()->lon,
@@ -29,7 +29,7 @@ function leafext_elevation_track( $atts ){
 	} else {
 		$latlng = array($atts['lat'],$atts['lng']);
 	}
-	if ( ! $atts['name'] ) {
+	if (! array_key_exists('name', $atts) ) {
 		$name = (string) $gpx->trk->name;
 	} else {
 		$name = $atts['name'];
@@ -148,7 +148,7 @@ return "\n".$text."\n";
 }
 
 function leafext_elevation_tracks( $atts ){
-	//leafext_enqueue_elevation ();
+	leafext_enqueue_elevation ();
 	//leafext_enqueue_multielevation ();
 	leafext_enqueue_multielevation_test();
 	leafext_enqueue_zoomhome();

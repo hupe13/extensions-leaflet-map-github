@@ -27,14 +27,12 @@ https://github.com/torfsen/leaflet.zoomhome
 https://github.com/Raruto/leaflet-elevation
 
 <pre>[elevation gpx="url_gpx_file"]</pre>
+<pre>[elevation-track ...]</pre>
+<pre>[elevation-tracks ...]</pre>
 
 https://github.com/CliffCloud/Leaflet.EasyButton
 
 <pre>[elevation gpx="url_gpx_file" chart="on|off"]</pre>
-
-https://github.com/mpetazzoni/leaflet-gpx
-
-<pre>[elevation-tracks ...]</pre>
 
 <h3>leaflet-gesture-handling</h3>
 
@@ -43,4 +41,3 @@ https://github.com/Raruto/leaflet-gesture-handling
 (leaflet-gesture-handling.js changed to deal with Safari bug marker popup)
 
 Used by nearly any leaflet map, see documentation
-

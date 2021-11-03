@@ -70,7 +70,7 @@ function leafext_elevation_params() {
 			'default' => false,
 			'values' => 1,
 		),
-		
+
 // Zusaetze
 
 		// Download link: "link" || false || "modal"

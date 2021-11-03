@@ -50,15 +50,14 @@ function leafext_enqueue_markercluster () {
 		array('wp_leaflet_map'),null );
 }
 
-define('LEAFEXT_ELEVATION_URL', LEAFEXT_PLUGIN_URL . '/leaflet-plugins/leaflet-elevation-1.7.2/');
+define('LEAFEXT_ELEVATION_URL', LEAFEXT_PLUGIN_URL . '/leaflet-plugins/leaflet-elevation-1.7.3/');
 function leafext_enqueue_elevation () {
 	wp_enqueue_script( 'elevation_js',
-		//plugins_url('leaflet-plugins/leaflet-elevation-1.7.2/js/leaflet-elevation.min.js',
-		plugins_url('leaflet-plugins/leaflet-elevation-1.7.2/js/leaflet-elevation-leafext.js',
+		plugins_url('leaflet-plugins/leaflet-elevation-1.7.3/js/leaflet-elevation.min.js',
     LEAFEXT_PLUGIN_FILE),
 		array('wp_leaflet_map'),null);
 	wp_enqueue_style( 'elevation_css',
-		plugins_url('leaflet-plugins/leaflet-elevation-1.7.2/css/leaflet-elevation.min.css',
+		plugins_url('leaflet-plugins/leaflet-elevation-1.7.3/css/leaflet-elevation.min.css',
 		LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
 	wp_enqueue_style( 'elevation_leafext_css',
@@ -81,21 +80,14 @@ function leafext_enqueue_multielevation () {
 }
 
 function leafext_enqueue_multielevation_test () {
-	wp_enqueue_script( 'elevation_test_js',
-		plugins_url('leaflet-plugins/leaflet-elevation-1.7.2/js/leaflet-elevation-leafext.js',
-		//plugins_url('leaflet-plugins/leaflet-elevation-1.7.0/js/leaflet-elevation.min.js',
-		LEAFEXT_PLUGIN_FILE),
-		array('wp_leaflet_map'),null);
-	wp_enqueue_script('leaflet.gpx',
-		plugins_url('leaflet-plugins/leaflet-gpx-1.7.0/gpx.js',LEAFEXT_PLUGIN_FILE),
-		array('elevation_test_js'),null);
 	wp_enqueue_script('leaflet.gpxgroup',
-		//plugins_url('leaflet-plugins/leaflet-elevation-1.7.2/libs/leaflet-gpxgroup.min.js',LEAFEXT_PLUGIN_FILE),
-		plugins_url('leaflet-plugins/leaflet-elevation-1.7.2/libs/leaflet-gpxgroup.js',LEAFEXT_PLUGIN_FILE),
-		array('leaflet.gpx'),null);
+		plugins_url('leaflet-plugins/leaflet-elevation-1.7.3/libs/leaflet-gpxgroup.min.js',LEAFEXT_PLUGIN_FILE),
+		array('elevation_js'),null);
 	//
+  wp_enqueue_script('leaflet_ajax_geojson_js');
+  //
 	wp_enqueue_style( 'elevation_css',
-		plugins_url('leaflet-plugins/leaflet-elevation-1.7.2/css/leaflet-elevation.min.css',
+		plugins_url('leaflet-plugins/leaflet-elevation-1.7.3/css/leaflet-elevation.min.css',
 		//plugins_url('leaflet-plugins/leaflet-elevation-1.7.0/css/leaflet-elevation.min.css',
 		LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
