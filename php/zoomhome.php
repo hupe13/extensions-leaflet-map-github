@@ -24,51 +24,52 @@ function leafext_zoomhome_script($fit){
 		//console.log("map zoom* "+maps[map_id].options.maxZoom);
 		if (typeof maps[map_id].options.maxZoom == "undefined")
 			maps[map_id].options.maxZoom = '.$maxzoom.';
-		if (maps[map_id].options.maxZoom == 20) 
+		if (maps[map_id].options.maxZoom == 20)
 			maps[map_id].options.maxZoom = 19;
+		//console.log(maps[map_id]);
 		//console.log(maps[map_id].options.maxZoom);
 		//console.log("map_id* "+map_id);
-		//console.log("fit "+'.json_encode($fit).');
+		console.log("fit "+'.json_encode($fit).');
 
 		if(typeof maps[map_id].zoomControl !== "undefined") {
 			maps[map_id].zoomControl._zoomOutButton.remove();
 			maps[map_id].zoomControl._zoomInButton.remove();
 		}
-		var zoom = 0;
 
 		var bounds = [];
 		bounds[map_id] = new L.latLngBounds();
+
 		var zoomHome = [];
 		zoomHome[map_id] = L.Control.zoomHome();
+		zoomHome[map_id].addTo(maps[map_id]);
 
-		// //
-		// var lines = window.WPLeafletMapPlugin.lines;
-		// if (lines.length > 0) {
-			// console.log("lines "+lines.length);
-		// }
-		// //
-		// var markers = window.WPLeafletMapPlugin.markers;
-		// if (markers.length > 0) {
-			// console.log("markers "+markers.length);
-		// }
-		// //
-		// var circles = window.WPLeafletMapPlugin.circles;
-		// if (circles.length > 0) {
-			// console.log("circles "+circles.length);
-		// }
+		if ('.json_encode($fit).' || typeof maps[map_id]._shouldFitBounds !== "undefined" ) {
+			// //
+			// var lines = window.WPLeafletMapPlugin.lines;
+			// if (lines.length > 0) {
+				// console.log("lines "+lines.length);
+			// }
+			// //
+			// var markers = window.WPLeafletMapPlugin.markers;
+			// if (markers.length > 0) {
+				// console.log("markers "+markers.length);
+			// }
+			// //
+			// var circles = window.WPLeafletMapPlugin.circles;
+			// if (circles.length > 0) {
+				// console.log("circles "+circles.length);
+			// }
 
-		//
-		var markergroups = window.WPLeafletMapPlugin.markergroups;
-		var mapmarkers = 0;
-		var maplines = 0;
-		var mapcircles = 0;
-		Object.entries(markergroups).forEach(([key, value]) => {
-			if ( markergroups[key]._map !== null ) {
-				if (map_id == markergroups[key]._map._leaflet_id) {
-					//console.log("markergroups loop");
-					markergroups[key].eachLayer(function(layer) {
-						zoom++;
-						//console.log("looping "+zoom);
+			//
+			var markergroups = window.WPLeafletMapPlugin.markergroups;
+			var mapmarkers = 0;
+			var maplines = 0;
+			var mapcircles = 0;
+			Object.entries(markergroups).forEach(([key, value]) => {
+				if ( markergroups[key]._map !== null ) {
+					if (map_id == markergroups[key]._map._leaflet_id) {
+						//console.log("markergroups loop");
+						markergroups[key].eachLayer(function(layer) {
 						//console.log(layer);
 						if (layer instanceof L.Marker){
 							//console.log("is_marker");
@@ -80,6 +81,7 @@ function leafext_zoomhome_script($fit){
 							bounds[map_id].extend(layer.getBounds());
 						} else if (layer instanceof L.Circle){
 							//console.log("is_Circle");
+							//console.log(layer);
 							mapcircles++;
 							bounds[map_id].extend(layer.getBounds());
 						//} else {
@@ -88,27 +90,60 @@ function leafext_zoomhome_script($fit){
 					});
 				}
 			}
+			});
+			//console.log("markers "+mapmarkers);
+			//console.log("lines "+maplines);
+			//console.log("circles "+mapcircles);
+
+		}
+			
+		maps[map_id].whenReady ( function() {
+			if (bounds[map_id].isValid()) {
+				console.log("ready map has bounds");
+				//console.log("zoom "+maps[map_id].getZoom());
+				zoomHome[map_id].setHomeBounds(bounds[map_id]);
+				maps[map_id].fitBounds(bounds[map_id]);
+			} else {
+				console.log("ready map has no bounds");
+				console.log("zoom load "+maps[map_id].getZoom());
+				//zoomHome[map_id].setHomeBounds(maps[map_id].getBounds());
+				zoomHome[map_id].setHomeCoordinates(maps[map_id].getCenter());
+				zoomHome[map_id].setHomeZoom(maps[map_id].getZoom());
+			}
 		});
-		//console.log("markers "+mapmarkers);
-		//console.log("lines "+maplines);
-		//console.log("circles "+mapcircles);
 
 		//geojson asynchron
 		var geojsons = window.WPLeafletMapPlugin.geojsons;
 		if (geojsons.length > 0) {
-			zoom++;
 			//console.log("geojsons "+geojsons.length);
 			var geocount = geojsons.length;
-			zoomHome[map_id].addTo(map);
 			for (var j = 0, len = geocount; j < len; j++) {
 				var geojson = geojsons[j];
 				if (map_id == geojsons[j]._map._leaflet_id) {
 					geojson.on("ready", function () {
 						//console.log(this._map._leaflet_id);
-						bounds[map_id].extend(this.getBounds());
+						console.log("geojson maps[map_id]._shouldFitBounds "+maps[map_id]._shouldFitBounds);
+						//console.log(this);
+						console.log(this._map._animateToZoom);
+						if ('.json_encode($fit).' || typeof maps[map_id]._shouldFitBounds !== "undefined") {
+							bounds[map_id].extend(this.getBounds());
+						}
 						if (bounds[map_id].isValid()) {
+							console.log("geojson bounds valid");
 							zoomHome[map_id].setHomeBounds(bounds[map_id]);
-							if ('.json_encode($fit).') maps[map_id].fitBounds(bounds[map_id]);
+							maps[map_id].fitBounds(bounds[map_id]);
+						} else {
+							console.log("geojson bounds not valid");
+							console.log(maps[map_id]._animateToCenter);
+							console.log(maps[map_id].getCenter());
+							console.log(maps[map_id]._animateToZoom);
+							if (typeof this.map._animateToZoom !== "undefined" ) {
+								zoomHome[map_id].setHomeCoordinates(maps[map_id]._animateToCenter);
+								zoomHome[map_id].setHomeZoom(maps[map_id]._animateToZoom);
+							} else {
+								zoomHome[map_id].setHomeCoordinates(maps[map_id].getCenter());
+								zoomHome[map_id].setHomeZoom(maps[map_id].getZoom());
+							}
 						}
 					});
 				}
@@ -117,31 +152,31 @@ function leafext_zoomhome_script($fit){
 
 		//elevation asynchron
 		maps[map_id].on("eledata_loaded", function(e) {
-			//console.log("elevation loaded");
+			console.log("elevation loaded");
 			//console.log(zoomHome);
-			bounds[map_id].extend(e.layer.getBounds());
+			console.log("elevation maps[map_id]._shouldFitBounds "+maps[map_id]._shouldFitBounds);
+
+			if ('.json_encode($fit).' || typeof maps[map_id]._shouldFitBounds !== "undefined") {
+				bounds[map_id].extend(e.layer.getBounds());
+			}
 			//console.log(Object.keys(zoomHome[map_id]));
 			//console.log(Object.keys(zoomHome[map_id]).includes("_zoomHomeButton"));
-			if ( ! Object.keys(zoomHome[map_id]).includes("_zoomHomeButton")) {
-				console.log("Lade Control");
-				zoomHome[map_id].addTo(map);
+			if (bounds[map_id].isValid()) {
+				zoomHome[map_id].setHomeBounds(bounds[map_id]);
+				maps[map_id].fitBounds(bounds[map_id]);
+			} else {
+				console.log(maps[map_id]._animateToCenter);
+				console.log(maps[map_id].getCenter());
+				console.log(maps[map_id]._animateToZoom);
+				zoomHome[map_id].setHomeCoordinates(maps[map_id].getCenter());
+				zoomHome[map_id].setHomeZoom(maps[map_id].getZoom());
 			}
-			zoomHome[map_id].setHomeBounds(bounds[map_id]);
-			maps[map_id].fitBounds(bounds[map_id]);
 		});
 
-		//console.log(zoomHome[map_id]);
-		if ( zoom > 0 ) {
-			if (bounds[map_id].isValid()) {
-				zoomHome[map_id].addTo(map);
-				zoomHome[map_id].setHomeBounds(bounds[map_id]);
-				if ('.json_encode($fit).') {
-					console.log("fit true");
-					//console.log("zoom "+maps[map_id].getZoom());
-					maps[map_id].fitBounds(bounds[map_id]);
-				}
-			}
-		}
+		maps[map_id].on("zoomend", function(e) {
+			console.log("zoomend");
+			console.log("zoom "+maps[map_id].getZoom());
+		});
 	});
 	</script>';
 	$text = \JShrink\Minifier::minify($text);

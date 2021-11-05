@@ -422,7 +422,7 @@ function leafext_elevation_function( $atts ) {
 	if ( ! $atts['gpx'] ) {
 		$text = "[elevation ";
 		foreach ($atts as $key=>$item){
-			$text = $text. "$key = $item ";
+			$text = $text. "$key=$item ";
 		}
 		$text = $text. "]";
 		return $text;

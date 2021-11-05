@@ -12,33 +12,60 @@ defined( 'ABSPATH' ) or die();
 //[elevation-tracks summary=1]
 
 function leafext_elevation_track( $atts ){
+
+	if ( $atts['file'] == "" ) {
+		$text = "[elevation-track ";
+		foreach ($atts as $key=>$item){
+			$text = $text. "$key=$item ";
+		}
+		$text = $text."]";
+		return $text;
+	}
+
 	global $all_files;
 	if (!is_array($all_files)) $all_files = array();
-	$all_files[]=$atts['file'];
-	//
 	global $all_points;
 	if (!is_array($all_points)) $all_points = array();
-	if ( ! array_key_exists('lat', $atts) || ! array_key_exists('lng',$atts) || ! array_key_exists('name', $atts) ) {
+
+	$defaults = array (
+		'lat'  => '',
+		'lng'  => '',
+		'name' => '',
+	);
+	$params = shortcode_atts($defaults, $atts);
+	//
+
+	if ( $params['lat'] == "" || $params['lng'] == "" || $params['name'] == "" ) {
 		$gpx = simplexml_load_file($atts['file']);
+		if ($gpx ===  FALSE) {
+			$text = "[elevation-track read error ";
+			foreach ($params as $key=>$item){
+				$text = $text. "$key=$item ";
+			}
+			$text = $text."]";
+			return $text;
+		}
 	}
-	if ( ! array_key_exists('lat', $atts) || ! array_key_exists('lng', $atts ) ) {
+	if ( $params['lat'] == "" || $params['lng'] == "" ) {
 		$latlng = array(
 			(float)$gpx->trk->trkseg->trkpt[0]->attributes()->lat,
 			(float)$gpx->trk->trkseg->trkpt[0]->attributes()->lon,
 		);
 	} else {
-		$latlng = array($atts['lat'],$atts['lng']);
+		$latlng = array($params['lat'],$params['lng']);
 	}
-	if (! array_key_exists('name', $atts) ) {
+	if ( $params['name'] == "" ) {
 		$name = (string) $gpx->trk->name;
 	} else {
-		$name = $atts['name'];
+		$name = $params['name'];
 	}
 	$point = array(
 		'latlng' => $latlng,
 		'name' 	 => $name,
 	);
+
 	$all_points[] = $point;
+	$all_files[]=$atts['file'];
 }
 add_shortcode('elevation-track', 'leafext_elevation_track' );
 
@@ -149,8 +176,7 @@ return "\n".$text."\n";
 
 function leafext_elevation_tracks( $atts ){
 	leafext_enqueue_elevation ();
-	//leafext_enqueue_multielevation ();
-	leafext_enqueue_multielevation_test();
+	leafext_enqueue_multielevation();
 	leafext_enqueue_zoomhome();
 
 	global $all_files;
