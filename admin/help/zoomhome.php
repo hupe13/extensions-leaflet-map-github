@@ -8,51 +8,115 @@ $text='<h2 id="leaflet.zoomhome">leaflet.zoomhome</h2>
 '.__('It resets the view to all markers (leaflet-marker), lines (leaflet-line), circles (leaflet-circle), geojsons (leaflet-geojson, leaflet-gpx, leaflet-kml) and a track (elevation).','extensions-leaflet-map').'
 
 <h2>Shortcode</h2>
-<pre><code>[leaflet-map ....]
-  ...
-[zoomhomemap]
-//or
-[zoomhomemap !fit]
-</code></pre>
+
+<pre><code>[zoomhomemap fit/<span style="color: #d63638">!fit</span>]</code></pre>
 
 <h2>Howto</h2>
 
-<h3>fit / !fit</h3>
-
-<ul>
-<li>
-'.__('When the map is loaded, it zooms to all objects by default.','extensions-leaflet-map').'
- '.sprintf(
-__('You can change this with the attribute %s.','extensions-leaflet-map'),"<code>fit</code> / <code>!fit</code>").' '.
-sprintf(__('If you are using %s, you have to define how the map should fit, e.g.','extensions-leaflet-map'),"<code>!fit</code>").'
-
-<pre>
-<code>[leaflet-map lat=... lng=... zoom=... <span style="color: #d63638">!fitbounds</span>]
-[leaflet-marker ....]
-...
-[zoomhomemap <span style="color: #d63638">!fit]</span></code>
-</pre>
-
-</li>
-
-<li>'.__('You can also define to zoom at the first call to a geojson:','extensions-leaflet-map').'
-
-<pre>
-<code>[leaflet-map <span style="color: #d63638">!fitbounds</span>]
-[leaflet-geojson src="//url/to/file.geojson" <span style="color: #d63638">fitbounds</span>]Name[/leaflet-geojson]
-[leaflet-marker lat=... lng=... ]Name 1[/leaflet-marker]
-[leaflet-marker lat=... lng=... ]Name 2[/leaflet-marker]
-...
-[leaflet-marker lat=... lng=... ]Name n[/leaflet-marker]
-[cluster]
-[zoomhomemap <span style="color: #d63638">!fit]</span></code>
-</pre>
-</li>
-
-<li>'.sprintf(
-__('There are certainly more examples. Test it yourself with the parameters %s or %s.','extensions-leaflet-map'),"<code>fitbounds</code> (leaflet-)","<code>fit</code> (zoomhomemap)").'
-</li>
-</ul>
+<p>You can set following and the Home button works as shown in the table.
+</p>
+<table border="1" style="text-align: center;">
+	<tr>
+		<th class="row-title">leaflet-map</th>
+		<th>leaflet-element<sup>*</sup></th>
+		<th>zoomhomemap</th>
+		<th>initial state of the map</th>
+		<th>Home button</th>
+	</tr>
+	<tr valign="top">
+		<td scope="row">fitbounds</td>
+		<td>-</td>
+		<td>-</td>
+		<td>map</td>
+		<td>map</td>
+	</tr>
+	<tr valign="top">
+		<td scope="row"><span style="color: #d63638">!fitbounds</span></td>
+		<td>fitbounds</td>
+		<td>fit</td>
+		<td>element</td>
+		<td>map</td>
+	</tr>
+	<tr valign="top" class="alternate">
+		<td scope="row"><span style="color: #d63638">!fitbounds</span></td>
+		<td>fitbounds</td>
+		<td><span style="color: #d63638">!fit</span></td>
+		<td>element</td>
+		<td>element</td>
+	</tr>
+	<tr valign="top" class="alternate">
+		<td scope="row"><span style="color: #d63638">!fitbounds</span></td>
+		<td><span style="color: #d63638">!fitbounds</span></td>
+		<td>fit</td>
+		<td>leaflet-map settings lat lng zoom</td>
+		<td>map</td>
+	</tr>
+	<tr valign="top">
+		<td scope="row"><span style="color: #d63638">!fitbounds</span></td>
+		<td><span style="color: #d63638">!fitbounds</span></td>
+		<td><span style="color: #d63638">!fit</span></td>
+		<td>leaflet-map settings lat lng zoom</td>
+		<td>leaflet-map settings lat lng zoom<sup>**</sup></td>
+	</tr>
+	<tr>
+		<th class="row-title">leaflet-map</th>
+		<th>leaflet-marker</th>
+		<th>zoomhomemap</th>
+		<th>initial state of the map</th>
+		<th>Home button</th>
+	</tr>
+	<tr valign="top">
+		<td scope="row">fitbounds</td>
+		<td>-</td>
+		<td>-</td>
+		<td>map</td>
+		<td>map</td>
+	</tr>
+	<tr valign="top">
+		<td scope="row"><span style="color: #d63638">!fitbounds</span></td>
+		<td>-</td>
+		<td>fit</td>
+		<td>leaflet-map settings lat lng zoom</td>
+		<td>map</td>
+	</tr>
+	<tr valign="top" class="alternate">
+		<td scope="row"><span style="color: #d63638">!fitbounds</span></td>
+		<td>-</td>
+		<td><span style="color: #d63638">!fit</span></td>
+		<td>leaflet-map settings lat lng zoom</td>
+		<td>leaflet-map settings lat lng zoom</td>
+	</tr>
+	<tr>
+		<th class="row-title">leaflet-map</th>
+		<th>elevation</th>
+		<th>zoomhomemap</th>
+		<th>initial state of the map</th>
+		<th>Home button</th>
+	</tr>
+	<tr valign="top">
+		<td scope="row">fitbounds</td>
+		<td>-</td>
+		<td>-</td>
+		<td>track</td>
+		<td>track</td>
+	</tr>
+	<tr valign="top">
+		<td scope="row"><span style="color: #d63638">!fitbounds</span></td>
+		<td>autofitBounds</td>
+		<td>-</td>
+		<td>track</td>
+		<td>map</td>
+	</tr>
+	<tr valign="top">
+		<td scope="row"><span style="color: #d63638">!fitbounds</span></td>
+		<td><span style="color: #d63638">!autofitBounds</span></td>
+		<td>-</td>
+		<td>map like defined</td>
+		<td>map like defined</td>
+	</tr>
+</table>
+* leaflet-element means leaflet-line, leaflet-polygon, leaflet-circle, leaflet-geojson, leaflet-gpx, leaflet-kml.<br>
+** except for leaflet-line: to first zoom
 ';
 
 echo $text;

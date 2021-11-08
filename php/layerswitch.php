@@ -23,9 +23,7 @@ function leafext_layerswitch_script($mylayers){
 		var baselayers = {};
 		map.eachLayer(function(layer) {
 			if( layer instanceof L.TileLayer ) {
-				map.removeLayer(layer);
 				layer.options.attribution = defaultAttr;
-				map.addLayer(layer);
 				if(typeof layer.options.id !== "undefined") {
 					var defaultname = layer.options.id;
 				} else {

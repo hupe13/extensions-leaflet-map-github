@@ -17,19 +17,16 @@ function leafext_zoomhome_script($fit){
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
-		//console.log(window.WPLeafletMapPlugin);
 		var map_id = map._leaflet_id;
 		var maps=[];
 		maps[map_id] = map;
-		//console.log("map zoom* "+maps[map_id].options.maxZoom);
+
 		if (typeof maps[map_id].options.maxZoom == "undefined")
 			maps[map_id].options.maxZoom = '.$maxzoom.';
 		if (maps[map_id].options.maxZoom == 20)
 			maps[map_id].options.maxZoom = 19;
-		//console.log(maps[map_id]);
-		//console.log(maps[map_id].options.maxZoom);
+
 		//console.log("map_id* "+map_id);
-		console.log("fit "+'.json_encode($fit).');
 
 		if(typeof maps[map_id].zoomControl !== "undefined") {
 			maps[map_id].zoomControl._zoomOutButton.remove();
@@ -39,76 +36,129 @@ function leafext_zoomhome_script($fit){
 		var bounds = [];
 		bounds[map_id] = new L.latLngBounds();
 
+		// parameter fit: only when map !fitbound and ele fitbounds then set zoomhome to map,
+		// not in elevation
+		// 0: home = ele fitbounds (default)
+		// 1: home = map
+		var allfit = [];
+		if ('.json_encode($fit).' && typeof maps[map_id]._shouldFitBounds === "undefined" ) {
+			allfit[map_id] = new L.latLngBounds();
+		}
+
 		var zoomHome = [];
 		zoomHome[map_id] = L.Control.zoomHome();
 		zoomHome[map_id].addTo(maps[map_id]);
 
-		if ('.json_encode($fit).' || typeof maps[map_id]._shouldFitBounds !== "undefined" ) {
-			// //
-			// var lines = window.WPLeafletMapPlugin.lines;
-			// if (lines.length > 0) {
-				// console.log("lines "+lines.length);
-			// }
-			// //
-			// var markers = window.WPLeafletMapPlugin.markers;
-			// if (markers.length > 0) {
-				// console.log("markers "+markers.length);
-			// }
-			// //
-			// var circles = window.WPLeafletMapPlugin.circles;
-			// if (circles.length > 0) {
-				// console.log("circles "+circles.length);
-			// }
+		// Some elements zooming to be ready on map
+		var ende = [];
+		ende[map_id] = 1;
+		// When map !fitbound, then ignore this
+		if ( typeof maps[map_id]._shouldFitBounds === "undefined" ) ende[map_id] = 0;
 
-			//
-			var markergroups = window.WPLeafletMapPlugin.markergroups;
-			var mapmarkers = 0;
-			var maplines = 0;
-			var mapcircles = 0;
-			Object.entries(markergroups).forEach(([key, value]) => {
-				if ( markergroups[key]._map !== null ) {
-					if (map_id == markergroups[key]._map._leaflet_id) {
-						//console.log("markergroups loop");
-						markergroups[key].eachLayer(function(layer) {
+		//
+		var markergroups = window.WPLeafletMapPlugin.markergroups;
+		var mapmarkers = 0;
+		var mappolygon = 0;
+		var maplines = 0;
+		var mapcircles = 0;
+		Object.entries(markergroups).forEach(([key, value]) => {
+			if ( markergroups[key]._map !== null ) {
+				if (map_id == markergroups[key]._map._leaflet_id) {
+					//console.log("markergroups loop");
+					markergroups[key].eachLayer(function(layer) {
 						//console.log(layer);
 						if (layer instanceof L.Marker){
+							//markers do not have fitbounds
 							//console.log("is_marker");
 							mapmarkers++;
-							bounds[map_id].extend(layer._latlng);
+							if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
+								bounds[map_id].extend(layer._latlng);
+							} else if ( typeof allfit[map_id] !== "undefined") {
+								allfit[map_id].extend(layer._latlng);
+								//console.log("allfit marker");
+							}
+						} else if (layer instanceof L.Polygon) {
+							//console.log("is_Polygon");
+							mappolygon++;
+							if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
+								bounds[map_id].extend(layer.getBounds());
+							} else if ( typeof allfit[map_id] !== "undefined") {
+								console.log("allfit polygon wird groesser");
+								allfit[map_id].extend(layer.getBounds());
+								ende[map_id] = 0;
+							} else {
+								//console.log("polygon was nun?");
+							}
 						} else if (layer instanceof L.Polyline){
 							//console.log("is_Line");
 							maplines++;
-							bounds[map_id].extend(layer.getBounds());
+							if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
+								bounds[map_id].extend(layer.getBounds());
+							} else if ( typeof allfit[map_id] !== "undefined") {
+								console.log("allfit line wird groesser");
+								allfit[map_id].extend(layer.getBounds());
+								ende[map_id] = 0;
+							} else {
+								//console.log("line was nun?");
+								ende[map_id] = 1;
+							}
 						} else if (layer instanceof L.Circle){
 							//console.log("is_Circle");
 							//console.log(layer);
 							mapcircles++;
-							bounds[map_id].extend(layer.getBounds());
+							ende[map_id] = 0;
+							if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
+								bounds[map_id].extend(layer.getBounds());
+							} else if ( typeof allfit[map_id] !== "undefined") {
+								allfit[map_id].extend(layer.getBounds());
+							}
 						//} else {
-						 	//console.log(layer);
+							//console.log(layer);
 						}
 					});
 				}
 			}
-			});
-			//console.log("markers "+mapmarkers);
-			//console.log("lines "+maplines);
-			//console.log("circles "+mapcircles);
+		});
+		//console.log("markers "+mapmarkers);
+		//console.log("lines "+maplines);
+		//console.log("polygon "+mappolygon);
+		//console.log("circles "+mapcircles);
 
-		}
-			
 		maps[map_id].whenReady ( function() {
 			if (bounds[map_id].isValid()) {
-				console.log("ready map has bounds");
-				//console.log("zoom "+maps[map_id].getZoom());
+				//console.log("ready map has bounds");
 				zoomHome[map_id].setHomeBounds(bounds[map_id]);
 				maps[map_id].fitBounds(bounds[map_id]);
 			} else {
-				console.log("ready map has no bounds");
-				console.log("zoom load "+maps[map_id].getZoom());
-				//zoomHome[map_id].setHomeBounds(maps[map_id].getBounds());
-				zoomHome[map_id].setHomeCoordinates(maps[map_id].getCenter());
-				zoomHome[map_id].setHomeZoom(maps[map_id].getZoom());
+				//console.log(map_id+" ready map has no bounds ende ist "+ende[map_id]);
+				if ( ende[map_id] ) {
+					maps[map_id].on("zoomend", function(e) {
+						//console.log("ende "+map_id+" "+ende[map_id]);
+						if ( ende[map_id] ) {
+							//console.log(map_id+ "ready zoomend");
+							//zoomHome[map_id].setHomeZoom(maps[map_id].getBounds());
+							//Uncaught Error: Attempted to load an infinite number of tiles
+							zoomHome[map_id].setHomeCoordinates(maps[map_id].getCenter());
+							zoomHome[map_id].setHomeZoom(maps[map_id].getZoom());
+							ende[map_id] = 0;
+						}
+					});
+				}
+
+				//console.log(allfit[map_id]);
+				//console.log(bounds[map_id]);
+				if (typeof allfit[map_id] !== "undefined") {
+					//console.log("ready map allfit");
+					if (allfit[map_id].isValid()) {
+						//console.log("ready map has valid allfit");
+						zoomHome[map_id].setHomeBounds(allfit[map_id]);
+						//maps[map_id].fitBounds(bounds[map_id]);
+					} else {
+						//console.log("ready map has invalid allfit");
+					}
+				} else {
+					//console.log("ready map has no allfit");
+				}
 			}
 		});
 
@@ -122,28 +172,30 @@ function leafext_zoomhome_script($fit){
 				if (map_id == geojsons[j]._map._leaflet_id) {
 					geojson.on("ready", function () {
 						//console.log(this._map._leaflet_id);
-						console.log("geojson maps[map_id]._shouldFitBounds "+maps[map_id]._shouldFitBounds);
+						//console.log("geojson maps[map_id]._shouldFitBounds "+maps[map_id]._shouldFitBounds);
 						//console.log(this);
-						console.log(this._map._animateToZoom);
-						if ('.json_encode($fit).' || typeof maps[map_id]._shouldFitBounds !== "undefined") {
+						//console.log("geojson animate "+this._map._animateToZoom);
+						if ( typeof maps[map_id]._shouldFitBounds !== "undefined") { //leaflet-map fitbounds
 							bounds[map_id].extend(this.getBounds());
-						}
-						if (bounds[map_id].isValid()) {
-							console.log("geojson bounds valid");
 							zoomHome[map_id].setHomeBounds(bounds[map_id]);
 							maps[map_id].fitBounds(bounds[map_id]);
-						} else {
-							console.log("geojson bounds not valid");
-							console.log(maps[map_id]._animateToCenter);
-							console.log(maps[map_id].getCenter());
-							console.log(maps[map_id]._animateToZoom);
-							if (typeof this.map._animateToZoom !== "undefined" ) {
-								zoomHome[map_id].setHomeCoordinates(maps[map_id]._animateToCenter);
-								zoomHome[map_id].setHomeZoom(maps[map_id]._animateToZoom);
-							} else {
-								zoomHome[map_id].setHomeCoordinates(maps[map_id].getCenter());
-								zoomHome[map_id].setHomeZoom(maps[map_id].getZoom());
-							}
+						} else if (typeof this.map._animateToZoom !== "undefined" ) { //zoom auf das element
+							zoomHome[map_id].setHomeCoordinates(maps[map_id]._animateToCenter);
+							zoomHome[map_id].setHomeZoom(maps[map_id]._animateToZoom);
+						} else if ( ! bounds[map_id].isValid() ) {
+							//console.log("geojson bounds invalid"); // weder noch
+							zoomHome[map_id].setHomeCoordinates(maps[map_id].getCenter());
+							zoomHome[map_id].setHomeZoom(maps[map_id].getZoom());
+						//} else {
+							//console.log("kommt das vor?");
+							//console.log("geojson bounds valid");
+							//zoomHome[map_id].setHomeBounds(bounds[map_id]);
+							//maps[map_id].fitBounds(bounds[map_id]);
+						}
+						if ( typeof allfit[map_id] !== "undefined") {
+							//console.log("allfit geojson wird groesser");
+							allfit[map_id].extend(this.getBounds());
+							zoomHome[map_id].setHomeBounds(allfit[map_id]);
 						}
 					});
 				}
@@ -152,31 +204,29 @@ function leafext_zoomhome_script($fit){
 
 		//elevation asynchron
 		maps[map_id].on("eledata_loaded", function(e) {
-			console.log("elevation loaded");
-			//console.log(zoomHome);
-			console.log("elevation maps[map_id]._shouldFitBounds "+maps[map_id]._shouldFitBounds);
-
-			if ('.json_encode($fit).' || typeof maps[map_id]._shouldFitBounds !== "undefined") {
+			//console.log(map_id+"elevation loaded");
+			//console.log("ende[map_id] "+map_id+" ist "+ende[map_id]);
+			//console.log("maps[map_id]._shouldFitBounds "+maps[map_id]._shouldFitBounds);
+			if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
 				bounds[map_id].extend(e.layer.getBounds());
+				//console.log("ele getbounds");
 			}
-			//console.log(Object.keys(zoomHome[map_id]));
-			//console.log(Object.keys(zoomHome[map_id]).includes("_zoomHomeButton"));
 			if (bounds[map_id].isValid()) {
+				//console.log("ele bounds valid");
 				zoomHome[map_id].setHomeBounds(bounds[map_id]);
 				maps[map_id].fitBounds(bounds[map_id]);
 			} else {
-				console.log(maps[map_id]._animateToCenter);
-				console.log(maps[map_id].getCenter());
-				console.log(maps[map_id]._animateToZoom);
+				//console.log("ele bounds not valid");
+				//console.log("animate "+maps[map_id]._zoom);
 				zoomHome[map_id].setHomeCoordinates(maps[map_id].getCenter());
 				zoomHome[map_id].setHomeZoom(maps[map_id].getZoom());
+				//console.log(maps[map_id]);
 			}
 		});
 
-		maps[map_id].on("zoomend", function(e) {
-			console.log("zoomend");
-			console.log("zoom "+maps[map_id].getZoom());
-		});
+		//maps[map_id].on("zoomend", function(e) {
+			//console.log("zoomend zoom "+maps[map_id].getZoom());
+		//});
 	});
 	</script>';
 	$text = \JShrink\Minifier::minify($text);
