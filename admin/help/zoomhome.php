@@ -13,14 +13,14 @@ $text='<h2 id="leaflet.zoomhome">leaflet.zoomhome</h2>
 
 <h2>Howto</h2>
 
-<p>You can set following and the Home button works as shown in the table.
+<p>'.__('You can set following and the Home button works as shown in the table.','extensions-leaflet-map').'
 </p>
 <table border="1" style="text-align: center;">
 	<tr>
 		<th class="row-title">leaflet-map</th>
 		<th>leaflet-element<sup>*</sup></th>
 		<th>zoomhomemap</th>
-		<th>initial state of the map</th>
+		<th>'.__('initial state of the map','extensions-leaflet-map').'</th>
 		<th>Home button</th>
 	</tr>
 	<tr valign="top">
@@ -62,7 +62,7 @@ $text='<h2 id="leaflet.zoomhome">leaflet.zoomhome</h2>
 		<th class="row-title">leaflet-map</th>
 		<th>leaflet-marker</th>
 		<th>zoomhomemap</th>
-		<th>initial state of the map</th>
+		<th>'.__('initial state of the map','extensions-leaflet-map').'</th>
 		<th>Home button</th>
 	</tr>
 	<tr valign="top">
@@ -90,7 +90,7 @@ $text='<h2 id="leaflet.zoomhome">leaflet.zoomhome</h2>
 		<th class="row-title">leaflet-map</th>
 		<th>elevation</th>
 		<th>zoomhomemap</th>
-		<th>initial state of the map</th>
+		<th>'.__('initial state of the map','extensions-leaflet-map').'</th>
 		<th>Home button</th>
 	</tr>
 	<tr valign="top">
@@ -111,12 +111,12 @@ $text='<h2 id="leaflet.zoomhome">leaflet.zoomhome</h2>
 		<td scope="row"><span style="color: #d63638">!fitbounds</span></td>
 		<td><span style="color: #d63638">!autofitBounds</span></td>
 		<td>-</td>
-		<td>map like defined</td>
-		<td>map like defined</td>
+		<td>'.__('map like defined','extensions-leaflet-map').'</td>
+		<td>'.__('map like defined','extensions-leaflet-map').'</td>
 	</tr>
 </table>
-* leaflet-element means leaflet-line, leaflet-polygon, leaflet-circle, leaflet-geojson, leaflet-gpx, leaflet-kml.<br>
-** except for leaflet-line: to first zoom
+* leaflet-element '.__('means','extensions-leaflet-map').' leaflet-line, leaflet-polygon, leaflet-circle, leaflet-geojson, leaflet-gpx, leaflet-kml.<br>
+** '.__('except for leaflet-line: to first zoom','extensions-leaflet-map').'
 ';
 
 echo $text;

@@ -59,7 +59,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * leaflet-elevation 1.7.3
 * multielevation fixed, removed leaflet-gpx
 * multielevation parameter name, lat, lng now optional
-* zoomhomemap ...
+* zoomhomemap reviewed
 
 ### 2.2 / 211031
 * Integration shortcode sgpx from WordPress plugin wp-gpx-maps (some parameters)
