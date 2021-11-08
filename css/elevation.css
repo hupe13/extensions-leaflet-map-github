@@ -1,7 +1,3 @@
 @media (hover: none) {
   .leaflet-tooltip-pane { display: none; }
 }
-
-.elevation-div {
-  top: 1px;
-}

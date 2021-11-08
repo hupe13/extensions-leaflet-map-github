@@ -65,7 +65,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * Integration shortcode sgpx from WordPress plugin wp-gpx-maps (some parameters)
 * leaflet.markercluster 1.5.3
 * leaflet.fullscreen 2.1.0
-* leaflet-elevation 1.7.2
+* leaflet-elevation 1.7.2 
 
 ### 2.1.3 / 211016
 * bug fix in parameters for markercluster
