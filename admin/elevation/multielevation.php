@@ -16,6 +16,7 @@ $text='
 [elevation-<span style="color: #d63638">track</span> file="..." lat="..." lng="..." name="..."]
 [elevation-<span style="color: #d63638">tracks</span> summary=1]  // like in [elevation]
 </code></pre>
+'.__('Parameter <code>lat</code>, <code>lng</code> and <code>name</code> are optional.','extensions-leaflet-map').'
 <h2>'.__('Example','extensions-leaflet-map').'</h2>
 '.__('This example is a very special application. gpx-files with tracks in a region are in a directory.','extensions-leaflet-map').'
 <pre>
