@@ -48,7 +48,6 @@ function leafext_zoomhome_script($fit){
 		zoomHome[map_id].addTo(maps[map_id]);
 
 		// Some elements zooming to be ready on map
-		// Z.Z. Only Lines
 		var ende = [];
 
 		//
@@ -66,12 +65,18 @@ function leafext_zoomhome_script($fit){
 						if (layer instanceof L.Marker){
 							//markers do not have fitbounds
 							//console.log("is_marker");
+							//console.log("_shouldFitBounds "+maps[map_id]._shouldFitBounds);
+							//console.log("allfit[map_id] "+allfit[map_id]);
 							mapmarkers++;
 							if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
+								//console.log("marker in all map");
 								bounds[map_id].extend(layer._latlng);
 							} else if ( typeof allfit[map_id] !== "undefined") {
+								//console.log("marker should fit Homebutton");
 								allfit[map_id].extend(layer._latlng);
 								//console.log("allfit marker");
+							} else {
+								//console.log("marker was nun?");
 							}
 						} else if (layer instanceof L.Polygon) {
 							//console.log("is_Polygon");
@@ -107,8 +112,8 @@ function leafext_zoomhome_script($fit){
 								maps[map_id].on("zoomend", function(e) {
 									if ( ende[map_id] ) {
 										//console.log(map_id+ "ready zoomend");
-										//zoomHome[map_id].setHomeZoom(maps[map_id].getBounds());
 										//Uncaught Error: Attempted to load an infinite number of tiles
+										//zoomHome[map_id].setHomeZoom(maps[map_id].getBounds());
 										zoomHome[map_id].setHomeCoordinates(maps[map_id].getCenter());
 										zoomHome[map_id].setHomeZoom(maps[map_id].getZoom());
 										ende[map_id] = 0;
@@ -124,7 +129,7 @@ function leafext_zoomhome_script($fit){
 							} else if ( typeof allfit[map_id] !== "undefined") {
 								allfit[map_id].extend(layer.getBounds());
 							}
-						//} else {
+						} else {
 							//console.log(layer);
 						}
 					});
@@ -152,10 +157,11 @@ function leafext_zoomhome_script($fit){
 						zoomHome[map_id].setHomeBounds(allfit[map_id]);
 						//maps[map_id].fitBounds(bounds[map_id]);
 					} else {
-						//console.log("ready map has invalid allfit");
+						console.log("ready map has invalid allfit");
 					}
 				} else {
 					//console.log("ready map has no allfit");
+					//console.log(maps[map_id].getZoom());
 				}
 			}
 		});
@@ -165,26 +171,44 @@ function leafext_zoomhome_script($fit){
 		if (geojsons.length > 0) {
 			//console.log("geojsons "+geojsons.length);
 			var geocount = geojsons.length;
+			ende[map_id] = 1;
 			for (var j = 0, len = geocount; j < len; j++) {
 				var geojson = geojsons[j];
 				if (map_id == geojsons[j]._map._leaflet_id) {
 					geojson.on("ready", function () {
 						//console.log(this._map._leaflet_id);
-						//console.log("geojson maps[map_id]._shouldFitBounds "+maps[map_id]._shouldFitBounds);
-						//console.log("geojson animate "+this._map._animateToZoom);
+						//console.log(this);
 						if ( typeof maps[map_id]._shouldFitBounds !== "undefined") { //leaflet-map fitbounds
+							//console.log("geojson maps"+map_id+"._shouldFitBounds "+maps[map_id]._shouldFitBounds);
 							bounds[map_id].extend(this.getBounds());
 							zoomHome[map_id].setHomeBounds(bounds[map_id]);
 							maps[map_id].fitBounds(bounds[map_id]);
-						} else if (typeof this.map._animateToZoom !== "undefined" ) { //zoom auf das element
+						} else if (typeof maps[map_id]._animateToZoom !== "undefined" ) { //zoom auf das element
+							//console.log("geojson animate "+map_id+" "+maps[map_id]._animateToZoom);
 							zoomHome[map_id].setHomeCoordinates(maps[map_id]._animateToCenter);
 							zoomHome[map_id].setHomeZoom(maps[map_id]._animateToZoom);
 						} else if ( ! bounds[map_id].isValid() ) {
-							//console.log("geojson bounds invalid"); // weder noch
-							zoomHome[map_id].setHomeCoordinates(maps[map_id].getCenter());
-							zoomHome[map_id].setHomeZoom(maps[map_id].getZoom());
-						//} else {
-							//console.log("kommt das vor?");
+							//console.log("geojson bounds invalid "+map_id); // weder noch
+							//console.log(this.json);
+							//console.log(this.json.type);
+							if ( this.json.type == "Feature") {
+								maps[map_id].on("zoomend", function(e) {
+									//console.log("zoomend "+map_id+" funktion definiert "+ende[map_id]);
+									if ( ende[map_id] ) {
+										//console.log("geojson "+map_id+ " ready zoomend");
+										//zoomHome[map_id].setHomeZoom(maps[map_id].getBounds());
+										//Uncaught Error: Attempted to load an infinite number of tiles
+										zoomHome[map_id].setHomeCoordinates(maps[map_id].getCenter());
+										zoomHome[map_id].setHomeZoom(maps[map_id].getZoom());
+										ende[map_id] = 0;
+									}
+								});
+							} else {
+								zoomHome[map_id].setHomeCoordinates(maps[map_id].getCenter());
+								zoomHome[map_id].setHomeZoom(maps[map_id].getZoom());
+							}
+						} else {
+							console.log("kommt das vor?");
 							//console.log("geojson bounds valid");
 							//zoomHome[map_id].setHomeBounds(bounds[map_id]);
 							//maps[map_id].fitBounds(bounds[map_id]);
@@ -221,7 +245,7 @@ function leafext_zoomhome_script($fit){
 		});
 
 		// maps[map_id].on("zoomend", function(e) {
-		// 	console.log("zoomend zoom "+maps[map_id].getZoom());
+		// 	console.log("zoomend zoom "+map_id+" "+maps[map_id].getZoom());
 		// });
 	});
 	</script>';
