@@ -7,8 +7,6 @@
 defined( 'ABSPATH' ) or die();
 
 //Shortcode: [zoomhomemap]
-
-// iterate any of these: `maps`, `markers`, `markergroups`, `lines`, `circles`, `geojsons`
 function leafext_zoomhome_script($fit){
 	$maxzoom=get_option('leaflet_default_zoom');
 	if ($maxzoom == 20) $maxzoom = 19;
@@ -50,10 +48,8 @@ function leafext_zoomhome_script($fit){
 		zoomHome[map_id].addTo(maps[map_id]);
 
 		// Some elements zooming to be ready on map
+		// Z.Z. Only Lines
 		var ende = [];
-		ende[map_id] = 1;
-		// When map !fitbound, then ignore this
-		if ( typeof maps[map_id]._shouldFitBounds === "undefined" ) ende[map_id] = 0;
 
 		//
 		var markergroups = window.WPLeafletMapPlugin.markergroups;
@@ -83,9 +79,8 @@ function leafext_zoomhome_script($fit){
 							if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
 								bounds[map_id].extend(layer.getBounds());
 							} else if ( typeof allfit[map_id] !== "undefined") {
-								console.log("allfit polygon wird groesser");
+								//console.log("allfit polygon wird groesser");
 								allfit[map_id].extend(layer.getBounds());
-								ende[map_id] = 0;
 							} else {
 								//console.log("polygon was nun?");
 							}
@@ -93,20 +88,37 @@ function leafext_zoomhome_script($fit){
 							//console.log("is_Line");
 							maplines++;
 							if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
+								//console.log("all lines should fit to map");
 								bounds[map_id].extend(layer.getBounds());
+								ende[map_id] = 1;
+								maps[map_id].on("zoomend", function(e) {
+									if ( ende[map_id] ) {
+										//console.log("lines zooming");
+										maps[map_id].fitBounds(bounds[map_id]);
+									}
+									ende[map_id] = 0;
+								});
 							} else if ( typeof allfit[map_id] !== "undefined") {
-								console.log("allfit line wird groesser");
+								//console.log("allfit line wird groesser");
 								allfit[map_id].extend(layer.getBounds());
-								ende[map_id] = 0;
 							} else {
 								//console.log("line was nun?");
 								ende[map_id] = 1;
+								maps[map_id].on("zoomend", function(e) {
+									if ( ende[map_id] ) {
+										//console.log(map_id+ "ready zoomend");
+										//zoomHome[map_id].setHomeZoom(maps[map_id].getBounds());
+										//Uncaught Error: Attempted to load an infinite number of tiles
+										zoomHome[map_id].setHomeCoordinates(maps[map_id].getCenter());
+										zoomHome[map_id].setHomeZoom(maps[map_id].getZoom());
+										ende[map_id] = 0;
+									}
+								});
 							}
 						} else if (layer instanceof L.Circle){
 							//console.log("is_Circle");
 							//console.log(layer);
 							mapcircles++;
-							ende[map_id] = 0;
 							if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
 								bounds[map_id].extend(layer.getBounds());
 							} else if ( typeof allfit[map_id] !== "undefined") {
@@ -120,8 +132,8 @@ function leafext_zoomhome_script($fit){
 			}
 		});
 		//console.log("markers "+mapmarkers);
-		//console.log("lines "+maplines);
 		//console.log("polygon "+mappolygon);
+		//console.log("lines "+maplines);
 		//console.log("circles "+mapcircles);
 
 		maps[map_id].whenReady ( function() {
@@ -130,21 +142,7 @@ function leafext_zoomhome_script($fit){
 				zoomHome[map_id].setHomeBounds(bounds[map_id]);
 				maps[map_id].fitBounds(bounds[map_id]);
 			} else {
-				//console.log(map_id+" ready map has no bounds ende ist "+ende[map_id]);
-				if ( ende[map_id] ) {
-					maps[map_id].on("zoomend", function(e) {
-						//console.log("ende "+map_id+" "+ende[map_id]);
-						if ( ende[map_id] ) {
-							//console.log(map_id+ "ready zoomend");
-							//zoomHome[map_id].setHomeZoom(maps[map_id].getBounds());
-							//Uncaught Error: Attempted to load an infinite number of tiles
-							zoomHome[map_id].setHomeCoordinates(maps[map_id].getCenter());
-							zoomHome[map_id].setHomeZoom(maps[map_id].getZoom());
-							ende[map_id] = 0;
-						}
-					});
-				}
-
+				//console.log(map_id+" ready map has no bounds");
 				//console.log(allfit[map_id]);
 				//console.log(bounds[map_id]);
 				if (typeof allfit[map_id] !== "undefined") {
@@ -173,7 +171,6 @@ function leafext_zoomhome_script($fit){
 					geojson.on("ready", function () {
 						//console.log(this._map._leaflet_id);
 						//console.log("geojson maps[map_id]._shouldFitBounds "+maps[map_id]._shouldFitBounds);
-						//console.log(this);
 						//console.log("geojson animate "+this._map._animateToZoom);
 						if ( typeof maps[map_id]._shouldFitBounds !== "undefined") { //leaflet-map fitbounds
 							bounds[map_id].extend(this.getBounds());
@@ -205,7 +202,6 @@ function leafext_zoomhome_script($fit){
 		//elevation asynchron
 		maps[map_id].on("eledata_loaded", function(e) {
 			//console.log(map_id+"elevation loaded");
-			//console.log("ende[map_id] "+map_id+" ist "+ende[map_id]);
 			//console.log("maps[map_id]._shouldFitBounds "+maps[map_id]._shouldFitBounds);
 			if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
 				bounds[map_id].extend(e.layer.getBounds());
@@ -224,9 +220,9 @@ function leafext_zoomhome_script($fit){
 			}
 		});
 
-		//maps[map_id].on("zoomend", function(e) {
-			//console.log("zoomend zoom "+maps[map_id].getZoom());
-		//});
+		// maps[map_id].on("zoomend", function(e) {
+		// 	console.log("zoomend zoom "+maps[map_id].getZoom());
+		// });
 	});
 	</script>';
 	$text = \JShrink\Minifier::minify($text);
