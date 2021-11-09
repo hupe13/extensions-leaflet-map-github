@@ -167,8 +167,16 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summ
 				zoomHome.addTo(map);
 				zoomHome.setHomeBounds(map.getBounds());
 			}
+			map.eachLayer(function(layer) {
+				//console.log(layer);
+				if (layer instanceof L.Marker) {
+					//console.log("Marker");
+					map.removeLayer(layer);
+				}
+			});
 		});
 	});
+	
 </script>';
 $text = \JShrink\Minifier::minify($text);
 return "\n".$text."\n";
