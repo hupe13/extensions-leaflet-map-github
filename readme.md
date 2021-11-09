@@ -6,7 +6,7 @@ Contributors: hupe13
 Tags: leaflet, elevation, markercluster, zoomhome, hover, fullscreen, gpx, gps, garmin, altitude  
 Requires at least: 5.5.3  
 Tested up to: 5.8  
-Stable tag: 2.2.1 (beta)  
+Stable tag: 2.2.1  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -143,12 +143,10 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Upgrade Notice
 
+### 2.2.1
+Please check the pages where you use zoomhomemap, if it still works as it should.
+Check the help at /wp-admin/admin.php?page=extensions-leaflet-map&tab=zoomhome 
+
 ### 2.1.2
 Please set in [elevation] preferCanvas to false due to a bug in MacOS and iOS, see https://github.com/Raruto/leaflet-elevation/issues/123
 
-### 1.4
-Please check the pages where you use zoomhomemap, if it still works as it should.
-Check the help at /wp-admin/admin.php?page=extensions-leaflet-map&tab=zoomhome
-
-### 1.0.1
-Elevation profile on smartphone works now.
