@@ -157,7 +157,7 @@ function leafext_zoomhome_script($fit){
 						zoomHome[map_id].setHomeBounds(allfit[map_id]);
 						//maps[map_id].fitBounds(bounds[map_id]);
 					} else {
-						console.log("ready map has invalid allfit");
+						//console.log("ready map has invalid allfit");
 					}
 				} else {
 					//console.log("ready map has no allfit");
@@ -208,7 +208,7 @@ function leafext_zoomhome_script($fit){
 								zoomHome[map_id].setHomeZoom(maps[map_id].getZoom());
 							}
 						} else {
-							console.log("kommt das vor?");
+							//console.log("kommt das vor?");
 							//console.log("geojson bounds valid");
 							//zoomHome[map_id].setHomeBounds(bounds[map_id]);
 							//maps[map_id].fitBounds(bounds[map_id]);

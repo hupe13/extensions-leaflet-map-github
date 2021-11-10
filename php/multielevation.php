@@ -176,7 +176,6 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summ
 			});
 		});
 	});
-	
 </script>';
 $text = \JShrink\Minifier::minify($text);
 return "\n".$text."\n";

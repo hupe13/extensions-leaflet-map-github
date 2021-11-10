@@ -195,6 +195,12 @@ L.GpxGroup = L.Class.extend({
             }
             geojson = toGeoJSON[type](xml);
             geojson.name = name.length > 0 ? name[0].textContent : '';
+            for (i = 0; i < name.length; i++) {
+              if (name[i].parentElement.tagName == "trk") {
+                geojson.name = name[i].textContent;
+                break;
+              }
+            }
           } catch (e) {
             try {
               geojson = JSON.parse(doc.toString());
@@ -253,9 +259,9 @@ L.GpxGroup = L.Class.extend({
   },
 
   highlight: function(route, polyline) {
-	if (typeof polyline.setStyle != "undefined") {
-	  polyline.setStyle(this.options.highlight);
-	}
+	  if (typeof polyline.setStyle != "undefined") {
+	    polyline.setStyle(this.options.highlight);
+	  }
     if (this.options.distanceMarkers) {
       polyline.addDistanceMarkers();
     }
