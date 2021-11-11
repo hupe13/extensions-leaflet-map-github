@@ -104,6 +104,7 @@ function leafext_do_page() {
 		echo '</form>';
 	} else if( $active_tab == 'zoomhome' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/help/zoomhome.php';
+		echo $text;
 	} else if( $active_tab == 'help' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/help.php';
 	} else if( $active_tab == 'other' ) {

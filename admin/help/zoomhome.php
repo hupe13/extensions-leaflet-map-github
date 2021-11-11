@@ -118,5 +118,3 @@ $text='<h2 id="leaflet.zoomhome">leaflet.zoomhome</h2>
 * leaflet-element '.__('means','extensions-leaflet-map').' leaflet-line, leaflet-polygon, leaflet-circle, leaflet-geojson, leaflet-gpx, leaflet-kml.<br>
 ** '.__('except for leaflet-line: to first zoom','extensions-leaflet-map').'
 ';
-
-echo $text;
