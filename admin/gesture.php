@@ -18,21 +18,6 @@ function leafext_gesture_init(){
 }
 add_action('admin_init', 'leafext_gesture_init' );
 
-function leafext_form_gesture1() {
-	//boolean
-	$defaults = array ('on' => true );
-	$options = shortcode_atts($defaults, get_option('leafext_gesture') );
-	echo '<p>'.
-	__("If it is true, it is valid for any map and you can't change it. If it is false, you can change it for each map:",'extensions-leaflet-map').'</p>';
-	echo '<pre><code>[gestures]</code></pre>';
-	echo '<input type="radio" name="leafext_gesture[on]" value="1" ';
-	echo $options['on'] ? 'checked' : '' ;
-	echo '> true &nbsp;&nbsp; ';
-	echo '<input type="radio" name="leafext_gesture[on]" value="0" ';
-	echo (!$options['on']) ? 'checked' : '' ;
-	echo '> false ';
-}
-
 // Baue Abfrage der Params
 function leafext_form_gesture($field) {
 	$options = leafext_gesture_params();
@@ -40,7 +25,7 @@ function leafext_form_gesture($field) {
 	$settings = leafext_gesture_settings();
 	$setting = $settings[$field];
 	if ( $option['desc'] != "" ) echo '<p>'.$option['desc'].'</p>';
-	echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option['param']. '</code><br>';
+	//echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option['param']. '</code><br>';
 	
 	if (!is_array($option['values'])) {
 

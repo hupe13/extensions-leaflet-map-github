@@ -12,7 +12,7 @@ function leafext_gesture_params() {
 			'param' => 'leafext_gesture_on',
 			'shortdesc' => __('valid for whole site or only for one map',"extensions-leaflet-map"),
 			'desc' => '<p>'.
-				__("If it is true, it is valid for any map and you can't change it. If it is false, you can change it.",'extensions-leaflet-map').'</p>',
+				__("If it is true, it is valid for any map and you can't change it. If it is false, you can change it for each map:",'extensions-leaflet-map').'</p><pre><code>[gestures]</code></pre>',
 			'default' => true,
 			'values' => 1,
 		),
