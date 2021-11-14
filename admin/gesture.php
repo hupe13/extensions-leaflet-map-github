@@ -40,7 +40,8 @@ function leafext_form_gesture($field) {
 	$settings = leafext_gesture_settings();
 	$setting = $settings[$field];
 	if ( $option['desc'] != "" ) echo '<p>'.$option['desc'].'</p>';
-
+	echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option['param']. '</code><br>';
+	
 	if (!is_array($option['values'])) {
 
 		if ($setting != $option['default'] ) {
