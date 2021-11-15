@@ -12,7 +12,8 @@ function leafext_gesture_params() {
 			'param' => 'leafext_gesture_on',
 			'shortdesc' => __('valid for whole site or only for one map',"extensions-leaflet-map"),
 			'desc' => '<p>'.
-				__("If it is true, it is valid for any map and you can't change it. If it is false, you can change it for each map:",'extensions-leaflet-map').'</p><pre><code>[gestures]</code></pre>',
+				__("If it is true, it is valid for any map and you can't change it. If it is false, you can change it for each map:",'extensions-leaflet-map').
+				'</p><pre><code>[gestures]</code></pre>',
 			'default' => true,
 			'values' => 1,
 		),
@@ -48,14 +49,14 @@ function leafext_gestures_lang($options) {
 		//var_dump($lngs);
 		if ( in_array($mylang , $lngs )) {
 			$lang = $mylang;
-		} else if ( in_array(substr($mylang,0,2), $lngs)) {
-			$lang = substr($mylang,0,2);
+		} else if ( in_array ( explode("-",$mylang)[0] , $lngs)) {
+			$lang = explode("-",$mylang)[0];
 		} else {
 			$lang = "en";
 		}
 		//var_dump($lang);
 	} else {
-		$lang = "";
+		$lang = ""; // Browser
 	}
 	return $lang;
 }
@@ -89,7 +90,6 @@ function leafext_gestures_script($lang){
 					map.gestureHandling.enable();
 				}
 			}
-			//console.log(map);
 		}
 		window.addEventListener("load", main);
 	})();
@@ -140,8 +140,8 @@ add_filter('pre_do_shortcode_tag', function ( $output, $shortcode ) {
 	return $output;
 }, 10, 2);
 
-function leafext_gestures_shortcode( $atts ) {
-	$options = shortcode_atts(leafext_gesture_settings(), $atts);
+function leafext_gestures_shortcode() {
+	$options = leafext_gesture_settings();
 	if ( ! (bool) $options['leafext_gesture_on'] ) {
 		leafext_enqueue_gestures();
 		//var_dump($options);

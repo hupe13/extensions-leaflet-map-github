@@ -54,8 +54,10 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.2.1 / 2111xx
+### 2.2.2 / 211xxx
+* gestures: The language can be determined by Site or by Browser
 
+### 2.2.1 / 211111
 * leaflet-elevation 1.7.3
 * multielevation fixed, removed leaflet-gpx
 * multielevation parameter name, lat, lng now optional
@@ -65,7 +67,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * Integration shortcode sgpx from WordPress plugin wp-gpx-maps (some parameters)
 * leaflet.markercluster 1.5.3
 * leaflet.fullscreen 2.1.0
-* leaflet-elevation 1.7.2 
+* leaflet-elevation 1.7.2
 
 ### 2.1.3 / 211016
 * bug fix in parameters for markercluster
@@ -145,8 +147,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ### 2.2.1
 Please check the pages where you use zoomhomemap, if it still works as it should.
-Check the help at /wp-admin/admin.php?page=extensions-leaflet-map&tab=zoomhome 
+Check the help at /wp-admin/admin.php?page=extensions-leaflet-map&tab=zoomhome
 
 ### 2.1.2
 Please set in [elevation] preferCanvas to false due to a bug in MacOS and iOS, see https://github.com/Raruto/leaflet-elevation/issues/123
-
