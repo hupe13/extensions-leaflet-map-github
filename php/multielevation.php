@@ -171,7 +171,8 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summ
 				//console.log(layer);
 				if (layer instanceof L.Marker) {
 					//console.log("Marker");
-					map.removeLayer(layer);
+					if ( !layer._icon.src.includes("'.LEAFEXT_ELEVATION_URL.'"))
+						map.removeLayer(layer);
 				}
 			});
 		});
