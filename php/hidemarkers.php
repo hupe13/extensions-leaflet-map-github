@@ -16,10 +16,15 @@ function leafext_hidemarkers_function(){
 			map.eachLayer(function(layer) {
 				if (layer.options.type == "gpx" ) {
 					//console.log("gpx");
-					layer.options.pointToLayer = function (feature, latlng) {
-						//console.log(feature);
-						return L.circleMarker(latlng,{"radius": 0 });
-					}; // layer.options
+					layer.options.filter = function (geoJsonFeature) {
+						if (geoJsonFeature.geometry.type == "Point" ) {
+							//console.log("wpt");
+							return false;
+						} else {
+							//console.log("kein wpt");
+							return true;
+						}
+					} //layer.options.filter							  
 				}; // if
 			}); //map.eachLayer
 		});
