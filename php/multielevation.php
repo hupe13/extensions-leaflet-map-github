@@ -136,6 +136,7 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summ
 			legend: true,
 			distanceMarkers: false,
 			legend_options: opts.legend_options,
+			filter: feature => feature.geometry.type != "Point",
 	    });
 		routes.addTo(map);
 		
@@ -162,14 +163,6 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summ
 				zoomHome.addTo(map);
 				zoomHome.setHomeBounds(map.getBounds());
 			}
-			map.eachLayer(function(layer) {
-				//console.log(layer);
-				if (layer instanceof L.Marker) {
-					//console.log("Marker");
-					if ( !layer._icon.src.includes("'.LEAFEXT_ELEVATION_URL.'"))
-						map.removeLayer(layer);
-				}
-			});
 		});
 	});
 </script>';
