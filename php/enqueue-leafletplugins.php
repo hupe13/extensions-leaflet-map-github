@@ -38,6 +38,10 @@ function leafext_enqueue_zoomhome () {
 		plugins_url('leaflet-plugins/leaflet.zoomhome/leaflet.zoomhome.css',
 		LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'), null);
+	wp_enqueue_style('zoomhome_css',
+		plugins_url('css/zoomhome.css',
+		LEAFEXT_PLUGIN_FILE),
+		array('zoomhome'), null);
 	leafext_enqueue_awesome();
 }
 
