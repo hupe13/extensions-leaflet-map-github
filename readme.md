@@ -56,8 +56,8 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ### 2.2.2 / 211xxx
 * gestures: The language can be determined by Site or by Browser
-* multielevation: start marker, geojson filter for waypoints
-* hidemarkers: geojson filter
+* multielevation: bug fix start marker, geojson filter for waypoints
+* hidemarkers: geojson filter for marker
 
 ### 2.2.1 / 211111
 * leaflet-elevation 1.7.3

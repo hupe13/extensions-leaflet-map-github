@@ -29,6 +29,13 @@ function leafext_enqueue_awesome() {
 	}
 }
 
+function leafext_css() {
+		wp_enqueue_style( 'leafext_css',
+		plugins_url('css/leafext.min.css',
+		LEAFEXT_PLUGIN_FILE),
+		array('leaflet_stylesheet'),null);
+}
+
 function leafext_enqueue_zoomhome () {
 	wp_enqueue_script('zoomhome',
 		plugins_url('leaflet-plugins/leaflet.zoomhome/leaflet.zoomhome.min.js',
@@ -38,11 +45,12 @@ function leafext_enqueue_zoomhome () {
 		plugins_url('leaflet-plugins/leaflet.zoomhome/leaflet.zoomhome.css',
 		LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'), null);
-	wp_enqueue_style('zoomhome_css',
-		plugins_url('css/zoomhome.css',
-		LEAFEXT_PLUGIN_FILE),
-		array('zoomhome'), null);
+	// wp_enqueue_style('zoomhome_css',
+		// plugins_url('css/zoomhome.css',
+		// LEAFEXT_PLUGIN_FILE),
+		// array('zoomhome'), null);
 	leafext_enqueue_awesome();
+	leafext_css();
 }
 
 function leafext_enqueue_markercluster () {
@@ -70,10 +78,11 @@ function leafext_enqueue_elevation () {
 		plugins_url('leaflet-plugins/leaflet-elevation-1.7.3/css/leaflet-elevation.min.css',
 		LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
-	wp_enqueue_style( 'elevation_leafext_css',
-		plugins_url('css/elevation.css',
-		LEAFEXT_PLUGIN_FILE),
-		array('elevation_css'),null);
+	// wp_enqueue_style( 'elevation_leafext_css',
+		// plugins_url('css/elevation.css',
+		// LEAFEXT_PLUGIN_FILE),
+		// array('elevation_css'),null);
+	leafext_css();
 }
 
 function leafext_enqueue_multielevation () {
@@ -88,10 +97,11 @@ function leafext_enqueue_multielevation () {
 		plugins_url('leaflet-plugins/leaflet-elevation-1.7.3/css/leaflet-elevation.min.css',
 		LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
-	wp_enqueue_style( 'my_elevation_css',
-	 	plugins_url('css/multielevation.css',
-		LEAFEXT_PLUGIN_FILE),
-	 	array('elevation_css'), null);
+	// wp_enqueue_style( 'my_elevation_css',
+	 	// plugins_url('css/multielevation.css',
+		// LEAFEXT_PLUGIN_FILE),
+	 	// array('elevation_css'), null);
+	leafext_css();
 }
 
 function leafext_enqueue_clustergroup () {
@@ -120,7 +130,7 @@ function leafext_enqueue_fullscreen () {
 		array('wp_leaflet_map'),null);
 }
 
-define('LEAFEXT_GESTURE_JS_FILE', LEAFEXT_PLUGIN_DIR . 
+define('LEAFEXT_GESTURE_JS_FILE', LEAFEXT_PLUGIN_DIR .
 		'leaflet-plugins/leaflet-gesture-handling-1.3.5/js/leaflet-gesture-handling-leafext.js');
 function leafext_enqueue_gestures() {
 	wp_enqueue_script('gestures_leaflet',
@@ -142,9 +152,10 @@ function leafext_enqueue_easybutton() {
 		plugins_url('leaflet-plugins/Leaflet.EasyButton/easy-button.js',
 		LEAFEXT_PLUGIN_FILE),
 		array('elevation_js'),null );
-	wp_enqueue_style( 'easybutton_mycss',
-		plugins_url('css/easy-button.css',
-		LEAFEXT_PLUGIN_FILE),
-		array('easybutton_css'),null);
+	// wp_enqueue_style( 'easybutton_mycss',
+		// plugins_url('css/easy-button.css',
+		// LEAFEXT_PLUGIN_FILE),
+		// array('easybutton_css'),null);
 	leafext_enqueue_awesome();
+	leafext_css();
 }

@@ -1,15 +1,21 @@
+/* easy button */
+.easy-button-button {
+	padding: 0px;
+}
+
+/* No tooltip on mobiles */
+@media (hover: none) {
+  .leaflet-tooltip-pane { display: none; }
+}
+
+/* multielevation tracks list top right */
 .leaflet-right .leaflet-control-layers-list {
 	max-width: 250px;
 	max-height: 25vh;
 	overflow: auto;
 }
 
-/*
-.leaflet-tooltip {
-	font-weight: 700;
-}
-*/
-
+/*elevation chart */
 #elevation-div {
 	height: auto;
 	width: 100%;
@@ -19,7 +25,6 @@
 	margin-right: auto;
 	font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
-
 .chart-placeholder {
 	height: auto;
  	width: 100%;
@@ -29,4 +34,12 @@
 	font-style: italic;
 	opacity: 0.5;
 	font-size: 0.9rem;
+}
+
+/* + and - should have not underline */
+.leaflet-control-zoomhome-out {
+  text-decoration: none !important;
+}
+.leaflet-control-zoomhome-in {
+  text-decoration: none !important;
 }

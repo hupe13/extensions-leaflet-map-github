@@ -109,7 +109,8 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summ
 				shadowUrl: null, // "http://mpetazzoni.github.io/leaflet-gpx/pin-shadow.png",
 			},
 			legend_options:{
-				collapsed: true,
+				//collapsed: true,
+				collapsed: false,
 			},
 		};
 
@@ -136,7 +137,6 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summ
 			legend: true,
 			distanceMarkers: false,
 			legend_options: opts.legend_options,
-			filter: feature => feature.geometry.type != "Point",
 	    });
 		routes.addTo(map);
 		
