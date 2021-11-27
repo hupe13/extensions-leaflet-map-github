@@ -87,7 +87,8 @@ function leafext_enqueue_elevation () {
 
 function leafext_enqueue_multielevation () {
 	wp_enqueue_script('leaflet.gpxgroup',
-  	plugins_url('leaflet-plugins/leaflet-elevation-1.7.3/libs/leaflet-gpxgroup.min.js',
+//  	plugins_url('leaflet-plugins/leaflet-elevation-1.7.3/libs/leaflet-gpxgroup.min.js',
+    	plugins_url('leaflet-plugins/leaflet-elevation-1.7.3/libs/leaflet-gpxgroup.js',
 		LEAFEXT_PLUGIN_FILE),
 		array('elevation_js'),null);
 	//

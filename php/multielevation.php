@@ -137,16 +137,17 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summ
 			legend: true,
 			distanceMarkers: false,
 			legend_options: opts.legend_options,
+			filename: true,
 	    });
 		routes.addTo(map);
-		
+
 		map.on("eledata_added eledata_clear", function(e) {
 			var p = document.querySelector(".chart-placeholder");
 			if(p) {
 				p.style.display = e.type=="eledata_added" ? "none" : "";
 			}
 		});
-	
+
 		if (typeof map.options.maxZoom == "undefined")
 			map.options.maxZoom = 19;
 		var bounds = [];
