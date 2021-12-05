@@ -158,6 +158,7 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $sett
 				//collapsed: true,
 				collapsed: false,
 			},
+			filename_option: '.$multioptions['filename'].',
 		};
 
 		var mylocale = {
@@ -193,7 +194,7 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $sett
 			legend: true,
 			distanceMarkers: false,
 			legend_options: opts.legend_options,
-			filename: '.$multioptions['filename'].',
+			filename: opts.filename_option,
 	    });
 		routes.addTo(map);
 
