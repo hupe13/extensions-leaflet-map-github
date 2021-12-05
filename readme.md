@@ -56,7 +56,11 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ### 2.2.2 / 211xxx
 * gestures: The language can be determined by Site or by Browser
-* multielevation: bug fix start marker, geojson filter for waypoints
+* multielevation revised:
+ * bug fix start marker
+ * geojson filter for waypoints
+ * option for filename as trackname
+ * options like in elevation
 * hidemarkers: geojson filter for marker
 
 ### 2.2.1 / 211111
