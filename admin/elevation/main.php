@@ -9,6 +9,7 @@ defined( 'ABSPATH' ) or die();
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/elevation.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/owntheme.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/sgpx.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/elevation/multielevation.php';
 
 function leafext_elevation_tab() {
 	$tabs = array (
@@ -50,8 +51,12 @@ function leafext_elevation_tab() {
 
 function leafext_admin_elevation($active_tab) {
 	if( $active_tab == 'multielevation') {
-		echo '<h2>'.leafext_elevation_tab().'</h2>';
-		include LEAFEXT_PLUGIN_DIR . '/admin/elevation/multielevation.php';
+		echo '<form method="post" action="options.php">';
+		settings_fields('leafext_settings_multieleparams');
+		do_settings_sections( 'leafext_settings_multieleparams' );
+		submit_button();
+		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+		echo '</form>';
 	} else if( $active_tab == 'elevationtheme') {
 		echo '<form method="post" action="options.php">';
 		settings_fields('leafext_settings_theme');
@@ -60,7 +65,7 @@ function leafext_admin_elevation($active_tab) {
 		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		echo '</form>';
 	} else if( $active_tab == 'sgpxelevation' ) {
-		
+
 		echo '<form method="post" action="options.php">';
 		if ( LEAFEXT_SGPX_ACTIVE ) {
 			settings_fields('leafext_settings_sgpxparams');
@@ -79,8 +84,8 @@ function leafext_admin_elevation($active_tab) {
 			echo __('wp-gpx-maps is not installed and nothing is configured.',"extensions-leaflet-map");
 		}
 		echo '</form>';
-		
-		
+
+
 	} else if( $active_tab == 'elevation' ) {  //Last tab!!!
 		echo '<form method="post" action="options.php">';
 		settings_fields('leafext_settings_eleparams');

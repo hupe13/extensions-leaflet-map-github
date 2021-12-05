@@ -6,6 +6,41 @@
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
+//Parameter and Values
+function leafext_multielevation_params() {
+	$params = array (
+		array(
+			'param' => 'summary',
+			'shortdesc' => __('Summary only',"extensions-leaflet-map"),
+			'desc' =>	sprintf (
+				__(
+				'If it is true, a short display is used. If it is false, settings from %s'.__('Elevation Profile','extensions-leaflet-map').'%s are valid.',"extensions-leaflet-map"),
+				'<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">',
+				'</a>'),
+			'default' => true,
+			'values' => 1,
+		),
+		array(
+			'param' => 'filename',
+			'shortdesc' => __('Use filename (without extension) as name of the track',"extensions-leaflet-map"),
+			'desc' => '',
+			'default' => false,
+			'values' => 1,
+		),
+	);
+	return $params;
+}
+
+function leafext_multielevation_settings() {
+	$defaults=array();
+	$params = leafext_multielevation_params();
+	foreach($params as $param) {
+		$defaults[$param['param']] = $param['default'];
+	}
+	$options = shortcode_atts($defaults, get_option('leafext_multieleparams'));
+	return $options;
+}
+
 //Shortcode:
 //[elevation-track file="'.$file.'" lat="'.$startlat.'" lng="'.$startlon.'" name="'.basename($file).'"]
 // lat lng name optional
@@ -70,7 +105,8 @@ function leafext_elevation_track( $atts ){
 add_shortcode('elevation-track', 'leafext_elevation_track' );
 
 //[elevation-tracks]
-function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summary, $slope ){
+function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $settings, $multioptions ) {
+	//var_dump($settings, $multioptions);wp_die();
 	$text = '
 	<script>
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -98,10 +134,20 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summ
 				zFollow: 15,
 				legend: false,
 				followMarker: false,
-				downloadLink:false,
-				polyline: { weight: 3,},
-				summary: '.json_encode($summary).',
-				slope: '.json_encode($slope).',
+	';
+
+					foreach ($settings as $k => $v) {
+						switch ($k) {
+							case "polyline":
+								$text = $text. "$k: ". $v .',';
+								unset ($settings[$k]);
+								break;
+							default:
+						}
+					}
+					$text = $text.leafext_java_params ($settings);
+
+			$text = $text.'
 			},
 			markers: {
 				startIconUrl: null, // "http://mpetazzoni.github.io/leaflet-gpx/pin-icon-start.png",
@@ -115,14 +161,24 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summ
 		};
 
 		var mylocale = {
+			"Acceleration"	: "'.__("Acceleration", "extensions-leaflet-map").'",
 			"Altitude"		: "'.__("Altitude", "extensions-leaflet-map").'",
+			"Slope"			: "'.__("Slope", "extensions-leaflet-map").'",
+			"Speed"			: "'.__("Speed", "extensions-leaflet-map").'",
+			"Total Time: "      : "'.__("Total Time", "extensions-leaflet-map").': ",
 			"Total Length: "	: "'.__("Total Length", "extensions-leaflet-map").': ",
 			"Max Elevation: "	: "'.__("Max Elevation", "extensions-leaflet-map").': ",
 			"Min Elevation: "	: "'.__("Min Elevation", "extensions-leaflet-map").': ",
 			"Total Ascent: "	: "'.__("Total Ascent", "extensions-leaflet-map").': ",
 			"Total Descent: "	: "'.__("Total Descent", "extensions-leaflet-map").': ",
-			"Min Slope: "		: "'.__("Min Slope", "extensions-leaflet-map").': ",
-			"Max Slope: "		: "'.__("Max Slope", "extensions-leaflet-map").': ",
+			"Min Slope: "	: "'.__("Min Slope", "extensions-leaflet-map").': ",
+			"Max Slope: "	: "'.__("Max Slope", "extensions-leaflet-map").': ",
+			"Min Speed: "	: "'.__("Min Speed", "extensions-leaflet-map").': ",
+			"Max Speed: "	: "'.__("Max Speed", "extensions-leaflet-map").': ",
+			"Avg Speed: "	: "'.__("Avg Speed", "extensions-leaflet-map").': ",
+			"Min Acceleration: "	: "'.__("Min Acceleration", "extensions-leaflet-map").': ",
+			"Max Acceleration: "	: "'.__("Max Acceleration", "extensions-leaflet-map").': ",
+			"Avg Acceleration: "	: "'.__("Avg Acceleration", "extensions-leaflet-map").': ",
 		};
 		L.registerLocale("wp", mylocale);
 		L.setLocale("wp");
@@ -137,7 +193,7 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summ
 			legend: true,
 			distanceMarkers: false,
 			legend_options: opts.legend_options,
-			filename: true,
+			filename: '.$multioptions['filename'].',
 	    });
 		routes.addTo(map);
 
@@ -179,21 +235,34 @@ function leafext_elevation_tracks( $atts ){
 	global $all_files;
 	global $all_points;
 
-	$theme = leafext_elevation_theme();
-	$atts = leafext_clear_params($atts);
-
-	$chart_options = shortcode_atts( array('summary' => false), $atts);
-
-	//Parameters see the sources from https://github.com/Raruto/leaflet-elevation
-	if ( ! $chart_options['summary'] ) {
-		$summary = false;
-		$slope = false;
+	if ( is_array($atts) && array_key_exists('theme', $atts) ) {
+		$theme = $atts['theme'];
 	} else {
-		$summary = "inline";
-		$slope = "summary";
+		$theme = leafext_elevation_theme();
 	}
 
-	$text = leafext_elevation_tracks_script( $all_files, $all_points, $theme, $summary, $slope);
+	$atts1 = leafext_case(array_keys(leafext_multielevation_settings()),leafext_clear_params($atts));
+	$multioptions = shortcode_atts(leafext_multielevation_settings(), $atts1);
+
+	if ( ! $multioptions['summary'] ) {
+		$atts1 = leafext_case(array_keys(leafext_elevation_settings()),leafext_clear_params($atts));
+		$options = shortcode_atts(leafext_elevation_settings(), $atts1);
+		unset($options['theme']);
+	} else {
+		$options = array (
+			'summary' => "inline",
+//			'slope' => "summary",
+			'speed' =>  false,
+			'acceleration' =>  false,
+			'time' => false,
+			'downloadLink' => false,
+			'preferCanvas' => false,
+			'legend' => false,
+			'polyline' =>  '{ weight: 3, }',
+		);
+	}
+
+	$text = leafext_elevation_tracks_script( $all_files, $all_points, $theme, $options, $multioptions);
 	$text = $text.'<div class="has-text-align-center"><div id="elevation-div" class="leaflet-control elevation"><p class="chart-placeholder">';
 	$text = $text.__("move mouse over a track or select one in control panel ...", "extensions-leaflet-map").'</p></div></div>';
 	return $text;
