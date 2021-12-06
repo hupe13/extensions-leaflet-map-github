@@ -30,7 +30,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 *   hover: Use it to highlight a geojson element or get a tooltip on mouse over.
 *   Hide Markers: Use it when a track in a GPX file contains some markers and you don't want to display them on the map.
-*   Option to migrate from WP GPX Maps to elevation
+*   Option to migrate from [WP GPX Maps](https://wordpress.org/plugins/wp-gpx-maps/) to elevation
 
 ## Screenshots
 
