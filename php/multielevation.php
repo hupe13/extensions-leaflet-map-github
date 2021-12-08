@@ -11,15 +11,15 @@ function leafext_multielevation_params() {
 	$params = array (
 		array(
 			'param' => 'summary',
-			'shortdesc' => __('Summary only',"extensions-leaflet-map"),
+			'shortdesc' => __('Summary',"extensions-leaflet-map"),
 			'desc' =>	sprintf (
-				__(
-				'If it is true, a short display is used. If it is false, settings from %s'.__('Elevation Profile','extensions-leaflet-map').'%s are valid.',"extensions-leaflet-map"),
+				__('1 / 0: only elevation profile with respectively without summary line / "elevation": you can use options like from %sElevation Profile%s','extensions-leaflet-map'),
 				'<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">',
 				'</a>'),
 			'default' => true,
-			'values' => 1,
+			'values' => array(true, false, "elevation"),
 		),
+
 		array(
 			'param' => 'filename',
 			'shortdesc' => __('Use filename (without extension) as name of the track',"extensions-leaflet-map"),
@@ -42,7 +42,7 @@ function leafext_multielevation_settings() {
 }
 
 //Shortcode:
-//[elevation-track file="'.$file.'" lat="'.$startlat.'" lng="'.$startlon.'" name="'.basename($file).'"]
+//[elevation-track file="'.$file.'" lat="'.$startlat.'" lng="'.$startlon.'" name="'.basename($file).'" filename=true/false]
 // lat lng name optional
 //[elevation-tracks summary=1]
 
@@ -62,15 +62,26 @@ function leafext_elevation_track( $atts ){
 	global $all_points;
 	if (!is_array($all_points)) $all_points = array();
 
+	$multioptions = shortcode_atts(leafext_multielevation_settings(), leafext_clear_params($atts));
+
 	$defaults = array (
 		'lat'  => '',
 		'lng'  => '',
 		'name' => '',
 	);
 	$params = shortcode_atts($defaults, $atts);
+
+	if ( $multioptions['filename']) {
+		$path_parts = pathinfo($atts['file']);
+		$name = $path_parts['basename'];
+	} else if ( $params['name'] != "" ) {
+		$name = $params['name'];
+	} else {
+		$name = '';
+	}
 	//
 
-	if ( $params['lat'] == "" || $params['lng'] == "" || $params['name'] == "" ) {
+	if ( $params['lat'] == "" || $params['lng'] == "" || $name == "" ) {
 		$gpx = simplexml_load_file($atts['file']);
 		if ($gpx ===  FALSE) {
 			$text = "[elevation-track read error ";
@@ -89,11 +100,14 @@ function leafext_elevation_track( $atts ){
 	} else {
 		$latlng = array($params['lat'],$params['lng']);
 	}
-	if ( $params['name'] == "" ) {
+	if ( $name == "" ) {
 		$name = (string) $gpx->trk->name;
-	} else {
-		$name = $params['name'];
 	}
+	//Fallback
+	if ( $name == "" ) {
+		$name = $path_parts['basename'];
+	}
+
 	$point = array(
 		'latlng' => $latlng,
 		'name' 	 => $name,
@@ -106,7 +120,6 @@ add_shortcode('elevation-track', 'leafext_elevation_track' );
 
 //[elevation-tracks]
 function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $settings, $multioptions ) {
-	//var_dump($settings, $multioptions);wp_die();
 	$text = '
 	<script>
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -130,7 +143,6 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $sett
 				theme: theme,
 				detachedView: true,
 				elevationDiv: "#elevation-div",
-				followPositionMarker: true,
 				zFollow: 15,
 				legend: false,
 				followMarker: false,
@@ -155,8 +167,7 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $sett
 				shadowUrl: null, // "http://mpetazzoni.github.io/leaflet-gpx/pin-shadow.png",
 			},
 			legend_options:{
-				//collapsed: true,
-				collapsed: false,
+				collapsed: true,
 			},
 			filename_option: '.$multioptions['filename'].',
 		};
@@ -224,7 +235,7 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $sett
 		});
 	});
 </script>';
-$text = \JShrink\Minifier::minify($text);
+//$text = \JShrink\Minifier::minify($text);
 return "\n".$text."\n";
 }
 
@@ -242,25 +253,32 @@ function leafext_elevation_tracks( $atts ){
 		$theme = leafext_elevation_theme();
 	}
 
-	$atts1 = leafext_case(array_keys(leafext_multielevation_settings()),leafext_clear_params($atts));
-	$multioptions = shortcode_atts(leafext_multielevation_settings(), $atts1);
+	$multioptions = shortcode_atts(leafext_multielevation_settings(), leafext_clear_params($atts));
 
-	if ( ! $multioptions['summary'] ) {
-		$atts1 = leafext_case(array_keys(leafext_elevation_settings()),leafext_clear_params($atts));
-		$options = shortcode_atts(leafext_elevation_settings(), $atts1);
-		unset($options['theme']);
-	} else {
-		$options = array (
-			'summary' => "inline",
-//			'slope' => "summary",
-			'speed' =>  false,
-			'acceleration' =>  false,
-			'time' => false,
-			'downloadLink' => false,
-			'preferCanvas' => false,
-			'legend' => false,
-			'polyline' =>  '{ weight: 3, }',
-		);
+	// some defaults
+	$options = array (
+		'speed' =>  false,
+		'acceleration' =>  false,
+		'time' => false,
+		'downloadLink' => false,
+		'preferCanvas' => false,
+		'legend' => false,
+		'polyline' =>  '{ weight: 3, }',
+	);
+	switch ($multioptions['summary']) {
+		case "true":
+			$options['summary'] = "inline";
+			$options['slope'] = "summary";
+			break;
+		case "false":
+			$options['summary'] = false;
+			$options['slope'] = false;
+			break;
+		default:
+			unset($atts['summary']);
+			$atts1 = leafext_case(array_keys(leafext_elevation_settings()),leafext_clear_params($atts));
+			$options = shortcode_atts(leafext_elevation_settings(), $atts1);
+			unset($options['theme']);
 	}
 
 	$text = leafext_elevation_tracks_script( $all_files, $all_points, $theme, $options, $multioptions);
