@@ -62,6 +62,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
    * option for filename as trackname
    * options like in elevation
 * hidemarkers: geojson filter for marker
+* leaflet.fullscreen 2.2.0
 
 ### 2.2.1 / 211111
 * leaflet-elevation 1.7.3
