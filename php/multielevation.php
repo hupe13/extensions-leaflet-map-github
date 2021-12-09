@@ -120,6 +120,7 @@ add_shortcode('elevation-track', 'leafext_elevation_track' );
 
 //[elevation-tracks]
 function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $settings, $multioptions ) {
+	//var_dump($settings,$multioptions); wp_die();
 	$text = '
 	<script>
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -169,7 +170,9 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $sett
 			legend_options:{
 				collapsed: true,
 			},
-			filename_option: '.$multioptions['filename'].',
+			filename_option: ';
+			$text = $multioptions['filename'] ?  $text.'true' :  $text.'false';
+			$text = $text.',
 		};
 
 		var mylocale = {
