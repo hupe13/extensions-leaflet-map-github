@@ -122,11 +122,11 @@ function leafext_enqueue_placementstrategies () {
 
 function leafext_enqueue_fullscreen () {
 	wp_enqueue_style( 'leaflet.fullscreen',
-		plugins_url('leaflet-plugins/leaflet.fullscreen-2.1.0/Control.FullScreen.css',
+		plugins_url('leaflet-plugins/leaflet.fullscreen-2.2.0/Control.FullScreen.css',
 		LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
 	wp_enqueue_script('leaflet.fullscreen',
-		plugins_url('leaflet-plugins/leaflet.fullscreen-2.1.0/Control.FullScreen.js',
+		plugins_url('leaflet-plugins/leaflet.fullscreen-2.2.0/Control.FullScreen.js',
 		LEAFEXT_PLUGIN_FILE),
 		array('wp_leaflet_map'),null);
 }
