@@ -141,8 +141,6 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $sett
 				detachedView: true,
 				elevationDiv: "#elevation-div",
 				zFollow: 15,
-				legend: false,
-				followMarker: false,
 	';
 
 					foreach ($settings as $k => $v) {
