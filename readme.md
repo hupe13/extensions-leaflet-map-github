@@ -6,7 +6,7 @@ Contributors: hupe13
 Tags: leaflet, elevation, markercluster, zoomhome, hover, fullscreen, gpx, gps, garmin, altitude  
 Requires at least: 5.5.3  
 Tested up to: 5.8  
-Stable tag: 2.2.1  
+Stable tag: 2.2.2  
 License: GPLv2 or later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -54,7 +54,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.2.2 / 211xxx
+### 2.2.2 / 2112xx
 * gestures: The language can be determined by Site or by Browser
 * multielevation revised:
    * bug fix start marker
