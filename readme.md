@@ -17,7 +17,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 ### Used Leaflet Plugins and Elements
 
 *   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation), [Leaflet.EasyButton](https://github.com/CliffCloud/Leaflet.EasyButton): Track with Elevation Profile
-*   [leaflet-gpxgroup](https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js): Multiple tracks with elevation profiles on one map
+*   [leaflet-gpxgroup](https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js), [Leaflet.GeometryUtil](https://github.com/makinacorpus/Leaflet.GeometryUtil): Multiple tracks with elevation profiles on one map
 *   [L.control.layers](https://leafletjs.com/examples/layers-control/): Switching Tilelayers
 *   [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster): Marker Cluster
 *   [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup):  add/remove groups of markers from Marker Cluster.
@@ -61,6 +61,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
    * geojson filter for waypoints
    * option for filename as trackname
    * options like in elevation
+   * Leaflet.GeometryUtil
 * hidemarkers: geojson filter for marker
 * leaflet.fullscreen 2.2.0
 

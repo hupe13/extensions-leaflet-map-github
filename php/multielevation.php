@@ -10,21 +10,18 @@ defined( 'ABSPATH' ) or die();
 function leafext_multielevation_params() {
 	$params = array (
 		array(
+			'param' => 'filename',
+			'shortdesc' => __('Filename as trackname',"extensions-leaflet-map"),
+			'desc' => __('Use filename (without extension) as name of the track.',"extensions-leaflet-map"),
+			'default' => false,
+			'values' => 1,
+		),
+		array(
 			'param' => 'summary',
 			'shortdesc' => __('Summary',"extensions-leaflet-map"),
-			'desc' =>	sprintf (
-				__('1 / 0: only elevation profile with respectively without summary line / "elevation": you can use options like from %sElevation Profile%s','extensions-leaflet-map'),
-				'<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">',
-				'</a>'),
+			'desc' =>	sprintf ( __('Valid for %s: Only elevation profile with or without summary line will be displayed.',"extensions-leaflet-map"),
+				'<code>[elevation-<span style="color: #d63638">tracks</span>]</code>'),
 			'default' => true,
-			'values' => array(true, false, "elevation"),
-		),
-
-		array(
-			'param' => 'filename',
-			'shortdesc' => __('Use filename (without extension) as name of the track',"extensions-leaflet-map"),
-			'desc' => '',
-			'default' => false,
 			'values' => 1,
 		),
 	);
@@ -132,7 +129,6 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $sett
 		var theme =  '.json_encode($theme).';
 		//console.log(points);
 		//console.log(tracks);
-
 		var opts = {
 			points: {
 				icon: {
@@ -206,7 +202,9 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $sett
 			elevation_options: opts.elevation,
 			marker_options: opts.markers,
 			legend: true,
-			distanceMarkers: false,
+			distanceMarkers: ';
+			$text = $multioptions['distanceMarkers'] ?  $text.'true' :  $text.'false';
+			$text = $text.',
 			legend_options: opts.legend_options,
 			filename: opts.filename_option,
 	    });
@@ -268,25 +266,48 @@ function leafext_elevation_tracks( $atts ){
 		'legend' => false,
 		'polyline' =>  '{ weight: 3, }',
 	);
-	switch ($multioptions['summary']) {
-		case "true":
-			$options['summary'] = "inline";
-			$options['slope'] = "summary";
-			break;
-		case "false":
-			$options['summary'] = false;
-			$options['slope'] = false;
-			break;
-		default:
-			unset($atts['summary']);
-			$atts1 = leafext_case(array_keys(leafext_elevation_settings()),leafext_clear_params($atts));
-			$options = shortcode_atts(leafext_elevation_settings(), $atts1);
-			unset($options['theme']);
+	if ($multioptions['summary']) {
+		$options['summary'] = "inline";
+		$options['slope'] = "summary";
+	} else {
+		$options['summary'] = false;
+		$options['slope'] = false;
 	}
-
+	//var_dump($options,$multioptions); wp_die();
 	$text = leafext_elevation_tracks_script( $all_files, $all_points, $theme, $options, $multioptions);
 	$text = $text.'<div class="has-text-align-center"><div id="elevation-div" class="leaflet-control elevation"><p class="chart-placeholder">';
 	$text = $text.__("move mouse over a track or select one in control panel ...", "extensions-leaflet-map").'</p></div></div>';
 	return $text;
 }
 add_shortcode('elevation-tracks', 'leafext_elevation_tracks' );
+
+//Interpret options like in elevation in [multielevation]
+function leafext_multielevation( $atts ){
+	leafext_enqueue_elevation ();
+	leafext_enqueue_multielevation();
+	leafext_enqueue_zoomhome();
+
+	global $all_files;
+	global $all_points;
+
+	if ( is_array($atts) && array_key_exists('theme', $atts) ) {
+		$theme = $atts['theme'];
+	} else {
+		$theme = leafext_elevation_theme();
+	}
+
+	// filenames as tracknames?
+	$multioptions = shortcode_atts(leafext_multielevation_settings(), leafext_clear_params($atts));
+
+	$atts1 = leafext_case(array_keys(leafext_elevation_settings()),leafext_clear_params($atts));
+	$options = shortcode_atts(leafext_elevation_settings(), $atts1);
+	unset($options['theme']);
+	$multioptions['distanceMarkers'] = $options['distanceMarkers'];
+	unset($options['distanceMarkers']);
+
+	$text = leafext_elevation_tracks_script( $all_files, $all_points, $theme, $options, $multioptions);
+	$text = $text.'<div class="has-text-align-center"><div id="elevation-div" class="leaflet-control elevation"><p class="chart-placeholder">';
+	$text = $text.__("move mouse over a track or select one in control panel ...", "extensions-leaflet-map").'</p></div></div>';
+	return $text;
+}
+add_shortcode('multielevation', 'leafext_multielevation' );

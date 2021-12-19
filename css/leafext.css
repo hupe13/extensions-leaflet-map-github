@@ -15,21 +15,20 @@
 	overflow: auto;
 }
 
-/*elevation chart */
+/*multielevation chart */
 #elevation-div {
+	font: 12px/1.5 Helvetica Neue,Arial,Helvetica,sans-serif;
 	height: auto;
 	width: 100%;
-	padding: 50px 10px;
-	margin: 0 0px;
-	margin-left: auto;
-	margin-right: auto;
-	font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
+	position: relative;
+	z-index: 0;
 }
+
 .chart-placeholder {
-	height: auto;
- 	width: 100%;
-	padding: 50px;
- 	margin: 0 0px;
+	position: absolute;
+	text-align: center;
+	left: 0;
+	right: 0;
 	font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
 	font-style: italic;
 	opacity: 0.5;

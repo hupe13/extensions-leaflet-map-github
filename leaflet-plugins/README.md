@@ -30,6 +30,10 @@ https://github.com/Raruto/leaflet-elevation
 <pre>[elevation-track ...]</pre>
 <pre>[elevation-tracks ...]</pre>
 
+https://github.com/makinacorpus/Leaflet.GeometryUtil
+
+<pre>[multielevation distanceMarkers ...]</pre>
+
 https://github.com/CliffCloud/Leaflet.EasyButton
 
 <pre>[elevation gpx="url_gpx_file" chart="on|off"]</pre>

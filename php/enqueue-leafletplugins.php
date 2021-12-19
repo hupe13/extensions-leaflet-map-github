@@ -30,8 +30,9 @@ function leafext_enqueue_awesome() {
 }
 
 function leafext_css() {
-		wp_enqueue_style( 'leafext_css',
-		plugins_url('css/leafext.min.css',
+	wp_enqueue_style( 'leafext_css',
+//		plugins_url('css/leafext.min.css',
+  plugins_url('css/leafext.css',
 		LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
 }
@@ -101,7 +102,19 @@ function leafext_enqueue_multielevation () {
 	// wp_enqueue_style( 'my_elevation_css',
 	 	// plugins_url('css/multielevation.css',
 		// LEAFEXT_PLUGIN_FILE),
-	 	// array('elevation_css'), null);
+	  // array('elevation_css'), null);
+  wp_enqueue_script('Leaflet.GeometryUtil',
+    plugins_url('leaflet-plugins/Leaflet.GeometryUtil/leaflet.geometryutil.js',
+    LEAFEXT_PLUGIN_FILE),
+	  array('elevation_js'),null);
+  wp_enqueue_script('leaflet.distanceMarkers',
+    plugins_url('leaflet-plugins/leaflet-elevation-1.7.3/libs/leaflet-distance-marker.min.js',
+		LEAFEXT_PLUGIN_FILE),
+	  array('Leaflet.GeometryUtil'),null);
+  wp_enqueue_style( 'leaflet.distanceMarkers',
+    plugins_url('leaflet-plugins/leaflet-elevation-1.7.3/libs/leaflet-distance-marker.min.css',
+    LEAFEXT_PLUGIN_FILE),
+    array('leaflet_stylesheet'),null);
 	leafext_css();
 }
 
