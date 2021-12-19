@@ -32,7 +32,7 @@ function leafext_enqueue_awesome() {
 function leafext_css() {
 	wp_enqueue_style( 'leafext_css',
 //		plugins_url('css/leafext.min.css',
-  plugins_url('css/leafext.css',
+  plugins_url('css/leafext.min.css',
 		LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
 }
