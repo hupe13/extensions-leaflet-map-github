@@ -147,9 +147,9 @@ function leafext_multiele_help_text () {
 		'<code>[multielevation]</code>',
 		'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">',
 		'</a>').
- 	'<code>polyline</code>, <code>waypoints</code>, <code>downloadLink</code>, <code>chart</code> '.
+ 	'<code>polyline</code>, <code>waypoints</code>, <code>downloadLink</code>, <code>chart</code> ('.
 	__('and maybe more','extensions-leaflet-map').
-	'.</li><li>'.
+	'). ;-)</li><li>'.
 	sprintf (__('The name of a %s is determined as described above.','extensions-leaflet-map'),
 		'<span style="color: #4f94d4">track</span>').
 	'</li></ul>'.

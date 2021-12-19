@@ -24,7 +24,7 @@ defined( 'ABSPATH' ) or die();
 
 	<tr><td>'.__('track with an elevation profile','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=elevation">elevation</a></td><td><a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a></td></tr>
 
-	<tr><td>'.__('multiple tracks with elevation profiles','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=multielevation">elevation-track, elevation-tracks</a></td><td><a href="https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js">leaflet-gpxgroup</a></td></tr>
+	<tr><td>'.__('multiple tracks with elevation profiles','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=multielevation">elevation-track, elevation-tracks, multielevation</a></td><td><a href="https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js">leaflet-gpxgroup</a></td></tr>
 
 	<tr><td>'.__('switching tile servers','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=tilelayers">layerswitch</a></td><td><a href="https://leafletjs.com/examples/layers-control/">L.control.layers</a></td></tr>
 
