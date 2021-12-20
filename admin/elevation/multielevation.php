@@ -147,7 +147,7 @@ function leafext_multiele_help_text () {
 	sprintf( __('If you use %s, you can use these options like in %sElevation Profile%s','extensions-leaflet-map'),
 		'<code>[multielevation]</code>',
 		'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">',
-		'</a>: ').
+		'</a>').': '.
  	leafext_eleparams_for_multi().
 	'.</li><li>'.
 	sprintf (__('The name of a %strack%s is determined as described above.','extensions-leaflet-map'),
