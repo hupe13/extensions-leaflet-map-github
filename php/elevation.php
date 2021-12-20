@@ -29,6 +29,7 @@ function leafext_elevation_params() {
 			'default' => "lime-theme",
 			'values' => array("lime-theme","steelblue-theme","purple-theme","yellow-theme","red-theme","magenta-theme","lightblue-theme"),
 			'next' => "3",
+			'multielevation' => true,
 		),
 
 		//Default hupe13 polyline: { weight: 3, }, Default Raruto 5
@@ -37,7 +38,8 @@ function leafext_elevation_params() {
 			'shortdesc' => __('Polyline weight',"extensions-leaflet-map"),
 			'desc' => '',
 			'default' => "{ weight: 3, }",
-			'values' => array("{ weight: 3, }","{ weight: 4, }","{ weight: 5, }"),
+			'values' => array("{ weight: 3, }","{ weight: 4, }","{ weight: 5, }","{ weight: 6, }"),
+			'multielevation' => false,
 		),
 
 		// https://github.com/Raruto/leaflet-elevation/issues/86#issuecomment-735274347
@@ -49,6 +51,7 @@ function leafext_elevation_params() {
 				<img src="'.LEAFEXT_ELEVATION_URL.'/images/elevation-position.svg" alt="elevation-position" align="middle"/> / '.__('nothing',"extensions-leaflet-map").' </p>',
 			'default' => 'elevation-line',
 			'values' => array("elevation-line", "position-marker",false),
+			'multielevation' => true,
 		),
 
 		// Display track waypoints: (true || false) - waypoints: false,
@@ -59,6 +62,7 @@ function leafext_elevation_params() {
 			'desc' => '',
 			'default' => true,
 			'values' => 1,
+			'multielevation' => false,
 		),
 
 		// Toggle "leaflet-distance-markers" integration
@@ -69,6 +73,7 @@ function leafext_elevation_params() {
 			'desc' => '',
 			'default' => false,
 			'values' => 1,
+			'multielevation' => true,
 		),
 
 // Zusaetze
@@ -80,6 +85,7 @@ function leafext_elevation_params() {
 			'desc' => '',
 			'default' => false,
 			'values' => array("link", false, "modal"),
+			'multielevation' => false,
 		),
 
 //Welche Infos?
@@ -96,6 +102,7 @@ function leafext_elevation_params() {
 			'default' => 'multiline',
 			'values' => array(true, "inline","multiline",false),
 			'next' => "3",
+			'multielevation' => true,
 		),
 
 		// Toggle chart legend filter.
@@ -108,6 +115,7 @@ function leafext_elevation_params() {
 				__('If it is disabled, you can\'t toggle the initial state of graphs.',"extensions-leaflet-map").'</p>',
 			'default' => true,
 			'values' => 1,
+			'multielevation' => true,
 		),
 
 // Graphen
@@ -123,6 +131,7 @@ function leafext_elevation_params() {
 			//'values' => array(true,"summary"),
 			'values' => array(true,"summary","disabled"),
 			'next' => "1",
+			'multielevation' => true,
 		),
 
 		// Acceleration chart profile: true || "summary" || "disabled" || false
@@ -133,6 +142,7 @@ function leafext_elevation_params() {
 			'desc' => '<p>'.__('graph initial state displayed and data in summary / data in summary only / graph initial state hidden and data in summary / nothing',"extensions-leaflet-map").'</p>',
 			'default' => false,
 			'values' => array(true,"summary","disabled",false),
+			'multielevation' => true,
 		),
 
 		// Slope chart profile: true || "summary" || "disabled" || false
@@ -144,6 +154,7 @@ function leafext_elevation_params() {
 				__('graph initial state displayed and data in summary / data in summary only / graph initial state hidden and data in summary / nothing',"extensions-leaflet-map").'</p>',
 			'default' => false,
 			'values' => array(true,"summary","disabled",false),
+			'multielevation' => true,
 		),
 
 		// Speed chart profile: true || "summary" || "disabled" || false
@@ -155,6 +166,7 @@ function leafext_elevation_params() {
 				__('graph initial state displayed and data in summary / data in summary only / graph initial state hidden and data in summary / nothing',"extensions-leaflet-map").'</p>',
 			'default' => false,
 			'values' => array(true,"summary","disabled",false),
+			'multielevation' => true,
 		),
 
 // Informationen
@@ -169,6 +181,7 @@ function leafext_elevation_params() {
 			'default' => false,
 			'values' => array(true,"summary",false),
 			'next' => "1",
+			'multielevation' => true,
 		),
 
 		// Display distance info: true || "summary"
@@ -180,6 +193,7 @@ function leafext_elevation_params() {
 				__('show distance data in graph and summary / show distance data in summary only',"extensions-leaflet-map").'</p>',
 			'default' => true,
 			'values' => array(true,"summary"),
+			'multielevation' => true,
 		),
 
 //
@@ -194,6 +208,7 @@ function leafext_elevation_params() {
 				'</p>',
 			'default' => true,
 			'values' => array(true, "on", "off"),
+			'multielevation' => false,
 		),
 
 // Verhalten u.a.
@@ -207,6 +222,7 @@ function leafext_elevation_params() {
 			'default' => true,
 			'values' => 1,
 			'next' => "3",
+			'multielevation' => true,
 		),
 
 		// Autoupdate map bounds on chart update.
@@ -217,6 +233,7 @@ function leafext_elevation_params() {
 			'desc' => '',
 			'default' => true,
 			'values' => 1,
+			'multielevation' => true,
 		),
 
 		// Chart distance/elevation units.
@@ -227,6 +244,7 @@ function leafext_elevation_params() {
 			'desc' => '',
 			'default' => false,
 			'values' => 1,
+			'multielevation' => true,
 		),
 
 		// [Lat, Long] vs [Long, Lat] points. (leaflet default: [Lat, Long])
@@ -237,6 +255,7 @@ function leafext_elevation_params() {
 			'desc' => '',
 			'default' => false,
 			'values' => 1,
+			'multielevation' => true,
 		),
 
 		// Toggle chart ruler filter.
@@ -251,13 +270,14 @@ function leafext_elevation_params() {
 
 		// Toggle "leaflet-almostover" integration
 		//almostOver: true,
-		array(
-			'param' => 'almostOver',
-			'shortdesc' => __('Toggle "leaflet-almostover" integration',"extensions-leaflet-map"),
-			'desc' => '',
-			'default' => true,
-			'values' => 1,
-		),
+		// auskommentiert. true sollte nicht geaendert werden
+		// array(
+		// 	'param' => 'almostOver',
+		// 	'shortdesc' => __('Toggle "leaflet-almostover" integration',"extensions-leaflet-map"),
+		// 	'desc' => '',
+		// 	'default' => true,
+		// 	'values' => 1,
+		// ),
 
 		// Render chart profiles as Canvas or SVG Paths
 		//preferCanvas: true
@@ -267,6 +287,7 @@ function leafext_elevation_params() {
 			'desc' => sprintf ( __('Due to a bug in MacOS and iOS, see %shere%s, you should it set to false.',"extensions-leaflet-map"), '<a href="https://github.com/Raruto/leaflet-elevation/issues/123">','</a>'),
 			'default' => true,
 			'values' => 1,
+			'multielevation' => false,
 		),
 
 		// Chart container outside/inside map container
@@ -302,6 +323,7 @@ function leafext_elevation_script($gpx,$theme,$settings,$chart){
 		var elevation_options = {
 		//lime-theme (default), magenta-theme, steelblue-theme, purple-theme, yellow-theme, lightblue-theme
 			theme: '.json_encode($theme).',
+			almostOver: true,
 		';
 		//old settings
 		if ( $settings['summary'] == "1" ) {

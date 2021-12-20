@@ -85,7 +85,7 @@ function leafext_multiele_help_text () {
 [elevation-<span style="color: #d63638">tracks</span> filename=0/1 summary=0/1]
 // or
 [multielevation filename=0/1 option1=value1 option2 !option3 ...]</code></pre>
-</code></pre>'.
+'.
 
 '<h3>Options elevation-<span style="color: #d63638">track</span></h3>
 <ul><li>'.
@@ -129,9 +129,10 @@ function leafext_multiele_help_text () {
 	sprintf(__('If you use %s, you get an elevation profile only with or without a summary line.','extensions-leaflet-map'),
 		'<code>[elevation-<span style="color: #d63638">tracks</span>]</code>').
 	'</li><li>'.
-	sprintf(__('The name of a %s is determined in this order:','extensions-leaflet-map'),
-		'<span style="color: #4f94d4">track</span>').
-	'</li><li>'.
+	sprintf(__('The name of a %strack%s is determined in this order:','extensions-leaflet-map'),
+		'<span style="color: #4f94d4">',
+		'</span>').
+	'</li><ol><li>'.
 	sprintf(__('If %s (in options below or in shortcode) is true, the filename (without extension) is used.','extensions-leaflet-map'),
 		'<code>filename</code>').
 	'</li><li>'.
@@ -139,19 +140,19 @@ function leafext_multiele_help_text () {
 	'</li><li>'.
 	__('If this is not available, the filename (without extension) is used.','extensions-leaflet-map').
 	'</li></ol>'.
-	'</li></ul>'.
+	'</ul>'.
 
 '<h3>Options multielevation</h3>
 	<ul><li>'.
-	sprintf( __('If you use %s, you can use options like in %sElevation Profile%s, except ','extensions-leaflet-map'),
+	sprintf( __('If you use %s, you can use these options like in %sElevation Profile%s','extensions-leaflet-map'),
 		'<code>[multielevation]</code>',
 		'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">',
-		'</a>').
- 	'<code>polyline</code>, <code>waypoints</code>, <code>downloadLink</code>, <code>chart</code> ('.
-	__('and maybe more','extensions-leaflet-map').
-	'). ;-)</li><li>'.
-	sprintf (__('The name of a %s is determined as described above.','extensions-leaflet-map'),
-		'<span style="color: #4f94d4">track</span>').
+		'</a>: ').
+ 	leafext_eleparams_for_multi().
+	'.</li><li>'.
+	sprintf (__('The name of a %strack%s is determined as described above.','extensions-leaflet-map'),
+		'<span style="color: #4f94d4">',
+		'</span>').
 	'</li></ul>'.
 
 '<h3>Theme</h3><p>'.
@@ -165,6 +166,7 @@ function leafext_multiele_help_text () {
 	'<code>false</code> = <code>!option</code> || <code>option="0"</code> || <code>option=0</code></br>'.
 	'<code>true</code> = <code>option</code> || <code>option="1"</code> || <code>option=1</code>'.
 	'</p>';
+
 	if (is_singular()|| is_archive() ) {
 		return $text;
 	} else {

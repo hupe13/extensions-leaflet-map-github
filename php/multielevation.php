@@ -28,6 +28,54 @@ function leafext_multielevation_params() {
 	return $params;
 }
 
+function leafext_eleparams_for_multi($options=array()) {
+		$multi=array();
+		$params = leafext_elevation_params();
+		foreach($params as $param) {
+			if ( $param['multielevation'] ) $multi[] = $param["param"];
+		}
+
+	// $params = array(
+	// 	//'theme', in multioptions
+	// 	//'polyline',
+	// 	'marker',
+	// 	//'waypoints',
+	// 	//'distanceMarkers', in multioptions
+	// 	//'downloadLink',
+	// 	'summary',
+	// 	'legend',
+	// 	'altitude',
+	// 	'acceleration',
+	// 	'slope',
+	// 	'speed',
+	// 	'time',
+	// 	'distance',
+	// 	//'chart',
+	// 	'followMarker',
+	// 	'autofitBounds',
+	// 	'imperial',
+	// 	'reverseCoords',
+	// 	//'ruler',
+	// 	//'almostOver',
+	// 	//'preferCanvas',
+	// );
+	if (count($options) > 1 ) {
+		$multioptions = array();
+		foreach ($multi as $param) {
+			$multioptions[$param] = $options[$param];
+		}
+		return $multioptions;
+	} else {
+		$text = '';
+		sort($multi);
+		foreach ($multi as $param) {
+			$text = $text.'<code>'.$param.'</code>, ';
+		}
+		$text = substr($text, 0, -2);
+		return $text;
+	}
+}
+
 function leafext_multielevation_settings() {
 	$defaults=array();
 	$params = leafext_multielevation_params();
@@ -140,7 +188,14 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $sett
 				theme: theme,
 				detachedView: true,
 				elevationDiv: "#elevation-div",
+				followPositionMarker: true,
 				zFollow: 15,
+				legend: false,
+				followMarker: false,
+				detachedView: true,
+				elevationDiv: "#elevation-div",
+				zFollow: 15,
+				almostOver: true,
 	';
 
 					foreach ($settings as $k => $v) {
@@ -192,6 +247,7 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $sett
 		L.registerLocale("wp", mylocale);
 		L.setLocale("wp");
 
+		console.log(opts.elevation);
 		var routes;
 		routes = new L.gpxGroup(tracks, {
 			points: points,
@@ -262,7 +318,6 @@ function leafext_elevation_tracks( $atts ){
 		'downloadLink' => false,
 		'preferCanvas' => false,
 		'legend' => false,
-		'polyline' =>  '{ weight: 3, }',
 	);
 	if ($multioptions['summary']) {
 		$options['summary'] = "inline";
@@ -299,9 +354,10 @@ function leafext_multielevation( $atts ){
 
 	$atts1 = leafext_case(array_keys(leafext_elevation_settings()),leafext_clear_params($atts));
 	$options = shortcode_atts(leafext_elevation_settings(), $atts1);
-	unset($options['theme']);
+
 	$multioptions['distanceMarkers'] = $options['distanceMarkers'];
-	unset($options['distanceMarkers']);
+
+	$options = leafext_eleparams_for_multi($options);
 
 	$text = leafext_elevation_tracks_script( $all_files, $all_points, $theme, $options, $multioptions);
 	$text = $text.'<div class="has-text-align-center"><div id="elevation-div" class="leaflet-control elevation"><p class="chart-placeholder">';
