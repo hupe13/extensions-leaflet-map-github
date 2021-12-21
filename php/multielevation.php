@@ -326,7 +326,7 @@ function leafext_elevation_tracks( $atts ){
 		$options['summary'] = false;
 		$options['slope'] = false;
 	}
-	//var_dump($options,$multioptions); wp_die();
+	$multioptions['distanceMarkers'] = false;
 	$text = leafext_elevation_tracks_script( $all_files, $all_points, $theme, $options, $multioptions);
 	$text = $text.'<div class="has-text-align-center"><div id="elevation-div" class="leaflet-control elevation"><p class="chart-placeholder">';
 	$text = $text.__("move mouse over a track or select one in control panel ...", "extensions-leaflet-map").'</p></div></div>';
