@@ -19,22 +19,19 @@
 #elevation-div {
 	height: auto;
 	width: 100%;
-	padding: 50px 0px;
-	margin: 0 0px;
-	margin-left: auto;
-	margin-right: auto;
 	font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 .chart-placeholder {
 	height: auto;
  	width: 100%;
-	padding: 50px;
+	padding: 60px 0px 60px 0;
  	margin: 0 0px;
 	font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
 	font-style: italic;
 	opacity: 0.5;
 	font-size: 0.9rem;
+	text-align: center;
 }
 
 /* + and - should have not underline */

@@ -192,9 +192,6 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $sett
 				zFollow: 15,
 				legend: false,
 				followMarker: false,
-				detachedView: true,
-				elevationDiv: "#elevation-div",
-				zFollow: 15,
 				almostOver: true,
 	';
 
@@ -328,8 +325,8 @@ function leafext_elevation_tracks( $atts ){
 	}
 	$multioptions['distanceMarkers'] = false;
 	$text = leafext_elevation_tracks_script( $all_files, $all_points, $theme, $options, $multioptions);
-	$text = $text.'<div class="has-text-align-center"><div id="elevation-div" class="leaflet-control elevation"><p class="chart-placeholder">';
-	$text = $text.__("move mouse over a track or select one in control panel ...", "extensions-leaflet-map").'</p></div></div>';
+	$text = $text.'<p class="chart-placeholder">';
+	$text = $text.__("move mouse over a track or select one in control panel ...", "extensions-leaflet-map").'</p>';
 	return $text;
 }
 add_shortcode('elevation-tracks', 'leafext_elevation_tracks' );
@@ -360,8 +357,8 @@ function leafext_multielevation( $atts ){
 	$options = leafext_eleparams_for_multi($options);
 
 	$text = leafext_elevation_tracks_script( $all_files, $all_points, $theme, $options, $multioptions);
-	$text = $text.'<div class="has-text-align-center"><div id="elevation-div" class="leaflet-control elevation"><p class="chart-placeholder">';
-	$text = $text.__("move mouse over a track or select one in control panel ...", "extensions-leaflet-map").'</p></div></div>';
+	$text = $text.'<p class="chart-placeholder">';
+	$text = $text.__("move mouse over a track or select one in control panel ...", "extensions-leaflet-map").'</p>';
 	return $text;
 }
 add_shortcode('multielevation', 'leafext_multielevation' );
