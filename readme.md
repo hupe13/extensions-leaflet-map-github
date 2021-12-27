@@ -2,13 +2,11 @@
 
 # Extensions for Leaflet Map Github Version
 
-Contributors: hupe13  
-Tags: leaflet, elevation, markercluster, zoomhome, hover, fullscreen, gpx, gps, garmin, altitude  
-Requires at least: 5.5.3  
-Tested up to: 5.8  
 Stable tag: 2.2.2  
+Tested up to: 5.8  
 License: GPLv2 or later  
-License URI: https://www.gnu.org/licenses/gpl-2.0.html  
+Tags: leaflet, gpx, elevation, markercluster, zoomhome, hover, fullscreen, gps, garmin, altitude  
+Contributors: hupe13  
 
 ## Description
 
