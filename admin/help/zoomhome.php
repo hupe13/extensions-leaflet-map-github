@@ -3,7 +3,7 @@
 defined( 'ABSPATH' ) or die();
 
 $text='<h2 id="leaflet.zoomhome">leaflet.zoomhome</h2>
-<img src="'.LEAFEXT_PLUGIN_PICTS.'home.png"><p>
+<img src="'.LEAFEXT_PLUGIN_PICTS.'home.png" alt="home"><p>
 &quot;Home&quot; '.__('button to reset the view. A must for clustering markers','extensions-leaflet-map').'.</p>
 '.__('It resets the view to all markers (leaflet-marker), lines (leaflet-line), circles (leaflet-circle), geojsons (leaflet-geojson, leaflet-gpx, leaflet-kml) and a track (elevation).','extensions-leaflet-map').'
 

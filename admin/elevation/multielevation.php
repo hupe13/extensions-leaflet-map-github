@@ -74,7 +74,7 @@ function leafext_validate_multiele_options($options) {
 // Helptext
 function leafext_multiele_help_text () {
 	$text='
-		<img src="'.LEAFEXT_PLUGIN_PICTS.'multielevation.png">
+		<img src="'.LEAFEXT_PLUGIN_PICTS.'multielevation.png" alt = "multielevation">
 		<h2>Shortcode</h2>
 <pre>
 <code>[leaflet-map fitbounds ...]
@@ -163,7 +163,7 @@ function leafext_multiele_help_text () {
 	'<h3>Options</h3>
 	<p>'.
 	__('For boolean values applies', "extensions-leaflet-map").':<br>'.
-	'<code>false</code> = <code>!option</code> || <code>option="0"</code> || <code>option=0</code></br>'.
+	'<code>false</code> = <code>!option</code> || <code>option="0"</code> || <code>option=0</code><br>'.
 	'<code>true</code> = <code>option</code> || <code>option="1"</code> || <code>option=1</code>'.
 	'</p>';
 

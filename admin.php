@@ -107,6 +107,7 @@ function leafext_do_page() {
 		echo $text;
 	} else if( $active_tab == 'help' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/help.php';
+		leafext_help_table($leafext_plugin_name);
 	} else if( $active_tab == 'other' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/other.php';
 	}
