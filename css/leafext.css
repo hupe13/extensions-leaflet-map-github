@@ -35,9 +35,9 @@
 }
 
 /* + and - should have not underline */
-.leaflet-control-zoomhome-out {
+.leaflet-control-zoom-out {
   text-decoration: none !important;
 }
-.leaflet-control-zoomhome-in {
+.leaflet-control-zoom-in {
   text-decoration: none !important;
 }
