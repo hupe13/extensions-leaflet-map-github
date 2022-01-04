@@ -241,7 +241,7 @@ function leafext_elevation_params() {
 		array(
 			'param' => 'imperial',
 			'shortdesc' => __('Chart distance/elevation units.',"extensions-leaflet-map"),
-			'desc' => '',
+			'desc' => __('miles or kilometers',"extensions-leaflet-map"),
 			'default' => false,
 			'values' => 1,
 			'multielevation' => true,

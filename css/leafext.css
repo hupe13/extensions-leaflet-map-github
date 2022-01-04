@@ -41,3 +41,9 @@
 .leaflet-control-zoomhome-in {
   text-decoration: none !important;
 }
+.leaflet-control-zoom-out {
+  text-decoration: none !important;
+}
+.leaflet-control-zoom-in {
+  text-decoration: none !important;
+}
