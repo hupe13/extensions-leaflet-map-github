@@ -346,6 +346,18 @@ function leafext_elevation_script($gpx,$theme,$settings,$chart){
 						$text = $text. "$k: ". $v .',';
 						unset ($settings[$k]);
 						break;
+					case "distanceMarkers":
+						if ($settings[$k] == true && $settings['imperial'] == "1") {
+							$text = $text .
+							'distanceMarkers: {
+								offset: 1000/0.621371,
+								textFunction: function(distance, i, offset) {
+									return Math.round(distance*0.621371/1000);
+								}
+							},';
+							unset($settings[$k]);
+						}
+						break;
 					default:
 				}
 			}
