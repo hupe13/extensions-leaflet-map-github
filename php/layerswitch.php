@@ -37,15 +37,24 @@ function leafext_layerswitch_script($mylayers,$myfulllayers){
 		});
 
 		var overlays = {};
+		var opacity = {};
 		var mylayers = '.json_encode($mylayers).';
 		';
 		foreach ($myfulllayers as $myfulllayer) {
 			if ( $myfulllayer['overlay'] != "" ) {
 				$text=$text.
 				'overlays['.$myfulllayer['mapid'].'] = L.tileLayer('.$myfulllayer['options'].');';
+				if ( $myfulllayer['opacity'] != "" ) {
+					$text=$text.
+					'opacity['.$myfulllayer['mapid'].'] = overlays['.$myfulllayer['mapid'].'];';
+				}
 			} else {
 				$text=$text.
 				'baselayers['.$myfulllayer['mapid'].'] = L.tileLayer('.$myfulllayer['options'].');';
+				if ( $myfulllayer['opacity'] != "" ) {
+					$text=$text.
+					'opacity['.$myfulllayer['mapid'].'] = baselayers['.$myfulllayer['mapid'].'];';
+				}
 			}
 		}
 		$text = $text.'
@@ -53,8 +62,14 @@ function leafext_layerswitch_script($mylayers,$myfulllayers){
 			//console.log(extralayer);
 			if (extralayer.overlay == 1) {
 				overlays[extralayer.mapid] = L.tileLayer(extralayer.tile, {attribution: extralayer.attr, id: extralayer.mapid});
+				if (extralayer.opacity == 1) {
+					opacity[extralayer.mapid] = overlays[extralayer.mapid];
+				}
 			} else {
 				baselayers[extralayer.mapid] = L.tileLayer(extralayer.tile, {attribution: extralayer.attr, id: extralayer.mapid});
+				if (extralayer.opacity == 1) {
+					opacity[extralayer.mapid] = baselayers[extralayer.mapid];
+				}
 			}
 		});
 
@@ -64,8 +79,8 @@ function leafext_layerswitch_script($mylayers,$myfulllayers){
 		//L.control.layers(baselayers,overlays).addTo(map);
 		L.control.layers(baselayers,overlays,{collapsed: false} ).addTo(map);
 		//L.control.opacity(overlays, {label: "Layers Opacity",}).addTo(map);
-		//L.control.opacity(overlays).addTo(map);
-		//L.control.opacity(overlays, {collapsed: true}).addTo(map);
+		L.control.opacity(opacity).addTo(map);
+		//L.control.opacity(opacity, {collapsed: true}).addTo(map);
 	});
 	</script>';
 	$text = \JShrink\Minifier::minify($text);
@@ -88,9 +103,15 @@ function leafext_layerswitch_function(){
 			} else {
 				$overlay = "";
 			}
+			if (! is_null($option['opacity']) && !$option['opacity'] == "" ) {
+				$opacity = $option['opacity'];
+			} else {
+				$opacity = "";
+			}
 			$mapsfull[] = array(
 				'mapid' => '"'.$option['mapid'].'"',
 				'overlay' => $overlay,
+				'opacity' => $opacity,
 				'options' => $entry,
 			);
 		} else {
