@@ -9,11 +9,11 @@
 }
 
 /* multielevation tracks list top right */
-.leaflet-right .leaflet-control-layers-list {
+/*.leaflet-right .leaflet-control-layers-list {
 	max-width: 250px;
 	max-height: 25vh;
 	overflow: auto;
-}
+} */
 
 /*multielevation chart */
 #elevation-div {

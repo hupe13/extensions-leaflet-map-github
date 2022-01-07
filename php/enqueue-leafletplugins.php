@@ -168,3 +168,14 @@ function leafext_enqueue_easybutton() {
 	leafext_enqueue_awesome();
 	leafext_css();
 }
+
+function leafext_enqueue_opacity () {
+	wp_enqueue_style( 'Leaflet.Control.Opacity',
+		plugins_url('leaflet-plugins/Leaflet.Control.Opacity/L.Control.Opacity.css',
+		LEAFEXT_PLUGIN_FILE),
+		array('leaflet_stylesheet'),null);
+	wp_enqueue_script('Leaflet.Control.Opacity',
+		plugins_url('leaflet-plugins/Leaflet.Control.Opacity/L.Control.Opacity.js',
+		LEAFEXT_PLUGIN_FILE),
+		array('wp_leaflet_map'),null);
+}
