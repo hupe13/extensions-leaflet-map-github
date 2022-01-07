@@ -52,7 +52,13 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.2.2 / 2112xx
+### 2.2.3 / 220xxx
+
+* elevation: miles marker
+* layerswitch: extra options
+* Leaflet.Control.Opacity (Plan)
+
+### 2.2.2 / 211228
 * gestures: The language can be determined by Site or by Browser
 * multielevation revised:
    * bug fix start marker
