@@ -18,12 +18,12 @@ function leafext_elevation_params() {
 			'param' => 'theme',
 			'shortdesc' => __('Theme Colors',"extensions-leaflet-map"),
 			'desc' => '<p>
-				lime - <img src="'.LEAFEXT_ELEVATION_URL.'/images/elevation-lime.svg" alt="lime" />
-				steelblue - <img width=26px height=26px src="'.LEAFEXT_ELEVATION_URL.'/images/elevation-steelblue.svg" alt="steelblue" />
-				purple - <img src="'.LEAFEXT_ELEVATION_URL.'/images/elevation-purple.svg" alt="purple" />
-				yellow - <img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-yellow.svg" alt="yellow" />
-				red - <img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-red.svg" alt="red" />
-				magenta - <img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-magenta.svg" alt="magenta" />
+				lime - <img src="'.LEAFEXT_ELEVATION_URL.'/images/elevation-lime.svg" alt="lime" /> /
+				steelblue - <img width=26px height=26px src="'.LEAFEXT_ELEVATION_URL.'/images/elevation-steelblue.svg" alt="steelblue" /> /
+				purple - <img src="'.LEAFEXT_ELEVATION_URL.'/images/elevation-purple.svg" alt="purple" /> /
+				yellow - <img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-yellow.svg" alt="yellow" /> /
+				red - <img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-red.svg" alt="red" /> /
+				magenta - <img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-magenta.svg" alt="magenta" /> / 
 				lightblue - <img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-lightblue.svg" alt="lightblue" />
 				</p>',
 			'default' => "lime-theme",
