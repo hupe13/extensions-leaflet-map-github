@@ -2,7 +2,7 @@
 
 # Extensions for Leaflet Map Github Version
 
-Stable tag: 2.2.2  
+Stable tag: 2.2.3 unstable  
 Tested up to: 5.8  
 License: GPLv2 or later  
 Tags: leaflet, gpx, elevation, markercluster, zoomhome, hover, fullscreen, gps, garmin, altitude  
@@ -17,6 +17,8 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 *   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation), [Leaflet.EasyButton](https://github.com/CliffCloud/Leaflet.EasyButton): Track with Elevation Profile
 *   [leaflet-gpxgroup](https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js), [Leaflet.GeometryUtil](https://github.com/makinacorpus/Leaflet.GeometryUtil): Multiple tracks with elevation profiles on one map
 *   [L.control.layers](https://leafletjs.com/examples/layers-control/): Switching Tilelayers
+*   [Leaflet-providers](https://github.com/leaflet-extras/leaflet-providers): An extension that contains configurations for various tile providers.
+*   [Leaflet.Control.Opacity](https://github.com/dayjournal/Leaflet.Control.Opacity): makes multiple tile layers transparent.
 *   [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster): Marker Cluster
 *   [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup):  add/remove groups of markers from Marker Cluster.
 *   [Leaflet.MarkerCluster.PlacementStrategies](https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies):  implements new possibilities how to place clustered children markers
@@ -56,7 +58,8 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 * elevation: miles marker
 * layerswitch: extra options
-* Leaflet.Control.Opacity (Plan)
+* Leaflet-providers
+* Leaflet.Control.Opacity
 
 ### 2.2.2 / 211228
 * gestures: The language can be determined by Site or by Browser

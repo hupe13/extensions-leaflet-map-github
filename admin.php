@@ -3,11 +3,9 @@
 defined( 'ABSPATH' ) or die();
 
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/main.php';
-
 include LEAFEXT_PLUGIN_DIR . '/admin/cluster/main.php';
-
 include LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
-include LEAFEXT_PLUGIN_DIR . '/admin/layerswitch.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/tiles/main.php';
 
 // Add menu page
 function leafext_add_page() {
@@ -49,11 +47,17 @@ function leafext_do_page() {
 	}
 	echo '">'. __('Markercluster','extensions-leaflet-map'). '</a>'."\n";
 	//
+	echo '<a href="?page='.$leafext_plugin_name.'&tab=tileshelp" class="nav-tab';
+	if ( strpos( $active_tab, 'tiles' ) !== false ) {
+		echo ' nav-tab-active';
+	}
+	echo '">'. __('Tiles','extensions-leaflet-map'). '</a>'."\n";
+	//
 	$tabs = array (
-		array (
-			'tab' => 'tilelayers',
-			'title' => __('Switching Tile Layers','extensions-leaflet-map'),
-		),
+		// array (
+		// 	'tab' => 'tilelayers',
+		// 	'title' => __('Switching Tile Layers','extensions-leaflet-map'),
+		// ),
 		array (
 			'tab' => 'hover',
 			'title' => __('Hovering','extensions-leaflet-map'),
@@ -88,12 +92,8 @@ function leafext_do_page() {
 		leafext_admin_elevation($active_tab);
 	} else if ( strpos( $active_tab, 'cluster' ) !== false ) {
 		leafext_admin_cluster($active_tab);
-	} else if ( $active_tab == 'tilelayers' ) {
-		echo '<form method="post" action="options.php">';
-		settings_fields('leafext_settings_maps');
-		do_settings_sections( 'leafext_settings_maps' );
-		submit_button();
-		echo '</form>';
+	} else if ( strpos( $active_tab, 'tiles' ) !== false ) {
+		leafext_admin_tiles($active_tab);
 	} else if( $active_tab == 'hover' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/help/hovergeojson.php';
 	} else if( $active_tab == 'gesture' ) {

@@ -23,7 +23,7 @@ function leafext_form_maps() {
 		"attr" => "" ,
 		"tile" => "",
 		"overlay" => "",
-		"oacity" => "",
+		"opacity" => "",
 	);
 	$options[]=$map;
 	$i=0;$count=count($options);
@@ -42,7 +42,7 @@ function leafext_form_maps() {
 		echo '<td><input type="text" size="80" placeholder="Copyright" name="leafext_maps['.$i.'][attr]" value="'.esc_attr($option['attr']).'" /></td>';
 		echo '</tr>';
 
-		echo '<tr><th scope="row-title">Tile server:</th>';
+		echo '<tr><th scope="row-title">Tile Server:</th>';
 		echo '<td><input type="url"  size="80" placeholder="https://{s}.tile.server.tld/{z}/{x}/{y}.png" name="leafext_maps['.$i.'][tile]" value="'.$option['tile'].'" /></td>';
 		echo '</tr>';
 
@@ -59,13 +59,13 @@ function leafext_form_maps() {
 			pattern='."'".'[a-zA-Z0-9_: ",\[\]\-.\{\}]*'."'".' value="'.esc_attr($option['options']).'" /></td>';
 		echo '</tr>';
 
-		echo '<tr><th scope="row-title">Overlay:</th>';
+		echo '<tr><th scope="row-title">Overlay Layer:</th>';
 		if (!isset($option['overlay'])) $option['overlay'] = "0";
 		$checked = $option['overlay'] == "1" ? "checked" : "";
 		echo '<td><input type="checkbox"  name="leafext_maps['.$i.'][overlay]" value="1" '.$checked.'/>';
 		echo '</td></tr>';
 
-		echo '<tr><th scope="row-title">Opacity:</th>';
+		echo '<tr><th scope="row-title">Leaflet.Control.Opacity:</th>';
 		if (!isset($option['opacity'])) $option['opacity'] = "0";
 		$checked = $option['opacity'] == "1" ? "checked" : "";
 		echo '<td><input type="checkbox"  name="leafext_maps['.$i.'][opacity]" value="1" '.$checked.'/>';
@@ -80,13 +80,10 @@ function leafext_validate_mapswitch($options) {
 	//
 	$maps = array();
 	foreach ($options as $option) {
-		if ( $option['mapid'] !="" && $option['attr'] !="" && $option['tile'] != "" ) {
+		if ( $option['mapid'] !="" ) {
 			$map=array();
 			$map['mapid'] = sanitize_text_field ( $option['mapid'] );
-			$map['attr'] =
-			//sanitize_text_field
-			wp_kses_normalize_entities
-			( $option['attr'] );
+			$map['attr'] = wp_kses_normalize_entities( $option['attr'] );
 			$map['tile'] = sanitize_text_field ( $option['tile'] );
 			$map['options'] = wp_kses_normalize_entities( $option['options'] );
 			$map['overlay'] = $option['overlay'] ;
@@ -100,21 +97,20 @@ function leafext_validate_mapswitch($options) {
 // Erklaerung / Hilfe
 function leafext_maps_help_text() {
 	//echo '<h4 id="switching-tile-layers">'.__('Switching Tile Layers','extensions-leaflet-map').'</h4>
-	echo '<img src="'.LEAFEXT_PLUGIN_PICTS.'layerswitch.png"><p>
-	<h2>'.__('About Tile servers','extensions-leaflet-map').'</h2>
-	<p>'.sprintf(__('The default Map Tiles are defined in the %s Settings%s
-	with the options %s and %s. %s and %s are
-	also important. You can define additionally Tile Servers here.','extensions-leaflet-map'),
-	'<a href="'.get_admin_url().'admin.php?page=leaflet-map">Leaflet Map ',
-	'</a>','tileurl, subdomains ','attribution','min_zoom','max_zoom').'</p>
-
-	<h2>Shortcode</h2>
-<pre><code>[leaflet-map mapid="..." ...]
+	echo '<img src="'.LEAFEXT_PLUGIN_PICTS.'layerswitch.png"><p>';
+echo __('Here you can define your Tile services. Additionally you can specify if opacity should be regulated.','extensions-leaflet-map');
+echo	'<h2>Shortcode</h2>';
+echo __('Per default all your tiles appear.','extensions-leaflet-map');
+echo '<pre><code>[leaflet-map mapid="..." ...]
 [layerswitch]
+</code></pre>';
+echo __('You can select your defined Tile Services with parameter <code>tiles</code> as comma separated list in the shortcode:','extensions-leaflet-map');
+echo '<pre><code>[leaflet-map mapid="..." ...]
+[layerswitch tiles="mapid1,mapid2,..."]
 </code></pre>';
 	echo '<p>'.
 		__("Configure a mapid, attribution and a tile url for each tile service.","extensions-leaflet-map").
-		' mapid '.__("appears in the switching control. To delete a service simply clear the values.","extensions-leaflet-map")
+		' mapid '.__("appears in the switching control. To delete a service simply clear the field mapid.","extensions-leaflet-map")
 		.'</p>';
 	echo '<div colspan=2 style="border-top: 3px solid #646970"> </div>';
 }
