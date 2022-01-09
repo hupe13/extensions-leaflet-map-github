@@ -3,6 +3,7 @@
 # Extensions for Leaflet Map Github Version
 
 Stable tag: 2.2.3 unstable  
+Requires at least: 5.5.3
 Tested up to: 5.8  
 License: GPLv2 or later  
 Tags: leaflet, gpx, elevation, markercluster, zoomhome, hover, fullscreen, gps, garmin, altitude  

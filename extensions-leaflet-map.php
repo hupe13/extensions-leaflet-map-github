@@ -5,6 +5,7 @@
  * Description: Extensions for the WordPress plugin Leaflet Map Github Version
  * Version:     2.2.3 unstable
  * Author:      hupe13
+ * License:     GPL v2 or later
  * Text Domain: extensions-leaflet-map
 **/
 
