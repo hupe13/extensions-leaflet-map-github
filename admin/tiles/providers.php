@@ -77,16 +77,22 @@ function leafext_validate_providers($options) {
 
 // Erklaerung / Hilfe
 function leafext_providers_help() {
-	echo '<pre><code>[leaflet-map]
+	$text = '<pre><code>[leaflet-map]
 [layerswitch providers="WaymarkedTrails.hiking"]
 
 [leaflet-map mapid="OSM"]
 [layerswitch providers="WaymarkedTrails.hiking,OPNVKarte"]</code></pre>'.
-'<p>'.'For a list of providers see <a href="http://leaflet-extras.github.io/leaflet-providers/preview/"
->http://leaflet-extras.github.io/leaflet-providers/preview/</a>.'
-.'</p>';
-echo '<p>I did not tested all, I have only checked the Javascript code. If something is not working, please let me know.
-</p>';
+	'<p>'.'For a list of providers see <a href="http://leaflet-extras.github.io/leaflet-providers/preview/"
+	>http://leaflet-extras.github.io/leaflet-providers/preview/</a>.'
+	.'</p>';
+	if (!(is_singular()|| is_archive())) {
+		$text = $text.'<p>I did not tested all, I have only checked the Javascript code. If something is not working, please let me know.</p>';
+	}
+	if (is_singular()|| is_archive() ) {
+		return $text;
+	} else {
+		echo $text;
+	}
 }
 
 // Draw the menu page itself

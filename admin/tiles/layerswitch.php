@@ -96,21 +96,30 @@ function leafext_validate_mapswitch($options) {
 
 // Erklaerung / Hilfe
 function leafext_maps_help_text() {
-	//echo '<h4 id="switching-tile-layers">'.__('Switching Tile Layers','extensions-leaflet-map').'</h4>
-	echo '<img src="'.LEAFEXT_PLUGIN_PICTS.'layerswitch.png"><p>';
-echo __('Here you can define your Tile services. Additionally you can specify if opacity should be regulated.','extensions-leaflet-map');
-echo	'<h2>Shortcode</h2>';
-echo __('Per default all your tiles appear.','extensions-leaflet-map');
-echo '<pre><code>[leaflet-map mapid="..." ...]
+	$text = "";
+	if (!(is_singular()|| is_archive())) {
+		$text = $text.'<img src="'.LEAFEXT_PLUGIN_PICTS.'layerswitch.png"><p>';
+		$text = $text.__('Here you can define your Tile servers. Additionally you can specify if opacity should be regulated.','extensions-leaflet-map');
+	}
+	$text = $text.'<h2>Shortcode</h2>';
+	$text = $text.__('Per default all defined tile servers appear.','extensions-leaflet-map');
+	$text = $text.'<pre><code>[leaflet-map mapid="..." ...]
 [layerswitch]
 </code></pre>';
-echo __('You can select your defined Tile Services with parameter <code>tiles</code> as comma separated list in the shortcode:','extensions-leaflet-map');
-echo '<pre><code>[leaflet-map mapid="..." ...]
+	$text = $text.__('You can select your defined Tile Server with parameter <code>tiles</code> as comma separated list in the shortcode:','extensions-leaflet-map');
+	$text = $text.'<pre><code>[leaflet-map mapid="..." ...]
 [layerswitch tiles="mapid1,mapid2,..."]
 </code></pre>';
-	echo '<p>'.
-		__("Configure a mapid, attribution and a tile url for each tile service.","extensions-leaflet-map").
-		' mapid '.__("appears in the switching control. To delete a service simply clear the field mapid.","extensions-leaflet-map")
-		.'</p>';
-	echo '<div colspan=2 style="border-top: 3px solid #646970"> </div>';
+	if (!(is_singular()|| is_archive())) {
+		$text = $text.'<p>'.
+			__("Configure a mapid, attribution and a tile url for each tile server.","extensions-leaflet-map").
+			' mapid '.__("appears in the switching control. To delete a server simply clear the field mapid.","extensions-leaflet-map")
+			.'</p>';
+			$text = $text.'<div colspan=2 style="border-top: 3px solid #646970"> </div>';
+	}
+	if (is_singular()|| is_archive() ) {
+		return $text;
+	} else {
+		echo $text;
+	}
 }
