@@ -9,9 +9,8 @@ defined( 'ABSPATH' ) or die();
 //[leaflet-map mapid=" "]
 //Shortcode: [layerswitch]
 
-function leafext_layerswitch_script($mylayers,$myfulllayers){
-	$text = '
-	<script>
+function leafext_layerswitch_begin_script() {
+	$text = '<script>
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
@@ -21,6 +20,8 @@ function leafext_layerswitch_script($mylayers,$myfulllayers){
 		var defaultAttr = String(attributions);
 		map.attributionControl._attributions = {};
 		var baselayers = {};
+		var overlays = {};
+		var opacity = {};
 
 		map.eachLayer(function(layer) {
 			if( layer instanceof L.TileLayer ) {
@@ -34,10 +35,12 @@ function leafext_layerswitch_script($mylayers,$myfulllayers){
 				map.removeLayer(layer);
 				map.addLayer(layer);
 			}
-		});
+		});';
+		return $text;
+}
 
-		var overlays = {};
-		var opacity = {};
+function leafext_layerswitch_tiles_script($mylayers,$myfulllayers){
+	$text = '
 		var mylayers = '.json_encode($mylayers).';
 		';
 		foreach ($myfulllayers as $myfulllayer) {
@@ -72,82 +75,147 @@ function leafext_layerswitch_script($mylayers,$myfulllayers){
 				}
 			}
 		});
+	';
+	return $text;
+}
 
+function leafext_providers_fkt_script() {
+	$text = '
+	//https://github.com/leaflet-extras/leaflet-providers/blob/57d69ea6e75834235c607eab72cbb4da862ddc96/preview/preview.js#L56';
+	$text = $text."
+	function isOverlay (providerName, layer) {
+		if (layer.options.opacity && layer.options.opacity < 1) {
+			return true;
+		}
+		var overlayPatterns = [
+			'^(OpenWeatherMap|OpenSeaMap|OpenSnowMap)',
+			'OpenMapSurfer.(Hybrid|AdminBounds|ContourLines|Hillshade|ElementsAtRisk)',
+			'Stamen.Toner(Hybrid|Lines|Labels)',
+			'Hydda.RoadsAndLabels',
+			'^JusticeMap',
+			'OpenAIP',
+			'OpenRailwayMap',
+			'OpenFireMap',
+			'SafeCast',
+			'WaymarkedTrails.(hiking|cycling|mtb|slopes|riding|skating)'
+		];
+
+		return providerName.match('(' + overlayPatterns.join('|') + ')') !== null;
+	};";
+	return $text;
+}
+
+function leafext_providers_script($maps) {
+	$regtiles = get_option('leafext_providers',array());
+	foreach ($maps as $map) {
+		$id = array_search(explode ( '.', $map )[0], array_column($regtiles, 'name'));
+		if ($id !== false) {
+			$text = $text.'var layer = L.tileLayer.provider("'.$map.'", {';
+			foreach ( $regtiles[$id]['keys'] as $key => $value ) {
+				$text = $text.$key.': "';
+				$text = $text.$value.'",';
+			}
+			$text = $text.'} );';
+		} else {
+			$text = $text.'var layer = L.tileLayer.provider("'.$map.'");';
+		}
+		$text = $text.'
+		if (isOverlay("'.$map.'", layer)) {
+			overlays["'.$map.'"] = layer;
+		} else {
+			baselayers["'.$map.'"] = layer;
+		}';
+	}
+	return $text;
+}
+
+function leafext_layerswitch_end_script() {
+	$text = '
 		//console.log(baselayers);
 		//console.log(overlays);
-
 		//L.control.layers(baselayers,overlays).addTo(map);
 		L.control.layers(baselayers,overlays,{collapsed: false} ).addTo(map);
-		//L.control.opacity(overlays, {label: "Layers Opacity",}).addTo(map);
 		if ( Object.entries(opacity).length !==  0) {
 			L.control.opacity(opacity).addTo(map);
 			//L.control.opacity(opacity, {collapsed: true}).addTo(map);
 		}
 	});
 	</script>';
-	$text = \JShrink\Minifier::minify($text);
-	return "\n".$text."\n";
+	return $text;
 }
 
 function leafext_layerswitch_function($atts){
-	//
+	$providers = "";
 	if (is_array($atts)){
 		if ( array_key_exists('providers',$atts) ) {
 			leafext_enqueue_providers();
-			//leafext_enqueue_opacity ();
 			$providers = explode ( ',', $atts['providers'] );
-			return leafext_providers_script($providers);
-			//
 		}
 	}
 	$options = get_option('leafext_maps');
-	if (!is_array($options )) return;
-	//
-	$tiles = array();
-	$tiles_alloptions = array();
+	if ( is_array($options )) {
 		//
-	if (is_array($atts)){
-		if ( array_key_exists('tiles',$atts) ) {
-			$only = array();
-			$atts_maps = explode(',',$atts['tiles']);
-			foreach ( $atts_maps as $atts_map ) {
-				foreach ($options as $option) {
-					if ($option['mapid'] == $atts_map) {
-						$only[]=$option;
+		$tiles = array();
+		$tiles_alloptions = array();
+			//
+		if (is_array($atts)) {
+			if ( array_key_exists('tiles',$atts) ) {
+				$only = array();
+				$atts_maps = explode(',',$atts['tiles']);
+				foreach ( $atts_maps as $atts_map ) {
+					foreach ($options as $option) {
+						if ($option['mapid'] == $atts_map) {
+							$only[]=$option;
+						}
 					}
+					$options = $only;
 				}
-				$options = $only;
+			} else {
+				if ( is_array($providers) ) {
+					$options = array();
+				}
+			}
+		}
+		foreach ($options as $option) {
+			if (! is_null($option['options']) && !$option['options'] == "" ) {
+				// L.tileLayer(extralayer.tile, {attribution: extralayer.attr, id: extralayer.mapid});
+				$entry = 'attribution: "'.str_replace('"','\"',$option['attr']).'", id: "'.$option['mapid'].'", ';
+				$entry = '"'.$option['tile'].'", {'.$entry.$option['options'].'}';
+				if (! is_null($option['overlay']) && !$option['overlay'] == "" ) {
+					$overlay = $option['overlay'];
+				} else {
+					$overlay = "";
+				}
+				if (! is_null($option['opacity']) && !$option['opacity'] == "" ) {
+					$opacity = $option['opacity'];
+				} else {
+					$opacity = "";
+				}
+				$tiles_alloptions[] = array(
+					'mapid' => '"'.$option['mapid'].'"',
+					'overlay' => $overlay,
+					'opacity' => $opacity,
+					'options' => $entry,
+				);
+			} else {
+				$tiles[] = $option;
 			}
 		}
 	}
-
-	foreach ($options as $option) {
-		if (! is_null($option['options']) && !$option['options'] == "" ) {
-			// L.tileLayer(extralayer.tile, {attribution: extralayer.attr, id: extralayer.mapid});
-			$entry = 'attribution: "'.str_replace('"','\"',$option['attr']).'", id: "'.$option['mapid'].'", ';
-			$entry = '"'.$option['tile'].'", {'.$entry.$option['options'].'}';
-			if (! is_null($option['overlay']) && !$option['overlay'] == "" ) {
-				$overlay = $option['overlay'];
-			} else {
-				$overlay = "";
-			}
-			if (! is_null($option['opacity']) && !$option['opacity'] == "" ) {
-				$opacity = $option['opacity'];
-			} else {
-				$opacity = "";
-			}
-			$tiles_alloptions[] = array(
-				'mapid' => '"'.$option['mapid'].'"',
-				'overlay' => $overlay,
-				'opacity' => $opacity,
-				'options' => $entry,
-			);
-		} else {
-			$tiles[] = $option;
-		}
-	}
+	if ( !is_array($tiles) && !is_array($tiles_alloptions) && !is_array($providers) ) return;
 	leafext_enqueue_opacity ();
-	return leafext_layerswitch_script($tiles,$tiles_alloptions);
+
+	$text = leafext_layerswitch_begin_script();
+	if ( is_array($tiles) || is_array($tiles_alloptions) ) {
+		$text = $text.leafext_layerswitch_tiles_script($tiles,$tiles_alloptions);
+	}
+	if (is_array($providers) ) {
+		$text = $text.leafext_providers_fkt_script();
+		$text = $text.leafext_providers_script($providers);
+	}
+	$text = $text.leafext_layerswitch_end_script();
+	//$text = \JShrink\Minifier::minify($text);
+	return "\n".$text."\n";
 }
 add_shortcode('layerswitch', 'leafext_layerswitch_function' );
 ?>
