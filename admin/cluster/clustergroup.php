@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) or die();
 echo '
 <h2 id="leaflet.featuregroup.subgroup">Leaflet.FeatureGroup.SubGroup</h2>
 <img src="'.LEAFEXT_PLUGIN_PICTS.'clustergroup.png">
-	
+
 <p>'.
 __('Dynamically add/remove groups of markers from Marker Cluster','extensions-leaflet-map').
 '.</p><h3>Options and Shortcode</h3>
@@ -29,7 +29,7 @@ __('The number of %s and %s must match.','extensions-leaflet-map'),"<code>string
 [markerClusterGroup feat="iconUrl" strings="red,green" groups="rot,gruen"]
 </code></pre>
 '.__('or','extensions-leaflet-map').'
-<pre><code>[leaflet-marker title="first ..."  ... ] ... [/leaflet-marker]
+<pre><code>[leaflet-marker title="first ..." ... ] ... [/leaflet-marker]
 [leaflet-marker title="second ..." ... ] ... [/leaflet-marker]
 //many markers
 [markerClusterGroup feat="title" strings="first,second" groups="First Group,Second Group"]

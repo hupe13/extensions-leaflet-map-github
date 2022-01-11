@@ -13,15 +13,15 @@ function leafext_tiles_tab() {
 	$tabs = array (
 		array (
 			'tab' => 'tileshelp',
-			'title' => 'Tile Services',
+			'title' => __('Tile Server','extensions-leaflet-map'),
 		),
 		array (
 			'tab' => 'tilesproviders',
-			'title' => 'Leaflet-providers',
+			'title' => __('Leaflet-providers','extensions-leaflet-map'),
 		),
 		array (
 			'tab' => 'tileswitch',
-			'title' => 'Extra Tile Services',
+			'title' => __('Extra Tile Server','extensions-leaflet-map'),
 		),
 	);
 

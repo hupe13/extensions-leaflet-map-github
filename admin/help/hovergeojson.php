@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die();
 
 $text='<h2 id="hovergeojson">hovering</h2>
 <img src="'.LEAFEXT_PLUGIN_PICTS.'hover.png">
-<p>'.__('Use it to highlight a geojson or marker and get a tooltip on mouse over.','extensions-leaflet-map').' '.
+<p>'.__('Use it to highlight a gpx, kml, geojson or marker and get a tooltip on mouse over.','extensions-leaflet-map').' '.
 sprintf(
 __('It works on %s and %s.','extensions-leaflet-map'),"leaflet-geojson, leaflet-gpx, leaflet-kml","leaflet-marker");
 $text = $text. '</p>

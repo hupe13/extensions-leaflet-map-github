@@ -86,7 +86,7 @@ function leafext_admin_elevation($active_tab) {
 		echo '</form>';
 
 
-	} else if( $active_tab == 'elevation' ) {  //Last tab!!!
+	} else if( $active_tab == 'elevation' ) { //Last tab!!!
 		echo '<form method="post" action="options.php">';
 		settings_fields('leafext_settings_eleparams');
 		do_settings_sections( 'leafext_settings_eleparams' );

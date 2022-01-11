@@ -26,7 +26,7 @@ function leafext_form_gesture($field) {
 	$setting = $settings[$field];
 	if ( $option['desc'] != "" ) echo '<p>'.$option['desc'].'</p>';
 	//echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option['param']. '</code><br>';
-	
+
 	if (!is_array($option['values'])) {
 
 		if ($setting != $option['default'] ) {
@@ -73,8 +73,9 @@ function leafext_validate_gesture($input) {
 // Erklaerung
 function leafext_gesture_help_text() {
 	echo '<img src="'.LEAFEXT_PLUGIN_PICTS.'gesture.png">
-	<p>'.__('Brings the basic functionality of Gesture Handling into Leaflet Map.
-	Prevents users from getting trapped on the map when scrolling a long page.
-	You can enable it for all maps or for particular maps. It becomes active
-	only when dragging or scrollWheelZoom is enabled.','extensions-leaflet-map').'</p>';
+	<p>'.
+	sprintf(__('Brings the basic functionality of Gesture Handling into Leaflet Map. Prevents users from getting trapped on the map when scrolling a long page. You can enable it for all maps or for particular maps. It becomes active only when %s or %s is enabled.','extensions-leaflet-map'),
+	'dragging',
+	'scrollWheelZoom')
+	.'</p>';
 }

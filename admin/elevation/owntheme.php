@@ -79,7 +79,7 @@ function leafext_form_other_theme() {
 function leafext_validate_elevationtheme($input) {
 	if (isset($_POST['submit'])) {
 		if ( $input['theme'] == 'other' ) {
-			$input['othertheme'] =  sanitize_text_field($input['othertheme']);
+			$input['othertheme'] = sanitize_text_field($input['othertheme']);
 			return $input;
 		} else {
 			delete_option('leafext_values');

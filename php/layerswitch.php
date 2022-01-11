@@ -94,6 +94,7 @@ function leafext_layerswitch_function($atts){
 	if (is_array($atts)){
 		if ( array_key_exists('providers',$atts) ) {
 			leafext_enqueue_providers();
+			//leafext_enqueue_opacity ();
 			$providers = explode ( ',', $atts['providers'] );
 			return leafext_providers_script($providers);
 			//

@@ -76,7 +76,7 @@ function leafext_sgpx_unclean_db_init(){
 }
 add_action('admin_init', 'leafext_sgpx_unclean_db_init' );
 
-// 
+//
 function leafext_form_sgpx_unclean_db() {
 	//
 }
@@ -105,13 +105,13 @@ function leafext_sgpx_help_text () {
 		'<code>sgpx</code>');
 	echo '<h2>'.__('Migration','extensions-leaflet-map').'</h2>';
 	echo sprintf(__("This page helps you to migrate from %s to %s.","extensions-leaflet-map"),'<code>sgpx</code>','<code>elevation</code>');
-	
+
 	echo ' '.sprintf(
 		__('See documentation and examples in %shere%s.',
 			"extensions-leaflet-map"),
 			'<a href="https://leafext.de/en/doku/elevation/sgpx/">',
 			'</a>');
-			
+
 	echo '<ul>';
 	if ( LEAFEXT_SGPX_ACTIVE ) {
 		echo '<li>';
@@ -122,17 +122,15 @@ function leafext_sgpx_help_text () {
 		echo sprintf(__('If you want to test it first: select %s and write in your test page / post %s.',"extensions-leaflet-map"),'"leaflet"','<code>[leaflet-map height="1"]</code>');
 		echo '</li><li>';
 		echo sprintf(__("If you are happy with it and if you don't use its track management, you can deactivate and delete the plugin %s.","extensions-leaflet-map"),'wp-gpx-maps');
-		echo ' ';
-		echo sprintf(__('(It could be, that %s will manage the tracks at some point.)',"extensions-leaflet-map"),'extensions-leaflet-map');
 		echo '</li>';
 		echo '<li>';
 		echo __('If you have deactivated the plugin, call this page again.',"extensions-leaflet-map");
 		echo '</li>';
 	} else { // nicht mehr aktiv
 		echo '<li>'.sprintf(__("%s is not active, %s parameters will interpreted with %s.","extensions-leaflet-map"),'wp-gpx-maps','sgpx','elevation').'</li>';
-		if ( LEAFEXT_SGPX_UNCLEAN_DB ) { 
+		if ( LEAFEXT_SGPX_UNCLEAN_DB ) {
 			echo '<li>'.__("You have wp-gpx-maps uninstalled, but some of its options exist in the database. You should delete them.","extensions-leaflet-map").'</li>';
-		} else if ( LEAFEXT_SGPX_SGPX ) { 
+		} else if ( LEAFEXT_SGPX_SGPX ) {
 			echo '<li>'.__("You can delete all settings on this page.","extensions-leaflet-map").'</li>';
 		}
 	}

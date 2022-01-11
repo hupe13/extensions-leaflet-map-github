@@ -23,7 +23,7 @@ function leafext_elevation_params() {
 				purple - <img src="'.LEAFEXT_ELEVATION_URL.'/images/elevation-purple.svg" alt="purple" /> /
 				yellow - <img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-yellow.svg" alt="yellow" /> /
 				red - <img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-red.svg" alt="red" /> /
-				magenta - <img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-magenta.svg" alt="magenta" /> / 
+				magenta - <img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-magenta.svg" alt="magenta" /> /
 				lightblue - <img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-lightblue.svg" alt="lightblue" />
 				</p>',
 			'default' => "lime-theme",
@@ -283,7 +283,7 @@ function leafext_elevation_params() {
 		//preferCanvas: true
 		array(
 			'param' => 'preferCanvas',
-			'shortdesc' =>  __('Render chart profiles as Canvas or SVG Paths.',"extensions-leaflet-map"),
+			'shortdesc' => __('Render chart profiles as Canvas or SVG Paths.',"extensions-leaflet-map"),
 			'desc' => sprintf ( __('Due to a bug in MacOS and iOS, see %shere%s, you should it set to false.',"extensions-leaflet-map"), '<a href="https://github.com/Raruto/leaflet-elevation/issues/123">','</a>'),
 			'default' => true,
 			'values' => 1,
@@ -330,13 +330,13 @@ function leafext_elevation_script($gpx,$theme,$settings,$chart){
 			$text = $text.'
 				summary: "inline",
 				slope: "summary",
-				speed:  false,
-				acceleration:  false,
+				speed: false,
+				acceleration: false,
 				time: false,
 				downloadLink: false,
 				preferCanvas: false,
 				legend: false,
-				polyline:  { weight: 3, },
+				polyline: { weight: 3, },
 				';
 				//old settings end
 		} else {
@@ -371,7 +371,7 @@ function leafext_elevation_script($gpx,$theme,$settings,$chart){
 			"Altitude"		: "'.__("Altitude", "extensions-leaflet-map").'",
 			"Slope"			: "'.__("Slope", "extensions-leaflet-map").'",
 			"Speed"			: "'.__("Speed", "extensions-leaflet-map").'",
-			"Total Time: "      : "'.__("Total Time", "extensions-leaflet-map").': ",
+			"Total Time: "			: "'.__("Total Time", "extensions-leaflet-map").': ",
 			"Total Length: "	: "'.__("Total Length", "extensions-leaflet-map").': ",
 			"Max Elevation: "	: "'.__("Max Elevation", "extensions-leaflet-map").': ",
 			"Min Elevation: "	: "'.__("Min Elevation", "extensions-leaflet-map").': ",

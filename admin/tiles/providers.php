@@ -82,11 +82,14 @@ function leafext_providers_help() {
 
 [leaflet-map mapid="OSM"]
 [layerswitch providers="WaymarkedTrails.hiking,OPNVKarte"]</code></pre>'.
-	'<p>'.'For a list of providers see <a href="http://leaflet-extras.github.io/leaflet-providers/preview/"
-	>http://leaflet-extras.github.io/leaflet-providers/preview/</a>.'
+	'<p>'.
+	__('For a list of providers see','extensions-leaflet-map').
+	' <a href="http://leaflet-extras.github.io/leaflet-providers/preview/">http://leaflet-extras.github.io/leaflet-providers/preview/</a>.'
 	.'</p>';
 	if (!(is_singular()|| is_archive())) {
-		$text = $text.'<p>I did not tested all, I have only checked the Javascript code. If something is not working, please let me know.</p>';
+		$text = $text.'<p>'.
+		__('I did not tested all, I have only checked the Javascript code. If something is not working, please let me know.','extensions-leaflet-map').
+		'</p>';
 	}
 	if (is_singular()|| is_archive() ) {
 		return $text;

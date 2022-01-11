@@ -20,8 +20,7 @@ function leafext_help_tiles() {
     $tilesproviders = site_url().'/tiles/providers/';
     $tileswitch = site_url().'/tiles/switch/';
   }
-  $text=$text.sprintf(__('Additionally you can use some predefined Tile Providers with %s
-  or you can define %syour Tile Servers%s.','extensions-leaflet-map'),
+  $text=$text.sprintf(__('Additionally you can use some predefined Tile Providers with %s or you can define %syour Tile Servers%s.','extensions-leaflet-map'),
   '<a href="'.$tilesproviders.'">Leaflet-providers</a>',
   '<a href="'.$tileswitch.'">',
   '</a>');

@@ -144,6 +144,8 @@ function leafext_providers_script($maps){
 		//console.log(baselayers);
 		//console.log(overlays);
 		L.control.layers(baselayers,overlays).addTo(map);
+		//var opacity = overlays;
+		//L.control.opacity(opacity).addTo(map);
 	});
 	</script>';
 	//$text = \JShrink\Minifier::minify($text);

@@ -21,8 +21,8 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 *   [Leaflet-providers](https://github.com/leaflet-extras/leaflet-providers): An extension that contains configurations for various tile providers.
 *   [Leaflet.Control.Opacity](https://github.com/dayjournal/Leaflet.Control.Opacity): makes multiple tile layers transparent.
 *   [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster): Marker Cluster
-*   [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup):  add/remove groups of markers from Marker Cluster.
-*   [Leaflet.MarkerCluster.PlacementStrategies](https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies):  implements new possibilities how to place clustered children markers
+*   [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup): add/remove groups of markers from Marker Cluster.
+*   [Leaflet.MarkerCluster.PlacementStrategies](https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies): implements new possibilities how to place clustered children markers
 *   [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome): Reset the view
 *   [leaflet.fullscreen](https://github.com/brunob/leaflet.fullscreen): Fullscreen mode
 *   [Leaflet.GestureHandling](https://github.com/Raruto/leaflet-gesture-handling): Gesture Handling
@@ -136,9 +136,9 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * fixing markercluster and markerClusterGroup for this.
 
 ### 1.3 / 210513
-* Shortcodes can be used on more than one map per page, except zoomhomemap.  
-* Parameter for GestureHandling  
-* fixed markerClusterGroup  
+* Shortcodes can be used on more than one map per page, except zoomhomemap.
+* Parameter for GestureHandling
+* fixed markerClusterGroup
 * prepare for translation
 * documentation
 
