@@ -16,10 +16,6 @@ function leafext_cluster_tab() {
 			'tab' => 'markercluster',
 			'title' => 'Leaflet.markercluster',
 		),
-		// array (
-			// 'tab' => 'markerclusterold',
-			// 'title' => __('Leaflet.markercluster old settings','extensions-leaflet-map'),
-		//),
 		array (
 			'tab' => 'clustergroup',
 			'title' => 'Leaflet.FeatureGroup.SubGroup',

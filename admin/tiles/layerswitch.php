@@ -99,10 +99,10 @@ function leafext_maps_help_text() {
 	$text = "";
 	if (!(is_singular()|| is_archive())) {
 		$text = $text.'<img src="'.LEAFEXT_PLUGIN_PICTS.'layerswitch.png"><p>';
-		$text = $text.__('Here you can define your Tile servers. Additionally you can specify if opacity should be regulated.','extensions-leaflet-map');
+		$text = $text.__('Here you can define your Tile servers. Additionally you can specify if opacity should be regulated. ','extensions-leaflet-map');
 	}
+	$text = $text.__('Per default all defined tile servers appear, except if the option <code>providers</code> exists. Then you need to specify <code>tiles</code>.','extensions-leaflet-map');
 	$text = $text.'<h2>Shortcode</h2>';
-	$text = $text.__('Per default all defined tile servers appear.','extensions-leaflet-map');
 	$text = $text.'<pre><code>[leaflet-map mapid="..." ...]
 [layerswitch]
 </code></pre>';

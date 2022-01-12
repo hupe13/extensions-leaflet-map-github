@@ -19,7 +19,7 @@ define('LEAFEXT_PLUGIN_PICTS', LEAFEXT_PLUGIN_URL . '/pict/'); // https://url/wp
 define('LEAFEXT_PLUGIN_SETTINGS', dirname( plugin_basename( __FILE__ ) ) ); // extensions-leaflet-map
 
 if ( ! function_exists( 'is_plugin_active' ) )
-    require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
+  require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
 
 if ( ! is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
   function leafext_require_leaflet_map_plugin(){?>
@@ -60,7 +60,7 @@ if (is_admin()) {
 
 // Add settings to plugin page
 function leafext_add_action_links ( $actions ) {
-	$actions[] = '<a href="'. esc_url( get_admin_url(null, 'admin.php?page='.LEAFEXT_PLUGIN_SETTINGS) ) .'">'. esc_html__( "Settings").'</a>';
+  $actions[] = '<a href="'. esc_url( get_admin_url(null, 'admin.php?page='.LEAFEXT_PLUGIN_SETTINGS) ) .'">'. esc_html__( "Settings").'</a>';
   return $actions;
 }
 add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'leafext_add_action_links' );

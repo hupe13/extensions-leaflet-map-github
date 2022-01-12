@@ -23,7 +23,7 @@ function leafext_clustergroup_script($featuregroups,$params){
 					$text=$text.leafext_java_params ($params);
 					$text = $text.'
 				});
-				
+
 				var featGroups = [];
 				let key;
 				for (key in groups) {
@@ -65,9 +65,6 @@ function leafext_clustergroup_script($featuregroups,$params){
 				}
 			}
 		});
-		// title *
-		// alt * (no)
-		// iconUrl *
 		</script>';
 		$text = \JShrink\Minifier::minify($text);
 		return "\n".$text."\n";
@@ -87,7 +84,7 @@ function leafext_clustergroup_function( $atts ){
 		'feat' => sanitize_text_field($featuregroups['feat']),
 		'groups' => array_combine($cl_strings, $cl_groups),
 	);
-	
+
 	$options = leafext_cluster_atts ($atts);
 	return leafext_clustergroup_script($featuregroups,$options);
 }

@@ -82,6 +82,7 @@ function leafext_providers_help() {
 
 [leaflet-map mapid="OSM"]
 [layerswitch providers="WaymarkedTrails.hiking,OPNVKarte"]</code></pre>'.
+__('You can use the parameter <code>tiles</code> also.','extensions-leaflet-map').
 	'<p>'.
 	__('For a list of providers see','extensions-leaflet-map').
 	' <a href="http://leaflet-extras.github.io/leaflet-providers/preview/">http://leaflet-extras.github.io/leaflet-providers/preview/</a>.'

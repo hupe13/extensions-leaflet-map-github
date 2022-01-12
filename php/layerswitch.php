@@ -7,7 +7,7 @@
 defined( 'ABSPATH' ) or die();
 
 //[leaflet-map mapid=" "]
-//Shortcode: [layerswitch]
+//Shortcode: [layerswitch tiles= providers= ]
 
 function leafext_layerswitch_begin_script() {
 	$text = '<script>
@@ -80,9 +80,8 @@ function leafext_layerswitch_tiles_script($mylayers,$myfulllayers){
 }
 
 function leafext_providers_fkt_script() {
-	$text = '
 	//https://github.com/leaflet-extras/leaflet-providers/blob/57d69ea6e75834235c607eab72cbb4da862ddc96/preview/preview.js#L56';
-	$text = $text."
+	$text = "
 	function isOverlay (providerName, layer) {
 		if (layer.options.opacity && layer.options.opacity < 1) {
 			return true;
@@ -99,7 +98,6 @@ function leafext_providers_fkt_script() {
 			'SafeCast',
 			'WaymarkedTrails.(hiking|cycling|mtb|slopes|riding|skating)'
 		];
-
 		return providerName.match('(' + overlayPatterns.join('|') + ')') !== null;
 	};";
 	return $text;
@@ -157,7 +155,7 @@ function leafext_layerswitch_function($atts){
 		//
 		$tiles = array();
 		$tiles_alloptions = array();
-			//
+		//
 		if (is_array($atts)) {
 			if ( array_key_exists('tiles',$atts) ) {
 				$only = array();

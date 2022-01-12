@@ -27,7 +27,6 @@ define('LEAFEXT_SGPX_SGPX', $sgpx_opts);
 
 // Erstmal alles von wp-gpx-map entfernen
 if ( LEAFEXT_SGPX_ACTIVE ) {
-
 	function leafext_dequeue_sgpx() {
 		wp_dequeue_script('leaflet');
 		wp_dequeue_style('leaflet.fullscreen');
@@ -164,10 +163,9 @@ function leafext_sgpx_settings() {
 }
 
 function leafext_sgpx_function( $atts ) {
-	$options=get_option('leafext_sgpxparams');
+  $options=get_option('leafext_sgpxparams');
   if ( LEAFEXT_SGPX_ACTIVE && LEAFEXT_SGPX_SGPX && $options['sgpx'] == "leaflet" && !wp_script_is( "wp_leaflet_map", 'enqueued' ) ) {
-
-		if (function_exists('enqueue_WP_GPX_Maps_scripts')) {
+    if (function_exists('enqueue_WP_GPX_Maps_scripts')) {
       enqueue_WP_GPX_Maps_scripts();
       wp_dequeue_style('leaflet.Photo');
   		wp_dequeue_script('leaflet.Photo');
@@ -219,31 +217,31 @@ function leafext_sgpx_function( $atts ) {
 		foreach ($eleele as $k => $v) {
       if ( $v == "") continue;
 			switch (gettype($v)) {
-			case "string":
-				switch ($v) {
-          case "false":
-					case "0": $value = '"0"'; break;
-					case "true":
-					case "1": $value = '"1"'; break;
-					default:
-						if (is_numeric($v)) {
-							$value = $v;
-						} else {
-							$value = '"'.$v.'"';
-						}
-					break;
-				}
-				break;
-			case "boolean":
-				$value = $v ? '"1"' : '"0"'; break;
-			case "integer":
-				switch ($v) {
-					//case 0: $value = "false"; break;
-					//case 1: $value = "true"; break;
-					default: $value = $v; break;
-				}
-				break;
-			default: var_dump($k, $v, gettype($v)); wp_die("Type");
+        case "string":
+  				switch ($v) {
+            case "false":
+  					case "0": $value = '"0"'; break;
+  					case "true":
+  					case "1": $value = '"1"'; break;
+  					default:
+  						if (is_numeric($v)) {
+  							$value = $v;
+  						} else {
+  							$value = '"'.$v.'"';
+  						}
+  					break;
+  				}
+  				break;
+  			case "boolean":
+  				$value = $v ? '"1"' : '"0"'; break;
+  			case "integer":
+  				switch ($v) {
+  					//case 0: $value = "false"; break;
+  					//case 1: $value = "true"; break;
+  					default: $value = $v; break;
+  				}
+  				break;
+          default: var_dump($k, $v, gettype($v)); wp_die("Type");
 			}
 			if ( $value != "" ) $eletext = $eletext." ".$k."=".$value;
 		}

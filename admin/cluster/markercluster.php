@@ -7,12 +7,12 @@
 defined( 'ABSPATH' ) or die();
 
 function leafext_admin_markercluster() {
-		echo '<form method="post" action="options.php">';
-		settings_fields('leafext_settings_clusterparams');
-		do_settings_sections( 'leafext_settings_clusterparams' );
-		submit_button();
-		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
-		echo '</form>';
+	echo '<form method="post" action="options.php">';
+	settings_fields('leafext_settings_clusterparams');
+	do_settings_sections( 'leafext_settings_clusterparams' );
+	submit_button();
+	submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+	echo '</form>';
 }
 
 function leafext_cluster_init(){
@@ -82,7 +82,7 @@ function leafext_markercluster_help_text () {
 	<h2>Leaflet.markercluster</h2>
 	<img src="'.LEAFEXT_PLUGIN_PICTS.'cluster.png">
 	<p>'.__('Many markers on a map become confusing. That is why they are clustered','extensions-leaflet-map').'.</p>
-	
+
 	<h3>Shortcode</h3>
 	<pre><code>[leaflet-map ....]
 // many markers
@@ -109,11 +109,11 @@ function leafext_markercluster_help_text () {
 	echo '<code>false</code> = <code>!parameter</code> || <code>parameter="0"</code> || <code>parameter=0</code></br>';
 	echo '<code>true</code> = <code>parameter</code> || <code>parameter="1"</code> || <code>parameter=1</code>';
 	echo '</p>';
-	
+
 	$defaults = get_option('leafext_cluster');
 	if (is_array($defaults)) {
-		if ( array_key_exists('zoom',$defaults) || 
-		array_key_exists('radius',$defaults) || 
+		if ( array_key_exists('zoom',$defaults) ||
+		array_key_exists('radius',$defaults) ||
 		array_key_exists('spiderfy',$defaults) ) {
 			echo '<p>';
 			echo __('The parameters zoom, radius and spiderfy have been renamed to disableClusteringAtZoom, maxClusterRadius and spiderfyOnMaxZoom, but they are still valid. Your settings:', "extensions-leaflet-map");
@@ -121,7 +121,5 @@ function leafext_markercluster_help_text () {
 			echo __('Before you click the submit button, please compare your settings with the new ones and change them if they are different.', "extensions-leaflet-map");
 			echo '</p>';
 		}
-		
-		
 	}
 }

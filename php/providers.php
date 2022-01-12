@@ -1,6 +1,6 @@
 <?php
 /**
- * Functions for elevation shortcode
+ * Functions for layerswitch shortcode, parameter providers
  * extensions-leaflet-map
  */
 // Direktzugriff auf diese Datei verhindern:
