@@ -127,15 +127,46 @@ function leafext_providers_script($maps) {
 	return $text;
 }
 
+function leafext_opacity_script($opacities) {
+	$text = '
+		var opacities = '.json_encode(explode(',',$opacities)).';
+		//console.log(opacities);
+		opacities.forEach(function(opid) {
+    	//console.log(opacity);
+			if (typeof baselayers[opid] !== "undefined") {
+				opacity[opid] = baselayers[opid];
+			}
+			if (typeof overlays[opid] !== "undefined") {
+				opacity[opid] = overlays[opid];
+			}
+		});
+	';
+	return $text;
+}
+
 function leafext_layerswitch_end_script() {
 	$text = '
 		//console.log(baselayers);
 		//console.log(overlays);
-		//L.control.layers(baselayers,overlays).addTo(map);
-		L.control.layers(baselayers,overlays,{collapsed: false} ).addTo(map);
+
+		let controlwitdh = document.getElementsByClassName( "leaflet-right");
+		let maxcontrolwidth = 0;
+		for(var i=0, len=controlwitdh.length; i<len; i++)	{
+    	var computed = getComputedStyle( controlwitdh[i], null );
+			var width = parseInt(computed.getPropertyValue( "width" ));
+			if (width > maxcontrolwidth) {
+		    maxcontrolwidth = width;
+		  }
+		}
+		//console.log( maxcontrolwidth );
+		//console.log(window.innerWidth);
+		var collapse = false;
+		if (window.innerWidth/5 < maxcontrolwidth) {
+			collapse = true;
+		}
+		L.control.layers(baselayers,overlays,{collapsed: collapse} ).addTo(map);
 		if ( Object.entries(opacity).length !==  0) {
-			L.control.opacity(opacity).addTo(map);
-			//L.control.opacity(opacity, {collapsed: true}).addTo(map);
+			L.control.opacity(opacity, {collapsed: collapse}).addTo(map);
 		}
 	});
 	</script>';
@@ -211,9 +242,14 @@ function leafext_layerswitch_function($atts){
 		$text = $text.leafext_providers_fkt_script();
 		$text = $text.leafext_providers_script($providers);
 	}
+	if (is_array($atts)){
+		if ( array_key_exists('opacity',$atts) ) {
+			$text = $text.leafext_opacity_script($atts['opacity']);
+		}
+	}
 	$text = $text.leafext_layerswitch_end_script();
 	//$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }
-add_shortcode('layerswitch', 'leafext_layerswitch_function' );
+add_shortcode('layerswitch', 'leafext_layerswitch_function');
 ?>

@@ -55,11 +55,11 @@ $text = $text.'
    <ul style="list-style: disc;">
    <li style="margin-left: 1.5em;"> '.sprintf(__('without any parameter: All defined %stile servers%s are used.','extensions-leaflet-map'),
    '<a href="'.$tileswitch.'">',
-   '</a>').'
-   <li style="margin-left: 1.5em;"> <a href="'.$tileswitch.'">tiles</a> - '.__('Only these are used.','extensions-leaflet-map').'
-   <li style="margin-left: 1.5em;"> <a href="'.$tilesproviders.'">providers</a> - '.__('These are used.','extensions-leaflet-map').'
-   <li style="margin-left: 1.5em;"> '.__('both tiles and providers - all specified are used.','extensions-leaflet-map').'
-   </ul>
+   '</a>').
+   '<li style="margin-left: 1.5em;"> '.sprintf(__('with %s or %s you can specify which tiles should be used.','extensions-leaflet-map'),
+   '<a href="'.$tileswitch.'">tiles</a>',
+   '<a href="'.$tilesproviders.'">providers</a>').
+   '</ul>
    </ul>
   ';
 
