@@ -48,7 +48,7 @@ Used by nearly any leaflet map, see documentation
 
 <h3>leaflet-providers / Leaflet.Control.Opacity</h3>
 
-https://github.com/leaflet-extras/leaflet-providers
+https://github.com/leaflet-extras/leaflet-providers  
 https://github.com/dayjournal/Leaflet.Control.Opacity
 
 <pre>[layerswitch ...]</pre>
