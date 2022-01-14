@@ -1,3 +1,5 @@
+// Deal with Safari bug on Popup Marker
+// Last checked 220114
 (function() {
   function main() {
     var maps = window.WPLeafletMapPlugin.maps;
@@ -14,7 +16,7 @@
       var is_chrome = navigator.userAgent.indexOf("Chrome") > -1;
       var is_safari = navigator.userAgent.indexOf("Safari") > -1;
       if ( !is_chrome && is_safari ) {
-		  console.log("is_safari");
+        console.log("is_safari 2");
         map.tap.disable();
       }
     }

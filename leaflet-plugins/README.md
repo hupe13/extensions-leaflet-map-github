@@ -45,3 +45,10 @@ https://github.com/Raruto/leaflet-gesture-handling
 (leaflet-gesture-handling.js changed to deal with Safari bug marker popup)
 
 Used by nearly any leaflet map, see documentation
+
+<h3>leaflet-providers / Leaflet.Control.Opacity</h3>
+
+https://github.com/leaflet-extras/leaflet-providers
+https://github.com/dayjournal/Leaflet.Control.Opacity
+
+<pre>[layerswitch ...]</pre>

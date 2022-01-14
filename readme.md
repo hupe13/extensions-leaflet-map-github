@@ -57,10 +57,12 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ### 2.2.3 / 220xxx
 
+* leaflet-elevation 1.7.5
 * elevation: miles marker
-* layerswitch: extra options
-* Leaflet-providers
-* Leaflet.Control.Opacity
+* layerswitch:
+    * extra options
+    * Leaflet-providers
+    * Leaflet.Control.Opacity
 
 ### 2.2.2 / 211228
 * gestures: The language can be determined by Site or by Browser
