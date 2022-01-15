@@ -507,10 +507,10 @@
 
 		_handleTouch: function(e) {
 			//Disregard touch events on the minimap if present
-			//hupe13: leaflet-control-layers-*
-			var ignore = this._hasClass(e.target, ["leaflet-control-minimap", "leaflet-interactive", "leaflet-popup-content", "leaflet-popup-content-wrapper", "leaflet-popup-close-button", "leaflet-control-zoom-in", "leaflet-control-zoom-out", "leaflet-control-layers-list", "leaflet-control-layers-toggle","leaflet-control-layers-selector", "leaflet-control-layers-range" ]);
-
-			if (ignore) {
+			var ignore = this._hasClass(e.target, ["leaflet-control-minimap", "leaflet-interactive", "leaflet-popup-content", "leaflet-popup-content-wrapper", "leaflet-popup-close-button", "leaflet-control-zoom-in", "leaflet-control-zoom-out"]);
+			//hupe13 - leaflet-control*
+			var leaflet_control_ignore = e.target.classList.toString().indexOf('leaflet-control');
+			if (ignore || leaflet_control_ignore != -1) {
 				if (L.DomUtil.hasClass(e.target, "leaflet-interactive") && e.type === "touchmove" && e.touches.length === 1) {
 					this._enableTouchWarning();
 				} else {

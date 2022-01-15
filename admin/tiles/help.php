@@ -40,7 +40,7 @@ function leafext_help_tiles() {
 
   $text = $text.'<h2>Shortcode</h2>';
 	$text = $text.'<pre><code>[leaflet-map mapid="..."]
-[layerswitch tiles="mapid1,mapid2,..." providers="..."]
+[layerswitch tiles="mapid1,mapid2,..." providers="provider1,provider2,..." opacity="mapid1,provider1,..."]
 </code></pre>';
 	//$text = $text.__('','extensions-leaflet-map');
 $text = $text.'
@@ -56,9 +56,10 @@ $text = $text.'
    <li style="margin-left: 1.5em;"> '.sprintf(__('without any parameter: All defined %stile servers%s are used.','extensions-leaflet-map'),
    '<a href="'.$tileswitch.'">',
    '</a>').
-   '<li style="margin-left: 1.5em;"> '.sprintf(__('with %s or %s you can specify which tiles should be used.','extensions-leaflet-map'),
-   '<a href="'.$tileswitch.'">tiles</a>',
-   '<a href="'.$tilesproviders.'">providers</a>').
+   '<li style="margin-left: 1.5em;"> '.sprintf(__('with %s and/or %s you can specify which tiles should be used.','extensions-leaflet-map'),
+   '<a href="'.$tileswitch.'"><code>tiles</code></a>',
+   '<a href="'.$tilesproviders.'"><code>providers</code></a>').
+   '<li style="margin-left: 1.5em;"> '.sprintf(__('with %s you can specify the mapids and/or providers for which opacity should be regulated.','extensions-leaflet-map'),'<code>opacity</code>').
    '</ul>
    </ul>
   ';
