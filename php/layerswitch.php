@@ -248,7 +248,7 @@ function leafext_layerswitch_function($atts){
 		}
 	}
 	$text = $text.leafext_layerswitch_end_script();
-	//$text = \JShrink\Minifier::minify($text);
+	$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }
 add_shortcode('layerswitch', 'leafext_layerswitch_function');
