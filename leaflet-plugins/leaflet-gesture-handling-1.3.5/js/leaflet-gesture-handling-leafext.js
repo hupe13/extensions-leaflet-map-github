@@ -509,7 +509,11 @@
 			//Disregard touch events on the minimap if present
 			var ignore = this._hasClass(e.target, ["leaflet-control-minimap", "leaflet-interactive", "leaflet-popup-content", "leaflet-popup-content-wrapper", "leaflet-popup-close-button", "leaflet-control-zoom-in", "leaflet-control-zoom-out"]);
 			//hupe13 - leaflet-control*
-			var ignore_parent = e.target.offsetParent.classList.toString().indexOf('leaflet-control');
+			if ( typeof e.target.offsetParent !== "undefined") {
+				var ignore_parent = e.target.offsetParent.classList.toString().indexOf('leaflet-control');
+			} else {
+				var ignore_parent = -1;
+			}
 			//console.log(ignore,ignore_parent);
 			if ( ignore || ignore_parent != -1 ) {
 				if (L.DomUtil.hasClass(e.target, "leaflet-interactive") && e.type === "touchmove" && e.touches.length === 1) {
