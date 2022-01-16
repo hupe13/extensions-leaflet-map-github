@@ -419,7 +419,7 @@
 			var is_chrome = navigator.userAgent.indexOf("Chrome") > -1;
 			var is_safari = navigator.userAgent.indexOf("Safari") > -1;
 			if ( !is_chrome && is_safari ) {
-				console.log("Safari");
+				//console.log("Safari");
 				this._map.tap.disable();
 			}
 			// end
@@ -509,12 +509,14 @@
 			//Disregard touch events on the minimap if present
 			var ignore = this._hasClass(e.target, ["leaflet-control-minimap", "leaflet-interactive", "leaflet-popup-content", "leaflet-popup-content-wrapper", "leaflet-popup-close-button", "leaflet-control-zoom-in", "leaflet-control-zoom-out"]);
 			//hupe13 - leaflet-control*
-			if ( typeof e.target.offsetParent !== "undefined") {
+			if ( e.target.offsetParent != null
+				&& e.target.offsetParent.classList != null
+				&& typeof e.target.offsetParent.classList !== 'undefined'
+		 	) {
 				var ignore_parent = e.target.offsetParent.classList.toString().indexOf('leaflet-control');
 			} else {
 				var ignore_parent = -1;
 			}
-			//console.log(ignore,ignore_parent);
 			if ( ignore || ignore_parent != -1 ) {
 				if (L.DomUtil.hasClass(e.target, "leaflet-interactive") && e.type === "touchmove" && e.touches.length === 1) {
 					this._enableTouchWarning();
