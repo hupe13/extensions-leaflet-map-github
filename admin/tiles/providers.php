@@ -14,7 +14,7 @@ function leafext_providers_init(){
 	$page = $section_group;
 	add_settings_section(
 		$settings_section,
-		'leafext_providers',
+		'Leaflet-providers',
 		'leafext_providers_help',
 		$page
 	);
