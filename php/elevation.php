@@ -284,7 +284,7 @@ function leafext_elevation_params() {
 		array(
 			'param' => 'preferCanvas',
 			'shortdesc' => __('Render chart profiles as Canvas or SVG Paths.',"extensions-leaflet-map"),
-			'desc' => sprintf ( __('Due to a bug in MacOS and iOS, see %shere%s, you should it set to false.',"extensions-leaflet-map"), '<a href="https://github.com/Raruto/leaflet-elevation/issues/123">','</a>'),
+			'desc' => sprintf ( __('Due to a bug in MacOS and iOS, see %shere%s, it is automatically set to false in Safari.',"extensions-leaflet-map"), '<a href="https://github.com/Raruto/leaflet-elevation/issues/123">','</a>'),
 			'default' => true,
 			'values' => 1,
 			'multielevation' => false,
@@ -393,6 +393,17 @@ function leafext_elevation_script($gpx,$theme,$settings,$chart){
 		var controlElevation = L.control.elevation(elevation_options);
 		var track_options= { url: "'.$gpx.'" };
 		controlElevation.addTo(map);';
+
+		$text = $text.'
+		//
+		var is_chrome = navigator.userAgent.indexOf("Chrome") > -1;
+		var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+		if ( !is_chrome && is_safari && controlElevation.options.preferCanvas != false ) {
+			console.log("is_safari - setting preferCanvas to false");
+			controlElevation.options.preferCanvas = false;
+		}
+		//
+		';
 
 		if ($chart != "1") {
 		$text=$text.'var controlButton = L.easyButton(

@@ -58,7 +58,9 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 ### 2.2.3 / 220xxx
 
 * leaflet-elevation 1.7.5
-* elevation: miles marker
+* elevation:
+    * miles marker
+    * in Safari: setting preferCanvas to false as default
 * layerswitch:
     * extra options
     * Leaflet-providers
