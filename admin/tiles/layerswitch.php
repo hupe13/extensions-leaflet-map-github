@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) or die();
 
 // init settings fuer tile switching
 function leafext_maps_init(){
-	add_settings_section( 'maps_settings', __('Switching Tilelayers','extensions-leaflet-map'), 'leafext_maps_help_text', 'leafext_settings_maps' );
+	add_settings_section( 'maps_settings', __('Extra Tile Server','extensions-leaflet-map'), 'leafext_maps_help_text', 'leafext_settings_maps' );
 	add_settings_field( 'leafext_form_maps_id', 'mapid:', 'leafext_form_maps', 'leafext_settings_maps', 'maps_settings', 'mapid' );
 	register_setting( 'leafext_settings_maps', 'leafext_maps', 'leafext_validate_mapswitch' );
 }
