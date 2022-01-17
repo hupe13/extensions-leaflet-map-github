@@ -105,6 +105,7 @@ function leafext_providers_fkt_script() {
 
 function leafext_providers_script($maps) {
 	$regtiles = get_option('leafext_providers',array());
+	$text = "";
 	foreach ($maps as $map) {
 		$id = array_search(explode ( '.', $map )[0], array_column($regtiles, 'name'));
 		if ($id !== false) {
