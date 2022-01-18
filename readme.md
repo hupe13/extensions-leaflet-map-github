@@ -65,6 +65,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
     * extra options
     * Leaflet-providers
     * Leaflet.Control.Opacity
+* some changes in leaflet-gestures.js for L.control
 
 ### 2.2.2 / 211228
 * gestures: The language can be determined by Site or by Browser
