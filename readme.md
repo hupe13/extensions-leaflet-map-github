@@ -55,7 +55,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.2.3 / 220118
+### 2.2.3 / 220xxx
 
 * leaflet-elevation 1.7.5
 * elevation:
