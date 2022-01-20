@@ -55,10 +55,13 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
+<<<<<<< HEAD
 ### 2.2.4 / 2202xxx
 
 * small error in layerswitch 
 
+=======
+>>>>>>> ba10eac86441775c5dbea85549add54f0f019763
 ### 2.2.3 / 220118
 
 * leaflet-elevation 1.7.5
