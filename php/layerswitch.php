@@ -207,7 +207,7 @@ function leafext_layerswitch_function($atts){
 			}
 		}
 		foreach ($options as $option) {
-			if (! is_null($option['options']) && !$option['options'] == "" ) {
+			if (array_key_exists('options', $option) && $option['options'] != "" ) {
 				// L.tileLayer(extralayer.tile, {attribution: extralayer.attr, id: extralayer.mapid});
 				$entry = 'attribution: "'.str_replace('"','\"',$option['attr']).'", id: "'.$option['mapid'].'", ';
 				$entry = '"'.$option['tile'].'", {'.$entry.$option['options'].'}';
