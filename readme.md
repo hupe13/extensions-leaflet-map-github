@@ -167,12 +167,3 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ### 1.0 / 210323
 * First Release
-
-## Upgrade Notice
-
-### 2.2.1
-Please check the pages where you use zoomhomemap, if it still works as it should.
-Check the help at /wp-admin/admin.php?page=extensions-leaflet-map&tab=zoomhome
-
-### 2.1.2
-Please set in [elevation] preferCanvas to false due to a bug in MacOS and iOS, see https://github.com/Raruto/leaflet-elevation/issues/123
