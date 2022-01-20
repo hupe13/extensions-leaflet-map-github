@@ -2,7 +2,7 @@
 
 # Extensions for Leaflet Map Github Version
 
-Stable tag: 2.2.3  
+Stable tag: 2.2.4 unstable  
 Requires at least: 5.5.3  
 Tested up to: 5.8  
 License: GPLv2 or later  
@@ -55,7 +55,11 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.2.3 / 220xxx
+### 2.2.4 / 2202xxx
+
+* small error in layerswitch 
+
+### 2.2.3 / 220118
 
 * leaflet-elevation 1.7.5
 * elevation:
