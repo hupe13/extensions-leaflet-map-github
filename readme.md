@@ -59,7 +59,6 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 * small error in layerswitch
 * fixed gestures
-* dequeue leaflet-map and enqueue if needed
 
 ### 2.2.3 / 220118
 
