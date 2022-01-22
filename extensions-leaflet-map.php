@@ -37,7 +37,6 @@ if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . 'admin.php';
 } //else {
 
-  include_once LEAFEXT_PLUGIN_DIR . '/php/enqueue-leaflet-map.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/enqueue-leafletplugins.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/functions.php';
   include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
