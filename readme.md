@@ -58,7 +58,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 ### 2.2.4 / 2202xxx
 
 * small error in layerswitch
-* fixed gestures
+* fixed gestures (sgpx did not work because of this)
 
 ### 2.2.3 / 220118
 
