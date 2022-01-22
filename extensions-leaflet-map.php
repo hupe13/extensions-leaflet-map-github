@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Extensions for Leaflet Map Github
- * Plugin URI:  https://github.com/hupe13/extensions-leaflet-map
- * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map
+ * Plugin URI:  https://github.com/hupe13/extensions-leaflet-map-github
+ * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
  * Primary Branch: main
  * Description: Extensions for the WordPress plugin Leaflet Map Github Version
  * Version:     2.2.4 unstable 22
