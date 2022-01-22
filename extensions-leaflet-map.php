@@ -3,8 +3,9 @@
  * Plugin Name: Extensions for Leaflet Map Github
  * Plugin URI:  https://github.com/hupe13/extensions-leaflet-map
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map
+ * Primary Branch: main
  * Description: Extensions for the WordPress plugin Leaflet Map Github Version
- * Version:     2.2.4 unstable
+ * Version:     2.2.4 unstable 22
  * Author:      hupe13
  * License:     GPL v2 or later
  * Text Domain: extensions-leaflet-map
@@ -36,6 +37,7 @@ if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . 'admin.php';
 } //else {
 
+  include_once LEAFEXT_PLUGIN_DIR . '/php/enqueue-leaflet-map.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/enqueue-leafletplugins.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/functions.php';
   include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';

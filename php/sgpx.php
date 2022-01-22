@@ -164,7 +164,8 @@ function leafext_sgpx_settings() {
 
 function leafext_sgpx_function( $atts ) {
   $options=get_option('leafext_sgpxparams');
-  if ( LEAFEXT_SGPX_ACTIVE && LEAFEXT_SGPX_SGPX && $options['sgpx'] == "leaflet" && !wp_script_is( "wp_leaflet_map", 'enqueued' ) ) {
+
+  if ( LEAFEXT_SGPX_ACTIVE && LEAFEXT_SGPX_SGPX && $options['sgpx'] == "leaflet" && !wp_script_is( "wp_leaflet_map", 'enqueued' )) {
     if (function_exists('enqueue_WP_GPX_Maps_scripts')) {
       enqueue_WP_GPX_Maps_scripts();
       wp_dequeue_style('leaflet.Photo');
@@ -270,6 +271,6 @@ function leafext_change_sgpx_shortcode() {
 	if ( LEAFEXT_SGPX_ACTIVE ) {
 		remove_shortcode( 'sgpx' );
 	}
-	add_shortcode('sgpx', 'leafext_sgpx_function' );
+  add_shortcode('sgpx', 'leafext_sgpx_function' );
 }
 add_action( 'init', 'leafext_change_sgpx_shortcode',20 );

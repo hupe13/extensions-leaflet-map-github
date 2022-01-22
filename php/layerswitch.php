@@ -176,6 +176,8 @@ function leafext_layerswitch_end_script() {
 
 function leafext_layerswitch_function($atts){
 	$providers = "";
+	$tiles = "";
+	$tiles_alloptions = "";
 	if (is_array($atts)){
 		if ( array_key_exists('providers',$atts) ) {
 			leafext_enqueue_providers();

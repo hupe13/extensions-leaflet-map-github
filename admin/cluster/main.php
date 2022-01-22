@@ -7,7 +7,6 @@
 defined( 'ABSPATH' ) or die();
 
 include LEAFEXT_PLUGIN_DIR . '/admin/cluster/markercluster.php';
-//include LEAFEXT_PLUGIN_DIR . '/admin/cluster/markerclusterold.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/cluster/placementstrategies.php';
 
 function leafext_cluster_tab() {
