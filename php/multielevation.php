@@ -344,6 +344,8 @@ function leafext_elevation_tracks( $atts ){
 	$text = leafext_elevation_tracks_script( $all_files, $all_points, $theme, $options, $multioptions);
 	$text = $text.'<p class="chart-placeholder">';
 	$text = $text.__("move mouse over a track or select one in control panel ...", "extensions-leaflet-map").'</p>';
+	$all_files = array();
+	$all_points = array();
 	return $text;
 }
 add_shortcode('elevation-tracks', 'leafext_elevation_tracks' );
@@ -376,6 +378,8 @@ function leafext_multielevation( $atts ){
 	$text = leafext_elevation_tracks_script( $all_files, $all_points, $theme, $options, $multioptions);
 	$text = $text.'<p class="chart-placeholder">';
 	$text = $text.__("move mouse over a track or select one in control panel ...", "extensions-leaflet-map").'</p>';
+	$all_files = array();
+	$all_points = array();
 	return $text;
 }
 add_shortcode('multielevation', 'leafext_multielevation' );
