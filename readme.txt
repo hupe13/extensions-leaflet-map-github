@@ -13,6 +13,8 @@ Contributors: hupe13
 
 Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
 
+Do not use afragen/git-updater, it doesn't work for this in the moment.
+
 ### Used Leaflet Plugins and Elements
 
 *   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation), [Leaflet.EasyButton](https://github.com/CliffCloud/Leaflet.EasyButton): Track with Elevation Profile
