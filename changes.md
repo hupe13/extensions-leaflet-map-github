@@ -1,5 +1,3 @@
-## Changelog
-
 ### 2.2.4 / 220xxx
 
 * small error in layerswitch
