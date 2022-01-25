@@ -5,3 +5,4 @@
 * cluster now works with leaflet-marker, leaflet-gpx, leaflet-geojson, leaflet-kml
 * multielavation: it works with multiple maps on one page now.
 * WordPress 5.9
+* switch to SemVer on Github

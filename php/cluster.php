@@ -106,12 +106,29 @@ function leafext_cluster_script($params){
 							//console.log(layer);
 							//console.log(layer.feature.properties.name);
 							var content = layer.feature.properties.name;
-							if (typeof content != "undefined") {
+							//console.log(layer.getPopup());
+							if (typeof layer.getPopup() != "undefined") {
+								//
+							} else if (typeof content != "undefined") {
 								layer.bindTooltip(content);
 								layer.bindPopup(content);
-								console.log(content);
-								map.removeLayer(layer);
+								//console.log(content);
+							} else {
+								//console.log(layer.feature.properties);
+								//var popupContent = [];
+								//for (var key in layer.feature.properties) {
+									//if (layer.feature.properties.hasOwnProperty(key)) {
+										//var stringLine = key + ": " + layer.feature.properties[key];
+										//popupContent.push(stringLine);
+									//}
+								//}
+								//console.log(popupContent.join(" <br>"));
+								//layer.bindTooltip(popupContent.join(" <br>"));
+								//layer.bindPopup(popupContent.join(" <br>"));
+								layer.bindTooltip("Point");
+								layer.bindPopup("Point");
 							}
+							map.removeLayer(layer);
 							clmarkers.addLayer(layer);
 						} else {
 							//console.log(layer);
