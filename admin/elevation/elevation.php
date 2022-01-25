@@ -88,7 +88,7 @@ function leafext_ele_help_text () {
 				"<code>[elevation]</code>",
 				"<code>gpx</code>");
 	echo "<p>";
-	echo __('The leaflet-elevation plugin has many configuration options. Some things are not trivial. If you can\'t configure something, ask in the forum.',"extensions-leaflet-map");
+	echo __('The elevation shortcode has many configuration options. Some things are not trivial. If you can\'t configure something, ask in the forum.',"extensions-leaflet-map");
 	echo "</p>";
 	echo '<h2>Shortcode</h2>
 	<pre><code>[leaflet-map ....]

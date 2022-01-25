@@ -78,7 +78,7 @@ function leafext_validate_markercluster_options($options) {
 
 // Helptext
 function leafext_markercluster_help_text () {
-	echo '
+	$text= '
 	<h2>Leaflet.markercluster</h2>
 	<img src="'.LEAFEXT_PLUGIN_PICTS.'cluster.png">
 	<p>'.__('Many markers on a map become confusing. That is why they are clustered','extensions-leaflet-map').'.</p>
@@ -104,32 +104,37 @@ function leafext_markercluster_help_text () {
 // or
 [cluster option1=value1 option2 !option3 ...]
 [zoomhomemap]
-</code></pre>
+</code></pre>';
 
-<h3>'.__('Options','extensions-leaflet-map').'</h3>
+$textoptions='<h3>'.__('Options','extensions-leaflet-map').'</h3>
 
 <p>'.
   sprintf(__('Please see the %s page for options. If you want to change other ones, please post it to the forum.',
   'extensions-leaflet-map'),'<a href="https://github.com/Leaflet/Leaflet.markercluster#options">Leaflet.markercluster</a>').' ';
-	echo __('To reset all values to their defaults, simply click the Reset button',
+	$textoptions=$textoptions. __('To reset all values to their defaults, simply click the Reset button',
 	'extensions-leaflet-map').'.</p>';
 
-	echo '<p>';
-	echo __('For boolean values applies', "extensions-leaflet-map").':<br>';
-	echo '<code>false</code> = <code>!parameter</code> || <code>parameter="0"</code> || <code>parameter=0</code></br>';
-	echo '<code>true</code> = <code>parameter</code> || <code>parameter="1"</code> || <code>parameter=1</code>';
-	echo '</p>';
+	$textoptions=$textoptions. '<p>';
+	$textoptions=$textoptions. __('For boolean values applies', "extensions-leaflet-map").':<br>';
+	$textoptions=$textoptions. '<code>false</code> = <code>!parameter</code> || <code>parameter="0"</code> || <code>parameter=0</code></br>';
+	$textoptions=$textoptions. '<code>true</code> = <code>parameter</code> || <code>parameter="1"</code> || <code>parameter=1</code>';
+	$textoptions=$textoptions. '</p>';
 
 	$defaults = get_option('leafext_cluster');
 	if (is_array($defaults)) {
 		if ( array_key_exists('zoom',$defaults) ||
 		array_key_exists('radius',$defaults) ||
 		array_key_exists('spiderfy',$defaults) ) {
-			echo '<p>';
-			echo __('The parameters zoom, radius and spiderfy have been renamed to disableClusteringAtZoom, maxClusterRadius and spiderfyOnMaxZoom, but they are still valid. Your settings:', "extensions-leaflet-map");
-			echo '<pre>'.substr(substr(print_r(get_option('leafext_cluster'),true),8),0,-3).'</pre>';
-			echo __('Before you click the submit button, please compare your settings with the new ones and change them if they are different.', "extensions-leaflet-map");
-			echo '</p>';
+			$textoptions=$textoptions. '<p>';
+			$textoptions=$textoptions. __('The parameters zoom, radius and spiderfy have been renamed to disableClusteringAtZoom, maxClusterRadius and spiderfyOnMaxZoom, but they are still valid. Your settings:', "extensions-leaflet-map");
+			$textoptions=$textoptions. '<pre>'.substr(substr(print_r(get_option('leafext_cluster'),true),8),0,-3).'</pre>';
+			$textoptions=$textoptions. __('Before you click the submit button, please compare your settings with the new ones and change them if they are different.', "extensions-leaflet-map");
+			$textoptions=$textoptions. '</p>';
 		}
 	}
+	if (is_singular() || is_archive() ) {
+    return $text;
+  } else {
+    echo $text.$textoptions;
+  }
 }
