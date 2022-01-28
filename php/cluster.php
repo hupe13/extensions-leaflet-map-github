@@ -114,7 +114,8 @@ function leafext_cluster_script($params){
 								layer.bindPopup(content);
 								//console.log(content);
 							} else {
-								//console.log(layer.feature.properties);
+								//What should popup?? Default: "Point"
+								console.log(layer.feature.properties);
 								//var popupContent = [];
 								//for (var key in layer.feature.properties) {
 									//if (layer.feature.properties.hasOwnProperty(key)) {

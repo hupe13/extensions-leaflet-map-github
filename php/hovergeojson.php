@@ -146,11 +146,13 @@ window.WPLeafletMapPlugin.push(function () {
 
 					if (i > 1) {
 						//marker as geojson
-						if ( !e.sourceTarget.getPopup().isOpen()) {
-							map.closePopup();
-							var content = e.sourceTarget.getPopup().getContent();
-							e.sourceTarget.bindTooltip(content);
-							e.sourceTarget.openTooltip(e.latlng);
+						if (typeof e.sourceTarget.getPopup() != "undefined") {
+							if ( !e.sourceTarget.getPopup().isOpen()) {
+								map.closePopup();
+								var content = e.sourceTarget.getPopup().getContent();
+								e.sourceTarget.bindTooltip(content);
+								e.sourceTarget.openTooltip(e.latlng);
+							}
 						}
 					} else {
 						e.target.eachLayer(function(layer) {
