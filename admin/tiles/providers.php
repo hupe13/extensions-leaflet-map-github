@@ -22,7 +22,7 @@ function leafext_providers_init(){
 	// Add fields to that section
 	add_settings_field(
 		$section_name,
-		'Providers requiring registration',
+		__('Providers requiring registration','extensions-leaflet-map'),
 		'leafext_providers_form',
 		$page,
 		$settings_section

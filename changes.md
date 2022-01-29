@@ -6,3 +6,4 @@
 * multielavation: it works with multiple maps on one page now.
 * WordPress 5.9
 * switch to SemVer on Github
+* hover: new option for click tolerance
