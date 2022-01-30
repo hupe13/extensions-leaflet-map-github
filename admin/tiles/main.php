@@ -43,6 +43,7 @@ function leafext_admin_tiles($active_tab) {
   echo '<h2>'.leafext_tiles_tab().'</h2>';
 	if( $active_tab == 'tileshelp') {
   	include LEAFEXT_PLUGIN_DIR . '/admin/tiles/help.php';
+		echo leafext_help_tiles();
 	} else
 	if( $active_tab == 'tileswitch') {
   	echo '<form method="post" action="options.php">';

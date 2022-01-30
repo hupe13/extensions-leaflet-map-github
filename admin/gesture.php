@@ -64,7 +64,7 @@ function leafext_form_gesture($field) {
 function leafext_validate_gesture($input) {
 	//var_dump($_POST,$input);
 	if (isset($_POST['submit'])) {
-		$input['on'] = (bool)($input['on']);
+		$input['leafext_gesture_on'] = (bool)($input['leafext_gesture_on']);
 	}
 	// var_dump($input);
 	return $input;

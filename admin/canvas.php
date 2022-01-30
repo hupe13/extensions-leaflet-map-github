@@ -14,7 +14,7 @@ function leafext_canvas_init(){
 	$page = $section_group;
 	add_settings_section(
 		$settings_section,
-		__('How much to extend click tolerance round a path/object on the map','extensions-leaflet-map'),
+		__('Settings','extensions-leaflet-map'),
 		'leafext_canvas_help',
 		$page
 	);
@@ -22,7 +22,7 @@ function leafext_canvas_init(){
 	// Add fields to that section
 	add_settings_field(
 		$section_name,
-		__('Value:','extensions-leaflet-map'),
+		'tolerance',
 		'leafext_canvas_form',
 		$page,
 		$settings_section,

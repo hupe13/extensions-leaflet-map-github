@@ -7,7 +7,7 @@ function leafext_help_tiles() {
   <h2>'.__('About Tile servers','extensions-leaflet-map').'</h2><p>';
   if (!(is_singular() || is_archive() )) { //backend
     $text=$text.sprintf(__('The default Map Tiles are defined in the %s Settings%s.','extensions-leaflet-map'),
-    '<a href="'.get_admin_url().'admin.php?page=leaflet-map">Leaflet Map ',
+    '<a href="'.get_admin_url().'admin.php?page=leaflet-map">Leaflet Map',
     '</a>');
   } else { //frontend
     $text=$text.__('The default Map Tiles are defined in the Leaflet Map Settings.','extensions-leaflet-map');
@@ -25,10 +25,9 @@ function leafext_help_tiles() {
   '<a href="'.$tileswitch.'">',
   '</a>');
   $text=$text.'</p>';
-
   $text=$text.'
   <figure class="wp-block-table aligncenter is-style-stripes">
-  <table class="form-table" border=1">
+  <table class="form-table" border="1">
   <tr><th style="text-align:center">Name</th><th style="text-align:center">Option</th><th style="text-align:center">'.__('Current Settings','extensions-leaflet-map').'</th></tr>
   <tr><td>'.__('Tile Id', 'leaflet-map').'</td><td>mapid</td><td>'.get_option('leaflet_mapid').'</td></tr>
   <tr><td>'.__('Map Tile URL', 'leaflet-map').'</td><td>tileurl</td><td>'.get_option('leaflet_map_tile_url').'</td></tr>
@@ -48,19 +47,19 @@ $text = $text.'
   <ul style="list-style: disc;">
   <li style="margin-left: 1.5em;"> <code>[leaflet-map]</code>
   <ul style="list-style: disc;">
-  <li style="margin-left: 1.5em;"> '.__('see Leaflet Map documentation','extensions-leaflet-map').'
-  <li style="margin-left: 1.5em;"> '.__('optional: mapid - This appears in the switching control.','extensions-leaflet-map').'
-  </ul>
+  <li style="margin-left: 1.5em;"> '.__('see Leaflet Map documentation','extensions-leaflet-map').'</li>
+  <li style="margin-left: 1.5em;"> '.__('optional: mapid - This appears in the switching control.','extensions-leaflet-map').'</li>
+  </ul></li>
    <li style="margin-left: 1.5em;"> <code>[layerswitch]</code>
    <ul style="list-style: disc;">
    <li style="margin-left: 1.5em;"> '.sprintf(__('without any parameter: All defined %stile servers%s are used.','extensions-leaflet-map'),
    '<a href="'.$tileswitch.'">',
-   '</a>').
+   '</a>').'</li>'.
    '<li style="margin-left: 1.5em;"> '.sprintf(__('with %s and/or %s you can specify which tiles should be used.','extensions-leaflet-map'),
    '<a href="'.$tileswitch.'"><code>tiles</code></a>',
    '<a href="'.$tilesproviders.'"><code>providers</code></a>').
-   '<li style="margin-left: 1.5em;"> '.sprintf(__('with %s you can specify the mapids and/or providers for which opacity should be regulated.','extensions-leaflet-map'),'<code>opacity</code>').
-   '</ul>
+   '</li><li style="margin-left: 1.5em;"> '.sprintf(__('with %s you can specify the mapids and/or providers for which opacity should be regulated.','extensions-leaflet-map'),'<code>opacity</code>').
+   '</li></ul></li>
    </ul>
   ';
 
@@ -70,5 +69,4 @@ $text = $text.'
     echo $text;
   }
 }
-
-leafext_help_tiles();
+//leafext_help_tiles();

@@ -97,6 +97,7 @@ function leafext_do_page() {
 		leafext_admin_tiles($active_tab);
 	} else if( $active_tab == 'hover' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/help/hovergeojson.php';
+		leafext_help_hover();
 		leafext_canvas_do_page ();
 	} else if( $active_tab == 'gesture' ) {
 		echo '<form method="post" action="options.php">';

@@ -80,7 +80,7 @@ function leafext_validate_markercluster_options($options) {
 function leafext_markercluster_help_text () {
 	$text= '
 	<h2>Leaflet.markercluster</h2>
-	<img src="'.LEAFEXT_PLUGIN_PICTS.'cluster.png">
+	<img src="'.LEAFEXT_PLUGIN_PICTS.'cluster.png" alt="cluster">
 	<p>'.__('Many markers on a map become confusing. That is why they are clustered','extensions-leaflet-map').'.</p>
 
 	<h3>Shortcode</h3>

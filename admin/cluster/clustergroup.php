@@ -28,15 +28,14 @@ function leafext_clustergroup_help_text () {
 [leaflet-marker iconUrl="...green..." ... ] ... [/leaflet-marker]
 //many markers
 [markerClusterGroup feat="iconUrl" strings="red,green" groups="rot,gruen"]
-</code></pre>
-			'.__('or','extensions-leaflet-map').'
-<pre><code>[leaflet-marker title="first ..." ... ] ... [/leaflet-marker]
+</code></pre>'
+.__('or','extensions-leaflet-map').
+'<pre><code>[leaflet-marker title="first ..." ... ] ... [/leaflet-marker]
 [leaflet-marker title="second ..." ... ] ... [/leaflet-marker]
 //many markers
 [markerClusterGroup feat="title" strings="first,second" groups="First Group,Second Group"]
-</code></pre>
-			<p>';
-	$textoptions = sprintf ( __('The parameter and settings for %s are valid too.','extensions-leaflet-map'),
+</code></pre>';
+	$textoptions = '<p>'.sprintf ( __('The parameter and settings for %s are valid too.','extensions-leaflet-map'),
 			'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=markercluster">Leaflet.markercluster</a>');
 	$textoptions = $textoptions.'</p>';
 	if (is_singular() || is_archive() ) {
