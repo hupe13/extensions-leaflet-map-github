@@ -213,15 +213,20 @@ window.WPLeafletMapPlugin.push(function () {
 
 	var markers = window.WPLeafletMapPlugin.markers;
 	if (markers.length > 0) {
-		//console.log("hover markers "+markers.length);
 		for (var i = 0; i < WPLeafletMapPlugin.markers.length; i++) {
 			var a = WPLeafletMapPlugin.markers[i];
+			//console.log(a);
 			a.on("mouseover", function (e) {
 				//console.log("marker mouseover");
+				//console.log(e.sourceTarget.options.title);
 				if (typeof e.sourceTarget.getPopup() != "undefined") {
 				if ( ! e.sourceTarget.getPopup().isOpen()) {
 					map.closePopup();
-					var content = e.sourceTarget.getPopup().getContent();
+					if ( e.sourceTarget.options.title != "") {
+						var content = e.sourceTarget.options.title;
+					} else {
+						var content = e.sourceTarget.getPopup().getContent();
+					}
 					e.sourceTarget.bindTooltip(content);
 					e.sourceTarget.openTooltip(e.latlng);
 				// } else {

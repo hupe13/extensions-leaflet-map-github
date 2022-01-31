@@ -25,6 +25,7 @@ function leafext_help_tiles() {
   '<a href="'.$tileswitch.'">',
   '</a>');
   $text=$text.'</p>';
+  $text = $text.'<h2>'.__('Your Settings','extensions-leaflet-map').'</h2>';
   $text=$text.'
   <figure class="wp-block-table aligncenter is-style-stripes">
   <table class="form-table" border="1">

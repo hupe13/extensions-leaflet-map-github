@@ -112,7 +112,9 @@ function leafext_maps_help_text() {
 	$text = $text.'<pre><code>[leaflet-map mapid="..." ...]
 [layerswitch tiles="mapid1,mapid2,..."]
 </code></pre>';
+$text = $text.'<p>'.__('You can use the parameter <code>providers</code> also.','extensions-leaflet-map').'</p>';
 	if (!(is_singular()|| is_archive())) {
+		$text = $text.'<h2>'.__('Settings','extensions-leaflet-map').'</h2>';
 		$text = $text.'<p>'.
 			__("Configure a mapid, attribution and a tile url for each tile server.","extensions-leaflet-map").
 			' mapid '.__("appears in the switching control. To delete a server simply clear the field mapid.","extensions-leaflet-map")

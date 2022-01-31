@@ -3,13 +3,15 @@
 defined( 'ABSPATH' ) or die();
 
 function leafext_help_hover() {
-$text='<h2 id="hovergeojson">Hovering</h2>
+$text='<h2 id="hover">Hovering</h2>
 <img src="'.LEAFEXT_PLUGIN_PICTS.'hover.png" alt="hover">
 <p>'.__('Use it to highlight a gpx, kml, geojson or marker and get a tooltip on mouse over.','extensions-leaflet-map').' '.
 sprintf(
 __('It works on %s and %s.','extensions-leaflet-map'),"leaflet-geojson, leaflet-gpx, leaflet-kml","leaflet-marker");
-$text = $text. '</p>
-<h2>Shortcode</h2>
+$text = $text. '</p>';
+$text = $text. sprintf(__('To customize the popup content for geojsons see %sgeojson options%s.','extensions-leaflet-map'),
+'<a href="https://github.com/bozdoz/wp-plugin-leaflet-map#leaflet-geojson-options">','</a>');
+$text = $text. '<h2>Shortcode</h2>
 <h4>'.__('Create Map','extensions-leaflet-map').'</h4>
 <pre><code>[leaflet-map ...]</code></pre>
 <h4>'.__('Load files with leaflet-geojson, leaflet-gpx, leaflet-kml or create markers with leaflet-marker','extensions-leaflet-map').'</h4>

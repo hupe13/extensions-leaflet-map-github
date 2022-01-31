@@ -81,9 +81,9 @@ function leafext_providers_help() {
 [layerswitch providers="WaymarkedTrails.hiking"]
 
 [leaflet-map mapid="OSM"]
-[layerswitch providers="WaymarkedTrails.hiking,OPNVKarte"]</code></pre>'.
+[layerswitch providers="WaymarkedTrails.hiking,OPNVKarte"]</code></pre><p>'.
 __('You can use the parameter <code>tiles</code> also.','extensions-leaflet-map').
-	'<p>'.
+	'</p><p>'.
 	__('For a list of providers see','extensions-leaflet-map').
 	' <a href="http://leaflet-extras.github.io/leaflet-providers/preview/">http://leaflet-extras.github.io/leaflet-providers/preview/</a>.'
 	.'</p>';
@@ -95,6 +95,7 @@ __('You can use the parameter <code>tiles</code> also.','extensions-leaflet-map'
 	if (is_singular()|| is_archive() ) {
 		return $text;
 	} else {
+		$text = $text.'<h2>'.__('Settings','extensions-leaflet-map').'</h2>';
 		echo $text;
 	}
 }
