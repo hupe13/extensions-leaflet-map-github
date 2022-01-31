@@ -3,14 +3,13 @@
 defined( 'ABSPATH' ) or die();
 
 function leafext_help_tiles() {
-  $text='
-  <h2>'.__('About Tile servers','extensions-leaflet-map').'</h2><p>';
   if (!(is_singular() || is_archive() )) { //backend
+    $text='<h2>'.__('About Tile servers','extensions-leaflet-map').'</h2><p>';
     $text=$text.sprintf(__('The default Map Tiles are defined in the %s Settings%s.','extensions-leaflet-map'),
     '<a href="'.get_admin_url().'admin.php?page=leaflet-map">Leaflet Map',
     '</a>');
   } else { //frontend
-    $text=$text.__('The default Map Tiles are defined in the Leaflet Map Settings.','extensions-leaflet-map');
+    $text=__('The default Map Tiles are defined in the Leaflet Map Settings.','extensions-leaflet-map');
   }
   $text=$text.' ';
   if (!(is_singular() || is_archive() )) { //backend

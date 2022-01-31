@@ -108,7 +108,8 @@ function leafext_maps_help_text() {
 	<pre><code>[leaflet-map mapid="..." ...]
 [layerswitch]
 </code></pre>';
-	$text = $text.__('You can select your defined Tile Server with parameter <code>tiles</code> as comma separated list in the shortcode:','extensions-leaflet-map');
+	$text = $text.'<p>'.__('You can select your defined Tile Server with parameter <code>tiles</code> as comma separated list in the shortcode:',
+	'extensions-leaflet-map').'</p>';
 	$text = $text.'<pre><code>[leaflet-map mapid="..." ...]
 [layerswitch tiles="mapid1,mapid2,..."]
 </code></pre>';
