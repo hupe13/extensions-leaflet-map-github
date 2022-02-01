@@ -2,7 +2,7 @@
 
 # Extensions for Leaflet Map Github Version
 
-Stable tag: 2.2.4 unstable  
+Stable tag: 2.2.4   
 Requires at least: 5.5.3  
 Tested up to: 5.9  
 License: GPLv2 or later  
@@ -55,7 +55,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.2.4 / 220xxx
+### 2.2.4 / 22020x
 
 * WordPress 5.9
 * fixed layerswitch

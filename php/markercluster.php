@@ -2,7 +2,7 @@
 /**
  * Functions for cluster and placementstrategies shortcode
  * extensions-leaflet-map
- * clusters markers from leaflet-marker, -geojson, -gpx
+ * clusters markers from leaflet-marker, -geojson, -gpx, -kml
  */
 
 // Direktzugriff auf diese Datei verhindern:
