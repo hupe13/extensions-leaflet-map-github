@@ -55,7 +55,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.2.4 / 22020x
+### 2.2.4 / 220202
 
 * WordPress 5.9
 * fixed layerswitch
