@@ -178,22 +178,6 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $sett
 		//console.log(points);
 		//console.log(tracks);
 
-		let controlwitdh = document.getElementsByClassName( "leaflet-right");
-		let maxcontrolwidth = 0;
-		for(var i=0, len=controlwitdh.length; i<len; i++)	{
-			var computed = getComputedStyle( controlwitdh[i], null );
-			var width = parseInt(computed.getPropertyValue( "width" ));
-			if (width > maxcontrolwidth) {
-				maxcontrolwidth = width;
-			}
-		}
-		//console.log( maxcontrolwidth );
-		//console.log(window.innerWidth);
-		var collapse = false;
-		if (window.innerWidth/5 < maxcontrolwidth) {
-			collapse = true;
-		}
-
 		var opts = {
 			points: {
 				icon: {
@@ -229,9 +213,6 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $sett
 				startIconUrl: null, // "http://mpetazzoni.github.io/leaflet-gpx/pin-icon-start.png",
 				endIconUrl: null, // "http://mpetazzoni.github.io/leaflet-gpx/pin-icon-end.png",
 				shadowUrl: null, // "http://mpetazzoni.github.io/leaflet-gpx/pin-shadow.png",
-			},
-			legend_options:{
-				collapsed: collapse,
 			},
 			filename_option: ';
 			$text = $multioptions['filename'] ?  $text.'true' :  $text.'false';
@@ -286,7 +267,7 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $sett
 		});
 
 		if (typeof map.options.maxZoom == "undefined")
-			map.options.maxZoom = 19;
+				map.options.maxZoom = 19;
 		var bounds = [];
 		bounds = new L.latLngBounds();
 		var zoomHome = [];

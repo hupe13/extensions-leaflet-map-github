@@ -308,6 +308,15 @@ function leafext_elevation_params() {
 		// if (!detached) control position on one of map corners
 		//position: "topright",
 
+		// wptIcons: {
+		// 	"": L.divIcon({
+		// 		className: "elevation-waypoint-marker",
+		// 		html: "<i class=\"elevation-waypoint-icon\"></i>",
+		// 		iconSize: [25,41],
+		// 		iconAnchor: [12,41],
+		// 		popupAnchor: [1,-34],
+		// 	}),
+		// },
 	);
 	return $params;
 }
@@ -343,6 +352,7 @@ function leafext_elevation_script($gpx,$theme,$settings,$chart){
 			foreach ($settings as $k => $v) {
 				switch ($k) {
 					case "polyline":
+					case "wptIcons":
 						$text = $text. "$k: ". $v .',';
 						unset ($settings[$k]);
 						break;
@@ -361,6 +371,7 @@ function leafext_elevation_script($gpx,$theme,$settings,$chart){
 					default:
 				}
 			}
+
 			$text = $text.leafext_java_params ($settings);
 
 		}//old settings end
@@ -491,6 +502,19 @@ function leafext_elevation_function( $atts ) {
 		leafext_enqueue_easybutton();
 	}
 	unset($options['chart']);
+	$waypoints = get_option('leafext_waypoints', "");
+
+	if ( $waypoints != "" ) {
+		$wptvalue="{";
+		foreach ( $waypoints as $wpt ) {
+			$wptvalue = $wptvalue.'"'.$wpt['sym'].'":  L.divIcon({
+				className: "elevation-waypoint-marker",
+			  html: '."'".'<i class="elevation-waypoint-icon '.$wpt['sym'].'"></i>'."'".','.
+				$wpt['js'].'}),';
+		}
+		$wptvalue = $wptvalue.'}';
+		$options['wptIcons'] =  $wptvalue;
+	}
 
 	return leafext_elevation_script($track,$theme,$options,$chart);
 }

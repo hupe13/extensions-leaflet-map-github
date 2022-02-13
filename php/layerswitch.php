@@ -150,24 +150,9 @@ function leafext_layerswitch_end_script() {
 		//console.log(baselayers);
 		//console.log(overlays);
 
-		let controlwitdh = document.getElementsByClassName( "leaflet-right");
-		let maxcontrolwidth = 0;
-		for(var i=0, len=controlwitdh.length; i<len; i++)	{
-    	var computed = getComputedStyle( controlwitdh[i], null );
-			var width = parseInt(computed.getPropertyValue( "width" ));
-			if (width > maxcontrolwidth) {
-		    maxcontrolwidth = width;
-		  }
-		}
-		//console.log( maxcontrolwidth );
-		//console.log(window.innerWidth);
-		var collapse = false;
-		if (window.innerWidth/5 < maxcontrolwidth) {
-			collapse = true;
-		}
-		L.control.layers(baselayers,overlays,{collapsed: collapse} ).addTo(map);
+		L.control.layers(baselayers,overlays).addTo(map);
 		if ( Object.entries(opacity).length !==  0) {
-			L.control.opacity(opacity, {collapsed: collapse}).addTo(map);
+			L.control.opacity(opacity).addTo(map);
 		}
 	});
 	</script>';
