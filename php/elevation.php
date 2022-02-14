@@ -507,9 +507,9 @@ function leafext_elevation_function( $atts ) {
 	if ( $waypoints != "" ) {
 		$wptvalue="{";
 		foreach ( $waypoints as $wpt ) {
-			$wptvalue = $wptvalue.'"'.$wpt['sym'].'":  L.divIcon({
+			$wptvalue = $wptvalue.'"'.$wpt['css'].'":  L.divIcon({
 				className: "elevation-waypoint-marker",
-			  html: '."'".'<i class="elevation-waypoint-icon '.$wpt['sym'].'"></i>'."'".','.
+			  html: '."'".'<i class="elevation-waypoint-icon '.$wpt['css'].'"></i>'."'".','.
 				$wpt['js'].'}),';
 		}
 		$wptvalue = $wptvalue.'}';

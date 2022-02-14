@@ -19,16 +19,16 @@ function leafext_elevation_tab() {
 			'title' => __('Elevation Profile','extensions-leaflet-map'),
 			),
 		array (
-			'tab' => 'multielevation',
-			'title' => __('Multiple hoverable tracks','extensions-leaflet-map'),
-		),
-		array (
 			'tab' => 'elevationtheme',
 			'title' => __('Own theme','extensions-leaflet-map'),
 		),
 		array (
 			'tab' => 'elevationwaypoints',
 			'title' => __('Customize waypoints','extensions-leaflet-map'),
+		),
+		array (
+			'tab' => 'multielevation',
+			'title' => __('Multiple hoverable tracks','extensions-leaflet-map'),
 		),
 	);
 
