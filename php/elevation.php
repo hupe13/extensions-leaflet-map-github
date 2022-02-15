@@ -58,7 +58,7 @@ function leafext_elevation_params() {
 		// plugins default true
 		array(
 			'param' => 'waypoints',
-			'shortdesc' => __('Display track waypoints.',"extensions-leaflet-map"),
+			'shortdesc' => __('Display track waypoints',"extensions-leaflet-map"),
 			'desc' => '',
 			'default' => true,
 			'values' => 1,

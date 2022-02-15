@@ -40,10 +40,14 @@ function leafext_form_waypoints() {
 
 		echo '<input class="full-width" type="text" ';
 		if ($option['js'] == "") echo 'placeholder="name" ';
-		echo 'name="leafext_waypoints['.$i.'][sym]" value="'.$option['sym'].'" pattern="-?[_a-zA-Z]+[_a-zA-Z0-9- ,]*" />';
-		if ($option['sym'] == "" && $option['js'] != "" ) echo ' (Default)';
-		if ($option['sym'] == "" && $option['js'] == "" ) {
-			echo '<p>'.__('It may be empty, then its javascript is the default. Valid characters: lowercase, uppercase, numbers, -, _, comma, blank character.','extensions-leaflet-map').'</p>';
+		echo 'name="leafext_waypoints['.$i.'][sym]" value="'.$option['sym'].'" pattern="[a-zA-Z]+[a-zA-Z0-9- ,]*" />';
+		if ($option['sym'] == "" && $option['js'] != "" ) echo ' ('.__('Default','extensions-leaflet-map').')';
+		if (($option['sym'] == "" && $option['js'] == "")) {
+			echo '<p>'.__('Valid characters: lowercase, uppercase, numbers, -, comma, blank character.','extensions-leaflet-map').'</p>';
+			$symkey = array_search("", array_column($options, 'sym'));
+			if ( $options[$symkey]['js'] == "" ) {
+				echo '<p>'.__('It may be empty, then its javascript is the default for all waypoints.','extensions-leaflet-map').'</p>';
+			}
 		}
 		echo '</td>';
 		echo '</tr>';
@@ -118,17 +122,51 @@ function leafext_waypoints_help_text() {
   "sym": "<span style="color: #4f94d4">'.__('Text of GPS symbol name','extensions-leaflet-map').'</span>"
 },</pre>';
 
-	$text = $text.'<h3>'.sprintf(__('CSS to define as HTML block (between %s and %s) or in css file','extensions-leaflet-map'),
-	'&lt;style&gt;','&lt;/style&gt;')
-	.'</h3>';
+$text = $text.'<h3>'.__('The waypoint CSS class Selector','extensions-leaflet-map').'</h3>';
+
+
+$text = $text.'<ul style="list-style: disc;">
+
+<li style="margin-left: 1.5em;">'
+	.sprintf(__('CSS to define as HTML block (between %s and %s) or in css file','extensions-leaflet-map'),
+	'<code>&lt;style&gt;</code>','<code>&lt;/style&gt;</code>').'</li>
+
+<li style="margin-left: 1.5em;">'
+	.__('Must be defined for each waypoint, also for the default.',
+	'extensions-leaflet-map').'</li>
+
+<li style="margin-left: 1.5em;">'
+	.__('You can use any css describing the waypoint.',
+	'extensions-leaflet-map').'</li>
+
+<li style="margin-left: 1.5em;">'
+	.sprintf(__(
+	'Any blank character from %sText of GPS symbol name%s is converted to a minus sign, uppercase to lowercase, a comma will be escaped.',
+	'extensions-leaflet-map'),'<span style="color: #4f94d4">','</span>').'</li>
+
+<li style="margin-left: 1.5em;">'
+	. __('e.g.','extensions-leaflet-map')
+	.' "<span style="color: #4f94d4">Flag, Blue</span>" --&gt; "<span style="color: #d63638">flag\,-blue</span>"</li>
+
+<li style="margin-left: 1.5em;">'
+	.sprintf(__(
+	'If you need more special characters than %s for your waypoints, please ask in the forum.',
+	'extensions-leaflet-map'),
+	' <code>- ,</code> ').'</li>
+
+</ul>';
+
+
+$text = $text.'<h4>'. __('Example','extensions-leaflet-map').'</h4>';
 	$text = $text.'<pre>.elevation-waypoint-icon.<span style="color: #d63638">waypoint-css</span>:before {
 	background: url(https://my-domain.tld/path/to/icon.png) no-repeat 50%/contain;
 }</pre>';
 
 	//waypoint-css: -?[_a-zA-Z]+[_a-zA-Z0-9-]* anderes escapen
 	$text = $text.'<h3>'.__('Generated Javascript','extensions-leaflet-map').'</h3>';
-	$text = $text.sprintf(__('More options see %sLeaflet API reference%s.','extensions_leaflet_map'),
-	'<a href="https://leafletjs.com/reference.html#divicon">','</a>');
+	$text = $text.
+	__('More options see','extensions-leaflet-map');
+	$text = $text. ' <a href="https://leafletjs.com/reference.html#divicon">Leaflet API reference</a>';
 	$text = $text.'<pre>';
 	$text = $text.'wptIcons: {
   "<span style="color: #d63638">waypoint-css</span>": L.divIcon({
