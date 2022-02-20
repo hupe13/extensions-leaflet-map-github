@@ -65,14 +65,15 @@ function leafext_enqueue_markercluster () {
 		array('wp_leaflet_map'),null );
 }
 
-define('LEAFEXT_ELEVATION_URL', LEAFEXT_PLUGIN_URL . '/leaflet-plugins/leaflet-elevation-1.7.6/');
+define('LEAFEXT_ELEVATION_VERSION',"1.7.6");
+define('LEAFEXT_ELEVATION_URL', LEAFEXT_PLUGIN_URL . '/leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/');
 function leafext_enqueue_elevation () {
 	wp_enqueue_script( 'elevation_js',
-		plugins_url('leaflet-plugins/leaflet-elevation-1.7.6/dist/leaflet-elevation.min.js',
+		plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.min.js',
 		LEAFEXT_PLUGIN_FILE),
 		array('wp_leaflet_map'),null);
 	wp_enqueue_style( 'elevation_css',
-		plugins_url('leaflet-plugins/leaflet-elevation-1.7.6/dist/leaflet-elevation.min.css',
+		plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.min.css',
 		LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
 	leafext_css();
@@ -80,7 +81,7 @@ function leafext_enqueue_elevation () {
 
 function leafext_enqueue_multielevation () {
 	wp_enqueue_script('leaflet.gpxgroup',
-    plugins_url('leaflet-plugins/leaflet-elevation-1.7.6/libs/leaflet-gpxgroup-leafext.js',
+    plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/libs/leaflet-gpxgroup-leafext.js',
     LEAFEXT_PLUGIN_FILE),
     array('elevation_js'),null);
   wp_enqueue_script('leaflet_ajax_geojson_js');
@@ -89,11 +90,11 @@ function leafext_enqueue_multielevation () {
     LEAFEXT_PLUGIN_FILE),
     array('elevation_js'),null);
   wp_enqueue_script('leaflet.distanceMarkers',
-    plugins_url('leaflet-plugins/leaflet-elevation-1.7.6/libs/leaflet-distance-marker.min.js',
+    plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/libs/leaflet-distance-marker.min.js',
     LEAFEXT_PLUGIN_FILE),
     array('Leaflet.GeometryUtil'),null);
   wp_enqueue_style( 'leaflet.distanceMarkers',
-    plugins_url('leaflet-plugins/leaflet-elevation-1.7.6/libs/leaflet-distance-marker.min.css',
+    plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/libs/leaflet-distance-marker.min.css',
     LEAFEXT_PLUGIN_FILE),
     array('elevation_css'),null);
   leafext_css();

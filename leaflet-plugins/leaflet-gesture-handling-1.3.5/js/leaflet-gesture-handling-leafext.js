@@ -518,6 +518,9 @@
 				var ignore_parent = -1;
 			}
 			if ( ignore || ignore_parent != -1 ) {
+				// end
+			// if (ignore) {
+
 				if (L.DomUtil.hasClass(e.target, "leaflet-interactive") && e.type === "touchmove" && e.touches.length === 1) {
 					this._enableTouchWarning();
 				} else {
