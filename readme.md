@@ -2,7 +2,7 @@
 
 # Extensions for Leaflet Map Github Version
 
-Stable tag: 2.2.4   
+Stable tag: 2.2.5   
 Requires at least: 5.5.3  
 Tested up to: 5.9  
 License: GPLv2 or later  
@@ -54,6 +54,12 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * Go to Settings - Leaflet Map - Extensions for Leaflet Map and get documentation and settings options.
 
 ## Changelog
+
+### 2.2.5 / 2202xx
+
+* leaflet-elevation 1.7.6
+* elevation: new/changed options: waypoints, wptLabels, wptIcons
+* fixed error in collapse control top right
 
 ### 2.2.4 / 220202
 

@@ -54,15 +54,49 @@ function leafext_elevation_params() {
 			'multielevation' => true,
 		),
 
-		// Display track waypoints: (true || false) - waypoints: false,
+		// Display track waypoints: true || "markers" || "dots" || false
 		// plugins default true
 		array(
 			'param' => 'waypoints',
 			'shortdesc' => __('Display track waypoints',"extensions-leaflet-map"),
-			'desc' => '',
+			'desc' => __('waypoints in map and in chart / only in map / only in chart / none',"extensions-leaflet-map"),
 			'default' => true,
-			'values' => 1,
+			'values' => array (true, "markers", "dots", false),
 			'multielevation' => false,
+		),
+
+		// Toggle waypoint labels: true || "markers" || "dots" || false
+	 	//wptLabels: true,
+		array(
+			'param' => 'wptLabels',
+			'shortdesc' => __('Toggle waypoint labels',"extensions-leaflet-map"),
+			'desc' => __('labels in map and in chart / only in map / only in chart / none',"extensions-leaflet-map"),
+			'default' => true,
+			'values' => array (true, "markers", "dots", false),
+			'multielevation' => false,
+		),
+
+		// // Toggle custom waypoint icons: true || { associative array of <sym> tags } || false
+		// wptIcons: {
+		// 	'': L.divIcon({
+		// 		className: 'elevation-waypoint-marker',
+		// 		html: '<i class="elevation-waypoint-icon"></i>',
+		// 		iconSize: [30, 30],
+		// 		iconAnchor: [8, 30],
+		// 		}),
+		// 		},
+		array(
+			'param' => 'wptIcons',
+			'shortdesc' => __('Toggle custom waypoint icons',"extensions-leaflet-map"),
+			'desc' => '<p>'.'true / "defined" / false'.
+				'</p><p>'.
+				sprintf (__('If %s is selected, you must define some %ssettings for the icons',"extensions-leaflet-map"),
+					'"defined"',
+					'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevationwaypoints">').'</a>.'
+				.'</p>',
+			'default' => true,
+			'values' => array (true, "defined", false),
+			'multielevation' => true,
 		),
 
 		// Toggle "leaflet-distance-markers" integration
@@ -258,14 +292,14 @@ function leafext_elevation_params() {
 			'multielevation' => true,
 		),
 
-		// Toggle chart ruler filter.
+		//Toggle chart ruler filter.
 		//ruler: true,
 		// array(
-			// 'param' => 'ruler',
-			// 'shortdesc' => __('Toggle chart ruler filter.',"extensions-leaflet-map"),
-			// 'desc' => '',
-			// 'default' => true,
-			// 'values' => 1,
+		// 	'param' => 'ruler',
+		// 	'shortdesc' => __('Toggle chart ruler filter.',"extensions-leaflet-map"),
+		// 	'desc' => '',
+		// 	'default' => true,
+		// 	'values' => 1,
 		// ),
 
 		// Toggle "leaflet-almostover" integration
@@ -308,15 +342,6 @@ function leafext_elevation_params() {
 		// if (!detached) control position on one of map corners
 		//position: "topright",
 
-		// wptIcons: {
-		// 	"": L.divIcon({
-		// 		className: "elevation-waypoint-marker",
-		// 		html: "<i class=\"elevation-waypoint-icon\"></i>",
-		// 		iconSize: [25,41],
-		// 		iconAnchor: [12,41],
-		// 		popupAnchor: [1,-34],
-		// 	}),
-		// },
 	);
 	return $params;
 }
@@ -352,9 +377,14 @@ function leafext_elevation_script($gpx,$theme,$settings,$chart){
 			foreach ($settings as $k => $v) {
 				switch ($k) {
 					case "polyline":
-					case "wptIcons":
 						$text = $text. "$k: ". $v .',';
 						unset ($settings[$k]);
+						break;
+					case "wptIcons":
+						if (strpos($v, '{') !== false){
+							$text = $text. "$k: ". $v .',';
+							unset ($settings[$k]);
+						}
 						break;
 					case "distanceMarkers":
 						if ($settings[$k] == true && $settings['imperial'] == "1") {
@@ -371,7 +401,6 @@ function leafext_elevation_script($gpx,$theme,$settings,$chart){
 					default:
 				}
 			}
-
 			$text = $text.leafext_java_params ($settings);
 
 		}//old settings end
@@ -445,7 +474,7 @@ function leafext_elevation_script($gpx,$theme,$settings,$chart){
 	$text=$text.'
 	});
 	</script>';
-	$text = \JShrink\Minifier::minify($text);
+	//$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }
 
@@ -502,18 +531,22 @@ function leafext_elevation_function( $atts ) {
 		leafext_enqueue_easybutton();
 	}
 	unset($options['chart']);
-	$waypoints = get_option('leafext_waypoints', "");
 
-	if ( $waypoints != "" ) {
-		$wptvalue="{";
-		foreach ( $waypoints as $wpt ) {
-			$wptvalue = $wptvalue.'"'.$wpt['css'].'":  L.divIcon({
-				className: "elevation-waypoint-marker",
-			  html: '."'".'<i class="elevation-waypoint-icon '.$wpt['css'].'"></i>'."'".','.
-				$wpt['js'].'}),';
+	$wptIcons = $options['wptIcons'];
+	if ( $wptIcons == "defined" ) {
+		unset($options['wptIcons']);
+		$waypoints = get_option('leafext_waypoints', "");
+		if ( $waypoints != "" && ( $options['waypoints'] == "markers" || $options['waypoints'] == "1" )) {
+			$wptvalue="{";
+			foreach ( $waypoints as $wpt ) {
+				$wptvalue = $wptvalue.'"'.$wpt['css'].'":  L.divIcon({
+					className: "elevation-waypoint-marker",
+					html: '."'".'<i class="elevation-waypoint-icon '.$wpt['css'].'"></i>'."'".','.
+					$wpt['js'].'}),';
+			}
+			$wptvalue = $wptvalue.'}';
+			$options['wptIcons'] =  $wptvalue;
 		}
-		$wptvalue = $wptvalue.'}';
-		$options['wptIcons'] =  $wptvalue;
 	}
 
 	return leafext_elevation_script($track,$theme,$options,$chart);
