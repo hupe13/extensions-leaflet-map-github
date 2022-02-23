@@ -198,7 +198,7 @@ window.WPLeafletMapPlugin.push(function () {
 					e.target.eachLayer(function(layer) {
 						if (typeof layer.getPopup() != "undefined") {
 							if ( !layer.getPopup().isOpen() ) {
-								map.closePopup();
+								//map.closePopup();
 								layer.openTooltip(e.latlng);
 							}
 						}

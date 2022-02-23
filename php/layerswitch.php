@@ -152,7 +152,7 @@ function leafext_layerswitch_end_script() {
 
 		L.control.layers(baselayers,overlays).addTo(map);
 		if ( Object.entries(opacity).length !==  0) {
-			L.control.opacity(opacity).addTo(map);
+			L.control.opacity(opacity,{collapsed:true,}).addTo(map);
 		}
 	});
 	</script>';
