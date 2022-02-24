@@ -241,13 +241,15 @@
 				.off(this.link, 'click', leaflet.DomEvent.stop)
 				.off(this.link, 'click', this.toggleFullScreen, this);
 
-			leaflet.DomEvent
-				.off(this._container, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
-				.off(this._container, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, this);
+			if (this._screenfull.raw) {
+				leaflet.DomEvent
+					.off(this._container, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
+					.off(this._container, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, this);
 
-			leaflet.DomEvent
-				.off(document, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
-				.off(document, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, this);
+				leaflet.DomEvent
+					.off(document, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
+					.off(document, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, this);
+			}
 		},
 
 		_createButton: function (title, className, content, container, fn, context) {
@@ -264,14 +266,16 @@
 			leaflet.DomEvent
 				.on(this.link, 'click', leaflet.DomEvent.stop)
 				.on(this.link, 'click', fn, context);
+			
+			if (this._screenfull.raw) {
+				leaflet.DomEvent
+					.on(container, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
+					.on(container, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, context);
 
-			leaflet.DomEvent
-				.on(container, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
-				.on(container, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, context);
-
-			leaflet.DomEvent
-				.on(document, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
-				.on(document, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, context);
+				leaflet.DomEvent
+					.on(document, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
+					.on(document, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, context);
+			}
 
 			return this.link;
 		},

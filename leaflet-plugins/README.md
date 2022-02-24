@@ -2,7 +2,8 @@
 
 <h3>leaflet.fullscreen</h3>
 
-https://github.com/brunob/leaflet.fullscreen
+https://github.com/brunob/leaflet.fullscreen <br>
+(with pull request from https://github.com/brunob/leaflet.fullscreen/pull/101)
 
 <pre>[fullscreen]</pre>
 
