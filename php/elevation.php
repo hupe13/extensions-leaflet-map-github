@@ -59,7 +59,7 @@ function leafext_elevation_params() {
 		array(
 			'param' => 'waypoints',
 			'shortdesc' => __('Display track waypoints',"extensions-leaflet-map"),
-			'desc' => __('waypoints in map and in chart / only in map / only in chart / none',"extensions-leaflet-map"),
+			'desc' => __('Display waypoints in map and in chart / only in map / only in chart / none',"extensions-leaflet-map"),
 			'default' => true,
 			'values' => array (true, "markers", "dots", false),
 			'multielevation' => false,
@@ -70,7 +70,8 @@ function leafext_elevation_params() {
 		array(
 			'param' => 'wptLabels',
 			'shortdesc' => __('Toggle waypoint labels',"extensions-leaflet-map"),
-			'desc' => __('labels in map and in chart / only in map / only in chart / none',"extensions-leaflet-map"),
+			'desc' => '<p>'.__('Show waypoint labels in map and in chart / only in map / only in chart / none',"extensions-leaflet-map").'</p>
+			<p>'.sprintf(__('Only meaningful, if %swaypoints%s exist.',"extensions-leaflet-map"),'<code>','</code>').'</p>',
 			'default' => true,
 			'values' => array (true, "markers", "dots", false),
 			'multielevation' => false,
@@ -88,9 +89,9 @@ function leafext_elevation_params() {
 		array(
 			'param' => 'wptIcons',
 			'shortdesc' => __('Toggle custom waypoint icons',"extensions-leaflet-map"),
-			'desc' => '<p>'.'true / "defined" / false'.
-				'</p><p>'.
-				sprintf (__('If %s is selected, you must define some %ssettings for the icons',"extensions-leaflet-map"),
+			'desc' => '<p>'.'true / "defined" / false'.'</p>
+				<p>'.__('Only meaningful, if waypoints are shown in the map.',"extensions-leaflet-map").'</p>
+				<p>'.sprintf (__('If %s is selected, you must define some %ssettings for the icons',"extensions-leaflet-map"),
 					'"defined"',
 					'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevationwaypoints">').'</a>.'
 				.'</p>',
@@ -459,7 +460,7 @@ function leafext_elevation_script($gpx,$theme,$settings,$chart){
 		// Load track from url (allowed data types: "*.geojson", "*.gpx")
 		controlElevation.load(track_options.url);';
 
-		if (is_string($chart)) {
+		if ($chart != "1") {
 		$text=$text.'map.on("eledata_added", function(e) {
 			//console.log("eledata_added");
 			//Ja 2x!!!
@@ -533,7 +534,7 @@ function leafext_elevation_function( $atts ) {
 	unset($options['chart']);
 
 	$wptIcons = $options['wptIcons'];
-	if ( $wptIcons == "defined" ) {
+	if ( !is_bool($wptIcons) && $wptIcons == "defined" ) {
 		unset($options['wptIcons']);
 		$waypoints = get_option('leafext_waypoints', "");
 		if ( $waypoints != "" && ( $options['waypoints'] == "markers" || $options['waypoints'] == "1" )) {
