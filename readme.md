@@ -55,7 +55,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.2.5 / 2202xx
+### 2.2.5 / 220226
 
 * leaflet-elevation 1.7.6
 * elevation: new/changed options: waypoints, wptLabels, wptIcons

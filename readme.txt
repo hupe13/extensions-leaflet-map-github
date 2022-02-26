@@ -2,7 +2,7 @@
 
 # Extensions for Leaflet Map Github Version
 
-Stable tag: 2.2.4 unstable
+Stable tag: 2.2.5
 Requires at least: 5.5.3
 Tested up to: 5.9
 License: GPLv2 or later
@@ -14,3 +14,4 @@ Contributors: hupe13
 Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
 
 This is the Github Version.
+WordPress Version 2.2.5 = Github Version 2.3-beta220226
