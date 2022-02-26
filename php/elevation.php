@@ -71,7 +71,7 @@ function leafext_elevation_params() {
 			'param' => 'wptLabels',
 			'shortdesc' => __('Toggle waypoint labels',"extensions-leaflet-map"),
 			'desc' => '<p>'.__('Show waypoint labels in map and in chart / only in map / only in chart / none',"extensions-leaflet-map").'</p>
-			<p>'.sprintf(__('Only meaningful, if %swaypoints%s exist.',"extensions-leaflet-map"),'<code>','</code>').'</p>',
+			<p>'.sprintf(__('Only meaningful, if %swaypoints%s is not %s.',"extensions-leaflet-map"),'<code>','</code>','<code>0</code>').'</p>',
 			'default' => true,
 			'values' => array (true, "markers", "dots", false),
 			'multielevation' => false,
