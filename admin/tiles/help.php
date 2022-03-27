@@ -11,6 +11,10 @@ function leafext_help_tiles() {
   } else { //frontend
     $text=__('The default Map Tiles are defined in the Leaflet Map Settings.','extensions-leaflet-map');
   }
+  $text=$text.' '.sprintf(__('Pay attention to the setting for %s, it depends on the used Map Tiles, see for example %shere%s.'),
+  "max_zoom",
+  '<a href="https://github.com/leaflet-extras/leaflet-providers/blob/master/leaflet-providers.js">',
+  '</a>');
   $text=$text.' ';
   if (!(is_singular() || is_archive() )) { //backend
     $tilesproviders = '?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=tilesproviders';
@@ -19,7 +23,7 @@ function leafext_help_tiles() {
     $tilesproviders = site_url().'/tiles/providers/';
     $tileswitch = site_url().'/tiles/switch/';
   }
-  $text=$text.sprintf(__('Additionally you can use some predefined Tile Providers with %s or you can define %syour Tile Servers%s.','extensions-leaflet-map'),
+  $text=$text.'</p><p>'.sprintf(__('Additionally you can use some predefined Tile Providers with %s or you can define %syour Tile Servers%s.','extensions-leaflet-map'),
   '<a href="'.$tilesproviders.'">Leaflet-providers</a>',
   '<a href="'.$tileswitch.'">',
   '</a>');

@@ -8,8 +8,6 @@ defined( 'ABSPATH' ) or die();
 
 //Shortcode: [zoomhomemap]
 function leafext_zoomhome_script($fit){
-	$maxzoom=get_option('leaflet_default_zoom');
-	if ($maxzoom == 20) $maxzoom = 19;
 	$text = '
 	<script>
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -18,11 +16,6 @@ function leafext_zoomhome_script($fit){
 		var map_id = map._leaflet_id;
 		var maps=[];
 		maps[map_id] = map;
-
-		if (typeof maps[map_id].options.maxZoom == "undefined")
-			maps[map_id].options.maxZoom = '.$maxzoom.';
-		if (maps[map_id].options.maxZoom == 20)
-			maps[map_id].options.maxZoom = 19;
 
 		//console.log("map_id* "+map_id);
 
