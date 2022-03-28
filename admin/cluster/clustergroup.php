@@ -71,7 +71,7 @@ function leafext_clustergroup_help_text () {
 					<h3>'.__('Shortcode for grouping markers (points) in leaflet-geojson','extensions-leaflet-map').'</h3>
 		<pre><code>[leaflet-geojson src="..." iconUrl="...red..." ... ] ... [/leaflet-geojson]
 [leaflet-geojson src="..." iconUrl="...green..." ... ] ... [/leaflet-geojson]
-//many leaflet-geojson
+//any more leaflet-geojson
 [markerClusterGroup feat="iconUrl" strings="red,green" groups="rot,gruen"]
 </code></pre>'
 					.__('or','extensions-leaflet-map').
@@ -79,7 +79,7 @@ function leafext_clustergroup_help_text () {
 //any more leaflet-geojson
 [markerClusterGroup feat="properties.<span style="color: #d63638">prop0</span>" strings="<span style="color: #4f94d4">value0</span>,..." groups="Description0,..."]
 </code></pre>
-<h3>groups unknown '.__('and','extensions-leaflet-map').' others</h3>'.
+<h3>groups unknown '.__('and','extensions-leaflet-map').' others</h3><p>'.
 sprintf(
 __('If %s contains %s and %s, then markers (respectively Points) for which the property %s does not apply are placed in the %s group. Markers (respectively Points) whose property is not known are placed in the %s group. See also the developer console.','extensions-leaflet-map'),
 			"<code>groups</code>",
@@ -90,8 +90,8 @@ __('If %s contains %s and %s, then markers (respectively Points) for which the p
 			"unknown"
 			).
 
-			'<h3>Shortcode groups unknown '.__('and','extensions-leaflet-map').' others</h3>
-<pre><code>[markerClusterGroup feat="..." strings="..,... ,others,unknown" groups="..,... ,Other properties,Unknown properties"]
+			'</p><h3>Shortcode groups unknown '.__('and','extensions-leaflet-map').' others</h3>
+<pre><code>[markerClusterGroup feat="..." strings="...,...,others,unknown" groups="...,...,Other properties,Unknown properties"]
 </code></pre>';
 
 	$textoptions = '<p>'.sprintf ( __('The parameter and settings for %s are valid too.','extensions-leaflet-map'),

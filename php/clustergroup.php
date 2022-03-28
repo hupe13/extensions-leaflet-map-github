@@ -11,14 +11,14 @@ function leafext_clustergroup_script($featuregroups,$params){
 	$text = '
 	<script>
 
-		var feat  = '.json_encode($featuregroups['feat']).';
-		var groups= '.json_encode($featuregroups['groups']).';
-		//console.log(feat,groups);
-
 		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 		window.WPLeafletMapPlugin.push(function () {
 			var map = window.WPLeafletMapPlugin.getCurrentMap();
 			var map_id = map._leaflet_id;
+			var feat  = '.json_encode($featuregroups['feat']).';
+			var groups= '.json_encode($featuregroups['groups']).';
+			//console.log(feat,groups);
+
 			//
 			var alle = new L.markerClusterGroup({';
 				$text=$text.leafext_java_params ($params);

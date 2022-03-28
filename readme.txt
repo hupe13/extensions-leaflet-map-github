@@ -14,4 +14,3 @@ Contributors: hupe13
 Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
 
 This is the Github Version.
-WordPress Version 2.2.5 = Github Version 2.3-beta220226

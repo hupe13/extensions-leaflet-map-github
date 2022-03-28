@@ -5,26 +5,39 @@ defined( 'ABSPATH' ) or die();
 function leafext_help_hover() {
 $text='<h2 id="hover">Hovering</h2>
 <img src="'.LEAFEXT_PLUGIN_PICTS.'hover.png" alt="hover">
-<p>'.__('Use it to highlight a gpx, kml, geojson or marker and get a tooltip on mouse over.','extensions-leaflet-map').' '.
-sprintf(
-__('It works on %s and %s.','extensions-leaflet-map'),"leaflet-geojson, leaflet-gpx, leaflet-kml","leaflet-marker");
+<p>'.sprintf(__('Use it to highlight a %s element and get a tooltip on mouse over.','extensions-leaflet-map'),
+"leaflet-*");
 $text = $text. '</p>';
-$text = $text. sprintf(__('To customize the popup content for geojsons see %sgeojson options%s.','extensions-leaflet-map'),
-'<a href="https://github.com/bozdoz/wp-plugin-leaflet-map#leaflet-geojson-options">','</a>');
+
 $text = $text. '<h2>Shortcode</h2>
 <h4>'.__('Create Map','extensions-leaflet-map').'</h4>
 <pre><code>[leaflet-map ...]</code></pre>
-<h4>'.__('Load files with leaflet-geojson, leaflet-gpx, leaflet-kml or create markers with leaflet-marker','extensions-leaflet-map').'</h4>
-<pre><code>[leaflet-geojson src="//url/to/file.geojson" color="..."]{name}[/leaflet-geojson]
-//or / and
-[leaflet-gpx src="//url/to/file.gpx" color="..."]{name}[/leaflet-gpx]
-//or / and
-[leaflet-kml src="//url/to/file.kml" color="..."]{name}[/leaflet-kml]
-//or / and
-[leaflet-marker ....]Marker ....[/leaflet-marker]</code></pre>
+<h4>'.sprintf(__('Load an element with any %s shortcode','extensions-leaflet-map'),
+'leaflet-*').'</h4>';
+$text = $text.'<ul style="list-style: disc;">';
+
+$text = $text.'<li style="margin-left: 1.5em;">';
+$text = $text.sprintf(__('The %s content is the same as the %s content and/or the content of %s option.','extensions-leaflet-map'),
+'tooltip','popup','title');
+$text = $text.'<li style="margin-left: 1.5em;">';
+$text = $text.sprintf(__('The %s option is valid for %s only and optional.','extensions-leaflet-map'),
+'title','leaflet-marker');
+$text = $text.'<li style="margin-left: 1.5em;">';
+$text = $text. sprintf(__('To customize the popup content for geojsons see %sgeojson options%s.','extensions-leaflet-map'),
+'<a href="https://github.com/bozdoz/wp-plugin-leaflet-map#leaflet-geojson-options">','</a>');
+$text = $text.'</ul>';
+
+$text = $text.'<pre><code>// one or more of these
+[leaflet-geojson ...]{name}[/leaflet-geojson]
+[leaflet-gpx ...]{name}[/leaflet-gpx]
+[leaflet-kml ...]{name}[/leaflet-kml]
+[leaflet-marker title="..." ...]Marker ...[/leaflet-marker]
+[leaflet-polygon ...]Polygon ...[/leaflet-polygon]
+[leaflet-circle ...]Circle ...[/leaflet-circle]
+[leaflet-line ...]Line ...[/leaflet-line]</code></pre>
 <h4>'.__('And hover','extensions-leaflet-map').'</h4>
 <pre><code>[hover exclude="url-substring" tolerance=xx]</code></pre><p>
-<h3>Parameters</h3>'.
+<h3>'.__('Parameters','extensions-leaflet-map').'</h3>'.
 __('Both parameters are optional.','extensions-leaflet-map').
 '<ul style="list-style: disc;">
 <li style="margin-left: 1.5em;"> <code>exclude</code>: '.sprintf(
