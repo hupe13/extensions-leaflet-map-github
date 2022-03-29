@@ -2,7 +2,7 @@
 
 # Extensions for Leaflet Map Github Version
 
-Stable tag: 2.2.5   
+Stable tag: 2.2.6   
 Requires at least: 5.5.3  
 Tested up to: 5.9  
 License: GPLv2 or later  
@@ -54,6 +54,14 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * Go to Settings - Leaflet Map - Extensions for Leaflet Map and get documentation and settings options.
 
 ## Changelog
+
+### 2.2.5 / 220xxx
+
+* hover.php reviewed, new: hovering circles, polygons and lines
+* zoomhome.php max_zoom removed. This should be set in leaflet-map settings depending on the tiles.
+  See https://github.com/leaflet-extras/leaflet-providers/blob/master/leaflet-providers.js
+* clustergroup.php (Leaflet.FeatureGroup.SubGroup): markers can also be defined in a geojson file,
+  new parameters others and unknown
 
 ### 2.2.5 / 220226
 
