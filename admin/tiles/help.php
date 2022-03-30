@@ -11,7 +11,9 @@ function leafext_help_tiles() {
   } else { //frontend
     $text=__('The default Map Tiles are defined in the Leaflet Map Settings.','extensions-leaflet-map');
   }
-  $text=$text.' '.sprintf(__('Pay attention to the setting for %s, it depends on the used Map Tiles, see for example %shere%s.'),
+  $text=$text.' '.sprintf(
+    __('Pay attention to the setting for %s, it depends on the used Map Tiles, see for example %shere%s.',
+'extensions-leaflet-map'),
   "max_zoom",
   '<a href="https://github.com/leaflet-extras/leaflet-providers/blob/master/leaflet-providers.js">',
   '</a>');
