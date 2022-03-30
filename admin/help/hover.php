@@ -17,11 +17,11 @@ $text = $text. '<h2>Shortcode</h2>
 $text = $text.'<ul style="list-style: disc;">';
 
 $text = $text.'<li style="margin-left: 1.5em;">';
-$text = $text.sprintf(__('The %s content is the same as the %s content and/or the content of %s option.','extensions-leaflet-map'),
-'tooltip','popup','title');
+$text = $text.sprintf(__('The tooltip content is the same as the popup content and/or the content of %s option.','extensions-leaflet-map'),
+'<em>title</em>');
 $text = $text.'<li style="margin-left: 1.5em;">';
 $text = $text.sprintf(__('The %s option is valid for %s only and optional.','extensions-leaflet-map'),
-'title','leaflet-marker');
+'<em>title</em>','<code>leaflet-marker</code>');
 $text = $text.'<li style="margin-left: 1.5em;">';
 $text = $text. sprintf(__('To customize the popup content for geojsons see %sgeojson options%s.','extensions-leaflet-map'),
 '<a href="https://github.com/bozdoz/wp-plugin-leaflet-map#leaflet-geojson-options">','</a>');
