@@ -55,7 +55,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.2.6 / 220xxx
+### 2.2.6 / 220401
 
 * hover.php reviewed, new: hovering circles, polygons and lines
 * zoomhome.php max_zoom removed. This should be set in leaflet-map settings depending on the tiles.
