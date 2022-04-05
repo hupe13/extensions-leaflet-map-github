@@ -1,0 +1,1167 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Extensions for Leaflet Map\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-01 11:59+0000\n"
+"PO-Revision-Date: 2022-04-04 08:11+0000\n"
+"Last-Translator: \n"
+"Language-Team: Svenska\n"
+"Language: sv_SE\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.1; wp-5.9.2\n"
+"X-Domain: extensions-leaflet-map"
+
+#: admin/cluster/placementstrategies.php:38
+msgid ""
+"\"default\" means: one-circle strategy up to 8 elements, else spiral strategy"
+msgstr ""
+
+#: admin/elevation/sgpx.php:130
+#, php-format
+msgid "%s is not active, %s parameters will interpreted with %s."
+msgstr ""
+
+#: admin/elevation/multielevation.php:92
+#, php-format
+msgid "%s is the url of the trackfile."
+msgstr ""
+
+#: admin/elevation/multielevation.php:94
+#, php-format
+msgid "%s, %s and %s describe the %sstart point%s and are optional."
+msgstr ""
+
+#: php/elevation.php:289
+msgid "[Lat, Long] vs [Long, Lat] points. (leaflet default: [Lat, Long])"
+msgstr ""
+
+#: admin/tiles/help.php:7
+msgid "About Tile servers"
+msgstr ""
+
+#: php/multielevation.php:223 php/elevation.php:411
+msgid "Acceleration"
+msgstr "Acceleration"
+
+#: php/elevation.php:176
+msgid "Acceleration chart profile"
+msgstr ""
+
+#: admin/tiles/help.php:22
+#, php-format
+msgid ""
+"Additionally you can use some predefined Tile Providers with %s or you can "
+"define %syour Tile Servers%s."
+msgstr ""
+
+#: php/multielevation.php:224 php/elevation.php:412
+msgid "Altitude"
+msgstr "Altitud"
+
+#: admin/help/hover.php:25
+msgid "And hover"
+msgstr ""
+
+#: admin/cluster/markercluster.php:90
+msgid "and markers with leaflet-marker"
+msgstr ""
+
+#: admin/cluster/markercluster.php:97
+msgid "and/or with leaflet-gpx and/or leaflet-geojson"
+msgstr ""
+
+#: admin/elevation/waypoints.php:143
+#, php-format
+msgid ""
+"Any blank character from %sText of GPS symbol name%s is converted to a minus "
+"sign, uppercase to lowercase, a comma will be escaped."
+msgstr ""
+
+#: admin/tiles/layerswitch.php:121
+msgid ""
+"appears in the switching control. To delete a server simply clear the field "
+"mapid."
+msgstr ""
+
+#: php/elevation.php:267
+msgid "Autoupdate map bounds on chart update."
+msgstr ""
+
+#: php/elevation.php:255
+msgid "Autoupdate map center on chart mouseover."
+msgstr ""
+
+#: php/multielevation.php:240 php/elevation.php:428
+msgid "Avg Acceleration"
+msgstr "Medelvärde acceleration"
+
+#: php/multielevation.php:237 php/elevation.php:425
+msgid "Avg Speed"
+msgstr "Medelvärde hastighet"
+
+#: admin/cluster/markercluster.php:131
+msgid ""
+"Before you click the submit button, please compare your settings with the "
+"new ones and change them if they are different."
+msgstr ""
+
+#: admin/help/hover.php:28
+msgid "Both parameters are optional."
+msgstr ""
+
+#: admin/gesture.php:77
+#, php-format
+msgid ""
+"Brings the basic functionality of Gesture Handling into Leaflet Map. "
+"Prevents users from getting trapped on the map when scrolling a long page. "
+"You can enable it for all maps or for particular maps. It becomes active "
+"only when %s or %s is enabled."
+msgstr ""
+
+#: admin/help/zoomhome.php:7
+msgid "button to reset the view. A must for clustering markers"
+msgstr ""
+
+#: php/elevation.php:278
+msgid "Chart distance/elevation units."
+msgstr ""
+
+#: admin/help.php:46
+msgid "clustering and grouping of markers"
+msgstr ""
+
+#: php/markercluster.php:25
+msgid ""
+"Clusters and markers too far from the viewport are removed from the map for "
+"performance."
+msgstr ""
+
+#: admin/cluster/clustergroup.php:23
+msgid "comma separated labels appear in the selection menu"
+msgstr ""
+
+#: admin/cluster/clustergroup.php:20
+#, php-format
+msgid ""
+"comma separated strings to distinguish the markers, e.g. an unique string in "
+"%s or %s"
+msgstr ""
+
+#: admin/tiles/layerswitch.php:120
+msgid "Configure a mapid, attribution and a tile url for each tile server."
+msgstr ""
+
+#: admin/elevation/sgpx.php:118
+#, php-format
+msgid "Configure your default %s settings."
+msgstr ""
+
+#: admin/cluster/markercluster.php:102
+msgid "Create cluster"
+msgstr ""
+
+#: admin/help/hover.php:15 admin/cluster/markercluster.php:87
+msgid "Create Map"
+msgstr ""
+
+#: admin/elevation/waypoints.php:131
+#, php-format
+msgid "CSS to define as HTML block (between %s and %s) or in css file"
+msgstr ""
+
+#: admin/tiles/help.php:31
+msgid "Current Settings"
+msgstr ""
+
+#: admin/elevation/main.php:27
+msgid "Customize waypoints"
+msgstr ""
+
+#: admin/elevation/waypoints.php:44
+msgid "Default"
+msgstr ""
+
+#: admin/elevation/waypoints.php:73
+msgid "Delete"
+msgstr ""
+
+#: admin/elevation/main.php:81 admin/elevation/sgpx.php:87
+msgid "Delete all settings from wp-gpx-maps!"
+msgstr ""
+
+#: admin/cluster/placementstrategies.php:86
+msgid "Demo and Documentation"
+msgstr ""
+
+#: admin/help.php:14
+#, php-format
+msgid "Detailed documentation and examples in %sGerman%s and %sEnglish%s"
+msgstr ""
+
+#: admin/help/hover.php:32
+msgid ""
+"determines how much to extend click tolerance round a path/object on the map."
+msgstr ""
+
+#: php/elevation.php:162
+msgid "Display altitude graph"
+msgstr ""
+
+#: php/elevation.php:226
+msgid "Display distance info"
+msgstr ""
+
+#: php/elevation.php:213
+msgid "Display time info"
+msgstr ""
+
+#: php/elevation.php:61
+msgid "Display track waypoints"
+msgstr ""
+
+#: php/elevation.php:62
+msgid ""
+"Display waypoints in map and in chart / only in map / only in chart / none"
+msgstr ""
+
+#: admin/help.php:12
+msgid "Documentation"
+msgstr ""
+
+#: php/elevation.php:119
+msgid "downloadLink"
+msgstr ""
+
+#: php/elevation.php:322
+#, php-format
+msgid ""
+"Due to a bug in MacOS and iOS, see %shere%s, it is automatically set to "
+"false in Safari."
+msgstr ""
+
+#: admin/cluster/clustergroup.php:14
+msgid "Dynamically add/remove groups of markers from Marker Cluster"
+msgstr ""
+
+#: admin/elevation/waypoints.php:148
+msgid "e.g."
+msgstr ""
+
+#: admin/elevation/main.php:19
+msgid "Elevation Profile"
+msgstr ""
+
+#: admin.php:43
+msgid "Elevation Profiles"
+msgstr ""
+
+#: admin/elevation/multielevation.php:161
+msgid "Elevation Theme"
+msgstr ""
+
+#: admin/elevation/waypoints.php:160
+msgid "Example"
+msgstr ""
+
+#. Name of the plugin
+msgid "Extensions for Leaflet Map"
+msgstr ""
+
+#. Description of the plugin
+msgid "Extensions for the WordPress plugin Leaflet Map"
+msgstr ""
+
+#: admin/tiles/layerswitch.php:11 admin/tiles/main.php:24
+msgid "Extra Tile Server"
+msgstr ""
+
+#: php/multielevation.php:14
+msgid "Filename as trackname"
+msgstr ""
+
+#: admin/tiles/providers.php:87
+msgid "For a list of providers see"
+msgstr ""
+
+#: admin/cluster/markercluster.php:118 admin/elevation/multielevation.php:165
+#: admin/elevation/elevation.php:103
+msgid "For boolean values applies"
+msgstr ""
+
+#: admin/help.php:7
+msgid "Found an issue?"
+msgstr ""
+
+#: admin/help.php:52
+msgid "fullscreen"
+msgstr ""
+
+#: admin/help.php:25
+msgid "Function"
+msgstr ""
+
+#: admin/elevation/waypoints.php:166
+msgid "Generated Javascript"
+msgstr ""
+
+#: admin.php:68
+msgid "Gesture Handling"
+msgstr ""
+
+#: admin/help.php:54
+msgid "gesture handling"
+msgstr ""
+
+#: php/elevation.php:164
+msgid ""
+"graph initial state displayed and data in summary / data in summary only / "
+"graph initial state hidden and data in summary"
+msgstr ""
+
+#: php/elevation.php:177 php/elevation.php:189 php/elevation.php:201
+msgid ""
+"graph initial state displayed and data in summary / data in summary only / "
+"graph initial state hidden and data in summary / nothing"
+msgstr ""
+
+#: admin.php:37
+msgid "Help"
+msgstr ""
+
+#: admin/elevation/waypoints.php:114
+msgid "Here you can define extra waypoint options."
+msgstr ""
+
+#: admin/tiles/layerswitch.php:102
+msgid ""
+"Here you can define your Tile servers. Additionally you can specify if "
+"opacity should be regulated."
+msgstr ""
+
+#: admin/help.php:58
+msgid "hide markers"
+msgstr ""
+
+#: admin.php:64
+msgid "Hovering"
+msgstr ""
+
+#: admin/help.php:56
+msgid "Hovering and Tooltips"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://wordpress.org/plugins/extensions-leaflet-map"
+msgstr ""
+
+#. Author of the plugin
+msgid "hupe13"
+msgstr ""
+
+#: admin/tiles/providers.php:92
+msgid ""
+"I did not tested all, I have only checked the Javascript code. If something "
+"is not working, please let me know."
+msgstr ""
+
+#: admin/elevation/main.php:85
+msgid "I don't need this anymore. sgpx is always interpreted as elevation."
+msgstr ""
+
+#: admin/elevation/multielevation.php:110
+#, php-format
+msgid ""
+"If %s (in options below or in shortcode) is true, the filename (without "
+"extension) is used, no matter how %s is."
+msgstr ""
+
+#: admin/elevation/multielevation.php:136
+#, php-format
+msgid ""
+"If %s (in options below or in shortcode) is true, the filename (without "
+"extension) is used."
+msgstr ""
+
+#: admin/elevation/multielevation.php:101
+#, php-format
+msgid "If %s and %s are not specified, they are read from the file."
+msgstr ""
+
+#: php/elevation.php:94
+#, php-format
+msgid "If %s is selected, you must define some %ssettings for the icons"
+msgstr ""
+
+#: admin/elevation/multielevation.php:115
+#, php-format
+msgid "If %s is specified, it is used."
+msgstr ""
+
+#: admin/help/hidemarkers.php:6
+msgid "If a GPX track contains waypoints that you do not want to display"
+msgstr ""
+
+#: php/elevation.php:136
+msgid "If it is disabled, settings for summary below are without function."
+msgstr ""
+
+#: php/elevation.php:150
+msgid "If it is disabled, you can't toggle the initial state of graphs."
+msgstr ""
+
+#: admin/elevation/multielevation.php:139
+msgid "If it is false, an attempt is made to read the trackname from the file."
+msgstr ""
+
+#: php/gesture.php:15
+msgid ""
+"If it is true, it is valid for any map and you can't change it. If it is "
+"false, you can change it for each map:"
+msgstr ""
+
+#: admin/elevation/multielevation.php:118
+msgid "If not, an attempt is made to read the trackname from the file."
+msgstr ""
+
+#: php/markercluster.php:36
+msgid ""
+"If set, at this zoom level and below, markers will not be clustered. If 0, "
+"it is disabled."
+msgstr ""
+
+#: admin/elevation/multielevation.php:120
+#: admin/elevation/multielevation.php:141
+msgid "If this is not available, the filename (without extension) is used."
+msgstr ""
+
+#: admin/elevation/sgpx.php:124
+#, php-format
+msgid ""
+"If you are happy with it and if you don't use its track management, you can "
+"deactivate and delete the plugin %s."
+msgstr ""
+
+#: admin/elevation/sgpx.php:127
+msgid "If you have deactivated the plugin, call this page again."
+msgstr ""
+
+#: admin/elevation/waypoints.php:152
+#, php-format
+msgid ""
+"If you need more special characters than %s for your waypoints, please ask "
+"in the forum."
+msgstr ""
+
+#: admin/elevation/multielevation.php:147
+#, php-format
+msgid "If you use %s, you can use these options like in %sElevation Profile%s"
+msgstr ""
+
+#: admin/elevation/multielevation.php:129
+#, php-format
+msgid ""
+"If you use %s, you get an elevation profile only with or without a summary "
+"line."
+msgstr ""
+
+#: admin/elevation/elevation.php:80
+#, php-format
+msgid ""
+"If you want to display a track only, use %s functions. If you want to "
+"display a track with an elevation profile use %s."
+msgstr ""
+
+#: admin/elevation/sgpx.php:122
+#, php-format
+msgid ""
+"If you want to test it first: select %s and write in your test page / post "
+"%s."
+msgstr ""
+
+#: admin/elevation/owntheme.php:97
+msgid ""
+"If you want use an own style, select \"other\" theme and give it a name. Put "
+"in your functions.php following code:"
+msgstr ""
+
+#: admin/elevation/owntheme.php:114
+msgid "In your elevation.css put the styles like the theme styles in"
+msgstr ""
+
+#: admin/help/zoomhome.php:23 admin/help/zoomhome.php:65
+#: admin/help/zoomhome.php:93
+msgid "initial state of the map"
+msgstr ""
+
+#: admin/elevation/waypoints.php:49
+msgid "It may be empty, then its javascript is the default for all waypoints."
+msgstr ""
+
+#: admin/help/zoomhome.php:8
+msgid ""
+"It resets the view to all markers (leaflet-marker), lines (leaflet-line), "
+"circles (leaflet-circle), geojsons (leaflet-geojson, leaflet-gpx, leaflet-"
+"kml) and a track (elevation)."
+msgstr ""
+
+#: admin/help/hover.php:10
+#, php-format
+msgid "It works on %s and %s."
+msgstr ""
+
+#: admin/help.php:27
+msgid "Leaflet Plugins and Elements"
+msgstr ""
+
+#: admin/tiles/main.php:20
+msgid "Leaflet-providers"
+msgstr ""
+
+#: admin/help/hover.php:17
+msgid ""
+"Load files with leaflet-geojson, leaflet-gpx, leaflet-kml or create markers "
+"with leaflet-marker"
+msgstr ""
+
+#: admin/cluster/markercluster.php:84
+msgid "Many markers on a map become confusing. That is why they are clustered"
+msgstr ""
+
+#: admin/elevation/sgpx.php:101
+#, php-format
+msgid ""
+"Many thanks to %s for his %sexcellent plugin%s, which I used myself for a "
+"long time. Unfortunately it needed some rework, especially to make wp-gpx-"
+"maps and leaflet-map work together. At some point it didn't work for me at "
+"all. So some of its features are included in the shortcode %s. Since version "
+"2.2. it interprets the shortcode %s."
+msgstr ""
+
+#: admin/help/zoomhome.php:114 admin/help/zoomhome.php:115
+msgid "map like defined"
+msgstr ""
+
+#: admin/help.php:44
+msgid "marker clustering"
+msgstr ""
+
+#: admin.php:49
+msgid "Markercluster"
+msgstr ""
+
+#: php/multielevation.php:239 php/elevation.php:427
+msgid "Max Acceleration"
+msgstr "Max acceleration"
+
+#: php/multielevation.php:229 php/elevation.php:417
+msgid "Max Elevation"
+msgstr "Max elevation"
+
+#: php/multielevation.php:234 php/elevation.php:422
+msgid "Max Slope"
+msgstr "Max lutning"
+
+#: php/multielevation.php:236 php/elevation.php:424
+msgid "Max Speed"
+msgstr "Max hastighet"
+
+#: admin/help/zoomhome.php:118
+msgid "means"
+msgstr ""
+
+#: admin/elevation/main.php:38
+msgid "Migrate from wp-gpx-maps"
+msgstr ""
+
+#: admin/elevation/sgpx.php:106
+msgid "Migration"
+msgstr ""
+
+#: admin/help.php:60
+msgid "Migration from"
+msgstr ""
+
+#: php/elevation.php:279
+msgid "miles or kilometers"
+msgstr ""
+
+#: php/multielevation.php:238 php/elevation.php:426
+msgid "Min Acceleration"
+msgstr "Min acceleration"
+
+#: php/multielevation.php:230 php/elevation.php:418
+msgid "Min Elevation"
+msgstr "Min elevation"
+
+#: php/multielevation.php:233 php/elevation.php:421
+msgid "Min Slope"
+msgstr "Min lutning"
+
+#: php/multielevation.php:235 php/elevation.php:423
+msgid "Min Speed"
+msgstr "Min fart"
+
+#: admin/elevation/waypoints.php:168
+msgid "More options see"
+msgstr ""
+
+#: php/multielevation.php:327 php/multielevation.php:361
+msgid "move mouse over a track or select one in control panel ..."
+msgstr ""
+
+#: admin/elevation/main.php:31
+msgid "Multiple hoverable tracks"
+msgstr ""
+
+#: admin/help.php:37
+msgid "multiple tracks with elevation profiles"
+msgstr ""
+
+#: php/placementstrategies.php:31
+msgid "Multiplicator of elements number for the next circle"
+msgstr ""
+
+#: admin/elevation/waypoints.php:135
+msgid "Must be defined for each waypoint, also for the default."
+msgstr ""
+
+#: admin/elevation/owntheme.php:72
+msgid "must end with"
+msgstr ""
+
+#: php/sgpx.php:146
+#, php-format
+msgid "No / Yes / Only, when %s is used, e.g. for testing."
+msgstr ""
+
+#: admin/cluster/placementstrategies.php:87
+msgid "Not all parameters are implemented in the plugin."
+msgstr ""
+
+#: admin/elevation/elevation.php:78
+msgid "Note"
+msgstr "Notera"
+
+#: php/elevation.php:51
+msgid "nothing"
+msgstr ""
+
+#: php/placementstrategies.php:27
+msgid "Number of elements in the first circle"
+msgstr ""
+
+#: php/elevation.php:74
+#, php-format
+msgid "Only meaningful, if %swaypoints%s is not %s."
+msgstr ""
+
+#: php/elevation.php:93
+msgid "Only meaningful, if waypoints are shown in the map."
+msgstr ""
+
+#: admin/tiles/help.php:51
+msgid "optional: mapid - This appears in the switching control."
+msgstr ""
+
+#: admin/cluster/markercluster.php:109
+msgid "Options"
+msgstr ""
+
+#: admin/cluster/clustergroup.php:32
+msgid "or"
+msgstr ""
+
+#: admin.php:76
+msgid "Other functions"
+msgstr ""
+
+#: admin/elevation/main.php:23
+msgid "Own theme"
+msgstr ""
+
+#: admin/tiles/layerswitch.php:105
+msgid "Per default all defined tile servers appear."
+msgstr ""
+
+#: admin/elevation/owntheme.php:120
+msgid "Please change this only, if you want to use your own theme."
+msgstr ""
+
+#: admin/elevation/elevation.php:117
+#, php-format
+msgid ""
+"Please delete %s these %stheme%s settings, these are valid as long as they "
+"are not deleted."
+msgstr ""
+
+#: admin/elevation/owntheme.php:123
+msgid "Please reset these settings, if you are not using an own theme!"
+msgstr ""
+
+#: admin/cluster/markercluster.php:112
+#, php-format
+msgid ""
+"Please see the %s page for options. If you want to change other ones, please "
+"post it to the forum."
+msgstr ""
+
+#: admin/gesture.php:34 admin/cluster/placementstrategies.php:46
+#: admin/cluster/markercluster.php:43 admin/elevation/multielevation.php:38
+#: admin/elevation/elevation.php:38 admin/elevation/sgpx.php:35
+msgid "Plugins Default"
+msgstr ""
+
+#: admin/gesture.php:50 admin/cluster/placementstrategies.php:62
+#: admin/cluster/markercluster.php:59 admin/elevation/multielevation.php:54
+#: admin/elevation/elevation.php:54 admin/elevation/sgpx.php:51
+msgid "Plugins Default:"
+msgstr ""
+
+#: php/elevation.php:38
+msgid "Polyline weight"
+msgstr ""
+
+#: php/elevation.php:49
+msgid "position/height indicator marker drawn onto the map"
+msgstr ""
+
+#: admin/cluster/clustergroup.php:18
+msgid "possible meaningful values"
+msgstr ""
+
+#: admin/help.php:9
+msgid "Post it to the support forum"
+msgstr ""
+
+#: admin/tiles/providers.php:25
+msgid "Providers requiring registration"
+msgstr ""
+
+#: php/elevation.php:321
+msgid "Render chart profiles as Canvas or SVG Paths."
+msgstr ""
+
+#: php/sgpx.php:145
+msgid "Replace <code>sgpx</code> (wp-gpx-maps) with <code>elevation</code>."
+msgstr ""
+
+#: admin/canvas.php:62 admin/tiles/main.php:59 admin/tiles/providers.php:109
+#: admin/cluster/placementstrategies.php:14 admin/cluster/markercluster.php:14
+#: admin/elevation/main.php:63 admin/elevation/main.php:70
+#: admin/elevation/main.php:96 admin/elevation/main.php:103
+msgid "Reset"
+msgstr ""
+
+#: admin/help.php:50
+msgid "reset the map"
+msgstr ""
+
+#: admin/elevation/sgpx.php:110
+#, php-format
+msgid "See documentation and examples in %shere%s."
+msgstr ""
+
+#: admin/tiles/help.php:50
+msgid "see Leaflet Map documentation"
+msgstr ""
+
+#: admin/elevation/sgpx.php:120
+#, php-format
+msgid "Select %s to interpret the %s parameters as %s."
+msgstr ""
+
+#: admin/canvas.php:17 admin/tiles/layerswitch.php:118
+#: admin/tiles/providers.php:98 admin/elevation/waypoints.php:183
+msgid "Settings"
+msgstr ""
+
+#: php/elevation.php:242
+#, php-format
+msgid ""
+"show always the block / show the block and toggle %s to hide / hide the "
+"block and toggle %s to show"
+msgstr ""
+
+#: php/elevation.php:228
+msgid ""
+"show distance data in graph and summary / show distance data in summary only"
+msgstr ""
+
+#: php/elevation.php:215
+msgid ""
+"show time data in graph and summary / show time data in summary only / "
+"nothing"
+msgstr ""
+
+#: php/elevation.php:73
+msgid ""
+"Show waypoint labels in map and in chart / only in map / only in chart / none"
+msgstr ""
+
+#: php/gesture.php:22
+msgid "Site Language or Browser Language"
+msgstr ""
+
+#: php/multielevation.php:225 php/elevation.php:413
+msgid "Slope"
+msgstr "Lutning"
+
+#: php/elevation.php:187
+msgid "Slope chart profile"
+msgstr "Diagram lutningsprofil"
+
+#: php/elevation.php:134
+msgid ""
+"some predefined settings / summary on one line / summary on multiple lines / "
+"without summary"
+msgstr ""
+
+#: admin/help/zoomhome.php:119
+msgid "sometimes to first zoom"
+msgstr ""
+
+#: php/multielevation.php:226 php/elevation.php:414
+msgid "Speed"
+msgstr "Hastighet"
+
+#: php/elevation.php:199
+msgid "Speed chart profile"
+msgstr "Diagram hastighetsprofil"
+
+#: php/placementstrategies.php:15
+msgid "Strategy for placing markers in cluster"
+msgstr ""
+
+#: admin/help.php:48
+msgid "styling markercluster"
+msgstr ""
+
+#: php/multielevation.php:21
+msgid "Summary"
+msgstr "Sammanfattning"
+
+#: php/elevation.php:132
+msgid "Summary track info style"
+msgstr ""
+
+#: php/placementstrategies.php:39
+msgid "Switch drawing helping circles on"
+msgstr ""
+
+#: admin/help.php:42
+msgid "switching tile servers"
+msgstr ""
+
+#: admin/elevation/waypoints.php:17 admin/elevation/waypoints.php:35
+#: admin/elevation/waypoints.php:118 admin/elevation/waypoints.php:122
+msgid "Text of GPS symbol name"
+msgstr ""
+
+#: admin/elevation/elevation.php:86
+#, php-format
+msgid ""
+"The %s parameter is called %s, but it works with gpx, kml, geojson and tcx "
+"files."
+msgstr ""
+
+#: admin/tiles/help.php:8
+#, php-format
+msgid "The default Map Tiles are defined in the %s Settings%s."
+msgstr ""
+
+#: admin/tiles/help.php:12
+msgid "The default Map Tiles are defined in the Leaflet Map Settings."
+msgstr ""
+
+#: admin/elevation/elevation.php:91
+msgid ""
+"The elevation shortcode has many configuration options. Some things are not "
+"trivial. If you can't configure something, ask in the forum."
+msgstr ""
+
+#: php/placementstrategies.php:53 php/markercluster.php:40
+msgid ""
+"The maximum radius that a cluster will cover from the central marker (in "
+"pixels). Decreasing will make more, smaller clusters."
+msgstr ""
+
+#: admin/elevation/multielevation.php:153
+#, php-format
+msgid "The name of a %strack%s is determined as described above."
+msgstr ""
+
+#: admin/elevation/multielevation.php:132
+#, php-format
+msgid "The name of a %strack%s is determined in this order:"
+msgstr ""
+
+#: admin/elevation/multielevation.php:105
+#, php-format
+msgid "The name of the %sstart point%s is determined in this order:"
+msgstr ""
+
+#: admin/cluster/clustergroup.php:25
+#, php-format
+msgid "The number of %s and %s must match."
+msgstr ""
+
+#: admin/cluster/clustergroup.php:38
+#, php-format
+msgid "The parameter and settings for %s are valid too."
+msgstr ""
+
+#: admin/cluster/placementstrategies.php:103
+#, php-format
+msgid "The parameter maxZoom has been removed, please use %s instead."
+msgstr ""
+
+#: admin/cluster/markercluster.php:129
+msgid ""
+"The parameters zoom, radius and spiderfy have been renamed to "
+"disableClusteringAtZoom, maxClusterRadius and spiderfyOnMaxZoom, but they "
+"are still valid. Your settings:"
+msgstr ""
+
+#: admin/tiles/layerswitch.php:53 admin/elevation/waypoints.php:65
+msgid "The syntax is not checked!"
+msgstr ""
+
+#: admin/elevation/multielevation.php:159
+msgid "The theme is the same as the"
+msgstr ""
+
+#: admin/elevation/waypoints.php:125
+msgid "The waypoint CSS class Selector"
+msgstr ""
+
+#: php/elevation.php:19
+msgid "Theme Colors"
+msgstr ""
+
+#: admin/help/hover.php:31
+#, php-format
+msgid ""
+"This is a very special case. I would like to exclude some leaflet-geojson "
+"with a specific string in the src url from changing its style on hovering. "
+"If the url to the geojson file is e.g. %s, url-substring should be %s."
+msgstr ""
+
+#: admin/elevation/sgpx.php:107
+#, php-format
+msgid "This page helps you to migrate from %s to %s."
+msgstr ""
+
+#: admin/tiles/main.php:16
+msgid "Tile Server"
+msgstr ""
+
+#: admin.php:55
+msgid "Tiles"
+msgstr ""
+
+#: admin/help/hover.php:12
+#, php-format
+msgid "To customize the popup content for geojsons see %sgeojson options%s."
+msgstr ""
+
+#: admin/cluster/markercluster.php:114
+msgid "To reset all values to their defaults, simply click the Reset button"
+msgstr ""
+
+#: php/elevation.php:107
+msgid "Toggle \"leaflet-distance-markers\" integration"
+msgstr ""
+
+#: php/elevation.php:147
+msgid "Toggle chart legend filter."
+msgstr ""
+
+#: php/elevation.php:91
+msgid "Toggle custom waypoint icons"
+msgstr ""
+
+#: php/elevation.php:240
+msgid "Toggle diagram and summary block"
+msgstr ""
+
+#: php/elevation.php:72
+msgid "Toggle waypoint labels"
+msgstr ""
+
+#: php/multielevation.php:231 php/elevation.php:419
+msgid "Total Ascent"
+msgstr "Total stigning"
+
+#: php/multielevation.php:232 php/elevation.php:420
+msgid "Total Descent"
+msgstr "Totalt nedför"
+
+#: php/multielevation.php:228 php/elevation.php:416
+msgid "Total Length"
+msgstr "Total sträcka"
+
+#: php/multielevation.php:227 php/elevation.php:415
+msgid "Total Time"
+msgstr "Total tid"
+
+#: admin/help.php:32
+msgid "track with an elevation profile"
+msgstr ""
+
+#: php/placementstrategies.php:21
+msgid "Type of marker"
+msgstr ""
+
+#: admin/elevation/multielevation.php:123
+#, php-format
+msgid "Use either %s or %s as last instruction."
+msgstr ""
+
+#: php/multielevation.php:15
+msgid "Use filename (without extension) as name of the track."
+msgstr ""
+
+#: admin/help/hover.php:8
+msgid ""
+"Use it to highlight a gpx, kml, geojson or marker and get a tooltip on mouse "
+"over."
+msgstr ""
+
+#: admin/elevation/waypoints.php:46
+msgid ""
+"Valid characters: lowercase, uppercase, numbers, -, comma, blank character."
+msgstr ""
+
+#: php/multielevation.php:22
+#, php-format
+msgid ""
+"Valid for %s: Only elevation profile with or without summary line will be "
+"displayed."
+msgstr ""
+
+#: php/gesture.php:13
+msgid "valid for whole site or only for one map"
+msgstr ""
+
+#: php/placementstrategies.php:35
+msgid "Value to be added to each new circle distance value"
+msgstr ""
+
+#: admin/elevation/waypoints.php:117
+msgid "Waypoint specified in file"
+msgstr ""
+
+#: php/placementstrategies.php:49 php/markercluster.php:22
+msgid ""
+"When you click a cluster at the bottom zoom level we spiderfy it so you can "
+"see all of its markers."
+msgstr ""
+
+#: php/markercluster.php:19
+msgid "When you click a cluster we zoom to its bounds."
+msgstr ""
+
+#: php/markercluster.php:16
+msgid "When you mouse over a cluster it shows the bounds of its markers."
+msgstr ""
+
+#: admin/tiles/help.php:58
+#, php-format
+msgid "with %s and/or %s you can specify which tiles should be used."
+msgstr ""
+
+#: admin/tiles/help.php:61
+#, php-format
+msgid ""
+"with %s you can specify the mapids and/or providers for which opacity should "
+"be regulated."
+msgstr ""
+
+#: admin/tiles/help.php:55
+#, php-format
+msgid "without any parameter: All defined %stile servers%s are used."
+msgstr ""
+
+#: admin/elevation/main.php:88
+msgid "wp-gpx-maps is not installed and nothing is configured."
+msgstr ""
+
+#: php/sgpx.php:180
+msgid ""
+"You are using the sgpx shortcode from plugin wp-gpx-maps. But the script "
+"cannot detect how to handle it. Please ask in the forum."
+msgstr ""
+
+#: php/sgpx.php:190
+msgid ""
+"You are using the sgpx shortcode from plugin wp-gpx-maps. wp-gpx-maps and "
+"leaflet-map don't work together. See admin settings page."
+msgstr ""
+
+#: admin/cluster/placementstrategies.php:41 admin/cluster/markercluster.php:38
+#: admin/elevation/elevation.php:33
+msgid "You can change it for each map with"
+msgstr ""
+
+#: admin/elevation/multielevation.php:33
+msgid "You can change it with"
+msgstr ""
+
+#: admin/elevation/sgpx.php:134
+msgid "You can delete all settings on this page."
+msgstr ""
+
+#: admin/elevation/elevation.php:97
+msgid "You can optionally set a marker on Start."
+msgstr ""
+
+#: admin/tiles/layerswitch.php:111
+msgid ""
+"You can select your defined Tile Server with parameter <code>tiles</code> as "
+"comma separated list in the shortcode:"
+msgstr ""
+
+#: admin/help/zoomhome.php:16
+msgid "You can set following and the Home button works as shown in the table."
+msgstr ""
+
+#: admin/elevation/waypoints.php:139
+msgid "You can use any css describing the waypoint."
+msgstr ""
+
+#: admin/tiles/layerswitch.php:116
+msgid "You can use the parameter <code>providers</code> also."
+msgstr ""
+
+#: admin/tiles/providers.php:85
+msgid "You can use the parameter <code>tiles</code> also."
+msgstr ""
+
+#: admin/elevation/elevation.php:112
+#, php-format
+msgid ""
+"You have installed your own theme. The settings for %s on this page are not "
+"valid for you."
+msgstr ""
+
+#: admin/elevation/sgpx.php:132
+msgid ""
+"You have wp-gpx-maps uninstalled, but some of its options exist in the "
+"database. You should delete them."
+msgstr ""
+
+#: admin/help.php:64
+msgid "You may be interested in"
+msgstr ""
+
+#: admin/tiles/help.php:27
+msgid "Your Settings"
+msgstr ""
+
+#: admin/elevation/elevation.php:115
+msgid "Your theme is"
+msgstr ""
