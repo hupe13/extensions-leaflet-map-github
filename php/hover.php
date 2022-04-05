@@ -16,6 +16,7 @@ function leafext_geojsonhover_script($url){
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
 		var map_id = map._leaflet_id;
+		//console.log(map_id);
 		var maps=[];
 		maps[map_id] = map;
 
@@ -56,16 +57,18 @@ function leafext_geojsonhover_script($url){
 									//console.log(layer);
 									//console.log(layer.options.fillOpacity);
 									//console.log(layer.options.weight);
-									if (typeof layer.options.fillOpacity == "undefined") {
-										origfillOpacity = 0.2; //leaflet default
-									} else {
-										origfillOpacity = layer.options.fillOpacity;
-									}
-									if (typeof layer.options.weight == "undefined") {
-										origweight = 3; //leaflet default
-									} else {
-										origweight = layer.options.weight;
-									}
+									// if (typeof layer.options.fillOpacity == "undefined") {
+									// 	origfillOpacity = 0.2; //leaflet default
+									// } else {
+									// 	origfillOpacity = layer.options.fillOpacity;
+									// }
+									// if (typeof layer.options.weight == "undefined") {
+									// 	origweight = 3; //leaflet default
+									// } else {
+									// 	origweight = layer.options.weight;
+									// }
+									var origfillOpacity = 0.2; //leaflet default
+									var origweight = 3; //leaflet default
 									layer.setStyle({
 										"fillOpacity" : origfillOpacity,
 										"weight" : origweight,
@@ -249,29 +252,33 @@ function leafext_geojsonhover_script($url){
 		if (markers.length > 0) {
 			for (var i = 0; i < WPLeafletMapPlugin.markers.length; i++) {
 				var a = WPLeafletMapPlugin.markers[i];
-				//console.log(a);
-				a.on("mouseover", function (e) {
-					//console.log("marker mouseover");
-					//console.log(e.sourceTarget.options.title);
-					if (typeof e.sourceTarget.getPopup() != "undefined") {
-						if ( ! e.sourceTarget.getPopup().isOpen()) {
-							map.closePopup();
-							if ( e.sourceTarget.options.title != "") {
-								var content = e.sourceTarget.options.title;
-							} else {
-								var content = e.sourceTarget.getPopup().getContent();
+				if (a._map._leaflet_id == map_id) {
+					a.on("mouseover", function (e) {
+						//console.log("marker mouseover");
+						//console.log(e.sourceTarget.options.title);
+						if (typeof e.sourceTarget.getPopup() != "undefined") {
+							if ( ! e.sourceTarget.getPopup().isOpen()) {
+								map.closePopup();
+								if ( e.sourceTarget.options.title != "") {
+									var content = e.sourceTarget.options.title;
+								} else {
+									var content = e.sourceTarget.getPopup().getContent();
+								}
+								e.sourceTarget.bindTooltip(content);
+								e.sourceTarget.openTooltip(e.latlng);
+								// } else {
+								//
 							}
-							e.sourceTarget.bindTooltip(content);
-							e.sourceTarget.openTooltip(e.latlng);
-							// } else {
-							//
 						}
-					}
-				});
-				a.on("click", function (e) {
-					//console.log("click");
-					e.sourceTarget.unbindTooltip();
-				});
+					});
+					a.on("click", function (e) {
+						//console.log("click");
+						e.sourceTarget.unbindTooltip();
+					});
+				// } else {
+				// 	console.log("nicht dasselbe");
+				}
+
 			}
 		}
 

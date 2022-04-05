@@ -1,3 +1,4 @@
 ###
 
-* This is the official version 2.2.6.
+* hover: geojson fixed
+* elevation: some strings for translation added

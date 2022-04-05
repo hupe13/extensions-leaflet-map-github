@@ -426,6 +426,18 @@ function leafext_elevation_script($gpx,$theme,$settings,$chart){
 			"Min Acceleration: "	: "'.__("Min Acceleration", "extensions-leaflet-map").': ",
 			"Max Acceleration: "	: "'.__("Max Acceleration", "extensions-leaflet-map").': ",
 			"Avg Acceleration: "	: "'.__("Avg Acceleration", "extensions-leaflet-map").': ",
+			"Download" 	: "'.__("Download", "extensions-leaflet-map").'",
+			"Elevation" : "'.__("Elevation", "extensions-leaflet-map").'",
+
+			"a: " 			: "'._x("a", "Abbreviation for acceleration in the chart", "extensions-leaflet-map").': ",
+			"cad: " 		: "'._x("cad", "Abbreviation for cadence in the chart", "extensions-leaflet-map").': ",
+			"hr: " 		: "'._x("hr", "Abbreviation for heart rate in the chart", "extensions-leaflet-map").': ",
+			"m: " 			: "'._x("m", "Abbreviation for slope in the chart", "extensions-leaflet-map").': ",
+			"t: " 			: "'._x("t", "Abbreviation for time in the chart", "extensions-leaflet-map").': ",
+			"T: " 			: "'._x("T", "Abbreviation for duration in the chart", "extensions-leaflet-map").': ",
+			"v: " 			: "'._x("v", "Abbreviation for speed in the chart", "extensions-leaflet-map").': ",
+			"x: " 			: "'._x("x", "Abbreviation for length in the chart", "extensions-leaflet-map").': ",
+			"y: " 			: "'._x("y", "Abbreviation for altitude in the chart", "extensions-leaflet-map").': ",
 		};
 		L.registerLocale("wp", mylocale);
 		L.setLocale("wp");

@@ -112,8 +112,8 @@ add_filter('pre_do_shortcode_tag', function ( &#36;output, &#36;shortcode ) {
 "
 .'<p>'.
 __('In your elevation.css put the styles like the theme styles in',"extensions-leaflet-map")
-.' <a href="https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css"
->https://unpkg.com/@raruto/leaflet-elevation/dist/leaflet-elevation.css</a></p>';
+.' <a href="https://unpkg.com/@raruto/leaflet-elevation@'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.css"
+>https://unpkg.com/@raruto/leaflet-elevation@'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.css</a></p>';
 
 $theme = get_option('leafext_values');
 if (!is_array($theme)) {
