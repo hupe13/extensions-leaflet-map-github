@@ -67,18 +67,6 @@ function leafext_add_action_links ( $actions ) {
 }
 add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'leafext_add_action_links' );
 
-// from https://developer.wordpress.org/plugins/internationalization/how-to-internationalize-your-plugin/#plugins-on-wordpress-org
-function leafext_extra_textdomain1( $mofile, $domain ) {
-    if ( 'extensions-leaflet-map' === $domain ) {
-        if (get_locale() == 'sv_SE') {
-          $mofile = LEAFEXT_PLUGIN_DIR . 'lang/extensions-leaflet-map-sv_SE.mo';
-          var_dump(get_locale(),$mofile, $domain); wp_die();
-        }
-    }
-    return $mofile;
-}
-//add_filter( 'load_textdomain_mofile', 'leafext_extra_textdomain', 10, 2 );
-
 // for translating a plugin
 function leafext_extra_textdomain() {
   if (get_locale() == 'sv_SE') {

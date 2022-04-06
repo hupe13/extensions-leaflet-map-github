@@ -2,7 +2,7 @@
 
 # Extensions for Leaflet Map Github Version
 
-Stable tag: 2.2.6   
+Stable tag: 2.2.7   
 Requires at least: 5.5.3  
 Tested up to: 5.9  
 License: GPLv2 or later  
@@ -54,6 +54,12 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * Go to Settings - Leaflet Map - Extensions for Leaflet Map and get documentation and settings options.
 
 ## Changelog
+
+### 2.2.7 / 2204xx
+
+* hover: geojson fixed
+* elevation: some strings for translation added
+* swedish translation frontend from @argentum
 
 ### 2.2.6 / 220401
 
