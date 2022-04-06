@@ -5,7 +5,7 @@
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
  * Primary Branch: main
  * Description: Extensions for the WordPress plugin Leaflet Map Github Version
- * Version:     2.3-beta.220405
+ * Version:     2.3-beta.220406
  * Author:      hupe13
  * License:     GPL v2 or later
  * Text Domain: extensions-leaflet-map
@@ -66,4 +66,23 @@ function leafext_add_action_links ( $actions ) {
   return $actions;
 }
 add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'leafext_add_action_links' );
-?>
+
+// from https://developer.wordpress.org/plugins/internationalization/how-to-internationalize-your-plugin/#plugins-on-wordpress-org
+function leafext_extra_textdomain1( $mofile, $domain ) {
+    if ( 'extensions-leaflet-map' === $domain ) {
+        if (get_locale() == 'sv_SE') {
+          $mofile = LEAFEXT_PLUGIN_DIR . 'lang/extensions-leaflet-map-sv_SE.mo';
+          var_dump(get_locale(),$mofile, $domain); wp_die();
+        }
+    }
+    return $mofile;
+}
+//add_filter( 'load_textdomain_mofile', 'leafext_extra_textdomain', 10, 2 );
+
+// for translating a plugin
+function leafext_extra_textdomain() {
+  if (get_locale() == 'sv_SE') {
+    load_plugin_textdomain('extensions-leaflet-map', false, LEAFEXT_PLUGIN_SETTINGS . '/lang/');
+  }
+}
+add_action( 'plugins_loaded', 'leafext_extra_textdomain' );
