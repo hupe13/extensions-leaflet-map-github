@@ -3,16 +3,16 @@ msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-01 11:59+0000\n"
-"PO-Revision-Date: 2022-04-06 19:42+0000\n"
+"PO-Revision-Date: 2022-04-07 09:34+0000\n"
 "Last-Translator: \n"
-"Language-Team: Swedish\n"
+"Language-Team: Svenska\n"
 "Language: sv_SE\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.1; wp-5.9.2\n"
+"X-Loco-Version: 2.6.1; wp-5.9.3\n"
 "X-Domain: extensions-leaflet-map"
 
 #: admin/cluster/placementstrategies.php:38
@@ -43,7 +43,7 @@ msgstr ""
 msgid "About Tile servers"
 msgstr ""
 
-#: php/multielevation.php:223
+#: php/multielevation.php:223 php/elevation.php:411
 msgid "Acceleration"
 msgstr "Acceleration"
 
@@ -51,22 +51,18 @@ msgstr "Acceleration"
 msgid "Acceleration chart profile"
 msgstr ""
 
-#: admin/tiles/help.php:28
+#: admin/tiles/help.php:22
 #, php-format
 msgid ""
 "Additionally you can use some predefined Tile Providers with %s or you can "
 "define %syour Tile Servers%s."
 msgstr ""
 
-#: php/multielevation.php:224
+#: php/multielevation.php:224 php/elevation.php:412
 msgid "Altitude"
 msgstr "Altitud"
 
-#: admin/cluster/clustergroup.php:79 admin/cluster/clustergroup.php:89
-msgid "and"
-msgstr ""
-
-#: admin/help/hover.php:38
+#: admin/help/hover.php:25
 msgid "And hover"
 msgstr ""
 
@@ -99,11 +95,11 @@ msgstr ""
 msgid "Autoupdate map center on chart mouseover."
 msgstr ""
 
-#: php/multielevation.php:240
+#: php/multielevation.php:240 php/elevation.php:428
 msgid "Avg Acceleration"
 msgstr "Medelvärde acceleration"
 
-#: php/multielevation.php:237
+#: php/multielevation.php:237 php/elevation.php:425
 msgid "Avg Speed"
 msgstr "Medelvärde hastighet"
 
@@ -113,7 +109,7 @@ msgid ""
 "new ones and change them if they are different."
 msgstr ""
 
-#: admin/help/hover.php:41
+#: admin/help/hover.php:28
 msgid "Both parameters are optional."
 msgstr ""
 
@@ -144,7 +140,7 @@ msgid ""
 "performance."
 msgstr ""
 
-#: admin/cluster/clustergroup.php:23 admin/cluster/clustergroup.php:63
+#: admin/cluster/clustergroup.php:23
 msgid "comma separated labels appear in the selection menu"
 msgstr ""
 
@@ -153,13 +149,6 @@ msgstr ""
 msgid ""
 "comma separated strings to distinguish the markers, e.g. an unique string in "
 "%s or %s"
-msgstr ""
-
-#: admin/cluster/clustergroup.php:58
-#, php-format
-msgid ""
-"comma separated strings to distinguish the markers, e.g. an unique substring "
-"in %s or the exact string (e.g.%s) in %s"
 msgstr ""
 
 #: admin/tiles/layerswitch.php:120
@@ -175,7 +164,7 @@ msgstr ""
 msgid "Create cluster"
 msgstr ""
 
-#: admin/cluster/markercluster.php:87 admin/help/hover.php:13
+#: admin/help/hover.php:15 admin/cluster/markercluster.php:87
 msgid "Create Map"
 msgstr ""
 
@@ -184,7 +173,7 @@ msgstr ""
 msgid "CSS to define as HTML block (between %s and %s) or in css file"
 msgstr ""
 
-#: admin/tiles/help.php:37
+#: admin/tiles/help.php:31
 msgid "Current Settings"
 msgstr ""
 
@@ -213,7 +202,7 @@ msgstr ""
 msgid "Detailed documentation and examples in %sGerman%s and %sEnglish%s"
 msgstr ""
 
-#: admin/help/hover.php:45
+#: admin/help/hover.php:32
 msgid ""
 "determines how much to extend click tolerance round a path/object on the map."
 msgstr ""
@@ -279,11 +268,11 @@ msgid "Example"
 msgstr ""
 
 #. Name of the plugin
-msgid "Extensions for Leaflet Map Github"
+msgid "Extensions for Leaflet Map"
 msgstr ""
 
 #. Description of the plugin
-msgid "Extensions for the WordPress plugin Leaflet Map Github Version"
+msgid "Extensions for the WordPress plugin Leaflet Map"
 msgstr ""
 
 #: admin/tiles/layerswitch.php:11 admin/tiles/main.php:24
@@ -298,8 +287,8 @@ msgstr ""
 msgid "For a list of providers see"
 msgstr ""
 
-#: admin/cluster/markercluster.php:118 admin/elevation/elevation.php:103
-#: admin/elevation/multielevation.php:165
+#: admin/cluster/markercluster.php:118 admin/elevation/multielevation.php:165
+#: admin/elevation/elevation.php:103
 msgid "For boolean values applies"
 msgstr ""
 
@@ -366,7 +355,7 @@ msgid "Hovering and Tooltips"
 msgstr ""
 
 #. URI of the plugin
-msgid "https://github.com/hupe13/extensions-leaflet-map-github"
+msgid "https://wordpress.org/plugins/extensions-leaflet-map"
 msgstr ""
 
 #. Author of the plugin
@@ -400,15 +389,6 @@ msgstr ""
 #: admin/elevation/multielevation.php:101
 #, php-format
 msgid "If %s and %s are not specified, they are read from the file."
-msgstr ""
-
-#: admin/cluster/clustergroup.php:81
-#, php-format
-msgid ""
-"If %s contains %s and %s, then markers (respectively Points) for which the "
-"property %s does not apply are placed in the %s group. Markers (respectively "
-"Points) whose property is not known are placed in the %s group. See also the "
-"developer console."
 msgstr ""
 
 #: php/elevation.php:94
@@ -508,151 +488,6 @@ msgid ""
 "in your functions.php following code:"
 msgstr ""
 
-#: php/elevation.php:411
-msgctxt "In Frontend"
-msgid "Acceleration"
-msgstr "Acceleration"
-
-#: php/elevation.php:412
-msgctxt "In Frontend"
-msgid "Altitude"
-msgstr "Altitud"
-
-#: php/elevation.php:428
-msgctxt "In Frontend"
-msgid "Avg Acceleration"
-msgstr "Medelvärde acceleration"
-
-#: php/elevation.php:425
-msgctxt "In Frontend"
-msgid "Avg Speed"
-msgstr "Medelvärde hastighet"
-
-#: php/elevation.php:429
-msgctxt "In Frontend"
-msgid "Download"
-msgstr ""
-
-#: php/elevation.php:430
-msgctxt "In Frontend"
-msgid "Elevation"
-msgstr "Elevation"
-
-#: php/elevation.php:427
-msgctxt "In Frontend"
-msgid "Max Acceleration"
-msgstr "Max acceleration"
-
-#: php/elevation.php:417
-msgctxt "In Frontend"
-msgid "Max Elevation"
-msgstr "Max Elevation"
-
-#: php/elevation.php:422
-msgctxt "In Frontend"
-msgid "Max Slope"
-msgstr "Max lutning"
-
-#: php/elevation.php:424
-msgctxt "In Frontend"
-msgid "Max Speed"
-msgstr "Max hastighet"
-
-#: php/elevation.php:426
-msgctxt "In Frontend"
-msgid "Min Acceleration"
-msgstr "Min acceleration"
-
-#: php/elevation.php:418
-msgctxt "In Frontend"
-msgid "Min Elevation"
-msgstr "Min Elevation"
-
-#: php/elevation.php:421
-msgctxt "In Frontend"
-msgid "Min Slope"
-msgstr "Min lutning"
-
-#: php/elevation.php:423
-msgctxt "In Frontend"
-msgid "Min Speed"
-msgstr "Min fart"
-
-#: php/elevation.php:413
-msgctxt "In Frontend"
-msgid "Slope"
-msgstr "Lutning"
-
-#: php/elevation.php:414
-msgctxt "In Frontend"
-msgid "Speed"
-msgstr "Hastighet"
-
-#: php/elevation.php:419
-msgctxt "In Frontend"
-msgid "Total Ascent"
-msgstr "Total stigning"
-
-#: php/elevation.php:420
-msgctxt "In Frontend"
-msgid "Total Descent"
-msgstr "Totalt nedför"
-
-#: php/elevation.php:416
-msgctxt "In Frontend"
-msgid "Total Length"
-msgstr "Total sträcka"
-
-#: php/elevation.php:415
-msgctxt "In Frontend"
-msgid "Total Time"
-msgstr "Total tid"
-
-#: php/elevation.php:432
-msgctxt "In Frontend: Abbreviation for acceleration in the chart"
-msgid "a"
-msgstr ""
-
-#: php/elevation.php:440
-msgctxt "In Frontend: Abbreviation for altitude in the chart"
-msgid "y"
-msgstr ""
-
-#: php/elevation.php:433
-msgctxt "In Frontend: Abbreviation for cadence in the chart"
-msgid "cad"
-msgstr ""
-
-#: php/elevation.php:437
-msgctxt "In Frontend: Abbreviation for duration in the chart"
-msgid "T"
-msgstr ""
-
-#: php/elevation.php:434
-msgctxt "In Frontend: Abbreviation for heart rate in the chart"
-msgid "hr"
-msgstr ""
-
-#: php/elevation.php:439
-msgctxt "In Frontend: Abbreviation for length in the chart"
-msgid "x"
-msgstr ""
-
-#: php/elevation.php:435
-msgctxt "In Frontend: Abbreviation for slope in the chart"
-msgid "m"
-msgstr ""
-
-#: php/elevation.php:438
-msgctxt "In Frontend: Abbreviation for speed in the chart"
-msgid "v"
-msgstr ""
-
-#: php/elevation.php:436
-msgctxt "In Frontend: Abbreviation for time in the chart"
-msgid "t"
-msgstr ""
-
 #: admin/elevation/owntheme.php:114
 msgid "In your elevation.css put the styles like the theme styles in"
 msgstr ""
@@ -660,11 +495,6 @@ msgstr ""
 #: admin/help/zoomhome.php:23 admin/help/zoomhome.php:65
 #: admin/help/zoomhome.php:93
 msgid "initial state of the map"
-msgstr ""
-
-#: admin/cluster/clustergroup.php:41
-msgid ""
-"is the name of a property in properties of the Point in the FeatureCollection"
 msgstr ""
 
 #: admin/elevation/waypoints.php:49
@@ -678,6 +508,11 @@ msgid ""
 "kml) and a track (elevation)."
 msgstr ""
 
+#: admin/help/hover.php:10
+#, php-format
+msgid "It works on %s and %s."
+msgstr ""
+
 #: admin/help.php:27
 msgid "Leaflet Plugins and Elements"
 msgstr ""
@@ -686,9 +521,10 @@ msgstr ""
 msgid "Leaflet-providers"
 msgstr ""
 
-#: admin/help/hover.php:15
-#, php-format
-msgid "Load an element with any %s shortcode"
+#: admin/help/hover.php:17
+msgid ""
+"Load files with leaflet-geojson, leaflet-gpx, leaflet-kml or create markers "
+"with leaflet-marker"
 msgstr ""
 
 #: admin/cluster/markercluster.php:84
@@ -717,19 +553,19 @@ msgstr ""
 msgid "Markercluster"
 msgstr ""
 
-#: php/multielevation.php:239
+#: php/multielevation.php:239 php/elevation.php:427
 msgid "Max Acceleration"
 msgstr "Max acceleration"
 
-#: php/multielevation.php:229
+#: php/multielevation.php:229 php/elevation.php:417
 msgid "Max Elevation"
 msgstr "Max elevation"
 
-#: php/multielevation.php:234
+#: php/multielevation.php:234 php/elevation.php:422
 msgid "Max Slope"
 msgstr "Max lutning"
 
-#: php/multielevation.php:236
+#: php/multielevation.php:236 php/elevation.php:424
 msgid "Max Speed"
 msgstr "Max hastighet"
 
@@ -753,19 +589,19 @@ msgstr ""
 msgid "miles or kilometers"
 msgstr ""
 
-#: php/multielevation.php:238
+#: php/multielevation.php:238 php/elevation.php:426
 msgid "Min Acceleration"
 msgstr "Min acceleration"
 
-#: php/multielevation.php:230
+#: php/multielevation.php:230 php/elevation.php:418
 msgid "Min Elevation"
 msgstr "Min elevation"
 
-#: php/multielevation.php:233
+#: php/multielevation.php:233 php/elevation.php:421
 msgid "Min Slope"
 msgstr "Min lutning"
 
-#: php/multielevation.php:235
+#: php/multielevation.php:235 php/elevation.php:423
 msgid "Min Speed"
 msgstr "Min fart"
 
@@ -827,7 +663,7 @@ msgstr ""
 msgid "Only meaningful, if waypoints are shown in the map."
 msgstr ""
 
-#: admin/tiles/help.php:57
+#: admin/tiles/help.php:51
 msgid "optional: mapid - This appears in the switching control."
 msgstr ""
 
@@ -835,15 +671,7 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
-#: admin/cluster/clustergroup.php:16
-msgid "Options for grouping leaflet-markers"
-msgstr ""
-
-#: admin/cluster/clustergroup.php:38
-msgid "Options for grouping markers (points) in leaflet-geojson"
-msgstr ""
-
-#: admin/cluster/clustergroup.php:33 admin/cluster/clustergroup.php:73
+#: admin/cluster/clustergroup.php:32
 msgid "or"
 msgstr ""
 
@@ -853,17 +681,6 @@ msgstr ""
 
 #: admin/elevation/main.php:23
 msgid "Own theme"
-msgstr ""
-
-#: admin/help/hover.php:40
-msgid "Parameters"
-msgstr ""
-
-#: admin/tiles/help.php:15
-#, php-format
-msgid ""
-"Pay attention to the setting for %s, it depends on the used Map Tiles, see "
-"for example %shere%s."
 msgstr ""
 
 #: admin/tiles/layerswitch.php:105
@@ -892,19 +709,15 @@ msgid ""
 "post it to the forum."
 msgstr ""
 
-#: admin/cluster/markercluster.php:136
-msgid "Please see the admin page for options."
-msgstr ""
-
-#: admin/gesture.php:34 admin/cluster/markercluster.php:43
-#: admin/cluster/placementstrategies.php:46 admin/elevation/elevation.php:38
-#: admin/elevation/multielevation.php:38 admin/elevation/sgpx.php:35
+#: admin/gesture.php:34 admin/cluster/placementstrategies.php:46
+#: admin/cluster/markercluster.php:43 admin/elevation/multielevation.php:38
+#: admin/elevation/elevation.php:38 admin/elevation/sgpx.php:35
 msgid "Plugins Default"
 msgstr ""
 
-#: admin/gesture.php:50 admin/cluster/markercluster.php:59
-#: admin/cluster/placementstrategies.php:62 admin/elevation/elevation.php:54
-#: admin/elevation/multielevation.php:54 admin/elevation/sgpx.php:51
+#: admin/gesture.php:50 admin/cluster/placementstrategies.php:62
+#: admin/cluster/markercluster.php:59 admin/elevation/multielevation.php:54
+#: admin/elevation/elevation.php:54 admin/elevation/sgpx.php:51
 msgid "Plugins Default:"
 msgstr ""
 
@@ -916,7 +729,7 @@ msgstr ""
 msgid "position/height indicator marker drawn onto the map"
 msgstr ""
 
-#: admin/cluster/clustergroup.php:18 admin/cluster/clustergroup.php:40
+#: admin/cluster/clustergroup.php:18
 msgid "possible meaningful values"
 msgstr ""
 
@@ -936,11 +749,10 @@ msgstr ""
 msgid "Replace <code>sgpx</code> (wp-gpx-maps) with <code>elevation</code>."
 msgstr ""
 
-#: admin/canvas.php:62 admin/cluster/markercluster.php:14
-#: admin/cluster/placementstrategies.php:14 admin/elevation/main.php:63
-#: admin/elevation/main.php:70 admin/elevation/main.php:96
-#: admin/elevation/main.php:103 admin/tiles/providers.php:109
-#: admin/tiles/main.php:59
+#: admin/canvas.php:62 admin/tiles/main.php:59 admin/tiles/providers.php:109
+#: admin/cluster/placementstrategies.php:14 admin/cluster/markercluster.php:14
+#: admin/elevation/main.php:63 admin/elevation/main.php:70
+#: admin/elevation/main.php:96 admin/elevation/main.php:103
 msgid "Reset"
 msgstr ""
 
@@ -953,7 +765,7 @@ msgstr ""
 msgid "See documentation and examples in %shere%s."
 msgstr ""
 
-#: admin/tiles/help.php:56
+#: admin/tiles/help.php:50
 msgid "see Leaflet Map documentation"
 msgstr ""
 
@@ -962,17 +774,9 @@ msgstr ""
 msgid "Select %s to interpret the %s parameters as %s."
 msgstr ""
 
-#: admin/canvas.php:17 admin/elevation/waypoints.php:183
-#: admin/tiles/layerswitch.php:118 admin/tiles/providers.php:98
+#: admin/canvas.php:17 admin/tiles/layerswitch.php:118
+#: admin/tiles/providers.php:98 admin/elevation/waypoints.php:183
 msgid "Settings"
-msgstr ""
-
-#: admin/cluster/clustergroup.php:28
-msgid "Shortcode for grouping leaflet-markers"
-msgstr ""
-
-#: admin/cluster/clustergroup.php:68
-msgid "Shortcode for grouping markers (points) in leaflet-geojson"
 msgstr ""
 
 #: php/elevation.php:242
@@ -1002,13 +806,13 @@ msgstr ""
 msgid "Site Language or Browser Language"
 msgstr ""
 
-#: php/multielevation.php:225
+#: php/multielevation.php:225 php/elevation.php:413
 msgid "Slope"
 msgstr "Lutning"
 
 #: php/elevation.php:187
 msgid "Slope chart profile"
-msgstr "Diagram lutningsprofil"
+msgstr "Diagram höjdprofil"
 
 #: php/elevation.php:134
 msgid ""
@@ -1020,7 +824,7 @@ msgstr ""
 msgid "sometimes to first zoom"
 msgstr ""
 
-#: php/multielevation.php:226
+#: php/multielevation.php:226 php/elevation.php:414
 msgid "Speed"
 msgstr "Hastighet"
 
@@ -1057,11 +861,6 @@ msgstr ""
 msgid "Text of GPS symbol name"
 msgstr ""
 
-#: admin/help/hover.php:23
-#, php-format
-msgid "The %s option is valid for %s only and optional."
-msgstr ""
-
 #: admin/elevation/elevation.php:86
 #, php-format
 msgid ""
@@ -1084,7 +883,7 @@ msgid ""
 "trivial. If you can't configure something, ask in the forum."
 msgstr ""
 
-#: php/markercluster.php:40 php/placementstrategies.php:53
+#: php/placementstrategies.php:53 php/markercluster.php:40
 msgid ""
 "The maximum radius that a cluster will cover from the central marker (in "
 "pixels). Decreasing will make more, smaller clusters."
@@ -1105,12 +904,12 @@ msgstr ""
 msgid "The name of the %sstart point%s is determined in this order:"
 msgstr ""
 
-#: admin/cluster/clustergroup.php:25 admin/cluster/clustergroup.php:65
+#: admin/cluster/clustergroup.php:25
 #, php-format
 msgid "The number of %s and %s must match."
 msgstr ""
 
-#: admin/cluster/clustergroup.php:92
+#: admin/cluster/clustergroup.php:38
 #, php-format
 msgid "The parameter and settings for %s are valid too."
 msgstr ""
@@ -1127,19 +926,12 @@ msgid ""
 "are still valid. Your settings:"
 msgstr ""
 
-#: admin/elevation/waypoints.php:65 admin/tiles/layerswitch.php:53
+#: admin/tiles/layerswitch.php:53 admin/elevation/waypoints.php:65
 msgid "The syntax is not checked!"
 msgstr ""
 
 #: admin/elevation/multielevation.php:159
 msgid "The theme is the same as the"
-msgstr ""
-
-#: admin/help/hover.php:20
-#, php-format
-msgid ""
-"The tooltip content is the same as the popup content and/or the content of "
-"%s option."
 msgstr ""
 
 #: admin/elevation/waypoints.php:125
@@ -1150,7 +942,7 @@ msgstr ""
 msgid "Theme Colors"
 msgstr ""
 
-#: admin/help/hover.php:44
+#: admin/help/hover.php:31
 #, php-format
 msgid ""
 "This is a very special case. I would like to exclude some leaflet-geojson "
@@ -1171,7 +963,7 @@ msgstr ""
 msgid "Tiles"
 msgstr ""
 
-#: admin/help/hover.php:26
+#: admin/help/hover.php:12
 #, php-format
 msgid "To customize the popup content for geojsons see %sgeojson options%s."
 msgstr ""
@@ -1200,19 +992,19 @@ msgstr ""
 msgid "Toggle waypoint labels"
 msgstr ""
 
-#: php/multielevation.php:231
+#: php/multielevation.php:231 php/elevation.php:419
 msgid "Total Ascent"
-msgstr "Total stigning"
+msgstr "Total höjdmeter"
 
-#: php/multielevation.php:232
+#: php/multielevation.php:232 php/elevation.php:420
 msgid "Total Descent"
-msgstr "Totalt nedför"
+msgstr "Total fallmeter"
 
-#: php/multielevation.php:228
+#: php/multielevation.php:228 php/elevation.php:416
 msgid "Total Length"
 msgstr "Total sträcka"
 
-#: php/multielevation.php:227
+#: php/multielevation.php:227 php/elevation.php:415
 msgid "Total Time"
 msgstr "Total tid"
 
@@ -1234,8 +1026,9 @@ msgid "Use filename (without extension) as name of the track."
 msgstr ""
 
 #: admin/help/hover.php:8
-#, php-format
-msgid "Use it to highlight a %s element and get a tooltip on mouse over."
+msgid ""
+"Use it to highlight a gpx, kml, geojson or marker and get a tooltip on mouse "
+"over."
 msgstr ""
 
 #: admin/elevation/waypoints.php:46
@@ -1262,7 +1055,7 @@ msgstr ""
 msgid "Waypoint specified in file"
 msgstr ""
 
-#: php/markercluster.php:22 php/placementstrategies.php:49
+#: php/placementstrategies.php:49 php/markercluster.php:22
 msgid ""
 "When you click a cluster at the bottom zoom level we spiderfy it so you can "
 "see all of its markers."
@@ -1276,19 +1069,19 @@ msgstr ""
 msgid "When you mouse over a cluster it shows the bounds of its markers."
 msgstr ""
 
-#: admin/tiles/help.php:64
+#: admin/tiles/help.php:58
 #, php-format
 msgid "with %s and/or %s you can specify which tiles should be used."
 msgstr ""
 
-#: admin/tiles/help.php:67
+#: admin/tiles/help.php:61
 #, php-format
 msgid ""
 "with %s you can specify the mapids and/or providers for which opacity should "
 "be regulated."
 msgstr ""
 
-#: admin/tiles/help.php:61
+#: admin/tiles/help.php:55
 #, php-format
 msgid "without any parameter: All defined %stile servers%s are used."
 msgstr ""
@@ -1309,7 +1102,7 @@ msgid ""
 "leaflet-map don't work together. See admin settings page."
 msgstr ""
 
-#: admin/cluster/markercluster.php:38 admin/cluster/placementstrategies.php:41
+#: admin/cluster/placementstrategies.php:41 admin/cluster/markercluster.php:38
 #: admin/elevation/elevation.php:33
 msgid "You can change it for each map with"
 msgstr ""
@@ -1365,7 +1158,7 @@ msgstr ""
 msgid "You may be interested in"
 msgstr ""
 
-#: admin/tiles/help.php:33
+#: admin/tiles/help.php:27
 msgid "Your Settings"
 msgstr ""
 
