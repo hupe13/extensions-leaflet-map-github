@@ -116,7 +116,7 @@ function leafext_elevation_params() {
 		// Download link: "link" || false || "modal"
 		array(
 			'param' => 'downloadLink',
-			'shortdesc' => __('downloadLink',"extensions-leaflet-map"),
+			'shortdesc' => __('Download Link',"extensions-leaflet-map"),
 			'desc' => '',
 			'default' => false,
 			'values' => array("link", false, "modal"),

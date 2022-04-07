@@ -3,17 +3,17 @@ msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-04-01 11:59+0000\n"
-"PO-Revision-Date: 2022-04-07 18:32+0000\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2022-04-07 21:37+0200\n"
+"Last-Translator: Magnus Tamelander <tamelander@gmail.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv_SE\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Loco-Version: 2.6.1; wp-5.9.3\n"
-"X-Domain: extensions-leaflet-map"
+"X-Domain: extensions-leaflet-map\n"
 
 #: admin/cluster/placementstrategies.php:38
 msgid ""
@@ -531,12 +531,12 @@ msgstr "Medelvärde hastighet"
 #: php/elevation.php:429
 msgctxt "In Frontend"
 msgid "Download"
-msgstr ""
+msgstr "Ladda ned"
 
 #: php/elevation.php:430
 msgctxt "In Frontend"
 msgid "Elevation"
-msgstr ""
+msgstr "Elevation"
 
 #: php/elevation.php:427
 msgctxt "In Frontend"
@@ -611,47 +611,47 @@ msgstr "Total tid"
 #: php/elevation.php:432
 msgctxt "In Frontend: Abbreviation for acceleration in the chart"
 msgid "a"
-msgstr ""
+msgstr "a"
 
 #: php/elevation.php:440
 msgctxt "In Frontend: Abbreviation for altitude in the chart"
 msgid "y"
-msgstr ""
+msgstr "y"
 
 #: php/elevation.php:433
 msgctxt "In Frontend: Abbreviation for cadence in the chart"
 msgid "cad"
-msgstr ""
+msgstr "kad"
 
 #: php/elevation.php:437
 msgctxt "In Frontend: Abbreviation for duration in the chart"
 msgid "T"
-msgstr ""
+msgstr "T"
 
 #: php/elevation.php:434
 msgctxt "In Frontend: Abbreviation for heart rate in the chart"
 msgid "hr"
-msgstr ""
+msgstr "hr"
 
 #: php/elevation.php:439
 msgctxt "In Frontend: Abbreviation for length in the chart"
 msgid "x"
-msgstr ""
+msgstr "x"
 
 #: php/elevation.php:435
 msgctxt "In Frontend: Abbreviation for slope in the chart"
 msgid "m"
-msgstr ""
+msgstr "m"
 
 #: php/elevation.php:438
 msgctxt "In Frontend: Abbreviation for speed in the chart"
 msgid "v"
-msgstr ""
+msgstr "v"
 
 #: php/elevation.php:436
 msgctxt "In Frontend: Abbreviation for time in the chart"
 msgid "t"
-msgstr ""
+msgstr "t"
 
 #: admin/elevation/owntheme.php:114
 msgid "In your elevation.css put the styles like the theme styles in"
@@ -743,15 +743,15 @@ msgstr ""
 
 #: admin/elevation/sgpx.php:106
 msgid "Migration"
-msgstr ""
+msgstr "Migration"
 
 #: admin/help.php:60
 msgid "Migration from"
-msgstr ""
+msgstr "Migration från"
 
 #: php/elevation.php:279
 msgid "miles or kilometers"
-msgstr ""
+msgstr "miles eller kilometer"
 
 #: php/multielevation.php:238
 msgid "Min Acceleration"
