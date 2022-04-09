@@ -74,23 +74,24 @@ function leafext_validate_ele_options($options) {
 // Helptext
 function leafext_ele_help_text () {
 	leafext_enqueue_awesome();
-	echo '<img src="'.LEAFEXT_PLUGIN_PICTS.'elevation.png">
+	$text = "";
+	$text = $text.'<p><img src="'.LEAFEXT_PLUGIN_PICTS.'elevation.png"></p>
 	<h2>'.__('Note','extensions-leaflet-map').'</h2>';
-	echo sprintf(
+	$text = $text.sprintf(
 				__(
 				'If you want to display a track only, use %s functions. If you want to display a track with an elevation profile use %s.',"extensions-leaflet-map"),
 				"<code>[leaflet-...]</code>",
 				"<code>[elevation]</code>");
-	echo " ";
-	echo sprintf(
+	$text = $text." ";
+	$text = $text.sprintf(
 				__(
 				'The %s parameter is called %s, but it works with gpx, kml, geojson and tcx files.',"extensions-leaflet-map"),
 				"<code>[elevation]</code>",
 				"<code>gpx</code>");
-	echo "<p>";
-	echo __('The elevation shortcode has many configuration options. Some things are not trivial. If you can\'t configure something, ask in the forum.',"extensions-leaflet-map");
-	echo "</p>";
-	echo '<h2>Shortcode</h2>
+	$text = $text."<p>";
+	$text = $text.__('The elevation shortcode has many configuration options. Some things are not trivial. If you can\'t configure something, ask in the forum.',"extensions-leaflet-map");
+	$text = $text."</p>";
+	$text = $text.'<h2>Shortcode</h2>
 	<pre><code>[leaflet-map ....]
 [elevation gpx="url_gpx_file" option1=value1 option2 !option3 ...]</code></pre>
 '.
@@ -100,28 +101,35 @@ __('You can optionally set a marker on Start.',"extensions-leaflet-map").'
 [elevation gpx="url_gpx_file" option1=value1 option2 !option3 ...]</code></pre>
 	<h3>Options</h3>
 	<p>';
-	echo __('For boolean values applies', "extensions-leaflet-map").':<br>';
-	echo '<code>false</code> = <code>!parameter</code> || <code>parameter="0"</code> || <code>parameter=0</code></br>';
-	echo '<code>true</code> = <code>parameter</code> || <code>parameter="1"</code> || <code>parameter=1</code>';
-	echo '</p>';
+	$text = $text.__('For boolean values applies', "extensions-leaflet-map").':<br>';
+	$text = $text.'<code>false</code> = <code>!parameter</code> || <code>parameter="0"</code> || <code>parameter=0</code></br>';
+	$text = $text.'<code>true</code> = <code>parameter</code> || <code>parameter="1"</code> || <code>parameter=1</code>';
+	$text = $text.'</p>';
 
-	$theme = get_option('leafext_values');
-	if (is_array($theme)) {
-		echo '<p>';
-		if ($theme['theme'] == "other") {
-			echo sprintf(__("You have installed your own theme. The settings for %s on this page are not valid for you.","extensions-leaflet-map"),"<code>theme</code>");
-		} else {
-			echo '<span style="color: #d63638">';
-			echo __('Your theme is','extensions-leaflet-map').' '.$theme['theme'].'. ';
-			echo sprintf(
-				__(
-				'Please delete %s these %stheme%s settings, these are valid as long as they are not deleted.',
-				"extensions-leaflet-map"),
-				'<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevationtheme">',
-				'<code>',
-				'</code></a>');
-			echo '</span>';
+	if (!(is_singular()|| is_archive())) {
+		$theme = get_option('leafext_values');
+		if (is_array($theme)) {
+			$text = $text.'<p>';
+			if ($theme['theme'] == "other") {
+				$text = $text.sprintf(__("You have installed your own theme. The settings for %s on this page are not valid for you.","extensions-leaflet-map"),"<code>theme</code>");
+			} else {
+				$text = $text.'<span style="color: #d63638">';
+				$text = $text.__('Your theme is','extensions-leaflet-map').' '.$theme['theme'].'. ';
+				$text = $text.sprintf(
+					__(
+						'Please delete %s these %stheme%s settings, these are valid as long as they are not deleted.',
+						"extensions-leaflet-map"),
+						'<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevationtheme">',
+						'<code>',
+						'</code></a>');
+						$text = $text.'</span>';
+			}
+			$text = $text.'</p>';
 		}
-		echo '</p>';
+	}
+	if (is_singular() || is_archive() ) {
+		return $text;
+	} else {
+		echo $text;
 	}
 }
