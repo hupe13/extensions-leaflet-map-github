@@ -252,7 +252,8 @@ function leafext_geojsonhover_script($url){
 		if (markers.length > 0) {
 			for (var i = 0; i < WPLeafletMapPlugin.markers.length; i++) {
 				var a = WPLeafletMapPlugin.markers[i];
-				if (a._map._leaflet_id == map_id) {
+				console.log(a);
+				//if (a._map._leaflet_id == map_id) {
 					a.on("mouseover", function (e) {
 						//console.log("marker mouseover");
 						//console.log(e.sourceTarget.options.title);
@@ -279,7 +280,7 @@ function leafext_geojsonhover_script($url){
 				// 	console.log("nicht dasselbe");
 				}
 
-			}
+			//}
 		}
 
 		var markergroups = window.WPLeafletMapPlugin.markergroups;
