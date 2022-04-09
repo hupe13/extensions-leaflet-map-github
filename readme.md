@@ -55,7 +55,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.2.7 / 2204xx
+### 2.2.7 / 220409
 
 * hover: bug with geojson fixed
 * elevation: some strings for translation added
