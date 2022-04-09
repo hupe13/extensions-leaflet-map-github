@@ -58,6 +58,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 ### 2.2.7 / 220409
 
 * hover: bug with geojson fixed
+* hover: tooltip on click in circle, polygon, line removed
 * elevation: some strings for translation added
 * swedish translation frontend from @argentum
 
