@@ -1,13 +1,15 @@
-* leaflet-gesture-handling 1.4.1
-* leaflet-elevation-2.2.4
+## leaflet-gesture-handling 1.4.1,
+* changes to original, TBD pull request
 
-Bugs:
-* imperial - y-axis
-* https://github.com/Raruto/leaflet-elevation/issues/194
+## leaflet-elevation-2.2.4
 
-New in elevation:
+#### Bugs:
+* imperial - y-axis is in metres
+* `distance: false,` - does not work.
+
+#### New:
 * Pace
 
-TBD:
-* Doku, translation
+#### TBD:
+* Documentation, translation
 * custom themes

@@ -31,7 +31,6 @@ function leafext_enqueue_awesome() {
 
 function leafext_css() {
   wp_enqueue_style( 'leafext_css',
-  //		plugins_url('css/leafext.min.css',
   plugins_url('css/leafext.min.css',
 		LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
@@ -70,7 +69,7 @@ define('LEAFEXT_ELEVATION_URL', LEAFEXT_PLUGIN_URL . '/leaflet-plugins/leaflet-e
 define('LEAFEXT_ELEVATION_DIR', LEAFEXT_PLUGIN_DIR . '/leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/');
 function leafext_enqueue_elevation () {
 	wp_enqueue_script( 'elevation_js',
-		plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.js',
+		plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation-leafext.js',
 		LEAFEXT_PLUGIN_FILE),
 		array('wp_leaflet_map'),null);
   //
@@ -80,16 +79,15 @@ function leafext_enqueue_elevation () {
   	array('elevation_js'),null);
 
 	wp_enqueue_style( 'elevation_css',
-		plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.css',
+		plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.min.css',
 		LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
-  //leafext_enqueue_elevation_css ();
 	leafext_css();
 }
 
 function leafext_enqueue_elevation_css () {
 	wp_enqueue_style( 'elevation_css_admin',
-		plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.css',
+		plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.min.css',
 		LEAFEXT_PLUGIN_FILE),
 		null,null);
 }
@@ -121,7 +119,7 @@ function leafext_enqueue_multielevation () {
 function leafext_enqueue_clustergroup () {
 	wp_enqueue_script('leaflet.subgroup',
 		plugins_url(
-		'leaflet-plugins\Leaflet.FeatureGroup.SubGroup-1.0.2/leaflet.featuregroup.subgroup.js',
+		'leaflet-plugins/Leaflet.FeatureGroup.SubGroup-1.0.2/leaflet.featuregroup.subgroup.js',
 		LEAFEXT_PLUGIN_FILE),
 		array('markercluster'),null);
 }
