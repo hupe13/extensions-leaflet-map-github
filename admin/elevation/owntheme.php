@@ -31,7 +31,7 @@ function leafext_form_theme() {
 	</script>
 	<?php
 	$colors = array();
-	$newoptions=leafext_elevation_settings();
+	$newoptions=leafext_elevation_settings(array("theme"));
 	$options = array(
 		"theme" => $newoptions['theme'],
 		"othertheme" => "" ,

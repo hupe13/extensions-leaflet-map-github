@@ -37,10 +37,6 @@ https://github.com/makinacorpus/Leaflet.GeometryUtil
 
 <pre>[multielevation distanceMarkers ...]</pre>
 
-https://github.com/CliffCloud/Leaflet.EasyButton
-
-<pre>[elevation gpx="url_gpx_file" chart="on|off"]</pre>
-
 <h3>leaflet-gesture-handling</h3>
 
 https://github.com/Raruto/leaflet-gesture-handling

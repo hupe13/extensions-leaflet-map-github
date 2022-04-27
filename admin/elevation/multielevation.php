@@ -31,22 +31,8 @@ function leafext_form_multielevation($field) {
 	if ( $option['desc'] != "" ) echo '<p>'.$option['desc'].'</p>';
 
 	echo __("You can change it with", "extensions-leaflet-map").' <code>'.$option['param']. '</code><br>';
-	if (!is_array($option['values'])) {
 
-		if ($setting != $option['default'] ) {
-			//var_dump($setting,$option['default']);
-			echo __("Plugins Default", "extensions-leaflet-map").': ';
-			echo $option['default'] ? "true" : "false";
-			echo '<br>';
-		}
-
-		echo '<input type="radio" name="leafext_multieleparams['.$option['param'].']" value="1" ';
-		echo $setting ? 'checked' : '' ;
-		echo '> true &nbsp;&nbsp; ';
-		echo '<input type="radio" name="leafext_multieleparams['.$option['param'].']" value="0" ';
-		echo (!$setting) ? 'checked' : '' ;
-		echo '> false ';
-	} else {
+	if (is_array($option['values'])) {
 		$plugindefault = is_string($option['default']) ? $option['default'] : ($option['default'] ? "1" : "0");
 		$setting = is_string($setting) ? $setting : ($setting ? "1" : "0");
 		if ($setting != $plugindefault ) {
@@ -61,6 +47,32 @@ function leafext_form_multielevation($field) {
 			echo 'value="'.$para.'" >'.$para.'</option>';
 		}
 		echo '</select>';
+
+	} else if ($option['values'] == "color") {
+		if ($setting != $option['default'] ) {
+			//var_dump($setting,$option['default']);
+			echo __("Plugins Default", "extensions-leaflet-map").': ';
+			echo $option['default'];
+			echo '<br>';
+		}
+		echo '<input type="color" id="leafext_multieleparams['.$option['param'].']" name="leafext_multieleparams['.$option['param'].']"
+		 value = "'.$setting.'">';
+
+	} else {
+
+		if ($setting != $option['default'] ) {
+			//var_dump($setting,$option['default']);
+			echo __("Plugins Default", "extensions-leaflet-map").': ';
+			echo $option['default'] ? "true" : "false";
+			echo '<br>';
+		}
+
+		echo '<input type="radio" name="leafext_multieleparams['.$option['param'].']" value="1" ';
+		echo $setting ? 'checked' : '' ;
+		echo '> true &nbsp;&nbsp; ';
+		echo '<input type="radio" name="leafext_multieleparams['.$option['param'].']" value="0" ';
+		echo (!$setting) ? 'checked' : '' ;
+		echo '> false ';
 	}
 }
 

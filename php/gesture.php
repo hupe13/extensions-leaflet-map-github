@@ -42,19 +42,16 @@ function leafext_gesture_settings() {
 
 function leafext_gestures_lang($options) {
 	if ( $options['lang'] == "Site" ) {
-		$mylang = get_bloginfo( 'language' );
-		$pattern = "/: \{$/i";
-		$lngs = preg_grep($pattern, file( LEAFEXT_GESTURE_JS_FILE ));
-		$lngs = preg_replace("/[^a-zA-Z-]+/", "", $lngs);
-		//var_dump($lngs);
-		if ( in_array($mylang , $lngs )) {
-			$lang = $mylang;
-		} else if ( in_array ( explode("-",$mylang)[0] , $lngs)) {
-			$lang = explode("-",$mylang)[0];
-		} else {
-			$lang = "en";
-		}
+		$lang = get_bloginfo( 'language' );
 		//var_dump($lang);
+		if ( ! glob(LEAFEXT_GESTURE_LOCALE_DIR.$lang.'.js')) {
+			if ( ! glob(LEAFEXT_GESTURE_LOCALE_DIR.explode("-",$lang)[0].'.js')) {
+				$lang = "en";
+			} else {
+				$lang = explode("-",$lang)[0];
+			}
+		}
+		//var_dump(glob(LEAFEXT_GESTURE_LOCALE_DIR.$lang.'.js'));
 	} else {
 		$lang = ""; // Browser
 	}
@@ -131,7 +128,7 @@ function leafext_gestures_function() {
 		wp_add_inline_script( 'gestures_leaflet', leafext_gestures_script($lang), 'after' );
 	}
 }
-//add_action( 'wp_enqueue_scripts', 'leafext_gestures_function' );
+add_action( 'wp_enqueue_scripts', 'leafext_gestures_function' );
 
 add_filter('pre_do_shortcode_tag', function ( $output, $shortcode ) {
 	if ( 'leaflet-map' == $shortcode ) {

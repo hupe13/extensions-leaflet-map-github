@@ -7,7 +7,7 @@
 defined( 'ABSPATH' ) or die();
 
 //Parameter and Values
-function leafext_multielevation_params() {
+function leafext_multielevation_params($typ = array('changeable')) {
 	$params = array (
 		array(
 			'param' => 'filename',
@@ -15,6 +15,7 @@ function leafext_multielevation_params() {
 			'desc' => __('Use filename (without extension) as name of the track.',"extensions-leaflet-map"),
 			'default' => false,
 			'values' => 1,
+			'typ' => array('changeable','point','multielevation','tracks'),
 		),
 		array(
 			'param' => 'summary',
@@ -23,47 +24,89 @@ function leafext_multielevation_params() {
 				'<code>[elevation-<span style="color: #d63638">tracks</span>]</code>'),
 			'default' => true,
 			'values' => 1,
+			'typ' => array('changeable','tracks'),
 		),
+
+		//     highlight: {
+		//       color: '#ff0',
+		//       opacity: 1,
+		//     },
+		array(
+			'param' => 'highlight',
+			'shortdesc' => __('Highlight color',"extensions-leaflet-map"),
+			'desc' =>	'The active track is displayed in this color.',
+			'default' => '#ffff00',
+			'values' => "color",
+			'typ' => array('changeable','multielevation'),
+		),
+
+		// flyToBounds: true,
+		// array(
+		// 	'param' => 'flyToBounds',
+		// 	'shortdesc' => __('flyToBounds',"extensions-leaflet-map"),
+		// 	'desc' =>	'',
+		// 	'default' => true,
+		// 	'values' => 1,
+		// 	'typ' => array('changeable','multielevation'),
+		// ),
+
+		//     distanceMarkers: true,
+		//     distanceMarkers_options: {
+		//       lazy: true
+		//     },
+		array(
+			'param' => 'distanceMarkers',
+			'shortdesc' => __('Toggle "leaflet-distance-markers" integration',"extensions-leaflet-map"),
+			'desc' =>	'',
+			'default' => true,
+			'values' => 1,
+			'typ' => array('changeable','multielevation'),
+		),
+
 	);
+
+	if (count($typ) > 0) {
+		$options = array();
+		foreach ($typ as $type) { //"fixed", "changeable", ""
+			foreach($params as $key => $param){
+				if ( in_array ($type, $params[$key]['typ'])) $options[] = $params[$key];
+			}
+		}
+		return $options;
+	}
 	return $params;
 }
 
+// immer true, oder?
+//     points: [],
+//     points_options: {
+//       icon: {
+//         iconUrl: '../images/elevation-poi.png',
+//         iconSize: [12, 12],
+//       }
+//     },
+
+// fest aber true
+//     legend: false,
+//     legend_options: {
+//       position: "topright",
+//       collapsed: false,
+//     },
+
 function leafext_eleparams_for_multi($options=array()) {
 		$multi=array();
-		$params = leafext_elevation_params();
+		$params = leafext_elevation_params(array("multielevation"));
 		foreach($params as $param) {
-			if ( $param['multielevation'] ) $multi[] = $param["param"];
+			$multi[] = $param["param"];
 		}
+		//var_dump($multi);
 
-	// $params = array(
-	// 	//'theme', in multioptions
-	// 	//'polyline',
-	// 	'marker',
-	// 	//'waypoints',
-	// 	//'distanceMarkers', in multioptions
-	// 	//'downloadLink',
-	// 	'summary',
-	// 	'legend',
-	// 	'altitude',
-	// 	'acceleration',
-	// 	'slope',
-	// 	'speed',
-	// 	'time',
-	// 	'distance',
-	// 	//'chart',
-	// 	'followMarker',
-	// 	'autofitBounds',
-	// 	'imperial',
-	// 	'reverseCoords',
-	// 	//'ruler',
-	// 	//'almostOver',
-	// 	//'preferCanvas',
-	// );
 	if (count($options) > 1 ) {
 		$multioptions = array();
 		foreach ($multi as $param) {
 			$multioptions[$param] = $options[$param];
 		}
+		//var_dump($multioptions); wp_die();
 		return $multioptions;
 	} else {
 		$text = '';
@@ -76,9 +119,9 @@ function leafext_eleparams_for_multi($options=array()) {
 	}
 }
 
-function leafext_multielevation_settings() {
+function leafext_multielevation_settings($typ=array('changeable')) {
 	$defaults=array();
-	$params = leafext_multielevation_params();
+	$params = leafext_multielevation_params($typ);
 	foreach($params as $param) {
 		$defaults[$param['param']] = $param['default'];
 	}
@@ -89,8 +132,6 @@ function leafext_multielevation_settings() {
 //Shortcode:
 //[elevation-track file="'.$file.'" lat="'.$startlat.'" lng="'.$startlon.'" name="'.basename($file).'" filename=true/false]
 // lat lng name optional
-//[elevation-tracks summary=1]
-
 function leafext_elevation_track( $atts ){
 
 	if ( $atts['file'] == "" ) {
@@ -107,8 +148,6 @@ function leafext_elevation_track( $atts ){
 	global $all_points;
 	if (!is_array($all_points)) $all_points = array();
 
-	$multioptions = shortcode_atts(leafext_multielevation_settings(), leafext_clear_params($atts));
-
 	$defaults = array (
 		'lat'  => '',
 		'lng'  => '',
@@ -116,17 +155,7 @@ function leafext_elevation_track( $atts ){
 	);
 	$params = shortcode_atts($defaults, $atts);
 
-	if ( $multioptions['filename']) {
-		$path_parts = pathinfo($atts['file']);
-		$name = $path_parts['basename'];
-	} else if ( $params['name'] != "" ) {
-		$name = $params['name'];
-	} else {
-		$name = '';
-	}
-	//
-
-	if ( $params['lat'] == "" || $params['lng'] == "" || $name == "" ) {
+	if ( $params['lat'] == "" || $params['lng'] == "" || $params['name'] == "" ) {
 		$gpx = simplexml_load_file($atts['file']);
 		if ($gpx ===  FALSE) {
 			$text = "[elevation-track read error ";
@@ -137,6 +166,7 @@ function leafext_elevation_track( $atts ){
 			return $text;
 		}
 	}
+
 	if ( $params['lat'] == "" || $params['lng'] == "" ) {
 		$latlng = array(
 			(float)$gpx->trk->trkseg->trkpt[0]->attributes()->lat,
@@ -145,26 +175,116 @@ function leafext_elevation_track( $atts ){
 	} else {
 		$latlng = array($params['lat'],$params['lng']);
 	}
-	if ( $name == "" ) {
-		$name = (string) $gpx->trk->name;
-	}
-	//Fallback
-	if ( $name == "" ) {
-		$name = $path_parts['basename'];
+
+	// filenames as tracknames?
+
+	if ( $params['name'] == "" ) {
+		$multioptions = shortcode_atts(leafext_multielevation_settings(array('point')), leafext_clear_params($atts));
+		//var_dump($multioptions);
+		if ( boolval($multioptions['filename'])) {
+			$path_parts = pathinfo($atts['file']);
+			$params['name'] = $path_parts['filename'];
+		} else {
+			$params['name'] = (string) $gpx->trk->name;
+		}
+		//Fallback
+		if ( $params['name'] == "" ) {
+			$path_parts = pathinfo($atts['file']);
+			$name = $path_parts['filename'];
+		}
 	}
 
 	$point = array(
 		'latlng' => $latlng,
-		'name' 	 => $name,
+		'name' 	 => $params['name'],
 	);
 
 	$all_points[] = $point;
-	$all_files[]=$atts['file'];
+	$all_files[] = $atts['file'];
 }
 add_shortcode('elevation-track', 'leafext_elevation_track' );
 
-//[elevation-tracks]
-function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $settings, $multioptions ) {
+//[elevation-tracks summary=0/1]
+//{multielvation ...}
+function leafext_multielevation( $atts, $contents, $shortcode){
+	leafext_enqueue_elevation ();
+	leafext_enqueue_multielevation();
+	leafext_enqueue_zoomhome();
+
+	global $all_files;
+	global $all_points;
+
+	$ele_options = array(
+		'detachedView' => true,
+		'elevationDiv' => "#elevation-div",
+		'zFollow' => 15,
+		'flyToBounds' => true,
+		'legend' => false,
+	);
+
+	if ( is_array($atts) && array_key_exists('theme', $atts) ) {
+		$ele_options['theme'] = $atts['theme'];
+	} else {
+		$ele_options['theme'] = leafext_elevation_theme();
+	}
+
+	if ($shortcode == "elevation-tracks") {
+		$options = array (
+			'acceleration' =>  false,
+			'almostOver' => true,
+			'downloadLink' => false,
+			'followMarker' => false,
+			'legend' => false,
+			'preferCanvas' => false,
+			'speed' =>  false,
+			'time' => false,
+			'height' => 200,
+		);
+		$multioptions = shortcode_atts(leafext_multielevation_settings(array('tracks')), leafext_clear_params($atts));
+		if ($multioptions['summary']) {
+			$options['summary'] = "inline";
+			$options['slope'] = "summary";
+		} else {
+			$options['summary'] = false;
+			$options['slope'] = false;
+		}
+		$options = array_merge($options, $ele_options);
+		$multioptions['distanceMarkers'] = false;
+	}
+
+	if ($shortcode == "multielevation" ) {
+		$atts1 = leafext_case(array_keys(leafext_elevation_settings(array("multielevation"))), leafext_clear_params($atts));
+		$options = shortcode_atts(leafext_elevation_settings(array("multielevation")), $atts1);
+
+		if (isset($options['pace']) ) {
+			if (isset($options['pace']) ) {
+				$options = leafext_elevation_pace($options);
+			}
+		}
+
+		$multioptions = shortcode_atts(leafext_multielevation_settings(array('multielevation')), leafext_clear_params($atts));
+		if (isset($multioptions['highlight']) ) {
+				$multioptions['highlight'] = "{color: '".$multioptions['highlight']."',opacity: 1,}";
+		}
+
+		//var_dump(leafext_multielevation_settings(array('multielevation')),$multioptions); wp_die();
+	}
+
+	$options = array_merge($options, $ele_options);
+
+	$rand = rand(1,20);
+	$text = leafext_multielevation_script( $all_files, $all_points, $options, $multioptions, $rand);
+
+	$text = $text.'<p class="chart-placeholder chart-placeholder-'.$rand.'">';
+	$text = $text.__("move mouse over a track or select one in control panel ...", "extensions-leaflet-map").'</p>';
+	$all_files = array();
+	$all_points = array();
+	return $text;
+}
+add_shortcode('elevation-tracks', 'leafext_multielevation');
+add_shortcode('multielevation', 'leafext_multielevation');
+
+function leafext_multielevation_script( $all_files, $all_points, $settings, $multioptions, $rand ) {
 	//var_dump($settings,$multioptions); wp_die();
 	$text = '
 	<script>
@@ -174,7 +294,6 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $sett
 
 		var points = '.json_encode($all_points).';
 		var tracks = '.json_encode($all_files).';
-		var theme =  '.json_encode($theme).';
 		//console.log(points);
 		//console.log(tracks);
 
@@ -186,88 +305,49 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $sett
 				},
 			},
 			elevation: {
-				theme: theme,
-				detachedView: true,
-				elevationDiv: "#elevation-div",
-				followPositionMarker: true,
-				zFollow: 15,
-				legend: false,
-				followMarker: false,
-				almostOver: true,
 	';
 
-					foreach ($settings as $k => $v) {
-						switch ($k) {
-							case "polyline":
-								$text = $text. "$k: ". $v .',';
-								unset ($settings[$k]);
-								break;
-							default:
-						}
-					}
-					$text = $text.leafext_java_params ($settings);
+			list($text1, $settings) = leafext_ele_java_params($settings);
+			$text = $text.$text1;
+			$text = $text.leafext_java_params ($settings);
 
 			$text = $text.'
 			},
-			markers: {
-				startIconUrl: null, // "http://mpetazzoni.github.io/leaflet-gpx/pin-icon-start.png",
-				endIconUrl: null, // "http://mpetazzoni.github.io/leaflet-gpx/pin-icon-end.png",
-				shadowUrl: null, // "http://mpetazzoni.github.io/leaflet-gpx/pin-shadow.png",
-			},
-			filename_option: ';
-			$text = $multioptions['filename'] ?  $text.'true' :  $text.'false';
-			$text = $text.',
 		};
+		console.log(opts.elevation);';
 
-		var mylocale = {
-			"Acceleration"	: "'.__("Acceleration", "extensions-leaflet-map").'",
-			"Altitude"		: "'.__("Altitude", "extensions-leaflet-map").'",
-			"Slope"			: "'.__("Slope", "extensions-leaflet-map").'",
-			"Speed"			: "'.__("Speed", "extensions-leaflet-map").'",
-			"Total Time: "      : "'.__("Total Time", "extensions-leaflet-map").': ",
-			"Total Length: "	: "'.__("Total Length", "extensions-leaflet-map").': ",
-			"Max Elevation: "	: "'.__("Max Elevation", "extensions-leaflet-map").': ",
-			"Min Elevation: "	: "'.__("Min Elevation", "extensions-leaflet-map").': ",
-			"Total Ascent: "	: "'.__("Total Ascent", "extensions-leaflet-map").': ",
-			"Total Descent: "	: "'.__("Total Descent", "extensions-leaflet-map").': ",
-			"Min Slope: "	: "'.__("Min Slope", "extensions-leaflet-map").': ",
-			"Max Slope: "	: "'.__("Max Slope", "extensions-leaflet-map").': ",
-			"Min Speed: "	: "'.__("Min Speed", "extensions-leaflet-map").': ",
-			"Max Speed: "	: "'.__("Max Speed", "extensions-leaflet-map").': ",
-			"Avg Speed: "	: "'.__("Avg Speed", "extensions-leaflet-map").': ",
-			"Min Acceleration: "	: "'.__("Min Acceleration", "extensions-leaflet-map").': ",
-			"Max Acceleration: "	: "'.__("Max Acceleration", "extensions-leaflet-map").': ",
-			"Avg Acceleration: "	: "'.__("Avg Acceleration", "extensions-leaflet-map").': ",
-		};
-		L.registerLocale("wp", mylocale);
-		L.setLocale("wp");
+		$text = $text.leafext_elevation_locale();
 
-		console.log(opts.elevation);
-		var routes;
-		routes = new L.gpxGroup(tracks, {
+		$text = $text.'
+		let routes;
+
+		import("'.LEAFEXT_ELEVATION_URL.'libs/leaflet-gpxgroup.js");
+
+		routes = L.gpxGroup(tracks, {
+			async: false,
 			points: points,
 			points_options: opts.points,
 			elevation: true,
 			elevation_options: opts.elevation,
-			marker_options: opts.markers,
 			legend: true,
-			distanceMarkers: ';
-			$text = $multioptions['distanceMarkers'] ?  $text.'true' :  $text.'false';
-			$text = $text.',
-			legend_options: opts.legend_options,
-			filename: opts.filename_option,
-	    });
+			legend_options: {
+	      position: "topright",
+	      collapsed: true,
+	    },';
+			$text = $text.leafext_java_params ($multioptions);
+			$text = $text.'
+		});
+		console.log(routes);
 		routes.addTo(map);
 
+		L.Control.Elevation.prototype.__btnIcon = "'.LEAFEXT_ELEVATION_URL.'/images/elevation.svg";
 		map.on("eledata_added eledata_clear", function(e) {
-			var p = document.querySelector(".chart-placeholder");
+			var p = document.querySelector(".chart-placeholder-'.$rand.'");
 			if(p) {
 				p.style.display = e.type=="eledata_added" ? "none" : "";
 			}
 		});
 
-		if (typeof map.options.maxZoom == "undefined")
-				map.options.maxZoom = 19;
 		var bounds = [];
 		bounds = new L.latLngBounds();
 		var zoomHome = [];
@@ -285,82 +365,6 @@ function leafext_elevation_tracks_script( $all_files, $all_points, $theme, $sett
 		});
 	});
 </script>';
-$text = \JShrink\Minifier::minify($text);
+//$text = \JShrink\Minifier::minify($text);
 return "\n".$text."\n";
 }
-
-function leafext_elevation_tracks( $atts ){
-	leafext_enqueue_elevation ();
-	leafext_enqueue_multielevation();
-	leafext_enqueue_zoomhome();
-
-	global $all_files;
-	global $all_points;
-
-	if ( is_array($atts) && array_key_exists('theme', $atts) ) {
-		$theme = $atts['theme'];
-	} else {
-		$theme = leafext_elevation_theme();
-	}
-
-	$multioptions = shortcode_atts(leafext_multielevation_settings(), leafext_clear_params($atts));
-
-	// some defaults
-	$options = array (
-		'speed' =>  false,
-		'acceleration' =>  false,
-		'time' => false,
-		'downloadLink' => false,
-		'preferCanvas' => false,
-		'legend' => false,
-	);
-	if ($multioptions['summary']) {
-		$options['summary'] = "inline";
-		$options['slope'] = "summary";
-	} else {
-		$options['summary'] = false;
-		$options['slope'] = false;
-	}
-	$multioptions['distanceMarkers'] = false;
-	$text = leafext_elevation_tracks_script( $all_files, $all_points, $theme, $options, $multioptions);
-	$text = $text.'<p class="chart-placeholder">';
-	$text = $text.__("move mouse over a track or select one in control panel ...", "extensions-leaflet-map").'</p>';
-	$all_files = array();
-	$all_points = array();
-	return $text;
-}
-add_shortcode('elevation-tracks', 'leafext_elevation_tracks' );
-
-//Interpret options like in elevation in [multielevation]
-function leafext_multielevation( $atts ){
-	leafext_enqueue_elevation ();
-	leafext_enqueue_multielevation();
-	leafext_enqueue_zoomhome();
-
-	global $all_files;
-	global $all_points;
-
-	if ( is_array($atts) && array_key_exists('theme', $atts) ) {
-		$theme = $atts['theme'];
-	} else {
-		$theme = leafext_elevation_theme();
-	}
-
-	// filenames as tracknames?
-	$multioptions = shortcode_atts(leafext_multielevation_settings(), leafext_clear_params($atts));
-
-	$atts1 = leafext_case(array_keys(leafext_elevation_settings()),leafext_clear_params($atts));
-	$options = shortcode_atts(leafext_elevation_settings(), $atts1);
-
-	$multioptions['distanceMarkers'] = $options['distanceMarkers'];
-
-	$options = leafext_eleparams_for_multi($options);
-
-	$text = leafext_elevation_tracks_script( $all_files, $all_points, $theme, $options, $multioptions);
-	$text = $text.'<p class="chart-placeholder">';
-	$text = $text.__("move mouse over a track or select one in control panel ...", "extensions-leaflet-map").'</p>';
-	$all_files = array();
-	$all_points = array();
-	return $text;
-}
-add_shortcode('multielevation', 'leafext_multielevation' );

@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) or die();
 
 function leafext_eleparams_init(){
 	add_settings_section( 'eleparams_settings', leafext_elevation_tab(), 'leafext_ele_help_text', 'leafext_settings_eleparams' );
-	$fields = leafext_elevation_params();
+	$fields = leafext_elevation_params(array("changeable"));
 	foreach($fields as $field) {
 		$trenn = "";
 		if ( isset ($field['next']) ) $trenn = '<div style="border-top: '.$field['next'].'px solid #646970"></div>';
@@ -21,11 +21,11 @@ add_action('admin_init', 'leafext_eleparams_init' );
 // Baue Abfrage der Params
 function leafext_form_elevation($field) {
 	//var_dump($field);
-	$options = leafext_elevation_params();
+	$options = leafext_elevation_params(array("changeable"));
 	//var_dump($options);
 	$option = leafext_array_find2($field, $options);
 	//var_dump($option);echo '<br>';
-	$settings = leafext_elevation_settings();
+	$settings = leafext_elevation_settings(array("changeable"));
 	$setting = $settings[$field];
 	if ( isset ($option['next']) ) echo '<div style="border-top: '.$option['next'].'px solid #646970"></div>';
 	if ( $option['desc'] != "" ) echo '<p>'.$option['desc'].'</p>';
@@ -73,6 +73,7 @@ function leafext_validate_ele_options($options) {
 
 // Helptext
 function leafext_ele_help_text () {
+	leafext_enqueue_elevation_css ();
 	leafext_enqueue_awesome();
 	$text = "";
 	$text = $text.'<p><img src="'.LEAFEXT_PLUGIN_PICTS.'elevation.png"></p>

@@ -65,29 +65,24 @@ function leafext_java_params ($params) {
 		$text = $text. "$k: ";
 		switch (gettype($v)) {
 			case "string":
-				switch ($v) {
-					case "false":
-					case "0": $value = "false"; break;
-					case "true":
-					case "1": $value = "true"; break;
-					default:
-						if (is_numeric($v)) {
-							$value = $v;
-						} else {
-							$value = '"'.$v.'"';
-						}
-					break;
-				}
-				break;
+			switch ($v) {
+				case "false":
+				case "0": $value = "false"; break;
+				case "true":
+				case "1": $value = "true"; break;
+				case strpos($v,"{") !== false:
+				case strpos($v,"}") !== false:
+				case is_numeric($v):
+				$value = $v; break;
+				default:
+				$value = '"'.$v.'"';
+			}
+			break;
 			case "boolean":
-				$value = $v ? "true" : "false"; break;
+			$value = $v ? "true" : "false"; break;
 			case "integer":
-				switch ($v) {
-					//case 0: $value = "false"; break;
-					//case 1: $value = "true"; break;
-					default: $value = $v; break;
-				}
-				break;
+			case "double":
+			$value = $v; break;
 			default: var_dump($k, $v, gettype($v)); wp_die("Type");
 		}
 		$text = $text.$value;
