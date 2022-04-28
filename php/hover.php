@@ -246,13 +246,19 @@ function leafext_geojsonhover_script($url){
 						if (typeof e.sourceTarget.getPopup() != "undefined") {
 							if ( ! e.sourceTarget.getPopup().isOpen()) {
 								map.closePopup();
+								let content;
 								if ( e.sourceTarget.options.title != "") {
-									var content = e.sourceTarget.options.title;
+									content = e.sourceTarget.options.title;
 									//console.log(e.sourceTarget);
 								} else {
-									var content = e.sourceTarget.getPopup().getContent();
+									content = e.sourceTarget.getPopup().getContent();
 								}
-								e.sourceTarget.bindTooltip(content);
+								//console.log(e.sourceTarget.getPopup().getContent(),content);
+								if (typeof content == "undefined" && typeof e.sourceTarget.getPopup().getContent() != "undefined") {
+									e.sourceTarget.bindTooltip(e.sourceTarget.getPopup().getContent());
+								} else {
+									e.sourceTarget.bindTooltip(content);
+								}
 								e.sourceTarget.openTooltip(e.latlng);
 								// } else {
 								//
@@ -287,7 +293,7 @@ function leafext_geojsonhover_script($url){
 								}
 							}
 							layer.on("mouseover", function (e) {
-								//console.log("mouseover");
+								console.log("markergroups mouseover");
 								if (typeof e.sourceTarget.setStyle != "undefined") {
 									//console.log(e.sourceTarget.options.fillOpacity);
 									//console.log(e.sourceTarget.options.weight);
