@@ -677,6 +677,25 @@ function leafext_elevation_theme() {
 	return($theme);
 }
 
+function leafext_elevation_color() {
+	static $already_run = false;
+	if ( $already_run !== true ) {
+		$owncolors = get_option('leafext_color');
+		$text="";
+		if (is_array($owncolors)) {
+			//var_dump($owncolors);
+			$theme = leafext_elevation_theme();
+			foreach ($owncolors as $key => $typ) {
+				$text=$text.'<style>.'.$theme.'.elevation-control .area path.'.$key.',.'
+					.$theme.' .legend-'.$key.' rect {fill: '.$typ
+					.';fill-opacity: 0.5;stroke: #000;stroke-width: 1.5;}</style>';
+			}
+		}
+	}
+	$already_run = true;
+	return $text;
+}
+
 function leafext_elevation_function( $atts ) {
 	if ( ! $atts['gpx'] ) {
 		$text = "[elevation ";
@@ -750,6 +769,10 @@ function leafext_elevation_function( $atts ) {
 		$options['legend'] = false;
 	}
 	ksort($options);
-	return leafext_elevation_script($track,$theme,$options); //,$chart
+	//
+	$text=leafext_elevation_color();
+	$text=$text.leafext_elevation_script($track,$theme,$options);
+	//
+	return $text;
 }
 add_shortcode('elevation', 'leafext_elevation_function' );

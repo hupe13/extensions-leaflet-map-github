@@ -10,6 +10,7 @@
 
 #### New:
 * Pace - time per distance
+* Colors
 
 #### TBD:
 * Documentation, translation

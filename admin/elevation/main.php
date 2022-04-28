@@ -9,6 +9,7 @@ defined( 'ABSPATH' ) or die();
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/elevation.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/owntheme.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/waypoints.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/elevation/owncolors.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/sgpx.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/multielevation.php';
 
@@ -21,6 +22,10 @@ function leafext_elevation_tab() {
 		array (
 			'tab' => 'elevationtheme',
 			'title' => __('Own theme','extensions-leaflet-map'),
+		),
+		array (
+			'tab' => 'elevationcolors',
+			'title' => __('Colors','extensions-leaflet-map'),
 		),
 		array (
 			'tab' => 'elevationwaypoints',
@@ -66,6 +71,13 @@ function leafext_admin_elevation($active_tab) {
 		echo '<form method="post" action="options.php">';
 		settings_fields('leafext_settings_theme');
 		do_settings_sections( 'leafext_settings_theme' );
+		submit_button();
+		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+		echo '</form>';
+	} else if( $active_tab == 'elevationcolors') {
+		echo '<form method="post" action="options.php">';
+		settings_fields('leafext_settings_color');
+		do_settings_sections( 'leafext_settings_color' );
 		submit_button();
 		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		echo '</form>';

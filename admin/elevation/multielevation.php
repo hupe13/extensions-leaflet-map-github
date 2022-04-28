@@ -49,15 +49,17 @@ function leafext_form_multielevation($field) {
 		echo '</select>';
 
 	} else if ($option['values'] == "color") {
+		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_script( 'wp-color-picker' );
+		echo '<script>jQuery(document).ready(function(){jQuery(".colorPicker").wpColorPicker();});</script>';
 		if ($setting != $option['default'] ) {
 			//var_dump($setting,$option['default']);
 			echo __("Plugins Default", "extensions-leaflet-map").': ';
 			echo $option['default'];
 			echo '<br>';
 		}
-		echo '<input type="color" id="leafext_multieleparams['.$option['param'].']" name="leafext_multieleparams['.$option['param'].']"
-		 value = "'.$setting.'">';
-
+		echo '<input type="text" class="colorPicker" id="leafext_multieleparams['.$option['param'].']" name="leafext_multieleparams['.$option['param'].']"
+	 	data-default-color = "'.$option['default'].'" value = "'.$setting.'"/>';
 	} else {
 
 		if ($setting != $option['default'] ) {
