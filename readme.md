@@ -2,12 +2,14 @@
 
 # Extensions for Leaflet Map Github Version
 
-Stable tag: 2.2.7   
 Requires at least: 5.5.3  
+Requires PHP: 7.4   
 Tested up to: 5.9  
 License: GPLv2 or later  
 Tags: leaflet, gpx, elevation, markercluster, zoomhome, hover, fullscreen  
 Contributors: hupe13  
+
+Differences to the WordPress version: [Changes](changes.md)
 
 ## Description
 
@@ -15,7 +17,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 ### Used Leaflet Plugins and Elements
 
-*   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation), [Leaflet.EasyButton](https://github.com/CliffCloud/Leaflet.EasyButton): Track with Elevation Profile
+*   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation), [Leaflet.i18n](https://github.com/yohanboniface/Leaflet.i18n): Track with Elevation Profile
 *   [leaflet-gpxgroup](https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js), [Leaflet.GeometryUtil](https://github.com/makinacorpus/Leaflet.GeometryUtil): Multiple tracks with elevation profiles on one map
 *   [L.control.layers](https://leafletjs.com/examples/layers-control/): Switching Tilelayers
 *   [Leaflet-providers](https://github.com/leaflet-extras/leaflet-providers): An extension that contains configurations for various tile providers.
