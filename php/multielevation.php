@@ -222,12 +222,6 @@ function leafext_multielevation( $atts, $contents, $shortcode){
 		'legend' => false,
 	);
 
-	if ( is_array($atts) && array_key_exists('theme', $atts) ) {
-		$ele_options['theme'] = $atts['theme'];
-	} else {
-		$ele_options['theme'] = leafext_elevation_theme();
-	}
-
 	if ($shortcode == "elevation-tracks") {
 		$options = array (
 			'acceleration' =>  false,
@@ -248,7 +242,6 @@ function leafext_multielevation( $atts, $contents, $shortcode){
 			$options['summary'] = false;
 			$options['slope'] = false;
 		}
-		$options = array_merge($options, $ele_options);
 		$multioptions['distanceMarkers'] = false;
 	}
 
@@ -266,14 +259,20 @@ function leafext_multielevation( $atts, $contents, $shortcode){
 		if (isset($multioptions['highlight']) ) {
 				$multioptions['highlight'] = "{color: '".$multioptions['highlight']."',opacity: 1,}";
 		}
-
-		//var_dump(leafext_multielevation_settings(array('multielevation')),$multioptions); wp_die();
 	}
 
 	$options = array_merge($options, $ele_options);
 
+	if ( is_array($atts) && array_key_exists('theme', $atts) ) {
+		$options['theme'] = $atts['theme'];
+	} else {
+		$options['theme'] = leafext_elevation_theme();
+	}
+
+	list($options,$style) = leafext_elevation_color($options);
+
 	$rand = rand(1,20);
-	$text = leafext_multielevation_script( $all_files, $all_points, $options, $multioptions, $rand);
+	$text = $style.leafext_multielevation_script( $all_files, $all_points, $options, $multioptions, $rand);
 
 	$text = $text.'<p class="chart-placeholder chart-placeholder-'.$rand.'">';
 	$text = $text.__("move mouse over a track or select one in control panel ...", "extensions-leaflet-map").'</p>';
@@ -337,7 +336,7 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 			$text = $text.leafext_java_params ($multioptions);
 			$text = $text.'
 		});
-		console.log(routes);
+		//console.log(routes);
 		routes.addTo(map);
 
 		L.Control.Elevation.prototype.__btnIcon = "'.LEAFEXT_ELEVATION_URL.'/images/elevation.svg";

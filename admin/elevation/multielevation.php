@@ -51,7 +51,10 @@ function leafext_form_multielevation($field) {
 	} else if ($option['values'] == "color") {
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
-		echo '<script>jQuery(document).ready(function(){jQuery(".colorPicker").wpColorPicker();});</script>';
+		wp_enqueue_script('leafext-picker',
+			plugins_url('js/colorpicker.js',LEAFEXT_PLUGIN_FILE),
+			array('wp-color-picker'), null);
+			
 		if ($setting != $option['default'] ) {
 			//var_dump($setting,$option['default']);
 			echo __("Plugins Default", "extensions-leaflet-map").': ';

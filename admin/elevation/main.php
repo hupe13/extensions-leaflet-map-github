@@ -20,13 +20,17 @@ function leafext_elevation_tab() {
 			'title' => __('Elevation Profile','extensions-leaflet-map'),
 			),
 		array (
-			'tab' => 'elevationtheme',
-			'title' => __('Own theme','extensions-leaflet-map'),
-		),
-		array (
-			'tab' => 'elevationcolors',
-			'title' => __('Colors','extensions-leaflet-map'),
-		),
+				'tab' => 'elevationtheme',
+				'title' => __('Theme / Colors','extensions-leaflet-map'),
+			),
+		// array (
+		// 	'tab' => 'elevationtheme',
+		// 	'title' => __('Own theme','extensions-leaflet-map'),
+		// ),
+		// array (
+		// 	'tab' => 'elevationcolors',
+		// 	'title' => __('Colors','extensions-leaflet-map'),
+		// ),
 		array (
 			'tab' => 'elevationwaypoints',
 			'title' => __('Customize waypoints','extensions-leaflet-map'),
@@ -67,17 +71,26 @@ function leafext_admin_elevation($active_tab) {
 		submit_button();
 		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		echo '</form>';
+	//} else if( $active_tab == 'elevationcolors') {
 	} else if( $active_tab == 'elevationtheme') {
-		echo '<form method="post" action="options.php">';
-		settings_fields('leafext_settings_theme');
-		do_settings_sections( 'leafext_settings_theme' );
-		submit_button();
-		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
-		echo '</form>';
-	} else if( $active_tab == 'elevationcolors') {
+		$ownoptions = get_option('leafext_values');
+		if (!is_array($ownoptions)) {
+			echo '<form method="post" action="options.php">';
+			settings_fields('leafext_settings_elethemes');
+			do_settings_sections( 'leafext_settings_elethemes' );
+			submit_button();
+			echo '</form>';
+		}
 		echo '<form method="post" action="options.php">';
 		settings_fields('leafext_settings_color');
 		do_settings_sections( 'leafext_settings_color' );
+		submit_button();
+		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+		echo '</form>';
+	// } else if( $active_tab == 'elevationtheme') {
+		echo '<form method="post" action="options.php">';
+		settings_fields('leafext_settings_theme');
+		do_settings_sections( 'leafext_settings_theme' );
 		submit_button();
 		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		echo '</form>';

@@ -8,16 +8,16 @@ defined( 'ABSPATH' ) or die();
 
 // init settings fuer elevation
 function leafext_elevation_init(){
-//	add_settings_section( 'theme_settings', 'Elevation Profile', 'leafext_elevation_help_text', 'leafext_settings_theme' );
-	add_settings_section( 'theme_settings', leafext_elevation_tab(), 'leafext_elevation_help_text', 'leafext_settings_theme' );
-	add_settings_field( 'leafext_values_1', 'Theme', 'leafext_form_theme', 'leafext_settings_theme', 'theme_settings' );
+	//add_settings_section( 'theme_settings', leafext_elevation_tab(), 'leafext_elevation_help_text', 'leafext_settings_theme' );
+	add_settings_section( 'theme_settings', "", 'leafext_elevation_help_text', 'leafext_settings_theme' );
+	add_settings_field( 'leafext_values_1', 'Theme', 'leafext_form_owntheme', 'leafext_settings_theme', 'theme_settings' );
 	add_settings_field( 'leafext_values_2', 'Other Theme', 'leafext_form_other_theme', 'leafext_settings_theme', 'theme_settings' );
 	register_setting( 'leafext_settings_theme', 'leafext_values', 'leafext_validate_elevationtheme' );
 }
 add_action('admin_init', 'leafext_elevation_init' );
 
 // Baue Abfrage Standardthema
-function leafext_form_theme() {
+function leafext_form_owntheme() {
 	?>
 	<script>
 		function leafext_EnableDisableOtherTheme(leafext_elecolor) {
@@ -92,28 +92,43 @@ function leafext_validate_elevationtheme($input) {
 
 // Helptext
 function leafext_elevation_help_text () {
-
+	wp_enqueue_style( 'prism-css',
+		plugins_url('pkg/prism/prism.css',LEAFEXT_PLUGIN_FILE));
+	wp_enqueue_script('prism-js',
+		plugins_url('pkg/prism/prism.js',LEAFEXT_PLUGIN_FILE));
 $text = '
-<h2>Theme</h2><p>'.__('If you want use an own style, select "other" theme and give it a name. Put in your functions.php following code:',"extensions-leaflet-map").
-"</p><pre>
+<p><div style="border-top: 1px solid #646970"></div></p>
+<h2>Theme</h2><p>'.
+__('If you want use an own style, select "other" theme and give it a name. Put in your functions.php following code:',
+"extensions-leaflet-map");
+
+$text=$text.'<details class="primer" style="display: inline-block; width: 100%;">
+<summary title="Show markup and usage">&#8226;&#8226;&#8226; '.
+'</summary>
+<section><pre class="language-php">
+<code class="language-php">&lt;?php
 //Shortcode: [elevation]
 function leafext_custom_elevation_function() {
 	// custom
-	wp_enqueue_style( 'elevation_mycss',
-		'url/to/css/elevation.css', array('elevation_css'));
+	wp_enqueue_style( "elevation_mycss",
+		"url/to/css/elevation.css", array("elevation_css"));
 }
-add_filter('pre_do_shortcode_tag', function ( &#36;output, &#36;shortcode ) {
-	if ( 'elevation' == &#36;shortcode || 'elevation-tracks' == &#36;shortcode ) {
+add_filter("pre_do_shortcode_tag", function ( &#36;output, &#36;shortcode ) {
+	if ( "elevation" == &#36;shortcode || "elevation-tracks" == &#36;shortcode ) {
 		leafext_custom_elevation_function();
 	}
 	return &#36;output;
 }, 10, 2);
-</pre>
-"
+?&gt;
+</code></pre></section>'
+
 .'<p>'.
 __('In your elevation.css put the styles like the theme styles in',"extensions-leaflet-map")
 .' <a href="https://unpkg.com/@raruto/leaflet-elevation@'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.css"
->https://unpkg.com/@raruto/leaflet-elevation@'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.css</a></p>';
+>https://unpkg.com/@raruto/leaflet-elevation@'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.css</a> '.
+sprintf(__("or check out Raruto's %sexamples%s","extensions-leaflet-map"),'<a href="https://github.com/Raruto/leaflet-elevation">','</a>')
+.'.</p>'.
+'</details><!--/.primer--><p>';
 
 $theme = get_option('leafext_values');
 if (!is_array($theme)) {

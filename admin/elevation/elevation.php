@@ -9,6 +9,14 @@ defined( 'ABSPATH' ) or die();
 function leafext_eleparams_init(){
 	add_settings_section( 'eleparams_settings', leafext_elevation_tab(), 'leafext_ele_help_text', 'leafext_settings_eleparams' );
 	$fields = leafext_elevation_params(array("changeable"));
+	$ownoptions = get_option('leafext_values');
+	if (is_array($ownoptions)) {
+		foreach ($fields as $key => $value) {
+			if ($value['param'] == 'theme') {
+				unset($fields[$key]);
+			}
+		}
+	}
 	foreach($fields as $field) {
 		$trenn = "";
 		if ( isset ($field['next']) ) $trenn = '<div style="border-top: '.$field['next'].'px solid #646970"></div>';
@@ -66,7 +74,18 @@ function leafext_form_elevation($field) {
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function leafext_validate_ele_options($options) {
-	if (isset($_POST['submit'])) return $options;
+	if (isset($_POST['submit'])) {
+		$defaults=array();
+		$params = leafext_elevation_params(array('changeable'));
+		foreach($params as $param) {
+			$defaults[$param['param']] = $param['default'];
+		}
+		$params = get_option('leafext_eleparams', $defaults);
+		foreach ($options as $key => $value) {
+			$params[$key] = $value;
+		}
+		return $params;
+	}
 	if (isset($_POST['delete'])) delete_option('leafext_eleparams');
 	return false;
 }
@@ -111,10 +130,10 @@ __('You can optionally set a marker on Start.',"extensions-leaflet-map").'
 		$theme = get_option('leafext_values');
 		if (is_array($theme)) {
 			$text = $text.'<p>';
+			$text = $text.'<span style="color: #d63638">';
 			if ($theme['theme'] == "other") {
-				$text = $text.sprintf(__("You have installed your own theme. The settings for %s on this page are not valid for you.","extensions-leaflet-map"),"<code>theme</code>");
+				$text = $text.sprintf(__("You have installed your own theme. The setting for %s on this page are not valid for you.","extensions-leaflet-map"),"<code>theme</code>");
 			} else {
-				$text = $text.'<span style="color: #d63638">';
 				$text = $text.__('Your theme is','extensions-leaflet-map').' '.$theme['theme'].'. ';
 				$text = $text.sprintf(
 					__(
@@ -123,8 +142,8 @@ __('You can optionally set a marker on Start.',"extensions-leaflet-map").'
 						'<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevationtheme">',
 						'<code>',
 						'</code></a>');
-						$text = $text.'</span>';
 			}
+			$text = $text.'</span>';
 			$text = $text.'</p>';
 		}
 	}

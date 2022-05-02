@@ -549,14 +549,6 @@ function leafext_ele_java_params($settings) {
 			$text = $text. "$k: ". $v .',';
 			unset($settings[$k]);
 			break;
-			// case "chart":
-			// if ($v == "off") {
-			// 	$chart = true;
-			// } else {
-			// 	$chart = false;
-			// }
-			//unset($settings[$k]);
-			//break;
 			default:
 		}
 	}
@@ -593,7 +585,7 @@ function leafext_elevation_pace($options) {
 }
 
 //Shortcode: [elevation gpx="...url..."]
-function leafext_elevation_script($gpx,$theme,$settings){ //,$chart
+function leafext_elevation_script($gpx,$settings){
 	$text = '
 	<script>
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -601,9 +593,7 @@ function leafext_elevation_script($gpx,$theme,$settings){ //,$chart
 		var map = window.WPLeafletMapPlugin.getCurrentMap();';
 
 	$text = $text.'
-	var elevation_options = {
-		theme: '.json_encode($theme).',
-	';
+	var elevation_options = {';
 
 	list($text1, $settings) = leafext_ele_java_params($settings);
 	$text = $text.$text1;
@@ -677,23 +667,45 @@ function leafext_elevation_theme() {
 	return($theme);
 }
 
-function leafext_elevation_color() {
-	static $already_run = false;
-	if ( $already_run !== true ) {
-		$owncolors = get_option('leafext_color');
-		$text="";
-		if (is_array($owncolors)) {
-			//var_dump($owncolors);
-			$theme = leafext_elevation_theme();
-			foreach ($owncolors as $key => $typ) {
-				$text=$text.'<style>.'.$theme.'.elevation-control .area path.'.$key.',.'
-					.$theme.' .legend-'.$key.' rect {fill: '.$typ
-					.';fill-opacity: 0.5;stroke: #000;stroke-width: 1.5;}</style>';
+function leafext_elevation_color($options) {
+	static $already_run = array();
+	$owncolors = get_option('leafext_color_'.$options['theme']);
+	//var_dump($options,$owncolors);
+	$text = "";
+	if (is_array($owncolors)) {
+		$options['preferCanvas'] = false;
+		foreach ($owncolors as $key => $typ) {
+			if (!isset($already_run[$key] ) ) {
+				switch ($key) {
+					case "polyline":
+					$text=$text.'<style>'.
+					'.'.$options['theme'].'.elevation-polyline {stroke: '.$typ.';stroke-width: '.$options['polyline'].';}'.
+					'</style>';
+					break;
+					case "altitude":
+					$text=$text.'<style>'.
+					'.'.$options['theme'].'.elevation-control .area path.'.$key.',
+					.'.$options['theme'].' .legend-'.$key.' rect.area {fill: '.$typ.'; }'.
+					'.'.$options['theme'].'.height-focus.circle-lower {fill: '.$typ.'; }'.
+					'</style>';
+					break;
+					case "background":
+					$text=$text.'<style>'.
+					'.elevation-control .background {background-color: '.$typ.' !important;}'.
+					'</style>';
+					break;
+					default;
+					$text=$text.'<style>'.
+					'.'.$options['theme'].'.elevation-control .area path.'.$key.','.
+					'.'.$options['theme'].' .legend-'.$key.' rect {fill: '.$typ.';}'.
+					'</style>';
+				}
+				$text=$text."\n";
+				$already_run[$key] = true;
 			}
 		}
 	}
-	$already_run = true;
-	return $text;
+	return array($options,$text);
 }
 
 function leafext_elevation_function( $atts ) {
@@ -711,13 +723,6 @@ function leafext_elevation_function( $atts ) {
 	$options = shortcode_atts(leafext_elevation_settings(array("changeable","fixed")), $atts1);
 
 	$track = $atts['gpx'];
-
-	if ( array_key_exists('theme', $atts) ) {
-		$theme = $atts['theme'];
-	} else {
-		$theme = leafext_elevation_theme();
-	}
-	unset($options['theme']);
 
 	if (isset($options['chart']) && $options['chart'] == "1") {
 		$options['closeBtn'] = false;
@@ -768,10 +773,14 @@ function leafext_elevation_function( $atts ) {
 		$options['preferCanvas'] = false;
 		$options['legend'] = false;
 	}
-	ksort($options);
 	//
-	$text=leafext_elevation_color();
-	$text=$text.leafext_elevation_script($track,$theme,$options);
+	if ( ! array_key_exists('theme', $atts) ) {
+		$options['theme'] = leafext_elevation_theme();
+	}
+	list($options,$style) = leafext_elevation_color($options);
+	ksort($options);
+
+	$text=$style.leafext_elevation_script($track,$options);
 	//
 	return $text;
 }

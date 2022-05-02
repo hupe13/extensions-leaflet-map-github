@@ -10,11 +10,11 @@
 
 #### New:
 * Pace - time per distance
-* Colors
+* Themes and Colors
 
 #### TBD:
 * Documentation, translation
-* custom themes
 
 ## Solved Bugs
 * hover with placementstrategies
+* own theme in multielevation

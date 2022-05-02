@@ -116,8 +116,8 @@ function leafext_waypoints_help_text() {
 
 	}
 
-	$text = $text.'<p>'.sprintf(__('You can of course also define waypoints with additional %s shortcodes.
-.','extensions-leaflet-map'),"<code>leaflet-marker</code>").'</p>';
+	$text = $text.'<p>'.sprintf(__('You can of course also define waypoints with additional %s shortcodes.'
+		,'extensions-leaflet-map'),"<code>leaflet-marker</code>").'</p>';
 	$text = $text.'<h3>'.__('Waypoint specified in file','extensions-leaflet-map').'</h3>';
 	$text = $text.'GPX: <pre>&lt;sym&gt;<span style="color: #4f94d4">'.__('Text of GPS symbol name','extensions-leaflet-map').'</span>&lt;/sym&gt;</pre>';
 	$text = $text.'Geojson: <pre>"properties": {
