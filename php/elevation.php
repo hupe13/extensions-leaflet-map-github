@@ -626,7 +626,7 @@ function leafext_elevation_script($gpx,$settings){
 	// Load track from url (allowed data types: "*.geojson", "*.gpx")
 	controlElevation.load(track_options.url);';
 
-	if (isset($settings['chart']) && $settings['chart'] == "off") {
+	if (isset($settings['chart']) && $settings['chart'] === "off") {
 		$text=$text.'map.on("eledata_added", function(e) {
 			//console.log(controlElevation);
 			controlElevation._toggle();
@@ -723,8 +723,8 @@ function leafext_elevation_function( $atts ) {
 	$options = shortcode_atts(leafext_elevation_settings(array("changeable","fixed")), $atts1);
 
 	$track = $atts['gpx'];
-
-	if (isset($options['chart']) && $options['chart'] == "1") {
+//var_dump($options);wp_die();
+	if (isset($options['chart']) && boolval($options['chart']) ) {
 		$options['closeBtn'] = false;
 	} else {
 		$options['closeBtn'] = true;
