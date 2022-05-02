@@ -11,6 +11,7 @@
 #### New:
 * Pace - time per distance
 * Themes and Colors
+* Please check css in own theme.
 
 #### TBD:
 * Documentation, translation
