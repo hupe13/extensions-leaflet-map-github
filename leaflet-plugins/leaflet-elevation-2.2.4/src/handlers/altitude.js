@@ -1,4 +1,5 @@
 export function Altitude() {
+	
 	const _  = L.Control.Elevation.Utils;
 
 	let opts       = this.options;
@@ -25,7 +26,7 @@ export function Altitude() {
 		// },
 		pointToAttr: (point, i) => {
 			if ("alt" in point) point.meta.ele = point.alt; // "alt" property is generated inside "leaflet"
-			return this._data[i].z * opts.altitudeFactor;
+			return this._data[i].z;
 		},
 		stats: { max: _.iMax, min: _.iMin, avg: _.iAvg },
 		grid: {
@@ -53,8 +54,8 @@ export function Altitude() {
 		},
 		tooltip: {
 			name: 'y',
-			chart: (item) => L._("y: ") + _.round(item[opts.yAttr]*opts.altitudeFactor, opts.decimalsY) + " " + altitude.label,
-			marker: (item) => _.round(item[opts.yAttr]*opts.altitudeFactor, opts.decimalsY) + " " + altitude.label,
+			chart: (item) => L._("y: ") + _.round(item[opts.yAttr], opts.decimalsY) + " " + altitude.label,
+			marker: (item) => _.round(item[opts.yAttr], opts.decimalsY) + " " + altitude.label,
 			order: 10,
 		},
 		summary: {

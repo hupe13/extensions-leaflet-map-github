@@ -6,7 +6,7 @@
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
-// For checking to load awesome (Home character, graph character)
+// For checking to load awesome (Home character)
 function leafext_plugin_stylesheet_installed($array_css) {
     global $wp_styles;
     foreach( $wp_styles->queue as $style ) {
@@ -77,11 +77,12 @@ function leafext_enqueue_elevation () {
     plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/Leaflet.i18n.js',
   	LEAFEXT_PLUGIN_FILE),
   	array('elevation_js'),null);
-
+  //
 	wp_enqueue_style( 'elevation_css',
 		plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.min.css',
 		LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
+  //
 	leafext_css();
 }
 

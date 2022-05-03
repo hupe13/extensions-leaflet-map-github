@@ -5,13 +5,13 @@
 ## leaflet-elevation-2.2.4
 
 #### Existing Bugs:
-* imperial - y-axis is in metres
+* `hotline: "elevation"` works with only with one map on a page.
 * `distance: false,` - does not work.
 
 #### New:
 * Pace - time per distance
 * Themes and Colors
-* Please check css in own theme.
+* Please check css in your own theme.
 
 #### TBD:
 * Documentation, translation

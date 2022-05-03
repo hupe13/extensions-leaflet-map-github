@@ -217,7 +217,8 @@ function leafext_elevation_params($typ = array()) {
 			'desc' => '<p>'.
 			__('show distance data in graph and summary / show distance data in summary only',"extensions-leaflet-map").'</p>',
 			'default' => true,
-			'values' => array(true,"summary",false),
+			//'values' => array(true,"summary",false),
+			'values' => array(true,"summary"),
 			'typ' => array('changeable','multielevation'),
 		),
 
@@ -243,6 +244,18 @@ function leafext_elevation_params($typ = array()) {
 			'shortdesc' => __('Display track datetimes',"extensions-leaflet-map"),
 			'desc' => '',
 			'default' => false,
+			'values' => 1,
+			'typ' => array('changeable','multielevation'),
+		),
+
+		//Toggle chart ruler filter.
+		//ruler: true,
+		array(
+			'param' => 'ruler',
+			'shortdesc' => __('Toggle chart ruler filter.',"extensions-leaflet-map"),
+			'desc' => "",
+			'default' => true,
+			//'default' => false,
 			'values' => 1,
 			'typ' => array('changeable','multielevation'),
 		),
@@ -355,17 +368,6 @@ function leafext_elevation_params($typ = array()) {
 			'values' => 1,
 			'typ' => array('changeable','multielevation'),
 		),
-
-		// Toggle chart ruler filter.
-		// ruler: true,
-		// array(
-		// 	'param' => 'ruler',
-		// 	'shortdesc' => __('Toggle chart ruler filter.',"extensions-leaflet-map"),
-		// 	'desc' => "",
-		// 	'default' => true,
-		// 	'values' => 1,
-		// 	'typ' => array('fixed'),
-		// ),
 
 		// Toggle "leaflet-almostover" integration
 		// almostOver: true,
@@ -612,21 +614,18 @@ function leafext_elevation_script($gpx,$settings){
 	controlElevation.addTo(map);';
 
 	$text = $text.'
-	//
 	var is_chrome = navigator.userAgent.indexOf("Chrome") > -1;
 	var is_safari = navigator.userAgent.indexOf("Safari") > -1;
 	if ( !is_chrome && is_safari && controlElevation.options.preferCanvas != false ) {
 		console.log("is_safari - setting preferCanvas to false");
 		controlElevation.options.preferCanvas = false;
-	}
-	//
-	';
+	}';
 
 	$text=$text.'
 	// Load track from url (allowed data types: "*.geojson", "*.gpx")
 	controlElevation.load(track_options.url);';
 
-	if (isset($settings['chart']) && $settings['chart'] === "off") {
+	if ( $settings['chart'] === "off") {
 		$text=$text.'map.on("eledata_added", function(e) {
 			//console.log(controlElevation);
 			controlElevation._toggle();
@@ -717,17 +716,18 @@ function leafext_elevation_function( $atts ) {
 		$text = $text. "]";
 		return $text;
 	}
+
 	leafext_enqueue_elevation ();
 
 	$atts1=leafext_case(array_keys(leafext_elevation_settings(array("changeable","fixed"))),leafext_clear_params($atts));
 	$options = shortcode_atts(leafext_elevation_settings(array("changeable","fixed")), $atts1);
 
 	$track = $atts['gpx'];
-//var_dump($options);wp_die();
-	if (isset($options['chart']) && boolval($options['chart']) ) {
-		$options['closeBtn'] = false;
-	} else {
+
+	if ( $options['chart'] === "on" || $options['chart'] === "off")  {
 		$options['closeBtn'] = true;
+	} else {
+		$options['closeBtn'] = false;
 	}
 
 	if (isset($options['wptIcons']) ) {
@@ -777,6 +777,8 @@ function leafext_elevation_function( $atts ) {
 	if ( ! array_key_exists('theme', $atts) ) {
 		$options['theme'] = leafext_elevation_theme();
 	}
+
+	if ( $options['hotline'] == "elevation") unset ($options['polyline'] );
 	list($options,$style) = leafext_elevation_color($options);
 	ksort($options);
 

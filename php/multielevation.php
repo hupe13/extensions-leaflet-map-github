@@ -220,6 +220,7 @@ function leafext_multielevation( $atts, $contents, $shortcode){
 		'zFollow' => 15,
 		'flyToBounds' => true,
 		'legend' => false,
+		'closeBtn' => false,
 	);
 
 	if ($shortcode == "elevation-tracks") {
@@ -228,7 +229,6 @@ function leafext_multielevation( $atts, $contents, $shortcode){
 			'almostOver' => true,
 			'downloadLink' => false,
 			'followMarker' => false,
-			'legend' => false,
 			'preferCanvas' => false,
 			'speed' =>  false,
 			'time' => false,

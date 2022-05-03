@@ -636,7 +636,7 @@
 				this._addPoint(
 					point.lat ?? point[1],
 					point.lng ?? point[0],
-					point.alt ?? point.meta.ele ?? point[2]
+					point.alt ?? point.meta.ele ?? (point[2] * this.options.altitudeFactor)
 				);
 
 				this.fire("elepoint_added", { point: point, index: this._data.length - 1 });
@@ -710,8 +710,7 @@
 				.then(() => {
 					layer.eachLayer((trkseg) => {
 						if(trkseg.feature.geometry.type != "Point") {
-							//let geo = L.geoJson(trkseg.toGeoJSON(), { coordsToLatLng: (coords) => L.latLng(coords[0], coords[1], coords[2])});
-							let geo = L.geoJson(trkseg.toGeoJSON(), { coordsToLatLng: (coords) => L.latLng(coords[0], coords[1], coords[2]*this.options.altitudeFactor)});
+							let geo = L.geoJson(trkseg.toGeoJSON(), { coordsToLatLng: (coords) => L.latLng(coords[0], coords[1], coords[2] * this.options.altitudeFactor)});
 							let line = L.hotline(geo.toGeoJSON().features[0].geometry.coordinates, {
 								min: isFinite(this.track_info[prop + '_min']) ? this.track_info[prop + '_min'] : 0,
 								max: isFinite(this.track_info[prop + '_max']) ? this.track_info[prop + '_max'] : 1,

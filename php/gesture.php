@@ -43,18 +43,17 @@ function leafext_gesture_settings() {
 function leafext_gestures_lang($options) {
 	if ( $options['lang'] == "Site" ) {
 		$lang = get_bloginfo( 'language' );
-		//var_dump($lang);
-		if ( ! glob(LEAFEXT_GESTURE_LOCALE_DIR.$lang.'.js')) {
-			if ( ! glob(LEAFEXT_GESTURE_LOCALE_DIR.explode("-",$lang)[0].'.js')) {
-				$lang = "en";
-			} else {
-				$lang = explode("-",$lang)[0];
-			}
-		}
-		//var_dump(glob(LEAFEXT_GESTURE_LOCALE_DIR.$lang.'.js'));
 	} else {
-		$lang = ""; // Browser
+		$lang = locale_accept_from_http($_SERVER['HTTP_ACCEPT_LANGUAGE']); // Browser
 	}
+	if ( ! glob(LEAFEXT_GESTURE_LOCALE_DIR.$lang.'.js')) {
+		if ( ! glob(LEAFEXT_GESTURE_LOCALE_DIR.explode("-",$lang)[0].'.js')) {
+			$lang = "en";
+		} else {
+			$lang = explode("-",$lang)[0];
+		}
+	}
+	//var_dump(glob(LEAFEXT_GESTURE_LOCALE_DIR.$lang.'.js'));
 	return $lang;
 }
 
