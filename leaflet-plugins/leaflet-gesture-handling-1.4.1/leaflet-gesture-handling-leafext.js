@@ -102,12 +102,13 @@
 			this._map.dragging.enable();
 			this._map.scrollWheelZoom.enable();
 			if (this._map.tap) this._map.tap.enable();
-			// hupe13: deal with safari bug
-			var is_chrome = navigator.userAgent.indexOf("Chrome") > -1;
-			var is_safari = navigator.userAgent.indexOf("Safari") > -1;
-			if ( !is_chrome && is_safari ) {
-				//console.log("Safari");
-				this._map.tap.disable();
+			// hupe13: deal with safari bug Leaflet version 1.7
+			if (parseInt(L.version.split('.')[1], 10) < 8 ) {
+				var is_chrome = navigator.userAgent.indexOf("Chrome") > -1;
+				var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+				if ( !is_chrome && is_safari ) {
+					this._map.tap.disable();
+				}
 			}
 			// end
 		},
@@ -211,7 +212,7 @@
 				var ignore_parent = -1;
 			}
 			if ( ignore || ignore_parent != -1 ) {
-				// end
+			// end
 
 			//if (ignore) {
 				if (L.DomUtil.hasClass(e.target, "leaflet-interactive") && e.type === "touchmove" && e.touches.length === 1) {

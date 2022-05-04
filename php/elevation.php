@@ -613,6 +613,7 @@ function leafext_elevation_script($gpx,$settings){
 	var track_options= { url: "'.$gpx.'" };
 	controlElevation.addTo(map);';
 
+	// not solved with leaflet 1.8 (220503)
 	$text = $text.'
 	var is_chrome = navigator.userAgent.indexOf("Chrome") > -1;
 	var is_safari = navigator.userAgent.indexOf("Safari") > -1;
