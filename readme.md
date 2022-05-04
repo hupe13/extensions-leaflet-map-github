@@ -32,8 +32,8 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 ### Other functions
 
 *  hover: 
- * Highlight a gpx, kml or geojson element on mouse over
- * get a tooltip for marker, gpx, kml or geojson element on mouse over.
+     * Highlight a gpx, kml or geojson element on mouse over
+     * get a tooltip for marker, gpx, kml or geojson element on mouse over.
 *   Hide Markers: Use it when a track in a GPX file contains some markers and you don't want to display them on the map.
 *   Option to migrate from [WP GPX Maps](https://wordpress.org/plugins/wp-gpx-maps/) to elevation
 
