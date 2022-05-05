@@ -86,8 +86,8 @@ function leafext_validate_mapswitch($options) {
 			$map['attr'] = wp_kses_normalize_entities( $option['attr'] );
 			$map['tile'] = sanitize_text_field ( $option['tile'] );
 			$map['options'] = wp_kses_normalize_entities( $option['options'] );
-			$map['overlay'] = $option['overlay'] ;
-			$map['opacity'] = $option['opacity'] ;
+			$map['overlay'] = isset($option['overlay']) ? $option['overlay'] : "";
+			$map['opacity'] = isset($option['opacity']) ? $option['opacity'] : "";
 			$maps[]=$map;
 		}
 	}

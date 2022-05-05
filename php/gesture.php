@@ -43,8 +43,10 @@ function leafext_gesture_settings() {
 function leafext_gestures_lang($options) {
 	if ( $options['lang'] == "Site" ) {
 		$lang = get_bloginfo( 'language' );
-	} else {
+	} else if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
 		$lang = locale_accept_from_http($_SERVER['HTTP_ACCEPT_LANGUAGE']); // Browser
+	} else {
+		$lang = "en";
 	}
 	if ( ! glob(LEAFEXT_GESTURE_LOCALE_DIR.$lang.'.js')) {
 		if ( ! glob(LEAFEXT_GESTURE_LOCALE_DIR.explode("-",$lang)[0].'.js')) {
