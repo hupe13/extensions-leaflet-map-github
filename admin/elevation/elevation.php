@@ -132,7 +132,8 @@ __('You can optionally set a marker on Start.',"extensions-leaflet-map").'
 			$text = $text.'<p>';
 			$text = $text.'<span style="color: #d63638">';
 			if ($theme['theme'] == "other") {
-				$text = $text.sprintf(__("You have installed your own theme. The setting for %s on this page are not valid for you.","extensions-leaflet-map"),"<code>theme</code>");
+				$text = $text.sprintf(__("You have installed your own %s.","extensions-leaflet-map"),
+				'<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevationtheme"><code>theme</code></a>');
 			} else {
 				$text = $text.__('Your theme is','extensions-leaflet-map').' '.$theme['theme'].'. ';
 				$text = $text.sprintf(
@@ -151,5 +152,6 @@ __('You can optionally set a marker on Start.',"extensions-leaflet-map").'
 		return $text;
 	} else {
 		echo $text;
+		echo '<div style="border-top: 3px solid #646970"></div>';
 	}
 }

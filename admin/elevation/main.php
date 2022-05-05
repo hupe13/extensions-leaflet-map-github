@@ -21,7 +21,7 @@ function leafext_elevation_tab() {
 			),
 		array (
 				'tab' => 'elevationtheme',
-				'title' => __('Theme / Colors','extensions-leaflet-map'),
+				'title' => __('Colors / Theme','extensions-leaflet-map'),
 			),
 		// array (
 		// 	'tab' => 'elevationtheme',

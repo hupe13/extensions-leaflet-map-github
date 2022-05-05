@@ -28,7 +28,7 @@ function leafext_elevation_params($typ = array()) {
 			</p>',
 			'default' => "lime-theme",
 			'values' => array("lime-theme","steelblue-theme","purple-theme","yellow-theme","red-theme","magenta-theme","lightblue-theme"),
-			'next' => "3",
+			//'next' => "3",
 			'typ' => array('changeable','theme','multielevation'),
 		),
 
@@ -737,7 +737,13 @@ function leafext_elevation_function( $atts ) {
 			unset($options['wptIcons']);
 			$waypoints = get_option('leafext_waypoints', "");
 			if ( $waypoints != "" && ( $options['waypoints'] == "markers" || $options['waypoints'] == "1" )) {
-				$wptvalue="{";
+				$wptvalue="{'': L.divIcon({
+					className: 'elevation-waypoint-marker',
+					html: '<i class=\"elevation-waypoint-icon default\"></i>',
+					iconSize: [30, 30],
+					iconAnchor: [8, 30],
+				}),
+					";
 				foreach ( $waypoints as $wpt ) {
 					$wptvalue = $wptvalue.'"'.$wpt['css'].'":  L.divIcon({
 						className: "elevation-waypoint-marker",

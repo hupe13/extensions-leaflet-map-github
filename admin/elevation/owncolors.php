@@ -96,7 +96,7 @@ function leafext_elevation_colors() {
 //init Wahl des theme, leafext_validate_ele_options und leafext_form_elevation ist in elevation.php
 function leafext_themes_init(){
 	// 	leafext_eleparams ist in der Datenbank!
-	add_settings_section( 'elethemes_settings', leafext_elevation_tab(), '', 'leafext_settings_elethemes' );
+	add_settings_section( 'elethemes_settings', leafext_elevation_tab().'<p><div style="border-top: 1px solid #646970"></div></p>', '', 'leafext_settings_elethemes' );
 	$fields = leafext_elevation_params(array("theme"));
 	foreach($fields as $field) {
 		$trenn = "";
