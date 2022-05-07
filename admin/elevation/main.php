@@ -21,16 +21,8 @@ function leafext_elevation_tab() {
 			),
 		array (
 				'tab' => 'elevationtheme',
-				'title' => __('Colors / Theme','extensions-leaflet-map'),
+				'title' => __('Theme / Colors','extensions-leaflet-map'),
 			),
-		// array (
-		// 	'tab' => 'elevationtheme',
-		// 	'title' => __('Own theme','extensions-leaflet-map'),
-		// ),
-		// array (
-		// 	'tab' => 'elevationcolors',
-		// 	'title' => __('Colors','extensions-leaflet-map'),
-		// ),
 		array (
 			'tab' => 'elevationwaypoints',
 			'title' => __('Customize waypoints','extensions-leaflet-map'),
@@ -71,7 +63,6 @@ function leafext_admin_elevation($active_tab) {
 		submit_button();
 		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		echo '</form>';
-	//} else if( $active_tab == 'elevationcolors') {
 	} else if( $active_tab == 'elevationtheme') {
 		$ownoptions = get_option('leafext_values');
 		if (!is_array($ownoptions)) {
@@ -87,7 +78,7 @@ function leafext_admin_elevation($active_tab) {
 		submit_button();
 		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		echo '</form>';
-	// } else if( $active_tab == 'elevationtheme') {
+		//
 		echo '<form method="post" action="options.php">';
 		settings_fields('leafext_settings_theme');
 		do_settings_sections( 'leafext_settings_theme' );

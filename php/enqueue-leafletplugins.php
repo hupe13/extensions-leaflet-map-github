@@ -74,7 +74,7 @@ function leafext_enqueue_elevation () {
 		array('wp_leaflet_map'),null);
   //
   wp_enqueue_script( 'Leaflet.i18n',
-    plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/Leaflet.i18n.js',
+    plugins_url('leaflet-plugins/Leaflet.i18n/Leaflet.i18n.js',
   	LEAFEXT_PLUGIN_FILE),
   	array('elevation_js'),null);
   //

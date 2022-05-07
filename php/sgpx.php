@@ -187,7 +187,10 @@ function leafext_sgpx_function( $atts ) {
 		return $text;
 
 	} else if ( LEAFEXT_SGPX_ACTIVE && ( ( LEAFEXT_SGPX_SGPX && ! $options['sgpx'] ) || ! LEAFEXT_SGPX_SGPX ) ) {
-		$text = __("You are using the sgpx shortcode from plugin wp-gpx-maps. wp-gpx-maps and leaflet-map don't work together. See admin settings page.","extensions-leaflet-map");
+		$text = __("You are using the sgpx shortcode from plugin wp-gpx-maps. wp-gpx-maps and leaflet-map don't work together.","extensions-leaflet-map").' ';
+		$text = $text .sprintf('See %sadmin settings page%s.',
+		'<a href="'.get_admin_url().'admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=sgpxelevation">',
+		'</a>');
 		$text = $text."<p>[sgpx ";
 		foreach ($atts as $key=>$item){
 			$text = $text. "$key = $item ";

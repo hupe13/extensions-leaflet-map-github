@@ -1,14 +1,15 @@
 <?php
 /**
- * Plugin Name: Extensions for Leaflet Map Github
- * Plugin URI:  https://github.com/hupe13/extensions-leaflet-map-github
+ * Plugin Name:       Extensions for Leaflet Map Github
+ * Plugin URI:        https://github.com/hupe13/extensions-leaflet-map-github
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
- * Primary Branch: main
- * Description: Extensions for the WordPress plugin Leaflet Map Github Version
- * Version:     2.3-beta.220505
- * Author:      hupe13
- * License:     GPL v2 or later
- * Text Domain: extensions-leaflet-map
+ * Primary Branch:    main
+ * Description:       Extensions for the WordPress plugin Leaflet Map Github Version
+ * Version:           2.3-beta.220505
+ * Requires PHP:      7.4
+ * Author:            hupe13
+ * License:           GPL v2 or later
+ * Text Domain:       extensions-leaflet-map
 **/
 
 // Direktzugriff auf diese Datei verhindern:

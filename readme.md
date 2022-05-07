@@ -2,12 +2,11 @@
 
 # Extensions for Leaflet Map Github Version
 
-Requires at least: 5.5.3  
-Requires PHP: 7.4   
-Tested up to: 5.9  
-License: GPLv2 or later  
+Contributors: hupe13    
 Tags: leaflet, gpx, elevation, markercluster, zoomhome, hover, fullscreen  
-Contributors: hupe13  
+Tested up to: 6.0  
+Stable tag: 2.2.7    
+License: GPLv2 or later  
 
 Differences to the WordPress version: [Changes](changes.md)
 

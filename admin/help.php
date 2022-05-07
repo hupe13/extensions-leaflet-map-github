@@ -31,7 +31,7 @@ function leafext_help_table($leafext_plugin_name="") {
 	<tr><td>'.
 	__('track with an elevation profile','extensions-leaflet-map').
 	'</td><td><a href="?page='.$leafext_plugin_name.'&tab=elevation">elevation</a></td>
-	<td><a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a></td></tr>
+	<td><a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>, <a href="https://github.com/yohanboniface/Leaflet.i18n">Leaflet.i18n</a></td></tr>
 
 	<tr class="alternate"><td>'
 	.__('multiple tracks with elevation profiles','extensions-leaflet-map').
@@ -60,8 +60,13 @@ function leafext_help_table($leafext_plugin_name="") {
 
 	</tbody></table></figure>';
 
-	$ende = __('You may be interested in','extensions-leaflet-map').
-		' <a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>.';
+	$ende = '<p>'.__('You may be interested in','extensions-leaflet-map').
+		' <a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>.</p>';
+
+	$ende = $ende.'<p>'.sprintf(__('If you want to help me, you can test to %smanage the files%s.','extensions-leaflet-map'),
+		'<a href="https://github.com/hupe13/extensions-leaflet-map-testing/">',
+		'</a>').'</p>';
+
 
 	if (is_singular() || is_archive() ) {
 		return $text;

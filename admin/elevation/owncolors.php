@@ -168,9 +168,16 @@ function leafext_validate_owncolors($options) {
 
 // Helptext
 function leafext_color_help_text () {
-	$text = '<div style="border-top: 1px solid #646970"></div>';
-	$text = $text.'<h2>Colors</h2>';
-// $text=$text. __('Your Theme is ',"extensions-leaflet-map");
-// $text=$text. leafext_elevation_theme().'.';
+	$text = "";
+	$theme = get_option('leafext_values');
+	if (is_array($theme)) {
+		$text = $text. '<p><div style="border-top: 1px solid #646970"></div></p>
+		<h2>Theme</h2><p>';
+		$text = $text. __("Your theme is the","extensions-leaflet-map");
+		$text = $text. ' <strong>'.$theme["othertheme"].'</strong>. ';
+		$text = $text. __("To change it see the bottom of the page.","extensions-leaflet-map");
+	}
+	$text = $text. '<div style="border-top: 1px solid #646970"></div>';
+	$text = $text. '<h2>Colors</h2>';
 	echo $text;
 }

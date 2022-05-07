@@ -217,8 +217,8 @@ function leafext_elevation_params($typ = array()) {
 			'desc' => '<p>'.
 			__('show distance data in graph and summary / show distance data in summary only',"extensions-leaflet-map").'</p>',
 			'default' => true,
-			//'values' => array(true,"summary",false),
-			'values' => array(true,"summary"),
+			'values' => array(true,"summary",false),
+			//'values' => array(true,"summary"),
 			'typ' => array('changeable','multielevation'),
 		),
 
