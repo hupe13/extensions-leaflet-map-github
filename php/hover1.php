@@ -46,12 +46,17 @@ function leafext_geojsonhover_script($url){
 						e.target.eachLayer(function(){ i += 1; });
 						//console.log("mouseout has", i, "layers.");
 						if (i > 1) {
-							//console.log("resetStyle");
-							e.target.eachLayer(function(layer){
+							console.log("resetStyle");
+							console.log(geojson);
+							console.log(geojson.setStyle);
+							geojson.eachLayer(function(layer) {
+								console.log(layer);
 								if (typeof layer.setStyle != "undefined") {
+									var origfillOpacity = 0.2; //leaflet default
+									var origweight = 3; //leaflet default
 									layer.setStyle({
-										"fillOpacity" : 0.2,
-										"weight" : 3,
+										"fillOpacity" : origfillOpacity,
+										"weight" : origweight,
 									});
 								}
 							});
@@ -98,16 +103,18 @@ function leafext_geojsonhover_script($url){
 							});
 							if (i > 1) {
 								if (typeof e.sourceTarget.setStyle != "undefined") {
-									//console.log("style4");
+									console.log("style4");
 									//console.log(e.layer.options.fillOpacity);
 									//console.log(e.layer.options.weight);
 									// e.sourceTarget.setStyle({
 									// 	"fillOpacity" : e.sourceTarget.options.fillOpacity+0.20,
 									// 	"weight" : e.sourceTarget.options.weight+2
 									// });
+									var origfillOpacity = 0.4; //leaflet default
+									var origweight = 5; //leaflet default
 									e.sourceTarget.setStyle({
-										"fillOpacity" : 0.4,
-										"weight" : 5,
+										"fillOpacity" : origfillOpacity,
+										"weight" : origweight,
 									});
 									e.sourceTarget.bringToFront();
 									// } else {
@@ -258,13 +265,19 @@ function leafext_geojsonhover_script($url){
 						if (typeof e.sourceTarget.getPopup() != "undefined") {
 							if ( ! e.sourceTarget.getPopup().isOpen()) {
 								map.closePopup();
+								let content;
 								if ( e.sourceTarget.options.title != "") {
-									var content = e.sourceTarget.options.title;
+									content = e.sourceTarget.options.title;
 									//console.log(e.sourceTarget);
 								} else {
-									var content = e.sourceTarget.getPopup().getContent();
+									content = e.sourceTarget.getPopup().getContent();
 								}
-								e.sourceTarget.bindTooltip(content);
+								//console.log(e.sourceTarget.getPopup().getContent(),content);
+								if (typeof content == "undefined" && typeof e.sourceTarget.getPopup().getContent() != "undefined") {
+									e.sourceTarget.bindTooltip(e.sourceTarget.getPopup().getContent());
+								} else {
+									e.sourceTarget.bindTooltip(content);
+								}
 								e.sourceTarget.openTooltip(e.latlng);
 								// } else {
 								//
@@ -299,7 +312,7 @@ function leafext_geojsonhover_script($url){
 								}
 							}
 							layer.on("mouseover", function (e) {
-								//console.log("mouseover");
+								console.log("markergroups mouseover");
 								if (typeof e.sourceTarget.setStyle != "undefined") {
 									//console.log(e.sourceTarget.options.fillOpacity);
 									//console.log(e.sourceTarget.options.weight);
@@ -319,7 +332,7 @@ function leafext_geojsonhover_script($url){
 							});
 							layer.on("mouseout", function (e) {
 								if (typeof e.sourceTarget.setStyle != "undefined") {
-									//console.log("mouseout");
+									console.log("mouseout");
 									//console.log(e.sourceTarget.options.fillOpacity);
 									//console.log(e.sourceTarget.options.weight);
 									e.sourceTarget.setStyle({

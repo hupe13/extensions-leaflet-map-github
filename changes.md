@@ -2,11 +2,10 @@
 * some changes to original for L.control.layers, Leaflet.Control.Opacity
 * TBD pull request
 
-## leaflet-elevation-2.2.4
+## leaflet-elevation-2.2.5
 
 #### Existing Bugs:
 * `hotline: "elevation"` works with only with one map on a page.
-* `distance: false,` - does not work.
 
 #### New:
 * Pace - time per distance

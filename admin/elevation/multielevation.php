@@ -54,7 +54,7 @@ function leafext_form_multielevation($field) {
 		wp_enqueue_script('leafext-picker',
 			plugins_url('js/colorpicker.js',LEAFEXT_PLUGIN_FILE),
 			array('wp-color-picker'), null);
-			
+
 		if ($setting != $option['default'] ) {
 			//var_dump($setting,$option['default']);
 			echo __("Plugins Default", "extensions-leaflet-map").': ';
@@ -174,7 +174,7 @@ function leafext_multiele_help_text () {
 
 '<h3>Theme</h3><p>'.
 	__('The theme is the same as the','extensions-leaflet-map').
-	' <a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">'.
+	' <a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevationtheme">'.
 	__('Elevation Theme','extensions-leaflet-map').'</a>.</p>'.
 
 	'<h3>Options</h3>

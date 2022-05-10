@@ -6,7 +6,7 @@
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
-function leafext_eleparams_init(){
+function leafext_eleparams_init_bak(){
 	add_settings_section( 'eleparams_settings', leafext_elevation_tab(), 'leafext_ele_help_text', 'leafext_settings_eleparams' );
 	$fields = leafext_elevation_params(array("changeable"));
 	$ownoptions = get_option('leafext_values');
@@ -24,6 +24,19 @@ function leafext_eleparams_init(){
 	}
 	register_setting( 'leafext_settings_eleparams', 'leafext_eleparams', 'leafext_validate_ele_options' );
 }
+
+function leafext_eleparams_init(){
+	register_setting( 'leafext_settings_eleparams', 'leafext_eleparams', 'leafext_validate_ele_options' );
+	// $ele_settings = array('theme','look','points','info','chart','other');
+	$ele_settings = array('look','points','info','chart','other');
+	foreach ( $ele_settings as $ele_setting ) {
+		add_settings_section( 'eleparams_settings_'.$ele_setting, '', 'leafext_ele_help_'.$ele_setting, 'leafext_settings_eleparams' );
+		$fields = leafext_elevation_params(array($ele_setting));
+		foreach($fields as $field) {
+			add_settings_field("leafext_eleparams[".$field['param']."]", $field['shortdesc'], 'leafext_form_elevation','leafext_settings_eleparams', 'eleparams_settings_'.$ele_setting, $field['param']);
+		}
+	}
+}
 add_action('admin_init', 'leafext_eleparams_init' );
 
 // Baue Abfrage der Params
@@ -35,7 +48,7 @@ function leafext_form_elevation($field) {
 	//var_dump($option);echo '<br>';
 	$settings = leafext_elevation_settings(array("changeable"));
 	$setting = $settings[$field];
-	if ( isset ($option['next']) ) echo '<div style="border-top: '.$option['next'].'px solid #646970"></div>';
+
 	if ( $option['desc'] != "" ) echo '<p>'.$option['desc'].'</p>';
 
 	echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option['param']. '</code><br>';
@@ -126,32 +139,103 @@ __('You can optionally set a marker on Start.',"extensions-leaflet-map").'
 	$text = $text.'<code>true</code> = <code>parameter</code> || <code>parameter="1"</code> || <code>parameter=1</code>';
 	$text = $text.'</p>';
 
-	if (!(is_singular()|| is_archive())) {
-		$theme = get_option('leafext_values');
-		if (is_array($theme)) {
-			$text = $text.'<p>';
-			$text = $text.'<span style="color: #d63638">';
-			if ($theme['theme'] == "other") {
-				$text = $text.sprintf(__("You have installed your own %s.","extensions-leaflet-map"),
-				'<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevationtheme"><code>theme</code></a>');
-			} else {
-				$text = $text.__('Your theme is','extensions-leaflet-map').' '.$theme['theme'].'. ';
-				$text = $text.sprintf(
-					__(
-						'Please delete %s these %stheme%s settings, these are valid as long as they are not deleted.',
-						"extensions-leaflet-map"),
-						'<a href="admin.php?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevationtheme">',
-						'<code>',
-						'</code></a>');
-			}
-			$text = $text.'</span>';
-			$text = $text.'</p>';
-		}
-	}
 	if (is_singular() || is_archive() ) {
 		return $text;
 	} else {
 		echo $text;
 		echo '<div style="border-top: 3px solid #646970"></div>';
 	}
+}
+
+function leafext_ele_help_look () {
+	echo '<h3>';
+	leafext_ele_help_text ();
+	echo '</h3>';
+	//echo '<div style="border-top: 3px solid #646970"></div>';
+	echo '<h3>';
+	echo __('Appearance','extensions-leaflet-map');
+	echo '</h3>';
+}
+
+function leafext_ele_help_points () {
+	echo '<div style="border-top: 3px solid #646970"></div>';
+	echo '<h3>';
+	echo __('Markers and Waypoints','extensions-leaflet-map');
+	echo '</h3>';
+}
+
+function leafext_ele_help_info () {
+	echo '<div style="border-top: 3px solid #646970"></div>';
+	echo '<h3>';
+	echo __('Information','extensions-leaflet-map');
+	echo '</h3>';
+}
+
+function leafext_ele_help_chart () {
+	echo '<div style="border-top: 3px solid #646970"></div>';
+	echo '<h3>';
+	echo __('Charts','extensions-leaflet-map');
+	echo '</h3>';
+	echo '
+	<figure class="wp-block-table aligncenter is-style-stripes">
+	<table class="form-table" border="1" >
+	<thead>
+	<tr class="alternate">
+	<th style="text-align:center">'.__('Setting','extensions-leaflet-map').'</th>
+	<th style="text-align:center">'.__('Display diagram','extensions-leaflet-map').'</th>
+	<th style="text-align:center">'.__('Tooltip','extensions-leaflet-map').'</th>
+	<th style="text-align:center">'.__('marker="elevation-line"','extensions-leaflet-map').'</th>
+	<th style="text-align:center">'.__('Summary','extensions-leaflet-map').'</th>
+	<th style="text-align:center">'.__('Axis display','extensions-leaflet-map').'</th>
+	</tr></thead>
+	<tbody>
+	<tr>
+	<td style="text-align:center"> </td>
+	<td style="text-align:center"> </td>
+	<td style="text-align:center"><img src="'.LEAFEXT_PLUGIN_PICTS.'tooltip_values.png"></td>
+	<td style="text-align:center"><img src="'.LEAFEXT_PLUGIN_PICTS.'marker_values.png"></td>
+	<td style="text-align:center"> </td>
+	<td style="text-align:center"><img src="'.LEAFEXT_PLUGIN_PICTS.'yachse.png"></td>
+	</tr>
+	<tr  class="alternate">
+	<td style="text-align:center">1</td>
+	<td style="text-align:center">'.__('yes','extensions-leaflet-map').'</td>
+	<td style="text-align:center">'.__('yes','extensions-leaflet-map').'</td>
+	<td style="text-align:center">'.__('yes','extensions-leaflet-map').'</td>
+	<td style="text-align:center">'.__('yes','extensions-leaflet-map').'</td>
+	<td style="text-align:center">'.__('yes','extensions-leaflet-map').'</td>
+	</tr>
+	<tr>
+	<td style="text-align:center">summary</td>
+	<td style="text-align:center">'.__('no','extensions-leaflet-map').' </td>
+	<td style="text-align:center">'.__('yes','extensions-leaflet-map').'</td>
+	<td style="text-align:center">'.__('yes','extensions-leaflet-map').'</td>
+	<td style="text-align:center">'.__('yes','extensions-leaflet-map').'</td>
+	<td style="text-align:center">'.__('no','extensions-leaflet-map').'</td>
+	</tr>
+	<tr  class="alternate">
+	<td style="text-align:center">disabled</td>
+	<td style="text-align:center">ausgeblendet <br><img src="'.LEAFEXT_PLUGIN_PICTS.'off_speed.png"></td>
+	<td style="text-align:center">'.__('yes','extensions-leaflet-map').'</td>
+	<td style="text-align:center">'.__('yes','extensions-leaflet-map').'</td>
+	<td style="text-align:center">'.__('yes','extensions-leaflet-map').'</td>
+	<td style="text-align:center">'.__('yes','extensions-leaflet-map').'</td>
+	</tr>
+	<tr>
+	<td style="text-align:center">0</td>
+	<td style="text-align:center">'.__('no','extensions-leaflet-map').'</td>
+	<td style="text-align:center">'.__('no','extensions-leaflet-map').'</td>
+	<td style="text-align:center">'.__('no','extensions-leaflet-map').'</td>
+	<td style="text-align:center">'.__('no','extensions-leaflet-map').'</td>
+	<td style="text-align:center">'.__('no','extensions-leaflet-map').'</td>
+	</tr></tbody></table></figure>
+	';
+	echo '</p>';
+}
+
+function leafext_ele_help_other () {
+	echo '<div style="border-top: 3px solid #646970"></div>';
+	echo '<h3>';
+	echo __('Others','extensions-leaflet-map');
+	echo '</h3>';
 }

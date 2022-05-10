@@ -129,7 +129,8 @@ function leafext_gestures_function() {
 		wp_add_inline_script( 'gestures_leaflet', leafext_gestures_script($lang), 'after' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'leafext_gestures_function' );
+// darf nicht per default geladen werden!! auskommentiert lassen!
+//add_action( 'wp_enqueue_scripts', 'leafext_gestures_function' );
 
 add_filter('pre_do_shortcode_tag', function ( $output, $shortcode ) {
 	if ( 'leaflet-map' == $shortcode ) {

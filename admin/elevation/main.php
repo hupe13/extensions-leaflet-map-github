@@ -112,6 +112,7 @@ function leafext_admin_elevation($active_tab) {
 		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		echo '</form>';
 	} else if( $active_tab == 'elevation' ) { //Last tab!!!
+		echo '<h2>'.leafext_elevation_tab().'</h2>';
 		echo '<form method="post" action="options.php">';
 		settings_fields('leafext_settings_eleparams');
 		do_settings_sections( 'leafext_settings_eleparams' );

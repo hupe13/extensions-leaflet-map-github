@@ -28,7 +28,6 @@ function leafext_elevation_params($typ = array()) {
 			</p>',
 			'default' => "lime-theme",
 			'values' => array("lime-theme","steelblue-theme","purple-theme","yellow-theme","red-theme","magenta-theme","lightblue-theme"),
-			//'next' => "3",
 			'typ' => array('changeable','theme','multielevation'),
 		),
 
@@ -39,7 +38,7 @@ function leafext_elevation_params($typ = array()) {
 			'desc' => '',
 			'default' => "3",
 			'values' => array("2","3","4","5","6","7","8"),
-			'typ' => array('changeable'),
+			'typ' => array('changeable','look'),
 		),
 
 		//hotline
@@ -49,7 +48,7 @@ function leafext_elevation_params($typ = array()) {
 			'desc' => "",
 			'default' => false,
 			'values' => array( false, 'elevation'), //, 'slope', 'speed'
-			'typ' => array('changeable',),
+			'typ' => array('changeable','look'),
 		),
 
 		// marker: "elevation-line" || "position-marker" || false
@@ -60,7 +59,7 @@ function leafext_elevation_params($typ = array()) {
 			<img src="'.LEAFEXT_ELEVATION_URL.'/images/elevation-position.svg" alt="elevation-position" align="middle"/> / '.__('nothing',"extensions-leaflet-map").' </p>',
 			'default' => 'elevation-line',
 			'values' => array("elevation-line", "position-marker",false),
-			'typ' => array('changeable','multielevation'),
+			'typ' => array('changeable','look','multielevation'),
 		),
 
 		// Toggle chart legend filter.
@@ -73,7 +72,7 @@ function leafext_elevation_params($typ = array()) {
 			__('If it is disabled, you can\'t toggle the initial state of graphs.',"extensions-leaflet-map").'</p>',
 			'default' => true,
 			'values' => 1,
-			'typ' => array('changeable','multielevation'),
+			'typ' => array('changeable','look','multielevation'),
 		),
 
 		// Quite uncommon and undocumented options
@@ -85,37 +84,31 @@ function leafext_elevation_params($typ = array()) {
 			'desc' => "?? noch nicht fertig",
 			'default' => "200",
 			'values' => array( "map.getSize().y", "200", "300" ),
-			'typ' => array('changeable',"multielevation"),
+			'typ' => array('changeable','look','multielevation'),
 		),
 
 		//chart: true,
 		// closeBtn
 		array(
 			'param' => 'chart',
-			'shortdesc' => __('Toggle diagram',"extensions-leaflet-map"),
-			'desc' => '<p>'.
-			sprintf(__('show always the diagram / show the diagram and toggle %s to hide / hide the diagram and toggle %s to show',"extensions-leaflet-map"),
+			'shortdesc' => __('Toggle chart',"extensions-leaflet-map"),
+			'desc' => sprintf(__('show always the chart / show the chart and toggle %s to hide / hide the diagram and toggle %s to show',"extensions-leaflet-map"),
 			'&#10006;',
-			'<img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-lime.svg" alt="lime" />').
-			'</p>',
+			'<img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-lime.svg" alt="lime" />'),
 			'default' => true,
 			'values' => array(true, "on", "off"),
-			'typ' => array('changeable',),
+			'typ' => array('changeable','look'),
 		),
 
-		// Summary track info style: "inline" || "multiline" || false
-		// hupe13: true historical
+		//Toggle chart ruler filter.
+		//ruler: true,
 		array(
-			'param' => 'summary',
-			'shortdesc' => __('Summary track info style',"extensions-leaflet-map"),
-			'desc' => '<p>'.
-			__('some predefined settings / summary on one line / summary on multiple lines / without summary',"extensions-leaflet-map").
-			'</p><p>'.
-			__('If it is disabled, settings for summary below are without function.',"extensions-leaflet-map").'</p>',
-			'default' => 'multiline',
-			'values' => array(true, "inline","multiline",false),
-			'next' => "1",
-			'typ' => array('changeable','multielevation'),
+			'param' => 'ruler',
+			'shortdesc' => __('Toggle chart ruler filter.',"extensions-leaflet-map"),
+			'desc' => '<img src="'.LEAFEXT_PLUGIN_PICTS.'/ruler.png" alt="lime">',
+			'default' => true,
+			'values' => 1,
+			'typ' => array('changeable','look','multielevation'),
 		),
 
 		// downloadLink: "link" || false || "modal"
@@ -125,7 +118,7 @@ function leafext_elevation_params($typ = array()) {
 			'desc' => '',
 			'default' => false,
 			'values' => array("link", false, "modal"),
-			'typ' => array('changeable',),
+			'typ' => array('changeable','look',),
 		),
 
 		// Alles mit Punkten / Markern
@@ -137,8 +130,7 @@ function leafext_elevation_params($typ = array()) {
 			'desc' => '',
 			'default' => true,
 			'values' => 1,
-			'typ' => array('changeable'),
-			'next' => "3",
+			'typ' => array('changeable','points'),
 		),
 
 		// Endpunkt
@@ -148,7 +140,18 @@ function leafext_elevation_params($typ = array()) {
 			'desc' => '',
 			'default' => true,
 			'values' => 1,
-			'typ' => array('changeable'),
+			'typ' => array('changeable','points'),
+		),
+
+		// Toggle "leaflet-distance-markers" integration
+		//distanceMarkers: false,
+		array(
+			'param' => 'distanceMarkers',
+			'shortdesc' => __('Toggle "leaflet-distance-markers" integration',"extensions-leaflet-map"),
+			'desc' => '',
+			'default' => false,
+			'values' => 1,
+			'typ' => array('changeable','points'),
 		),
 
 		// Display track waypoints: true || "markers" || "dots" || false
@@ -159,7 +162,7 @@ function leafext_elevation_params($typ = array()) {
 			'desc' => __('Display waypoints in map and in chart / only in map / only in chart / none',"extensions-leaflet-map"),
 			'default' => true,
 			'values' => array (true, "markers", "dots", false),
-			'typ' => array('changeable',),
+			'typ' => array('changeable','points',),
 		),
 
 		// Toggle waypoint labels: true || "markers" || "dots" || false
@@ -171,7 +174,7 @@ function leafext_elevation_params($typ = array()) {
 			<p>'.sprintf(__('Only meaningful, if %swaypoints%s is not %s.',"extensions-leaflet-map"),'<code>','</code>','<code>0</code>').'</p>',
 			'default' => true,
 			'values' => array (true, "markers", "dots", false),
-			'typ' => array('changeable',),
+			'typ' => array('changeable','points',),
 		),
 
 		// // Toggle custom waypoint icons: true || { associative array of <sym> tags } || false
@@ -194,20 +197,10 @@ function leafext_elevation_params($typ = array()) {
 			.'</p>',
 			'default' => true,
 			'values' => array (true, "defined", false),
-			'typ' => array('changeable',),
+			'typ' => array('changeable','points',),
 		),
 
-		// Toggle "leaflet-distance-markers" integration
-		//distanceMarkers: false,
-		array(
-			'param' => 'distanceMarkers',
-			'shortdesc' => __('Toggle "leaflet-distance-markers" integration',"extensions-leaflet-map"),
-			'desc' => '',
-			'default' => false,
-			'values' => 1,
-			'next' => "1",
-			'typ' => array('changeable'),
-		),
+		// Informationen
 
 		// Display distance info: true || "summary" || false
 		//distance: true,
@@ -215,49 +208,47 @@ function leafext_elevation_params($typ = array()) {
 			'param' => 'distance',
 			'shortdesc' => __('Display distance info',"extensions-leaflet-map"),
 			'desc' => '<p>'.
-			__('show distance data in graph and summary / show distance data in summary only',"extensions-leaflet-map").'</p>',
+			__("show distance data in graph and summary / show distance data in summary only / don't show distance data","extensions-leaflet-map").'</p>',
 			'default' => true,
 			'values' => array(true,"summary",false),
-			//'values' => array(true,"summary"),
-			'typ' => array('changeable','multielevation'),
+			'typ' => array('changeable','info','multielevation'),
 		),
-
-		// Informationen
 
 		// Display time info: true || "summary" || false
 		//time: false,
 		array(
 			'param' => 'time',
-			'shortdesc' => __('Display time info',"extensions-leaflet-map"),
+			'shortdesc' => __('Display time info (duration)',"extensions-leaflet-map"),
 			'desc' => '<p>'.
 			__('show time data in graph and summary / show time data in summary only / nothing',"extensions-leaflet-map").'</p>',
 			'default' => false,
 			'values' => array(true,"summary",false),
-			'next' => "1",
-			'typ' => array('changeable','multielevation'),
+			'typ' => array('changeable','info','multielevation'),
 		),
 
 		// Display track datetimes: true || false
 		//timestamps: false,
 		array(
 			'param' => 'timestamps',
-			'shortdesc' => __('Display track datetimes',"extensions-leaflet-map"),
+			'shortdesc' => __('Display date and clock time',"extensions-leaflet-map"),
 			'desc' => '',
 			'default' => false,
 			'values' => 1,
-			'typ' => array('changeable','multielevation'),
+			'typ' => array('changeable','info','multielevation'),
 		),
 
-		//Toggle chart ruler filter.
-		//ruler: true,
+		// Summary track info style: "inline" || "multiline" || false
+		// hupe13: true historical
 		array(
-			'param' => 'ruler',
-			'shortdesc' => __('Toggle chart ruler filter.',"extensions-leaflet-map"),
-			'desc' => "",
-			'default' => true,
-			//'default' => false,
-			'values' => 1,
-			'typ' => array('changeable','multielevation'),
+			'param' => 'summary',
+			'shortdesc' => __('Summary track info style',"extensions-leaflet-map"),
+			'desc' => '<p>'.
+			__('some predefined settings / summary on one line / summary on multiple lines / without summary',"extensions-leaflet-map").
+			'</p><p>'.
+			__('If it is disabled, settings for summary below are without function.',"extensions-leaflet-map").'</p>',
+			'default' => 'multiline',
+			'values' => array(true, "inline","multiline",false),
+			'typ' => array('changeable','info','multielevation'),
 		),
 
 		// Graphen
@@ -267,13 +258,11 @@ function leafext_elevation_params($typ = array()) {
 		array(
 			'param' => 'altitude',
 			'shortdesc' => __('Display altitude graph',"extensions-leaflet-map"),
-			'desc' => '<p>'.
-			__('graph initial state displayed and data in summary / data in summary only / graph initial state hidden and data in summary',"extensions-leaflet-map").'</p>',
+			'desc' => '',
 			'default' => true,
 			//'values' => array(true,"summary"),
 			'values' => array(true,"summary","disabled",false),
-			'next' => "3",
-			'typ' => array('changeable','multielevation'),
+			'typ' => array('changeable','chart','multielevation'),
 		),
 
 		// Acceleration chart profile: true || "summary" || "disabled" || false
@@ -281,10 +270,10 @@ function leafext_elevation_params($typ = array()) {
 		array(
 			'param' => 'acceleration',
 			'shortdesc' => __('Acceleration chart profile',"extensions-leaflet-map"),
-			'desc' => '<p>'.__('graph initial state displayed and data in summary / data in summary only / graph initial state hidden and data in summary / nothing',"extensions-leaflet-map").'</p>',
+			'desc' => '',
 			'default' => false,
 			'values' => array(true,"summary","disabled",false),
-			'typ' => array('changeable','multielevation'),
+			'typ' => array('changeable','chart','multielevation'),
 		),
 
 		// Slope chart profile: true || "summary" || "disabled" || false
@@ -292,11 +281,10 @@ function leafext_elevation_params($typ = array()) {
 		array(
 			'param' => 'slope',
 			'shortdesc' => __('Slope chart profile',"extensions-leaflet-map"),
-			'desc' => '<p>'.
-			__('graph initial state displayed and data in summary / data in summary only / graph initial state hidden and data in summary / nothing',"extensions-leaflet-map").'</p>',
+			'desc' => '',
 			'default' => false,
 			'values' => array(true,"summary","disabled",false),
-			'typ' => array('changeable','multielevation'),
+			'typ' => array('changeable','chart','multielevation'),
 		),
 
 		// Speed chart profile: true || "summary" || "disabled" || false
@@ -304,22 +292,20 @@ function leafext_elevation_params($typ = array()) {
 		array(
 			'param' => 'speed',
 			'shortdesc' => __('Speed chart profile',"extensions-leaflet-map"),
-			'desc' => '<p>'.
-			__('graph initial state displayed and data in summary / data in summary only / graph initial state hidden and data in summary / nothing',"extensions-leaflet-map").'</p>',
+			'desc' => '',
 			'default' => false,
 			'values' => array(true,"summary","disabled",false),
-			'typ' => array('changeable','multielevation'),
+			'typ' => array('changeable','chart','multielevation'),
 		),
 
 		//pace
 		array(
 			'param' => 'pace',
 			'shortdesc' => __('Pace profile - time per distance',"extensions-leaflet-map"),
-			'desc' => '<p>'.
-			__('graph initial state displayed and data in summary / data in summary only / graph initial state hidden and data in summary / nothing',"extensions-leaflet-map").'</p>',
+			'desc' => '',
 			'default' => false,
 			'values' => array(true,"summary","disabled",false),
-			'typ' => array('changeable','multielevation'),
+			'typ' => array('changeable','chart','multielevation'),
 		),
 
 		// Verhalten u.a.
@@ -332,8 +318,7 @@ function leafext_elevation_params($typ = array()) {
 			'desc' => '',
 			'default' => true,
 			'values' => 1,
-			'next' => "3",
-			'typ' => array('changeable','multielevation'),
+			'typ' => array('changeable','other','multielevation'),
 		),
 
 		// Autoupdate map bounds on chart update.
@@ -344,7 +329,7 @@ function leafext_elevation_params($typ = array()) {
 			'desc' => '',
 			'default' => true,
 			'values' => 1,
-			'typ' => array('changeable','multielevation'),
+			'typ' => array('changeable','other','multielevation'),
 		),
 
 		// Chart distance/elevation units.
@@ -355,7 +340,7 @@ function leafext_elevation_params($typ = array()) {
 			'desc' => __('miles or kilometers',"extensions-leaflet-map"),
 			'default' => false,
 			'values' => 1,
-			'typ' => array('changeable','multielevation'),
+			'typ' => array('changeable','other','multielevation'),
 		),
 
 		// [Lat, Long] vs [Long, Lat] points. (leaflet default: [Lat, Long])
@@ -366,7 +351,7 @@ function leafext_elevation_params($typ = array()) {
 			'desc' => '',
 			'default' => false,
 			'values' => 1,
-			'typ' => array('changeable','multielevation'),
+			'typ' => array('changeable','other','multielevation'),
 		),
 
 		// Toggle "leaflet-almostover" integration
@@ -388,7 +373,7 @@ function leafext_elevation_params($typ = array()) {
 			'desc' => sprintf ( __('Due to a bug in MacOS and iOS, see %shere%s, it is automatically set to false in Safari.',"extensions-leaflet-map"), '<a href="https://github.com/Raruto/leaflet-elevation/issues/123">','</a>'),
 			'default' => true,
 			'values' => 1,
-			'typ' => array('changeable',),
+			'typ' => array('changeable','other',),
 		),
 
 		// Chart container outside/inside map container

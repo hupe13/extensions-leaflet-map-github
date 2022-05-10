@@ -28,34 +28,32 @@ define('LEAFEXT_SGPX_SGPX', $sgpx_opts);
 // Erstmal alles von wp-gpx-map entfernen
 if ( LEAFEXT_SGPX_ACTIVE ) {
 	function leafext_dequeue_sgpx() {
-		wp_dequeue_script('leaflet');
-		wp_dequeue_style('leaflet.fullscreen');
-		wp_dequeue_style('leaflet');
-		wp_dequeue_style('leaflet.markercluster');
-		wp_dequeue_script('leaflet.markercluster');
-		wp_dequeue_style('leaflet.Photo');
-		wp_dequeue_script('leaflet.Photo');
-		wp_dequeue_script('leaflet.fullscreen');
-		wp_dequeue_script('WP-GPX-Maps');
-		wp_dequeue_script('chartjs');
 		//
+		wp_dequeue_script( 'chartjs' );
+		wp_dequeue_script( 'jquery' );
+		wp_dequeue_script( 'leaflet.fullscreen' );
+		wp_dequeue_script( 'leaflet.markercluster' );
+		wp_dequeue_script( 'leaflet.Photo' );
+		wp_dequeue_script( 'leaflet' );
+		wp_dequeue_script( 'output-style' );
 		wp_dequeue_script( 'wp-gpx-maps' );
+		wp_dequeue_style( 'leaflet.fullscreen' );
+		wp_dequeue_style( 'leaflet.markercluster' );
+		wp_dequeue_style( 'leaflet.Photo' );
+		wp_dequeue_style( 'leaflet' );
+		wp_dequeue_style( 'output-style' );
+		wp_deregister_script( 'chartjs' );
+		wp_deregister_script( 'leaflet.fullscreen' );
+		wp_deregister_script( 'leaflet.markercluster' );
+		wp_deregister_script( 'leaflet.Photo' );
+		wp_deregister_script( 'leaflet');
+		wp_deregister_script( 'wp-gpx-maps' );
+		wp_deregister_style( 'leaflet.fullscreen');
+		wp_deregister_style( 'leaflet.markercluster' );
+		wp_deregister_style( 'leaflet.Photo' );
+		wp_deregister_style( 'leaflet' );
+		wp_deregister_style( 'output-style');
 		//
-		//	wp_dequeue_script('jquery');
-		wp_deregister_script('leaflet');
-		wp_deregister_style('leaflet.fullscreen');
-		wp_deregister_style('leaflet');
-		wp_deregister_style('leaflet.markercluster');
-		wp_deregister_script('leaflet.markercluster');
-		wp_deregister_style('leaflet.Photo');
-		wp_deregister_script('leaflet.Photo');
-		wp_deregister_script('leaflet.fullscreen');
-		wp_deregister_script('WP-GPX-Maps');
-		wp_deregister_script('chartjs');
-		//
-		wp_deregister_script('wp-gpx-maps');
-		//	wp_deregister_script('jquery');
-		remove_action('wp_print_styles', 'print_WP_GPX_Maps_styles' );
 		unload_textdomain( "wp-gpx-maps" );
 	}
 	add_action( 'wp_enqueue_scripts', 'leafext_dequeue_sgpx' , 100);
