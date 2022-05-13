@@ -40,7 +40,7 @@ export function Acceleration() {
 		},
 		tooltip: {
 			chart: (item) => L._("a: ") + item.acceleration + " " + acceleration.label,
-			marker: (item) => (Math.round(item.acceleration * 100) / 100) + " " + acceleration.label,
+			marker: (item) => item.acceleration + " " + acceleration.label,
 			order: 60,
 		},
 		summary: {

@@ -59,7 +59,7 @@ function leafext_elevation_params($typ = array()) {
 			<img src="'.LEAFEXT_ELEVATION_URL.'/images/elevation-position.svg" alt="elevation-position" align="middle"/> / '.__('nothing',"extensions-leaflet-map").' </p>',
 			'default' => 'elevation-line',
 			'values' => array("elevation-line", "position-marker",false),
-			'typ' => array('changeable','look','multielevation'),
+			'typ' => array('changeable','chartlook','multielevation'),
 		),
 
 		// Toggle chart legend filter.
@@ -69,10 +69,11 @@ function leafext_elevation_params($typ = array()) {
 			'shortdesc' => __('Toggle chart legend filter.',"extensions-leaflet-map"),
 			'desc' => '<img src="'.LEAFEXT_PLUGIN_PICTS.'on.png" alt="on"/>
 			<p>'.
-			__('If it is disabled, you can\'t toggle the initial state of graphs.',"extensions-leaflet-map").'</p>',
+			__('You can always toggle the charts individually by clicking on <img src="'.LEAFEXT_PLUGIN_PICTS.'switcher.png" alt="switch"/>.',"extensions-leaflet-map").' '.
+			__('If <code>legend</code> is disabled, you can\'t see all charts at the same time (except at the beginning).',"extensions-leaflet-map").'</p>',
 			'default' => true,
 			'values' => 1,
-			'typ' => array('changeable','look','multielevation'),
+			'typ' => array('changeable','chartlook','multielevation'),
 		),
 
 		// Quite uncommon and undocumented options
@@ -92,7 +93,7 @@ function leafext_elevation_params($typ = array()) {
 		array(
 			'param' => 'chart',
 			'shortdesc' => __('Toggle chart',"extensions-leaflet-map"),
-			'desc' => sprintf(__('show always the chart / show the chart and toggle %s to hide / hide the diagram and toggle %s to show',"extensions-leaflet-map"),
+			'desc' => sprintf(__('show always the chart / show the chart and toggle %s to hide / hide the chart and toggle %s to show',"extensions-leaflet-map"),
 			'&#10006;',
 			'<img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-lime.svg" alt="lime" />'),
 			'default' => true,
@@ -244,11 +245,10 @@ function leafext_elevation_params($typ = array()) {
 			'shortdesc' => __('Summary track info style',"extensions-leaflet-map"),
 			'desc' => '<p>'.
 			__('some predefined settings / summary on one line / summary on multiple lines / without summary',"extensions-leaflet-map").
-			'</p><p>'.
-			__('If it is disabled, settings for summary below are without function.',"extensions-leaflet-map").'</p>',
+			'</p>',
 			'default' => 'multiline',
 			'values' => array(true, "inline","multiline",false),
-			'typ' => array('changeable','info','multielevation'),
+			'typ' => array('changeable','chartlook','multielevation'),
 		),
 
 		// Graphen
