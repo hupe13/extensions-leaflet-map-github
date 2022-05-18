@@ -34,7 +34,7 @@ function leafext_multielevation_params($typ = array('changeable')) {
 		array(
 			'param' => 'highlight',
 			'shortdesc' => __('Highlight color',"extensions-leaflet-map"),
-			'desc' =>	'The active track is displayed in this color.',
+			'desc' =>	__('The active track is displayed in this color.',"extensions-leaflet-map"),
 			'default' => '#ffff00',
 			'values' => "color",
 			'typ' => array('changeable','multielevation'),
@@ -156,7 +156,7 @@ function leafext_elevation_track( $atts ){
 	$params = shortcode_atts($defaults, $atts);
 
 	$multioptions = shortcode_atts(leafext_multielevation_settings(array('point')), leafext_clear_params($atts)); // filename or not?
-	if ( boolval($multioptions['filename']) && $params['name'] == '' ) {
+	if ( boolval($multioptions['filename']) ) {
 		$path_parts = pathinfo($atts['file']);
 		$params['name'] = $path_parts['filename'];
 	}
