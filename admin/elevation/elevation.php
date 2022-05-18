@@ -8,8 +8,6 @@ defined( 'ABSPATH' ) or die();
 
 function leafext_eleparams_init(){
 	register_setting( 'leafext_settings_eleparams', 'leafext_eleparams', 'leafext_validate_ele_options' );
-	// $ele_settings = array('theme','look','points','info','chart','other');
-	// $ele_settings = array('look','points','info','chartlook','chart','other');
 	$ele_settings = array('chartlook','chart','info','look','points','other');
 	foreach ( $ele_settings as $ele_setting ) {
 		add_settings_section( 'eleparams_settings_'.$ele_setting, '', 'leafext_ele_help_'.$ele_setting, 'leafext_settings_eleparams' );
@@ -30,46 +28,61 @@ function leafext_form_elevation($field) {
 	//var_dump($option);echo '<br>';
 	$settings = leafext_elevation_settings(array("changeable"));
 	$setting = $settings[$field];
+	$name_id = "leafext_eleparams[".$option['param']."]";
 
 	if ( $option['desc'] != "" ) echo '<p>'.$option['desc'].'</p>';
 
 	echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option['param']. '</code><br>';
-	if (!is_array($option['values'])) {
 
+	//var_dump(gettype($option['values']));
+	switch(gettype($option['values'])) {
+		case "string":   //z.B. Height
+		if ($setting != $option['default'] ) {
+			echo __("Plugins Default:", "extensions-leaflet-map").' '. $option['default'] . '<br>';
+		}
+		echo '<input name="'.$name_id.'" placeholder="'.$setting.'" '.$option['values'].'/>';
+		break;
+		case "integer": // true/false
 		if ($setting != $option['default'] ) {
 			//var_dump($setting,$option['default']);
 			echo __("Plugins Default", "extensions-leaflet-map").': ';
 			echo $option['default'] ? "true" : "false";
 			echo '<br>';
 		}
-
-		echo '<input type="radio" name="leafext_eleparams['.$option['param'].']" value="1" ';
+		echo '<input type="radio" name="'.$name_id.'" value="1" ';
 		echo $setting ? 'checked' : '' ;
 		echo '> true &nbsp;&nbsp; ';
-		echo '<input type="radio" name="leafext_eleparams['.$option['param'].']" value="0" ';
+		echo '<input type="radio" name="'.$name_id.'" value="0" ';
 		echo (!$setting) ? 'checked' : '' ;
 		echo '> false ';
-	} else {
+		break;
+		case "array":  // array of Values
 		$plugindefault = is_string($option['default']) ? $option['default'] : ($option['default'] ? "1" : "0");
 		$setting = is_string($setting) ? $setting : ($setting ? "1" : "0");
 		if ($setting != $plugindefault ) {
-			//var_dump("Option: ",$option['default'],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
 			echo __("Plugins Default:", "extensions-leaflet-map").' '. $plugindefault . '<br>';
 		}
-		echo '<select name="leafext_eleparams['.$option['param'].']">';
+		echo '<select name="'.$name_id.'">';
 		foreach ( $option['values'] as $para) {
 			echo '<option ';
 			if (is_bool($para)) $para = ($para ? "1" : "0");
 			if ($para === $setting) echo ' selected="selected" ';
-			echo 'value="'.$para.'" >'.$para.'</option>';
+			echo 'value="'.$para.'">'.$para.'</option>';
 		}
 		echo '</select>';
+		break;
+		default:
+		var_dump(gettype($option['values']));
+		wp_die();
 	}
+	echo "\n";
 }
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function leafext_validate_ele_options($options) {
+	//var_dump($options);
 	if (isset($_POST['submit'])) {
+		if ($options['height'] == "") return false;
 		$defaults=array();
 		$params = leafext_elevation_params(array('changeable'));
 		foreach($params as $param) {
@@ -109,11 +122,6 @@ function leafext_ele_help_text () {
 	$text = $text.'<h2>Shortcode</h2>
 	<pre><code>[leaflet-map ....]
 [elevation gpx="url_gpx_file" option1=value1 option2 !option3 ...]</code></pre>
-'.
-__('You can optionally set a marker on Start.',"extensions-leaflet-map").'
-<pre><code>[leaflet-map ....]
-[leaflet-marker lat=... lng=... ...]Start[/leaflet-marker]
-[elevation gpx="url_gpx_file" option1=value1 option2 !option3 ...]</code></pre>
 	<h3>Options</h3>
 	<p>';
 	$text = $text.__('For boolean values applies', "extensions-leaflet-map").':<br>';
@@ -139,9 +147,6 @@ __('You can optionally set a marker on Start.',"extensions-leaflet-map").'
 }
 
 function leafext_ele_help_look () {
-	// echo '<h3>';
-	// leafext_ele_help_text ();
-	// echo '</h3>';
 	echo '<div style="border-top: 3px solid #646970"></div>';
 	echo '<h3>';
 	echo __('Appearance','extensions-leaflet-map');
@@ -198,10 +203,10 @@ function leafext_ele_help_chart () {
 	<tr>
 	<td style="text-align:center"> </td>
 	<td style="text-align:center">';
-	if ( $leg_on != "" ) echo __('Your setting:<br>','extensions-leaflet-map').' ';
+	if ( $leg_on != "" ) echo __('Your setting:','extensions-leaflet-map').'<br>';
 	echo '<code>legend="0"</code></td>
 	<td style="text-align:center">';
-	if ( $leg_on == "" ) echo __('Your setting:<br>','extensions-leaflet-map').' ';
+	if ( $leg_on == "" ) echo __('Your setting:','extensions-leaflet-map').'<br>';
 	echo '<code>legend="1"</code></td>
 	<td style="text-align:center"><img src="'.LEAFEXT_PLUGIN_PICTS.'yachse.png"></td>
 	<td style="text-align:center">';

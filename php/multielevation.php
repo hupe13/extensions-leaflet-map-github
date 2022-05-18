@@ -11,8 +11,8 @@ function leafext_multielevation_params($typ = array('changeable')) {
 	$params = array (
 		array(
 			'param' => 'filename',
-			'shortdesc' => __('Filename as trackname',"extensions-leaflet-map"),
-			'desc' => __('Use filename (without extension) as name of the track.',"extensions-leaflet-map"),
+			'shortdesc' => __('Filename as name',"extensions-leaflet-map"),
+			'desc' => __('Use filename (without extension) as name of the point and track.',"extensions-leaflet-map"),
 			'default' => false,
 			'values' => 1,
 			'typ' => array('changeable','point','multielevation','tracks'),
@@ -155,6 +155,12 @@ function leafext_elevation_track( $atts ){
 	);
 	$params = shortcode_atts($defaults, $atts);
 
+	$multioptions = shortcode_atts(leafext_multielevation_settings(array('point')), leafext_clear_params($atts)); // filename or not?
+	if ( boolval($multioptions['filename']) && $params['name'] == '' ) {
+		$path_parts = pathinfo($atts['file']);
+		$params['name'] = $path_parts['filename'];
+	}
+
 	if ( $params['lat'] == "" || $params['lng'] == "" || $params['name'] == "" ) {
 		$gpx = simplexml_load_file($atts['file']);
 		if ($gpx ===  FALSE) {
@@ -179,24 +185,18 @@ function leafext_elevation_track( $atts ){
 	// filenames as tracknames?
 
 	if ( $params['name'] == "" ) {
-		$multioptions = shortcode_atts(leafext_multielevation_settings(array('point')), leafext_clear_params($atts));
-		//var_dump($multioptions);
-		if ( boolval($multioptions['filename'])) {
-			$path_parts = pathinfo($atts['file']);
-			$params['name'] = $path_parts['filename'];
-		} else {
-			$params['name'] = (string) $gpx->trk->name;
-		}
-		//Fallback
-		if ( $params['name'] == "" ) {
-			$path_parts = pathinfo($atts['file']);
-			$name = $path_parts['filename'];
-		}
+		$params['name'] = (string) $gpx->trk->name;
+	}
+	//Fallback
+	if ( $params['name'] == "" ) {
+		$path_parts = pathinfo($atts['file']);
+		$params['name'] = $path_parts['filename'];
 	}
 
 	$point = array(
 		'latlng' => $latlng,
 		'name' 	 => $params['name'],
+		'filename' => $params['filename'],
 	);
 
 	$all_points[] = $point;
@@ -237,10 +237,10 @@ function leafext_multielevation( $atts, $contents, $shortcode){
 		$multioptions = shortcode_atts(leafext_multielevation_settings(array('tracks')), leafext_clear_params($atts));
 		if ($multioptions['summary']) {
 			$options['summary'] = "inline";
-			$options['slope'] = "summary";
+			//$options['slope'] = "summary";
 		} else {
 			$options['summary'] = false;
-			$options['slope'] = false;
+			//$options['slope'] = false;
 		}
 		$multioptions['distanceMarkers'] = false;
 	}
@@ -261,6 +261,8 @@ function leafext_multielevation( $atts, $contents, $shortcode){
 		}
 	}
 
+	//if ($multioptions['distanceMarkers']) leafext_enqueue_rotation();
+
 	$options = array_merge($options, $ele_options);
 
 	if ( is_array($atts) && array_key_exists('theme', $atts) ) {
@@ -270,6 +272,8 @@ function leafext_multielevation( $atts, $contents, $shortcode){
 	}
 
 	list($options,$style) = leafext_elevation_color($options);
+
+	//var_dump($all_files, $all_points, $options, $multioptions); wp_die();
 
 	$rand = rand(1,20);
 	$text = $style.leafext_multielevation_script( $all_files, $all_points, $options, $multioptions, $rand);
@@ -290,7 +294,6 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
-
 		var points = '.json_encode($all_points).';
 		var tracks = '.json_encode($all_files).';
 		//console.log(points);

@@ -82,9 +82,10 @@ function leafext_elevation_params($typ = array()) {
 		array(
 			'param' => 'height',
 			'shortdesc' => __('Height of the chart',"extensions-leaflet-map"),
-			'desc' => "?? noch nicht fertig",
+			'desc' => "",
 			'default' => "200",
-			'values' => array( "map.getSize().y", "200", "300" ),
+			// form input type,  pattern, help
+			'values' => 'type="text" pattern="^[1-4][0-9]{2}$" title="'.__('three digit number (px), minimum 100, maximum 499','extensions-leaflet-map').'"',
 			'typ' => array('changeable','look','multielevation'),
 		),
 
@@ -500,12 +501,6 @@ function leafext_ele_java_params($settings) {
 				weight: '.$v.'}';
 			$text = $text. "$k: ". $value .','."\n";
 			unset ($settings[$k]);
-			break;
-			case "height":
-			if (!ctype_digit($v)) {
-				$text = $text. "$k: ". trim($v, '"').',';
-				unset ($settings[$k]);
-			}
 			break;
 			// true ist automatisch, wenn man das setzt, bringt es Fehler!
 			case "trkStart":

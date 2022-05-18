@@ -98,7 +98,7 @@ function leafext_enqueue_multielevation () {
   leafext_enqueue_elevation ();
 	leafext_enqueue_zoomhome();
   wp_enqueue_script('leaflet.gpxgroup',
-    plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/libs/leaflet-gpxgroup.js',
+    plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/libs/leaflet-gpxgroup-leafext.js',
     LEAFEXT_PLUGIN_FILE),
     array('elevation_js'),null);
   wp_enqueue_script('leaflet_ajax_geojson_js');
@@ -117,6 +117,13 @@ function leafext_enqueue_multielevation () {
   leafext_css();
   leafext_enqueue_zoomhome();
 }
+
+// function leafext_enqueue_rotation () {
+// 	wp_enqueue_script('leaflet-rotation',
+// 		plugins_url('leaflet-plugins/leaflet-rotate/leaflet-rotate.js',
+// 		LEAFEXT_PLUGIN_FILE),
+// 		array('elevation_js'),null);
+// }
 
 function leafext_enqueue_clustergroup () {
 	wp_enqueue_script('leaflet.subgroup',
