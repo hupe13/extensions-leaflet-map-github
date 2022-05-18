@@ -5,7 +5,7 @@
 ## leaflet-elevation-2.2.5
 
 #### Existing Bugs:
-* `hotline: "elevation"` works with only with one map on a page.
+* `trkStart`, `trkStop` work not on multiple maps on one page
 
 #### New:
 * Pace - time per distance
@@ -16,5 +16,5 @@
 * Documentation, translation
 
 ## Solved Bugs
-* hover with placementstrategies
+* hover with placementstrategies and hidemarkers
 * own theme in multielevation
