@@ -173,7 +173,7 @@ function leafext_ele_help_chartlook () {
 	echo '</h3>';
 	//echo '<div style="border-top: 3px solid #646970"></div>';
 	echo '<h3>';
-	echo __('Chart informations','extensions-leaflet-map');
+	echo __('Information display','extensions-leaflet-map');
 	echo '</h3>';
 }
 

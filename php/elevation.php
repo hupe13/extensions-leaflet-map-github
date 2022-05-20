@@ -44,7 +44,7 @@ function leafext_elevation_params($typ = array()) {
 		//hotline
 		array(
 			'param' => 'hotline',
-			'shortdesc' => __('Polyline colors according to the values',"extensions-leaflet-map"),
+			'shortdesc' => __('Track colors according to the values of elevation',"extensions-leaflet-map"),
 			'desc' => "",
 			'default' => false,
 			'values' => array( false, 'elevation'), //, 'slope', 'speed'
@@ -258,7 +258,7 @@ function leafext_elevation_params($typ = array()) {
 		//altitude: true,
 		array(
 			'param' => 'altitude',
-			'shortdesc' => __('Display altitude graph',"extensions-leaflet-map"),
+			'shortdesc' => __('Altitude chart profile',"extensions-leaflet-map"),
 			'desc' => '',
 			'default' => true,
 			//'values' => array(true,"summary"),

@@ -49,7 +49,7 @@ function leafext_elevation_colors() {
 	$params = array(
 		array(
 			'param' => 'altitude',
-			'shortdesc' => __('Altitude graph',"extensions-leaflet-map"),
+			'shortdesc' => __('Altitude chart profile',"extensions-leaflet-map"),
 			'desc' => "",
 			'default' => isset($themes[$theme]['altitude']) ? $themes[$theme]['altitude'] : "",
 		),
@@ -178,6 +178,6 @@ function leafext_color_help_text () {
 		$text = $text. __("To change it see the bottom of the page.","extensions-leaflet-map");
 	}
 	$text = $text. '<div style="border-top: 1px solid #646970"></div>';
-	$text = $text. '<h2>Colors</h2>';
+	$text = $text. '<h2>'.__("Colors","extensions-leaflet-map").'</h2>';
 	echo $text;
 }
