@@ -69,8 +69,11 @@ function leafext_elevation_params($typ = array()) {
 			'shortdesc' => __('Toggle chart legend filter.',"extensions-leaflet-map"),
 			'desc' => '<img src="'.LEAFEXT_PLUGIN_PICTS.'on.png" alt="on"/>
 			<p>'.
-			__('You can always toggle the charts individually by clicking on <img src="'.LEAFEXT_PLUGIN_PICTS.'switcher.png" alt="switch"/>.',"extensions-leaflet-map").' '.
-			__('If <code>legend</code> is disabled, you can\'t see all charts at the same time (except at the beginning).',"extensions-leaflet-map").'</p>',
+			sprintf(__('You can always toggle the charts individually by clicking on %s.',"extensions-leaflet-map"),
+			'<img src="'.LEAFEXT_PLUGIN_PICTS.'switcher.png" alt="switch"/>')
+			.' '.
+			sprintf(__('If %s is disabled, you can\'t see all charts at the same time (except at the beginning).',"extensions-leaflet-map"),
+			'<code>legend</code>').'</p>',
 			'default' => true,
 			'values' => 1,
 			'typ' => array('changeable','chartlook','multielevation'),
@@ -616,7 +619,7 @@ function leafext_elevation_script($gpx,$settings){
 	$text=$text.'
 	});
 	</script>';
-	//$text = \JShrink\Minifier::minify($text);
+	$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }
 

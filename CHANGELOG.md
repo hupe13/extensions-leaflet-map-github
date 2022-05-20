@@ -1,3 +1,10 @@
+### 2.2.7 / 220409
+
+* hover: bug with geojson fixed
+* hover: tooltip on click in circle, polygon, line removed
+* elevation: some strings for translation added
+* swedish translation frontend from @argentum
+
 ### 2.2.6 / 220401
 
 * hover.php reviewed, new: hovering circles, polygons and lines

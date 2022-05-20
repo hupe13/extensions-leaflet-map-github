@@ -5,7 +5,7 @@
 Contributors: hupe13    
 Tags: leaflet, gpx, elevation, markercluster, zoomhome, hover, fullscreen  
 Tested up to: 6.0  
-Stable tag: 2.2.7    
+Stable tag: 3.0    
 License: GPLv2 or later  
 
 Differences to the WordPress version: [Changes](changes.md)
@@ -58,12 +58,17 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 2.2.7 / 220409
+### 3.0 / 22052x
 
-* hover: bug with geojson fixed
-* hover: tooltip on click in circle, polygon, line removed
-* elevation: some strings for translation added
-* swedish translation frontend from @argentum
+* leaflet-gesture-handling 1.4.1
+* leaflet-elevation-2.2.5
+   * Bug: `trkStart`, `trkStop` work not on multiple maps on one page
+   * New: Pace - time per distance
+   * New: Themes and Colors
+   * Please check css in your own theme.
+* Solved Bugs
+  * hover with placementstrategies and hidemarkers
+  * own theme in multielevation
 
 ### Previous
 

@@ -118,13 +118,6 @@ function leafext_enqueue_multielevation () {
   leafext_enqueue_zoomhome();
 }
 
-// function leafext_enqueue_rotation () {
-// 	wp_enqueue_script('leaflet-rotation',
-// 		plugins_url('leaflet-plugins/leaflet-rotate/leaflet-rotate.js',
-// 		LEAFEXT_PLUGIN_FILE),
-// 		array('elevation_js'),null);
-// }
-
 function leafext_enqueue_clustergroup () {
 	wp_enqueue_script('leaflet.subgroup',
 		plugins_url(

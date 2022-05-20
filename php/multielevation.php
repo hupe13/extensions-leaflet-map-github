@@ -367,6 +367,6 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 		});
 	});
 </script>';
-//$text = \JShrink\Minifier::minify($text);
+$text = \JShrink\Minifier::minify($text);
 return "\n".$text."\n";
 }

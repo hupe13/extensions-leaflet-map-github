@@ -12,9 +12,6 @@
 * Themes and Colors
 * Please check css in your own theme.
 
-#### TBD:
-* Documentation, translation
-
 ## Solved Bugs
 * hover with placementstrategies and hidemarkers
 * own theme in multielevation

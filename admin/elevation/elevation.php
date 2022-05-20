@@ -122,7 +122,7 @@ function leafext_ele_help_text () {
 	$text = $text.'<h2>Shortcode</h2>
 	<pre><code>[leaflet-map ....]
 [elevation gpx="url_gpx_file" option1=value1 option2 !option3 ...]</code></pre>
-	<h3>Options</h3>
+	<h3>'.__('Options', "extensions-leaflet-map").'</h3>
 	<p>';
 	$text = $text.__('For boolean values applies', "extensions-leaflet-map").':<br>';
 	$text = $text.'<code>false</code> = <code>!parameter</code> || <code>parameter="0"</code> || <code>parameter=0</code></br>';
