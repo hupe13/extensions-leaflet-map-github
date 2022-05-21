@@ -103,7 +103,7 @@ function leafext_ele_help_text () {
 	leafext_enqueue_elevation_css ();
 	leafext_enqueue_awesome();
 	$text = "";
-	$text = $text.'<p><img src="'.LEAFEXT_PLUGIN_PICTS.'elevation.png"></p>
+	$text = $text.'<p><img src="'.LEAFEXT_PLUGIN_PICTS.'elevation.png" alt="elevation"></p>
 	<h2>'.__('Note','extensions-leaflet-map').'</h2>';
 	$text = $text.sprintf(
 				__(
@@ -125,7 +125,7 @@ function leafext_ele_help_text () {
 	<h3>'.__('Options', "extensions-leaflet-map").'</h3>
 	<p>';
 	$text = $text.__('For boolean values applies', "extensions-leaflet-map").':<br>';
-	$text = $text.'<code>false</code> = <code>!parameter</code> || <code>parameter="0"</code> || <code>parameter=0</code></br>';
+	$text = $text.'<code>false</code> = <code>!parameter</code> || <code>parameter="0"</code> || <code>parameter=0</code><br>';
 	$text = $text.'<code>true</code> = <code>parameter</code> || <code>parameter="1"</code> || <code>parameter=1</code>';
 	$text = $text.'</p>';
 
@@ -208,19 +208,19 @@ function leafext_ele_help_chart () {
 	<td style="text-align:center">';
 	if ( $leg_on == "" ) echo __('Your setting:','extensions-leaflet-map').'<br>';
 	echo '<code>legend="1"</code></td>
-	<td style="text-align:center"><img src="'.LEAFEXT_PLUGIN_PICTS.'yachse.png"></td>
+	<td style="text-align:center"><img src="'.LEAFEXT_PLUGIN_PICTS.'yachse.png" alt="yachse"></td>
 	<td style="text-align:center">';
 	if ( $marker_on != "" ) echo __('Your setting:','extensions-leaflet-map').'<br><code>marker="'.$options['marker'].'"</code><br>';
 	echo $marker_on.'<code>marker="elevation-line"</code>'.$span_off.'<br>
-	<img src="'.LEAFEXT_PLUGIN_PICTS.'tooltip_values.png">
-	<img src="'.LEAFEXT_PLUGIN_PICTS.'marker_values.png"></td>
+	<img src="'.LEAFEXT_PLUGIN_PICTS.'tooltip_values.png" alt="tooltip_values">
+	<img src="'.LEAFEXT_PLUGIN_PICTS.'marker_values.png" alt="marker_values"></td>
 	<td style="text-align:center">'.__('Your setting:','extensions-leaflet-map').'<br><code>summary="'.$options['summary'].'"</code></td>
 	</tr>
 	<tr class="alternate">
 	<td style="text-align:center">1</td>
 	<td style="text-align:center">'.__('yes','extensions-leaflet-map').'</td>
 	<td style="text-align:center">'.__('yes','extensions-leaflet-map').'<br>
-	<img src="'.LEAFEXT_PLUGIN_PICTS.'on_speed.png"></td>
+	<img src="'.LEAFEXT_PLUGIN_PICTS.'on_speed.png" alt="on_speed"></td>
 	<td style="text-align:center">'.__('yes','extensions-leaflet-map').'</td>
 	<td style="text-align:center">'.$marker_on.__('yes','extensions-leaflet-map').$span_off.'</td>
 	<td style="text-align:center">'.$sum_on.__('yes','extensions-leaflet-map').$span_off.'</td>
@@ -236,7 +236,7 @@ function leafext_ele_help_chart () {
 	<td style="text-align:center">disabled</td>
 	<td style="text-align:center">'.__('no','extensions-leaflet-map').'</td>
 	<td style="text-align:center">'.$leg_on.__('hidden','extensions-leaflet-map').$span_off.' <br>
-	<img src="'.LEAFEXT_PLUGIN_PICTS.'off_speed.png"></td>
+	<img src="'.LEAFEXT_PLUGIN_PICTS.'off_speed.png" alt="off_speed"></td>
 
 	<td style="text-align:center">'.__('yes','extensions-leaflet-map').'</td>
 	<td style="text-align:center">'.$marker_on.__('yes','extensions-leaflet-map').$span_off.'</td>

@@ -57,7 +57,7 @@ function leafext_clustergroup_help_text () {
 			<li style="margin-left: 1.5em;"><code>strings</code> - '.sprintf(
 				__('comma separated strings to distinguish the markers, e.g. an unique substring in %s or the exact string (e.g.%s) in %s',
 				'extensions-leaflet-map'),"<code>iconUrl</code>",
-				'<code><span style="color: #4f94d4">value0</code>',
+				'<code><span style="color: #4f94d4">value0</span></code>',
 				"<code>properties.<i>property</i></code>").'</li>
 				<li style="margin-left: 1.5em;"><code>groups</code> - '.
 				__('comma separated labels appear in the selection menu','extensions-leaflet-map').'</li>

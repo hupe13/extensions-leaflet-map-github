@@ -173,10 +173,16 @@ function leafext_multiele_help_text () {
 	'</li></ul>'.
 
 '<h3>Theme</h3><p>'.
-	__('The theme is the same as the','extensions-leaflet-map').
-	' <a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevationtheme">'.
-	__('Elevation Theme','extensions-leaflet-map').'</a>.</p>'.
+	__('The theme is the same as the','extensions-leaflet-map');
+	if (is_singular()|| is_archive() ) {
+	$text = $text.' <a href="'.get_site_url().'/elevation/liste/?testing=theme">'.
+	__('Elevation Theme','extensions-leaflet-map').'</a>.</p>';
 
+} else {
+	$text = $text.' <a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevationtheme">'.
+	__('Elevation Theme','extensions-leaflet-map').'</a>.</p>';
+}
+$text = $text.
 	'<h3>Options</h3>
 	<p>'.
 	__('For boolean values applies', "extensions-leaflet-map").':<br>'.

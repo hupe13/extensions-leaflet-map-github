@@ -9,7 +9,7 @@ function leafext_help_tiles() {
     '<a href="'.get_admin_url().'admin.php?page=leaflet-map">Leaflet Map',
     '</a>');
   } else { //frontend
-    $text=__('The default Map Tiles are defined in the Leaflet Map Settings.','extensions-leaflet-map');
+    $text='<p>'.__('The default Map Tiles are defined in the Leaflet Map Settings.','extensions-leaflet-map');
   }
   $text=$text.' '.sprintf(
     __('Pay attention to the setting for %s, it depends on the used Map Tiles, see for example %shere%s.',
