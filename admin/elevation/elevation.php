@@ -40,7 +40,7 @@ function leafext_form_elevation($field) {
 		if ($setting != $option['default'] ) {
 			echo __("Plugins Default:", "extensions-leaflet-map").' '. $option['default'] . '<br>';
 		}
-		echo '<input name="'.$name_id.'" placeholder="'.$setting.'" '.$option['values'].'/>';
+		echo '<input name="'.$name_id.'" value="'.$setting.'" '.$option['values'].'/>';
 		break;
 		case "integer": // true/false
 		if ($setting != $option['default'] ) {
@@ -80,9 +80,7 @@ function leafext_form_elevation($field) {
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function leafext_validate_ele_options($options) {
-	//var_dump($options);
 	if (isset($_POST['submit'])) {
-		if ($options['height'] == "") return false;
 		$defaults=array();
 		$params = leafext_elevation_params(array('changeable'));
 		foreach($params as $param) {
@@ -90,6 +88,7 @@ function leafext_validate_ele_options($options) {
 		}
 		$params = get_option('leafext_eleparams', $defaults);
 		foreach ($options as $key => $value) {
+			if ($key == 'height' && $value == "") continue;
 			$params[$key] = $value;
 		}
 		return $params;

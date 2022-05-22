@@ -52,7 +52,7 @@ function leafext_gestures_lang($options) {
 		if ( ! glob(LEAFEXT_GESTURE_LOCALE_DIR.substr($lang, 0, 2).'.js')) {
 			$lang = "en";
 		} else {
-			$lang = explode("-",$lang)[0];
+			$lang = substr($lang, 0, 2);
 		}
 	}
 	return $lang;
