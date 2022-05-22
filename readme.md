@@ -6,6 +6,8 @@ Contributors: hupe13
 Tags: leaflet, gpx, elevation, markercluster, zoomhome, hover, fullscreen  
 Tested up to: 6.0  
 Stable tag: 3.0    
+Requires at least: 5.5.3     
+Requires PHP: 7.4     
 License: GPLv2 or later  
 
 Differences to the WordPress version: [Changes](changes.md)
