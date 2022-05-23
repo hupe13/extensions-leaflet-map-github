@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Extensions for Leaflet Map - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-05-19 15:16:11+0000\n"
+"PO-Revision-Date: 2022-05-23 13:36:40+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,47 @@ msgstr ""
 "X-Generator: GlotPress/4.0.0-alpha.1\n"
 "Language: sv_SE\n"
 "Project-Id-Version: Plugins - Extensions for Leaflet Map - Development (trunk)\n"
+
+#: php/elevation.php:485
+msgctxt "In Frontend: Abbreviation for pace in the chart"
+msgid "pace"
+msgstr "tempo"
+
+#: php/elevation.php:477
+msgctxt "In Frontend"
+msgid "Avg Pace"
+msgstr "Genomsnittligt tempo"
+
+#: php/elevation.php:476
+msgctxt "In Frontend"
+msgid "Max Pace"
+msgstr "Max tempo"
+
+#: php/elevation.php:475
+msgctxt "In Frontend"
+msgid "Min Pace"
+msgstr "Min tempo"
+
+#: php/elevation.php:468
+msgctxt "In Frontend"
+msgid "Avg Slope"
+msgstr "Genomsnittlig lutning"
+
+#: php/elevation.php:47
+msgid "Track colors according to the values of elevation"
+msgstr ""
+
+#: admin/elevation/owncolors.php:181
+msgid "Colors"
+msgstr ""
+
+#: admin/elevation/owncolors.php:52 php/elevation.php:264
+msgid "Altitude chart profile"
+msgstr ""
+
+#: admin/elevation/elevation.php:175
+msgid "Information display"
+msgstr ""
 
 #: php/multielevation.php:37
 msgid "The active track is displayed in this color."
@@ -27,57 +68,53 @@ msgstr ""
 msgid "Filename as name"
 msgstr ""
 
-#: php/elevation.php:460
+#: php/elevation.php:463
 msgctxt "In Frontend"
 msgid "Avg Elevation"
 msgstr "Medelvärde elevation"
 
-#: php/elevation.php:235
+#: php/elevation.php:238
 msgid "Display date and clock time"
 msgstr ""
 
-#: php/elevation.php:223
+#: php/elevation.php:226
 msgid "Display time info (duration)"
 msgstr ""
 
-#: php/elevation.php:213
+#: php/elevation.php:216
 msgid "show distance data in graph and summary / show distance data in summary only / don't show distance data"
 msgstr ""
 
-#: php/elevation.php:141
+#: php/elevation.php:144
 msgid "Display circle marker on End"
 msgstr ""
 
-#: php/elevation.php:131
+#: php/elevation.php:134
 msgid "Display circle marker on Start"
 msgstr ""
 
-#: php/elevation.php:109
+#: php/elevation.php:112
 msgid "Toggle chart ruler filter."
 msgstr ""
 
-#: php/elevation.php:96
+#: php/elevation.php:99
 msgid "Toggle chart"
 msgstr ""
 
-#: php/elevation.php:88
+#: php/elevation.php:91
 msgid "three digit number (px), minimum 100, maximum 499"
 msgstr ""
 
-#: php/elevation.php:84
+#: php/elevation.php:87
 msgid "Height of the chart"
 msgstr ""
 
-#: php/elevation.php:73
-msgid "If <code>legend</code> is disabled, you can't see all charts at the same time (except at the beginning)."
+#: php/elevation.php:75
+msgid "If %s is disabled, you can't see all charts at the same time (except at the beginning)."
 msgstr ""
 
 #: php/elevation.php:72
-msgid "You can always toggle the charts individually by clicking on <img src=\""
-msgstr ""
-
-#: php/elevation.php:47
-msgid "Polyline colors according to the values"
+msgid "You can always toggle the charts individually by clicking on %s."
 msgstr ""
 
 #: admin/help.php:66
@@ -112,231 +149,223 @@ msgstr ""
 msgid "Track color"
 msgstr ""
 
-#: admin/elevation/owncolors.php:76 php/elevation.php:305
+#: admin/elevation/owncolors.php:76 php/elevation.php:308
 msgid "Pace profile - time per distance"
-msgstr ""
-
-#: admin/elevation/owncolors.php:52
-msgid "Altitude graph"
 msgstr ""
 
 #: admin/elevation/main.php:24
 msgid "Theme / Colors"
 msgstr ""
 
-#: admin/elevation/elevation.php:259
+#: admin/elevation/elevation.php:258
 msgid "Others"
 msgstr ""
 
-#: admin/elevation/elevation.php:238
+#: admin/elevation/elevation.php:237
 msgid "hidden"
 msgstr ""
 
-#: admin/elevation/elevation.php:230 admin/elevation/elevation.php:231
-#: admin/elevation/elevation.php:237 admin/elevation/elevation.php:247
-#: admin/elevation/elevation.php:248 admin/elevation/elevation.php:249
-#: admin/elevation/elevation.php:250
+#: admin/elevation/elevation.php:229 admin/elevation/elevation.php:230
+#: admin/elevation/elevation.php:236 admin/elevation/elevation.php:246
+#: admin/elevation/elevation.php:247 admin/elevation/elevation.php:248
+#: admin/elevation/elevation.php:249
 msgid "no"
 msgstr ""
 
-#: admin/elevation/elevation.php:221 admin/elevation/elevation.php:222
-#: admin/elevation/elevation.php:224 admin/elevation/elevation.php:225
-#: admin/elevation/elevation.php:226 admin/elevation/elevation.php:232
-#: admin/elevation/elevation.php:233 admin/elevation/elevation.php:241
-#: admin/elevation/elevation.php:242 admin/elevation/elevation.php:243
+#: admin/elevation/elevation.php:220 admin/elevation/elevation.php:221
+#: admin/elevation/elevation.php:223 admin/elevation/elevation.php:224
+#: admin/elevation/elevation.php:225 admin/elevation/elevation.php:231
+#: admin/elevation/elevation.php:232 admin/elevation/elevation.php:240
+#: admin/elevation/elevation.php:241 admin/elevation/elevation.php:242
 msgid "yes"
 msgstr ""
 
-#: admin/elevation/elevation.php:206 admin/elevation/elevation.php:209
-#: admin/elevation/elevation.php:213 admin/elevation/elevation.php:217
+#: admin/elevation/elevation.php:205 admin/elevation/elevation.php:208
+#: admin/elevation/elevation.php:212 admin/elevation/elevation.php:216
 msgid "Your setting:"
 msgstr ""
 
-#: admin/elevation/elevation.php:199
+#: admin/elevation/elevation.php:198
 msgid "Tooltip display"
 msgstr ""
 
-#: admin/elevation/elevation.php:198
+#: admin/elevation/elevation.php:197
 msgid "Axis display"
 msgstr ""
 
-#: admin/elevation/elevation.php:197
+#: admin/elevation/elevation.php:196
 msgid "Display diagram"
 msgstr ""
 
-#: admin/elevation/elevation.php:196
+#: admin/elevation/elevation.php:195
 msgid "Setting"
 msgstr ""
 
-#: admin/elevation/elevation.php:183
+#: admin/elevation/elevation.php:182
 msgid "Charts"
 msgstr ""
 
-#: admin/elevation/elevation.php:176
-msgid "Chart informations"
-msgstr ""
-
-#: admin/elevation/elevation.php:166
+#: admin/elevation/elevation.php:165
 msgid "Distance and time"
 msgstr ""
 
-#: admin/elevation/elevation.php:159
+#: admin/elevation/elevation.php:158
 msgid "Markers and Waypoints"
 msgstr ""
 
-#: admin/elevation/elevation.php:152
+#: admin/elevation/elevation.php:151
 msgid "Appearance"
 msgstr ""
 
-#: admin/elevation/elevation.php:138
+#: admin/elevation/elevation.php:137
 msgid "in %sGerman%s and %sEnglish%s"
 msgstr ""
 
-#: admin/elevation/elevation.php:136
+#: admin/elevation/elevation.php:135
 msgid "Detailed documentation and examples"
 msgstr ""
 
-#: php/elevation.php:482
+#: php/elevation.php:490
 msgctxt "In Frontend: Abbreviation for altitude in the chart"
 msgid "y"
 msgstr "y"
 
-#: php/elevation.php:481
+#: php/elevation.php:489
 msgctxt "In Frontend: Abbreviation for length in the chart"
 msgid "x"
 msgstr "x"
 
-#: php/elevation.php:480
+#: php/elevation.php:488
 msgctxt "In Frontend: Abbreviation for speed in the chart"
 msgid "v"
 msgstr "v"
 
-#: php/elevation.php:479
+#: php/elevation.php:487
 msgctxt "In Frontend: Abbreviation for duration in the chart"
 msgid "T"
 msgstr "T"
 
-#: php/elevation.php:478
+#: php/elevation.php:486
 msgctxt "In Frontend: Abbreviation for time in the chart"
 msgid "t"
 msgstr "t"
 
-#: php/elevation.php:477
+#: php/elevation.php:484
 msgctxt "In Frontend: Abbreviation for slope in the chart"
 msgid "m"
 msgstr "m"
 
-#: php/elevation.php:476
+#: php/elevation.php:483
 msgctxt "In Frontend: Abbreviation for heart rate in the chart"
 msgid "hr"
 msgstr "hr"
 
-#: php/elevation.php:475
+#: php/elevation.php:482
 msgctxt "In Frontend: Abbreviation for cadence in the chart"
 msgid "cad"
 msgstr "kad"
 
-#: php/elevation.php:474
+#: php/elevation.php:481
 msgctxt "In Frontend: Abbreviation for acceleration in the chart"
 msgid "a"
 msgstr "a"
 
-#: php/elevation.php:472
+#: php/elevation.php:479
 msgctxt "In Frontend"
 msgid "Elevation"
 msgstr "Elevation"
 
-#: php/elevation.php:471
+#: php/elevation.php:478
 msgctxt "In Frontend"
 msgid "Download"
 msgstr "Ladda ned"
 
-#: php/elevation.php:470
+#: php/elevation.php:474
 msgctxt "In Frontend"
 msgid "Avg Acceleration"
 msgstr "Medelvärde acceleration"
 
-#: php/elevation.php:469
+#: php/elevation.php:473
 msgctxt "In Frontend"
 msgid "Max Acceleration"
 msgstr "Max acceleration"
 
-#: php/elevation.php:468
+#: php/elevation.php:472
 msgctxt "In Frontend"
 msgid "Min Acceleration"
 msgstr "Min acceleration"
 
-#: php/elevation.php:467
+#: php/elevation.php:471
 msgctxt "In Frontend"
 msgid "Avg Speed"
 msgstr "Medelvärde hastighet"
 
-#: php/elevation.php:466
+#: php/elevation.php:470
 msgctxt "In Frontend"
 msgid "Max Speed"
 msgstr "Max hastighet"
 
-#: php/elevation.php:465
+#: php/elevation.php:469
 msgctxt "In Frontend"
 msgid "Min Speed"
 msgstr "Min hastighet"
 
-#: php/elevation.php:464
+#: php/elevation.php:467
 msgctxt "In Frontend"
 msgid "Max Slope"
 msgstr "Max lutning"
 
-#: php/elevation.php:463
+#: php/elevation.php:466
 msgctxt "In Frontend"
 msgid "Min Slope"
 msgstr "Min lutning"
 
-#: php/elevation.php:462
+#: php/elevation.php:465
 msgctxt "In Frontend"
 msgid "Total Descent"
 msgstr "Total nedstigning"
 
-#: php/elevation.php:461
+#: php/elevation.php:464
 msgctxt "In Frontend"
 msgid "Total Ascent"
 msgstr "Total stigning"
 
-#: php/elevation.php:459
+#: php/elevation.php:462
 msgctxt "In Frontend"
 msgid "Min Elevation"
 msgstr "Min elevation"
 
-#: php/elevation.php:458
+#: php/elevation.php:461
 msgctxt "In Frontend"
 msgid "Max Elevation"
 msgstr "Max elevation"
 
-#: php/elevation.php:457
+#: php/elevation.php:460
 msgctxt "In Frontend"
 msgid "Total Length"
 msgstr "Total sträcka"
 
-#: php/elevation.php:456
+#: php/elevation.php:459
 msgctxt "In Frontend"
 msgid "Total Time"
 msgstr "Total tid"
 
-#: php/elevation.php:455
+#: php/elevation.php:458
 msgctxt "In Frontend"
 msgid "Speed"
 msgstr "Hastighet"
 
-#: php/elevation.php:454
+#: php/elevation.php:457
 msgctxt "In Frontend"
 msgid "Slope"
 msgstr "Lutning"
 
-#: php/elevation.php:453
+#: php/elevation.php:456
 msgctxt "In Frontend"
 msgid "Altitude"
 msgstr "Altitud"
 
-#: php/elevation.php:452
+#: php/elevation.php:455
 msgctxt "In Frontend"
 msgid "Acceleration"
 msgstr "Acceleration"
@@ -401,31 +430,31 @@ msgstr ""
 msgid "Options for grouping leaflet-markers"
 msgstr ""
 
-#: php/elevation.php:164
+#: php/elevation.php:167
 msgid "Display waypoints in map and in chart / only in map / only in chart / none"
 msgstr ""
 
-#: php/elevation.php:195
+#: php/elevation.php:198
 msgid "Only meaningful, if waypoints are shown in the map."
 msgstr ""
 
-#: php/elevation.php:176
+#: php/elevation.php:179
 msgid "Only meaningful, if %swaypoints%s is not %s."
 msgstr ""
 
-#: php/elevation.php:196
+#: php/elevation.php:199
 msgid "If %s is selected, you must define some %ssettings for the icons"
 msgstr ""
 
-#: php/elevation.php:193
+#: php/elevation.php:196
 msgid "Toggle custom waypoint icons"
 msgstr ""
 
-#: php/elevation.php:174
+#: php/elevation.php:177
 msgid "Toggle waypoint labels"
 msgstr ""
 
-#: php/elevation.php:175
+#: php/elevation.php:178
 msgid "Show waypoint labels in map and in chart / only in map / only in chart / none"
 msgstr ""
 
@@ -514,7 +543,7 @@ msgstr ""
 msgid "And hover"
 msgstr ""
 
-#: admin/cluster/markercluster.php:109
+#: admin/cluster/markercluster.php:109 admin/elevation/elevation.php:124
 msgid "Options"
 msgstr ""
 
@@ -534,7 +563,7 @@ msgstr ""
 msgid "Create Map"
 msgstr ""
 
-#: php/elevation.php:374
+#: php/elevation.php:377
 msgid "Due to a bug in MacOS and iOS, see %shere%s, it is automatically set to false in Safari."
 msgstr ""
 
@@ -602,7 +631,7 @@ msgstr ""
 msgid "The default Map Tiles are defined in the %s Settings%s."
 msgstr ""
 
-#: php/elevation.php:341
+#: php/elevation.php:344
 msgid "miles or kilometers"
 msgstr "miles eller kilometer"
 
@@ -678,7 +707,7 @@ msgstr ""
 msgid "Valid for %s: Only elevation profile with or without summary line will be displayed."
 msgstr ""
 
-#: admin/elevation/elevation.php:200 php/multielevation.php:22
+#: admin/elevation/elevation.php:199 php/multielevation.php:22
 msgid "Summary"
 msgstr "Sammanfattning"
 
@@ -852,19 +881,15 @@ msgstr ""
 msgid "You have wp-gpx-maps uninstalled, but some of its options exist in the database. You should delete them."
 msgstr "Du har avinstallerat wp-gpx-maps, men en del inställningar finns kvar i databasen. Du bör ta bort dem."
 
-#: php/elevation.php:97
+#: php/elevation.php:100
 msgid "show always the chart / show the chart and toggle %s to hide / hide the chart and toggle %s to show"
 msgstr ""
 
-#: php/elevation.php:225
+#: php/elevation.php:228
 msgid "show time data in graph and summary / show time data in summary only / nothing"
 msgstr ""
 
-#: php/elevation.php:261
-msgid "Display altitude graph"
-msgstr ""
-
-#: php/elevation.php:248
+#: php/elevation.php:251
 msgid "some predefined settings / summary on one line / summary on multiple lines / without summary"
 msgstr ""
 
@@ -872,19 +897,19 @@ msgstr ""
 msgid "nothing"
 msgstr ""
 
-#: admin/elevation/elevation.php:120
+#: admin/elevation/elevation.php:119
 msgid "The elevation shortcode has many configuration options. Some things are not trivial. If you can't configure something, ask in the forum."
 msgstr ""
 
-#: admin/elevation/elevation.php:115
+#: admin/elevation/elevation.php:114
 msgid "The %s parameter is called %s, but it works with gpx, kml, geojson and tcx files."
 msgstr ""
 
-#: admin/elevation/elevation.php:109
+#: admin/elevation/elevation.php:108
 msgid "If you want to display a track only, use %s functions. If you want to display a track with an elevation profile use %s."
 msgstr ""
 
-#: admin/elevation/elevation.php:107
+#: admin/elevation/elevation.php:106
 msgid "Note"
 msgstr "Notera"
 
@@ -908,7 +933,7 @@ msgstr ""
 msgid "When you mouse over a cluster it shows the bounds of its markers."
 msgstr ""
 
-#: php/elevation.php:163
+#: php/elevation.php:166
 msgid "Display track waypoints"
 msgstr ""
 
@@ -1036,7 +1061,8 @@ msgstr ""
 msgid "position/height indicator marker drawn onto the map"
 msgstr ""
 
-#: admin/elevation/multielevation.php:178
+#: admin/elevation/multielevation.php:179
+#: admin/elevation/multielevation.php:183
 msgid "Elevation Theme"
 msgstr ""
 
@@ -1048,11 +1074,11 @@ msgstr ""
 msgid "Elevation Profile"
 msgstr ""
 
-#: php/elevation.php:373
+#: php/elevation.php:376
 msgid "Render chart profiles as Canvas or SVG Paths."
 msgstr ""
 
-#: php/elevation.php:152 php/multielevation.php:59
+#: php/elevation.php:155 php/multielevation.php:59
 msgid "Toggle \"leaflet-distance-markers\" integration"
 msgstr ""
 
@@ -1060,43 +1086,43 @@ msgstr ""
 msgid "Toggle chart legend filter."
 msgstr ""
 
-#: php/elevation.php:119
+#: php/elevation.php:122
 msgid "Download Link"
 msgstr ""
 
-#: php/elevation.php:246
+#: php/elevation.php:249
 msgid "Summary track info style"
 msgstr ""
 
-#: php/elevation.php:211
+#: php/elevation.php:214
 msgid "Display distance info"
 msgstr ""
 
-#: admin/elevation/owncolors.php:58 php/elevation.php:295
+#: admin/elevation/owncolors.php:58 php/elevation.php:298
 msgid "Speed chart profile"
 msgstr "Diagram hastighetsprofil"
 
-#: admin/elevation/owncolors.php:70 php/elevation.php:284
+#: admin/elevation/owncolors.php:70 php/elevation.php:287
 msgid "Slope chart profile"
 msgstr "Diagram höjdprofil"
 
-#: admin/elevation/owncolors.php:64 php/elevation.php:273
+#: admin/elevation/owncolors.php:64 php/elevation.php:276
 msgid "Acceleration chart profile"
 msgstr ""
 
-#: php/elevation.php:351
+#: php/elevation.php:354
 msgid "[Lat, Long] vs [Long, Lat] points. (leaflet default: [Lat, Long])"
 msgstr ""
 
-#: php/elevation.php:340
+#: php/elevation.php:343
 msgid "Chart distance/elevation units."
 msgstr ""
 
-#: php/elevation.php:329
+#: php/elevation.php:332
 msgid "Autoupdate map bounds on chart update."
 msgstr ""
 
-#: php/elevation.php:318
+#: php/elevation.php:321
 msgid "Autoupdate map center on chart mouseover."
 msgstr ""
 
@@ -1112,8 +1138,8 @@ msgstr ""
 msgid "To reset all values to their defaults, simply click the Reset button"
 msgstr ""
 
-#: admin/cluster/markercluster.php:118 admin/elevation/elevation.php:127
-#: admin/elevation/multielevation.php:182
+#: admin/cluster/markercluster.php:118 admin/elevation/elevation.php:126
+#: admin/elevation/multielevation.php:188
 msgid "For boolean values applies"
 msgstr ""
 
