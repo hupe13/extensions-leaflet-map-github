@@ -196,7 +196,7 @@ function leafext_elevation_track( $atts ){
 	$point = array(
 		'latlng' => $latlng,
 		'name' 	 => $params['name'],
-		'filename' => $params['filename'],
+		'filename' => $params['name'],
 	);
 
 	$all_points[] = $point;

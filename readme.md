@@ -62,15 +62,15 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ### 3.0 / 22052x
 
-* leaflet-gesture-handling 1.4.1
-* leaflet-elevation-2.2.5
-   * Bug: `trkStart`, `trkStop` do not work on multiple maps on one page
-   * New: Pace - time per distance
-   * New: Themes and Colors
-   * Please check css in your own theme.
 * Solved Bugs
   * hover with placementstrategies and hidemarkers
   * own theme in multielevation
+* leaflet-gesture-handling 1.4.1
+* leaflet-elevation-2.2.5
+   * New: Pace - time per distance
+   * New: Themes and Colors
+   * Please check css in your own theme.
+   * Bug: `trkStart`, `trkStop` do not work on multiple maps on one page
 
 ### Previous
 
