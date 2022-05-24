@@ -60,7 +60,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 3.0 / 22052x
+### 3.0 / 220524
 
 * Solved Bugs
   * hover with placementstrategies and hidemarkers
