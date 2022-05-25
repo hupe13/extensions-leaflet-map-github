@@ -136,7 +136,7 @@
 	/**
 	 * TODO: use generators instead? (ie. "yield")
 	 */
-	const iMax = (iVal, max = -Infinity) => (iVal > max ? iVal : max);
+	const iMax = (iVal, max = -Infinity) => (iVal > max ? iVal : max); 
 	const iMin = (iVal, min = +Infinity) => (iVal < min ? iVal : min);
 	const iAvg = (iVal, avg = 0, idx = 1) => (iVal + avg * (idx - 1)) / idx;
 	const iSum = (iVal, sum = 0) => iVal + sum;
@@ -250,8 +250,8 @@
 		time: true,
 		timeFactor: 3600,
 		timestamps: false,
-		trkStart: L.circleMarker([0,0], { className: 'start-marker', radius: 6, weight: 2, color: '#fff', fillColor: '#00d800', fillOpacity: 1, interactive: false }),
-		trkEnd: L.circleMarker([0,0], { className: 'end-marker', radius: 6, weight: 2, color: '#fff', fillColor: '#ff0606', fillOpacity: 1, interactive: false }),
+		trkStart: { className: 'start-marker', radius: 6, weight: 2, color: '#fff', fillColor: '#00d800', fillOpacity: 1, interactive: false },
+		trkEnd: { className: 'end-marker', radius: 6, weight: 2, color: '#fff', fillColor: '#ff0606', fillOpacity: 1, interactive: false },
 		waypoints: true,
 		wptIcons: {
 			'': L.divIcon({
@@ -382,7 +382,7 @@
 
 		/**
 		 * TODO: Create a base class to handle custom data attributes (heart rate, cadence, temperature, ...)
-		 *
+		 * 
 		 * @link https://leafletjs.com/examples/extending/extending-3-controls.html#handlers
 		 */
 		// addHandler: function (name, HandlerClass) {
@@ -465,8 +465,8 @@
 			this._hotline        = L.featureGroup();
 			this._circleMarkers  = L.featureGroup();
 			this._markedSegments = L.polyline([]);
-			this._start          = (opts.trkStart || Options.trkStart);
-			this._end            = (opts.trkEnd || Options.trkEnd);
+			this._start          = L.circleMarker([0,0], (opts.trkStart || Options.trkStart));
+			this._end            = L.circleMarker([0,0], (opts.trkEnd || Options.trkEnd));
 			this._chartEnabled   = true;
 			this._yCoordMax      = -Infinity;
 			this.track_info      = {};
@@ -628,13 +628,13 @@
 
 				// GARMIN_EXTENSIONS = ["hr", "cad", "atemp", "wtemp", "depth", "course", "bearing"];
 				point.meta = point.meta ?? { time: null, ele: null };
-
+				
 				point.prev = (attr) => (attr ? this._data[i > 0 ? i - 1 : 0][attr] : this._data[i > 0 ? i - 1 : 0]);
 
 				this.fire("elepoint_init", { point: point, props: props, id: i, isMulti: nestingLevel });
 
 				this._addPoint(
-					point.lat ?? point[1],
+					point.lat ?? point[1], 
 					point.lng ?? point[0],
 					point.alt ?? point.meta.ele ?? point[2]
 				);
@@ -819,7 +819,7 @@
 
 		/**
 		 * Partial fix for initial tooltip size
-		 *
+		 * 
 		 * @link https://github.com/Raruto/leaflet-elevation/issues/81#issuecomment-713477050
 		 */
 		_fixTooltipSize: function() {
@@ -889,14 +889,14 @@
 			]).then((m) => {
 
 				let chart = this._chart = new (m[1] || Elevation).Chart(opts, this);
-
+		
 				this._x     = this._chart._x;
 				this._y     = this._chart._y;
-
+		
 				d3
 					.select(container)
 					.call(chart.render());
-
+		
 				chart
 					.on('reset_drag',      this._hideMarker,     this)
 					.on('mouse_enter',     this._onMouseEnter,   this)
@@ -907,8 +907,8 @@
 					.on('zoom',            this._updateChart,    this)
 					.on('elepath_toggle',  this._onToggleChart,  this)
 					.on('margins_updated', this._resizeChart,    this);
-
-
+		
+		
 				this.fire("elechart_init");
 
 				map
@@ -1130,11 +1130,11 @@
 				let item = this._findItemForLatLng(latlng);
 				if (item) {
 					let xCoord = item.xDiagCoord;
-
+		
 					if (this._chartEnabled) this._chart._showDiagramIndicator(item, xCoord);
-
+		
 					this._updateMarker(item);
-
+		
 					this.fire("elechart_change", { data: item, xCoord: xCoord });
 				}
 			}
@@ -1276,7 +1276,7 @@
 			let i, curr, prev, attr;
 
 			// save here a reference to last used point
-			let lastValid = null;
+			let lastValid = null; 
 
 			// iteration
 			this.on("elepoint_added", ({index, point}) => {
@@ -1324,7 +1324,7 @@
 				if (props.deltaMax) {
 					curr[attr] =wrapDelta(curr[attr], prev[attr], props.deltaMax);
 				}
-
+				
 				// Range of acceptable values.
 				if (props.clampRange) {
 					curr[attr] = clamp(curr[attr], props.clampRange);
@@ -1423,7 +1423,7 @@
 			}
 			return this._addMarker(marker)
 		},
-
+		
 		/**
 		 * Add chart or marker tooltip info
 		 */
@@ -1505,13 +1505,13 @@
 		_updateChart: function() {
 			if (this._chart && this._container) {
 				this.fire("elechart_axis");
-
+		
 				this._chart.update({ data: this._data, options: this.options });
-
+		
 				this._x     = this._chart._x;
 				this._y     = this._chart._y;
-
-				this.fire('elechart_updated');
+		
+				this.fire('elechart_updated');		
 			}
 		},
 

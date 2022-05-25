@@ -44,7 +44,7 @@ function leafext_gestures_lang($options) {
 	if ( $options['lang'] == "Site" ) {
 		$lang = get_bloginfo( 'language' );
 	} else if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-		$lang = locale_accept_from_http($_SERVER['HTTP_ACCEPT_LANGUAGE']); // Browser
+		$lang = preg_split("/[\s,;]+/", $_SERVER['HTTP_ACCEPT_LANGUAGE'])[0];
 	} else {
 		$lang = "en";
 	}
