@@ -1,5 +1,3 @@
-<a href="https://wordpress.org/plugins/extensions-leaflet-map/">Official WordPress Plugin</a>
-
 # Extensions for Leaflet Map Github Version
 
 Contributors: hupe13    
@@ -10,7 +8,7 @@ Requires at least: 5.5.3
 Requires PHP: 7.4     
 License: GPLv2 or later  
 
-Differences to the WordPress version: [Changes](changes.md)
+Differences to the WordPress plugin <a href="https://wordpress.org/plugins/extensions-leaflet-map/">Extensions for Leaflet Map</a>: [Changes](changes.md)
 
 ## Description
 
@@ -60,7 +58,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 3.0 / 22052x
+### 3.1 / 22052x
 
 * Solved Bug: detect Browser language in gesture handling
 * leaflet-elevation-2.2.6
