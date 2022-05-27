@@ -5,7 +5,7 @@
 Contributors: hupe13    
 Tags: leaflet, gpx, elevation, markercluster, zoomhome, hover, fullscreen  
 Tested up to: 6.0  
-Stable tag: 3.0    
+Stable tag: 3.1    
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later  
@@ -60,17 +60,10 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 3.0 / 220524
+### 3.0 / 22052x
 
-* Solved Bugs
-  * hover with placementstrategies and hidemarkers
-  * own theme in multielevation
-* leaflet-gesture-handling 1.4.1
-* leaflet-elevation-2.2.5
-   * New: Pace - time per distance
-   * New: Themes and Colors
-   * Please check css in your own theme.
-   * Bug: `trkStart`, `trkStop` do not work on multiple maps on one page
+* Solved Bug: detect Browser language in gesture handling
+* leaflet-elevation-2.2.6
 
 ### Previous
 

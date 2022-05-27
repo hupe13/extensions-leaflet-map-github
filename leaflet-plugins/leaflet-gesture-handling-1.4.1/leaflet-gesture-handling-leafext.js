@@ -200,21 +200,13 @@
 
 		_handleTouch: function(e) {
 			//Disregard touch events on the minimap if present
-			var ignore = this._hasClass(e.target, ["leaflet-control-minimap", "leaflet-interactive", "leaflet-popup-content", "leaflet-popup-content-wrapper", "leaflet-popup-close-button", "leaflet-control-zoom-in", "leaflet-control-zoom-out"]);
-
-			//hupe13 - leaflet-control*
-			if ( e.target.offsetParent != null
-				&& e.target.offsetParent.classList != null
-				&& typeof e.target.offsetParent.classList !== 'undefined'
-			) {
-				var ignore_parent = e.target.offsetParent.classList.toString().indexOf('leaflet-control');
-			} else {
-				var ignore_parent = -1;
-			}
-			if ( ignore || ignore_parent != -1 ) {
-			// end
+			//var ignore = this._hasClass(e.target, ["leaflet-control-minimap", "leaflet-interactive", "leaflet-popup-content", "leaflet-popup-content-wrapper", "leaflet-popup-close-button", "leaflet-control-zoom-in", "leaflet-control-zoom-out", ]);
+			var ignore = this._hasClass(e.target, ["leaflet-interactive",]);
+			var ignore_control = e.target.className.indexOf("leaflet-control");
+			var ignore_popup = e.target.className.indexOf("leaflet-popup");
 
 			//if (ignore) {
+			if (ignore || ignore_control !== -1 || ignore_popup !== -1) {
 				if (L.DomUtil.hasClass(e.target, "leaflet-interactive") && e.type === "touchmove" && e.touches.length === 1) {
 					this._enableTouchWarning();
 				} else {
