@@ -201,7 +201,7 @@
 		_handleTouch: function(e) {
 			//Disregard touch events on the minimap if present
 			//var ignore = this._hasClass(e.target, ["leaflet-control-minimap", "leaflet-interactive", "leaflet-popup-content", "leaflet-popup-content-wrapper", "leaflet-popup-close-button", "leaflet-control-zoom-in", "leaflet-control-zoom-out"]);
-			var ignore = this._hasClass(e.target, ["leaflet-control-minimap", "leaflet-interactive",]);
+			var ignore = this._hasClass(e.target, ["leaflet-interactive"]);
 			var ignore_control = e.target.className.indexOf("leaflet-control");
 			var ignore_popup = e.target.className.indexOf("leaflet-popup");
 
