@@ -61,6 +61,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 ### 3.1 / 22052x
 
 * Solved Bug: detect Browser language in gesture handling
+* leaflet-gesture-handling-1.4.2
 * leaflet-elevation-2.2.6
 
 ### Previous
