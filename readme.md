@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, gpx, elevation, markercluster, zoomhome, hover, fullscreen  
 Tested up to: 6.0  
-Stable tag: 3.1    
+Stable tag: 3.0.1    
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later  
@@ -58,7 +58,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 3.1 / 22052x
+### 3.0.1 / 220602
 
 * Solved Bug: detect Browser language in gesture handling
 * leaflet-gesture-handling-1.4.2
