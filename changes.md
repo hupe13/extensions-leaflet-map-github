@@ -1,3 +1,1 @@
-* Solved Bug: detect Browser language in gesture handling
-* leaflet-gesture-handling-1.4.2
-* leaflet-elevation-2.2.6
+* This is the same as the WordPress Version 3.0.1
