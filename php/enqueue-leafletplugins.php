@@ -143,17 +143,16 @@ function leafext_enqueue_fullscreen () {
 		array('wp_leaflet_map'),null);
 }
 
-define('LEAFEXT_GESTURE_VERSION',"1.4.2");
+define('LEAFEXT_GESTURE_VERSION',"1.4.3");
 define('LEAFEXT_GESTURE_LOCALE_DIR', LEAFEXT_PLUGIN_DIR .
-		'leaflet-plugins/leaflet-gesture-handling-'.LEAFEXT_GESTURE_VERSION.'/locales/');
+		'leaflet-plugins/leaflet-gesture-handling-'.LEAFEXT_GESTURE_VERSION.'/src/locales/');
 function leafext_enqueue_gestures() {
 	wp_enqueue_script('gestures_leaflet',
-		//plugins_url('leaflet-plugins/leaflet-gesture-handling-'.LEAFEXT_GESTURE_VERSION.'/leaflet-gesture-handling.min.js',
-    plugins_url('leaflet-plugins/leaflet-gesture-handling-'.LEAFEXT_GESTURE_VERSION.'/leaflet-gesture-handling-leafext.js',
-		LEAFEXT_PLUGIN_FILE),
+		plugins_url('leaflet-plugins/leaflet-gesture-handling-'.LEAFEXT_GESTURE_VERSION.'/dist/leaflet-gesture-handling.min.js',
+    LEAFEXT_PLUGIN_FILE),
 		array('wp_leaflet_map'), null);
 	wp_enqueue_style('gestures_leaflet_styles',
-		plugins_url('leaflet-plugins/leaflet-gesture-handling-'.LEAFEXT_GESTURE_VERSION.'/leaflet-gesture-handling.min.css',
+		plugins_url('leaflet-plugins/leaflet-gesture-handling-'.LEAFEXT_GESTURE_VERSION.'/dist/leaflet-gesture-handling.min.css',
 		LEAFEXT_PLUGIN_FILE),
 		array('leaflet_stylesheet'),null);
 }
