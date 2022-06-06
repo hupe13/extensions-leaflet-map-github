@@ -1,0 +1,58 @@
+{
+	"name": "@raruto/leaflet-gesture-handling",
+	"version": "1.4.3",
+	"description": "A Leaflet plugin that allows to prevent default map scroll/touch behaviours",
+	"main": "./dist/leaflet-gesture-handling.min.js",
+	"module": "src/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "rollup -c build/rollup.config.js",
+		"watch": "rollup -c build/rollup.config.js --watch",
+		"dev": "npm run watch",
+		"version": "npm run build && git add -A dist"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Raruto/leaflet-gesture-handling.git"
+	},
+	"keywords": [
+		"Leaflet",
+		"Maps",
+		"Gesture",
+		"Handling",
+		"two",
+		"fingers",
+		"mobile",
+		"scroll"
+	],
+	"author": "A Marquis",
+	"contributors": [
+		{
+			"name": "Raruto",
+			"url": "https://github.com/Raruto/leaflet-gesture-handling"
+		},
+		{
+			"name": "A Marquis",
+			"web": "https://github.com/elmarquis/Leaflet.GestureHandling"
+		}
+	],
+	"license": "GPL-3.0",
+	"bugs": {
+		"url": "https://github.com/Raruto/leaflet-gesture-handling/issues"
+	},
+	"homepage": "https://github.com/Raruto/leaflet-gesture-handling#readme",
+	"peerDependencies": {
+		"leaflet": "^1.3.4"
+	},
+	"devDependencies": {
+		"postcss-copy": "^7.1.0",
+		"postcss-import": "^12.0.1",
+		"rollup": "^2.2.0",
+		"rollup-plugin-commonjs": "^10.1.0",
+		"rollup-plugin-copy": "^3.4.0",
+		"rollup-plugin-git-version": "^0.3.1",
+		"rollup-plugin-node-resolve": "^5.2.0",
+		"rollup-plugin-postcss": "^2.5.0",
+		"rollup-plugin-terser": "^7.0.2"
+	}
+}
