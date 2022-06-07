@@ -145,7 +145,7 @@ function leafext_enqueue_fullscreen () {
 
 define('LEAFEXT_GESTURE_VERSION',"1.4.3");
 define('LEAFEXT_GESTURE_LOCALE_DIR', LEAFEXT_PLUGIN_DIR .
-		'leaflet-plugins/leaflet-gesture-handling-'.LEAFEXT_GESTURE_VERSION.'/src/locales/');
+		'leaflet-plugins/leaflet-gesture-handling-'.LEAFEXT_GESTURE_VERSION.'/dist/locales/');
 function leafext_enqueue_gestures() {
 	wp_enqueue_script('gestures_leaflet',
 		plugins_url('leaflet-plugins/leaflet-gesture-handling-'.LEAFEXT_GESTURE_VERSION.'/dist/leaflet-gesture-handling.min.js',
