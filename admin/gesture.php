@@ -78,4 +78,5 @@ function leafext_gesture_help_text() {
 	'dragging',
 	'scrollWheelZoom')
 	.'</p>';
+	echo '<p>'.__('Global Leaflet Map setting ','extensions-leaflet-map').'scrollWheelZoom (scrollwheel): '.print_r(get_option('leaflet_scroll_wheel_zoom')).'. dragging '.__('is true at default','extensions_leaflet_map').'.</p>';
 }

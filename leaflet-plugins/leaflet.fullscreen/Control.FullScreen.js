@@ -15,7 +15,7 @@
 		// Save 'screenfull' into global window variable
 		root.screenfull = factory();
 	}
-}(this, function () {
+}(typeof self !== 'undefined' ? self : this, function () {
 	'use strict';
 
 	var document = typeof window !== 'undefined' && typeof window.document !== 'undefined' ? window.document : {};
@@ -198,7 +198,7 @@
 		// Assume 'leaflet' and 'screenfull' are loaded into global variable already
 		factory(root.L, root.screenfull);
 	}
-}(this, function (leaflet, screenfull) {
+}(typeof self !== 'undefined' ? self : this, function (leaflet, screenfull) {
 	'use strict';
 
 	leaflet.Control.FullScreen = leaflet.Control.extend({
@@ -241,7 +241,7 @@
 				.off(this.link, 'click', leaflet.DomEvent.stop)
 				.off(this.link, 'click', this.toggleFullScreen, this);
 
-			if (this._screenfull.raw) {
+			if (this._screenfull.isEnabled) {
 				leaflet.DomEvent
 					.off(this._container, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
 					.off(this._container, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, this);
@@ -266,8 +266,8 @@
 			leaflet.DomEvent
 				.on(this.link, 'click', leaflet.DomEvent.stop)
 				.on(this.link, 'click', fn, context);
-			
-			if (this._screenfull.raw) {
+
+			if (this._screenfull.isEnabled) {
 				leaflet.DomEvent
 					.on(container, this._screenfull.raw.fullscreenchange, leaflet.DomEvent.stop)
 					.on(container, this._screenfull.raw.fullscreenchange, this._handleFullscreenChange, context);

@@ -72,9 +72,8 @@ function leafext_gestures_script($lang){
 			//console.log("gesture");
 			for (var i = 0, len = maps.length; i < len; i++) {
 				var map = maps[i];
-				if ( map.dragging.enabled()
-						|| map.scrollWheelZoom.enabled()
-					) {
+				console.log(map.dragging.enabled(),map.scrollWheelZoom.enabled());
+				if ( map.dragging.enabled() || map.scrollWheelZoom.enabled()) {
 					//console.log("enabled");
 					';
 					if ( $lang != "" ) {
@@ -102,6 +101,7 @@ function leafext_gesture_script($lang){
 		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 		window.WPLeafletMapPlugin.push(function () {
 			var map = window.WPLeafletMapPlugin.getCurrentMap();
+			//console.log(map.dragging.enabled(),map.scrollWheelZoom.enabled());
 			if ( map.dragging.enabled() || map.scrollWheelZoom.enabled() ) {
 				//console.log("enabled");
 				';
@@ -132,8 +132,11 @@ function leafext_gestures_function() {
 //add_action( 'wp_enqueue_scripts', 'leafext_gestures_function' );
 
 add_filter('pre_do_shortcode_tag', function ( $output, $shortcode ) {
-	if ( 'leaflet-map' == $shortcode ) {
+	global $leafext_gesture_loaded;
+	if (!isset($leafext_gesture_loaded)) $leafext_gesture_loaded = true;
+	if ( 'leaflet-map' == $shortcode && $leafext_gesture_loaded) {
 		leafext_gestures_function();
+		$leafext_gesture_loaded = false;
 	}
 	return $output;
 }, 10, 2);
