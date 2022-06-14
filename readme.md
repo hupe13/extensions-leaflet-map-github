@@ -66,7 +66,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Upgrade Notice ##
 
-### 3.1-220609 ###
+### 3.1 ###
 
 Please check your Leaflet Map settings for scrollwheel. See the help for Gesture Handling!
 
