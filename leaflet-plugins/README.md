@@ -2,8 +2,7 @@
 
 <h3>leaflet.fullscreen</h3>
 
-https://github.com/brunob/leaflet.fullscreen <br>
-(with pull request from https://github.com/brunob/leaflet.fullscreen/pull/101)
+https://github.com/brunob/leaflet.fullscreen
 
 <pre>[fullscreen]</pre>
 
@@ -41,9 +40,6 @@ https://github.com/makinacorpus/Leaflet.GeometryUtil
 <h3>leaflet-gesture-handling</h3>
 
 https://github.com/Raruto/leaflet-gesture-handling
-
-* changed to deal with Safari bug marker popup
-* changed for L.Control
 
 Used by nearly any leaflet map, see documentation
 

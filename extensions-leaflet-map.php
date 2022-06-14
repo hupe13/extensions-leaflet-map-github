@@ -75,3 +75,15 @@ function leafext_extra_textdomain() {
   }
 }
 add_action( 'plugins_loaded', 'leafext_extra_textdomain' );
+
+// add plugin upgrade notification
+function leafext_plugin_update_message( $plugin_data, $new_data ) {
+    if ( isset( $plugin_data['update'] ) && $plugin_data['update'] && isset( $new_data->upgrade_notice ) ) {
+        printf(
+            '<div class="update-message"><p><strong>%s</strong>: %s</p></div>',
+            $new_data -> new_version,
+            wpautop( $new_data -> upgrade_notice )
+        );
+    }
+}
+add_action('in_plugin_update_message-extensions-leaflet-map-github/extensions-leaflet-map.php', 'leafext_plugin_update_message', 10, 2);

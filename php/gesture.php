@@ -12,7 +12,8 @@ function leafext_gesture_params() {
 			'param' => 'leafext_gesture_on',
 			'shortdesc' => __('valid for whole site or only for one map',"extensions-leaflet-map"),
 			'desc' => '<p>'.
-				__("If it is true, it is valid for any map and you can't change it. If it is false, you can change it for each map:",'extensions-leaflet-map').
+				sprintf(__("If it is true, it is valid for any map (depending on %s respectively %s) and you can't change it. If it is false, you can enable it for a map:",'extensions-leaflet-map')
+				,'<code>scrollwheel</code>','<code>dragging</code>').
 				'</p><pre><code>[gestures]</code></pre>',
 			'default' => true,
 			'values' => 1,
@@ -72,9 +73,9 @@ function leafext_gestures_script($lang){
 			//console.log("gesture");
 			for (var i = 0, len = maps.length; i < len; i++) {
 				var map = maps[i];
-				console.log(map.dragging.enabled(),map.scrollWheelZoom.enabled());
-				if ( map.dragging.enabled() || map.scrollWheelZoom.enabled()) {
-					//console.log("enabled");
+				console.log("dragging, scroll, mobile ",map.dragging.enabled(),map.scrollWheelZoom.enabled(),L.Browser.mobile);
+				if ( map.scrollWheelZoom.enabled() || ( map.dragging.enabled() && L.Browser.mobile ) ) {
+					console.log(i,"enabled");
 					';
 					if ( $lang != "" ) {
 						$text = $text.'
@@ -101,8 +102,8 @@ function leafext_gesture_script($lang){
 		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 		window.WPLeafletMapPlugin.push(function () {
 			var map = window.WPLeafletMapPlugin.getCurrentMap();
-			//console.log(map.dragging.enabled(),map.scrollWheelZoom.enabled());
-			if ( map.dragging.enabled() || map.scrollWheelZoom.enabled() ) {
+			console.log("dragging, scroll, mobile ",map.dragging.enabled(),map.scrollWheelZoom.enabled(),L.Browser.mobile);
+			if ( map.scrollWheelZoom.enabled() || ( map.dragging.enabled() && L.Browser.mobile ) ) {
 				//console.log("enabled");
 				';
 				if ( $lang != "" ) {
