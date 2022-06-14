@@ -75,3 +75,15 @@ function leafext_extra_textdomain() {
   }
 }
 add_action( 'plugins_loaded', 'leafext_extra_textdomain' );
+
+function leafext_update_notice( $plugin_data, $r ) {
+	if ( version_compare( '3.1-220609', $plugin_data['new_version'], '>' ) || version_compare( '3.1-220609', $plugin_data['Version'], '<=' ) ) {
+		return;
+	}
+	$update_notice = '</p><div class="wc_plugin_upgrade_notice">';
+	// translators: placeholders are opening and closing tags. Leads to docs on version 2.0.0
+	$update_notice .=  __( 'Please check your Leaflet Map settings for scrollwheel. See the help for Gesture Handling!', 'extensions-leaflet-map' );
+	$update_notice .= '</div><p class="dummy" style="display:none">';
+	echo wp_kses_post( $update_notice );
+}
+add_action( 'in_plugin_update_message-extensions-leaflet-map-github/extensions-leaflet-map.php', 'leafext_update_notice', 10, 2 );
