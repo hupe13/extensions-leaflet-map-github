@@ -64,6 +64,12 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * leaflet-gesture-handling-1.4.2
 * leaflet-elevation-2.2.6
 
+## Upgrade Notice ##
+
+### 3.1-220609 ###
+
+Please check your Leaflet Map settings for scrollwheel. See the help for Gesture Handling!
+
 ### Previous
 
 [Changelog](CHANGELOG.md)

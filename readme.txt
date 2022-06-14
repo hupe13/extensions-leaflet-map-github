@@ -16,7 +16,3 @@ This is the Github Version.
 <a href="https://wordpress.org/plugins/extensions-leaflet-map/">Official WordPress Plugin</a>
 
 Differences to the WordPress version see changes.md
-
-## Upgrade Notice ##
-### 3.1-220609 ###
-Please check your Leaflet Map settings for scrollwheel. See the help for Gesture Handling!
