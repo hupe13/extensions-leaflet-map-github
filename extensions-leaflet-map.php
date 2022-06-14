@@ -75,13 +75,3 @@ function leafext_extra_textdomain() {
   }
 }
 add_action( 'plugins_loaded', 'leafext_extra_textdomain' );
-
-// add plugin upgrade notification
-function leafext_plugin_update_message($currentPluginMetadata, $newPluginMetadata){
-  // check "upgrade_notice"
-  if (isset($newPluginMetadata->upgrade_notice) && strlen(trim($newPluginMetadata->upgrade_notice)) > 0){
-    echo '<p style="background-color: #d54e21; padding: 10px; color: #f9f9f9; margin-top: 10px"><strong>Important Upgrade Notice:</strong> ';
-    echo esc_html($newPluginMetadata->upgrade_notice), '</p>';
-  }
-}
-add_action('in_plugin_update_message-extensions-leaflet-map-github/extensions-leaflet-map.php', 'leafext_plugin_update_message', 10, 2);
