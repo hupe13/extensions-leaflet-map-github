@@ -1,18 +1,24 @@
 <?php
 /**
- * Admin for Leaflet.placementstrategies
- * extensions-leaflet-map
- */
+* Admin for Leaflet.placementstrategies
+* extensions-leaflet-map
+*/
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
 function leafext_admin_placementstrategies() {
+	if (current_user_can('manage_options')) {
 		echo '<form method="post" action="options.php">';
-		settings_fields('leafext_settings_placementparams');
-		do_settings_sections( 'leafext_settings_placementparams' );
+	} else {
+		echo '<form>';
+	}
+	settings_fields('leafext_settings_placementparams');
+	do_settings_sections( 'leafext_settings_placementparams' );
+	if (current_user_can('manage_options')) {
 		submit_button();
 		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
-		echo '</form>';
+	}
+	echo '</form>';
 }
 
 function leafext_placementparams_init(){
@@ -34,6 +40,11 @@ function leafext_form_placement($field) {
 	//var_dump($option);echo '<br>';
 	$settings = leafext_placementstrategies_settings();
 	$setting = $settings[$field];
+	if (!current_user_can('manage_options')) {
+		$disabled = " disabled ";
+	} else {
+		$disabled = "";
+	}
 
 	if ( $option[0] == "elementsPlacementStrategy") echo '<p>'. __('"default" means: one-circle strategy up to 8 elements, else spiral strategy',"extensions-leaflet-map").'</p>';
 
@@ -48,10 +59,10 @@ function leafext_form_placement($field) {
 			echo '<br>';
 		}
 
-		echo '<input type="radio" name="leafext_placementparams['.$option[0].']" value="1" ';
+		echo '<input '.$disabled.' type="radio" name="leafext_placementparams['.$option[0].']" value="1" ';
 		echo $setting ? 'checked' : '' ;
 		echo '> true &nbsp;&nbsp; ';
-		echo '<input type="radio" name="leafext_placementparams['.$option[0].']" value="0" ';
+		echo '<input '.$disabled.' type="radio" name="leafext_placementparams['.$option[0].']" value="0" ';
 		echo (!$setting) ? 'checked' : '' ;
 		echo '> false ';
 	} else {
@@ -61,7 +72,12 @@ function leafext_form_placement($field) {
 			//var_dump("Option: ",$option[2],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
 			echo __("Plugins Default:", "extensions-leaflet-map").' '. $plugindefault . '<br>';
 		}
-		echo '<select name="leafext_placementparams['.$option[0].']">';
+		if (!current_user_can('manage_options')) {
+			$select_disabled = ' disabled multiple size='.count($option[3]).' ';
+		} else {
+			$select_disabled = "";
+		}
+		echo '<select '.$select_disabled.' name="leafext_placementparams['.$option[0].']">';
 		foreach ( $option[3] as $para) {
 			echo '<option ';
 			if (is_bool($para)) $para = ($para ? "1" : "0");
@@ -84,21 +100,21 @@ function leafext_placement_help_text () {
 	echo '<h2>Leaflet.MarkerCluster.PlacementStrategies</h2>';
 	echo '<p>';
 	echo '<a href="https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies">'.__('Demo and Documentation','extensions-leaflet-map').'</a>';
-  echo ' - '.__('Not all parameters are implemented in the plugin.','extensions-leaflet-map').'';
+	echo ' - '.__('Not all parameters are implemented in the plugin.','extensions-leaflet-map').'';
 	echo '</p>';
 	echo '<h3>Shortcode</h3>
 	<pre><code>[leaflet-map ....]
-// many markers
-[leaflet-marker lat=... lng=... ...]poi1[/leaflet-marker]
-[leaflet-marker lat=... lng=... ...]poi2[/leaflet-marker]
-...
-[leaflet-marker lat=... lng=... ...]poixx[/leaflet-marker]
-[placementstrategies ...]
-//optional
-[hover]
-[zoomhomemap]
-</code></pre>
-<h3>Options</h3>
+	// many markers
+	[leaflet-marker lat=... lng=... ...]poi1[/leaflet-marker]
+	[leaflet-marker lat=... lng=... ...]poi2[/leaflet-marker]
+	...
+	[leaflet-marker lat=... lng=... ...]poixx[/leaflet-marker]
+	[placementstrategies ...]
+	//optional
+	[hover]
+	[zoomhomemap]
+	</code></pre>
+	<h3>Options</h3>
 
-<p>'.sprintf(__('The parameter maxZoom has been removed, please use %s instead.',"extensions-leaflet-map"),'<code>[leaflet-map max_zoom="xx" ...]</code>').'</p>';
+	<p>'.sprintf(__('The parameter maxZoom has been removed, please use %s instead.',"extensions-leaflet-map"),'<code>[leaflet-map max_zoom="xx" ...]</code>').'</p>';
 }

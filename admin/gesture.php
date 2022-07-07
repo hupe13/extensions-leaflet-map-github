@@ -1,15 +1,15 @@
 <?php
 /**
- * Admin for Leaflet.gesture
- * extensions-leaflet-map
- */
+* Admin for Leaflet.gesture
+* extensions-leaflet-map
+*/
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
 // init settings fuer gesture
 function leafext_gesture_init(){
 	add_settings_section( 'gesture_settings', 'Gesture Handling', 'leafext_gesture_help_text', 'leafext_settings_gesture' );
-//	add_settings_field( 'leafext_gesture_on', 'gesture_on', 'leafext_form_gesture', 'leafext_settings_gesture', 'gesture_settings' );
+	//	add_settings_field( 'leafext_gesture_on', 'gesture_on', 'leafext_form_gesture', 'leafext_settings_gesture', 'gesture_settings' );
 	$fields = leafext_gesture_params();
 	foreach($fields as $field) {
 		add_settings_field("leafext_gesture[".$field['param']."]", $field['shortdesc'], 'leafext_form_gesture','leafext_settings_gesture', 'gesture_settings', $field['param']);
@@ -27,6 +27,12 @@ function leafext_form_gesture($field) {
 	if ( $option['desc'] != "" ) echo '<p>'.$option['desc'].'</p>';
 	//echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option['param']. '</code><br>';
 
+	if (!current_user_can('manage_options')) {
+		$disabled = " disabled ";
+	} else {
+		$disabled = "";
+	}
+
 	if (!is_array($option['values'])) {
 
 		if ($setting != $option['default'] ) {
@@ -35,11 +41,10 @@ function leafext_form_gesture($field) {
 			echo $option['default'] ? "true" : "false";
 			echo '<br>';
 		}
-
-		echo '<input type="radio" name="leafext_gesture['.$option['param'].']" value="1" ';
+		echo '<input '.$disabled.' type="radio" name="leafext_gesture['.$option['param'].']" value="1" ';
 		echo $setting ? 'checked' : '' ;
 		echo '> true &nbsp;&nbsp; ';
-		echo '<input type="radio" name="leafext_gesture['.$option['param'].']" value="0" ';
+		echo '<input '.$disabled.' type="radio" name="leafext_gesture['.$option['param'].']" value="0" ';
 		echo (!$setting) ? 'checked' : '' ;
 		echo '> false ';
 	} else {
@@ -49,7 +54,7 @@ function leafext_form_gesture($field) {
 			//var_dump("Option: ",$option['default'],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
 			echo __("Plugins Default:", "extensions-leaflet-map").' '. $plugindefault . '<br>';
 		}
-		echo '<select name="leafext_gesture['.$option['param'].']">';
+		echo '<select '.$disabled.' name="leafext_gesture['.$option['param'].']">';
 		foreach ( $option['values'] as $para) {
 			echo '<option ';
 			if (is_bool($para)) $para = ($para ? "1" : "0");
@@ -75,7 +80,21 @@ function leafext_gesture_help_text() {
 	echo '<img src="'.LEAFEXT_PLUGIN_PICTS.'gesture.png"><p>'
 	.__('Brings the basic functionality of Gesture Handling into Leaflet Map. Prevents users from getting trapped on the map when scrolling a long page.','extensions-leaflet-map');
 	echo '</p><ul style="list-style: disc;">';
-	echo '<li style="margin-left: 1.5em;"> '.__('You can enable it for all maps or for individual maps.','extensions-leaflet-map');
+
+	if (current_user_can('manage_options')) {
+		echo '<li style="margin-left: 1.5em;"> '.__('You can enable it for all maps or for individual maps.','extensions-leaflet-map');
+	} else {
+		echo '<li style="margin-left: 1.5em;"> ';
+		$settings = leafext_gesture_settings();
+		//var_dump($settings);
+		if ($settings['leafext_gesture_on']) {
+			echo __('It is enabled for all maps.','extensions-leaflet-map');
+		} else {
+			echo __('It is disabled by default. You can enable it for a map with','extensions-leaflet-map').' <code>[gestures]</code>.';
+		}
+	}
+	echo '<li style="margin-left: 1.5em;"> '.__('When Gesture Handling is enabled:','extensions-leaflet-map');
+	echo '<ul style="list-style: disc;"><p>';
 	echo '<li style="margin-left: 1.5em;"> '.
 	sprintf(__('It becomes active when Scroll Wheel Zoom (%s) is enabled.','extensions-leaflet-map'),
 	'<code>scrollwheel</code>');
@@ -96,5 +115,5 @@ function leafext_gesture_help_text() {
 	__('You can change it with ','extensions-leaflet-map').' <code>[leaflet-map ';
 	echo get_option('leaflet_scroll_wheel_zoom','0') == "1" ? '!' : "";
 	echo 'scrollwheel !dragging]</code>';
-	echo '</ul>';
+	echo '</p></ul></ul>';
 }

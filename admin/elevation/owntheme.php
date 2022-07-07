@@ -46,7 +46,12 @@ function leafext_form_owntheme() {
 			}
 		}
 	}
-	echo '<select id="leafext_elecolor" name="leafext_values[theme]" onchange = "leafext_EnableDisableOtherTheme(this)">';
+	if (!current_user_can('manage_options')) {
+		$select_disabled = ' disabled ';
+	} else {
+		$select_disabled = "";
+	}
+	echo '<select '.$select_disabled.' id="leafext_elecolor" name="leafext_values[theme]" onchange = "leafext_EnableDisableOtherTheme(this)">';
 	$colors[] = "other";
 	foreach ($colors as $color) {
 		if ($color == $options['theme']) {

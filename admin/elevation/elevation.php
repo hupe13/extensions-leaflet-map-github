@@ -34,13 +34,18 @@ function leafext_form_elevation($field) {
 
 	echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option['param']. '</code><br>';
 
+	if (!current_user_can('manage_options')) {
+		$disabled = " disabled ";
+	} else {
+		$disabled = "";
+	}
 	//var_dump(gettype($option['values']));
 	switch(gettype($option['values'])) {
 		case "string":   //z.B. Height
 		if ($setting != $option['default'] ) {
 			echo __("Plugins Default:", "extensions-leaflet-map").' '. $option['default'] . '<br>';
 		}
-		echo '<input name="'.$name_id.'" value="'.$setting.'" '.$option['values'].'/>';
+		echo '<input '.$disabled.'name="'.$name_id.'" value="'.$setting.'" '.$option['values'].'/>';
 		break;
 		case "integer": // true/false
 		if ($setting != $option['default'] ) {
@@ -49,10 +54,10 @@ function leafext_form_elevation($field) {
 			echo $option['default'] ? "true" : "false";
 			echo '<br>';
 		}
-		echo '<input type="radio" name="'.$name_id.'" value="1" ';
+		echo '<input '.$disabled.'type="radio" name="'.$name_id.'" value="1" ';
 		echo $setting ? 'checked' : '' ;
 		echo '> true &nbsp;&nbsp; ';
-		echo '<input type="radio" name="'.$name_id.'" value="0" ';
+		echo '<input '.$disabled.'type="radio" name="'.$name_id.'" value="0" ';
 		echo (!$setting) ? 'checked' : '' ;
 		echo '> false ';
 		break;
@@ -62,7 +67,12 @@ function leafext_form_elevation($field) {
 		if ($setting != $plugindefault ) {
 			echo __("Plugins Default:", "extensions-leaflet-map").' '. $plugindefault . '<br>';
 		}
-		echo '<select name="'.$name_id.'">';
+		if (!current_user_can('manage_options')) {
+			$select_disabled = ' disabled multiple size='.count($option['values']).' ';
+		} else {
+			$select_disabled = "";
+		}
+		echo '<select '.$select_disabled.' name="'.$name_id.'">';
 		foreach ( $option['values'] as $para) {
 			echo '<option ';
 			if (is_bool($para)) $para = ($para ? "1" : "0");

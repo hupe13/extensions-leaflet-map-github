@@ -16,6 +16,11 @@ add_action('admin_init', 'leafext_maps_init' );
 
 // Baue Abfrage der Tiles // Wie geht das besser?
 function leafext_form_maps() {
+	if (!current_user_can('manage_options')) {
+		$disabled = " disabled ";
+	} else {
+		$disabled = "";
+	}
 	$options = get_option('leafext_maps');
 	if ( ! $options ) $options = array();
 	$map=array(
@@ -35,15 +40,15 @@ function leafext_form_maps() {
 		} else {
 			//echo '<td>';
 		}
-		echo '<input class="full-width" type="text" placeholder="name" name="leafext_maps['.$i.'][mapid]" value="'.$option['mapid'].'" /></td>';
+		echo '<input '.$disabled.' class="full-width" type="text" placeholder="name" name="leafext_maps['.$i.'][mapid]" value="'.$option['mapid'].'" /></td>';
 		echo '</tr>';
 
 		echo '<tr><th scope="row-title">Attribution:</th>';
-		echo '<td><input type="text" size="80" placeholder="Copyright" name="leafext_maps['.$i.'][attr]" value="'.esc_attr($option['attr']).'" /></td>';
+		echo '<td><input '.$disabled.' type="text" size="80" placeholder="Copyright" name="leafext_maps['.$i.'][attr]" value="'.esc_attr($option['attr']).'" /></td>';
 		echo '</tr>';
 
 		echo '<tr><th scope="row-title">Tile Server:</th>';
-		echo '<td><input type="url" size="80" placeholder="https://{s}.tile.server.tld/{z}/{x}/{y}.png" name="leafext_maps['.$i.'][tile]" value="'.$option['tile'].'" /></td>';
+		echo '<td><input '.$disabled.' type="url" size="80" placeholder="https://{s}.tile.server.tld/{z}/{x}/{y}.png" name="leafext_maps['.$i.'][tile]" value="'.$option['tile'].'" /></td>';
 		echo '</tr>';
 
 		echo '<tr><th scope="row-title">Extra Options: (optional)</th>';
@@ -52,7 +57,7 @@ function leafext_form_maps() {
 		if ($option['options'] == "") {
 			echo __('The syntax is not checked!','extensions-leaflet-map').'<br>';
 		}
-		echo '<input type="text" size="80"
+		echo '<input '.$disabled.' type="text" size="80"
 			placeholder="'.
 			esc_attr('minZoom: 1, maxZoom: 16, subdomains: "abcd", opacity: 0.5, bounds: [[22, -132], [51, -56]]').'"
 			name="leafext_maps['.$i.'][options]"
@@ -62,13 +67,13 @@ function leafext_form_maps() {
 		echo '<tr><th scope="row-title">Overlay Layer:</th>';
 		if (!isset($option['overlay'])) $option['overlay'] = "0";
 		$checked = $option['overlay'] == "1" ? "checked" : "";
-		echo '<td><input type="checkbox" name="leafext_maps['.$i.'][overlay]" value="1" '.$checked.'/>';
+		echo '<td><input '.$disabled.' type="checkbox" name="leafext_maps['.$i.'][overlay]" value="1" '.$checked.'/>';
 		echo '</td></tr>';
 
 		echo '<tr><th scope="row-title">Leaflet.Control.Opacity:</th>';
 		if (!isset($option['opacity'])) $option['opacity'] = "0";
 		$checked = $option['opacity'] == "1" ? "checked" : "";
-		echo '<td><input type="checkbox" name="leafext_maps['.$i.'][opacity]" value="1" '.$checked.'/>';
+		echo '<td><input '.$disabled.' type="checkbox" name="leafext_maps['.$i.'][opacity]" value="1" '.$checked.'/>';
 
 		$i++;
 		if ($i < $count) echo '</td></tr>';

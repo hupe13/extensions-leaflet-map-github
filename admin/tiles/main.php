@@ -1,8 +1,8 @@
 <?php
 /**
- * main admin page for tile functions
- * extensions-leaflet-map
- */
+* main admin page for tile functions
+* extensions-leaflet-map
+*/
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
@@ -40,23 +40,33 @@ function leafext_tiles_tab() {
 }
 
 function leafext_admin_tiles($active_tab) {
-  echo '<h2>'.leafext_tiles_tab().'</h2>';
+	echo '<h2>'.leafext_tiles_tab().'</h2>';
 	if( $active_tab == 'tileshelp') {
-  	include LEAFEXT_PLUGIN_DIR . '/admin/tiles/help.php';
+		include LEAFEXT_PLUGIN_DIR . '/admin/tiles/help.php';
 		echo leafext_help_tiles();
 	} else
 	if( $active_tab == 'tileswitch') {
-  	echo '<form method="post" action="options.php">';
-  	settings_fields('leafext_settings_maps');
-  	do_settings_sections( 'leafext_settings_maps' );
-  	submit_button();
-  	echo '</form>';
+		if (current_user_can('manage_options')) {
+			echo '<form method="post" action="options.php">';
+		} else {
+			echo '<form>';
+		}
+		settings_fields('leafext_settings_maps');
+		do_settings_sections( 'leafext_settings_maps' );
+		if (current_user_can('manage_options')) {
+			submit_button();
+		}
+		echo '</form>';
 	} else if( $active_tab == 'tilesproviders' ) {
-    echo '<form method="post" action="options.php">';
-    settings_fields('leafext_providers');
-    do_settings_sections( 'leafext_providers' );
-    submit_button();
-    submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
-    echo '</form>';
+		if (current_user_can('manage_options')) {
+			echo '<form method="post" action="options.php">';
+			settings_fields('leafext_providers');
+			do_settings_sections( 'leafext_providers' );
+			submit_button();
+			submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+			echo '</form>';
+		} else {
+			leafext_providers_help();
+		}
 	}
 }

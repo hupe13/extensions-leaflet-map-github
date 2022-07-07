@@ -144,8 +144,15 @@ function leafext_form_colors($field) {
 	} else {
 		$setting = $option['default'];
 	}
-	echo '<input type="text" class="colorPicker" id="leafext_color_'.$theme.'['.$option['param'].']" name="leafext_color_'.$theme.'['.$option['param'].']"
-	data-default-color = "'.$option['default'].'" value = "'.$setting.'"/>';
+
+	if (current_user_can('manage_options')) {
+		echo '<input type="text" class="colorPicker" id="leafext_color_'.$theme.'['.$option['param'].']" name="leafext_color_'.$theme.'['.$option['param'].']"
+			data-default-color = "'.$option['default'].'" value = "'.$setting.'"/>';
+	} else {
+		echo '<svg width="25" height="25">
+		<rect width="25" height="25" style="fill:'.$option['default'].';stroke-width:1;stroke:rgb(0,0,0)" />
+		</svg>';
+	}
 }
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.

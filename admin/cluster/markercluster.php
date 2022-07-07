@@ -7,11 +7,17 @@
 defined( 'ABSPATH' ) or die();
 
 function leafext_admin_markercluster() {
-	echo '<form method="post" action="options.php">';
+	if (current_user_can('manage_options')) {
+		echo '<form method="post" action="options.php">';
+	} else {
+		echo '<form>';
+	}
 	settings_fields('leafext_settings_clusterparams');
 	do_settings_sections( 'leafext_settings_clusterparams' );
-	submit_button();
-	submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+	if (current_user_can('manage_options')) {
+		submit_button();
+		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+	}
 	echo '</form>';
 }
 
@@ -35,6 +41,12 @@ function leafext_form_markercluster($field) {
 	$settings = leafext_cluster_settings();
 	$setting = $settings[$field];
 
+	if (!current_user_can('manage_options')) {
+		$disabled = " disabled ";
+	} else {
+		$disabled = "";
+	}
+
 	echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option[0]. '</code><br>';
 	if (!is_array($option[3])) {
 
@@ -45,10 +57,10 @@ function leafext_form_markercluster($field) {
 			echo '<br>';
 		}
 
-		echo '<input type="radio" name="leafext_cluster['.$option[0].']" value="1" ';
+		echo '<input '.$disabled.' type="radio" name="leafext_cluster['.$option[0].']" value="1" ';
 		echo $setting ? 'checked' : '' ;
 		echo '> true &nbsp;&nbsp; ';
-		echo '<input type="radio" name="leafext_cluster['.$option[0].']" value="0" ';
+		echo '<input '.$disabled.' type="radio" name="leafext_cluster['.$option[0].']" value="0" ';
 		echo (!$setting) ? 'checked' : '' ;
 		echo '> false ';
 	} else {
@@ -58,7 +70,12 @@ function leafext_form_markercluster($field) {
 			//var_dump("Option: ",$option[2],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
 			echo __("Plugins Default:", "extensions-leaflet-map").' '. $plugindefault . '<br>';
 		}
-		echo '<select name="leafext_cluster['.$option[0].']">';
+		if (!current_user_can('manage_options')) {
+			$select_disabled = ' disabled multiple size='.count($option[3]).' ';
+		} else {
+			$select_disabled = "";
+		}
+		echo '<select '.$select_disabled.' name="leafext_cluster['.$option[0].']">';
 		foreach ( $option[3] as $para) {
 			echo '<option ';
 			if (is_bool($para)) $para = ($para ? "1" : "0");

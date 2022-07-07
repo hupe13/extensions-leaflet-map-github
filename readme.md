@@ -39,12 +39,12 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 ## Screenshots
 
 1. Track with elevation and other profiles and Switching Tile Layers<br>![Track with elevation profile](.wordpress-org/screenshot-1.png)
-1. Track with elevation profile only and Switching Tile Layers<br>![Track with elevation profile](.wordpress-org/screenshot-2.png)
-2. Multiple Tracks with elevation profile<br>![Multiple Tracks with elevation profile](.wordpress-org/screenshot-3.png)
-3. Hover a Geojson area <br>![Hover a Geojson area](.wordpress-org/screenshot-4.png)
-4. Markercluster and Groups <br>![Markercluster](.wordpress-org/screenshot-5.png)
-5. Markercluster PlacementStrategies <br>![PlacementStrategies](.wordpress-org/screenshot-6.png)
-6. GestureHandling <br>![GestureHandling](.wordpress-org/screenshot-7.png)
+2. Track with elevation profile only and Switching Tile Layers<br>![Track with elevation profile](.wordpress-org/screenshot-2.png)
+3. Multiple Tracks with elevation profile<br>![Multiple Tracks with elevation profile](.wordpress-org/screenshot-3.png)
+4. Hover a Geojson area <br>![Hover a Geojson area](.wordpress-org/screenshot-4.png)
+5. Markercluster and Groups <br>![Markercluster](.wordpress-org/screenshot-5.png)
+6. Markercluster PlacementStrategies <br>![PlacementStrategies](.wordpress-org/screenshot-6.png)
+7. GestureHandling <br>![GestureHandling](.wordpress-org/screenshot-7.png)
 
 ## Documentation
 
@@ -58,15 +58,14 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 3.0.1 / 220602
+### 3.0.2 / 220xxx
 
-* Solved Bug: detect Browser language in gesture handling
-* leaflet-gesture-handling-1.4.2
-* leaflet-elevation-2.2.6
+* leaflet-gestures-1.4.3: Please check your Leaflet Map settings for scrollwheel. See the help for Gesture Handling!
+* Leaflet.Control.FullScreen 2.4.0
 
-## Upgrade Notice ##
+## Upgrade Notice
 
-### 3.1 ###
+### 3.0.2
 
 Please check your Leaflet Map settings for scrollwheel. See the help for Gesture Handling!
 

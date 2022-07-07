@@ -1,8 +1,8 @@
 <?php
 /**
- * main admin page for elevation functions
- * extensions-leaflet-map
- */
+* main admin page for elevation functions
+* extensions-leaflet-map
+*/
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
@@ -18,11 +18,11 @@ function leafext_elevation_tab() {
 		array (
 			'tab' => 'elevation',
 			'title' => __('Elevation Profile','extensions-leaflet-map'),
-			),
+		),
 		array (
-				'tab' => 'elevationtheme',
-				'title' => __('Theme / Colors','extensions-leaflet-map'),
-			),
+			'tab' => 'elevationtheme',
+			'title' => __('Theme / Colors','extensions-leaflet-map'),
+		),
 		array (
 			'tab' => 'elevationwaypoints',
 			'title' => __('Customize waypoints','extensions-leaflet-map'),
@@ -34,10 +34,12 @@ function leafext_elevation_tab() {
 	);
 
 	if ( LEAFEXT_SGPX_ACTIVE || LEAFEXT_SGPX_UNCLEAN_DB || LEAFEXT_SGPX_SGPX ) {
-		$tabs[] = array (
-			'tab' => 'sgpxelevation',
-			'title' => __('Migrate from wp-gpx-maps','extensions-leaflet-map'),
-		);
+		if (current_user_can('manage_options')) {
+			$tabs[] = array (
+				'tab' => 'sgpxelevation',
+				'title' => __('Migrate from wp-gpx-maps','extensions-leaflet-map'),
+			);
+		}
 	}
 
 	$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : '';
@@ -57,67 +59,113 @@ function leafext_elevation_tab() {
 
 function leafext_admin_elevation($active_tab) {
 	if( $active_tab == 'multielevation') {
-		echo '<form method="post" action="options.php">';
+		if (current_user_can('manage_options')) {
+			echo '<form method="post" action="options.php">';
+		} else {
+			echo '<form>';
+		}
 		settings_fields('leafext_settings_multieleparams');
 		do_settings_sections( 'leafext_settings_multieleparams' );
-		submit_button();
-		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+		if (current_user_can('manage_options')) {
+			submit_button();
+			submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+		}
 		echo '</form>';
 	} else if( $active_tab == 'elevationtheme') {
 		$ownoptions = get_option('leafext_values');
 		if (!is_array($ownoptions)) {
-			echo '<form method="post" action="options.php">';
+			if (current_user_can('manage_options')) {
+				echo '<form method="post" action="options.php">';
+			} else {
+				echo '<form>';
+			}
 			settings_fields('leafext_settings_elethemes');
 			do_settings_sections( 'leafext_settings_elethemes' );
-			submit_button();
+			if (current_user_can('manage_options')) {
+				submit_button();
+			}
 			echo '</form>';
 		}
-		echo '<form method="post" action="options.php">';
+		if (current_user_can('manage_options')) {
+			echo '<form method="post" action="options.php">';
+		} else {
+			echo '<form>';
+		}
 		settings_fields('leafext_settings_color');
 		do_settings_sections( 'leafext_settings_color' );
-		submit_button();
-		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+		if (current_user_can('manage_options')) {
+			submit_button();
+			submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+		}
 		echo '</form>';
 		//
-		echo '<form method="post" action="options.php">';
+		if (current_user_can('manage_options')) {
+			echo '<form method="post" action="options.php">';
+		} else {
+			echo '<form>';
+		}
 		settings_fields('leafext_settings_theme');
 		do_settings_sections( 'leafext_settings_theme' );
-		submit_button();
-		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+		if (current_user_can('manage_options')) {
+			submit_button();
+			submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+		}
 		echo '</form>';
 	} else if( $active_tab == 'sgpxelevation' ) {
-		echo '<form method="post" action="options.php">';
+		if (current_user_can('manage_options')) {
+			echo '<form method="post" action="options.php">';
+		} else {
+			echo '<form>';
+		}
 		if ( LEAFEXT_SGPX_ACTIVE ) {
 			settings_fields('leafext_settings_sgpxparams');
 			do_settings_sections( 'leafext_settings_sgpxparams' );
-			submit_button();
+			if (current_user_can('manage_options')) {
+				submit_button();
+			}
 		} else if ( LEAFEXT_SGPX_UNCLEAN_DB ) {
 			settings_fields('leafext_settings_sgpx_unclean_db');
 			do_settings_sections( 'leafext_settings_sgpx_unclean_db' );
-			submit_button( __( 'Delete all settings from wp-gpx-maps!', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+			if (current_user_can('manage_options')) {
+				submit_button( __( 'Delete all settings from wp-gpx-maps!', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+			}
 		} else if ( LEAFEXT_SGPX_SGPX ) {
 			settings_fields('leafext_settings_sgpxparams');
 			do_settings_sections( 'leafext_settings_sgpxparams' );
-			submit_button( __( "I don't need this anymore. sgpx is always interpreted as elevation.", 'extensions-leaflet-map' ), 'delete', 'delete', false);
+			if (current_user_can('manage_options')) {
+				submit_button( __( "I don't need this anymore. sgpx is always interpreted as elevation.", 'extensions-leaflet-map' ), 'delete', 'delete', false);
+			}
 		} else {
 			echo '<h2>'.leafext_elevation_tab().'</h2>';
 			echo __('wp-gpx-maps is not installed and nothing is configured.',"extensions-leaflet-map");
 		}
 		echo '</form>';
 	} else if( $active_tab == 'elevationwaypoints' ) {
-		echo '<form method="post" action="options.php">';
+		if (current_user_can('manage_options')) {
+			echo '<form method="post" action="options.php">';
+		} else {
+			echo '<form>';
+		}
 		settings_fields('leafext_waypoints');
 		do_settings_sections( 'leafext_waypoints' );
-		submit_button();
-		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+		if (current_user_can('manage_options')) {
+			submit_button();
+			submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+		}
 		echo '</form>';
 	} else if( $active_tab == 'elevation' ) { //Last tab!!!
 		echo '<h2>'.leafext_elevation_tab().'</h2>';
-		echo '<form method="post" action="options.php">';
+		if (current_user_can('manage_options')) {
+			echo '<form method="post" action="options.php">';
+		} else {
+			echo '<form>';
+		}
 		settings_fields('leafext_settings_eleparams');
 		do_settings_sections( 'leafext_settings_eleparams' );
-		submit_button();
-		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+		if (current_user_can('manage_options')) {
+			submit_button();
+			submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+		}
 		echo '</form>';
 	} else {
 		echo "Error";

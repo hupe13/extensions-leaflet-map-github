@@ -34,7 +34,12 @@ add_action( 'admin_init', 'leafext_canvas_init' );
 function leafext_canvas_form() {
   $options = get_option( 'leafext_canvas' );
   $tolerance = ( is_array ($options) && $options['tolerance'] != "" )  ? $options['tolerance'] : "0";
-	echo '<input type="number"
+	if (!current_user_can('manage_options')) {
+		$disabled = " disabled ";
+	} else {
+		$disabled = "";
+	}
+	echo '<input '.$disabled.' type="number"
        min="0" max="20" size=3 name="leafext_canvas[tolerance]" value="'.$tolerance.'" /> (0 - 20)';
 }
 
@@ -55,10 +60,16 @@ function leafext_canvas_help() {
 
 // Draw the menu page itself
 function leafext_canvas_do_page (){
-	echo '<form method="post" action="options.php">';
+	if (current_user_can('manage_options')) {
+		echo '<form method="post" action="options.php">';
+	} else {
+		echo '<form>';
+	}
 	settings_fields('leafext_canvas');
 	do_settings_sections( 'leafext_canvas' );
-	submit_button();
-	submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+	if (current_user_can('manage_options')) {
+		submit_button();
+		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
+	}
 	echo '</form>';
 }

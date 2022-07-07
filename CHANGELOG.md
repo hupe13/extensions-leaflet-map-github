@@ -1,3 +1,9 @@
+### 3.0.1 / 220602
+
+* Solved Bug: detect Browser language in gesture handling
+* leaflet-gesture-handling-1.4.2
+* leaflet-elevation-2.2.6
+
 ### 3.0 / 220524
 
 * Solved Bugs

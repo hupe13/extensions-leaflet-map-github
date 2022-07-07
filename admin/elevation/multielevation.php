@@ -20,6 +20,11 @@ add_action('admin_init', 'leafext_multieleparams_init' );
 
 // Baue Abfrage der Params
 function leafext_form_multielevation($field) {
+	if (!current_user_can('manage_options')) {
+		$disabled = " disabled ";
+	} else {
+		$disabled = "";
+	}
 	//var_dump($field);
 	$options = leafext_multielevation_params();
 	//var_dump($options);
@@ -61,8 +66,14 @@ function leafext_form_multielevation($field) {
 			echo $option['default'];
 			echo '<br>';
 		}
-		echo '<input type="text" class="colorPicker" id="leafext_multieleparams['.$option['param'].']" name="leafext_multieleparams['.$option['param'].']"
-	 	data-default-color = "'.$option['default'].'" value = "'.$setting.'"/>';
+		if (current_user_can('manage_options')) {
+			echo '<input type="text" class="colorPicker" id="leafext_multieleparams['.$option['param'].']" name="leafext_multieleparams['.$option['param'].']"
+	 		data-default-color = "'.$option['default'].'" value = "'.$setting.'"/>';
+		} else {
+			echo '<svg width="25" height="25">
+			<rect width="25" height="25" style="fill:'.$option['default'].';stroke-width:1;stroke:rgb(0,0,0)" />
+			</svg>';
+		}
 	} else {
 
 		if ($setting != $option['default'] ) {
@@ -72,10 +83,10 @@ function leafext_form_multielevation($field) {
 			echo '<br>';
 		}
 
-		echo '<input type="radio" name="leafext_multieleparams['.$option['param'].']" value="1" ';
+		echo '<input '.$disabled.' type="radio" name="leafext_multieleparams['.$option['param'].']" value="1" ';
 		echo $setting ? 'checked' : '' ;
 		echo '> true &nbsp;&nbsp; ';
-		echo '<input type="radio" name="leafext_multieleparams['.$option['param'].']" value="0" ';
+		echo '<input '.$disabled.' type="radio" name="leafext_multieleparams['.$option['param'].']" value="0" ';
 		echo (!$setting) ? 'checked' : '' ;
 		echo '> false ';
 	}
