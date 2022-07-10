@@ -23,7 +23,7 @@ function leafext_help_table($leafext_plugin_name="") {
 	<table class="form-table" border="1" >
 	<thead><tr class="alternate"><th style="text-align:center">'.
 	__('Function','extensions-leaflet-map').
-	'</th><th style="text-align:center">Shortcode(s)</th><th style="text-align:center">'.
+	'</th><th style="text-align:center">Shortcode(s) / '.__('Function','extensions-leaflet-map').'</th><th style="text-align:center">'.
 	__('Leaflet Plugins and Elements','extensions-leaflet-map').
 	'</th></tr></thead>
 	<tbody>
@@ -37,6 +37,10 @@ function leafext_help_table($leafext_plugin_name="") {
 	.__('multiple tracks with elevation profiles','extensions-leaflet-map').
 	'</td><td><a href="?page='.$leafext_plugin_name.'&tab=multielevation">elevation-track, elevation-tracks, multielevation</a></td>
 	<td><a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a></td></tr>
+
+	<tr><td>'.__('Managing files','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=filemgr'.(current_user_can('manage_options')?'':'-list').'">File manager</a></td><td></td></tr>
+
+	<tr class="alternate"><td>'.__('Tracks from all files in a directory','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=filemgr-dir">leaflet-dir</a></td><td></td></tr>
 
 	<tr><td>'.__('switching tile servers','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=tileshelp">layerswitch</a></td><td><a href="https://leafletjs.com/examples/layers-control/">L.control.layers</a>, <a href="https://github.com/dayjournal/Leaflet.Control.Opacity">Leaflet.Control.Opacity</a>, <a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers</a></td></tr>
 
@@ -63,10 +67,9 @@ function leafext_help_table($leafext_plugin_name="") {
 	$ende = '<p>'.__('You may be interested in','extensions-leaflet-map').
 		' <a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>.</p>';
 
-	$ende = $ende.'<p>'.sprintf(__('If you want to help me, you can test to %smanage the files%s.','extensions-leaflet-map'),
-		'<a href="https://github.com/hupe13/extensions-leaflet-map-testing/">',
-		'</a>').'</p>';
-
+	// $ende = $ende.'<p>'.sprintf(__('If you want to help me, you can test to %smanage the files%s.','extensions-leaflet-map'),
+	// 	'<a href="https://github.com/hupe13/extensions-leaflet-map-testing/">',
+	// 	'</a>').'</p>';
 
 	if (is_singular() || is_archive() ) {
 		return $text;

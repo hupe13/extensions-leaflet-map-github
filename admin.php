@@ -7,6 +7,7 @@ include LEAFEXT_PLUGIN_DIR . '/admin/cluster/main.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/tiles/main.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/canvas.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/filemgr/main.php';
 
 // Add menu page for admin
 function leafext_add_page() {
@@ -30,6 +31,8 @@ function leafext_do_page() {
 	//
 	if ( strpos( $active_tab,  'elevation' ) !== false ) {
 		leafext_admin_elevation($active_tab);
+	} else if ( strpos( $active_tab, 'filemgr' ) !== false ) {
+		leafext_admin_filemgr($active_tab);
 	} else if ( strpos( $active_tab, 'cluster' ) !== false ) {
 		leafext_admin_cluster($active_tab);
 	} else if ( strpos( $active_tab, 'tiles' ) !== false ) {
@@ -61,8 +64,8 @@ function leafext_add_nonadmin_page() {
 	//Add Submenu
 	$leafext_autor_page =
 		add_submenu_page( 'leaflet-shortcode-helper',
-			'Extensions for Leaflet Map Options non Admin',
-			'Extensions for Leaflet Map non Admin',
+			'Extensions for Leaflet Map Options',
+			'Extensions for Leaflet Map',
 			'edit_posts',
 			$leafext_plugin_name,
 			'leafext_do_nonadmin_page');
@@ -76,6 +79,8 @@ function leafext_do_nonadmin_page() {
 	//
 	if ( strpos( $active_tab,  'elevation' ) !== false ) {
 		leafext_admin_elevation($active_tab);
+	} else if ( strpos( $active_tab, 'filemgr' ) !== false ) {
+		leafext_admin_filemgr($active_tab);
 	} else if ( strpos( $active_tab, 'cluster' ) !== false ) {
 		leafext_admin_cluster($active_tab);
 	} else if ( strpos( $active_tab, 'tiles' ) !== false ) {
@@ -102,7 +107,7 @@ function leafext_do_nonadmin_page() {
 
 function leafext_admin_tabs() {
 	$leafext_plugin_name = basename(dirname(  __FILE__  ));
-	echo '<div class="wrap">
+	echo '<div class="wrap nothickbox">
 	<h2>Extensions for Leaflet Map Options and Help</h2></div>'."\n";
 
 	$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'help';
@@ -118,6 +123,18 @@ function leafext_admin_tabs() {
 		echo ' nav-tab-active';
 	}
 	echo '">'. __('Elevation Profiles','extensions-leaflet-map'). '</a>'."\n";
+	//
+	if (current_user_can('manage_options')) {
+		echo '<a href="?page='.$leafext_plugin_name.'&tab=filemgr" class="nav-tab';
+		if ( strpos( $active_tab, 'filemgr' ) !== false ) {
+			echo ' nav-tab-active';
+		}
+		echo '">'.__('Manage Files',"extensions-leaflet-map").'</a>'."\n";
+	} else {
+		echo '<a href="?page='.$leafext_plugin_name.'&tab=filemgr-list" class="nav-tab';
+		echo $active_tab == 'filemgr-list' ? ' nav-tab-active' : '';
+		echo '">'.__('Manage Files',"extensions-leaflet-map").'</a>'."\n";
+	}
 	//
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=markercluster" class="nav-tab';
 	if ( strpos( $active_tab, 'cluster' ) !== false ) {
@@ -157,6 +174,7 @@ function leafext_admin_tabs() {
 		// 	'title' => '',
 		// ),
 	);
+
 	foreach ( $tabs as $tab) {
 		echo '<a href="?page='.$leafext_plugin_name.'&tab='.$tab['tab'].'" class="nav-tab';
 		$active = ( $active_tab == $tab['tab'] ) ? ' nav-tab-active' : '' ;
