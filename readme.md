@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, gpx, elevation, markercluster, zoomhome, hover, fullscreen  
 Tested up to: 6.0  
-Stable tag: 3.0.1    
+Stable tag: 3.1  
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later  
@@ -30,6 +30,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 ### Other functions
 
+*  File manager
 *  hover:
      * Highlight a gpx, kml or geojson element on mouse over
      * get a tooltip for marker, gpx, kml or geojson element on mouse over.
@@ -62,6 +63,9 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 * leaflet-gestures-1.4.3: Please check your Leaflet Map settings for scrollwheel. See the help for Gesture Handling!
 * Leaflet.Control.FullScreen 2.4.0
+* non-admin interface
+* File Manager
+* leaflet-dir: Tracks from all files in a directory
 
 ## Upgrade Notice
 
