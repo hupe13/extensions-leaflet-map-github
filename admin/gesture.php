@@ -99,7 +99,7 @@ function leafext_gesture_help_text() {
 	sprintf(__('It becomes active when Scroll Wheel Zoom (%s) is enabled.','extensions-leaflet-map'),
 	'<code>scrollwheel</code>');
 	echo '<li style="margin-left: 1.5em;"> '.
-	sprintf(__('It also becomes active on mobile only when %s is enabled.','extensions-leaflet-map'),
+	sprintf(__('It becomes active on mobile only when %s is enabled.','extensions-leaflet-map'),
 	'<code>dragging</code>');
 	echo '<li style="margin-left: 1.5em;"> '.
 	sprintf(__('Your %s setting for','extensions-leaflet-map'),
@@ -107,10 +107,10 @@ function leafext_gesture_help_text() {
 	' '.__('Scroll Wheel Zoom', 'leaflet-map').' (<code>scrollwheel</code>) '.
 	' '.__('is','extensions-leaflet-map').' ';
 	echo get_option('leaflet_scroll_wheel_zoom','0') == "1" ? "true" : "false";
-	echo ', <code>dragging</code> '.__('is true at default','extensions_leaflet_map').'.';
+	echo ', <code>dragging</code> '.__('is true at default','extensions-leaflet-map').'.';
 	echo '<li style="margin-left: 1.5em;"> '.
 	__('This means for you:','extensions-leaflet-map').' ';
-	echo get_option('leaflet_scroll_wheel_zoom','0') == "1" ? __("It is enabled on both desktop and mobile by default.",'extensions_leaflet_map') : __("It is enabled on mobile only by default.",'extensions_leaflet_map');
+	echo get_option('leaflet_scroll_wheel_zoom','0') == "1" ? __("It is enabled on both desktop and mobile by default.",'extensions-leaflet-map') : __("It is enabled on mobile only by default.",'extensions_leaflet_map');
 	echo '<li style="margin-left: 1.5em;"> '.
 	__('You can change it with ','extensions-leaflet-map').' <code>[leaflet-map ';
 	echo get_option('leaflet_scroll_wheel_zoom','0') == "1" ? '!' : "";
