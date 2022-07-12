@@ -180,21 +180,6 @@ function leafext_clustergroup_script($featuregroups,$params){
 										console.log(layer.feature.properties);
 								}
 
-								if (map.hasLayer(featGroups["others"]) && "others" in groups) {
-									//console.log("others count is "+featGroups["others"].getLayers().length);
-									control.removeLayer(featGroups["others"]);
-									if (featGroups["others"].getLayers().length > 0) {
-										control.addOverlay(featGroups["others"], groups["others"]);
-									}
-								}
-								if (map.hasLayer(featGroups["unknown"]) && "unknown" in groups) {
-									//console.log("unknown count is "+featGroups["unknown"].getLayers().length);
-									control.removeLayer(featGroups["unknown"]);
-									if (featGroups["unknown"].getLayers().length > 0) {
-										control.addOverlay(featGroups["unknown"], groups["unknown"]);
-									}
-								}
-
 							});
 						});
 					}
@@ -210,19 +195,6 @@ function leafext_clustergroup_script($featuregroups,$params){
 			//
 			for (key in groups) {
 				featGroups[key].addTo(map);
-			}
-
-			if (map.hasLayer(featGroups["others"]) && "others" in groups) {
-				//console.log("others count is "+featGroups["others"].getLayers().length);
-				if (featGroups["others"].getLayers().length == 0) {
-					control.removeLayer(featGroups["others"]);
-				}
-			}
-			if (map.hasLayer(featGroups["unknown"]) && "unknown" in groups) {
-				//console.log("others count is "+featGroups["others"].getLayers().length);
-				if (featGroups["unknown"].getLayers().length == 0) {
-					control.removeLayer(featGroups["unknown"]);
-			 	}
 			}
 		});
 		</script>';
