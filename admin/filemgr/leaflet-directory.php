@@ -16,5 +16,7 @@ function leafext_directory_help_text() {
   <li style="margin-left: 1.5em;"> start - (optional). '.sprintf(__('If %s and a file is a gpx file, display start point and cluster','extensions-leaflet-map'),'"leaflet"').'.
   </ul>
   ';
+  $text=$text.'<p>'.sprintf(__('Use the %sdirectory listing%s for simplicity.','extensions-leaflet-map'),
+  '<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=filemgr-list">','</a>').'</p>';
   return $text;
 }

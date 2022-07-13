@@ -48,45 +48,52 @@ function leafext_list_dir($directory,$extensions) {
 
 // Unterteile Liste aller Files in pages
 function leafext_list_paginate($files,$anzahl) {
-	$page = isset($_GET['page']) ? $_GET['page'] : "";
-	$tab = isset($_GET['tab']) ? $_GET['tab'] : "";
-	if (count($_POST) != 0) {
-		$all =	isset($_POST["all"]) ? '&all="on"' : "";
-		$dir =	isset($_POST["dir"]) ? "&dir=".$_POST["dir"] : "";
-	} else {
-		$all =	isset($_GET["all"])  ? '&all="on"' : "";
-		$dir =	isset($_GET["dir"])  ? "&dir=".$_GET["dir"] : "";
-	}
-	$pageurl = admin_url( 'admin.php' ).'?page='.$page.'&tab='.$tab.'&anzahl='.$anzahl.$all.$dir.'&nr=%_%';
-	$pages = intdiv(count($files), $anzahl) + 1;
-	$pagenr = max(1,isset($_GET["nr"]) ? $_GET["nr"] : "1");
-	$pagefiles = array_chunk($files, $anzahl);
+	if (count($files)>0) {
+		$page = isset($_GET['page']) ? $_GET['page'] : "";
+		$tab = isset($_GET['tab']) ? $_GET['tab'] : "";
+		if (count($_POST) != 0) {
+			$all =	isset($_POST["all"]) ? '&all="on"' : "";
+			$dir =	isset($_POST["dir"]) ? "&dir=".$_POST["dir"] : "";
+		} else {
+			$all =	isset($_GET["all"])  ? '&all="on"' : "";
+			$dir =	isset($_GET["dir"])  ? "&dir=".$_GET["dir"] : "";
+		}
+		$pageurl = admin_url( 'admin.php' ).'?page='.$page.'&tab='.$tab.'&anzahl='.$anzahl.$all.$dir.'&nr=%_%';
+		$pages = intdiv(count($files), $anzahl) + 1;
+		$pagenr = max(1,isset($_GET["nr"]) ? $_GET["nr"] : "1");
+		$pagefiles = array_chunk($files, $anzahl);
 
-	echo '<h2>Listing - page '.$pagenr.'/'.$pages.'</h2>';
-	echo '<p>';
-	if (count($pagefiles) > 1 ) {
-		echo paginate_links( array(
-			'base'               => $pageurl, // http://example.com/all_posts.php%_% : %_% is replaced by format (below).
-			'format'             => '%#%', // ?page=%#% : %#% is replaced by the page number.
-			'total'              => $pages,
-			'current'            => $pagenr,
-			'aria_current'       => 'page',
-			'show_all'           => false,
-			'prev_next'          => true,
-			'prev_text'          => __( '&laquo; Previous' ),
-			'next_text'          => __( 'Next &raquo;' ),
-			'end_size'           => 1,
-			'mid_size'           => 2,
-			'type'               => 'plain',
-			'add_args'           => array(), // Array of query args to add.
-			'add_fragment'       => '',
-			'before_page_number' => '',
-			'after_page_number'  => '',
-		));
+		echo '<h2>'.__('Listing - page','extensions-leaflet-map').' '.$pagenr.'/'.$pages.'</h2>';
+		echo '<p>';
+		if (count($pagefiles) > 1 ) {
+			echo paginate_links( array(
+				'base'               => $pageurl, // http://example.com/all_posts.php%_% : %_% is replaced by format (below).
+				'format'             => '%#%', // ?page=%#% : %#% is replaced by the page number.
+				'total'              => $pages,
+				'current'            => $pagenr,
+				'aria_current'       => 'page',
+				'show_all'           => false,
+				'prev_next'          => true,
+				'prev_text'          => __( '&laquo; Previous' ),
+				'next_text'          => __( 'Next &raquo;' ),
+				'end_size'           => 1,
+				'mid_size'           => 2,
+				'type'               => 'plain',
+				'add_args'           => array(), // Array of query args to add.
+				'add_fragment'       => '',
+				'before_page_number' => '',
+				'after_page_number'  => '',
+			));
+		}
+		echo '</p><p>';
+		echo leafext_files_table($pagefiles[$pagenr - 1]);
+		echo '</p>';
+	} else {
+		echo '<h2>'.__('Listing Files','extensions-leaflet-map').'</h2>';
+		echo '<p>';
+		echo __('no files','extensions-leaflet-map');
+		echo '</p>';
 	}
-	echo '</p><p>';
-	echo leafext_files_table($pagefiles[$pagenr - 1]);
-	echo '</p>';
 }
 
 // enqueue javascript and css for creating shortcode for copy
