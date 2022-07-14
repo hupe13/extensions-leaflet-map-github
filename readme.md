@@ -65,7 +65,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 * Leaflet.Control.FullScreen 2.4.0
 * Backend interface for non-admin
 * File Manager
-* leaflet-dir: Tracks from all files in a directory
+* leaflet-directory: Tracks from all files in a directory
 
 ## Upgrade Notice
 
