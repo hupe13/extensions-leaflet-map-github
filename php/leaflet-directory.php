@@ -27,9 +27,11 @@ function leafext_directory_function($atts) {
     'url' => "",
     'type' => "gpx",
     'start' => false,
-    'cmd' => "track", //leaflet, track
+    'elevation' => true,
+    'leaflet' => false,
   );
   $options = shortcode_atts($defaults, leafext_clear_params($atts));
+  if ($options['leaflet']) $options['elevation'] = false;
   //var_dump($options);
 
   if ( $options['src'] == "" ) {
@@ -68,7 +70,7 @@ function leafext_directory_function($atts) {
     $dirpath = "";
   }
 
-  if ( $options['cmd'] == "track") {
+  if ( $options['elevation'] ) {
     $type = "gpx";
   } else {
     $valid = array_diff(explode(",",$options['type']), array ("gpx","kml","geojson","json"));
@@ -85,7 +87,6 @@ function leafext_directory_function($atts) {
     }
   }
 
-  //var_dump($dirpath.$dir."/*".$options['type']);
   $files = glob($dirpath.$dir.'/*.{'.$type.'}', GLOB_BRACE);
   if (count($files) == 0) {
     $options['type'] = '...not found any... '.$options['type'];
@@ -97,7 +98,7 @@ function leafext_directory_function($atts) {
     return $text;
   }
 
-  if ( $options['cmd'] == "leaflet") {
+  if ( $options['leaflet'] ) {
     $farben=array("green","red","blue","yellow","orange");
     $count=1;
     $shortcode='';
@@ -149,4 +150,4 @@ function leafext_directory_function($atts) {
     return $text;
   }
 }
-add_shortcode('leaflet-dir', 'leafext_directory_function' );
+add_shortcode('leaflet-directory', 'leafext_directory_function' );

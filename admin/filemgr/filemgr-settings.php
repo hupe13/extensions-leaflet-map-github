@@ -102,7 +102,7 @@ function leafext_filemgr_settings() {
 }
 
 function leafext_managefiles_help() {
-	echo __('Here you can see all gpx, kml, geojson, json and tcx files in subdirectories of uploads directory.','extensions-leaflet-map').' ';
+	echo __('Here you can display all gpx, kml, geojson, json and tcx files in subdirectories of uploads directory.','extensions-leaflet-map').' ';
 	echo __('You can manage these','extensions-leaflet-map');
 	if (!current_user_can('manage_options')) {
 		echo ' '.__('according to your permissions','extensions-leaflet-map');
@@ -122,9 +122,6 @@ function leafext_managefiles_help() {
 	echo '</li>';
 	echo '<li style="margin-left: 1.5em;">';
 	echo __('or in your own way.','extensions-leaflet-map');
-	echo '</li>';
-	echo '<li style="margin-left: 1.5em;">';
-	echo __('...','extensions-leaflet-map');
 	echo '</li>';
 	echo '</ul>';
 }
