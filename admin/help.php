@@ -38,9 +38,9 @@ function leafext_help_table($leafext_plugin_name="") {
 	'</td><td><a href="?page='.$leafext_plugin_name.'&tab=multielevation">elevation-track, elevation-tracks, multielevation</a></td>
 	<td><a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a></td></tr>
 
-	<tr><td>'.__('Managing files','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=filemgr'.(current_user_can('manage_options')?'':'-list').'">File manager</a></td><td></td></tr>
+	<tr><td>'.__('Files for Leaflet Map','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=filemgr'.(current_user_can('manage_options')?'':'-list').'">Files for Leaflet Map</a></td><td></td></tr>
 
-	<tr class="alternate"><td>'.__('Tracks from all files in a directory','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=filemgr-dir">leaflet-dir</a></td><td></td></tr>
+	<tr class="alternate"><td>'.__('Tracks from all files in a directory','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=filemgr-dir">leaflet-directory</a></td><td></td></tr>
 
 	<tr><td>'.__('switching tile servers','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=tileshelp">layerswitch</a></td><td><a href="https://leafletjs.com/examples/layers-control/">L.control.layers</a>, <a href="https://github.com/dayjournal/Leaflet.Control.Opacity">Leaflet.Control.Opacity</a>, <a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers</a></td></tr>
 

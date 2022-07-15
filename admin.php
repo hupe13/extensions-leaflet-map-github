@@ -129,11 +129,11 @@ function leafext_admin_tabs() {
 		if ( strpos( $active_tab, 'filemgr' ) !== false ) {
 			echo ' nav-tab-active';
 		}
-		echo '">'.__('Manage Files',"extensions-leaflet-map").'</a>'."\n";
+		echo '">'.__('Files for Leaflet Map',"extensions-leaflet-map").'</a>'."\n";
 	} else {
 		echo '<a href="?page='.$leafext_plugin_name.'&tab=filemgr-list" class="nav-tab';
 		echo $active_tab == 'filemgr-list' ? ' nav-tab-active' : '';
-		echo '">'.__('Manage Files',"extensions-leaflet-map").'</a>'."\n";
+		echo '">'.__('Files for Leaflet Map',"extensions-leaflet-map").'</a>'."\n";
 	}
 	//
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=markercluster" class="nav-tab';

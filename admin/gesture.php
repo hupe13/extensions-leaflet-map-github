@@ -77,43 +77,54 @@ function leafext_validate_gesture($input) {
 
 // Erklaerung
 function leafext_gesture_help_text() {
-	echo '<img src="'.LEAFEXT_PLUGIN_PICTS.'gesture.png"><p>'
+	$text = "";
+	if (!(is_singular() || is_archive() )) {
+		$text = $text . '<img src="'.LEAFEXT_PLUGIN_PICTS.'gesture.png">';
+	}
+	$text = $text . '<p>'
 	.__('Brings the basic functionality of Gesture Handling into Leaflet Map. Prevents users from getting trapped on the map when scrolling a long page.','extensions-leaflet-map');
-	echo '</p><ul style="list-style: disc;">';
+	$text = $text . '</p><ul style="list-style: disc;">';
 
-	if (current_user_can('manage_options')) {
-		echo '<li style="margin-left: 1.5em;"> '.__('You can enable it for all maps or for individual maps.','extensions-leaflet-map');
+	if ( current_user_can('manage_options') || (is_singular() || is_archive()) ) {
+		$text = $text . '<li style="margin-left: 1.5em;"> '.__('You can enable it for all maps or for individual maps.','extensions-leaflet-map');
 	} else {
-		echo '<li style="margin-left: 1.5em;"> ';
+		$text = $text . '<li style="margin-left: 1.5em;"> ';
 		$settings = leafext_gesture_settings();
 		//var_dump($settings);
 		if ($settings['leafext_gesture_on']) {
-			echo __('It is enabled for all maps.','extensions-leaflet-map');
+			$text = $text . __('It is enabled for all maps.','extensions-leaflet-map');
 		} else {
-			echo __('It is disabled by default. You can enable it for a map with','extensions-leaflet-map').' <code>[gestures]</code>.';
+			$text = $text . __('It is disabled by default. You can enable it for a map with','extensions-leaflet-map').' <code>[gestures]</code>.';
 		}
 	}
-	echo '<li style="margin-left: 1.5em;"> '.__('When Gesture Handling is enabled:','extensions-leaflet-map');
-	echo '<ul style="list-style: disc;"><p>';
-	echo '<li style="margin-left: 1.5em;"> '.
+	$text = $text . '<li style="margin-left: 1.5em;"> '.__('When Gesture Handling is enabled:','extensions-leaflet-map');
+	$text = $text . '<ul style="list-style: disc;"><p>';
+	$text = $text . '<li style="margin-left: 1.5em;"> '.
 	sprintf(__('It becomes active when Scroll Wheel Zoom (%s) is enabled.','extensions-leaflet-map'),
 	'<code>scrollwheel</code>');
-	echo '<li style="margin-left: 1.5em;"> '.
-	sprintf(__('It becomes active on mobile only when %s is enabled.','extensions-leaflet-map'),
+	$text = $text . '<li style="margin-left: 1.5em;"> '.
+	sprintf(__('It becomes active on a touch device only when %s is enabled.','extensions-leaflet-map'),
 	'<code>dragging</code>');
-	echo '<li style="margin-left: 1.5em;"> '.
-	sprintf(__('Your %s setting for','extensions-leaflet-map'),
-	'<a href="'.get_admin_url().'admin.php?page=leaflet-map">Leaflet Map</a>').
-	' '.__('Scroll Wheel Zoom', 'leaflet-map').' (<code>scrollwheel</code>) '.
-	' '.__('is','extensions-leaflet-map').' ';
-	echo get_option('leaflet_scroll_wheel_zoom','0') == "1" ? "true" : "false";
-	echo ', <code>dragging</code> '.__('is true at default','extensions-leaflet-map').'.';
-	echo '<li style="margin-left: 1.5em;"> '.
-	__('This means for you:','extensions-leaflet-map').' ';
-	echo get_option('leaflet_scroll_wheel_zoom','0') == "1" ? __("It is enabled on both desktop and mobile by default.",'extensions-leaflet-map') : __("It is enabled on mobile only by default.",'extensions_leaflet_map');
-	echo '<li style="margin-left: 1.5em;"> '.
-	__('You can change it with ','extensions-leaflet-map').' <code>[leaflet-map ';
-	echo get_option('leaflet_scroll_wheel_zoom','0') == "1" ? '!' : "";
-	echo 'scrollwheel !dragging]</code>';
-	echo '</p></ul></ul>';
+	if (!(is_singular() || is_archive())) {
+		$text = $text . '<li style="margin-left: 1.5em;"> '.
+		sprintf(__('Your %s setting for','extensions-leaflet-map'),
+		'<a href="'.get_admin_url().'admin.php?page=leaflet-map">Leaflet Map</a>').
+		' '.__('Scroll Wheel Zoom', 'leaflet-map').' (<code>scrollwheel</code>) '.
+		' '.__('is','extensions-leaflet-map').' ';
+		$text = $text . (get_option('leaflet_scroll_wheel_zoom','0') == "1" ? "true" : "false");
+		$text = $text . ', <code>dragging</code> '.__('is true at default','extensions-leaflet-map').'.';
+		$text = $text . '<li style="margin-left: 1.5em;"> '.
+		__('This means for you:','extensions-leaflet-map').' ';
+		$text = $text . (get_option('leaflet_scroll_wheel_zoom','0') == "1" ? __("It is enabled on both desktop and touch device by default.",'extensions-leaflet-map') : __("It is only enabled on touch devices by default.",'extensions_leaflet_map'));
+		$text = $text . '<li style="margin-left: 1.5em;"> '.
+		__('You can change it with ','extensions-leaflet-map').' <code>[leaflet-map ';
+		$text = $text . (get_option('leaflet_scroll_wheel_zoom','0') == "1" ? '!' : "");
+		$text = $text . 'scrollwheel !dragging]</code>';
+	}
+	$text = $text . '</p></ul></ul>';
+	if (is_singular() || is_archive() ) {
+		return $text;
+	} else {
+		echo $text;
+	}
 }

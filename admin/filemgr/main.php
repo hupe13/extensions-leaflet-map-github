@@ -18,7 +18,7 @@ function leafext_filemgr_tab() {
 	if (current_user_can('manage_options')) {
 		$tabs[] = array (
 			'tab' => 'filemgr',
-			'title' => __('File Manager','extensions-leaflet-map'),
+			'title' => __('Files for Leaflet Map','extensions-leaflet-map'),
 		);
 	}
 	$tabs[] =	array (
