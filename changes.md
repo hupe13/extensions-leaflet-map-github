@@ -2,4 +2,4 @@
 * Leaflet.Control.FullScreen 2.4.0
 * non-admin interface
 * File Manager
-* leaflet-dir: Tracks from all files in a directory
+* leaflet-directory: Tracks from all files in a directory

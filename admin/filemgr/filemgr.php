@@ -207,12 +207,12 @@ function leafext_managefiles() {
 			if ($dir != "/") {
 				echo '<div><a href="?page='.$page.'&tab=filemgr-dir">Shortcode</a> '.__('for showing all files of this directory on a map',"extensions-leaflet-map").':'.
 				'<span class="leafexttooltip" href="#" onclick="leafext_createShortcode('.
-				"'leaflet-dir  src='".','.
+				"'leaflet-directory  src='".','.
 				"'',".
 				"'/".trim($dir,'/')."/'".')"'.
 				'onmouseout="leafext_outFunc()">'.
 				'<span class="leafextcopy" id="leafextTooltip">Copy to clipboard</span>'.
-				'<code>[leaflet-dir src="/'.trim($dir,'/').'/"]</code>'.
+				'<code>[leaflet-directory src="/'.trim($dir,'/').'/"]</code>'.
 				'</span>'.
 				'</div>';
 			}
