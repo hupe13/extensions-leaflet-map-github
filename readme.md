@@ -30,7 +30,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 ### Other functions
 
-*  File manager
+*  List files for Leaflet Map
 *  hover:
      * Highlight a gpx, kml or geojson element on mouse over
      * get a tooltip for marker, gpx, kml or geojson element on mouse over.
