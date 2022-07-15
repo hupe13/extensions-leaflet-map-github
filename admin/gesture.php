@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) or die();
 
 // init settings fuer gesture
 function leafext_gesture_init(){
-	add_settings_section( 'gesture_settings', 'Gesture Handling', 'leafext_gesture_help_text', 'leafext_settings_gesture' );
+	add_settings_section( 'gesture_settings', __('Gesture Handling','extensions-leaflet-map', 'leafext_gesture_help_text', 'leafext_settings_gesture' );
 	//	add_settings_field( 'leafext_gesture_on', 'gesture_on', 'leafext_form_gesture', 'leafext_settings_gesture', 'gesture_settings' );
 	$fields = leafext_gesture_params();
 	foreach($fields as $field) {

@@ -38,7 +38,7 @@ function leafext_help_table($leafext_plugin_name="") {
 	'</td><td><a href="?page='.$leafext_plugin_name.'&tab=multielevation">elevation-track, elevation-tracks, multielevation</a></td>
 	<td><a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a></td></tr>
 
-	<tr><td>'.__('Files for Leaflet Map','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=filemgr'.(current_user_can('manage_options')?'':'-list').'">Files for Leaflet Map</a></td><td></td></tr>
+	<tr><td>'.__('Files for Leaflet Map','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=filemgr'.(current_user_can('manage_options')?'':'-list').'">'.__('Files for Leaflet Map','extensions-leaflet-map').'</a></td><td></td></tr>
 
 	<tr class="alternate"><td>'.__('Tracks from all files in a directory','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=filemgr-dir">leaflet-directory</a></td><td></td></tr>
 
