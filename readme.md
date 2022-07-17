@@ -59,7 +59,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 3.0.2 / 220xxx
+### 3.1 / 220xxx
 
 * leaflet-gestures-1.4.3: Please check your Leaflet Map settings for scrollwheel. See the help for Gesture Handling!
 * Leaflet.Control.FullScreen 2.4.0
@@ -69,7 +69,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Upgrade Notice
 
-### 3.0.2
+### 3.1
 
 Please check your Leaflet Map settings for scrollwheel. See the help for Gesture Handling!
 
