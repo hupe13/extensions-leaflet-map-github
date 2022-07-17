@@ -100,10 +100,10 @@ function leafext_gesture_help_text() {
 	$text = $text . '<li style="margin-left: 1.5em;"> '.__('When Gesture Handling is enabled:','extensions-leaflet-map');
 	$text = $text . '<ul style="list-style: disc;"><p>';
 	$text = $text . '<li style="margin-left: 1.5em;"> '.
-	sprintf(__('It becomes active when Scroll Wheel Zoom (%s) is enabled.','extensions-leaflet-map'),
+	sprintf(__('If Scroll Wheel Zoom (%s) is enabled, it becomes active on both desktop and touch devices.','extensions-leaflet-map'),
 	'<code>scrollwheel</code>');
 	$text = $text . '<li style="margin-left: 1.5em;"> '.
-	sprintf(__('It becomes active on a touch device only when %s is enabled.','extensions-leaflet-map'),
+	sprintf(__('If %s is enabled, it becomes active on touch devices only.','extensions-leaflet-map'),
 	'<code>dragging</code>');
 	if (!(is_singular() || is_archive())) {
 		$text = $text . '<li style="margin-left: 1.5em;"> '.
