@@ -19,7 +19,7 @@ function leafext_listing_form_types() {
 	if (count($_POST) != 0) {
 		$type =	isset($_POST["type"]) ? $_POST["type"] : "";
 	} else if ( isset($_GET["type"] ) ) {
-		$type = $_GET["type"];
+		$type = array($_GET["type"]);
 	} else {
 		$stored = get_option('leafext_file_listing_'.get_current_user_id());
 		if (is_array($stored)) {
@@ -180,10 +180,11 @@ function leafext_managefiles() {
 		} else {
 			$dir = isset($_GET["dir"]) ? $_GET["dir"] : "";
 			$all = isset($_GET['all']) ? $_GET['all'] : '';
-			$type =	isset($_GET["type"]) ? $_GET["type"] : "";
+			$type =	isset($_GET["type"]) ? array($_GET["type"]) : "";
 			$anzahl = isset($_GET["anzahl"]) ? $_GET["anzahl"] : "10";
 		}
 		$extensions = is_array($type) ? '{'.implode(",", $type).'}' : '{gpx,kml,geojson,json,tcx}';
+		//var_dump($extensions);
 
 		if ( $dir == "" && $all == "" && !current_user_can('manage_options')) leafext_managefiles_help();
 

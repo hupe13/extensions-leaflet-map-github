@@ -52,13 +52,17 @@ function leafext_list_paginate($files,$anzahl) {
 		$page = isset($_GET['page']) ? $_GET['page'] : "";
 		$tab = isset($_GET['tab']) ? $_GET['tab'] : "";
 		if (count($_POST) != 0) {
+			//var_dump($_POST);
 			$all =	isset($_POST["all"]) ? '&all="on"' : "";
 			$dir =	isset($_POST["dir"]) ? "&dir=".$_POST["dir"] : "";
+			$type =	isset($_POST["type"]) ? "&type=".implode(",", $_POST["type"]) : "";
 		} else {
+			//var_dump($_GET); 
 			$all =	isset($_GET["all"])  ? '&all="on"' : "";
 			$dir =	isset($_GET["dir"])  ? "&dir=".$_GET["dir"] : "";
+			$type = isset($_GET["type"]) ? "&type=".$_GET["type"] : "";
 		}
-		$pageurl = admin_url( 'admin.php' ).'?page='.$page.'&tab='.$tab.'&anzahl='.$anzahl.$all.$dir.'&nr=%_%';
+		$pageurl = admin_url( 'admin.php' ).'?page='.$page.'&tab='.$tab.'&anzahl='.$anzahl.$type.$all.$dir.'&nr=%_%';
 		$pages = intdiv(count($files), $anzahl) + 1;
 		$pagenr = max(1,isset($_GET["nr"]) ? $_GET["nr"] : "1");
 		$pagefiles = array_chunk($files, $anzahl);
