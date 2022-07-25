@@ -560,6 +560,9 @@ function leafext_elevation_pace($options) {
 		}
 		$text = $text.'import("'.LEAFEXT_ELEVATION_URL.'src/handlers/pace.js"),';
 		$text = $text.'import("'.LEAFEXT_ELEVATION_URL.'src/handlers/speed.js"),';
+		if ( (bool)$options['acceleration'] ) {
+			$text = $text.'import("'.TESTLEAFEXT_ELEVATION_URL.'src/handlers/acceleration.js"),';
+		}
 		$text = $text.']';
 		$options['handlers'] = $text;
 		//pace.label      = opts.paceLabel  || L._(opts.imperial ? 'min/mi' : 'min/km');
