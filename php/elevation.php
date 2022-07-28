@@ -472,6 +472,7 @@ function leafext_elevation_locale() {
 		"Min Acceleration: "	: "'._x("Min Acceleration", "In Frontend", "extensions-leaflet-map").': ",
 		"Max Acceleration: "	: "'._x("Max Acceleration", "In Frontend", "extensions-leaflet-map").': ",
 		"Avg Acceleration: "	: "'._x("Avg Acceleration", "In Frontend", "extensions-leaflet-map").': ",
+		"Pace"						: "'._x("Pace", "In Frontend", "extensions-leaflet-map").': ",
 		"Min Pace: "			: "'._x("Min Pace", "In Frontend", "extensions-leaflet-map").': ",
 		"Max Pace: "			: "'._x("Max Pace", "In Frontend", "extensions-leaflet-map").': ",
 		"Avg Pace: "			: "'._x("Avg Pace", "In Frontend", "extensions-leaflet-map").': ",
@@ -561,7 +562,7 @@ function leafext_elevation_pace($options) {
 		$text = $text.'import("'.LEAFEXT_ELEVATION_URL.'src/handlers/pace.js"),';
 		$text = $text.'import("'.LEAFEXT_ELEVATION_URL.'src/handlers/speed.js"),';
 		if ( (bool)$options['acceleration'] ) {
-			$text = $text.'import("'.TESTLEAFEXT_ELEVATION_URL.'src/handlers/acceleration.js"),';
+			$text = $text.'import("'.LEAFEXT_ELEVATION_URL.'src/handlers/acceleration.js"),';
 		}
 		$text = $text.']';
 		$options['handlers'] = $text;
