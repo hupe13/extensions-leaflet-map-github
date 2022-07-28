@@ -32,8 +32,8 @@
 		if ( s === 60 ) { m++; s = 0; }
 		if ( m === 60 ) { h++; m = 0; }
 		if ( h === 24 ) { d++; h = 0; }
-		if ( !d && !h && !m ) return                                                                         s.toString().padStart(2, 0) + '"';
-		if ( !d && !h )       return                                     m.toString().padStart(2, 0) + "'" + s.toString().padStart(2, 0) + '"';
+		if ( !d && !h && !m ) return s.toString().padStart(2, 0) + '"';
+		if ( !d && !h ) return m.toString().padStart(2, 0) + "'" + s.toString().padStart(2, 0) + '"';
 		return (d ? d + "d " : '') + h.toString().padStart(2, 0) + ':' + m.toString().padStart(2, 0) + "'" + s.toString().padStart(2, 0) + '"';
 	}
 
@@ -138,8 +138,8 @@
 	/**
 	 * TODO: use generators instead? (ie. "yield")
 	 */
-	const iMax = (iVal, max = -Infinity) => (iVal > max ? iVal : max);
-	const iMin  = (iVal, min = +Infinity) => ((iVal && iVal < min) ? iVal : min );
+	const iMax = (iVal, max = -Infinity) => (iVal > max ? iVal : max); 
+	const iMin = (iVal, min = +Infinity) => ((iVal && iVal < min) ? iVal : min );
 	const iMinP = (iVal, min = +Infinity) => ((iVal && iVal < min && iVal > 0) ? iVal : min );
 	const iAvg = (iVal, avg = 0, idx = 1) => (iVal && idx > 1) ? (iVal + avg * (idx - 1)) / idx : avg ;
 	const iSum = (iVal, sum = 0) => iVal + sum;
@@ -165,6 +165,30 @@
 	 * Limit a delta difference between two values
 	 */
 	const wrapDelta = (curr, prev, deltaMax) => Math.abs(curr - prev) > deltaMax ? prev + deltaMax * Math.sign(curr - prev) : curr;
+
+	function tooltipvalue(value,count){
+		comma = count - 1 - Math.floor(Math.log10(Math.abs(value)));
+		factor = Math.pow(10,comma);
+		result = Math.round(value * factor) / factor;
+		return result;
+	}
+
+	function tooltiptime(t) {
+		const SEC  = 1000;
+		const MIN  = SEC * 60;
+		const HOUR = MIN * 60;
+		const DAY  = HOUR * 24;
+		let d = Math.floor(t / DAY);
+		let h = Math.floor( (t - d * DAY) / HOUR);
+		let m = Math.floor( (t - d * DAY - h * HOUR) / MIN);
+		let s = Math.round( (t - d * DAY - h * HOUR - m * MIN) / SEC);
+		if ( s === 60 ) { m++; s = 0; }
+		if ( m === 60 ) { h++; m = 0; }
+		if ( h === 24 ) { d++; h = 0; }
+		if ( !d && !h && !m ) return                                                                         s.toString().padStart(2, 0) + '"';
+		if ( !d && !h )       return                                     m.toString().padStart(2, 0) + "'" + s.toString().padStart(2, 0) + '"';
+		return (d ? d + "d " : '') + h.toString().padStart(2, 0) + ':' + m.toString().padStart(2, 0) + "'" + s.toString().padStart(2, 0) + '"';
+	}
 
 	var _ = /*#__PURE__*/Object.freeze({
 		__proto__: null,
@@ -202,7 +226,9 @@
 		hasClass: hasClass,
 		round: round,
 		clamp: clamp,
-		wrapDelta: wrapDelta
+		wrapDelta: wrapDelta,
+		tooltipvalue: tooltipvalue,
+		tooltiptime: tooltiptime
 	});
 
 	var Options = {
@@ -386,7 +412,7 @@
 
 		/**
 		 * TODO: Create a base class to handle custom data attributes (heart rate, cadence, temperature, ...)
-		 *
+		 * 
 		 * @link https://leafletjs.com/examples/extending/extending-3-controls.html#handlers
 		 */
 		// addHandler: function (name, HandlerClass) {
@@ -632,13 +658,13 @@
 
 				// GARMIN_EXTENSIONS = ["hr", "cad", "atemp", "wtemp", "depth", "course", "bearing"];
 				point.meta = point.meta ?? { time: null, ele: null };
-
+				
 				point.prev = (attr) => (attr ? this._data[i > 0 ? i - 1 : 0][attr] : this._data[i > 0 ? i - 1 : 0]);
 
 				this.fire("elepoint_init", { point: point, props: props, id: i, isMulti: nestingLevel });
 
 				this._addPoint(
-					point.lat ?? point[1],
+					point.lat ?? point[1], 
 					point.lng ?? point[0],
 					point.alt ?? point.meta.ele ?? point[2]
 				);
@@ -823,7 +849,7 @@
 
 		/**
 		 * Partial fix for initial tooltip size
-		 *
+		 * 
 		 * @link https://github.com/Raruto/leaflet-elevation/issues/81#issuecomment-713477050
 		 */
 		_fixTooltipSize: function() {
@@ -893,14 +919,14 @@
 			]).then((m) => {
 
 				let chart = this._chart = new (m[1] || Elevation).Chart(opts, this);
-
+		
 				this._x     = this._chart._x;
 				this._y     = this._chart._y;
-
+		
 				d3
 					.select(container)
 					.call(chart.render());
-
+		
 				chart
 					.on('reset_drag',      this._hideMarker,     this)
 					.on('mouse_enter',     this._onMouseEnter,   this)
@@ -911,8 +937,8 @@
 					.on('zoom',            this._updateChart,    this)
 					.on('elepath_toggle',  this._onToggleChart,  this)
 					.on('margins_updated', this._resizeChart,    this);
-
-
+		
+		
 				this.fire("elechart_init");
 
 				map
@@ -1134,11 +1160,11 @@
 				let item = this._findItemForLatLng(latlng);
 				if (item) {
 					let xCoord = item.xDiagCoord;
-
+		
 					if (this._chartEnabled) this._chart._showDiagramIndicator(item, xCoord);
-
+		
 					this._updateMarker(item);
-
+		
 					this.fire("elechart_change", { data: item, xCoord: xCoord });
 				}
 			}
@@ -1280,7 +1306,7 @@
 			let i, curr, prev, attr;
 
 			// save here a reference to last used point
-			let lastValid = null;
+			let lastValid = null; 
 
 			// iteration
 			this.on("elepoint_added", ({index, point}) => {
@@ -1328,7 +1354,7 @@
 				if (props.deltaMax) {
 					curr[attr] =wrapDelta(curr[attr], prev[attr], props.deltaMax);
 				}
-
+				
 				// Range of acceptable values.
 				if (props.clampRange) {
 					curr[attr] = clamp(curr[attr], props.clampRange);
@@ -1427,7 +1453,7 @@
 			}
 			return this._addMarker(marker)
 		},
-
+		
 		/**
 		 * Add chart or marker tooltip info
 		 */
@@ -1509,13 +1535,13 @@
 		_updateChart: function() {
 			if (this._chart && this._container) {
 				this.fire("elechart_axis");
-
+		
 				this._chart.update({ data: this._data, options: this.options });
-
+		
 				this._x     = this._chart._x;
 				this._y     = this._chart._y;
-
-				this.fire('elechart_updated');
+		
+				this.fire('elechart_updated');		
 			}
 		},
 
@@ -1640,29 +1666,4 @@
 	L.control.elevation = (options) => new Elevation(options);
 
 }));
-
-function tooltipvalue(value,count){
-	comma = count - 1 - Math.floor(Math.log10(Math.abs(value)));
-	factor = Math.pow(10,comma);
-	result = Math.round(value * factor) / factor;
-	return result;
-}
-
-function tooltiptime(t) {
-	const SEC  = 1000;
-	const MIN  = SEC * 60;
-	const HOUR = MIN * 60;
-	const DAY  = HOUR * 24;
-	let d = Math.floor(t / DAY);
-	let h = Math.floor( (t - d * DAY) / HOUR);
-	let m = Math.floor( (t - d * DAY - h * HOUR) / MIN);
-	let s = Math.round( (t - d * DAY - h * HOUR - m * MIN) / SEC);
-	if ( s === 60 ) { m++; s = 0; }
-	if ( m === 60 ) { h++; m = 0; }
-	if ( h === 24 ) { d++; h = 0; }
-	if ( !d && !h && !m ) return                                                                         s.toString().padStart(2, 0) + '"';
-	if ( !d && !h )       return                                     m.toString().padStart(2, 0) + "'" + s.toString().padStart(2, 0) + '"';
-	return (d ? d + "d " : '') + h.toString().padStart(2, 0) + ':' + m.toString().padStart(2, 0) + "'" + s.toString().padStart(2, 0) + '"';
-}
-
 //# sourceMappingURL=leaflet-elevation.js.map
