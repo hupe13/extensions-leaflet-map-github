@@ -162,8 +162,7 @@ export const clamp     = (val, range)           => range ? (val < range[0] ? ran
 export const wrapDelta = (curr, prev, deltaMax) => Math.abs(curr - prev) > deltaMax ? prev + deltaMax * Math.sign(curr - prev) : curr;
 
 export function tooltipvalue(value,count){
-	comma = count - 1 - Math.floor(Math.log10(Math.abs(value)));
-	factor = Math.pow(10,comma);
-	result = Math.round(value * factor) / factor;
-	return result;
+	let comma = count - 1 - Math.floor(Math.log10(Math.abs(value)));
+	let factor = Math.pow(10,comma);
+	return Math.round(value * factor) / factor;
 }
