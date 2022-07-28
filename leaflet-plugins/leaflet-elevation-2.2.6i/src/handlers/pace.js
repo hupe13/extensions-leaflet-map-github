@@ -47,17 +47,17 @@ export function Pace() {
 		summary: (this.options.pace) && {
 			"minpace"  : {
 				label: "Min Pace: ",
-				value: (track, distunit) => (tooltiptime(track.pace_max * 1000 * 60) || 0) + '&nbsp;' + distunit,
+				value: (track, unit) => (tooltiptime(track.pace_max * 1000 * 60) || 0) + '&nbsp;' + unit,
 				order: 51
 			},
 			"maxpace"  : {
 				label: "Max Pace: ",
-				value: (track, distunit) => (tooltiptime(track.pace_min * 1000 * 60) || 0) + '&nbsp;' + distunit,
+				value: (track, unit) => (tooltiptime(track.pace_min * 1000 * 60) || 0) + '&nbsp;' + unit,
 				order: 51
 			},
 			"avgpace": {
 				label: "Avg Pace: ",
-				value: (track, distunit) => (tooltiptime(track.pace_avg * 1000 * 60) || 0) + '&nbsp;' + distunit,
+				value: (track, unit) => tooltiptime( Math.abs((track.time / track.distance) / opts.paceFactor)*60) + '&nbsp;' + unit,
 				order: 52
 			},
 		}

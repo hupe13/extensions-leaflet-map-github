@@ -58,7 +58,7 @@ export function Speed() {
 			},
 			"avgspeed": {
 				label: "Avg Speed: ",
-				value: (track, unit) => tooltipvalue(track.speed_avg,2) + '&nbsp;' + unit,
+				value: (track, unit) => tooltipvalue(Math.abs((track.distance * 1000 / track.time) * opts.timeFactor) * opts.speedFactor,2) + '&nbsp;' + unit,
 				order: 52
 			},
 		}
