@@ -41,24 +41,24 @@ export function Speed() {
 			fillOpacity  : "0.25",
 		},
 		tooltip: (this.options.speed) && {
-			chart: (item) => L._('v: ') + tooltipvalue(item.speed,2) + " " + speed.label,
-			marker: (item) => tooltipvalue(item.speed,3) + " " + speed.label,
+			chart: (item) => L._('v: ') + _.tooltipvalue(item.speed,2) + " " + speed.label,
+			marker: (item) => _.tooltipvalue(item.speed,3) + " " + speed.label,
 			order: 50,
 		},
 		summary: (this.options.speed) && {
 			"minspeed"  : {
 				label: "Min Speed: ",
-				value: (track, unit) => tooltipvalue(track.speed_min,2) + '&nbsp;' + unit,
+				value: (track, unit) => _.tooltipvalue(track.speed_min,2) + '&nbsp;' + unit,
 				order: 51
 			},
 			"maxspeed"  : {
 				label: "Max Speed: ",
-				value: (track, unit) => tooltipvalue(track.speed_max,2) + '&nbsp;' + unit,
+				value: (track, unit) => _.tooltipvalue(track.speed_max,2) + '&nbsp;' + unit,
 				order: 51
 			},
 			"avgspeed": {
 				label: "Avg Speed: ",
-				value: (track, unit) => tooltipvalue(Math.abs((track.distance * 1000 / track.time) * opts.timeFactor) * opts.speedFactor,2) + '&nbsp;' + unit,
+				value: (track, unit) => _.tooltipvalue(Math.abs((track.distance * 1000 / track.time) * opts.timeFactor) * opts.speedFactor,2) + '&nbsp;' + unit,
 				order: 52
 			},
 		}

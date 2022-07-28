@@ -41,23 +41,23 @@ export function Pace() {
 		},
 		tooltip: (this.options.pace) && {
 			chart: (item) => L._('pace: ') +  _.formatTime(item.pace * 1000 * 60 || 0) + " " + pace.label,
-			marker: (item) => tooltiptime(item.pace * 1000 * 60) + " " + pace.label,
+			marker: (item) => _.formatTime(item.pace * 1000 * 60) + " " + pace.label,
 			order: 50,
 		},
 		summary: (this.options.pace) && {
 			"minpace"  : {
 				label: "Min Pace: ",
-				value: (track, unit) => (tooltiptime(track.pace_max * 1000 * 60) || 0) + '&nbsp;' + unit,
+				value: (track, unit) => (_.formatTime(track.pace_max * 1000 * 60) || 0) + '&nbsp;' + unit,
 				order: 51
 			},
 			"maxpace"  : {
 				label: "Max Pace: ",
-				value: (track, unit) => (tooltiptime(track.pace_min * 1000 * 60) || 0) + '&nbsp;' + unit,
+				value: (track, unit) => (_.formatTime(track.pace_min * 1000 * 60) || 0) + '&nbsp;' + unit,
 				order: 51
 			},
 			"avgpace": {
 				label: "Avg Pace: ",
-				value: (track, unit) => tooltiptime( Math.abs((track.time / track.distance) / opts.paceFactor)*60) + '&nbsp;' + unit,
+				value: (track, unit) => _.formatTime( Math.abs((track.time / track.distance) / opts.paceFactor)*60) + '&nbsp;' + unit,
 				order: 52
 			},
 		}

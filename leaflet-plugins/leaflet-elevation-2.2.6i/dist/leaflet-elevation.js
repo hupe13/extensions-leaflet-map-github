@@ -173,23 +173,6 @@
 		return result;
 	}
 
-	function tooltiptime(t) {
-		const SEC  = 1000;
-		const MIN  = SEC * 60;
-		const HOUR = MIN * 60;
-		const DAY  = HOUR * 24;
-		let d = Math.floor(t / DAY);
-		let h = Math.floor( (t - d * DAY) / HOUR);
-		let m = Math.floor( (t - d * DAY - h * HOUR) / MIN);
-		let s = Math.round( (t - d * DAY - h * HOUR - m * MIN) / SEC);
-		if ( s === 60 ) { m++; s = 0; }
-		if ( m === 60 ) { h++; m = 0; }
-		if ( h === 24 ) { d++; h = 0; }
-		if ( !d && !h && !m ) return                                                                         s.toString().padStart(2, 0) + '"';
-		if ( !d && !h )       return                                     m.toString().padStart(2, 0) + "'" + s.toString().padStart(2, 0) + '"';
-		return (d ? d + "d " : '') + h.toString().padStart(2, 0) + ':' + m.toString().padStart(2, 0) + "'" + s.toString().padStart(2, 0) + '"';
-	}
-
 	var _ = /*#__PURE__*/Object.freeze({
 		__proto__: null,
 		Colors: Colors,
@@ -227,8 +210,7 @@
 		round: round,
 		clamp: clamp,
 		wrapDelta: wrapDelta,
-		tooltipvalue: tooltipvalue,
-		tooltiptime: tooltiptime
+		tooltipvalue: tooltipvalue
 	});
 
 	var Options = {
@@ -1666,29 +1648,4 @@
 	L.control.elevation = (options) => new Elevation(options);
 
 }));
-
-function tooltipvalue(value,count){
-	comma = count - 1 - Math.floor(Math.log10(Math.abs(value)));
-	factor = Math.pow(10,comma);
-	result = Math.round(value * factor) / factor;
-	return result;
-}
-
-function tooltiptime(t) {
-	const SEC  = 1000;
-	const MIN  = SEC * 60;
-	const HOUR = MIN * 60;
-	const DAY  = HOUR * 24;
-	let d = Math.floor(t / DAY);
-	let h = Math.floor( (t - d * DAY) / HOUR);
-	let m = Math.floor( (t - d * DAY - h * HOUR) / MIN);
-	let s = Math.round( (t - d * DAY - h * HOUR - m * MIN) / SEC);
-	if ( s === 60 ) { m++; s = 0; }
-	if ( m === 60 ) { h++; m = 0; }
-	if ( h === 24 ) { d++; h = 0; }
-	if ( !d && !h && !m ) return                                                                         s.toString().padStart(2, 0) + '"';
-	if ( !d && !h )       return                                     m.toString().padStart(2, 0) + "'" + s.toString().padStart(2, 0) + '"';
-	return (d ? d + "d " : '') + h.toString().padStart(2, 0) + ':' + m.toString().padStart(2, 0) + "'" + s.toString().padStart(2, 0) + '"';
-}
-
 //# sourceMappingURL=leaflet-elevation.js.map
