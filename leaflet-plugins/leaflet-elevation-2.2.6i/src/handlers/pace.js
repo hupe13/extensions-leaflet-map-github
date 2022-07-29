@@ -6,6 +6,8 @@ export function Pace() {
 	let pace = {};
 
 	pace.label      = opts.paceLabel  || L._(opts.imperial ? 'min/mi' : 'min/km');
+	pace.labeldist  = opts.paceLabelDist  || L._(opts.imperial ? '/mi' : '/km');
+
 	opts.paceFactor = opts.paceFactor || 60; // 1 min = 60 sec
 
 	return {
@@ -40,8 +42,8 @@ export function Pace() {
 			fillOpacity  : "0.25",
 		},
 		tooltip: (this.options.pace) && {
-			chart: (item) => L._('pace: ') +  _.formatTime(item.pace * 1000 * 60 || 0) + " " + pace.label,
-			marker: (item) => _.formatTime(item.pace * 1000 * 60) + " " + pace.label,
+			chart: (item) => L._('pace: ') +  _.formatTime(item.pace * 1000 * 60 || 0) + " " + pace.labeldist,
+			marker: (item) => _.formatTime(item.pace * 1000 * 60) + " " + pace.labeldist,
 			order: 50,
 		},
 		summary: (this.options.pace) && {
