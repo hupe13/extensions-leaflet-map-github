@@ -21,5 +21,12 @@ New: iMinP: like iMin, but > 0 (not negative)
 iAvg: iVal must be valid, idx > 0
 New function: tooltipvalue(): return values accuracy according to size
 
+libs/leaflet-gpxgroup.js: options.filename:
+routes = L.gpxGroup(tracks, {
+			...
+      filename: true,
+      ...
+		});
+
 Unable to solve:
 pace.label

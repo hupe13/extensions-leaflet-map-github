@@ -196,7 +196,6 @@ function leafext_elevation_track( $atts ){
 	$point = array(
 		'latlng' => $latlng,
 		'name' 	 => $params['name'],
-		'filename' => $params['name'],
 	);
 
 	$all_points[] = $point;
@@ -302,7 +301,7 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 		var opts = {
 			points: {
 				icon: {
-					iconUrl: "'.LEAFEXT_ELEVATION_URL.'" + "/images/elevation-poi.png",
+					iconUrl: "'.LEAFEXT_ELEVATION_URL.'" + "images/elevation-poi.png",
 					iconSize: [12, 12],
 				},
 			},

@@ -99,7 +99,7 @@ function leafext_enqueue_multielevation () {
   leafext_enqueue_elevation ();
 	leafext_enqueue_zoomhome();
   wp_enqueue_script('leaflet.gpxgroup',
-    plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/libs/leaflet-gpxgroup-leafext.js',
+    plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/libs/leaflet-gpxgroup.js',
     LEAFEXT_PLUGIN_FILE),
     array('elevation_js'),null);
   wp_enqueue_script('leaflet_ajax_geojson_js');
