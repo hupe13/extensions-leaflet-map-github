@@ -188,7 +188,7 @@ L.GpxGroup = L.Class.extend({
       originalStyle: line_style,
       filter: feature => feature.geometry.type != "Point",
     });
-
+    
 
     this._elevation.import(this._elevation.__LGEOMUTIL).then(() => {
       route.addTo(this._layers);
