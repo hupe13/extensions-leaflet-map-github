@@ -3,6 +3,13 @@ leaflet-elevation-2.2.6i
 ToDo: Pull Request
 
 Changes:
+utils.js:
+formatTime(): hide day, hour, minutes if 0
+iMin: iVal must be valid
+New: iMinP: like iMin, but > 0 (not negative)
+iAvg: iVal must be valid, idx > 0
+New function: tooltipvalue(): return values accuracy according to size
+
 altitude.js: integer for min, max, avg
 acceleration: min, max, avg accuracy according to size
 distance.js: accuracy according to size
@@ -14,14 +21,8 @@ speed.js: dt must be valid (problem if you use speed and pace at the same chart)
           chart, marker, minspeed, maxspeed, avgspeed - accuracy according to size
           avgspeed is distance / time
 
-leaflet-elevation.js:
-formatTime(): hide day, hour, minutes if 0
-iMin: iVal must be valid
-New: iMinP: like iMin, but > 0 (not negative)
-iAvg: iVal must be valid, idx > 0
-New function: tooltipvalue(): return values accuracy according to size
-
-libs/leaflet-gpxgroup.js: options.filename:
+libs/leaflet-gpxgroup.js:
+options.filename:
 routes = L.gpxGroup(tracks, {
 			...
       filename: true,
