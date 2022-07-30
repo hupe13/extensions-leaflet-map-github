@@ -138,7 +138,7 @@
 	/**
 	 * TODO: use generators instead? (ie. "yield")
 	 */
-	const iMax = (iVal, max = -Infinity) => (iVal > max ? iVal : max); 
+	const iMax = (iVal, max = -Infinity) => (iVal > max ? iVal : max);
 	const iMin = (iVal, min = +Infinity) => ((iVal && iVal < min) ? iVal : min );
 	const iMinP = (iVal, min = +Infinity) => ((iVal && iVal < min && iVal > 0) ? iVal : min );
 	const iAvg = (iVal, avg = 0, idx = 1) => (iVal && idx > 1) ? (iVal + avg * (idx - 1)) / idx : avg ;
@@ -166,6 +166,9 @@
 	 */
 	const wrapDelta = (curr, prev, deltaMax) => Math.abs(curr - prev) > deltaMax ? prev + deltaMax * Math.sign(curr - prev) : curr;
 
+	/**
+	 * Round numbers according to size
+	 */
 	function tooltipvalue(value,count){
 		let comma = count - 1 - Math.floor(Math.log10(Math.abs(value)));
 		let factor = Math.pow(10,comma);

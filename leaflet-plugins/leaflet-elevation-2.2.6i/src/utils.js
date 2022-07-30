@@ -133,7 +133,7 @@ export const randomId      = ()                   => Math.random().toString(36).
 /**
  * TODO: use generators instead? (ie. "yield")
  */
-export const iMax = (iVal, max = -Infinity) => (iVal > max ? iVal : max); 
+export const iMax = (iVal, max = -Infinity) => (iVal > max ? iVal : max);
 export const iMin = (iVal, min = +Infinity) => ((iVal && iVal < min) ? iVal : min );
 export const iMinP = (iVal, min = +Infinity) => ((iVal && iVal < min && iVal > 0) ? iVal : min );
 export const iAvg = (iVal, avg = 0, idx = 1) => (iVal && idx > 1) ? (iVal + avg * (idx - 1)) / idx : avg ;
@@ -161,6 +161,9 @@ export const clamp     = (val, range)           => range ? (val < range[0] ? ran
  */
 export const wrapDelta = (curr, prev, deltaMax) => Math.abs(curr - prev) > deltaMax ? prev + deltaMax * Math.sign(curr - prev) : curr;
 
+/**
+ * Round numbers according to size
+ */
 export function tooltipvalue(value,count){
 	let comma = count - 1 - Math.floor(Math.log10(Math.abs(value)));
 	let factor = Math.pow(10,comma);

@@ -134,7 +134,7 @@ L.GpxGroup = L.Class.extend({
     this._elevation   = L.control.elevation(this.options.elevation_options);
     this._legend      = L.control.layersLegend(null, null, this.options.legend_options);
 
-    this.options.points.forEach((poi) =>
+    this.options.points.forEach((poi) => 
       L
         .marker(poi.latlng, { icon: L.icon(this.options.points_options.icon) })
         .bindTooltip(poi.name, { direction: 'auto' }).addTo(this._markers)
@@ -165,7 +165,6 @@ L.GpxGroup = L.Class.extend({
       .then(geojson => {
         if(geojson) {
           geojson.name = this.options.filename ? track.split('/').pop().split('.').slice(0, -1).join('.') : (geojson.name || (geojson[0] && geojson[0].properties.name) || track.split('/').pop().split('.').slice(0, -1).join('.'));
-          //geojson.name = geojson.name || (geojson[0] && geojson[0].properties.name) || track.split('/').pop().split('#')[0].split('?')[0];
           this._loadRoute(geojson);
         }
       });
@@ -188,8 +187,8 @@ L.GpxGroup = L.Class.extend({
       originalStyle: line_style,
       filter: feature => feature.geometry.type != "Point",
     });
-    
 
+    
     this._elevation.import(this._elevation.__LGEOMUTIL).then(() => {
       route.addTo(this._layers);
 
@@ -215,7 +214,7 @@ L.GpxGroup = L.Class.extend({
     if (this.options.legend) {
       this._legend.addBaseLayer(route, '<svg id="legend_' + route._leaflet_id + '" width="25" height="10" version="1.1" xmlns="http://www.w3.org/2000/svg">' + '<line x1="0" x2="50" y1="5" y2="5" stroke="' + route.options.originalStyle.color + '" fill="transparent" stroke-width="5" /></svg>' + ' ' + route.options.name);
     }
-
+    
     this.fire('route_loaded', { route: route });
 
     if (++this._loadedCount === this._tracks.length) {
