@@ -8,7 +8,7 @@ Requires at least: 5.5.3
 Requires PHP: 7.4     
 License: GPLv2 or later  
 
-Differences to the WordPress plugin <a href="https://wordpress.org/plugins/extensions-leaflet-map/">Extensions for Leaflet Map</a>: [Changes](changes.md)
+[Differences](changes.md) to the <a href="https://wordpress.org/plugins/extensions-leaflet-map/">WordPress version</a>.
 
 ## Description
 
