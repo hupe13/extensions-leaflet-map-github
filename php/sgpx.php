@@ -275,3 +275,11 @@ function leafext_change_sgpx_shortcode() {
 	add_shortcode('sgpx', 'leafext_sgpx_function' );
 }
 add_action( 'init', 'leafext_change_sgpx_shortcode',20 );
+
+function leafext_insert_jquery() {
+	$options=get_option('leafext_sgpxparams');
+	if ( LEAFEXT_SGPX_ACTIVE && LEAFEXT_SGPX_SGPX && $options['sgpx'] == "leaflet" && !wp_script_is( "wp_leaflet_map", 'enqueued' )) {
+		wp_enqueue_script('jquery-core', false, array(), false, false);
+	}
+}
+add_filter('wp_enqueue_scripts','leafext_insert_jquery',1);
