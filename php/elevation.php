@@ -9,6 +9,16 @@ defined( 'ABSPATH' ) or die();
 //Parameter and Values
 function leafext_elevation_params($typ = array()) {
 	$params = array(
+		// Testing
+		array(
+			'param' => 'testing',
+			'shortdesc' => __('Test Pull Request',"extensions-leaflet-map"),
+			'desc' => __('Activate leaflet-elevation version from',"extensions-leaflet-map").
+			' <a href="https://github.com/Raruto/leaflet-elevation/pull/210">Pull request</a>.',
+			'default' => false,
+			'values' => 1,
+			'typ' => array('changeable','test'),
+		),
 
 		// Aussehen
 
@@ -120,7 +130,7 @@ function leafext_elevation_params($typ = array()) {
 		array(
 			'param' => 'downloadLink',
 			'shortdesc' => __('Download Link',"extensions-leaflet-map"),
-			'desc' => '',
+			'desc' => 'css: .download',
 			'default' => false,
 			'values' => array("link", false, "modal"),
 			'typ' => array('changeable','look',),
@@ -213,7 +223,7 @@ function leafext_elevation_params($typ = array()) {
 			'param' => 'distance',
 			'shortdesc' => __('Display distance info',"extensions-leaflet-map"),
 			'desc' => '<p>'.
-			__("show distance data in graph and summary / show distance data in summary only / don't show distance data","extensions-leaflet-map").'</p>',
+			__("show distance data in graph and summary / show distance data in summary only / don't show distance data","extensions-leaflet-map").'</p>'.'css: .totlen',
 			'default' => true,
 			'values' => array(true,"summary",false),
 			'typ' => array('changeable','info','multielevation'),
@@ -225,7 +235,7 @@ function leafext_elevation_params($typ = array()) {
 			'param' => 'time',
 			'shortdesc' => __('Display time info (duration)',"extensions-leaflet-map"),
 			'desc' => '<p>'.
-			__('show time data in graph and summary / show time data in summary only / nothing',"extensions-leaflet-map").'</p>',
+			__('show time data in graph and summary / show time data in summary only / nothing',"extensions-leaflet-map").'</p>'.'css: .tottime',
 			'default' => false,
 			'values' => array(true,"summary",false),
 			'typ' => array('changeable','info','multielevation'),
@@ -259,10 +269,11 @@ function leafext_elevation_params($typ = array()) {
 
 		// Altitude chart profile: true || "summary" || "disabled" || false
 		//altitude: true,
+		//css: "minele" "maxele" "avgele"
 		array(
 			'param' => 'altitude',
 			'shortdesc' => __('Altitude chart profile',"extensions-leaflet-map"),
-			'desc' => '',
+			'desc' => 'css: .minele, .maxele, .avgele,',
 			'default' => true,
 			//'values' => array(true,"summary"),
 			'values' => array(true,"summary","disabled",false),
@@ -271,10 +282,11 @@ function leafext_elevation_params($typ = array()) {
 
 		// Acceleration chart profile: true || "summary" || "disabled" || false
 		//acceleration: false,
+		//css: "minacceleration"  "maxacceleration" "avgacceleration"
 		array(
 			'param' => 'acceleration',
 			'shortdesc' => __('Acceleration chart profile',"extensions-leaflet-map"),
-			'desc' => '',
+			'desc' => 'css: .minacceleration, .maxacceleration, .avgacceleration,',
 			'default' => false,
 			'values' => array(true,"summary","disabled",false),
 			'typ' => array('changeable','chart','multielevation'),
@@ -282,10 +294,11 @@ function leafext_elevation_params($typ = array()) {
 
 		// Slope chart profile: true || "summary" || "disabled" || false
 		//slope: false,
+		//css: "minslope" "maxslope"	"avgslope"	"ascent" "descent"
 		array(
 			'param' => 'slope',
 			'shortdesc' => __('Slope chart profile',"extensions-leaflet-map"),
-			'desc' => '',
+			'desc' => 'css: .minslope, .maxslope, .avgslope, .ascent, .descent,',
 			'default' => false,
 			'values' => array(true,"summary","disabled",false),
 			'typ' => array('changeable','chart','multielevation'),
@@ -293,20 +306,22 @@ function leafext_elevation_params($typ = array()) {
 
 		// Speed chart profile: true || "summary" || "disabled" || false
 		//speed: false,
+		//css: "minspeed" 	"maxspeed"  	"avgspeed"
 		array(
 			'param' => 'speed',
 			'shortdesc' => __('Speed chart profile',"extensions-leaflet-map"),
-			'desc' => '',
+			'desc' => 'css: .minspeed, .maxspeed, .avgspeed,',
 			'default' => false,
 			'values' => array(true,"summary","disabled",false),
 			'typ' => array('changeable','chart','multielevation'),
 		),
 
 		//pace
+		//css: "minpace" 	"maxpace" 	"avgpace"
 		array(
 			'param' => 'pace',
 			'shortdesc' => __('Pace profile - time per distance',"extensions-leaflet-map"),
-			'desc' => '',
+			'desc' => 'css: .minpace, .maxpace, .avgpace,',
 			'default' => false,
 			'values' => array(true,"summary","disabled",false),
 			'typ' => array('changeable','chart','multielevation'),
@@ -417,6 +432,7 @@ function leafext_elevation_params($typ = array()) {
 		),
 
 		//cadence
+		//"minrpm" "maxrpm"	"avgrpm"
 		// array(
 		// 	'param' => 'cadence',
 		// 	'shortdesc' => __('cadence - ??',"extensions-leaflet-map"),
@@ -427,6 +443,7 @@ function leafext_elevation_params($typ = array()) {
 		// ),
 
 		//heart
+		// "minbpm" "maxbpm" "avgbpm"
 		// array(
 		// 	'param' => 'heart',
 		// 	'shortdesc' => __('heart - ??',"extensions-leaflet-map"),

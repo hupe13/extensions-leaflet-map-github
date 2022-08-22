@@ -59,19 +59,11 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 3.1 / 220718
+### 3.1.1 / 2208xx
 
-* leaflet-gestures-1.4.3: Please check your Leaflet Map settings for scrollwheel. See the help for Gesture Handling!
-* Leaflet.Control.FullScreen 2.4.0
-* Backend interface for non-admin
-* File Manager
-* leaflet-directory: Tracks from all files in a directory
-
-## Upgrade Notice
-
-### 3.1
-
-Please check your Leaflet Map settings for scrollwheel. See the help for Gesture Handling!
+* error extensions in file listing
+* pace and acceleration work together now
+* bug in sgpx
 
 ### Previous
 

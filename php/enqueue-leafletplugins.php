@@ -64,16 +64,29 @@ function leafext_enqueue_markercluster () {
 		array('wp_leaflet_map'),null );
 }
 
-//define('LEAFEXT_ELEVATION_VERSION',"2.2.6");
-define('LEAFEXT_ELEVATION_VERSION',"2.2.6i");
+$params = get_option('leafext_eleparams');
+if ( array_key_exists('testing', $params) && (bool) $params['testing']) {
+  define('LEAFEXT_ELEVATION_VERSION',"2.2.6i");
+} else {
+  define('LEAFEXT_ELEVATION_VERSION',"2.2.6");
+}
+
 define('LEAFEXT_ELEVATION_URL', LEAFEXT_PLUGIN_URL . '/leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/');
 define('LEAFEXT_ELEVATION_DIR', LEAFEXT_PLUGIN_DIR . '/leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/');
 function leafext_enqueue_elevation () {
-	wp_enqueue_script( 'elevation_js',
-		//plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.min.js',
-		plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.js',
-		LEAFEXT_PLUGIN_FILE),
-		array('wp_leaflet_map'),null);
+  if (LEAFEXT_ELEVATION_VERSION == "2.2.6i") {
+    wp_enqueue_script( 'elevation_js',
+  		//plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.min.js',
+  		plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.js',
+  		LEAFEXT_PLUGIN_FILE),
+  		array('wp_leaflet_map'),null);
+  } else {
+    wp_enqueue_script( 'elevation_js',
+  		plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.min.js',
+  		LEAFEXT_PLUGIN_FILE),
+  		array('wp_leaflet_map'),null);
+  }
+
   //
   wp_enqueue_script( 'Leaflet.i18n',
     plugins_url('leaflet-plugins/Leaflet.i18n/Leaflet.i18n.js',

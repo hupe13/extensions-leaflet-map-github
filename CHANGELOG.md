@@ -1,3 +1,11 @@
+### 3.1 / 220718
+
+* leaflet-gestures-1.4.3: Please check your Leaflet Map settings for scrollwheel. See the help for Gesture Handling!
+* Leaflet.Control.FullScreen 2.4.0
+* Backend interface for non-admin
+* File Manager
+* leaflet-directory: Tracks from all files in a directory
+
 ### 3.0.1 / 220602
 
 * Solved Bug: detect Browser language in gesture handling

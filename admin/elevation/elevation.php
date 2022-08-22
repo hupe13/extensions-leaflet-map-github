@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) or die();
 
 function leafext_eleparams_init(){
 	register_setting( 'leafext_settings_eleparams', 'leafext_eleparams', 'leafext_validate_ele_options' );
-	$ele_settings = array('chartlook','chart','info','look','points','other');
+	$ele_settings = array('test','chartlook','chart','info','look','points','other');
 	foreach ( $ele_settings as $ele_setting ) {
 		add_settings_section( 'eleparams_settings_'.$ele_setting, '', 'leafext_ele_help_'.$ele_setting, 'leafext_settings_eleparams' );
 		$fields = leafext_elevation_params(array($ele_setting));
@@ -32,7 +32,7 @@ function leafext_form_elevation($field) {
 
 	if ( $option['desc'] != "" ) echo '<p>'.$option['desc'].'</p>';
 
-	echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option['param']. '</code><br>';
+	if ( $option['param'] != "testing" ) echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option['param']. '</code><br>';
 
 	if (!current_user_can('manage_options')) {
 		$disabled = " disabled ";
@@ -108,6 +108,10 @@ function leafext_validate_ele_options($options) {
 }
 
 // Helptext
+function leafext_ele_help_test() {
+
+}
+
 function leafext_ele_help_text () {
 	leafext_enqueue_elevation_css ();
 	leafext_enqueue_awesome();
@@ -187,6 +191,10 @@ function leafext_ele_help_chartlook () {
 }
 
 function leafext_ele_help_chart () {
+	wp_enqueue_style( 'prism-css',
+		plugins_url('pkg/prism/prism.css',LEAFEXT_PLUGIN_FILE));
+	wp_enqueue_script('prism-js',
+		plugins_url('pkg/prism/prism.js',LEAFEXT_PLUGIN_FILE));
 	echo '<div style="border-top: 3px solid #646970"></div>';
 	echo '<h3>';
 	echo __('Charts','extensions-leaflet-map');
@@ -260,6 +268,14 @@ function leafext_ele_help_chart () {
 	</tr></tbody></table></figure>
 	';
 	echo '</p>';
+
+	echo __('If summary is displayed, you can customize the information to display with css, e.g. show Total Length, Total Time, Total Ascent, Total Descent, Avg Speed, Avg Pace only:',"extensions-leaflet-map");
+	echo '</p>';
+	echo '<pre class="language-css"><code class="language-css">';
+	echo '.elevation-summary > :not(.totlen, .tottime, .ascent, .descent, .avgspeed, .avgpace) {'."\n";
+	echo '	display: none !important;'."\n";
+	echo '}';
+	echo '</code></pre>';
 }
 
 function leafext_ele_help_other () {
