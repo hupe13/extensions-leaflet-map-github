@@ -64,8 +64,8 @@ function leafext_enqueue_markercluster () {
 		array('wp_leaflet_map'),null );
 }
 
-$testing = get_option('leafext_eleparams')['testing'];
-if ( (bool) $testing) {
+$params = get_option('leafext_eleparams');
+if (is_array($params) && key_exists('testing', $params) && (bool)$params['testing']) {
   define('LEAFEXT_ELEVATION_VERSION',"2.2.6i");
 } else {
   define('LEAFEXT_ELEVATION_VERSION',"2.2.6");
