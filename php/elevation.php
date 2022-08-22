@@ -14,7 +14,8 @@ function leafext_elevation_params($typ = array()) {
 			'param' => 'testing',
 			'shortdesc' => __('Test Pull Request',"extensions-leaflet-map"),
 			'desc' => __('Activate leaflet-elevation version from',"extensions-leaflet-map").
-			' <a href="https://github.com/Raruto/leaflet-elevation/pull/210">Pull request</a>.',
+			' <a href="https://github.com/Raruto/leaflet-elevation/pull/210">Pull request</a>. '.
+			__('Please give feedback, if you find an issue.',"extensions-leaflet-map"),
 			'default' => false,
 			'values' => 1,
 			'typ' => array('changeable','test'),
