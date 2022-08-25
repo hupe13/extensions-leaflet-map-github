@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, gpx, elevation, markercluster, zoomhome, hover, fullscreen  
 Tested up to: 6.0  
-Stable tag: 3.1  
+Stable tag: 3.1.1  
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later  
@@ -59,7 +59,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Changelog
 
-### 3.1.1 / 2208xx
+### 3.1.1 / 220823
 
 * error extensions in file listing
 * pace and acceleration work together now
