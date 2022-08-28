@@ -115,6 +115,40 @@ function leafext_elevation_params($typ = array()) {
 			'values' => array(true, "on", "off"),
 			'typ' => array('changeable','look'),
 		),
+		// Chart container outside/inside map container
+		// detached: true,
+		//array('detached', 'Chart container outside/inside map container', true, 1),
+		array(
+			'param' => 'detached',
+			'shortdesc' => 'Chart is detached',
+			'desc' => "",
+			'default' => true,
+			'values' => 1,
+			//'typ' => array('fixed'),
+			'typ' => array('changeable','look'),
+		),
+
+		// if (detached), the elevation chart container
+		//elevationDiv: "#elevation-div",
+
+		// if (!detached) autohide chart profile on chart mouseleave
+		//autohide: false,
+		//array('autohide', 'if (!detached) autohide chart profile on chart mouseleave', false, 1),
+
+		// if (!detached) initial state of chart profile control
+		//collapsed: false,
+		//array('collapsed', 'if (!detached) initial state of chart profile control', false, 1),
+
+		// if (!detached) control position on one of map corners
+		//position: "topright",
+		array(
+			'param' => 'position',
+			'shortdesc' => __('If (!detached) control position on one of map corners.',"extensions-leaflet-map"),
+			'desc' => '',
+			'default' => "topright",
+			'values' => array('topright','topleft','bottomleft','bottomright'),
+			'typ' => array('changeable','look',),
+		),
 
 		//Toggle chart ruler filter.
 		//ruler: true,
@@ -341,6 +375,16 @@ function leafext_elevation_params($typ = array()) {
 			'typ' => array('changeable','other','multielevation'),
 		),
 
+		//zFollow
+		array(
+			'param' => 'zFollow',
+			'shortdesc' => __('zFollow zoom',"extensions-leaflet-map"),
+			'desc' => '',
+			'default' => false,
+			'values' => array(false,"7","8","9","10","11","12","13","14","15","16","17","18","19"),
+			'typ' => array('changeable','other'),
+		),
+
 		// Autoupdate map bounds on chart update.
 		//autofitBounds: true,
 		array(
@@ -395,32 +439,6 @@ function leafext_elevation_params($typ = array()) {
 			'values' => 1,
 			'typ' => array('changeable','other',),
 		),
-
-		// Chart container outside/inside map container
-		// detached: true,
-		//array('detached', 'Chart container outside/inside map container', true, 1),
-		array(
-			'param' => 'detached',
-			'shortdesc' => 'detached',
-			'desc' => "",
-			'default' => true,
-			'values' => 1,
-			'typ' => array('fixed'),
-		),
-
-		// if (detached), the elevation chart container
-		//elevationDiv: "#elevation-div",
-
-		// if (!detached) autohide chart profile on chart mouseleave
-		//autohide: false,
-		//array('autohide', 'if (!detached) autohide chart profile on chart mouseleave', false, 1),
-
-		// if (!detached) initial state of chart profile control
-		//collapsed: false,
-		//array('collapsed', 'if (!detached) initial state of chart profile control', false, 1),
-
-		// if (!detached) control position on one of map corners
-		//position: "topright",
 
 		// margins: { top: 30, right: 30, bottom: 30, left: 40 },
 		array(
