@@ -70,7 +70,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 #### It doesn't work!
 
 * Are you using any caching plugin? Try to exclude the js files of both plugins from caching.
-* Are you using any plugin to handle cookies (GDPR/DSGVO)? There might be a problem with that.
+* Are you using any plugin to to comply with the GDPR/DSGVO? There might be a problem with that.
 
 #### Apropos GDPR/DSGVO
 
