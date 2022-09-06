@@ -134,6 +134,25 @@ function leafext_zoomhome_script($fit){
 		//console.log("lines "+maplines);
 		//console.log("circles "+mapcircles);
 
+		//extramarker icon
+		maps[map_id].eachLayer(function(layer) {
+			if (layer instanceof L.Marker){
+				//console.log("is icon");
+				//console.log(maps[map_id]._shouldFitBounds);
+				if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
+					//console.log("icon in all map");
+					bounds[map_id].extend(layer._latlng);
+				} else if ( typeof allfit[map_id] !== "undefined") {
+					//console.log("icon should fit Homebutton");
+					allfit[map_id].extend(layer._latlng);
+					//console.log("allfit icon");
+				} else {
+					//console.log("icon was nun?");
+					bounds[map_id].extend(layer._latlng);
+				}
+			}
+		});
+
 		maps[map_id].whenReady ( function() {
 			if (bounds[map_id].isValid()) {
 				//console.log("ready map has bounds");
@@ -240,6 +259,7 @@ function leafext_zoomhome_script($fit){
 		// maps[map_id].on("zoomend", function(e) {
 		// 	console.log("zoomend zoom "+map_id+" "+maps[map_id].getZoom());
 		// });
+
 	});
 	</script>';
 	$text = \JShrink\Minifier::minify($text);

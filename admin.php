@@ -8,6 +8,7 @@ include LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/tiles/main.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/canvas.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/filemgr/main.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/extramarker.php';
 
 // Add menu page for admin
 function leafext_add_page() {
@@ -35,6 +36,8 @@ function leafext_do_page() {
 		leafext_admin_filemgr($active_tab);
 	} else if ( strpos( $active_tab, 'cluster' ) !== false ) {
 		leafext_admin_cluster($active_tab);
+	} else if ( strpos( $active_tab, 'extramarker' ) !== false ) {
+		leafext_extramarker_help();
 	} else if ( strpos( $active_tab, 'tiles' ) !== false ) {
 		leafext_admin_tiles($active_tab);
 	} else if( $active_tab == 'hover' ) {
@@ -141,6 +144,12 @@ function leafext_admin_tabs() {
 		echo ' nav-tab-active';
 	}
 	echo '">'. __('Markercluster','extensions-leaflet-map'). '</a>'."\n";
+	//
+	echo '<a href="?page='.$leafext_plugin_name.'&tab=extramarker" class="nav-tab';
+	if ( strpos( $active_tab, 'extramarker' ) !== false ) {
+		echo ' nav-tab-active';
+	}
+	echo '">'. __('ExtraMarkers','extensions-leaflet-map'). '</a>'."\n";
 	//
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=tileshelp" class="nav-tab';
 	if ( strpos( $active_tab, 'tiles' ) !== false ) {

@@ -340,6 +340,28 @@ function leafext_geojsonhover_script($url){
 				}
 			}
 		});
+
+		//extramarker icon
+		maps[map_id].eachLayer(function(layer) {
+			if (layer instanceof L.Marker){
+				//console.log("is icon");
+				layer.on("mouseover", function (e) {
+					//console.log("mouseover");
+					map.closePopup();
+					if ( typeof e.sourceTarget.getPopup() != "undefined") {
+						if ( ! e.sourceTarget.getPopup().isOpen()) {
+							var content = e.sourceTarget.getPopup().getContent();
+							e.sourceTarget.bindTooltip(content);
+							e.sourceTarget.openTooltip();
+						}
+					}
+				});
+				layer.on("click", function (e) {
+					//console.log("click");
+					e.sourceTarget.unbindTooltip();
+				});
+			}
+		});
 	});
 <?php
   $javascript = ob_get_clean();
