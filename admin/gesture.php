@@ -97,14 +97,14 @@ function leafext_gesture_help_text() {
 			$text = $text . __('It is disabled by default. You can enable it for a map with','extensions-leaflet-map').' <code>[gestures]</code>.';
 		}
 	}
-	$text = $text . '<li style="margin-left: 1.5em;"> '.__('When Gesture Handling is enabled:','extensions-leaflet-map');
+	$text = $text . '</li>'.'<li style="margin-left: 1.5em;"> '.__('When Gesture Handling is enabled:','extensions-leaflet-map');
 	$text = $text . '<ul style="list-style: disc;"><p>';
-	$text = $text . '<li style="margin-left: 1.5em;"> '.
+	$text = $text . '</li>'.'<li style="margin-left: 1.5em;"> '.
 	sprintf(__('If Scroll Wheel Zoom (%s) is enabled, it becomes active on both desktop and touch devices.','extensions-leaflet-map'),
-	'<code>scrollwheel</code>');
+	'<code>scrollwheel</code>').'</li>';
 	$text = $text . '<li style="margin-left: 1.5em;"> '.
 	sprintf(__('If %s is enabled, it becomes active on touch devices only.','extensions-leaflet-map'),
-	'<code>dragging</code>');
+	'<code>dragging</code>').'</li>';
 	if (!(is_singular() || is_archive())) {
 		$text = $text . '<li style="margin-left: 1.5em;"> '.
 		sprintf(__('Your %s setting for','extensions-leaflet-map'),
@@ -112,14 +112,14 @@ function leafext_gesture_help_text() {
 		' '.__('Scroll Wheel Zoom', 'leaflet-map').' (<code>scrollwheel</code>) '.
 		' '.__('is','extensions-leaflet-map').' ';
 		$text = $text . (get_option('leaflet_scroll_wheel_zoom','0') == "1" ? "true" : "false");
-		$text = $text . ', <code>dragging</code> '.__('is true at default','extensions-leaflet-map').'.';
+		$text = $text . ', <code>dragging</code> '.__('is true at default','extensions-leaflet-map').'</li>'.'.';
 		$text = $text . '<li style="margin-left: 1.5em;"> '.
 		__('This means for you:','extensions-leaflet-map').' ';
 		$text = $text . (get_option('leaflet_scroll_wheel_zoom','0') == "1" ? __("It is enabled on both desktop and touch device by default.",'extensions-leaflet-map') : __("It is only enabled on touch devices by default.",'extensions-leaflet-map'));
-		$text = $text . '<li style="margin-left: 1.5em;"> '.
+		$text = $text . '</li>'.'<li style="margin-left: 1.5em;"> '.
 		__('You can change it with ','extensions-leaflet-map').' <code>[leaflet-map ';
 		$text = $text . (get_option('leaflet_scroll_wheel_zoom','0') == "1" ? '!' : "");
-		$text = $text . 'scrollwheel !dragging]</code>';
+		$text = $text . 'scrollwheel !dragging]</code>'.'</li>';
 	}
 	$text = $text . '</p></ul></ul>';
 	$text = $text . '<p>'.sprintf(__('You can test it yourself on a %sseparate page%s.','extensions-leaflet-map'),

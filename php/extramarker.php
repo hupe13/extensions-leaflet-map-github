@@ -113,8 +113,7 @@ function leafext_extramarker_script($params,$content){
   window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
   window.WPLeafletMapPlugin.push(function () {
     var map = window.WPLeafletMapPlugin.getCurrentMap();
-    var map_id = map._leaflet_id;
-
+    var group = window.WPLeafletMapPlugin.getCurrentGroup();
     var icon = L.marker(
       ['.$params['lat'].','.$params['lng'].'],
       {icon: L.ExtraMarkers.icon(
@@ -122,8 +121,8 @@ function leafext_extramarker_script($params,$content){
       )}
     );
     icon.bindPopup("'.$content.'");
-    icon.addTo(map);
-
+    icon.addTo(group);
+    window.WPLeafletMapPlugin.markers.push( icon );
   });
   </script>';
   //$text = \JShrink\Minifier::minify($text);
