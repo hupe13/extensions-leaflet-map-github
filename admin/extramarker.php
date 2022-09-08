@@ -43,7 +43,7 @@ function leafext_extramarker_help() {
   );
 
   $text = $text. '<p><h3>All Colors</h3></p>';
-  $text = $text. do_shortcode('[leaflet-map height=100 width=70% lat=0.1 lng=0.36 zoom=10]');
+  $text = $text. do_shortcode('[leaflet-map height=180 width=80% lat=0.1 lng=0.36 zoom=10]');
   $lat = 0.1;
   $lng = 0.1;
   for ($farbe = 0; $farbe < count($colors); $farbe++) {
@@ -59,7 +59,7 @@ function leafext_extramarker_help() {
   //$text = $text. do_shortcode('[zoomhomemap fit]');
 
   $text = $text. '<p><h3>All Shapes without (1) / with (2) SVG</h3></p>';
-  $text = $text. do_shortcode('[leaflet-map height=100 width=70%  lat=0.1 lng=0.23 zoom=10]');
+  $text = $text. do_shortcode('[leaflet-map height=180 width=80%  lat=0.1 lng=0.23 zoom=10]');
   $lat = 0.1;
   $lng = 0.1;
   for ($shape = 0; $shape < count($shapes); $shape++) {
@@ -73,7 +73,7 @@ function leafext_extramarker_help() {
   //$text = $text. do_shortcode('[zoomhomemap fit]');
 
   $text = $text. '<p><h3>Some Icons</h3></p>';
-  $text = $text. do_shortcode('[leaflet-map height=100 width=70%  lat=0.1 lng=0.3 zoom=10]');
+  $text = $text. do_shortcode('[leaflet-map height=180 width=80%  lat=0.1 lng=0.3 zoom=10]');
   $anzahl = 0;
   $lat = 0.1;
   $lng = 0.1;
@@ -101,7 +101,7 @@ function leafext_extramarker_help() {
       'desc' => $option['desc'],
     );
   }
-  $text = $text.'<div style="width:70%;">'.leafext_html_table($new).'</div>';
+  $text = $text.'<div style="width:80%;">'.leafext_html_table($new).'</div>';
   if (is_singular() || is_archive() ) {
     return $text;
   } else {
