@@ -12,9 +12,9 @@ function leafext_extramarker_help() {
   $text=$text.'<p>Only the <a href="https://fontawesome.com/download">Font Awesome 6</a> is included in the plugin Extensions for Leaflet Map.
   You can install the <a href="https://github.com/coryasilva/Leaflet.ExtraMarkers#icons">other fonts</a> and use these also.</p>
   <h2>Shortcode</h2>';
-  $text = $text.'<pre><code>&#91;leaflet-map ....]'."\n";
+  $text = $text.'<pre><code>&#91;leaflet-map (!)fitbounds ....]'."\n";
   $text = $text.'&#91;extramarker option=... ...]description[/extramarker]'."\n";
-  $text = $text.'&#91;zoomhomemap fit]</code></pre>';
+  $text = $text.'&#91;zoomhomemap]</code></pre>';
 
   // Setup map
   $shapes = array ('circle', 'square', 'star', 'penta');
