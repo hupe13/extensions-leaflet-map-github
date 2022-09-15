@@ -14,12 +14,14 @@ function leafext_extramarker_params() {
       'desc' =>  __('Latitude',"extensions-leaflet-map"),
       //'shortdesc' => '',
       'default' => '',
+      'filter' => '',
     ),
     array(
       'param' => 'lng',
       'desc' => __("Longitude","extensions-leaflet-map"),
       //'shortdesc' => '',
       'default' => '',
+      'filter' => '',
     ),
     // extraClasses 	Additional classes in the created <i> tag 	'' 	fa-rotate90 myclass; space delimited classes to add
     array(
@@ -28,6 +30,7 @@ function leafext_extramarker_params() {
       "extensions-leaflet-map"),
       //'shortdesc' => '',
       'default' => '',
+      'filter' => '',
     ),
     // icon 	Name of the icon with prefix 	'' 	fa-coffee (see icon library's documentation)
     array(
@@ -36,6 +39,7 @@ function leafext_extramarker_params() {
       "extensions-leaflet-map"),
       //'shortdesc' => '',
       'default' => '',
+      'filter' => '',
     ),
     // iconColor 	Color of the icon 	'white' 	'white', 'black' or css code (hex, rgba etc)
     array(
@@ -44,6 +48,7 @@ function leafext_extramarker_params() {
       "extensions-leaflet-map"),
       //'shortdesc' => '',
       'default' => 'white',
+      'filter' => '',
     ),
     // iconRotate 	Rotates the icon with css transformations 	0 	numeric degrees
     array(
@@ -52,6 +57,7 @@ function leafext_extramarker_params() {
       "extensions-leaflet-map"),
       //'shortdesc' => '',
       'default' => '0',
+      'filter' => 'FILTER_SANITIZE_NUMBER_INT',
     ),
     // innerHTML 	Custom HTML code 	'' 	<svg>, images, or other HTML; a truthy assignment will override the default html icon creation behavior
     array(
@@ -60,6 +66,7 @@ function leafext_extramarker_params() {
       "extensions-leaflet-map"),
       //'shortdesc' => '',
       'default' => '',
+      'filter' => '',
     ),
     // markerColor 	Color of the marker (css class) 	'blue' 	'red', 'orange-dark', 'orange', 'yellow', 'blue-dark', 'cyan', 'purple', 'violet', 'pink', 'green-dark', 'green', 'green-light', 'black', 'white', or color hex code if svg is true
     array(
@@ -67,7 +74,8 @@ function leafext_extramarker_params() {
       'desc' => __("Color of the marker (css class), Possible values: 'red', 'orange-dark', 'orange', 'yellow', 'blue-dark', 'cyan', 'purple', 'violet', 'pink', 'green-dark', 'green', 'green-light', 'black', 'white', or color hex code if svg is true",
       "extensions-leaflet-map"),
       //'shortdesc' => '',
-      'default' => 'blue',
+      'default' => 'blue-dark',
+      'filter' => '',
     ),
     // number 	Instead of an icon, define a plain text 	'' 	'1' or 'A', must set icon: 'fa-number'
     array(
@@ -76,6 +84,7 @@ function leafext_extramarker_params() {
       "extensions-leaflet-map"),
       //'shortdesc' => '',
       'default' => '',
+      'filter' => '',
     ),
     // prefix 	The icon library's base class 	'glyphicon' 	fa (see icon library's documentation)
     array(
@@ -84,6 +93,7 @@ function leafext_extramarker_params() {
       "extensions-leaflet-map"),
       //'shortdesc' => '',
       'default' => 'glyphicon',
+      'filter' => '',
     ),
     // shape 	Shape of the marker (css class) 	'circle' 	'circle', 'square', 'star', or 'penta'
     array(
@@ -92,6 +102,7 @@ function leafext_extramarker_params() {
       "extensions-leaflet-map"),
       //'shortdesc' => '',
       'default' => 'circle',
+      'filter' => '',
     ),
     // svg 	Use SVG version 	false 	true or false
     array(
@@ -100,86 +111,100 @@ function leafext_extramarker_params() {
       "extensions-leaflet-map"),
       //'shortdesc' => '',
       'default' => '0',
+      'filter' => 'FILTER_VALIDATE_BOOLEAN',
+    ),
+    // tooltipAnchor
+    array(
+      'param' => 'tooltipAnchor',
+      'desc' => __('The coordinates of the point from which tooltips will "open", relative to the icon anchor.',
+      "extensions-leaflet-map"),
+      //'shortdesc' => '',
+      'default' => '16,-20',
+      'filter' => 'latlon',
+    ),
+    // popupAnchor
+    array(
+      'param' => 'popupAnchor',
+      'desc' => __('Set the anchor position of the popup: e.g. "40,60" for 40px left 60px top',
+      "extensions-leaflet-map"),
+      //'shortdesc' => '',
+      'default' => '0, -38',
+      'filter' => 'latlon',
     ),
   );
   return $params;
 }
 
-//Shortcode: [extramarker]
-
-function leafext_extramarker_script($params,$content){
-  $text = '
-  <script>
-  window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
-  window.WPLeafletMapPlugin.push(function () {
-    var map = window.WPLeafletMapPlugin.getCurrentMap();
-    var group = window.WPLeafletMapPlugin.getCurrentGroup();
-
-    var icon = L.marker(
-      ['.$params['lat'].','.$params['lng'].'],
-      {icon: L.ExtraMarkers.icon(
-        {'.leafext_extramarkers_params ($params).'}
-      )}
-    );
-    //icon.bindPopup("'.$content.'");
-    //icon.addTo(map);
-
-    icon.addTo( group );
-    icon.bindPopup(window.WPLeafletMapPlugin.unescape("'.$content.'"));
-    window.WPLeafletMapPlugin.markers.push( icon );
-
-  });
-  </script>';
-
-  $text = \JShrink\Minifier::minify($text);
-  return "\n".$text."\n";
-}
-
-function leafext_extramarker_settings() {
+function leafext_extramarker_defaults() {
   $defaults=array();
 	$params = leafext_extramarker_params();
 	foreach($params as $param) {
 		$defaults[$param['param']] = $param['default'];
 	}
-	$options = shortcode_atts($defaults, get_option('leafext_eleparams'));
-	return $options;
+	return $defaults;
 }
 
+function leafext_extramarker_filter() {
+  $filters=array();
+	$params = leafext_extramarker_params();
+	foreach($params as $param) {
+		$filters[$param['param']] = $param['filter'];
+	}
+	return $filters;
+}
+
+//Shortcode: [leaflet-extramarker]
 function leafext_extramarker_function( $atts, $content="" ){
   leafext_enqueue_extramarker ();
-  $options=leafext_case(array_keys(leafext_extramarker_settings()),leafext_clear_params($atts));
-  return leafext_extramarker_script($options,$content);
+  $marker_shortcode = "[leaflet-marker lat=".$atts['lat']." lng=".$atts['lng']."]".$content."[/leaflet-marker]";
+  $text = do_shortcode($marker_shortcode);
+
+  $text = \JShrink\Minifier::minify($text);
+  $atts1 = leafext_case(array_keys(leafext_extramarker_defaults()),leafext_clear_params($atts));
+  $options = shortcode_atts(leafext_extramarker_defaults(), $atts1);
+
+  //var_dump($options);//wp_die();
+  $icon = 'var extramarker = L.ExtraMarkers.icon({'.leafext_extramarkers_params ($options).'});';
+  //var_dump($icon);
+  $text = str_replace(",marker_options","",$text);
+  $text = str_replace("marker.addTo(group);","marker.addTo(group);".$icon."marker.setIcon(extramarker);",$text);
+  $text = \JShrink\Minifier::minify($text);
+  //var_dump($text);
+
+  // // Creates a red marker with the coffee icon
+  // var redMarker = L.ExtraMarkers.icon({
+  //   icon: 'fa-coffee',
+  //   markerColor: 'red',
+  //   shape: 'square',
+  //   prefix: 'fa'
+  // });
+  //
+  // L.marker([51.941196,4.512291], {icon: redMarker}).addTo(map);
+  // marker.setIcon(redMarker);
+
+  return $text;
 }
 add_shortcode('extramarker', 'leafext_extramarker_function' );
 
 function leafext_extramarkers_params ($params) {
-	///var_dump($params); wp_die();
+  $filters = leafext_extramarker_filter();
+	//var_dump($params); //wp_die();
 	$text = "";
+
 	foreach ($params as $k => $v) {
-		//var_dump($v,gettype($v));
+    if ($k == "lat" || $k == "lng") continue;
+    if ($v == "") continue;
 		$text = $text. "$k: ";
-		switch (gettype($v)) {
-			case "string":
-			switch ($v) {
-				// case "false":
-				// case "0": $value = "false"; break;
-				// case "true":
-				// case "1": $value = "true"; break;
-				case strpos($v,"{") !== false:
-				case strpos($v,"}") !== false:
-				case is_numeric($v):
-				$value = $v; break;
-				default:
-				$value = '"'.$v.'"';
-			}
-			break;
-			case "boolean":
-			$value = $v ? "true" : "false"; break;
-			case "integer":
-			case "double":
-			$value = $v; break;
-			default: var_dump($k, $v, gettype($v)); wp_die("Type");
-		}
+    switch ($filters[$k]) {
+      case "FILTER_VALIDATE_BOOLEAN":
+      $value = filter_var($v, FILTER_VALIDATE_BOOLEAN) ? 'true':'false'; break;
+      case "FILTER_SANITIZE_NUMBER_INT":
+      $value = filter_var($v, FILTER_SANITIZE_NUMBER_INT); break;
+      case "latlon":
+      $value = "[".$v."]"; break;
+      default:
+      $value = '"'.$v.'"';
+    }
 		$text = $text.$value;
 		$text = $text.",\n";
 	}

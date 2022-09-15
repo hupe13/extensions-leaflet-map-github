@@ -14,6 +14,7 @@ function leafext_extramarker_help() {
   <h2>Shortcode</h2>';
   $text = $text.'<pre><code>&#91;leaflet-map (!)fitbounds ....]'."\n";
   $text = $text.'&#91;extramarker option=... ...]description[/extramarker]'."\n";
+  $text = $text.'&#91;hover]'."\n";
   $text = $text.'&#91;zoomhomemap]</code></pre>';
 
   // Setup map
@@ -56,6 +57,7 @@ function leafext_extramarker_help() {
     $text = $text. do_shortcode('[extramarker lat='.$lat.' lng='.$lng.' '.$code.' ]'.$code.'[/extramarker]');
     $lng = $lng + 0.052;
   }
+  $text = $text. do_shortcode('[hover]');
   //$text = $text. do_shortcode('[zoomhomemap fit]');
 
   $text = $text. '<p><h3>All Shapes without (1) / with (2) SVG</h3></p>';
@@ -70,6 +72,7 @@ function leafext_extramarker_help() {
     $text = $text. do_shortcode('[extramarker lat='.$lat.' lng='.$lng.' '.$code.']'.$code.'[/extramarker]');
     $lng = $lng + 0.052;
   }
+  $text = $text. do_shortcode('[hover]');
   //$text = $text. do_shortcode('[zoomhomemap fit]');
 
   $text = $text. '<p><h3>Some Icons</h3></p>';
@@ -84,6 +87,7 @@ function leafext_extramarker_help() {
     $text = $text. do_shortcode('[extramarker lat='.$lat.' lng='.$lng.' '.$code.' ]'.$code.'[/extramarker]');
     $lng = $lng + 0.052;
   }
+  $text = $text. do_shortcode('[hover]');
   //$text = $text. do_shortcode('[zoomhomemap fit]');
 
   $text = $text.'<h2>Options</h2>';

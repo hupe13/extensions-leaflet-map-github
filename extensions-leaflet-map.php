@@ -5,7 +5,7 @@
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
  * Primary Branch:    main
  * Description:       Extensions for the WordPress plugin Leaflet Map Github Version
- * Version:           3.1-220908
+ * Version:           3.1-220915
  * Requires PHP:      7.4
  * Author:            hupe13
  * License:           GPL v2 or later
@@ -24,7 +24,7 @@ define('LEAFEXT_PLUGIN_SETTINGS', dirname( plugin_basename( __FILE__ ) ) ); // e
 if ( ! function_exists( 'is_plugin_active' ) )
   require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
 
-if ( ! is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
+if ( strpos(implode(" " ,get_option('active_plugins')), "/leaflet-map.php")  === false ) {
   function leafext_require_leaflet_map_plugin(){?>
     <div class="notice notice-error" >
       <p> Please install and activate <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map Plugin</a> before using Extensions for Leaflet Map.</p>

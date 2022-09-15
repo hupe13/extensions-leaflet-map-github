@@ -34,7 +34,6 @@ function leafext_zoomhome_script($fit){
 		var allfit = [];
 		if ('.json_encode($fit).' && typeof maps[map_id]._shouldFitBounds === "undefined" ) {
 			allfit[map_id] = new L.latLngBounds();
-			//console.log(allfit[map_id]);
 		}
 
 		var zoomHome = [];
@@ -241,7 +240,6 @@ function leafext_zoomhome_script($fit){
 		// maps[map_id].on("zoomend", function(e) {
 		// 	console.log("zoomend zoom "+map_id+" "+maps[map_id].getZoom());
 		// });
-
 	});
 	</script>';
 	$text = \JShrink\Minifier::minify($text);
