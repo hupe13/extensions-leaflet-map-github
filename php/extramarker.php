@@ -74,7 +74,7 @@ function leafext_extramarker_params() {
       'desc' => __("Color of the marker (css class), Possible values: 'red', 'orange-dark', 'orange', 'yellow', 'blue-dark', 'cyan', 'purple', 'violet', 'pink', 'green-dark', 'green', 'green-light', 'black', 'white', or color hex code if svg is true",
       "extensions-leaflet-map"),
       //'shortdesc' => '',
-      'default' => 'blue-dark',
+      'default' => 'red',
       'filter' => '',
     ),
     // number 	Instead of an icon, define a plain text 	'' 	'1' or 'A', must set icon: 'fa-number'
@@ -110,27 +110,27 @@ function leafext_extramarker_params() {
       'desc' => __("Use SVG version, Possible values: true or false",
       "extensions-leaflet-map"),
       //'shortdesc' => '',
-      'default' => '0',
+      'default' => 'false',
       'filter' => 'FILTER_VALIDATE_BOOLEAN',
     ),
     // tooltipAnchor
-    array(
-      'param' => 'tooltipAnchor',
-      'desc' => __('The coordinates of the point from which tooltips will "open", relative to the icon anchor.',
-      "extensions-leaflet-map"),
-      //'shortdesc' => '',
-      'default' => '16,-20',
-      'filter' => 'latlon',
-    ),
+    // array(
+    //   'param' => 'tooltipAnchor',
+    //   'desc' => __('The coordinates of the point from which tooltips will "open", relative to the icon anchor (<code>[17,42]</code>).',
+    //   "extensions-leaflet-map"),
+    //   //'shortdesc' => '',
+    //   'default' => '12,-24',
+    //   'filter' => 'latlon',
+    // ),
     // popupAnchor
-    array(
-      'param' => 'popupAnchor',
-      'desc' => __('Set the anchor position of the popup: e.g. "40,60" for 40px left 60px top',
-      "extensions-leaflet-map"),
-      //'shortdesc' => '',
-      'default' => '0, -38',
-      'filter' => 'latlon',
-    ),
+    // array(
+    //   'param' => 'popupAnchor',
+    //   'desc' => __('Set the anchor position of the popup: e.g. "40,60" for 40px left 60px top',
+    //   "extensions-leaflet-map"),
+    //   //'shortdesc' => '',
+    //   'default' => '1,-32',
+    //   'filter' => 'latlon',
+    // ),
   );
   return $params;
 }
@@ -164,7 +164,7 @@ function leafext_extramarker_function( $atts, $content="" ){
   $options = shortcode_atts(leafext_extramarker_defaults(), $atts1);
 
   //var_dump($options);//wp_die();
-  $icon = 'var extramarker = L.ExtraMarkers.icon({'.leafext_extramarkers_params ($options).'});';
+  $icon = 'var extramarker = L.ExtraMarkers.icon({'.leafext_extramarkers_params ($options).'tooltipAnchor:[12,-24]});';
   //var_dump($icon);
   $text = str_replace(",marker_options","",$text);
   $text = str_replace("marker.addTo(group);","marker.addTo(group);".$icon."marker.setIcon(extramarker);",$text);
@@ -211,20 +211,3 @@ function leafext_extramarkers_params ($params) {
 	//var_dump($text); wp_die();
 	return $text;
 }
-
-add_filter('pre_do_shortcode_tag', function ( $output, $shortcode, $attr) {
-  // $m ist ein array:
-  //0 Ganzer Shortcode: [leaflet-marker svg background="#777" iconClass="dashicons dashicons-star-filled" color="gold"]from Shortcode Helper Page[/leaflet-marker]
-  //1
-  //2 leaflet-marker
-  //3 parameter: svg background="#777" iconClass="dashicons dashicons-star-filled" color="gold"
-  //4
-  //5 content: from Shortcode Helper Page
-  //6
-  if ( 'leaflet-marker' == $shortcode ) {
-    if (isset($attr["iconclass"]) &&  str_contains($attr["iconclass"], "dashicons")) {
-      wp_enqueue_style( 'dashicons' );
-    }
-  }
-  return $output;
-}, 10, 3);

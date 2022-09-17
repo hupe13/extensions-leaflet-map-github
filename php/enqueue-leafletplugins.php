@@ -206,4 +206,14 @@ function leafext_replace_br ($content) {
   $content = preg_replace( '#</script>(\s*)<br />#', '</script>', $content );
   return $content;
 }
-add_filter('the_content', 'leafext_replace_br', 20, 1);
+//add_filter('the_content', 'leafext_replace_br', 20, 1);
+
+add_filter('pre_do_shortcode_tag', function ( $output, $shortcode, $attr) {
+  if ( 'leaflet-marker' == $shortcode ) {
+    if (isset($attr["iconclass"]) &&  str_contains($attr["iconclass"], "dashicons")) {
+      wp_enqueue_style( 'dashicons' );
+    }
+  }
+  add_filter('the_content', 'leafext_replace_br', 20, 1);
+  return $output;
+}, 10, 3);

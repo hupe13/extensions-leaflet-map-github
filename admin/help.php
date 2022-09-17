@@ -4,7 +4,7 @@ defined( 'ABSPATH' ) or die();
 
 function leafext_help_table($leafext_plugin_name="") {
 	$header = '<h3>'.
-	__('Found an issue?','extensions-leaflet-map').'</h3>
+	__('Found an issue? Do you have a question?','extensions-leaflet-map').'</h3>
     <p>'.
 	__('Post it to the support forum','extensions-leaflet-map').': <a href="https://wordpress.org/support/plugin/extensions-leaflet-map/" target="_blank">Extensions for Leaflet Map</a></p>';
 	//

@@ -776,7 +776,7 @@ function leafext_elevation_function( $atts ) {
 					$wptvalue = $wptvalue.'"'.$wpt['css'].'":  L.divIcon({
 						className: "elevation-waypoint-marker",
 						html: '."'".'<i class="elevation-waypoint-icon '.$wpt['css'].'"></i>'."'".','.
-						$wpt['js'].'}),';
+						html_entity_decode($wpt['js']).'}),';
 				}
 				$wptvalue = $wptvalue.'}';
 				$options['wptIcons'] =  $wptvalue;

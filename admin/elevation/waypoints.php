@@ -90,7 +90,7 @@ function leafext_validate_waypoints($options) {
 				//$wpt['sym'] = strtolower(sanitize_text_field ( $option['sym'] ));
 				$wpt['sym'] = $option['sym'];
 				$wpt['css'] = str_replace(array(' ',','), array('-','\,'), strtolower( $option['sym'] ));
-				$wpt['js'] = wp_kses_normalize_entities( $option['js'] );
+				$wpt['js'] = htmlspecialchars( $option['js'] );
 
 				if(array_search($wpt['sym'], array_column($wpts, 'sym')) === false) {
 					if ($wpt['sym'] == "") {

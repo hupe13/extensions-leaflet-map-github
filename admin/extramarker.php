@@ -9,31 +9,41 @@ function leafext_extramarker_help() {
     $text = '<h2>Leaflet.Extramarkers</h2>';
   }
 
-  $text=$text.'<p>Only the <a href="https://fontawesome.com/download">Font Awesome 6</a> is included in the plugin Extensions for Leaflet Map.
-  You can install the <a href="https://github.com/coryasilva/Leaflet.ExtraMarkers#icons">other fonts</a> and use these also.</p>
+  $text=$text.'<p>'.sprintf(__('Only the %s is included in the plugin %s.
+  You can install the %sother fonts%s and use these also.','extensions-leaflet-map'),
+  '<a href="https://fontawesome.com/download">Font Awesome 6</a>',
+  'Extensions for Leaflet Map',
+  '<a href="https://github.com/coryasilva/Leaflet.ExtraMarkers#icons">',
+  '</a>').'</p>
   <h2>Shortcode</h2>';
-  $text = $text.'<pre><code>&#91;leaflet-map (!)fitbounds ....]'."\n";
+  $text = $text.'<pre><code>&#91;leaflet-map fitbounds ....]'."\n";
   $text = $text.'&#91;extramarker option=... ...]description[/extramarker]'."\n";
   $text = $text.'&#91;hover]'."\n";
   $text = $text.'&#91;zoomhomemap]</code></pre>';
 
   // Setup map
   $shapes = array ('circle', 'square', 'star', 'penta');
-  $colors = array('red', 'orange-dark', 'orange', 'yellow', 'blue-dark', 'cyan', 'purple', 'violet', 'pink', 'green-dark', 'green', 'white', 'black');
+  $colors = array('red', 'orange-dark', 'orange', 'yellow', 'blue-dark', 'cyan', 'purple', 'violet', 'pink', 'green-dark', 'green', 'green-light', 'black', 'white');
 
   // Define test cases
   $tests = array(
-    "icon='fa-coffee' prefix='fa' iconColor='black' iconRotate=270",
-    "icon='fa-coffee' prefix='fa' iconColor='black'",
-    "icon='fa-cog' prefix='fa' extraClasses='fa-5x' iconColor='#6b1d5c'",
-    "icon='fa-cog' prefix='fa' iconColor='#6b1d5c'",
-    "icon='fa-igloo' prefix='fas'",
-    "icon='fa-number' number='1'",
-    "icon='fa-number' number='42' svg=true",
-    "icon='fa-spinner' prefix='fa' extraClasses='fa-spin' svg=true",
-    "icon='fa-spinner' prefix='fa' extraClasses='fa-spin'",
-    "icon='fa-spinner' prefix='fa'",
-    "icon='fa-plus' prefix='fa'",
+    "icon=fa-coffee prefix=fa iconColor=black iconRotate=270",
+    "icon=fa-coffee prefix=fa iconColor=black",
+    "icon=fa-cog prefix=fa extraClasses=fa-5x iconColor=#6b1d5c",
+    "icon=fa-cog prefix=fa iconColor=#6b1d5c",
+    "icon=fa-igloo prefix=fas",
+    "icon=fa-number number=1",
+    "icon=fa-number number=42 svg",
+    "icon=fa-plus prefix=fa",
+    "icon=fa-solid prefix=fa-cart-shopping extraClasses=fa",
+    "icon=fa-solid prefix=fa-utensils extraClasses=fa",
+    "icon=fa-spinner prefix=fa extraClasses=fa-spin svg",
+    "icon=fa-spinner prefix=fa",
+    "icon=fa-solid prefix=fa-car-side extraClasses='fa fa-spin fa-spin-reverse'",
+    "icon=fa-solid prefix=fa-mountain-sun extraClasses=fa",
+    "icon=fa-solid prefix=fa-person-hiking extraClasses=fa",
+    "icon=fa-solid prefix=fa-person-biking extraClasses=fa",
+
     //bootstrap
     //"icon='glyphicon-cog' prefix='glyphicon'",
     //
@@ -43,25 +53,21 @@ function leafext_extramarker_help() {
     //"icon='archive' prefix='icon'",
   );
 
-  $text = $text. '<p><h3>All Colors</h3></p>';
-  $text = $text. do_shortcode('[leaflet-map height=180 width=80% lat=0.1 lng=0.36 zoom=10]');
+  $text = $text. '<p><h3>'.__('All Colors','extensions-leaflet-map').'</h3></p>';
+  $text = $text. do_shortcode('[leaflet-map fitbounds height=180 width=80%]'); //lat=0.1 lng=0.36 zoom=10
   $lat = 0.1;
   $lng = 0.1;
   for ($farbe = 0; $farbe < count($colors); $farbe++) {
     $color=$colors[$farbe];
-    if ($color == "white") {
-      $code='markerColor='.$color.' iconColor=black shape=circle icon=fa-number number=1';
-    } else {
-      $code='markerColor='.$color.' shape=circle icon=fa-number number=1';
-    }
+    $code='markerColor='.$color.' shape=circle';
     $text = $text. do_shortcode('[extramarker lat='.$lat.' lng='.$lng.' '.$code.' ]'.$code.'[/extramarker]');
     $lng = $lng + 0.052;
   }
   $text = $text. do_shortcode('[hover]');
   //$text = $text. do_shortcode('[zoomhomemap fit]');
 
-  $text = $text. '<p><h3>All Shapes without (1) / with (2) SVG</h3></p>';
-  $text = $text. do_shortcode('[leaflet-map height=180 width=80%  lat=0.1 lng=0.23 zoom=10]');
+  $text = $text. '<p><h3>'.__('All Shapes without (1) / with (2) SVG','extensions-leaflet-map').'</h3></p>';
+  $text = $text. do_shortcode('[leaflet-map fitbounds height=180 width=80% max_zoom=11]'); // lat=0.1 lng=0.23 zoom=10
   $lat = 0.1;
   $lng = 0.1;
   for ($shape = 0; $shape < count($shapes); $shape++) {
@@ -75,8 +81,8 @@ function leafext_extramarker_help() {
   $text = $text. do_shortcode('[hover]');
   //$text = $text. do_shortcode('[zoomhomemap fit]');
 
-  $text = $text. '<p><h3>Some Icons</h3></p>';
-  $text = $text. do_shortcode('[leaflet-map height=180 width=80%  lat=0.1 lng=0.3 zoom=10]');
+  $text = $text. '<p><h3>'.__('Some Icons','extensions-leaflet-map').'</h3></p>';
+  $text = $text. do_shortcode('[leaflet-map fitbounds height=180 width=80% max_zoom=10]'); //lat=0.1 lng=0.3 zoom=10
   $anzahl = 0;
   $lat = 0.1;
   $lng = 0.1;
@@ -88,15 +94,19 @@ function leafext_extramarker_help() {
     $lng = $lng + 0.052;
   }
   $text = $text. do_shortcode('[hover]');
-  //$text = $text. do_shortcode('[zoomhomemap fit]');
 
-  $text = $text.'<h2>Options</h2>';
+  $text = $text. '<p><a href="https://fontawesome.com/search?o=r&m=free">'.__('More icons','extensions-leaflet-map').' ...</a></p>';
+  $text = $text. '<p>'.sprintf(__('If you use %s, you must write %s also','extensions-leaflet-map'),
+  '<code>icon=fa-solid</code>',
+  '<code>extraClasses=fa</code>').'.</p>';
+
+  $text = $text.'<p><h2>'.__('Options','extensions-leaflet-map').'</h2></p>';
   $options = leafext_extramarker_params();
   $new = array();
   $new[] = array(
     'param' => "<strong>Option</strong>",
-    'default' => "<strong>Default</strong>",
-    'desc' => "<strong>Description</strong>",
+    'default' => "<strong>".__('Default','extensions-leaflet-map').'</strong>',
+    'desc' => "<strong>".__('Description','extensions-leaflet-map').'</strong>',
   );
   foreach ($options as $option) {
     $new[] = array(
