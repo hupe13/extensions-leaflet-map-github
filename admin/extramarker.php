@@ -9,8 +9,7 @@ function leafext_extramarker_help() {
     $text = '<h2>Leaflet.Extramarkers</h2>';
   }
 
-  $text=$text.'<p>'.sprintf(__('Only the %s is included in the plugin %s.
-  You can install the %sother fonts%s and use these also.','extensions-leaflet-map'),
+  $text=$text.'<p>'.sprintf(__('Only the %s is included in the plugin %s. You can install the %sother fonts%s and use these also.','extensions-leaflet-map'),
   '<a href="https://fontawesome.com/download">Font Awesome 6</a>',
   'Extensions for Leaflet Map',
   '<a href="https://github.com/coryasilva/Leaflet.ExtraMarkers#icons">',

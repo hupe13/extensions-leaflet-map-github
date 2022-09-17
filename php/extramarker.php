@@ -44,7 +44,7 @@ function leafext_extramarker_params() {
     // iconColor 	Color of the icon 	'white' 	'white', 'black' or css code (hex, rgba etc)
     array(
       'param' => 'iconColor',
-      'desc' => __("Color of the icon, Possible values: 	'white', 'black' or css code (hex, rgba etc)",
+      'desc' => __("Color of the icon, Possible values: 'white', 'black' or css code (hex, rgba etc)",
       "extensions-leaflet-map"),
       //'shortdesc' => '',
       'default' => 'white',
@@ -98,7 +98,7 @@ function leafext_extramarker_params() {
     // shape 	Shape of the marker (css class) 	'circle' 	'circle', 'square', 'star', or 'penta'
     array(
       'param' => 'shape',
-      'desc' => __("Shape of the marker (css class), Possible values: 'circle' 	'circle', 'square', 'star', or 'penta'",
+      'desc' => __("Shape of the marker (css class), Possible values: 'circle', 'square', 'star', or 'penta'",
       "extensions-leaflet-map"),
       //'shortdesc' => '',
       'default' => 'circle',
