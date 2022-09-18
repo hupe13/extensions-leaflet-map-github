@@ -16,7 +16,7 @@ function leafext_extramarker_help() {
   '</a>').'</p>
   <h2>Shortcode</h2>';
   $text = $text.'<pre><code>&#91;leaflet-map fitbounds ....]'."\n";
-  $text = $text.'&#91;extramarker option=... ...]description[/extramarker]'."\n";
+  $text = $text.'&#91;leaflet-extramarker option=... ...]description[/leaflet-extramarker]'."\n";
   $text = $text.'&#91;hover]'."\n";
   $text = $text.'&#91;zoomhomemap]</code></pre>';
 
@@ -34,14 +34,14 @@ function leafext_extramarker_help() {
     "icon=fa-number number=1",
     "icon=fa-number number=42 svg",
     "icon=fa-plus prefix=fa",
-    "icon=fa-solid prefix=fa-cart-shopping extraClasses=fa",
-    "icon=fa-solid prefix=fa-utensils extraClasses=fa",
+    "icon=fa prefix=fa-cart-shopping",
+    "icon=fa prefix=fa-utensils",
     "icon=fa-spinner prefix=fa extraClasses=fa-spin svg",
     "icon=fa-spinner prefix=fa",
-    "icon=fa-solid prefix=fa-car-side extraClasses='fa fa-spin fa-spin-reverse'",
-    "icon=fa-solid prefix=fa-mountain-sun extraClasses=fa",
-    "icon=fa-solid prefix=fa-person-hiking extraClasses=fa",
-    "icon=fa-solid prefix=fa-person-biking extraClasses=fa",
+    "icon=fa prefix=fa-car-side extraClasses='fa-spin fa-spin-reverse'",
+    "icon=fa prefix=fa-mountain-sun",
+    "icon=fa prefix=fa-person-hiking",
+    "icon=fa prefix=fa-person-biking",
 
     //bootstrap
     //"icon='glyphicon-cog' prefix='glyphicon'",
@@ -59,7 +59,7 @@ function leafext_extramarker_help() {
   for ($farbe = 0; $farbe < count($colors); $farbe++) {
     $color=$colors[$farbe];
     $code='markerColor='.$color.' shape=circle';
-    $text = $text. do_shortcode('[extramarker lat='.$lat.' lng='.$lng.' '.$code.' ]'.$code.'[/extramarker]');
+    $text = $text. do_shortcode('[leaflet-extramarker lat='.$lat.' lng='.$lng.' '.$code.' ]'.$code.'[/leaflet-extramarker]');
     $lng = $lng + 0.052;
   }
   $text = $text. do_shortcode('[hover]');
@@ -71,10 +71,10 @@ function leafext_extramarker_help() {
   $lng = 0.1;
   for ($shape = 0; $shape < count($shapes); $shape++) {
     $code='shape='.$shapes[$shape].' icon=fa-number number=1';
-    $text = $text. do_shortcode('[extramarker lat='.$lat.' lng='.$lng.' '.$code.']'.$code.'[/extramarker]');
+    $text = $text. do_shortcode('[leaflet-extramarker lat='.$lat.' lng='.$lng.' '.$code.']'.$code.'[/leaflet-extramarker]');
     $lng = $lng + 0.052;
     $code='shape='.$shapes[$shape].' icon=fa-number number=2 svg';
-    $text = $text. do_shortcode('[extramarker lat='.$lat.' lng='.$lng.' '.$code.']'.$code.'[/extramarker]');
+    $text = $text. do_shortcode('[leaflet-extramarker lat='.$lat.' lng='.$lng.' '.$code.']'.$code.'[/leaflet-extramarker]');
     $lng = $lng + 0.052;
   }
   $text = $text. do_shortcode('[hover]');
@@ -89,15 +89,15 @@ function leafext_extramarker_help() {
   $farbe='orange';
   for ($i = 0; $i < count($tests); $i++) {
     $code='markerColor='.$farbe.' shape='.$shape.' '.$tests[$i];
-    $text = $text. do_shortcode('[extramarker lat='.$lat.' lng='.$lng.' '.$code.' ]'.$code.'[/extramarker]');
+    $text = $text. do_shortcode('[leaflet-extramarker lat='.$lat.' lng='.$lng.' '.$code.' ]'.$code.'[/leaflet-extramarker]');
     $lng = $lng + 0.052;
   }
   $text = $text. do_shortcode('[hover]');
 
   $text = $text. '<p><a href="https://fontawesome.com/search?o=r&m=free">'.__('More icons','extensions-leaflet-map').' ...</a></p>';
-  $text = $text. '<p>'.sprintf(__('If you use %s, you must write %s also','extensions-leaflet-map'),
-  '<code>icon=fa-solid</code>',
-  '<code>extraClasses=fa</code>').'.</p>';
+  // $text = $text. '<p>'.sprintf(__('If you use %s, you must write %s also','extensions-leaflet-map'),
+  // '<code>icon=fa-solid</code>',
+  // '<code>extraClasses=fa</code>').'.</p>';
 
   $text = $text.'<p><h2>'.__('Options','extensions-leaflet-map').'</h2></p>';
   $options = leafext_extramarker_params();

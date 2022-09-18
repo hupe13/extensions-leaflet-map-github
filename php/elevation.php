@@ -120,8 +120,8 @@ function leafext_elevation_params($typ = array()) {
 		//array('detached', 'Chart container outside/inside map container', true, 1),
 		array(
 			'param' => 'detached',
-			'shortdesc' => 'Chart is detached',
-			'desc' => "",
+			'shortdesc' => __('Chart container outside/inside map container',"extensions-leaflet-map"),
+			'desc' => sprintf(__('%s outside, %s inside',"extensions-leaflet-map"),'true - ','false - '),
 			'default' => true,
 			'values' => 1,
 			//'typ' => array('fixed'),

@@ -54,11 +54,11 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Frequently Asked Questions
 
-#### Is there a widget or other support for the editor?
+### Is there a widget or other support for the editor?
 
 Unfortunately both plugins - Leaflet Map and Extensions for Leaflet Map - only work with shortcodes. If you have any questions please ask in the [forum](https://wordpress.org/support/plugin/extensions-leaflet-map/).
 
-#### My gpx file is not displayed!
+### My gpx file is not displayed!
 
 * Is the URL correct?
 * Does the webserver return the correct mime type?
@@ -68,12 +68,13 @@ AddType application/gpx+xml gpx
 RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 ```
 
-#### It doesn't work!
+### It doesn't work!
 
 * Are you using any caching plugin? Try to exclude the js files of both plugins from caching.
 * Are you using any plugin to comply with the GDPR/DSGVO? There might be a problem with that.
+* Please ask in the [forum](https://wordpress.org/support/plugin/extensions-leaflet-map/)!
 
-#### Apropos GDPR/DSGVO
+### Apropos GDPR/DSGVO
 
 If you need a plugin for this try [DSGVO/GDPR Snippet for Extensions for Leaflet Map](https://github.com/hupe13/extensions-leaflet-map-dsgvo).
 

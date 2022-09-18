@@ -156,7 +156,12 @@ function leafext_extramarker_filter() {
 //Shortcode: [leaflet-extramarker]
 function leafext_extramarker_function( $atts, $content="" ){
   leafext_enqueue_extramarker ();
-  $marker_shortcode = "[leaflet-marker lat=".$atts['lat']." lng=".$atts['lng']."]".$content."[/leaflet-marker]";
+  if ( $atts['lat'] && $atts['lng'] ) {
+    $latlng = "lat=".$atts['lat']." lng=".$atts['lng'];
+  } else {
+    $latlng = "";
+  }
+  $marker_shortcode = "[leaflet-marker ".$latlng."]".$content."[/leaflet-marker]";
   $text = do_shortcode($marker_shortcode);
 
   $text = \JShrink\Minifier::minify($text);
@@ -185,6 +190,7 @@ function leafext_extramarker_function( $atts, $content="" ){
   return $text;
 }
 add_shortcode('extramarker', 'leafext_extramarker_function' );
+add_shortcode('leaflet-extramarker', 'leafext_extramarker_function' );
 
 function leafext_extramarkers_params ($params) {
   $filters = leafext_extramarker_filter();
