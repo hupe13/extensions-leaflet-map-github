@@ -117,7 +117,18 @@ function leafext_ele_help_text () {
 	leafext_enqueue_awesome();
 	$text = "";
 	$text = $text.'<p><img src="'.LEAFEXT_PLUGIN_PICTS.'elevation.png" alt="elevation"></p>
-	<h2>'.__('Note','extensions-leaflet-map').'</h2>';
+	<h2>'.__('Translation','extensions-leaflet-map').'</h2><p>';
+	$text = $text.__("Your web site language isn't english? You can speak english?",'extensions-leaflet-map').' ';
+	$text = $text.sprintf(__('%s has some english strings in the frontend. Go to %s, choose your language and %s or %s, filter %s and translate these 36 short strings.','extensions-leaflet-map'),
+	'<code>elevation</code>',
+	'<a href="https://translate.wordpress.org/projects/wp-plugins/extensions-leaflet-map/">Translating WordPress</a>',
+	'"Development"',
+	'"Stable"',
+	'"in Frontend"');
+	$text = $text.' '.__('I will include these translations in the plugin. Swedish, for example, is already included.','extensions-leaflet-map').' ';
+	$text = $text.' '.__('A language pack will be generated, if at least 90% of all strings are translated, like german or spanish.','extensions-leaflet-map').' ';
+	$text = $text.__("Many thanks to the translators.",'extensions-leaflet-map').'</p>';
+	$text = $text.'<h2>'.__('Note','extensions-leaflet-map').'</h2>';
 	$text = $text.sprintf(
 				__(
 				'If you want to display a track only, use %s functions. If you want to display a track with an elevation profile use %s.',"extensions-leaflet-map"),

@@ -54,6 +54,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 
 ## Frequently Asked Questions
 
+<p>
 <details>
 <summary>
 <b>Is there a widget or other support for the editor?</b>
@@ -94,6 +95,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 * If you need a plugin for this try [DSGVO/GDPR Snippet for Extensions for Leaflet Map](https://github.com/hupe13/extensions-leaflet-map-dsgvo).
 </details>
+</p>
 
 ## Installation
 
