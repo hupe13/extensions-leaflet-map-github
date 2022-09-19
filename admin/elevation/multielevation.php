@@ -112,9 +112,15 @@ function leafext_multiele_help_text () {
 // At last either
 [elevation-<span style="color: #d63638">tracks</span> filename=0/1 summary=0/1]
 // or
-[multielevation filename=0/1 option1=value1 option2 !option3 ...]</code></pre>'.
-__('See also','extensions-leaflet-map').' <a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=filemgr-dir"><code>leaflet-directory</code></a>'.
-'<h3>Options elevation-<span style="color: #d63638">track</span></h3>
+[multielevation filename=0/1 option1=value1 option2 !option3 ...]</code></pre><p>'.
+__('See also','extensions-leaflet-map');
+if (is_singular()|| is_archive() ) {
+	$text = $text.' <a href="'.site_url().'/file/leaflet-dir/">';
+} else {
+	$text = $text.' <a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=filemgr-dir">';
+}
+$text = $text.'<code>leaflet-directory</code></a></p>
+<h3>Options elevation-<span style="color: #d63638">track</span></h3>
 <ul style="list-style: disc;"><li style="margin-left: 1.5em;">'.
 	sprintf ( __('%s is the url of the trackfile.','extensions-leaflet-map'),'<code>file</code>').
 		'</li><li style="margin-left: 1.5em;">'.
