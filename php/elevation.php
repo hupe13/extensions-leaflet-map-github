@@ -12,10 +12,9 @@ function leafext_elevation_params($typ = array()) {
 		// Testing
 		array(
 			'param' => 'testing',
-			'shortdesc' => __('Test Pull Request',"extensions-leaflet-map"),
-			'desc' => __('Activate leaflet-elevation version from',"extensions-leaflet-map").
-			' <a href="https://github.com/Raruto/leaflet-elevation/pull/210">Pull request</a>. '.
-			__('Please give feedback, if you find an issue.',"extensions-leaflet-map"),
+			'shortdesc' => __('Testing Development Version',"extensions-leaflet-map"),
+			'desc' => __('Activate leaflet-elevation development version. Pay attention to the presentation of the values. ',"extensions-leaflet-map").' '
+			.__('Please give feedback, if you find an issue.',"extensions-leaflet-map"),
 			'default' => false,
 			'values' => 1,
 			'typ' => array('changeable','test'),
@@ -370,7 +369,7 @@ function leafext_elevation_params($typ = array()) {
 			'param' => 'followMarker',
 			'shortdesc' => __('Autoupdate map center on chart mouseover.',"extensions-leaflet-map"),
 			'desc' => '',
-			'default' => true,
+			'default' => false,
 			'values' => 1,
 			'typ' => array('changeable','other','multielevation'),
 		),

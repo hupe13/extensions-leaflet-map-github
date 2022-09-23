@@ -156,7 +156,7 @@ function leafext_extramarker_filter() {
 //Shortcode: [leaflet-extramarker]
 function leafext_extramarker_function( $atts, $content="" ){
   leafext_enqueue_extramarker ();
-  if ( $atts['lat'] && $atts['lng'] ) {
+  if (isset($atts['lat']) && isset($atts['lng'])) {
     $latlng = "lat=".$atts['lat']." lng=".$atts['lng'];
   } else {
     $latlng = "";
