@@ -15,8 +15,8 @@ export function Pace() {
 		clampRange: this.options.paceRange,
 		decimals: 2,
 		pointToAttr: (_, i) => {
-			let dx   = (this._data[i].dist - this._data[i > 0 ? i - 1 : i].dist) * 1000;
-			let dt   = this._data[i].time - this._data[ i > 0 ? i - 1 : i].time;
+			let dx   = (this._data[i].dist - this._data[i > 1 ? i - 1 : i].dist) * 1000;
+			let dt   = this._data[i].time - this._data[ i > 1 ? i - 1 : i].time;
 			return dx > 0 ? Math.abs((dt / dx) / opts.paceFactor) : 0;
 		},
 		stats: { max: _.iMax, min: _.iMin, avg: _.iAvg },
