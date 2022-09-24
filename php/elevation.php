@@ -10,15 +10,15 @@ defined( 'ABSPATH' ) or die();
 function leafext_elevation_params($typ = array()) {
 	$params = array(
 		// Testing
-		array(
-			'param' => 'testing',
-			'shortdesc' => __('Testing Development Version',"extensions-leaflet-map"),
-			'desc' => __('Activate leaflet-elevation development version. Pay attention to the presentation of the values. ',"extensions-leaflet-map").' '
-			.__('Please give feedback, if you find an issue.',"extensions-leaflet-map"),
-			'default' => false,
-			'values' => 1,
-			'typ' => array('changeable','test'),
-		),
+		// array(
+		// 	'param' => 'testing',
+		// 	'shortdesc' => __('Testing Development Version',"extensions-leaflet-map"),
+		// 	'desc' => __('Activate leaflet-elevation development version. Pay attention to the presentation of the values. ',"extensions-leaflet-map").' '
+		// 	.__('Please give feedback, if you find an issue.',"extensions-leaflet-map"),
+		// 	'default' => false,
+		// 	'values' => 1,
+		// 	'typ' => array('changeable','test'),
+		// ),
 
 		// Aussehen
 

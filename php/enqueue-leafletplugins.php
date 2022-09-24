@@ -64,12 +64,12 @@ function leafext_enqueue_markercluster () {
   array('wp_leaflet_map'),null );
 }
 
-$params = get_option('leafext_eleparams');
-if (is_array($params) && key_exists('testing', $params) && (bool)$params['testing']) {
+//$params = get_option('leafext_eleparams');
+//if (is_array($params) && key_exists('testing', $params) && (bool)$params['testing']) {
   define('LEAFEXT_ELEVATION_VERSION',"2.2.7i");
-} else {
-  define('LEAFEXT_ELEVATION_VERSION',"2.2.6");
-}
+//} else {
+//  define('LEAFEXT_ELEVATION_VERSION',"2.2.6");
+//}
 define('LEAFEXT_ELEVATION_URL', LEAFEXT_PLUGIN_URL . '/leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/');
 define('LEAFEXT_ELEVATION_DIR', LEAFEXT_PLUGIN_DIR . '/leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/');
 function leafext_enqueue_elevation () {
