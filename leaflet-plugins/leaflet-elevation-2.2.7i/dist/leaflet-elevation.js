@@ -137,8 +137,6 @@
 	 * TODO: use generators instead? (ie. "yield")
 	 */
 	const iMax = (iVal, max = -Infinity) => (iVal > max ? iVal : max);
-	//const iMin = (iVal, min = +Infinity) => ((iVal && iVal < min) ? iVal : min);
-	//const iAvg = (iVal, avg = 0, idx = 1) => (iVal && idx > 1) ? (iVal + avg * (idx - 1)) / idx : avg ;
 	const iMin = (iVal, min = +Infinity) => ((iVal && iVal < min) ? iVal : min);
 	const iAvg = (iVal, avg = 0, idx = 1) => (iVal && idx > 1) ? (iVal + avg * (idx - 1)) / idx : avg ;
 	const iSum = (iVal, sum = 0) => iVal + sum;
