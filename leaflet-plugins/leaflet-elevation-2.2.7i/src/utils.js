@@ -133,7 +133,7 @@ export const randomId      = ()                   => Math.random().toString(36).
  */
 export const iMax = (iVal, max = -Infinity) => (iVal > max ? iVal : max);
 export const iMin = (iVal, min = +Infinity) => ((iVal && iVal < min) ? iVal : min);
-export const iAvg = (iVal, avg = 0, idx = 1) => (iVal && idx > 1) ? (iVal + avg * (idx - 1)) / idx : avg ;
+export const iAvg = (iVal, avg = 0, idx = 1) => ((iVal && idx > 1) ? ((iVal + avg * (idx - 1)) / idx) : ((iVal && idx < 2) ? iVal : avg));
 export const iSum = (iVal, sum = 0) => iVal + sum;
 
 /**
