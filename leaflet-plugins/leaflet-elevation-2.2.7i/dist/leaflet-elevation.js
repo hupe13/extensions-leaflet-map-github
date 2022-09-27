@@ -136,8 +136,8 @@
 	/**
 	 * TODO: use generators instead? (ie. "yield")
 	 */
-	const iMax = (iVal, max = -Infinity)  => (((typeof (iVal) === 'number') && (iVal > max)) ? iVal : max);
-	const iMin = (iVal, min = +Infinity)  => (((typeof (iVal) === 'number') && (iVal < min)) ? iVal : min);
+	const iMax = (iVal, max = -Infinity) =>  (((typeof (iVal) === 'number') && (iVal > max)) ? iVal : max);
+	const iMin = (iVal, min = +Infinity) =>  (((typeof (iVal) === 'number') && (iVal < min)) ? iVal : min);
 	const iAvg = (iVal, avg = 0, idx = 1) => (((typeof (iVal) === 'number') && idx > 1) ? ((iVal + avg * (idx - 1)) / idx) : ((iVal && idx < 2) ? iVal : avg));
 	const iSum = (iVal, sum = 0) => iVal + sum;
 
@@ -168,7 +168,7 @@
 	 */
 	function precision(x,n){
 		if ( typeof x == 'number')
-		return Number(parseFloat((x.toPrecision(n))).toFixed(n));
+		return Number(parseFloat(x.toPrecision(n)).toFixed(n));
 	}
 
 	var _ = /*#__PURE__*/Object.freeze({
@@ -391,7 +391,7 @@
 
 		/**
 		 * TODO: Create a base class to handle custom data attributes (heart rate, cadence, temperature, ...)
-		 *
+		 * 
 		 * @link https://leafletjs.com/examples/extending/extending-3-controls.html#handlers
 		 */
 		// addHandler: function (name, HandlerClass) {
@@ -637,13 +637,13 @@
 
 				// GARMIN_EXTENSIONS = ["hr", "cad", "atemp", "wtemp", "depth", "course", "bearing"];
 				point.meta = point.meta ?? { time: null, ele: null };
-
+				
 				point.prev = (attr) => (attr ? this._data[i > 0 ? i - 1 : 0][attr] : this._data[i > 0 ? i - 1 : 0]);
 
 				this.fire("elepoint_init", { point: point, props: props, id: i, isMulti: nestingLevel });
 
 				this._addPoint(
-					point.lat ?? point[1],
+					point.lat ?? point[1], 
 					point.lng ?? point[0],
 					point.alt ?? point.meta.ele ?? point[2]
 				);
@@ -828,7 +828,7 @@
 
 		/**
 		 * Partial fix for initial tooltip size
-		 *
+		 * 
 		 * @link https://github.com/Raruto/leaflet-elevation/issues/81#issuecomment-713477050
 		 */
 		_fixTooltipSize: function() {
@@ -898,14 +898,14 @@
 			]).then((m) => {
 
 				let chart = this._chart = new (m[1] || Elevation).Chart(opts, this);
-
+		
 				this._x     = this._chart._x;
 				this._y     = this._chart._y;
-
+		
 				d3
 					.select(container)
 					.call(chart.render());
-
+		
 				chart
 					.on('reset_drag',      this._hideMarker,     this)
 					.on('mouse_enter',     this._onMouseEnter,   this)
@@ -916,8 +916,8 @@
 					.on('zoom',            this._updateChart,    this)
 					.on('elepath_toggle',  this._onToggleChart,  this)
 					.on('margins_updated', this._resizeChart,    this);
-
-
+		
+		
 				this.fire("elechart_init");
 
 				map
@@ -1139,11 +1139,11 @@
 				let item = this._findItemForLatLng(latlng);
 				if (item) {
 					let xCoord = item.xDiagCoord;
-
+		
 					if (this._chartEnabled) this._chart._showDiagramIndicator(item, xCoord);
-
+		
 					this._updateMarker(item);
-
+		
 					this.fire("elechart_change", { data: item, xCoord: xCoord });
 				}
 			}
@@ -1285,7 +1285,7 @@
 			let i, curr, prev, attr;
 
 			// save here a reference to last used point
-			let lastValid = null;
+			let lastValid = null; 
 
 			// iteration
 			this.on("elepoint_added", ({index, point}) => {
@@ -1333,7 +1333,7 @@
 				if (props.deltaMax) {
 					curr[attr] =wrapDelta(curr[attr], prev[attr], props.deltaMax);
 				}
-
+				
 				// Range of acceptable values.
 				if (props.clampRange) {
 					curr[attr] = clamp(curr[attr], props.clampRange);
@@ -1432,7 +1432,7 @@
 			}
 			return this._addMarker(marker)
 		},
-
+		
 		/**
 		 * Add chart or marker tooltip info
 		 */
@@ -1514,13 +1514,13 @@
 		_updateChart: function() {
 			if (this._chart && this._container) {
 				this.fire("elechart_axis");
-
+		
 				this._chart.update({ data: this._data, options: this.options });
-
+		
 				this._x     = this._chart._x;
 				this._y     = this._chart._y;
-
-				this.fire('elechart_updated');
+		
+				this.fire('elechart_updated');		
 			}
 		},
 
