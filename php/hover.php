@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) or die();
 
 //Shortcode: [hover]
 function leafext_geojsonhover_script($url){
-	$text = '<script>';
+	$text = '<script><!--';
 	ob_start();
   ?>/*<script>*/
 
@@ -343,7 +343,7 @@ function leafext_geojsonhover_script($url){
 	});
 <?php
   $javascript = ob_get_clean();
-	$text = $text . $javascript . '</script>';
+	$text = $text . $javascript . '//-->'."\n".'</script>';
 	$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }
