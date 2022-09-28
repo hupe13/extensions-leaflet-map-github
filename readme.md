@@ -70,7 +70,7 @@ Detailed documentation and examples in <a href="https://leafext.de/">German</a> 
 </summary>
 
 * Is the URL correct?
-* Does the webserver return the correct mime type?
+* Does the webserver return the correct mime type (application/gpx+xml)?
 Put in your `.htaccess`:
 ```
 AddType application/gpx+xml gpx
@@ -105,11 +105,11 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.1.1 / 220823
+### 3.2 / 220xxx
 
-* error extensions in file listing
-* pace and acceleration work together now
-* bug in sgpx
+* new shortcode leaflet-extramarker: https://github.com/coryasilva/Leaflet.ExtraMarkers
+* leaflet-elevation 2.2.7 with pull request
+* elevation: followMarker, zFollow, !detached chart
 
 ### Previous
 

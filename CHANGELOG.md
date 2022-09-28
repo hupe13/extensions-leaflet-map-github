@@ -1,3 +1,9 @@
+### 3.1.1 / 220823
+
+* error extensions in file listing
+* pace and acceleration work together now
+* bug in sgpx
+
 ### 3.1 / 220718
 
 * leaflet-gestures-1.4.3: Please check your Leaflet Map settings for scrollwheel. See the help for Gesture Handling!

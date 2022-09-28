@@ -1,3 +1,3 @@
-* followMarker: zFollow (please set this in /wp-admin/admin.php?page=extensions-leaflet-map-github&tab=elevation)
-* elevation: detached chart
-* Shortcode leaflet-extramarker: https://github.com/coryasilva/Leaflet.ExtraMarkers
+* new shortcode leaflet-extramarker: https://github.com/coryasilva/Leaflet.ExtraMarkers
+* leaflet-elevation 2.2.7 with pull request
+* elevation: followMarker, zFollow, !detached chart
