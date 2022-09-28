@@ -29,6 +29,13 @@
 	text-align: center;
 }
 
+.elevation-control .background {
+  height: min-content;
+}
+/* .elevation-expanded {
+  width: 70%;
+} */
+
 /* + and - should have not underline */
 .leaflet-control-zoomhome-out {
   text-decoration: none !important;
