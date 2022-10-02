@@ -1,3 +1,0 @@
-leaflet-elevation-2.2.7i
-
-https://github.com/Raruto/leaflet-elevation/pull/216
