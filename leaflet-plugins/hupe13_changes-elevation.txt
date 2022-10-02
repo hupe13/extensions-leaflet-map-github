@@ -1,33 +1,3 @@
-leaflet-elevation-2.2.6i
+leaflet-elevation-2.2.7i
 
-ToDo: Pull Request
-
-Changes:
-utils.js:
-formatTime(): hide day, hour, minutes if 0
-iMin: iVal must be valid
-New: iMinP: like iMin, but > 0 (not negative)
-iAvg: iVal must be valid, idx > 0
-New function: tooltipvalue(): return values accuracy according to size
-
-altitude.js: integer for min, max, avg
-acceleration: min, max, avg accuracy according to size
-distance.js: accuracy according to size
-pace.js: pointToAttr: ignore the first value,
-         use formatTime() for marker, min, max, avg
-         avgpace is time / distance
-speed.js: dt must be valid (problem if you use speed and pace at the same chart)
-          stats: iMinP (min > 0)
-          chart, marker, minspeed, maxspeed, avgspeed - accuracy according to size
-          avgspeed is distance / time
-
-libs/leaflet-gpxgroup.js:
-options.filename:
-routes = L.gpxGroup(tracks, {
-			...
-      filename: true,
-      ...
-		});
-
-Unable to solve:
-pace.label in summary
+https://github.com/Raruto/leaflet-elevation/pull/216

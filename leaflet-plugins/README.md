@@ -16,6 +16,12 @@ https://raw.githubusercontent.com/adammertel/Leaflet.MarkerCluster.PlacementStra
 [markerClusterGroup ...]
 [placementstrategies ...]</pre>
 
+<h3>Leaflet.ExtraMarker</h3>
+
+https://github.com/coryasilva/Leaflet.ExtraMarkers
+
+<pre>[leaflet-extramarker ...]</pre>
+
 <h3>leaflet.zoomhome</h3>
 
 https://github.com/torfsen/leaflet.zoomhome
