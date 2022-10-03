@@ -24,7 +24,8 @@ define('LEAFEXT_PLUGIN_SETTINGS', dirname( plugin_basename( __FILE__ ) ) ); // e
 if ( ! function_exists( 'is_plugin_active' ) )
   require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
 
-if ( strpos(implode(" " ,get_option('active_plugins')), "/leaflet-map.php")  === false ) {
+if ( strpos(implode(" ",                get_option('active_plugins',         array()) ), "/leaflet-map.php") === false &&
+     strpos(implode(" ",array_keys(get_site_option('active_sitewide_plugins',array()))), "/leaflet-map.php") === false) {
   function leafext_require_leaflet_map_plugin(){?>
     <div class="notice notice-error" >
       <p> Please install and activate <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map Plugin</a> before using Extensions for Leaflet Map.</p>
