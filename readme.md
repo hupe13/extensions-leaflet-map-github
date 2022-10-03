@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, gpx, elevation, markercluster, zoomhome, hover, fullscreen  
 Tested up to: 6.0  
-Stable tag: 3.1.1  
+Stable tag: 3.2  
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later  
@@ -105,10 +105,10 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.2 / 220xxx
+### 3.2 / 221003
 
 * new shortcode leaflet-extramarker: https://github.com/coryasilva/Leaflet.ExtraMarkers
-* leaflet-elevation 2.2.7 with pull request
+* leaflet-elevation 2.2.7 (with pull request)
 * elevation: followMarker, zFollow, !detached chart
 
 ### Previous
