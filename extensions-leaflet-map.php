@@ -21,9 +21,6 @@ define('LEAFEXT_PLUGIN_URL', WP_PLUGIN_URL . '/' . basename (LEAFEXT_PLUGIN_DIR)
 define('LEAFEXT_PLUGIN_PICTS', LEAFEXT_PLUGIN_URL . '/pict/'); // https://url/wp-content/plugins/extensions-leaflet-map-github/pict/
 define('LEAFEXT_PLUGIN_SETTINGS', dirname( plugin_basename( __FILE__ ) ) ); // extensions-leaflet-map
 
-if ( ! function_exists( 'is_plugin_active' ) )
-  require_once( ABSPATH . '/wp-admin/includes/plugin.php' );
-
 if ( strpos(implode(" ",                get_option('active_plugins',         array()) ), "/leaflet-map.php") === false &&
      strpos(implode(" ",array_keys(get_site_option('active_sitewide_plugins',array()))), "/leaflet-map.php") === false) {
   function leafext_require_leaflet_map_plugin(){?>
