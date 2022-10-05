@@ -99,7 +99,7 @@ function leafext_gesture_help_text() {
 	}
 	$text = $text . '</li>'.'<li style="margin-left: 1.5em;"> '.__('When Gesture Handling is enabled:','extensions-leaflet-map');
 	$text = $text . '<ul style="list-style: disc;"><p>';
-	$text = $text . '</li>'.'<li style="margin-left: 1.5em;"> '.
+	$text = $text . '<li style="margin-left: 1.5em;"> '.
 	sprintf(__('If Scroll Wheel Zoom (%s) is enabled, it becomes active on both desktop and touch devices.','extensions-leaflet-map'),
 	'<code>scrollwheel</code>').'</li>';
 	$text = $text . '<li style="margin-left: 1.5em;"> '.
@@ -121,7 +121,7 @@ function leafext_gesture_help_text() {
 		$text = $text . (get_option('leaflet_scroll_wheel_zoom','0') == "1" ? '!' : "");
 		$text = $text . 'scrollwheel !dragging]</code>'.'</li>';
 	}
-	$text = $text . '</p></ul></ul>';
+	$text = $text . '</p></ul></li></ul>';
 	$text = $text . '<p>'.sprintf(__('You can test it yourself on a %sseparate page%s.','extensions-leaflet-map'),
 	'<a href="/extra/gesture/">','</a>').'</p>';
 	if (is_singular() || is_archive() ) {
