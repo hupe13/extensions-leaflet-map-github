@@ -5,7 +5,7 @@
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
  * Primary Branch:    main
  * Description:       Extensions for the WordPress plugin Leaflet Map Github Version
- * Version:           3.2-221003
+ * Version:           3.2-221025
  * Requires PHP:      7.4
  * Author:            hupe13
  * License:           GPL v2 or later
@@ -21,16 +21,20 @@ define('LEAFEXT_PLUGIN_URL', WP_PLUGIN_URL . '/' . basename (LEAFEXT_PLUGIN_DIR)
 define('LEAFEXT_PLUGIN_PICTS', LEAFEXT_PLUGIN_URL . '/pict/'); // https://url/wp-content/plugins/extensions-leaflet-map-github/pict/
 define('LEAFEXT_PLUGIN_SETTINGS', dirname( plugin_basename( __FILE__ ) ) ); // extensions-leaflet-map
 
-if ( strpos(implode(" ",                get_option('active_plugins',         array()) ), "/leaflet-map.php") === false &&
-     strpos(implode(" ",array_keys(get_site_option('active_sitewide_plugins',array()))), "/leaflet-map.php") === false) {
-  function leafext_require_leaflet_map_plugin(){?>
-    <div class="notice notice-error" >
-      <p> Please install and activate <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map Plugin</a> before using Extensions for Leaflet Map.</p>
-    </div><?php
+function leafext_plugin_init() {
+  if (is_admin()) {
+    if ( ! defined('LEAFLET_MAP__PLUGIN_DIR') ) {
+      function leafext_require_leaflet_map_plugin(){?>
+        <div class="notice notice-error" >
+          <p> Please install and activate <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map Plugin</a> before using Extensions for Leaflet Map.</p>
+        </div><?php
+      }
+      add_action('admin_notices','leafext_require_leaflet_map_plugin');
+      //register_activation_hook(__FILE__, 'leafext_require_leaflet_map_plugin');
+    }
   }
-  add_action('admin_notices','leafext_require_leaflet_map_plugin');
-  //register_activation_hook(__FILE__, 'leafext_require_leaflet_map_plugin');
 }
+add_action( 'plugins_loaded', 'leafext_plugin_init' );
 
 if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . 'admin.php';
