@@ -105,11 +105,11 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.2 / 221003
+### 3.2.1 / 22103x
 
-* new shortcode leaflet-extramarker: https://github.com/coryasilva/Leaflet.ExtraMarkers
-* leaflet-elevation 2.2.7 (with pull request)
-* elevation: followMarker, zFollow, !detached chart
+* detect network activated leaflet-map on multisite
+* WP 6.1
+* some documentation cleanup
 
 ### Previous
 

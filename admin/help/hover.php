@@ -19,12 +19,15 @@ $text = $text.'<ul style="list-style: disc;">';
 $text = $text.'<li style="margin-left: 1.5em;">';
 $text = $text.sprintf(__('The tooltip content is the same as the popup content and/or the content of %s option.','extensions-leaflet-map'),
 '<em>title</em>');
+$text = $text.'</li>';
 $text = $text.'<li style="margin-left: 1.5em;">';
 $text = $text.sprintf(__('The %s option is valid for %s only and optional.','extensions-leaflet-map'),
 '<em>title</em>','<code>leaflet-marker</code>');
+$text = $text.'</li>';
 $text = $text.'<li style="margin-left: 1.5em;">';
 $text = $text. sprintf(__('To customize the popup content for geojsons see %sgeojson options%s.','extensions-leaflet-map'),
 '<a href="https://github.com/bozdoz/wp-plugin-leaflet-map#leaflet-geojson-options">','</a>');
+$text = $text.'</li>';
 $text = $text.'</ul>';
 
 $text = $text.'<pre><code>// one or more of these
@@ -42,8 +45,9 @@ __('Both parameters are optional.','extensions-leaflet-map').
 '<ul style="list-style: disc;">
 <li style="margin-left: 1.5em;"> <code>exclude</code>: '.sprintf(
 __('This is a very special case. I would like to exclude some leaflet-geojson with a specific string in the src url from changing its style on hovering. If the url to the geojson file is e.g. %s, url-substring should be %s.','extensions-leaflet-map'), '"https://url/to/special.geojson"','"special"')
-.'<li style="margin-left: 1.5em;"> <code>tolerance</code>: '.__('determines how much to extend click tolerance round a path/object on the map.','extensions-leaflet-map').'
-</ul></p>';
+.'</li>'
+.'<li style="margin-left: 1.5em;"> <code>tolerance</code>: '.__('determines how much to extend click tolerance round a path/object on the map.','extensions-leaflet-map').'</li>'.
+'</ul></p>';
 if (is_singular() || is_archive() ) {
   return $text;
 } else {

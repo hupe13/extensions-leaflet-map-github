@@ -1,3 +1,9 @@
+### 3.2 / 221003
+
+* new shortcode leaflet-extramarker: https://github.com/coryasilva/Leaflet.ExtraMarkers
+* leaflet-elevation 2.2.7 (with pull request)
+* elevation: followMarker, zFollow, !detached chart
+
 ### 3.1.1 / 220823
 
 * error extensions in file listing
