@@ -86,6 +86,8 @@ function leafext_do_nonadmin_page() {
 		leafext_admin_filemgr($active_tab);
 	} else if ( strpos( $active_tab, 'cluster' ) !== false ) {
 		leafext_admin_cluster($active_tab);
+	} else if ( strpos( $active_tab, 'extramarker' ) !== false ) {
+		leafext_extramarker_help();
 	} else if ( strpos( $active_tab, 'tiles' ) !== false ) {
 		leafext_admin_tiles($active_tab);
 	} else if( $active_tab == 'hover' ) {
