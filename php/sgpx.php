@@ -264,7 +264,8 @@ function leafext_sgpx_function( $atts ) {
 		}
 
 		$text = '[leaflet-map zoomcontrol '.$maptext.'][elevation gpx="'.$atts['gpx'].'" marker="position-marker"'.$eletext.'][fullscreen]';
-		return "<script>console.log(".json_encode( $text )." )</script>".do_shortcode($text);
+		if (is_single() || is_page()) echo "<script>console.log(".json_encode( $text ).")</script>";
+		return do_shortcode($text);
 	}
 }
 //add_shortcode('sgpx', 'leafext_sgpx_function' );

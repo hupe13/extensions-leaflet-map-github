@@ -108,6 +108,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 ### 3.2.1 / 22103x
 
 * detect network activated leaflet-map on multisite
+* Bug in fullscreen with the new standard theme
 * WP 6.1
 * some documentation cleanup
 

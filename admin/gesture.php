@@ -122,8 +122,10 @@ function leafext_gesture_help_text() {
 		$text = $text . 'scrollwheel !dragging]</code>'.'</li>';
 	}
 	$text = $text . '</p></ul></li></ul>';
-	$text = $text . '<p>'.sprintf(__('You can test it yourself on a %sseparate page%s.','extensions-leaflet-map'),
-	'<a href="/extra/gesture/">','</a>').'</p>';
+	if (!(is_singular() || is_archive() )) {
+		$text = $text . '<p>'.sprintf(__('You can test it yourself on a %sseparate page%s.','extensions-leaflet-map'),
+		'<a href="https://leafext.de/extra/gesture/">','</a>').'</p>';
+	}
 	if (is_singular() || is_archive() ) {
 		return $text;
 	} else {
