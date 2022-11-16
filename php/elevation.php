@@ -149,6 +149,16 @@ function leafext_elevation_params($typ = array()) {
 			'typ' => array('changeable','look',),
 		),
 
+		// Switch track on/off
+		array(
+			'param' => 'track',
+			'shortdesc' => __('Switch Track on and off',"extensions-leaflet-map"),
+			'desc' => __('none - show filename in control - show trackname in control',"extensions-leaflet-map"),
+			'default' => false,
+			'values' => array(false,"filename","trackname"),
+			'typ' => array('changeable','look',),
+		),
+
 		//Toggle chart ruler filter.
 		//ruler: true,
 		array(
@@ -633,12 +643,23 @@ function leafext_elevation_script($gpx,$settings){
 
 	$text = $text.leafext_elevation_locale();
 
+	if ( $settings['track'] ) {
+		$text = $text.'
+		var layersControl_options = {
+			collapsed: true,
+		};
+		var switchtrack = L.control.layers(null, null, layersControl_options);';
+	}
+
 	$text = $text.'
 	// Instantiate elevation control.
 	L.Control.Elevation.prototype.__btnIcon = "'.LEAFEXT_ELEVATION_URL.'/images/elevation.svg";
 	var controlElevation = L.control.elevation(elevation_options);
 	var track_options= { url: "'.$gpx.'" };
 	controlElevation.addTo(map);';
+	if ( $settings['track'] ) {
+		$text = $text.'switchtrack.addTo(map);';
+	}
 
 	// not solved with leaflet 1.9.1 (221102)
 	$text = $text.'
@@ -653,17 +674,31 @@ function leafext_elevation_script($gpx,$settings){
 	// Load track from url (allowed data types: "*.geojson", "*.gpx")
 	controlElevation.load(track_options.url);';
 
-	if ( $settings['chart'] === "off") {
+	if ( $settings['chart'] === "off" ) {
 		$text=$text.'map.on("eledata_added", function(e) {
 			//console.log(controlElevation);
 			controlElevation._toggle();
 		});';
 	}
 
+	if ( $settings['track'] ) {
+		if ( $settings['track'] == "filename" ) {
+			$path_parts = pathinfo($gpx);
+			$switchname = '"'.$path_parts['filename'].'"';
+		} else {
+			$switchname = "e.name";
+		}
+		$text=$text.'
+		controlElevation.on("eledata_loaded", function(e) {
+			switchtrack.addOverlay(e.layer, '.$switchname.');
+		});
+		';
+	}
+
 	$text=$text.'
 	});
 	</script>';
-	$text = \JShrink\Minifier::minify($text);
+	//$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }
 

@@ -1,3 +1,2 @@
-* detect network activated leaflet-map on multisite
-* WP 6.1
-* some documentation cleanup
+* elevation new parameter track: switch track on/off
+* filemgr: per default all types selected

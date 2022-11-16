@@ -25,7 +25,8 @@ function leafext_listing_form_types() {
 		if (is_array($stored)) {
 			$type = $stored['type'];
 		} else {
-			$type = array ("gpx");
+			//$type = array ("gpx");
+			$type = array ("gpx","kml","geojson","json","tcx");
 		}
 	}
 	$types = array ("gpx","kml","geojson","json","tcx");
@@ -163,6 +164,10 @@ function leafext_managefiles() {
 		//echo '<h2>'.__('Manage Files',"extensions-leaflet-map").'</h2>';
 
 		if (count($_POST) != 0) {
+			if (isset($_POST['delete'])) {
+				delete_option('leafext_file_listing_'.get_current_user_id());
+				//return false;
+			}
 			$dir = isset($_POST["dir"]) ? $_POST["dir"] : "";
 			$all = isset($_POST['all']) ? $_POST['all'] : '';
 			$type =	isset($_POST["type"]) ? $_POST["type"] : "";
@@ -197,6 +202,7 @@ function leafext_managefiles() {
 		settings_fields('leafext_file_listing');
 		do_settings_sections( 'leafext_file_listing' );
 		submit_button(__("List files","extensions-leaflet-map"));
+		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		echo '</form>';
 
 		if ( $dir != "" || $all != "" ) {
