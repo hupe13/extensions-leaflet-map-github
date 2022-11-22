@@ -109,7 +109,7 @@ function leafext_enqueue_multielevation () {
   wp_enqueue_script('leaflet_distanceMarkers',
   plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/libs/leaflet-distance-marker.min.js',
   LEAFEXT_PLUGIN_FILE),
-  array('Leaflet.GeometryUtil'),null);
+  array('Leaflet_GeometryUtil'),null);
   wp_enqueue_style( 'leaflet_distanceMarkers',
   plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/libs/leaflet-distance-marker.min.css',
   LEAFEXT_PLUGIN_FILE),

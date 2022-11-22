@@ -5,7 +5,7 @@
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
  * Primary Branch:    main
  * Description:       Extensions for the WordPress plugin Leaflet Map Github Version
- * Version:           3.2-221114
+ * Version:           3.2-221122
  * Requires PHP:      7.4
  * Author:            hupe13
  * License:           GPL v2 or later
@@ -48,7 +48,9 @@ if (is_admin()) {
   include_once LEAFEXT_PLUGIN_DIR . '/php/sgpx.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/multielevation.php';
 
-  include_once LEAFEXT_PLUGIN_DIR . '/php/fullscreen.php';
+  if (!is_admin()) {
+    include_once LEAFEXT_PLUGIN_DIR . '/php/fullscreen.php';
+  }
   include_once LEAFEXT_PLUGIN_DIR . '/php/gesture.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/hidemarkers.php';
   include_once LEAFEXT_PLUGIN_DIR . '/php/hover.php';
