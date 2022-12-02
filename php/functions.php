@@ -61,7 +61,7 @@ function leafext_java_params ($params) {
 	///var_dump($params); wp_die();
 	$text = "";
 	foreach ($params as $k => $v) {
-		//var_dump($v,gettype($v));
+		//var_dump($v,gettype($v),strpos($v,"["));
 		$text = $text. "$k: ";
 		switch (gettype($v)) {
 			case "string":
@@ -72,6 +72,8 @@ function leafext_java_params ($params) {
 				case "1": $value = "true"; break;
 				case strpos($v,"{") !== false:
 				case strpos($v,"}") !== false:
+				case strpos($v,"[") !== false:
+				case strpos($v,"]") !== false:
 				case is_numeric($v):
 				$value = $v; break;
 				default:

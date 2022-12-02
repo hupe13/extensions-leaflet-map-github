@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, elevation, markercluster, hover
 Tested up to: 6.1  
-Stable tag: 3.2.1  
+Stable tag: 3.2.2  
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later  
@@ -105,11 +105,12 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.2.1 / 221104
+### 3.2.2 / 221202
 
-* detect network activated leaflet-map on multisite
-* works with the new standard theme now
-* some documentation cleanup
+* elevation new parameter track: switch track on/off
+* filemgr: per default all types selected
+* typo multielevation (distanceMarkers)
+* fixed: fullscreen crashes the editor.
 
 ### Previous
 

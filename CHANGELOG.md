@@ -1,3 +1,9 @@
+### 3.2.1 / 221104
+
+* detect network activated leaflet-map on multisite
+* works with the new standard theme now
+* some documentation cleanup
+
 ### 3.2 / 221003
 
 * new shortcode leaflet-extramarker: https://github.com/coryasilva/Leaflet.ExtraMarkers
