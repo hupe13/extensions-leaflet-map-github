@@ -698,7 +698,7 @@ function leafext_elevation_script($gpx,$settings){
 	$text=$text.'
 	});
 	</script>';
-	//$text = \JShrink\Minifier::minify($text);
+	$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }
 
