@@ -598,14 +598,18 @@ function leafext_elevation_pace($options) {
 		$handlers = glob(LEAFEXT_ELEVATION_DIR.'/src/handlers/*');
 		foreach ($handlers as $handler) {
 			$handle = basename ($handler,'.js');
-			if (isset($options[$handle]) && $handle != 'pace') {
+			if (isset($options[$handle]) && $handle != 'pace' && $handle != 'speed') {
 				if ((bool)$options[$handle]) {
 					$text = $text.'"'.ucfirst($handle).'",';
 				}
 			}
 		}
-		$text = $text.'import("'.LEAFEXT_ELEVATION_URL.'src/handlers/pace.js"),';
-		$text = $text.'import("'.LEAFEXT_ELEVATION_URL.'src/handlers/speed.js"),';
+		if ( (bool)$options['pace'] || (bool)$options['speed'] ) {
+			$text = $text.'import("'.LEAFEXT_ELEVATION_URL.'/src/handlers/speed.js"),';
+			if ( (bool)$options['pace'] ) {
+				$text = $text.'import("'.LEAFEXT_ELEVATION_URL.'/src/handlers/pace.js"),';
+			}
+		}
 		if ( (bool)$options['acceleration'] ) {
 			$text = $text.'import("'.LEAFEXT_ELEVATION_URL.'src/handlers/acceleration.js"),';
 		}
@@ -616,9 +620,9 @@ function leafext_elevation_pace($options) {
 		//$options['paceFactor'] = 3600;
 		//deltaMax: this.options.paceDeltaMax,
 		// Mein Standard: 1 (?)
-		$options['paceDeltaMax'] = 1;
+		//$options['paceDeltaMax'] = 1;
 		//clampRange: this.options.paceRange,
-		//$options['paceRange'] = 0.6;
+		//$options['paceRange'] = "[0.01, 15]";
 	}
 	return $options;
 }
@@ -642,7 +646,9 @@ function leafext_elevation_script($gpx,$settings){
 	';
 
 	$text = $text.leafext_elevation_locale();
-
+	
+	$text = $text.file_get_contents(LEAFEXT_PLUGIN_URL.'/js/elevation.js');
+	
 	if ( $settings['track'] ) {
 		$text = $text.'
 		var layersControl_options = {
