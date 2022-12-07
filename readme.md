@@ -1,7 +1,7 @@
 # Extensions for Leaflet Map Github Version
 
 Contributors: hupe13    
-Tags: leaflet, elevation, markercluster, hover
+Tags: leaflet, elevation, markercluster, hover   
 Tested up to: 6.1  
 Stable tag: 3.2.2  
 Requires at least: 5.5.3     
