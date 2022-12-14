@@ -10,7 +10,6 @@ defined( 'ABSPATH' ) or die();
 function leafext_clustergroup_script($featuregroups,$params){
 	$text = '
 	<script>
-
 		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 		window.WPLeafletMapPlugin.push(function () {
 			var map = window.WPLeafletMapPlugin.getCurrentMap();
@@ -19,7 +18,6 @@ function leafext_clustergroup_script($featuregroups,$params){
 			var groups  = '.json_encode($featuregroups['groups']).';
 			var visible = '.json_encode($featuregroups['visible']).';
 			console.log(feat,groups,visible);
-
 			//
 			var alle = new L.markerClusterGroup({';
 				$text=$text.leafext_java_params ($params);
