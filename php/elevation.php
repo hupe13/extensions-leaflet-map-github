@@ -9,17 +9,6 @@ defined( 'ABSPATH' ) or die();
 //Parameter and Values
 function leafext_elevation_params($typ = array()) {
 	$params = array(
-		// Testing
-		// array(
-		// 	'param' => 'testing',
-		// 	'shortdesc' => __('Testing Development Version',"extensions-leaflet-map"),
-		// 	'desc' => __('Activate leaflet-elevation development version. Pay attention to the presentation of the values. ',"extensions-leaflet-map").' '
-		// 	.__('Please give feedback, if you find an issue.',"extensions-leaflet-map"),
-		// 	'default' => false,
-		// 	'values' => 1,
-		// 	'typ' => array('changeable','test'),
-		// ),
-
 		// Aussehen
 
 		// Default chart colors: theme lime-theme, magenta-theme, ...
@@ -604,22 +593,18 @@ function leafext_elevation_pace($options) {
 				}
 			}
 		}
-		if ( (bool)$options['pace'] || (bool)$options['speed'] ) {
+		if ( (bool)$options['speed'] ) {
 			$text = $text.'import("'.LEAFEXT_ELEVATION_URL.'/src/handlers/speed.js"),';
-			if ( (bool)$options['pace'] ) {
-				$text = $text.'import("'.LEAFEXT_ELEVATION_URL.'/src/handlers/pace.js"),';
-			}
+		}
+		if ( (bool)$options['pace'] ) {
+			$text = $text.'import("'.LEAFEXT_ELEVATION_URL.'/src/handlers/pace.js"),';
 		}
 		if ( (bool)$options['acceleration'] ) {
 			$text = $text.'import("'.LEAFEXT_ELEVATION_URL.'src/handlers/acceleration.js"),';
 		}
 		$text = $text.']';
 		$options['handlers'] = $text;
-		//pace.label      = opts.paceLabel  || L._(opts.imperial ? 'min/mi' : 'min/km');
-		//opts.paceFactor = opts.paceFactor || 60; // 1 min = 60 sec
-		//$options['paceFactor'] = 3600;
 		//deltaMax: this.options.paceDeltaMax,
-		// Mein Standard: 1 (?)
 		//$options['paceDeltaMax'] = 1;
 		//clampRange: this.options.paceRange,
 		//$options['paceRange'] = "[0.01, 15]";
@@ -646,9 +631,9 @@ function leafext_elevation_script($gpx,$settings){
 	';
 
 	$text = $text.leafext_elevation_locale();
-	
+
 	$text = $text.file_get_contents(LEAFEXT_PLUGIN_URL.'/js/elevation.js');
-	
+
 	if ( $settings['track'] ) {
 		$text = $text.'
 		var layersControl_options = {
@@ -777,54 +762,56 @@ function leafext_elevation_color($options) {
 }
 
 function leafext_elevation_function( $atts ) {
-	if ( ! $atts['gpx'] ) {
-		$text = "[elevation ";
-		foreach ($atts as $key=>$item){
-			$text = $text. "$key=$item ";
+	if (is_singular() || is_archive()) {
+		if ( ! $atts['gpx'] ) {
+			$text = "[elevation ";
+			foreach ($atts as $key=>$item){
+				$text = $text. "$key=$item ";
+			}
+			$text = $text. "]";
+			return $text;
 		}
-		$text = $text. "]";
-		return $text;
-	}
 
-	leafext_enqueue_elevation ();
+		leafext_enqueue_elevation ();
 
-	$atts1=leafext_case(array_keys(leafext_elevation_settings(array("changeable","fixed"))),leafext_clear_params($atts));
-	$options = shortcode_atts(leafext_elevation_settings(array("changeable","fixed")), $atts1);
+		$atts1=leafext_case(array_keys(leafext_elevation_settings(array("changeable","fixed"))),leafext_clear_params($atts));
+		$options = shortcode_atts(leafext_elevation_settings(array("changeable","fixed")), $atts1);
 
-	$track = $atts['gpx'];
+		$track = $atts['gpx'];
 
-	if ( $options['chart'] === "on" || $options['chart'] === "off")  {
-		$options['closeBtn'] = true;
-	} else {
-		$options['closeBtn'] = false;
-	}
+		if ( $options['chart'] === "on" || $options['chart'] === "off")  {
+			$options['closeBtn'] = true;
+		} else {
+			$options['closeBtn'] = false;
+		}
 
-	if (isset($options['wptIcons']) ) {
-		$wptIcons = $options['wptIcons'];
-		if ( !is_bool($wptIcons) && $wptIcons == "defined" ) {
-			unset($options['wptIcons']);
-			$waypoints = get_option('leafext_waypoints', "");
-			if ( $waypoints != "" && ( $options['waypoints'] == "markers" || $options['waypoints'] == "1" )) {
-				$wptvalue="{'': L.divIcon({
-					className: 'elevation-waypoint-marker',
-					html: '<i class=\"elevation-waypoint-icon default\"></i>',
-					iconSize: [30, 30],
-					iconAnchor: [8, 30],
-				}),
+		if (isset($options['wptIcons']) ) {
+			$wptIcons = $options['wptIcons'];
+			if ( !is_bool($wptIcons) && $wptIcons == "defined" ) {
+				unset($options['wptIcons']);
+				$waypoints = get_option('leafext_waypoints', "");
+				if ( $waypoints != "" && ( $options['waypoints'] == "markers" || $options['waypoints'] == "1" )) {
+					$wptvalue="{'': L.divIcon({
+						className: 'elevation-waypoint-marker',
+						html: '<i class=\"elevation-waypoint-icon default\"></i>',
+						iconSize: [30, 30],
+						iconAnchor: [8, 30],
+					}),
 					";
-				foreach ( $waypoints as $wpt ) {
-					$wptvalue = $wptvalue.'"'.$wpt['css'].'":  L.divIcon({
-						className: "elevation-waypoint-marker",
-						html: '."'".'<i class="elevation-waypoint-icon '.$wpt['css'].'"></i>'."'".','.
-						html_entity_decode($wpt['js']).'}),';
+					foreach ( $waypoints as $wpt ) {
+						$wptvalue = $wptvalue.'"'.$wpt['css'].'":  L.divIcon({
+							className: "elevation-waypoint-marker",
+							html: '."'".'<i class="elevation-waypoint-icon '.$wpt['css'].'"></i>'."'".','.
+							html_entity_decode($wpt['js']).
+						'}),';
+					}
+					$wptvalue = $wptvalue.'}';
+					$options['wptIcons'] =  $wptvalue;
 				}
-				$wptvalue = $wptvalue.'}';
-				$options['wptIcons'] =  $wptvalue;
 			}
 		}
-	}
 
-	//if ($options['distance'] == false) {
+		//if ($options['distance'] == false) {
 		// $options['handlers'] = '[
 		// 	import("'.LEAFEXT_ELEVATION_URL.'src/handlers/acceleration.js"),
 		// 	import("'.LEAFEXT_ELEVATION_URL.'src/handlers/altitude.js"),
@@ -833,32 +820,40 @@ function leafext_elevation_function( $atts ) {
 		// 	import("'.LEAFEXT_ELEVATION_URL.'src/handlers/time.js"),
 		// 	import("'.LEAFEXT_ELEVATION_URL.'libs/leaflet-hotline.min.js"),
 		// 	]';
-	//}
+		//}
 
-	if (isset($options['pace']) ) {
-		$options = leafext_elevation_pace($options);
-	}
-
-	if ( isset($options['summary']) && $options['summary'] == "1" ) {
-		$params = leafext_elevation_params();
-		foreach($params as $param) {
-			$options['param'] = $param['default'];
+		if (isset($options['pace']) ) {
+			$options = leafext_elevation_pace($options);
 		}
-		$options['summary'] = "inline";
-		$options['preferCanvas'] = false;
-		$options['legend'] = false;
-	}
-	//
-	if ( ! array_key_exists('theme', $atts) ) {
-		$options['theme'] = leafext_elevation_theme();
-	}
 
-	if ( $options['hotline'] == "elevation") unset ($options['polyline'] );
-	list($options,$style) = leafext_elevation_color($options);
-	ksort($options);
+		if ( isset($options['summary']) && $options['summary'] == "1" ) {
+			$params = leafext_elevation_params();
+			foreach($params as $param) {
+				$options['param'] = $param['default'];
+			}
+			$options['summary'] = "inline";
+			$options['preferCanvas'] = false;
+			$options['legend'] = false;
+		}
+		//
+		if ( ! array_key_exists('theme', $atts) ) {
+			$options['theme'] = leafext_elevation_theme();
+		}
 
-	$text=$style.leafext_elevation_script($track,$options);
-	//
-	return $text;
+		if ( $options['hotline'] == "elevation") unset ($options['polyline'] );
+		list($options,$style) = leafext_elevation_color($options);
+		ksort($options);
+
+		$text=$style.leafext_elevation_script($track,$options);
+		//
+		return $text;
+	} else {
+		$text = "[elevation ";
+		foreach ($atts as $key=>$item){
+			$text = $text. "$key=$item ";
+		}
+		$text = $text. "]";
+		return $text;
+	}
 }
-add_shortcode('elevation', 'leafext_elevation_function' );
+add_shortcode('elevation', 'leafext_elevation_function');

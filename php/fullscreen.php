@@ -1,16 +1,16 @@
 <?php
 /**
- * Functions for fullscreen shortcode
- * extensions-leaflet-map
- */
+* Functions for fullscreen shortcode
+* extensions-leaflet-map
+*/
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
 //Shortcode: [fullscreen]
-
-function leafext_fullscreen_script(){
-	$text = '
-	<script>
+function leafext_fullscreen_script() {
+	if (is_singular() || is_archive()) {
+		$text = '
+		<script>
 		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 		window.WPLeafletMapPlugin.push(function () {
 			var map = window.WPLeafletMapPlugin.getCurrentMap();
@@ -19,9 +19,13 @@ function leafext_fullscreen_script(){
 			// add fullscreen control to the map
 			map.addControl(fsControl);
 		});
-	</script>';
-$text = \JShrink\Minifier::minify($text);
-return "\n".$text."\n";
+		</script>';
+		$text = \JShrink\Minifier::minify($text);
+		return "\n".$text."\n";
+	} else {
+		$text = "[fullscreen]";
+		return $text;
+	}
 }
 
 function leafext_fullscreen_function(){
@@ -29,4 +33,3 @@ function leafext_fullscreen_function(){
 	return leafext_fullscreen_script();
 }
 add_shortcode('fullscreen', 'leafext_fullscreen_function' );
-?>

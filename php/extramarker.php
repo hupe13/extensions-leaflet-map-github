@@ -155,39 +155,48 @@ function leafext_extramarker_filter() {
 
 //Shortcode: [leaflet-extramarker]
 function leafext_extramarker_function( $atts, $content="" ){
-  leafext_enqueue_extramarker ();
-  if (isset($atts['lat']) && isset($atts['lng'])) {
-    $latlng = "lat=".$atts['lat']." lng=".$atts['lng'];
+  if (is_singular() || is_archive()) {
+    leafext_enqueue_extramarker ();
+    if (isset($atts['lat']) && isset($atts['lng'])) {
+      $latlng = "lat=".$atts['lat']." lng=".$atts['lng'];
+    } else {
+      $latlng = "";
+    }
+    $marker_shortcode = "[leaflet-marker ".$latlng."]".$content."[/leaflet-marker]";
+    $text = do_shortcode($marker_shortcode);
+
+    $text = \JShrink\Minifier::minify($text);
+    $atts1 = leafext_case(array_keys(leafext_extramarker_defaults()),leafext_clear_params($atts));
+    $options = shortcode_atts(leafext_extramarker_defaults(), $atts1);
+
+    //var_dump($options);//wp_die();
+    $icon = 'var extramarker = L.ExtraMarkers.icon({'.leafext_extramarkers_params ($options).'tooltipAnchor:[12,-24]});';
+    //var_dump($icon);
+    $text = str_replace(",marker_options","",$text);
+    $text = str_replace("marker.addTo(group);","marker.addTo(group);".$icon."marker.setIcon(extramarker);",$text);
+    $text = \JShrink\Minifier::minify($text);
+    //var_dump($text);
+
+    // // Creates a red marker with the coffee icon
+    // var redMarker = L.ExtraMarkers.icon({
+    //   icon: 'fa-coffee',
+    //   markerColor: 'red',
+    //   shape: 'square',
+    //   prefix: 'fa'
+    // });
+    //
+    // L.marker([51.941196,4.512291], {icon: redMarker}).addTo(map);
+    // marker.setIcon(redMarker);
+
+    return $text;
   } else {
-    $latlng = "";
+    $text = "[leaflet-extramarker ";
+    foreach ($atts as $key=>$item){
+      $text = $text. "$key=$item ";
+    }
+    $text = $text. "]";
+    return $text;
   }
-  $marker_shortcode = "[leaflet-marker ".$latlng."]".$content."[/leaflet-marker]";
-  $text = do_shortcode($marker_shortcode);
-
-  $text = \JShrink\Minifier::minify($text);
-  $atts1 = leafext_case(array_keys(leafext_extramarker_defaults()),leafext_clear_params($atts));
-  $options = shortcode_atts(leafext_extramarker_defaults(), $atts1);
-
-  //var_dump($options);//wp_die();
-  $icon = 'var extramarker = L.ExtraMarkers.icon({'.leafext_extramarkers_params ($options).'tooltipAnchor:[12,-24]});';
-  //var_dump($icon);
-  $text = str_replace(",marker_options","",$text);
-  $text = str_replace("marker.addTo(group);","marker.addTo(group);".$icon."marker.setIcon(extramarker);",$text);
-  $text = \JShrink\Minifier::minify($text);
-  //var_dump($text);
-
-  // // Creates a red marker with the coffee icon
-  // var redMarker = L.ExtraMarkers.icon({
-  //   icon: 'fa-coffee',
-  //   markerColor: 'red',
-  //   shape: 'square',
-  //   prefix: 'fa'
-  // });
-  //
-  // L.marker([51.941196,4.512291], {icon: redMarker}).addTo(map);
-  // marker.setIcon(redMarker);
-
-  return $text;
 }
 add_shortcode('extramarker', 'leafext_extramarker_function' );
 add_shortcode('leaflet-extramarker', 'leafext_extramarker_function' );

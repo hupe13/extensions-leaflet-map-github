@@ -143,13 +143,17 @@ add_filter('pre_do_shortcode_tag', function ( $output, $shortcode ) {
 }, 10, 2);
 
 function leafext_gestures_shortcode() {
-	$options = leafext_gesture_settings();
-	if ( ! (bool) $options['leafext_gesture_on'] ) {
-		leafext_enqueue_gestures();
-		//var_dump($options);
-		$lang = leafext_gestures_lang($options);
-		return leafext_gesture_script($lang);
+	if (is_singular() || is_archive()) {
+		$options = leafext_gesture_settings();
+		if ( ! (bool) $options['leafext_gesture_on'] ) {
+			leafext_enqueue_gestures();
+			//var_dump($options);
+			$lang = leafext_gestures_lang($options);
+			return leafext_gesture_script($lang);
+		}
+	} else {
+		$text = "[gestures]";
+		return $text;
 	}
 }
 add_shortcode('gestures', 'leafext_gestures_shortcode' );
-?>

@@ -359,14 +359,25 @@ function leafext_canvas_script($tolerance) {
 }
 
 function leafext_geojsonhover_function($atts){
-	$settings = shortcode_atts(	array('exclude' => false,'tolerance' => 0), get_option( 'leafext_canvas' ));
-	$options  = shortcode_atts( $settings, $atts);
-	//var_dump($atts,get_option( 'leafext_canvas'),$settings,$options); wp_die();
-	$text = "";
-	if ($options['tolerance'] != 0) {
-		$text = $text.leafext_canvas_script( $options['tolerance'] );
+	if (is_singular() || is_archive()) {
+		$settings = shortcode_atts(	array('exclude' => false,'tolerance' => 0), get_option( 'leafext_canvas' ));
+		$options  = shortcode_atts( $settings, $atts);
+		//var_dump($atts,get_option( 'leafext_canvas'),$settings,$options); wp_die();
+		$text = "";
+		if ($options['tolerance'] != 0) {
+			$text = $text.leafext_canvas_script( $options['tolerance'] );
+		}
+		$text=$text.leafext_geojsonhover_script($options['exclude']);
+		return $text;
+	}	else {
+		$text = "[hover ";
+		if (is_array($atts)) {
+			foreach ($atts as $key=>$item){
+				$text = $text. "$key=$item ";
+			}
+		}
+		$text = $text. "]";
+		return $text;
 	}
-	$text=$text.leafext_geojsonhover_script($options['exclude']);
-	return $text;
 }
-add_shortcode('hover', 'leafext_geojsonhover_function' );
+add_shortcode('hover', 'leafext_geojsonhover_function');

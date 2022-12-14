@@ -174,9 +174,17 @@ function leafext_cluster_atts ($atts) {
 }
 
 function leafext_cluster_function( $atts ){
-	leafext_enqueue_markercluster ();
-	//erzeuge Javascript
-	return leafext_cluster_script(leafext_cluster_atts ($atts));
+	if (is_singular() || is_archive()) {
+		leafext_enqueue_markercluster ();
+		//erzeuge Javascript
+		return leafext_cluster_script(leafext_cluster_atts ($atts));
+	} else {
+		$text = "[cluster ";
+		foreach ($atts as $key=>$item){
+			$text = $text. "$key=$item ";
+		}
+		$text = $text. "]";
+		return $text;
+	}
 }
 add_shortcode('cluster', 'leafext_cluster_function' );
-?>

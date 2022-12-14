@@ -117,7 +117,9 @@ function leafext_sgpx_help_text () {
 		echo '<li style="margin-left: 1.5em;">';
 		echo sprintf(__('Configure your default %s settings.',"extensions-leaflet-map"),'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">elevation</a>');
 		echo '</li><li style="margin-left: 1.5em;">';
-		echo sprintf(__('Select %s to interpret the %s parameters as %s.',"extensions-leaflet-map"),'"1"','sgpx','elevation');
+		echo sprintf(__('Select %s to interpret the %s parameters as %s.',"extensions-leaflet-map"),'"1"','sgpx','elevation').' ';
+		echo sprintf(__('This is the only option for block oriented themes, like %s. Maybe your theme does not work with %s. Then this is the only option also.',"extensions-leaflet-map"),
+		'Twenty Twenty-Two','WP GPX Maps');
 		echo '</li><li style="margin-left: 1.5em;">';
 		echo sprintf(__('If you want to test it first: select %s and write in your test page / post %s.',"extensions-leaflet-map"),'"leaflet"','<code>[leaflet-map height="1"]</code>');
 		echo '</li><li style="margin-left: 1.5em;">';

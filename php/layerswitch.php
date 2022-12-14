@@ -160,84 +160,92 @@ function leafext_layerswitch_end_script() {
 }
 
 function leafext_layerswitch_function($atts){
-	$providers = "";
-	$tiles = "";
-	$tiles_alloptions = "";
-	if (is_array($atts)){
-		if ( array_key_exists('providers',$atts) ) {
-			leafext_enqueue_providers();
-			$providers = explode ( ',', $atts['providers'] );
+	if (is_singular() || is_archive()) {
+		$providers = "";
+		$tiles = "";
+		$tiles_alloptions = "";
+		if (is_array($atts)){
+			if ( array_key_exists('providers',$atts) ) {
+				leafext_enqueue_providers();
+				$providers = explode ( ',', $atts['providers'] );
+			}
 		}
-	}
-	$options = get_option('leafext_maps');
-	if ( is_array($options )) {
-		//
-		$tiles = array();
-		$tiles_alloptions = array();
-		//
-		if (is_array($atts)) {
-			if ( array_key_exists('tiles',$atts) ) {
-				$only = array();
-				$atts_maps = explode(',',$atts['tiles']);
-				foreach ( $atts_maps as $atts_map ) {
-					foreach ($options as $option) {
-						if ($option['mapid'] == $atts_map) {
-							$only[]=$option;
+		$options = get_option('leafext_maps');
+		if ( is_array($options )) {
+			//
+			$tiles = array();
+			$tiles_alloptions = array();
+			//
+			if (is_array($atts)) {
+				if ( array_key_exists('tiles',$atts) ) {
+					$only = array();
+					$atts_maps = explode(',',$atts['tiles']);
+					foreach ( $atts_maps as $atts_map ) {
+						foreach ($options as $option) {
+							if ($option['mapid'] == $atts_map) {
+								$only[]=$option;
+							}
 						}
+						$options = $only;
 					}
-					$options = $only;
+				} else {
+					if ( is_array($providers) ) {
+						$options = array();
+					}
 				}
-			} else {
-				if ( is_array($providers) ) {
-					$options = array();
+			}
+			foreach ($options as $option) {
+				if (array_key_exists('options', $option) && $option['options'] != "" ) {
+					// L.tileLayer(extralayer.tile, {attribution: extralayer.attr, id: extralayer.mapid});
+					$entry = 'attribution: "'.str_replace('"','\"',$option['attr']).'", id: "'.$option['mapid'].'", ';
+					$entry = '"'.$option['tile'].'", {'.$entry.$option['options'].'}';
+					if (! is_null($option['overlay']) && !$option['overlay'] == "" ) {
+						$overlay = $option['overlay'];
+					} else {
+						$overlay = "";
+					}
+					if (! is_null($option['opacity']) && !$option['opacity'] == "" ) {
+						$opacity = $option['opacity'];
+					} else {
+						$opacity = "";
+					}
+					$tiles_alloptions[] = array(
+						'mapid' => '"'.$option['mapid'].'"',
+						'overlay' => $overlay,
+						'opacity' => $opacity,
+						'options' => $entry,
+					);
+				} else {
+					$tiles[] = $option;
 				}
 			}
 		}
-		foreach ($options as $option) {
-			if (array_key_exists('options', $option) && $option['options'] != "" ) {
-				// L.tileLayer(extralayer.tile, {attribution: extralayer.attr, id: extralayer.mapid});
-				$entry = 'attribution: "'.str_replace('"','\"',$option['attr']).'", id: "'.$option['mapid'].'", ';
-				$entry = '"'.$option['tile'].'", {'.$entry.$option['options'].'}';
-				if (! is_null($option['overlay']) && !$option['overlay'] == "" ) {
-					$overlay = $option['overlay'];
-				} else {
-					$overlay = "";
-				}
-				if (! is_null($option['opacity']) && !$option['opacity'] == "" ) {
-					$opacity = $option['opacity'];
-				} else {
-					$opacity = "";
-				}
-				$tiles_alloptions[] = array(
-					'mapid' => '"'.$option['mapid'].'"',
-					'overlay' => $overlay,
-					'opacity' => $opacity,
-					'options' => $entry,
-				);
-			} else {
-				$tiles[] = $option;
-			}
-		}
-	}
-	if ( !is_array($tiles) && !is_array($tiles_alloptions) && !is_array($providers) ) return;
-	leafext_enqueue_opacity ();
+		if ( !is_array($tiles) && !is_array($tiles_alloptions) && !is_array($providers) ) return;
+		leafext_enqueue_opacity ();
 
-	$text = leafext_layerswitch_begin_script();
-	if ( is_array($tiles) || is_array($tiles_alloptions) ) {
-		$text = $text.leafext_layerswitch_tiles_script($tiles,$tiles_alloptions);
-	}
-	if (is_array($providers) ) {
-		$text = $text.leafext_providers_fkt_script();
-		$text = $text.leafext_providers_script($providers);
-	}
-	if (is_array($atts)){
-		if ( array_key_exists('opacity',$atts) ) {
-			$text = $text.leafext_opacity_script($atts['opacity']);
+		$text = leafext_layerswitch_begin_script();
+		if ( is_array($tiles) || is_array($tiles_alloptions) ) {
+			$text = $text.leafext_layerswitch_tiles_script($tiles,$tiles_alloptions);
 		}
+		if (is_array($providers) ) {
+			$text = $text.leafext_providers_fkt_script();
+			$text = $text.leafext_providers_script($providers);
+		}
+		if (is_array($atts)){
+			if ( array_key_exists('opacity',$atts) ) {
+				$text = $text.leafext_opacity_script($atts['opacity']);
+			}
+		}
+		$text = $text.leafext_layerswitch_end_script();
+		$text = \JShrink\Minifier::minify($text);
+		return "\n".$text."\n";
+	}	else {
+		$text = "[layerswitch ";
+		foreach ($atts as $key=>$item){
+			$text = $text. "$key=$item ";
+		}
+		$text = $text. "]";
+		return $text;
 	}
-	$text = $text.leafext_layerswitch_end_script();
-	$text = \JShrink\Minifier::minify($text);
-	return "\n".$text."\n";
 }
 add_shortcode('layerswitch', 'leafext_layerswitch_function');
-?>

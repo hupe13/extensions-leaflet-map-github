@@ -274,6 +274,7 @@ function leafext_change_sgpx_shortcode() {
 	if ( LEAFEXT_SGPX_ACTIVE ) {
 		remove_shortcode( 'sgpx' );
 	}
+	//if (is_singular() || is_archive()) 
 	add_shortcode('sgpx', 'leafext_sgpx_function' );
 }
 add_action( 'init', 'leafext_change_sgpx_shortcode',20 );

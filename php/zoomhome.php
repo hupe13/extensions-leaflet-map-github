@@ -246,19 +246,30 @@ function leafext_zoomhome_script($fit){
 	return "\n".$text."\n";
 }
 
-function leafext_plugin_zoomhome_function($atts){
-	leafext_enqueue_zoomhome ();
-	//
-	$defaults = array(
-		'fit' => 1,
-	);
-	$atts1 = leafext_clear_params($atts);
-	$params = shortcode_atts($defaults, $atts1);
-	switch ($params['fit']) {
-		case "false":
-		case "0": $params['fit'] = false; break;
-		default: $params['fit'] = true;
+function leafext_zoomhome_function($atts){
+	if (is_singular() || is_archive()) {
+		leafext_enqueue_zoomhome ();
+		//
+		$defaults = array(
+			'fit' => 1,
+		);
+		$atts1 = leafext_clear_params($atts);
+		$params = shortcode_atts($defaults, $atts1);
+		switch ($params['fit']) {
+			case "false":
+			case "0": $params['fit'] = false; break;
+			default: $params['fit'] = true;
+		}
+		return leafext_zoomhome_script($params['fit']);
+	} else {
+		$text = "[zoomhomemap ";
+		if (is_array($atts)) {
+			foreach ($atts as $key=>$item){
+				$text = $text. "$key=$item ";
+			}
+		}
+		$text = $text. "]";
+		return $text;
 	}
-	return leafext_zoomhome_script($params['fit']);
 }
-add_shortcode('zoomhomemap', 'leafext_plugin_zoomhome_function' );
+add_shortcode('zoomhomemap', 'leafext_zoomhome_function' );

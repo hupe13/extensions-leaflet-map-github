@@ -36,38 +36,34 @@ function leafext_plugin_init() {
 }
 add_action( 'plugins_loaded', 'leafext_plugin_init' );
 
-if (is_admin()) {
-  include_once LEAFEXT_PLUGIN_DIR . 'admin.php';
-} //else {
+if (is_admin()) include_once LEAFEXT_PLUGIN_DIR . 'admin.php';
 
-  include_once LEAFEXT_PLUGIN_DIR . '/php/enqueue-leafletplugins.php';
-  include_once LEAFEXT_PLUGIN_DIR . '/php/functions.php';
-  include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/enqueue-leafletplugins.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/functions.php';
+include_once LEAFEXT_PLUGIN_DIR . '/pkg/JShrink/Minifier.php';
 
-  include_once LEAFEXT_PLUGIN_DIR . '/php/elevation.php';
-  include_once LEAFEXT_PLUGIN_DIR . '/php/sgpx.php';
-  include_once LEAFEXT_PLUGIN_DIR . '/php/multielevation.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/elevation.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/sgpx.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/multielevation.php';
 
-  if (!is_admin()) {
-    include_once LEAFEXT_PLUGIN_DIR . '/php/fullscreen.php';
-  }
-  include_once LEAFEXT_PLUGIN_DIR . '/php/gesture.php';
-  include_once LEAFEXT_PLUGIN_DIR . '/php/hidemarkers.php';
-  include_once LEAFEXT_PLUGIN_DIR . '/php/hover.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/fullscreen.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/gesture.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/hidemarkers.php';
 
-  include_once LEAFEXT_PLUGIN_DIR . '/php/markercluster.php';
-  include_once LEAFEXT_PLUGIN_DIR . '/php/placementstrategies.php';
-  include_once LEAFEXT_PLUGIN_DIR . '/php/clustergroup.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/hover.php';
 
-  include_once LEAFEXT_PLUGIN_DIR . '/php/extramarker.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/markercluster.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/placementstrategies.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/clustergroup.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/extramarker.php';
 
-  include_once LEAFEXT_PLUGIN_DIR . '/php/zoomhome.php';
-  include_once LEAFEXT_PLUGIN_DIR . '/php/layerswitch.php';
-  include_once LEAFEXT_PLUGIN_DIR . '/php/providers.php';
-  include_once LEAFEXT_PLUGIN_DIR . '/php/safari.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/zoomhome.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/layerswitch.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/providers.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/safari.php';
 
-  include_once LEAFEXT_PLUGIN_DIR . '/php/leaflet-directory.php';
-  include_once LEAFEXT_PLUGIN_DIR . '/php/managefiles.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/leaflet-directory.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/managefiles.php';
 
 // Add settings to plugin page
 function leafext_add_action_links ( $actions ) {

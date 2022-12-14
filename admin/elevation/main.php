@@ -171,4 +171,3 @@ function leafext_admin_elevation($active_tab) {
 		echo "Error";
 	}
 }
-?>

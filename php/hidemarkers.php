@@ -8,8 +8,9 @@ defined( 'ABSPATH' ) or die();
 
 //Shortcode: [hidemarkers]
 function leafext_hidemarkers_function(){
-	$text = '
-	<script>
+	if (is_singular() || is_archive()) {
+		$text = '
+		<script>
 		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 		window.WPLeafletMapPlugin.push(function () {
 			var map = window.WPLeafletMapPlugin.getCurrentMap();
@@ -24,14 +25,17 @@ function leafext_hidemarkers_function(){
 							//console.log("kein wpt");
 							return true;
 						}
-					} //layer.options.filter							  
+					} //layer.options.filter
 				}; // if
 			}); //map.eachLayer
 		});
-	</script>
-	';
-	$text = \JShrink\Minifier::minify($text);
-	return $text;
+		</script>
+		';
+		$text = \JShrink\Minifier::minify($text);
+		return $text;
+	}	else {
+		$text = "[hidemarkers]";
+		return $text;
+	}
 }
 add_shortcode('hidemarkers', 'leafext_hidemarkers_function' );
-?>
