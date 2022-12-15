@@ -32,7 +32,7 @@ function leafext_zoomhome_script($fit){
 		// 0: home = ele fitbounds (default)
 		// 1: home = map
 		var allfit = [];
-		if ('.json_encode($fit).' && typeof maps[map_id]._shouldFitBounds === "undefined" ) {
+		if ('.json_encode((bool)$fit).' && typeof maps[map_id]._shouldFitBounds === "undefined" ) {
 			allfit[map_id] = new L.latLngBounds();
 		}
 
@@ -255,11 +255,6 @@ function leafext_zoomhome_function($atts){
 		);
 		$atts1 = leafext_clear_params($atts);
 		$params = shortcode_atts($defaults, $atts1);
-		switch ($params['fit']) {
-			case "false":
-			case "0": $params['fit'] = false; break;
-			default: $params['fit'] = true;
-		}
 		return leafext_zoomhome_script($params['fit']);
 	} else {
 		$text = "[zoomhomemap ";
