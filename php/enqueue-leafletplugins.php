@@ -64,14 +64,12 @@ function leafext_enqueue_markercluster () {
   array('wp_leaflet_map'),null );
 }
 
-define('LEAFEXT_ELEVATION_VERSION',"min-speed-0");
-//define('LEAFEXT_ELEVATION_VERSION',"2.2.7i");
+define('LEAFEXT_ELEVATION_VERSION',"2.2.8");
 define('LEAFEXT_ELEVATION_URL', LEAFEXT_PLUGIN_URL . '/leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/');
 define('LEAFEXT_ELEVATION_DIR', LEAFEXT_PLUGIN_DIR . '/leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/');
 function leafext_enqueue_elevation () {
   wp_enqueue_script( 'elevation_js',
   plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.min.js',
-  //plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.js',
   LEAFEXT_PLUGIN_FILE),
   array('wp_leaflet_map'),null);
   //
@@ -99,7 +97,7 @@ function leafext_enqueue_multielevation () {
   leafext_enqueue_elevation ();
   leafext_enqueue_zoomhome();
   wp_enqueue_script('leaflet_gpxgroup',
-  plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/libs/leaflet-gpxgroup.js',
+  plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/libs/leaflet-gpxgroup.min.js',
   LEAFEXT_PLUGIN_FILE),
   array('elevation_js'),null);
   wp_enqueue_script('leaflet_ajax_geojson_js');

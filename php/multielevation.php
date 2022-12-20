@@ -329,10 +329,27 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 
 		$text = $text.leafext_elevation_locale();
 
+		$text = $text."
+		var gpxGroupProto = L.GpxGroup.prototype;
+		var addTrack = gpxGroupProto.addTrack;
+
+		L.GpxGroup.include({
+			addTrack: function(track) {
+				fetch(track)
+				.then(response => response.ok && response.text())
+				.then(text => this._elevation._parseFromString(text))
+				.then(geojson => {
+					if(geojson) {
+						geojson.name = geojson.name || (geojson[0] && geojson[0].properties.name) || track.split('/').pop().split('#')[0].split('?')[0];
+						geojson.name = this.options.filename ? track.split('/').pop().split('.').slice(0, -1).join('.') : geojson.name;
+						this._loadRoute(geojson);
+					}
+				});
+			},
+		})";
+
 		$text = $text.'
 		let routes;
-
-		import("'.LEAFEXT_ELEVATION_URL.'libs/leaflet-gpxgroup.js");
 
 		routes = L.gpxGroup(tracks, {
 			async: false,

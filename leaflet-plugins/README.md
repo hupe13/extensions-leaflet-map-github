@@ -33,9 +33,6 @@ https://github.com/torfsen/leaflet.zoomhome
 https://github.com/Raruto/leaflet-elevation
 https://github.com/yohanboniface/Leaflet.i18n
 
-* leaflet-gpxgroup changed, see https://github.com/Raruto/leaflet-elevation/pull/160
-* leaflet-elevation-2.2.7i: https://github.com/Raruto/leaflet-elevation/pull/216
-
 <pre>[elevation gpx="url_gpx_file"]</pre>
 <pre>[elevation-track ...]</pre>
 <pre>[elevation-tracks ...]</pre>

@@ -1,4 +1,4 @@
-* branch leaflet-elevation-min-speed-0 with own presentation of results.
+* leaflet-elevation-2.2.8 with own presentation of results.
 * compability with themes and (block)editor
 * new option in markerClusterGroup: visible
 * fixed bug zoomhomemap
