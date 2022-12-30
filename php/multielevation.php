@@ -286,8 +286,10 @@ function leafext_multielevation( $atts, $contents, $shortcode){
 		return $text;
 	} else {
 		$text = "[".$shortcode." ";
-		foreach ($atts as $key=>$item){
-			$text = $text. "$key=$item ";
+		if (is_array($atts)){
+			foreach ($atts as $key=>$item){
+				$text = $text. "$key=$item ";
+			}
 		}
 		$text = $text. "]";
 		return $text;

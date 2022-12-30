@@ -86,16 +86,18 @@ function leafext_geojsonhover_script($url){
 							e.target.eachLayer(function(){ i += 1; });
 							//console.log("mouseover has", i, "layers.");
 							var marker_popup_open = false;
-							e.target._map.eachLayer(function(layer){
-								if (typeof layer.options.icon != "undefined") {
-									//console.log("icon defined");
-									if (typeof layer.getPopup() != "undefined") {
-										if (layer.getPopup().isOpen()) {
-											marker_popup_open = true;
+							if (e.target._map !== null) {
+								e.target._map.eachLayer(function(layer){
+									if (typeof layer.options.icon != "undefined") {
+										//console.log("icon defined");
+										if (typeof layer.getPopup() != "undefined") {
+											if (layer.getPopup().isOpen()) {
+												marker_popup_open = true;
+											}
 										}
 									}
-								}
-							});
+								});
+							}
 							if (i > 1) {
 								if (typeof e.sourceTarget.setStyle != "undefined") {
 									//console.log("style4");
@@ -165,18 +167,19 @@ function leafext_geojsonhover_script($url){
 							e.target.eachLayer(function(){ i += 1; });
 							//console.log("mousemove has", i, "layers.");
 							marker_popup_open = false;
-
-							e.target._map.eachLayer(function(layer){
-								if (typeof layer.options.icon != "undefined") {
-									//console.log("icon defined");
-									if (typeof layer.getPopup() != "undefined" ) {
-										if (layer.getPopup().isOpen()) {
-											//console.log("mousemove popup is open");
-											marker_popup_open = true;
+							if (e.target._map !== null) {
+								e.target._map.eachLayer(function(layer){
+									if (typeof layer.options.icon != "undefined") {
+										//console.log("icon defined");
+										if (typeof layer.getPopup() != "undefined" ) {
+											if (layer.getPopup().isOpen()) {
+												//console.log("mousemove popup is open");
+												marker_popup_open = true;
+											}
 										}
 									}
-								}
-							});
+								});
+							}
 
 							if (i > 1) {
 								//marker as geojson
