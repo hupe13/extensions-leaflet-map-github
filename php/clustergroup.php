@@ -63,7 +63,7 @@ function leafext_clustergroup_function( $atts ){
 		}
 
 		$clusteroptions = leafext_cluster_atts ($atts);
-		return leafext_subgroup_script($options,$clusteroptions);
+		return leafext_featuregroup_script($options,$clusteroptions);
 	} else {
 		$text = "[markerClusterGroup ";
 		foreach ($atts as $key=>$item){
