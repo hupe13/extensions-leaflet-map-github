@@ -22,7 +22,7 @@ function leafext_admin_placementstrategies() {
 }
 
 function leafext_placementparams_init(){
-	add_settings_section( 'placementparams_settings', leafext_cluster_tab(), 'leafext_placement_help_text', 'leafext_settings_placementparams' );
+	add_settings_section( 'placementparams_settings', leafext_marker_tab(), 'leafext_placement_help_text', 'leafext_settings_placementparams' );
 	$fields = leafext_placementstrategies_params();
 	foreach($fields as $field) {
 		add_settings_field("leafext_placementparams[".$field[0]."]", $field[1], 'leafext_form_placement','leafext_settings_placementparams', 'placementparams_settings', $field[0]);

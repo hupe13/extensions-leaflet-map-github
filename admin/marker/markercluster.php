@@ -22,7 +22,7 @@ function leafext_admin_markercluster() {
 }
 
 function leafext_cluster_init(){
-	add_settings_section( 'clusterparams_settings', leafext_cluster_tab(), 'leafext_markercluster_help_text', 'leafext_settings_clusterparams' );
+	add_settings_section( 'clusterparams_settings', leafext_marker_tab(), 'leafext_markercluster_help_text', 'leafext_settings_clusterparams' );
 	$fields = leafext_cluster_params();
 	foreach($fields as $field) {
 		add_settings_field("leafext_cluster[".$field[0]."]", $field[1], 'leafext_form_markercluster','leafext_settings_clusterparams', 'clusterparams_settings', $field[0]);

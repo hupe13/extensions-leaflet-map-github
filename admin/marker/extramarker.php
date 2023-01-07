@@ -3,11 +3,11 @@
 defined( 'ABSPATH' ) or die();
 
 function leafext_extramarker_help() {
-  if (is_singular() || is_archive() ) {
-    $text = '';
-  } else {
-    $text = '<h2>Leaflet.Extramarkers</h2>';
-  }
+  // if (is_singular() || is_archive() ) {
+  //   $text = '';
+  // } else {
+     $text = '<h2>Leaflet.Extramarkers</h2>';
+  // }
 
   $text=$text.'<p>'.sprintf(__('Only the %s is included in the plugin %s. You can install the %sother fonts%s and use these also.','extensions-leaflet-map'),
   '<a href="https://fontawesome.com/download">Font Awesome 6</a>',

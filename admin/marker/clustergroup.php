@@ -13,7 +13,13 @@ function leafext_clustergroup_help_text () {
 	<p>'.
 	__('Dynamically add/remove groups of markers from Marker Cluster','extensions-leaflet-map').
 	'.</p>';
-	$text='<h3>'.__('Options for grouping markers','extensions-leaflet-map').'</h3>'.
+	$text='<h3>'.__('Note','extensions-leaflet-map').'</h3>'.
+	'<p>'.sprintf(__('The shortcode %s is a special case of %s respectively %s.','extensions-leaflet-map'),
+	'<code>markerClusterGroup</code>',
+	'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=featuregroup"><code>leaflet-optiongroup</code></a>',
+	'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=featuregroup"><code>leaflet-featuregroup</code></a>')
+	.'</p>';
+	$text=$text.'<h3>'.__('Options for grouping markers','extensions-leaflet-map').'</h3>'.
 	'<code>[markerClusterGroup feat="..." strings="..., ..." groups="..., ..." visible=...]</code>'.
 	'<ul style="list-style: disc;">
 	<li style="margin-left: 1.5em;"><code>feat</code> - '.

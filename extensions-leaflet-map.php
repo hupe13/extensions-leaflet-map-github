@@ -5,7 +5,7 @@
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
  * Primary Branch:    main
  * Description:       Extensions for the WordPress plugin Leaflet Map Github Version
- * Version:           3.2-221230
+ * Version:           3.2-230107
  * Requires PHP:      7.4
  * Author:            hupe13
  * License:           GPL v2 or later
@@ -55,7 +55,11 @@ include_once LEAFEXT_PLUGIN_DIR . '/php/hover.php';
 include_once LEAFEXT_PLUGIN_DIR . '/php/markercluster.php';
 include_once LEAFEXT_PLUGIN_DIR . '/php/placementstrategies.php';
 include_once LEAFEXT_PLUGIN_DIR . '/php/clustergroup.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/featuregroup.php';
+
 include_once LEAFEXT_PLUGIN_DIR . '/php/extramarker.php';
+
+include_once LEAFEXT_PLUGIN_DIR . '/php/choropleth.php';
 
 include_once LEAFEXT_PLUGIN_DIR . '/php/zoomhome.php';
 include_once LEAFEXT_PLUGIN_DIR . '/php/layerswitch.php';

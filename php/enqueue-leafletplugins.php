@@ -203,3 +203,14 @@ add_filter('pre_do_shortcode_tag', function ( $output, $shortcode, $attr) {
   add_filter('the_content', 'leafext_replace_br', 20, 1);
   return $output;
 }, 10, 3);
+
+function leafext_enqueue_choropleth () {
+  wp_enqueue_script('choropleth',
+  plugins_url('leaflet-plugins/choropleth/choropleth.js',
+  LEAFEXT_PLUGIN_FILE),
+  array('leaflet_ajax_geojson_js'), null);
+  wp_enqueue_style( 'leafext_css',
+  plugins_url('css/choropleth.css',
+  LEAFEXT_PLUGIN_FILE),
+  array('leaflet_stylesheet'),null);
+}

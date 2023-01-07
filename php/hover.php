@@ -362,7 +362,7 @@ function leafext_canvas_script($tolerance) {
 }
 
 function leafext_geojsonhover_function($atts){
-	if (is_singular() || is_archive()) {
+	if (is_singular() || is_archive() || leafext_backend()) {
 		$settings = shortcode_atts(	array('exclude' => false,'tolerance' => 0), get_option( 'leafext_canvas' ));
 		$options  = shortcode_atts( $settings, $atts);
 		//var_dump($atts,get_option( 'leafext_canvas'),$settings,$options); wp_die();

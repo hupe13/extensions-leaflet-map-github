@@ -3,198 +3,9 @@
  * Functions for markerClusterGroup shortcode
  * extensions-leaflet-map
  */
+
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
-
-//Shortcode: [markerClusterGroup]
-function leafext_clustergroup_script($featuregroups,$params){
-	$text = '
-	<script>
-		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
-		window.WPLeafletMapPlugin.push(function () {
-			var map = window.WPLeafletMapPlugin.getCurrentMap();
-			var map_id = map._leaflet_id;
-			var feat    = '.json_encode($featuregroups['feat']).';
-			var groups  = '.json_encode($featuregroups['groups']).';
-			var visible = '.json_encode($featuregroups['visible']).';
-			console.log(feat,groups,visible);
-			//
-			var alle = new L.markerClusterGroup({';
-				$text=$text.leafext_java_params ($params);
-				$text = $text.'
-			});
-			let featGroups = [];
-			for (key in groups) {
-				featGroups[key] = new L.featureGroup.subGroup(alle);
-			}
-			//featGroups["others"] = new L.featureGroup.subGroup(alle);
-			//featGroups["unknown"] = new L.featureGroup.subGroup(alle);
-
-			var control = new L.control.layers(null, null, { collapsed: false });
-
-			//
-			if ( WPLeafletMapPlugin.markers.length > 0 ) {
-			  //console.log("markers "+WPLeafletMapPlugin.markers.length);
-			  for (var i = 0; i < WPLeafletMapPlugin.markers.length; i++) {
-			    if ( WPLeafletMapPlugin.markers[i]._map !== null ) {
-			      if (map_id == WPLeafletMapPlugin.markers[i]._map._leaflet_id) {
-			        let a = WPLeafletMapPlugin.markers[i];
-			        //console.log(a);
-			        //console.log(a.options);
-			        //console.log(a.getIcon());
-			        //console.log(a.getIcon().options);
-
-			        var this_options = a.getIcon().options;
-			        var is_feat = false;
-			        for (const key in this_options) {
-			          if (this_options.hasOwnProperty(key)) {
-			            if (key == feat) {
-			              is_feat = true;
-			              //console.log("option "+`${feat}: ${this_options[key]}`);
-			              var is_key = false;
-			              for (group in groups) {
-			                //console.log(group,`${this_options[key]}`.match(group));
-			                if (`${this_options[key]}`.match(group)) {
-			                  a.addTo(featGroups[group]);
-			                  map.removeLayer(a);
-			                  is_key = true;
-			                }
-			              }
-			              if (is_key == false) {
-			                if ("others" in groups) {
-			                  a.addTo(featGroups["others"]);
-			                  map.removeLayer(a);
-			                } else {
-			                  console.log("marker feat not matched.");
-			                  console.log(a.getIcon().options);
-			                }
-			              }
-			            }
-			          } // hasOwnProperty(key)
-			        } // key in this_options
-			        if (is_feat == false) {
-			          if ("unknown" in groups) {
-			            a.addTo(featGroups["unknown"]);
-			            map.removeLayer(a);
-			          } else {
-			            console.log(feat+" is not available.");
-			            console.log(a.options);
-			          }
-			        }
-			      } // _map._leaflet_id
-			    } // has markers[i]._map
-			  } // loop markers
-			} // markers.length
-
-			var geojsons = window.WPLeafletMapPlugin.geojsons;
-			if (geojsons.length > 0) {
-			  //console.log("geojsons "+geojsons.length);
-			  var geocount = geojsons.length;
-			  for (var j = 0, len = geocount; j < len; j++) {
-			    var geojson = geojsons[j];
-			    //console.log(geojson);
-			    if (map_id == geojson._map._leaflet_id) {
-			      geojson.on("ready", function () {
-			        var a = this.layer;
-			        //console.log(a);
-			        a.eachLayer(function(layer) {
-			          //console.log(layer);
-			          //console.log(layer.feature.properties);
-								//console.log(typeof layer.setIcon);
-			          //console.log(layer.getIcon().options);
-
-			          if (feat.match("properties")) {
-			            //console.log(layer.feature.properties);
-			            //console.log(feat.substr(11));
-			            //console.log(layer.feature.properties[feat.substr(11)]);
-			            if (typeof layer.feature.properties[feat.substr(11)] != "undefined") {
-			              let prop = layer.feature.properties[feat.substr(11)];
-			              if (prop in groups) {
-			                map.removeLayer(layer);
-			                layer.addTo(featGroups[prop]);
-			              } else {
-			                if ("others" in groups) {
-			                  layer.addTo(featGroups["others"]);
-			                  map.removeLayer(layer);
-			                } else {
-			                  console.log(prop+" not in groups");
-			                }
-			              }
-			            } else {
-			              if ("unknown" in groups) {
-			                map.removeLayer(layer);
-			                layer.addTo(featGroups["unknown"]);
-			              } else {
-			                console.log("Feature "+feat+" for this leaflet-geojson marker is undefined.");
-			                console.log(layer.feature.properties);
-			              }
-			            }
-			          } // end feat.match("properties")
-			          else {
-									if ( typeof layer.setIcon !== "undefined") {
-			            var this_options = layer.getIcon().options;
-			            var is_feat = false;
-			            for (const key in this_options) {
-			              if (this_options.hasOwnProperty(key)) {
-			                if (key == feat) {
-			                  is_feat = true;
-			                  //console.log("option "+`${feat}: ${this_options[key]}`);
-			                  var is_key = false;
-			                  for (group in groups) {
-			                    //console.log(group,`${this_options[key]}`.match(group));
-			                    if (`${this_options[key]}`.match(group)) {
-			                      a.addTo(featGroups[group]);
-			                      map.removeLayer(a);
-			                      is_key = true;
-			                    }
-			                  }
-			                  if (is_key == false) {
-			                    if ("others" in groups) {
-			                      a.addTo(featGroups["others"]);
-			                      map.removeLayer(a);
-			                    } else {
-			                      console.log("geojson feat not matched.");
-			                      console.log(layer.getIcon().options);
-			                    }
-			                  }
-			                }
-			              } // hasOwnProperty(key)
-			            } // key in this_options
-								}
-			            if (is_feat == false) {
-			              if ("unknown" in groups) {
-			                a.addTo(featGroups["unknown"]);
-			                map.removeLayer(a);
-			              } else {
-			                console.log(feat+" is not available.");
-			                console.log(a.options);
-			              }
-			            }
-			          }
-			        }); // eachLayer
-			      }); // geojson ready
-			    }
-			  }
-			}
-
-			//
-			for (key in groups) {
-				control.addOverlay(featGroups[key], groups[key]);
-			}
-			control.addTo(map);
-			alle.addTo(map);
-			//
-			for (key in groups) {
-				//console.log("visible "+visible[key]);
-				if (visible[key] == "1") {
-					featGroups[key].addTo(map);
-				}
-			}
-		});
-		</script>';
-		$text = \JShrink\Minifier::minify($text);
-		return "\n".$text."\n";
-}
 
 function leafext_clustergroup_function( $atts ){
 	if (is_singular() || is_archive()) {
@@ -239,8 +50,20 @@ function leafext_clustergroup_function( $atts ){
 			'visible' => array_combine($cl_strings, $cl_on),
 		);
 
-		$options = leafext_cluster_atts ($atts);
-		return leafext_clustergroup_script($featuregroups,$options);
+		$options = array(
+			'property' => '',
+			'option' => '',
+			'groups'  => $featuregroups['groups'],
+			'visible' => $featuregroups['visible'],
+		);
+		if (strpos($featuregroups['feat'],"properties") !== false) {
+			$options['property'] = substr($featuregroups['feat'],11);
+		} else {
+			$options['option'] = $featuregroups['feat'];
+		}
+
+		$clusteroptions = leafext_cluster_atts ($atts);
+		return leafext_subgroup_script($options,$clusteroptions);
 	} else {
 		$text = "[markerClusterGroup ";
 		foreach ($atts as $key=>$item){

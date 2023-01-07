@@ -111,3 +111,14 @@ function leafext_array_replace_keys($array, $keys) {
 	}
 	return $array;
 }
+
+// Backend Plugin extension-leaflet-map
+function leafext_backend() {
+	$backend_page = isset($_GET['page']) ? $_GET['page'] : "";
+	$url=$_SERVER['REQUEST_URI'];
+	if (strpos($backend_page, 'extensions-leaflet-map') !== false && strpos($url, '/wp-admin/admin.php') !== false ) {
+		return true;
+	} else {
+		return false;
+	}
+}

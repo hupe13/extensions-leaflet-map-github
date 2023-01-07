@@ -3,12 +3,13 @@
 defined( 'ABSPATH' ) or die();
 
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/main.php';
-include LEAFEXT_PLUGIN_DIR . '/admin/cluster/main.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/marker/main.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/tiles/main.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/canvas.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/filemgr/main.php';
-include LEAFEXT_PLUGIN_DIR . '/admin/extramarker.php';
+//include LEAFEXT_PLUGIN_DIR . '/admin/extramarker.php';
+//include LEAFEXT_PLUGIN_DIR . '/admin/choropleth.php';
 
 // Add menu page for admin
 function leafext_add_page() {
@@ -34,10 +35,10 @@ function leafext_do_page() {
 		leafext_admin_elevation($active_tab);
 	} else if ( strpos( $active_tab, 'filemgr' ) !== false ) {
 		leafext_admin_filemgr($active_tab);
-	} else if ( strpos( $active_tab, 'cluster' ) !== false ) {
-		leafext_admin_cluster($active_tab);
-	} else if ( strpos( $active_tab, 'extramarker' ) !== false ) {
-		leafext_extramarker_help();
+	} else if ( strpos( $active_tab, 'marker' ) !== false ) {
+		leafext_admin_marker($active_tab);
+	// } else if ( strpos( $active_tab, 'extramarker' ) !== false ) {
+	// 	leafext_extramarker_help();
 	} else if ( strpos( $active_tab, 'tiles' ) !== false ) {
 		leafext_admin_tiles($active_tab);
 	} else if( $active_tab == 'hover' ) {
@@ -58,6 +59,12 @@ function leafext_do_page() {
 		leafext_help_table($leafext_plugin_name);
 	} else if( $active_tab == 'other' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/other.php';
+	} else if( $active_tab == 'choropleth' ) {
+		include LEAFEXT_PLUGIN_DIR . '/admin/choropleth.php';
+		leafext_choropleth_help();
+	} else if( $active_tab == 'featuregroup' ) {
+		include LEAFEXT_PLUGIN_DIR . '/admin/featuregroup.php';
+		//leafext_help_featuregroup();
 	}
 }
 
@@ -84,10 +91,8 @@ function leafext_do_nonadmin_page() {
 		leafext_admin_elevation($active_tab);
 	} else if ( strpos( $active_tab, 'filemgr' ) !== false ) {
 		leafext_admin_filemgr($active_tab);
-	} else if ( strpos( $active_tab, 'cluster' ) !== false ) {
-		leafext_admin_cluster($active_tab);
-	} else if ( strpos( $active_tab, 'extramarker' ) !== false ) {
-		leafext_extramarker_help();
+	} else if ( strpos( $active_tab, 'marker' ) !== false ) {
+		leafext_admin_marker($active_tab);
 	} else if ( strpos( $active_tab, 'tiles' ) !== false ) {
 		leafext_admin_tiles($active_tab);
 	} else if( $active_tab == 'hover' ) {
@@ -107,7 +112,14 @@ function leafext_do_nonadmin_page() {
 		leafext_help_table($leafext_plugin_name);
 	} else if( $active_tab == 'other' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/other.php';
+	} else if( $active_tab == 'choropleth' ) {
+		include LEAFEXT_PLUGIN_DIR . '/admin/choropleth.php';
+		leafext_choropleth_help();
+	} else if( $active_tab == 'featuregroup' ) {
+		include LEAFEXT_PLUGIN_DIR . '/admin/featuregroup.php';
+		//leafext_help_featuregroup();
 	}
+	//
 }
 
 function leafext_admin_tabs() {
@@ -141,29 +153,37 @@ function leafext_admin_tabs() {
 		echo '">'.__('Files for Leaflet Map',"extensions-leaflet-map").'</a>'."\n";
 	}
 	//
-	echo '<a href="?page='.$leafext_plugin_name.'&tab=markercluster" class="nav-tab';
-	if ( strpos( $active_tab, 'cluster' ) !== false ) {
-		echo ' nav-tab-active';
-	}
-	echo '">'. __('Markercluster','extensions-leaflet-map'). '</a>'."\n";
-	//
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=extramarker" class="nav-tab';
-	if ( strpos( $active_tab, 'extramarker' ) !== false ) {
+	if ( strpos( $active_tab, 'marker' ) !== false ) {
 		echo ' nav-tab-active';
 	}
-	echo '">'. __('ExtraMarkers','extensions-leaflet-map'). '</a>'."\n";
+	echo '">'. __('Marker','extensions-leaflet-map'). '</a>'."\n";
+	//
+	// echo '<a href="?page='.$leafext_plugin_name.'&tab=extramarker" class="nav-tab';
+	// if ( strpos( $active_tab, 'extramarker' ) !== false ) {
+	// 	echo ' nav-tab-active';
+	// }
+	// echo '">'. __('ExtraMarkers','extensions-leaflet-map'). '</a>'."\n";
 	//
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=tileshelp" class="nav-tab';
 	if ( strpos( $active_tab, 'tiles' ) !== false ) {
 		echo ' nav-tab-active';
 	}
-	echo '">'. __('Tiles','extensions-leaflet-map'). '</a>'."\n";
+	echo '">'. __('Tile server','extensions-leaflet-map'). '</a>'."\n";
 	//
 	$tabs = array (
 		// array (
 		// 	'tab' => 'tilelayers',
 		// 	'title' => __('Switching Tile Layers','extensions-leaflet-map'),
 		// ),
+		array (
+			'tab' => 'featuregroup',
+			'title' => 'FeatureGroup',
+		),
+		array (
+			'tab' => 'choropleth',
+			'title' => 'Choropleth',
+		),
 		array (
 			'tab' => 'hover',
 			'title' => __('Hovering','extensions-leaflet-map'),
