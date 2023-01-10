@@ -21,12 +21,12 @@ function leafext_marker_tab() {
 			'title' => 'Leaflet.markercluster',
 		),
 		array (
-			'tab' => 'markerclustergroup',
-			'title' => 'Leaflet.FeatureGroup.SubGroup',
-		),
-		array (
 			'tab' => 'markerclusterplacementstrategies',
 			'title' => 'Leaflet.MarkerCluster.PlacementStrategies',
+		),
+		array (
+			'tab' => 'markerclustergroup',
+			'title' => 'Leaflet.FeatureGroup.SubGroup',
 		),
 	);
 

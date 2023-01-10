@@ -32,8 +32,7 @@ if (typeof durchlauf[map_id] == "undefined" ) {
     }
   }
 }
-console.log("Round "+durchlauf[map_id]+" on map "+map_id);
-console.log(map_id,att_option,att_property,groups,visible);
+console.log("Round "+durchlauf[map_id]+" on map "+map_id+"; Option:",att_option,"; Property:",att_property,"; substr: "+substr+";"+"Groups",groups,"visible",visible);
 
 //
 if ( WPLeafletMapPlugin.markers.length > 0 ) {
@@ -42,8 +41,10 @@ if ( WPLeafletMapPlugin.markers.length > 0 ) {
     if ( WPLeafletMapPlugin.markers[i]._map !== null ) {
       if (map_id == WPLeafletMapPlugin.markers[i]._map._leaflet_id) {
         let a = WPLeafletMapPlugin.markers[i];
-        //console.log("Marker");
-        //console.log(a.options);
+        // console.log("Marker");
+        // console.log(a.options);
+        // console.log("Icon");
+        // console.log(a.getIcon().options);
         let found = false;
 
         let this_options = a.getIcon().options;
@@ -57,19 +58,21 @@ if ( WPLeafletMapPlugin.markers.length > 0 ) {
               var this_option = `${this_options[key]}`;
               //console.log("Suche nach "+this_option);
               if (this_option in groups) {
-                console.log("Found Marker exact option "+key+" "+this_option+" for "+groups[this_option]);
+                console.log("Found Marker option exact "+key+" "+this_option+" for "+groups[this_option]);
                 map.removeLayer(a);
                 a.addTo(featGroups[map_id][groups[this_option]]);
                 is_key = true;
               } else {
-                for (group in groups) {
-                  //console.log(group,this_option.match(group));
-                  if (this_option.match(group)) {
-                    console.log("Found Marker option substring "+key+" "+group+" for "+groups[group]);
-                    map.removeLayer(a);
-                    a.addTo(featGroups[map_id][groups[group]]);
-                    is_key = true;
-                    break;
+                if (substr == true) {
+                  for (group in groups) {
+                    //console.log(group,this_option.match(group));
+                    if (this_option.match(group)) {
+                      console.log("Found Marker option substring "+key+" "+group+" for "+groups[group]);
+                      map.removeLayer(a);
+                      a.addTo(featGroups[map_id][groups[group]]);
+                      is_key = true;
+                      break;
+                    }
                   }
                 }
               }
@@ -90,7 +93,7 @@ if ( WPLeafletMapPlugin.markers.length > 0 ) {
             map.removeLayer(a);
             a.addTo(featGroups[map_id][groups["unknown"]]);
           } else {
-            console.log(att_option+" is not available.");
+            console.log("marker option "+att_option+" is not available.");
             console.log(a.options);
           }
         }
@@ -113,25 +116,29 @@ if (geojsons.length > 0) {
         a.eachLayer(function(layer) {
           //console.log(layer);
           if (att_option != '') {
+            // console.log("layer.options");
             // console.log(layer.options);
             // console.log(att_option);
             // console.log(layer.options[att_option]);
             let found = false;
             if (typeof layer.options[att_option] != "undefined") {
               if (layer.options[att_option] in groups) {
-                console.log("Found geojson option "+layer.options[att_option]+" "+groups[layer.options[att_option]]);
+                console.log("Found geojson option exact "+layer.options[att_option]+" "+groups[layer.options[att_option]]);
                 map.removeLayer(layer);
                 layer.addTo(featGroups[map_id][groups[layer.options[att_option]]]);
                 found = true;
               } else {
-                for (group in groups) {
-                  //console.log("group "+group);
-                  if (layer.options[att_option].match(group)) {
-                    console.log("Found geojson option substr "+layer.options[att_option]+" "+groups[group]);
-                    map.removeLayer(layer);
-                    layer.addTo(featGroups[map_id][groups[group]]);
-                    found = true;
-                    break;
+                if ( substr == true) {
+                  //console.log("substr geojson option "+substr);
+                  for (group in groups) {
+                    //console.log("group "+group);
+                    if (layer.options[att_option].match(group)) {
+                      console.log("Found geojson option substr "+layer.options[att_option]+" "+groups[group]);
+                      map.removeLayer(layer);
+                      layer.addTo(featGroups[map_id][groups[group]]);
+                      found = true;
+                      break;
+                    }
                   }
                 }
               }
@@ -140,21 +147,45 @@ if (geojsons.length > 0) {
                   map.removeLayer(layer);
                   layer.addTo(featGroups[map_id][groups["others"]]);
                 } else {
-                  console.log("Option "+att_option+" not in groups");
+                  console.log("geojson Option "+att_option+" not in groups");
                   console.log(layer.options[att_option]);
                 }
+              }
+            } else {
+              if ("unknown" in groups) {
+                map.removeLayer(layer);
+                layer.addTo(featGroups[map_id][groups["unknown"]]);
+              } else {
+                console.log("geojson Option "+att_option+" is undefined.");
+                console.log(layer.options);
               }
             }
           } // end att_option != ''
           else if (att_property != '') {
+            let found = false;
             //console.log(layer.feature.properties);
             if (typeof layer.feature.properties[att_property] != "undefined") {
               let prop = layer.feature.properties[att_property];
               if (prop in groups) {
-                console.log("Found geojson property "+prop+" "+groups[prop]);
+                console.log("Found geojson property exact "+prop+" for "+groups[prop]);
                 map.removeLayer(layer);
                 layer.addTo(featGroups[map_id][groups[prop]]);
+                found = true;
               } else {
+                if ( substr == true) {
+                  // console.log("property substr "+substr);
+                  for (group in groups) {
+                    if (prop.match(group)) {
+                      console.log("Found geojson property substring "+prop+" "+group+" for "+groups[group]);
+                      map.removeLayer(layer);
+                      layer.addTo(featGroups[map_id][groups[group]]);
+                      found = true;
+                      break;
+                    }
+                  }
+                }
+              }
+              if (found == false) {
                 if ("others" in groups) {
                   map.removeLayer(layer);
                   layer.addTo(featGroups[map_id][groups["others"]]);
@@ -175,7 +206,6 @@ if (geojsons.length > 0) {
         }); // eachLayer
         //geojson asynchron
         for (group in featGroups[map_id]) {
-          //console.log(`${group}: ${featGroups[map_id][group]}`);
           control[map_id].removeLayer(featGroups[map_id][group]);
           control[map_id].addOverlay(featGroups[map_id][group], group);
         }
@@ -186,12 +216,10 @@ if (geojsons.length > 0) {
 
 if (durchlauf[map_id] == 0 ) {
   for (group in featGroups[map_id]) {
-    //console.log(`${group}: ${featGroups[map_id][group]}`);
     control[map_id].addOverlay(featGroups[map_id][group], group);
   }
 } else {
   for (group in featGroups[map_id]) {
-    //console.log(`${group}: ${featGroups[map_id][group]}`);
     control[map_id].removeLayer(featGroups[map_id][group]);
     control[map_id].addOverlay(featGroups[map_id][group], group);
   }

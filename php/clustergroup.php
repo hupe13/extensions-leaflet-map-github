@@ -17,7 +17,8 @@ function leafext_clustergroup_function( $atts ){
 				'feat' => false,
 				'strings' => false,
 				'groups' => false,
-				'visible' => false
+				'visible' => false,
+				'substr' => true,
 			), $atts
 		);
 		//var_dump($featuregroups); wp_die();
@@ -58,8 +59,10 @@ function leafext_clustergroup_function( $atts ){
 		);
 		if (strpos($featuregroups['feat'],"properties") !== false) {
 			$options['property'] = substr($featuregroups['feat'],11);
+			$options['substr'] = false;
 		} else {
 			$options['option'] = $featuregroups['feat'];
+			$options['substr'] = true;
 		}
 
 		$clusteroptions = leafext_cluster_atts ($atts);

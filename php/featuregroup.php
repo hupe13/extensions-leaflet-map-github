@@ -16,6 +16,7 @@ function leafext_featuregroup_script($options,$params){
 			let att_option = '.json_encode($options['option']).';
 			let groups  = '.json_encode($options['groups']).';
 			let visible = '.json_encode($options['visible']).';
+			let substr = '.json_encode($options['substr']).';
 			let	alle = new L.markerClusterGroup({';
 					$text=$text.leafext_java_params ($params);
 					$text = $text.'
@@ -40,6 +41,7 @@ function leafext_featuregroup_function( $atts, $content, $shortcode){
 				'option' => '',
 				'values' => '',
 				'groups' => '',
+				'substr' => $shortcode == "leaflet-featuregroup" ? false : true,
 				'visible' => false,
 			), leafext_clear_params($atts)
 		);
@@ -97,6 +99,7 @@ function leafext_featuregroup_function( $atts, $content, $shortcode){
 			'option' => sanitize_text_field($options['option']),
 			'values' => sanitize_text_field($options['values']),
 			'groups'  => array_combine($cl_values, $cl_groups),
+			'substr' => (bool)$options['substr'],
 			'visible' => array_combine($cl_values, $cl_on),
 		);
 

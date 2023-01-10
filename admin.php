@@ -182,7 +182,7 @@ function leafext_admin_tabs() {
 		),
 		array (
 			'tab' => 'choropleth',
-			'title' => 'Choropleth',
+			'title' => 'Choropleth Map',
 		),
 		array (
 			'tab' => 'hover',

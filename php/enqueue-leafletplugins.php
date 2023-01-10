@@ -206,7 +206,7 @@ add_filter('pre_do_shortcode_tag', function ( $output, $shortcode, $attr) {
 
 function leafext_enqueue_choropleth () {
   wp_enqueue_script('choropleth',
-  plugins_url('leaflet-plugins/choropleth/choropleth.js',
+  plugins_url('leaflet-plugins/leaflet-choropleth/choropleth.js',
   LEAFEXT_PLUGIN_FILE),
   array('leaflet_ajax_geojson_js'), null);
   wp_enqueue_style( 'leafext_css',

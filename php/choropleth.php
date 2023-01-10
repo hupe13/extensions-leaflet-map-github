@@ -26,7 +26,7 @@ function leafext_choropleth_params() {
 		array('steps', __('number of breaks or steps in range',"extensions-leaflet-map"), "5", "5"),
 		array('mode', __('q for quantile, e for equidistant, k for k-means',"extensions-leaflet-map"), "q", "q"),
 		array('legend', __('show legend',"extensions-leaflet-map"), true, "!legend"),
-		array('hover', __('enable hovering',"extensions-leaflet-map"), true, "!hover"),
+		array('hover', __('get a tooltip on mouse over',"extensions-leaflet-map"), true, "!hover"),
 	);
 	return $params;
 }
