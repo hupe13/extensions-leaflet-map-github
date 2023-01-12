@@ -20,8 +20,9 @@ function leafext_choropleth_help() {
   $text = $text.'<p><h2>'.__('Popup Content','extensions-leaflet-map').'</h2></p>';
   $text = $text.sprintf(__('You can specify %s as you like.','extensions-leaflet-map'),
   "<code>Property1 {property1}&lt;br>{property2} Property2</code>");
-  $text = $text.'<p>'.__('Use it like the popup content for Geojsons in Leaflet Map: To add feature properties to the popups,
-  use the inner content and curly brackets to substitute the values:','extensions-leaflet-map').
+  $text = $text.'<p>'.
+  __('Use it like the popup content for Geojsons in Leaflet Map: To add feature properties to the popups, use the inner content and curly brackets to substitute the values:',
+  'extensions-leaflet-map').
   '<pre><code>&#91;choropleth ...]Field A = {field_a}[/choropleth]';
   $text = $text.'</code></pre>'
   .'</p>';
