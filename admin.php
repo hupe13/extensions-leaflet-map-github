@@ -169,7 +169,7 @@ function leafext_admin_tabs() {
 	if ( strpos( $active_tab, 'tiles' ) !== false ) {
 		echo ' nav-tab-active';
 	}
-	echo '">'. __('Tile server','extensions-leaflet-map'). '</a>'."\n";
+	echo '">'. __('Tile Server','extensions-leaflet-map'). '</a>'."\n";
 	//
 	$tabs = array (
 		// array (
@@ -215,3 +215,13 @@ function leafext_admin_tabs() {
 	//
 	echo '</h3>';
 }
+
+function leafext_admin_style() {
+	$page = isset($_GET['page']) ? $_GET['page'] : "";
+	if ( $page == LEAFEXT_PLUGIN_SETTINGS ) {
+		wp_enqueue_style('leafext_admin_css',
+		plugins_url('css/leafext-admin.css',
+		LEAFEXT_PLUGIN_FILE));
+	}
+}
+add_action('admin_enqueue_scripts', 'leafext_admin_style');

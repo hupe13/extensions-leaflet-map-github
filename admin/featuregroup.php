@@ -7,13 +7,33 @@
 defined( 'ABSPATH' ) or die();
 
 function leafext_help_featuregroup() {
-	$firsttext = '
+	$text='';
+	$admintext = '
 	<h2 id="leaflet.featuregroup.subgroup">Leaflet.FeatureGroup.SubGroup</h2>
 	<img src="'.LEAFEXT_PLUGIN_PICTS.'clustergroup.png">
 	<p>'.
 	__('Group elements and dynamically add/remove from map','extensions-leaflet-map').
 	'.</p>';
-	$text='';
+
+	$helptext='<!-- wp:quote -->
+<blockquote class="wp-block-quote"><!-- wp:paragraph -->
+<p><a href="https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup">Leaflet.FeatureGroup.SubGroup</a> '.
+__('is a simple plugin to create Feature Groups that add their child layers into a parent group. Typical usage is to switch them through L.Control.Layers to dynamically add/remove groups of markers from Leaflet.markercluster.','extensions-leaflet-map').'</p>
+<!-- /wp:paragraph --></blockquote>
+<!-- /wp:quote -->
+
+<!-- wp:paragraph -->
+<p><em>Extensions for Leaflet Map</em> '.
+sprintf(__('uses this Leaflet plugin to group leaflet elements like %s and others by options and properties. There are two shortcodes: %s and %s.
+Use %s to group elements by options and %s to group elements by properties.','extensions-leaflet-map'),
+'<code>leaflet-marker</code>, <code>leaflet-geojson</code>',
+'<code>leaflet-optiongroup</code>',
+'<code>leaflet-featuregroup</code>',
+'<code>leaflet-optiongroup</code>',
+'<code>leaflet-featuregroup</code>')
+.'</p>
+<!-- /wp:paragraph -->
+';
 
   $text=$text.'<h3>Shortcode</h3>
   <pre>
@@ -26,37 +46,37 @@ function leafext_help_featuregroup() {
   [leaflet-kml         ...] ... [/leaflet-kml]
   //one or more
   //suitable for all leaflet-elements above
-  [leaflet-optiongroup option="..." values="..., ..." groups="..., ..." visible=...]
+  [leaflet-optiongroup option="..." values="..., ..." groups="..., ..." substr visible=...]
   //suitable for leaflet-geojson, leaflet-gpx, leaflet-kml.
-  [leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." visible=...]
+  [leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." <code><span style="color: #d63638">!</span>substr</code>substr visible=...]
   </pre>
   ';
 	$text=$text.'<h3>leaflet-optiongroup option</h3>'.
-	__('For <code>option</code> you can use any option of the leaflet element.','extensions-leaflet-map').' '.
+	sprintf(__('For %s you can use any option of the leaflet element.','extensions-leaflet-map'),'<code>option</code>').' '.
 	__('Not every option is suitable for every element.','extensions-leaflet-map');
 
 	$text=$text.' '.__('Meaningful options may be:','extensions-leaflet-map');
 
-	$text=$text.'<ul style="list-style: disc;">
-	<li style="margin-left: 1.5em;">'.
+	$text=$text.'<ul>
+	<li>'.
 	'leaflet-marker: iconClass, title, iconUrl'.'<br>'.
 	__("You can use iconclass to group, regardless of whether they affect the appearance of the icon or not.",'extensions-leaflet-map').' '.
-	__("If not, you must specify an iconurl.",'extensions-leaflet-map')
+	sprintf(__("If not, you must specify an %s.",'extensions-leaflet-map'),'iconurl')
 	.'</li>
-	<li style="margin-left: 1.5em;">'.
+	<li>'.
 	'leaflet-extramarker: className, extraClasses, icon, iconColor, markerColor, number, prefix, shape'
 	.'</li>
-	<li style="margin-left: 1.5em;">'.
+	<li>'.
 	'leaflet-geojson (-gpx, -kml): iconUrl, alt, className, color'.
-	'<ul style="list-style: disc;">
-	<li style="margin-left: 1.5em;">'.
-	__("iconurl switches only markers.",'extensions-leaflet-map').
+	'<ul>
+	<li>'.
+	sprintf(__("%s switches only the markers.",'extensions-leaflet-map'),'iconurl').
 	'</li>'.
-	'<li style="margin-left: 1.5em;">'.
-	__('Every marker with an icon has the option alt="Marker".','extensions-leaflet-map')
+	'<li>'.
+	sprintf(__('Every marker with an icon has the option %s as default.','extensions-leaflet-map'),'<code>alt="Marker"</code>')
 	.'</li>
-	<li style="margin-left: 1.5em;">'.
-	__('You can use className for grouping, it is not used by leaflet-geojson but passed through.','extensions-leaflet-map')
+	<li>'.
+	sprintf(__('You can use %s for grouping, it is not used by leaflet-geojson but passed through.','extensions-leaflet-map'),'className')
 	.'</li>
 	</ul>'
 	.'</li>
@@ -83,32 +103,46 @@ function leafext_help_featuregroup() {
 
 
 	$text=$text.'<h3>values '.__('and','extensions-leaflet-map').' groups</h3><p>';
-	$text=$text.'<ul style="list-style: disc;">
-	<li style="margin-left: 1.5em;"><code>values</code> - '.sprintf( __('comma separated strings to distinguish the elements, e.g. the exact string or an unique substring in %s or the exact string (e.g.%s) in %s',
-	'extensions-leaflet-map'),"<code>option</code>",
-	'<code><span style="color: #4f94d4">value0</span></code>',
-	"<code>property</code>").'</li>
+	$text=$text.'<ul>
+	<li><code>values</code> - '.sprintf( __('comma separated strings to distinguish the elements, e.g. the exact string or an unique substring in %s (e.g.%s)',
+	'extensions-leaflet-map'),
+	"option / property",
+	'<code><span style="color: #4f94d4">value0</span></code>'
+	).'</li>
 
-	<li style="margin-left: 1.5em;">'.sprintf(__('Note that the %s are case sensitive, but the options in the shortcode are not.','extensions-leaflet-map'),
+	<li><code>substr</code> ('.__('optional','extensions-leaflet-map').') - '.
+	sprintf(__('search substring %s or the exact string %s in %s.','extensions-leaflet-map'),
+	"(<code>substr</code>)",
+	'(<code><span style="color: #d63638">!</span>substr</code>)',
+	"<code>values</code>"
+	).' '.
+	sprintf(
+		__('The default is %s for %s and %s for %s.','extensions-leaflet-map'),
+		"<i>true</i>",
+		"<code>leaflet-optiongroup</code>",
+		"<i>false</i>",
+		"<code>leaflet-featuregroup</code>").'
+		</li>
+
+	<li>'.sprintf(__('Note that the %s are case sensitive, but the options in the shortcode are not.','extensions-leaflet-map'),
 	'<code>values</code>')
 	.'</li>
 
-		<li style="margin-left: 1.5em;"><code>groups</code> - '.
-		__('comma separated labels appear in the selection menu','extensions-leaflet-map').'</li>
+		<li><code>groups</code> - '.
+		__('comma separated labels appear in the selection menu','extensions-leaflet-map').'.</li>
 
-		<li style="margin-left: 1.5em;">'.sprintf(
+		<li>'.sprintf(
 			__('The number of %s and %s must match.','extensions-leaflet-map'),"<code>values</code>","<code>groups</code>").'
 			</li>
-<li style="margin-left: 1.5em;">'.
+			<li>'.
 			sprintf(__('You can specify multiple %s and %s. If the %s are called the same, the elements will be placed in the same group despite having different options resp. properties.','extensions-leaflet-map'),
-			'<code>leaflet-optionsgroup</code>',
+			'<code>leaflet-optiongroup</code>',
 			'<code>leaflet-featuregroup</code>',
 			'<code>groups</code>').'<br>'.
-			__('However, make sure that it is unique. Otherwise unwanted, but sometimes interesting effects can occur. Test it with your application!','extensions-leaflet-map')
-
+			__('However, make sure that they are unique. Otherwise unwanted, but sometimes interesting effects can occur. Test it with your application!','extensions-leaflet-map')
 			.'</li>
 
-			<li style="margin-left: 1.5em;"><code>visible</code> ('.__('optional','extensions-leaflet-map').') - '.
+			<li><code>visible</code> ('.__('optional','extensions-leaflet-map').') - '.
 			sprintf(__('initial visibility of a group, default: %s. Either %s (valid for all groups) or a comma-separated list of %s and %s, where the number must match those of %s.',
 			'extensions-leaflet-map'),
 			'1',
@@ -119,7 +153,6 @@ function leafext_help_featuregroup() {
 			).'</li>
 
 			</ul></p>';
-
 
 	$text=$text.'<h3>Groups unknown '.__('and','extensions-leaflet-map').' others</h3><p>'.
 	sprintf(
@@ -147,7 +180,7 @@ function leafext_help_featuregroup() {
 	if (is_singular() || is_archive() ) {
 		return $text;
 	} else {
-		echo $firsttext.$text.$othertext;
+		echo $admintext.$helptext.$text.$othertext;
 	}
 }
 leafext_help_featuregroup();

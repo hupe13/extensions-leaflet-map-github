@@ -45,6 +45,14 @@ function leafext_choropleth_help() {
   }
   $text = $text.'<div style="width:80%;">'.leafext_html_table($new).'</div>';
 
+  $text=$text.'<h3>mode</h3>
+  <ul>
+  <li> '.__('quantile maps try to arrange groups so they have the same quantity.','extensions-leaflet-map').'</li>
+  <li> '.__('equidistant: divide the classes into equal groups.','extensions-leaflet-map').'</li>
+  <li> '.__('k-means: each standard deviation becomes a class.','extensions-leaflet-map').'</li>
+  </ul>';
+
+$text=$text.'<small>('.__("Help me, if I'm wrong.",'extensions-leaflet-map').')</small>';
   if (is_singular() || is_archive() ) {
     return $text;
   } else {

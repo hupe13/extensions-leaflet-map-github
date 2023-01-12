@@ -50,21 +50,21 @@ function leafext_help_tiles() {
 	//$text = $text.__('','extensions-leaflet-map');
 $text = $text.'
   <h3>Parameter</h3>
-  <ul style="list-style: disc;">
-  <li style="margin-left: 1.5em;"> <code>[leaflet-map]</code>
-  <ul style="list-style: disc;">
-  <li style="margin-left: 1.5em;"> '.__('see Leaflet Map documentation','extensions-leaflet-map').'</li>
-  <li style="margin-left: 1.5em;"> '.__('optional: mapid - This appears in the switching control.','extensions-leaflet-map').'</li>
+  <ul>
+  <li> <code>[leaflet-map]</code>
+  <ul>
+  <li> '.__('see Leaflet Map documentation','extensions-leaflet-map').'</li>
+  <li> '.__('optional: mapid - This appears in the switching control.','extensions-leaflet-map').'</li>
   </ul></li>
-   <li style="margin-left: 1.5em;"> <code>[layerswitch]</code>
-   <ul style="list-style: disc;">
-   <li style="margin-left: 1.5em;"> '.sprintf(__('without any parameter: All defined %stile servers%s are used.','extensions-leaflet-map'),
+   <li> <code>[layerswitch]</code>
+   <ul>
+   <li> '.sprintf(__('without any parameter: All defined %stile servers%s are used.','extensions-leaflet-map'),
    '<a href="'.$tileswitch.'">',
    '</a>').'</li>'.
-   '<li style="margin-left: 1.5em;"> '.sprintf(__('with %s and/or %s you can specify which tiles should be used.','extensions-leaflet-map'),
+   '<li> '.sprintf(__('with %s and/or %s you can specify which tiles should be used.','extensions-leaflet-map'),
    '<a href="'.$tileswitch.'"><code>tiles</code></a>',
    '<a href="'.$tilesproviders.'"><code>providers</code></a>').
-   '</li><li style="margin-left: 1.5em;"> '.sprintf(__('with %s you can specify the mapids and/or providers for which opacity should be regulated.','extensions-leaflet-map'),'<code>opacity</code>').
+   '</li><li> '.sprintf(__('with %s you can specify the mapids and/or providers for which opacity should be regulated.','extensions-leaflet-map'),'<code>opacity</code>').
    '</li></ul></li>
    </ul>
   ';

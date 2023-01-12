@@ -28,17 +28,17 @@ function leafext_clustergroup_help_text () {
 	.'</p>';
 
 	$text='<h3>'.__('Options for grouping leaflet-markers','extensions-leaflet-map').'</h3>
-	<ul style="list-style: disc;">
-	<li style="margin-left: 1.5em;"><code>feat</code> - '.__('possible meaningful values','extensions-leaflet-map').': <code>iconUrl</code>, <code>title</code></li>
-		<li style="margin-left: 1.5em;"><code>strings</code> - '.sprintf(
+	<ul>
+	<li><code>feat</code> - '.__('possible meaningful values','extensions-leaflet-map').': <code>iconUrl</code>, <code>title</code></li>
+		<li><code>strings</code> - '.sprintf(
 		__('comma separated strings to distinguish the markers, e.g. an unique string in %s or %s',
 		'extensions-leaflet-map'),"<code>iconUrl</code>","<code>title</code>").'</li>
-			<li style="margin-left: 1.5em;"><code>groups</code> - '.
+			<li><code>groups</code> - '.
 			__('comma separated labels appear in the selection menu','extensions-leaflet-map').'</li>
-		<li style="margin-left: 1.5em;">'.sprintf(
+		<li>'.sprintf(
 			__('The number of %s and %s must match.','extensions-leaflet-map'),"<code>strings</code>","<code>groups</code>").'
 			</li>
-			<li style="margin-left: 1.5em;"><code>visible</code> ('.__('optional','extensions-leaflet-map').') - '.
+			<li><code>visible</code> ('.__('optional','extensions-leaflet-map').') - '.
 			sprintf(__('initial visibility of a group, default: %s. Either %s (valid for all groups) or a comma-separated list of %s and %s, where the number must match those of %s.',
 			'extensions-leaflet-map'),
 			'1',
@@ -60,9 +60,9 @@ function leafext_clustergroup_help_text () {
 //many markers
 [markerClusterGroup feat="title" strings="first,second" groups="First Group,Second Group" visible=...]</code></pre>
 			<h3>'.__('Options for grouping markers (points) in leaflet-geojson','extensions-leaflet-map').'</h3>
-			<ul style="list-style: disc;">
-			<li style="margin-left: 1.5em;"><code>feat</code> - '.__('possible meaningful values','extensions-leaflet-map').': <code>iconUrl</code>, <code>properties.<i>property</i></code></li>
-			<li style="margin-left: 1.5em;"><code>properties.<i>property</i></code> - '.__('is the name of a property in properties of the Point in the FeatureCollection','extensions-leaflet-map').
+			<ul>
+			<li><code>feat</code> - '.__('possible meaningful values','extensions-leaflet-map').': <code>iconUrl</code>, <code>properties.<i>property</i></code></li>
+			<li><code>properties.<i>property</i></code> - '.__('is the name of a property in properties of the Point in the FeatureCollection','extensions-leaflet-map').
 			', e.g. <code>properties.<span style="color: #d63638"><i>prop0</i></span></code> in
 			<pre>{
        "type": "FeatureCollection",
@@ -78,17 +78,17 @@ function leafext_clustergroup_help_text () {
        },...</pre>
 			 '
 			.'</li>
-			<li style="margin-left: 1.5em;"><code>strings</code> - '.sprintf(
+			<li><code>strings</code> - '.sprintf(
 				__('comma separated strings to distinguish the markers, e.g. an unique substring in %s or the exact string (e.g.%s) in %s',
 				'extensions-leaflet-map'),"<code>iconUrl</code>",
 				'<code><span style="color: #4f94d4">value0</span></code>',
 				"<code>properties.<i>property</i></code>").'</li>
-				<li style="margin-left: 1.5em;"><code>groups</code> - '.
+				<li><code>groups</code> - '.
 				__('comma separated labels appear in the selection menu','extensions-leaflet-map').'</li>
-				<li style="margin-left: 1.5em;">'.sprintf(
+				<li>'.sprintf(
 					__('The number of %s and %s must match.','extensions-leaflet-map'),"<code>strings</code>","<code>groups</code>").'
 					</li>
-					<li style="margin-left: 1.5em;"><code>visible</code> ('.__('optional','extensions-leaflet-map').') - '.
+					<li><code>visible</code> ('.__('optional','extensions-leaflet-map').') - '.
 					sprintf(__('initial visibility of a group, default: %s. Either %s (valid for all groups) or a comma-separated list of %s and %s, where the number must match those of %s.',
 					'extensions-leaflet-map'),
 					'1',

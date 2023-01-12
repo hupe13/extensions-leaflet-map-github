@@ -129,30 +129,30 @@ function leafext_waypoints_help_text() {
 $text = $text.'<h3>'.__('The waypoint CSS class Selector','extensions-leaflet-map').'</h3>';
 
 
-$text = $text.'<ul style="list-style: disc;">
+$text = $text.'<ul>
 
-<li style="margin-left: 1.5em;">'
+<li>'
 	.sprintf(__('CSS to define as HTML block (between %s and %s) or in css file','extensions-leaflet-map'),
 	'<code>&lt;style&gt;</code>','<code>&lt;/style&gt;</code>').'</li>
 
-<li style="margin-left: 1.5em;">'
+<li>'
 	.__('Must be defined for each waypoint, also for the default.',
 	'extensions-leaflet-map').'</li>
 
-<li style="margin-left: 1.5em;">'
+<li>'
 	.__('You can use any css describing the waypoint.',
 	'extensions-leaflet-map').'</li>
 
-<li style="margin-left: 1.5em;">'
+<li>'
 	.sprintf(__(
 	'Any blank character from %sText of GPS symbol name%s is converted to a minus sign, uppercase to lowercase, a comma will be escaped.',
 	'extensions-leaflet-map'),'<span style="color: #4f94d4">','</span>').'</li>
 
-<li style="margin-left: 1.5em;">'
+<li>'
 	. __('e.g.','extensions-leaflet-map')
 	.' "<span style="color: #4f94d4">Flag, Blue</span>" --&gt; "<span style="color: #d63638">flag\,-blue</span>"</li>
 
-<li style="margin-left: 1.5em;">'
+<li>'
 	.sprintf(__(
 	'If you need more special characters than %s for your waypoints, please ask in the forum.',
 	'extensions-leaflet-map'),

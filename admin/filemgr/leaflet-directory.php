@@ -10,13 +10,13 @@ function leafext_directory_help_text() {
   $text=$text.'<pre><code>[leaflet-map fitbounds]'."\n";
   $text=$text.'[leaflet-directory url="..." src="..." leaflet type="..." start]</code></pre>';
 
-  $text=$text.'<ul style="list-style: disc;">
-  <li style="margin-left: 1.5em;"> url - '.__('url to directory, default: URL from upload directory.','extensions-leaflet-map').'</li>
-  <li style="margin-left: 1.5em;"> src - '.__('(relative) path to directory, accessible both from path and from url','extensions-leaflet-map').'</li>
-  <li style="margin-left: 1.5em;"> elevation - '.sprintf(__('(default) prepare the tracks for %s','extensions-leaflet-map'),' <code>multielevation</code>').'</li>
-  <li style="margin-left: 1.5em;"> leaflet - '.sprintf(__('draw the content with %scommands ','extensions-leaflet-map'),'<code>leaflet-</code>').'</li>
-  <li style="margin-left: 1.5em;"> type - '.sprintf(__('For %s it is ignored. For %s a list of %s. Default is %s.','extensions-leaflet-map'),'"elevation"','"leaflet"','gpx,kml,geojson,json','"gpx"').'</li>
-  <li style="margin-left: 1.5em;"> start - (optional). '.sprintf(__('If %s and a file is a gpx file, display start point and cluster','extensions-leaflet-map'),'"leaflet"').'.</li>
+  $text=$text.'<ul>
+  <li> url - '.__('url to directory, default: URL from upload directory.','extensions-leaflet-map').'</li>
+  <li> src - '.__('(relative) path to directory, accessible both from path and from url','extensions-leaflet-map').'</li>
+  <li> elevation - '.sprintf(__('(default) prepare the tracks for %s','extensions-leaflet-map'),' <code>multielevation</code>').'</li>
+  <li> leaflet - '.sprintf(__('draw the content with %scommands ','extensions-leaflet-map'),'<code>leaflet-</code>').'</li>
+  <li> type - '.sprintf(__('For %s it is ignored. For %s a list of %s. Default is %s.','extensions-leaflet-map'),'"elevation"','"leaflet"','gpx,kml,geojson,json','"gpx"').'</li>
+  <li> start - (optional). '.sprintf(__('If %s and a file is a gpx file, display start point and cluster','extensions-leaflet-map'),'"leaflet"').'.</li>
   </ul>';
   if (is_singular() || is_archive() ) {
     //

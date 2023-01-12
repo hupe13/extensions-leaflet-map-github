@@ -121,35 +121,35 @@ if (is_singular()|| is_archive() ) {
 }
 $text = $text.'<code>leaflet-directory</code></a></p>
 <h3>Options elevation-<span style="color: #d63638">track</span></h3>
-<ul style="list-style: disc;"><li style="margin-left: 1.5em;">'.
+<ul><li>'.
 	sprintf ( __('%s is the url of the trackfile.','extensions-leaflet-map'),'<code>file</code>').
-		'</li><li style="margin-left: 1.5em;">'.
+		'</li><li>'.
 	sprintf ( __('%s, %s and %s describe the %sstart point%s and are optional.','extensions-leaflet-map'),
 		'<code>lat</code>',
 		'<code>lng</code>',
 		'<code>name</code>',
 		'<span style="color: #4f94d4">',
 		'</span> <img src="'.LEAFEXT_ELEVATION_URL.'/images/elevation-poi.png" width="12" height="12" alt="elevation-poi">').
-	'</li><li style="margin-left: 1.5em;">'.
+	'</li><li>'.
 	sprintf ( __('If %s and %s are not specified, they are read from the file.','extensions-leaflet-map'),
 		'<code>lat</code>',
 		'<code>lng</code>').
-	'</li><li style="margin-left: 1.5em;">'.
+	'</li><li>'.
 	sprintf ( __('The name of the %sstart point%s is determined in this order:',
 		'extensions-leaflet-map'),
 		'<span style="color: #4f94d4">',
 		'</span>').
-	'<ol><li style="margin-left: 1.5em;">'.
+	'<ol><li>'.
 		sprintf ( __('If %s (in options below or in shortcode) is true, the filename (without extension) is used, no matter how %s is.',
 			'extensions-leaflet-map'),
 			'<code>filename</code>',
 			'<code>name</code>').
-	'</li><li style="margin-left: 1.5em;">'.
+	'</li><li>'.
 		sprintf ( __('If %s is specified, it is used.','extensions-leaflet-map'),
 	 	'<code>name</code>').
-	'</li><li style="margin-left: 1.5em;">'.
+	'</li><li>'.
 	 	__('If not, an attempt is made to read the trackname from the file.','extensions-leaflet-map').
-	'</li><li style="margin-left: 1.5em;">'.
+	'</li><li>'.
 		__('If this is not available, the filename (without extension) is used.','extensions-leaflet-map').
 	'</li></ol>'.
 '</li></ul><p>'.
@@ -158,31 +158,31 @@ $text = $text.'<code>leaflet-directory</code></a></p>
 		'<code>[multielevation]</code>').'</p>'.
 
 '<h3>Options elevation-<span style="color: #d63638">tracks</span></h3>
-	<ul style="list-style: disc;"><li style="margin-left: 1.5em;">'.
+	<ul><li>'.
 	sprintf(__('If you use %s, you get an elevation profile only with or without a summary line.','extensions-leaflet-map'),
 		'<code>[elevation-<span style="color: #d63638">tracks</span>]</code>').
-	'</li><li style="margin-left: 1.5em;">'.
+	'</li><li>'.
 	sprintf(__('The name of a %strack%s is determined in this order:','extensions-leaflet-map'),
 		'<span style="color: #4f94d4">',
 		'</span>').
-	'</li><ol><li style="margin-left: 1.5em;">'.
+	'</li><ol><li>'.
 	sprintf(__('If %s (in options below or in shortcode) is true, the filename (without extension) is used.','extensions-leaflet-map'),
 		'<code>filename</code>').
-	'</li><li style="margin-left: 1.5em;">'.
+	'</li><li>'.
 	__('If it is false, an attempt is made to read the trackname from the file.','extensions-leaflet-map').
-	'</li><li style="margin-left: 1.5em;">'.
+	'</li><li>'.
 	__('If this is not available, the filename (without extension) is used.','extensions-leaflet-map').
 	'</li></ol>'.
 	'</ul>'.
 
 '<h3>Options multielevation</h3>
-	<ul style="list-style: disc;"><li style="margin-left: 1.5em;">'.
+	<ul><li>'.
 	sprintf( __('If you use %s, you can use these options like in %sElevation Profile%s','extensions-leaflet-map'),
 		'<code>[multielevation]</code>',
 		'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">',
 		'</a>').': '.
  	leafext_eleparams_for_multi().
-	'.</li><li style="margin-left: 1.5em;">'.
+	'.</li><li>'.
 	sprintf (__('The name of a %strack%s is determined as described above.','extensions-leaflet-map'),
 		'<span style="color: #4f94d4">',
 		'</span>').

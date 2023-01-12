@@ -112,20 +112,20 @@ function leafext_managefiles_help() {
 	} else {
 		$text = $text .  __('You can manage these','extensions-leaflet-map');
 	}
-	$text = $text .  '<ul style="list-style: disc;">';
-	$text = $text .  '<li style="margin-left: 1.5em;">';
+	$text = $text .  '<ul>';
+	$text = $text .  '<li>';
 	$text = $text .  __('direct in the Media Library.','extensions-leaflet-map');
 	$text = $text .  '</li>';
-	$text = $text .  '<li style="margin-left: 1.5em;">';
+	$text = $text .  '<li>';
 	$text = $text .  __('with any (S)FTP-Client,','extensions-leaflet-map');
 	$text = $text .  '</li>';
-	$text = $text .  '<li style="margin-left: 1.5em;">';
+	$text = $text .  '<li>';
 	$text = $text .  __('with any File Manager plugin,','extensions-leaflet-map');
 	$text = $text .  '</li>';
-	$text = $text .  '<li style="margin-left: 1.5em;">';
+	$text = $text .  '<li>';
 	$text = $text .  __('with any plugin for importing uploaded files to the Media Library.','extensions-leaflet-map');
 	$text = $text .  '</li>';
-	$text = $text .  '<li style="margin-left: 1.5em;">';
+	$text = $text .  '<li>';
 	$text = $text .  __('or in your own way.','extensions-leaflet-map');
 	$text = $text .  '</li>';
 	$text = $text .  '</ul>';

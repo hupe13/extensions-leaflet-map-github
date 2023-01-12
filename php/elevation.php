@@ -652,7 +652,7 @@ function leafext_elevation_script($gpx,$settings){
 		$text = $text.'switchtrack.addTo(map);';
 	}
 
-	// not solved with leaflet 1.9.1 (221102)
+	// not solved with leaflet 1.9.3 (230112)
 	$text = $text.'
 	var is_chrome = navigator.userAgent.indexOf("Chrome") > -1;
 	var is_safari = navigator.userAgent.indexOf("Safari") > -1;
