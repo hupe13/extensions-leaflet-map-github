@@ -1,3 +1,10 @@
+### 3.2.2 / 221202
+
+* elevation new parameter track: switch track on/off
+* filemgr: per default all types selected
+* typo multielevation (distanceMarkers)
+* fixed: fullscreen crashes the editor.
+
 ### 3.2.1 / 221104
 
 * detect network activated leaflet-map on multisite
