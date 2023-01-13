@@ -46,7 +46,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 3. Hover a Geojson area <br>![Hover a Geojson area](.wordpress-org/screenshot-3.png)
 4. Markercluster and Groups <br>![Markercluster](.wordpress-org/screenshot-4.png)
 5. Markercluster PlacementStrategies <br>![PlacementStrategies](.wordpress-org/screenshot-5.png)
-6. GestureHandling <br>![GestureHandling](.wordpress-org/screenshot-6.png)
+6. ExtraMarker <br>![ExtraMarker](.wordpress-org/screenshot-6.png)
 7. Files for Leaflet Map <br>![Files for Leaflet Map](.wordpress-org/screenshot-7.png)
 
 ## Documentation
