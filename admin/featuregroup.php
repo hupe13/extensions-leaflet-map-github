@@ -52,6 +52,8 @@ Use %s to group elements by options and %s to group elements by properties.','ex
   </pre>
   ';
 	$text=$text.'<h3>leaflet-optiongroup option</h3>'.
+	sprintf(__('Each of the above leaflet elements has options. These are from the shortcode %s and are fixed.','extensions-leaflet-map'),'<code>leaflet-...</code>').' ';
+
 	sprintf(__('For %s you can use any option of the leaflet element.','extensions-leaflet-map'),'<code>option</code>').' '.
 	__('Not every option is suitable for every element.','extensions-leaflet-map');
 
@@ -82,11 +84,23 @@ Use %s to group elements by options and %s to group elements by properties.','ex
 	.'</li>
 	</ul>';
 
-
 	$text=$text.'<h3>leaflet-featuregroup property</h3>';
-	$text=$text.'<p>'.'<code>property</code> '.
-	__('is the name of a property in properties of an element in the FeatureCollection','extensions-leaflet-map').
-	', e.g. <code><span style="color: #d63638">prop0</span></code> in <pre>{
+	$text=$text.'<p>'.__('In a geojson file there are features and properties. They are different for each application.','extensions-leaflet-map').' ';
+	$text=$text.sprintf(__("gpx and kml are similar to geojson, so you can also use %s there. But it's not that easy to find relevant features.",
+	'extensions-leaflet-map'),
+	'<code>leaflet-featuregroup</code>').'</p>';
+
+	$text=$text.'<p>'.
+	sprintf(__('A %s has %s, each of them has a %s and %s. %s is the label of a %s in %s, e.g.',
+	'extensions-leaflet-map'),
+	'"FeatureCollection"',
+	'"features"',
+	'"geometry"',
+	'"properties"',
+	'<code>property</code>',
+	'property',
+	'"properties"').
+	'<code><span style="color: #d63638">prop0</span></code> in <pre>{
   "type": "FeatureCollection",
     "features": [{
       "type": "Feature",
