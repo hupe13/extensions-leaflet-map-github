@@ -26,7 +26,7 @@ function leafext_featuregroup_script($options,$params){
 		$text = $text.'
 		});
 		</script>';
-		//$text = \JShrink\Minifier::minify($text);
+		$text = \JShrink\Minifier::minify($text);
 		return "\n".$text."\n";
 }
 
