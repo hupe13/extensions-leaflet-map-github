@@ -115,7 +115,8 @@ Use %s to group elements by options and %s to group elements by properties.','ex
       },...</pre>
 		 </p>';
 
-	$text=$text.'<code>property</code> '.__('is case sensitive.','extensions-leaflet-map');
+	$text=$text.sprintf(__('%s is case sensitive.','extensions-leaflet-map'),
+	'<code>property</code>');
 
 	$text=$text.'<h3>values '.__('and','extensions-leaflet-map').' groups</h3><p>';
 	$text=$text.'<ul>
