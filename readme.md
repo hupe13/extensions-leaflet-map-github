@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, elevation, markercluster, Leaflet Plugins   
 Tested up to: 6.1  
-Stable tag: 3.3.1  
+Stable tag: 3.3.2  
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later  
@@ -105,6 +105,10 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 * Go to Settings - Leaflet Map - Extensions for Leaflet Map and get documentation and settings options.
 
 ## Changelog
+
+### 3.3.2 / 230115
+
+* The bug was not fixed yet, sorry.
 
 ### 3.3.1 / 230115
 
