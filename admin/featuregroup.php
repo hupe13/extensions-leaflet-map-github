@@ -79,7 +79,9 @@ Use %s to group elements by options and %s to group elements by properties.','ex
 	<li>'.
 	sprintf(__('You can use %s for grouping, it is not used by leaflet-geojson but passed through.','extensions-leaflet-map'),'className')
 	.'</li>
-	</ul>'
+	</ul>'.
+	'</li>'.
+	'<li>'.__('The options are case sensitive.','extensions-leaflet-map')
 	.'</li>
 	</ul>';
 
@@ -113,7 +115,7 @@ Use %s to group elements by options and %s to group elements by properties.','ex
       },...</pre>
 		 </p>';
 
-
+	$text=$text.'<code>property</code> '.__('is case sensitive.','extensions-leaflet-map');
 
 	$text=$text.'<h3>values '.__('and','extensions-leaflet-map').' groups</h3><p>';
 	$text=$text.'<ul>
@@ -122,6 +124,10 @@ Use %s to group elements by options and %s to group elements by properties.','ex
 	"option / property",
 	'<code><span style="color: #4f94d4">value0</span></code>'
 	).'</li>
+
+	<li>'.sprintf(__('The %s are case sensitive.','extensions-leaflet-map'),
+	'<code>values</code>')
+	.'</li>
 
 	<li><code>substr</code> ('.__('optional','extensions-leaflet-map').') - '.
 	sprintf(__('search substring %s or the exact string %s in %s.','extensions-leaflet-map'),
@@ -136,10 +142,6 @@ Use %s to group elements by options and %s to group elements by properties.','ex
 		"<i>false</i>",
 		"<code>leaflet-featuregroup</code>").'
 		</li>
-
-	<li>'.sprintf(__('Note that the %s are case sensitive, but the options in the shortcode are not.','extensions-leaflet-map'),
-	'<code>values</code>')
-	.'</li>
 
 		<li><code>groups</code> - '.
 		__('comma separated labels appear in the selection menu','extensions-leaflet-map').'.</li>
