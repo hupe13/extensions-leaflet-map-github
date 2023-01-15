@@ -106,7 +106,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.3 / 23011x
+### 3.3 / 230114
 
 * leaflet-elevation-2.2.8 with own presentation of results.
 * new shortcode: choropleth - https://github.com/timwis/leaflet-choropleth
