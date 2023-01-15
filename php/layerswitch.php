@@ -241,8 +241,10 @@ function leafext_layerswitch_function($atts){
 		return "\n".$text."\n";
 	}	else {
 		$text = "[layerswitch ";
-		foreach ($atts as $key=>$item){
-			$text = $text. "$key=$item ";
+		if (is_array($atts)){
+			foreach ($atts as $key=>$item){
+				$text = $text. "$key=$item ";
+			}
 		}
 		$text = $text. "]";
 		return $text;
