@@ -62,8 +62,7 @@ Use %s to group elements by options and %s to group elements by properties.','ex
 	$text=$text.'<ul>
 	<li>'.
 	'leaflet-marker: iconClass, title, iconUrl'.'<br>'.
-	__("You can use iconclass to group, regardless of whether they affect the appearance of the icon or not.",'extensions-leaflet-map').' '.
-	sprintf(__("If not, you must specify an %s.",'extensions-leaflet-map'),'iconurl')
+	__("You can use iconclass to group, regardless of whether they affect the appearance of the icon or not.",'extensions-leaflet-map')
 	.'</li>
 	<li>'.
 	'leaflet-extramarker: className, extraClasses, icon, iconColor, markerColor, number, prefix, shape'
