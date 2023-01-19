@@ -122,3 +122,28 @@ function leafext_backend() {
 		return false;
 	}
 }
+
+function leafext_should_interpret_shortcode($shortcode,$atts) {
+	if (is_singular() || is_archive() || is_home() || is_front_page() || leafext_backend()) {
+		$excerpt = get_option('leaflet_shortcode_in_excerpt');
+		if ($excerpt) add_filter('the_excerpt', 'do_shortcode');
+		return "";
+	} else {
+		$text = "['.$shortcode.' ";
+		if (is_array($atts)){
+			foreach ($atts as $key=>$item){
+				$text = $text. "$key=$item ";
+			}
+		}
+		$text = $text. "]";
+		return $text;
+	}
+}
+
+    // ! is_admin() ||
+    // ! is_singular() &&  ==  (is_single() || is_page() || is_attachment()) {
+    // ! is_page() &&
+    // ! is_single() &&
+    // ! is_archive() &&
+    // ! is_home() &&
+    // ! is_front_page()

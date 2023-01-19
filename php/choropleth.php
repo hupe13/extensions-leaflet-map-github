@@ -33,40 +33,38 @@ function leafext_choropleth_params() {
 
 //Shortcode: [choropleth]
 function leafext_choropleth_script($atts,$content) {
-	if (is_singular() || is_archive()) {
-		$text = '
-		<script>
-		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
-		window.WPLeafletMapPlugin.push(function () {
-			var map = window.WPLeafletMapPlugin.getCurrentMap();
-			var att_valueProperty = '.json_encode($atts['valueproperty']).';
-			var att_scale = '.json_encode($atts['scale']).'.split(",");
-			var att_steps = '.json_encode($atts['steps']).';
-			var att_mode = '.json_encode($atts['mode']).';
-			var att_popup = '.json_encode($content).';
-			var att_legend = '.json_encode((bool)$atts['legend']).';
-			var att_hover = '.json_encode((bool)$atts['hover']).';
-			var att_fillOpacity = '.json_encode($atts['fillopacity']).';
-			console.log(att_valueProperty,att_scale,att_steps,att_mode,att_legend,att_hover,att_fillOpacity);
-			console.log(att_popup);
+	$text = '
+	<script>
+	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
+	window.WPLeafletMapPlugin.push(function () {
+		var map = window.WPLeafletMapPlugin.getCurrentMap();
+		var att_valueProperty = '.json_encode($atts['valueproperty']).';
+		var att_scale = '.json_encode($atts['scale']).'.split(",");
+		var att_steps = '.json_encode($atts['steps']).';
+		var att_mode = '.json_encode($atts['mode']).';
+		var att_popup = '.json_encode($content).';
+		var att_legend = '.json_encode((bool)$atts['legend']).';
+		var att_hover = '.json_encode((bool)$atts['hover']).';
+		var att_fillOpacity = '.json_encode($atts['fillopacity']).';
+		console.log(att_valueProperty,att_scale,att_steps,att_mode,att_legend,att_hover,att_fillOpacity);
+		console.log(att_popup);
 		';
 		$text = $text.file_get_contents(LEAFEXT_PLUGIN_URL.'/js/choropleth.js');
 		$text = $text.'
-		});
-		</script>';
-		$text = \JShrink\Minifier::minify($text);
-		return "\n".$text."\n";
-	} else {
-		$text = "[choropleth]";
-		return $text;
-	}
+	});
+	</script>';
+	$text = \JShrink\Minifier::minify($text);
+	return "\n".$text."\n";
 }
 
-function leafext_choropleth_function($atts,$content){
-	if (is_singular() || is_archive()) {
+function leafext_choropleth_function($atts,$content,$shortcode) {
+	$text = leafext_should_interpret_shortcode($shortcode,$atts);
+	if ( $text != "" ) {
+		return $text;
+	} else {
 		leafext_enqueue_choropleth ();
 		$params = leafext_choropleth_params();
-		$defaults=array();
+		$defaults = array();
 		foreach($params as $param) {
 			$defaults[$param[0]] = $param[2];
 		}
@@ -79,15 +77,6 @@ function leafext_choropleth_function($atts,$content){
 		$content = preg_split('/\+/',$content);
 		//var_dump($atts); wp_die("test");
 		return leafext_choropleth_script($options,$content);
-	} else {
-		$text = "[choropleth ";
-		if (is_array($atts)) {
-			foreach ($atts as $key=>$item) {
-				$text = $text. "$key=$item ";
-			}
-		}
-		$text = $text. "]";
-		return $text;
 	}
 }
 add_shortcode('choropleth', 'leafext_choropleth_function');

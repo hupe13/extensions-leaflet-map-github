@@ -761,8 +761,11 @@ function leafext_elevation_color($options) {
 	return array($options,$text);
 }
 
-function leafext_elevation_function( $atts ) {
-	if (is_singular() || is_archive()) {
+function leafext_elevation_function($atts,$content,$shortcode) {
+	$text = leafext_should_interpret_shortcode($shortcode,$atts);
+	if ( $text != "" ) {
+		return $text;
+	} else {
 		if ( ! $atts['gpx'] ) {
 			$text = "[elevation ";
 			foreach ($atts as $key=>$item){
@@ -846,13 +849,6 @@ function leafext_elevation_function( $atts ) {
 
 		$text=$style.leafext_elevation_script($track,$options);
 		//
-		return $text;
-	} else {
-		$text = "[elevation ";
-		foreach ($atts as $key=>$item){
-			$text = $text. "$key=$item ";
-		}
-		$text = $text. "]";
 		return $text;
 	}
 }

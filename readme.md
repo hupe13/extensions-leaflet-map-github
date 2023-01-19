@@ -108,10 +108,6 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ### 3.3.2 / 230115
 
-* The bug was not fixed yet, sorry.
-
-### 3.3.1 / 230115
-
 * bug in grouping the default icon fixed
 
 ### 3.3 / 230114

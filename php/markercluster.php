@@ -173,18 +173,14 @@ function leafext_cluster_atts ($atts) {
 	return($options);
 }
 
-function leafext_cluster_function( $atts ){
-	if (is_singular() || is_archive()) {
+function leafext_cluster_function($atts,$content,$shortcode) {
+	$text = leafext_should_interpret_shortcode($shortcode,$atts);
+	if ( $text != "" ) {
+		return $text;
+	} else {
 		leafext_enqueue_markercluster ();
 		//erzeuge Javascript
 		return leafext_cluster_script(leafext_cluster_atts ($atts));
-	} else {
-		$text = "[cluster ";
-		foreach ($atts as $key=>$item){
-			$text = $text. "$key=$item ";
-		}
-		$text = $text. "]";
-		return $text;
 	}
 }
 add_shortcode('cluster', 'leafext_cluster_function' );

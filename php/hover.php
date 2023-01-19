@@ -361,8 +361,11 @@ function leafext_canvas_script($tolerance) {
 	</script>';
 }
 
-function leafext_geojsonhover_function($atts){
-	if (is_singular() || is_archive() || leafext_backend()) {
+function leafext_geojsonhover_function($atts,$content,$shortcode) {
+	$text = leafext_should_interpret_shortcode($shortcode,$atts);
+	if ( $text != "" ) {
+		return $text;
+	} else {
 		$settings = shortcode_atts(	array('exclude' => false,'tolerance' => 0), get_option( 'leafext_canvas' ));
 		$options  = shortcode_atts( $settings, $atts);
 		//var_dump($atts,get_option( 'leafext_canvas'),$settings,$options); wp_die();
@@ -371,15 +374,6 @@ function leafext_geojsonhover_function($atts){
 			$text = $text.leafext_canvas_script( $options['tolerance'] );
 		}
 		$text=$text.leafext_geojsonhover_script($options['exclude']);
-		return $text;
-	}	else {
-		$text = "[hover ";
-		if (is_array($atts)) {
-			foreach ($atts as $key=>$item){
-				$text = $text. "$key=$item ";
-			}
-		}
-		$text = $text. "]";
 		return $text;
 	}
 }

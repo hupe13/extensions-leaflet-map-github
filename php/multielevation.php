@@ -132,8 +132,11 @@ function leafext_multielevation_settings($typ=array('changeable')) {
 //Shortcode:
 //[elevation-track file="'.$file.'" lat="'.$startlat.'" lng="'.$startlon.'" name="'.basename($file).'" filename=true/false]
 // lat lng name optional
-function leafext_elevation_track( $atts ){
-	if (is_singular() || is_archive()) {
+function leafext_elevation_track($atts,$content,$shortcode) {
+	$text = leafext_should_interpret_shortcode($shortcode,$atts);
+	if ( $text != "" ) {
+		return $text;
+	} else {
 		if ( $atts['file'] == "" ) {
 			$text = "[elevation-track ";
 			foreach ($atts as $key=>$item){
@@ -206,8 +209,11 @@ add_shortcode('elevation-track', 'leafext_elevation_track' );
 
 //[elevation-tracks summary=0/1]
 //{multielvation ...}
-function leafext_multielevation( $atts, $contents, $shortcode){
-	if (is_singular() || is_archive()) {
+function leafext_multielevation( $atts,$content,$shortcode) {
+	$text = leafext_should_interpret_shortcode($shortcode,$atts);
+	if ( $text != "" ) {
+		return $text;
+	} else {
 		leafext_enqueue_elevation ();
 		leafext_enqueue_multielevation();
 		leafext_enqueue_zoomhome();
@@ -283,15 +289,6 @@ function leafext_multielevation( $atts, $contents, $shortcode){
 		$text = $text.__("move mouse over a track or select one in control panel ...", "extensions-leaflet-map").'</p>';
 		$all_files = array();
 		$all_points = array();
-		return $text;
-	} else {
-		$text = "[".$shortcode." ";
-		if (is_array($atts)){
-			foreach ($atts as $key=>$item){
-				$text = $text. "$key=$item ";
-			}
-		}
-		$text = $text. "]";
 		return $text;
 	}
 }

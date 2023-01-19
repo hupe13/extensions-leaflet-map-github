@@ -159,8 +159,11 @@ function leafext_layerswitch_end_script() {
 	return $text;
 }
 
-function leafext_layerswitch_function($atts){
-	if (is_singular() || is_archive()) {
+function leafext_layerswitch_function($atts,$content,$shortcode) {
+	$text = leafext_should_interpret_shortcode($shortcode,$atts);
+	if ( $text != "" ) {
+		return $text;
+	} else {
 		$providers = "";
 		$tiles = "";
 		$tiles_alloptions = "";
@@ -239,15 +242,6 @@ function leafext_layerswitch_function($atts){
 		$text = $text.leafext_layerswitch_end_script();
 		$text = \JShrink\Minifier::minify($text);
 		return "\n".$text."\n";
-	}	else {
-		$text = "[layerswitch ";
-		if (is_array($atts)){
-			foreach ($atts as $key=>$item){
-				$text = $text. "$key=$item ";
-			}
-		}
-		$text = $text. "]";
-		return $text;
 	}
 }
 add_shortcode('layerswitch', 'leafext_layerswitch_function');

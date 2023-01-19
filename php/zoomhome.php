@@ -246,8 +246,11 @@ function leafext_zoomhome_script($fit){
 	return "\n".$text."\n";
 }
 
-function leafext_zoomhome_function($atts){
-	if (is_singular() || is_archive()) {
+function leafext_zoomhome_function($atts,$content,$shortcode) {
+	$text = leafext_should_interpret_shortcode($shortcode,$atts);
+	if ( $text != "" ) {
+		return $text;
+	} else {
 		leafext_enqueue_zoomhome ();
 		//
 		$defaults = array(
@@ -256,15 +259,6 @@ function leafext_zoomhome_function($atts){
 		$atts1 = leafext_clear_params($atts);
 		$params = shortcode_atts($defaults, $atts1);
 		return leafext_zoomhome_script($params['fit']);
-	} else {
-		$text = "[zoomhomemap ";
-		if (is_array($atts)) {
-			foreach ($atts as $key=>$item){
-				$text = $text. "$key=$item ";
-			}
-		}
-		$text = $text. "]";
-		return $text;
 	}
 }
 add_shortcode('zoomhomemap', 'leafext_zoomhome_function' );

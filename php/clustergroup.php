@@ -7,8 +7,11 @@
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
-function leafext_clustergroup_function( $atts ){
-	if (is_singular() || is_archive()) {
+function leafext_clustergroup_function($atts,$content,$shortcode) {
+	$text = leafext_should_interpret_shortcode($shortcode,$atts);
+	if ( $text != "" ) {
+		return $text;
+	} else {
 		//var_dump($atts); wp_die();
 		leafext_enqueue_markercluster ();
 		leafext_enqueue_clustergroup ();
@@ -67,13 +70,6 @@ function leafext_clustergroup_function( $atts ){
 
 		$clusteroptions = leafext_cluster_atts ($atts);
 		return leafext_featuregroup_script($options,$clusteroptions);
-	} else {
-		$text = "[markerClusterGroup ";
-		foreach ($atts as $key=>$item){
-			$text = $text. "$key=$item ";
-		}
-		$text = $text. "]";
-		return $text;
 	}
 }
 add_shortcode('markerClusterGroup', 'leafext_clustergroup_function' );

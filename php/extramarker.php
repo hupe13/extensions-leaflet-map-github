@@ -154,8 +154,11 @@ function leafext_extramarker_filter() {
 }
 
 //Shortcode: [leaflet-extramarker]
-function leafext_extramarker_function( $atts, $content="" ){
-  if (is_singular() || is_archive() || leafext_backend()) {
+function leafext_extramarker_function( $atts,$content,$shortcode) {
+	$text = leafext_should_interpret_shortcode($shortcode,$atts);
+	if ( $text != "" ) {
+		return $text;
+	} else {
     leafext_enqueue_extramarker ();
     if (isset($atts['lat']) && isset($atts['lng'])) {
       $latlng = "lat=".$atts['lat']." lng=".$atts['lng'];
@@ -188,13 +191,6 @@ function leafext_extramarker_function( $atts, $content="" ){
     // L.marker([51.941196,4.512291], {icon: redMarker}).addTo(map);
     // marker.setIcon(redMarker);
 
-    return $text;
-  } else {
-    $text = "[leaflet-extramarker ";
-    foreach ($atts as $key=>$item){
-      $text = $text. "$key=$item ";
-    }
-    $text = $text. "]";
     return $text;
   }
 }

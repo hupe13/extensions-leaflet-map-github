@@ -20,8 +20,11 @@ function leafext_color_name_to_hex($color_name) {
 }
 
 //Shortcode: [leaflet_dir dir=...]
-function leafext_directory_function($atts) {
-  if (is_singular() || is_archive()) {
+function leafext_directory_function($atts,$content,$shortcode) {
+	$text = leafext_should_interpret_shortcode($shortcode,$atts);
+	if ( $text != "" ) {
+		return $text;
+	} else {
     $defaults = array (
       'src' => "",
       'url' => "",
@@ -149,13 +152,6 @@ function leafext_directory_function($atts) {
       //$text = $shortcode;
       return $text;
     }
-  } else {
-    $text = "[leaflet-directory ";
-    foreach ($atts as $key=>$item){
-      $text = $text. "$key=$item ";
-    }
-    $text = $text. "]";
-    return $text;
   }
 }
 add_shortcode('leaflet-directory', 'leafext_directory_function' );

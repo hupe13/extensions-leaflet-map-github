@@ -1,1 +1,2 @@
-* grouping default icon
+* consider is_home()
+* some documentation

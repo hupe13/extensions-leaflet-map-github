@@ -179,7 +179,7 @@ function leafext_ele_help_look () {
 
 function leafext_ele_help_points () {
 	echo '<div style="border-top: 3px solid #646970"></div>';
-	echo '<h3>';
+	echo '<h3 id="markers">';
 	echo __('Markers and Waypoints','extensions-leaflet-map');
 	echo '</h3>';
 }

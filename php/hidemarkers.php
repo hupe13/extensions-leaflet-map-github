@@ -1,14 +1,17 @@
 <?php
 /**
- * Functions for hidemarkers shortcode
- * extensions-leaflet-map
- */
+* Functions for hidemarkers shortcode
+* extensions-leaflet-map
+*/
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
 //Shortcode: [hidemarkers]
 function leafext_hidemarkers_function(){
-	if (is_singular() || is_archive()) {
+	$text = leafext_should_interpret_shortcode('hidemarkers',0);
+	if ( $text != "" ) {
+		return $text;
+	} else {
 		$text = '
 		<script>
 		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -32,9 +35,6 @@ function leafext_hidemarkers_function(){
 		</script>
 		';
 		$text = \JShrink\Minifier::minify($text);
-		return $text;
-	}	else {
-		$text = "[hidemarkers]";
 		return $text;
 	}
 }

@@ -30,8 +30,11 @@ function leafext_featuregroup_script($options,$params){
 		return "\n".$text."\n";
 }
 
-function leafext_featuregroup_function( $atts, $content, $shortcode){
-	if (is_singular() || is_archive()) {
+function leafext_featuregroup_function($atts,$content,$shortcode) {
+	$text = leafext_should_interpret_shortcode($shortcode,$atts);
+	if ( $text != "" ) {
+		return $text;
+	} else {
 		//var_dump($atts); wp_die();
 		leafext_enqueue_markercluster ();
 		leafext_enqueue_clustergroup ();
@@ -61,13 +64,25 @@ function leafext_featuregroup_function( $atts, $content, $shortcode){
 			foreach ($atts as $key=>$item){
 				$text = $text. "$key=$item ";
 			}
-			$text = $text. "]";
 			if ($shortcode == "leaflet-featuregroup") {
 				$missing = "property";
 			} else {
 				$missing = "option";
 			}
-			$text = $text." - ".$missing." is missing.";
+			$text = $text." - ".$missing." is missing. ";
+			$text = $text. "]";
+			return $text;
+		}
+
+		if ( substr_count($options['values'],',') != substr_count($options['groups'],',') ) {
+			$text = "['.$shortcode.' ";
+			if (is_array($atts)){
+				foreach ($atts as $key=>$item){
+					$text = $text. "$key=$item ";
+				}
+			}
+			$text = $text." - values and groups do not match. ";
+			$text = $text. "]";
 			return $text;
 		}
 
@@ -81,17 +96,17 @@ function leafext_featuregroup_function( $atts, $content, $shortcode){
 			$cl_on = array_map('trim', explode( ',', $options['visible'] ));
 			if (count($cl_on) == 1) {
 				$cl_on = array_fill(0, count($cl_values), '0');
+			} else {
+				if ( count($cl_values) != count($cl_on) ) {
+					$text = "['.$shortcode.' ";
+					foreach ($atts as $key=>$item){
+						$text = $text. "$key=$item ";
+					}
+					$text = $text." - groups and visible do not match. ";
+					$text = $text. "]";
+					return $text;
+				}
 			}
-		}
-
-		if ( count($cl_values) != count($cl_groups) && count($cl_values) != count($cl_on) ) {
-			$text = "['.$shortcode.' ";
-			foreach ($atts as $key=>$item){
-				$text = $text. "$key=$item ";
-			}
-			$text = $text. "]";
-			$text = $text." - values and groups (and visible) do not match. ";
-			return $text;
 		}
 
 		$options = array(
@@ -105,13 +120,6 @@ function leafext_featuregroup_function( $atts, $content, $shortcode){
 
 		$clusteroptions = leafext_cluster_atts ($atts);
 		return leafext_featuregroup_script($options,$clusteroptions);
-	} else {
-		$text = "['.$shortcode.' ";
-		foreach ($atts as $key=>$item){
-			$text = $text. "$key=$item ";
-		}
-		$text = $text. "]";
-		return $text;
 	}
 }
 add_shortcode('leaflet-featuregroup', 'leafext_featuregroup_function');
