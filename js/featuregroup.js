@@ -49,9 +49,11 @@ if ( WPLeafletMapPlugin.markers.length > 0 ) {
 
         let this_options = a.getIcon().options;
         if (this_options.hasOwnProperty(att_option)) {
-          if (this_options[att_option] != a.options[att_option]) {
-            this_options[att_option]=a.options[att_option];
-            console.log("changed "+att_option+' '+this_options[att_option]);
+          if (typeof a.options[att_option] != "undefined") {
+            if (this_options[att_option] != a.options[att_option]) {
+              this_options[att_option]=a.options[att_option];
+              console.log("changed "+att_option+' '+this_options[att_option]);
+            }
           }
         } else {
           console.log("has not "+att_option);
