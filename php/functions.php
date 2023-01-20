@@ -125,8 +125,6 @@ function leafext_backend() {
 
 function leafext_should_interpret_shortcode($shortcode,$atts) {
 	if (is_singular() || is_archive() || is_home() || is_front_page() || leafext_backend()) {
-		$excerpt = get_option('leaflet_shortcode_in_excerpt');
-		if ($excerpt) add_filter('the_excerpt', 'do_shortcode');
 		return "";
 	} else {
 		$text = "['.$shortcode.' ";
