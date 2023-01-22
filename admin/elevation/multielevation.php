@@ -120,7 +120,7 @@ if (is_singular()|| is_archive() ) {
 	$text = $text.' <a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=filemgr-dir">';
 }
 $text = $text.'<code>leaflet-directory</code></a></p>
-<h3>Options elevation-<span style="color: #d63638">track</span></h3>
+<h3>'.__('Options','extensions-leaflet-map').' elevation-<span style="color: #d63638">track</span></h3>
 <ul><li>'.
 	sprintf ( __('%s is the url of the trackfile.','extensions-leaflet-map'),'<code>file</code>').
 		'</li><li>'.
@@ -157,7 +157,7 @@ $text = $text.'<code>leaflet-directory</code></a></p>
 		'<code>[elevation-<span style="color: #d63638">tracks</span>]</code>',
 		'<code>[multielevation]</code>').'</p>'.
 
-'<h3>Options elevation-<span style="color: #d63638">tracks</span></h3>
+'<h3>'.__('Options','extensions-leaflet-map').' elevation-<span style="color: #d63638">tracks</span></h3>
 	<ul><li>'.
 	sprintf(__('If you use %s, you get an elevation profile only with or without a summary line.','extensions-leaflet-map'),
 		'<code>[elevation-<span style="color: #d63638">tracks</span>]</code>').
@@ -175,7 +175,7 @@ $text = $text.'<code>leaflet-directory</code></a></p>
 	'</li></ol>'.
 	'</ul>'.
 
-'<h3>Options multielevation</h3>
+'<h3>'.__('Options','extensions-leaflet-map').' multielevation</h3>
 	<ul><li>'.
 	sprintf( __('If you use %s, you can use these options like in %sElevation Profile%s','extensions-leaflet-map'),
 		'<code>[multielevation]</code>',
@@ -199,7 +199,7 @@ $text = $text.'<code>leaflet-directory</code></a></p>
 	__('Elevation Theme','extensions-leaflet-map').'</a>.</p>';
 }
 $text = $text.
-	'<h3>Options</h3>
+	'<h3>'.__('Options','extensions-leaflet-map').'</h3>
 	<p>'.
 	__('For boolean values applies', "extensions-leaflet-map").':<br>'.
 	'<code>false</code> = <code>!option</code> || <code>option="0"</code> || <code>option=0</code><br>'.
