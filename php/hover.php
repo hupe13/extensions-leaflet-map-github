@@ -254,21 +254,25 @@ function leafext_geojsonhover_script($url){
 			for (var i = 0; i < WPLeafletMapPlugin.markers.length; i++) {
 				var a = WPLeafletMapPlugin.markers[i];
 				if (( a._map != null && a._map._leaflet_id == map_id) ||
-				 	a._map == null ) {
+				a._map == null ) {
 					a.on("mouseover", function (e) {
 						//console.log("marker mouseover");
 						//console.log(e.sourceTarget.options.title);
 						if (typeof e.sourceTarget.getPopup() != "undefined") {
 							if ( ! e.sourceTarget.getPopup().isOpen()) {
 								map.closePopup();
-								if ( e.sourceTarget.options.title != "") {
+								//console.log(e.sourceTarget.options);
+								if ( typeof e.sourceTarget.options.title != "undefined" && e.sourceTarget.options.title != "") {
 									var content = e.sourceTarget.options.title;
 									//console.log(e.sourceTarget);
 								} else {
+									if ( typeof e.sourceTarget.getPopup().getContent() != "undefined" )
 									var content = e.sourceTarget.getPopup().getContent();
 								}
-								e.sourceTarget.bindTooltip(content);
-								e.sourceTarget.openTooltip(e.latlng);
+								if ( typeof content != "undefined" ) {
+									e.sourceTarget.bindTooltip(content);
+									e.sourceTarget.openTooltip(e.latlng);
+								}
 								// } else {
 								//
 							}

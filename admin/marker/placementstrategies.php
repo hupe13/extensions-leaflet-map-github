@@ -104,17 +104,18 @@ function leafext_placement_help_text () {
 	echo '</p>';
 	echo '<h3>Shortcode</h3>
 	<pre><code>[leaflet-map ....]
-	// many markers
-	[leaflet-marker lat=... lng=... ...]poi1[/leaflet-marker]
-	[leaflet-marker lat=... lng=... ...]poi2[/leaflet-marker]
-	...
-	[leaflet-marker lat=... lng=... ...]poixx[/leaflet-marker]
-	[placementstrategies ...]
-	//optional
-	[hover]
-	[zoomhomemap]
-	</code></pre>
-	<h3>Options</h3>
+// many markers
+[leaflet-marker lat=... lng=... ...]poi1[/leaflet-marker]
+[leaflet-marker lat=... lng=... ...]poi2[/leaflet-marker]
+...
+[leaflet-marker lat=... lng=... ...]poixx[/leaflet-marker]
+[placementstrategies ...]
+//optional
+[hover]
+[zoomhomemap]
+</code></pre><p>
+'.__('It also works with','extensions-leaflet-map').'<code>leaflet-extramarkers]</code>. </p>
+	<h3>'.__('Options','extensions-leaflet-map').'</h3>
 
 	<p>'.sprintf(__('The parameter maxZoom has been removed, please use %s instead.',"extensions-leaflet-map"),'<code>[leaflet-map max_zoom="xx" ...]</code>').'</p>';
 }

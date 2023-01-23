@@ -5,7 +5,7 @@
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
  * Primary Branch:    main
  * Description:       Extensions for the WordPress plugin Leaflet Map Github Version
- * Version:           3.3.2-230119
+ * Version:           3.3.2-230123
  * Requires PHP:      7.4
  * Author:            hupe13
  * License:           GPL v2 or later
