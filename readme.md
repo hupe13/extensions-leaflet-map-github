@@ -42,11 +42,11 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 ## Screenshots
 
 1. Track with elevation and other profiles and Switching Tile Layers<br>![Track with elevation profile](.wordpress-org/screenshot-1.png)
-2. Multiple Tracks with elevation profile<br>![Multiple Tracks with elevation profile](.wordpress-org/screenshot-2.png)
-3. Hover a Geojson area <br>![Hover a Geojson area](.wordpress-org/screenshot-3.png)
-4. Markercluster and Groups <br>![Markercluster](.wordpress-org/screenshot-4.png)
-5. Markercluster PlacementStrategies <br>![PlacementStrategies](.wordpress-org/screenshot-5.png)
-6. ExtraMarkers <br>![ExtraMarkers](.wordpress-org/screenshot-6.png)
+2. Hover a Geojson area <br>![Hover a Geojson area](.wordpress-org/screenshot-2.png)
+3. Markercluster and Groups <br>![Markercluster](.wordpress-org/screenshot-3.png)
+4. Markercluster PlacementStrategies <br>![PlacementStrategies](.wordpress-org/screenshot-4.png)
+5. ExtraMarkers <br>![ExtraMarkers](.wordpress-org/screenshot-5.png)
+6. Choropleth Map <br>![Choropleth Map (data from Choropleth example)](.wordpress-org/screenshot-6.png)
 7. Files for Leaflet Map <br>![Files for Leaflet Map](.wordpress-org/screenshot-7.png)
 
 ## Documentation
