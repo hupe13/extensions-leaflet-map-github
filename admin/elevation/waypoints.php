@@ -122,6 +122,14 @@ function leafext_waypoints_help_text() {
 		"<code>leaflet-marker</code>",
 		"<code>leaflet-extramarker</code>").'</p>';
 
+$text=$text.'<h3>'.__('Introduction','extensions-leaflet-map').'</h3>';
+$text=$text.__('To change the display of waypoints in the elevation profile, 3 things are important:','extensions-leaflet-map');
+$text=$text.'<ul>
+	<li>'.__('the waypoint in the track file,','extensions-leaflet-map').'</li>
+	<li>'.__('css describing the waypoint, e.g. the definition of the icon url.','extensions-leaflet-map').'</li>
+	<li>'.__('and Javascript to describe the icon.','extensions-leaflet-map').'</li>
+</ul>';
+
 $text=$text.'<h3>Shortcode</h3>
 <pre><code>[leaflet-map ....]
 [elevation gpx="url_gpx_file" waypoints=1 wptIcons=defined ...]
