@@ -46,7 +46,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 3. Markercluster and Groups <br>![Markercluster](.wordpress-org/screenshot-3.png)
 4. Markercluster PlacementStrategies <br>![PlacementStrategies](.wordpress-org/screenshot-4.png)
 5. ExtraMarkers <br>![ExtraMarkers](.wordpress-org/screenshot-5.png)
-6. Choropleth Map (data from <a href="http://timwis.com/leaflet-choropleth/examples/basic/">Choropleth example</a>)<br>![Choropleth Map (data from <a href="http://timwis.com/leaflet-choropleth/examples/basic/">Choropleth example</a>](.wordpress-org/screenshot-6.png)
+6. Choropleth Map (data from Choropleth plugin example) <br>![Choropleth Map (data from Choropleth example)](.wordpress-org/screenshot-6.png)
 7. Files for Leaflet Map <br>![Files for Leaflet Map](.wordpress-org/screenshot-7.png)
 
 ## Documentation
