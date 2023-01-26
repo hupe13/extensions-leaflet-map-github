@@ -55,7 +55,7 @@ function leafext_help_table($leafext_plugin_name="") {
 
 	<tr><td colspan="3" style="text-align:center"><b>'.__('Further Leaflet Plugins','extensions-leaflet-map').'</b></td></tr>
 
-	<tr><td>'.__('Grouping of options and features','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=featuregroup">leaflet-optiongroup, leaflet-featuregroup</a></td><td><a href="https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup">Leaflet.FeatureGroup.SubGroup</a></td></tr>
+	<tr><td>'.__('Grouping by options and features','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=featuregroup">leaflet-optiongroup, leaflet-featuregroup</a></td><td><a href="https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup">Leaflet.FeatureGroup.SubGroup</a></td></tr>
 
 	<tr><td>'.__('Leaflet Choropleth','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=choropleth">choropleth</a></td><td><a href="https://github.com/timwis/leaflet-choropleth">Leaflet Choropleth</a></td></tr>
 
