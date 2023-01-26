@@ -16,16 +16,20 @@ function leafext_clustergroup_help_text () {
 	$firsttext=$firsttext.'<h3>'.__('Note','extensions-leaflet-map').'</h3>'.
 	'<p>'.sprintf(__('The shortcode %s is a special case of %s respectively %s.','extensions-leaflet-map'),
 	'<code>markerClusterGroup</code>',
-	'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=featuregroup"><code>leaflet-optiongroup</code></a>',
-	'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=featuregroup"><code>leaflet-featuregroup</code></a>')
-	.'</p>';
+	'<code>leaflet-optiongroup</code>',
+	'<code>leaflet-featuregroup</code>')
+	.'<br>'.sprintf(__("If you don't use this shortcode yet, start %sthere%s.",'extensions-leaflet-map'),
+	'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=featuregroup">',
+	'</a>').'</p>';
 
 	$note='<h3>'.__('Note','extensions-leaflet-map').'</h3>'.
 	'<p>'.sprintf(__('The shortcode %s is a special case of %s respectively %s.','extensions-leaflet-map'),
 	'<code>markerClusterGroup</code>',
-	'<a href="doku/featuregroup/"><code>leaflet-optiongroup</code></a>',
-	'<a href="doku/featuregroup/"><code>leaflet-featuregroup</code></a>')
-	.'</p>';
+	'<code>leaflet-optiongroup</code>',
+	'<code>leaflet-featuregroup</code>')
+	.'<br>'.sprintf(__("If you don't use this shortcode yet, start %sthere%s.",'extensions-leaflet-map'),
+	'<a href="/doku/featuregroup/">',
+	'</a>').'</p>';
 
 	$text='<h3>'.__('Options for grouping leaflet-markers','extensions-leaflet-map').'</h3>
 	<ul>
