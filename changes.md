@@ -1,3 +1,1 @@
-* interpret shortcode only in frontend, consider is_home()
-* some documentation
-* bug in optiongroup
+* WP Version 3.3.3
