@@ -18,7 +18,7 @@ function leafext_clustergroup_help_text () {
 	'<code>markerClusterGroup</code>',
 	'<code>leaflet-optiongroup</code>',
 	'<code>leaflet-featuregroup</code>')
-	.'<br>'.sprintf(__("If you don't use this shortcode yet, start %sthere%s.",'extensions-leaflet-map'),
+	.'<br>'.sprintf(__("If you don't use this shortcode yet, start your work with %sthese two%s.",'extensions-leaflet-map'),
 	'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=featuregroup">',
 	'</a>').'</p>';
 

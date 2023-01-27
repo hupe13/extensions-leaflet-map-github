@@ -137,13 +137,14 @@ $text=$text.'<h3>Shortcode</h3>
 [elevation gpx="url_gpx_file" waypoints=markers wptIcons=defined ...]
 </code></pre>';
 
-		$text = $text.'<p>'.sprintf(__('Or set this in the %selevation settings%s.'
-			,'extensions-leaflet-map'),
-			'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation#markers">',
-			'</a>'
-			).'</p>';
-
-
+if (is_singular()|| is_archive() ) {
+	$text = $text.'<p>'.sprintf(__('Or set this in the %selevation settings%s.','extensions-leaflet-map'),
+	'<a href="'.get_site_url().'/elevation/wpts/">','</a>');
+} else {
+	$text = $text.'<p>'.sprintf(__('Or set this in the %selevation settings%s.','extensions-leaflet-map'),
+	'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation#markers">','</a>');
+}
+	$text = $text.'</p>';
 	$text = $text.'<h3>'.__('Waypoint specified in file','extensions-leaflet-map').'</h3>';
 	$text = $text.'GPX: <pre>&lt;sym&gt;<span style="color: #4f94d4">'.__('Text of GPS symbol name','extensions-leaflet-map').'</span>&lt;/sym&gt;</pre>';
 	$text = $text.'Geojson: <pre>"properties": {

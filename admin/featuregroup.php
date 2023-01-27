@@ -185,18 +185,32 @@ Use %s to group elements by options and %s to group elements by properties.','ex
 	<pre><code>[leaflet-optiongroup option="..." values="...,...,others,unknown" groups="...,...,Other elements,Unknown elements"]
 [leaflet-featuregroup property="..." values="...,...,others,unknown" groups="...,...,Other elements,Unknown elements"]</code></pre>';
 
-	$othertext = '<h3>'.__('Notes','extensions-leaflet-map').'</h3>'.'<p>'.sprintf ( __('The parameter and settings for %s are valid too.','extensions-leaflet-map'),
-			'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=markercluster">Leaflet.markercluster</a>').'</p>'.
-			'<p>'.sprintf(__('The shortcode %s is a special case of %s respectively %s.','extensions-leaflet-map'),
-			'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=markerclustergroup"><code>markerClusterGroup</code></a>',
-			'<code>leaflet-optiongroup</code>',
-			'<code>leaflet-featuregroup</code>')
-			.'</p>'.'<pre><code>[leaflet-optiongroup option="..." values="..., ..." groups="..., ..." visible=...]
+if (is_singular() || is_archive() ) {
+	$clusterref = get_site_url().'/doku/cluster/';
+} else {
+	$clusterref = '?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=markercluster';
+}
+
+$text = $text.'<h3>'.__('Notes','extensions-leaflet-map').'</h3>'.'<p>'.
+sprintf ( __('When markers are grouped, %s is automatically active and the parameter and settings for %s are valid too.','extensions-leaflet-map'),
+'Leaflet.markercluster',
+'<a href="'.$clusterref.'"><code>cluster</code></a>').'</p>';
+
+if (is_singular() || is_archive() ) {
+	//$text = $text;
+} else {
+	$text = $text.'<p>'.sprintf(__('The shortcode %s is a special case of %s respectively %s.','extensions-leaflet-map'),
+	'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=markerclustergroup"><code>markerClusterGroup</code></a>',
+	'<code>leaflet-optiongroup</code>',
+	'<code>leaflet-featuregroup</code>')
+	.'</p>';
+}
+$text = $text.'<pre><code>[leaflet-optiongroup option="..." values="..., ..." groups="..., ..." visible=...]
 [leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." visible=...]</code></pre>';
 	if (is_singular() || is_archive() ) {
 		return $text;
 	} else {
-		echo $admintext.$helptext.$text.$othertext;
+		echo $admintext.$helptext.$text;
 	}
 }
 leafext_help_featuregroup();
