@@ -63,7 +63,6 @@ function leafext_cluster_params() {
 function leafext_cluster_script($params){
 	$text = '
 	<script>
-	//console.log("cluster.zoom "+'.$params['disableClusteringAtZoom'].');
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 	var map = window.WPLeafletMapPlugin.getCurrentMap();
@@ -170,6 +169,7 @@ function leafext_cluster_atts ($atts) {
 	$atts2=leafext_case(array_keys(leafext_cluster_settings()),leafext_clear_params($atts1));
 	//gleiche mit eigenen settings und Plugin defaults ab
 	$options = shortcode_atts( leafext_cluster_settings(), $atts2);
+	if ($options['disableClusteringAtZoom'] == "0") unset($options['disableClusteringAtZoom'] );
 	return($options);
 }
 

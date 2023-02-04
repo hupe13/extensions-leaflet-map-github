@@ -3,6 +3,12 @@
   .leaflet-tooltip-pane { display: none; }
 }
 
+/* obiges klappt bei elevation (und Samsung Smartphone) nicht, deshalb
+https://github.com/Artuar/css-test-device-or-desktop */
+@media not all and (pointer: fine) {
+  .leaflet-tooltip-pane { display: none; }
+}
+
 /* multielevation tracks list top right */
 /*.leaflet-right .leaflet-control-layers-list {
 	max-width: 250px;

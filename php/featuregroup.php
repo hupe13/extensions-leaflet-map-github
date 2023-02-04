@@ -22,7 +22,9 @@ function leafext_featuregroup_script($options,$params){
 					$text = $text.'
 				});
 			';
-			$text = $text.file_get_contents(LEAFEXT_PLUGIN_URL.'/js/featuregroup.js');
+			ob_start();
+			include (LEAFEXT_PLUGIN_DIR.'/js/featuregroup.js');
+			$text = $text.ob_get_clean();
 		$text = $text.'
 		});
 		</script>';

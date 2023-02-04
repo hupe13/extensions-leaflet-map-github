@@ -32,6 +32,7 @@ function leafext_enqueue_awesome() {
 function leafext_css() {
   wp_enqueue_style( 'leafext_css',
   plugins_url('css/leafext.min.css',
+  //plugins_url('css/leafext.css',
   LEAFEXT_PLUGIN_FILE),
   array('leaflet_stylesheet'),null);
 }
@@ -200,9 +201,20 @@ add_filter('pre_do_shortcode_tag', function ( $output, $shortcode, $attr) {
       wp_enqueue_style( 'dashicons' );
     }
   }
-  add_filter('the_content', 'leafext_replace_br', 20, 1);
+  //add_filter('the_content', 'leafext_replace_br', 20, 1);
   return $output;
 }, 10, 3);
+
+add_filter('render_block', function ($blockContent, $block) {
+    if ($block['blockName'] === 'core/shortcode') {
+      $shortcodes = array('leaflet-map','leaflet-marker','leaflet-extramarker');
+      $match = (str_replace($shortcodes, '', $block['innerHTML']) != $block['innerHTML']);
+      if ($match) {
+        return htmlspecialchars_decode($block['innerHTML']);
+      }
+    }
+    return $blockContent;
+}, 10, 2);
 
 function leafext_enqueue_choropleth () {
   wp_enqueue_script('choropleth',
