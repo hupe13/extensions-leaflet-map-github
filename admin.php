@@ -65,6 +65,9 @@ function leafext_do_page() {
 	} else if( $active_tab == 'featuregroup' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/featuregroup.php';
 		//leafext_help_featuregroup();
+	} else if( $active_tab == 'search' ) {
+		include LEAFEXT_PLUGIN_DIR . '/admin/leaflet-search.php';
+		leafext_leafletsearch_help();
 	}
 }
 
@@ -118,6 +121,9 @@ function leafext_do_nonadmin_page() {
 	} else if( $active_tab == 'featuregroup' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/featuregroup.php';
 		//leafext_help_featuregroup();
+	} else if( $active_tab == 'search' ) {
+		include LEAFEXT_PLUGIN_DIR . '/admin/leaflet-search.php';
+		leafext_leafletsearch_help();
 	}
 	//
 }
@@ -179,6 +185,10 @@ function leafext_admin_tabs() {
 		array (
 			'tab' => 'featuregroup',
 			'title' => 'FeatureGroup',
+		),
+		array (
+			'tab' => 'search',
+			'title' => 'Leaflet Control Search',
 		),
 		array (
 			'tab' => 'choropleth',

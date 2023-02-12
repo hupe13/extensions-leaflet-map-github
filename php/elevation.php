@@ -1,8 +1,8 @@
 <?php
 /**
- * Functions for elevation shortcode
- * extensions-leaflet-map
- */
+* Functions for elevation shortcode
+* extensions-leaflet-map
+*/
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
@@ -536,12 +536,12 @@ function leafext_ele_java_params($settings) {
 		switch ($k) {
 			case "polyline":
 			$v = filter_var($v, FILTER_SANITIZE_NUMBER_INT);
-			$value =
-			'{className: "elevation-polyline",
+			$value = '{className: "elevation-polyline",
 				color: "#000",
 				opacity: 0.75,
 				lineCap: "round",
-				weight: '.$v.'}';
+				weight: '.$v.'
+			}';
 			$text = $text. "$k: ". $value .','."\n";
 			unset ($settings[$k]);
 			break;
@@ -562,10 +562,11 @@ function leafext_ele_java_params($settings) {
 			if ($settings[$k] == true && $settings['imperial'] == "1") {
 				$text = $text.
 				'distanceMarkers: {
-				offset: 1000/0.621371,
-				textFunction: function(distance, i, offset) {
-				return Math.round(distance*0.621371/1000);
-				}},';
+					offset: 1000/0.621371,
+					textFunction: function(distance, i, offset) {
+						return Math.round(distance*0.621371/1000);
+					}
+				},';
 				unset($settings[$k]);
 			}
 			break;
@@ -580,6 +581,7 @@ function leafext_ele_java_params($settings) {
 	return array($text,$settings);
 }
 
+//
 function leafext_elevation_pace($options) {
 	if ( (bool)$options['pace'] ) {
 		if ( !(bool) $options['time'] ) $options['time'] = "summary";
@@ -614,81 +616,166 @@ function leafext_elevation_pace($options) {
 
 //Shortcode: [elevation gpx="...url..."]
 function leafext_elevation_script($gpx,$settings){
-	$text = '
-	<script>
+	list($elevation_settings, $settings) = leafext_ele_java_params($settings);
+	$text = '<script><!--';
+	ob_start();
+	?>/*<script>*/
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
-		var map = window.WPLeafletMapPlugin.getCurrentMap();';
-
-	$text = $text.'
-	var elevation_options = {';
-
-	list($text1, $settings) = leafext_ele_java_params($settings);
-	$text = $text.$text1;
-	$text = $text.leafext_java_params ($settings);
-
-	$text = $text.'};
-	';
-
-	$text = $text.leafext_elevation_locale();
-
-	$text = $text.file_get_contents(LEAFEXT_PLUGIN_URL.'/js/elevation.js');
-
-	if ( $settings['track'] ) {
-		$text = $text.'
-		var layersControl_options = {
-			collapsed: true,
+		var map = window.WPLeafletMapPlugin.getCurrentMap();
+		var elevation_options = {
+			<?php echo $elevation_settings; ?>
+			<?php echo leafext_java_params ($settings); ?>
 		};
-		var switchtrack = L.control.layers(null, null, layersControl_options);';
-	}
 
-	$text = $text.'
-	// Instantiate elevation control.
-	L.Control.Elevation.prototype.__btnIcon = "'.LEAFEXT_ELEVATION_URL.'/images/elevation.svg";
-	var controlElevation = L.control.elevation(elevation_options);
-	var track_options= { url: "'.$gpx.'" };
-	controlElevation.addTo(map);';
-	if ( $settings['track'] ) {
-		$text = $text.'switchtrack.addTo(map);';
-	}
+		<?php echo leafext_elevation_locale();?>
 
-	// not solved with leaflet 1.9.3 (230112)
-	$text = $text.'
-	var is_chrome = navigator.userAgent.indexOf("Chrome") > -1;
-	var is_safari = navigator.userAgent.indexOf("Safari") > -1;
-	if ( !is_chrome && is_safari && controlElevation.options.preferCanvas != false ) {
-		console.log("is_safari - setting preferCanvas to false");
-		controlElevation.options.preferCanvas = false;
-	}';
+		//BEGIN
+		const toPrecision = (x, n) => Number(parseFloat(x.toPrecision(n)).toFixed(n));
 
-	$text=$text.'
-	// Load track from url (allowed data types: "*.geojson", "*.gpx")
-	controlElevation.load(track_options.url);';
-
-	if ( $settings['chart'] === "off" ) {
-		$text=$text.'map.on("eledata_added", function(e) {
-			//console.log(controlElevation);
-			controlElevation._toggle();
-		});';
-	}
-
-	if ( $settings['track'] ) {
-		if ( $settings['track'] == "filename" ) {
-			$path_parts = pathinfo($gpx);
-			$switchname = '"'.$path_parts['filename'].'"';
-		} else {
-			$switchname = "e.name";
+		function formatTime(t) {
+			//console.log(t);
+			var date = new Date(t);
+			//console.log("fkt "+date);
+			var days = Math.floor(t/(1000 * 60 * 60 * 24));
+			var hours = date.getUTCHours();
+			if (days == 0 && hours == 0) { hours = ""; } else { hours = hours + ":";}
+			var minutes = "0" + date.getUTCMinutes();
+			minutes = minutes.substr(-2) + "\'";
+			var seconds = "0" + date.getUTCSeconds();
+			if (days > 0) { seconds = ""; } else { seconds = seconds.substr(-2) + "\'\'";}
+			if (days == 0) { days = ""; } else { days = days + "d ";}
+			return (days + hours + minutes + seconds);
 		}
-		$text=$text.'
-		controlElevation.on("eledata_loaded", function(e) {
-			switchtrack.addOverlay(e.layer, '.$switchname.');
-		});
-		';
-	}
 
-	$text=$text.'
+		// Save a reference of default "L.Control.Elevation" (for later use)
+		const elevationProto = L.extend({}, L.Control.Elevation.prototype);
+		// Override default "_registerHandler" behaviour.
+		L.Control.Elevation.include({
+			// ref: https://github.com/Raruto/leaflet-elevation/blob/c58250e7c20d52490aa3a50b611dbb282ff00a57/src/control.js#L1063-L1128
+			_registerHandler: function(props) {
+				if (typeof props === "object") {
+					switch(props.name) {
+						// ref: https://github.com/Raruto/leaflet-elevation/blob/c58250e7c20d52490aa3a50b611dbb282ff00a57/src/handlers/acceleration.js#L41-L61
+						case "acceleration":
+						let accelerationLabel = this.options.accelerationLabel || L._(this.options.imperial ? "ft/s²" : "m/s²");
+						props.tooltip.chart                 = (item)        => L._("a: ") + toPrecision(item.acceleration || 0, 2) + " " + accelerationLabel;
+						props.tooltip.marker                = (item)        => toPrecision(item.acceleration, 2) + " " + accelerationLabel;
+						props.summary.minacceleration.value = (track, unit) => toPrecision(track.acceleration_min || 0, 2) + "&nbsp;" + unit;
+						props.summary.maxacceleration.value = (track, unit) => toPrecision(track.acceleration_max || 0, 2) + "&nbsp;" + unit;
+						props.summary.avgacceleration.value = (track, unit) => toPrecision(track.acceleration_avg || 0, 2) + "&nbsp;" + unit;
+						break;
+						case "altitude":
+						props.summary.minele.value = (track, unit) => (track.elevation_min || 0).toFixed(0) + "&nbsp;" + unit;
+						props.summary.maxele.value = (track, unit) => (track.elevation_max || 0).toFixed(0) + "&nbsp;" + unit;
+						props.summary.avgele.value = (track, unit) => (track.elevation_avg || 0).toFixed(0) + "&nbsp;" + unit;
+						break;
+						//cadence
+						case "distance":
+						if (this.options.distance) {
+							let distlabel = this.options.distance.label || L._(this.options.imperial ? "mi" : this.options.xLabel);
+							props.tooltip.chart = (item) => L._("x: ") + toPrecision(item.dist, (item.dist > 10) ? 3 : 2 ) + " " + distlabel;
+							props.summary.totlen.value = (track) => toPrecision(track.distance || 0, 3 ) + "&nbsp;" + distlabel;
+						}
+						break;
+						//heart
+						case "pace":
+						if (this.options.pace) {
+							//let paceLabel = this.options.paceLabel || L._(opts.imperial ? "min/mi" : "min/km");
+							let paceLabel = this.options.imperial ? "/mi" : "/km";
+							props.tooltip.chart         = (item)        => L._("pace: ") +  (formatTime(item.pace * 1000 * 60) || 0) + " " + paceLabel;
+							props.tooltip.marker        = (item)        =>                  (formatTime(item.pace * 1000 * 60) || 0) + " " + paceLabel;
+							props.summary.minpace.value = (track, unit) =>                  (formatTime(track.pace_max * 1000 * 60) || 0) + "&nbsp;" + paceLabel;
+							props.summary.maxpace.value = (track, unit) =>                  (formatTime(track.pace_min * 1000 * 60) || 0) + "&nbsp;" + paceLabel;
+							props.summary.avgpace.value = (track, unit) => formatTime( Math.abs((track.time / track.distance) / this.options.paceFactor) *60) + "&nbsp;" + paceLabel;
+						}
+						break;
+						case "slope":
+						let slopeLabel = this.options.slopeLabel || "%";
+						props.tooltip.chart         = (item) => L._("m: ") + Math.round(item.slope) + slopeLabel;
+						break;
+						case "speed":
+						//console.log(this.options.speed);
+						if (this.options.speed) {
+							let speedLabel = this.options.speedLabel || L._(this.options.imperial ? "mph" : "km/h");
+							props.tooltip.chart                 = (item) => L._("v: ") + toPrecision(item.speed,2) + " " + speedLabel;
+							props.tooltip.marker                = (item) => toPrecision(item.speed,3) + " " + speedLabel;
+							props.summary.minspeed.value = (track, unit) => toPrecision(track.speed_min || 0, 2) + "&nbsp;" + unit;
+							props.summary.maxspeed.value = (track, unit) => toPrecision(track.speed_max || 0, 2) + "&nbsp;" + unit;
+							props.summary.avgspeed.value = (track, unit) => toPrecision(track.speed_avg || 0, 2) + "&nbsp;" + unit;
+							//props.summary.avgspeed.value = (track, unit) => (track.speed_avg || 0) + "&nbsp;" + unit;
+						}
+						break;
+						case "time":
+						if (this.options.time) {
+							props.tooltips.find(({ name }) => name === "time").chart = (item) => L._("T: ") + formatTime(item.duration || 0);
+							props.summary.tottime.value = (track) => formatTime(track.time || 0);
+						}
+						break;
+					}
+				}
+				elevationProto._registerHandler.apply(this, [props]);
+			}
+		});
+
+		// Proceed as usual
+		//var controlElevation = L.control.elevation(opts.elevationControl.options);
+		//controlElevation.load(opts.elevationControl.url);
+		//END
+
+		<?php if ( $settings['track'] ) {
+			echo '
+			var layersControl_options = {
+				collapsed: true,
+			};
+			var switchtrack = L.control.layers(null, null, layersControl_options);';
+		} ?>
+
+		// Instantiate elevation control.
+		L.Control.Elevation.prototype.__btnIcon = "<?php echo LEAFEXT_ELEVATION_URL;?>/images/elevation.svg";
+		var controlElevation = L.control.elevation(elevation_options);
+		var track_options= { url: "<?php echo $gpx;?>" };
+		controlElevation.addTo(map);
+		<?php if ( $settings['track'] ) {
+			echo 'switchtrack.addTo(map);';
+		} ?>
+
+		// not solved with leaflet 1.9.3 (230112)
+		var is_chrome = navigator.userAgent.indexOf("Chrome") > -1;
+		var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+		if ( !is_chrome && is_safari && controlElevation.options.preferCanvas != false ) {
+			console.log("is_safari - setting preferCanvas to false");
+			controlElevation.options.preferCanvas = false;
+		}
+
+		// Load track from url (allowed data types: "*.geojson", "*.gpx")
+		controlElevation.load(track_options.url);
+
+		<?php if ( $settings['chart'] === "off" ) {
+			echo 'map.on("eledata_added", function(e) {
+				//console.log(controlElevation);
+				controlElevation._toggle();
+			});';
+		}
+
+		if ( $settings['track'] ) {
+			if ( $settings['track'] == "filename" ) {
+				$path_parts = pathinfo($gpx);
+				$switchname = '"'.$path_parts['filename'].'"';
+			} else {
+				$switchname = "e.name";
+			}
+			echo '
+			controlElevation.on("eledata_loaded", function(e) {
+				switchtrack.addOverlay(e.layer, '.$switchname.');
+			});
+			';
+		} ?>
+
 	});
-	</script>';
+	<?php
+	$javascript = ob_get_clean();
+	$text = $text . $javascript . '//-->'."\n".'</script>';
 	$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }
@@ -701,7 +788,7 @@ function leafext_elevation_settings($typ) {
 	}
 	$options = shortcode_atts($defaults, get_option('leafext_eleparams'));
 	if (array_key_exists('polyline', $options))
-		$options['polyline'] = filter_var($options['polyline'], FILTER_SANITIZE_NUMBER_INT);
+	$options['polyline'] = filter_var($options['polyline'], FILTER_SANITIZE_NUMBER_INT);
 	return $options;
 }
 
@@ -802,11 +889,13 @@ function leafext_elevation_function($atts,$content,$shortcode) {
 					}),
 					";
 					foreach ( $waypoints as $wpt ) {
-						$wptvalue = $wptvalue.'"'.$wpt['css'].'":  L.divIcon({
-							className: "elevation-waypoint-marker",
-							html: '."'".'<i class="elevation-waypoint-icon '.$wpt['css'].'"></i>'."'".','.
-							html_entity_decode($wpt['js']).
-						'}),';
+						$wptvalue = $wptvalue.'"'.$wpt['css'].'":  L.divIcon(
+							{
+								className: "elevation-waypoint-marker",
+								html: '."'".'<i class="elevation-waypoint-icon '.$wpt['css'].'"></i>'."'".','.
+								html_entity_decode($wpt['js']).'
+							}
+						),';
 					}
 					$wptvalue = $wptvalue.'}';
 					$options['wptIcons'] =  $wptvalue;

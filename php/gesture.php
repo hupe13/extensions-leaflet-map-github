@@ -1,8 +1,8 @@
 <?php
 /**
- * Functions for gestures shortcode
- * extensions-leaflet-map
- */
+* Functions for gestures shortcode
+* extensions-leaflet-map
+*/
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
@@ -12,9 +12,9 @@ function leafext_gesture_params() {
 			'param' => 'leafext_gesture_on',
 			'shortdesc' => __('valid for whole site or only for one map',"extensions-leaflet-map"),
 			'desc' => '<p>'.
-				sprintf(__("If it is true, it is valid for any map (depending on %s respectively %s) and you can't change it. If it is false, you can enable it for a map:",'extensions-leaflet-map')
-				,'<code>scrollwheel</code>','<code>dragging</code>').
-				'</p><pre><code>[gestures]</code></pre>',
+			sprintf(__("If it is true, it is valid for any map (depending on %s respectively %s) and you can't change it. If it is false, you can enable it for a map:",'extensions-leaflet-map')
+			,'<code>scrollwheel</code>','<code>dragging</code>').
+			'</p><pre><code>[gestures]</code></pre>',
 			'default' => true,
 			'values' => 1,
 		),
@@ -22,7 +22,7 @@ function leafext_gesture_params() {
 			'param' => 'lang',
 			'shortdesc' => __('Site Language or Browser Language',"extensions-leaflet-map"),
 			'desc' => '<p>
-				</p>',
+			</p>',
 			'default' => "Browser",
 			'values' => array("Site","Browser"),
 		),
@@ -61,7 +61,9 @@ function leafext_gestures_lang($options) {
 
 // For use with any map on a webpage
 function leafext_gestures_script($lang){
-	$text = '
+	ob_start();
+	?>
+	/*<script>*/
 	// For use with any map on a webpage
 	//GestureHandling disables the following map attributes.
 	//dragging
@@ -76,47 +78,47 @@ function leafext_gestures_script($lang){
 				console.log("dragging, scroll, mobile ",map.dragging.enabled(),map.scrollWheelZoom.enabled(),L.Browser.mobile);
 				if ( map.scrollWheelZoom.enabled() || ( map.dragging.enabled() && L.Browser.mobile ) ) {
 					console.log(i,"enabled");
-					';
-					if ( $lang != "" ) {
-						$text = $text.'
+					<?php if ( $lang != "" ) { ?>
 						map.options.gestureHandlingOptions = {
-							locale: "'.$lang.'", // set language of the warning message.
-						}';
-					}
-					$text = $text.'
+							locale: "<?php echo $lang;?>", // set language of the warning message.
+						}
+					<?php } ?>
 					map.gestureHandling.enable();
 				}
 			}
 		}
 		window.addEventListener("load", main);
 	})();
-	';
+	<?php
+	$text = ob_get_clean();
 	$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }
 
 // For use with one map on a webpage
 function leafext_gesture_script($lang){
-	$text = '
-	<script>
-		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
-		window.WPLeafletMapPlugin.push(function () {
-			var map = window.WPLeafletMapPlugin.getCurrentMap();
-			console.log("dragging, scroll, mobile ",map.dragging.enabled(),map.scrollWheelZoom.enabled(),L.Browser.mobile);
-			if ( map.scrollWheelZoom.enabled() || ( map.dragging.enabled() && L.Browser.mobile ) ) {
-				//console.log("enabled");
-				';
-				if ( $lang != "" ) {
-					$text = $text.'
-					map.options.gestureHandlingOptions = {
-						locale: "'.$lang.'", // set language of the warning message.
-					}';
+	$text = '<script><!--';
+	ob_start();
+	?>
+	/*<script>*/
+	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
+	window.WPLeafletMapPlugin.push(function () {
+		var map = window.WPLeafletMapPlugin.getCurrentMap();
+		console.log("dragging, scroll, mobile ",map.dragging.enabled(),map.scrollWheelZoom.enabled(),L.Browser.mobile);
+		if ( map.scrollWheelZoom.enabled() || ( map.dragging.enabled() && L.Browser.mobile ) ) {
+			//console.log("enabled");
+			<?php if ( $lang != "" ) { ?>
+				map.options.gestureHandlingOptions = {
+					locale: "<?php echo $lang; ?>", // set language of the warning message.
 				}
-				$text = $text.'
-				map.gestureHandling.enable();
-			}
-		});
-	</script>';
+				<?php
+			} ?>
+			map.gestureHandling.enable();
+		}
+	});
+	<?php
+	$javascript = ob_get_clean();
+	$text = $text . $javascript . '//-->'."\n".'</script>';
 	$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }

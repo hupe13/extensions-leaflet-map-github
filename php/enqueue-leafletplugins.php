@@ -222,7 +222,22 @@ function leafext_enqueue_choropleth () {
   LEAFEXT_PLUGIN_FILE),
   array('leaflet_ajax_geojson_js'), null);
   wp_enqueue_style( 'leafext_css',
-  plugins_url('css/choropleth.css',
+  plugins_url('css/choropleth.min.css',
   LEAFEXT_PLUGIN_FILE),
   array('leaflet_stylesheet'),null);
+}
+
+function leafext_enqueue_leafletsearch () {
+  wp_enqueue_script('leafletsearch',
+  plugins_url('leaflet-plugins/leaflet-search/dist/leaflet-search.min.js',
+  LEAFEXT_PLUGIN_FILE),
+  array('wp_leaflet_map'), null);
+  wp_enqueue_style('leafletsearch',
+  plugins_url('leaflet-plugins/leaflet-search/dist/leaflet-search.min.css',
+  LEAFEXT_PLUGIN_FILE),
+  array('leaflet_stylesheet'), null);
+  // wp_enqueue_style('leafletsearch_mobile',
+  // plugins_url('leaflet-plugins/leaflet-search/dist/leaflet-search.mobile.min.css',
+  // TESTLEAFEXT_PLUGIN_FILE),
+  // array('leaflet_stylesheet'), null);
 }

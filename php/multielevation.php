@@ -1,8 +1,8 @@
 <?php
 /**
- * Functions for multielevation
- * extensions-leaflet-map
- */
+* Functions for multielevation
+* extensions-leaflet-map
+*/
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
@@ -21,7 +21,7 @@ function leafext_multielevation_params($typ = array('changeable')) {
 			'param' => 'summary',
 			'shortdesc' => __('Summary',"extensions-leaflet-map"),
 			'desc' =>	sprintf ( __('Valid for %s: Only elevation profile with or without summary line will be displayed.',"extensions-leaflet-map"),
-				'<code>[elevation-<span style="color: #d63638">tracks</span>]</code>'),
+			'<code>[elevation-<span style="color: #d63638">tracks</span>]</code>'),
 			'default' => true,
 			'values' => 1,
 			'typ' => array('changeable','tracks'),
@@ -94,12 +94,12 @@ function leafext_multielevation_params($typ = array('changeable')) {
 //     },
 
 function leafext_eleparams_for_multi($options=array()) {
-		$multi=array();
-		$params = leafext_elevation_params(array("multielevation"));
-		foreach($params as $param) {
-			$multi[] = $param["param"];
-		}
-		//var_dump($multi);
+	$multi=array();
+	$params = leafext_elevation_params(array("multielevation"));
+	foreach($params as $param) {
+		$multi[] = $param["param"];
+	}
+	//var_dump($multi);
 
 	if (count($options) > 1 ) {
 		$multioptions = array();
@@ -297,38 +297,34 @@ add_shortcode('multielevation', 'leafext_multielevation');
 
 function leafext_multielevation_script( $all_files, $all_points, $settings, $multioptions, $rand ) {
 	//var_dump($settings,$multioptions); wp_die();
-	$text = '
-	<script>
+	list($elevation_settings, $settings) = leafext_ele_java_params($settings);
+	$text = '<script><!--';
+	ob_start();
+	?>/*<script>*/
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
-		var points = '.json_encode($all_points).';
-		var tracks = '.json_encode($all_files).';
+		var points = <?php echo json_encode($all_points); ?>;
+		var tracks = <?php echo json_encode($all_files); ?>;
 		//console.log(points);
 		//console.log(tracks);
 
 		var opts = {
 			points: {
 				icon: {
-					iconUrl: "'.LEAFEXT_ELEVATION_URL.'" + "images/elevation-poi.png",
+					iconUrl: "<?php echo LEAFEXT_ELEVATION_URL;?>images/elevation-poi.png",
 					iconSize: [12, 12],
 				},
 			},
 			elevation: {
-	';
-
-			list($text1, $settings) = leafext_ele_java_params($settings);
-			$text = $text.$text1;
-			$text = $text.leafext_java_params ($settings);
-
-			$text = $text.'
+				<?php echo $elevation_settings;?>
+				<?php echo leafext_java_params ($settings);?>
 			},
 		};
-		console.log(opts.elevation);';
+		console.log(opts.elevation);
 
-		$text = $text.leafext_elevation_locale();
+		<?php echo leafext_elevation_locale();?>;
 
-		$text = $text."
 		var gpxGroupProto = L.GpxGroup.prototype;
 		var addTrack = gpxGroupProto.addTrack;
 
@@ -345,11 +341,9 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 					}
 				});
 			},
-		})";
+		});
 
-		$text = $text.'
 		let routes;
-
 		routes = L.gpxGroup(tracks, {
 			async: false,
 			points: points,
@@ -358,18 +352,17 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 			elevation_options: opts.elevation,
 			legend: true,
 			legend_options: {
-	      position: "topright",
-	      collapsed: true,
-	    },';
-			$text = $text.leafext_java_params ($multioptions);
-			$text = $text.'
+				position: "topright",
+				collapsed: true,
+			},
+			<?php echo leafext_java_params ($multioptions);?>
 		});
 		//console.log(routes);
 		routes.addTo(map);
 
-		L.Control.Elevation.prototype.__btnIcon = "'.LEAFEXT_ELEVATION_URL.'/images/elevation.svg";
+		L.Control.Elevation.prototype.__btnIcon = "<?php echo LEAFEXT_ELEVATION_URL;?>/images/elevation.svg";
 		map.on("eledata_added eledata_clear", function(e) {
-			var p = document.querySelector(".chart-placeholder-'.$rand.'");
+			var p = document.querySelector(".chart-placeholder-<?php echo $rand;?>");
 			if(p) {
 				p.style.display = e.type=="eledata_added" ? "none" : "";
 			}
@@ -391,7 +384,9 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 			}
 		});
 	});
-</script>';
-$text = \JShrink\Minifier::minify($text);
-return "\n".$text."\n";
+	<?php
+	$javascript = ob_get_clean();
+	$text = $text . $javascript . '//-->'."\n".'</script>';
+	$text = \JShrink\Minifier::minify($text);
+	return "\n".$text."\n";
 }

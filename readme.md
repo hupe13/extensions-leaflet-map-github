@@ -106,7 +106,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.3.3 / 2301xx
+### 3.3.3 / 230128
 
 * interpret shortcode only in frontend, consider is_home()
 * some documentation

@@ -8,8 +8,9 @@ defined( 'ABSPATH' ) or die();
 
 //Shortcode: [fullscreen]
 function leafext_fullscreen_script() {
-	$text = '
-	<script>
+	$text = '<script><!--';
+	ob_start();
+	?>/*<script>*/
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
@@ -18,7 +19,9 @@ function leafext_fullscreen_script() {
 		// add fullscreen control to the map
 		map.addControl(fsControl);
 	});
-	</script>';
+	<?php
+	$javascript = ob_get_clean();
+	$text = $text . $javascript . '//-->'."\n".'</script>';
 	$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }

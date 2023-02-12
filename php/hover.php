@@ -1,8 +1,8 @@
 <?php
 /**
- * Functions for hover shortcode
- * extensions-leaflet-map
- */
+* Functions for hover shortcode
+* extensions-leaflet-map
+*/
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) or die();
 function leafext_geojsonhover_script($url){
 	$text = '<script><!--';
 	ob_start();
-  ?>/*<script>*/
+	?>/*<script>*/
 
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
@@ -282,8 +282,8 @@ function leafext_geojsonhover_script($url){
 						//console.log("click");
 						e.sourceTarget.unbindTooltip();
 					});
-				// } else {
-				// console.log("nicht dasselbe");
+					// } else {
+					// console.log("nicht dasselbe");
 				}
 			}
 		}
@@ -348,21 +348,27 @@ function leafext_geojsonhover_script($url){
 			}
 		});
 	});
-<?php
-  $javascript = ob_get_clean();
+	<?php
+	$javascript = ob_get_clean();
 	$text = $text . $javascript . '//-->'."\n".'</script>';
 	$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }
 
 function leafext_canvas_script($tolerance) {
-	return '<script>
-	  window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
-	  window.WPLeafletMapPlugin.push(function () {
-	    var map = window.WPLeafletMapPlugin.getCurrentMap();
-	    map.options.renderer=L.canvas({ tolerance: '.$tolerance.' });
-	  });
-	</script>';
+	$text = '<script><!--';
+	ob_start();
+	?>/*<script>*/
+	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
+	window.WPLeafletMapPlugin.push(function () {
+		var map = window.WPLeafletMapPlugin.getCurrentMap();
+		map.options.renderer=L.canvas({ tolerance: <?php echo $tolerance;?> });
+	});
+	<?php
+	$javascript = ob_get_clean();
+	$text = $text . $javascript . '//-->'."\n".'</script>';
+	$text = \JShrink\Minifier::minify($text);
+	return "\n".$text."\n";
 }
 
 function leafext_geojsonhover_function($atts,$content,$shortcode) {
