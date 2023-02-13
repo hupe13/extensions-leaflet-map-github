@@ -229,6 +229,7 @@ function leafext_leafletsearch_script($options,$jsoptions){
           map.addControl( markerSearchControl );
           markerSearchControl.on("search:locationfound", function(e) {
             if (typeof e.layer.getPopup() != "undefined") e.layer.openPopup();
+            e.sourceTarget._input.blur();
           });
           markerSearchControl.on("search:cancel", function(e) {
             //console.log(e);
@@ -309,6 +310,7 @@ function leafext_leafletsearch_script($options,$jsoptions){
           geojsonSearchControl.on("search:locationfound", function(e) {
             //console.log("search:locationfound" );
             if(e.layer._popup) e.layer.openPopup([e.latlng.lat, e.latlng.lng]);
+            e.sourceTarget._input.blur();
           });
           geojsonSearchControl.on("search:cancel", function(e) {
             //console.log(e);
@@ -326,7 +328,7 @@ function leafext_leafletsearch_script($options,$jsoptions){
 
 <?php
 $javascript = ob_get_clean();
-$text = $text . $javascript . '// --></script>';
-//$text = \JShrink\Minifier::minify($text);
+$text = $text . $javascript . '//-->'."\n".'</script>';
+$text = \JShrink\Minifier::minify($text);
 return "\n".$text."\n";
 }

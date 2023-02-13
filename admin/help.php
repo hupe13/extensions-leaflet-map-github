@@ -57,6 +57,8 @@ function leafext_help_table($leafext_plugin_name="") {
 
 	<tr><td>'.__('Grouping by options and features','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=featuregroup">leaflet-optiongroup, leaflet-featuregroup</a></td><td><a href="https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup">Leaflet.FeatureGroup.SubGroup</a></td></tr>
 
+	<tr><td>'.__('Search markers/features','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=search">leaflet-search</a></td><td><a href="https://github.com/stefanocudini/leaflet-search">Leaflet Control Search</a></td></tr>
+
 	<tr><td>'.__('Leaflet Choropleth','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=choropleth">choropleth</a></td><td><a href="https://github.com/timwis/leaflet-choropleth">Leaflet Choropleth</a></td></tr>
 
 	<tr><td>'.__('switching tile servers','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=tileshelp">layerswitch</a></td><td><a href="https://leafletjs.com/examples/layers-control/">L.control.layers</a>, <a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers</a>, <a href="https://github.com/dayjournal/Leaflet.Control.Opacity">Leaflet.Control.Opacity</a></td></tr>

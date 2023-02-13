@@ -281,7 +281,7 @@ function leafext_featuregroup_script($options,$params){
 	$javascript = ob_get_clean();
 	$text = $text . $javascript . '//-->'."\n".'</script>';
 
-	//$text = \JShrink\Minifier::minify($text);
+	$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }
 

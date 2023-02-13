@@ -5,6 +5,23 @@ function leafext_leafletsearch_help(){
   } else {
     $text = '<h2>Leaflet Control Search</h2>';
   }
+
+  $text=$text.'<p>'.__('A control for search Markers/Features location by custom property.',"extensions-leaflet-map").'</p>';
+
+  $text=$text.'<h3>Shortcode</h3>
+  <pre>
+  [leaflet-map fitbounds]
+  //any many
+  [leaflet-marker      ...] ... [/leaflet-marker]
+  [leaflet-extramarker ...] ... [/leaflet-extramarker]
+  [leaflet-geojson     ...] ... [/leaflet-geojson]
+  //one or more
+  [leaflet-search propertyName="..." ...]
+  </pre>
+  ';
+
+  $text = $text.'<p><h2>'.__('Options','extensions-leaflet-map').'</h2></p>';
+
   $options=leafext_search_params();
   $new = array();
   $new[] = array(
