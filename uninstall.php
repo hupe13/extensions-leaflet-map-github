@@ -11,4 +11,3 @@ foreach ( $option_names as $key=>$value ) {
   // for site options in Multisite
   delete_site_option($value->option_name);
 }
-?>

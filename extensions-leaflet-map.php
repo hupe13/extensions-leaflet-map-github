@@ -7,9 +7,9 @@
  * Description:       Extensions for the WordPress plugin Leaflet Map Github Version
  * Version:           3.3.4-230214
  * Requires PHP:      7.4
- * Author:            hupe13
- * License:           GPL v2 or later
- * Text Domain:       extensions-leaflet-map
+ * Author:      hupe13
+ * License:     GPL v2 or later
+ * Text Domain: extensions-leaflet-map
 **/
 
 // Direktzugriff auf diese Datei verhindern:
