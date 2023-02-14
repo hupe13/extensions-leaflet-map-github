@@ -39,7 +39,7 @@ function leafext_help_table($leafext_plugin_name="") {
 	<tr><td>'
 	.__('multiple tracks with elevation profiles','extensions-leaflet-map').
 	'</td><td><a href="?page='.$leafext_plugin_name.'&tab=multielevation">elevation-track, elevation-tracks, multielevation</a></td>
-	<td><a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a></td></tr>
+	<td><a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>, <a href="https://github.com/makinacorpus/Leaflet.GeometryUtil">Leaflet.GeometryUtil</a></td></tr>
 
 	<tr><td colspan="3" style="text-align:center"><b>'.__('Functions for Markers','extensions-leaflet-map').'</b></td></tr>
 

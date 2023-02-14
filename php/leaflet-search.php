@@ -236,6 +236,7 @@ function leafext_leafletsearch_script($options,$jsoptions){
             if (e.target.options.hideMarkerOnCollapse) {
               e.target._map.removeLayer(this._markerSearch);
             }
+            e.sourceTarget._input.blur();
           });
         }
       } else {
@@ -317,6 +318,7 @@ function leafext_leafletsearch_script($options,$jsoptions){
             if (e.target.options.hideMarkerOnCollapse) {
               e.target._map.removeLayer(this._markerSearch);
             }
+            e.sourceTarget._input.blur();
           });
         } else {
           console.log("Nothing to search in Geojsons");

@@ -33,26 +33,138 @@ function leafext_choropleth_params() {
 
 //Shortcode: [choropleth]
 function leafext_choropleth_script($atts,$content) {
-	$text = '
-	<script>
+	$text = '<script><!--';
+	ob_start();
+	?>/*<script>*/
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
-		var att_valueProperty = '.json_encode($atts['valueproperty']).';
-		var att_scale = '.json_encode($atts['scale']).'.split(",");
-		var att_steps = '.json_encode($atts['steps']).';
-		var att_mode = '.json_encode($atts['mode']).';
-		var att_popup = '.json_encode($content).';
-		var att_legend = '.json_encode((bool)$atts['legend']).';
-		var att_hover = '.json_encode((bool)$atts['hover']).';
-		var att_fillOpacity = '.json_encode($atts['fillopacity']).';
+		var att_valueProperty = <?php echo json_encode($atts['valueproperty']);?>;
+		var att_scale = <?php echo json_encode($atts['scale']);?>.split(",");
+		var att_steps = <?php echo json_encode($atts['steps']);?>;
+		var att_mode = <?php echo json_encode($atts['mode']);?>;
+		var att_popup = <?php echo json_encode($content);?>;
+		var att_legend = <?php echo json_encode((bool)$atts['legend']);?>;
+		var att_hover = <?php echo json_encode((bool)$atts['hover']);?>;
+		var att_fillOpacity = <?php echo json_encode($atts['fillopacity']);?>;
 		console.log(att_valueProperty,att_scale,att_steps,att_mode,att_legend,att_hover,att_fillOpacity);
 		console.log(att_popup);
-		';
-		$text = $text.file_get_contents(LEAFEXT_PLUGIN_URL.'/js/choropleth.js');
-		$text = $text.'
+		map.eachLayer(function(layer) {
+		  //console.log(layer.options.type);
+		  if (layer.options.type == "json" ) {
+		    layer.on("ready", function (layer){
+		      // console.log(layer.target.json);
+		      map.removeLayer(layer);
+		      choropleth = L.choropleth(layer.sourceTarget.json, {
+		        valueProperty: att_valueProperty,
+		        scale: att_scale,
+		        steps: att_steps,
+		        mode: att_mode,
+		        style: {
+		          color: "#fff",
+		          weight: 2,
+		          fillOpacity: att_fillOpacity
+		        },
+		        onEachFeature: function (feature, layer) {
+		          let this_popup = "";
+		          for (var j = 0, len = att_popup.length; j < len; j++) {
+		            //console.log(att_popup[j]);
+		            if (att_popup[j].indexOf("{") !== -1) { // true; found
+		              let property = att_popup[j].replace(/{|}/g, '');
+		              //console.log(property);
+		              this_popup = this_popup + feature.properties[property];
+		            } else {
+		              this_popup = this_popup + att_popup[j];
+		            }
+		          }
+		          layer.bindPopup(this_popup);
+
+		          layer.on("mouseover", function (e) {
+		            e.target.setStyle({
+		              weight: 4,
+		              color: "#666",
+		            });
+		            e.target.bringToFront();
+		          }),
+		          layer.on("mouseout", function (e) {
+		            e.target.setStyle({
+		              weight: 2,
+		              color: "#fff",
+		            });
+		          }),
+
+		          layer.on("mouseover", function (e) {
+		            if (att_hover) {
+		              if (typeof layer.getPopup() != "undefined") {
+		                //console.log("popup defined");
+		                if (layer.getPopup().isOpen()) {
+		                  //console.log("mouseover open "+layer.getPopup().isOpen());
+		                  layer.unbindTooltip();
+		                } else {
+		                  //console.log("need tooltip");
+		                  var content = layer.getPopup().getContent();
+		                  layer.bindTooltip(content);
+		                }
+		              }
+		            }
+		          }),
+
+		          layer.on("mousemove", function (e) {
+		            if (att_hover) {
+		              if (typeof layer.getPopup() != "undefined") {
+		                if (layer.getPopup().isOpen()) {
+		                  //console.log("mousemove open "+layer.getPopup().isOpen());
+		                  layer.unbindTooltip();
+		                } else {
+		                  //console.log("mousemove close "+layer.getPopup().isOpen());
+		                  map.closePopup();
+		                  layer.openTooltip(e.latlng);
+		                }
+		              }
+		            }
+		          }),
+
+		          layer.on("click", function (e) {
+		            if (att_hover) {
+		              if (typeof layer.getPopup() != "undefined") {
+		                if (layer.getPopup().isOpen())
+		                layer.unbindTooltip();
+		              }
+		            }
+		          })
+
+		        }
+		      }); // choropleth
+		      choropleth.addTo(map);
+
+		      // Add legend (don't forget to add the CSS from index.html)
+		      if (att_legend) {
+		        var legend = L.control({ position: 'bottomright' });
+		        legend.onAdd = function (map) {
+		          var div = L.DomUtil.create('div', 'info legend');
+		          var limits = choropleth.options.limits;
+		          var colors = choropleth.options.colors;
+		          var labels = [];
+		          // Add min & max
+		          div.innerHTML = '<div class="labels"><div class="min">' + limits[0] + '</div> \
+		          <div class="max">' + limits[limits.length - 1] + '</div></div>';
+		          limits.forEach(function (limit, index) {
+		            labels.push('<li style="background-color: ' + colors[index] + '; opacity: '+ att_fillOpacity +';"></li>');
+		          })
+		          div.innerHTML += '<ul>' + labels.join('') + '</ul>';
+		          return div;
+		        }
+		        legend.addTo(map);
+		      }
+
+		    }); // on ready
+		  }; // if
+		}); // map.eachLayer
+
 	});
-	</script>';
+	<?php
+	$javascript = ob_get_clean();
+	$text = $text . $javascript . '//-->'."\n".'</script>';
 	$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }
