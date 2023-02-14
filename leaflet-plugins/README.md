@@ -1,55 +1,54 @@
 # Leaflet Plugins
 
-<h3>leaflet.fullscreen</h3>
+<table class="form-table" border="1">
+<thead><tr><th style="text-align:center">Function</th><th style="text-align:center">Shortcode(s) / Function</th><th style="text-align:center">Leaflet Plugins</th></tr></thead>
+<tbody>
 
-https://github.com/brunob/leaflet.fullscreen
+<tr><td colspan="3" style="text-align:center"><b>Elevation Profile</b></td></tr>
+<tr><td>track with an elevation profile</td><td>elevation
+<td><a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>, <a href="https://github.com/yohanboniface/Leaflet.i18n">Leaflet.i18n</a></td></tr>
 
-<pre>[fullscreen]</pre>
+<tr><td>multiple tracks with elevation profiles</td><td>elevation-track, elevation-tracks, multielevation
+<td><a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>, <a href="https://github.com/makinacorpus/Leaflet.GeometryUtil">Leaflet.GeometryUtil</a></td></tr>
 
-<h3>Markercluster</h3>
+<tr><td colspan="3" style="text-align:center"><b>Functions for Markers</b></td></tr>
 
-https://github.com/Leaflet/Leaflet.markercluster   
-https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup
-https://raw.githubusercontent.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies/master/dist/leaflet-markercluster.placementstrategies.js
+<tr><td>marker clustering</td><td>cluster</td><td><a href="https://github.com/Leaflet/Leaflet.markercluster">Leaflet.markercluster</a></td></tr>
 
-<pre>[cluster]
-[markerClusterGroup ...]
-[placementstrategies ...]</pre>
+<tr><td>clustering and grouping of markers</td><td>markerClusterGroup</td><td><a href="https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup">Leaflet.FeatureGroup.SubGroup</a></td></tr>
 
-<h3>Leaflet.ExtraMarker</h3>
+<tr><td>styling markercluster</td><td>placementstrategies</td><td><a href="https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies">Leaflet.MarkerCluster.PlacementStrategies</a></td></tr>
 
-https://github.com/coryasilva/Leaflet.ExtraMarkers
+<tr><td>more markers</td><td>leaflet-extramarker</td><td><a href="https://github.com/coryasilva/Leaflet.ExtraMarkers">Leaflet.ExtraMarkers</a></td></tr>
 
-<pre>[leaflet-extramarker ...]</pre>
+<tr ><td>hide markers</td><td>hidemarkers</td><td></td></tr>
 
-<h3>leaflet.zoomhome</h3>
+<tr><td colspan="3" style="text-align:center"><b>Further Leaflet Plugins</b></td></tr>
 
-https://github.com/torfsen/leaflet.zoomhome
+<tr><td>Grouping by options and features</td><td>leaflet-optiongroup, leaflet-featuregroup</td><td><a href="https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup">Leaflet.FeatureGroup.SubGroup</a></td></tr>
 
-<pre>[zoomhomemap]</pre>
+<tr><td>Search markers/features</td><td>leaflet-search</td><td><a href="https://github.com/stefanocudini/leaflet-search">Leaflet Control Search</a></td></tr>
 
-<h3>leaflet-elevation / leaflet-gpxgroup</h3>
+<tr><td>Leaflet Choropleth</td><td>choropleth</td><td><a href="https://github.com/timwis/leaflet-choropleth">Leaflet Choropleth</a></td></tr>
 
-https://github.com/Raruto/leaflet-elevation
-https://github.com/yohanboniface/Leaflet.i18n
+<tr><td>switching tile servers</td><td>layerswitch</td><td><a href="https://leafletjs.com/examples/layers-control/">L.control.layers</a>, <a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers</a>, <a href="https://github.com/dayjournal/Leaflet.Control.Opacity">Leaflet.Control.Opacity</a></td></tr>
 
-<pre>[elevation gpx="url_gpx_file"]</pre>
-<pre>[elevation-track ...]</pre>
-<pre>[elevation-tracks ...]</pre>
+<tr><td>reset the map</td><td>zoomhomemap</td><td><a href="https://github.com/torfsen/leaflet.zoomhome">leaflet.zoomhome</a></td></tr>
 
-https://github.com/makinacorpus/Leaflet.GeometryUtil
+<tr><td>fullscreen</td><td>fullscreen</td><td><a href="https://github.com/brunob/leaflet.fullscreen">leaflet.fullscreen</a></td></tr>
 
-<pre>[multielevation distanceMarkers ...]</pre>
+<tr><td>gesture handling</td><td>gestures</td><td><a href="https://github.com/Raruto/leaflet-gesture-handling">Leaflet.GestureHandling</a></td></tr>
 
-<h3>leaflet-gesture-handling</h3>
+<tr><td colspan="3" style="text-align:center"><b>Files for Leaflet Map</b></td></tr>
 
-https://github.com/Raruto/leaflet-gesture-handling
+<tr><td>Files for Leaflet Map</td><td>Files for Leaflet Map</td><td></td></tr>
 
-Used by nearly any leaflet map, see documentation
+<tr><td>Tracks from all files in a directory</td><td>leaflet-directory</td><td></td></tr>
 
-<h3>leaflet-providers / Leaflet.Control.Opacity</h3>
+<tr><td colspan="3" style="text-align:center"><b>More Functions</b></td></tr>
 
-https://github.com/leaflet-extras/leaflet-providers  
-https://github.com/dayjournal/Leaflet.Control.Opacity
+<tr><td>Hovering and Tooltips</td><td>hover</td><td></td></tr>
 
-<pre>[layerswitch ...]</pre>
+<tr><td>Migration from <a href="https://wordpress.org/plugins/wp-gpx-maps/">WP GPX Maps</a></td><td>sgpx</td><td></td></tr>
+
+</tbody></table>
