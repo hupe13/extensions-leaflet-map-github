@@ -49,9 +49,20 @@ function leafext_geojsonhover_script($url){
 							//console.log("resetStyle");
 							e.target.eachLayer(function(layer){
 								if (typeof layer.setStyle != "undefined") {
+									//console.log(layer);
+									if (typeof layer.options.origweight != "undefined") {
+										var origweight = layer.options.origweight;
+									} else {
+										var origweight = 3; //leaflet default
+									}
+									if (typeof layer.options.origfillOpacity != "undefined") {
+										var origfillOpacity = layer.options.origfillOpacity;
+									} else {
+										var origfillOpacity = 0.2; //leaflet default
+									}
 									layer.setStyle({
-										"fillOpacity" : 0.2,
-										"weight" : 3,
+										"fillOpacity" : origfillOpacity,
+										"weight" : origweight,
 									});
 								}
 							});
@@ -61,8 +72,17 @@ function leafext_geojsonhover_script($url){
 							e.target.eachLayer(function(layer) {
 								//console.log(layer);
 								if (typeof layer.setStyle != "undefined") {
-									var origfillOpacity = 0.2; //leaflet default
-									var origweight = 3; //leaflet default
+									//console.log(layer);
+									if (typeof layer.options.origweight != "undefined") {
+										var origweight = layer.options.origweight;
+									} else {
+										var origweight = 3; //leaflet default
+									}
+									if (typeof layer.options.origfillOpacity != "undefined") {
+										var origfillOpacity = layer.options.origfillOpacity;
+									} else {
+										var origfillOpacity = 0.2; //leaflet default
+									}
 									layer.setStyle({
 										"fillOpacity" : origfillOpacity,
 										"weight" : origweight,
@@ -101,15 +121,22 @@ function leafext_geojsonhover_script($url){
 							if (i > 1) {
 								if (typeof e.sourceTarget.setStyle != "undefined") {
 									//console.log("style4");
-									//console.log(e.layer.options.fillOpacity);
-									//console.log(e.layer.options.weight);
-									// e.sourceTarget.setStyle({
-									// 	"fillOpacity" : e.sourceTarget.options.fillOpacity+0.20,
-									// 	"weight" : e.sourceTarget.options.weight+2
-									// });
+									//console.log(e);
+									if (typeof e.sourceTarget.options.fillOpacity == "undefined") {
+										var highfillOpacity = 0.4; //leaflet default + 0.2
+									} else {
+										e.sourceTarget.options.origfillOpacity = e.sourceTarget.options.fillOpacity;
+										var highfillOpacity = e.sourceTarget.options.fillOpacity + 0.2;
+									}
+									if (typeof e.sourceTarget.options.weight == "undefined") {
+										var highweight = 5; //leaflet default +2
+									} else {
+										e.sourceTarget.options.origweight = e.sourceTarget.options.weight;
+										var highweight = e.sourceTarget.options.weight + 2;
+									}
 									e.sourceTarget.setStyle({
-										"fillOpacity" : 0.4,
-										"weight" : 5,
+										"fillOpacity" : highfillOpacity,
+										"weight" : highweight,
 									});
 									e.sourceTarget.bringToFront();
 									// } else {
@@ -139,14 +166,16 @@ function leafext_geojsonhover_script($url){
 										//console.log(layer.options.fillOpacity);
 										//console.log(layer.options.weight);
 										if (typeof layer.options.fillOpacity == "undefined") {
-											highfillOpacity = 0.4; //leaflet default + 0.2
+											var highfillOpacity = 0.4; //leaflet default + 0.2
 										} else {
-											highfillOpacity = layer.options.fillOpacity + 0.2;
+											layer.options.origfillOpacity = layer.options.fillOpacity;
+											var highfillOpacity = layer.options.fillOpacity + 0.2;
 										}
 										if (typeof layer.options.weight == "undefined") {
-											highweight = 5; //leaflet default +2
+											var highweight = 5; //leaflet default +2
 										} else {
-											highweight = layer.options.weight + 2;
+											layer.options.origweight = layer.options.weight;
+											var highweight = layer.options.weight + 2;
 										}
 										layer.setStyle({
 											"fillOpacity" : highfillOpacity,
