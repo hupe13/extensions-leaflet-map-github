@@ -131,41 +131,50 @@ function leafext_extramarker_params() {
     //   'default' => '1,-32',
     //   'filter' => 'latlon',
     // ),
+    array(
+      'param' => 'title',
+      'desc' => __("Add a hover-over message to your marker (different than popup)",
+      "extensions-leaflet-map"),
+      //'shortdesc' => '',
+      'default' => '',
+      'filter' => '',
+    ),
   );
   return $params;
 }
 
 function leafext_extramarker_defaults() {
   $defaults=array();
-	$params = leafext_extramarker_params();
-	foreach($params as $param) {
-		$defaults[$param['param']] = $param['default'];
-	}
-	return $defaults;
+  $params = leafext_extramarker_params();
+  foreach($params as $param) {
+    $defaults[$param['param']] = $param['default'];
+  }
+  return $defaults;
 }
 
 function leafext_extramarker_filter() {
   $filters=array();
-	$params = leafext_extramarker_params();
-	foreach($params as $param) {
-		$filters[$param['param']] = $param['filter'];
-	}
-	return $filters;
+  $params = leafext_extramarker_params();
+  foreach($params as $param) {
+    $filters[$param['param']] = $param['filter'];
+  }
+  return $filters;
 }
 
 //Shortcode: [leaflet-extramarker]
 function leafext_extramarker_function( $atts,$content,$shortcode) {
-	$text = leafext_should_interpret_shortcode($shortcode,$atts);
-	if ( $text != "" ) {
-		return $text;
-	} else {
+  $text = leafext_should_interpret_shortcode($shortcode,$atts);
+  if ( $text != "" ) {
+    return $text;
+  } else {
     leafext_enqueue_extramarker ();
     if (isset($atts['lat']) && isset($atts['lng'])) {
       $latlng = "lat=".$atts['lat']." lng=".$atts['lng'];
     } else {
       $latlng = "";
     }
-    $marker_shortcode = "[leaflet-marker ".$latlng."]".$content."[/leaflet-marker]";
+    if (isset($atts['title'])) { $title="title='".$atts['title']."'"; } else { $title = ""; }
+    $marker_shortcode = "[leaflet-marker ".$latlng." ".$title."]".$content."[/leaflet-marker]";
     $text = do_shortcode($marker_shortcode);
 
     $text = \JShrink\Minifier::minify($text);
@@ -175,7 +184,7 @@ function leafext_extramarker_function( $atts,$content,$shortcode) {
     //var_dump($options);//wp_die();
     $icon = 'var extramarker = L.ExtraMarkers.icon({'.leafext_extramarkers_params ($options).'tooltipAnchor:[12,-24]});';
     //var_dump($icon);
-    $text = str_replace(",marker_options","",$text);
+    //$text = str_replace(",marker_options","",$text);
     $text = str_replace("marker.addTo(group);","marker.addTo(group);".$icon."marker.setIcon(extramarker);",$text);
     $text = \JShrink\Minifier::minify($text);
     //var_dump($text);
@@ -199,13 +208,13 @@ add_shortcode('leaflet-extramarker', 'leafext_extramarker_function' );
 
 function leafext_extramarkers_params ($params) {
   $filters = leafext_extramarker_filter();
-	//var_dump($params); //wp_die();
-	$text = "";
+  //var_dump($params); //wp_die();
+  $text = "";
 
-	foreach ($params as $k => $v) {
+  foreach ($params as $k => $v) {
     if ($k == "lat" || $k == "lng") continue;
     if ($v == "") continue;
-		$text = $text. "$k: ";
+    $text = $text. "$k: ";
     switch ($filters[$k]) {
       case "FILTER_VALIDATE_BOOLEAN":
       $value = filter_var($v, FILTER_VALIDATE_BOOLEAN) ? 'true':'false'; break;
@@ -216,9 +225,9 @@ function leafext_extramarkers_params ($params) {
       default:
       $value = '"'.$v.'"';
     }
-		$text = $text.$value;
-		$text = $text.",\n";
-	}
-	//var_dump($text); wp_die();
-	return $text;
+    $text = $text.$value;
+    $text = $text.",\n";
+  }
+  //var_dump($text); wp_die();
+  return $text;
 }

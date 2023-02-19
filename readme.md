@@ -25,6 +25,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 *   [Leaflet.MarkerCluster.PlacementStrategies](https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies): implements new possibilities how to place clustered children markers
 *   [Leaflet.ExtraMarkers](https://github.com/coryasilva/Leaflet.ExtraMarkers): Shameless copy of Awesome-Markers with more shapes, colors and semantic-ui support
 *   [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup): Creates Feature Groups that add their child layers into a parent group. Typical usage is to switch them through L.Control.Layers to dynamically add/remove groups of markers from Leaflet.markercluster.
+*   [Leaflet Control Search](https://github.com/stefanocudini/leaflet-search): A control for search Markers/Features location by custom property in LayerGroup/GeoJSON.
 *   [leaflet-choropleth](https://github.com/timwis/leaflet-choropleth): Choropleth plugin for Leaflet (color scale based on value)
 *   [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome): Reset the view
 *   [leaflet.fullscreen](https://github.com/brunob/leaflet.fullscreen): Simple plugin for Leaflet that adds fullscreen button to your maps.

@@ -5,3 +5,4 @@
 * there is no bug safari popups in leafletjs 1.9.3 anymore
 * new: Leaflet Search Control
 * pay more attention to original values on hovering
+* leaflet-extramarker title
