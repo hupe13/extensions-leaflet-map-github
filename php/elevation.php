@@ -432,10 +432,10 @@ function leafext_elevation_params($typ = array()) {
 		array(
 			'param' => 'preferCanvas',
 			'shortdesc' => __('Render chart profiles as Canvas or SVG Paths.',"extensions-leaflet-map"),
-			'desc' => sprintf ( __('Due to a bug in MacOS and iOS, see %shere%s, it is automatically set to false in Safari.',"extensions-leaflet-map"), '<a href="https://github.com/Raruto/leaflet-elevation/issues/123">','</a>'),
+			'desc' => __('Due to a problem in MacOS and iOS, it is automatically set to false in Safari.',"extensions-leaflet-map"),
 			'default' => true,
 			'values' => 1,
-			'typ' => array('changeable','other',),
+			'typ' => array('changeable','other',), //'multielevation'
 		),
 
 		// margins: { top: 30, right: 30, bottom: 30, left: 40 },
@@ -740,7 +740,7 @@ function leafext_elevation_script($gpx,$settings){
 			echo 'switchtrack.addTo(map);';
 		} ?>
 
-		// not solved with leaflet 1.9.3 (230112)
+		// https://github.com/Raruto/leaflet-elevation/issues/232#issuecomment-1443554554
 		var is_chrome = navigator.userAgent.indexOf("Chrome") > -1;
 		var is_safari = navigator.userAgent.indexOf("Safari") > -1;
 		if ( !is_chrome && is_safari && controlElevation.options.preferCanvas != false ) {

@@ -6,3 +6,4 @@
 * new: Leaflet Search Control
 * pay more attention to original values on hovering
 * leaflet-extramarker title
+* changed Gesture Handling to work with Complianz-GDPR

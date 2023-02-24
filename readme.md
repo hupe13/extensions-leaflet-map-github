@@ -96,6 +96,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 </summary>
 
 * If you need a plugin for this try [DSGVO/GDPR Snippet for Extensions for Leaflet Map](https://github.com/hupe13/extensions-leaflet-map-dsgvo).
+* If you use [Complianz | GDPR/CCPA Cookie Consent](https://wordpress.org/plugins/complianz-gdpr/) see [here](https://complianz.io/leaflet-maps/).
 </details>
 </p>
 

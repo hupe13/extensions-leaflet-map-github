@@ -69,12 +69,13 @@ function leafext_gestures_script($lang){
 	//dragging
 	//tap
 	//scrollWheelZoom
-	(function() {
-		function main() {
+	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
+	window.WPLeafletMapPlugin.push(function () {
 			var maps = window.WPLeafletMapPlugin.maps;
 			//console.log("gesture");
 			for (var i = 0, len = maps.length; i < len; i++) {
 				var map = maps[i];
+			map.whenReady ( function() {
 				console.log("dragging, scroll, mobile ",map.dragging.enabled(),map.scrollWheelZoom.enabled(),L.Browser.mobile);
 				if ( map.scrollWheelZoom.enabled() || ( map.dragging.enabled() && L.Browser.mobile ) ) {
 					console.log(i,"enabled");
@@ -82,13 +83,13 @@ function leafext_gestures_script($lang){
 						map.options.gestureHandlingOptions = {
 							locale: "<?php echo $lang;?>", // set language of the warning message.
 						}
-					<?php } ?>
+						<?php
+					} ?>
 					map.gestureHandling.enable();
 				}
+			});
 			}
-		}
-		window.addEventListener("load", main);
-	})();
+	});
 	<?php
 	$text = ob_get_clean();
 	$text = \JShrink\Minifier::minify($text);

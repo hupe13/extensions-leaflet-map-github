@@ -143,18 +143,8 @@ function leafext_leafletsearch_function($atts,$content,$shortcode) {
     if ($options['marker'] == '') {
       unset($options['marker']);
     } else {
-      $pattern = array(
-        "/iconSize:\s*'\s*(-?\d+)\s*,\s*(-?\d+)\s*'/",
-        "/iconAnchor:\s*'\s*(-?\d+)\s*,\s*(-?\d+)\s*'/",
-        "/popupAnchor:\s*'\s*(-?\d+)\s*,\s*(-?\d+)\s*'/",
-        "/shadowSize:\s*'\s*(-?\d+)\s*,\s*(-?\d+)\s*'/",
-      );
-      $replacement = array(
-        "iconSize:[$1,$2]",
-        "iconAnchor:[$1,$2]",
-        "popupAnchor:[$1,$2]",
-        "shadowSize:[$1,$2]",
-      );
+      $pattern = array("/:\s*'\s*(-?\d+)\s*,\s*(-?\d+)\s*'/");
+      $replacement = array(":[$1,$2]");
       $options['marker'] = preg_replace($pattern, $replacement, $options['marker']);
     }
     if ($options['container'] == '') {
