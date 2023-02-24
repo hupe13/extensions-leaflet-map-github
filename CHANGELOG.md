@@ -1,3 +1,9 @@
+### 3.3.3 / 230128
+
+* interpret shortcode only in frontend, consider is_home()
+* some documentation
+* bug in optiongroup
+
 ### 3.3.2 / 230115
 
 * bug in grouping the default icon fixed

@@ -108,11 +108,17 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.3.3 / 230128
+### 3.3.4 / 230xxx
 
-* interpret shortcode only in frontend, consider is_home()
-* some documentation
-* bug in optiongroup
+* new: Leaflet Search Control
+* bug if disableClusteringAtZoom = 0 fixed
+* fix && in inline JavaScript
+* add_filter('render_block' to prevent various WordPress filters like wpautop in leaflet-shortcode block (?test!)
+* disable tooltip on hover on Samsung smartphones
+* pay more attention to original values on hovering
+* leaflet-extramarker title
+* changed Gesture Handling to work with Complianz-GDPR
+* there is no bug safari popups in leafletjs 1.9.3 anymore
 
 ### Previous
 
