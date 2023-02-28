@@ -10,13 +10,13 @@ function leafext_leafletsearch_help(){
 
   $text=$text.'<h3>Shortcode</h3>
   <pre>
-  [leaflet-map fitbounds]
+  &#91;leaflet-map fitbounds]
   //any many
-  [leaflet-marker      ...] ... [/leaflet-marker]
-  [leaflet-extramarker ...] ... [/leaflet-extramarker]
-  [leaflet-geojson     ...] ... [/leaflet-geojson]
+  &#91;leaflet-marker      ...] ... [/leaflet-marker]
+  &#91;leaflet-extramarker ...] ... [/leaflet-extramarker]
+  &#91;leaflet-geojson     ...] ... [/leaflet-geojson]
   //one or more
-  [leaflet-search propertyName="..." ...]
+  &#91;leaflet-search propertyName="..." ...]
   </pre>
   ';
 
@@ -41,9 +41,30 @@ function leafext_leafletsearch_help(){
   }
   $text=$text.'<div style="width:80%;">'.leafext_html_table($new).'</div>';
 
-  $text=$text.'<h4>'.__('Examples for',"extensions-leaflet-map").' marker:</h4>';
-  $text=$text.'<a href="https://leafext.de/leafletsearch/leafletsearchmarker/">Examples</a>';
-  $text=$text.'<h4>'.__('Note',"extensions-leaflet-map").'</h4>';
+  // $text=$text.'<h3>'.__('Examples for',"extensions-leaflet-map").' marker:</h3>';
+  // $text=$text.'<p><a href="https://leafext.de/leafletsearch/leafletsearchmarker/">'.__('Examples',"extensions-leaflet-map").'</a></p>';
+  $text=$text.'<h3>'.__('Option',"extensions-leaflet-map").' container</h3>';
+  $text=$text.'<p>'.sprintf(__('If you want the search field to be outside the map, define a div element with a custom html block on the post / page and give it an id. This id you then specify in option %s.',"extensions-leaflet-map"),'container').'</p>';
+  $text=$text.'<code>&lt;div id="myId" style="height:3em; border:2px solid gray; width:200px;">&lt;/div></code>';
+  $text=$text.'<p>'.__('Define some css:',"extensions-leaflet-map").'</p>';
+  $text=$text.'<pre><code>&lt;style>
+.leaflet-control-search.search-exp { border: none !important;}
+.search-input {width: 80%;}
+&lt;/style></code></pre>';
+$text=$text.'<style>.leaflet-control-search.search-exp { border: none !important;}.search-input {width: 80%;}</style>';
+  $text=$text.'<p>'.__('Define a leaflet-search command with the option container:',"extensions-leaflet-map").'</p>';
+  $text=$text.'<p><code>&#91;leaflet-search propertyname=... ... container=myId ...]</code>'.'</p>';
+  $text=$text.'<div id="myId" style="height:3em; border:2px solid gray; width:200px;"></div>';
+  $text=$text.do_shortcode('[leaflet-map !boxZoom !doubleClickZoom !dragging !keyboard !scrollwheel !attribution !touchZoom !show_scale height=200 width=200 fitbounds min_zoom=12]');
+  $text=$text.do_shortcode('[leaflet-marker lat=0.0 lng=0.0]Marker[/leaflet-marker]');
+  $text=$text.do_shortcode('[leaflet-search container=myId propertyName=popupContent textPlaceholder="M ..."]');
+  $text=$text.'<p>'.sprintf(__('The specific style and css depends on your %stheme and taste%s',"extensions-leaflet-map"),'<a href="https://leafext.de/leafletsearch/searchcontainer/">','</a>');
+  if (is_singular() || is_archive() ) {
+    $text=$text.', '.__('as you can see on this page. This is the same code as in backend. There it looks better.',"extensions-leaflet-map");
+  } else {
+    $text=$text.'.';
+  }
+  $text=$text.'</p>'.'<h3>'.__('Note',"extensions-leaflet-map").'</h3>';
   $text=$text.'<p>'.sprintf(__('%s must be before %s.','extensions-leaflet-map'),
   '<code>leaflet-search</code>',
   '<code>leaflet-optiongroup, cluster</code>').'</p>';

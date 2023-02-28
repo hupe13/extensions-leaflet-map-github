@@ -20,7 +20,7 @@ function leafext_search_params() {
     // | propertyName	  | 'title'	 | property in marker.options(or feature.properties for vector layer) trough filter elements in layer, |
     array(
       'param' => 'propertyName',
-      'desc' => sprintf(__('a option / property for marker or a %s for geojson layer',"extensions-leaflet-map"),
+      'desc' => sprintf(__('a option / property for marker or a %s for geojson layer. Can also be a comma-separated list of options or properties.',"extensions-leaflet-map"),
       'feature.property'),
       'default' => 'title',
       'values' => sprintf(__('for example %s for marker, additional for example %s for extramarkers; %s depending on geojson layer; %s for all',"extensions-leaflet-map"),
@@ -36,9 +36,9 @@ function leafext_search_params() {
     // | container		  | ''	     | container id to insert Search Control		 |
     array(
       'param' => 'container',
-      'desc' => __('container id to style the control panel with custom css',"extensions-leaflet-map"),
+      'desc' => __('container id to style the control panel (outside the map) with custom css',"extensions-leaflet-map"),
       'default' => '',
-      'values' => '',
+      'values' => __('see below',"extensions-leaflet-map"),
     ),
     // | zoom		      | null	 | default zoom level for move to location |
     array(
@@ -99,8 +99,11 @@ function leafext_search_params() {
       'param' => 'marker',
       'desc' => __('show or hide marker at the position found',"extensions-leaflet-map"),
       'default' => '',
-      'values' => sprintf(__("not specified for default (red circle), %s for no marker, or a definition like below","extensions-leaflet-map"),
-      'false'),
+      'values' => sprintf(__("not specified for default (red circle), %s for no marker, or a definition like on an %sexample page%s.","extensions-leaflet-map"),
+      'false',
+      '<a href="https://leafext.de/leafletsearch/leafletsearchmarker/">',
+      '</a>'
+      ),
     ),
     // | marker.icon	  | false	 | custom L.Icon for maker location or false for hide |
     // | marker.animate  | true	 | animate a circle over location found |
@@ -115,9 +118,9 @@ function leafext_search_params() {
     // hupe13 type
     array(
       'param' => 'type',
-      'desc' => __('specify this parameter if both leaflet-marker and leaflet-geojson elements are on the map.',"extensions-leaflet-map"),
+      'desc' => __('specify this parameter if both leaflet-marker and leaflet-geojson elements are on a post or page.',"extensions-leaflet-map"),
       'default' => 'marker',
-      'values' => sprintf(__("%s (default) - search for marker, %s - search for geojson layer, %s - search for all. (all doesn't work yet.)","extensions-leaflet-map"),
+      'values' => sprintf(__("%s (default) - search for marker, %s - search in geojson.","extensions-leaflet-map"),
       '"marker"',
       '"geojson"',
       '"all"'),
@@ -143,7 +146,7 @@ function leafext_leafletsearch_function($atts,$content,$shortcode) {
     if ($options['marker'] == '') {
       unset($options['marker']);
     } else {
-      $pattern = array("/:\s*'\s*(-?\d+)\s*,\s*(-?\d+)\s*'/");
+      $pattern = array("/<p>/","/<br>/","/:\s*'\s*(-?\d+)\s*,\s*(-?\d+)\s*'/");
       $replacement = array(":[$1,$2]");
       $options['marker'] = preg_replace($pattern, $replacement, $options['marker']);
     }
