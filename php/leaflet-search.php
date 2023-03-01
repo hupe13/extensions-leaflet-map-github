@@ -146,7 +146,7 @@ function leafext_leafletsearch_function($atts,$content,$shortcode) {
     if ($options['marker'] == '') {
       unset($options['marker']);
     } else {
-      $pattern = array("/<p>/","/<br>/","/:\s*'\s*(-?\d+)\s*,\s*(-?\d+)\s*'/");
+      $pattern = array("/:\s*'\s*(-?\d+)\s*,\s*(-?\d+)\s*'/");
       $replacement = array(":[$1,$2]");
       $options['marker'] = preg_replace($pattern, $replacement, $options['marker']);
     }
@@ -244,8 +244,12 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
 
               if (leafextsearch != "") {
                 // replace - strip out HTML
+
+                leafextsearch=leafextsearch.replace( /<p>/ig, ' ');
+                leafextsearch=leafextsearch.replace( /<br>/ig, ' ');
                 leafextsearch=leafextsearch.replace( /(<([^>]+)>)/ig,'');
-                leafextsearch=leafextsearch.replace( / \| /, '');
+                leafextsearch=leafextsearch.replace( / \| /g, '');
+                leafextsearch=leafextsearch.replace( / +/g, ' ');
 
                 let search = leafextsearch;
                 if (typeof duplicates[search] == "undefined" ) {

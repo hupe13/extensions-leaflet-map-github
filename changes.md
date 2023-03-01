@@ -7,3 +7,4 @@
 * pay more attention to original values on hovering
 * leaflet-extramarker title
 * changed Gesture Handling to work with Complianz-GDPR
+* leaflet-gesture-handling-1.4.4

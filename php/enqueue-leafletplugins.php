@@ -144,7 +144,7 @@ function leafext_enqueue_fullscreen () {
   array('wp_leaflet_map'),null);
 }
 
-define('LEAFEXT_GESTURE_VERSION',"1.4.3");
+define('LEAFEXT_GESTURE_VERSION',"1.4.4");
 define('LEAFEXT_GESTURE_LOCALE_DIR', LEAFEXT_PLUGIN_DIR .
 'leaflet-plugins/leaflet-gesture-handling-'.LEAFEXT_GESTURE_VERSION.'/dist/locales/');
 function leafext_enqueue_gestures() {

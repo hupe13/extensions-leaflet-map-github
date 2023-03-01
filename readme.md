@@ -117,6 +117,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 * disable tooltip on hover on Samsung smartphones
 * pay more attention to original values on hovering
 * leaflet-extramarker title
+* leaflet-gesture-handling-1.4.4
 * changed Gesture Handling to work with Complianz-GDPR
 * there is no bug safari popups in leafletjs 1.9.3 anymore
 

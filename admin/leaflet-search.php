@@ -55,7 +55,7 @@ $text=$text.'<style>.leaflet-control-search.search-exp { border: none !important
   $text=$text.'<p>'.__('Define a leaflet-search command with the option container:',"extensions-leaflet-map").'</p>';
   $text=$text.'<p><code>&#91;leaflet-search propertyname=... ... container=myId ...]</code>'.'</p>';
   $text=$text.'<div id="myId" style="height:3em; border:2px solid gray; width:200px;"></div>';
-  $text=$text.do_shortcode('[leaflet-map !boxZoom !doubleClickZoom !dragging !keyboard !scrollwheel !attribution !touchZoom !show_scale height=200 width=200 fitbounds min_zoom=12]');
+  $text=$text.do_shortcode('[leaflet-map !boxZoom !doubleClickZoom !dragging !keyboard !scrollwheel !attribution !touchZoom !show_scale height=200 width=200 fitbounds min_zoom=12 max_zoom=16]');
   $text=$text.do_shortcode('[leaflet-marker lat=0.0 lng=0.0]Marker[/leaflet-marker]');
   $text=$text.do_shortcode('[leaflet-search container=myId propertyName=popupContent textPlaceholder="M ..."]');
   $text=$text.'<p>'.sprintf(__('The specific style and css depends on your %stheme and taste%s',"extensions-leaflet-map"),'<a href="https://leafext.de/leafletsearch/searchcontainer/">','</a>');
