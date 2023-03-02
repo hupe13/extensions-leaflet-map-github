@@ -289,9 +289,8 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
               <?php echo $jsoptions;?>
               initial: false,
               moveToLocation: function(latlng, title, map) {
-                //console.log( title);
-                map.fitBounds(L.latLngBounds([latlng.layer.getLatLng()]));
-                map.setZoom(att_zoom);
+                //console.log("moveToLocation");
+                map.setView(latlng,att_zoom);
                 // },
                 // buildTip: function (text, val) {
                 // // strip HTML out
@@ -303,6 +302,16 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
           map.addControl( markerSearchControl );
 
           markerSearchControl.on("search:locationfound", function(e) {
+            //console.log(e);
+            //console.log(this._markerSearch);
+            //console.log("search:locationfound");
+            if(e.target._map.hasLayer(e.layer)){
+              //console.log("marker is visible, do nothing");
+            } else {
+              //console.log("marker is not on map, _adding");
+              e.layer.addTo(map);
+              this._markerSearch._markeradd = e.layer;
+            }
             <?php
             if ($options['openPopup']) {?>
               if (typeof e.layer.getPopup() != "undefined") e.layer.openPopup();
@@ -312,7 +321,13 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
           });
           markerSearchControl.on("search:cancel", function(e) {
             //console.log(e);
+            //console.log(this._markerSearch);
+            //console.log(this._markerSearch._markeradd);
+            if (typeof this._markerSearch._markeradd !== "undefined") {
+              e.target._map.removeLayer(this._markerSearch._markeradd);
+            }
             if (e.target.options.hideMarkerOnCollapse) {
+              //console.log(e.target._map);
               e.target._map.removeLayer(this._markerSearch);
             }
             e.sourceTarget._input.blur();
@@ -411,6 +426,13 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
             map.addControl( geojsonSearchControl );  //inizialize search control
             geojsonSearchControl.on("search:locationfound", function(e) {
               //console.log("search:locationfound" );
+              if(e.target._map.hasLayer(e.layer)){
+                //console.log("geojsonmarker is visible, do nothing");
+              } else {
+                //console.log("geojsonmarker is not on map, _adding");
+                e.layer.addTo(map);
+                this._markerSearch._markeradd = e.layer;
+              }
               <?php
               if ($options['openPopup']) {?>
                 if(e.layer._popup) e.layer.openPopup([e.latlng.lat, e.latlng.lng]);
@@ -420,6 +442,9 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
             });
             geojsonSearchControl.on("search:cancel", function(e) {
               //console.log(e);
+              if (typeof this._markerSearch._markeradd !== "undefined") {
+                e.target._map.removeLayer(this._markerSearch._markeradd);
+              }
               if (e.target.options.hideMarkerOnCollapse) {
                 e.target._map.removeLayer(this._markerSearch);
               }
