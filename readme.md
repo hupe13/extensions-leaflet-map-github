@@ -113,7 +113,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 * new: Leaflet Search Control
 * bug if disableClusteringAtZoom = 0 fixed
 * fix && in inline JavaScript
-* add_filter('render_block' to prevent various WordPress filters like wpautop in leaflet-shortcode block (?test!)
+* add_filter('render_block' to prevent various WordPress filters like wpautop in leaflet-shortcode block
 * disable tooltip on hover on Samsung smartphones
 * pay more attention to original values on hovering
 * leaflet-extramarker title

@@ -81,10 +81,11 @@ function leafext_search_params() {
       'values' => '',
     ),
     // // | hideMarkerOnCollapse		 | false	 | remove circle and marker on search control collapsed		 |
+    //hupe13: default true
     array(
       'param' => 'hideMarkerOnCollapse',
       'desc' => __('remove circle and marker on search control collapsed or search canceled',"extensions-leaflet-map"),
-      'default' => false,
+      'default' => true,
       'values' => "true, false",
     ),
     // // | position		  | 'topleft'| position in the map		 |
