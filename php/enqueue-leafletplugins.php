@@ -230,15 +230,10 @@ function leafext_enqueue_choropleth () {
 function leafext_enqueue_leafletsearch () {
   wp_enqueue_script('leafletsearch',
   plugins_url('leaflet-plugins/leaflet-search/dist/leaflet-search.min.js',
-  //plugins_url('leaflet-plugins/leaflet-search/dist/leaflet-search.src.js',
   LEAFEXT_PLUGIN_FILE),
   array('wp_leaflet_map'), null);
   wp_enqueue_style('leafletsearch',
   plugins_url('leaflet-plugins/leaflet-search/dist/leaflet-search.min.css',
   LEAFEXT_PLUGIN_FILE),
   array('leaflet_stylesheet'), null);
-  // wp_enqueue_style('leafletsearch_mobile',
-  // plugins_url('leaflet-plugins/leaflet-search/dist/leaflet-search.mobile.min.css',
-  // TESTLEAFEXT_PLUGIN_FILE),
-  // array('leaflet_stylesheet'), null);
 }
