@@ -4,7 +4,7 @@ Requires at least: 5.5.3
 Tested up to: 6.1
 Requires PHP: 7.4
 License: GPLv2 or later
-Tags: leaflet, elevation, markercluster, hover
+Tags: leaflet, elevation, markercluster, Leaflet Plugins
 Contributors: hupe13
 
 ## Description
