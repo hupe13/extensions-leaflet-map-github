@@ -11,11 +11,17 @@ $text='<h2 id="leaflet.zoomhome">leaflet.zoomhome</h2>
 
 <pre><code>[zoomhomemap fit/<span style="color: #d63638">!fit</span>]</code></pre>
 
-<h2>Howto</h2>
+<h2>Howto</h2>';
 
-<p>'.__('You can set following and the Home button works as shown in the table.','extensions-leaflet-map').'
+$text='<style>tr:nth-child(even) { background-color: #fcfcfc; }</style>';
+if (is_singular() || is_archive()){
+	$text=$text.'<style>td,th { border:1px solid #195b7a !important; }</style>';
+}
+
+$text=$text.'<p>'.__('You can set following and the Home button works as shown in the table.','extensions-leaflet-map').'
 </p>
-<table border="1" style="text-align: center;">
+<figure class="wp-block-table aligncenter is-style-stripes">
+<table class="form-table" border="1" style="text-align: center;">
 	<tr>
 		<th class="row-title">leaflet-map</th>
 		<th>leaflet-element<sup>*</sup></th>
@@ -114,7 +120,7 @@ $text='<h2 id="leaflet.zoomhome">leaflet.zoomhome</h2>
 		<td>'.__('map like defined','extensions-leaflet-map').'</td>
 		<td>'.__('map like defined','extensions-leaflet-map').'</td>
 	</tr>
-</table>
+</table></div>
 * leaflet-element '.__('means','extensions-leaflet-map').' leaflet-line, leaflet-polygon, leaflet-circle, leaflet-geojson, leaflet-gpx, leaflet-kml.<br>
 ** '.__('sometimes to first zoom','extensions-leaflet-map').'
 ';

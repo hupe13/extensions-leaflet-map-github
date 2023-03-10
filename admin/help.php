@@ -21,6 +21,10 @@ function leafext_help_table($leafext_plugin_name="") {
 	//
 
 	$text='<style>tr:nth-child(even) { background-color: #fcfcfc; }</style>';
+	if (is_singular() || is_archive()){
+		$text=$text.'<style>td,th { border:1px solid #195b7a !important; }</style>';
+	}
+
 	$text=$text.'<figure class="wp-block-table aligncenter is-style-stripes">
 	<table class="form-table" border="1">
 	<thead><tr><th style="text-align:center">'.

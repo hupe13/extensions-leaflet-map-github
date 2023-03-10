@@ -114,7 +114,7 @@ function leafext_extramarker_help() {
       'desc' => $option['desc'],
     );
   }
-  $text = $text.'<div style="width:80%;">'.leafext_html_table($new).'</div>';
+  $text = $text.leafext_html_table($new);
   if (is_singular() || is_archive() ) {
     return $text;
   } else {

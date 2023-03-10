@@ -44,7 +44,7 @@ function leafext_choropleth_help() {
       'example' => $option[3],
     );
   }
-  $text = $text.'<div style="width:80%;">'.leafext_html_table($new).'</div>';
+  $text = $text.leafext_html_table($new);
 
   $text=$text.'<h3>mode</h3>
   <ul>

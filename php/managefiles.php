@@ -146,16 +146,3 @@ function leafext_get_kml_data($file) {
   }
   return $kmldata;
 }
-
-//Display array as table
-function leafext_html_table($data = array()) {
-  $rows = array();
-  foreach ($data as $row) {
-    $cells = array();
-    foreach ($row as $cell) {
-      $cells[] = "<td>{$cell}</td>";
-    }
-    $rows[] = "<tr>" . implode('', $cells) . "</tr>";
-  }
-  return "<table border='1'>" . implode('', $rows) . "</table>";
-}

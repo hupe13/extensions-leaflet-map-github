@@ -31,6 +31,9 @@ function leafext_help_tiles() {
   '</a>');
   $text=$text.'</p>';
   $text = $text.'<h2>'.__('Your Settings','extensions-leaflet-map').'</h2>';
+  if (is_singular() || is_archive()){
+		$text=$text.'<style>td,th { border:1px solid #195b7a !important; }</style>';
+	}
   $text=$text.'
   <figure class="wp-block-table aligncenter is-style-stripes">
   <table class="form-table" border="1">

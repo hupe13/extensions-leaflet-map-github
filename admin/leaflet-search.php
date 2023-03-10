@@ -39,7 +39,7 @@ function leafext_leafletsearch_help(){
       'values' => $option['values'],
     );
   }
-  $text=$text.'<div style="width:80%;">'.leafext_html_table($new).'</div>';
+  $text=$text.leafext_html_table($new);
 
   // $text=$text.'<h3>'.__('Examples for',"extensions-leaflet-map").' marker:</h3>';
   // $text=$text.'<p><a href="https://leafext.de/leafletsearch/leafletsearchmarker/">'.__('Examples',"extensions-leaflet-map").'</a></p>';
