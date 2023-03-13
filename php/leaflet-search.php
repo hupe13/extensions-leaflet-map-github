@@ -3,7 +3,7 @@
 * Functions for leaflet-search shortcode
 * extensions-leaflet-map
 * leaflet-search knows: L.Marker L.CircleMarker L.LayerGroup L.Path L.Polyline L.Polygon L.LayerGroup, GeoJson
-* implemented: L.Marker, GeoJson
+* implemented: L.Marker, GeoJson, L.Polygon, L.Circle L.Polyline
 * Leaflet-Map knows CircleMarker only in leaflet-geojson
 */
 // Direktzugriff auf diese Datei verhindern:
@@ -20,12 +20,13 @@ function leafext_search_params() {
     // | propertyName	  | 'title'	 | property in marker.options(or feature.properties for vector layer) trough filter elements in layer, |
     array(
       'param' => 'propertyName',
-      'desc' => sprintf(__('a option / property for marker or a %s for geojson layer. Can also be a comma-separated list of options or properties.',"extensions-leaflet-map"),
+      'desc' => sprintf(__('a option / property for marker, polygon, circle, line or a %s for geojson layer. Can also be a comma-separated list of options or properties.',"extensions-leaflet-map"),
       'feature.property'),
       'default' => 'title',
-      'values' => sprintf(__('for example %s for marker, additional for example %s for extramarkers; %s depending on geojson layer; %s for all',"extensions-leaflet-map"),
+      'values' => sprintf(__('for example %s for marker, additional for example %s for extramarkers; %s for polygon, circle, line; %s depending on geojson layer; %s for all',"extensions-leaflet-map"),
       'title, iconclass',
       'number',
+      'color, className',
       'feature.property',
       'popupContent'),
     ),
@@ -270,6 +271,74 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
           } // has markers[i]._map
         } // loop markers
 
+        var markergroups = window.WPLeafletMapPlugin.markergroups;
+        Object.entries(markergroups).forEach(([key, value]) => {
+          if ( markergroups[key]._map !== null ) {
+            if (map_id == markergroups[key]._map._leaflet_id) {
+              //console.log("markergroups loop");
+              markergroups[key].eachLayer(function(layer) {
+                //console.log(layer);
+                if (layer instanceof L.Marker){
+                  //console.log("is_marker");
+                } else if (layer instanceof L.Polygon || layer instanceof L.Circle || layer instanceof L.Polyline ) {
+                  //console.log("markergroup");
+
+                  let leafextsearch = "";
+                  for (let i = 0; i < all_properties.length; i++) {
+                    att_property = all_properties[i];
+
+                    if (layer.hasOwnProperty(att_property)) {
+                      if (typeof layer.options[att_property] != "undefined") {
+                        leafextsearch = leafextsearch.concat(' | ',layer.options[att_property]);
+                      }
+                    } else
+                    if (att_property == "popupContent") {
+                      //console.log("popupContent");
+                      if (typeof layer.getPopup() != "undefined") {
+                        if ( typeof layer.getPopup().getContent() != "undefined" ) {
+                          leafextsearch = leafextsearch.concat(' | ', layer.getPopup().getContent());
+                        }
+                      }
+                    }
+                    else {
+                      if (layer.options[att_property] != "undefined" && layer.options[att_property] != "") {
+                        leafextsearch = leafextsearch.concat(' | ',layer.options[att_property]);
+                      } else {
+                        console.log("was nun?");
+                      }
+                    }
+
+                    if (leafextsearch != "") {
+                      // replace - strip out HTML
+                      leafextsearch=leafextsearch.replace( /<p>/ig, ' ');
+                      leafextsearch=leafextsearch.replace( /<br>/ig, ' ');
+                      leafextsearch=leafextsearch.replace( /(<([^>]+)>)/ig,'');
+                      leafextsearch=leafextsearch.replace( / \| /g, '');
+                      leafextsearch=leafextsearch.replace( / +/g, ' ');
+
+                      let search = leafextsearch;
+                      if (typeof duplicates[search] == "undefined" ) {
+                        duplicates[search] = 1;
+                      } else {
+                        duplicates[search] = duplicates[search] + 1;
+                      }
+                    }
+
+                    if (leafextsearch != "") {
+                      layer.options["searchindex"] = i;
+                      layer.options[att_propertyName] = leafextsearch;
+                      markersLayer.addLayer(layer);
+                    }
+                  }
+                } else {
+                  //console.log("other");
+                  //console.log(layer);
+                }
+              });
+            }
+          }
+        });
+
         //console.log(markersLayer);
         //console.log("markerslayer.length "+Object.keys(markersLayer._layers).length);
         if (Object.keys(markersLayer._layers).length > 0) {
@@ -290,13 +359,18 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
               <?php echo $jsoptions;?>
               initial: false,
               moveToLocation: function(latlng, title, map) {
-                //console.log("moveToLocation");
-                map.setView(latlng,att_zoom);
-                // },
-                // buildTip: function (text, val) {
-                // // strip HTML out
-                // string=text.replace( /(<([^>]+)>)/ig,'');
-                // return '<li class="">'+string+'</li>';
+                // console.log("moveToLocation");
+                // console.log(latlng, title);
+                // console.log(latlng.layer);
+                if (latlng.layer instanceof L.Polygon || latlng.layer instanceof L.Circle || latlng.layer instanceof L.Polyline ) {
+                  map.fitBounds(L.latLngBounds([latlng]));
+                  var zoom = map.getBoundsZoom(latlng.layer.getBounds());
+                  map.setView(latlng, zoom); // access the zoom
+                } else {
+                  //console.log("has not Bounds");
+                  map.fitBounds(L.latLngBounds([latlng]));
+                  map.setZoom(att_zoom);
+                }
               }
             }
           );
@@ -342,13 +416,13 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
     //
 
     if ( count_geojson > 0 && (count_marker == 0 || type != "marker")) { //type "geojson" or "all"
-      //console.log("geojsons");
+      // console.log("geojsons");
       var geojsons = window.WPLeafletMapPlugin.geojsons;
       var geojsonLayers = new L.layerGroup();
 
       for (var j = 0, len = count_geojson; j < len; j++) {
         if (map_id == geojsons[j]._map._leaflet_id) {
-          //console.log(geojsons[j]);
+          // console.log(geojsons[j]);
           geojsons[j].options[all_properties]
           geojsons[j].on("ready", function (e) {
             let duplicates = {};
@@ -363,6 +437,7 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
                 //if (layer.feature.properties.hasOwnProperty(att_property)) {
                 if (att_property == "popupContent") {
                   if (typeof layer.getPopup() != "undefined") {
+                    // console.log("geojson popup");
                     //layer.feature.properties['popupContent'] = layer.getPopup().getContent();
                     leafextsearch = leafextsearch.concat(' | ',layer.getPopup().getContent());
                   }
@@ -397,7 +472,8 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
         }
         //
         if (Object.keys(geojsonLayers._layers).length > 0) {
-          //console.log(Object.keys(geojsonLayers._layers).length);
+          // console.log(Object.keys(geojsonLayers._layers).length);
+          // console.log(searchcontrol[map_id][att_propertyName]);
           if (searchcontrol[map_id][att_propertyName] == "found") {
             searchcontrol[map_id][att_propertyName] = "added";
             map.addLayer(geojsonLayers);
@@ -417,11 +493,6 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
                   var zoom = map.getBoundsZoom(latlng.layer.getBounds());
                   map.setView(latlng, zoom); // access the zoom
                 }
-                // },
-                // buildTip: function (text, val) {
-                //   // strip HTML out
-                //   string=text.replace( /(<([^>]+)>)/ig,'');
-                //   return '<li class="">'+string+'</li>';
               }
             });
             map.addControl( geojsonSearchControl );  //inizialize search control
@@ -452,7 +523,16 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
               e.sourceTarget._input.blur();
             });
           } else {
-            console.log("Nothing to search in Geojsons");
+            if (markersLayer) {
+              //Suchfeld schon da?
+              if ( Object.keys(markersLayer._layers).length > 0 ) {
+                geojsonLayers.eachLayer(function(layer) {
+                  markersLayer.addLayer(layer);
+                });
+              }
+            } else {
+              console.log("Nothing to search in Geojsons");
+            }
           }
         }
       }

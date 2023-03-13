@@ -237,8 +237,8 @@ function leafext_enqueue_leafletsearch () {
   LEAFEXT_PLUGIN_FILE),
   array('leaflet_stylesheet'), null);
   if ( strpos($_SERVER['HTTP_USER_AGENT'],"iPhone") !== false) {
-    wp_enqueue_style('leafletsearchmobile',
-    plugins_url('leaflet-plugins/leaflet-search/dist/leaflet-search.mobile.min.css',
+    wp_enqueue_style('leafletsearchiphone',
+    plugins_url('css/iphone.min.css',
     LEAFEXT_PLUGIN_FILE),
     array('leafletsearch'), null);
   }

@@ -41,6 +41,9 @@ Use %s to group elements by options and %s to group elements by properties.','ex
   //any many
   [leaflet-marker      ...] ... [/leaflet-marker]
   [leaflet-extramarker ...] ... [/leaflet-extramarker]
+  [leaflet-polygon     ...] ... [/leaflet-polygon]
+  [leaflet-circle      ...] ... [/leaflet-circle]
+  [leaflet-line        ...] ... [/leaflet-line]
   [leaflet-geojson     ...] ... [/leaflet-geojson]
   [leaflet-gpx         ...] ... [/leaflet-gpx]
   [leaflet-kml         ...] ... [/leaflet-kml]
@@ -48,8 +51,7 @@ Use %s to group elements by options and %s to group elements by properties.','ex
   //suitable for all leaflet-elements above
   [leaflet-optiongroup option="..." values="..., ..." groups="..., ..." substr visible=...]
   //suitable for leaflet-geojson, leaflet-gpx, leaflet-kml.
-  [leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." <code><span style="color: #d63638">!</span>substr</code>substr visible=...]
-  </pre>
+  [leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." <span style="color: #d63638">!</span>substr visible=...]</pre>
   ';
 	$text=$text.'<h3>leaflet-optiongroup option</h3>'.
 	sprintf(__('Each of the above leaflet elements has options. These are from the shortcode %s and are fixed.','extensions-leaflet-map'),'<code>leaflet-...</code>').' ';
@@ -65,7 +67,10 @@ Use %s to group elements by options and %s to group elements by properties.','ex
 	__("You can use iconclass to group, regardless of whether they affect the appearance of the icon or not.",'extensions-leaflet-map')
 	.'</li>
 	<li>'.
-	'leaflet-extramarker: className, extraClasses, icon, iconColor, markerColor, number, prefix, shape'
+	'leaflet-extramarker: className, extraClasses, icon, iconColor, markerColor, number, prefix, shape, title'
+	.'</li>
+	<li>'.
+	'leaflet-polygon (-circle, -line):  color, className'
 	.'</li>
 	<li>'.
 	'leaflet-geojson (-gpx, -kml): iconUrl, alt, className, color'.
@@ -81,6 +86,8 @@ Use %s to group elements by options and %s to group elements by properties.','ex
 	.'</li>
 	</ul>'.
 	'</li>'.
+	'<li>'.sprintf(__('See %sLeaflet Map Github page%s for more or less useful and possible options.',"extensions-leaflet-map"),
+  '<a href="https://github.com/bozdoz/wp-plugin-leaflet-map#leaflet-marker">','</a>').'</li>'.
 	'<li>'.__('The options are case sensitive.','extensions-leaflet-map')
 	.'</li>
 	</ul>';

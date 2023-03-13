@@ -55,12 +55,3 @@ https://github.com/Artuar/css-test-device-or-desktop */
 .leaflet-control-zoom-in {
   text-decoration: none !important;
 }
-
-/* iPhone problem, danke HR! */
-/* @media (max-width: 768px) {
-  .leaflet-control-search .search-input,
-  .leaflet-control-search .search-alert {
-    font-size: 1.4em !important;
-    max-width: 200px !important;
-  }
-} */

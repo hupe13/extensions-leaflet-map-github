@@ -14,10 +14,12 @@ function leafext_leafletsearch_help(){
   //any many
   &#91;leaflet-marker      ...] ... [/leaflet-marker]
   &#91;leaflet-extramarker ...] ... [/leaflet-extramarker]
+  &#91;leaflet-polygon     ...] ... [/leaflet-polygon]
+  &#91;leaflet-circle      ...] ... [/leaflet-circle]
+  &#91;leaflet-line        ...] ... [/leaflet-line]
   &#91;leaflet-geojson     ...] ... [/leaflet-geojson]
   //one or more
-  &#91;leaflet-search propertyName="..." ...]
-  </pre>
+  &#91;leaflet-search propertyName="..." ...]</pre>
   ';
 
   $text = $text.'<p><h2>'.__('Options','extensions-leaflet-map').'</h2></p>';
@@ -40,6 +42,9 @@ function leafext_leafletsearch_help(){
     );
   }
   $text=$text.leafext_html_table($new);
+
+  $text=$text.'<p>'.sprintf(__('See %sLeaflet Map Github page%s for more or less useful and possible options for %s.',"extensions-leaflet-map"),
+  '<a href="https://github.com/bozdoz/wp-plugin-leaflet-map#leaflet-marker">','</a>','propertyName').'</p>';
 
   // $text=$text.'<h3>'.__('Examples for',"extensions-leaflet-map").' marker:</h3>';
   // $text=$text.'<p><a href="https://leafext.de/leafletsearch/leafletsearchmarker/">'.__('Examples',"extensions-leaflet-map").'</a></p>';

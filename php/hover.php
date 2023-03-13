@@ -6,382 +6,161 @@
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
-//Shortcode: [hover]
-function leafext_geojsonhover_script($url){
-	$text = '<script><!--';
-	ob_start();
-	?>/*<script>*/
+include_once LEAFEXT_PLUGIN_DIR . 'php/hover_geojsonstyle.php';
+include_once LEAFEXT_PLUGIN_DIR . 'php/hover_geojsontooltip.php';
+include_once LEAFEXT_PLUGIN_DIR . 'php/hover_markergroupstyle.php';
+include_once LEAFEXT_PLUGIN_DIR . 'php/hover_markergrouptooltip.php';
+include_once LEAFEXT_PLUGIN_DIR . 'php/hover_markertooltip.php';
 
-	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
-	window.WPLeafletMapPlugin.push(function () {
-		var map = window.WPLeafletMapPlugin.getCurrentMap();
-		var map_id = map._leaflet_id;
-		//console.log(map_id);
-		var maps=[];
-		maps[map_id] = map;
+function leafext_hover_params($typ = '') {
+	$params = array(
+		array(
+			'param' => 'marker',
+			'desc' => __('show tooltip for marker on hover or not',"extensions-leaflet-map"),
+			'default' => true,
+			'values' => 'true, false',
+			'element' => true,
+			'only' => false,
+		),
+		array(
+			'param' => 'circle',
+			'desc' => __('',"extensions-leaflet-map"),
+			'default' => true,
+			'values' => 'true, false, tooltip, style',
+			'element' => true,
+			'only' => false,
+		),
+		array(
+			'param' => 'polygon',
+			'desc' => __('',"extensions-leaflet-map"),
+			'default' => true,
+			'values' => 'true, false, tooltip, style',
+			'element' => true,
+			'only' => false,
+		),
+		array(
+			'param' => 'line',
+			'desc' => __('',"extensions-leaflet-map"),
+			'default' => true,
+			'values' => 'true, false, tooltip, style',
+			'element' => true,
+			'only' => false,
+		),
+		array(
+			'param' => 'geojson',
+			'desc' => __('',"extensions-leaflet-map"),
+			'default' => true,
+			'values' => 'true, false, tooltip, style',
+			'element' => true,
+			'only' => false,
+		),
+		array(
+			'param' => 'gpx',
+			'desc' => __('',"extensions-leaflet-map"),
+			'default' => true,
+			'values' => 'true, false, tooltip, style',
+			'element' => true,
+			'only' => false,
+		),
+		array(
+			'param' => 'kml',
+			'desc' => __('',"extensions-leaflet-map"),
+			'default' => true,
+			'values' => 'true, false, tooltip, style',
+			'element' => true,
+			'only' => false,
+		),
+		//
+		array(
+			'param' => 'markertooltip',
+			'desc' => __('alias for',"extensions-leaflet-map").' <code>[hover marker=true circle/polygon/line/geojson/gpx/kml=false]</code>',
+			'default' => false,
+			'values' => '',
+			'element' => false,
+			'only' => true,
+		),
+		array(
+			'param' => 'geojsontooltip',
+			'desc' => __('alias for',"extensions-leaflet-map").' <code>[hover geojson/gpx/kml=tooltip marker/circle/polygon/line=false]</code>',
+			'default' => false,
+			'values' => '',
+			'element' => false,
+			'only' => true,
+		),
+		array(
+			'param' => 'geojsonstyle',
+			'desc' => __('alias for',"extensions-leaflet-map").' <code>[hover geojson/gpx/kml=style marker/circle/polygon/line=false]</code>',
+			'default' => false,
+			'values' => '',
+			'element' => false,
+			'only' => true,
+		),
+		array(
+			'param' => 'markergrouptooltip',
+			'desc' => __('alias for',"extensions-leaflet-map").' <code>[hover circle/polygon/line=tooltip marker/geojson/gpx/kml=false]</code>',
+			'default' => false,
+			'values' => '',
+			'element' => false,
+			'only' => true,
+		),
+		array(
+			'param' => 'markergroupstyle',
+			'desc' => __('alias for',"extensions-leaflet-map").' <code>[hover circle/polygon/line=style marker/geojson/gpx/kml=false]</code>',
+			'default' => false,
+			'values' => '',
+			'element' => false,
+			'only' => true,
+		),
+		//
+		array(
+			'param' => 'exclude',
+			'desc' => __('exclude any geojson, gpx, kml with a defined substring in the src url from changing its style on hovering, the tooltip is not affected','extensions-leaflet-map'),
+			'default' => '',
+			'values' => __('substring from url to geojson, gpx, kml file',"extensions-leaflet-map"),
+			'element' => false,
+			'only' => false,
+		),
+		array(
+			'param' => 'tolerance',
+			'desc' => __('determines how much to extend click tolerance round a path/object on the map','extensions-leaflet-map'),
+			'default' => 0,
+			'values' => 'a number',
+			'element' => false,
+			'only' => false,
+		),
+		// array(
+		// 	'param' => 'tooltip',
+		// 	'desc' => __('',"extensions-leaflet-map"),
+		// 	'default' => '',
+		// 	'values' => 'marker,circle,polygon,line,geojson,gpx,kml',
+		// ),
+		// array(
+		// 	'param' => 'style',
+		// 	'desc' => __('',"extensions-leaflet-map"),
+		// 	'default' => '',
+		// 	'values' => 'marker,circle,polygon,line,geojson,gpx,kml',
+		// ),
+		// array(
+		// 	'param' => '',
+		// 	'desc' => __('',"extensions-leaflet-map"),
+		// 	'default' => '',
+		// 	'values' => __('',"extensions-leaflet-map"),
+		// ),
+	);
 
-		if ( WPLeafletMapPlugin.geojsons.length > 0 ) {
-			var geojsons = window.WPLeafletMapPlugin.geojsons;
-			var geocount = geojsons.length;
-
-			for (var j = 0, len = geocount; j < len; j++) {
-				var geojson = geojsons[j];
-				//console.log(geojson);
-				if (map_id == geojsons[j]._map._leaflet_id) {
-					//mouse click
-					geojson.layer.on("click", function (e) {
-						//console.log("click");
-						e.target.eachLayer(function(layer) {
-							if (typeof layer.getPopup() != "undefined") {
-								if (layer.getPopup().isOpen())
-								layer.unbindTooltip();
-							}
-						});
-					});
-					//mouse click end
-
-					//mouseout
-					geojson.layer.on("mouseout", function (e) {
-						let i = 0;
-						e.target.eachLayer(function(){ i += 1; });
-						//console.log("mouseout has", i, "layers.");
-						if (i > 1) {
-							//console.log("resetStyle");
-							e.target.eachLayer(function(layer){
-								if (typeof layer.setStyle != "undefined") {
-									//console.log(layer);
-									if (typeof layer.options.origweight != "undefined") {
-										var origweight = layer.options.origweight;
-									} else {
-										var origweight = 3; //leaflet default
-									}
-									if (typeof layer.options.origfillOpacity != "undefined") {
-										var origfillOpacity = layer.options.origfillOpacity;
-									} else {
-										var origfillOpacity = 0.2; //leaflet default
-									}
-									layer.setStyle({
-										"fillOpacity" : origfillOpacity,
-										"weight" : origweight,
-									});
-								}
-							});
-							geojson.resetStyle();
-						} else {
-							//resetStyle is only working with a geoJSON Group.
-							e.target.eachLayer(function(layer) {
-								//console.log(layer);
-								if (typeof layer.setStyle != "undefined") {
-									//console.log(layer);
-									if (typeof layer.options.origweight != "undefined") {
-										var origweight = layer.options.origweight;
-									} else {
-										var origweight = 3; //leaflet default
-									}
-									if (typeof layer.options.origfillOpacity != "undefined") {
-										var origfillOpacity = layer.options.origfillOpacity;
-									} else {
-										var origfillOpacity = 0.2; //leaflet default
-									}
-									layer.setStyle({
-										"fillOpacity" : origfillOpacity,
-										"weight" : origweight,
-									});
-								}
-							});
-							geojson.resetStyle();
-						}
-					});
-					//mouseout end
-
-					let excludeurl = new RegExp(".*" + "<?php echo $url; ?>" + ".*");
-					//console.log("excludeurl", excludeurl,geojson._url);
-
-					if ( "<?php echo $url; ?>" == ""  || ( "<?php echo $url; ?>" != "" && !geojson._url.match (excludeurl)) ) {
-						//console.log("layer event mouseover not matches");
-
-						//mouseover
-						geojson.layer.on("mouseover", function (e) {
-							let i = 0;
-							e.target.eachLayer(function(){ i += 1; });
-							//console.log("mouseover has", i, "layers.");
-							var marker_popup_open = false;
-							if (e.target._map !== null) {
-								e.target._map.eachLayer(function(layer){
-									if (typeof layer.options.icon != "undefined") {
-										//console.log("icon defined");
-										if (typeof layer.getPopup() != "undefined") {
-											if (layer.getPopup().isOpen()) {
-												marker_popup_open = true;
-											}
-										}
-									}
-								});
-							}
-							if (i > 1) {
-								if (typeof e.sourceTarget.setStyle != "undefined") {
-									//console.log("style4");
-									//console.log(e);
-									if (typeof e.sourceTarget.options.fillOpacity == "undefined") {
-										var highfillOpacity = 0.4; //leaflet default + 0.2
-									} else {
-										e.sourceTarget.options.origfillOpacity = e.sourceTarget.options.fillOpacity;
-										var highfillOpacity = e.sourceTarget.options.fillOpacity + 0.2;
-									}
-									if (typeof e.sourceTarget.options.weight == "undefined") {
-										var highweight = 5; //leaflet default +2
-									} else {
-										e.sourceTarget.options.origweight = e.sourceTarget.options.weight;
-										var highweight = e.sourceTarget.options.weight + 2;
-									}
-									e.sourceTarget.setStyle({
-										"fillOpacity" : highfillOpacity,
-										"weight" : highweight,
-									});
-									e.sourceTarget.bringToFront();
-									// } else {
-									//console.log("nostyle");
-								}
-							} else {
-								//console.log("style2");
-								e.target.eachLayer(function(layer) {
-									if ( marker_popup_open ) {
-										//console.log("mouseover handle marker popup");
-										layer.unbindTooltip();
-									} else {
-										if (typeof layer.getPopup() != "undefined") {
-											if (!layer.getPopup().isOpen() && layer.getTooltip() === null) {
-												//console.log("need tooltip");
-												var content = layer.getPopup().getContent();
-												layer.bindTooltip(content);
-											}
-										}
-									}
-								});
-
-								e.target.eachLayer(function(layer) {
-									//console.log("style3");
-									//console.log(layer);
-									if (typeof layer.setStyle != "undefined") {
-										//console.log(layer.options.fillOpacity);
-										//console.log(layer.options.weight);
-										if (typeof layer.options.fillOpacity == "undefined") {
-											var highfillOpacity = 0.4; //leaflet default + 0.2
-										} else {
-											layer.options.origfillOpacity = layer.options.fillOpacity;
-											var highfillOpacity = layer.options.fillOpacity + 0.2;
-										}
-										if (typeof layer.options.weight == "undefined") {
-											var highweight = 5; //leaflet default +2
-										} else {
-											layer.options.origweight = layer.options.weight;
-											var highweight = layer.options.weight + 2;
-										}
-										layer.setStyle({
-											"fillOpacity" : highfillOpacity,
-											"weight" : highweight,
-										});
-										//layer.setStyle(leafext_highlightstyle);
-										layer.bringToFront();
-									}
-								});
-
-							} //end else i
-						});
-						//mouseover end
-
-						//mousemove
-						geojson.layer.on("mousemove", function (e) {
-							let i = 0;
-							e.target.eachLayer(function(){ i += 1; });
-							//console.log("mousemove has", i, "layers.");
-							marker_popup_open = false;
-							if (e.target._map !== null) {
-								e.target._map.eachLayer(function(layer){
-									if (typeof layer.options.icon != "undefined") {
-										//console.log("icon defined");
-										if (typeof layer.getPopup() != "undefined" ) {
-											if (layer.getPopup().isOpen()) {
-												//console.log("mousemove popup is open");
-												marker_popup_open = true;
-											}
-										}
-									}
-								});
-							}
-
-							if (i > 1) {
-								//marker as geojson
-								if (typeof e.sourceTarget.getPopup() != "undefined") {
-									if ( !e.sourceTarget.getPopup().isOpen()) {
-										map.closePopup();
-										var content = e.sourceTarget.getPopup().getContent();
-										e.sourceTarget.bindTooltip(content);
-										e.sourceTarget.openTooltip(e.latlng);
-									}
-								}
-							} else {
-								e.target.eachLayer(function(layer) {
-									if (typeof layer.getPopup() != "undefined") {
-										if ( !layer.getPopup().isOpen() && !marker_popup_open) {
-											map.closePopup();
-											if ( typeof layer.getTooltip() == "undefined") {
-												var content = layer.getPopup().getContent();
-												//console.log(content);
-												layer.bindTooltip(content);
-											}
-											layer.openTooltip(e.latlng);
-										}
-									}
-								});
-							}
-						});
-						//mousemove end
-
-					} else {
-						//excludeurl
-						//console.log("url exclude");
-						//console.log(geojson);
-						geojson.layer.on('mouseover', function () {
-							this.bringToBack();
-						});
-
-						geojson.layer.on('mouseover', function (e) {
-							e.target.eachLayer(function(layer) {
-								//console.log(layer);
-								if (typeof layer.getPopup() != "undefined") {
-									//console.log("popup defined");
-									if (!layer.getPopup().isOpen()) {
-										//console.log("need tooltip");
-										var content = layer.getPopup().getContent();
-										layer.bindTooltip(content);
-									}
-								}
-							});
-						});
-
-						geojson.layer.on("mousemove", function (e) {
-							e.target.eachLayer(function(layer) {
-								if (typeof layer.getPopup() != "undefined") {
-									if ( !layer.getPopup().isOpen() ) {
-										//map.closePopup();
-										layer.openTooltip(e.latlng);
-									}
-								}
-							});
-						});
-
-					} //else end excludeurl
-
-				}//geojson foreach
+	if ($typ != '') {
+		foreach ($params as $key => $value) {
+			if (! $params[$key][$typ]) {
+				unset($params[$key]);
 			}
 		}
-		//geojson end
-
-		var markers = window.WPLeafletMapPlugin.markers;
-		if (markers.length > 0) {
-			for (var i = 0; i < WPLeafletMapPlugin.markers.length; i++) {
-				var a = WPLeafletMapPlugin.markers[i];
-				if (( a._map != null && a._map._leaflet_id == map_id) ||
-				a._map == null ) {
-					a.on("mouseover", function (e) {
-						//console.log("marker mouseover");
-						//console.log(e.sourceTarget.options.title);
-						if (typeof e.sourceTarget.getPopup() != "undefined") {
-							if ( ! e.sourceTarget.getPopup().isOpen()) {
-								map.closePopup();
-								//console.log(e.sourceTarget.options);
-								if ( typeof e.sourceTarget.options.title != "undefined" && e.sourceTarget.options.title != "") {
-									var content = e.sourceTarget.options.title;
-									//console.log(e.sourceTarget);
-								} else {
-									if ( typeof e.sourceTarget.getPopup().getContent() != "undefined" )
-									var content = e.sourceTarget.getPopup().getContent();
-								}
-								if ( typeof content != "undefined" ) {
-									e.sourceTarget.bindTooltip(content);
-									e.sourceTarget.openTooltip(e.latlng);
-								}
-								// } else {
-								//
-							}
-						}
-					});
-					a.on("click", function (e) {
-						//console.log("click");
-						e.sourceTarget.unbindTooltip();
-					});
-					// } else {
-					// console.log("nicht dasselbe");
-				}
-			}
+		$selection = array();
+		foreach ($params as $value) {
+			array_push($selection,$value['param']);
 		}
-
-		var markergroups = window.WPLeafletMapPlugin.markergroups;
-		Object.entries(markergroups).forEach(([key, value]) => {
-			if ( markergroups[key]._map !== null ) {
-				if (map_id == markergroups[key]._map._leaflet_id) {
-					//console.log("markergroups loop");
-					markergroups[key].eachLayer(function(layer) {
-						//console.log(layer);
-						if (layer instanceof L.Marker){
-							//console.log("is_marker");
-						} else if (layer instanceof L.Polygon || layer instanceof L.Circle || layer instanceof L.Polyline ) {
-							//console.log("is_Polygon or circle or polyline");
-							if (typeof layer.getTooltip() == "undefined") {
-								if (typeof layer.getPopup() != "undefined") {
-									var content = layer.getPopup().getContent();
-									layer.bindTooltip(content);
-								}
-							}
-							layer.on("mouseover", function (e) {
-								//console.log("mouseover");
-								if (typeof e.sourceTarget.setStyle != "undefined") {
-									//console.log(e.sourceTarget.options.fillOpacity);
-									//console.log(e.sourceTarget.options.weight);
-									e.sourceTarget.setStyle({
-										"fillOpacity" : e.sourceTarget.options.fillOpacity+0.20,
-										"weight" : e.sourceTarget.options.weight+2
-									});
-									e.sourceTarget.bringToFront();
-								}
-								if ( typeof e.sourceTarget.getPopup() != "undefined") {
-									if ( ! e.sourceTarget.getPopup().isOpen()) {
-										var content = e.sourceTarget.getPopup().getContent();
-										e.sourceTarget.bindTooltip(content);
-										e.sourceTarget.openTooltip();
-									}
-								}
-							});
-							layer.on("mouseout", function (e) {
-								if (typeof e.sourceTarget.setStyle != "undefined") {
-									//console.log("mouseout");
-									//console.log(e.sourceTarget.options.fillOpacity);
-									//console.log(e.sourceTarget.options.weight);
-									e.sourceTarget.setStyle({
-										"fillOpacity" : e.sourceTarget.options.fillOpacity-0.20,
-										"weight" : e.sourceTarget.options.weight-2
-									});
-								}
-							});
-							layer.on("click", function (e) {
-								//console.log("click");
-								e.sourceTarget.unbindTooltip();
-							});
-						} else {
-							//console.log("other");
-							//console.log(layer);
-						}
-					});
-				}
-			}
-		});
-	});
-	<?php
-	$javascript = ob_get_clean();
-	$text = $text . $javascript . '//-->'."\n".'</script>';
-	$text = \JShrink\Minifier::minify($text);
-	return "\n".$text."\n";
+		return $selection;
+	}
+	return $params;
 }
 
 function leafext_canvas_script($tolerance) {
@@ -400,20 +179,68 @@ function leafext_canvas_script($tolerance) {
 	return "\n".$text."\n";
 }
 
-function leafext_geojsonhover_function($atts,$content,$shortcode) {
+function leafext_hover_function($atts,$content,$shortcode) {
 	$text = leafext_should_interpret_shortcode($shortcode,$atts);
 	if ( $text != "" ) {
 		return $text;
 	} else {
-		$settings = shortcode_atts(	array('exclude' => false,'tolerance' => 0), get_option( 'leafext_canvas' ));
-		$options  = shortcode_atts( $settings, $atts);
+		$defaults=array();
+		$params = leafext_hover_params();
+		foreach($params as $param) {
+			$defaults[$param['param']] = $param['default'];
+		}
+		$settings = shortcode_atts(	$defaults, get_option( 'leafext_canvas' ));
+		$options  = shortcode_atts( $settings, leafext_clear_params($atts));
 		//var_dump($atts,get_option( 'leafext_canvas'),$settings,$options); wp_die();
 		$text = "";
 		if ($options['tolerance'] != 0) {
 			$text = $text.leafext_canvas_script( $options['tolerance'] );
 		}
-		$text=$text.leafext_geojsonhover_script($options['exclude']);
+
+		$do_tooltip = array(true,'tooltip');
+		$do_style = array(true,'style');
+		$do_only = leafext_hover_params('only');
+		$do_element = leafext_hover_params('element');
+
+		foreach ($do_only as $only) {
+			if ($options[$only]) {
+				foreach ($do_element as $element) {
+					$options[$element] = false;
+				}
+				break;
+			}
+		}
+		//var_dump($options);
+
+		if (in_array($options['marker'],$do_tooltip,true)
+		|| $options['markertooltip'])
+		$text=$text.leafext_markertooltip_script($options);
+		//
+		if (in_array($options['circle'],$do_tooltip,true)
+		|| in_array($options['polygon'],$do_tooltip,true)
+		|| in_array($options['line'],$do_tooltip,true)
+		|| $options['markergrouptooltip'])
+		$text = $text.leafext_markergrouptooltip_script($options);
+		//
+		if (in_array($options['circle'],$do_style,true)
+		|| in_array($options['polygon'],$do_style,true)
+		|| in_array($options['line'],$do_style,true)
+		|| $options['markergroupstyle'])
+		$text = $text.leafext_markergroupstyle_script($options);
+		//
+		if (in_array($options['geojson'],$do_tooltip,true)
+		|| in_array($options['gpx'],$do_tooltip,true)
+		|| in_array($options['kml'],$do_tooltip,true)
+		|| $options['geojsontooltip'])
+		$text = $text.leafext_geojsontooltip_script($options);
+		//
+		if (in_array($options['geojson'],$do_style,true)
+		|| in_array($options['gpx'],$do_style,true)
+		|| in_array($options['kml'],$do_style,true)
+		|| $options['geojsonstyle'])
+		$text = $text.leafext_geojsonstyle_script($options);
+
 		return $text;
 	}
 }
-add_shortcode('hover', 'leafext_geojsonhover_function');
+add_shortcode('hover', 'leafext_hover_function');

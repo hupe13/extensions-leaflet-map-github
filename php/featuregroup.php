@@ -144,6 +144,78 @@ function leafext_featuregroup_script($options,$params){
 			} // loop markers
 		} // markers.length
 
+		var markergroups = window.WPLeafletMapPlugin.markergroups;
+		Object.entries(markergroups).forEach(([key, value]) => {
+			if ( markergroups[key]._map !== null ) {
+				if (map_id == markergroups[key]._map._leaflet_id) {
+					//console.log("markergroups loop");
+					markergroups[key].eachLayer(function(layer) {
+						//console.log(layer);
+						if (layer instanceof L.Marker){
+							//console.log("is_marker");
+						} else if (layer instanceof L.Polygon || layer instanceof L.Circle || layer instanceof L.Polyline ) {
+							// console.log("markergroup");
+
+							let found = false;
+							this_options = layer.options;
+							for (const key in this_options) {
+								if (this_options.hasOwnProperty(key)) {
+									if (key == att_option) {
+										found = true;
+										var is_key = false;
+										var this_option = `${this_options[key]}`;
+										//console.log("Suche nach "+this_option);
+										if (this_option in groups) {
+											console.log("Found Polygon/Circle/Line on map "+map_id+" option exact "+key+" "+this_option+" for "+groups[this_option]);
+											maps[map_id].removeLayer(layer);
+											layer.addTo(featGroups[map_id][groups[this_option]]);
+											is_key = true;
+										} else {
+											if (substr == true) {
+												for (group in groups) {
+													//console.log(group,this_option.match(group));
+													if (this_option.match(group)) {
+														console.log("Found Polygon/Circle/Line on map "+map_id+" option substring "+key+" "+group+" for "+groups[group]);
+														maps[map_id].removeLayer(layer);
+														layer.addTo(featGroups[map_id][groups[group]]);
+														is_key = true;
+														break;
+													}
+												}
+											}
+										}
+										if (is_key == false) {
+											if ("others" in groups) {
+												maps[map_id].removeLayer(layer);
+												layer.addTo(featGroups[map_id][groups["others"]]);
+											} else {
+												console.log("Polygon/Circle/Line option "+att_option+" not matched.");
+												console.log(layer.options);
+											}
+										}
+									}
+								} // hasOwnProperty(key)
+							} // key in this_options
+
+							if (found == false) {
+								if ("unknown" in groups) {
+									maps[map_id].removeLayer(layer);
+									layer.addTo(featGroups[map_id][groups["unknown"]]);
+								} else {
+									console.log("Polygon/Circle/Line option "+att_option+" is not available.");
+									console.log(layer.options);
+								}
+							}
+
+						} else {
+							//console.log("other");
+							//console.log(layer);
+						}
+					});
+				}
+			}
+		});
+
 		var geojsons = window.WPLeafletMapPlugin.geojsons;
 		if (geojsons.length > 0) {
 			//console.log("geojsons "+geojsons.length);
