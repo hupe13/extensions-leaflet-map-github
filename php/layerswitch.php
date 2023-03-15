@@ -1,8 +1,8 @@
 <?php
 /**
- * Functions for layerswitch shortcode
- * extensions-leaflet-map
- */
+* Functions for layerswitch shortcode
+* extensions-leaflet-map
+*/
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
@@ -10,7 +10,9 @@ defined( 'ABSPATH' ) or die();
 //Shortcode: [layerswitch tiles= providers= ]
 
 function leafext_layerswitch_begin_script() {
-	$text = '<script>
+	$text = '<script><!--';
+	ob_start();
+	?>/*<script>*/
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
@@ -26,7 +28,7 @@ function leafext_layerswitch_begin_script() {
 		map.eachLayer(function(layer) {
 			if( layer instanceof L.TileLayer ) {
 				layer.options.attribution = defaultAttr;
-				if(typeof layer.options.id !== "undefined") {
+				if( layer.options.id ) {
 					var defaultname = layer.options.id;
 				} else {
 					var defaultname = "Default";
@@ -35,53 +37,63 @@ function leafext_layerswitch_begin_script() {
 				map.removeLayer(layer);
 				map.addLayer(layer);
 			}
-		});';
-		return $text;
+		}
+	);
+	<?php
+	$javascript = ob_get_clean();
+	$text = $text . $javascript . '//-->'."\n";
+	return $text;
 }
 
 function leafext_layerswitch_tiles_script($mylayers,$myfulllayers){
 	$text = '
-		var mylayers = '.json_encode($mylayers).';
-		';
-		foreach ($myfulllayers as $myfulllayer) {
-			if ( $myfulllayer['overlay'] != "" ) {
+	var mylayers = '.json_encode($mylayers).';
+	';
+	foreach ($myfulllayers as $myfulllayer) {
+		if ( $myfulllayer['overlay'] != "" ) {
+			$text=$text.
+			'overlays['.$myfulllayer['mapid'].'] = L.tileLayer('.$myfulllayer['options'].');';
+			if ( $myfulllayer['opacity'] != "" ) {
 				$text=$text.
-				'overlays['.$myfulllayer['mapid'].'] = L.tileLayer('.$myfulllayer['options'].');';
-				if ( $myfulllayer['opacity'] != "" ) {
-					$text=$text.
-					'opacity['.$myfulllayer['mapid'].'] = overlays['.$myfulllayer['mapid'].'];';
-				}
-			} else {
+				'opacity['.$myfulllayer['mapid'].'] = overlays['.$myfulllayer['mapid'].'];';
+			}
+		} else {
+			$text=$text.
+			'baselayers['.$myfulllayer['mapid'].'] = L.tileLayer('.$myfulllayer['options'].');';
+			if ( $myfulllayer['opacity'] != "" ) {
 				$text=$text.
-				'baselayers['.$myfulllayer['mapid'].'] = L.tileLayer('.$myfulllayer['options'].');';
-				if ( $myfulllayer['opacity'] != "" ) {
-					$text=$text.
-					'opacity['.$myfulllayer['mapid'].'] = baselayers['.$myfulllayer['mapid'].'];';
-				}
+				'opacity['.$myfulllayer['mapid'].'] = baselayers['.$myfulllayer['mapid'].'];';
 			}
 		}
-		$text = $text.'
-		mylayers.forEach(extralayer => {
-			//console.log(extralayer);
-			if (extralayer.overlay == 1) {
-				overlays[extralayer.mapid] = L.tileLayer(extralayer.tile, {attribution: extralayer.attr, id: extralayer.mapid});
-				if (extralayer.opacity == 1) {
-					opacity[extralayer.mapid] = overlays[extralayer.mapid];
-				}
-			} else {
-				baselayers[extralayer.mapid] = L.tileLayer(extralayer.tile, {attribution: extralayer.attr, id: extralayer.mapid});
-				if (extralayer.opacity == 1) {
-					opacity[extralayer.mapid] = baselayers[extralayer.mapid];
-				}
+	}
+	$text = $text.'<!--';
+	ob_start();
+	?>/*<script>*/
+	mylayers.forEach(extralayer => {
+		//console.log(extralayer);
+		if (extralayer.overlay == 1) {
+			overlays[extralayer.mapid] = L.tileLayer(extralayer.tile, {attribution: extralayer.attr, id: extralayer.mapid});
+			if (extralayer.opacity == 1) {
+				opacity[extralayer.mapid] = overlays[extralayer.mapid];
 			}
-		});
-	';
+		} else {
+			baselayers[extralayer.mapid] = L.tileLayer(extralayer.tile, {attribution: extralayer.attr, id: extralayer.mapid});
+			if (extralayer.opacity == 1) {
+				opacity[extralayer.mapid] = baselayers[extralayer.mapid];
+			}
+		}
+	});
+	<?php
+	$javascript = ob_get_clean();
+	$text = $text . $javascript . '//-->'."\n";
 	return $text;
 }
 
 function leafext_providers_fkt_script() {
 	//https://github.com/leaflet-extras/leaflet-providers/blob/57d69ea6e75834235c607eab72cbb4da862ddc96/preview/preview.js#L56';
-	$text = "
+	$text = '<!--';
+	ob_start();
+	?>/*<script>*/
 	function isOverlay (providerName, layer) {
 		if (layer.options.opacity && layer.options.opacity < 1) {
 			return true;
@@ -99,7 +111,10 @@ function leafext_providers_fkt_script() {
 			'WaymarkedTrails.(hiking|cycling|mtb|slopes|riding|skating)'
 		];
 		return providerName.match('(' + overlayPatterns.join('|') + ')') !== null;
-	};";
+	};
+	<?php
+	$javascript = ob_get_clean();
+	$text = $text . $javascript . '//-->'."\n";
 	return $text;
 }
 
@@ -110,11 +125,12 @@ function leafext_providers_script($maps) {
 		$id = array_search(explode ( '.', $map )[0], array_column($regtiles, 'name'));
 		if ($id !== false) {
 			$text = $text.'var layer = L.tileLayer.provider("'.$map.'", {';
-			foreach ( $regtiles[$id]['keys'] as $key => $value ) {
-				$text = $text.$key.': "';
-				$text = $text.$value.'",';
-			}
-			$text = $text.'} );';
+				foreach ( $regtiles[$id]['keys'] as $key => $value ) {
+					$text = $text.$key.': "';
+					$text = $text.$value.'",';
+				}
+				$text = $text.'
+			} );';
 		} else {
 			$text = $text.'var layer = L.tileLayer.provider("'.$map.'");';
 		}
@@ -129,34 +145,42 @@ function leafext_providers_script($maps) {
 }
 
 function leafext_opacity_script($opacities) {
-	$text = '
-		var opacities = '.json_encode(explode(',',$opacities)).';
-		//console.log(opacities);
-		opacities.forEach(function(opid) {
-    	//console.log(opacity);
-			if (typeof baselayers[opid] !== "undefined") {
-				opacity[opid] = baselayers[opid];
-			}
-			if (typeof overlays[opid] !== "undefined") {
-				opacity[opid] = overlays[opid];
-			}
-		});
-	';
+	$text = '<!--';
+	ob_start();
+	?>/*<script>*/
+	var opacities = <?php echo json_encode(explode(',',$opacities));?>;
+	//console.log(opacities);
+	opacities.forEach(function(opid) {
+		//console.log(opacity);
+		if ( baselayers[opid] ) {
+			opacity[opid] = baselayers[opid];
+		}
+		if ( overlays[opid] ) {
+			opacity[opid] = overlays[opid];
+		}
+	});
+	<?php
+	$javascript = ob_get_clean();
+	$text = $text . $javascript . '//-->'."\n";
 	return $text;
 }
 
 function leafext_layerswitch_end_script() {
-	$text = '
-		//console.log(baselayers);
-		//console.log(overlays);
+	$text = '<!--';
+	ob_start();
+	?>/*<script>*/
+	//console.log(baselayers);
+	//console.log(overlays);
 
-		L.control.layers(baselayers,overlays).addTo(map);
-		if ( Object.entries(opacity).length !==  0) {
-			L.control.opacity(opacity,{collapsed:true,}).addTo(map);
-		}
-	});
-	</script>';
-	return $text;
+	L.control.layers(baselayers,overlays).addTo(map);
+	if ( Object.entries(opacity).length !==  0) {
+		L.control.opacity(opacity,{collapsed:true,}).addTo(map);
+	}
+});
+<?php
+$javascript = ob_get_clean();
+$text = $text . $javascript . '//-->'."\n".'</script>';
+return "\n".$text."\n";
 }
 
 function leafext_layerswitch_function($atts,$content,$shortcode) {

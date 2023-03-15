@@ -40,7 +40,7 @@ function leafext_markergroupstyle_script($options){
 							//console.log("is_Polygon or circle or polyline");
 							layer.on("mouseover", function (e) {
 								//console.log("mouseover");
-								if (typeof e.sourceTarget.setStyle != "undefined") {
+								if ( e.sourceTarget.setStyle ) {
 									//console.log(e.sourceTarget.options.fillOpacity);
 									//console.log(e.sourceTarget.options.weight);
 									e.sourceTarget.setStyle({
@@ -52,7 +52,7 @@ function leafext_markergroupstyle_script($options){
 
 							});
 							layer.on("mouseout", function (e) {
-								if (typeof e.sourceTarget.setStyle != "undefined") {
+								if ( e.sourceTarget.setStyle ) {
 									//console.log("mouseout");
 									//console.log(e.sourceTarget.options.fillOpacity);
 									//console.log(e.sourceTarget.options.weight);

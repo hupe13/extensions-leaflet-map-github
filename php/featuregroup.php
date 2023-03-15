@@ -74,7 +74,7 @@ function leafext_featuregroup_script($options,$params){
 
 						let this_options = a.getIcon().options;
 						if (this_options.hasOwnProperty(att_option)) {
-							if (typeof a.options[att_option] != "undefined") {
+							if ( a.options[att_option] ) {
 								if (this_options[att_option] != a.options[att_option] && typeof a.options[att_option] == "string") {
 									this_options[att_option]=a.options[att_option];
 									console.log("changed "+att_option+' '+this_options[att_option]);
@@ -235,7 +235,7 @@ function leafext_featuregroup_script($options,$params){
 								// console.log(att_option);
 								// console.log(layer.options[att_option]);
 								let found = false;
-								if (typeof layer.options[att_option] != "undefined") {
+								if ( layer.options[att_option] ) {
 									if (layer.options[att_option] in groups) {
 										console.log("Found geojson on map "+map_id+" option exact "+layer.options[att_option]+" "+groups[layer.options[att_option]]);
 										maps[map_id].removeLayer(layer);
@@ -278,7 +278,7 @@ function leafext_featuregroup_script($options,$params){
 							else if (att_property != '') {
 								let found = false;
 								//console.log(layer.feature.properties);
-								if (typeof layer.feature.properties[att_property] != "undefined") {
+								if ( layer.feature.properties[att_property] ) {
 									let prop = layer.feature.properties[att_property];
 									if (prop in groups) {
 										console.log("Found geojson on map "+map_id+" property exact "+prop+" for "+groups[prop]);

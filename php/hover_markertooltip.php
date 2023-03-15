@@ -13,6 +13,7 @@ function leafext_markertooltip_script($options){
 
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
+		console.log("leafext_markertooltip_script");
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
 		var map_id = map._leaflet_id;
 		//console.log(map_id);
@@ -28,11 +29,11 @@ function leafext_markertooltip_script($options){
 					// console.log(a.options.title);
 					if ( a.options.title ) {
 						// console.log("has title - deleted");
-						a.options.title = " ";
+						a.options.title = "";
 			 		}
 					if ( a._icon ) {
 						// console.log("has _icon - title deleted");
-						a._icon.title = " "; // muss ein Leerzeichen sein!! Sonst Fehler.
+						a._icon.title = "";
 			 		}
 					//console.log(a);
 					a.on("mouseover", function (e) {

@@ -45,7 +45,7 @@ function leafext_geojsontooltip_script($options){
 						geojson.layer.on("click", function (e) {
 							//console.log("click");
 							e.target.eachLayer(function(layer) {
-								if (typeof layer.getPopup() != "undefined") {
+								if ( layer.getPopup() ) {
 									if (layer.getPopup().isOpen())
 									layer.unbindTooltip();
 								}
@@ -65,10 +65,10 @@ function leafext_geojsontooltip_script($options){
 								// console.log(layer.getPopup().isOpen());
 
 								let popup_open = false;
-								if (typeof layer.getPopup() != "undefined") {
+								if ( layer.getPopup() ) {
 									if ( layer.getPopup().isOpen()) {
 										popup_open = true;
-										if (typeof layer.getTooltip() != "undefined") {
+										if ( layer.getTooltip() ) {
 											if (layer.feature.geometry.type == "MultiPoint") {
 												// console.log("Multipoint");
 												layer.closeTooltip();
@@ -83,7 +83,7 @@ function leafext_geojsontooltip_script($options){
 									if (popup_open == false) {
 										//console.log("popup_open == false");
 										//console.log(layer);
-										if (typeof layer.getPopup() != "undefined") {
+										if ( layer.getPopup() ) {
 											if ( !layer.getPopup().isOpen()) {
 												map.closePopup();
 											}
@@ -94,7 +94,7 @@ function leafext_geojsontooltip_script($options){
 									}
 								} else {
 									//kml, gpx
-									if (typeof e.sourceTarget.getPopup() != "undefined") {
+									if ( e.sourceTarget.getPopup() ) {
 										if ( !e.sourceTarget.getPopup().isOpen()) {
 											map.closePopup();
 											var content = e.sourceTarget.getPopup().getContent();

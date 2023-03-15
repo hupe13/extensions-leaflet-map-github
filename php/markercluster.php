@@ -63,7 +63,7 @@ function leafext_cluster_script($params){
 		});
 		if ( WPLeafletMapPlugin.markers.length > 0 ) {
 			//console.log("map.options.maxZoom "+map.options.maxZoom);
-			if (typeof map.options.maxZoom == "undefined")
+			if (! map.options.maxZoom )
 			map.options.maxZoom = 19;
 			//console.log("WPLeafletMapPlugin.markers.length "+WPLeafletMapPlugin.markers.length);
 			for (var i = 0; i < WPLeafletMapPlugin.markers.length; i++) {
@@ -96,7 +96,7 @@ function leafext_cluster_script($params){
 								//console.log(layer.feature.properties.name);
 								var content = layer.feature.properties.name;
 								//console.log(layer.getPopup());
-								if (typeof layer.getPopup() != "undefined") {
+								if ( layer.getPopup() ) {
 									//
 								} else if (typeof content != "undefined") {
 									layer.bindTooltip(content);

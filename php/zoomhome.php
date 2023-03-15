@@ -8,8 +8,9 @@ defined( 'ABSPATH' ) or die();
 
 //Shortcode: [zoomhomemap]
 function leafext_zoomhome_script($fit){
-	$text = '
-	<script>
+	$text = '<script><!--';
+	ob_start();
+	?>/*<script>*/
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
@@ -32,7 +33,7 @@ function leafext_zoomhome_script($fit){
 		// 0: home = ele fitbounds (default)
 		// 1: home = map
 		var allfit = [];
-		if ('.json_encode((bool)$fit).' && typeof maps[map_id]._shouldFitBounds === "undefined" ) {
+		if (<?php echo json_encode((bool)$fit); ?> && typeof maps[map_id]._shouldFitBounds === "undefined" ) {
 			allfit[map_id] = new L.latLngBounds();
 		}
 
@@ -241,7 +242,9 @@ function leafext_zoomhome_script($fit){
 		// 	console.log("zoomend zoom "+map_id+" "+maps[map_id].getZoom());
 		// });
 	});
-	</script>';
+	<?php
+	$javascript = ob_get_clean();
+	$text = $text . $javascript . '//-->'."\n".'</script>';
 	$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }

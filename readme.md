@@ -108,7 +108,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.4 / 23030x
+### 3.4 / 230304
 
 * new: Leaflet Search Control
 * bug if disableClusteringAtZoom = 0 fixed

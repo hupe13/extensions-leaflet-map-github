@@ -62,7 +62,7 @@ function leafext_extramarker_help() {
     $text = $text. do_shortcode('[leaflet-extramarker lat='.$lat.' lng='.$lng.' '.$code.' ]'.$code.'[/leaflet-extramarker]');
     $lng = $lng + 0.052;
   }
-  $text = $text. do_shortcode('[hover]');
+  $text = $text. do_shortcode('[hover markertooltip]');
   //$text = $text. do_shortcode('[zoomhomemap fit]');
 
   $text = $text. '<p><h3>'.__('All Shapes without (1) / with (2) SVG','extensions-leaflet-map').'</h3></p>';
@@ -77,7 +77,7 @@ function leafext_extramarker_help() {
     $text = $text. do_shortcode('[leaflet-extramarker lat='.$lat.' lng='.$lng.' '.$code.']'.$code.'[/leaflet-extramarker]');
     $lng = $lng + 0.052;
   }
-  $text = $text. do_shortcode('[hover]');
+  $text = $text. do_shortcode('[hover markertooltip]');
   //$text = $text. do_shortcode('[zoomhomemap fit]');
 
   $text = $text. '<p><h3>'.__('Some Icons','extensions-leaflet-map').'</h3></p>';
@@ -92,7 +92,7 @@ function leafext_extramarker_help() {
     $text = $text. do_shortcode('[leaflet-extramarker lat='.$lat.' lng='.$lng.' '.$code.' ]'.$code.'[/leaflet-extramarker]');
     $lng = $lng + 0.052;
   }
-  $text = $text. do_shortcode('[hover]');
+  $text = $text. do_shortcode('[hover markertooltip]');
 
   $text = $text. '<p><a href="https://fontawesome.com/search?o=r&m=free">'.__('More icons','extensions-leaflet-map').' ...</a></p>';
   // $text = $text. '<p>'.sprintf(__('If you use %s, you must write %s also','extensions-leaflet-map'),

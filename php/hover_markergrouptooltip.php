@@ -43,17 +43,17 @@ function leafext_markergrouptooltip_script($options){
 							layer.on("mousemove", function (e) {
 								//console.log("mousemove");
 								let popup_open = false;
-								if (typeof e.sourceTarget.getPopup() != "undefined") {
+								if ( e.sourceTarget.getPopup() ) {
 									if ( e.sourceTarget.getPopup().isOpen()) {
 										popup_open = true;
-										if (typeof e.sourceTarget.getTooltip() != "undefined") {
+										if ( e.sourceTarget.getTooltip() ) {
 											layer.unbindTooltip();
 										}
 									}
 								}
 								if (popup_open == false) {
 									//console.log("popup_open == false");
-									if (typeof e.sourceTarget.getPopup() != "undefined") {
+									if ( e.sourceTarget.getPopup() ) {
 										if ( !e.sourceTarget.getPopup().isOpen()) {
 											map.closePopup();
 										}

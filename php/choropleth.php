@@ -95,7 +95,7 @@ function leafext_choropleth_script($atts,$content) {
 
 		          layer.on("mouseover", function (e) {
 		            if (att_hover) {
-		              if (typeof layer.getPopup() != "undefined") {
+		              if ( layer.getPopup() ) {
 		                //console.log("popup defined");
 		                if (layer.getPopup().isOpen()) {
 		                  //console.log("mouseover open "+layer.getPopup().isOpen());
@@ -111,7 +111,7 @@ function leafext_choropleth_script($atts,$content) {
 
 		          layer.on("mousemove", function (e) {
 		            if (att_hover) {
-		              if (typeof layer.getPopup() != "undefined") {
+		              if ( layer.getPopup() ) {
 		                if (layer.getPopup().isOpen()) {
 		                  //console.log("mousemove open "+layer.getPopup().isOpen());
 		                  layer.unbindTooltip();
@@ -126,7 +126,7 @@ function leafext_choropleth_script($atts,$content) {
 
 		          layer.on("click", function (e) {
 		            if (att_hover) {
-		              if (typeof layer.getPopup() != "undefined") {
+		              if ( layer.getPopup() ) {
 		                if (layer.getPopup().isOpen())
 		                layer.unbindTooltip();
 		              }

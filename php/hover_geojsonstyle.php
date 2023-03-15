@@ -59,15 +59,15 @@ function leafext_geojsonstyle_script($options){
 
 							if (i > 1) {
 								// z.B leaflet-gpx mit Track und Marker
-								if (typeof e.sourceTarget.setStyle != "undefined") {
+								if ( e.sourceTarget.setStyle ) {
 									//console.log(e);
-									if (typeof e.sourceTarget.options.fillOpacity == "undefined") {
+									if ( ! e.sourceTarget.options.fillOpacity ) {
 										var highfillOpacity = 0.4; //leaflet default + 0.2
 									} else {
 										e.sourceTarget.options.origfillOpacity = e.sourceTarget.options.fillOpacity;
 										var highfillOpacity = e.sourceTarget.options.fillOpacity + 0.2;
 									}
-									if (typeof e.sourceTarget.options.weight == "undefined") {
+									if ( ! e.sourceTarget.options.weight ) {
 										var highweight = 5; //leaflet default +2
 									} else {
 										e.sourceTarget.options.origweight = e.sourceTarget.options.weight;
@@ -82,16 +82,16 @@ function leafext_geojsonstyle_script($options){
 							} else {
 								e.target.eachLayer(function(layer) {
 									//console.log(layer);
-									if (typeof layer.setStyle != "undefined") {
+									if ( layer.setStyle ) {
 										//console.log(layer.options.fillOpacity);
 										//console.log(layer.options.weight);
-										if (typeof layer.options.fillOpacity == "undefined") {
+										if (! layer.options.fillOpacity ) {
 											var highfillOpacity = 0.4; //leaflet default + 0.2
 										} else {
 											layer.options.origfillOpacity = layer.options.fillOpacity;
 											var highfillOpacity = layer.options.fillOpacity + 0.2;
 										}
-										if (typeof layer.options.weight == "undefined") {
+										if ( ! layer.options.weight ) {
 											var highweight = 5; //leaflet default +2
 										} else {
 											layer.options.origweight = layer.options.weight;
@@ -117,14 +117,14 @@ function leafext_geojsonstyle_script($options){
 							if (i > 1) {
 								//console.log("resetStyle");
 								e.target.eachLayer(function(layer){
-									if (typeof layer.setStyle != "undefined") {
+									if ( layer.setStyle ) {
 										//console.log(layer);
-										if (typeof layer.options.origweight != "undefined") {
+										if ( layer.options.origweight ) {
 											var origweight = layer.options.origweight;
 										} else {
 											var origweight = 3; //leaflet default
 										}
-										if (typeof layer.options.origfillOpacity != "undefined") {
+										if ( layer.options.origfillOpacity ) {
 											var origfillOpacity = layer.options.origfillOpacity;
 										} else {
 											var origfillOpacity = 0.2; //leaflet default
@@ -140,14 +140,14 @@ function leafext_geojsonstyle_script($options){
 								//resetStyle is only working with a geoJSON Group.
 								e.target.eachLayer(function(layer) {
 									//console.log(layer);
-									if (typeof layer.setStyle != "undefined") {
+									if ( layer.setStyle ) {
 										//console.log(layer);
-										if (typeof layer.options.origweight != "undefined") {
+										if ( layer.options.origweight ) {
 											var origweight = layer.options.origweight;
 										} else {
 											var origweight = 3; //leaflet default
 										}
-										if (typeof layer.options.origfillOpacity != "undefined") {
+										if ( layer.options.origfillOpacity ) {
 											var origfillOpacity = layer.options.origfillOpacity;
 										} else {
 											var origfillOpacity = 0.2; //leaflet default

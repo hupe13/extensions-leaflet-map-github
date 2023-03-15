@@ -9,6 +9,11 @@
 }
 
 .leaflet-control-search .search-input {
+  display:block;
+  float:left;
+  background: #fff;
+  border:1px solid #666;
+  border-radius:2px;
   height:24px;
   /* font-size:1.25em; */
   font-size: 16px !important;

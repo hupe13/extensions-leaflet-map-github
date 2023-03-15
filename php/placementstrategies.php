@@ -66,10 +66,12 @@ function leafext_placementstrategies_params() {
 function leafext_placementstrategies_script($params) {
 	//var_dump($params);wp_die();
 	//var_dump($params['elementsPlacementStrategy']);wp_die();
-	$text = '
-	<script>
+	$text = '<script><!--';
+	ob_start();
+	?>/*<script>*/
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
+		let all_params = <?php echo json_encode($params); ?>;
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
 		//console.log(map);
 		var map_id = map._leaflet_id;
@@ -88,27 +90,25 @@ function leafext_placementstrategies_script($params) {
 			var clmarkers = L.markerClusterGroup({
 				spiderLegPolylineOptions: { weight: 0 },
 
-				elementsPlacementStrategy: "'.$params['elementsPlacementStrategy'].'",
-				helpingCircles: '.$params['helpingCircles'].',
+				elementsPlacementStrategy: all_params['elementsPlacementStrategy'],
+				helpingCircles: all_params['helpingCircles'],
 
-				spiderfyDistanceSurplus: '.$params['spiderfyDistanceSurplus'].',
+				spiderfyDistanceSurplus: all_params['spiderfyDistanceSurplus'],
 				spiderfyDistanceMultiplier: 1,
 
-				elementsMultiplier: '.$params['elementsMultiplier'].',
-				firstCircleElements: '.$params['firstCircleElements'].',
+				elementsMultiplier: all_params['elementsMultiplier'],
+				firstCircleElements: all_params['firstCircleElements'],
 
 				//
-				maxClusterRadius: '.$params['maxClusterRadius'].',
-				spiderfyOnMaxZoom: '.$params['spiderfyOnMaxZoom'].',
+				maxClusterRadius: all_params['maxClusterRadius'],
+				spiderfyOnMaxZoom: all_params['spiderfyOnMaxZoom'],
 			});
 
 			for (var i = 0; i < WPLeafletMapPlugin.markers.length; i++) {
 				if ( WPLeafletMapPlugin.markers[i]._map !== null ) {
 					if (map_id == WPLeafletMapPlugin.markers[i]._map._leaflet_id) {
 						var a = WPLeafletMapPlugin.markers[i];
-						';
-						if ($params['shapes'] == "circle") {
-							$text=$text.'
+						if (all_params['shapes'] == "circle") {
 							map.createPane("locationMarker");
 							map.getPane("locationMarker").style.zIndex = 610;
 							var circle = L.circleMarker(a.getLatLng(), {
@@ -122,12 +122,9 @@ function leafext_placementstrategies_script($params) {
 							circle.bindPopup(a.getPopup());
 							clmarkers.addLayer(circle);
 							//console.log(circle._popup);
-							';
 						} else {
-							$text=$text.'
-							clmarkers.addLayer(a);';
+							clmarkers.addLayer(a);
 						}
-						$text=$text.'
 						map.removeLayer(a);
 					}
 				}
@@ -136,7 +133,9 @@ function leafext_placementstrategies_script($params) {
 			WPLeafletMapPlugin.markers.push( clmarkers );
 		}
 	});
-	</script>';
+	<?php
+	$javascript = ob_get_clean();
+	$text = $text . $javascript . '//-->'."\n".'</script>';
 	$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }
