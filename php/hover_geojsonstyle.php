@@ -1,7 +1,6 @@
 <?php
 /**
-* Functions for hover shortcode
-* Part geojson style
+* Functions for hover shortcode geojsonstyle
 * extensions-leaflet-map
 */
 // Direktzugriff auf diese Datei verhindern:

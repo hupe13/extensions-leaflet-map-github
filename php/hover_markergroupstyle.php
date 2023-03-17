@@ -1,6 +1,6 @@
 <?php
 /**
-* Functions for hover shortcode
+* Functions for hover shortcode markergroupstyle
 * extensions-leaflet-map
 */
 // Direktzugriff auf diese Datei verhindern:

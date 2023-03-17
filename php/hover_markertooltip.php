@@ -47,20 +47,47 @@ function leafext_markertooltip_script($options){
 								var content = e.sourceTarget.getPopup().getContent();
 								if ( typeof content != "undefined" ) {
 									//console.log(e.sourceTarget);
+									e.sourceTarget.unbindTooltip();
+									e.sourceTarget.bindTooltip(content);
+									e.sourceTarget.openTooltip(e.latlng);
+								}
+							} else {
+								e.sourceTarget.unbindTooltip();
+								e.sourceTarget.bindTooltip("", {visibility: 'hidden', opacity: 0}).closeTooltip();
+							}
+						}
+					});
+					a.on("click", function (e) {
+						//console.log("click");
+						if (typeof e.sourceTarget.getPopup() != "undefined") {
+							if ( e.sourceTarget.getPopup().isOpen()) {
+								e.sourceTarget.unbindTooltip();
+								e.sourceTarget.bindTooltip("", {visibility: 'hidden', opacity: 0}).closeTooltip();
+							} else {
+								if ( typeof e.sourceTarget.getPopup().getContent() != "undefined" )
+								var content = e.sourceTarget.getPopup().getContent();
+								if ( typeof content != "undefined" ) {
+									//console.log("bind tooltip");
+									//console.log(e.sourceTarget);
 									e.sourceTarget.bindTooltip(content);
 									e.sourceTarget.openTooltip(e.latlng);
 								}
 							}
 						}
 					});
-					a.on("click", function (e) {
-						//console.log("click");
-						e.sourceTarget.unbindTooltip();
+					a.on("popupclose", function (e) {
+						//console.log("popup close");
+						if ( typeof e.sourceTarget.getPopup().getContent() != "undefined" )
+						var content = e.sourceTarget.getPopup().getContent();
+						if ( typeof content != "undefined" ) {
+							//console.log(e.sourceTarget);
+							e.sourceTarget.bindTooltip(content);
+							e.sourceTarget.openTooltip(e.latlng);
+						}
 					});
 				}
 			}
 		}
-
 	});
 	<?php
 	$javascript = ob_get_clean();

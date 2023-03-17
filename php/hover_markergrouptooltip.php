@@ -55,7 +55,27 @@ function leafext_markergrouptooltip_script($options){
 									//console.log("popup_open == false");
 									if ( e.sourceTarget.getPopup() ) {
 										if ( !e.sourceTarget.getPopup().isOpen()) {
-											map.closePopup();
+											var elements = [];
+											e.sourceTarget._map.eachLayer(function(layer){
+												if ( layer.getPopup() ) {
+													if ( layer.getPopup().isOpen()) {
+														//console.log("is open");
+														//console.log(layer.getPopup().getLatLng());
+														elements.push(new L.Marker(layer.getPopup().getLatLng()));
+													}
+												}
+											});
+											//console.log(elements);
+											var result = L.GeometryUtil.closestLayerSnap(
+												e.sourceTarget._map,
+												elements, // alle Marker
+												e.latlng, // mouse position.
+												50 // distance in pixels under which snapping occurs.
+											);
+											//console.log(result);
+											if (!result) {
+												map.closePopup();
+											}
 										}
 										var content = e.sourceTarget.getPopup().getContent();
 										e.sourceTarget.bindTooltip(content);

@@ -1,6 +1,6 @@
 <?php
 /**
-* Functions for 	Leaflet.FeatureGroup.SubGroup featureSubgroup shortcode
+* Functions for Leaflet.FeatureGroup.SubGroup featureSubgroup shortcode
 * extensions-leaflet-map
 */
 // Direktzugriff auf diese Datei verhindern:

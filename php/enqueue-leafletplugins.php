@@ -189,6 +189,13 @@ function leafext_enqueue_extramarker () {
   leafext_enqueue_awesome();
 }
 
+function leafext_enqueue_geometry () {
+  wp_enqueue_script('Leaflet_GeometryUtil',
+  plugins_url('leaflet-plugins/Leaflet.GeometryUtil/leaflet.geometryutil.js',
+  LEAFEXT_PLUGIN_FILE),
+  array('wp_leaflet_map'),null);
+}
+
 function leafext_replace_br ($content) {
   $content = preg_replace( '#</script>(\s*)<br />#', '</script>', $content );
   return $content;

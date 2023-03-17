@@ -184,6 +184,7 @@ function leafext_hover_function($atts,$content,$shortcode) {
 	if ( $text != "" ) {
 		return $text;
 	} else {
+		leafext_enqueue_geometry();
 		$defaults=array();
 		$params = leafext_hover_params();
 		foreach($params as $param) {

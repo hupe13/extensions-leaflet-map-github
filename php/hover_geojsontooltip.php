@@ -1,6 +1,6 @@
 <?php
 /**
-* Functions for hover shortcode
+* Functions for hover shortcode geojsontooltip
 * extensions-leaflet-map
 */
 // Direktzugriff auf diese Datei verhindern:
@@ -46,8 +46,15 @@ function leafext_geojsontooltip_script($options){
 							//console.log("click");
 							e.target.eachLayer(function(layer) {
 								if ( layer.getPopup() ) {
-									if (layer.getPopup().isOpen())
-									layer.unbindTooltip();
+									if (layer.getPopup().isOpen()) {
+										if (layer.feature.geometry.type == "MultiPoint") {
+											//console.log("Multipoint");
+											layer.unbindTooltip();
+											layer.bindTooltip("", {visibility: 'hidden', opacity: 0}).closeTooltip();
+										}  else {
+											layer.unbindTooltip();
+										}
+									}
 								}
 							});
 						});
@@ -70,8 +77,10 @@ function leafext_geojsontooltip_script($options){
 										popup_open = true;
 										if ( layer.getTooltip() ) {
 											if (layer.feature.geometry.type == "MultiPoint") {
-												// console.log("Multipoint");
-												layer.closeTooltip();
+												//console.log("Multipoint");
+												//layer.closeTooltip();
+												layer.unbindTooltip();
+												layer.bindTooltip("", {visibility: 'hidden', opacity: 0}).closeTooltip();
 											} else {
 												layer.unbindTooltip();
 											}
@@ -85,7 +94,27 @@ function leafext_geojsontooltip_script($options){
 										//console.log(layer);
 										if ( layer.getPopup() ) {
 											if ( !layer.getPopup().isOpen()) {
-												map.closePopup();
+												var elements = [];
+												e.sourceTarget._map.eachLayer(function(layer){
+													if ( layer.getPopup() ) {
+														if ( layer.getPopup().isOpen()) {
+															//console.log("is open");
+															//console.log(layer.getPopup().getLatLng());
+															elements.push(new L.Marker(layer.getPopup().getLatLng()));
+														}
+													}
+												});
+												//console.log(elements);
+												var result = L.GeometryUtil.closestLayerSnap(
+													e.sourceTarget._map,
+													elements, // alle Marker
+													e.latlng, // mouse position.
+													50 // distance in pixels under which snapping occurs.
+												);
+												//console.log(result);
+												if (!result) {
+													map.closePopup();
+												}
 											}
 											var content = layer.getPopup().getContent();
 											layer.bindTooltip(content);
@@ -93,10 +122,28 @@ function leafext_geojsontooltip_script($options){
 										}
 									}
 								} else {
-									//kml, gpx
+									//kml, gpx, mehrere Elemente in geojson
 									if ( e.sourceTarget.getPopup() ) {
 										if ( !e.sourceTarget.getPopup().isOpen()) {
-											map.closePopup();
+											var elements = [];
+											e.sourceTarget._map.eachLayer(function(layer){
+												if ( layer.getPopup() ) {
+													if ( layer.getPopup().isOpen()) {
+														// console.log("is open");
+														elements.push(new L.Marker(layer.getPopup().getLatLng()));
+													}
+												}
+											});
+											var result = L.GeometryUtil.closestLayerSnap(
+												e.sourceTarget._map,
+												elements, // popups
+												e.latlng, // mouse position.
+												50 // distance in pixels under which snapping occurs.
+											);
+											// console.log(result);
+											if (!result) {
+												map.closePopup();
+											}
 											var content = e.sourceTarget.getPopup().getContent();
 											e.sourceTarget.bindTooltip(content);
 											e.sourceTarget.openTooltip(e.latlng);
