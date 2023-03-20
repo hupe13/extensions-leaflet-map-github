@@ -11,14 +11,15 @@ include_once LEAFEXT_PLUGIN_DIR . 'php/hover_geojsontooltip.php';
 include_once LEAFEXT_PLUGIN_DIR . 'php/hover_markergroupstyle.php';
 include_once LEAFEXT_PLUGIN_DIR . 'php/hover_markergrouptooltip.php';
 include_once LEAFEXT_PLUGIN_DIR . 'php/hover_markertooltip.php';
+include_once LEAFEXT_PLUGIN_DIR . 'php/hover_markertitle.php';
 
 function leafext_hover_params($typ = '') {
 	$params = array(
 		array(
 			'param' => 'marker',
-			'desc' => __('show tooltip for marker on hover or not',"extensions-leaflet-map"),
+			'desc' => __("show tooltip for marker on hover or not, or don't show tooltip and hide title","extensions-leaflet-map"),
 			'default' => true,
-			'values' => 'true, false',
+			'values' => 'true, false, notitle',
 			'element' => true,
 			'only' => false,
 		),
@@ -212,6 +213,11 @@ function leafext_hover_function($atts,$content,$shortcode) {
 			}
 		}
 		//var_dump($options);
+
+		if ($options['marker'] == "notitle") {
+			$text = $text.leafext_markertitle_script($options);
+			$options['marker'] == false;
+		}
 
 		if (in_array($options['marker'],$do_tooltip,true)
 		|| $options['markertooltip'])
