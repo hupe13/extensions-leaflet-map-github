@@ -37,6 +37,8 @@ function leafext_geojsonstyle_script($options){
 
 					// console.log(geojson._url);
 					extension = geojson._url.split(".").pop();
+					extension = extension.toLowerCase();
+					if (extension == 'json') extension = 'geojson';
 					// console.log(extension);
 					// console.log(all_options[extension]);
 
