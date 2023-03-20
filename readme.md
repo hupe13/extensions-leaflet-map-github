@@ -2,7 +2,7 @@
 
 Contributors: hupe13    
 Tags: leaflet, elevation, markercluster, Leaflet Plugins   
-Tested up to: 6.1  
+Tested up to: 6.2  
 Stable tag: 3.4  
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
@@ -108,18 +108,12 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.4 / 230304
+### 3.4.1 / 2303xx
 
-* new: Leaflet Search Control
-* bug if disableClusteringAtZoom = 0 fixed
-* fix && in inline JavaScript
-* add_filter('render_block' to prevent various WordPress filters like wpautop in leaflet-shortcode block
-* disable tooltip on hover on Samsung smartphones
-* pay more attention to original values on hovering
-* leaflet-extramarker title
-* leaflet-gesture-handling-1.4.4
-* changed Gesture Handling to work with Complianz-GDPR
-* there is no bug safari popups in leafletjs 1.9.3 anymore
+* revision of hover: bugs fixed, many new options
+* leaflet-optiongroup: leaflet-polyline, -circle, -line
+* leaflet-search: leaflet-polyline, -circle, -line
+* leaflet-search: css for iPhone
 
 ### Previous
 

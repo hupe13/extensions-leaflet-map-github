@@ -105,31 +105,31 @@ function leafext_search_params() {
       'false',
       '<a href="https://leafext.de/leafletsearch/leafletsearchmarker/">',
       '</a>'
-      ),
     ),
-    // | marker.icon	  | false	 | custom L.Icon for maker location or false for hide |
-    // | marker.animate  | true	 | animate a circle over location found |
-    // | marker.circle	  | L.CircleMarker options |	draw a circle in location found |
-    // hupe13 open popup when location found
-    array(
-      'param' => 'openPopup',
-      'desc' => __('show or hide popup when position found',"extensions-leaflet-map"),
-      'default' => true,
-      'values' => "true, false",
-    ),
-    // hupe13 type
-    array(
-      'param' => 'type',
-      'desc' => __('specify this parameter if both leaflet-marker and leaflet-geojson elements are on a post or page.',"extensions-leaflet-map"),
-      'default' => 'marker',
-      'values' => sprintf(__("%s (default) - search for marker, %s - search in geojson.","extensions-leaflet-map"),
-      '"marker"',
-      '"geojson"',
-      '"all"'),
-    ),
+  ),
+  // | marker.icon	  | false	 | custom L.Icon for maker location or false for hide |
+  // | marker.animate  | true	 | animate a circle over location found |
+  // | marker.circle	  | L.CircleMarker options |	draw a circle in location found |
+  // hupe13 open popup when location found
+  array(
+    'param' => 'openPopup',
+    'desc' => __('show or hide popup when position found',"extensions-leaflet-map"),
+    'default' => true,
+    'values' => "true, false",
+  ),
+  // hupe13 type
+  array(
+    'param' => 'type',
+    'desc' => __('specify this parameter if both leaflet-marker and leaflet-geojson elements are on a post or page.',"extensions-leaflet-map"),
+    'default' => 'marker',
+    'values' => sprintf(__("%s (default) - search for marker, %s - search in geojson.","extensions-leaflet-map"),
+    '"marker"',
+    '"geojson"',
+    '"all"'),
+  ),
 
-  );
-  return $params;
+);
+return $params;
 }
 
 function leafext_leafletsearch_function($atts,$content,$shortcode) {
@@ -190,353 +190,297 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
       searchcontrol[map_id] = [];
     }
     if (typeof searchcontrol[map_id][att_propertyName] == "undefined") {
-      searchcontrol[map_id][att_propertyName] = "found";
+      searchcontrol[map_id][att_propertyName] = att_propertyName;
       console.log("mapid: "+map_id);
       console.log(all_properties);
       console.log(<?php echo json_encode($jsoptions);?>);
-      let count_marker = WPLeafletMapPlugin.markers.length;
-      let count_geojson = window.WPLeafletMapPlugin.geojsons.length;
-      let type = <?php echo json_encode($options['type']);?>;
-      //console.log(count_marker,count_geojson,type);
+      searchLayer = new L.LayerGroup();	//layer contain searched elements
+      var duplicates = [];
+    }
 
-      if ( count_marker > 0 && (count_geojson == 0 || type != "geojson")) { //type "marker" or "all"
-        //console.log("markers "+WPLeafletMapPlugin.markers.length);
-        var markersLayer = new L.LayerGroup();	//layer contain searched elements
-        let duplicates = {};
-        for (var i = 0; i < WPLeafletMapPlugin.markers.length; i++) {
-          if ( WPLeafletMapPlugin.markers[i]._map !== null ) {
-            if (map_id == WPLeafletMapPlugin.markers[i]._map._leaflet_id) {
-              //console.log("Marker");
-              let a = WPLeafletMapPlugin.markers[i];
-              //console.log(a);
+    for (var i = 0; i < WPLeafletMapPlugin.markers.length; i++) {
+      if ( WPLeafletMapPlugin.markers[i]._map !== null ) {
+        if (map_id == WPLeafletMapPlugin.markers[i]._map._leaflet_id) {
+          //console.log("Marker");
+          let a = WPLeafletMapPlugin.markers[i];
+          //console.log(a);
+
+          let leafextsearch = "";
+          for (let i = 0; i < all_properties.length; i++) {
+            //console.log(leafextsearch);
+            att_property = all_properties[i];
+            //console.log(att_property);
+            //console.log(a.options);
+            let this_options = a.getIcon().options;
+            //console.log(this_options);
+            if (this_options.hasOwnProperty(att_property)) {
+              if ( a.options[att_property] ) {
+                //console.log("a.options.property " +att_property);
+                leafextsearch = leafextsearch.concat(' | ',a.options[att_property]);
+              } else {
+                //console.log("this_options.property "+att_property);
+                leafextsearch = leafextsearch.concat(' | ',this_options[att_property]);
+              }
+            } else
+            if (att_property == "popupContent") {
+              if ( a.getPopup() ) {
+                if ( a.getPopup().getContent() ) {
+                  let this_content = a.getPopup().getContent();
+                  // replace - strip out HTML
+                  this_content=this_content.replace( /<p>/ig, ' ');
+                  this_content=this_content.replace( /<br>/ig, ' ');
+                  this_content=this_content.replace( /(<([^>]+)>)/ig,'');
+                  this_content=this_content.replace( / \| /g, '');
+                  this_content=this_content.replace( / +/g, ' ');
+                  leafextsearch = leafextsearch.concat(' | ', this_content );
+                }
+              }
+              //console.log(leafextsearch);
+            }
+            else {
+              if (a.options[att_property] && a.options[att_property] != "") {
+                //console.log("a.options[att_property] "+att_property);
+                leafextsearch = leafextsearch.concat(' | ',a.options[att_property]);
+              } else {
+                console.log("was nun?");
+              }
+            }
+          }
+
+          if (leafextsearch != "") {
+            let search = leafextsearch;
+            if (typeof duplicates[search] == "undefined" ) {
+              duplicates[search] = 1;
+            } else {
+              duplicates[search] = duplicates[search] + 1;
+            }
+          }
+
+          if (leafextsearch != "") {
+            a.options["searchindex"] = i;
+            a.options[att_propertyName] = leafextsearch;
+            searchLayer.addLayer(a);
+          }
+          //map.removeLayer(a);
+        } // _map._leaflet_id
+      } // has markers[i]._map
+    }
+
+    //console.log("after marker searchLayer.length "+Object.keys(searchLayer._layers).length);
+
+    var markergroups = window.WPLeafletMapPlugin.markergroups;
+    Object.entries(markergroups).forEach(([key, value]) => {
+      if ( markergroups[key]._map !== null ) {
+        if (map_id == markergroups[key]._map._leaflet_id) {
+          //console.log("markergroups loop");
+          markergroups[key].eachLayer(function(layer) {
+            //console.log(layer);
+            if (layer instanceof L.Marker){
+              //console.log("is_marker");
+            } else if (layer instanceof L.Polygon || layer instanceof L.Circle || layer instanceof L.Polyline ) {
+              //console.log("markergroup");
 
               let leafextsearch = "";
               for (let i = 0; i < all_properties.length; i++) {
-
                 att_property = all_properties[i];
-                //console.log(a.options);
-                let this_options = a.getIcon().options;
-                //console.log(this_options);
-                if (this_options.hasOwnProperty(att_property)) {
-                  if ( a.options[att_property] ) {
-                    //console.log("a.options.property " +att_property);
-                    leafextsearch = leafextsearch.concat(' | ',a.options[att_property]);
-                  } else {
-                    //console.log("this_options.property "+att_property);
-                    leafextsearch = leafextsearch.concat(' | ',this_options[att_property]);
+
+                if (layer.hasOwnProperty(att_property)) {
+                  if ( layer.options[att_property] ) {
+                    leafextsearch = leafextsearch.concat(' | ',layer.options[att_property]);
                   }
                 } else
                 if (att_property == "popupContent") {
                   //console.log("popupContent");
-                  if ( a.getPopup() ) {
-                    if ( a.getPopup().getContent() ) {
-                      leafextsearch = leafextsearch.concat(' | ', a.getPopup().getContent());
+                  if ( layer.getPopup() ) {
+                    if ( layer.getPopup().getContent() ) {
+                      let this_content = layer.getPopup().getContent();
+                      // replace - strip out HTML
+                      this_content=this_content.replace( /<p>/ig, ' ');
+                      this_content=this_content.replace( /<br>/ig, ' ');
+                      this_content=this_content.replace( /(<([^>]+)>)/ig,'');
+                      this_content=this_content.replace( / \| /g, '');
+                      this_content=this_content.replace( / +/g, ' ');
+                      leafextsearch = leafextsearch.concat(' | ', this_content );
                     }
                   }
                 }
                 else {
-                  if (a.options[att_property] && a.options[att_property] != "") {
-                    //console.log("a.options[att_property] "+att_property);
-                    leafextsearch = leafextsearch.concat(' | ',a.options[att_property]);
+                  if (layer.options[att_property] && layer.options[att_property] != "") {
+                    leafextsearch = leafextsearch.concat(' | ',layer.options[att_property]);
                   } else {
                     console.log("was nun?");
                   }
                 }
-              }
 
-              if (leafextsearch != "") {
-                // replace - strip out HTML
-
-                leafextsearch=leafextsearch.replace( /<p>/ig, ' ');
-                leafextsearch=leafextsearch.replace( /<br>/ig, ' ');
-                leafextsearch=leafextsearch.replace( /(<([^>]+)>)/ig,'');
-                leafextsearch=leafextsearch.replace( / \| /g, '');
-                leafextsearch=leafextsearch.replace( / +/g, ' ');
-
-                let search = leafextsearch;
-                if (typeof duplicates[search] == "undefined" ) {
-                  duplicates[search] = 1;
-                } else {
-                  duplicates[search] = duplicates[search] + 1;
-                }
-              }
-
-              if (leafextsearch != "") {
-                a.options["searchindex"] = i;
-                a.options[att_propertyName] = leafextsearch;
-                markersLayer.addLayer(a);
-              }
-              //map.removeLayer(a);
-            } // _map._leaflet_id
-          } // has markers[i]._map
-        } // loop markers
-
-        var markergroups = window.WPLeafletMapPlugin.markergroups;
-        Object.entries(markergroups).forEach(([key, value]) => {
-          if ( markergroups[key]._map !== null ) {
-            if (map_id == markergroups[key]._map._leaflet_id) {
-              //console.log("markergroups loop");
-              markergroups[key].eachLayer(function(layer) {
-                //console.log(layer);
-                if (layer instanceof L.Marker){
-                  //console.log("is_marker");
-                } else if (layer instanceof L.Polygon || layer instanceof L.Circle || layer instanceof L.Polyline ) {
-                  //console.log("markergroup");
-
-                  let leafextsearch = "";
-                  for (let i = 0; i < all_properties.length; i++) {
-                    att_property = all_properties[i];
-
-                    if (layer.hasOwnProperty(att_property)) {
-                      if ( layer.options[att_property] ) {
-                        leafextsearch = leafextsearch.concat(' | ',layer.options[att_property]);
-                      }
-                    } else
-                    if (att_property == "popupContent") {
-                      //console.log("popupContent");
-                      if ( layer.getPopup() ) {
-                        if ( layer.getPopup().getContent() ) {
-                          leafextsearch = leafextsearch.concat(' | ', layer.getPopup().getContent());
-                        }
-                      }
-                    }
-                    else {
-                      if (layer.options[att_property] && layer.options[att_property] != "") {
-                        leafextsearch = leafextsearch.concat(' | ',layer.options[att_property]);
-                      } else {
-                        console.log("was nun?");
-                      }
-                    }
-
-                    if (leafextsearch != "") {
-                      // replace - strip out HTML
-                      leafextsearch=leafextsearch.replace( /<p>/ig, ' ');
-                      leafextsearch=leafextsearch.replace( /<br>/ig, ' ');
-                      leafextsearch=leafextsearch.replace( /(<([^>]+)>)/ig,'');
-                      leafextsearch=leafextsearch.replace( / \| /g, '');
-                      leafextsearch=leafextsearch.replace( / +/g, ' ');
-
-                      let search = leafextsearch;
-                      if (typeof duplicates[search] == "undefined" ) {
-                        duplicates[search] = 1;
-                      } else {
-                        duplicates[search] = duplicates[search] + 1;
-                      }
-                    }
-
-                    if (leafextsearch != "") {
-                      layer.options["searchindex"] = i;
-                      layer.options[att_propertyName] = leafextsearch;
-                      markersLayer.addLayer(layer);
-                    }
+                if (leafextsearch != "") {
+                  let search = leafextsearch;
+                  if (typeof duplicates[search] == "undefined" ) {
+                    duplicates[search] = 1;
+                  } else {
+                    duplicates[search] = duplicates[search] + 1;
                   }
-                } else {
-                  //console.log("other");
-                  //console.log(layer);
                 }
-              });
-            }
-          }
-        });
 
-        //console.log(markersLayer);
-        //console.log("markerslayer.length "+Object.keys(markersLayer._layers).length);
-        if (Object.keys(markersLayer._layers).length > 0) {
-          if (searchcontrol[map_id][att_propertyName] == "found") {
-            searchcontrol[map_id][att_propertyName] = "added";
-            markersLayer.eachLayer(function(layer) {
-              let search = layer.options[att_propertyName];
-              //console.log(search);
-              if (duplicates[search] > 1) {
-                layer.options[att_propertyName] = layer.options[att_propertyName] + " | "+ layer.options["searchindex"];
-              }
-              //console.log(layer.options[att_propertyName]);
-            });
-
-            map.addLayer(markersLayer);
-            var markerSearchControl = new L.Control.Search({
-              layer: markersLayer,
-              <?php echo $jsoptions;?>
-              initial: false,
-              moveToLocation: function(latlng, title, map) {
-                // console.log("moveToLocation");
-                // console.log(latlng, title);
-                // console.log(latlng.layer);
-                if (latlng.layer instanceof L.Polygon || latlng.layer instanceof L.Circle || latlng.layer instanceof L.Polyline ) {
-                  map.fitBounds(L.latLngBounds([latlng]));
-                  var zoom = map.getBoundsZoom(latlng.layer.getBounds());
-                  map.setView(latlng, zoom); // access the zoom
-                } else {
-                  //console.log("has not Bounds");
-                  map.fitBounds(L.latLngBounds([latlng]));
-                  map.setZoom(att_zoom);
+                if (leafextsearch != "") {
+                  layer.options["searchindex"] = i;
+                  layer.options[att_propertyName] = leafextsearch;
+                  searchLayer.addLayer(layer);
                 }
               }
-            }
-          );
-          map.addControl( markerSearchControl );
-
-          markerSearchControl.on("search:locationfound", function(e) {
-            //console.log(e);
-            //console.log(this._markerSearch);
-            //console.log("search:locationfound");
-            if(e.target._map.hasLayer(e.layer)){
-              //console.log("marker is visible, do nothing");
             } else {
-              //console.log("marker is not on map, _adding");
-              e.layer.addTo(map);
-              this._markerSearch._markeradd = e.layer;
+              //console.log("other");
+              //console.log(layer);
             }
-            <?php
-            if ($options['openPopup']) {?>
-              if ( e.layer.getPopup() ) e.layer.openPopup();
-              <?php
-            } ?>
-            e.sourceTarget._input.blur();
-          });
-          markerSearchControl.on("search:cancel", function(e) {
-            //console.log(e);
-            //console.log(this._markerSearch);
-            //console.log(this._markerSearch._markeradd);
-            if ( this._markerSearch._markeradd ) {
-              e.target._map.removeLayer(this._markerSearch._markeradd);
-            }
-            if (e.target.options.hideMarkerOnCollapse) {
-              //console.log(e.target._map);
-              e.target._map.removeLayer(this._markerSearch);
-            }
-            e.sourceTarget._input.blur();
           });
         }
-      } else {
-        console.log("Nothing to search in Markers");
       }
-    } // markers.length
+    });
 
-    //
+    //console.log("after markergroup searchLayer.length "+Object.keys(searchLayer._layers).length);
 
-    if ( count_geojson > 0 && (count_marker == 0 || type != "marker")) { //type "geojson" or "all"
-      // console.log("geojsons");
-      var geojsons = window.WPLeafletMapPlugin.geojsons;
-      var geojsonLayers = new L.layerGroup();
-
-      for (var j = 0, len = count_geojson; j < len; j++) {
-        if (map_id == geojsons[j]._map._leaflet_id) {
-          // console.log(geojsons[j]);
-          geojsons[j].options[all_properties]
-          geojsons[j].on("ready", function (e) {
-            let duplicates = {};
-            j = 0;
-            e.target.eachLayer(function(layer) {
-              let leafextsearch = "";
-              for (let i = 0; i < all_properties.length; i++) {
-                att_property = all_properties[i];
-                //console.log(att_property);
-                // console.log(layer.feature.properties.hasOwnProperty(att_property));
-                // console.log(layer.feature.properties);
-                //if (layer.feature.properties.hasOwnProperty(att_property)) {
-                if (att_property == "popupContent") {
-                  if ( layer.getPopup() ) {
-                    // console.log("geojson popup");
-                    //layer.feature.properties['popupContent'] = layer.getPopup().getContent();
-                    leafextsearch = leafextsearch.concat(' | ',layer.getPopup().getContent());
-                  }
-                } else {
-                  if (layer.feature.properties.hasOwnProperty(att_property)) {
-                    leafextsearch = leafextsearch.concat(' | ',layer.feature.properties[att_property]);
-                  }
+    // console.log("geojsons");
+    var geojsons = window.WPLeafletMapPlugin.geojsons;
+    for (var j = 0, len = geojsons.length; j < len; j++) {
+      if (map_id == geojsons[j]._map._leaflet_id) {
+        // console.log(geojsons[j]);
+        // geojsons[j].options[all_properties]
+        geojsons[j].on("ready", function (e) {
+          let duplicates = [];
+          j = 0;
+          e.target.eachLayer(function(layer) {
+            let leafextsearch = "";
+            for (let i = 0; i < all_properties.length; i++) {
+              att_property = all_properties[i];
+              //console.log(att_property);
+              // console.log(layer.feature.properties.hasOwnProperty(att_property));
+              // console.log(layer.feature.properties);
+              //if (layer.feature.properties.hasOwnProperty(att_property)) {
+              if (att_property == "popupContent") {
+                if ( layer.getPopup() ) {
+                  // console.log("geojson popup");
+                  //layer.feature.properties['popupContent'] = layer.getPopup().getContent();
+                  let this_content = layer.getPopup().getContent();
+                  // replace - strip out HTML
+                  this_content=this_content.replace( /<p>/ig, ' ');
+                  this_content=this_content.replace( /<br>/ig, ' ');
+                  this_content=this_content.replace( /(<([^>]+)>)/ig,'');
+                  this_content=this_content.replace( / \| /g, '');
+                  this_content=this_content.replace( / +/g, ' ');
+                  leafextsearch = leafextsearch.concat(' | ', this_content );
+                  //console.log(leafextsearch);
+                }
+              } else {
+                if (layer.feature.properties.hasOwnProperty(att_property)) {
+                  leafextsearch = leafextsearch.concat(' | ',layer.feature.properties[att_property]);
                 }
               }
-              let search = leafextsearch;
-              if (typeof duplicates[search] == "undefined" ) {
-                duplicates[search] = 1;
-              } else {
-                duplicates[search] = duplicates[search] + 1;
-              }
-              layer.feature.properties["searchindex"] = j;
-              j++;
-              //console.log(leafextsearch);
-              layer.feature.properties[att_propertyName] = leafextsearch;
-            });
-            //console.log(duplicates);
-            e.target.eachLayer(function(layer) {
-              let search = layer.feature.properties[att_propertyName];
-              if (duplicates[search] > 1) {
-                layer.feature.properties[att_propertyName] = layer.feature.properties[att_propertyName] + " | "+ layer.feature.properties["searchindex"];
-                //console.log(layer.feature.properties);
-              }
-              layer.feature.properties[att_propertyName]=layer.feature.properties[att_propertyName].replace( / \| /, '');
-            });
-          });
-          geojsons[j].addTo(geojsonLayers);
-        }
-        //
-        if (Object.keys(geojsonLayers._layers).length > 0) {
-          // console.log(Object.keys(geojsonLayers._layers).length);
-          // console.log(searchcontrol[map_id][att_propertyName]);
-          if (searchcontrol[map_id][att_propertyName] == "found") {
-            searchcontrol[map_id][att_propertyName] = "added";
-            map.addLayer(geojsonLayers);
-            var geojsonSearchControl = new L.control.search({
-              layer: geojsonLayers,
-              <?php echo $jsoptions;?>
-              initial: false,
-              moveToLocation: function(latlng, title, map) {
-                //console.log(latlng, title, map);
-                //console.log(latlng.layer);
-                //console.log(latlng.layer.feature.geometry.type);
-                if (latlng.layer.feature.geometry.type == "Point") {
-                  map.fitBounds(L.latLngBounds([latlng]));
-                  map.setZoom(att_zoom);
-                } else {
-                  map.fitBounds( latlng.layer.getBounds() );
-                  var zoom = map.getBoundsZoom(latlng.layer.getBounds());
-                  map.setView(latlng, zoom); // access the zoom
-                }
-              }
-            });
-            map.addControl( geojsonSearchControl );  //inizialize search control
-            geojsonSearchControl.on("search:locationfound", function(e) {
-              //console.log("search:locationfound" );
-              if(e.target._map.hasLayer(e.layer)){
-                //console.log("geojsonmarker is visible, do nothing");
-              } else {
-                //console.log("geojsonmarker is not on map, _adding");
-                e.layer.addTo(map);
-                this._markerSearch._markeradd = e.layer;
-              }
-              <?php
-              if ($options['openPopup']) {?>
-                if(e.layer._popup) e.layer.openPopup([e.latlng.lat, e.latlng.lng]);
-                <?php
-              } ?>
-              e.sourceTarget._input.blur();
-            });
-            geojsonSearchControl.on("search:cancel", function(e) {
-              //console.log(e);
-              if ( this._markerSearch._markeradd ) {
-                e.target._map.removeLayer(this._markerSearch._markeradd);
-              }
-              if (e.target.options.hideMarkerOnCollapse) {
-                e.target._map.removeLayer(this._markerSearch);
-              }
-              e.sourceTarget._input.blur();
-            });
-          } else {
-            if (markersLayer) {
-              //Suchfeld schon da?
-              if ( Object.keys(markersLayer._layers).length > 0 ) {
-                geojsonLayers.eachLayer(function(layer) {
-                  markersLayer.addLayer(layer);
-                });
-              }
-            } else {
-              console.log("Nothing to search in Geojsons");
             }
-          }
-        }
+            let search = leafextsearch;
+            if (typeof duplicates[search] == "undefined" ) {
+              duplicates[search] = 1;
+            } else {
+              duplicates[search] = duplicates[search] + 1;
+            }
+            layer.feature.properties["searchindex"] = j;
+            j++;
+            //console.log(leafextsearch);
+            layer.feature.properties[att_propertyName] = leafextsearch;
+          });
+          //console.log(duplicates);
+          e.target.eachLayer(function(layer) {
+            let search = layer.feature.properties[att_propertyName];
+            if (duplicates[search] > 1) {
+              layer.feature.properties[att_propertyName] = layer.feature.properties[att_propertyName] + " | "+ layer.feature.properties["searchindex"];
+              //console.log(layer.feature.properties);
+            }
+            layer.feature.properties[att_propertyName]=layer.feature.properties[att_propertyName].replace( /\| /, '');
+          });
+        });
+        geojsons[j].addTo(searchLayer);
       }
     }
+
+    //console.log("after geojson searchLayer.length "+Object.keys(searchLayer._layers).length);
+
+    if (Object.keys(searchLayer._layers).length > 0) {
+      searchLayer.eachLayer(function(layer) {
+        if (layer.options[att_propertyName]) {
+          let search = layer.options[att_propertyName];
+          //console.log(search);
+          if (duplicates[search] > 1) {
+            layer.options[att_propertyName] = layer.options[att_propertyName] + " | "+ layer.options["searchindex"];
+          }
+          layer.options[att_propertyName]=layer.options[att_propertyName].replace( /\| /, '');
+          //console.log(layer.options[att_propertyName]);
+        }
+      });
+
+      var SearchControl = new L.Control.Search({
+        layer: searchLayer,
+        <?php echo $jsoptions;?>
+        initial: false,
+        moveToLocation: function(latlng, title, map) {
+          //console.log("moveToLocation");
+          // console.log(latlng, title);
+          // console.log(latlng.layer);
+          if (latlng.layer.feature && latlng.layer.feature.geometry && latlng.layer.feature.geometry.type == "Point") {
+            map.fitBounds(L.latLngBounds([latlng]));
+            map.setZoom(att_zoom);
+          } else if ( latlng.layer instanceof L.Marker ) {
+            //console.log("has not Bounds");
+            map.fitBounds(L.latLngBounds([latlng]));
+            map.setZoom(att_zoom);
+          } else {
+            map.fitBounds( latlng.layer.getBounds() );
+            var zoom = map.getBoundsZoom(latlng.layer.getBounds());
+            map.setView(latlng, zoom);
+          }
+        }
+      }
+    );
+
+    map.addControl( SearchControl );
+
+    SearchControl.on("search:locationfound", function(e) {
+      //console.log(e);
+      //console.log("search:locationfound");
+      if(e.target._map.hasLayer(e.layer)){
+        //console.log("marker is visible, do nothing");
+      } else {
+        //console.log("marker is not on map, _adding");
+        e.layer.addTo(map);
+        this._markerSearch._markeradd = e.layer;
+      }
+      <?php
+      if ($options['openPopup']) {?>
+        if ( e.layer.getPopup() )// e.layer.openPopup();
+        e.layer.openPopup([e.latlng.lat, e.latlng.lng]);
+        <?php
+      } ?>
+      e.sourceTarget._input.blur();
+    });
+    SearchControl.on("search:cancel", function(e) {
+      //console.log("search:cancel");
+      //console.log(e);
+      //console.log(this);
+      //console.log(this._markerSearch);
+      //console.log(this._markerSearch._markeradd);
+      if ( this._markerSearch && this._markerSearch._markeradd ) {
+        e.target._map.removeLayer(this._markerSearch._markeradd);
+      }
+      <?php
+      if ($options['openPopup']) {?>
+        map.closePopup();
+        //e.layer.openPopup([e.latlng.lat, e.latlng.lng]);
+        <?php
+      } ?>
+      if (e.target.options.hideMarkerOnCollapse && this._markerSearch) {
+        //console.log(e.target._map);
+        e.target._map.removeLayer(this._markerSearch);
+      }
+      e.sourceTarget._input.blur();
+    });
+    map.addLayer(searchLayer);
   }
 });
 

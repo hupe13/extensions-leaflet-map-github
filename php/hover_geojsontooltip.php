@@ -35,7 +35,7 @@ function leafext_geojsontooltip_script($options){
 					let exclude = -1;
 					// console.log(geojson._url);
 					extension = geojson._url.split(".").pop();
-				  //console.log(extension);
+					//console.log(extension);
 					//console.log(all_options[extension]);
 					if (!(all_options[extension] == true || all_options[extension] == 'tooltip' || all_options['geojsontooltip'])) {
 						exclude = 99;
@@ -47,7 +47,8 @@ function leafext_geojsontooltip_script($options){
 							e.target.eachLayer(function(layer) {
 								if ( layer.getPopup() ) {
 									if (layer.getPopup().isOpen()) {
-										if (layer.feature.geometry.type == "MultiPoint") {
+										//console.log(layer.feature.geometry.type);
+										if (layer.feature.geometry.type == "MultiPoint" || layer.feature.geometry.type == "Point") {
 											//console.log("Multipoint");
 											layer.unbindTooltip();
 											layer.bindTooltip("", {visibility: 'hidden', opacity: 0}).closeTooltip();

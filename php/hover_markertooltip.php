@@ -83,6 +83,7 @@ function leafext_markertooltip_script($options){
 							//console.log(e.sourceTarget);
 							e.sourceTarget.bindTooltip(content);
 							e.sourceTarget.openTooltip(e.latlng);
+							e.sourceTarget.closeTooltip();
 						}
 					});
 				}
