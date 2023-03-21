@@ -19,10 +19,6 @@ function leafext_help_hover() {
   $text = $text.__('The tooltip content is the same as the popup content.','extensions-leaflet-map');
   $text = $text.'</li>';
   $text = $text.'<li>';
-  $text = $text.__('New in version 3.4.1:','extensions-leaflet-map').' '.sprintf(__('The %s option from %s is ignored and hidden.','extensions-leaflet-map'),
-  '<em>title</em>','<code>leaflet-(extra)marker</code>');
-  $text = $text.'</li>';
-  $text = $text.'<li>';
   $text = $text. sprintf(__('To customize the popup content for geojsons see %sgeojson options%s.','extensions-leaflet-map'),
   '<a href="https://github.com/bozdoz/wp-plugin-leaflet-map#leaflet-geojson-options">','</a>');
   $text = $text.'</li>';
@@ -30,7 +26,9 @@ function leafext_help_hover() {
 
   $text = $text.'<pre><code>// any many
 [leaflet-marker ...]Marker ...[/leaflet-marker]
+[leaflet-marker title=... ...]Marker ...[/leaflet-marker]
 [leaflet-extramarker ...]Marker ...[/leaflet-marker]
+[leaflet-extramarker title=... ...]Marker ...[/leaflet-marker]
 [leaflet-geojson ...]{name}[/leaflet-geojson]
 [leaflet-gpx ...]{name}[/leaflet-gpx]
 [leaflet-kml ...]{name}[/leaflet-kml]
@@ -84,10 +82,11 @@ $text=$text.'<p>'.
 
 $do_only = leafext_hover_params('only');
 $do_element = leafext_hover_params('element');
-$text=$text.'<p>'.sprintf(__("If you use one or multiple options from %s, then the options %s will be ignored.",
+$text=$text.'<p>'.sprintf(__("If you use one or multiple options from %s, then the options %s (except %s) will be ignored. ",
 'extensions-leaflet-map'),
 str_replace(array('","','"'),array(', ',''),trim(json_encode(leafext_hover_params('only')),'[]')),
-str_replace(array('","','"'),array(', ',''),trim(json_encode(leafext_hover_params('element')),'[]'))
+str_replace(array('","','"'),array(', ',''),trim(json_encode(leafext_hover_params('element')),'[]')),
+'marker=notitle'
 )
 .'</p>';
 

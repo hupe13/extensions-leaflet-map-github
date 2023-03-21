@@ -17,7 +17,10 @@ function leafext_hover_params($typ = '') {
 	$params = array(
 		array(
 			'param' => 'marker',
-			'desc' => __("show tooltip for marker on hover or not, or don't show tooltip and hide title","extensions-leaflet-map"),
+			'desc' => '<ul style="list-style-type:disc;margin-left:1em;">'.
+			'<li>'.'<code>true</code> - '.sprintf(__("show tooltip and hide %s if present","extensions-leaflet-map"),'<em>title</em>').'</li>'.
+			'<li>'.'<code>false</code> - '.sprintf(__("do not show tooltip, but show %s as usual","extensions-leaflet-map"),'<em>title</em>').'</li>'.
+			'<li>'.'<code>notitle</code> - '.sprintf(__("hide %s, but do not show tooltip","extensions-leaflet-map"),'<em>title</em>').'</li>'.'</ul>',
 			'default' => true,
 			'values' => 'true, false, notitle',
 			'element' => true,
@@ -123,7 +126,7 @@ function leafext_hover_params($typ = '') {
 		),
 		array(
 			'param' => 'tolerance',
-			'desc' => __('determines how much to extend click tolerance round a path/object on the map','extensions-leaflet-map'),
+			'desc' => __('determines how much to extend click tolerance round an object on the map','extensions-leaflet-map'),
 			'default' => 0,
 			'values' => 'a number',
 			'element' => false,
@@ -198,6 +201,11 @@ function leafext_hover_function($atts,$content,$shortcode) {
 		if ($options['tolerance'] != 0) {
 			$text = $text.leafext_canvas_script( $options['tolerance'] );
 		}
+		
+		if ($options['marker'] == "notitle") {
+			$text = $text.leafext_markertitle_script($options);
+			$options['marker'] == false;
+		}
 
 		$do_tooltip = array(true,'tooltip');
 		$do_style = array(true,'style');
@@ -213,11 +221,6 @@ function leafext_hover_function($atts,$content,$shortcode) {
 			}
 		}
 		//var_dump($options);
-
-		if ($options['marker'] == "notitle") {
-			$text = $text.leafext_markertitle_script($options);
-			$options['marker'] == false;
-		}
 
 		if (in_array($options['marker'],$do_tooltip,true)
 		|| $options['markertooltip'])
