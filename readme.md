@@ -108,12 +108,12 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.4.1 / 2303xx
+### 3.4.1 / 23032x
 
-* revision of hover: bugs fixed, many new options
-* leaflet-optiongroup: leaflet-polyline, -circle, -line
+* revision of hover: bugs fixed, many new option
+* leaflet-search: code cleanup, no option type anymore, css for iPhone
 * leaflet-search: leaflet-polyline, -circle, -line
-* leaflet-search: css for iPhone
+* leaflet-optiongroup: leaflet-polyline, -circle, -line
 
 ### Previous
 

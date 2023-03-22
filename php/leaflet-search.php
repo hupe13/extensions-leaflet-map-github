@@ -117,16 +117,6 @@ function leafext_search_params() {
     'default' => true,
     'values' => "true, false",
   ),
-  // hupe13 type
-  array(
-    'param' => 'type',
-    'desc' => __('specify this parameter if both leaflet-marker and leaflet-geojson elements are on a post or page.',"extensions-leaflet-map"),
-    'default' => 'marker',
-    'values' => sprintf(__("%s (default) - search for marker, %s - search in geojson.","extensions-leaflet-map"),
-    '"marker"',
-    '"geojson"',
-    '"all"'),
-  ),
 
 );
 return $params;

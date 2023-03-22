@@ -1,4 +1,4 @@
-* revision of hover: bugs fixed, many new options
-* leaflet-optiongroup: leaflet-polyline, -circle, -line
+* revision of hover: bugs fixed, many new option
+* leaflet-search: code cleanup, no option type anymore, css for iPhone
 * leaflet-search: leaflet-polyline, -circle, -line
-* leaflet-search: css for iPhone
+* leaflet-optiongroup: leaflet-polyline, -circle, -line
