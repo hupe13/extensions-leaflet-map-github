@@ -119,7 +119,16 @@ function leafext_zoomhome_script($fit){
 							//console.log(layer);
 							mapcircles++;
 							if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
-								bounds[map_id].extend(layer.getBounds());
+								//https://github.com/Leaflet/Leaflet/issues/4978
+								if ( layer._map ) {
+									//console.log("has map");
+									bounds[map_id].extend(layer.getBounds());
+								} else {
+									//console.log("has no map");
+									maps[map_id].addLayer(layer);
+									bounds[map_id].extend(layer.getBounds());
+									maps[map_id].removeLayer(layer);
+								}
 							} else if ( typeof allfit[map_id] !== "undefined") {
 								allfit[map_id].extend(layer.getBounds());
 							}
@@ -136,6 +145,7 @@ function leafext_zoomhome_script($fit){
 		//console.log("circles "+mapcircles);
 
 		maps[map_id].whenReady ( function() {
+			//console.log("map is ready");
 			if (bounds[map_id].isValid()) {
 				//console.log("ready map has bounds");
 				zoomHome[map_id].setHomeBounds(bounds[map_id]);
