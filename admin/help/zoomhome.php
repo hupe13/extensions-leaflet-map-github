@@ -120,7 +120,7 @@ $text=$text.'<p>'.__('You can set following and the Home button works as shown i
 		<td>'.__('map like defined','extensions-leaflet-map').'</td>
 		<td>'.__('map like defined','extensions-leaflet-map').'</td>
 	</tr>
-</table></div>
+</table></figure>
 * leaflet-element '.__('means','extensions-leaflet-map').' leaflet-line, leaflet-polygon, leaflet-circle, leaflet-geojson, leaflet-gpx, leaflet-kml.<br>
 ** '.__('sometimes to first zoom','extensions-leaflet-map').'
 ';

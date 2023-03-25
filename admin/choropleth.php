@@ -9,25 +9,25 @@ function leafext_choropleth_help() {
     $text = '<h2>Leaflet Choropleth</h2>';
   }
 
-  $text=$text.'<p>'.'</p>
+  $text=$text.'
   <h2>Shortcode</h2>';
-  $text = $text.'<pre><code>&#91;leaflet-map fitbounds ....]'."\n";
+  $text = $text.'<p><pre><code>&#91;leaflet-map fitbounds ....]'."\n";
   $text = $text.'[leaflet-geojson src=https://domain.tld/path/to/file.geojson][/leaflet-geojson]
 [choropleth valueProperty="property1" scale="white, red" steps=5 mode=e legend fillopacity=0.8]Property1 {property1}&lt;br>{property2} Property2[/choropleth]
 [zoomhomemap]';
-  $text = $text.'</code></pre>';
+  $text = $text.'</code></pre></p>';
 
-  $text = $text.'<p><h2>'.__('Popup Content','extensions-leaflet-map').'</h2></p>';
+  $text = $text.'<h2>'.__('Popup Content','extensions-leaflet-map').'</h2><p>';
   $text = $text.sprintf(__('You can specify %s as you like.','extensions-leaflet-map'),
   "<code>Property1 {property1}&lt;br>{property2} Property2</code>");
-  $text = $text.'<p>'.
+  $text = $text.'</p><p>'.
   __('Use it like the popup content for Geojsons in Leaflet Map: To add feature properties to the popups, use the inner content and curly brackets to substitute the values:',
   'extensions-leaflet-map').
   '<pre><code>&#91;choropleth ...]Field A = {field_a}[/choropleth]';
   $text = $text.'</code></pre>'
   .'</p>';
 
-  $text = $text.'<p><h2>'.__('Options','extensions-leaflet-map').'</h2></p>';
+  $text = $text.'<h2>'.__('Options','extensions-leaflet-map').'</h2>';
   $options = leafext_choropleth_params();
   $new = array();
   $new[] = array(

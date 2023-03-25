@@ -9,6 +9,7 @@ defined( 'ABSPATH' ) or die();
 include LEAFEXT_PLUGIN_DIR . '/admin/marker/markercluster.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/marker/placementstrategies.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/marker/extramarker.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/marker/hidemarkers.php';
 
 function leafext_marker_tab() {
 	$tabs = array (
@@ -27,6 +28,10 @@ function leafext_marker_tab() {
 		array (
 			'tab' => 'markerclustergroup',
 			'title' => 'Leaflet.FeatureGroup.SubGroup',
+		),
+		array (
+			'tab' => 'hidemarkers',
+			'title' => 'Hide Markers',
 		),
 	);
 
@@ -59,6 +64,9 @@ function leafext_admin_marker($active_tab) {
 	} else if ( $active_tab ==  'extramarker') {
 		echo leafext_marker_tab();
 		leafext_extramarker_help();
+	} else if( $active_tab == 'hidemarkers') {
+		echo '<h2>'.leafext_marker_tab().'</h2>';
+		leafext_help_hidemarkers();
 	}
 }
 

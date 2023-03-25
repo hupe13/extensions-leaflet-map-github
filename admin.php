@@ -8,20 +8,18 @@ include LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/tiles/main.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/canvas.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/filemgr/main.php';
-//include LEAFEXT_PLUGIN_DIR . '/admin/extramarker.php';
-//include LEAFEXT_PLUGIN_DIR . '/admin/choropleth.php';
 
 // Add menu page for admin
 function leafext_add_page() {
 	$leafext_plugin_name = basename(dirname(  __FILE__  ));
 	//Add Submenu
 	$leafext_admin_page =
-		add_submenu_page( 'leaflet-map',
-			'Extensions for Leaflet Map Options',
-			'Extensions for Leaflet Map',
-			'manage_options',
-			$leafext_plugin_name,
-			'leafext_do_page');
+	add_submenu_page( 'leaflet-map',
+	'Extensions for Leaflet Map Options',
+	'Extensions for Leaflet Map',
+	'manage_options',
+	$leafext_plugin_name,
+	'leafext_do_page');
 }
 add_action('admin_menu', 'leafext_add_page', 99);
 
@@ -37,8 +35,6 @@ function leafext_do_page() {
 		leafext_admin_filemgr($active_tab);
 	} else if ( strpos( $active_tab, 'marker' ) !== false ) {
 		leafext_admin_marker($active_tab);
-	// } else if ( strpos( $active_tab, 'extramarker' ) !== false ) {
-	// 	leafext_extramarker_help();
 	} else if ( strpos( $active_tab, 'tiles' ) !== false ) {
 		leafext_admin_tiles($active_tab);
 	} else if( $active_tab == 'hover' ) {
@@ -57,15 +53,15 @@ function leafext_do_page() {
 	} else if( $active_tab == 'help' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/help.php';
 		leafext_help_table($leafext_plugin_name);
-	} else if( $active_tab == 'other' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/other.php';
+	} else if( $active_tab == 'fullscreen' ) {
+		include LEAFEXT_PLUGIN_DIR . '/admin/fullscreen.php';
+		leafext_help_fullscreen();
 	} else if( $active_tab == 'choropleth' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/choropleth.php';
 		leafext_choropleth_help();
 	} else if( $active_tab == 'featuregroup' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/featuregroup.php';
-		//leafext_help_featuregroup();
-	} else if( $active_tab == 'search' ) {
+	} else if( $active_tab == 'leafletsearch' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/leaflet-search.php';
 		leafext_leafletsearch_help();
 	}
@@ -76,12 +72,12 @@ function leafext_add_nonadmin_page() {
 	$leafext_plugin_name = basename(dirname(  __FILE__  ));
 	//Add Submenu
 	$leafext_autor_page =
-		add_submenu_page( 'leaflet-shortcode-helper',
-			'Extensions for Leaflet Map Options',
-			'Extensions for Leaflet Map',
-			'edit_posts',
-			$leafext_plugin_name,
-			'leafext_do_nonadmin_page');
+	add_submenu_page( 'leaflet-shortcode-helper',
+	'Extensions for Leaflet Map Options',
+	'Extensions for Leaflet Map',
+	'edit_posts',
+	$leafext_plugin_name,
+	'leafext_do_nonadmin_page');
 }
 add_action('admin_menu', 'leafext_add_nonadmin_page', 99);
 
@@ -113,15 +109,16 @@ function leafext_do_nonadmin_page() {
 	} else if( $active_tab == 'help' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/help.php';
 		leafext_help_table($leafext_plugin_name);
-	} else if( $active_tab == 'other' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/other.php';
+	} else if( $active_tab == 'fullscreen' ) {
+		include LEAFEXT_PLUGIN_DIR . '/admin/fullscreen.php';
+		leafext_help_fullscreen();
 	} else if( $active_tab == 'choropleth' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/choropleth.php';
 		leafext_choropleth_help();
 	} else if( $active_tab == 'featuregroup' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/featuregroup.php';
 		//leafext_help_featuregroup();
-	} else if( $active_tab == 'search' ) {
+	} else if( $active_tab == 'leafletsearch' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/leaflet-search.php';
 		leafext_leafletsearch_help();
 	}
@@ -165,12 +162,6 @@ function leafext_admin_tabs() {
 	}
 	echo '">'. __('Marker','extensions-leaflet-map'). '</a>'."\n";
 	//
-	// echo '<a href="?page='.$leafext_plugin_name.'&tab=extramarker" class="nav-tab';
-	// if ( strpos( $active_tab, 'extramarker' ) !== false ) {
-	// 	echo ' nav-tab-active';
-	// }
-	// echo '">'. __('ExtraMarkers','extensions-leaflet-map'). '</a>'."\n";
-	//
 	echo '<a href="?page='.$leafext_plugin_name.'&tab=tileshelp" class="nav-tab';
 	if ( strpos( $active_tab, 'tiles' ) !== false ) {
 		echo ' nav-tab-active';
@@ -178,16 +169,12 @@ function leafext_admin_tabs() {
 	echo '">'. __('Tile Server','extensions-leaflet-map'). '</a>'."\n";
 	//
 	$tabs = array (
-		// array (
-		// 	'tab' => 'tilelayers',
-		// 	'title' => __('Switching Tile Layers','extensions-leaflet-map'),
-		// ),
 		array (
 			'tab' => 'featuregroup',
 			'title' => 'FeatureGroup',
 		),
 		array (
-			'tab' => 'search',
+			'tab' => 'leafletsearch',
 			'title' => 'Leaflet Control Search',
 		),
 		array (
@@ -207,8 +194,8 @@ function leafext_admin_tabs() {
 			'title' => 'leaflet.zoomhome',
 		),
 		array (
-			'tab' => 'other',
-			'title' => __('Other functions','extensions-leaflet-map'),
+			'tab' => 'fullscreen',
+			'title' => __('Fullscreen','extensions-leaflet-map'),
 		),
 		// array (
 		// 	'tab' => '',

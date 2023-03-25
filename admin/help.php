@@ -5,18 +5,21 @@ defined( 'ABSPATH' ) or die();
 function leafext_help_table($leafext_plugin_name="") {
 	$header = '<h3>'.
 	__('Found an issue? Do you have a question?','extensions-leaflet-map').'</h3>
-    <p>'.
-	__('Post it to the support forum','extensions-leaflet-map').': <a href="https://wordpress.org/support/plugin/extensions-leaflet-map/" target="_blank">Extensions for Leaflet Map</a></p>';
+	<p>'.
+	__('Post it to the support forum','extensions-leaflet-map').
+	': <a href="https://wordpress.org/support/plugin/extensions-leaflet-map/" target="_blank">Extensions for Leaflet Map</a></p>';
 	//
 	$header=$header.'<h3>'.
 	__('Documentation','extensions-leaflet-map').'</h3><p>';
-	$header=$header.sprintf(
+	$header=$header.
+	sprintf(
 		__('Detailed documentation and examples in %sGerman%s and %sEnglish%s',
-			"extensions-leaflet-map"),
-			'<a href="https://leafext.de/">',
-			'</a>',
-			'<a href="https://leafext.de/en/">',
-			'</a>');
+		"extensions-leaflet-map"),
+		'<a href="https://leafext.de/">',
+		'</a>',
+		'<a href="https://leafext.de/en/">',
+		'</a>'
+	);
 	$header=$header.'.</p>';
 	//
 
@@ -32,67 +35,193 @@ function leafext_help_table($leafext_plugin_name="") {
 	'</th><th style="text-align:center">Shortcode(s) / '.__('Function','extensions-leaflet-map').'</th><th style="text-align:center">'.
 	__('Leaflet Plugins','extensions-leaflet-map').
 	'</th></tr></thead>
-	<tbody>
+	<tbody>';
 
-	<tr><td colspan="3" style="text-align:center"><b>'.__('Elevation Profile','extensions-leaflet-map').'</b></td></tr>
-	<tr><td>'.
-	__('track with an elevation profile','extensions-leaflet-map').
-	'</td><td><a href="?page='.$leafext_plugin_name.'&tab=elevation">elevation</a></td>
-	<td><a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>, <a href="https://github.com/yohanboniface/Leaflet.i18n">Leaflet.i18n</a></td></tr>
+	$table = array();
 
-	<tr><td>'
-	.__('multiple tracks with elevation profiles','extensions-leaflet-map').
-	'</td><td><a href="?page='.$leafext_plugin_name.'&tab=multielevation">elevation-track, elevation-tracks, multielevation</a></td>
-	<td><a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>, <a href="https://github.com/makinacorpus/Leaflet.GeometryUtil">Leaflet.GeometryUtil</a></td></tr>
+	$table[__('Elevation Profile','extensions-leaflet-map')] = array(
+		array(
+			'function' => __('track with an elevation profile','extensions-leaflet-map'),
+			'shortcode' => 'elevation',
+			'tab' => 'elevation',
+			'plugins' => '<a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>,
+			<a href="https://github.com/yohanboniface/Leaflet.i18n">Leaflet.i18n</a>',
+			'doku' => '/doku/elevation/',
+			'kategorie' => '/examples/elevation/',
+		),
+		array(
+			'function' => __('multiple tracks with elevation profiles','extensions-leaflet-map'),
+			'shortcode' => 'elevation-track, elevation-tracks, multielevation',
+			'tab' => 'multielevation',
+			'plugins' => '<a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>,
+			<a href="https://github.com/makinacorpus/Leaflet.GeometryUtil">Leaflet.GeometryUtil</a>',
+			'doku' => '/doku/multielevation/',
+			'kategorie' => '/examples/multielevation/',
+		),
+		array(
+			'function' => __('Migration from','extensions-leaflet-map').' <a href="https://wordpress.org/plugins/wp-gpx-maps/">WP GPX Maps</a>',
+			'shortcode' => 'sgpx',
+			'tab' => 'sgpxelevation',
+			'plugins' => '',
+			'doku' => '/doku/sgpxelevation/',
+			'kategorie' => '/extra/category/sgpx/',
+		),
+	);
 
-	<tr><td colspan="3" style="text-align:center"><b>'.__('Functions for Markers','extensions-leaflet-map').'</b></td></tr>
+	$table[__('Functions for Markers','extensions-leaflet-map')] = array(
+		array(
+			'function' => __('marker clustering','extensions-leaflet-map'),
+			'shortcode' => 'cluster',
+			'tab' => 'markercluster',
+			'plugins' => '<a href="https://github.com/Leaflet/Leaflet.markercluster">Leaflet.markercluster</a>',
+			'doku' => '/doku/markercluster/',
+			'kategorie' => '/examples/cluster/',
+		),
+		array(
+			'function' => __('clustering and grouping of markers','extensions-leaflet-map'),
+			'shortcode' => 'markerClusterGroup',
+			'tab' => 'markerclustergroup',
+			'plugins' => '<a href="https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup">Leaflet.FeatureGroup.SubGroup</a>',
+			'doku' => '/doku/markerclustergroup/',
+			'kategorie' => '',
+		),
+		array(
+			'function' => __('styling markercluster','extensions-leaflet-map'),
+			'shortcode' => 'placementstrategies',
+			'tab' => 'clusterplacementstrategies',
+			'plugins' => '<a href="https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies">Leaflet.MarkerCluster.PlacementStrategies</a>',
+			'doku' => '',
+			'kategorie' => '/cluster/placementstrategies/',
+		),
+		array(
+			'function' => __('more markers','extensions-leaflet-map'),
+			'shortcode' => 'leaflet-extramarker',
+			'tab' => 'extramarker',
+			'plugins' => '<a href="https://github.com/coryasilva/Leaflet.ExtraMarkers">Leaflet.ExtraMarkers</a>',
+			'doku' => '/doku/extramarker/',
+			'kategorie' => '',
+		),
+		array(
+			'function' => __('hide markers','extensions-leaflet-map'),
+			'shortcode' => 'hidemarkers',
+			'tab' => 'hidemarkers',
+			'plugins' => '',
+			'doku' => '/doku/hidemarkers/',
+			'kategorie' => '',
+		),
+	);
 
-	<tr><td>'.__('marker clustering','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=markercluster">cluster</a></td><td><a href="https://github.com/Leaflet/Leaflet.markercluster">Leaflet.markercluster</a></td></tr>
+	$table[__('Further Leaflet Plugins','extensions-leaflet-map')] = array(
+		array(
+			'function' => __('Grouping by options and features','extensions-leaflet-map'),
+			'shortcode' => 'leaflet-optiongroup, leaflet-featuregroup',
+			'tab' => 'featuregroup',
+			'plugins' => '<a href="https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup">Leaflet.FeatureGroup.SubGroup</a>',
+			'doku' => '/doku/featuregroup/',
+			'kategorie' => '/examples/grouping/',
+		),
+		array(
+			'function' => __('Search markers/features','extensions-leaflet-map'),
+			'shortcode' => 'leaflet-search',
+			'tab' => 'leafletsearch',
+			'plugins' => '<a href="https://github.com/stefanocudini/leaflet-search">Leaflet Control Search</a>',
+			'doku' => '/doku/leafletsearch/',
+			'kategorie' => '/examples/leafletsearch/',
+		),
+		array(
+			'function' => __('Leaflet Choropleth','extensions-leaflet-map'),
+			'shortcode' => 'choropleth',
+			'tab' => 'choropleth',
+			'plugins' => '<a href="https://github.com/timwis/leaflet-choropleth">Leaflet Choropleth</a>',
+			'doku' => '/doku/choropleth/',
+			'kategorie' => '',
+		),
+		array(
+			'function' => __('switching tile servers','extensions-leaflet-map'),
+			'shortcode' => 'layerswitch',
+			'tab' => 'tileshelp',
+			'plugins' => '<a href="https://leafletjs.com/examples/layers-control/">L.control.layers</a>,
+			<a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers</a>,
+			<a href="https://github.com/dayjournal/Leaflet.Control.Opacity">Leaflet.Control.Opacity</a>',
+			'doku' => '/doku/tileshelp/',
+			'kategorie' => '',
+		),
+		array(
+			'function' => __('reset the map','extensions-leaflet-map'),
+			'shortcode' => 'zoomhomemap',
+			'tab' => 'zoomhome',
+			'plugins' => '<a href="https://github.com/torfsen/leaflet.zoomhome">leaflet.zoomhome</a>',
+			'doku' => '/doku/zoomhome/',
+			'kategorie' => '/zoomhome/zoomhome/',
+		),
+		array(
+			'function' => __('fullscreen','extensions-leaflet-map'),
+			'shortcode' => 'fullscreen',
+			'tab' => 'fullscreen',
+			'plugins' => '<a href="https://github.com/brunob/leaflet.fullscreen">leaflet.fullscreen</a>',
+			'doku' => '/doku/fullscreen/',
+			'kategorie' => '',
+		),
+		array(
+			'function' => __('gesture handling','extensions-leaflet-map'),
+			'shortcode' => 'gestures',
+			'tab' => 'gesture',
+			'plugins' => '<a href="https://github.com/Raruto/leaflet-gesture-handling">Leaflet.GestureHandling</a>',
+			'doku' => '/doku/gesture/',
+			'kategorie' => '',
+		),
+	);
 
-	<tr><td>'.__('clustering and grouping of markers','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=markerclustergroup">markerClusterGroup</a></td><td><a href="https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup">Leaflet.FeatureGroup.SubGroup</a></td></tr>
+	$table[__('Files for Leaflet Map','extensions-leaflet-map')] = array(
+		array(
+			'function' => __('Files for Leaflet Map','extensions-leaflet-map'),
+			'shortcode' => __('Files for Leaflet Map','extensions-leaflet-map'),
+			'tab' => 'filemgr'.(current_user_can('manage_options')?'':'-list'),
+			'plugins' => '',
+			'doku' => '/doku/filemgr/',
+			'kategorie' => '',
+		),
+		array(
+			'function' => __('Tracks from all files in a directory','extensions-leaflet-map'),
+			'shortcode' => 'leaflet-directory',
+			'tab' => 'filemgr-dir',
+			'plugins' => '',
+			'doku' => '/doku/filemgr/',
+			'kategorie' => '',
+		),
+	);
 
-	<tr><td>'.__('styling markercluster','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=clusterplacementstrategies">placementstrategies</a></td><td><a href="https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies">Leaflet.MarkerCluster.PlacementStrategies</a></td></tr>
+	$table[__('More Functions','extensions-leaflet-map')] = array(
+		array(
+			'function' => __('Hovering and Tooltips','extensions-leaflet-map'),
+			'shortcode' => 'hover',
+			'tab' => 'hover',
+			'plugins' => '',
+			'doku' => '/doku/hover/',
+			'kategorie' => '/examples/hover/',
+		),
+	);
 
-	<tr><td>'.__('more markers','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=extramarker">leaflet-extramarker</a></td><td><a href="https://github.com/coryasilva/Leaflet.ExtraMarkers">Leaflet.ExtraMarkers</a></td></tr>
+	foreach ($table as $key => $entries) {
+		$text=$text.'<tr><td colspan="3" style="text-align:center"><b>'.$key.'</b></td></tr>';
+		foreach ($entries as $entry) {
+			$text=$text.'<tr><td>'.$entry['function'].'</td>';
+			if (is_singular() || is_archive() ) {
+				$text=$text.'<td>'.$entry['shortcode'];
+				if ($entry['doku'] != "") $text=$text.' - <a href="'.$entry['doku'].'">'.__('Documentation','extensions-leaflet-map').'</a>';
+				if ($entry['kategorie'] != "") $text=$text.' - <a href="'.$entry['kategorie'].'">'.__('Examples','extensions-leaflet-map').'</a>';
+				$text=$text.'</td>';
+			} else {
+				$text=$text.'<td><a href="?page='.$leafext_plugin_name.'&tab='.$entry['tab'].'">'.$entry['shortcode'].'</a></td>';
+			}
+			$text=$text.'<td>'.$entry['plugins'].'</td></tr>';
+		}
+	}
 
-	<tr ><td>'.__('hide markers','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=other">hidemarkers</a></td><td></td></tr>
-
-	<tr><td colspan="3" style="text-align:center"><b>'.__('Further Leaflet Plugins','extensions-leaflet-map').'</b></td></tr>
-
-	<tr><td>'.__('Grouping by options and features','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=featuregroup">leaflet-optiongroup, leaflet-featuregroup</a></td><td><a href="https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup">Leaflet.FeatureGroup.SubGroup</a></td></tr>
-
-	<tr><td>'.__('Search markers/features','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=search">leaflet-search</a></td><td><a href="https://github.com/stefanocudini/leaflet-search">Leaflet Control Search</a></td></tr>
-
-	<tr><td>'.__('Leaflet Choropleth','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=choropleth">choropleth</a></td><td><a href="https://github.com/timwis/leaflet-choropleth">Leaflet Choropleth</a></td></tr>
-
-	<tr><td>'.__('switching tile servers','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=tileshelp">layerswitch</a></td><td><a href="https://leafletjs.com/examples/layers-control/">L.control.layers</a>, <a href="https://github.com/leaflet-extras/leaflet-providers">Leaflet-providers</a>, <a href="https://github.com/dayjournal/Leaflet.Control.Opacity">Leaflet.Control.Opacity</a></td></tr>
-
-	<tr><td>'.__('reset the map','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=zoomhome">zoomhomemap</a></td><td><a href="https://github.com/torfsen/leaflet.zoomhome">leaflet.zoomhome</a></td></tr>
-
-	<tr><td>'.__('fullscreen','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=other">fullscreen</a></td><td><a href="https://github.com/brunob/leaflet.fullscreen">leaflet.fullscreen</a></td></tr>
-
-	<tr><td>'.__('gesture handling','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=gesture" >gestures</a></td><td><a href="https://github.com/Raruto/leaflet-gesture-handling">Leaflet.GestureHandling</a></td></tr>
-
-	<tr><td colspan="3" style="text-align:center"><b>'.__('Files for Leaflet Map','extensions-leaflet-map').'</b></td></tr>
-
-	<tr><td>'.__('Files for Leaflet Map','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=filemgr'.(current_user_can('manage_options')?'':'-list').'">'.__('Files for Leaflet Map','extensions-leaflet-map').'</a></td><td></td></tr>
-
-	<tr><td>'.__('Tracks from all files in a directory','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=filemgr-dir">leaflet-directory</a></td><td></td></tr>
-
-	<tr><td colspan="3" style="text-align:center"><b>'.__('More Functions','extensions-leaflet-map').'</b></td></tr>
-
-	<tr><td>'.__('Hovering and Tooltips','extensions-leaflet-map').'</td><td><a href="?page='.$leafext_plugin_name.'&tab=hover" >hover</a></td><td></td></tr>
-
-	<tr><td>'.__('Migration from','extensions-leaflet-map').' <a href="https://wordpress.org/plugins/wp-gpx-maps/">WP GPX Maps</a></td><td><a href="?page='.$leafext_plugin_name.'&tab=sgpxelevation">sgpx</a></td><td></td></tr>
-
-	</tbody></table></figure>';
+	$text=$text.'</tbody></table></figure>';
 
 	$ende = '<p>'.__('You may be interested in','extensions-leaflet-map').
-		' <a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>.</p>';
-
-	// $ende = $ende.'<p>'.sprintf(__('If you want to help me, you can test to %smanage the files%s.','extensions-leaflet-map'),
-	// 	'<a href="https://github.com/hupe13/extensions-leaflet-map-testing/">',
-	// 	'</a>').'</p>';
+	' <a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>.</p>';
 
 	if (is_singular() || is_archive() ) {
 		return $text;
