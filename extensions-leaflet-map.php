@@ -24,10 +24,12 @@ define('LEAFEXT_PLUGIN_SETTINGS', dirname( plugin_basename( __FILE__ ) ) ); // e
 function leafext_plugin_init() {
   if (is_admin()) {
     if ( ! defined('LEAFLET_MAP__PLUGIN_DIR') ) {
-      function leafext_require_leaflet_map_plugin(){?>
-        <div class="notice notice-error" >
-          <p> Please install and activate <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map Plugin</a> before using Extensions for Leaflet Map.</p>
-        </div><?php
+      function leafext_require_leaflet_map_plugin(){
+        echo '<div class="notice notice-error" ><p> '
+        .sprintf(__('Please install and activate %s before using %s.','extensions-leaflet-map'),
+        '<a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>',
+        'Extensions for Leaflet Map').
+        '</p></div>';
       }
       add_action('admin_notices','leafext_require_leaflet_map_plugin');
       //register_activation_hook(__FILE__, 'leafext_require_leaflet_map_plugin');
