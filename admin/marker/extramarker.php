@@ -3,11 +3,11 @@
 defined( 'ABSPATH' ) or die();
 
 function leafext_extramarker_help() {
-  // if (is_singular() || is_archive() ) {
-  //   $text = '';
-  // } else {
+  if (is_singular() || is_archive() ) {
+    $text = '';
+  } else {
      $text = '<h2>Leaflet.Extramarkers</h2>';
-  // }
+  }
 
   $text=$text.'<p>'.sprintf(__('Only the %s is included in the plugin %s. You can install the %sother fonts%s and use these also.','extensions-leaflet-map'),
   '<a href="https://fontawesome.com/download">Font Awesome 6</a>',
@@ -15,10 +15,10 @@ function leafext_extramarker_help() {
   '<a href="https://github.com/coryasilva/Leaflet.ExtraMarkers#icons">',
   '</a>').'</p>
   <h2>Shortcode</h2>';
-  $text = $text.'<pre><code>&#91;leaflet-map fitbounds ....]'."\n";
-  $text = $text.'&#91;leaflet-extramarker option=... ...]description[/leaflet-extramarker]'."\n";
-  $text = $text.'&#91;hover]'."\n";
-  $text = $text.'&#91;zoomhomemap]</code></pre>';
+  $text = $text.'<pre><code>[&#173;leaflet-map fitbounds ....]'."\n";
+  $text = $text.'[&#173;leaflet-extramarker option=... ...]description[/leaflet-extramarker]'."\n";
+  $text = $text.'[&#173;hover]'."\n";
+  $text = $text.'[&#173;zoomhomemap]</code></pre>';
 
   // Setup map
   $shapes = array ('circle', 'square', 'star', 'penta');

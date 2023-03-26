@@ -36,23 +36,21 @@ Use %s to group elements by options and %s to group elements by properties.','ex
 ';
 
   $text=$text.'<h3>Shortcode</h3>
-  <pre>
-  [leaflet-map fitbounds]
-  //any many
-  [leaflet-marker      ...] ... [/leaflet-marker]
-  [leaflet-extramarker ...] ... [/leaflet-extramarker]
-  [leaflet-polygon     ...] ... [/leaflet-polygon]
-  [leaflet-circle      ...] ... [/leaflet-circle]
-  [leaflet-line        ...] ... [/leaflet-line]
-  [leaflet-geojson     ...] ... [/leaflet-geojson]
-  [leaflet-gpx         ...] ... [/leaflet-gpx]
-  [leaflet-kml         ...] ... [/leaflet-kml]
-  //one or more
-  //suitable for all leaflet-elements above
-  [leaflet-optiongroup option="..." values="..., ..." groups="..., ..." substr visible=...]
-  //suitable for leaflet-geojson, leaflet-gpx, leaflet-kml.
-  [leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." <span style="color: #d63638">!</span>substr visible=...]</pre>
-  ';
+  <pre><code>[leaflet-map fitbounds]
+//any many
+[leaflet-marker      ...] ... [/leaflet-marker]
+[leaflet-extramarker ...] ... [/leaflet-extramarker]
+[leaflet-polygon     ...] ... [/leaflet-polygon]
+[leaflet-circle      ...] ... [/leaflet-circle]
+[leaflet-line        ...] ... [/leaflet-line]
+[leaflet-geojson     ...] ... [/leaflet-geojson]
+[leaflet-gpx         ...] ... [/leaflet-gpx]
+[leaflet-kml         ...] ... [/leaflet-kml]
+//one or more
+//suitable for all leaflet-elements above
+[leaflet-optiongroup option="..." values="..., ..." groups="..., ..." substr visible=...]
+//suitable for leaflet-geojson, leaflet-gpx, leaflet-kml.
+[leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." <span style="color: #d63638">!</span>substr visible=...]</code></pre>';
 	$text=$text.'<h3>leaflet-optiongroup option</h3>'.
 	sprintf(__('Each of the above leaflet elements has options. These are from the shortcode %s and are fixed.','extensions-leaflet-map'),'<code>leaflet-...</code>').' ';
 

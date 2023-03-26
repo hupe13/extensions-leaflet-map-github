@@ -9,19 +9,16 @@ function leafext_leafletsearch_help(){
   $text=$text.'<p>'.__('A control for search Markers/Features location by custom property.',"extensions-leaflet-map").'</p>';
 
   $text=$text.'<h3>Shortcode</h3>
-  <pre>
-  &#91;leaflet-map fitbounds]
-  //any many
-  &#91;leaflet-marker      ...] ... [/leaflet-marker]
-  &#91;leaflet-extramarker ...] ... [/leaflet-extramarker]
-  &#91;leaflet-polygon     ...] ... [/leaflet-polygon]
-  &#91;leaflet-circle      ...] ... [/leaflet-circle]
-  &#91;leaflet-line        ...] ... [/leaflet-line]
-  &#91;leaflet-geojson     ...] ... [/leaflet-geojson]
-  //one or more
-  &#91;leaflet-search propertyName="..." ...]</pre>
-  ';
-
+  <pre><code>[&#173;leaflet-map fitbounds]
+//any many
+[&#173;leaflet-marker      ...] ... [/leaflet-marker]
+[&#173;leaflet-extramarker ...] ... [/leaflet-extramarker]
+[&#173;leaflet-polygon     ...] ... [/leaflet-polygon]
+[&#173;leaflet-circle      ...] ... [/leaflet-circle]
+[&#173;leaflet-line        ...] ... [/leaflet-line]
+[&#173;leaflet-geojson     ...] ... [/leaflet-geojson]
+//one or more
+[&#173;leaflet-search propertyName="..." ...]</code></pre>';
   $text = $text.'<p><h2>'.__('Options','extensions-leaflet-map').'</h2></p>';
 
   $options=leafext_search_params();

@@ -232,7 +232,7 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
                 //console.log("a.options[att_property] "+att_property);
                 leafextsearch = leafextsearch.concat(' | ',a.options[att_property]);
               } else {
-                console.log("was nun?");
+                //console.log("was nun?");
               }
             }
           }
@@ -298,7 +298,7 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
                   if (layer.options[att_property] && layer.options[att_property] != "") {
                     leafextsearch = leafextsearch.concat(' | ',layer.options[att_property]);
                   } else {
-                    console.log("was nun?");
+                    //console.log("was nun?");
                   }
                 }
 
@@ -332,13 +332,25 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
     var geojsons = window.WPLeafletMapPlugin.geojsons;
     for (var j = 0, len = geojsons.length; j < len; j++) {
       if (map_id == geojsons[j]._map._leaflet_id) {
-        // console.log(geojsons[j]);
         // geojsons[j].options[all_properties]
+        // console.log("geojson");
+        // console.log(geojsons[j]);
         geojsons[j].on("ready", function (e) {
+          //console.log("geojson ready");
+          //console.log(e);
           let duplicates = [];
           j = 0;
           e.target.eachLayer(function(layer) {
+            //console.log(layer.options);
             let leafextsearch = "";
+            if (layer.options) {
+              for (let i = 0; i < all_properties.length; i++) {
+                att_property = all_properties[i];
+                if (layer.options[att_property] && layer.options[att_property] != "") {
+                  leafextsearch = leafextsearch.concat(' | ',layer.options[att_property]);
+                }
+              }
+            }
             for (let i = 0; i < all_properties.length; i++) {
               att_property = all_properties[i];
               //console.log(att_property);
@@ -420,6 +432,23 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
             //console.log("has not Bounds");
             map.fitBounds(L.latLngBounds([latlng]));
             map.setZoom(att_zoom);
+          } else if ( latlng.layer instanceof L.Circle ) {
+            //console.log("circle gefunden");
+            //console.log(latlng.layer);
+            //https://github.com/Leaflet/Leaflet/issues/4978
+            if ( latlng.layer._map ) {
+              console.log("has map");
+              map.fitBounds( latlng.layer.getBounds() );
+              var zoom = map.getBoundsZoom(latlng.layer.getBounds());
+              map.setView(latlng, zoom);
+            } else {
+              //console.log("has no map");
+              map.addLayer(latlng.layer);
+              map.fitBounds( latlng.layer.getBounds() );
+              var zoom = map.getBoundsZoom(latlng.layer.getBounds());
+              map.setView(latlng, zoom);
+              map.removeLayer(latlng.layer);
+            }
           } else {
             map.fitBounds( latlng.layer.getBounds() );
             var zoom = map.getBoundsZoom(latlng.layer.getBounds());
@@ -435,9 +464,9 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
       //console.log(e);
       //console.log("search:locationfound");
       if(e.target._map.hasLayer(e.layer)){
-        //console.log("marker is visible, do nothing");
+        //console.log("layer is visible, do nothing");
       } else {
-        //console.log("marker is not on map, _adding");
+        //console.log("layer is not on map, _adding");
         e.layer.addTo(map);
         this._markerSearch._markeradd = e.layer;
       }

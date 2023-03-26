@@ -37,7 +37,7 @@ function leafext_markertitle_script($options){
 						// console.log("has _icon - title deleted");
 						a._icon.title = "";
 					}
-					console.log(a);
+					//console.log(a);
 					a.unbindTooltip();
 					a.bindTooltip("", {visibility: 'hidden', opacity: 0}).closeTooltip();
 				}
