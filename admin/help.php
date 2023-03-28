@@ -47,7 +47,8 @@ function leafext_help_table($leafext_plugin_name="") {
 			'plugins' => '<a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>,
 			<a href="https://github.com/yohanboniface/Leaflet.i18n">Leaflet.i18n</a>',
 			'doku' => '/doku/elevation/',
-			'kategorie' => '/examples/elevation/',
+			'kategorie' => 'elevation',
+			'examples' => '',
 		),
 		array(
 			'function' => __('multiple tracks with elevation profiles','extensions-leaflet-map'),
@@ -56,7 +57,8 @@ function leafext_help_table($leafext_plugin_name="") {
 			'plugins' => '<a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>,
 			<a href="https://github.com/makinacorpus/Leaflet.GeometryUtil">Leaflet.GeometryUtil</a>',
 			'doku' => '/doku/multielevation/',
-			'kategorie' => '/examples/multielevation/',
+			'kategorie' => 'multielevation',
+			'examples' => '',
 		),
 		array(
 			'function' => __('Migration from','extensions-leaflet-map').' <a href="https://wordpress.org/plugins/wp-gpx-maps/">WP GPX Maps</a>',
@@ -64,7 +66,8 @@ function leafext_help_table($leafext_plugin_name="") {
 			'tab' => 'sgpxelevation',
 			'plugins' => '',
 			'doku' => '/doku/sgpxelevation/',
-			'kategorie' => '/extra/category/sgpx/',
+			'kategorie' => '',
+			'examples' => '/extra/category/sgpx/',
 		),
 	);
 
@@ -75,7 +78,8 @@ function leafext_help_table($leafext_plugin_name="") {
 			'tab' => 'markercluster',
 			'plugins' => '<a href="https://github.com/Leaflet/Leaflet.markercluster">Leaflet.markercluster</a>',
 			'doku' => '/doku/markercluster/',
-			'kategorie' => '/examples/cluster/',
+			'kategorie' => 'cluster',
+			'examples' => '',
 		),
 		array(
 			'function' => __('clustering and grouping of markers','extensions-leaflet-map'),
@@ -84,6 +88,7 @@ function leafext_help_table($leafext_plugin_name="") {
 			'plugins' => '<a href="https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup">Leaflet.FeatureGroup.SubGroup</a>',
 			'doku' => '/doku/markerclustergroup/',
 			'kategorie' => '',
+			'examples' => '',
 		),
 		array(
 			'function' => __('styling markercluster','extensions-leaflet-map'),
@@ -91,7 +96,8 @@ function leafext_help_table($leafext_plugin_name="") {
 			'tab' => 'clusterplacementstrategies',
 			'plugins' => '<a href="https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies">Leaflet.MarkerCluster.PlacementStrategies</a>',
 			'doku' => '',
-			'kategorie' => '/cluster/placementstrategies/',
+			'kategorie' => '',
+			'examples' => '/cluster/placementstrategies/',
 		),
 		array(
 			'function' => __('more markers','extensions-leaflet-map'),
@@ -100,6 +106,7 @@ function leafext_help_table($leafext_plugin_name="") {
 			'plugins' => '<a href="https://github.com/coryasilva/Leaflet.ExtraMarkers">Leaflet.ExtraMarkers</a>',
 			'doku' => '/doku/extramarker/',
 			'kategorie' => '',
+			'examples' => '',
 		),
 		array(
 			'function' => __('hide markers','extensions-leaflet-map'),
@@ -108,6 +115,7 @@ function leafext_help_table($leafext_plugin_name="") {
 			'plugins' => '',
 			'doku' => '/doku/hidemarkers/',
 			'kategorie' => '',
+			'examples' => '',
 		),
 	);
 
@@ -118,7 +126,8 @@ function leafext_help_table($leafext_plugin_name="") {
 			'tab' => 'featuregroup',
 			'plugins' => '<a href="https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup">Leaflet.FeatureGroup.SubGroup</a>',
 			'doku' => '/doku/featuregroup/',
-			'kategorie' => '/examples/grouping/',
+			'kategorie' => 'grouping',
+			'examples' => '',
 		),
 		array(
 			'function' => __('Search markers/features','extensions-leaflet-map'),
@@ -126,7 +135,8 @@ function leafext_help_table($leafext_plugin_name="") {
 			'tab' => 'leafletsearch',
 			'plugins' => '<a href="https://github.com/stefanocudini/leaflet-search">Leaflet Control Search</a>',
 			'doku' => '/doku/leafletsearch/',
-			'kategorie' => '/examples/leafletsearch/',
+			'kategorie' => 'leafletsearch',
+			'examples' => '',
 		),
 		array(
 			'function' => __('Leaflet Choropleth','extensions-leaflet-map'),
@@ -135,6 +145,7 @@ function leafext_help_table($leafext_plugin_name="") {
 			'plugins' => '<a href="https://github.com/timwis/leaflet-choropleth">Leaflet Choropleth</a>',
 			'doku' => '/doku/choropleth/',
 			'kategorie' => '',
+			'examples' => '',
 		),
 		array(
 			'function' => __('switching tile servers','extensions-leaflet-map'),
@@ -145,6 +156,7 @@ function leafext_help_table($leafext_plugin_name="") {
 			<a href="https://github.com/dayjournal/Leaflet.Control.Opacity">Leaflet.Control.Opacity</a>',
 			'doku' => '/doku/tileshelp/',
 			'kategorie' => '',
+			'examples' => '',
 		),
 		array(
 			'function' => __('reset the map','extensions-leaflet-map'),
@@ -152,7 +164,8 @@ function leafext_help_table($leafext_plugin_name="") {
 			'tab' => 'zoomhome',
 			'plugins' => '<a href="https://github.com/torfsen/leaflet.zoomhome">leaflet.zoomhome</a>',
 			'doku' => '/doku/zoomhome/',
-			'kategorie' => '/zoomhome/zoomhome/',
+			'kategorie' => '',
+			'examples' => '/zoomhome/zoomhome/',
 		),
 		array(
 			'function' => __('fullscreen','extensions-leaflet-map'),
@@ -161,6 +174,7 @@ function leafext_help_table($leafext_plugin_name="") {
 			'plugins' => '<a href="https://github.com/brunob/leaflet.fullscreen">leaflet.fullscreen</a>',
 			'doku' => '/doku/fullscreen/',
 			'kategorie' => '',
+			'examples' => '',
 		),
 		array(
 			'function' => __('gesture handling','extensions-leaflet-map'),
@@ -169,6 +183,7 @@ function leafext_help_table($leafext_plugin_name="") {
 			'plugins' => '<a href="https://github.com/Raruto/leaflet-gesture-handling">Leaflet.GestureHandling</a>',
 			'doku' => '/doku/gesture/',
 			'kategorie' => '',
+			'examples' => '',
 		),
 	);
 
@@ -180,6 +195,7 @@ function leafext_help_table($leafext_plugin_name="") {
 			'plugins' => '',
 			'doku' => '/doku/filemgr/',
 			'kategorie' => '',
+			'examples' => '',
 		),
 		array(
 			'function' => __('Tracks from all files in a directory','extensions-leaflet-map'),
@@ -188,6 +204,7 @@ function leafext_help_table($leafext_plugin_name="") {
 			'plugins' => '',
 			'doku' => '/doku/filemgr/',
 			'kategorie' => '',
+			'examples' => '',
 		),
 	);
 
@@ -198,7 +215,8 @@ function leafext_help_table($leafext_plugin_name="") {
 			'tab' => 'hover',
 			'plugins' => '',
 			'doku' => '/doku/hover/',
-			'kategorie' => '/examples/hover/',
+			'kategorie' => 'hover',
+			'examples' => '',
 		),
 	);
 
@@ -209,7 +227,8 @@ function leafext_help_table($leafext_plugin_name="") {
 			if (is_singular() || is_archive() ) {
 				$text=$text.'<td>'.$entry['shortcode'];
 				if ($entry['doku'] != "") $text=$text.' - <a href="'.$entry['doku'].'">'.__('Documentation','extensions-leaflet-map').'</a>';
-				if ($entry['kategorie'] != "") $text=$text.' - <a href="'.$entry['kategorie'].'">'.__('Examples','extensions-leaflet-map').'</a>';
+				if ($entry['kategorie'] != "") $text=$text.' - <a href="/examples/'.$entry['kategorie'].'/">'.__('Examples','extensions-leaflet-map').'</a>';
+				if ($entry['examples'] != "") $text=$text.' - <a href="'.$entry['examples'].'">'.__('Examples','extensions-leaflet-map').'</a>';
 				$text=$text.'</td>';
 			} else {
 				$text=$text.'<td><a href="?page='.$leafext_plugin_name.'&tab='.$entry['tab'].'">'.$entry['shortcode'].'</a></td>';
