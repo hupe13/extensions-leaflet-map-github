@@ -22,8 +22,13 @@ function leafext_help_tiles() {
     $tilesproviders = '?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=tilesproviders';
     $tileswitch = '?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=tileswitch';
   } else { // for my frontend leafext.de
-    $tilesproviders = site_url().'/tiles/providers/';
-    $tileswitch = site_url().'/tiles/switch/';
+    if (strpos($_SERVER["REQUEST_URI"], "/en/") !==  false) {
+      $lang = '/en';
+    } else {
+      $lang = '';
+    }
+    $tilesproviders = $lang.'/doku/tilesproviders/';
+    $tileswitch = $lang.'/doku/tileswitch/';
   }
   $text=$text.'</p><p>'.sprintf(__('Additionally you can use some predefined Tile Providers with %s or you can define %syour Tile Servers%s.','extensions-leaflet-map'),
   '<a href="'.$tilesproviders.'">Leaflet-providers</a>',
