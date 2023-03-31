@@ -20,8 +20,7 @@ function leafext_hover_params($typ = '') {
 			'desc' => '<ul style="list-style-type:disc;margin-left:1em;">'.
 			'<li>'.'<code>true</code> - '.sprintf(__("show tooltip and hide %s if present","extensions-leaflet-map"),'<em>title</em>').'</li>'.
 			'<li>'.'<code>false</code> - '.sprintf(__("do not show tooltip and hide %s","extensions-leaflet-map"),'<em>title</em>').'</li>'.
-			'<li>'.'<code>title</code> - '.sprintf(__("do not show tooltip but show %s","extensions-leaflet-map"),'<em>title</em>').'</li>'.'</ul>'.
-			__('The latter only makes sense with the other options.','extensions-leaflet-map'),
+			'<li>'.'<code>title</code> - '.sprintf(__("do not show tooltip but show %s","extensions-leaflet-map"),'<em>title</em>').'</li>'.'</ul>',
 			'default' => true,
 			'values' => 'true, false, title',
 			'element' => true,

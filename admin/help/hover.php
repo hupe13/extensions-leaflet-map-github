@@ -95,6 +95,11 @@ $text=$text.'<p>'.__('So can you write:','extensions-leaflet-map').
 .'<li>'.__('change style but do not show tooltips on hover (geojson, gpx, kml, circle, polygon, line):','extensions-leaflet-map').' <code>[hover geojsonstyle markergroupstyle]</code>'.'</li>'
 .'</ul></p>';
 
+$text = $text.'<p>'.__('For boolean values applies', "extensions-leaflet-map").':<br>';
+$text = $text.'<code>false</code> = <code>!parameter</code> || <code>parameter="0"</code> || <code>parameter=0</code><br>';
+$text = $text.'<code>true</code> = <code>parameter</code> || <code>parameter="1"</code> || <code>parameter=1</code>';
+$text = $text.'</p>';
+
   if (is_singular() || is_archive() ) {
     return $text;
   } else {

@@ -164,8 +164,11 @@ function leafext_geojsonstyle_script($options){
 						});
 						//mouseout end
 					} else { //exclude
-						geojson.layer.on('mouseover', function () {
-							this.bringToFront();
+						// geojson.layer.on('mouseover', function () {
+						// 	this.bringToFront();
+						// });
+						geojson.layer.on('mouseout', function () {
+							this.bringToBack();
 						});
 					}
 				}//map_id
