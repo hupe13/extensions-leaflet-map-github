@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, elevation, markercluster, Leaflet Plugins   
 Tested up to: 6.2  
-Stable tag: 3.4  
+Stable tag: 3.4.1  
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later  
@@ -16,33 +16,34 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 ### Used Leaflet Plugins and Elements
 
-*   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation), [Leaflet.i18n](https://github.com/yohanboniface/Leaflet.i18n): Track with Elevation Profile
-*   [leaflet-gpxgroup](https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js), [Leaflet.GeometryUtil](https://github.com/makinacorpus/Leaflet.GeometryUtil): Multiple tracks with elevation profiles on one map
-*   [L.control.layers](https://leafletjs.com/examples/layers-control/): Switching Tilelayers
+*   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation), [Leaflet.i18n](https://github.com/yohanboniface/Leaflet.i18n): Track with an Elevation Profile.
+*   [leaflet-gpxgroup](https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js): Multiple tracks with elevation profiles on one map.
+*   [L.control.layers](https://leafletjs.com/examples/layers-control/): Switching tile layers.
 *   [Leaflet-providers](https://github.com/leaflet-extras/leaflet-providers): An extension that contains configurations for various tile providers.
-*   [Leaflet.Control.Opacity](https://github.com/dayjournal/Leaflet.Control.Opacity): makes multiple tile layers transparent.
-*   [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster): Provides Beautiful Animated Marker Clustering functionality
-*   [Leaflet.MarkerCluster.PlacementStrategies](https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies): implements new possibilities how to place clustered children markers
-*   [Leaflet.ExtraMarkers](https://github.com/coryasilva/Leaflet.ExtraMarkers): Shameless copy of Awesome-Markers with more shapes, colors and semantic-ui support
-*   [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup): Creates Feature Groups that add their child layers into a parent group. Typical usage is to switch them through L.Control.Layers to dynamically add/remove groups of markers from Leaflet.markercluster.
-*   [Leaflet Control Search](https://github.com/stefanocudini/leaflet-search): A control for search Markers/Features location by custom property in LayerGroup/GeoJSON.
-*   [leaflet-choropleth](https://github.com/timwis/leaflet-choropleth): Choropleth plugin for Leaflet (color scale based on value)
-*   [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome): Reset the view
+*   [Leaflet.Control.Opacity](https://github.com/dayjournal/Leaflet.Control.Opacity): Makes tile layers transparent.
+*   [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster): Provides Beautiful Animated Marker Clustering functionality.
+*   [Leaflet.MarkerCluster.PlacementStrategies](https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies): Styling Markerclusters.
+*   [Leaflet.ExtraMarkers](https://github.com/coryasilva/Leaflet.ExtraMarkers): Shameless copy of Awesome-Markers with more shapes and colors.
+*   [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup): Grouping of Leaflet elements by options and features.
+*   [Leaflet Control Search](https://github.com/stefanocudini/leaflet-search): Search Markers/Features location by option or custom property.
+*   [leaflet-choropleth](https://github.com/timwis/leaflet-choropleth): Choropleth plugin for Leaflet (color scale based on value).
+*   [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome): Reset the view.
 *   [leaflet.fullscreen](https://github.com/brunob/leaflet.fullscreen): Simple plugin for Leaflet that adds fullscreen button to your maps.
 *   [Leaflet.GestureHandling](https://github.com/Raruto/leaflet-gesture-handling): A Leaflet plugin that allows to prevent default map scroll/touch behaviours.
+*   [Leaflet.GeometryUtil](https://github.com/makinacorpus/Leaflet.GeometryUtil): Used for some functions.
 
 ### Other functions
 
 *  List files for Leaflet Map
 *  hover:
-     * Highlight a gpx, kml or geojson element on mouse over
-     * get a tooltip for marker, gpx, kml or geojson element on mouse over.
+     * Highlight a leaflet element on mouse over
+     * get a tooltip for a leaflet element on mouse over.
 *   Hide Markers: Use it when a track in a GPX file contains some markers and you don't want to display them on the map.
 *   Option to migrate from [WP GPX Maps](https://wordpress.org/plugins/wp-gpx-maps/) to elevation
 
 ## Screenshots
 
-1. Track with elevation and other profiles and Switching Tile Layers<br>![Track with elevation profile](.wordpress-org/screenshot-1.png)
+1. Track with elevation and other profiles and Switching tile layers<br>![Track with elevation profile](.wordpress-org/screenshot-1.png)
 2. Hover a Geojson area <br>![Hover a Geojson area](.wordpress-org/screenshot-2.png)
 3. Markercluster and Groups <br>![Markercluster](.wordpress-org/screenshot-3.png)
 4. Markercluster PlacementStrategies <br>![PlacementStrategies](.wordpress-org/screenshot-4.png)
@@ -108,7 +109,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.4.1 / 23032x
+### 3.4.1 / 23040x
 
 * revision of hover: bugs fixed, many new options
 * leaflet-search: code cleanup, no option type anymore, css for iPhone
