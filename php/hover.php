@@ -206,8 +206,10 @@ function leafext_hover_function($atts,$content,$shortcode) {
 		//var_dump($options);
 
 		if (in_array($options['marker'],$do_tooltip,true)
-		|| $options['markertooltip'])
-		$text=$text.leafext_markertooltip_script($options);
+		|| $options['markertooltip']) {
+			$text=$text.leafext_markertooltip_script($options);
+			$options['marker'] = true;
+		}
 		//
 		if (in_array($options['circle'],$do_tooltip,true)
 		|| in_array($options['polygon'],$do_tooltip,true)
