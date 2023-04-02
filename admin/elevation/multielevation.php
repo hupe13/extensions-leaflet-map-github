@@ -101,11 +101,14 @@ function leafext_validate_multiele_options($options) {
 
 // Helptext
 function leafext_multiele_help_text () {
-	$text='
-		<img src="'.LEAFEXT_PLUGIN_PICTS.'multielevation.png" alt = "multielevation">
+	if (strpos($_SERVER["REQUEST_URI"], "/en/") !==  false) {
+		$lang = '/en';
+	} else {
+		$lang = '';
+	}
+	$text='<img src="'.LEAFEXT_PLUGIN_PICTS.'multielevation.png" alt = "multielevation">
 		<h2>Shortcode</h2>
-<pre>
-<code>[leaflet-map fitbounds ...]
+<pre><code>[leaflet-map fitbounds ...]
 [elevation-<span style="color: #d63638">track</span> file="http(s)://my.domain.tld/url_file" lat="..." lng="..." name="..." filename=0/1]
 // many of this
 [elevation-<span style="color: #d63638">track</span> file="http(s):/my.domain.tld/url_file" lat="..." lng="..." name="..." filename=0/1]
@@ -115,7 +118,7 @@ function leafext_multiele_help_text () {
 [multielevation filename=0/1 option1=value1 option2 !option3 ...]</code></pre><p>'.
 __('See also','extensions-leaflet-map');
 if (is_singular()|| is_archive() ) {
-	$text = $text.' <a href="'.site_url().'/file/leaflet-dir/">';
+	$text = $text.' <a href="'.$lang.'/doku/filemgr/">';
 } else {
 	$text = $text.' <a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=filemgr-dir">';
 }
@@ -176,10 +179,15 @@ $text = $text.'<code>leaflet-directory</code></a></p>
 	'</ul>'.
 
 '<h3>'.__('Options','extensions-leaflet-map').' multielevation</h3>
-	<ul><li>'.
-	sprintf( __('If you use %s, you can use these options like in %sElevation Profile%s','extensions-leaflet-map'),
+	<ul><li>';
+		if (is_singular()|| is_archive() ) {
+			$link = $lang."/doku/elevation/";
+		}	else {
+			$link = '?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation';
+		}
+	$text = $text.sprintf( __('If you use %s, you can use these options like in %sElevation Profile%s','extensions-leaflet-map'),
 		'<code>[multielevation]</code>',
-		'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">',
+		'<a href="'.$link.'">',
 		'</a>').': '.
  	leafext_eleparams_for_multi().
 	'.</li><li>'.
@@ -191,7 +199,7 @@ $text = $text.'<code>leaflet-directory</code></a></p>
 '<h3>Theme</h3><p>'.
 	__('The theme is the same as the','extensions-leaflet-map');
 	if (is_singular()|| is_archive() ) {
-	$text = $text.' <a href="'.get_site_url().'/elevation/liste/?testing=theme">'.
+	$text = $text.' <a href="'.$lang.'/elevation/liste/?testing=theme">'.
 	__('Elevation Theme','extensions-leaflet-map').'</a>.</p>';
 
 } else {

@@ -150,7 +150,7 @@ $textoptions='<h3>'.__('Options','extensions-leaflet-map').'</h3>
 		}
 	}
 	if (is_singular() || is_archive() ) {
-		$text = $text.__('Please see the admin page for options.','extensions-leaflet-map');
+		$text = $text.'<p>'.__('Please see the admin page for options.','extensions-leaflet-map').'</p>';
     return $text;
   } else {
     echo $text.$textoptions;
