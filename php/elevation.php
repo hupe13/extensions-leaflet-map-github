@@ -566,7 +566,8 @@ function leafext_ele_java_params($settings) {
 					textFunction: function(distance, i, offset) {
 						return Math.round(distance*0.621371/1000);
 					}
-				},';
+				},
+				';
 				unset($settings[$k]);
 			}
 			break;
@@ -615,7 +616,7 @@ function leafext_elevation_pace($options) {
 }
 
 //Shortcode: [elevation gpx="...url..."]
-function leafext_elevation_script($gpx,$settings){
+function leafext_elevation_script($gpx,$settings,$rotate){
 	list($elevation_settings, $settings) = leafext_ele_java_params($settings);
 	$text = '<script><!--';
 	ob_start();
@@ -629,7 +630,12 @@ function leafext_elevation_script($gpx,$settings){
 		};
 
 		<?php echo leafext_elevation_locale();?>
-
+		<?php if ( $rotate ) { ?>
+			if ( typeof map.rotateControl !== "undefined" ) {
+				map.rotateControl.remove();
+			}
+			map.options.rotate = true;
+		<?php } ?>
 		//BEGIN
 		const toPrecision = (x, n) => Number(parseFloat(x.toPrecision(n)).toFixed(n));
 
@@ -771,7 +777,6 @@ function leafext_elevation_script($gpx,$settings){
 			});
 			';
 		} ?>
-
 	});
 	<?php
 	$javascript = ob_get_clean();
@@ -933,10 +938,11 @@ function leafext_elevation_function($atts,$content,$shortcode) {
 		}
 
 		if ( $options['hotline'] == "elevation") unset ($options['polyline'] );
+		$rotate = $options['distanceMarkers'] ? true : false;
 		list($options,$style) = leafext_elevation_color($options);
 		ksort($options);
 
-		$text=$style.leafext_elevation_script($track,$options);
+		$text=$style.leafext_elevation_script($track,$options,$rotate);
 		//
 		return $text;
 	}

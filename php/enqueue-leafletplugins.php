@@ -79,6 +79,11 @@ function leafext_enqueue_elevation () {
   LEAFEXT_PLUGIN_FILE),
   array('elevation_js'),null);
   //
+  wp_enqueue_script( 'Leaflet_rotate',
+  plugins_url('leaflet-plugins/leaflet-rotate/leaflet-rotate.js',
+  LEAFEXT_PLUGIN_FILE),
+  array('elevation_js'),null);
+  //
   wp_enqueue_style( 'elevation_css',
   plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.min.css',
   LEAFEXT_PLUGIN_FILE),
