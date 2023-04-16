@@ -202,6 +202,16 @@ function leafext_elevation_params($typ = array()) {
 			'typ' => array('changeable','points'),
 		),
 
+		// Toggle direction arrows integration
+		array(
+			'param' => 'direction',
+			'shortdesc' => __('Toggle direction arrows',"extensions-leaflet-map"),
+			'desc' => '',
+			'default' => false,
+			'values' => 1,
+			'typ' => array('changeable','points'),
+		),
+
 		// Display track waypoints: true || "markers" || "dots" || false
 		//waypoints: true,
 		array(
@@ -559,17 +569,31 @@ function leafext_ele_java_params($settings) {
 			}
 			break;
 			case "distanceMarkers":
-			if ($settings[$k] == true && $settings['imperial'] == "1") {
-				$text = $text.
-				'distanceMarkers: {
-					offset: 1000/0.621371,
+			//distanceMarkers: { lazy: true, distance: true, direction: true },
+			if ($settings[$k] == true) {
+				$text = $text.'distanceMarkers: {'; //}
+				if ( $settings['imperial'] == true) {
+					$text = $text.
+					'offset: 1000/0.621371,
 					textFunction: function(distance, i, offset) {
 						return Math.round(distance*0.621371/1000);
-					}
-				},
-				';
-				unset($settings[$k]);
+					},';
+				}
+				if ( $settings['direction'] == true) {
+					$text = $text.'lazy: true, distance: true, direction: true,';
+				} else {
+					$text = $text.'lazy: true, distance: true, direction: false,';
+				}
+				$text = $text.'},';
+			} else {
+				if ($settings['direction'] == true) {
+					$text = $text.'distanceMarkers: { lazy: true, distance: false, direction: true },';
+				} else {
+					$text = $text.'distanceMarkers: false,';
+				}
 			}
+			unset($settings[$k]);
+			unset($settings['direction']);
 			break;
 			case "handlers":
 			case "margins":
