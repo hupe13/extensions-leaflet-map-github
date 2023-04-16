@@ -84,6 +84,13 @@ function leafext_enqueue_elevation () {
   LEAFEXT_PLUGIN_FILE),
   array('elevation_js'),null);
   //
+  leafext_enqueue_geometry ();
+  //
+  wp_enqueue_script('Leaflet_AlmostOver',
+  plugins_url('leaflet-plugins/Leaflet.AlmostOver/leaflet.almostover.js',
+  LEAFEXT_PLUGIN_FILE),
+  array('Leaflet_GeometryUtil'),null);
+  //
   wp_enqueue_style( 'elevation_css',
   plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/dist/leaflet-elevation.min.css',
   LEAFEXT_PLUGIN_FILE),
@@ -107,10 +114,6 @@ function leafext_enqueue_multielevation () {
   LEAFEXT_PLUGIN_FILE),
   array('elevation_js'),null);
   wp_enqueue_script('leaflet_ajax_geojson_js');
-  wp_enqueue_script('Leaflet_GeometryUtil',
-  plugins_url('leaflet-plugins/Leaflet.GeometryUtil/leaflet.geometryutil.js',
-  LEAFEXT_PLUGIN_FILE),
-  array('elevation_js'),null);
   wp_enqueue_script('leaflet_distanceMarkers',
   plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/libs/leaflet-distance-marker.min.js',
   LEAFEXT_PLUGIN_FILE),
@@ -120,7 +123,6 @@ function leafext_enqueue_multielevation () {
   LEAFEXT_PLUGIN_FILE),
   array('elevation_css'),null);
   leafext_css();
-  leafext_enqueue_zoomhome();
 }
 
 function leafext_enqueue_clustergroup () {
@@ -201,19 +203,12 @@ function leafext_enqueue_geometry () {
   array('wp_leaflet_map'),null);
 }
 
-function leafext_replace_br ($content) {
-  $content = preg_replace( '#</script>(\s*)<br />#', '</script>', $content );
-  return $content;
-}
-//add_filter('the_content', 'leafext_replace_br', 20, 1);
-
 add_filter('pre_do_shortcode_tag', function ( $output, $shortcode, $attr) {
   if ( 'leaflet-marker' == $shortcode ) {
     if (isset($attr["iconclass"]) &&  str_contains($attr["iconclass"], "dashicons")) {
       wp_enqueue_style( 'dashicons' );
     }
   }
-  //add_filter('the_content', 'leafext_replace_br', 20, 1);
   return $output;
 }, 10, 3);
 
@@ -254,4 +249,11 @@ function leafext_enqueue_leafletsearch () {
     LEAFEXT_PLUGIN_FILE),
     array('leafletsearch'), null);
   }
+}
+
+function leafext_enqueue_turf () {
+  wp_enqueue_script('leafletturf',
+  plugins_url('leaflet-plugins/turf/turf.min.js',
+  LEAFEXT_PLUGIN_FILE),
+  array('wp_leaflet_map'), null);
 }

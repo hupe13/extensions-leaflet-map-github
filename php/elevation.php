@@ -418,14 +418,14 @@ function leafext_elevation_params($typ = array()) {
 
 		// Toggle "leaflet-almostover" integration
 		// almostOver: true,
-		// array(
-		// 	'param' => 'almostOver',
-		// 	'shortdesc' => __('Toggle "leaflet-almostover" integration',"extensions-leaflet-map"),
-		// 	'desc' => "",
-		// 	'default' => true,
-		// 	'values' => 1,
-		// 	'typ' => array('fixed'),
-		// ),
+		array(
+			'param' => 'almostOver',
+			'shortdesc' => __('Toggle "leaflet-almostover" integration',"extensions-leaflet-map"),
+			'desc' => "",
+			'default' => true,
+			'values' => 1,
+			'typ' => array('fixed'),
+		),
 
 		// Render chart profiles as Canvas or SVG Paths
 		//preferCanvas: true
@@ -616,7 +616,7 @@ function leafext_elevation_pace($options) {
 }
 
 //Shortcode: [elevation gpx="...url..."]
-function leafext_elevation_script($gpx,$settings,$rotate){
+function leafext_elevation_script($gpx,$settings){
 	list($elevation_settings, $settings) = leafext_ele_java_params($settings);
 	$text = '<script><!--';
 	ob_start();
@@ -630,12 +630,7 @@ function leafext_elevation_script($gpx,$settings,$rotate){
 		};
 
 		<?php echo leafext_elevation_locale();?>
-		<?php if ( $rotate ) { ?>
-			if ( typeof map.rotateControl !== "undefined" ) {
-				map.rotateControl.remove();
-			}
-			map.options.rotate = true;
-		<?php } ?>
+
 		//BEGIN
 		const toPrecision = (x, n) => Number(parseFloat(x.toPrecision(n)).toFixed(n));
 
@@ -728,6 +723,11 @@ function leafext_elevation_script($gpx,$settings,$rotate){
 		//var controlElevation = L.control.elevation(opts.elevationControl.options);
 		//controlElevation.load(opts.elevationControl.url);
 		//END
+
+		if ( typeof map.rotateControl !== "undefined" ) {
+			map.rotateControl.remove();
+		}
+		map.options.rotate = true;
 
 		<?php if ( $settings['track'] ) {
 			echo '
@@ -938,11 +938,10 @@ function leafext_elevation_function($atts,$content,$shortcode) {
 		}
 
 		if ( $options['hotline'] == "elevation") unset ($options['polyline'] );
-		$rotate = $options['distanceMarkers'] ? true : false;
 		list($options,$style) = leafext_elevation_color($options);
 		ksort($options);
 
-		$text=$style.leafext_elevation_script($track,$options,$rotate);
+		$text=$style.leafext_elevation_script($track,$options);
 		//
 		return $text;
 	}

@@ -309,6 +309,11 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 		//console.log(points);
 		//console.log(tracks);
 
+		if ( typeof map.rotateControl !== "undefined" ) {
+			map.rotateControl.remove();
+		}
+		map.options.rotate = true;
+
 		var opts = {
 			points: {
 				icon: {
