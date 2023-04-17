@@ -48,7 +48,6 @@ function leafext_list_dir($directory,$extensions) {
 
 // Unterteile Liste aller Files in pages
 function leafext_list_paginate($files,$anzahl) {
-	//var_dump($files,$anzahl);
 	if (count($files)>0) {
 		$page = isset($_GET['page']) ? filter_input(INPUT_GET, 'page', FILTER_SANITIZE_SPECIAL_CHARS) : "";
 		$tab = isset($_GET['tab']) ? filter_input(INPUT_GET, 'tab', FILTER_SANITIZE_SPECIAL_CHARS) : "";

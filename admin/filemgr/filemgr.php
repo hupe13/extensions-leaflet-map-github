@@ -45,7 +45,7 @@ function leafext_listing_form_dirs() {
 		$type =	isset($_POST["type"]) ? $_POST["type"] : "";
 		$all =	isset($_POST["all"]) ? $_POST["all"] : "";
 	} else if (count($_GET) > 2) {  //mehr als page und tab
-		$verz =	isset($GET["verz"]) ? filter_input(INPUT_GET, 'verz', FILTER_SANITIZE_SPECIAL_CHARS) :
+		$verz =	isset($_GET["verz"]) ? filter_input(INPUT_GET, 'verz', FILTER_SANITIZE_SPECIAL_CHARS) :
 		((isset($_GET["dir"]) ? filter_input(INPUT_GET, 'dir', FILTER_SANITIZE_SPECIAL_CHARS) : ""));
 		$count = isset($_GET["count"]) ? filter_input(INPUT_GET, 'count', FILTER_VALIDATE_INT) : "5";
 		$type =	isset($_GET["type"]) ? filter_input(INPUT_GET, 'type', FILTER_SANITIZE_SPECIAL_CHARS) : "";
