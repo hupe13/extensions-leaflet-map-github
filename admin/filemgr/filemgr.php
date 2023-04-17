@@ -19,7 +19,7 @@ function leafext_listing_form_types() {
 	if (count($_POST) != 0) {
 		$type =	isset($_POST["type"]) ? $_POST["type"] : "";
 	} else if ( isset($_GET["type"] ) ) {
-		$type = array($_GET["type"]);
+		$type = array(filter_input(INPUT_GET, 'type', FILTER_SANITIZE_SPECIAL_CHARS));
 	} else {
 		$stored = get_option('leafext_file_listing_'.get_current_user_id());
 		if (is_array($stored)) {
@@ -45,10 +45,11 @@ function leafext_listing_form_dirs() {
 		$type =	isset($_POST["type"]) ? $_POST["type"] : "";
 		$all =	isset($_POST["all"]) ? $_POST["all"] : "";
 	} else if (count($_GET) > 2) {  //mehr als page und tab
-		$verz =	isset($_GET["verz"]) ? $_GET["verz"] : (isset($_GET["dir"]) ? $_GET["dir"] : "");
-		$count = isset($_GET["count"]) ? $_GET["count"] : "5";
-		$type =	isset($_GET["type"]) ? $_GET["type"] : "";
-		$all =	isset($_GET["all"]) ? $_GET["all"] : "";
+		$verz =	isset($GET["verz"]) ? filter_input(INPUT_GET, 'verz', FILTER_SANITIZE_SPECIAL_CHARS) :
+		((isset($_GET["dir"]) ? filter_input(INPUT_GET, 'dir', FILTER_SANITIZE_SPECIAL_CHARS) : ""));
+		$count = isset($_GET["count"]) ? filter_input(INPUT_GET, 'count', FILTER_VALIDATE_INT) : "5";
+		$type =	isset($_GET["type"]) ? filter_input(INPUT_GET, 'type', FILTER_SANITIZE_SPECIAL_CHARS) : "";
+		$all =	isset($_GET["all"]) ? filter_input(INPUT_GET, 'all', FILTER_SANITIZE_SPECIAL_CHARS) : "";
 	} else {
 		$stored = get_option('leafext_file_listing_'.get_current_user_id());
 		if (is_array($stored)) {
@@ -105,7 +106,7 @@ function leafext_listing_form_all() {
 	if (count($_POST) != 0) {
 		$all = isset($_POST["all"]) ? $_POST["all"] : "";
 	} else if (isset($_GET["all"])) {
-		$all = $_GET["all"];
+		$all = filter_input(INPUT_GET, 'all', FILTER_SANITIZE_SPECIAL_CHARS);
 	} else {
 		$stored = get_option('leafext_file_listing_'.get_current_user_id());
 		if (is_array($stored)) {
@@ -122,7 +123,7 @@ function leafext_listing_form_files() {
 	if (count($_POST) != 0) {
 		$anzahl = isset($_POST["anzahl"]) ? $_POST["anzahl"] : "10";
 	} else if (isset($_GET["anzahl"])) {
-		$anzahl = $_GET["anzahl"];
+		$anzahl = filter_input(INPUT_GET, 'anzahl', FILTER_VALIDATE_INT);
 	} else {
 		$stored = get_option('leafext_file_listing_'.get_current_user_id());
 		if (is_array($stored)) {
@@ -140,9 +141,9 @@ function leafext_listing_form_default() {
 
 function leafext_managefiles() {
 
-	$page = isset($_GET['page']) ? $_GET['page'] : "";
-	$tab = isset($_GET['tab']) ? $_GET['tab'] : "";
-	$track = isset($_GET['track']) ? $_GET['track'] : "";
+	$page = isset($_GET['page']) ? filter_input(INPUT_GET, 'page', FILTER_SANITIZE_SPECIAL_CHARS) : "";
+	$tab = isset($_GET['tab']) ? filter_input(INPUT_GET, 'tab', FILTER_SANITIZE_SPECIAL_CHARS) : "";
+	$track = isset($_GET['track']) ? filter_input(INPUT_GET, 'track', FILTER_SANITIZE_SPECIAL_CHARS) : "";
 
 	if ( $track != "") {
 		include LEAFEXT_PLUGIN_DIR . '/admin/filemgr/thickbox.php';
@@ -157,10 +158,15 @@ function leafext_managefiles() {
 			if(wp_verify_nonce($_REQUEST['leafext_file_listing'], 'leafext_file_listing')){
 				//echo "valid" ;   // Nonce is matched and valid. do whatever you want now.
 			} else {
-				echo "invalid" ; wp_die();
+				wp_die('invalid', 404);
 			}
 		}
 
+		if (count($_GET) > 2) {
+			if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( $_GET['_wpnonce'], 'leafext_file_listing' ) ) {
+				wp_die('invalid', 404);
+			}
+		}
 		//echo '<h2>'.__('Manage Files',"extensions-leaflet-map").'</h2>';
 
 		if (count($_POST) != 0) {
@@ -183,10 +189,10 @@ function leafext_managefiles() {
 				update_option('leafext_file_listing_'.get_current_user_id(), $defaults);
 			}
 		} else {
-			$dir = isset($_GET["dir"]) ? $_GET["dir"] : "";
-			$all = isset($_GET['all']) ? $_GET['all'] : '';
-			$type =	isset($_GET["type"]) ? array($_GET["type"]) : "";
-			$anzahl = isset($_GET["anzahl"]) ? $_GET["anzahl"] : "10";
+			$dir = isset($_GET["dir"]) ? filter_input(INPUT_GET, 'dir', FILTER_SANITIZE_SPECIAL_CHARS) : "";
+			$all = isset($_GET['all']) ? filter_input(INPUT_GET, 'all', FILTER_SANITIZE_SPECIAL_CHARS) : '';
+			$type =	isset($_GET["type"]) ? array(filter_input(INPUT_GET, 'type', FILTER_SANITIZE_SPECIAL_CHARS)) : "";
+			$anzahl = isset($_GET["anzahl"]) ? filter_input(INPUT_GET, 'anzahl', FILTER_VALIDATE_INT) : "10";
 		}
 		$extensions = is_array($type) ? '{'.implode(",", $type).'}' : '{gpx,kml,geojson,json,tcx}';
 		//var_dump($extensions);

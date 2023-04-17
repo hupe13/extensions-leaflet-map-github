@@ -48,21 +48,23 @@ function leafext_list_dir($directory,$extensions) {
 
 // Unterteile Liste aller Files in pages
 function leafext_list_paginate($files,$anzahl) {
+	//var_dump($files,$anzahl);
 	if (count($files)>0) {
-		$page = isset($_GET['page']) ? $_GET['page'] : "";
-		$tab = isset($_GET['tab']) ? $_GET['tab'] : "";
+		$page = isset($_GET['page']) ? filter_input(INPUT_GET, 'page', FILTER_SANITIZE_SPECIAL_CHARS) : "";
+		$tab = isset($_GET['tab']) ? filter_input(INPUT_GET, 'tab', FILTER_SANITIZE_SPECIAL_CHARS) : "";
 		if (count($_POST) != 0) {
 			//var_dump($_POST);
 			$all =	isset($_POST["all"]) ? '&all="on"' : "";
 			$dir =	isset($_POST["dir"]) ? "&dir=".$_POST["dir"] : "";
 			$type =	isset($_POST["type"]) ? "&type=".implode(",", $_POST["type"]) : "";
 		} else {
-			//var_dump($_GET); 
+			//var_dump($_GET);
 			$all =	isset($_GET["all"])  ? '&all="on"' : "";
-			$dir =	isset($_GET["dir"])  ? "&dir=".$_GET["dir"] : "";
-			$type = isset($_GET["type"]) ? "&type=".$_GET["type"] : "";
+			$dir =	isset($_GET["dir"])  ? "&dir=".filter_input(INPUT_GET, 'dir', FILTER_SANITIZE_SPECIAL_CHARS) : "";
+			$type = isset($_GET["type"]) ? "&type=".filter_input(INPUT_GET, 'type', FILTER_SANITIZE_SPECIAL_CHARS) : "";
 		}
 		$pageurl = admin_url( 'admin.php' ).'?page='.$page.'&tab='.$tab.'&anzahl='.$anzahl.$type.$all.$dir.'&nr=%_%';
+		$pageurl = add_query_arg( '_wpnonce', wp_create_nonce( 'leafext_file_listing' ), $pageurl );
 		$pages = intdiv(count($files), $anzahl) + 1;
 		$pagenr = max(1,isset($_GET["nr"]) ? $_GET["nr"] : "1");
 		$pagefiles = array_chunk($files, $anzahl);
