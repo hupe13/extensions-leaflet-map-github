@@ -1,3 +1,10 @@
+### 3.4.1 / 230402
+
+* revision of hover: bugs fixed, many new options
+* leaflet-search: code cleanup, no option type anymore, css for iPhone
+* leaflet-search: leaflet-polyline, -circle, -line
+* leaflet-optiongroup: leaflet-polyline, -circle, -line
+
 ### 3.4 / 230304
 
 * new: Leaflet Search Control

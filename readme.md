@@ -109,12 +109,11 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.4.1 / 23040x
+### 3.4.2 / 23041x
 
-* revision of hover: bugs fixed, many new options
-* leaflet-search: code cleanup, no option type anymore, css for iPhone
-* leaflet-search: leaflet-polyline, -circle, -line
-* leaflet-optiongroup: leaflet-polyline, -circle, -line
+* elevation: arrows on track if distanceMarkers = true (https://github.com/Raruto/leaflet-elevation/issues/244)
+* elevation: almostOver = true
+* filemgr: vulnerable to Cross Site Scripting (XSS) fixed
 
 ### Previous
 

@@ -63,7 +63,6 @@ function leafext_list_paginate($files,$anzahl) {
 			$type = isset($_GET["type"]) ? "&type=".filter_input(INPUT_GET, 'type', FILTER_SANITIZE_SPECIAL_CHARS) : "";
 		}
 		$pageurl = admin_url( 'admin.php' ).'?page='.$page.'&tab='.$tab.'&anzahl='.$anzahl.$type.$all.$dir.'&nr=%_%';
-		$pageurl = add_query_arg( '_wpnonce', wp_create_nonce( 'leafext_file_listing' ), $pageurl );
 		$pages = intdiv(count($files), $anzahl) + 1;
 		$pagenr = max(1,isset($_GET["nr"]) ? $_GET["nr"] : "1");
 		$pagefiles = array_chunk($files, $anzahl);
@@ -84,7 +83,7 @@ function leafext_list_paginate($files,$anzahl) {
 				'end_size'           => 1,
 				'mid_size'           => 2,
 				'type'               => 'plain',
-				'add_args'           => array(), // Array of query args to add.
+				'add_args'           => array('_wpnonce' => wp_create_nonce( 'leafext_file_listing' )), // Array of query args to add.
 				'add_fragment'       => '',
 				'before_page_number' => '',
 				'after_page_number'  => '',
