@@ -1,6 +1,6 @@
 * elevation: arrows on track if distanceMarkers = true (https://github.com/Raruto/leaflet-elevation/issues/244)
 * elevation: almostOver = true
-* filemgr: vulnerable to Cross Site Scripting (XSS) fixed
+* filemgr: vulnerable to Cross Site Scripting (XSS) fixed (works not, wait to the next tag)
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
