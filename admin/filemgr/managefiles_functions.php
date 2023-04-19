@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) or die();
 // list all files with extensions in dir and subdirs
 function leafext_list_allfiles($directory,$extensions) {
 	$files = array();
-	$dir = '/'.trim($directory,'/').'/';
+	$dir = trailingslashit($directory);
 	foreach(glob($dir.'*.'.$extensions, GLOB_BRACE) as $file) {
 		$files[] = $file;
 	}
@@ -23,9 +23,9 @@ function leafext_list_allfiles($directory,$extensions) {
 // list all dirs with at least count files with extensions in each dir and subdir
 function leafext_list_dirs($directory,$extensions,$count) {
 	$upload_dir = wp_get_upload_dir();
-	$upload_path = $upload_dir['path'];
+	$upload_path = trailingslashit($upload_dir['basedir']);
 	$directories = array();
-	$dir = '/'.trim($directory,'/').'/';
+	$dir = trailingslashit($directory);
 	if (count(glob($dir.'*.'.$extensions, GLOB_BRACE)) >= $count ) {
 		$directories [] = str_replace($upload_path,'',$dir);
 	}
@@ -39,9 +39,9 @@ function leafext_list_dirs($directory,$extensions,$count) {
 // list all files with extensions in dir
 function leafext_list_dir($directory,$extensions) {
 	$upload_dir = wp_get_upload_dir();
-	$upload_path = $upload_dir['path'].'/';
-	$directory = trim($directory,'/');
-	$dir = str_replace('//','/',$upload_path.$directory.'/');
+	$upload_path = trailingslashit($upload_dir['basedir']);
+	$directory = trailingslashit($directory);
+	$dir = $upload_path.$directory;
 	$files = glob($dir.'*.'.$extensions, GLOB_BRACE);
 	return $files;
 }
@@ -125,13 +125,13 @@ function leafext_files_table($track_files) {
 	'<b>'.__(''.__('Preview','extensions-leaflet-map').'','extensions-leaflet-map').'</b>',
 	'<b>'.__('Media Library','extensions-leaflet-map').'</b>',
 	'<b>'.__('leaflet Shortcode','extensions-leaflet-map').'</b>',
-	'<b>'.__('elevation Shortcode','extensions-leaflet-map').'</b>');
+	'<b>'.__('elevation<sup>*</sup> Shortcode','extensions-leaflet-map').'</b>');
 	$track_table[] = $entry;
 
 	foreach ($track_files as $file) {
 		$upload_dir = wp_get_upload_dir();
-		$upload_path = $upload_dir['path'].'/';
-		$upload_url = $upload_dir['url'].'/';
+		$upload_path = trailingslashit($upload_dir['basedir']);
+		$upload_url = trailingslashit($upload_dir['baseurl']);
 		$page = isset($_GET['page']) ? $_GET['page'] : "";
 		$tab = isset($_GET['tab']) ? $_GET['tab'] : "";
 		$entry = array();
@@ -155,13 +155,13 @@ function leafext_files_table($track_files) {
 				$entry['post_title'] = $key -> post_title;
 				if ( current_user_can( 'edit_post', $key -> ID ) ) {
 					// View as thickbox
-					$entry['view'] = '<a href="'. esc_url( get_admin_url(null, 'admin.php?page='.$page) ) .'&tab='.$tab.'&track=/'
+					$entry['view'] = '<a href="'. esc_url( get_admin_url(null, 'admin.php?page='.$page) ) .'&tab='.$tab.'&track='
 					.$myfile.'&TB_iframe=true" class="thickbox">'.__('Preview','extensions-leaflet-map').'</a>';
 					//
 					$entry['edit'] = '<a href ="'.get_admin_url().'post.php?post='.$key -> ID.'&action=edit">'.__('Edit').'</a>';
 				} else if ( current_user_can( 'read', $key -> ID ) ) {
 					// View as thickbox
-					$entry['view'] = '<a href="'. esc_url( get_admin_url(null, 'admin.php?page='.$page) ) .'&tab='.$tab.'&track=/'
+					$entry['view'] = '<a href="'. esc_url( get_admin_url(null, 'admin.php?page='.$page) ) .'&tab='.$tab.'&track='
 					.$myfile.'&TB_iframe=true" class="thickbox">'.__('Preview','extensions-leaflet-map').'</a>';
 					//
 					$entry['edit'] = '<a href ="'.get_admin_url().'upload.php?item='.$key -> ID.'">'.__('View').'</a>';
@@ -174,7 +174,7 @@ function leafext_files_table($track_files) {
 			$entry['post_date'] = date('Y-m-d G:i:s', filemtime($file));
 			$entry['post_title'] = $myfile;
 			if ($type != "") {
-				$entry['view'] = '<a href="'. esc_url( get_admin_url(null, 'admin.php?page='.$page) ) .'&tab='.$tab.'&track=/'
+				$entry['view'] = '<a href="'. esc_url( get_admin_url(null, 'admin.php?page='.$page) ) .'&tab='.$tab.'&track='
 				.$myfile.'&TB_iframe=true" class="thickbox">'.__('Preview','extensions-leaflet-map').'</a>'; //&width=600&height=550
 			} else {
 				$entry['view'] = 'none';
@@ -183,30 +183,34 @@ function leafext_files_table($track_files) {
 		}
 
 		if ($type != "") {
-			$entry['leaflet'] = '<span class="leafexttooltip" href="#" onclick="leafext_createShortcode('.
-			"'leaflet-".$path_parts['extension']." src='".','.
-			"'".$upload_url."',".
-			"'".$myfile."'".')"
-			onmouseout="leafext_outFunc()">
+			$shortcode = '[leaflet-'.$path_parts['extension'].' src=';
+			$uploadurl = $upload_url;
+			$file = trim($myfile,'/');
+			$end = ']';
+			$entry['leaflet'] = '<span class="leafexttooltip" href="#" '.
+			'onclick="leafext_createShortcode(\''.$shortcode.'\',\''.$uploadurl.'\',\''.$file.'\',\''.$end.'\')" '.
+			'onmouseout="leafext_outFunc()">
 			<span class="leafextcopy" id="leafextTooltip">Copy to clipboard</span>
 			<code>[leaflet-'.$type.' src="..."]</code></span>';
 		} else {
 			$entry['leaflet'] = "";
 		}
 
-		$entry['elevation'] = '<span class="leafexttooltip" href="#" onclick="leafext_createShortcode('.
-		"'elevation gpx='".','.
-		"'".$upload_url."',".
-		"'".$myfile."'".')"
-		onmouseout="leafext_outFunc()">
+		$shortcode = '[elevation gpx=';
+		$uploadurl = $upload_url;
+		$file = trim($myfile,'/');
+		$end = ']';
+		$entry['elevation'] = '<span class="leafexttooltip" href="#" '.
+		'onclick="leafext_createShortcode(\''.$shortcode.'\',\''.$uploadurl.'\',\''.$file.'\',\''.$end.'\')" '.
+		'onmouseout="leafext_outFunc()">
 		<span class="leafextcopy" id="leafextTooltip">Copy to clipboard</span>
 		<code>[elevation gpx="..."]</code></span>';
 
-		//if (!( $entry['edit'] == "" && $entry['view'] == "" ))
 		$track_table[] = $entry;
 	}
 
 	$text = leafext_html_table($track_table);
+	$text = $text.'<small>* - '.__('It is not checked whether the file contains a track with elevation data.','extensions-leaflet-map').'</small>';
 	return $text;
 }
 

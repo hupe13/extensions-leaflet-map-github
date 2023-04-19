@@ -68,7 +68,7 @@ function leafext_listing_form_dirs() {
 	$extensions = is_array($type) ? '{'.implode(",", $type).'}' : '{gpx,kml,geojson,json,tcx}';
 
 	$upload_dir = wp_get_upload_dir();
-	$upload_path = $upload_dir['path'];
+	$upload_path = trailingslashit($upload_dir['basedir']);
 	$disabled = ($all == "on") ? "disabled" : "";
 
 	echo __("with at least","extensions-leaflet-map").' <input '.$disabled.' type="number" min="2" name="count" id="leafext_dirListnr" value="'.$count.'" size="3"> '.__("Files","extensions-leaflet-map").': ';
@@ -80,7 +80,7 @@ function leafext_listing_form_dirs() {
 		} else {
 			echo '<option ';
 		}
-		echo 'value="'.$dir.'">'.$dir.'</option>';
+		echo 'value="'.$dir.'">/'.$dir.'</option>';
 	}
 	echo '</select>';
 	echo '<p>'.__("If you change the number, submit the form to get the directories you want.","extensions-leaflet-map").'</p>';
@@ -156,7 +156,7 @@ function leafext_managefiles() {
 
 		if (count($_POST) != 0) {
 			if(wp_verify_nonce($_REQUEST['leafext_file_listing'], 'leafext_file_listing')){
-				//echo "valid" ;   // Nonce is matched and valid. do whatever you want now.
+				//echo "valid" ;   // Nonce is matched and valid.
 			} else {
 				wp_die('invalid', 404);
 			}
@@ -216,16 +216,29 @@ function leafext_managefiles() {
 			leafext_createShortcode_css();
 		}
 		if ( $dir != "" ) {
-			echo '<h3>'.__('Directory',"extensions-leaflet-map").' '.$dir.'</h3>';
+			echo '<h3>'.__('Directory',"extensions-leaflet-map").' /'.$dir.'</h3>';
 			if ($dir != "/") {
-				echo '<div><a href="?page='.$page.'&tab=filemgr-dir">Shortcode</a> '.__('for showing all files of this directory on a map',"extensions-leaflet-map").':'.
-				'<span class="leafexttooltip" href="#" onclick="leafext_createShortcode('.
-				"'leaflet-directory  src='".','.
-				"'',".
-				"'/".trim($dir,'/')."/'".')"'.
+				echo '<div><a href="?page='.$page.'&tab=filemgr-dir">Shortcode</a> '.__('for showing all files of this directory on a map',"extensions-leaflet-map").':<br>';
+				$shortcode = '[leaflet-map fitbounds][leaflet-directory src=';
+				$uploadurl = '';
+				$file = "/".trim($dir,'/')."/";
+				$end = ' elevation][multielevation]';
+				echo '<span class="leafexttooltip" href="#" '.
+				'onclick="leafext_createShortcode(\''.$shortcode.'\',\''.$uploadurl.'\',\''.$file.'\',\''.$end.'\')" '.
 				'onmouseout="leafext_outFunc()">'.
 				'<span class="leafextcopy" id="leafextTooltip">Copy to clipboard</span>'.
-				'<code>[leaflet-directory src="/'.trim($dir,'/').'/"]</code>'.
+				'<code>[leaflet-directory src="/'.trailingslashit($dir).'" elevation]</code>'.
+				'</span>';
+				echo '<br>';
+				$shortcode = '[leaflet-map fitbounds][leaflet-directory src=';
+				$uploadurl = '';
+				$file = "/".trim($dir,'/')."/";
+				$end = ' leaflet]';
+				echo '<span class="leafexttooltip" href="#" '.
+				'onclick="leafext_createShortcode(\''.$shortcode.'\',\''.$uploadurl.'\',\''.$file.'\',\''.$end.'\')" '.
+				'onmouseout="leafext_outFunc()">'.
+				'<span class="leafextcopy" id="leafextTooltip">Copy to clipboard</span>'.
+				'<code>[leaflet-directory src="/'.trailingslashit($dir).'" leaflet]</code>'.
 				'</span>'.
 				'</div>';
 			}
@@ -234,7 +247,7 @@ function leafext_managefiles() {
 			echo '</p>';
 		} else if ($all != "") {
 			$upload_dir = wp_get_upload_dir();
-			$upload_path = $upload_dir['path'].'/';
+			$upload_path = $upload_dir['basedir'].'/';
 			leafext_list_paginate(leafext_list_allfiles($upload_path,$extensions),$anzahl);
 		}
 	}

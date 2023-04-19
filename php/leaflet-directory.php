@@ -53,22 +53,30 @@ function leafext_directory_function($atts,$content,$shortcode) {
     $dir = $atts['src'];
 
     $upload_dir = wp_get_upload_dir();
-    $upload_path = $upload_dir['path'];
-    $upload_url = $upload_dir['url'];
-    if ($options['url'] == "") {
-      $url = $upload_url;
-    } else {
-      $url = $options['url'];
+    $upload_path = $upload_dir['basedir'];
+    $upload_url = $upload_dir['baseurl'];
+
+    if (!is_dir($dir)) {
+      if (!is_dir($upload_path.'/'.$dir)) {
+        // changed in 3.4.2 from path to basedir
+        $upload_path = $upload_dir['path'];
+        $upload_url = $upload_dir['url'];
+      }
+      if (!is_dir($upload_path.'/'.$dir)) {
+        $text = '[leaflet_dir ';
+        $options['src'] = '...not exists... '.$options['src'];
+        foreach ($options as $key=>$item){
+          $text = $text. $key.'="'.$item.'" ';
+        }
+        $text = $text. "]";
+        return $text;
+      }
     }
 
-    if (!is_dir($dir) && !is_dir($upload_path.'/'.$dir)) {
-      $text = '[leaflet_dir ';
-      $options['src'] = '...not exists... '.$options['src'];
-      foreach ($options as $key=>$item){
-        $text = $text. $key.'="'.$item.'" ';
-      }
-      $text = $text. "]";
-      return $text;
+    if ($options['url'] == "") {
+      $url = trailingslashit($upload_url);
+    } else {
+      $url = trailingslashit($options['url']);
     }
 
     if (!is_dir($dir)) {
@@ -125,7 +133,7 @@ function leafext_directory_function($atts,$content,$shortcode) {
           $text = $text. "]";
           return $text;
         }
-        $shortcode = $shortcode.'[leaflet-'.$ext.' src="'.$url.'/'.$file.'" color="'.$farbe.'"]{name}[/leaflet-'.$ext.']';
+        $shortcode = $shortcode.'[leaflet-'.$ext.' src="'.$url.$file.'" color="'.$farbe.'"]{name}[/leaflet-'.$ext.']';
       }
       $shortcode = $shortcode.'[hidemarkers]';
       if ( $options['start'] ) {
@@ -150,7 +158,7 @@ function leafext_directory_function($atts,$content,$shortcode) {
       $shortcode='';
       foreach ( $files as $file) {
         if ($dirpath != "" ) $file = str_replace($dirpath.'/',"",$file);
-        $shortcode = $shortcode.'[elevation-track file="'.$url.'/'.$file.'"]';
+        $shortcode = $shortcode.'[elevation-track file="'.$url.$file.'"]';
       }
       $text=do_shortcode($shortcode);
       //$text = $shortcode;

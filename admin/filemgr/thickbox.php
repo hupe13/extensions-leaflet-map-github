@@ -14,8 +14,8 @@ function leafext_thickbox($track){
   </style>';
   date_default_timezone_set(wp_timezone_string());
   $upload_dir = wp_get_upload_dir();
-  $upload_path = $upload_dir['path'];
-  $upload_url = $upload_dir['url'];
+  $upload_path = $upload_dir['basedir'];
+  $upload_url = $upload_dir['baseurl'];
   $path_parts = pathinfo($track);
   $type = strtolower($path_parts['extension']);
   if ( 'kml' != $type && 'gpx' != $type && 'geojson' != $type && 'json' != $type) return;
