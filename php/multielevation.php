@@ -63,6 +63,16 @@ function leafext_multielevation_params($typ = array('changeable')) {
 			'typ' => array('changeable','multielevation'),
 		),
 
+		// Toggle direction arrows integration
+		array(
+			'param' => 'direction',
+			'shortdesc' => __('Toggle direction arrows',"extensions-leaflet-map"),
+			'desc' => '',
+			'default' => false,
+			'values' => 1,
+			'typ' => array('changeable','multielevation'),
+		),
+
 	);
 
 	if (count($typ) > 0) {
@@ -109,6 +119,7 @@ function leafext_eleparams_for_multi($options=array()) {
 		//var_dump($multioptions); wp_die();
 		return $multioptions;
 	} else {
+		//fuer Hilfe
 		$text = '';
 		sort($multi);
 		foreach ($multi as $param) {
@@ -266,8 +277,17 @@ function leafext_multielevation( $atts,$content,$shortcode) {
 			if (isset($multioptions['highlight']) ) {
 				$multioptions['highlight'] = "{color: '".$multioptions['highlight']."',opacity: 1,}";
 			}
-		}
 
+			$opts_distanceMarker = array(
+				'distanceMarkers' => $multioptions['distanceMarkers'],
+				'direction' => $multioptions['direction'],
+				'imperial' => $options['imperial'],
+			);
+			list($multi_dist_settings, $not_needed) = leafext_ele_java_params($opts_distanceMarker);
+			//var_dump($multi_dist_settings);
+			$multioptions['distanceMarkers_options'] = str_replace('distanceMarkers: ','',trim($multi_dist_settings,','));
+			$multioptions['distanceMarkers'] = true;
+		}
 		//if ($multioptions['distanceMarkers']) leafext_enqueue_rotation();
 
 		$options = array_merge($options, $ele_options);
@@ -281,7 +301,7 @@ function leafext_multielevation( $atts,$content,$shortcode) {
 		list($options,$style) = leafext_elevation_color($options);
 
 		//var_dump($all_files, $all_points, $options, $multioptions); wp_die();
-
+		//var_dump($options,$multioptions);
 		$rand = rand(1,20);
 		$text = $style.leafext_multielevation_script( $all_files, $all_points, $options, $multioptions, $rand);
 
@@ -325,6 +345,7 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 				<?php echo $elevation_settings;?>
 				<?php echo leafext_java_params ($settings);?>
 			},
+			distanceMarkers: <?php echo $multioptions['distanceMarkers_options'];?>
 		};
 		console.log(opts.elevation);
 

@@ -109,21 +109,20 @@ function leafext_multiele_help_text () {
 	$text='<img src="'.LEAFEXT_PLUGIN_PICTS.'multielevation.png" alt = "multielevation">
 		<h2>Shortcode</h2>
 <pre><code>[leaflet-map fitbounds ...]
-[elevation-<span style="color: #d63638">track</span> file="http(s)://my.domain.tld/url_file" lat="..." lng="..." name="..." filename=0/1]
+[elevation-track file="http(s)://my.domain.tld/url_file_1" lat="..." lng="..." name="..." filename=0/1]
 // many of this
-[elevation-<span style="color: #d63638">track</span> file="http(s):/my.domain.tld/url_file" lat="..." lng="..." name="..." filename=0/1]
-// At last either
-[elevation-<span style="color: #d63638">tracks</span> filename=0/1 summary=0/1]
-// or
+[elevation-track file="http(s):/my.domain.tld/url_file_n" lat="..." lng="..." name="..." filename=0/1]
+// At last
 [multielevation filename=0/1 option1=value1 option2 !option3 ...]</code></pre><p>'.
 __('See also','extensions-leaflet-map');
+
 if (is_singular()|| is_archive() ) {
 	$text = $text.' <a href="'.$lang.'/doku/filemgr/">';
 } else {
 	$text = $text.' <a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=filemgr-dir">';
 }
 $text = $text.'<code>leaflet-directory</code></a></p>
-<h3>'.__('Options','extensions-leaflet-map').' elevation-<span style="color: #d63638">track</span></h3>
+<h3>'.__('Options','extensions-leaflet-map').' elevation-track</h3>
 <ul><li>'.
 	sprintf ( __('%s is the url of the trackfile.','extensions-leaflet-map'),'<code>file</code>').
 		'</li><li>'.
@@ -156,15 +155,19 @@ $text = $text.'<code>leaflet-directory</code></a></p>
 		__('If this is not available, the filename (without extension) is used.','extensions-leaflet-map').
 	'</li></ol>'.
 '</li></ul><p>'.
-	sprintf( __('Use either %s or %s as last instruction.','extensions-leaflet-map'),
-		'<code>[elevation-<span style="color: #d63638">tracks</span>]</code>',
-		'<code>[multielevation]</code>').'</p>'.
 
-'<h3>'.__('Options','extensions-leaflet-map').' elevation-<span style="color: #d63638">tracks</span></h3>
-	<ul><li>'.
-	sprintf(__('If you use %s, you get an elevation profile only with or without a summary line.','extensions-leaflet-map'),
-		'<code>[elevation-<span style="color: #d63638">tracks</span>]</code>').
-	'</li><li>'.
+'<h3>'.__('Options','extensions-leaflet-map').' multielevation</h3>
+	<ul><li>';
+		if (is_singular()|| is_archive() ) {
+			$link = $lang."/doku/elevation/";
+		}	else {
+			$link = '?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation';
+		}
+	$text = $text.sprintf( __('You can use these options like in %sElevation Profile%s','extensions-leaflet-map'),
+		'<a href="'.$link.'">',
+		'</a>').': '.
+ 	leafext_eleparams_for_multi().
+	'.</li><li>'.
 	sprintf(__('The name of a %strack%s is determined in this order:','extensions-leaflet-map'),
 		'<span style="color: #4f94d4">',
 		'</span>').
@@ -178,23 +181,15 @@ $text = $text.'<code>leaflet-directory</code></a></p>
 	'</li></ol>'.
 	'</ul>'.
 
-'<h3>'.__('Options','extensions-leaflet-map').' multielevation</h3>
-	<ul><li>';
-		if (is_singular()|| is_archive() ) {
-			$link = $lang."/doku/elevation/";
-		}	else {
-			$link = '?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation';
-		}
-	$text = $text.sprintf( __('If you use %s, you can use these options like in %sElevation Profile%s','extensions-leaflet-map'),
-		'<code>[multielevation]</code>',
-		'<a href="'.$link.'">',
-		'</a>').': '.
- 	leafext_eleparams_for_multi().
-	'.</li><li>'.
+	'<h3>'.__('Options','extensions-leaflet-map').' elevation-tracks</h3>
+	<ul><li>'.
+	sprintf(__('If you use %s instead of %s, you get an elevation profile only with or without a summary line.','extensions-leaflet-map'),
+	'<code>[elevation-<span style="color: #d63638">tracks</span>]</code>','<code>[multielevation]</code>').' '.
 	sprintf (__('The name of a %strack%s is determined as described above.','extensions-leaflet-map'),
-		'<span style="color: #4f94d4">',
-		'</span>').
+	'<span style="color: #4f94d4">',
+	'</span>').
 	'</li></ul>'.
+	'<pre><code>[elevation-tracks filename=0/1 summary=0/1]</code></pre>'.
 
 '<h3>Theme</h3><p>'.
 	__('The theme is the same as the','extensions-leaflet-map');

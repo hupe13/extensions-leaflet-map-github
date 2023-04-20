@@ -109,11 +109,14 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.4.2 / 23041x
+### 3.4.2 / 23042x
 
-* elevation: arrows on track if distanceMarkers = true (https://github.com/Raruto/leaflet-elevation/issues/244)
+* elevation: arrows on track (https://github.com/Raruto/leaflet-elevation/issues/244)
 * elevation: almostOver = true
+* multielevation: arrows on track
+* leaflet-directory: bugs fixed
 * filemgr: vulnerable to Cross Site Scripting (XSS) fixed
+* filemgr: bugs fixed
 
 ### Previous
 
