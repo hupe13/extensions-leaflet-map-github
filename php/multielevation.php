@@ -73,6 +73,16 @@ function leafext_multielevation_params($typ = array('changeable')) {
 			'typ' => array('changeable','multielevation'),
 		),
 
+		// Toggle "leaflet-almostover" integration
+		// almostOver: true,
+		array(
+			'param' => 'almostOver',
+			'shortdesc' => __('Toggle "leaflet-almostover" integration',"extensions-leaflet-map"),
+			'desc' => "",
+			'default' => true,
+			'values' => 1,
+			'typ' => array('fixed'),
+		),
 	);
 
 	if (count($typ) > 0) {
@@ -136,6 +146,7 @@ function leafext_multielevation_settings($typ=array('changeable')) {
 	foreach($params as $param) {
 		$defaults[$param['param']] = $param['default'];
 	}
+	//var_dump($defaults);
 	$options = shortcode_atts($defaults, get_option('leafext_multieleparams'));
 	return $options;
 }
@@ -273,7 +284,7 @@ function leafext_multielevation( $atts,$content,$shortcode) {
 				}
 			}
 
-			$multioptions = shortcode_atts(leafext_multielevation_settings(array('multielevation')), leafext_clear_params($atts));
+			$multioptions = shortcode_atts(leafext_multielevation_settings(array('multielevation','fixed')), leafext_clear_params($atts));
 			if (isset($multioptions['highlight']) ) {
 				$multioptions['highlight'] = "{color: '".$multioptions['highlight']."',opacity: 1,}";
 			}
