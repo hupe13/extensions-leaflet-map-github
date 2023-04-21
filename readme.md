@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, elevation, markercluster, Leaflet Plugins   
 Tested up to: 6.2  
-Stable tag: 3.4.1  
+Stable tag: 3.4.2  
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later  
@@ -109,7 +109,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.4.2 / 23042x
+### 3.4.2 / 230421
 
 * elevation: arrows on track (https://github.com/Raruto/leaflet-elevation/issues/244)
 * elevation: almostOver = true
