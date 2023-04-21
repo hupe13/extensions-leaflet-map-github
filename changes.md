@@ -1,9 +1,4 @@
-* elevation: arrows on track (https://github.com/Raruto/leaflet-elevation/issues/244)
-* elevation: almostOver = true
-* multielevation: arrows on track
-* leaflet-directory: bugs fixed
-* filemgr: vulnerable to Cross Site Scripting (XSS) fixed
-* filemgr: bugs fixed
+* none
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
