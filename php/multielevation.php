@@ -272,6 +272,7 @@ function leafext_multielevation( $atts,$content,$shortcode) {
 				//$options['slope'] = false;
 			}
 			$multioptions['distanceMarkers'] = false;
+			$multioptions['distanceMarkers_options'] = "false";
 		}
 
 		if ($shortcode == "multielevation" ) {
