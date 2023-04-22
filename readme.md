@@ -109,6 +109,10 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
+### 3.4.3 / 230422
+
+* elevation-tracks: bug fixed
+
 ### 3.4.2 / 230421
 
 * elevation: arrows on track (https://github.com/Raruto/leaflet-elevation/issues/244)
