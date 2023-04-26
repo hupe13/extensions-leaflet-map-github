@@ -78,6 +78,17 @@ function leafext_elevation_params($typ = array()) {
 			'typ' => array('changeable','chartlook','multielevation'),
 		),
 
+		// Toggle "leaflet-edgescale" integration
+    // edgeScale: false,
+		array(
+			'param' => 'edgeScale',
+			'shortdesc' => __('Toggle "leaflet-edgescale" integration',"extensions-leaflet-map"),
+			'desc' => "",
+			'default' => false,
+			'values' => 1,
+			'typ' => array('changeable','look','multielevation'),
+		),
+
 		// Quite uncommon and undocumented options
 		// Line 73 src/options.js
 		// height
@@ -408,7 +419,7 @@ function leafext_elevation_params($typ = array()) {
 		//imperial: false,
 		array(
 			'param' => 'imperial',
-			'shortdesc' => __('Chart distance/elevation units.',"extensions-leaflet-map"),
+			'shortdesc' => __('Chart distance/elevation units imperial or metric.',"extensions-leaflet-map"),
 			'desc' => __('miles or kilometers',"extensions-leaflet-map"),
 			'default' => false,
 			'values' => 1,
@@ -572,13 +583,13 @@ function leafext_ele_java_params($settings) {
 			//distanceMarkers: { lazy: true, distance: true, direction: true },
 			if ($settings[$k] == true) {
 				$text = $text.'distanceMarkers: {'; //}
-				if ( $settings['imperial'] == true) {
-					$text = $text.
-					'offset: 1000/0.621371,
-					textFunction: function(distance, i, offset) {
-						return Math.round(distance*0.621371/1000);
-					},';
-				}
+				// if ( $settings['imperial'] == true) {
+				// 	$text = $text.
+				// 	'offset: 1000/0.621371,
+				// 	textFunction: function(distance, i, offset) {
+				// 		return Math.round(distance*0.621371/1000);
+				// 	},';
+				// }
 				if ( $settings['direction'] == true) {
 					$text = $text.'lazy: true, distance: true, direction: true,';
 				} else {
@@ -750,8 +761,8 @@ function leafext_elevation_script($gpx,$settings){
 
 		if ( typeof map.rotateControl !== "undefined" ) {
 			map.rotateControl.remove();
+			map.options.rotate = true;
 		}
-		map.options.rotate = true;
 
 		<?php if ( $settings['track'] ) {
 			echo '
@@ -962,6 +973,8 @@ function leafext_elevation_function($atts,$content,$shortcode) {
 		}
 
 		if ( $options['hotline'] == "elevation") unset ($options['polyline'] );
+		if ( $options['direction'] == true) leafext_enqueue_rotate();
+
 		list($options,$style) = leafext_elevation_color($options);
 		ksort($options);
 

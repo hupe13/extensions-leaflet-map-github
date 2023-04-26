@@ -242,14 +242,14 @@ export const LegendSmall = ({
 
 		symbol.exit().remove();
 		label.exit().remove();
-
+	
 		symbol.enter()
 			.append("svg:path")
 			.attr("class", "legend-switcher-symbol")
 			.attr("cursor", 'pointer')
 			.attr("fill", "#000")
 			.merge(symbol)
-			.attr("d",
+			.attr("d", 
 				d3.symbol()
 				.type(d => d.type)
 				.size(d => d.size)
@@ -272,7 +272,7 @@ export const LegendSmall = ({
 			onClick(items[idx]);
 		};
 		setIdx(0);
-
+		
 		return g;
 	};
 };
@@ -610,7 +610,7 @@ export const Chart = ({
 		g            .attr("transform", "translate(" + margins.left + "," + margins.top + ")");
 
 		// Partially fix: https://github.com/Raruto/leaflet-elevation/issues/123
-		if(/Mac|iPod|iPhone|iPad/.test(navigator.platform) && /AppleWebkit/i.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)) {
+		if(/Mac|iPod|iPhone|iPad/.test(navigator.platform) && /AppleWebkit/i.test(navigator.userAgent)) {
 			canvas   .style("transform", "translate(" + margins.left + "px," + margins.top + "px)");
 		}
 

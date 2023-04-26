@@ -1064,7 +1064,7 @@
 			}
 		},
 		AzureMaps: {
-			url: 
+			url:
 				'https://atlas.microsoft.com/map/tile?api-version={apiVersion}'+
 				'&tilesetId={variant}&x={x}&y={y}&zoom={z}&language={language}'+
 				'&subscription-key={subscriptionKey}',
@@ -1082,7 +1082,7 @@
 				MicrosoftBaseHybridRoad: 'microsoft.base.hybrid.road',
 				MicrosoftTerraMain: 'microsoft.terra.main',
 				MicrosoftWeatherInfraredMain: {
-					url: 
+					url:
 					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}'+
 					'&tilesetId={variant}&x={x}&y={y}&zoom={z}'+
 					'&timeStamp={timeStamp}&language={language}' +
@@ -1094,7 +1094,7 @@
 					},
 				},
 				MicrosoftWeatherRadarMain: {
-					url: 
+					url:
 					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}'+
 					'&tilesetId={variant}&x={x}&y={y}&zoom={z}'+
 					'&timeStamp={timeStamp}&language={language}' +

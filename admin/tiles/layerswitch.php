@@ -21,8 +21,7 @@ function leafext_form_maps() {
 	} else {
 		$disabled = "";
 	}
-	$options = get_option('leafext_maps');
-	if ( ! $options ) $options = array();
+	$options = get_option('leafext_maps', array());
 	$map=array(
 		"mapid" => "",
 		"attr" => "" ,

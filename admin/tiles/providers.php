@@ -77,10 +77,11 @@ function leafext_validate_providers($options) {
 // Erklaerung / Hilfe
 function leafext_providers_help() {
 	$text = '<pre><code>[leaflet-map]'."\n".
-	'[layerswitch providers="WaymarkedTrails.hiking"]'."\n".
+	'[layerswitch mapids=hiking providers="WaymarkedTrails.hiking"]'."\n".
 	"\n".
 	'[leaflet-map mapid="OSM"]'."\n".
-	'[layerswitch providers="WaymarkedTrails.hiking,OPNVKarte"]</code></pre><p>'.
+	'[layerswitch mapids="hiking,OPNV" providers="WaymarkedTrails.hiking,OPNVKarte"]</code></pre><p>'.
+	__('The option <code>mapids</code> is optional.','extensions-leaflet-map').' '.
 	__('You can use the parameter <code>tiles</code> also.','extensions-leaflet-map').
 	'</p><p>'.
 	__('For a list of providers see','extensions-leaflet-map').
