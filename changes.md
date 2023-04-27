@@ -1,3 +1,5 @@
+# Differences to the WordPress version
+
 * leaflet-elevation-2.3.4
 * elevation: new option edgeScale
 * Raruto fixed [Map automatically moves after clicking on markers when rotate: true](https://github.com/Raruto/leaflet-elevation/issues/250)
