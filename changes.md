@@ -4,6 +4,7 @@
 * elevation: new option edgeScale
 * Raruto fixed [Map automatically moves after clicking on markers when rotate: true](https://github.com/Raruto/leaflet-elevation/issues/250)
 * layerswitch: providers can have a [mapid](https://wordpress.org/support/topic/change-maps-name-in-layerswitch/)
+* cluster: fixed bug disableClusteringAtZoom=0
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

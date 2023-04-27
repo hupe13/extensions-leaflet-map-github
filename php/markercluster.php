@@ -104,7 +104,7 @@ function leafext_cluster_script($params){
 									//console.log(content);
 								} else {
 									//What should popup?? Default: "Point"
-									console.log(layer.feature.properties);
+									//console.log(layer.feature.properties);
 									//var popupContent = [];
 									//for (var key in layer.feature.properties) {
 									//if (layer.feature.properties.hasOwnProperty(key)) {
@@ -161,7 +161,7 @@ function leafext_cluster_atts ($atts) {
 	$atts2=leafext_case(array_keys(leafext_cluster_settings()),leafext_clear_params($atts1));
 	//gleiche mit eigenen settings und Plugin defaults ab
 	$options = shortcode_atts( leafext_cluster_settings(), $atts2);
-	if ($options['disableClusteringAtZoom'] == "0") unset($options['disableClusteringAtZoom'] );
+	//if ($options['disableClusteringAtZoom'] == "0") unset($options['disableClusteringAtZoom'] );
 	return($options);
 }
 
