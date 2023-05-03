@@ -109,6 +109,15 @@ function leafext_help_table($leafext_plugin_name="") {
 			'examples' => '',
 		),
 		array(
+			'function' => __('geojson markers','extensions-leaflet-map'),
+			'shortcode' => 'geojsonmarker',
+			'tab' => 'geojsonmarker',
+			'plugins' => '',
+			'doku' => '/doku/geojsonmarker/',
+			'kategorie' => '',
+			'examples' => '',
+		),
+		array(
 			'function' => __('hide markers','extensions-leaflet-map'),
 			'shortcode' => 'hidemarkers',
 			'tab' => 'hidemarkers',

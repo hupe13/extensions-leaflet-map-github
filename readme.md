@@ -38,8 +38,9 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 *  hover:
      * Highlight a leaflet element on mouse over
      * get a tooltip for a leaflet element on mouse over.
-*   Hide Markers: Use it when a track in a GPX file contains some markers and you don't want to display them on the map.
-*   Option to migrate from [WP GPX Maps](https://wordpress.org/plugins/wp-gpx-maps/) to elevation
+*  Hide Markers: Use it when a track in a GPX file contains some markers and you don't want to display them on the map.
+*  Styling marker in geojson files.
+*  Option to migrate from [WP GPX Maps](https://wordpress.org/plugins/wp-gpx-maps/) to elevation
 
 ## Screenshots
 
@@ -109,18 +110,14 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.4.3 / 230422
+### 3.4.4 / 2305xx
 
-* elevation-tracks: bug fixed
-
-### 3.4.2 / 230421
-
-* elevation: arrows on track (https://github.com/Raruto/leaflet-elevation/issues/244)
-* elevation: almostOver = true
-* multielevation: arrows on track
-* leaflet-directory: bugs fixed
-* filemgr: vulnerable to Cross Site Scripting (XSS) fixed
-* filemgr: bugs fixed
+* leaflet-elevation-2.3.4
+* elevation: new option edgeScale
+* Raruto fixed [Map automatically moves after clicking on markers when rotate: true](https://github.com/Raruto/leaflet-elevation/issues/250)
+* layerswitch: providers can have a [mapid](https://wordpress.org/support/topic/change-maps-name-in-layerswitch/)
+* cluster: fixed bug disableClusteringAtZoom=0
+* New shortcode geojsonmarker: Design markers from geojson files according to their properties
 
 ### Previous
 

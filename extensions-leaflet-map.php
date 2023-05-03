@@ -5,7 +5,7 @@
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
  * Primary Branch:    main
  * Description:       Extensions for the WordPress plugin Leaflet Map Github Version
- * Version:           3.4.4-230427
+ * Version:           3.4.4-230503
  * Requires PHP:      7.4
  * Author:      hupe13
  * License:     GPL v2 or later
@@ -50,7 +50,6 @@ include_once LEAFEXT_PLUGIN_DIR . '/php/multielevation.php';
 
 include_once LEAFEXT_PLUGIN_DIR . '/php/fullscreen.php';
 include_once LEAFEXT_PLUGIN_DIR . '/php/gesture.php';
-include_once LEAFEXT_PLUGIN_DIR . '/php/hidemarkers.php';
 
 include_once LEAFEXT_PLUGIN_DIR . '/php/hover.php';
 
@@ -60,12 +59,12 @@ include_once LEAFEXT_PLUGIN_DIR . '/php/clustergroup.php';
 include_once LEAFEXT_PLUGIN_DIR . '/php/featuregroup.php';
 
 include_once LEAFEXT_PLUGIN_DIR . '/php/extramarker.php';
-//include_once LEAFEXT_PLUGIN_DIR . '/php/geojsoncolor.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/geojsonmarker.php';
+include_once LEAFEXT_PLUGIN_DIR . '/php/hidemarkers.php';
 
 include_once LEAFEXT_PLUGIN_DIR . '/php/choropleth.php';
 
 include_once LEAFEXT_PLUGIN_DIR . '/php/zoomhome.php';
-//include_once LEAFEXT_PLUGIN_DIR . '/php/zoomhome-a.php';
 
 include_once LEAFEXT_PLUGIN_DIR . '/php/tileserver.php';
 

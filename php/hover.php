@@ -128,7 +128,7 @@ function leafext_hover_params($typ = '') {
 			'param' => 'tolerance',
 			'desc' => __('determines how much to extend click tolerance round an object on the map','extensions-leaflet-map'),
 			'default' => 0,
-			'values' => 'a number',
+			'values' => __('a number',"extensions-leaflet-map"),
 			'element' => false,
 			'only' => false,
 		),

@@ -56,7 +56,7 @@ function leafext_geojsonstyle_script($options){
 						geojson.layer.on("mouseover", function (e) {
 							let i = 0;
 							e.target.eachLayer(function(){ i += 1; });
-							//console.log("mouseover has", i, "layers.");
+							// console.log("mouseover has", i, "layers.");
 
 							if (i > 1) {
 								// z.B leaflet-gpx mit Track und Marker
@@ -136,7 +136,7 @@ function leafext_geojsonstyle_script($options){
 										});
 									}
 								});
-								geojson.resetStyle();
+								//geojson.resetStyle();
 							} else {
 								//resetStyle is only working with a geoJSON Group.
 								e.target.eachLayer(function(layer) {

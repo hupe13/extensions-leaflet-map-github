@@ -25,7 +25,7 @@ function leafext_cluster_init(){
 	add_settings_section( 'clusterparams_settings', leafext_marker_tab(), 'leafext_markercluster_help_text', 'leafext_settings_clusterparams' );
 	$fields = leafext_cluster_params();
 	foreach($fields as $field) {
-		add_settings_field("leafext_cluster[".$field[0]."]", $field[1], 'leafext_form_markercluster','leafext_settings_clusterparams', 'clusterparams_settings', $field[0]);
+		add_settings_field("leafext_cluster[".$field['param']."]", $field['desc'], 'leafext_form_markercluster','leafext_settings_clusterparams', 'clusterparams_settings', $field['param']);
 	}
 	register_setting( 'leafext_settings_clusterparams', 'leafext_cluster', 'leafext_validate_markercluster_options' );
 }
@@ -36,7 +36,7 @@ function leafext_form_markercluster($field) {
 	//var_dump($field);
 	$options = leafext_cluster_params();
 	//var_dump($options);
-	$option = leafext_array_find($field, $options);
+	$option = leafext_array_find2($field, $options);
 	//var_dump($option);echo '<br>';
 	$settings = leafext_cluster_settings();
 	$setting = $settings[$field];
@@ -47,36 +47,35 @@ function leafext_form_markercluster($field) {
 		$disabled = "";
 	}
 
-	echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option[0]. '</code><br>';
-	if (!is_array($option[3])) {
+	echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option['param']. '</code><br>';
+	if (!is_array($option['values'])) {
 
-		if ($setting != $option[2] ) {
-			//var_dump($setting,$option[2]);
+		if ($setting != $option['default'] ) {
 			echo __("Plugins Default", "extensions-leaflet-map").': ';
-			echo $option[2] ? "1" : "0";
+			echo $option['default'] ? "1" : "0";
 			echo '<br>';
 		}
 
-		echo '<input '.$disabled.' type="radio" name="leafext_cluster['.$option[0].']" value="1" ';
+		echo '<input '.$disabled.' type="radio" name="leafext_cluster['.$option['param'].']" value="1" ';
 		echo $setting ? 'checked' : '' ;
 		echo '> true &nbsp;&nbsp; ';
-		echo '<input '.$disabled.' type="radio" name="leafext_cluster['.$option[0].']" value="0" ';
+		echo '<input '.$disabled.' type="radio" name="leafext_cluster['.$option['param'].']" value="0" ';
 		echo (!$setting) ? 'checked' : '' ;
 		echo '> false ';
 	} else {
-		$plugindefault = is_string($option[2]) ? $option[2] : ($option[2] ? "1" : "0");
+		$plugindefault = is_string($option['default']) ? $option['default'] : ($option['default'] ? "1" : "0");
 		$setting = is_string($setting) ? $setting : ($setting ? "1" : "0");
 		if ($setting != $plugindefault ) {
 			//var_dump("Option: ",$option[2],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
 			echo __("Plugins Default:", "extensions-leaflet-map").' '. $plugindefault . '<br>';
 		}
 		if (!current_user_can('manage_options')) {
-			$select_disabled = ' disabled multiple size='.count($option[3]).' ';
+			$select_disabled = ' disabled multiple size='.count($option['values']).' ';
 		} else {
 			$select_disabled = "";
 		}
-		echo '<select '.$select_disabled.' name="leafext_cluster['.$option[0].']">';
-		foreach ( $option[3] as $para) {
+		echo '<select '.$select_disabled.' name="leafext_cluster['.$option['param'].']">';
+		foreach ( $option['values'] as $para) {
 			echo '<option ';
 			if (is_bool($para)) $para = ($para ? "1" : "0");
 			if ($para === $setting) echo ' selected="selected" ';

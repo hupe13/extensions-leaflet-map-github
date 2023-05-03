@@ -1,3 +1,16 @@
+### 3.4.3 / 230422
+
+* elevation-tracks: bug fixed
+
+### 3.4.2 / 230421
+
+* elevation: arrows on track (https://github.com/Raruto/leaflet-elevation/issues/244)
+* elevation: almostOver = true
+* multielevation: arrows on track
+* leaflet-directory: bugs fixed
+* filemgr: vulnerable to Cross Site Scripting (XSS) fixed
+* filemgr: bugs fixed
+
 ### 3.4.1 / 230402
 
 * revision of hover: bugs fixed, many new options
