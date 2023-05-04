@@ -1,4 +1,4 @@
-# Differences to the WordPress version
+# Differences to the WordPress Repository version
 
 * leaflet-elevation-2.3.4
 * elevation: new option edgeScale
