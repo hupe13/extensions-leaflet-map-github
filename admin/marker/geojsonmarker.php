@@ -3,7 +3,24 @@
 defined( 'ABSPATH' ) or die();
 
 function leafext_help_geojsonmarker() {
-  $text='<h3>Design markers from geojson files according to their properties</h3>';
+
+  if (is_singular() || is_archive() ) {
+    if (strpos($_SERVER["REQUEST_URI"], "/en/") !==  false) {
+      $lang = '/en';
+    } else {
+      $lang = '';
+    }
+    $featuregroup = $lang."/doku/featuregroup/";
+    $cluster = $lang."/doku/markercluster/";
+    $extramarker = $lang."/doku/extramarker/";
+  } else {
+    $featuregroup = '?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=featuregroup';
+    $cluster = '?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=markercluster';
+    $extramarker = '?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=extramarker';
+  }
+
+  $text='<h3>'.__('Design markers from geojson files according to their properties',
+	'extensions-leaflet-map').'</h3>';
   $text=$text.'<p>'.
 	sprintf(__('A %s in a geojson file is specified like this:',
 	'extensions-leaflet-map'),
@@ -15,7 +32,7 @@ function leafext_help_geojsonmarker() {
     "coordinates": [lat, lng]
   },
   "properties": {
-    "<span style="color: #d63638">color</span>": "<span style="color: #4f94d4">valid color</span>"
+    "<span style="color: #d63638">property</span>": "value"
     ....
   }
 }</pre>
@@ -23,41 +40,81 @@ function leafext_help_geojsonmarker() {
 
 	$text=$text.'<h3>Shortcode</h3>
 
-<pre><code>[geojsonmarker property=<span style="color: #d63638">value</span> default=<span style="color: #4f94d4">blue</span> <i>cluster-options</i> values=... groups=... visible=...]</code></pre>
+<pre><code>[geojsonmarker property=<span style="color: #d63638">property</span> values=... iconprops=... icondefault=<span style="color: #4f94d4"><span style="color: #4f94d4">blue</span></span> groups=... visible=... <i>cluster-options</i>]</code></pre>
 
-<ul><li><code>property</code> - '.sprintf(__('default:','extensions-leaflet-map'),).' <span style="color: #d63638">color</span></li>
-<li><code>default</code> - '.sprintf(__('default:','extensions-leaflet-map'),).' <span style="color: #4f94d4">blue</span></li>
-<li>'.sprintf(__('The markers were clustered. Optional you can specify options from %s','extensions-leaflet-map'),
-'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=markercluster"><code>cluster</code></a>').'</li>
-<li>'.sprintf(__('If you specify %s from %s, the markers are grouped.','extensions-leaflet-map'),
-'<code>values</code>, <code>groups</code>, <code>visible</code>',
-'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=featuregroup"><code>leaflet-featuregroup</code></a>').'</li>
-</ul>
-  <h3>circleMarker</h3>'.
-  sprintf(__('%s is the only %s for circle markers.','extensions-leaflet-map'),'<code>color</code>','<code>property</code>')
-  .'<pre><code>[leaflet-map fitbounds ...]
-[leaflet-geojson src="//url/to/file.geojson" circleMarker color=blue]
-[geojsonmarker property=<span style="color: #d63638">color</span> default=blue]
-[zoomhomemap]</code></pre>
+<pre><code>[geojsonmarker property=<span style="color: #d63638">property</span> auto <i>cluster-options</i>]</code></pre>
 
-<h3>Marker with icon</h3>'.
-sprintf(__('Here you can play with %s. Make sure that the %s must appear in the path of the %s.','extensions-leaflet-map'),
-'<code>property</code>','<code>value</code>','<code>iconurl</code>').'<br> '
+<h3>circleMarker</h3>'
+.sprintf(__('If you want to use CircleMarker you must specify %s and optional %s and %s in %s shortcode.','extensions-leaflet-map'),
+'<code>circlemarker</code>','<code>color</code>','<code>radius</code>','<code>leaflet-geojson</code>')
+.'<pre><code>[leaflet-geojson src="//url/to/file.geojson" circleMarker color=<span style="color: #4f94d4">blue</span> radius=...]
+[geojsonmarker property=<span style="color: #d63638">property</span> icondefault=<span style="color: #4f94d4">blue</span> ...]</code></pre>
+
+<h3>'.__('Marker with icon','extensions-leaflet-map').'</h3>'.
+sprintf(__('The substring %s will be replaced in the path of the %s with any of %s.','extensions-leaflet-map'),
+'<code>icondefault</code>','<code>iconurl</code>','<code>iconprops</code>').'<br> '
 .sprintf(__('The markers should have the same %s, only %s differs.','extensions-leaflet-map'),
-'<code>iconsize</code>, <code>iconanchor</code>, <code>shadowurl</code>, <code>shadowsize</code>, <code>shadowanchor</code>, <code>popupanchor</code>, <code>tooltipanchor</code>',
+'<code>iconsize</code>, <code>iconanchor</code>, <code>popupanchor</code>, <code>tooltipanchor</code>, <code>shadowurl</code>, <code>shadowsize</code>, <code>shadowanchor</code>',
 '<code>iconurl</code>')
-.'<pre><code>[leaflet-map fitbounds ...]
-[leaflet-geojson src="//url/to/file.geojson" iconurl="//url/to/marker-icon-blue.png" shadowurl="//url/to/marker-shadow.png" iconanchor="12,41" popupanchor="1,-34"  tooltipanchor="16,-28"]
-[geojsonmarker property=<span style="color: #d63638">value</span> default=blue]
-[zoomhomemap]</code></pre>
+.'<pre><code>[leaflet-geojson src="//url/to/file.geojson" iconurl="//url/to/marker-icon-<span style="color: #4f94d4">blue</span>.png" iconsize=... iconanchor="..,.." popupanchor="..,.."  tooltipanchor="..,.." shadowurl="//url/to/marker-shadow.png" shadowsize=... shadowanchor=...]
+[geojsonmarker property=<span style="color: #d63638">property</span> values=... iconprops=... icondefault=<span style="color: #4f94d4">blue</span> ...]</code></pre>
 
 <h3>Extramarker</h3>'.
-sprintf(__('For now, %s is mapped to %s from %s. Maybe there are other options.','extensions-leaflet-map'),
-'<code>property</code>','<code>markerColor</code>','<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=extramarker">leaflet-extramarker</a>')
+sprintf(__('If you want to use ExtraMarkers you can specify %s options.','extensions-leaflet-map'),
+'<a href="'.$extramarker.'">leaflet-extramarker</a>').' '.
+
+sprintf(__('For now, %s are mapped to %s. Maybe there are other options.','extensions-leaflet-map'),
+'<code>values</code>','<code>markerColor</code>')
+
 .'<pre><code>[leaflet-map fitbounds ...]
 [leaflet-geojson src="//url/to/file.geojson"]
-[geojsonmarker property=<span style="color: #d63638">color</span> default=blue markerColor=blue <i>extramarker-options</i>]
-[zoomhomemap]</code></pre>';
+[geojsonmarker property=<span style="color: #d63638">property</span> icondefault=<span style="color: #4f94d4">blue</span> markerColor=<span style="color: #4f94d4">blue</span> <i>extramarker-options</i>] ...</code></pre>
+
+
+<h3>Options</h3>
+
+<ul>
+<li><code>property</code> - '.__('required','extensions-leaflet-map').'</li>
+
+<li><code>values</code>
+<ul>
+<li> '.__('comma separated strings of property values','extensions-leaflet-map').'</li>
+<li> '.__('if not specified collect values from property','extensions-leaflet-map').'</li>
+<li> '.sprintf(__('required for markers with %s','extensions-leaflet-map'),'<code>iconurl</code>').'</li>
+<li> '.sprintf(__('required if you want to group like with %s','extensions-leaflet-map'),
+'<a href="'.$featuregroup.'"><code>leaflet-featuregroup</code></a>').'</li>
+</ul></li>
+
+<li><code>iconprops</code>
+<ul>
+<li> '.sprintf(__('comma separated colors for marker or substrings in %s for marker to distinguish the values','extensions-leaflet-map'),'<code>iconurl</code>').'</li>
+<li> '.sprintf(__('required for markers with %s','extensions-leaflet-map'),'<code>iconurl</code>').'</li>
+<li> '.__('if not specified colors are generated','extensions-leaflet-map').' '.
+sprintf(__('(max 16 %s for %s, 14 for %s)','extensions-leaflet-map'),'<code>values</code>','circleMarker','ExtraMarker').'</li>
+<li> '.sprintf(__('if specified the count must match the count of %s','extensions-leaflet-map'),'<code>values</code>').'</li>
+</ul></li>
+
+<li><code>icondefault</code> - '.sprintf(__('default color','extensions-leaflet-map'),).
+' (<span style="color: #4f94d4">blue</span>), '
+.__('resp. substring of ','extensions-leaflet-map').'<code>iconurl</code></li>
+
+<li><code>groups</code> - '.sprintf(__('required if you want to group like with %s','extensions-leaflet-map'),
+'<a href="'.$featuregroup.'"><code>leaflet-featuregroup</code></a>').'</li>
+
+<li> <code>visible</code> - '.__('for grouping','extensions-leaflet-map').'</li>
+
+<li> <code>auto</code> <ul>
+<li> '.sprintf(__('automatic generation of %s, %s (color) and %s','extensions-leaflet-map'),
+'<code>values</code>','<code>iconprops</code>','<code>groups</code>').'</li>
+<li>'.__('not for markers with iconUrl','extensions-leaflet-map').'</li>
+<li>'.sprintf(__('no more than 16 different %s for %s','extensions-leaflet-map'),'<code>values</code>','circleMarker').'</li>
+<li>'.sprintf(__('no more than 14 different %s for %s','extensions-leaflet-map'),'<code>values</code>','ExtraMarker').'</li>
+</ul></li>
+
+
+<li>'.sprintf(__('The markers are clustered. Optional you can specify options from %s.','extensions-leaflet-map'),
+'<a href="'.$cluster.'"><code>cluster</code></a>').'</li>
+</ul>';
 
   if (is_singular() || is_archive() ) {
     return $text;
