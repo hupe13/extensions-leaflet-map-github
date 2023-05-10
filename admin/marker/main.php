@@ -32,11 +32,11 @@ function leafext_marker_tab() {
 		),
 		array (
 			'tab' => 'geojsonmarker',
-			'title' => 'Markers for Geojson',
+			'title' => __('Markers for Geojson','extensions-leaflet-map'),
 		),
 		array (
 			'tab' => 'hidemarkers',
-			'title' => 'Hide Markers',
+			'title' => __('Hide Markers','extensions-leaflet-map'),
 		),
 	);
 
