@@ -19,7 +19,7 @@ function leafext_help_hover() {
   $text = $text.__('The tooltip content is the same as the popup content.','extensions-leaflet-map');
   $text = $text.'</li>';
   $text = $text.'<li>';
-  $text = $text. sprintf(__('To customize the popup content for geojsons see %sgeojson options%s.','extensions-leaflet-map'),
+  $text = $text. sprintf(__('To customize the popup content for geojsons, see %sgeojson options%s.','extensions-leaflet-map'),
   '<a href="https://github.com/bozdoz/wp-plugin-leaflet-map#leaflet-geojson-options">','</a>');
   $text = $text.'</li>';
   $text = $text.'</ul>';
@@ -93,6 +93,7 @@ $text=$text.'<p>'.__('So can you write:','extensions-leaflet-map').
 .'<li>'.__('hover only for geojsons, gpx, kml:','extensions-leaflet-map').' <code>[hover geojsontooltip geojsonstyle]</code>'.'</li>'
 .'<li>'.__('show tooltips on hover:','extensions-leaflet-map').' <code>[hover markertooltip geojsontooltip markergrouptooltip]</code>'.'</li>'
 .'<li>'.__('change style but do not show tooltips on hover (geojson, gpx, kml, circle, polygon, line):','extensions-leaflet-map').' <code>[hover geojsonstyle markergroupstyle]</code>'.'</li>'
+.'<li>'.__('show a short tooltip, if the popup is too big:','extensions-leaflet-map').' <code>[hover geojsontooltip="{name}"]</code>'.'</li>'
 .'</ul></p>';
 
 $text = $text.'<p>'.__('For boolean values applies', "extensions-leaflet-map").':<br>';

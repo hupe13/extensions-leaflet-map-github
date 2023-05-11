@@ -118,6 +118,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 * layerswitch: providers can have a [mapid](https://wordpress.org/support/topic/change-maps-name-in-layerswitch/)
 * cluster: fixed bug disableClusteringAtZoom=0
 * New shortcode geojsonmarker: Design markers from geojson files according to their properties
+* hover geojsontooltip: specify a short string for tooltip, if the popup is too big
 
 ### Previous
 

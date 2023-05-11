@@ -17,6 +17,8 @@ function leafext_geojsontooltip_script($options){
 		let all_options = <?php echo json_encode($options);?>;
 		console.log("leafext_geojsontooltip_script");
 		console.log(all_options);
+		let tooltip = <?php echo json_encode($options['geojsontooltip']);?>;
+		//console.log(tooltip);
 
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
 		var map_id = map._leaflet_id;
@@ -27,6 +29,68 @@ function leafext_geojsontooltip_script($options){
 		if ( WPLeafletMapPlugin.geojsons.length > 0 ) {
 			var geojsons = window.WPLeafletMapPlugin.geojsons;
 			var geocount = geojsons.length;
+
+			function leafext_get_tooltip(layer, tooltip) {
+				//console.log(layer.options);
+
+				if (typeof tooltip == "string" ) {
+					if (!layer.options.tooltip) {
+						if (tooltip.indexOf('{') !== -1) {
+
+							//https://gist.github.com/forcewake/82e4e646c41bb638a3db
+							var tipprops = [],          // an array to collect the strings that are found
+							rxp = /{([^}]+)}/g,
+							str = tooltip,
+							curMatch;
+							while( curMatch = rxp.exec( str ) ) {
+								tipprops.push( curMatch[1] );
+							}
+							//console.log( tipprops );
+
+							var thistooltip = tooltip;
+							for (const tipprop of tipprops) {
+								if (layer.feature.properties[tipprop]) {
+									thistooltip = thistooltip.replace('{'+tipprop+'}',layer.feature.properties[tipprop]);
+								}
+							}
+							content = thistooltip;
+							layer.options.tooltip = thistooltip;
+						} else {
+							content = tooltip;
+							layer.options.tooltip = tooltip;
+						}
+					} else {
+						content = layer.options.tooltip;
+					}
+				} else {
+					content = layer.getPopup().getContent();
+				}
+				return content;
+			}
+
+			function leafext_tooltip_snap (e,map) {
+				var elements = [];
+				e.sourceTarget._map.eachLayer(function(layer){
+					if ( layer.getPopup() ) {
+						if ( layer.getPopup().isOpen()) {
+							//console.log("is open");
+							//console.log(layer.getPopup().getLatLng());
+							elements.push(new L.Marker(layer.getPopup().getLatLng()));
+						}
+					}
+				});
+				//console.log(elements);
+				var result = L.GeometryUtil.closestLayerSnap(
+					e.sourceTarget._map,
+					elements, // alle Marker
+					e.latlng, // mouse position.
+					50 // distance in pixels under which snapping occurs.
+				);
+				//console.log(result);
+				if (!result) {
+					map.closePopup();
+				}
+			}
 
 			for (var j = 0, len = geocount; j < len; j++) {
 				var geojson = geojsons[j];
@@ -67,7 +131,7 @@ function leafext_geojsontooltip_script($options){
 								if ( layer.getPopup().isOpen()) {
 									popup_open = true;
 									if ( layer.getTooltip() ) {
-										if (layer.feature.geometry.type == "MultiPoint") {
+										if (layer.feature.geometry.type == "MultiPoint" || layer.feature.geometry.type == "Point") {
 											//console.log("Multipoint");
 											//layer.closeTooltip();
 											layer.unbindTooltip();
@@ -85,29 +149,9 @@ function leafext_geojsontooltip_script($options){
 									//console.log(layer);
 									if ( layer.getPopup() ) {
 										if ( !layer.getPopup().isOpen()) {
-											var elements = [];
-											e.sourceTarget._map.eachLayer(function(layer){
-												if ( layer.getPopup() ) {
-													if ( layer.getPopup().isOpen()) {
-														//console.log("is open");
-														//console.log(layer.getPopup().getLatLng());
-														elements.push(new L.Marker(layer.getPopup().getLatLng()));
-													}
-												}
-											});
-											//console.log(elements);
-											var result = L.GeometryUtil.closestLayerSnap(
-												e.sourceTarget._map,
-												elements, // alle Marker
-												e.latlng, // mouse position.
-												50 // distance in pixels under which snapping occurs.
-											);
-											//console.log(result);
-											if (!result) {
-												map.closePopup();
-											}
+											leafext_tooltip_snap (e,map);
 										}
-										var content = layer.getPopup().getContent();
+										var content = leafext_get_tooltip(layer, tooltip);
 										layer.bindTooltip(content);
 										layer.openTooltip(e.latlng);
 									}
@@ -116,26 +160,8 @@ function leafext_geojsontooltip_script($options){
 								//kml, gpx, mehrere Elemente in geojson
 								if ( e.sourceTarget.getPopup() ) {
 									if ( !e.sourceTarget.getPopup().isOpen()) {
-										var elements = [];
-										e.sourceTarget._map.eachLayer(function(layer){
-											if ( layer.getPopup() ) {
-												if ( layer.getPopup().isOpen()) {
-													// console.log("is open");
-													elements.push(new L.Marker(layer.getPopup().getLatLng()));
-												}
-											}
-										});
-										var result = L.GeometryUtil.closestLayerSnap(
-											e.sourceTarget._map,
-											elements, // popups
-											e.latlng, // mouse position.
-											50 // distance in pixels under which snapping occurs.
-										);
-										// console.log(result);
-										if (!result) {
-											map.closePopup();
-										}
-										var content = e.sourceTarget.getPopup().getContent();
+										leafext_tooltip_snap (e,map);
+										var content = leafext_get_tooltip(e.sourceTarget, tooltip);
 										e.sourceTarget.bindTooltip(content);
 										e.sourceTarget.openTooltip(e.latlng);
 									}

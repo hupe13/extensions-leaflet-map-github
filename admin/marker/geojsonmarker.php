@@ -40,7 +40,7 @@ function leafext_help_geojsonmarker() {
 
 	$text=$text.'<h3>Shortcode</h3>
 
-<pre><code>[geojsonmarker property=<span style="color: #d63638">property</span> values=... iconprops=... icondefault=<span style="color: #4f94d4"><span style="color: #4f94d4">blue</span></span> groups=... visible=... <i>cluster-options</i>]</code></pre>
+<pre><code>[geojsonmarker property=<span style="color: #d63638">property</span> values=... iconprops=... icondefault=<span style="color: #4f94d4">blue</span> groups=... visible=... <i>cluster-options</i>]</code></pre>
 
 <pre><code>[geojsonmarker property=<span style="color: #d63638">property</span> auto <i>cluster-options</i>]</code></pre>
 
@@ -51,11 +51,12 @@ function leafext_help_geojsonmarker() {
 [geojsonmarker property=<span style="color: #d63638">property</span> icondefault=<span style="color: #4f94d4">blue</span> ...]</code></pre>
 
 <h3>'.__('Marker with icon','extensions-leaflet-map').'</h3>'.
-sprintf(__('The substring %s will be replaced in the path of the %s with any of %s.','extensions-leaflet-map'),
-'<code>icondefault</code>','<code>iconurl</code>','<code>iconprops</code>').'<br> '
-.sprintf(__('The markers should have the same %s, only %s differs.','extensions-leaflet-map'),
+
+sprintf(__('The markers should have the same %s, only %s differs.','extensions-leaflet-map'),
 '<code>iconsize</code>, <code>iconanchor</code>, <code>popupanchor</code>, <code>tooltipanchor</code>, <code>shadowurl</code>, <code>shadowsize</code>, <code>shadowanchor</code>',
-'<code>iconurl</code>')
+'<code>iconurl</code>').' '.
+sprintf(__('The substring %s will be replaced in the path of the %s with any of %s.','extensions-leaflet-map'),
+'<code>icondefault</code>','<code>iconurl</code>','<code>iconprops</code>')
 .'<pre><code>[leaflet-geojson src="//url/to/file.geojson" iconurl="//url/to/marker-icon-<span style="color: #4f94d4">blue</span>.png" iconsize=... iconanchor="..,.." popupanchor="..,.."  tooltipanchor="..,.." shadowurl="//url/to/marker-shadow.png" shadowsize=... shadowanchor=...]
 [geojsonmarker property=<span style="color: #d63638">property</span> values=... iconprops=... icondefault=<span style="color: #4f94d4">blue</span> ...]</code></pre>
 

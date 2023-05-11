@@ -85,9 +85,10 @@ function leafext_hover_params($typ = '') {
 		),
 		array(
 			'param' => 'geojsontooltip',
-			'desc' => __('alias for',"extensions-leaflet-map").' <code>[hover geojson/gpx/kml=tooltip marker/circle/polygon/line=false]</code>',
+			'desc' => __('alias for',"extensions-leaflet-map").' <code>[hover geojson/gpx/kml=tooltip marker/circle/polygon/line=false]</code>, '.
+					__('specify a short string as parameter, if the popup is too big.',"extensions-leaflet-map"),
 			'default' => false,
-			'values' => '',
+			'values' => __('nothing or a string like the popup content for geojsons').': <code>Field A = {field_a}</code>.',
 			'element' => false,
 			'only' => true,
 		),
@@ -204,6 +205,10 @@ function leafext_hover_function($atts,$content,$shortcode) {
 			}
 		}
 		//var_dump($options);
+
+		if (is_string($options['geojsontooltip'])) {
+			$options['geojsontooltip'] = filter_var($options['geojsontooltip'], FILTER_SANITIZE_SPECIAL_CHARS);
+		}
 
 		if (in_array($options['marker'],$do_tooltip,true)
 		|| $options['markertooltip']) {
