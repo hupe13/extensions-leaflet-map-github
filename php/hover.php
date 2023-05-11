@@ -88,7 +88,7 @@ function leafext_hover_params($typ = '') {
 			'desc' => __('alias for',"extensions-leaflet-map").' <code>[hover geojson/gpx/kml=tooltip marker/circle/polygon/line=false]</code>, '.
 					__('specify a short string as parameter, if the popup is too big.',"extensions-leaflet-map"),
 			'default' => false,
-			'values' => __('nothing or a string like the popup content for geojsons').': <code>Field A = {field_a}</code>.',
+			'values' => __('nothing or a string like the popup content for geojsons','extensions-leaflet-map').': <code>Field A = {field_a}</code>.',
 			'element' => false,
 			'only' => true,
 		),
