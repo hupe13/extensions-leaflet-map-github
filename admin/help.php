@@ -100,7 +100,7 @@ function leafext_help_table($leafext_plugin_name="") {
 			'examples' => '/cluster/placementstrategies/',
 		),
 		array(
-			'function' => __('more markers','extensions-leaflet-map'),
+			'function' => 'ExtraMarkers',
 			'shortcode' => 'leaflet-extramarker',
 			'tab' => 'extramarker',
 			'plugins' => '<a href="https://github.com/coryasilva/Leaflet.ExtraMarkers">Leaflet.ExtraMarkers</a>',
@@ -115,7 +115,7 @@ function leafext_help_table($leafext_plugin_name="") {
 			'plugins' => '',
 			'doku' => '/doku/geojsonmarker/',
 			'kategorie' => '',
-			'examples' => '',
+			'examples' => '/marker/geojsonmarker/',
 		),
 		array(
 			'function' => __('hide markers','extensions-leaflet-map'),
