@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, elevation, markercluster, Leaflet Plugins   
 Tested up to: 6.2  
-Stable tag: 3.4.3  
+Stable tag: 3.4.4  
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later  
