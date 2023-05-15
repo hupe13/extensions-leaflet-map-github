@@ -1,6 +1,7 @@
 # Differences to the WordPress Repository version
 
-* none
+* enqueue rotate for multielevation
+* remove 'other' group from geojsonmarker groups if empty
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
