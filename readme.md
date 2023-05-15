@@ -110,7 +110,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.4.4 / 2305xx
+### 3.4.4 / 230512
 
 * leaflet-elevation-2.3.4
 * elevation: new option edgeScale
