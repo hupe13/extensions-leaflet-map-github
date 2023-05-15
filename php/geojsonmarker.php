@@ -91,7 +91,7 @@ function leafext_geojsonmarker_script($propertyoptions,$extramarkericon,$cluster
 					// console.log("geojson");
 
 					geojson.on("ready", function () {
-						console.log("ready");
+						//console.log("ready");
 						var a = this.layer;
 						//console.log(a);
 
@@ -304,6 +304,10 @@ function leafext_geojsonmarker_script($propertyoptions,$extramarkericon,$cluster
 							for (key in featGroups[map_id]) {
 								featGroups[map_id][key].addTo(map);
 							}
+						}
+						//console.log(Object.entries(featGroups[map_id]['others']).length);
+						if (Object.entries(featGroups[map_id]['others']) && Object.entries(featGroups[map_id]['others']).length == 0) {
+							control[map_id].removeLayer(featGroups[map_id]['others']);
 						}
 					}); // geojson ready
 				}

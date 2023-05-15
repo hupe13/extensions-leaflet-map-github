@@ -110,6 +110,7 @@ function leafext_enqueue_elevation_css () {
 
 function leafext_enqueue_multielevation () {
   leafext_enqueue_elevation ();
+  leafext_enqueue_rotate();
   leafext_enqueue_zoomhome();
   wp_enqueue_script('leaflet_gpxgroup',
   plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/libs/leaflet-gpxgroup.min.js',
