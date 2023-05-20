@@ -236,7 +236,6 @@ function leafext_multielevation( $atts,$content,$shortcode) {
 	if ( $text != "" ) {
 		return $text;
 	} else {
-		leafext_enqueue_elevation ();
 		leafext_enqueue_multielevation();
 		leafext_enqueue_zoomhome();
 
@@ -299,9 +298,9 @@ function leafext_multielevation( $atts,$content,$shortcode) {
 			//var_dump($multi_dist_settings);
 			$multioptions['distanceMarkers_options'] = str_replace('distanceMarkers: ','',trim($multi_dist_settings,','));
 			$multioptions['distanceMarkers'] = true;
+			leafext_enqueue_rotate();
 		}
-		//if ($multioptions['distanceMarkers']) leafext_enqueue_rotation();
-
+		
 		$options = array_merge($options, $ele_options);
 
 		if ( is_array($atts) && array_key_exists('theme', $atts) ) {

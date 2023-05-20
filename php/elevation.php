@@ -50,6 +50,21 @@ function leafext_elevation_params($typ = array()) {
 			'typ' => array('changeable','look'),
 		),
 
+		// linearGradient: {
+		// 				attr: 'z',
+		// 				path: 'altitude',
+		// 				range: { 0.0: '#008800', 0.5: '#ffff00', 1.0: '#ff0000' },
+		// 				min: 'elevation_min',
+		// 				max: 'elevation_max',
+		array(
+			'param' => 'linearGradient',
+			'shortdesc' => __('linearGradient',"extensions-leaflet-map"),
+			'desc' => "",
+			'default' => false,
+			'values' => 1,
+			'typ' => array('changeable','look'),
+		),
+
 		// marker: "elevation-line" || "position-marker" || false
 		array(
 			'param' => 'marker',
@@ -234,18 +249,6 @@ function leafext_elevation_params($typ = array()) {
 			'typ' => array('changeable','points',),
 		),
 
-		// Toggle waypoint labels: true || "markers" || "dots" || false
-		//wptLabels: true,
-		array(
-			'param' => 'wptLabels',
-			'shortdesc' => __('Toggle waypoint labels',"extensions-leaflet-map"),
-			'desc' => '<p>'.__('Show waypoint labels in map and in chart / only in map / only in chart / none',"extensions-leaflet-map").'</p>
-			<p>'.sprintf(__('Only meaningful, if %swaypoints%s is not %s.',"extensions-leaflet-map"),'<code>','</code>','<code>0</code>').'</p>',
-			'default' => true,
-			'values' => array (true, "markers", "dots", false),
-			'typ' => array('changeable','points',),
-		),
-
 		// // Toggle custom waypoint icons: true || { associative array of <sym> tags } || false
 		// wptIcons: {
 		// 	'': L.divIcon({
@@ -267,6 +270,36 @@ function leafext_elevation_params($typ = array()) {
 			'default' => true,
 			'values' => array (true, "defined", false),
 			'typ' => array('changeable','points',),
+		),
+
+		// Toggle waypoint labels: true || "markers" || "dots" || false
+		//wptLabels: true,
+		array(
+			'param' => 'wptLabels',
+			'shortdesc' => __('Toggle waypoint labels',"extensions-leaflet-map"),
+			'desc' => '<p>'.__('Show waypoint labels in map and in chart / only in map / only in chart / none',"extensions-leaflet-map").'</p>
+			<p>'.sprintf(__('Only meaningful, if %swaypoints%s is not %s.',"extensions-leaflet-map"),'<code>','</code>','<code>0</code>').'</p>',
+			'default' => true,
+			'values' => array (true, "markers", "dots", false),
+			'typ' => array('changeable','points',),
+		),
+
+		array(
+			'param' => 'labelsRotation',
+			'shortdesc' => __('Labels degrees',"extensions-leaflet-map"),
+			'desc' => __('Waypoint labels rotation (degrees) in chart',"extensions-leaflet-map"),
+			'default' => "0",
+			'values' => "",
+			'typ' => array('changeable','points',)
+		),
+
+		array(
+			'param' => 'labelsAlign',
+			'shortdesc' => __('Labels align',"extensions-leaflet-map"),
+			'desc' => __('Waypoint labels alignment in chart',"extensions-leaflet-map"),
+			'default' => "start",
+			'values' => array('start' , 'middle' , 'end'),
+			'typ' => array('changeable','points',)
 		),
 
 		// Informationen
@@ -611,43 +644,22 @@ function leafext_ele_java_params($settings) {
 			$text = $text. "$k: ". $v .',';
 			unset($settings[$k]);
 			break;
+			case "linearGradient":
+			if ($settings['linearGradient'] == true) {
+				$text = $text. "$k: ". "{
+					attr: 'z',
+					path: 'altitude',
+					range: { 0.0: '#008800', 0.5: '#ffff00', 1.0: '#ff0000' },
+					min: 'elevation_min',
+					max: 'elevation_max',
+				},";
+			}
+			unset($settings[$k]);
+			break;
 			default:
 		}
 	}
 	return array($text,$settings);
-}
-
-//
-function leafext_elevation_pace($options) {
-	if ( (bool)$options['pace'] ) {
-		if ( !(bool) $options['time'] ) $options['time'] = "summary";
-		$text = '[';
-		$handlers = glob(LEAFEXT_ELEVATION_DIR.'/src/handlers/*');
-		foreach ($handlers as $handler) {
-			$handle = basename ($handler,'.js');
-			if (isset($options[$handle]) && $handle != 'pace' && $handle != 'speed') {
-				if ((bool)$options[$handle]) {
-					$text = $text.'"'.ucfirst($handle).'",';
-				}
-			}
-		}
-		if ( (bool)$options['speed'] ) {
-			$text = $text.'import("'.LEAFEXT_ELEVATION_URL.'/src/handlers/speed.js"),';
-		}
-		if ( (bool)$options['pace'] ) {
-			$text = $text.'import("'.LEAFEXT_ELEVATION_URL.'/src/handlers/pace.js"),';
-		}
-		if ( (bool)$options['acceleration'] ) {
-			$text = $text.'import("'.LEAFEXT_ELEVATION_URL.'src/handlers/acceleration.js"),';
-		}
-		$text = $text.']';
-		$options['handlers'] = $text;
-		//deltaMax: this.options.paceDeltaMax,
-		//$options['paceDeltaMax'] = 1;
-		//clampRange: this.options.paceRange,
-		//$options['paceRange'] = "[0.01, 15]";
-	}
-	return $options;
 }
 
 //Shortcode: [elevation gpx="...url..."]
@@ -785,8 +797,8 @@ function leafext_elevation_script($gpx,$settings){
 		var is_chrome = navigator.userAgent.indexOf("Chrome") > -1;
 		var is_safari = navigator.userAgent.indexOf("Safari") > -1;
 		if ( !is_chrome && is_safari && controlElevation.options.preferCanvas != false ) {
-			console.log("is_safari - setting preferCanvas to false");
-			controlElevation.options.preferCanvas = false;
+			console.log("is_safari - not setting preferCanvas to false");
+			//controlElevation.options.preferCanvas = false;
 		}
 
 		// Load track from url (allowed data types: "*.geojson", "*.gpx")
@@ -816,7 +828,7 @@ function leafext_elevation_script($gpx,$settings){
 	<?php
 	$javascript = ob_get_clean();
 	$text = $text . $javascript . '//-->'."\n".'</script>';
-	$text = \JShrink\Minifier::minify($text);
+	//$text = \JShrink\Minifier::minify($text);
 	return "\n".$text."\n";
 }
 
@@ -943,20 +955,44 @@ function leafext_elevation_function($atts,$content,$shortcode) {
 			}
 		}
 
-		//if ($options['distance'] == false) {
-		// $options['handlers'] = '[
-		// 	import("'.LEAFEXT_ELEVATION_URL.'src/handlers/acceleration.js"),
-		// 	import("'.LEAFEXT_ELEVATION_URL.'src/handlers/altitude.js"),
-		// 	import("'.LEAFEXT_ELEVATION_URL.'src/handlers/distance.js"),
-		// 	import("'.LEAFEXT_ELEVATION_URL.'src/handlers/speed.js"),
-		// 	import("'.LEAFEXT_ELEVATION_URL.'src/handlers/time.js"),
-		// 	import("'.LEAFEXT_ELEVATION_URL.'libs/leaflet-hotline.min.js"),
-		// 	]';
-		//}
+		// acceleration.js
+		// altitude.js
+		// // cadence.js
+		// distance.js
+		// // heart.js
+		// labels.js
+		// lineargradient.js
+		// pace.js
+		// // runner.js
+		// slope.js
+		// speed.js
+		// time.js
 
-		if (isset($options['pace']) ) {
-			$options = leafext_elevation_pace($options);
+		//var_dump($options);
+
+		$handlers = array();
+
+		if ( (bool)$options['pace'] ) {
+			$handlers[] = '"Pace"';
+			if ( !(bool)$options['time'] ) $options['time'] = "summary";
+			if ( (bool)$options['speed'] ) $handlers[] = '"Speed"';
+			if ( (bool)$options['acceleration'] ) $handlers[] = '"Acceleration"';
+			if ( (bool)$options['slope'] ) $handlers[] = '"Slope"';
 		}
+		if ((bool)$options['labelsRotation'] || $options['labelsAlign'] != 'start')
+			$handlers[] = '"Labels"';
+		if ( (bool)$options['linearGradient'] ) {
+			$handlers[] = '"Slope"';
+			$handlers[] = '"LinearGradient"';
+		}
+
+		$handlers = array_unique($handlers);
+		//var_dump($handlers);
+
+		if (count($handlers) > 0) $options['handlers'] = '[...L.Control.Elevation.prototype.options.handlers,'.implode(',',$handlers).']';
+		//if (count($handlers) > 0) $options['handlers'] = '["Distance","Time","Altitude",'.implode(',',$handlers).']';
+		//if (count($handlers) > 0) $options['handlers'] = '['.implode(',',$handlers).',...L.Control.Elevation.prototype.options.handlers]';
+		//if (count($handlers) > 0) $options['handlers'] = '[ "Distance", "Time", "Altitude", "Slope", "Speed", "Acceleration", "Labels"]';
 
 		if ( isset($options['summary']) && $options['summary'] == "1" ) {
 			$params = leafext_elevation_params();
@@ -974,6 +1010,7 @@ function leafext_elevation_function($atts,$content,$shortcode) {
 
 		if ( $options['hotline'] == "elevation") unset ($options['polyline'] );
 		if ( $options['direction'] == true) leafext_enqueue_rotate();
+		if ( $options['distanceMarkers'] == true) leafext_enqueue_rotate();
 
 		list($options,$style) = leafext_elevation_color($options);
 		ksort($options);
