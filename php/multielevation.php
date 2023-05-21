@@ -279,9 +279,16 @@ function leafext_multielevation( $atts,$content,$shortcode) {
 			$options = shortcode_atts(leafext_elevation_settings(array("multielevation")), $atts1);
 
 			if (isset($options['pace']) ) {
-				if (isset($options['pace']) ) {
-					$options = leafext_elevation_pace($options);
+				//$options = leafext_elevation_pace($options);
+				$handlers = array();
+				if ( (bool)$options['pace'] ) {
+					$handlers[] = '"Pace"';
+					if ( !(bool)$options['time'] ) $options['time'] = "summary";
+					if ( (bool)$options['speed'] ) $handlers[] = '"Speed"';
+					if ( (bool)$options['acceleration'] ) $handlers[] = '"Acceleration"';
+					if ( (bool)$options['slope'] ) $handlers[] = '"Slope"';
 				}
+				if (count($handlers) > 0) $options['handlers'] = '[...L.Control.Elevation.prototype.options.handlers,'.implode(',',$handlers).']';
 			}
 
 			$multioptions = shortcode_atts(leafext_multielevation_settings(array('multielevation','fixed')), leafext_clear_params($atts));
@@ -300,7 +307,7 @@ function leafext_multielevation( $atts,$content,$shortcode) {
 			$multioptions['distanceMarkers'] = true;
 			leafext_enqueue_rotate();
 		}
-		
+
 		$options = array_merge($options, $ele_options);
 
 		if ( is_array($atts) && array_key_exists('theme', $atts) ) {
