@@ -147,8 +147,9 @@ $text = $text.'<code>leaflet-directory</code></a></p>
 			'<code>filename</code>',
 			'<code>name</code>').
 	'</li><li>'.
-		sprintf ( __('If %s is specified, it is used.','extensions-leaflet-map'),
-	 	'<code>name</code>').
+		sprintf ( __('If %s is false and %s is specified, it is used.','extensions-leaflet-map'),
+	 		'<code>filename</code>',
+			'<code>name</code>').
 	'</li><li>'.
 	 	__('If not, an attempt is made to read the trackname from the file.','extensions-leaflet-map').
 	'</li><li>'.

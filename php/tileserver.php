@@ -281,13 +281,16 @@ function leafext_layerswitch_function($atts,$content,$shortcode) {
 				if (count($providers) != count($mapids)) {
 					$mapids = $providers;
 				}
-				$atts_opacity = explode ( ',', $atts['opacity'] );
-				for ($i = 0; $i <= count($providers); $i++) {
-					if (in_array($providers[$i],$atts_opacity)) {
-						$opacities[] = $mapids[$i];
-					}
-					if (in_array($mapids[$i],$atts_opacity)) {
-						$opacities[] = $mapids[$i];
+
+				if ( array_key_exists('opacity',$atts) ) {
+					$atts_opacity = explode ( ',', $atts['opacity'] );
+					for ($i = 0; $i < count($providers); $i++) {
+						if (in_array($providers[$i],$atts_opacity)) {
+							$opacities[] = $mapids[$i];
+						}
+						if (in_array($mapids[$i],$atts_opacity)) {
+							$opacities[] = $mapids[$i];
+						}
 					}
 				}
 			}
