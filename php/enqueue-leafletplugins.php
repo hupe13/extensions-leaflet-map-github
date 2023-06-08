@@ -252,10 +252,3 @@ function leafext_enqueue_leafletsearch () {
     array('leafletsearch'), null);
   }
 }
-
-function leafext_enqueue_turf () {
-  wp_enqueue_script('leafletturf',
-  plugins_url('leaflet-plugins/turf/turf.min.js',
-  LEAFEXT_PLUGIN_FILE),
-  array('wp_leaflet_map'), null);
-}

@@ -74,6 +74,7 @@ function leafext_java_params ($params) {
 				case strpos($v,"}") !== false:
 				case strpos($v,"[") !== false:
 				case strpos($v,"]") !== false:
+				case strpos($v,"screen.width") !== false:
 				case is_numeric($v):
 				$value = $v; break;
 				default:

@@ -99,6 +99,7 @@ function leafext_validate_ele_options($options) {
 		$params = get_option('leafext_eleparams', $defaults);
 		foreach ($options as $key => $value) {
 			if ($key == 'height' && $value == "") continue;
+			if ($key == 'width' && $value == "") continue;
 			$params[$key] = $value;
 		}
 		return $params;

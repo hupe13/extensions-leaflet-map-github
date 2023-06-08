@@ -76,6 +76,29 @@ function leafext_elevation_params($typ = array()) {
 			'typ' => array('changeable','chartlook','multielevation'),
 		),
 
+		// https://wordpress.org/support/topic/elevation-y-axis/
+		// yAxisMax
+		array(
+			'param' => 'yAxisMax',
+			'shortdesc' => __('y Axis Max',"extensions-leaflet-map"),
+			'desc' => "",
+			'default' => "0",
+			// form input type,  pattern, help
+			'values' => 'type="text" pattern="^[0-9]+$" title="'.__('number','extensions-leaflet-map').'"',
+			'typ' => array('changeable','look','multielevation'),
+		),
+
+		// yAxisMin
+		array(
+			'param' => 'yAxisMin',
+			'shortdesc' => __('y Axis Min',"extensions-leaflet-map"),
+			'desc' => "",
+			'default' => "0",
+			// form input type,  pattern, help
+			'values' => 'type="text" pattern="^[0-9]+$" title="'.__('number','extensions-leaflet-map').'"',
+			'typ' => array('changeable','look','multielevation'),
+		),
+
 		// Toggle chart legend filter.
 		//legend: true,
 		array(
@@ -94,7 +117,7 @@ function leafext_elevation_params($typ = array()) {
 		),
 
 		// Toggle "leaflet-edgescale" integration
-    // edgeScale: false,
+		// edgeScale: false,
 		array(
 			'param' => 'edgeScale',
 			'shortdesc' => __('Toggle "leaflet-edgescale" integration',"extensions-leaflet-map"),
@@ -106,7 +129,7 @@ function leafext_elevation_params($typ = array()) {
 
 		// Quite uncommon and undocumented options
 		// Line 73 src/options.js
-		// height
+		// height: (screen.height * 0.3) || 200,
 		array(
 			'param' => 'height',
 			'shortdesc' => __('Height of the chart',"extensions-leaflet-map"),
@@ -114,6 +137,18 @@ function leafext_elevation_params($typ = array()) {
 			'default' => "200",
 			// form input type,  pattern, help
 			'values' => 'type="text" pattern="^[1-4][0-9]{2}$" title="'.__('three digit number (px), minimum 100, maximum 499','extensions-leaflet-map').'"',
+			'typ' => array('changeable','look','multielevation'),
+		),
+
+		// Quite uncommon and undocumented options
+		// width: (screen.width * 0.6) || 600,
+		array(
+			'param' => 'width',
+			'shortdesc' => __('If (!detached) width of the chart',"extensions-leaflet-map"),
+			'desc' => "",
+			'default' => "(screen.width * 0.6) || 600",
+			'values' => 'type="text" placeholder="(screen.width * 0.6) || 600" pattern="^[0-9]{2,4}$|^\(screen.width \* 0.[1-9]\) \|\| [0-9]{2,4}$"
+				title="'.__('a number (px) or an expression like the default value','extensions-leaflet-map').'"',
 			'typ' => array('changeable','look','multielevation'),
 		),
 
@@ -980,7 +1015,7 @@ function leafext_elevation_function($atts,$content,$shortcode) {
 			if ( (bool)$options['slope'] ) $handlers[] = '"Slope"';
 		}
 		if ((bool)$options['labelsRotation'] || $options['labelsAlign'] != 'start')
-			$handlers[] = '"Labels"';
+		$handlers[] = '"Labels"';
 		if ( (bool)$options['linearGradient'] ) {
 			$handlers[] = '"Slope"';
 			$handlers[] = '"LinearGradient"';

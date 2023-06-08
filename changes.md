@@ -2,8 +2,9 @@
 
 * enqueue rotate for multielevation
 * remove 'other' group from geojsonmarker groups if empty
-* leaflet-elevation 2.4.0 with linear gradient
-* leaflet-elevation waypoint labels rotate
+* leaflet-elevation 2.4.0 with branch linear gradient
+* leaflet-elevation waypoint labels rotate PR
+* leaflet-elevation new options width, yAxisMin, yAxisMax
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

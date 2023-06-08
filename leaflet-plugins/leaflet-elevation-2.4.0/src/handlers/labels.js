@@ -8,7 +8,7 @@
  */
 export function Labels() {
 
-  this.on('elechart_init elechart_axis elechart_updated', function(e) {
+    this.on('elechart_updated', function(e) {
 
     const pointG = this._chart._chart.pane('point');
 
@@ -35,7 +35,7 @@ export function Labels() {
         .attr("dx", "4px")
         .attr("dy", "-9px")
         .attr('text-anchor', textAnchor ?? (0 == textRotation ? 'start' : 'middle'))
-        .attr('transform', 'rotate('+ -textRotation + ')')
+        .attr('transform', 'rotate('+ -textRotation +')')
 
     }
 
