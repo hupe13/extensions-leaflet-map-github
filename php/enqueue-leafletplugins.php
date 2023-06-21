@@ -252,3 +252,26 @@ function leafext_enqueue_leafletsearch () {
     array('leafletsearch'), null);
   }
 }
+
+function leafext_enqueue_turf () {
+  wp_enqueue_script('leafletturf',
+  plugins_url('leaflet-plugins/turf/turf.min.js',
+  LEAFEXT_PLUGIN_FILE),
+  array('wp_leaflet_map'), null);
+}
+
+function leafext_enqueue_hoverlap () {
+  wp_enqueue_script('leaflethoverlap',
+  plugins_url('js/hoverlap.min.js',
+  //plugins_url('js/hoverlap.js',
+  LEAFEXT_PLUGIN_FILE),
+  array('leafletturf'), null);
+}
+
+function leafext_enqueue_leafext () {
+  wp_enqueue_script('leafext',
+  plugins_url('js/leafext.min.js',
+  //plugins_url('js/leafext.js',
+  LEAFEXT_PLUGIN_FILE),
+  array('wp_leaflet_map'), null);
+}

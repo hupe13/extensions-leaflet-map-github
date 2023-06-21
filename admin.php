@@ -8,6 +8,7 @@ include LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/tiles/main.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/canvas.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/filemgr/main.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/hover/main.php';
 
 // Add menu page for admin
 function leafext_add_page() {
@@ -37,10 +38,8 @@ function leafext_do_page() {
 		leafext_admin_marker($active_tab);
 	} else if ( strpos( $active_tab, 'tiles' ) !== false ) {
 		leafext_admin_tiles($active_tab);
-	} else if( $active_tab == 'hover' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/help/hover.php';
-		leafext_help_hover();
-		leafext_canvas_do_page ();
+	} else if ( strpos( $active_tab, 'hover' ) !== false ) {
+		leafext_admin_hover($active_tab);
 	} else if( $active_tab == 'gesture' ) {
 		echo '<form method="post" action="options.php">';
 		settings_fields('leafext_settings_gesture');

@@ -5,6 +5,7 @@
 * leaflet-elevation 2.4.0 with branch linear gradient
 * leaflet-elevation waypoint labels rotate PR
 * leaflet-elevation new options width, yAxisMin, yAxisMax
+* New shortcode [hoverlap] - hover overlapping elements
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

@@ -225,8 +225,10 @@ function leafext_hover_function($atts,$content,$shortcode) {
 		if (in_array($options['circle'],$do_style,true)
 		|| in_array($options['polygon'],$do_style,true)
 		|| in_array($options['line'],$do_style,true)
-		|| $options['markergroupstyle'])
-		$text = $text.leafext_markergroupstyle_script($options);
+		|| $options['markergroupstyle']) {
+			leafext_enqueue_leafext();
+			$text = $text.leafext_markergroupstyle_script($options);
+		}
 		//
 		if (in_array($options['geojson'],$do_tooltip,true)
 		|| in_array($options['gpx'],$do_tooltip,true)
@@ -237,9 +239,10 @@ function leafext_hover_function($atts,$content,$shortcode) {
 		if (in_array($options['geojson'],$do_style,true)
 		|| in_array($options['gpx'],$do_style,true)
 		|| in_array($options['kml'],$do_style,true)
-		|| $options['geojsonstyle'])
-		$text = $text.leafext_geojsonstyle_script($options);
-
+		|| $options['geojsonstyle']) {
+			leafext_enqueue_leafext();
+			$text = $text.leafext_geojsonstyle_script($options);
+		}
 		if ($options['marker'] == false ) {
 			$text = $text.leafext_markertitle_script($options);
 		}

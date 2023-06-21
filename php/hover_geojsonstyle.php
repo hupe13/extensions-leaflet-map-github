@@ -57,55 +57,14 @@ function leafext_geojsonstyle_script($options){
 							let i = 0;
 							e.target.eachLayer(function(){ i += 1; });
 							// console.log("mouseover has", i, "layers.");
-
 							if (i > 1) {
 								// z.B leaflet-gpx mit Track und Marker
-								if ( e.sourceTarget.setStyle ) {
-									//console.log(e);
-									if ( ! e.sourceTarget.options.fillOpacity ) {
-										var highfillOpacity = 0.4; //leaflet default + 0.2
-									} else {
-										e.sourceTarget.options.origfillOpacity = e.sourceTarget.options.fillOpacity;
-										var highfillOpacity = e.sourceTarget.options.fillOpacity + 0.2;
-									}
-									if ( ! e.sourceTarget.options.weight ) {
-										var highweight = 5; //leaflet default +2
-									} else {
-										e.sourceTarget.options.origweight = e.sourceTarget.options.weight;
-										var highweight = e.sourceTarget.options.weight + 2;
-									}
-									e.sourceTarget.setStyle({
-										"fillOpacity" : highfillOpacity,
-										"weight" : highweight,
-									});
-									e.sourceTarget.bringToFront();
-								}
+								leafext_make_overstyle(e.sourceTarget);
 							} else {
 								e.target.eachLayer(function(layer) {
 									//console.log(layer);
-									if ( layer.setStyle ) {
-										//console.log(layer.options.fillOpacity);
-										//console.log(layer.options.weight);
-										if (! layer.options.fillOpacity ) {
-											var highfillOpacity = 0.4; //leaflet default + 0.2
-										} else {
-											layer.options.origfillOpacity = layer.options.fillOpacity;
-											var highfillOpacity = layer.options.fillOpacity + 0.2;
-										}
-										if ( ! layer.options.weight ) {
-											var highweight = 5; //leaflet default +2
-										} else {
-											layer.options.origweight = layer.options.weight;
-											var highweight = layer.options.weight + 2;
-										}
-										layer.setStyle({
-											"fillOpacity" : highfillOpacity,
-											"weight" : highweight,
-										});
-										layer.bringToFront();
-									}
+									leafext_make_overstyle(layer);
 								});
-
 							} //end else i
 						});
 						//mouseover end
@@ -116,57 +75,19 @@ function leafext_geojsonstyle_script($options){
 							e.target.eachLayer(function(){ i += 1; });
 							//console.log("mouseout has", i, "layers.");
 							if (i > 1) {
-								//console.log("resetStyle");
 								e.target.eachLayer(function(layer){
-									if ( layer.setStyle ) {
-										//console.log(layer);
-										if ( layer.options.origweight ) {
-											var origweight = layer.options.origweight;
-										} else {
-											var origweight = 3; //leaflet default
-										}
-										if ( layer.options.origfillOpacity ) {
-											var origfillOpacity = layer.options.origfillOpacity;
-										} else {
-											var origfillOpacity = 0.2; //leaflet default
-										}
-										layer.setStyle({
-											"fillOpacity" : origfillOpacity,
-											"weight" : origweight,
-										});
-									}
+									leafext_make_styleback(layer);
 								});
-								//geojson.resetStyle();
 							} else {
 								//resetStyle is only working with a geoJSON Group.
 								e.target.eachLayer(function(layer) {
-									//console.log(layer);
-									if ( layer.setStyle ) {
-										//console.log(layer);
-										if ( layer.options.origweight ) {
-											var origweight = layer.options.origweight;
-										} else {
-											var origweight = 3; //leaflet default
-										}
-										if ( layer.options.origfillOpacity ) {
-											var origfillOpacity = layer.options.origfillOpacity;
-										} else {
-											var origfillOpacity = 0.2; //leaflet default
-										}
-										layer.setStyle({
-											"fillOpacity" : origfillOpacity,
-											"weight" : origweight,
-										});
-									}
+									leafext_make_styleback(layer);
 								});
 								geojson.resetStyle();
 							}
 						});
 						//mouseout end
 					} else { //exclude
-						// geojson.layer.on('mouseover', function () {
-						// 	this.bringToFront();
-						// });
 						geojson.layer.on('mouseout', function () {
 							this.bringToBack();
 						});

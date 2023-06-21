@@ -227,6 +227,15 @@ function leafext_help_table($leafext_plugin_name="") {
 			'kategorie' => 'hover',
 			'examples' => '',
 		),
+		array(
+			'function' => __('Hovering overlapping elements','extensions-leaflet-map'),
+			'shortcode' => 'hoverlap',
+			'tab' => 'hoverlap',
+			'plugins' => '',
+			'doku' => '/doku/hoverlap/',
+			'kategorie' => 'hoverlap',
+			'examples' => '',
+		),
 	);
 
 	foreach ($table as $key => $entries) {

@@ -40,27 +40,10 @@ function leafext_markergroupstyle_script($options){
 							//console.log("is_Polygon or circle or polyline");
 							layer.on("mouseover", function (e) {
 								//console.log("mouseover");
-								if ( e.sourceTarget.setStyle ) {
-									//console.log(e.sourceTarget.options.fillOpacity);
-									//console.log(e.sourceTarget.options.weight);
-									e.sourceTarget.setStyle({
-										"fillOpacity" : e.sourceTarget.options.fillOpacity+0.20,
-										"weight" : e.sourceTarget.options.weight+2
-									});
-									e.sourceTarget.bringToFront();
-								}
-
+								leafext_make_overstyle(e.sourceTarget);
 							});
 							layer.on("mouseout", function (e) {
-								if ( e.sourceTarget.setStyle ) {
-									//console.log("mouseout");
-									//console.log(e.sourceTarget.options.fillOpacity);
-									//console.log(e.sourceTarget.options.weight);
-									e.sourceTarget.setStyle({
-										"fillOpacity" : e.sourceTarget.options.fillOpacity-0.20,
-										"weight" : e.sourceTarget.options.weight-2
-									});
-								}
+								leafext_make_styleback(e.sourceTarget);
 							});
 						} else {
 							//console.log("other");
@@ -70,7 +53,6 @@ function leafext_markergroupstyle_script($options){
 				}
 			}
 		});
-
 	});
 	<?php
 	$javascript = ob_get_clean();
