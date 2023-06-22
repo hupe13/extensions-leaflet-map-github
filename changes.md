@@ -6,6 +6,7 @@
 * leaflet-elevation waypoint labels rotate PR
 * leaflet-elevation new options width, yAxisMin, yAxisMax
 * New shortcode [hoverlap] - hover overlapping elements
+* reduce inline Javascript
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

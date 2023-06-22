@@ -93,10 +93,8 @@ function leafext_do_nonadmin_page() {
 		leafext_admin_marker($active_tab);
 	} else if ( strpos( $active_tab, 'tiles' ) !== false ) {
 		leafext_admin_tiles($active_tab);
-	} else if( $active_tab == 'hover' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/help/hover.php';
-		leafext_help_hover();
-		leafext_canvas_do_page ();
+	} else if ( strpos( $active_tab, 'hover' ) !== false ) {
+		leafext_admin_hover($active_tab);
 	} else if( $active_tab == 'gesture' ) {
 		echo '<form>';
 		settings_fields('leafext_settings_gesture');

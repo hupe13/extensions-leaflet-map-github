@@ -260,18 +260,15 @@ function leafext_enqueue_turf () {
   array('wp_leaflet_map'), null);
 }
 
-function leafext_enqueue_hoverlap () {
-  wp_enqueue_script('leaflethoverlap',
-  plugins_url('js/hoverlap.min.js',
-  //plugins_url('js/hoverlap.js',
+function leafext_enqueue_leafext ($file,$dep="") {
+  if ($dep == "") {
+    $deps = array('wp_leaflet_map');
+  } else {
+    $deps = array('wp_leaflet_map',$dep);
+  }
+  wp_enqueue_script('leafext_'.$file,
+  plugins_url('js/'.$file.'.min.js',
+  //plugins_url('js/'.$file.'.js',
   LEAFEXT_PLUGIN_FILE),
-  array('leafletturf'), null);
-}
-
-function leafext_enqueue_leafext () {
-  wp_enqueue_script('leafext',
-  plugins_url('js/leafext.min.js',
-  //plugins_url('js/leafext.js',
-  LEAFEXT_PLUGIN_FILE),
-  array('wp_leaflet_map'), null);
+  $deps, null);
 }
