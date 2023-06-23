@@ -1,3 +1,13 @@
+### 3.4.4 / 230512
+
+* leaflet-elevation-2.3.4
+* elevation: new option edgeScale
+* Raruto fixed [Map automatically moves after clicking on markers when rotate: true](https://github.com/Raruto/leaflet-elevation/issues/250)
+* layerswitch: providers can have a [mapid](https://wordpress.org/support/topic/change-maps-name-in-layerswitch/)
+* cluster: fixed bug disableClusteringAtZoom=0
+* New shortcode geojsonmarker: Design markers from geojson files according to their properties
+* hover geojsontooltip: specify a short string for tooltip, if the popup is too big
+
 ### 3.4.3 / 230422
 
 * elevation-tracks: bug fixed

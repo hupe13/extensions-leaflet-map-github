@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, elevation, markercluster, Leaflet Plugins   
 Tested up to: 6.2  
-Stable tag: 3.4.4  
+Stable tag: 3.5  
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later  
@@ -30,12 +30,15 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 *   [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome): Reset the view.
 *   [leaflet.fullscreen](https://github.com/brunob/leaflet.fullscreen): Simple plugin for Leaflet that adds fullscreen button to your maps.
 *   [Leaflet.GestureHandling](https://github.com/Raruto/leaflet-gesture-handling): A Leaflet plugin that allows to prevent default map scroll/touch behaviours.
-*   [Leaflet.GeometryUtil](https://github.com/makinacorpus/Leaflet.GeometryUtil): Used for some functions.
+*   [Leaflet.GeometryUtil](https://github.com/makinacorpus/Leaflet.GeometryUtil)
+*   [turf](https://github.com/Turfjs/turf): Advanced geospatial analysis for browsers and Node.js
+*   [leaflet-rotate](https://github.com/Raruto/leaflet-rotate): A Leaflet plugin that allows to add rotation functionality to map tiles
+*   [Leaflet.AlmostOver](https://github.com/makinacorpus/Leaflet.AlmostOver): This plugin allows to detect mouse click and overing events on lines, with a tolerance distance.
 
 ### Other functions
 
 *  List files for Leaflet Map
-*  hover:
+*  Hovering:
      * Highlight a leaflet element on mouse over
      * get a tooltip for a leaflet element on mouse over.
 *  Hide Markers: Use it when a track in a GPX file contains some markers and you don't want to display them on the map.
@@ -110,15 +113,15 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.4.4 / 230512
+### 3.5 / 23062x
 
-* leaflet-elevation-2.3.4
-* elevation: new option edgeScale
-* Raruto fixed [Map automatically moves after clicking on markers when rotate: true](https://github.com/Raruto/leaflet-elevation/issues/250)
-* layerswitch: providers can have a [mapid](https://wordpress.org/support/topic/change-maps-name-in-layerswitch/)
-* cluster: fixed bug disableClusteringAtZoom=0
-* New shortcode geojsonmarker: Design markers from geojson files according to their properties
-* hover geojsontooltip: specify a short string for tooltip, if the popup is too big
+* enqueue rotate for multielevation
+* remove 'other' group from geojsonmarker groups if empty
+* leaflet-elevation 2.4.0 with branch linear gradient
+* leaflet-elevation waypoint labels rotate PR
+* leaflet-elevation new options width, yAxisMin, yAxisMax
+* New shortcode [hoverlap] - hover overlapping elements
+* reduce inline Javascript
 
 ### Previous
 
