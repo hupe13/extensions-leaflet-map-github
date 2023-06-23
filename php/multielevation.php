@@ -236,6 +236,7 @@ function leafext_multielevation( $atts,$content,$shortcode) {
 	if ( $text != "" ) {
 		return $text;
 	} else {
+		leafext_enqueue_leafext_elevation();
 		leafext_enqueue_multielevation();
 		leafext_enqueue_zoomhome();
 
@@ -366,8 +367,8 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 			distanceMarkers: <?php echo $multioptions['distanceMarkers_options'];?>
 		};
 		console.log(opts.elevation);
-
-		<?php echo leafext_elevation_locale();?>;
+		leafext_elevation_locale_js();
+		leafext_elevation_prep_js ();
 
 		var gpxGroupProto = L.GpxGroup.prototype;
 		var addTrack = gpxGroupProto.addTrack;

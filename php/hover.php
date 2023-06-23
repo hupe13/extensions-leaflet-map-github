@@ -6,13 +6,6 @@
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
-include_once LEAFEXT_PLUGIN_DIR . 'php/hover_geojsonstyle.php';
-include_once LEAFEXT_PLUGIN_DIR . 'php/hover_geojsontooltip.php';
-include_once LEAFEXT_PLUGIN_DIR . 'php/hover_markergroupstyle.php';
-include_once LEAFEXT_PLUGIN_DIR . 'php/hover_markergrouptooltip.php';
-include_once LEAFEXT_PLUGIN_DIR . 'php/hover_markertooltip.php';
-include_once LEAFEXT_PLUGIN_DIR . 'php/hover_markertitle.php';
-
 function leafext_hover_params($typ = '') {
 	$params = array(
 		array(
@@ -178,6 +171,8 @@ function leafext_hover_function($atts,$content,$shortcode) {
 		return $text;
 	} else {
 		leafext_enqueue_geometry();
+		leafext_enqueue_leafext("changestyle");
+		leafext_enqueue_leafext("hover");
 		$defaults=array();
 		$params = leafext_hover_params();
 		foreach($params as $param) {
@@ -210,43 +205,65 @@ function leafext_hover_function($atts,$content,$shortcode) {
 			$options['geojsontooltip'] = filter_var($options['geojsontooltip'], FILTER_SANITIZE_SPECIAL_CHARS);
 		}
 
-		if (in_array($options['marker'],$do_tooltip,true)
-		|| $options['markertooltip']) {
-			$text=$text.leafext_markertooltip_script($options);
-			$options['marker'] = true;
-		}
-		//
-		if (in_array($options['circle'],$do_tooltip,true)
-		|| in_array($options['polygon'],$do_tooltip,true)
-		|| in_array($options['line'],$do_tooltip,true)
-		|| $options['markergrouptooltip'])
-		$text = $text.leafext_markergrouptooltip_script($options);
-		//
-		if (in_array($options['circle'],$do_style,true)
-		|| in_array($options['polygon'],$do_style,true)
-		|| in_array($options['line'],$do_style,true)
-		|| $options['markergroupstyle']) {
-			leafext_enqueue_leafext("changestyle");
-			$text = $text.leafext_markergroupstyle_script($options);
-		}
-		//
-		if (in_array($options['geojson'],$do_tooltip,true)
-		|| in_array($options['gpx'],$do_tooltip,true)
-		|| in_array($options['kml'],$do_tooltip,true)
-		|| $options['geojsontooltip'])
-		$text = $text.leafext_geojsontooltip_script($options);
-		//
-		if (in_array($options['geojson'],$do_style,true)
-		|| in_array($options['gpx'],$do_style,true)
-		|| in_array($options['kml'],$do_style,true)
-		|| $options['geojsonstyle']) {
-			leafext_enqueue_leafext("changestyle");
-			$text = $text.leafext_geojsonstyle_script($options);
-		}
-		if ($options['marker'] == false ) {
-			$text = $text.leafext_markertitle_script($options);
-		}
-
+		$text = '<script><!--';
+		ob_start();
+		?>/*<script>*/
+		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
+		window.WPLeafletMapPlugin.push(function () {
+			let all_options = <?php echo json_encode($options);?>;
+			<?php
+			if (in_array($options['marker'],$do_tooltip,true)
+			|| $options['markertooltip']) {
+				?>
+				leafext_hover_markertooltip_js();
+				<?php
+				$options['marker'] = true;
+			}
+			//
+			if (in_array($options['circle'],$do_tooltip,true)
+			|| in_array($options['polygon'],$do_tooltip,true)
+			|| in_array($options['line'],$do_tooltip,true)
+			|| $options['markergrouptooltip'])
+			?>
+			leafext_hover_markergrouptooltip_js(all_options);
+			<?php
+			//
+			if (in_array($options['circle'],$do_style,true)
+			|| in_array($options['polygon'],$do_style,true)
+			|| in_array($options['line'],$do_style,true)
+			|| $options['markergroupstyle'])
+			?>
+			leafext_hover_markergroupstyle_js(all_options);
+			<?php
+			//
+			if (in_array($options['geojson'],$do_tooltip,true)
+			|| in_array($options['gpx'],$do_tooltip,true)
+			|| in_array($options['kml'],$do_tooltip,true)
+			|| $options['geojsontooltip'])
+			?>
+			let tooltip = <?php echo json_encode($options['geojsontooltip']);?>;
+			leafext_hover_geojsontooltip_js(tooltip);
+			<?php
+			//
+			if (in_array($options['geojson'],$do_style,true)
+			|| in_array($options['gpx'],$do_style,true)
+			|| in_array($options['kml'],$do_style,true)
+			|| $options['geojsonstyle'])
+			?>
+			leafext_hover_geojsonstyle_js(all_options);
+			<?php
+			//
+			if ($options['marker'] == false ) {
+				//$text = $text.leafext_markertitle_script($options);
+				?>
+				leafext_hover_markertitle_js();
+				<?php
+			}
+			?>
+		});
+		<?php
+		$javascript = ob_get_clean();
+		$text = $text . $javascript . '//-->'."\n".'</script>';
 		return $text;
 	}
 }
