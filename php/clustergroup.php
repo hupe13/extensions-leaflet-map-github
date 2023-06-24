@@ -13,6 +13,7 @@ function leafext_clustergroup_function($atts,$content,$shortcode) {
 		return $text;
 	} else {
 		//var_dump($atts); wp_die();
+		leafext_enqueue_leafext ("featuregroup");
 		leafext_enqueue_markercluster ();
 		leafext_enqueue_clustergroup ();
 		$featuregroups = shortcode_atts(
