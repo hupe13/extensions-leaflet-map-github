@@ -38,8 +38,7 @@ function leafext_help_hover() {
 
 $text=$text.'<h4>'.__('And hover','extensions-leaflet-map').'</h4>'
 .'<pre><code>[hover]</code></pre>'.
-'<h3>'.__('Options','extensions-leaflet-map').'</h3>'.
-__('New in version 3.4.1:','extensions-leaflet-map');
+'<h3>'.__('Options','extensions-leaflet-map').'</h3>';
 
 $text=$text.'<p>'.__("By default, all elements react to hover. If you don't want this, you have the following options.",'extensions-leaflet-map').'</p>';
 

@@ -231,7 +231,7 @@ function leafext_help_table($leafext_plugin_name="") {
 			'function' => __('Hovering overlapping elements','extensions-leaflet-map'),
 			'shortcode' => 'hoverlap',
 			'tab' => 'hoverlap',
-			'plugins' => '',
+			'plugins' => '<a href="https://github.com/Turfjs/turf">Turf</a>, <a href="https://github.com/makinacorpus/Leaflet.GeometryUtil">Leaflet.GeometryUtil</a>',
 			'doku' => '/doku/hoverlap/',
 			'kategorie' => 'hoverlap',
 			'examples' => '',
