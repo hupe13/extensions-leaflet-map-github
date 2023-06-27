@@ -117,7 +117,7 @@ function leafext_gesture_help_text() {
 		__('This means for you:','extensions-leaflet-map').' ';
 		$text = $text . (get_option('leaflet_scroll_wheel_zoom','0') == "1" ? __("It is enabled on both desktop and touch device by default.",'extensions-leaflet-map') : __("It is only enabled on touch devices by default.",'extensions-leaflet-map'));
 		$text = $text . '</li>'.'<li> '.
-		__('You can change it with ','extensions-leaflet-map').' <code>[leaflet-map ';
+		__('You can change it with','extensions-leaflet-map').' <code>[leaflet-map ';
 		$text = $text . (get_option('leaflet_scroll_wheel_zoom','0') == "1" ? '!' : "");
 		$text = $text . 'scrollwheel !dragging]</code>'.'</li>';
 	}

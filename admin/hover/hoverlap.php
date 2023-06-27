@@ -34,30 +34,22 @@ $text=$text.' '.sprintf(__('For overlapping markers see %s or %s.','extensions-l
 .'</p>';
 
 $text=$text.
-'<h3>Development</h3>
-<p>
-Einiges muss noch verbessert werden.
-<ul>
-<li>Wie sollen die teilweise großen Inhalte von Popups behandelt werden?
-<li>Geojson GeometryCollections funktionieren nicht in jeder Hinsicht.
-<li>und evtl. noch andere Dinge.
-</ul>
-Über (Code-)Vorschläge bin ich dankbar.
-</p>
-<p>
-All this is not ready yet.
-<ul>
-<li>How should the sometimes large contents of popups be handled?
-<li>Geojson GeometryCollections do not (yet) work in all senses.
-<li>and maybe other things.
-</ul>
-I am glad about (code-)suggestions.
-</p>';
+'<h3>Development</h3><p>'.
+__('All this is not ready yet.','extensions-leaflet-map').
+'<ul><li>'.
+__('How to deal with the sometimes large contents of popups?','extensions-leaflet-map').
+'<li>'.
+__('Geojson GeometryCollections do not (yet) work in all senses.','extensions-leaflet-map').
+'<li>'.
+__('and maybe other things.','extensions-leaflet-map').
+'</ul>'.
+__('I am glad about (code-)suggestions.','extensions-leaflet-map').
+'</p>';
 
-  if (is_singular() || is_archive() ) {
-    return $text;
-  } else {
-    echo $text;
-  }
+if (is_singular() || is_archive() ) {
+  return $text;
+} else {
+  echo $text;
+}
 }
 //leafext_help_hoverlap();
