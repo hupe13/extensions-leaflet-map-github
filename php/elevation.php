@@ -645,6 +645,12 @@ function leafext_ele_java_params($settings) {
 			}
 			unset($settings[$k]);
 			break;
+			case 'yAxisMin':
+			if ($settings['yAxisMin'] == "0") unset($settings[$k]);
+			break;
+			case 'yAxisMin':
+			if ($settings['yAxisMax'] == "0") unset($settings[$k]);
+			break;
 			default:
 		}
 	}

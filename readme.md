@@ -113,7 +113,11 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.5 / 23062x
+### 3.5.1 / 230627
+
+* fixed bug with yAxisMin
+
+### 3.5 / 230626
 
 * enqueue rotate for multielevation
 * remove 'other' group from geojsonmarker groups if empty
