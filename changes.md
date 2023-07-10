@@ -1,12 +1,6 @@
 # Differences to the WordPress Repository version
 
-* enqueue rotate for multielevation
-* remove 'other' group from geojsonmarker groups if empty
-* leaflet-elevation 2.4.0 with branch linear gradient
-* leaflet-elevation waypoint labels rotate PR
-* leaflet-elevation new options width, yAxisMin, yAxisMax
-* New shortcode [hoverlap] - hover overlapping elements
-* reduce inline Javascript
+* none
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
