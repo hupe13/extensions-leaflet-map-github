@@ -2,8 +2,8 @@
 
 Contributors: hupe13    
 Tags: leaflet, elevation, markercluster, Leaflet Plugins   
-Tested up to: 6.2  
-Stable tag: 3.5  
+Tested up to: 6.3  
+Stable tag: 3.5.2  
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later  
@@ -41,7 +41,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 *  Hovering:
      * Highlight a leaflet element on mouse over
      * get a tooltip for a leaflet element on mouse over.
-*  Hide Markers: Use it when a track in a GPX file contains some markers and you don't want to display them on the map.
+*  Hide Markers: Use it when a track loaded with leaflet-gpx contains some markers and you don't want to display them on the map.
 *  Styling marker in geojson files.
 *  Option to migrate from [WP GPX Maps](https://wordpress.org/plugins/wp-gpx-maps/) to elevation
 

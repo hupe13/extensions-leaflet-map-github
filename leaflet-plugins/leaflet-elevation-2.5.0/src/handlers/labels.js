@@ -8,7 +8,7 @@
  */
 export function Labels() {
 
-    this.on('elechart_updated', function(e) {
+  this.on('elechart_updated', function(e) {
 
     const pointG = this._chart._chart.pane('point');
 

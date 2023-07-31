@@ -122,7 +122,7 @@ function leafext_layerswitch_tiles_script($tiles){
 	$text = '<!--';
 	ob_start();
 	?>/*<script>*/
-	var tilelayers = <?php echo json_encode($tiles); ?>
+	var tilelayers = <?php echo json_encode($tiles); ?>;
 	//console.log(tilelayers);
 	tilelayers.forEach(tilelayer => {
 		var layer = L.tileLayer(tilelayer.tile, tilelayer.options);
@@ -228,8 +228,8 @@ function leafext_layerswitch_end_script() {
 	$text = '<!--';
 	ob_start();
 	?>/*<script>*/
-	// console.log(baselayers);
-	// console.log(overlays);
+	//console.log(baselayers);
+	//console.log(overlays);
 
 	L.control.layers(baselayers,overlays).addTo(map);
 	if ( Object.entries(opacity).length !==  0) {
@@ -299,18 +299,48 @@ function leafext_layerswitch_function($atts,$content,$shortcode) {
 		foreach ($defined_tileservers as $defined_tileserver) {
 			$overlay = $defined_tileserver['overlay'] == "1" ?  "1" : "";
 			$opacity = $defined_tileserver['opacity'] == "1" ?  "1" : "";
-			// L.tileLayer(tilelayer.tile, {attribution: tilelayer.attr, id: tilelayer.mapid});
-			$entry = 'attribution: "'.str_replace('"','\"',$defined_tileserver['attr']).'", id: "'.$defined_tileserver['mapid'].'", ';
-			//extra options (Javascript) in admin backend
-			$entry = ',{'.$entry.$defined_tileserver['options'].'}';
+
+			$tileoptions = array();
+			$tileoptions['attribution'] = $defined_tileserver['attr'];
+
+			$javas=explode(',',str_replace(' ','',$defined_tileserver['options']));
+
+			$key="";
+			$value="";
+			foreach ($javas as $java) {
+			  $parts = [];
+			  $tok = strtok($java, ":");
+			  while ($tok !== false) {
+			    $parts[] = $tok;
+			    $tok = strtok(":");
+			  }
+			  if (count($parts) > 1 ) {
+			    if ($key != "") {
+			      $tileoptions[$key] = trim($value,',');
+			    }
+			    $key = $parts[0];
+			    $value="";
+			    for ($i = 1; $i < count($parts); $i++) {
+			      $value = $value.':'.$parts[$i];
+			      $value = trim($value,':');
+			    }
+			  } else {
+			    if (count($parts) == 1) {
+			      $value = $value.','.$parts[0];
+			    }
+			  }
+			}
+			if ($key != "") {
+			  $tileoptions[$key] = trim($value,',');
+			}
+
 			$tiles[] = array(
 				'mapid' => $defined_tileserver['mapid'],
 				'tile' => $defined_tileserver['tile'],
 				'overlay' => $overlay,
 				'opacity' => $opacity,
-				'options' => $entry,
+				'options' => $tileoptions,
 			);
-			//var_dump($tiles);
 		}
 
 		if ( count($tiles) == 0 && count($providers) == 0 ) return;

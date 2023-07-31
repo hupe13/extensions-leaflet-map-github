@@ -424,6 +424,10 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 			if ( ! zoomhomemap ) {
 				//console.log(map.getBounds());
 				zoomhomemap=true;
+				if(typeof map.zoomControl !== "undefined") {
+			    map.zoomControl._zoomOutButton.remove();
+			    map.zoomControl._zoomInButton.remove();
+			  }
 				zoomHome.addTo(map);
 				zoomHome.setHomeBounds(map.getBounds());
 			}

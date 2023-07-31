@@ -40,7 +40,7 @@ function leafext_zoomhome_function($atts,$content,$shortcode) {
 		return $text;
 	} else {
 		leafext_enqueue_zoomhome ();
-		leafext_enqueue_leafext("zoomhome");
+		leafext_enqueue_leafext("zoomhome","zoomhome");
 		//
 		$defaults = array(
 			'fit' => 1,
