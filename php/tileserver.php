@@ -109,8 +109,23 @@ function leafext_layerswitch_begin_script() {
 				map.removeLayer(layer);
 				map.addLayer(layer);
 			}
-		}
-	);
+		});
+		map.on("baselayerchange", function (e) {
+			//console.log("baselayerchange");
+			var layer = e.layer;
+			if (!map.hasLayer(layer)) {
+				return;
+			}
+			if (layer.options.minZoom > 1 && map.getZoom() > layer.options.minZoom) {
+				map.setZoom(layer.options.minZoom);
+			}
+			// console.log("map min zoom "+map.options.minZoom);
+			// console.log("map max zoom "+map.options.maxZoom);
+			// console.log("layer min zoom "+layer.options.minZoom);
+			// console.log("layer max zoom "+layer.options.maxZoom);
+			map.options.minZoom=layer.options.minZoom;
+			map.options.maxZoom=layer.options.maxZoom;
+		});
 	<?php
 	$javascript = ob_get_clean();
 	$text = $text . $javascript . '//-->'."\n";
