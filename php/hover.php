@@ -171,7 +171,7 @@ function leafext_hover_function($atts,$content,$shortcode) {
 		return $text;
 	} else {
 		leafext_enqueue_geometry();
-		leafext_enqueue_leafext("changestyle");
+		leafext_enqueue_js();
 		leafext_enqueue_leafext("hover");
 		$defaults=array();
 		$params = leafext_hover_params();

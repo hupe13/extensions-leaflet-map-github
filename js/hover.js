@@ -41,30 +41,6 @@ function leafext_get_tooltip(layer, tooltip) {
   return content;
 }
 
-function leafext_tooltip_snap (e,map) {
-  var elements = [];
-  e.sourceTarget._map.eachLayer(function(layer){
-    if ( layer.getPopup() ) {
-      if ( layer.getPopup().isOpen()) {
-        //console.log("is open");
-        //console.log(layer.getPopup().getLatLng());
-        elements.push(new L.Marker(layer.getPopup().getLatLng()));
-      }
-    }
-  });
-  //console.log(elements);
-  var result = L.GeometryUtil.closestLayerSnap(
-    e.sourceTarget._map,
-    elements, // alle Marker
-    e.latlng, // mouse position.
-    50 // distance in pixels under which snapping occurs.
-  );
-  //console.log(result);
-  if (!result) {
-    map.closePopup();
-  }
-}
-
 function leafext_hover_geojsonstyle_js(all_options) {
   var map = window.WPLeafletMapPlugin.getCurrentMap();
   var map_id = map._leaflet_id;

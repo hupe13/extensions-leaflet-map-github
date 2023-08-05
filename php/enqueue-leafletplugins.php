@@ -29,12 +29,20 @@ function leafext_enqueue_awesome() {
   }
 }
 
-function leafext_css() {
+function leafext_enqueue_css() {
   wp_enqueue_style( 'leafext_css',
   plugins_url('css/leafext.min.css',
   //plugins_url('css/leafext.css',
   LEAFEXT_PLUGIN_FILE),
   array('leaflet_stylesheet'),null);
+}
+
+function leafext_enqueue_js() {
+  wp_enqueue_script( 'leafext_js',
+  plugins_url('js/leafext.min.js',
+  //plugins_url('js/leafext.js',
+  LEAFEXT_PLUGIN_FILE),
+  array('wp_leaflet_map'),null);
 }
 
 function leafext_enqueue_zoomhome () {
@@ -47,7 +55,7 @@ function leafext_enqueue_zoomhome () {
   LEAFEXT_PLUGIN_FILE),
   array('leaflet_stylesheet'), null);
   leafext_enqueue_awesome();
-  leafext_css();
+  leafext_enqueue_css();
 }
 
 function leafext_enqueue_markercluster () {
@@ -101,7 +109,7 @@ function leafext_enqueue_elevation () {
   LEAFEXT_PLUGIN_FILE),
   array('leaflet_stylesheet'),null);
   //
-  leafext_css();
+  leafext_enqueue_css();
 }
 
 function leafext_enqueue_rotate () {
@@ -134,7 +142,7 @@ function leafext_enqueue_multielevation () {
   plugins_url('leaflet-plugins/leaflet-elevation-'.LEAFEXT_ELEVATION_VERSION.'/libs/leaflet-distance-marker.min.css',
   LEAFEXT_PLUGIN_FILE),
   array('elevation_css'),null);
-  leafext_css();
+  leafext_enqueue_css();
 }
 
 function leafext_enqueue_clustergroup () {
@@ -263,12 +271,20 @@ function leafext_enqueue_leafletsearch () {
   }
 }
 
-function leafext_enqueue_turf () {
-  wp_enqueue_script('leafletturf',
-  plugins_url('leaflet-plugins/turf/turf.min.js',
+function leafext_enqueue_turf() {
+  wp_enqueue_script('leafextturf',
+  plugins_url('leaflet-plugins/turf/leafext-turf.min.js',
   LEAFEXT_PLUGIN_FILE),
   array('wp_leaflet_map'), null);
 }
+
+function leafext_javascript_module( $tag, $handle, $src ) {
+  if ('leafextturf' === $handle) {
+    $tag = '<script type="module" src="'. $src .'"></script>'."\n";
+  }
+  return $tag;
+}
+add_filter( 'script_loader_tag', 'leafext_javascript_module', 10, 3 );
 
 function leafext_enqueue_leafext ($file,$dep="") {
   if ($dep == "") {
@@ -277,8 +293,8 @@ function leafext_enqueue_leafext ($file,$dep="") {
     $deps = array('wp_leaflet_map',$dep);
   }
   wp_enqueue_script('leafext_'.$file,
-  plugins_url('js/'.$file.'.min.js',
   //plugins_url('js/'.$file.'.js',
+  plugins_url('js/'.$file.'.min.js',
   LEAFEXT_PLUGIN_FILE),
   $deps, null);
 }

@@ -4,8 +4,9 @@
 */
 
 function leafext_is_point_in_layer(map,point,layer) {
+  //console.log(turf);
+  turfpoint = turf.helpers.point([point.lng,point.lat]);
   let debug = false;
-  turfpoint = turf.point([point.lng,point.lat]);
   //if (debug) console.log(layer);
   if (debug) console.log(layer.type);
   if (layer instanceof L.Circle) {
@@ -73,7 +74,7 @@ function leafext_is_point_in_layer(map,point,layer) {
   } else
   if ( layer.feature && layer.feature.geometry && layer.feature.geometry.type == 'GeometryCollection') {
     if (debug) console.log("leafext_is_point_in_layer is GeometryCollection");
-    turf.flattenEach(layer.toGeoJSON(), function (currentFeature, featureIndex, multiFeatureIndex) {
+    turf.meta.flattenEach(layer.toGeoJSON(), function (currentFeature, featureIndex, multiFeatureIndex) {
       if (debug) console.log("leafext_is_point_in_layer is in GeometryCollection", currentFeature.geometry.type);
       if (leafext_is_point_in_layer(map,point,currentFeature.geometry)) {
         if (debug) console.log("ist drin");
@@ -90,37 +91,6 @@ function leafext_is_point_in_layer(map,point,layer) {
   }
   if (debug) console.log("ist nicht drin");
   return false;
-}
-
-// close all tooltips
-function leafext_close_tooltips(map) {
-  map.eachLayer(function(layer) {
-    if (layer.options.pane === "tooltipPane") {
-      layer.removeFrom(map);
-      //console.log("leafext_close_tooltips");
-    }
-  });
-}
-
-function leafext_map_popups(map) {
-  let popup = false;
-  map.eachLayer(function(layer){
-    if ( layer instanceof L.Popup ) {
-      //console.log("popup is open");
-      popup = true;
-    }
-  });
-  return popup;
-}
-
-function leafext_markertooltip(map) {
-  var markertooltip = false;
-  map.eachLayer(function(layer) {
-    if (layer.options.pane === "tooltipPane") {
-      markertooltip = layer._source instanceof L.Marker;
-    }
-  });
-  return markertooltip;
 }
 
 function leafext_marker_click(e,map,map_id,layer) {
@@ -255,7 +225,7 @@ function leafext_hoverlap_js(all_options) {
             // console.log(layer.feature.geometry.type);
             // console.log(layer.getPopup().getContent());
             if ( layer.feature.geometry.type == 'GeometryCollection') {
-              turf.flattenEach(layer.toGeoJSON(), function (currentFeature, featureIndex, multiFeatureIndex) {
+              turf.meta.flattenEach(layer.toGeoJSON(), function (currentFeature, featureIndex, multiFeatureIndex) {
                 // console.log(currentFeature.geometry.type);
                 if ( layer.getPopup() ) {
                   //console.log(layer.getPopup().getContent());
@@ -378,7 +348,7 @@ function leafext_hoverlap_js(all_options) {
         if (layer.feature && layer.feature.geometry && layer.feature.geometry.type ) {
           //console.log(layer.feature.geometry.type);
           if ( layer.feature.geometry.type == 'GeometryCollection' ) {
-            turf.flattenEach(layer.toGeoJSON(), function (currentFeature, featureIndex, multiFeatureIndex) {
+            turf.meta.flattenEach(layer.toGeoJSON(), function (currentFeature, featureIndex, multiFeatureIndex) {
               if (leafext_is_point_in_layer(map,latlng,currentFeature.geometry)) {
                 leafext_make_overstyle(layer);
               }
@@ -413,7 +383,7 @@ function leafext_hoverlap_js(all_options) {
       if (layer.feature && layer.feature.geometry && layer.feature.geometry.type ) {
         // console.log(layer.feature.geometry.type);
         if ( layer.feature.geometry.type == 'GeometryCollection' ) {
-          turf.flattenEach(layer.toGeoJSON(), function (currentFeature, featureIndex, multiFeatureIndex) {
+          turf.meta.flattenEach(layer.toGeoJSON(), function (currentFeature, featureIndex, multiFeatureIndex) {
             if (leafext_is_point_in_layer(map,latlng,currentFeature.geometry)) {
               if ( layer.getPopup().getContent() ) {
                 mouselayers.push(layer.getPopup().getContent());

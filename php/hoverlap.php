@@ -39,10 +39,10 @@ function leafext_hoverlap_function($atts,$content,$shortcode) {
 	if ( $text != "" ) {
 		return $text;
 	} else {
-		leafext_enqueue_leafext("changestyle");
-		leafext_enqueue_leafext("hoverlap",'leafletturf');
+		leafext_enqueue_js();
 		leafext_enqueue_geometry();
 		leafext_enqueue_turf();
+		leafext_enqueue_leafext("hoverlap",'leafextturf');
 		$defaults=array();
 		$params = leafext_hoverlap_params();
 		foreach($params as $param) {
@@ -66,7 +66,7 @@ function leafext_hoverlap_script($options){
   $text = '<script><!--';
   ob_start();
   ?>/*<script>*/
-  window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
+	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
   window.WPLeafletMapPlugin.push(function () {
     let all_options = <?php echo json_encode($options);?>;
     // console.log("leafext_hoverlap_script");
