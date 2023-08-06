@@ -113,19 +113,13 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.5.1 / 230627
+### 3.5.2 / 23080x
 
-* fixed bug with yAxisMin
-
-### 3.5 / 230626
-
-* enqueue rotate for multielevation
-* remove 'other' group from geojsonmarker groups if empty
-* leaflet-elevation 2.4.0 with branch linear gradient
-* leaflet-elevation waypoint labels rotate PR
-* leaflet-elevation new options width, yAxisMin, yAxisMax
-* New shortcode [hoverlap] - hover overlapping elements
-* reduce inline Javascript
+* leaflet-elevation 2.5.0
+* local hosting of d3.min.js and tmcw/togeojson.umd.js
+* bug multielevation: removed map.zoomControl (+/-)
+* bug layerswitch: fixed extra options (Javascript in admin backend) in leafext_layerswitch_tiles_script and max_zoom
+* CSP: prevent unsafe-eval for turf
 
 ### Previous
 

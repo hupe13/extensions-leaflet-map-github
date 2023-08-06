@@ -278,14 +278,6 @@ function leafext_enqueue_turf() {
   array('wp_leaflet_map'), null);
 }
 
-function leafext_javascript_module( $tag, $handle, $src ) {
-  if ('leafextturf' === $handle) {
-    $tag = '<script type="module" src="'. $src .'"></script>'."\n";
-  }
-  return $tag;
-}
-add_filter( 'script_loader_tag', 'leafext_javascript_module', 10, 3 );
-
 function leafext_enqueue_leafext ($file,$dep="") {
   if ($dep == "") {
     $deps = array('wp_leaflet_map');

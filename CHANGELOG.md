@@ -1,3 +1,17 @@
+### 3.5.1 / 230627
+
+* fixed bug with yAxisMin
+
+### 3.5 / 230626
+
+* enqueue rotate for multielevation
+* remove 'other' group from geojsonmarker groups if empty
+* leaflet-elevation 2.4.0 with branch linear gradient
+* leaflet-elevation waypoint labels rotate PR
+* leaflet-elevation new options width, yAxisMin, yAxisMax
+* New shortcode [hoverlap] - hover overlapping elements
+* reduce inline Javascript
+
 ### 3.4.4 / 230512
 
 * leaflet-elevation-2.3.4

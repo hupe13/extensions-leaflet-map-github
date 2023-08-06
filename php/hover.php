@@ -205,7 +205,7 @@ function leafext_hover_function($atts,$content,$shortcode) {
 			$options['geojsontooltip'] = filter_var($options['geojsontooltip'], FILTER_SANITIZE_SPECIAL_CHARS);
 		}
 
-		$text = '<script><!--';
+		$text = $text.'<script><!--';
 		ob_start();
 		?>/*<script>*/
 		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
