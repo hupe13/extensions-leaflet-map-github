@@ -27,8 +27,8 @@ function leafext_help_hover() {
   $text = $text.'<pre><code>// any many
 [leaflet-marker ...]Marker ...[/leaflet-marker]
 [leaflet-marker title=... ...]Marker ...[/leaflet-marker]
-[leaflet-extramarker ...]Marker ...[/leaflet-marker]
-[leaflet-extramarker title=... ...]Marker ...[/leaflet-marker]
+[leaflet-extramarker ...]Marker ...[/leaflet-extramarker]
+[leaflet-extramarker title=... ...]Marker ...[/leaflet-extramarker]
 [leaflet-geojson ...]{name}[/leaflet-geojson]
 [leaflet-gpx ...]{name}[/leaflet-gpx]
 [leaflet-kml ...]{name}[/leaflet-kml]
