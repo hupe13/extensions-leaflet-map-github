@@ -18,6 +18,7 @@ function leafext_hover_params($typ = '') {
 			'values' => 'true, false, title',
 			'element' => true,
 			'only' => false,
+			'changeable' => false,
 		),
 		array(
 			'param' => 'circle',
@@ -26,6 +27,7 @@ function leafext_hover_params($typ = '') {
 			'values' => 'true, false, tooltip, style',
 			'element' => true,
 			'only' => false,
+			'changeable' => false,
 		),
 		array(
 			'param' => 'polygon',
@@ -34,6 +36,7 @@ function leafext_hover_params($typ = '') {
 			'values' => 'true, false, tooltip, style',
 			'element' => true,
 			'only' => false,
+			'changeable' => false,
 		),
 		array(
 			'param' => 'line',
@@ -42,6 +45,7 @@ function leafext_hover_params($typ = '') {
 			'values' => 'true, false, tooltip, style',
 			'element' => true,
 			'only' => false,
+			'changeable' => false,
 		),
 		array(
 			'param' => 'geojson',
@@ -50,6 +54,7 @@ function leafext_hover_params($typ = '') {
 			'values' => 'true, false, tooltip, style',
 			'element' => true,
 			'only' => false,
+			'changeable' => false,
 		),
 		array(
 			'param' => 'gpx',
@@ -58,6 +63,7 @@ function leafext_hover_params($typ = '') {
 			'values' => 'true, false, tooltip, style',
 			'element' => true,
 			'only' => false,
+			'changeable' => false,
 		),
 		array(
 			'param' => 'kml',
@@ -66,6 +72,7 @@ function leafext_hover_params($typ = '') {
 			'values' => 'true, false, tooltip, style',
 			'element' => true,
 			'only' => false,
+			'changeable' => false,
 		),
 		//
 		array(
@@ -75,6 +82,7 @@ function leafext_hover_params($typ = '') {
 			'values' => '',
 			'element' => false,
 			'only' => true,
+			'changeable' => false,
 		),
 		array(
 			'param' => 'geojsontooltip',
@@ -84,6 +92,7 @@ function leafext_hover_params($typ = '') {
 			'values' => __('nothing or a string like the popup content for geojsons','extensions-leaflet-map').': <code>Field A = {field_a}</code>.',
 			'element' => false,
 			'only' => true,
+			'changeable' => false,
 		),
 		array(
 			'param' => 'geojsonstyle',
@@ -92,6 +101,7 @@ function leafext_hover_params($typ = '') {
 			'values' => '',
 			'element' => false,
 			'only' => true,
+			'changeable' => false,
 		),
 		array(
 			'param' => 'markergrouptooltip',
@@ -100,6 +110,7 @@ function leafext_hover_params($typ = '') {
 			'values' => '',
 			'element' => false,
 			'only' => true,
+			'changeable' => false,
 		),
 		array(
 			'param' => 'markergroupstyle',
@@ -108,6 +119,7 @@ function leafext_hover_params($typ = '') {
 			'values' => '',
 			'element' => false,
 			'only' => true,
+			'changeable' => false,
 		),
 		//
 		array(
@@ -117,15 +129,36 @@ function leafext_hover_params($typ = '') {
 			'values' => __('substring from url to geojson, gpx, kml file',"extensions-leaflet-map"),
 			'element' => false,
 			'only' => false,
+			'changeable' => false,
+		),
+		array(
+			'param' => 'class',
+			'desc' => __('className for the tooltip','extensions-leaflet-map'),
+			'default' => 'leafext-tooltip',
+			'values' => __('a className',"extensions-leaflet-map"),
+			'element' => false,
+			'only' => false,
+			'changeable' => true,
 		),
 		array(
 			'param' => 'tolerance',
-			'desc' => __('determines how much to extend click tolerance round an object on the map','extensions-leaflet-map'),
+			'desc' => sprintf(__('How much to extend click tolerance round an object on the map, only valid for %s','extensions-leaflet-map'),'leaflet-geojson, gpx, kml'),
 			'default' => 0,
 			'values' => __('a number',"extensions-leaflet-map"),
 			'element' => false,
 			'only' => false,
+			'changeable' => true,
 		),
+		array(
+			'param' => 'snap',
+			'desc' => __('At which distance of the mouse from a popup the popup closes. If it is 0, this is disabled','extensions-leaflet-map'),
+			'default' => 50,
+			'values' => __('a number',"extensions-leaflet-map"),
+			'element' => false,
+			'only' => false,
+			'changeable' => true,
+		),
+
 		// array(
 		// 	'param' => '',
 		// 	'desc' => __('',"extensions-leaflet-map"),
@@ -149,6 +182,18 @@ function leafext_hover_params($typ = '') {
 	return $params;
 }
 
+function leafext_hover_settings() {
+	$params = leafext_hover_params();
+	$defaults = array();
+	foreach($params as $param) {
+		$defaults[$param['param']] = $param['default'];
+	}
+	$options = shortcode_atts($defaults,get_option('leafext_hover'));
+	$options = shortcode_atts($options,get_option('leafext_canvas'));
+	//var_dump($options); wp_die();
+	return $options;
+}
+
 function leafext_canvas_script($tolerance) {
 	$text = '<script><!--';
 	ob_start();
@@ -157,6 +202,8 @@ function leafext_canvas_script($tolerance) {
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
 		map.options.renderer=L.canvas({ tolerance: <?php echo $tolerance;?> });
+		console.log("tolerance "+<?php echo $tolerance;?>);
+		console.log(map.options.renderer);
 	});
 	<?php
 	$javascript = ob_get_clean();
@@ -178,9 +225,11 @@ function leafext_hover_function($atts,$content,$shortcode) {
 		foreach($params as $param) {
 			$defaults[$param['param']] = $param['default'];
 		}
-		$settings = shortcode_atts(	$defaults, get_option( 'leafext_canvas' ));
+
+		$settings = leafext_hover_settings();
+		//var_dump($atts);
 		$options  = shortcode_atts( $settings, leafext_clear_params($atts));
-		//var_dump($atts,get_option( 'leafext_canvas'),$settings,$options); wp_die();
+		//var_dump($atts,$settings,$options); wp_die();
 		$text = "";
 		if ($options['tolerance'] != 0) {
 			$text = $text.leafext_canvas_script( $options['tolerance'] );
@@ -211,11 +260,13 @@ function leafext_hover_function($atts,$content,$shortcode) {
 		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 		window.WPLeafletMapPlugin.push(function () {
 			let all_options = <?php echo json_encode($options);?>;
+			console.log("leafext_hover_function");
+			console.log(all_options);
 			<?php
 			if (in_array($options['marker'],$do_tooltip,true)
 			|| $options['markertooltip']) {
 				?>
-				leafext_hover_markertooltip_js();
+				leafext_hover_markertooltip_js(all_options);
 				<?php
 				$options['marker'] = true;
 			}
@@ -242,7 +293,7 @@ function leafext_hover_function($atts,$content,$shortcode) {
 			|| $options['geojsontooltip'])
 			?>
 			let tooltip = <?php echo json_encode($options['geojsontooltip']);?>;
-			leafext_hover_geojsontooltip_js(tooltip);
+			leafext_hover_geojsontooltip_js(tooltip,all_options);
 			<?php
 			//
 			if (in_array($options['geojson'],$do_style,true)

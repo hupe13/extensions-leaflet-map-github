@@ -1,6 +1,8 @@
 # Differences to the WordPress Repository version
 
-* none
+* new shortcode: overviewmap
+* new options for hover: class (style the tooltip) and snap (let the popup open or not)
+* reduce inline Javascript for geojsonmarker
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

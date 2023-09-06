@@ -6,7 +6,6 @@ include LEAFEXT_PLUGIN_DIR . '/admin/elevation/main.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/marker/main.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/tiles/main.php';
-include LEAFEXT_PLUGIN_DIR . '/admin/canvas.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/filemgr/main.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/hover/main.php';
 
@@ -63,6 +62,9 @@ function leafext_do_page() {
 	} else if( $active_tab == 'leafletsearch' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/leaflet-search.php';
 		leafext_leafletsearch_help();
+	} else if( $active_tab == 'overviewmap' ) {
+		include LEAFEXT_PLUGIN_DIR . '/admin/overview-map.php';
+		leafext_overviewmap_help();
 	}
 }
 
@@ -118,6 +120,9 @@ function leafext_do_nonadmin_page() {
 	} else if( $active_tab == 'leafletsearch' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/leaflet-search.php';
 		leafext_leafletsearch_help();
+	} else if( $active_tab == 'overviewmap' ) {
+		include LEAFEXT_PLUGIN_DIR . '/admin/overview-map.php';
+		leafext_overviewmap_help();
 	}
 	//
 }
@@ -187,8 +192,12 @@ function leafext_admin_tabs() {
 			'title' => __('Gesture Handling','extensions-leaflet-map'),
 		),
 		array (
+			'tab' => 'overviewmap',
+			'title' => __('Overview Map','extensions-leaflet-map'),
+		),
+		array (
 			'tab' => 'zoomhome',
-			'title' => 'leaflet.zoomhome',
+			'title' => 'zoomhome',
 		),
 		array (
 			'tab' => 'fullscreen',

@@ -109,7 +109,7 @@ function leafext_sgpx_help_text () {
 	echo ' '.sprintf(
 		__('See documentation and examples in %shere%s.',
 			"extensions-leaflet-map"),
-			'<a href="https://leafext.de/en/doku/elevation/sgpx/">',
+			'<a href="https://leafext.de/en/doku/sgpxelevation/">',
 			'</a>');
 
 	echo '<ul>';
@@ -123,10 +123,13 @@ function leafext_sgpx_help_text () {
 		echo '</li><li>';
 		echo sprintf(__('If you want to test it first: select %s and write in your test page / post %s.',"extensions-leaflet-map"),'"leaflet"','<code>[leaflet-map height="1"]</code>');
 		echo '</li><li>';
-		echo sprintf(__("If you are happy with it and if you don't use its track management, you can deactivate and delete the plugin %s.","extensions-leaflet-map"),'wp-gpx-maps');
+		echo sprintf(__("If you are happy with this and if you don't use the track management of %s, you can deactivate and delete the plugin %s.","extensions-leaflet-map"),'wp-gpx-maps','wp-gpx-maps');
 		echo '</li>';
 		echo '<li>';
-		echo __('If you have deactivated the plugin, call this page again.',"extensions-leaflet-map");
+		echo sprintf(__("To manage your tracks now, you can use %sFiles for Leaflet Map%s.","extensions-leaflet-map"),'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=filemgr">','</a>');
+		echo '</li>';
+		echo '<li>';
+		echo __('If you have deleted the plugin, call this page again.',"extensions-leaflet-map");
 		echo '</li>';
 	} else { // nicht mehr aktiv
 		echo '<li>'.sprintf(__("%s is not active, %s parameters will interpreted with %s.","extensions-leaflet-map"),'wp-gpx-maps','sgpx','elevation').'</li>';

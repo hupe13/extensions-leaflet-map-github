@@ -44,6 +44,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 *  Hide Markers: Use it when a track loaded with leaflet-gpx contains some markers and you don't want to display them on the map.
 *  Styling marker in geojson files.
 *  Option to migrate from [WP GPX Maps](https://wordpress.org/plugins/wp-gpx-maps/) to elevation
+*  Overview map (idea from @codade)
 
 ## Screenshots
 

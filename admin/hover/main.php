@@ -8,6 +8,7 @@ defined( 'ABSPATH' ) or die();
 
 include LEAFEXT_PLUGIN_DIR . '/admin/hover/hover.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/hover/hoverlap.php';
+include LEAFEXT_PLUGIN_DIR . '/admin/hover/settings.php';
 
 function leafext_hover_tab() {
 	$tabs = array (
@@ -40,7 +41,7 @@ function leafext_admin_hover($active_tab) {
 	if( $active_tab == 'hover') {
 		echo '<h2>'.leafext_hover_tab().'</h2>';
 		leafext_help_hover();
-		leafext_canvas_do_page ();
+		leafext_hover_admin_page();
 	} else if( $active_tab == 'hoverlap') {
 		echo '<h2>'.leafext_hover_tab().'</h2>';
 		leafext_help_hoverlap();

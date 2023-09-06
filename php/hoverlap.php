@@ -24,6 +24,14 @@ function leafext_hoverlap_params() {
 			'element' => false,
 			'only' => false,
 		),
+		array(
+			'param' => 'class',
+			'desc' => __('className for the tooltip','extensions-leaflet-map'),
+			'default' => 'leafext-tooltip',
+			'values' => __('a className',"extensions-leaflet-map"),
+			'element' => false,
+			'only' => false,
+		),
 		// array(
 		// 	'param' => '',
 		// 	'desc' => __('',"extensions-leaflet-map"),

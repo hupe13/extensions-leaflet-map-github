@@ -54,39 +54,6 @@ function leafext_make_styleback(element) {
   }
 }
 
-function leafext_tooltip_snap (e,map) {
-  var elements = [];
-  e.sourceTarget._map.eachLayer(function(layer){
-    if ( layer.getPopup() ) {
-      if ( layer.getPopup().isOpen()) {
-        //console.log("is open");
-        //console.log(layer.getPopup().getLatLng());
-        elements.push(new L.Marker(layer.getPopup().getLatLng()));
-      }
-    }
-  });
-  //console.log(elements);
-  var result = L.GeometryUtil.closestLayerSnap(
-    e.sourceTarget._map,
-    elements, // alle Marker
-    e.latlng, // mouse position.
-    50 // distance in pixels under which snapping occurs.
-  );
-  //console.log(result);
-  if (!result) {
-    map.closePopup();
-  }
-}
-
-function leafext_close_tooltips(map) {
-  map.eachLayer(function(layer) {
-    if (layer.options.pane === "tooltipPane") {
-      layer.removeFrom(map);
-      //console.log("leafext_close_tooltips");
-    }
-  });
-}
-
 function leafext_map_popups(map) {
   let popup = false;
   map.eachLayer(function(layer){
@@ -96,14 +63,4 @@ function leafext_map_popups(map) {
     }
   });
   return popup;
-}
-
-function leafext_markertooltip(map) {
-  var markertooltip = false;
-  map.eachLayer(function(layer) {
-    if (layer.options.pane === "tooltipPane") {
-      markertooltip = layer._source instanceof L.Marker;
-    }
-  });
-  return markertooltip;
 }

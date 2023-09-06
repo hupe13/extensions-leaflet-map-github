@@ -100,6 +100,26 @@ $text = $text.'<code>false</code> = <code>!parameter</code> || <code>parameter="
 $text = $text.'<code>true</code> = <code>parameter</code> || <code>parameter="1"</code> || <code>parameter=1</code>';
 $text = $text.'</p>';
 
+$text = $text.'<h4>'.__('Tooltip className', "extensions-leaflet-map").'</h4>';
+$text = $text.'<p>'.sprintf(__('The tooltip has a %s, its default is %s. You can style the tooltip with css, e.g.', "extensions-leaflet-map"),'className','"leafext-tooltip"');
+$text = $text.'<pre>
+.leafext-tooltip {
+  background-color: #eee !important;
+  border: 1px solid #eee !important;
+  white-space: normal !important;
+  width: 100px;
+  height: 100px;
+}
+/* the triangle */
+.leaflet-tooltip-left.leafext-tooltip::before {
+  border-left-color: #eee;
+}
+.leaflet-tooltip-right.leafext-tooltip::before {
+  border-right-color: #eee;
+}
+</pre>';
+$text = $text.'</p>';
+
   if (is_singular() || is_archive() ) {
     return $text;
   } else {

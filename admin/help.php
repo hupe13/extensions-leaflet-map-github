@@ -126,6 +126,15 @@ function leafext_help_table($leafext_plugin_name="") {
 			'kategorie' => '',
 			'examples' => '',
 		),
+		array(
+			'function' => __('Overview Map','extensions-leaflet-map'),
+			'shortcode' => 'overviewmap',
+			'tab' => 'overviewmap',
+			'plugins' => '',
+			'doku' => '/development/doku/overviewmap/',
+			'kategorie' => '',
+			'examples' => '/extra/category/overviewmap/',
+		),
 	);
 
 	$table[__('Further Leaflet Plugins','extensions-leaflet-map')] = array(

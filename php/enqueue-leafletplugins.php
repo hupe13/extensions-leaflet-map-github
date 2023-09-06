@@ -298,3 +298,10 @@ function leafext_enqueue_leafext_elevation() {
   array('wp_leaflet_map','elevation_js'), null);
   wp_set_script_translations( 'leafext_elevation', 'extensions-leaflet-map' );
 }
+
+function leafext_enqueue_overview() {
+  wp_enqueue_style( 'overview',
+  plugins_url('css/overview.min.css',
+  LEAFEXT_PLUGIN_FILE),
+  array('leaflet_stylesheet'),null);
+}

@@ -8,7 +8,7 @@ function leafext_is_point_in_layer(map,point,layer) {
   turfpoint = turf.helpers.point([point.lng,point.lat]);
   let debug = false;
   //if (debug) console.log(layer);
-  if (debug) console.log(layer.type);
+  //if (debug) console.log(layer.type);
   if (layer instanceof L.Circle) {
     if (debug) console.log("leafext_is_point_in_layer is L.Circle");
     let center = layer.getLatLng();
@@ -93,7 +93,7 @@ function leafext_is_point_in_layer(map,point,layer) {
   return false;
 }
 
-function leafext_marker_click(e,map,map_id,layer) {
+function leafext_marker_click(e,map,map_id,layer,all_options) {
   // console.log("Marker "+e.type);
   // console.log(layer);
   let event = e.type;
@@ -138,7 +138,7 @@ function leafext_marker_click(e,map,map_id,layer) {
   if (event == "mouseover" && leafext_map_popups(map) == false && ele_popup_open == false) {
     // console.log("marker hover");
     e.sourceTarget.unbindTooltip();
-    e.sourceTarget.bindTooltip(mouselayers.join('<br>'));
+    e.sourceTarget.bindTooltip(mouselayers.join('<br>'),{className: all_options['class']});
     e.sourceTarget.openTooltip(e.latlng);
     //console.log(e.sourceTarget);
   }
@@ -184,7 +184,7 @@ function leafext_hoverlap_js(all_options) {
           if (layer instanceof L.Marker) {
             //console.log("is_marker");
             layer.on("mouseover click", function (e) {
-              leafext_marker_click(e,map,map_id,layer);
+              leafext_marker_click(e,map,map_id,layer,all_options);
             });
           } else
           if (
@@ -222,7 +222,7 @@ function leafext_hoverlap_js(all_options) {
           // console.log("geojson ready");
           // console.log(e);
           e.target.eachLayer(function(layer) {
-            // console.log(layer.feature.geometry.type);
+            console.log(layer.feature.geometry.type);
             // console.log(layer.getPopup().getContent());
             if ( layer.feature.geometry.type == 'GeometryCollection') {
               turf.meta.flattenEach(layer.toGeoJSON(), function (currentFeature, featureIndex, multiFeatureIndex) {
@@ -268,7 +268,7 @@ function leafext_hoverlap_js(all_options) {
                     geometry.off('click');
                     layer.off('click');
                     geometry.on("mouseover click", function (e) {
-                      leafext_marker_click(e,map,map_id,geometry);
+                      leafext_marker_click(e,map,map_id,geometry,all_options);
                     });
                   }
                 }
@@ -280,7 +280,7 @@ function leafext_hoverlap_js(all_options) {
                 if ( layer.getPopup() ) {
                   layer.options.popupContent = layer.getPopup().getContent();
                   layer.on("mouseover click", function (e) {
-                    leafext_marker_click(e,map,map_id,layer);
+                    leafext_marker_click(e,map,map_id,layer,all_options);
                   });
                 }
               } else {
@@ -303,7 +303,7 @@ function leafext_hoverlap_js(all_options) {
                     point.options.popupContent = layer.getPopup().getContent();
                     point.off('click');
                     point.on("mouseover click", function (e) {
-                      leafext_marker_click(e,map,map_id,point);
+                      leafext_marker_click(e,map,map_id,point,all_options);
                     });
                   }
                 } else {
@@ -418,7 +418,7 @@ function leafext_hoverlap_js(all_options) {
       leafext_close_tooltips(map);
       if (mouselayers.length > 0) {
         // console.log("tooltip map mouseover");
-        var tooltip = L.tooltip()
+        var tooltip = L.tooltip({className: all_options['class']})
         .setLatLng(latlng)
         .setContent(mouselayers.join('<br>'))
         .openOn(map);
@@ -442,4 +442,24 @@ function leafext_hoverlap_js(all_options) {
       leafext_make_styleback(layer);
     });
   });
+
+}
+
+function leafext_close_tooltips(map) {
+  map.eachLayer(function(layer) {
+    if (layer.options.pane === "tooltipPane") {
+      layer.removeFrom(map);
+      //console.log("leafext_close_tooltips");
+    }
+  });
+}
+
+function leafext_markertooltip(map) {
+  var markertooltip = false;
+  map.eachLayer(function(layer) {
+    if (layer.options.pane === "tooltipPane") {
+      markertooltip = layer._source instanceof L.Marker;
+    }
+  });
+  return markertooltip;
 }
