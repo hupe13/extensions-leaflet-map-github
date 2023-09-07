@@ -25,7 +25,6 @@ function leafext_listing_form_types() {
 		if (is_array($stored)) {
 			$type = $stored['type'];
 		} else {
-			//$type = array ("gpx");
 			$type = array ("gpx","kml","geojson","json","tcx");
 		}
 	}
@@ -60,13 +59,13 @@ function leafext_listing_form_dirs() {
 		} else {
 			$verz = "";
 			$count = "5";
-			$type = array("gpx");
+			//$type = array("gpx");
+			$type = array('gpx','kml','geojson','json','tcx');
 			$all = "";
 		}
 	}
 
 	$extensions = is_array($type) ? '{'.implode(",", $type).'}' : '{gpx,kml,geojson,json,tcx}';
-
 	$upload_dir = wp_get_upload_dir();
 	$upload_path = trailingslashit($upload_dir['basedir']);
 	$disabled = ($all == "on") ? "disabled" : "";
@@ -229,6 +228,7 @@ function leafext_managefiles() {
 				'<span class="leafextcopy" id="leafextTooltip">Copy to clipboard</span>'.
 				'<code>[leaflet-directory src="/'.trailingslashit($dir).'" elevation]</code>'.
 				'</span>';
+				echo ' ('.__('does only work with gpx files',"extensions-leaflet-map").')';
 				echo '<br>';
 				$shortcode = '[leaflet-map fitbounds][leaflet-directory src=';
 				$uploadurl = '';

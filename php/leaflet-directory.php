@@ -104,12 +104,12 @@ function leafext_directory_function($atts,$content,$shortcode) {
 
     $files = glob($dirpath.$dir.'/*.{'.$type.'}', GLOB_BRACE);
     if (count($files) == 0) {
-      $options['type'] = '...not found any... '.$options['type'];
       $text = '[leaflet_dir ';
       foreach ($options as $key=>$item){
         $text = $text. $key.'="'.$item.'" ';
       }
       $text = $text. "]";
+      $text = $text.' * no any '.$options['type'].' files found in directory '.$dirpath.$dir;
       return $text;
     }
 

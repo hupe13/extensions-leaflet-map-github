@@ -26,7 +26,7 @@ function leafext_list_dirs($directory,$extensions,$count) {
 	$upload_path = trailingslashit($upload_dir['basedir']);
 	$directories = array();
 	$dir = trailingslashit($directory);
-	if (count(glob($dir.'*.'.$extensions, GLOB_BRACE)) >= $count ) {
+	if (count(glob($dir.'*.'.$extensions, GLOB_BRACE)) >= $count) {
 		$directories [] = str_replace($upload_path,'',$dir);
 	}
 	foreach(glob($dir.'*', GLOB_ONLYDIR) as $file) {
@@ -183,10 +183,10 @@ function leafext_files_table($track_files) {
 			$entry['edit'] = "no media";
 		}
 
+		$uploadurl = $upload_url;
+		$file = trim($myfile,'/');
 		if ($type != "") {
 			$shortcode = '[leaflet-'.$path_parts['extension'].' src=';
-			$uploadurl = $upload_url;
-			$file = trim($myfile,'/');
 			$end = ']';
 			$entry['leaflet'] = '<span class="leafexttooltip" href="#" '.
 			'onclick="leafext_createShortcode(\''.$shortcode.'\',\''.$uploadurl.'\',\''.$file.'\',\''.$end.'\')" '.
@@ -198,8 +198,6 @@ function leafext_files_table($track_files) {
 		}
 
 		$shortcode = '[elevation gpx=';
-		$uploadurl = $upload_url;
-		$file = trim($myfile,'/');
 		$end = ']';
 		$entry['elevation'] = '<span class="leafexttooltip" href="#" '.
 		'onclick="leafext_createShortcode(\''.$shortcode.'\',\''.$uploadurl.'\',\''.$file.'\',\''.$end.'\')" '.
@@ -207,16 +205,17 @@ function leafext_files_table($track_files) {
 		<span class="leafextcopy" id="leafextTooltip">Copy to clipboard</span>
 		<code>[elevation gpx="..."]</code></span>';
 
-		$shortcode = '[elevation-track file=';
-		$uploadurl = $upload_url;
-		$file = trim($myfile,'/');
-		$end = ']';
-		$entry['multielevation'] = '<span class="leafexttooltip" href="#" '.
-		'onclick="leafext_createShortcode(\''.$shortcode.'\',\''.$uploadurl.'\',\''.$file.'\',\''.$end.'\')" '.
-		'onmouseout="leafext_outFunc()">
-		<span class="leafextcopy" id="leafextTooltip">Copy to clipboard</span>
-		<code>[elevation-track file="..."]</code></span>';
-
+		if ($path_parts['extension'] == 'gpx'){
+			$shortcode = '[elevation-track file=';
+			$end = ']';
+			$entry['multielevation'] = '<span class="leafexttooltip" href="#" '.
+			'onclick="leafext_createShortcode(\''.$shortcode.'\',\''.$uploadurl.'\',\''.$file.'\',\''.$end.'\')" '.
+			'onmouseout="leafext_outFunc()">
+			<span class="leafextcopy" id="leafextTooltip">Copy to clipboard</span>
+			<code>[elevation-track file="..."]</code></span>';
+		} else {
+			$entry['multielevation'] = '';
+		}
 		$track_table[] = $entry;
 	}
 

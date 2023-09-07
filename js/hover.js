@@ -204,7 +204,7 @@ function leafext_hover_markergroupstyle_js(all_options) {
 }
 
 function leafext_hover_geojsontooltip_js(tooltip,all_options) {
-  var snap = parseInt(all_options['snap']);
+  var snap = parseInt(all_options['popupclose']);
   var map = window.WPLeafletMapPlugin.getCurrentMap();
   var map_id = map._leaflet_id;
   //console.log(map_id);

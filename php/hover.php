@@ -150,8 +150,8 @@ function leafext_hover_params($typ = '') {
 			'changeable' => true,
 		),
 		array(
-			'param' => 'snap',
-			'desc' => __('At which distance of the mouse from a popup the popup closes. If it is 0, this is disabled','extensions-leaflet-map'),
+			'param' => 'popupclose',
+			'desc' => __('At which distance of the mouse from a popup the popup closes. If it is 0, this is disabled, e.g. keep the popup open.','extensions-leaflet-map'),
 			'default' => 50,
 			'values' => __('a number',"extensions-leaflet-map"),
 			'element' => false,
