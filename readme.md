@@ -44,7 +44,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 *  Hide Markers: Use it when a track loaded with leaflet-gpx contains some markers and you don't want to display them on the map.
 *  Styling marker in geojson files.
 *  Option to migrate from [WP GPX Maps](https://wordpress.org/plugins/wp-gpx-maps/) to elevation
-*  Overview map (idea from @codade)
+*  Overview map with geo positions provided in the pages and posts (idea from @codade)
 
 ## Screenshots
 
@@ -114,13 +114,12 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.5.2 / 23080x
+### 3.5.3 / 2309xx
 
-* leaflet-elevation 2.5.0
-* local hosting of d3.min.js and tmcw/togeojson.umd.js
-* bug multielevation: removed map.zoomControl (+/-)
-* bug layerswitch: fixed extra options (Javascript in admin backend) in leafext_layerswitch_tiles_script and max_zoom
-* CSP: prevent unsafe-eval for turf
+* new shortcode overviewmap: generates an overview map with geo positions provided in the pages and posts
+* new options for hover: class (style the tooltip) and popupclose (keep the popup open or not)
+* reduce inline Javascript for geojsonmarker
+* multielevation accepts now also kml files (may work)
 
 ### Previous
 

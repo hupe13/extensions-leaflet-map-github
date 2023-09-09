@@ -1,3 +1,11 @@
+### 3.5.2 / 230808
+
+* leaflet-elevation 2.5.0
+* local hosting of d3.min.js and tmcw/togeojson.umd.js
+* bug multielevation: removed map.zoomControl (+/-)
+* bug layerswitch: fixed extra options (Javascript in admin backend) in leafext_layerswitch_tiles_script and max_zoom
+* CSP: prevent unsafe-eval for turf
+
 ### 3.5.1 / 230627
 
 * fixed bug with yAxisMin

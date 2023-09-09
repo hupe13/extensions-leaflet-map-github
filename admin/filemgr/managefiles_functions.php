@@ -125,8 +125,8 @@ function leafext_files_table($track_files) {
 	'<b>'.__(''.__('Preview','extensions-leaflet-map').'','extensions-leaflet-map').'</b>',
 	'<b>'.__('Media Library','extensions-leaflet-map').'</b>',
 	'<b>'.__('leaflet Shortcode','extensions-leaflet-map').'</b>',
-	'<b>'.__('elevation<sup>*</sup> Shortcode','extensions-leaflet-map').'</b>',
-	'<b>'.__('track in multielevation<sup>*,**</sup>','extensions-leaflet-map').'</b>');
+	'<b>'.__('elevation<sup>1</sup> Shortcode','extensions-leaflet-map').'</b>',
+	'<b>'.__('track in multielevation<sup>1,2</sup>','extensions-leaflet-map').'</b>');
 	$track_table[] = $entry;
 
 	foreach ($track_files as $file) {
@@ -205,7 +205,7 @@ function leafext_files_table($track_files) {
 		<span class="leafextcopy" id="leafextTooltip">Copy to clipboard</span>
 		<code>[elevation gpx="..."]</code></span>';
 
-		if ($path_parts['extension'] == 'gpx'){
+		if ($path_parts['extension'] == 'gpx' || $path_parts['extension'] == 'kml' ){
 			$shortcode = '[elevation-track file=';
 			$end = ']';
 			$entry['multielevation'] = '<span class="leafexttooltip" href="#" '.
@@ -220,8 +220,9 @@ function leafext_files_table($track_files) {
 	}
 
 	$text = leafext_html_table($track_table);
-	$text = $text.'<small>&nbsp;&nbsp;* - '.__('It is not checked whether the file contains a track with elevation data.','extensions-leaflet-map').'</small>';
-	$text = $text.'<br><small>** - '.sprintf(__("Don't forget %s at last.",'extensions-leaflet-map'),'<code>[multielevation]</code>').'</small>';
+	$text = $text.'<small>&nbsp;&nbsp;<sup>1</sup> - '.__('It is not checked whether the file contains a track with elevation data.','extensions-leaflet-map').'</small>';
+	$text = $text.'<br><small>&nbsp;&nbsp;<sup>2</sup> - '.__("It works with gpx files, it may work with kml files.",'extensions-leaflet-map').' ';
+	$text = $text.sprintf(__("Don't forget to declare %s at last statement.",'extensions-leaflet-map'),'<code>[multielevation]</code>').'</small>';
 	return $text;
 }
 

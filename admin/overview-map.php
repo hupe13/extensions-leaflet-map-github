@@ -6,7 +6,7 @@ function leafext_overviewmap_help(){
     $text = '<h2>'.__('Overview Map',"extensions-leaflet-map").'</h2>';
   }
 
-  $text=$text.__('Create an overview map with your pages and posts.','extensions-leaflet-map');
+  $text=$text.__('Generates an overview map with geo positions provided in the pages and posts.','extensions-leaflet-map');
   $text=$text.'<h3>'.__('Preparation','extensions-leaflet-map').'</h3>';
 
   $text = $text.'<ul><li>'.__('Create for every desired page or post the below mentioned customs fields.','extensions-leaflet-map').'</li>';

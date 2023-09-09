@@ -181,15 +181,16 @@ function leafext_elevation_track($atts,$content,$shortcode) {
 		$params = shortcode_atts($defaults, $atts);
 
 		$multioptions = shortcode_atts(leafext_multielevation_settings(array('point')), leafext_clear_params($atts)); // filename or not?
+		$path_parts = pathinfo($atts['file']);
 		if ( boolval($multioptions['filename']) ) {
-			$path_parts = pathinfo($atts['file']);
 			$params['name'] = $path_parts['filename'];
 		}
 
 		if ( $params['lat'] == "" || $params['lng'] == "" || $params['name'] == "" ) {
 			$gpx = simplexml_load_file($atts['file']);
 			if ($gpx ===  FALSE) {
-				$text = "[elevation-track read error ";
+				$text = "[*elevation-track read error ";
+				$text = $text . $atts['file'];
 				foreach ($params as $key=>$item){
 					$text = $text. "$key=$item ";
 				}
@@ -199,10 +200,27 @@ function leafext_elevation_track($atts,$content,$shortcode) {
 		}
 
 		if ( $params['lat'] == "" || $params['lng'] == "" ) {
-			$latlng = array(
-				(float)$gpx->trk->trkseg->trkpt[0]->attributes()->lat,
-				(float)$gpx->trk->trkseg->trkpt[0]->attributes()->lon,
-			);
+			if ($path_parts['extension'] == "gpx") {
+				$latlng = array(
+					(float)$gpx->trk->trkseg->trkpt[0]->attributes()->lat,
+					(float)$gpx->trk->trkseg->trkpt[0]->attributes()->lon,
+				);
+			} else if ($path_parts['extension'] == "kml") {
+				$allcoordinates=$gpx->Document->Folder->Folder->Placemark->LineString->coordinates;
+				$coordsArray=explode("\n",$allcoordinates);
+				for ($i=0; $i<count($coordsArray);$i++) {
+			    $latlonheight=explode(",",$coordsArray[$i]);
+			    if (count($latlonheight) == 3) {
+			      $startlat = $latlonheight[1];
+			      $startlon = $latlonheight[0];
+			      break;
+			    }
+			  }
+				$latlng = array(
+					(float)$startlat,
+					(float)$startlon,
+				);
+			}
 		} else {
 			$latlng = array($params['lat'],$params['lng']);
 		}
@@ -210,7 +228,11 @@ function leafext_elevation_track($atts,$content,$shortcode) {
 		// filenames as tracknames?
 
 		if ( $params['name'] == "" ) {
-			$params['name'] = (string) $gpx->trk->name;
+			if ($path_parts['extension'] == "gpx") {
+				$params['name'] = (string) $gpx->trk->name;
+			} else if ($path_parts['extension'] == "kml") {
+				$params['name'] = (string) $gpx->Document->name;
+			}
 		}
 		//Fallback
 		if ( $params['name'] == "" ) {
