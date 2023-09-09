@@ -6,7 +6,7 @@ function leafext_overviewmap_help(){
     $text = '<h2>'.__('Overview Map',"extensions-leaflet-map").'</h2>';
   }
 
-  $text=$text.__('Generates an overview map with geo positions provided in the pages and posts.','extensions-leaflet-map');
+  $text=$text.'<p>'.__('Generates an overview map with geo positions provided in the pages and posts.','extensions-leaflet-map').'</p>';
   $text=$text.'<h3>'.__('Preparation','extensions-leaflet-map').'</h3>';
 
   $text = $text.'<ul><li>'.__('Create for every desired page or post the below mentioned customs fields.','extensions-leaflet-map').'</li>';
@@ -23,7 +23,7 @@ function leafext_overviewmap_help(){
     'desc' => "<strong>".__('Custom field','extensions-leaflet-map').'</strong>',
     'content' => "<strong>".__('Content','extensions-leaflet-map').'</strong>',
     'default' => "<strong>".__('Default name','extensions-leaflet-map').'</strong>',
-    'param' => "<strong>Option to change</strong>",
+    'param' => "<strong>".__('Option to change','extensions-leaflet-map').'</strong>',
   );
 
   foreach ($options as $option) {

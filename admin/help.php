@@ -131,7 +131,7 @@ function leafext_help_table($leafext_plugin_name="") {
 			'shortcode' => 'overviewmap',
 			'tab' => 'overviewmap',
 			'plugins' => '',
-			'doku' => '/development/doku/overviewmap/',
+			'doku' => '/doku/overviewmap/',
 			'kategorie' => '',
 			'examples' => '/extra/category/overviewmap/',
 		),

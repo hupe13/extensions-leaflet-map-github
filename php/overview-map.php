@@ -24,7 +24,7 @@ function leafext_overviewmap_settings() {
 			'desc' => sprintf(__('for the marker icon, optional.%s Default is taken from the overviewmap shortcode or it is the blue marker icon.',
 			"extensions-leaflet-map"),'<br>'),
 			'content' => '<ul>'.
-			'<li>'.__('either a marker filename',"extensions-leaflet-map").' <code>filename.ext</code></li>'.
+			'<li>'.__('either a icon filename',"extensions-leaflet-map").' <code>filename.ext</code></li>'.
 			'<li>'.__('or <code>leaflet-marker iconurl=... option=... ...</code> (like shortcode without brackets)',"extensions-leaflet-map").'</li>'.
 			'<li>'.__('or <code>leaflet-extramarker option=... ...</code> (like shortcode without brackets)',"extensions-leaflet-map").'</li>'.
 			'</ul>',
@@ -63,7 +63,7 @@ function leafext_overviewmap_params() {
 			'desc' => __('Select only pages / posts from these categories',"extensions-leaflet-map"),
 			'content' => __('',"extensions-leaflet-map"),
 			'default' => '',
-			'values' => 'a comma separated list of category names, slugs or IDs',
+			'values' => __('a comma separated list of category names, slugs or IDs',"extensions-leaflet-map"),
 		),
 		array(
 			'param' => 'debug',
