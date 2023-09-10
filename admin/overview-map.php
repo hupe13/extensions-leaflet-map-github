@@ -76,7 +76,7 @@ function leafext_overviewmap_help(){
   $text=$text.'<p>'.__('<b>iconUrl</b> is for icon filename required. The icons directory must be the same as from <b>iconUrl</b>.','extensions-leaflet-map').'</p>';
 
   $text=$text.'<h4>leafext_extramarker</h4>';
-  $text=$text.implode(', ',leafext_extramarker_options());
+  $text=$text.'<p>'.implode(', ',leafext_extramarker_options()).'</p>';
 
   $text=$text.'<p>'.sprintf(__('See %sexamples%s.','extensions-leaflet-map'),'<a href="https://leafext.de/extra/category/overviewmap/">','</a>').'</p>';
 
