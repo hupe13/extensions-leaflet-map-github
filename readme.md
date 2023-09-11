@@ -18,7 +18,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 ### Deutsch
 
-* Erzeuge ein Höhenprofil eines Tracks. Es gibt noch Beschleunigungsdiagramm, Steigungsdiagramm, Geschwindigkeitsdiagramm, Tempodiagramm. Du kannst auch mehrere Tracks auf einer Karte platzieren.
+* Erstelle ein Höhenprofil eines Tracks. Es gibt noch Beschleunigungsdiagramm, Steigungsdiagramm, Geschwindigkeitsdiagramm, Tempodiagramm. Du kannst auch mehrere Tracks auf einer Karte platzieren.
 
 * Standardmäßig verwendet Leaflet Map die Kacheln von openstreetmap.org. Du kannst weitere verwenden und zwischen ihnen umschalten.
 
