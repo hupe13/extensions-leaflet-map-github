@@ -14,7 +14,69 @@ License: GPLv2 or later
 
 Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
 
-### Used Leaflet Plugins and Elements
+### Functions
+
+### Deutsch
+
+* Erzeuge ein Höhenprofil eines Tracks. Es gibt noch Beschleunigungsdiagramm, Steigungsdiagramm, Geschwindigkeitsdiagramm, Tempodiagramm. Du kannst auch mehrere Tracks auf einer Karte platzieren.
+
+* Standardmäßig verwendet Leaflet Map die Kacheln von openstreetmap.org. Du kannst weitere verwenden und zwischen ihnen umschalten.
+
+* Viele Marker auf einer Karte werden unübersichtlich. Du kannst sie clustern und gestalten.
+
+* Du kannst Awesome-Markers verwenden.
+
+* Du kannst die Elemente auf der Karte nach Kriterien gruppieren und ein- und ausblenden.
+
+* Erstelle eine Übersichtskarte mit den auf den Seiten und Beiträgen hinterlegten Geopositionen. (Idee von @codade)
+
+* Erhalte Tooltips und Popups beim Überfahren eines Elementes mit der Maus.
+
+* Du kannst eine Choropleth-Karte gestalten.
+
+* Du kannst dir die Karte im Vollbildmodus anzeigen lassen.
+
+* Setze die Karte zurück.
+
+* Gestensteuerung
+
+* Verwalte deine Dateien für Leaflet Map.
+
+* Hilfe zum Migrieren von WP GPX Maps
+
+* und weitere Funktionen.
+
+### Englisch
+
+* Create an elevation chart profile of a track. There are also acceleration, slope, speed and tempo chart profiles. You can also place multiple tracks on one map.
+
+* By default Leaflet Map uses tiles from openstreetmap.org. You can use others and switch between them.
+
+* Many markers on a map become confusing. You can cluster and shape them.
+
+* You can use Awesome markers.
+
+* You can group the elements on the map by criteria and show/hide them.
+
+* Create an overview map with geo-locations provided in the pages and posts (idea from @codade).
+
+* Get tooltips and popups when hovering over an element.
+
+* You can design a choropleth map.
+
+* You can display the map in fullscreen mode.
+
+* Reset the map.
+
+* Gesture handling
+
+* Manage your files for Leaflet Map.
+
+* Help to migrate from WP GPX Maps
+
+* and more functions.
+
+### Used Leaflet Plugins
 
 *   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation), [Leaflet.i18n](https://github.com/yohanboniface/Leaflet.i18n): Track with an Elevation Profile.
 *   [leaflet-gpxgroup](https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js): Multiple tracks with elevation profiles on one map.
@@ -34,17 +96,6 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 *   [turf](https://github.com/Turfjs/turf): Advanced geospatial analysis for browsers and Node.js
 *   [leaflet-rotate](https://github.com/Raruto/leaflet-rotate): A Leaflet plugin that allows to add rotation functionality to map tiles
 *   [Leaflet.AlmostOver](https://github.com/makinacorpus/Leaflet.AlmostOver): This plugin allows to detect mouse click and overing events on lines, with a tolerance distance.
-
-### Other functions
-
-*  List files for Leaflet Map
-*  Hovering:
-     * Highlight a leaflet element on mouse over
-     * get a tooltip for a leaflet element on mouse over.
-*  Hide Markers: Use it when a track loaded with leaflet-gpx contains some markers and you don't want to display them on the map.
-*  Styling marker in geojson files.
-*  Option to migrate from [WP GPX Maps](https://wordpress.org/plugins/wp-gpx-maps/) to elevation
-*  Overview map with geo positions provided in the pages and posts (idea from @codade)
 
 ## Screenshots
 

@@ -38,10 +38,10 @@ function leafext_overviewmap_help(){
 
 
   $text=$text.'<h3>Shortcode</h3>
-  <pre><code>[leaflet-map fitbounds]
-[overviewmap latlngs=... icons=... options= ...]
+  <pre><code>&#091;leaflet-map fitbounds]
+&#091;overviewmap latlngs=... icons=... options= ...]
 // optional
-[hover class=leafext-overview-tooltip]
+&#091;hover class=leafext-overview-tooltip]
 </code></pre>';
 
   //$text = $text.'<p>'.__('You can use in shortcode <code>overviewmap</code> any of the options below.','extensions-leaflet-map').'</p>';

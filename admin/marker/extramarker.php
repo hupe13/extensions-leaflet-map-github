@@ -15,10 +15,10 @@ function leafext_extramarker_help() {
   '<a href="https://github.com/coryasilva/Leaflet.ExtraMarkers#icons">',
   '</a>').'</p>
   <h2>Shortcode</h2>';
-  $text = $text.'<pre><code>[&#173;leaflet-map fitbounds ....]'."\n";
-  $text = $text.'[&#173;leaflet-extramarker option=... ...]description[/leaflet-extramarker]'."\n";
-  $text = $text.'[&#173;hover]'."\n";
-  $text = $text.'[&#173;zoomhomemap]</code></pre>';
+  $text = $text.'<pre><code>&#091;leaflet-map fitbounds ....]'."\n";
+  $text = $text.'&#091;leaflet-extramarker option=... ...]description[/leaflet-extramarker]'."\n";
+  $text = $text.'&#091;hover]'."\n";
+  $text = $text.'&#091;zoomhomemap]</code></pre>';
 
   // Setup map
   $shapes = array ('circle', 'square', 'star', 'penta');

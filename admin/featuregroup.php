@@ -36,21 +36,21 @@ Use %s to group elements by options and %s to group elements by properties.','ex
 ';
 
   $text=$text.'<h3>Shortcode</h3>
-  <pre><code>[leaflet-map fitbounds]
+  <pre><code>&#091;leaflet-map fitbounds]
 //any many
-[leaflet-marker      ...] ... [/leaflet-marker]
-[leaflet-extramarker ...] ... [/leaflet-extramarker]
-[leaflet-polygon     ...] ... [/leaflet-polygon]
-[leaflet-circle      ...] ... [/leaflet-circle]
-[leaflet-line        ...] ... [/leaflet-line]
-[leaflet-geojson     ...] ... [/leaflet-geojson]
-[leaflet-gpx         ...] ... [/leaflet-gpx]
-[leaflet-kml         ...] ... [/leaflet-kml]
+&#091;leaflet-marker      ...] ... &#091;/leaflet-marker]
+&#091;leaflet-extramarker ...] ... &#091;/leaflet-extramarker]
+&#091;leaflet-polygon     ...] ... &#091;/leaflet-polygon]
+&#091;leaflet-circle      ...] ... &#091;/leaflet-circle]
+&#091;leaflet-line        ...] ... &#091;/leaflet-line]
+&#091;leaflet-geojson     ...] ... &#091;/leaflet-geojson]
+&#091;leaflet-gpx         ...] ... &#091;/leaflet-gpx]
+&#091;leaflet-kml         ...] ... &#091;/leaflet-kml]
 //one or more
 //suitable for all leaflet-elements above
-[leaflet-optiongroup option="..." values="..., ..." groups="..., ..." substr visible=...]
+&#091;leaflet-optiongroup option="..." values="..., ..." groups="..., ..." substr visible=...]
 //suitable for leaflet-geojson, leaflet-gpx, leaflet-kml.
-[leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." <span style="color: #d63638">!</span>substr visible=...]</code></pre>';
+&#091;leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." <span style="color: #d63638">!</span>substr visible=...]</code></pre>';
 	$text=$text.'<h3>leaflet-optiongroup option</h3>'.
 	sprintf(__('Each of the above leaflet elements has options. These are from the shortcode %s and are fixed.','extensions-leaflet-map'),'<code>leaflet-...</code>').' ';
 
@@ -187,8 +187,8 @@ Use %s to group elements by options and %s to group elements by properties.','ex
 		"unknown"
 		).
 		'</p><h3>Shortcode groups unknown '.__('and','extensions-leaflet-map').' others</h3>
-	<pre><code>[leaflet-optiongroup option="..." values="...,...,others,unknown" groups="...,...,Other elements,Unknown elements"]
-[leaflet-featuregroup property="..." values="...,...,others,unknown" groups="...,...,Other elements,Unknown elements"]</code></pre>';
+	<pre><code>&#091;leaflet-optiongroup option="..." values="...,...,others,unknown" groups="...,...,Other elements,Unknown elements"]
+&#091;leaflet-featuregroup property="..." values="...,...,others,unknown" groups="...,...,Other elements,Unknown elements"]</code></pre>';
 
 if (is_singular() || is_archive() ) {
 	$clusterref = get_site_url().'/doku/cluster/';
@@ -210,8 +210,8 @@ if (is_singular() || is_archive() ) {
 	'<code>leaflet-featuregroup</code>')
 	.'</p>';
 }
-$text = $text.'<pre><code>[leaflet-optiongroup option="..." values="..., ..." groups="..., ..." visible=...]
-[leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." visible=...]</code></pre>';
+$text = $text.'<pre><code>&#091;leaflet-optiongroup option="..." values="..., ..." groups="..., ..." visible=...]
+&#091;leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." visible=...]</code></pre>';
 	if (is_singular() || is_archive() ) {
 		return $text;
 	} else {

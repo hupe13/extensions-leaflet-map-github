@@ -9,16 +9,16 @@ function leafext_leafletsearch_help(){
   $text=$text.'<p>'.__('A control for search Markers/Features location by custom property.',"extensions-leaflet-map").'</p>';
 
   $text=$text.'<h3>Shortcode</h3>
-  <pre><code>[&#173;leaflet-map fitbounds]
+  <pre><code>&#091;leaflet-map fitbounds]
 //any many
-[&#173;leaflet-marker      ...] ... [/leaflet-marker]
-[&#173;leaflet-extramarker ...] ... [/leaflet-extramarker]
-[&#173;leaflet-polygon     ...] ... [/leaflet-polygon]
-[&#173;leaflet-circle      ...] ... [/leaflet-circle]
-[&#173;leaflet-line        ...] ... [/leaflet-line]
-[&#173;leaflet-geojson     ...] ... [/leaflet-geojson]
+&#091;leaflet-marker      ...] ... [/leaflet-marker]
+&#091;leaflet-extramarker ...] ... [/leaflet-extramarker]
+&#091;leaflet-polygon     ...] ... [/leaflet-polygon]
+&#091;leaflet-circle      ...] ... [/leaflet-circle]
+&#091;leaflet-line        ...] ... [/leaflet-line]
+&#091;leaflet-geojson     ...] ... [/leaflet-geojson]
 //one or more
-[&#173;leaflet-search propertyName="..." ...]</code></pre>';
+&#091;leaflet-search propertyName="..." ...]</code></pre>';
   $text = $text.'<p><h2>'.__('Options','extensions-leaflet-map').'</h2></p>';
 
   $options=leafext_search_params();
@@ -55,7 +55,7 @@ function leafext_leafletsearch_help(){
 &lt;/style></code></pre>';
 $text=$text.'<style>.leaflet-control-search.search-exp { border: none !important;}.search-input {width: 80%;}</style>';
   $text=$text.'<p>'.__('Define a leaflet-search command with the option container:',"extensions-leaflet-map").'</p>';
-  $text=$text.'<p><code>[&#173;leaflet-search propertyname=... ... container=myId ...]</code>'.'</p>';
+  $text=$text.'<p><code>&#091;leaflet-search propertyname=... ... container=myId ...]</code>'.'</p>';
   $text=$text.'<div id="myId" style="height:3em; border:2px solid gray; width:200px;"></div>';
   $text=$text.do_shortcode('[leaflet-map !boxZoom !doubleClickZoom !dragging !keyboard !scrollwheel !attribution !touchZoom !show_scale height=200 width=200 fitbounds min_zoom=12 max_zoom=16]');
   $text=$text.do_shortcode('[leaflet-marker lat=0.0 lng=0.0]Marker[/leaflet-marker]');
