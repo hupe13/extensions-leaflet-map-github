@@ -30,7 +30,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 * Erstelle eine Übersichtskarte mit den auf den Seiten und Beiträgen hinterlegten Geopositionen. (Idee von @codade)
 
-* Erhalte Tooltips und Popups beim Überfahren eines Elementes mit der Maus.
+* Erhalte einen Tooltip beim Überfahren eines Elementes mit der Maus.
 
 * Du kannst eine Choropleth-Karte gestalten.
 
@@ -46,7 +46,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 * und weitere Funktionen.
 
-### Englisch
+### English
 
 * Create an elevation chart profile of a track. There are also acceleration, slope, speed and tempo chart profiles. You can also place multiple tracks on one map.
 
@@ -60,7 +60,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 * Create an overview map with geo-locations provided in the pages and posts (idea from @codade).
 
-* Get tooltips and popups when hovering over an element.
+* Get a tooltip when hovering over an element.
 
 * You can design a choropleth map.
 
