@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, elevation, markercluster, Leaflet Plugins   
 Tested up to: 6.3  
-Stable tag: 3.5.2  
+Stable tag: 3.5.3  
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later  
@@ -38,11 +38,11 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 * Setze die Karte zurück.
 
-* Gestensteuerung
+* Gestensteuerung.
 
 * Verwalte deine Dateien für Leaflet Map.
 
-* Hilfe zum Migrieren von WP GPX Maps
+* Hilfe zum Migrieren von [WP GPX Maps](https://wordpress.org/plugins/wp-gpx-maps/).
 
 * und weitere Funktionen.
 
@@ -72,7 +72,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 * Manage your files for Leaflet Map.
 
-* Help to migrate from WP GPX Maps
+* Help to migrate from [WP GPX Maps](https://wordpress.org/plugins/wp-gpx-maps/).
 
 * and more functions.
 
