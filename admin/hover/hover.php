@@ -11,7 +11,7 @@ function leafext_help_hover() {
 
   $text = $text. '<h2>Shortcode</h2>
   <h4>'.__('Create Map','extensions-leaflet-map').'</h4>
-  <pre><code>[leaflet-map ...]</code></pre>
+  <pre><code>&#091;leaflet-map ...]</code></pre>
   <h4>'.sprintf(__('Load any elements with any %s shortcode','extensions-leaflet-map'),
   'leaflet-*').'</h4>';
   $text = $text.'<ul>';
@@ -25,19 +25,19 @@ function leafext_help_hover() {
   $text = $text.'</ul>';
 
   $text = $text.'<pre><code>// any many
-[leaflet-marker ...]Marker ...[/leaflet-marker]
-[leaflet-marker title=... ...]Marker ...[/leaflet-marker]
-[leaflet-extramarker ...]Marker ...[/leaflet-extramarker]
-[leaflet-extramarker title=... ...]Marker ...[/leaflet-extramarker]
-[leaflet-geojson ...]{name}[/leaflet-geojson]
-[leaflet-gpx ...]{name}[/leaflet-gpx]
-[leaflet-kml ...]{name}[/leaflet-kml]
-[leaflet-polygon ...]Polygon ...[/leaflet-polygon]
-[leaflet-circle ...]Circle ...[/leaflet-circle]
-[leaflet-line ...]Line ...[/leaflet-line]</code></pre>';
+&#091;leaflet-marker ...]Marker ...&#091;/leaflet-marker]
+&#091;leaflet-marker title=... ...]Marker ...&#091;/leaflet-marker]
+&#091;leaflet-extramarker ...]Marker ...&#091;/leaflet-extramarker]
+&#091;leaflet-extramarker title=... ...]Marker ...&#091;/leaflet-extramarker]
+&#091;leaflet-geojson ...]{name}&#091;/leaflet-geojson]
+&#091;leaflet-gpx ...]{name}&#091;/leaflet-gpx]
+&#091;leaflet-kml ...]{name}&#091;/leaflet-kml]
+&#091;leaflet-polygon ...]Polygon ...&#091;/leaflet-polygon]
+&#091;leaflet-circle ...]Circle ...&#091;/leaflet-circle]
+&#091;leaflet-line ...]Line ...&#091;/leaflet-line]</code></pre>';
 
 $text=$text.'<h4>'.__('And hover','extensions-leaflet-map').'</h4>'
-.'<pre><code>[hover]</code></pre>'.
+.'<pre><code>&#091;hover]</code></pre>'.
 '<h3>'.__('Options','extensions-leaflet-map').'</h3>';
 
 $text=$text.'<p>'.__("By default, all elements react to hover. If you don't want this, you have the following options.",'extensions-leaflet-map').'</p>';

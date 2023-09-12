@@ -11,29 +11,29 @@ function leafext_help_hoverlap() {
 
   $text = $text. '<h2>Shortcode</h2>
   <h4>'.__('Create Map','extensions-leaflet-map').'</h4>
-  <pre><code>[leaflet-map ...]</code></pre>
+  <pre><code>&#091;leaflet-map ...]</code></pre>
   <h4>'.sprintf(__('Load any elements with any %s shortcode.','extensions-leaflet-map'),
   'leaflet-*').'</h4>';
 
   $text = $text.'<pre><code>// some, but not ovarlapping with other markers
-[leaflet-marker ...]...[/leaflet-marker]
-[leaflet-extramarker ...]...[/leaflet-extramarker]
+&#091;leaflet-marker ...]...&#091;/leaflet-marker]
+&#091;leaflet-extramarker ...]...&#091;/leaflet-extramarker]
 // any many
-[leaflet-geojson ...]{name}[/leaflet-geojson]
-[leaflet-gpx ...]{name}[/leaflet-gpx]
-[leaflet-kml ...]{name}[/leaflet-kml]
-[leaflet-polygon ...]Polygon ...[/leaflet-polygon]
-[leaflet-circle ...]Circle ...[/leaflet-circle]
-[leaflet-line ...]Line ...[/leaflet-line]</code></pre>';
+&#091;leaflet-geojson ...]{name}&#091;/leaflet-geojson]
+&#091;leaflet-gpx ...]{name}&#091;/leaflet-gpx]
+&#091;leaflet-kml ...]{name}&#091;/leaflet-kml]
+&#091;leaflet-polygon ...]Polygon ...&#091;/leaflet-polygon]
+&#091;leaflet-circle ...]Circle ...&#091;/leaflet-circle]
+&#091;leaflet-line ...]Line ...&#091;/leaflet-line]</code></pre>';
 
 $text=$text.'<h4>'.__('And hoverlap','extensions-leaflet-map').'</h4>'
-.'<pre><code>[hoverlap]</code></pre>'.
+.'<pre><code>&#091;hoverlap]</code></pre>'.
 '<h3>'.__('Options','extensions-leaflet-map').'</h3>';
 
 $text=$text.'<p>'.sprintf(__('The options %s and %s are the same as for the %s shortcode.','extensions-leaflet-map'),
 '<code>exclude</code>, <code>tolerance</code>','<code>class</code>','<code>hover</code>');
 $text=$text.'<br>'.sprintf(__('For overlapping markers see %s or %s.','extensions-leaflet-map'),
-'<code>[cluster]</code>','<a href="https://leafext.de/extra/spiderfier/">Overlapping Marker Spiderfier for Leaflet</a>')
+'<code>&#091;cluster]</code>','<a href="https://leafext.de/extra/spiderfier/">Overlapping Marker Spiderfier for Leaflet</a>')
 .'</p>';
 
 $text=$text.

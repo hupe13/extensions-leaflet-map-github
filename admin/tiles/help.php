@@ -47,18 +47,18 @@ function leafext_help_tiles() {
   '</a>').'</p>';
 
   $text = $text.'<h2>Shortcode</h2>';
-	$text = $text.'<pre><code>[leaflet-map mapid="..."]
-[layerswitch tiles="mapid1,mapid2,..." mapids="mapid3,mapid4,..." providers="provider1,provider2,..." opacity="mapid1,provider1,..."]
+	$text = $text.'<pre><code>&#091;leaflet-map mapid="..."]
+&#091;layerswitch tiles="mapid1,mapid2,..." mapids="mapid3,mapid4,..." providers="provider1,provider2,..." opacity="mapid1,provider1,..."]
 </code></pre>';
 $text = $text.'
   <h3>Parameter</h3>
   <ul>
-  <li> <code>[leaflet-map]</code>
+  <li> <code>&#091;leaflet-map]</code>
   <ul>
   <li> '.__('see Leaflet Map documentation','extensions-leaflet-map').'</li>
   <li> '.__('optional: <code>mapid</code> - This appears in the switching control.','extensions-leaflet-map').'</li>
   </ul></li>
-   <li> <code>[layerswitch]</code>
+   <li> <code>&#091;layerswitch]</code>
    <ul>
    <li> '.sprintf(__('without any parameter: All your defined %stile servers%s are used.','extensions-leaflet-map'),
    '<a href="'.$tileswitch.'">',

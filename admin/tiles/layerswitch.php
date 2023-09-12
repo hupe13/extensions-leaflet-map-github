@@ -109,13 +109,13 @@ function leafext_maps_help_text() {
 	$text = $text.__('Per default all defined tile servers appear.',
 	'extensions-leaflet-map');
 	$text = $text.'</p>
-	<pre><code>[leaflet-map mapid="..." ...]
-[layerswitch]
+	<pre><code>&#091;leaflet-map mapid="..." ...]
+&#091;layerswitch]
 </code></pre>';
 	$text = $text.'<p>'.__('You can select your defined Tile Server with parameter <code>tiles</code> as comma separated list in the shortcode:',
 	'extensions-leaflet-map').'</p>';
-	$text = $text.'<pre><code>[leaflet-map mapid="..." ...]
-[layerswitch tiles="mapid1,mapid2,..."]
+	$text = $text.'<pre><code>&#091;leaflet-map mapid="..." ...]
+&#091;layerswitch tiles="mapid1,mapid2,..."]
 </code></pre>';
 $text = $text.'<p>'.__('You can use the parameter <code>providers</code> also.','extensions-leaflet-map').'</p>';
 	if (!(is_singular()|| is_archive())) {

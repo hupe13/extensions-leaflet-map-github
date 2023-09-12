@@ -54,15 +54,15 @@ function leafext_clustergroup_help_text () {
 			</ul>
 
 			<h3>'.__('Shortcode for grouping leaflet-markers','extensions-leaflet-map').'</h3>
-			<pre><code>[leaflet-marker iconUrl="...red..." ... ] ... [/leaflet-marker]
-[leaflet-marker iconUrl="...green..." ... ] ... [/leaflet-marker]
+			<pre><code>&#091;leaflet-marker iconUrl="...red..." ... ] ... &#091;/leaflet-marker]
+&#091;leaflet-marker iconUrl="...green..." ... ] ... &#091;/leaflet-marker]
 //many markers
-[markerClusterGroup feat="iconUrl" strings="red,green" groups="rot,gruen" visible=...]</code></pre>'
+&#091;markerClusterGroup feat="iconUrl" strings="red,green" groups="rot,gruen" visible=...]</code></pre>'
 			.__('or','extensions-leaflet-map').
-			'<pre><code>[leaflet-marker title="first ..." ... ] ... [/leaflet-marker]
-[leaflet-marker title="second ..." ... ] ... [/leaflet-marker]
+			'<pre><code>&#091;leaflet-marker title="first ..." ... ] ... &#091;/leaflet-marker]
+&#091;leaflet-marker title="second ..." ... ] ... &#091;/leaflet-marker]
 //many markers
-[markerClusterGroup feat="title" strings="first,second" groups="First Group,Second Group" visible=...]</code></pre>
+&#091;markerClusterGroup feat="title" strings="first,second" groups="First Group,Second Group" visible=...]</code></pre>
 			<h3>'.__('Options for grouping markers (points) in leaflet-geojson','extensions-leaflet-map').'</h3>
 			<ul>
 			<li><code>feat</code> - '.__('possible meaningful values','extensions-leaflet-map').': <code>iconUrl</code>, <code>properties.<i>property</i></code></li>
@@ -103,14 +103,14 @@ function leafext_clustergroup_help_text () {
 					).'</li></ul>
 
 					<h3>'.__('Shortcode for grouping markers (points) in leaflet-geojson','extensions-leaflet-map').'</h3>
-		<pre><code>[leaflet-geojson src="..." iconUrl="...red..." ... ] ... [/leaflet-geojson]
-[leaflet-geojson src="..." iconUrl="...green..." ... ] ... [/leaflet-geojson]
+		<pre><code>&#091;leaflet-geojson src="..." iconUrl="...red..." ... ] ... &#091;/leaflet-geojson]
+&#091;leaflet-geojson src="..." iconUrl="...green..." ... ] ... &#091;/leaflet-geojson]
 //any more leaflet-geojson
-[markerClusterGroup feat="iconUrl" strings="red,green" groups="rot,gruen" visible=...]</code></pre>'
+&#091;markerClusterGroup feat="iconUrl" strings="red,green" groups="rot,gruen" visible=...]</code></pre>'
 					.__('or','extensions-leaflet-map').
-	'<pre><code>[leaflet-geojson src="..."  ... ] ... [/leaflet-geojson]
+	'<pre><code>&#091;leaflet-geojson src="..."  ... ] ... &#091;/leaflet-geojson]
 //any more leaflet-geojson
-[markerClusterGroup feat="properties.<span style="color: #d63638">prop0</span>" strings="<span style="color: #4f94d4">value0</span>,..." groups="Description0,..." visible=...]</code></pre>
+&#091;markerClusterGroup feat="properties.<span style="color: #d63638">prop0</span>" strings="<span style="color: #4f94d4">value0</span>,..." groups="Description0,..." visible=...]</code></pre>
 <h3>groups unknown '.__('and','extensions-leaflet-map').' others</h3><p>'.
 sprintf(
 __('If %s contains %s and %s, then markers (respectively Points) for which the property %s does not apply are placed in the %s group. Markers (respectively Points) whose property is not known are placed in the %s group. See also the developer console.','extensions-leaflet-map'),
@@ -122,7 +122,7 @@ __('If %s contains %s and %s, then markers (respectively Points) for which the p
 			"unknown"
 			).
 			'</p><h3>Shortcode groups unknown '.__('and','extensions-leaflet-map').' others</h3>
-<pre><code>[markerClusterGroup feat="..." strings="...,...,others,unknown" groups="...,...,Other properties,Unknown properties"]</code></pre>';
+<pre><code>&#091;markerClusterGroup feat="..." strings="...,...,others,unknown" groups="...,...,Other properties,Unknown properties"]</code></pre>';
 
 	$textoptions = '<p>'.sprintf ( __('The parameter and settings for %s are valid too.','extensions-leaflet-map'),
 			'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=markercluster">Leaflet.markercluster</a>');

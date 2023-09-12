@@ -11,7 +11,7 @@ function leafext_choropleth_help() {
 
   $text=$text.'
   <h2>Shortcode</h2>';
-  $text = $text.'<p><pre><code>&#91;leaflet-map fitbounds ....]'."\n";
+  $text = $text.'<p><pre><code>&#091;leaflet-map fitbounds ....]'."\n";
   $text = $text.'[leaflet-geojson src=https://domain.tld/path/to/file.geojson][/leaflet-geojson]
 [choropleth valueProperty="property1" scale="white, red" steps=5 mode=e legend fillopacity=0.8]Property1 {property1}&lt;br>{property2} Property2[/choropleth]
 [zoomhomemap]';

@@ -19,7 +19,7 @@ function leafext_help_geojsonmarker() {
     $extramarker = '?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=extramarker';
   }
 
-  $text='<h3>'.__('Design markers from geojson files according to their properties',
+  $text='<h3>'.__('Design and group markers from geojson files according to their properties',
 	'extensions-leaflet-map').'</h3>';
   $text=$text.'<p>'.
 	sprintf(__('A %s in a geojson file is specified like this:',
@@ -40,15 +40,15 @@ function leafext_help_geojsonmarker() {
 
 	$text=$text.'<h3>Shortcode</h3>
 
-<pre><code>[geojsonmarker property=<span style="color: #d63638">property</span> values=... iconprops=... icondefault=<span style="color: #4f94d4">blue</span> groups=... visible=... <i>cluster-options</i>]</code></pre>
+<pre><code>&#091;geojsonmarker property=<span style="color: #d63638">property</span> values=... iconprops=... icondefault=<span style="color: #4f94d4">blue</span> groups=... visible=... <i>cluster-options</i>]</code></pre>
 
-<pre><code>[geojsonmarker property=<span style="color: #d63638">property</span> auto <i>cluster-options</i>]</code></pre>
+<pre><code>&#091;geojsonmarker property=<span style="color: #d63638">property</span> auto <i>cluster-options</i>]</code></pre>
 
 <h3>circleMarker</h3>'
 .sprintf(__('If you want to use CircleMarker you must specify %s and optional %s and %s in %s shortcode.','extensions-leaflet-map'),
 '<code>circlemarker</code>','<code>color</code>','<code>radius</code>','<code>leaflet-geojson</code>')
-.'<pre><code>[leaflet-geojson src="//url/to/file.geojson" circleMarker color=<span style="color: #4f94d4">blue</span> radius=...]
-[geojsonmarker property=<span style="color: #d63638">property</span> icondefault=<span style="color: #4f94d4">blue</span> ...]</code></pre>
+.'<pre><code>&#091;leaflet-geojson src="//url/to/file.geojson" circleMarker color=<span style="color: #4f94d4">blue</span> radius=...]
+&#091;geojsonmarker property=<span style="color: #d63638">property</span> icondefault=<span style="color: #4f94d4">blue</span> ...]</code></pre>
 
 <h3>'.__('Marker with icon','extensions-leaflet-map').'</h3>'.
 
@@ -57,8 +57,8 @@ sprintf(__('The markers should have the same %s, only %s differs.','extensions-l
 '<code>iconurl</code>').' '.
 sprintf(__('The substring %s will be replaced in the path of the %s with any of %s.','extensions-leaflet-map'),
 '<code>icondefault</code>','<code>iconurl</code>','<code>iconprops</code>')
-.'<pre><code>[leaflet-geojson src="//url/to/file.geojson" iconurl="//url/to/marker-icon-<span style="color: #4f94d4">blue</span>.png" iconsize=... iconanchor="..,.." popupanchor="..,.."  tooltipanchor="..,.." shadowurl="//url/to/marker-shadow.png" shadowsize=... shadowanchor=...]
-[geojsonmarker property=<span style="color: #d63638">property</span> values=... iconprops=... icondefault=<span style="color: #4f94d4">blue</span> ...]</code></pre>
+.'<pre><code>&#091;leaflet-geojson src="//url/to/file.geojson" iconurl="//url/to/marker-icon-<span style="color: #4f94d4">blue</span>.png" iconsize=... iconanchor="..,.." popupanchor="..,.."  tooltipanchor="..,.." shadowurl="//url/to/marker-shadow.png" shadowsize=... shadowanchor=...]
+&#091;geojsonmarker property=<span style="color: #d63638">property</span> values=... iconprops=... icondefault=<span style="color: #4f94d4">blue</span> ...]</code></pre>
 
 <h3>Extramarker</h3>'.
 sprintf(__('If you want to use ExtraMarkers you can specify %s options.','extensions-leaflet-map'),
@@ -67,9 +67,9 @@ sprintf(__('If you want to use ExtraMarkers you can specify %s options.','extens
 sprintf(__('For now, %s are mapped to %s. Maybe there are other options.','extensions-leaflet-map'),
 '<code>values</code>','<code>markerColor</code>')
 
-.'<pre><code>[leaflet-map fitbounds ...]
-[leaflet-geojson src="//url/to/file.geojson"]
-[geojsonmarker property=<span style="color: #d63638">property</span> icondefault=<span style="color: #4f94d4">blue</span> markerColor=<span style="color: #4f94d4">blue</span> <i>extramarker-options</i>] ...</code></pre>
+.'<pre><code>&#091;leaflet-map fitbounds ...]
+&#091;leaflet-geojson src="//url/to/file.geojson"]
+&#091;geojsonmarker property=<span style="color: #d63638">property</span> icondefault=<span style="color: #4f94d4">blue</span> markerColor=<span style="color: #4f94d4">blue</span> <i>extramarker-options</i>] ...</code></pre>
 
 
 <h3>Options</h3>
