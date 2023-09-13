@@ -23,7 +23,7 @@ function leafext_enqueue_awesome() {
   $font_awesome = array('font-awesome', 'fontawesome');
   if (leafext_plugin_stylesheet_installed($font_awesome) === 0) {
     wp_enqueue_style('font-awesome',
-    plugins_url('fonts/fontawesome-free-6.2.0-web/css/all.min.css',
+    plugins_url('fonts/fontawesome-free-6.4.2-web/css/all.min.css',
     LEAFEXT_PLUGIN_FILE),
     null, null);
   }

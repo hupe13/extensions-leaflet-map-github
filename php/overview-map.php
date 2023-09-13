@@ -14,7 +14,8 @@ $params = array(
 		'content' => '<ul>'.
 		'<li>'.__('either a comma or space separated pair of lat and lng',"extensions-leaflet-map").'</li>'.
 		'<li>'.__('or',"extensions-leaflet-map").' <code>lat=... lng=...</code> '.__('like in',"extensions-leaflet-map").' leaflet-marker'.'</li>'.
-		'<li>'.' <s>'.__('or <code>leaflet-gpx / leaflet-kml src=... </code>  (like shortcode without brackets)',"extensions-leaflet-map").'</s>'.'</li>'.
+		'<li>'.' <s>'.__('or',"extensions-leaflet-map").' <code>leaflet-gpx / leaflet-kml src=... </code> '.
+				__('(like shortcode without brackets)',"extensions-leaflet-map").'</s>'.'</li>'.
 		'</ul>',
 		'default' => 'overview-latlng',
 		'values' => '',
@@ -25,8 +26,10 @@ $params = array(
 		"extensions-leaflet-map"),'<br>'),
 		'content' => '<ul>'.
 		'<li>'.__('either a icon filename',"extensions-leaflet-map").' <code>filename.ext</code></li>'.
-		'<li>'.__('or <code>leaflet-marker iconurl=... option=... ...</code> (like shortcode without brackets)',"extensions-leaflet-map").'</li>'.
-		'<li>'.__('or <code>leaflet-extramarker option=... ...</code> (like shortcode without brackets)',"extensions-leaflet-map").'</li>'.
+		'<li>'.__('or',"extensions-leaflet-map").' <code>leaflet-marker iconurl=... option=... ...</code> '.
+		__('(like shortcode without brackets)',"extensions-leaflet-map").'</li>'.
+		'<li>'.__('or',"extensions-leaflet-map").' <code>leaflet-extramarker option=... ...</code> '.
+		__('(like shortcode without brackets)',"extensions-leaflet-map").'</li>'.
 		'</ul>',
 		'default' => 'overview-icon',
 		'values' => '',

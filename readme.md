@@ -76,26 +76,11 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 * and more functions.
 
-### Used Leaflet Plugins
+### Included Leaflet Plugins and fonts
 
-*   [leaflet-elevation](https://github.com/Raruto/leaflet-elevation), [Leaflet.i18n](https://github.com/yohanboniface/Leaflet.i18n): Track with an Elevation Profile.
-*   [leaflet-gpxgroup](https://github.com/Raruto/leaflet-elevation/blob/master/libs/leaflet-gpxgroup.js): Multiple tracks with elevation profiles on one map.
-*   [L.control.layers](https://leafletjs.com/examples/layers-control/): Switching tile layers.
-*   [Leaflet-providers](https://github.com/leaflet-extras/leaflet-providers): An extension that contains configurations for various tile providers.
-*   [Leaflet.Control.Opacity](https://github.com/dayjournal/Leaflet.Control.Opacity): Makes tile layers transparent.
-*   [Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster): Provides Beautiful Animated Marker Clustering functionality.
-*   [Leaflet.MarkerCluster.PlacementStrategies](https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies): Styling Markerclusters.
-*   [Leaflet.ExtraMarkers](https://github.com/coryasilva/Leaflet.ExtraMarkers): Shameless copy of Awesome-Markers with more shapes and colors.
-*   [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup): Grouping of Leaflet elements by options and features.
-*   [Leaflet Control Search](https://github.com/stefanocudini/leaflet-search): Search Markers/Features location by option or custom property.
-*   [leaflet-choropleth](https://github.com/timwis/leaflet-choropleth): Choropleth plugin for Leaflet (color scale based on value).
-*   [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome): Reset the view.
-*   [leaflet.fullscreen](https://github.com/brunob/leaflet.fullscreen): Simple plugin for Leaflet that adds fullscreen button to your maps.
-*   [Leaflet.GestureHandling](https://github.com/Raruto/leaflet-gesture-handling): A Leaflet plugin that allows to prevent default map scroll/touch behaviours.
-*   [Leaflet.GeometryUtil](https://github.com/makinacorpus/Leaflet.GeometryUtil)
-*   [turf](https://github.com/Turfjs/turf): Advanced geospatial analysis for browsers and Node.js
-*   [leaflet-rotate](https://github.com/Raruto/leaflet-rotate): A Leaflet plugin that allows to add rotation functionality to map tiles
-*   [Leaflet.AlmostOver](https://github.com/makinacorpus/Leaflet.AlmostOver): This plugin allows to detect mouse click and overing events on lines, with a tolerance distance.
+* [Leaflet plugins](https://github.com/hupe13/extensions-leaflet-map-github/tree/main/leaflet-plugins)
+
+* [Font Awesome 6](https://fontawesome.com/download)
 
 ## Screenshots
 
