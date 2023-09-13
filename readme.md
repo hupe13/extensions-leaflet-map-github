@@ -78,7 +78,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 ### Included Leaflet Plugins and fonts
 
-* [Leaflet plugins](https://github.com/hupe13/extensions-leaflet-map-github/tree/main/leaflet-plugins)
+* [Leaflet plugins](https://github.com/hupe13/extensions-leaflet-map-github/tree/main/leaflet-plugins/readme.md)
 
 * [Font Awesome 6](https://fontawesome.com/download)
 
