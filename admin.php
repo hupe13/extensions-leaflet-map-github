@@ -46,7 +46,7 @@ function leafext_do_page() {
 		submit_button();
 		echo '</form>';
 	} else if( $active_tab == 'zoomhome' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/help/zoomhome.php';
+		include LEAFEXT_PLUGIN_DIR . '/admin/zoomhome.php';
 		echo $text;
 	} else if( $active_tab == 'help' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/help.php';
@@ -103,7 +103,7 @@ function leafext_do_nonadmin_page() {
 		do_settings_sections( 'leafext_settings_gesture' );
 		echo '</form>';
 	} else if( $active_tab == 'zoomhome' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/help/zoomhome.php';
+		include LEAFEXT_PLUGIN_DIR . '/admin/zoomhome.php';
 		echo $text;
 	} else if( $active_tab == 'help' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/help.php';
@@ -158,38 +158,29 @@ function leafext_admin_tabs() {
 		echo '">'.__('Files for Leaflet Map',"extensions-leaflet-map").'</a>'."\n";
 	}
 	//
-	echo '<a href="?page='.$leafext_plugin_name.'&tab=extramarker" class="nav-tab';
-	if ( strpos( $active_tab, 'marker' ) !== false ) {
-		echo ' nav-tab-active';
-	}
-	echo '">'. __('Marker','extensions-leaflet-map'). '</a>'."\n";
-	//
-	echo '<a href="?page='.$leafext_plugin_name.'&tab=tileshelp" class="nav-tab';
-	if ( strpos( $active_tab, 'tiles' ) !== false ) {
-		echo ' nav-tab-active';
-	}
-	echo '">'. __('Tile Server','extensions-leaflet-map'). '</a>'."\n";
-	//
 	$tabs = array (
 		array (
+			'tab' => 'markercluster',
+			'title' => __('Functions for Markers','extensions-leaflet-map'),
+			'strpos' => 'marker',
+		),
+		array (
 			'tab' => 'featuregroup',
-			'title' => 'FeatureGroup',
+			'title' => __('Grouping by options and features','extensions-leaflet-map'),
 		),
 		array (
 			'tab' => 'leafletsearch',
-			'title' => 'Leaflet Control Search',
+			'title' => __('Search markers/features','extensions-leaflet-map'),
 		),
 		array (
-			'tab' => 'choropleth',
-			'title' => 'Choropleth Map',
+			'tab' => 'tiles',
+			'title' => __('Switching Tile Servers','extensions-leaflet-map'),
+			'strpos' => 'tiles',
 		),
 		array (
 			'tab' => 'hover',
-			'title' => __('Hovering','extensions-leaflet-map'),
-		),
-		array (
-			'tab' => 'gesture',
-			'title' => __('Gesture Handling','extensions-leaflet-map'),
+			'title' => __('Hovering and Tooltips','extensions-leaflet-map'),
+			'strpos' => 'hover',
 		),
 		array (
 			'tab' => 'overviewmap',
@@ -197,11 +188,19 @@ function leafext_admin_tabs() {
 		),
 		array (
 			'tab' => 'zoomhome',
-			'title' => 'zoomhome',
+			'title' => __('Reset the map','extensions-leaflet-map'),
 		),
 		array (
 			'tab' => 'fullscreen',
 			'title' => __('Fullscreen','extensions-leaflet-map'),
+		),
+		array (
+			'tab' => 'gesture',
+			'title' => __('Gesture Handling','extensions-leaflet-map'),
+		),
+		array (
+			'tab' => 'choropleth',
+			'title' => 'Choropleth Map',
 		),
 		// array (
 		// 	'tab' => '',
@@ -212,6 +211,11 @@ function leafext_admin_tabs() {
 	foreach ( $tabs as $tab) {
 		echo '<a href="?page='.$leafext_plugin_name.'&tab='.$tab['tab'].'" class="nav-tab';
 		$active = ( $active_tab == $tab['tab'] ) ? ' nav-tab-active' : '' ;
+		if (isset($tab['strpos'])) {
+			if (strpos($active_tab,$tab['strpos']) !== false) {
+				$active = ' nav-tab-active';
+			}
+		}
 		echo $active;
 		echo '">'.$tab['title'].'</a>'."\n";
 	}

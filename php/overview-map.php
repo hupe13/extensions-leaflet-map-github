@@ -14,8 +14,8 @@ $params = array(
 		'content' => '<ul>'.
 		'<li>'.__('either a comma or space separated pair of lat and lng',"extensions-leaflet-map").'</li>'.
 		'<li>'.__('or',"extensions-leaflet-map").' <code>lat=... lng=...</code> '.__('like in',"extensions-leaflet-map").' leaflet-marker'.'</li>'.
-		'<li>'.' <s>'.__('or',"extensions-leaflet-map").' <code>leaflet-gpx / leaflet-kml src=... </code> '.
-				__('(like shortcode without brackets)',"extensions-leaflet-map").'</s>'.'</li>'.
+		// '<li>'.' <s>'.__('or',"extensions-leaflet-map").' <code>leaflet-gpx / leaflet-kml src=... </code> '.
+		// 		__('(like shortcode without brackets)',"extensions-leaflet-map").'</s>'.'</li>'.
 		'</ul>',
 		'default' => 'overview-latlng',
 		'values' => '',
@@ -70,7 +70,7 @@ $params = array(
 	),
 	array(
 		'param' => 'debug',
-		'desc' => __('Creates an overview table of posts / pages instead of markers to see any mistakes.',"extensions-leaflet-map"),
+		'desc' => __('Creates an overview table of posts / pages instead of markers to see any mistakes',"extensions-leaflet-map"),
 		'content' => '',
 		'default' => false,
 		'values' => 'true / false',
@@ -384,4 +384,4 @@ if ( $text != "" ) {
 	return $text;
 }
 }
-add_shortcode( 'overviewmap', 'leafext_overviewmap_function' );
+add_shortcode('overviewmap', 'leafext_overviewmap_function');

@@ -15,24 +15,28 @@ include LEAFEXT_PLUGIN_DIR . '/admin/marker/hidemarkers.php';
 function leafext_marker_tab() {
 	$tabs = array (
 		array (
-			'tab' => 'extramarker',
-			'title' => 'Leaflet.ExtraMarkers',
-		),
-		array (
 			'tab' => 'markercluster',
-			'title' => 'Leaflet.markercluster',
-		),
-		array (
-			'tab' => 'markerclusterplacementstrategies',
-			'title' => 'Leaflet.MarkerCluster.PlacementStrategies',
+			'plugin' => 'Leaflet.markercluster',
+			'title' => __('Marker Clustering','extensions-leaflet-map'),
 		),
 		array (
 			'tab' => 'markerclustergroup',
-			'title' => 'Leaflet.FeatureGroup.SubGroup',
+			'plugin' => 'Leaflet.FeatureGroup.SubGroup',
+			'title' => __('Clustering and Grouping of Markers','extensions-leaflet-map'),
+		),
+		array (
+			'tab' => 'markerclusterplacementstrategies',
+			'title' => __('Styling Markercluster','extensions-leaflet-map'),
+			'plugin' => 'Leaflet.MarkerCluster.PlacementStrategies',
+		),
+		array (
+			'tab' => 'extramarker',
+			'title' => 'Font Awesome Icons',
+			'plugin' => 'Leaflet.ExtraMarkers',
 		),
 		array (
 			'tab' => 'geojsonmarker',
-			'title' => __('Markers for Geojson','extensions-leaflet-map'),
+			'title' => __('Design and Group markers from geojson files','extensions-leaflet-map'),
 		),
 		array (
 			'tab' => 'hidemarkers',
@@ -56,14 +60,14 @@ function leafext_marker_tab() {
 }
 
 function leafext_admin_marker($active_tab) {
-	if ( $active_tab ==  'extramarker') {
-		echo '<h2>'.leafext_marker_tab().'</h2>';
-		leafext_extramarker_help();
+	if ( $active_tab ==  'markercluster' ) {
+		leafext_admin_markercluster();
 	} else if( $active_tab == 'markerclustergroup') {
 		echo '<h2>'.leafext_marker_tab().'</h2>';
 		include LEAFEXT_PLUGIN_DIR . '/admin/marker/clustergroup.php';
-	} else if( $active_tab == 'markercluster' ) {
-		leafext_admin_markercluster();
+	} else if( $active_tab == 'extramarker') {
+		echo '<h2>'.leafext_marker_tab().'</h2>';
+		leafext_extramarker_help();
 	} else if ( $active_tab == 'markerclusterplacementstrategies' ) {
 		leafext_admin_placementstrategies();
 	} else if ( $active_tab ==  'extramarker') {
