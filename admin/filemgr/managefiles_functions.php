@@ -221,7 +221,7 @@ function leafext_files_table($track_files) {
 
 	$text = leafext_html_table($track_table);
 	$text = $text.'<small>&nbsp;&nbsp;<sup>1</sup> - '.__('It is not checked whether the file contains a track with elevation data.','extensions-leaflet-map').'</small>';
-	$text = $text.'<br><small>&nbsp;&nbsp;<sup>2</sup> - '.__("It works with gpx files, it may work with kml files.",'extensions-leaflet-map').' ';
+	$text = $text.'<br><small>&nbsp;&nbsp;<sup>2</sup> - '.__("It works with gpx and kml files.",'extensions-leaflet-map').' ';
 	$text = $text.sprintf(__("Don't forget to declare %s at last statement.",'extensions-leaflet-map'),'<code>[multielevation]</code>').'</small>';
 	return $text;
 }
