@@ -172,12 +172,12 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.5.3 / 2309xx
+### 3.5.3 / 230920
 
 * new shortcode overviewmap: generates an overview map with geo positions provided in the pages and posts
 * new options for hover: class (style the tooltip) and popupclose (keep the popup open or not)
 * reduce inline Javascript for geojsonmarker
-* multielevation accepts now also kml files (may work)
+* multielevation accepts now also kml files
 
 ### Previous
 
