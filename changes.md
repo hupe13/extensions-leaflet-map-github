@@ -1,6 +1,6 @@
 # Differences to the WordPress Repository version
 
-* none
+* new leaflet-search version
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
