@@ -25,7 +25,7 @@ function leafext_enqueue_awesome() {
     wp_enqueue_style('font-awesome',
     plugins_url('fonts/fontawesome-free-6.4.2-web/css/all.min.css',
     LEAFEXT_PLUGIN_FILE),
-    null, null);
+    array('leaflet_stylesheet'), null);
   }
 }
 
