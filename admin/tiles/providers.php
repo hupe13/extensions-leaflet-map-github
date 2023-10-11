@@ -86,7 +86,10 @@ function leafext_providers_help() {
 	'</p><p>'.
 	__('For a list of providers see','extensions-leaflet-map').
 	' <a href="http://leaflet-extras.github.io/leaflet-providers/preview/">http://leaflet-extras.github.io/leaflet-providers/preview/</a>.'
-	.'</p>';
+	.'</p>'.'<b>'.sprintf(
+	__('Please note %s (Quote from Leaflet Providers page):','extensions-leaflet-map'),'</b>').'<p> <i>'.
+	__("We try to maintain leaflet-providers in such a way that you'll be able to use the layers we include without paying money.".'<br>'.
+	"This doesn't mean no limits apply, you should always check before using these layers for anything serious.",'extensions-leaflet-map').'</i></p>';
 	if (current_user_can('manage_options')) {
 	if (!(is_singular()|| is_archive())) {
 		$text = $text.'<p>'.

@@ -84,6 +84,12 @@ function leafext_elevation_colors() {
 			'default' => isset($themes[$theme]['polyline']) ? $themes[$theme]['polyline'] : "",
 		),
 		array(
+			'param' => 'polylineSegments',
+			'shortdesc' => __('Track color over the ruler filter',"extensions-leaflet-map"),
+			'desc' => "",
+			'default' => "#F00",
+		),
+		array(
 			'param' => 'background',
 			'shortdesc' => __('Chart background color',"extensions-leaflet-map"),
 			'desc' => "",

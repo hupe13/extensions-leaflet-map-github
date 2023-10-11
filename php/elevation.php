@@ -666,6 +666,7 @@ function leafext_elevation_script($gpx,$settings){
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
+		map.options.preferCanvas = true;
 		var elevation_options = {
 			<?php echo $elevation_settings; ?>
 			<?php echo leafext_java_params ($settings); ?>
@@ -700,8 +701,8 @@ function leafext_elevation_script($gpx,$settings){
 		var is_chrome = navigator.userAgent.indexOf("Chrome") > -1;
 		var is_safari = navigator.userAgent.indexOf("Safari") > -1;
 		if ( !is_chrome && is_safari && controlElevation.options.preferCanvas != false ) {
-			console.log("is_safari - not setting preferCanvas to false");
-			//controlElevation.options.preferCanvas = false;
+			console.log("is_safari - setting preferCanvas to false");
+			controlElevation.options.preferCanvas = false;
 		}
 
 		// Load track from url (allowed data types: "*.geojson", "*.gpx")
@@ -768,10 +769,11 @@ function leafext_elevation_color($options) {
 	//var_dump($options,$owncolors);
 	$text = "";
 	if (is_array($owncolors)) {
-		$options['preferCanvas'] = false;
 		foreach ($owncolors as $key => $typ) {
 			if (!isset($already_run[$key] ) ) {
 				switch ($key) {
+					case "polylineSegments":
+					break;
 					case "polyline":
 					$text=$text.'<style>'.
 					'.'.$options['theme'].'.elevation-polyline {stroke: '.$typ.';stroke-width: '.$options['polyline'].';}'.
@@ -905,12 +907,21 @@ function leafext_elevation_function($atts,$content,$shortcode) {
 				$options['param'] = $param['default'];
 			}
 			$options['summary'] = "inline";
-			$options['preferCanvas'] = false;
 			$options['legend'] = false;
 		}
 		//
 		if ( ! array_key_exists('theme', $atts) ) {
 			$options['theme'] = leafext_elevation_theme();
+		}
+
+		$owncolors = get_option('leafext_color_'.$options['theme']);
+		if (is_array($owncolors)) {
+			if (isset($owncolors['polylineSegments']) ) {
+				$options['polylineSegments'] = '{className: "elevation-polyline-segments",
+					color: "'.$owncolors['polylineSegments'].'",
+					interactive: false,
+				}';
+			}
 		}
 
 		if ( $options['hotline'] == "elevation") unset ($options['polyline'] );

@@ -131,7 +131,11 @@ function leafext_should_interpret_shortcode($shortcode,$atts) {
 		$text = "['.$shortcode.' ";
 		if (is_array($atts)){
 			foreach ($atts as $key=>$item){
-				$text = $text. "$key=$item ";
+				if (is_int($key)) {
+					$text = $text. "$item ";
+				} else {
+					$text = $text. "$key=$item ";
+				}
 			}
 		}
 		$text = $text. "]";
