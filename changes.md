@@ -1,6 +1,7 @@
 # Differences to the WordPress Repository version
 
 * new leaflet-search version
+* new version leaflet.fullscreen
 * solved: Polyline layer turns black after turning off all legend filters
 * you can change the track color over the ruler filter
 
