@@ -1,10 +1,11 @@
 # Differences to the WordPress Repository version
 
-* new leaflet-search version
+* new version leaflet-search
 * new version leaflet.fullscreen
+* new version leaflet-providers.js
 * solved: Polyline layer turns black after turning off all legend filters
-* you can change the track color over the ruler filter
+* you can change the track color over the ruler filter now
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
-Releases are the same as the WordPress versions. If you want test the Github version, download the [main tree](https://github.com/hupe13/extensions-leaflet-map-github/archive/refs/heads/main.zip) or from the [tags](https://github.com/hupe13/extensions-leaflet-map-github/tags).
+Releases are the same as the WordPress versions. If you want test the Github version, download the [main tree](https://github.com/hupe13/extensions-leaflet-map-github/archive/refs/heads/main.zip) or from the [tags](https://github.com/hupe13/extensions-leaflet-map-github/tags) or clone it.

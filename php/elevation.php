@@ -775,9 +775,11 @@ function leafext_elevation_color($options) {
 					case "polylineSegments":
 					break;
 					case "polyline":
-					$text=$text.'<style>'.
-					'.'.$options['theme'].'.elevation-polyline {stroke: '.$typ.';stroke-width: '.$options['polyline'].';}'.
-					'</style>';
+					if (isset($options['polyline'])) {
+						$text=$text.'<style>'.
+						'.'.$options['theme'].'.elevation-polyline {stroke: '.$typ.';stroke-width: '.$options['polyline'].';}'.
+						'</style>';
+					}
 					break;
 					case "altitude":
 					$text=$text.'<style>'.
