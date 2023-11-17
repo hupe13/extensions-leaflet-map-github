@@ -178,12 +178,14 @@ these js files from caching:
 
 ## Changelog
 
-### 3.5.3 / 230920
+### 3.5.4 / 2311xx
 
-* new shortcode overviewmap: generates an overview map with geo positions provided in the pages and posts
-* new options for hover: class (style the tooltip) and popupclose (keep the popup open or not)
-* reduce inline Javascript for geojsonmarker
-* multielevation accepts now also kml files
+* new version leaflet-search
+* new version leaflet.fullscreen
+* new version leaflet-providers.js
+* solved: Polyline layer turns black after turning off all legend filters
+* you can change the track color over the ruler filter now
+* some corrections that [Plugin Check](https://github.com/WordPress/plugin-check) has found
 
 ### Previous
 

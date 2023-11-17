@@ -1,3 +1,10 @@
+### 3.5.3 / 230920
+
+* new shortcode overviewmap: generates an overview map with geo positions provided in the pages and posts
+* new options for hover: class (style the tooltip) and popupclose (keep the popup open or not)
+* reduce inline Javascript for geojsonmarker
+* multielevation accepts now also kml files
+
 ### 3.5.2 / 230808
 
 * leaflet-elevation 2.5.0
