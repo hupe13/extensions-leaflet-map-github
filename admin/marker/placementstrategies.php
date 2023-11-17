@@ -15,6 +15,7 @@ function leafext_admin_placementstrategies() {
 	settings_fields('leafext_settings_placementparams');
 	do_settings_sections( 'leafext_settings_placementparams' );
 	if (current_user_can('manage_options')) {
+		wp_nonce_field('leafext_marker', 'leafext_marker_nonce');
 		submit_button();
 		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 	}
@@ -90,9 +91,11 @@ function leafext_form_placement($field) {
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function leafext_validate_placement_options($options) {
-	if (isset($_POST['submit'])) return $options;
-	if (isset($_POST['delete'])) delete_option('leafext_placementparams');
-	return false;
+	if ( ! empty( $_POST ) && check_admin_referer( 'leafext_marker', 'leafext_marker_nonce' ) ) {
+		if (isset($_POST['submit'])) return $options;
+		if (isset($_POST['delete'])) delete_option('leafext_placementparams');
+		return false;
+	}
 }
 
 // Helptext

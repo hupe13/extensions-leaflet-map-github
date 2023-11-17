@@ -268,7 +268,7 @@ function leafext_sgpx_function( $atts,$content,$shortcode) {
 			}
 
 			$text = '[leaflet-map zoomcontrol '.$maptext.'][elevation gpx="'.$atts['gpx'].'" marker="position-marker"'.$eletext.'][fullscreen]';
-			if (is_single() || is_page()) echo "<script>console.log(".json_encode( $text ).")</script>";
+			if (is_single() || is_page()) echo "<script>console.log(".wp_json_encode( $text ).")</script>";
 			return do_shortcode($text);
 		}
 	}
@@ -286,7 +286,7 @@ add_action( 'init', 'leafext_change_sgpx_shortcode',20 );
 function leafext_insert_jquery() {
 	$options=get_option('leafext_sgpxparams');
 	if ( LEAFEXT_SGPX_ACTIVE && LEAFEXT_SGPX_SGPX && $options['sgpx'] == "leaflet" && !wp_script_is( "wp_leaflet_map", 'enqueued' )) {
-		wp_enqueue_script('jquery-core', false, array(), false, false);
+		wp_enqueue_script('jquery-core', false, array(), null, false);
 	}
 }
 add_filter('wp_enqueue_scripts','leafext_insert_jquery',1);

@@ -154,18 +154,17 @@ function leafext_managefiles() {
 		// echo '</pre>';
 
 		if (count($_POST) != 0) {
-			if(wp_verify_nonce($_REQUEST['leafext_file_listing'], 'leafext_file_listing')){
-				//echo "valid" ;   // Nonce is matched and valid.
-			} else {
-				wp_die('invalid', 404);
+			if ( ! empty( $_POST ) && check_admin_referer( 'leafext_file', 'leafext_file_nonce' ) ) {
+				//
 			}
 		}
 
 		if (count($_GET) > 2) {
-			if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( $_GET['_wpnonce'], 'leafext_file_listing' ) ) {
-				wp_die('invalid', 404);
+			if ( ! empty( $_GET ) && check_admin_referer( 'leafext_file', 'leafext_file_nonce' ) ) {
+				//
 			}
 		}
+
 		//echo '<h2>'.__('Manage Files',"extensions-leaflet-map").'</h2>';
 
 		if (count($_POST) != 0) {
@@ -203,7 +202,7 @@ function leafext_managefiles() {
 		//var_dump(get_current_user_id());
 
 		echo '<form method="post" action="'.admin_url( 'admin.php' ).'?page='.$page.'&tab='.$tab.'">';
-		wp_nonce_field('leafext_file_listing', 'leafext_file_listing');
+		wp_nonce_field('leafext_file', 'leafext_file_nonce');
 		settings_fields('leafext_file_listing');
 		do_settings_sections( 'leafext_file_listing' );
 		submit_button(__("List files","extensions-leaflet-map"));

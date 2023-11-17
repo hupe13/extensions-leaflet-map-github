@@ -82,20 +82,22 @@ function leafext_form_other_theme() {
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function leafext_validate_elevationtheme($input) {
-	if (isset($_POST['submit'])) {
-		if ( $input['theme'] == 'other' ) {
-			$input['othertheme'] = sanitize_text_field($input['othertheme']);
-			if (strpos($input['othertheme'],'-theme') === false) {
+	if ( ! empty( $_POST ) && check_admin_referer( 'leafext_elevation', 'leafext_elevation_nonce' ) ) {
+		if (isset($_POST['submit'])) {
+			if ( $input['theme'] == 'other' ) {
+				$input['othertheme'] = sanitize_text_field($input['othertheme']);
+				if (strpos($input['othertheme'],'-theme') === false) {
+					return false;
+				}
+				return $input;
+			} else {
+				delete_option('leafext_values');
 				return false;
 			}
-			return $input;
-		} else {
-			delete_option('leafext_values');
-			return false;
 		}
+		if (isset($_POST['delete'])) delete_option('leafext_values');
+		return false;
 	}
-	if (isset($_POST['delete'])) delete_option('leafext_values');
-	return false;
 }
 
 // Helptext
@@ -103,7 +105,7 @@ function leafext_elevation_help_text () {
 	wp_enqueue_style( 'prism-css',
 		plugins_url('pkg/prism/prism.css',LEAFEXT_PLUGIN_FILE));
 	wp_enqueue_script('prism-js',
-		plugins_url('pkg/prism/prism.js',LEAFEXT_PLUGIN_FILE));
+		plugins_url('pkg/prism/prism.js',LEAFEXT_PLUGIN_FILE),array(), null, true);
 $text = '
 <p><div style="border-top: 1px solid #646970"></div></p>
 <h2>Theme</h2><p>'.

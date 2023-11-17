@@ -39,14 +39,14 @@ function leafext_choropleth_script($atts,$content) {
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
-		var att_valueProperty = <?php echo json_encode($atts['valueproperty']);?>;
-		var att_scale = <?php echo json_encode($atts['scale']);?>.split(",");
-		var att_steps = <?php echo json_encode($atts['steps']);?>;
-		var att_mode = <?php echo json_encode($atts['mode']);?>;
-		var att_popup = <?php echo json_encode($content);?>;
-		var att_legend = <?php echo json_encode((bool)$atts['legend']);?>;
-		var att_hover = <?php echo json_encode((bool)$atts['hover']);?>;
-		var att_fillOpacity = <?php echo json_encode($atts['fillopacity']);?>;
+		var att_valueProperty = <?php echo wp_json_encode($atts['valueproperty']);?>;
+		var att_scale = <?php echo wp_json_encode($atts['scale']);?>.split(",");
+		var att_steps = <?php echo wp_json_encode($atts['steps']);?>;
+		var att_mode = <?php echo wp_json_encode($atts['mode']);?>;
+		var att_popup = <?php echo wp_json_encode($content);?>;
+		var att_legend = <?php echo wp_json_encode((bool)$atts['legend']);?>;
+		var att_hover = <?php echo wp_json_encode((bool)$atts['hover']);?>;
+		var att_fillOpacity = <?php echo wp_json_encode($atts['fillopacity']);?>;
 		console.log(att_valueProperty,att_scale,att_steps,att_mode,att_legend,att_hover,att_fillOpacity);
 		console.log(att_popup);
 		leafext_choropleth_js(map,att_valueProperty,att_scale,att_steps,att_mode,att_popup,att_legend,att_hover,att_fillOpacity);

@@ -52,6 +52,7 @@ function leafext_admin_filemgr($active_tab) {
 		echo '<form method="post" action="options.php">';
 		settings_fields('leafext_settings_filemgr');
 		do_settings_sections( 'leafext_settings_filemgr' );
+		wp_nonce_field('leafext_file', 'leafext_file_nonce');
 		submit_button();
 		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		echo '</form>';

@@ -83,8 +83,8 @@ $do_only = leafext_hover_params('only');
 $do_element = leafext_hover_params('element');
 $text=$text.'<p>'.sprintf(__("If you use one or multiple options from %s, then the options %s will be ignored. ",
 'extensions-leaflet-map'),
-str_replace(array('","','"'),array(', ',''),trim(json_encode(leafext_hover_params('only')),'[]')),
-str_replace(array('","','"'),array(', ',''),trim(json_encode(leafext_hover_params('element')),'[]')))
+str_replace(array('","','"'),array(', ',''),trim(wp_json_encode(leafext_hover_params('only')),'[]')),
+str_replace(array('","','"'),array(', ',''),trim(wp_json_encode(leafext_hover_params('element')),'[]')))
 .'</p>';
 
 $text=$text.'<p>'.__('So can you write:','extensions-leaflet-map').

@@ -90,22 +90,24 @@ function leafext_form_elevation($field) {
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function leafext_validate_ele_options($options) {
-	if (isset($_POST['submit'])) {
-		$defaults=array();
-		$params = leafext_elevation_params(array('changeable'));
-		foreach($params as $param) {
-			$defaults[$param['param']] = $param['default'];
+	if ( ! empty( $_POST ) && check_admin_referer( 'leafext_elevation', 'leafext_elevation_nonce' ) ) {
+		if (isset($_POST['submit'])) {
+			$defaults=array();
+			$params = leafext_elevation_params(array('changeable'));
+			foreach($params as $param) {
+				$defaults[$param['param']] = $param['default'];
+			}
+			$params = get_option('leafext_eleparams', $defaults);
+			foreach ($options as $key => $value) {
+				if ($key == 'height' && $value == "") continue;
+				if ($key == 'width' && $value == "") continue;
+				$params[$key] = $value;
+			}
+			return $params;
 		}
-		$params = get_option('leafext_eleparams', $defaults);
-		foreach ($options as $key => $value) {
-			if ($key == 'height' && $value == "") continue;
-			if ($key == 'width' && $value == "") continue;
-			$params[$key] = $value;
-		}
-		return $params;
+		if (isset($_POST['delete'])) delete_option('leafext_eleparams');
+		return false;
 	}
-	if (isset($_POST['delete'])) delete_option('leafext_eleparams');
-	return false;
 }
 
 // Helptext
@@ -206,7 +208,7 @@ function leafext_ele_help_chart () {
 	wp_enqueue_style( 'prism-css',
 		plugins_url('pkg/prism/prism.css',LEAFEXT_PLUGIN_FILE));
 	wp_enqueue_script('prism-js',
-		plugins_url('pkg/prism/prism.js',LEAFEXT_PLUGIN_FILE));
+		plugins_url('pkg/prism/prism.js',LEAFEXT_PLUGIN_FILE),array(), null, true);
 	echo '<div style="border-top: 3px solid #646970"></div>';
 	echo '<h3>';
 	echo __('Charts','extensions-leaflet-map');

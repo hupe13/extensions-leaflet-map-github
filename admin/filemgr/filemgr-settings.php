@@ -44,20 +44,22 @@ function leafext_filemgr_init(){
 add_action('admin_init', 'leafext_filemgr_init');
 
 function leafext_validate_filemgr_options($options){
-	if (isset($_POST['submit'])) {
-		$defaults=array();
-		$params = leafext_filemgr_params();
-		foreach($params as $param) {
-			$defaults[$param['param']] = $param['default'];
+	if ( ! empty( $_POST ) && check_admin_referer( 'leafext_file', 'leafext_file_nonce' ) ) {
+		if (isset($_POST['submit'])) {
+			$defaults=array();
+			$params = leafext_filemgr_params();
+			foreach($params as $param) {
+				$defaults[$param['param']] = $param['default'];
+			}
+			$params = get_option('leafext_filemgr', $defaults);
+			foreach ($options as $key => $value) {
+				$params[$key] = $value;
+			}
+			return $params;
 		}
-		$params = get_option('leafext_filemgr', $defaults);
-		foreach ($options as $key => $value) {
-			$params[$key] = $value;
-		}
-		return $params;
-	}
-	if (isset($_POST['delete'])) delete_option('leafext_filemgr');
-	return false;
+		if (isset($_POST['delete'])) delete_option('leafext_filemgr');
+		return false;
+	} 
 }
 
 function leafext_form_filemgr($field) {

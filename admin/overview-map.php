@@ -78,7 +78,7 @@ function leafext_overviewmap_help(){
   $text=$text.'<h4>leafext_extramarker</h4>';
   $text=$text.'<p>'.implode(', ',leafext_extramarker_options()).'</p>';
 
-  $text=$text.'<p>'.sprintf(__('See %sexamples%s.','extensions-leaflet-map'),'<a href="https://leafext.de/extra/category/overviewmap/">','</a>').'</p>';
+  $text=$text.'<p>'.sprintf(__('See %1$sexamples%2$s.','extensions-leaflet-map'),'<a href="https://leafext.de/extra/category/overviewmap/">','</a>').'</p>';
 
   if (is_singular() || is_archive() ) {
     return $text;

@@ -13,11 +13,11 @@ function leafext_featuregroup_script($options,$params){
 	?>/*<script>*/
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
-		let att_property = <?php echo json_encode($options['property']);?>;
-		let att_option = <?php echo json_encode($options['option']);?>;
-		let groups  = <?php echo json_encode($options['groups']);?>;
-		let visible = <?php echo json_encode($options['visible']);?>;
-		let substr = <?php echo json_encode($options['substr']);?>;
+		let att_property = <?php echo wp_json_encode($options['property']);?>;
+		let att_option = <?php echo wp_json_encode($options['option']);?>;
+		let groups  = <?php echo wp_json_encode($options['groups']);?>;
+		let visible = <?php echo wp_json_encode($options['visible']);?>;
+		let substr = <?php echo wp_json_encode($options['substr']);?>;
 		let	alle = new L.markerClusterGroup({
 			<?php echo leafext_java_params ($params);?>
 		});

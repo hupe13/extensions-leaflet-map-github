@@ -55,6 +55,7 @@ function leafext_admin_tiles($active_tab) {
 		settings_fields('leafext_settings_maps');
 		do_settings_sections( 'leafext_settings_maps' );
 		if (current_user_can('manage_options')) {
+			wp_nonce_field('leafext_tiles', 'leafext_tiles_nonce');
 			submit_button();
 		}
 		echo '</form>';
@@ -64,6 +65,7 @@ function leafext_admin_tiles($active_tab) {
 			echo '<form method="post" action="options.php">';
 			settings_fields('leafext_providers');
 			do_settings_sections( 'leafext_providers' );
+			wp_nonce_field('leafext_tiles', 'leafext_tiles_nonce');
 			submit_button();
 			submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 			echo '</form>';

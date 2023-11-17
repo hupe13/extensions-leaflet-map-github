@@ -80,31 +80,33 @@ function leafext_form_waypoints() {
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function leafext_validate_waypoints($options) {
-	if (isset($_POST['submit'])) {
-		$wpts = array();
-		foreach ($options as $option) {
-			if ( $option['sym'] !="" || $option['js'] != "" ) {
-				if ($option['delete'] == 1) continue;
-				$wpt=array();
-				//$wpt['sym'] = str_replace('-', '', strtolower(sanitize_text_field ( $option['sym'] )));
-				//$wpt['sym'] = strtolower(sanitize_text_field ( $option['sym'] ));
-				$wpt['sym'] = $option['sym'];
-				$wpt['css'] = str_replace(array(' ',','), array('-','\,'), strtolower( $option['sym'] ));
-				$wpt['js'] = htmlspecialchars( $option['js'] );
+	if ( ! empty( $_POST ) && check_admin_referer( 'leafext_elevation', 'leafext_elevation_nonce' ) ) {
+		if (isset($_POST['submit'])) {
+			$wpts = array();
+			foreach ($options as $option) {
+				if ( $option['sym'] !="" || $option['js'] != "" ) {
+					if ($option['delete'] == 1) continue;
+					$wpt=array();
+					//$wpt['sym'] = str_replace('-', '', strtolower(sanitize_text_field ( $option['sym'] )));
+					//$wpt['sym'] = strtolower(sanitize_text_field ( $option['sym'] ));
+					$wpt['sym'] = $option['sym'];
+					$wpt['css'] = str_replace(array(' ',','), array('-','\,'), strtolower( $option['sym'] ));
+					$wpt['js'] = htmlspecialchars( $option['js'] );
 
-				if(array_search($wpt['sym'], array_column($wpts, 'sym')) === false) {
-					if ($wpt['sym'] == "") {
-						array_unshift($wpts, $wpt);
-					} else {
-						$wpts[]=$wpt;
+					if(array_search($wpt['sym'], array_column($wpts, 'sym')) === false) {
+						if ($wpt['sym'] == "") {
+							array_unshift($wpts, $wpt);
+						} else {
+							$wpts[]=$wpt;
+						}
 					}
 				}
 			}
+			return $wpts;
 		}
-		return $wpts;
+		if (isset($_POST['delete'])) delete_option('leafext_waypoints');
+		return false;
 	}
-	if (isset($_POST['delete'])) delete_option('leafext_waypoints');
-	return false;
 }
 
 // Erklaerung / Hilfe

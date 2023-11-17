@@ -12,7 +12,7 @@ function leafext_thickbox($track){
   .nav-tab-wrapper {display: none;}
   .nothickbox {display: none;}
   </style>';
-  date_default_timezone_set(wp_timezone_string());
+  //date_default_timezone_set(wp_timezone_string());
   $upload_dir = wp_get_upload_dir();
   $upload_path = $upload_dir['basedir'];
   $upload_url = $upload_dir['baseurl'];
@@ -22,18 +22,18 @@ function leafext_thickbox($track){
   if ($type == "json") $type="geojson";
   //
   echo '<div class="attachment-info"><div class="details"><h2>';
-  _e( "Details" );
+  esc_html_e( "Details" );
   echo '</h2><div><strong>';
-  _e( "Uploaded on:" );
-  echo '</strong> '.date('Y-m-d G:i:s', filemtime($upload_path.$track)).'</div><div><strong>';
-  _e( "File name:" );
+  esc_html_e( "Uploaded on:" );
+  echo '</strong> '.get_date_from_gmt(gmdate('Y-m-d G:i:s', filemtime($upload_path.$track))).'</div><div><strong>';
+  esc_html_e( "File name:" );
   echo '</strong> '.basename($track).'</div>';
   //echo '<div ><strong>';
-  //_e( "File type:" );
+  //esc_html_e( "File type:" );
   //$type=mime_content_type($upload_path.$track); gibt nur text/xml zurueck
   //echo '</strong> '.$type.'</div>';
   echo '<div ><strong>';
-  _e( "File size: " );
+  esc_html_e( "File size: " );
   echo '</strong> '.size_format(filesize($upload_path.$track)).'</div></div><p>';
   $content = do_shortcode('[leaflet-map  height=300 width=300 !scrollwheel !dragging fitbounds][leaflet-'.$type.' src="'. $upload_url . $track .'"]{name}[/leaflet-'.$type.']');
 	echo $content;
@@ -46,7 +46,7 @@ function leafext_thickbox($track){
     $form_fields = array();
     foreach ( $data as $key => $value ) {
       $form_fields[$key] = array(
-        'key' => __( $key ),
+        'key' => $key,
         'value'  => $value,
       );
     }

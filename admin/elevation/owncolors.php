@@ -138,7 +138,7 @@ function leafext_form_colors($field) {
 	wp_enqueue_script( 'wp-color-picker' );
 	wp_enqueue_script('leafext-picker',
 		plugins_url('js/colorpicker.js',LEAFEXT_PLUGIN_FILE),
-		array('wp-color-picker'), null);
+		array('wp-color-picker'), null, true);
 
 	$theme = leafext_elevation_theme();
 	$options  = leafext_elevation_colors();
@@ -163,20 +163,22 @@ function leafext_form_colors($field) {
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function leafext_validate_owncolors($options) {
-	$theme = leafext_elevation_theme();
-	if (isset($_POST['submit'])) {
-		//var_dump($options);
-		$defaults = leafext_elevation_colors();
-		foreach ($options as $key => $value) {
-			$param = leafext_array_find2($key, $defaults);
-			if ($options[$key] == $param['default']) {
-				unset ($options[$key]);
+	if ( ! empty( $_POST ) && check_admin_referer( 'leafext_elevation', 'leafext_elevation_nonce' ) ) {
+		$theme = leafext_elevation_theme();
+		if (isset($_POST['submit'])) {
+			//var_dump($options);
+			$defaults = leafext_elevation_colors();
+			foreach ($options as $key => $value) {
+				$param = leafext_array_find2($key, $defaults);
+				if ($options[$key] == $param['default']) {
+					unset ($options[$key]);
+				}
 			}
+			return $options;
 		}
-		return $options;
+		if (isset($_POST['delete'])) delete_option('leafext_color_'.$theme);
+		return false;
 	}
-	if (isset($_POST['delete'])) delete_option('leafext_color_'.$theme);
-	return false;
 }
 
 // Helptext

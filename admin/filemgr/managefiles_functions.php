@@ -83,7 +83,7 @@ function leafext_list_paginate($files,$anzahl) {
 				'end_size'           => 1,
 				'mid_size'           => 2,
 				'type'               => 'plain',
-				'add_args'           => array('_wpnonce' => wp_create_nonce( 'leafext_file_listing' )), // Array of query args to add.
+				'add_args'           => array('leafext_file_nonce' => wp_create_nonce( 'leafext_file' )),
 				'add_fragment'       => '',
 				'before_page_number' => '',
 				'after_page_number'  => '',
@@ -104,7 +104,7 @@ function leafext_list_paginate($files,$anzahl) {
 function leafext_createShortcode_js() {
 	wp_enqueue_script('leafext_createShortcode_js',
 	plugins_url('admin/filemgr/create_copy/createShortcode.js',
-	LEAFEXT_PLUGIN_FILE));
+	LEAFEXT_PLUGIN_FILE),array(), null, true);
 }
 function leafext_createShortcode_css() {
 	wp_enqueue_style( 'leafext_createShortcode_css',
@@ -117,12 +117,12 @@ function leafext_files_table($track_files) {
 	//https://codex.wordpress.org/Javascript_Reference/ThickBox
 	add_thickbox();
 	//
-	date_default_timezone_set(wp_timezone_string());
+	//date_default_timezone_set(wp_timezone_string());
 
 	$track_table = array();
 	$entry = array('<b>'.__('Date','extensions-leaflet-map').'</b>',
 	'<b>'.__('Name','extensions-leaflet-map').'</b>',
-	'<b>'.__(''.__('Preview','extensions-leaflet-map').'','extensions-leaflet-map').'</b>',
+	'<b>'.__('Preview','extensions-leaflet-map').'</b>',
 	'<b>'.__('Media Library','extensions-leaflet-map').'</b>',
 	'<b>'.__('leaflet Shortcode','extensions-leaflet-map').'</b>',
 	'<b>'.__('elevation<sup>1</sup> Shortcode','extensions-leaflet-map').'</b>',
@@ -172,7 +172,7 @@ function leafext_files_table($track_files) {
 				}
 			}
 		} else {
-			$entry['post_date'] = date('Y-m-d G:i:s', filemtime($file));
+			$entry['post_date'] = get_date_from_gmt(gmdate('Y-m-d G:i:s', filemtime($file)));
 			$entry['post_title'] = $myfile;
 			if ($type != "") {
 				$entry['view'] = '<a href="'. esc_url( get_admin_url(null, 'admin.php?page='.$page) ) .'&tab='.$tab.'&track='

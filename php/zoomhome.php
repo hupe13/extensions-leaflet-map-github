@@ -22,7 +22,7 @@ function leafext_zoomhome_script($fit){
 		// 0: home = ele fitbounds (default)
 		// 1: home = map
 		var allfit = [];
-		if (<?php echo json_encode((bool)$fit); ?> && typeof maps[map_id]._shouldFitBounds === "undefined" ) {
+		if (<?php echo wp_json_encode((bool)$fit); ?> && typeof maps[map_id]._shouldFitBounds === "undefined" ) {
 			allfit[map_id] = new L.latLngBounds();
 		}
 		leafext_zoomhome_js(maps,map_id,allfit);

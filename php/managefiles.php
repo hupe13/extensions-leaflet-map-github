@@ -24,7 +24,7 @@ function leafext_media_library_content( $content ){
     );
     foreach ( $gpx_data as $key => $value ) {
       $fields[] = array(
-        'key' => __( $key ),
+        'key' => $key,
         'value' => $value,
       );
     }
@@ -77,7 +77,7 @@ function leafext_attachment_fields_to_edit( $form_fields, $post ){
     foreach ( $gpx_data as $key => $value ) {
       $form_fields[$key] = array(
         'value' => $value,
-        'label' => __( $key ),
+        'label' => $key,
         'input' => 'html',
         'html'  => $value,
       );

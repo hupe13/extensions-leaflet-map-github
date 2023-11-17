@@ -67,6 +67,7 @@ function leafext_admin_elevation($active_tab) {
 		settings_fields('leafext_settings_multieleparams');
 		do_settings_sections( 'leafext_settings_multieleparams' );
 		if (current_user_can('manage_options')) {
+			wp_nonce_field('leafext_elevation', 'leafext_elevation_nonce');
 			submit_button();
 			submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		}
@@ -82,6 +83,7 @@ function leafext_admin_elevation($active_tab) {
 			settings_fields('leafext_settings_elethemes');
 			do_settings_sections( 'leafext_settings_elethemes' );
 			if (current_user_can('manage_options')) {
+				wp_nonce_field('leafext_elevation', 'leafext_elevation_nonce');
 				submit_button();
 			}
 			echo '</form>';
@@ -94,6 +96,7 @@ function leafext_admin_elevation($active_tab) {
 		settings_fields('leafext_settings_color');
 		do_settings_sections( 'leafext_settings_color' );
 		if (current_user_can('manage_options')) {
+			wp_nonce_field('leafext_elevation', 'leafext_elevation_nonce');
 			submit_button();
 			submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		}
@@ -107,6 +110,7 @@ function leafext_admin_elevation($active_tab) {
 		settings_fields('leafext_settings_theme');
 		do_settings_sections( 'leafext_settings_theme' );
 		if (current_user_can('manage_options')) {
+			wp_nonce_field('leafext_elevation', 'leafext_elevation_nonce');
 			submit_button();
 			submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		}
@@ -121,18 +125,21 @@ function leafext_admin_elevation($active_tab) {
 			settings_fields('leafext_settings_sgpxparams');
 			do_settings_sections( 'leafext_settings_sgpxparams' );
 			if (current_user_can('manage_options')) {
+				wp_nonce_field('leafext_elevation', 'leafext_elevation_nonce');
 				submit_button();
 			}
 		} else if ( LEAFEXT_SGPX_UNCLEAN_DB ) {
 			settings_fields('leafext_settings_sgpx_unclean_db');
 			do_settings_sections( 'leafext_settings_sgpx_unclean_db' );
 			if (current_user_can('manage_options')) {
+				wp_nonce_field('leafext_elevation', 'leafext_elevation_nonce');
 				submit_button( __( 'Delete all settings from wp-gpx-maps!', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 			}
 		} else if ( LEAFEXT_SGPX_SGPX ) {
 			settings_fields('leafext_settings_sgpxparams');
 			do_settings_sections( 'leafext_settings_sgpxparams' );
 			if (current_user_can('manage_options')) {
+				wp_nonce_field('leafext_elevation', 'leafext_elevation_nonce');
 				submit_button( __( "I don't need this anymore. sgpx is always interpreted as elevation.", 'extensions-leaflet-map' ), 'delete', 'delete', false);
 			}
 		} else {
@@ -149,6 +156,7 @@ function leafext_admin_elevation($active_tab) {
 		settings_fields('leafext_waypoints');
 		do_settings_sections( 'leafext_waypoints' );
 		if (current_user_can('manage_options')) {
+			wp_nonce_field('leafext_elevation', 'leafext_elevation_nonce');
 			submit_button();
 			submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		}
@@ -163,6 +171,7 @@ function leafext_admin_elevation($active_tab) {
 		settings_fields('leafext_settings_eleparams');
 		do_settings_sections( 'leafext_settings_eleparams' );
 		if (current_user_can('manage_options')) {
+			wp_nonce_field('leafext_elevation', 'leafext_elevation_nonce');
 			submit_button();
 			submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 		}

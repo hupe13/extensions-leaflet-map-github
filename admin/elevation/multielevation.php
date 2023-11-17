@@ -58,7 +58,7 @@ function leafext_form_multielevation($field) {
 		wp_enqueue_script( 'wp-color-picker' );
 		wp_enqueue_script('leafext-picker',
 			plugins_url('js/colorpicker.js',LEAFEXT_PLUGIN_FILE),
-			array('wp-color-picker'), null);
+			array('wp-color-picker'), null, true);
 
 		if ($setting != $option['default'] ) {
 			//var_dump($setting,$option['default']);
@@ -94,9 +94,11 @@ function leafext_form_multielevation($field) {
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function leafext_validate_multiele_options($options) {
-	if (isset($_POST['submit'])) return $options;
-	if (isset($_POST['delete'])) delete_option('leafext_multieleparams');
-	return false;
+	if ( ! empty( $_POST ) && check_admin_referer( 'leafext_elevation', 'leafext_elevation_nonce' ) ) {
+		if (isset($_POST['submit'])) return $options;
+		if (isset($_POST['delete'])) delete_option('leafext_multieleparams');
+		return false;
+	} 
 }
 
 // Helptext

@@ -137,7 +137,7 @@ function leafext_layerswitch_tiles_script($tiles){
 	$text = '<!--';
 	ob_start();
 	?>/*<script>*/
-	var tilelayers = <?php echo json_encode($tiles); ?>;
+	var tilelayers = <?php echo wp_json_encode($tiles); ?>;
 	//console.log(tilelayers);
 	tilelayers.forEach(tilelayer => {
 		var layer = L.tileLayer(tilelayer.tile, tilelayer.options);
@@ -223,7 +223,7 @@ function leafext_opacity_script($opacities) {
 	$text = '<!--';
 	ob_start();
 	?>/*<script>*/
-	var opacities = <?php echo json_encode($opacities);?>;
+	var opacities = <?php echo wp_json_encode($opacities);?>;
 	//console.log(opacities);
 	opacities.forEach(function(opid) {
 		if ( baselayers[opid] ) {

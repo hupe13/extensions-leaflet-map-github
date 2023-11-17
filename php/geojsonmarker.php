@@ -19,23 +19,23 @@ function leafext_geojsonmarker_script($propertyoptions,$extramarkericon,$cluster
 	//
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
-		let property = <?php echo json_encode($propertyoptions['property']);?>;
+		let property = <?php echo wp_json_encode($propertyoptions['property']);?>;
 		// console.log("property: "+property);
-		let iconprops = <?php echo json_encode($propertyoptions['iconprops']);?>;
+		let iconprops = <?php echo wp_json_encode($propertyoptions['iconprops']);?>;
 		// console.log(iconprops);
-		let icondefault = <?php echo json_encode($propertyoptions['icondefault']);?>;
+		let icondefault = <?php echo wp_json_encode($propertyoptions['icondefault']);?>;
 		// console.log(icondefault);
-		let auto = <?php echo json_encode($propertyoptions['auto']);?>;
+		let auto = <?php echo wp_json_encode($propertyoptions['auto']);?>;
 		// console.log(auto);
 		//
-		let groups  = <?php echo json_encode($featuregroupoptions['groups']);?>;
+		let groups  = <?php echo wp_json_encode($featuregroupoptions['groups']);?>;
 		// console.log(groups);
-		let visible = <?php echo json_encode($featuregroupoptions['visible']);?>;
+		let visible = <?php echo wp_json_encode($featuregroupoptions['visible']);?>;
 		//
 		let clmarkers = L.markerClusterGroup({
 			<?php echo leafext_java_params ($clusteroptions);?>
 		});
-		let extramarkericon = <?php echo json_encode($extramarkericon);?>;
+		let extramarkericon = <?php echo wp_json_encode($extramarkericon);?>;
 		leafext_geojsonmarker_js(property,iconprops,icondefault,auto,groups,visible,clmarkers,extramarkericon);
 	});
 	<?php

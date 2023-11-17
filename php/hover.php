@@ -22,7 +22,7 @@ function leafext_hover_params($typ = '') {
 		),
 		array(
 			'param' => 'circle',
-			'desc' => __('',"extensions-leaflet-map"),
+			'desc' => '',
 			'default' => true,
 			'values' => 'true, false, tooltip, style',
 			'element' => true,
@@ -31,7 +31,7 @@ function leafext_hover_params($typ = '') {
 		),
 		array(
 			'param' => 'polygon',
-			'desc' => __('',"extensions-leaflet-map"),
+			'desc' => '',
 			'default' => true,
 			'values' => 'true, false, tooltip, style',
 			'element' => true,
@@ -40,7 +40,7 @@ function leafext_hover_params($typ = '') {
 		),
 		array(
 			'param' => 'line',
-			'desc' => __('',"extensions-leaflet-map"),
+			'desc' => '',
 			'default' => true,
 			'values' => 'true, false, tooltip, style',
 			'element' => true,
@@ -49,7 +49,7 @@ function leafext_hover_params($typ = '') {
 		),
 		array(
 			'param' => 'geojson',
-			'desc' => __('',"extensions-leaflet-map"),
+			'desc' => '',
 			'default' => true,
 			'values' => 'true, false, tooltip, style',
 			'element' => true,
@@ -58,7 +58,7 @@ function leafext_hover_params($typ = '') {
 		),
 		array(
 			'param' => 'gpx',
-			'desc' => __('',"extensions-leaflet-map"),
+			'desc' => '',
 			'default' => true,
 			'values' => 'true, false, tooltip, style',
 			'element' => true,
@@ -67,7 +67,7 @@ function leafext_hover_params($typ = '') {
 		),
 		array(
 			'param' => 'kml',
-			'desc' => __('',"extensions-leaflet-map"),
+			'desc' => '',
 			'default' => true,
 			'values' => 'true, false, tooltip, style',
 			'element' => true,
@@ -259,7 +259,7 @@ function leafext_hover_function($atts,$content,$shortcode) {
 		?>/*<script>*/
 		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 		window.WPLeafletMapPlugin.push(function () {
-			let all_options = <?php echo json_encode($options);?>;
+			let all_options = <?php echo wp_json_encode($options);?>;
 			console.log("leafext_hover_function");
 			console.log(all_options);
 			<?php
@@ -292,7 +292,7 @@ function leafext_hover_function($atts,$content,$shortcode) {
 			|| in_array($options['kml'],$do_tooltip,true)
 			|| $options['geojsontooltip'])
 			?>
-			let tooltip = <?php echo json_encode($options['geojsontooltip']);?>;
+			let tooltip = <?php echo wp_json_encode($options['geojsontooltip']);?>;
 			leafext_hover_geojsontooltip_js(tooltip,all_options);
 			<?php
 			//

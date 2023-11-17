@@ -343,7 +343,7 @@ function leafext_multielevation( $atts,$content,$shortcode) {
 
 		//var_dump($all_files, $all_points, $options, $multioptions); wp_die();
 		//var_dump($options,$multioptions);
-		$rand = rand(1,20);
+		$rand = wp_rand(1,20);
 		$text = $style.leafext_multielevation_script( $all_files, $all_points, $options, $multioptions, $rand);
 
 		$text = $text.'<p class="chart-placeholder chart-placeholder-'.$rand.'">';
@@ -365,8 +365,8 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
-		var points = <?php echo json_encode($all_points); ?>;
-		var tracks = <?php echo json_encode($all_files); ?>;
+		var points = <?php echo wp_json_encode($all_points); ?>;
+		var tracks = <?php echo wp_json_encode($all_files); ?>;
 		//console.log(points);
 		//console.log(tracks);
 

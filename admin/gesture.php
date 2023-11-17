@@ -67,12 +67,14 @@ function leafext_form_gesture($field) {
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function leafext_validate_gesture($input) {
-	//var_dump($_POST,$input);
-	if (isset($_POST['submit'])) {
-		$input['leafext_gesture_on'] = (bool)($input['leafext_gesture_on']);
+	//var_dump($_REQUEST,$_POST,$input); wp_die();
+	if ( ! empty( $_POST ) && check_admin_referer( 'leafext_gesture', 'leafext_gesture_nonce' ) ) {
+		if (isset($_POST['submit'])) {
+			$input['leafext_gesture_on'] = (bool)($input['leafext_gesture_on']);
+		}
+		// var_dump($input);
+		return $input;
 	}
-	// var_dump($input);
-	return $input;
 }
 
 // Erklaerung

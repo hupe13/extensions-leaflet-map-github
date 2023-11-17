@@ -151,7 +151,7 @@ function leafext_leafletsearch_function($atts,$content,$shortcode) {
       $options['textPlaceholder'] = str_replace('"','\"',$options['textPlaceholder']);
     }
     $allproperties = array_map('trim', explode(',', $options['propertyName']));
-    $options['propertyName'] = implode($allproperties).rand(1, 20); //"leafextsearch";
+    $options['propertyName'] = implode($allproperties).wp_rand(1, 20); //"leafextsearch";
     leafext_enqueue_leafletsearch ();
     //var_dump(leafext_java_params($options));wp_die();
     return leafext_leafletsearch_script($options,trim(preg_replace('/\s+/', ' ',leafext_java_params($options))),$allproperties);
@@ -165,9 +165,9 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
   ?>/*<script>*/
   window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
   window.WPLeafletMapPlugin.push(function () {
-    let all_properties = <?php echo json_encode($allproperties); ?>;
-    let att_zoom = <?php echo json_encode($options['zoom']); ?>;
-    let att_propertyName = <?php echo json_encode($options['propertyName']); ?>;
+    let all_properties = <?php echo wp_json_encode($allproperties); ?>;
+    let att_zoom = <?php echo wp_json_encode($options['zoom']); ?>;
+    let att_propertyName = <?php echo wp_json_encode($options['propertyName']); ?>;
 
     if (typeof searchcontrol == "undefined" ) {
       var maps=[];
@@ -183,7 +183,7 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
       searchcontrol[map_id][att_propertyName] = att_propertyName;
       console.log("mapid: "+map_id);
       console.log(all_properties);
-      console.log(<?php echo json_encode($jsoptions);?>);
+      console.log(<?php echo wp_json_encode($jsoptions);?>);
       searchLayer = new L.LayerGroup();	//layer contain searched elements
       var duplicates = [];
     }

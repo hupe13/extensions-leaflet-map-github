@@ -43,6 +43,7 @@ function leafext_do_page() {
 		echo '<form method="post" action="options.php">';
 		settings_fields('leafext_settings_gesture');
 		do_settings_sections( 'leafext_settings_gesture' );
+		wp_nonce_field('leafext_gesture', 'leafext_gesture_nonce');
 		submit_button();
 		echo '</form>';
 	} else if( $active_tab == 'zoomhome' ) {

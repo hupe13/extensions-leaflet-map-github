@@ -76,7 +76,7 @@ function leafext_hoverlap_script($options){
   ?>/*<script>*/
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
   window.WPLeafletMapPlugin.push(function () {
-    let all_options = <?php echo json_encode($options);?>;
+    let all_options = <?php echo wp_json_encode($options);?>;
     // console.log("leafext_hoverlap_script");
     // console.log(all_options);
     leafext_hoverlap_js(all_options);

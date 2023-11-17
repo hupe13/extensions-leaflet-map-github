@@ -36,10 +36,10 @@ $params = array(
 	),
 	// array(
 	// 	'param' => '',
-	// 	'desc' => __('',"extensions-leaflet-map"),
+	// 	'desc' => '',
 	//  'content' => '',
 	// 	'default' => '',
-	// 	'values' => __('',"extensions-leaflet-map"),
+	// 	'values' => '',
 	// ),
 );
 return $params;
@@ -50,21 +50,21 @@ $params = array(
 	array(
 		'param' => 'show_thumbnails',
 		'desc' => __('Show page / post featured image',"extensions-leaflet-map"),
-		'content' => __('',"extensions-leaflet-map"),
+		'content' => '',
 		'default' => false,
 		'values' => 'true / false',
 	),
 	array(
 		'param' => 'show_category',
 		'desc' => __('Show a link to category page',"extensions-leaflet-map"),
-		'content' => __('',"extensions-leaflet-map"),
+		'content' => '',
 		'default' => false,
 		'values' => 'true / false',
 	),
 	array(
 		'param' => 'category',
 		'desc' => __('Select only pages / posts from these categories',"extensions-leaflet-map"),
-		'content' => __('',"extensions-leaflet-map"),
+		'content' => '',
 		'default' => '',
 		'values' => __('a comma separated list of category names, slugs or IDs',"extensions-leaflet-map"),
 	),

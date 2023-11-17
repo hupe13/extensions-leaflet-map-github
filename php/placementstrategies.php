@@ -71,7 +71,7 @@ function leafext_placementstrategies_script($params) {
 	?>/*<script>*/
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
-		let all_params = <?php echo json_encode($params); ?>;
+		let all_params = <?php echo wp_json_encode($params); ?>;
 		leafext_placementstrategies_js(all_params);
 	});
 	<?php

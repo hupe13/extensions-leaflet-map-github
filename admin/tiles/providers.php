@@ -62,16 +62,18 @@ function leafext_providers_form() {
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function leafext_validate_providers($options) {
-	if (isset($_POST['submit'])) {
-		foreach ($options as $option) {
-			foreach ($option['keys'] as $key => $value ) {
-				if ($value != "") $providers[] = $option; break;
+	if ( ! empty( $_POST ) && check_admin_referer( 'leafext_tiles', 'leafext_tiles_nonce' ) ) {
+		if (isset($_POST['submit'])) {
+			foreach ($options as $option) {
+				foreach ($option['keys'] as $key => $value ) {
+					if ($value != "") $providers[] = $option; break;
+				}
 			}
+			return $providers;
 		}
-		return $providers;
+		if (isset($_POST['delete'])) delete_option('leafext_providers');
+		return false;
 	}
-	if (isset($_POST['delete'])) delete_option('leafext_providers');
-	return false;
 }
 
 // Erklaerung / Hilfe
@@ -88,8 +90,8 @@ function leafext_providers_help() {
 	' <a href="http://leaflet-extras.github.io/leaflet-providers/preview/">http://leaflet-extras.github.io/leaflet-providers/preview/</a>.'
 	.'</p>'.'<b>'.sprintf(
 	__('Please note %s (Quote from Leaflet Providers page):','extensions-leaflet-map'),'</b>').'<p> <i>'.
-	__("We try to maintain leaflet-providers in such a way that you'll be able to use the layers we include without paying money.".'<br>'.
-	"This doesn't mean no limits apply, you should always check before using these layers for anything serious.",'extensions-leaflet-map').'</i></p>';
+	__("We try to maintain leaflet-providers in such a way that you'll be able to use the layers we include without paying money.<br>
+	This doesn't mean no limits apply, you should always check before using these layers for anything serious.",'extensions-leaflet-map').'</i></p>';
 	if (current_user_can('manage_options')) {
 	if (!(is_singular()|| is_archive())) {
 		$text = $text.'<p>'.
@@ -117,6 +119,7 @@ function leafext_providers_do_page (){
 	settings_fields('leafext_providers');
 	do_settings_sections( 'leafext_providers' );
 	if (current_user_can('manage_options')) {
+		wp_nonce_field('leafext_tiles', 'leafext_tiles_nonce');
 		submit_button();
 		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 	}

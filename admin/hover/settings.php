@@ -55,18 +55,20 @@ function leafext_form_hover($field) {
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function leafext_validate_hover($options) {
-	if (isset($_POST['submit'])) {
-		$options['class'] = sanitize_text_field( $options['class'] );
-		$options['tolerance'] = (int) $options['tolerance'];
-		$options['snap'] = (int) $options['snap'];
-		delete_option('leafext_canvas'); //old option
-		return $options;
+	if ( ! empty( $_POST ) && check_admin_referer( 'leafext_hover', 'leafext_hover_nonce' ) ) {
+		if (isset($_POST['submit'])) {
+			$options['class'] = sanitize_text_field( $options['class'] );
+			$options['tolerance'] = (int) $options['tolerance'];
+			$options['snap'] = (int) $options['snap'];
+			delete_option('leafext_canvas'); //old option
+			return $options;
+		}
+		if (isset($_POST['delete'])) {
+			delete_option('leafext_hover');
+			delete_option('leafext_canvas');
+		}
+		return false;
 	}
-	if (isset($_POST['delete'])) {
-		delete_option('leafext_hover');
-		delete_option('leafext_canvas');
-	}
-	return false;
 }
 
 // Draw the menu page itself
@@ -79,6 +81,7 @@ function leafext_hover_admin_page (){
 	settings_fields('leafext_settings_hover');
 	do_settings_sections( 'leafext_settings_hover' );
 	if (current_user_can('manage_options')) {
+		wp_nonce_field('leafext_hover', 'leafext_hover_nonce');
 		submit_button();
 		submit_button( __( 'Reset', 'extensions-leaflet-map' ), 'delete', 'delete', false);
 	}
