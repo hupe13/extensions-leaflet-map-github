@@ -180,6 +180,10 @@ these js files from caching:
 
 ### 3.5.4 / 2311xx
 
+* rework elevation colors
+
+### 3.5.4 / 231119
+
 * new version leaflet-search
 * new version leaflet.fullscreen
 * new version leaflet-providers.js
@@ -189,4 +193,4 @@ these js files from caching:
 
 ### Previous
 
-[Changelog](CHANGELOG.md)
+[Changelog](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/CHANGELOG.md)

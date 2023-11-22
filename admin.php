@@ -2,6 +2,7 @@
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 
+include LEAFEXT_PLUGIN_DIR . '/admin/deleting.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/elevation/main.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/marker/main.php';
 include LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
@@ -50,6 +51,12 @@ function leafext_do_page() {
 		include LEAFEXT_PLUGIN_DIR . '/admin/zoomhome.php';
 		leafext_zoomhome_help();
 	} else if( $active_tab == 'help' ) {
+		echo '<form method="post" action="options.php">';
+		settings_fields('leafext_settings_deleting');
+		do_settings_sections( 'leafext_settings_deleting' );
+		wp_nonce_field('leafext_deleting', 'leafext_deleting_nonce');
+		submit_button();
+		echo '</form>';
 		include LEAFEXT_PLUGIN_DIR . '/admin/help.php';
 		leafext_help_table($leafext_plugin_name);
 	} else if( $active_tab == 'fullscreen' ) {

@@ -1,11 +1,7 @@
 # Differences to the WordPress Repository version
 
-* new version leaflet-search
-* new version leaflet.fullscreen
-* new version leaflet-providers.js
-* solved: Polyline layer turns black after turning off all legend filters
-* you can change the track color over the ruler filter now
-* some corrections that [Plugin Check](https://github.com/WordPress/plugin-check) has found
+* fixing bug elevation colors
+* new option: Delete all plugin settings when deleting the plugin?
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

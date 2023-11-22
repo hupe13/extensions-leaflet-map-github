@@ -573,6 +573,109 @@ function leafext_elevation_params($typ = array()) {
 	return $params;
 }
 
+function leafext_elevation_colors() {
+	$theme = leafext_elevation_theme();
+	$owncolors = get_option('leafext_color_'.$theme);
+	$themes = array(
+		"lime-theme" => array(
+			'polyline' => '#80904e',
+			'background' => "#ebf3d3",
+			'altitude' => "#accc45",
+		),
+		"steelblue-theme" => array(
+			'polyline' => '#74a1c7',
+			'background' => "#dae6f0",
+			'altitude' => "#6496c0",
+		),
+		"purple-theme" => array(
+			'polyline' => '#96619c',
+			'background' => "#e3d5e5",
+			'altitude' => "#8b5291",
+		),
+		"yellow-theme" => array(
+			'polyline' => '#ffff40',
+			'background' => "#dae6f0",
+			'altitude' => "#f8fa30",
+		),
+		"red-theme" => array(
+			'polyline' => '#ff4040',
+			'background' => "#dae6f0",
+			'altitude' => "#f82e30",
+		),
+		"magenta-theme" => array(
+			'polyline' => '#ff4086',
+			'background' => "#ffffff",
+			'altitude' => "#ff337e",
+		),
+		"lightblue-theme" => array(
+			'polyline' => '#668cd9',
+			'background' => "#dae6f0",
+			'altitude' => "#8face0",
+		),
+	);
+
+	if (!isset($themes[$theme])) {
+		$themes[$theme] = array(
+			'polyline' => isset($owncolors["polyline"]) ? $owncolors["polyline"] : '#000',
+			'background' => isset($owncolors["background"]) ? $owncolors["background"] : "#4682b4",  //rgba(70, 130, 180, 0.2)
+			'altitude' => isset($owncolors["altitude"]) ? $owncolors["altitude"] : "#4682B4",
+		);
+	}
+
+	//
+	$params = array(
+		array(
+			'param' => 'altitude',
+			'shortdesc' => __('Altitude chart profile',"extensions-leaflet-map"),
+			'desc' => "",
+			'default' => isset($themes[$theme]['altitude']) ? $themes[$theme]['altitude'] : "",
+		),
+		array(
+			'param' => 'speed',
+			'shortdesc' => __('Speed chart profile',"extensions-leaflet-map"),
+			'desc' => "",
+			'default' => isset($themes[$theme]['speed']) ? $themes[$theme]['speed'] : "#03ffff",
+		),
+		array(
+			'param' => 'acceleration',
+			'shortdesc' => __('Acceleration chart profile',"extensions-leaflet-map"),
+			'desc' => "",
+			'default' => isset($themes[$theme]['acceleration']) ? $themes[$theme]['acceleration'] : "#050402",
+		),
+		array(
+			'param' => 'slope',
+			'shortdesc' => __('Slope chart profile',"extensions-leaflet-map"),
+			'desc' => "",
+			'default' => isset($themes[$theme]['slope']) ? $themes[$theme]['slope'] : "#FF0000",
+		),
+		array(
+			'param' => 'pace',
+			'shortdesc' =>  __('Pace profile - time per distance',"extensions-leaflet-map"),
+			'desc' => "",
+			'default' => isset($themes[$theme]['pace']) ? $themes[$theme]['pace'] : "#03ffff",
+		),
+		array(
+			'param' => 'polyline',
+			'shortdesc' => __('Track color',"extensions-leaflet-map"),
+			'desc' => "",
+			'default' => isset($themes[$theme]['polyline']) ? $themes[$theme]['polyline'] : '#000',
+		),
+		array(
+			'param' => 'polylineSegments',
+			'shortdesc' => __('Track color over the ruler filter',"extensions-leaflet-map"),
+			'desc' => "",
+			'default' => "#F00",
+		),
+		array(
+			'param' => 'background',
+			'shortdesc' => __('Chart background color',"extensions-leaflet-map"),
+			'desc' => "",
+			'default' => isset($themes[$theme]['background']) ? $themes[$theme]['background'] : "",
+		),
+	);
+	return $params;
+}
+
 function leafext_ele_java_params($settings) {
 	$text = "";
 	foreach ($settings as $k => $v) {
@@ -666,7 +769,6 @@ function leafext_elevation_script($gpx,$settings){
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
-		map.options.preferCanvas = true;
 		var elevation_options = {
 			<?php echo $elevation_settings; ?>
 			<?php echo leafext_java_params ($settings); ?>
@@ -924,6 +1026,7 @@ function leafext_elevation_function($atts,$content,$shortcode) {
 					interactive: false,
 				}';
 			}
+			$options["preferCanvas"] = "false";
 		}
 
 		if ( $options['hotline'] == "elevation") unset ($options['polyline'] );
