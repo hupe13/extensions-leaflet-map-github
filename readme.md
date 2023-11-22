@@ -178,7 +178,7 @@ these js files from caching:
 
 ## Changelog
 
-### 3.5.4 / 2311xx
+### 3.5.5 / 2311xx
 
 * rework elevation colors
 
