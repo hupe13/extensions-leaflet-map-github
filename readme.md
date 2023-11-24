@@ -178,9 +178,10 @@ these js files from caching:
 
 ## Changelog
 
-### 3.5.5 / 2311xx
+### 3.5.5 / 23112x
 
-* rework elevation colors
+* fixing bug elevation colors
+* new option: Delete all plugin settings when deleting the plugin?
 
 ### 3.5.4 / 231119
 
