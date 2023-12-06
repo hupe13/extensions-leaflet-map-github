@@ -7,7 +7,7 @@ function leafext_help_tiles() {
     $tilesproviders = '?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=tilesproviders';
     $tileswitch = '?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=tileswitch';
     $text='<h2>'.__('About Tile servers','extensions-leaflet-map').'</h2><p>';
-    $text=$text.sprintf(__('The default Map Tiles are defined in the %s Settings%s.','extensions-leaflet-map'),
+    $text=$text.sprintf(__('The default Map Tiles are defined in the %1$s Settings%2$s.','extensions-leaflet-map'),
     '<a href="'.get_admin_url().'admin.php?page=leaflet-map">Leaflet Map',
     '</a>');
   } else { // for my frontend leafext.de
@@ -20,7 +20,7 @@ function leafext_help_tiles() {
     $tileswitch = $lang.'/doku/tileswitch/';
     $text='<p>'.__('The default Map Tiles are defined in the Leaflet Map Settings.','extensions-leaflet-map');
   }
-  $text=$text.' '.sprintf(__('Pay attention to the setting for %s, it depends on the used Map Tiles, see %shere%s.',
+  $text=$text.' '.sprintf(__('Pay attention to the setting for %1$s, it depends on the used Map Tiles, see %2$shere%3$s.',
   'extensions-leaflet-map'),
   "max_zoom",
   '<a href="https://github.com/leaflet-extras/leaflet-providers/blob/master/leaflet-providers.js">',
@@ -41,7 +41,7 @@ function leafext_help_tiles() {
   <tr><td>'.__('Default Max Zoom', 'leaflet-map').'</td><td>max_zoom</td><td>'.get_option('leaflet_default_max_zoom').'</td></tr>
   </table></figure>';
 
-  $text=$text.'<p>'.sprintf(__('Additionally you can use some predefined Tile Providers with %s or you can define %syour Tile Servers%s.','extensions-leaflet-map'),
+  $text=$text.'<p>'.sprintf(__('Additionally you can use some predefined Tile Providers with %1$s or you can define %2$syour Tile Servers%3$s.','extensions-leaflet-map'),
   '<a href="'.$tilesproviders.'">Leaflet-providers</a>',
   '<a href="'.$tileswitch.'">',
   '</a>').'</p>';
@@ -60,22 +60,33 @@ $text = $text.'
   </ul></li>
    <li> <code>&#091;layerswitch]</code>
    <ul>
-   <li> '.sprintf(__('without any parameter: All your defined %stile servers%s are used.','extensions-leaflet-map'),
+   <li> '.sprintf(__('without any parameter: All your defined %1$stile servers%2$s are used.','extensions-leaflet-map'),
    '<a href="'.$tileswitch.'">',
    '</a>').'</li>'.
-   '<li> <code>tiles</code>: '.sprintf(__('a comma separated list of any your defined %stile servers%s','extensions-leaflet-map'),
+   '<li> <code>tiles</code>: '.sprintf(__('a comma separated list of any your defined %1$stile servers%2$s','extensions-leaflet-map'),
    '<a href="'.$tileswitch.'">',
    '</a>.').
    '</li>
-   <li> <code>providers</code>: '.sprintf(__('a comma separated list of any %sproviders%s','extensions-leaflet-map'),
+   <li> <code>providers</code>: '.sprintf(__('a comma separated list of any %1$sproviders%2$s','extensions-leaflet-map'),
    '<a href="'.$tilesproviders.'">',
    '</a>.').
    '</li><li>'.
    __('optional: <code>mapids</code> - a comma separated list with shortnames for providers. These appear in the switching control.',
    'extensions-leaflet-map').' '.sprintf(
-     __('The number of %s and %s must match.','extensions-leaflet-map'),"<code>mapids</code>","<code>providers</code>").'
-   </li><li> '.sprintf(__('with %s you can specify the mapids and/or providers for which opacity should be regulated.','extensions-leaflet-map'),'<code>opacity</code>').
-   '</li></ul></li>
+     __('The number of %1$s and %2$s must match.','extensions-leaflet-map'),"<code>mapids</code>","<code>providers</code>").'
+   </li><li> '.sprintf(__('with %1$s you can specify the mapids and/or providers for which opacity should be regulated.','extensions-leaflet-map'),'<code>opacity</code>').
+   '</li>
+
+   <li>'.
+   __('optional: <code>position</code> - position of tiles control','extensions-leaflet-map').': topleft, topright, bottomleft, bottomright. '.
+   __('Default','extensions-leaflet-map').': topright.
+   </li>
+   <li>'.
+   __('optional: <code>collapsed</code> - tiles control collapsed or not:','extensions-leaflet-map').' true, false. '.
+   __('Default','extensions-leaflet-map').': true.
+   </li>
+
+   </ul></li>
    </ul>
   ';
 

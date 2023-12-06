@@ -239,16 +239,22 @@ function leafext_opacity_script($opacities) {
 	return $text;
 }
 
-function leafext_layerswitch_end_script() {
+function leafext_layerswitch_end_script($settings) {
 	$text = '<!--';
 	ob_start();
 	?>/*<script>*/
 	//console.log(baselayers);
 	//console.log(overlays);
 
-	L.control.layers(baselayers,overlays).addTo(map);
+	L.control.layers(baselayers,overlays,{
+		collapsed:<?php echo $settings['collapsed']; ?>,
+		position:"<?php echo $settings['position']; ?>",
+	}).addTo(map);
 	if ( Object.entries(opacity).length !==  0) {
-		L.control.opacity(opacity,{collapsed:true,}).addTo(map);
+		L.control.opacity(opacity,{
+			collapsed:<?php echo $settings['collapsed']; ?>,
+			position:"<?php echo $settings['position']; ?>",
+		}).addTo(map);
 	}
 });
 <?php
@@ -375,7 +381,11 @@ function leafext_layerswitch_function($atts,$content,$shortcode) {
 				$text = $text.leafext_opacity_script($opacities);
 			}
 		}
-		$text = $text.leafext_layerswitch_end_script();
+		$control = array('position' => "topright",'collapsed' => true);
+		$atts1 = leafext_clear_params($atts);
+		$options = shortcode_atts($control, $atts1);
+		if (!leafext_check_position_control($options['position'])) $options['position'] = "topright";
+		$text = $text.leafext_layerswitch_end_script($options);
 		$text = \JShrink\Minifier::minify($text);
 		return "\n".$text."\n";
 	}

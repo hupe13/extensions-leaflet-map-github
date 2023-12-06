@@ -9,7 +9,7 @@ function leafext_extramarker_help() {
      $text = '<h2>Leaflet.Extramarkers</h2>';
   }
 
-  $text=$text.'<p>'.sprintf(__('The %s is included in the plugin %s. If you have already installed some yourself, yours will be used.','extensions-leaflet-map'),
+  $text=$text.'<p>'.sprintf(__('The %1$s is included in the plugin %2$s. If you have already installed some yourself, yours will be used.','extensions-leaflet-map'),
   '<a href="https://fontawesome.com/download">Font Awesome 6</a>',
   'Extensions for Leaflet Map',
   '<a href="https://github.com/coryasilva/Leaflet.ExtraMarkers#icons">',
@@ -95,9 +95,6 @@ function leafext_extramarker_help() {
   $text = $text. do_shortcode('[hover markertooltip]');
 
   $text = $text. '<p><a href="https://fontawesome.com/search?o=r&m=free">'.__('More icons','extensions-leaflet-map').' ...</a></p>';
-  // $text = $text. '<p>'.sprintf(__('If you use %s, you must write %s also','extensions-leaflet-map'),
-  // '<code>icon=fa-solid</code>',
-  // '<code>extraClasses=fa</code>').'.</p>';
 
   $text = $text.'<p><h2>'.__('Options','extensions-leaflet-map').'</h2></p>';
   $options = leafext_extramarker_params();

@@ -5,21 +5,21 @@ defined( 'ABSPATH' ) or die();
 function leafext_help_hover() {
   $text='<h2 id="hover">Hovering</h2>
   <img src="'.LEAFEXT_PLUGIN_PICTS.'hover.png" alt="hover">
-  <p>'.sprintf(__('Use it to highlight a %s element and get a tooltip on mouse over.','extensions-leaflet-map'),
+  <p>'.sprintf(__('Use it to highlight a %1$s element and get a tooltip on mouse over.','extensions-leaflet-map'),
   "leaflet-*");
   $text = $text. '</p>';
 
   $text = $text. '<h2>Shortcode</h2>
   <h4>'.__('Create Map','extensions-leaflet-map').'</h4>
   <pre><code>&#091;leaflet-map ...]</code></pre>
-  <h4>'.sprintf(__('Load any elements with any %s shortcode','extensions-leaflet-map'),
+  <h4>'.sprintf(__('Load any elements with any %1$s shortcode','extensions-leaflet-map'),
   'leaflet-*').'</h4>';
   $text = $text.'<ul>';
   $text = $text.'<li>';
   $text = $text.__('The tooltip content is the same as the popup content.','extensions-leaflet-map');
   $text = $text.'</li>';
   $text = $text.'<li>';
-  $text = $text. sprintf(__('To customize the popup content for geojsons, see %sgeojson options%s.','extensions-leaflet-map'),
+  $text = $text. sprintf(__('To customize the popup content for geojsons, see %1$sgeojson options%2$s.','extensions-leaflet-map'),
   '<a href="https://github.com/bozdoz/wp-plugin-leaflet-map#leaflet-geojson-options">','</a>');
   $text = $text.'</li>';
   $text = $text.'</ul>';
@@ -81,7 +81,7 @@ $text=$text.'<p>'.
 
 $do_only = leafext_hover_params('only');
 $do_element = leafext_hover_params('element');
-$text=$text.'<p>'.sprintf(__("If you use one or multiple options from %s, then the options %s will be ignored. ",
+$text=$text.'<p>'.sprintf(__('If you use one or multiple options from %1$s, then the options %2$s will be ignored. ',
 'extensions-leaflet-map'),
 str_replace(array('","','"'),array(', ',''),trim(wp_json_encode(leafext_hover_params('only')),'[]')),
 str_replace(array('","','"'),array(', ',''),trim(wp_json_encode(leafext_hover_params('element')),'[]')))
@@ -101,7 +101,7 @@ $text = $text.'<code>true</code> = <code>parameter</code> || <code>parameter="1"
 $text = $text.'</p>';
 
 $text = $text.'<h4>'.__('Tooltip className', "extensions-leaflet-map").'</h4>';
-$text = $text.'<p>'.sprintf(__('The tooltip has a %s, its default is %s. You can style the tooltip with css, e.g.', "extensions-leaflet-map"),'className','"leafext-tooltip"');
+$text = $text.'<p>'.sprintf(__('The tooltip has a %1$s, its default is %2$s. You can style the tooltip with css, e.g.', "extensions-leaflet-map"),'className','"leafext-tooltip"');
 $text = $text.'<pre>
 .leafext-tooltip {
   background-color: #eee !important;

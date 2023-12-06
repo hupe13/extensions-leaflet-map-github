@@ -1,3 +1,17 @@
+### 3.5.5 / 231125
+
+* fixing bug elevation colors
+* new option: Delete all plugin settings when deleting the plugin?
+
+### 3.5.4 / 231119
+
+* new version leaflet-search
+* new version leaflet.fullscreen
+* new version leaflet-providers.js
+* solved: Polyline layer turns black after turning off all legend filters
+* you can change the track color over the ruler filter now
+* some corrections that [Plugin Check](https://github.com/WordPress/plugin-check) has found
+
 ### 3.5.3 / 230920
 
 * new shortcode overviewmap: generates an overview map with geo positions provided in the pages and posts

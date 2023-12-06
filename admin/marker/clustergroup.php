@@ -14,20 +14,20 @@ function leafext_clustergroup_help_text () {
 	__('Dynamically add/remove groups of markers from Marker Cluster','extensions-leaflet-map').
 	'.</p>';
 	$firsttext=$firsttext.'<h3>'.__('Note','extensions-leaflet-map').'</h3>'.
-	'<p>'.sprintf(__('The shortcode %s is a special case of %s respectively %s.','extensions-leaflet-map'),
+	'<p>'.sprintf(__('The shortcode %1$s is a special case of %2$s respectively %3$s.','extensions-leaflet-map'),
 	'<code>markerClusterGroup</code>',
 	'<code>leaflet-optiongroup</code>',
 	'<code>leaflet-featuregroup</code>')
-	.'<br>'.sprintf(__("If you don't use this shortcode yet, start your work with %sthese two%s.",'extensions-leaflet-map'),
+	.'<br>'.sprintf(__('If you don\'t use this shortcode yet, start your work with %1$sthese two%2$s.','extensions-leaflet-map'),
 	'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=featuregroup">',
 	'</a>').'</p>';
 
 	$note='<h3>'.__('Note','extensions-leaflet-map').'</h3>'.
-	'<p>'.sprintf(__('The shortcode %s is a special case of %s respectively %s.','extensions-leaflet-map'),
+	'<p>'.sprintf(__('The shortcode %1$s is a special case of %2$s respectively %3$s.','extensions-leaflet-map'),
 	'<code>markerClusterGroup</code>',
 	'<code>leaflet-optiongroup</code>',
 	'<code>leaflet-featuregroup</code>')
-	.'<br>'.sprintf(__("If you don't use this shortcode yet, start %sthere%s.",'extensions-leaflet-map'),
+	.'<br>'.sprintf(__('If you don\'t use this shortcode yet, start %1$sthere%2$s.','extensions-leaflet-map'),
 	'<a href="/doku/featuregroup/">',
 	'</a>').'</p>';
 
@@ -35,15 +35,15 @@ function leafext_clustergroup_help_text () {
 	<ul>
 	<li><code>feat</code> - '.__('possible meaningful values','extensions-leaflet-map').': <code>iconUrl</code>, <code>title</code></li>
 		<li><code>strings</code> - '.sprintf(
-		__('comma separated strings to distinguish the markers, e.g. an unique string in %s or %s',
+		__('comma separated strings to distinguish the markers, e.g. an unique string in %1$s or %2$s',
 		'extensions-leaflet-map'),"<code>iconUrl</code>","<code>title</code>").'</li>
 			<li><code>groups</code> - '.
 			__('comma separated labels appear in the selection menu','extensions-leaflet-map').'</li>
 		<li>'.sprintf(
-			__('The number of %s and %s must match.','extensions-leaflet-map'),"<code>strings</code>","<code>groups</code>").'
+			__('The number of %1$s and %2$s must match.','extensions-leaflet-map'),"<code>strings</code>","<code>groups</code>").'
 			</li>
 			<li><code>visible</code> ('.__('optional','extensions-leaflet-map').') - '.
-			sprintf(__('initial visibility of a group, default: %s. Either %s (valid for all groups) or a comma-separated list of %s and %s, where the number must match those of %s.',
+			sprintf(__('initial visibility of a group, default: %1$s. Either %2$s (valid for all groups) or a comma-separated list of %3$s and %4$s, where the number must match those of %5$s.',
 			'extensions-leaflet-map'),
 			'1',
 			'0',
@@ -83,17 +83,17 @@ function leafext_clustergroup_help_text () {
 			 '
 			.'</li>
 			<li><code>strings</code> - '.sprintf(
-				__('comma separated strings to distinguish the markers, e.g. an unique substring in %s or the exact string (e.g.%s) in %s',
+				__('comma separated strings to distinguish the markers, e.g. an unique substring in %1$s or the exact string (e.g.%2$s) in %3$s',
 				'extensions-leaflet-map'),"<code>iconUrl</code>",
 				'<code><span style="color: #4f94d4">value0</span></code>',
 				"<code>properties.<i>property</i></code>").'</li>
 				<li><code>groups</code> - '.
 				__('comma separated labels appear in the selection menu','extensions-leaflet-map').'</li>
 				<li>'.sprintf(
-					__('The number of %s and %s must match.','extensions-leaflet-map'),"<code>strings</code>","<code>groups</code>").'
+					__('The number of %1$s and %2$s must match.','extensions-leaflet-map'),"<code>strings</code>","<code>groups</code>").'
 					</li>
 					<li><code>visible</code> ('.__('optional','extensions-leaflet-map').') - '.
-					sprintf(__('initial visibility of a group, default: %s. Either %s (valid for all groups) or a comma-separated list of %s and %s, where the number must match those of %s.',
+					sprintf(__('initial visibility of a group, default: %1$s. Either %2$s (valid for all groups) or a comma-separated list of %3$s and %4$s, where the number must match those of %5$s.',
 					'extensions-leaflet-map'),
 					'1',
 					'0',
@@ -113,7 +113,7 @@ function leafext_clustergroup_help_text () {
 &#091;markerClusterGroup feat="properties.<span style="color: #d63638">prop0</span>" strings="<span style="color: #4f94d4">value0</span>,..." groups="Description0,..." visible=...]</code></pre>
 <h3>groups unknown '.__('and','extensions-leaflet-map').' others</h3><p>'.
 sprintf(
-__('If %s contains %s and %s, then markers (respectively Points) for which the property %s does not apply are placed in the %s group. Markers (respectively Points) whose property is not known are placed in the %s group. See also the developer console.','extensions-leaflet-map'),
+__('If %1$s contains %2$s and %3$s, then markers (respectively Points) for which the property %4$s does not apply are placed in the %5$s group. Markers (respectively Points) whose property is not known are placed in the %6$s group. See also the developer console.','extensions-leaflet-map'),
 			"<code>groups</code>",
 			'"unknown"',
 			'"others"',
@@ -124,7 +124,7 @@ __('If %s contains %s and %s, then markers (respectively Points) for which the p
 			'</p><h3>Shortcode groups unknown '.__('and','extensions-leaflet-map').' others</h3>
 <pre><code>&#091;markerClusterGroup feat="..." strings="...,...,others,unknown" groups="...,...,Other properties,Unknown properties"]</code></pre>';
 
-	$textoptions = '<p>'.sprintf ( __('The parameter and settings for %s are valid too.','extensions-leaflet-map'),
+	$textoptions = '<p>'.sprintf ( __('The parameter and settings for %1$s are valid too.','extensions-leaflet-map'),
 			'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=markercluster">Leaflet.markercluster</a>');
 	$textoptions = $textoptions.'</p>';
 	if (is_singular() || is_archive() ) {

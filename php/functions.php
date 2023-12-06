@@ -113,6 +113,12 @@ function leafext_array_replace_keys($array, $keys) {
 	return $array;
 }
 
+// check position
+function leafext_check_position_control($value) {
+	$valid = array('topright','topleft','bottomleft','bottomright');
+	return in_array($value,$valid);
+}
+
 // Backend Plugin extension-leaflet-map
 function leafext_backend() {
 	$backend_page = isset($_GET['page']) ? $_GET['page'] : "";

@@ -13,7 +13,7 @@ function leafext_help_table($leafext_plugin_name="") {
 	__('Documentation','extensions-leaflet-map').'</h3><p>';
 	$header=$header.
 	sprintf(
-		__('Detailed documentation and examples in %sGerman%s and %sEnglish%s',
+		__('Detailed documentation and examples in %1$sGerman%2$s and %3$sEnglish%4$s',
 		"extensions-leaflet-map"),
 		'<a href="https://leafext.de/">',
 		'</a>',
@@ -323,7 +323,7 @@ function leafext_help_table($leafext_plugin_name="") {
 <li><a href="https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup">Leaflet.FeatureGroup.SubGroup</a>: '.__('Grouping of Leaflet elements by options and features.','extensions-leaflet-map').'</li>
 <li><a href="https://github.com/stefanocudini/leaflet-search">Leaflet Control Search</a>: '.__('Search Markers/Features location by option or custom property.','extensions-leaflet-map').'</li>
 <li><a href="https://github.com/timwis/leaflet-choropleth">leaflet-choropleth</a>: '.__('Choropleth plugin for Leaflet (color scale based on value).','extensions-leaflet-map').'</li>
-<li><a href="https://github.com/torfsen/leaflet.zoomhome">leaflet.zoomhome</a>: '.sprintf(__('Provides a zoom control with a %sHome%s button to reset the view.','extensions-leaflet-map'),'&quot;','&quot;').'</li>
+<li><a href="https://github.com/torfsen/leaflet.zoomhome">leaflet.zoomhome</a>: '.sprintf(__('Provides a zoom control with a %1$sHome%2$s button to reset the view.','extensions-leaflet-map'),'&quot;','&quot;').'</li>
 <li><a href="https://github.com/brunob/leaflet.fullscreen">leaflet.fullscreen</a>: '.__('Simple plugin for Leaflet that adds fullscreen button to your maps.','extensions-leaflet-map').'</li>
 <li><a href="https://github.com/Raruto/leaflet-gesture-handling">Leaflet.GestureHandling</a>: '.__('A Leaflet plugin that allows to prevent default map scroll/touch behaviours.','extensions-leaflet-map').'</li>
 <li><a href="https://github.com/Turfjs/turf">turf</a>: '.__('Advanced geospatial analysis for browsers and Node.js','extensions-leaflet-map').'</li>

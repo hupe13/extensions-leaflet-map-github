@@ -1,7 +1,8 @@
 # Differences to the WordPress Repository version
 
-* fixing bug elevation colors
-* new option: Delete all plugin settings when deleting the plugin?
+* every control has a position and collapse option now.
+* translation placeholder
+* new leaflet-providers.js
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

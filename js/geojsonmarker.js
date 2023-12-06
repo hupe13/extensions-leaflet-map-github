@@ -3,7 +3,7 @@
 * extensions-leaflet-map geojsonmarker
 */
 
-function leafext_geojsonmarker_js(property,iconprops,icondefault,auto,groups,visible,clmarkers,extramarkericon) {
+function leafext_geojsonmarker_js(property,iconprops,icondefault,auto,groups,visible,clmarkers,extramarkericon,position,collapsed) {
   var map = window.WPLeafletMapPlugin.getCurrentMap();
   var map_id = map._leaflet_id;
 
@@ -12,27 +12,30 @@ function leafext_geojsonmarker_js(property,iconprops,icondefault,auto,groups,vis
   }
 
   if (groups !== null) {
-    if (typeof durchlauf == "undefined" ) {
-      maps=[];
-      durchlauf=[];
-      featGroups=[];
+    if (typeof geojsonmarker_pass == "undefined" ) {
+      if (typeof maps == "undefined" ) maps=[];
+      geojsonmarker_pass=[];
+      if (typeof featGroups == "undefined" ) featGroups=[];
       autogroups=[];
       iconproperties=[];
       icondefaults=[];
-      control=[];
-      displayed=[];
-      cluster=[];
+      if (typeof control == "undefined" ) control=[];
+      if (typeof displayed == "undefined" ) displayed=[];
+      if (typeof cluster == "undefined" ) cluster=[];
     }
-    if (typeof durchlauf[map_id] == "undefined" ) {
+    if (typeof geojsonmarker_pass[map_id] == "undefined" ) {
       maps[map_id] = map;
-      durchlauf[map_id] = 0;
+      geojsonmarker_pass[map_id] = 0;
       featGroups[map_id] = [];
       autogroups[map_id]=groups;
       iconproperties[map_id]=iconprops;
       icondefaults[map_id]=icondefault;
       displayed[map_id] = [];
       cluster[map_id] = clmarkers;
-      control[map_id] =  L.control.layers(null, null, { collapsed: false });
+      control[map_id] =  L.control.layers(null, null, {
+        collapsed:collapsed,
+        position:position
+      });
       for (key in autogroups[map_id]) {
         featGroups[map_id][autogroups[map_id][key]] = new L.featureGroup.subGroup(cluster[map_id]);
         //console.log("visible",key,visible[key]);
@@ -40,7 +43,7 @@ function leafext_geojsonmarker_js(property,iconprops,icondefault,auto,groups,vis
         //console.log(displayed[map_id]);
       }
     } else {
-      durchlauf[map_id] = durchlauf[map_id] +1;
+      geojsonmarker_pass[map_id] = geojsonmarker_pass[map_id] +1;
       for (key in autogroups[map_id]) {
         if ( autogroups[map_id][key] in featGroups[map_id] ) {
           //console.log(autogroups[map_id][key]+" schon in featGroups[map_id]");
@@ -50,7 +53,7 @@ function leafext_geojsonmarker_js(property,iconprops,icondefault,auto,groups,vis
         }
       }
     }
-    console.log("Round "+durchlauf[map_id]+" on map "+map_id+"; Property:",property,"; "+"Groups",autogroups[map_id],"visible",visible);
+    console.log("Round "+geojsonmarker_pass[map_id]+" on map "+map_id+"; Property:",property,"; "+"Groups",autogroups[map_id],"visible",visible);
   }
 
   var geojsons = window.WPLeafletMapPlugin.geojsons;
@@ -59,7 +62,7 @@ function leafext_geojsonmarker_js(property,iconprops,icondefault,auto,groups,vis
     var geocount = geojsons.length;
     for (var j = 0, len = geocount; j < len; j++) {
       var geojson = geojsons[j];
-      //console.log(geojson);
+      // console.log(geojson);
       if (map_id == geojson._map._leaflet_id) {
         // console.log("geojson");
 

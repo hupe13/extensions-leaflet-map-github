@@ -7,7 +7,7 @@
 defined( 'ABSPATH' ) or die();
 
 //Shortcode: [zoomhomemap]
-function leafext_zoomhome_script($fit){
+function leafext_zoomhome_script($options){
 	$text = '<script><!--';
 	ob_start();
 	?>/*<script>*/
@@ -22,10 +22,11 @@ function leafext_zoomhome_script($fit){
 		// 0: home = ele fitbounds (default)
 		// 1: home = map
 		var allfit = [];
-		if (<?php echo wp_json_encode((bool)$fit); ?> && typeof maps[map_id]._shouldFitBounds === "undefined" ) {
+		if (<?php echo wp_json_encode((bool)$options['fit']); ?> && typeof maps[map_id]._shouldFitBounds === "undefined" ) {
 			allfit[map_id] = new L.latLngBounds();
 		}
-		leafext_zoomhome_js(maps,map_id,allfit);
+		var position = <?php echo wp_json_encode($options['position']); ?>;
+		leafext_zoomhome_js(maps,map_id,allfit,position);
 	});
 	<?php
 	$javascript = ob_get_clean();
@@ -44,10 +45,12 @@ function leafext_zoomhome_function($atts,$content,$shortcode) {
 		//
 		$defaults = array(
 			'fit' => 1,
+			'position' => "topleft",
 		);
 		$atts1 = leafext_clear_params($atts);
 		$params = shortcode_atts($defaults, $atts1);
-		return leafext_zoomhome_script($params['fit']);
+		if (!leafext_check_position_control($params['position'])) $params['position'] = "topleft";
+		return leafext_zoomhome_script($params);
 	}
 }
 add_shortcode('zoomhomemap', 'leafext_zoomhome_function' );

@@ -853,11 +853,11 @@
 		 */
 		_fixCanvasPaths() {
 			let oldProto = L.Canvas.prototype._fillStroke;
-
 			let control  = this;
 
 			let theme      = this.options.theme.split(' ')[0].replace('-theme', '');
 			let color      = Colors[theme] || {};
+
 			L.Canvas.include({
 				_fillStroke(ctx, layer) {
 					if (control._layers.hasLayer(layer)) {
@@ -1241,6 +1241,7 @@
 			this._chartEnabled = this._chart._hasActiveLayers();
 
 			// toggle layer visibility on empty chart
+			// this._layers.eachLayer(layer => toggleClass(layer.getElement && layer.getElement(), this.options.polyline.className + ' ' + this.options.theme, this._chartEnabled));
 			this._layers.eachLayer(layer => layer.getElement && this._chartEnabled && this.options.polyline.className && _.toggleClass(layer.getElement && layer.getElement(), this.options.polyline.className + ' ' + this.options.theme, this._chartEnabled));
 
 			// toggle option value (eg. altitude = { 'disabled' || 'enabled' })

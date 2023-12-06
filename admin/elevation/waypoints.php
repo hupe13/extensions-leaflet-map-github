@@ -118,7 +118,7 @@ function leafext_waypoints_help_text() {
 
 	}
 
-	$text = $text.'<p>'.sprintf(__('You can of course use %s and define waypoints with additional %s and %s shortcodes.'
+	$text = $text.'<p>'.sprintf(__('You can of course use %1$s and define waypoints with additional %2$s and %3$s shortcodes.'
 		,'extensions-leaflet-map'),
 		"<code>[elevation ... waypoints=0 ...]</code>",
 		"<code>leaflet-marker</code>",
@@ -140,10 +140,10 @@ $text=$text.'<h3>Shortcode</h3>
 </code></pre>';
 
 if (is_singular()|| is_archive() ) {
-	$text = $text.'<p>'.sprintf(__('Or set this in the %selevation settings%s.','extensions-leaflet-map'),
+	$text = $text.'<p>'.sprintf(__('Or set this in the %1$selevation settings%2$s.','extensions-leaflet-map'),
 	'<a href="'.get_site_url().'/elevation/wpts/">','</a>');
 } else {
-	$text = $text.'<p>'.sprintf(__('Or set this in the %selevation settings%s.','extensions-leaflet-map'),
+	$text = $text.'<p>'.sprintf(__('Or set this in the %1$selevation settings%2$s.','extensions-leaflet-map'),
 	'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation#markers">','</a>');
 }
 	$text = $text.'</p>';
@@ -161,7 +161,7 @@ $text = $text.'<h3>'.__('The waypoint CSS class Selector','extensions-leaflet-ma
 $text = $text.'<ul>
 
 <li>'
-	.sprintf(__('CSS to define as HTML block (between %s and %s) or in css file','extensions-leaflet-map'),
+	.sprintf(__('CSS to define as HTML block (between %1$s and %2$s) or in css file','extensions-leaflet-map'),
 	'<code>&lt;style&gt;</code>','<code>&lt;/style&gt;</code>').'</li>
 
 <li>'
@@ -174,7 +174,7 @@ $text = $text.'<ul>
 
 <li>'
 	.sprintf(__(
-	'Any blank character from %sText of GPS symbol name%s is converted to a minus sign, uppercase to lowercase, a comma will be escaped.',
+	'Any blank character from %1$sText of GPS symbol name%2$s is converted to a minus sign, uppercase to lowercase, a comma will be escaped.',
 	'extensions-leaflet-map'),'<span style="color: #4f94d4">','</span>').'</li>
 
 <li>'
@@ -183,7 +183,7 @@ $text = $text.'<ul>
 
 <li>'
 	.sprintf(__(
-	'If you need more special characters than %s for your waypoints, please ask in the forum.',
+	'If you need more special characters than %1$s for your waypoints, please ask in the forum.',
 	'extensions-leaflet-map'),
 	' <code>- ,</code> ').'</li>
 

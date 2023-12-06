@@ -98,7 +98,7 @@ function leafext_validate_multiele_options($options) {
 		if (isset($_POST['submit'])) return $options;
 		if (isset($_POST['delete'])) delete_option('leafext_multieleparams');
 		return false;
-	} 
+	}
 }
 
 // Helptext
@@ -126,30 +126,30 @@ if (is_singular()|| is_archive() ) {
 $text = $text.'<code>leaflet-directory</code></a></p>
 <h3>'.__('Options','extensions-leaflet-map').' elevation-track</h3>
 <ul><li>'.
-	sprintf ( __('%s is the url of the trackfile.','extensions-leaflet-map'),'<code>file</code>').
+	sprintf ( __('%1$s is the url of the trackfile.','extensions-leaflet-map'),'<code>file</code>').
 		'</li><li>'.
-	sprintf ( __('%s, %s and %s describe the %sstart point%s and are optional.','extensions-leaflet-map'),
+	sprintf ( __('%1$s, %2$s and %3$s describe the %4$sstart point%5$s and are optional.','extensions-leaflet-map'),
 		'<code>lat</code>',
 		'<code>lng</code>',
 		'<code>name</code>',
 		'<span style="color: #4f94d4">',
 		'</span> <img src="'.LEAFEXT_ELEVATION_URL.'/images/elevation-poi.png" width="12" height="12" alt="elevation-poi">').
 	'</li><li>'.
-	sprintf ( __('If %s and %s are not specified, they are read from the file.','extensions-leaflet-map'),
+	sprintf ( __('If %1$s and %2$s are not specified, they are read from the file.','extensions-leaflet-map'),
 		'<code>lat</code>',
 		'<code>lng</code>').
 	'</li><li>'.
-	sprintf ( __('The name of the %sstart point%s is determined in this order:',
+	sprintf ( __('The name of the %1$sstart point%2$s is determined in this order:',
 		'extensions-leaflet-map'),
 		'<span style="color: #4f94d4">',
 		'</span>').
 	'<ol><li>'.
-		sprintf ( __('If %s (in options below or in shortcode) is true, the filename (without extension) is used, no matter how %s is.',
+		sprintf ( __('If %1$s (in options below or in shortcode) is true, the filename (without extension) is used, no matter how %2$s is.',
 			'extensions-leaflet-map'),
 			'<code>filename</code>',
 			'<code>name</code>').
 	'</li><li>'.
-		sprintf ( __('If %s is false and %s is specified, it is used.','extensions-leaflet-map'),
+		sprintf ( __('If %1$s is false and %2$s is specified, it is used.','extensions-leaflet-map'),
 	 		'<code>filename</code>',
 			'<code>name</code>').
 	'</li><li>'.
@@ -166,16 +166,16 @@ $text = $text.'<code>leaflet-directory</code></a></p>
 		}	else {
 			$link = '?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation';
 		}
-	$text = $text.sprintf( __('You can use these options like in %sElevation Profile%s','extensions-leaflet-map'),
+	$text = $text.sprintf( __('You can use these options like in %1$sElevation Profile%2$s','extensions-leaflet-map'),
 		'<a href="'.$link.'">',
 		'</a>').': '.
  	leafext_eleparams_for_multi().
 	'.</li><li>'.
-	sprintf(__('The name of a %strack%s is determined in this order:','extensions-leaflet-map'),
+	sprintf(__('The name of a %1$strack%2$s is determined in this order:','extensions-leaflet-map'),
 		'<span style="color: #4f94d4">',
 		'</span>').
 	'</li><ol><li>'.
-	sprintf(__('If %s (in options below or in shortcode) is true, the filename (without extension) is used.','extensions-leaflet-map'),
+	sprintf(__('If %1$s (in options below or in shortcode) is true, the filename (without extension) is used.','extensions-leaflet-map'),
 		'<code>filename</code>').
 	'</li><li>'.
 	__('If it is false, an attempt is made to read the trackname from the file.','extensions-leaflet-map').
@@ -186,9 +186,9 @@ $text = $text.'<code>leaflet-directory</code></a></p>
 
 	'<h3>'.__('Options','extensions-leaflet-map').' elevation-tracks</h3>
 	<ul><li>'.
-	sprintf(__('If you use %s instead of %s, you get an elevation profile only with or without a summary line.','extensions-leaflet-map'),
+	sprintf(__('If you use %1$s instead of %2$s, you get an elevation profile only with or without a summary line.','extensions-leaflet-map'),
 	'<code>[elevation-<span style="color: #d63638">tracks</span>]</code>','<code>[multielevation]</code>').' '.
-	sprintf (__('The name of a %strack%s is determined as described above.','extensions-leaflet-map'),
+	sprintf (__('The name of a %1$strack%2$s is determined as described above.','extensions-leaflet-map'),
 	'<span style="color: #4f94d4">',
 	'</span>').
 	'</li></ul>'.

@@ -106,10 +106,10 @@ function leafext_elevation_params($typ = array()) {
 			'shortdesc' => __('Toggle chart legend filter.',"extensions-leaflet-map"),
 			'desc' => '<img src="'.LEAFEXT_PLUGIN_PICTS.'on.png" alt="on"/>
 			<p>'.
-			sprintf(__('You can always toggle the charts individually by clicking on %s.',"extensions-leaflet-map"),
+			sprintf(__('You can always toggle the charts individually by clicking on %1$s.',"extensions-leaflet-map"),
 			'<img src="'.LEAFEXT_PLUGIN_PICTS.'switcher.png" alt="switch"/>')
 			.' '.
-			sprintf(__('If %s is disabled, you can\'t see all charts at the same time (except at the beginning).',"extensions-leaflet-map"),
+			sprintf(__('If %1$s is disabled, you can\'t see all charts at the same time (except at the beginning).',"extensions-leaflet-map"),
 			'<code>legend</code>').'</p>',
 			'default' => true,
 			'values' => 1,
@@ -157,7 +157,7 @@ function leafext_elevation_params($typ = array()) {
 		array(
 			'param' => 'chart',
 			'shortdesc' => __('Toggle chart',"extensions-leaflet-map"),
-			'desc' => sprintf(__('show always the chart / show the chart and toggle %s to hide / hide the chart and toggle %s to show',"extensions-leaflet-map"),
+			'desc' => sprintf(__('show always the chart / show the chart and toggle %1$s to hide / hide the chart and toggle %2$s to show',"extensions-leaflet-map"),
 			'&#10006;',
 			'<img src="'.LEAFEXT_PLUGIN_PICTS.'/elevation-lime.svg" alt="lime" />'),
 			'default' => true,
@@ -170,7 +170,7 @@ function leafext_elevation_params($typ = array()) {
 		array(
 			'param' => 'detached',
 			'shortdesc' => __('Chart container outside/inside map container',"extensions-leaflet-map"),
-			'desc' => sprintf(__('%s outside, %s inside',"extensions-leaflet-map"),'true - ','false - '),
+			'desc' => sprintf(__('%1$s outside, %2$s inside',"extensions-leaflet-map"),'true - ','false - '),
 			'default' => true,
 			'values' => 1,
 			//'typ' => array('fixed'),
@@ -206,6 +206,24 @@ function leafext_elevation_params($typ = array()) {
 			'desc' => __('none - show filename in control - show trackname in control',"extensions-leaflet-map"),
 			'default' => false,
 			'values' => array(false,"filename","trackname"),
+			'typ' => array('changeable','look',),
+		),
+		// Position of track control
+		array(
+			'param' => 'trackposition',
+			'shortdesc' => __('position of track control',"extensions-leaflet-map"),
+			'desc' => '',
+			'default' => 'topright',
+			'values' => "topleft, topright, bottomleft, bottomright",
+			'typ' => array('changeable','look',),
+		),
+		// Collapsed track control
+		array(
+			'param' => 'trackcollapsed',
+			'shortdesc' => __('track control collapsed',"extensions-leaflet-map"),
+			'desc' => '',
+			'default' => false,
+			'values' => 1,
 			'typ' => array('changeable','look',),
 		),
 
@@ -298,7 +316,7 @@ function leafext_elevation_params($typ = array()) {
 			'shortdesc' => __('Toggle custom waypoint icons',"extensions-leaflet-map"),
 			'desc' => '<p>'.'true / "defined" / false'.'</p>
 			<p>'.__('Only meaningful, if waypoints are shown in the map.',"extensions-leaflet-map").'</p>
-			<p>'.sprintf (__('If %s is selected, you must define some %ssettings for the icons',"extensions-leaflet-map"),
+			<p>'.sprintf (__('If %1$s is selected, you must define some %2$ssettings for the icons',"extensions-leaflet-map"),
 			'"defined"',
 			'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevationwaypoints">').'</a>.'
 			.'</p>',
@@ -313,7 +331,7 @@ function leafext_elevation_params($typ = array()) {
 			'param' => 'wptLabels',
 			'shortdesc' => __('Toggle waypoint labels',"extensions-leaflet-map"),
 			'desc' => '<p>'.__('Show waypoint labels in map and in chart / only in map / only in chart / none',"extensions-leaflet-map").'</p>
-			<p>'.sprintf(__('Only meaningful, if %swaypoints%s is not %s.',"extensions-leaflet-map"),'<code>','</code>','<code>0</code>').'</p>',
+			<p>'.sprintf(__('Only meaningful, if %1$swaypoints%2$s is not %3$s.',"extensions-leaflet-map"),'<code>','</code>','<code>0</code>').'</p>',
 			'default' => true,
 			'values' => array (true, "markers", "dots", false),
 			'typ' => array('changeable','points',),
@@ -783,11 +801,12 @@ function leafext_elevation_script($gpx,$settings){
 		}
 
 		<?php if ( $settings['track'] ) {
-			echo '
-			var layersControl_options = {
-				collapsed: true,
-			};
-			var switchtrack = L.control.layers(null, null, layersControl_options);';
+			echo 'var switchtrack = L.control.layers(null, null, {';
+			//if ( $settings['trackcollapsed'] )
+			echo 'collapsed:'.$settings['trackcollapsed'].',';
+			//if ( $settings['trackposition'] )
+			echo 'position:"'.$settings['trackposition'].'",';
+			echo '});';
 		} ?>
 
 		// Instantiate elevation control.

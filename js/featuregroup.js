@@ -3,17 +3,17 @@
 * extensions-leaflet-map
 */
 
-function leafext_featuregroup_js(att_property,att_option,groups,visible,substr,alle) {
+function leafext_featuregroup_js(att_property,att_option,groups,visible,substr,alle,position,collapsed) {
   var map = window.WPLeafletMapPlugin.getCurrentMap();
   var map_id = map._leaflet_id;
 
   if (typeof durchlauf == "undefined" ) {
-    maps=[];
+    if (typeof maps == "undefined" ) maps=[];
     durchlauf=[];
-    featGroups=[];
-    control=[];
-    displayed=[];
-    cluster=[];
+    if (typeof featGroups == "undefined" ) featGroups=[];
+    if (typeof control == "undefined" ) control=[];
+    if (typeof displayed == "undefined" ) displayed=[];
+    if (typeof cluster == "undefined" ) cluster=[];
   }
   if (typeof durchlauf[map_id] == "undefined" ) {
     maps[map_id] = map;
@@ -21,7 +21,10 @@ function leafext_featuregroup_js(att_property,att_option,groups,visible,substr,a
     featGroups[map_id] = [];
     displayed[map_id] = [];
     cluster[map_id] = alle;
-    control[map_id] =  L.control.layers(null, null, { collapsed: false });
+    control[map_id] =  L.control.layers(null, null, {
+      collapsed:collapsed,
+      position:position
+    });
     for (key in groups) {
       featGroups[map_id][groups[key]] = new L.featureGroup.subGroup(cluster[map_id]);
       //console.log("visible",key,visible[key]);

@@ -14,7 +14,9 @@ function leafext_zoomhome_help(){
 
 	<h2>Shortcode</h2>
 
-	<pre><code>[zoomhomemap fit/<span style="color: #d63638">!fit</span>]</code></pre>
+	<pre><code>[zoomhomemap fit|<span style="color: #d63638">!fit</span>]</code></pre>
+	<pre><code>[zoomhomemap fit|<span style="color: #d63638">!fit</span> position=topleft|topright|bottomleft|bottomright</code></pre>
+	default position: <code>topleft</code>
 
 	<h2>Howto</h2>';
 

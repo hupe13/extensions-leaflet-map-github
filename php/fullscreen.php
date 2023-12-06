@@ -7,7 +7,7 @@
 defined( 'ABSPATH' ) or die();
 
 //Shortcode: [fullscreen]
-function leafext_fullscreen_script() {
+function leafext_fullscreen_script($position) {
 	$text = '<script><!--';
 	ob_start();
 	?>/*<script>*/
@@ -15,7 +15,9 @@ function leafext_fullscreen_script() {
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
 		// create fullscreen control
-		var fsControl = new L.Control.FullScreen();
+		var fsControl = new L.Control.FullScreen({
+			position: <?php echo wp_json_encode($position); ?>
+		});
 		// add fullscreen control to the map
 		map.addControl(fsControl);
 	});
@@ -26,13 +28,15 @@ function leafext_fullscreen_script() {
 	return "\n".$text."\n";
 }
 
-function leafext_fullscreen_function(){
-	$text = leafext_should_interpret_shortcode('fullscreen',0);
+function leafext_fullscreen_function($atts,$content,$shortcode) {
+	$text = leafext_should_interpret_shortcode($shortcode,$atts);
 	if ( $text != "" ) {
 		return $text;
 	} else {
 		leafext_enqueue_fullscreen ();
-		return leafext_fullscreen_script();
+		$options=shortcode_atts(array('position'=>'topleft'), $atts);
+		if (!leafext_check_position_control($options['position'])) $options['position'] = "topleft";
+		return leafext_fullscreen_script($options['position']);
 	}
 }
 add_shortcode('fullscreen', 'leafext_fullscreen_function' );

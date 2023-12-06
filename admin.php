@@ -1,4 +1,8 @@
 <?php
+/**
+ * Extensions for Leaflet Map admin.php
+ */
+
 // Direktzugriff auf diese Datei verhindern:
 defined( 'ABSPATH' ) or die();
 

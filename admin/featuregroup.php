@@ -24,8 +24,8 @@ __('is a simple plugin to create Feature Groups that add their child layers into
 
 <!-- wp:paragraph -->
 <p><em>Extensions for Leaflet Map</em> '.
-sprintf(__('uses this Leaflet plugin to group leaflet elements like %s and others by options and properties. There are two shortcodes: %s and %s.
-Use %s to group elements by options and %s to group elements by properties.','extensions-leaflet-map'),
+sprintf(__('uses this Leaflet plugin to group leaflet elements like %1$s and others by options and properties. There are two shortcodes: %2$s and %3$s.
+Use %4$s to group elements by options and %5$s to group elements by properties.','extensions-leaflet-map'),
 '<code>leaflet-marker</code>, <code>leaflet-geojson</code>',
 '<code>leaflet-optiongroup</code>',
 '<code>leaflet-featuregroup</code>',
@@ -52,9 +52,9 @@ Use %s to group elements by options and %s to group elements by properties.','ex
 //suitable for leaflet-geojson, leaflet-gpx, leaflet-kml.
 &#091;leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." <span style="color: #d63638">!</span>substr visible=...]</code></pre>';
 	$text=$text.'<h3>leaflet-optiongroup option</h3>'.
-	sprintf(__('Each of the above leaflet elements has options. These are from the shortcode %s and are fixed.','extensions-leaflet-map'),'<code>leaflet-...</code>').' ';
+	sprintf(__('Each of the above leaflet elements has options. These are from the shortcode %1$s and are fixed.','extensions-leaflet-map'),'<code>leaflet-...</code>').' ';
 
-	sprintf(__('For %s you can use any option of the leaflet element.','extensions-leaflet-map'),'<code>option</code>').' '.
+	sprintf(__('For %1$s you can use any option of the leaflet element.','extensions-leaflet-map'),'<code>option</code>').' '.
 	__('Not every option is suitable for every element.','extensions-leaflet-map');
 
 	$text=$text.' '.__('Meaningful options may be:','extensions-leaflet-map');
@@ -74,17 +74,17 @@ Use %s to group elements by options and %s to group elements by properties.','ex
 	'leaflet-geojson (-gpx, -kml): iconUrl, alt, className, color'.
 	'<ul>
 	<li>'.
-	sprintf(__("%s switches only the markers.",'extensions-leaflet-map'),'iconurl').
+	sprintf(__('%1$s switches only the markers.','extensions-leaflet-map'),'iconurl').
 	'</li>'.
 	'<li>'.
-	sprintf(__('Every marker with an icon has the option %s as default.','extensions-leaflet-map'),'<code>alt="Marker"</code>')
+	sprintf(__('Every marker with an icon has the option %1$s as default.','extensions-leaflet-map'),'<code>alt="Marker"</code>')
 	.'</li>
 	<li>'.
-	sprintf(__('You can use %s for grouping, it is not used by leaflet-geojson but passed through.','extensions-leaflet-map'),'className')
+	sprintf(__('You can use %1$s for grouping, it is not used by leaflet-geojson but passed through.','extensions-leaflet-map'),'className')
 	.'</li>
 	</ul>'.
 	'</li>'.
-	'<li>'.sprintf(__('See %sLeaflet Map Github page%s for more or less useful and possible options.',"extensions-leaflet-map"),
+	'<li>'.sprintf(__('See %1$sLeaflet Map Github page%2$s for more or less useful and possible options.',"extensions-leaflet-map"),
   '<a href="https://github.com/bozdoz/wp-plugin-leaflet-map#leaflet-marker">','</a>').'</li>'.
 	'<li>'.__('The options are case sensitive.','extensions-leaflet-map')
 	.'</li>
@@ -92,12 +92,12 @@ Use %s to group elements by options and %s to group elements by properties.','ex
 
 	$text=$text.'<h3>leaflet-featuregroup property</h3>';
 	$text=$text.'<p>'.__('In a geojson file there are features and properties. They are different for each application.','extensions-leaflet-map').' ';
-	$text=$text.sprintf(__("gpx and kml are similar to geojson, so you can also use %s there. But it's not that easy to find relevant features.",
+	$text=$text.sprintf(__('gpx and kml are similar to geojson, so you can also use %1$s there. But it is not that easy to find relevant features.',
 	'extensions-leaflet-map'),
 	'<code>leaflet-featuregroup</code>').'</p>';
 
 	$text=$text.'<p>'.
-	sprintf(__('A %s has %s, each of them has a %s and %s. %s is the label of a %s in %s, e.g.',
+	sprintf(__('A %1$s has %2$s, each of them has a %3$s and %4$s. %5$s is the label of a %6$s in %7$s, e.g.',
 	'extensions-leaflet-map'),
 	'"FeatureCollection"',
 	'"features"',
@@ -120,29 +120,29 @@ Use %s to group elements by options and %s to group elements by properties.','ex
       },...</pre>
 		 </p>';
 
-	$text=$text.'<p>'.sprintf(__('%s is case sensitive.','extensions-leaflet-map'),
+	$text=$text.'<p>'.sprintf(__('%1$s is case sensitive.','extensions-leaflet-map'),
 	'<code>property</code>').'</p>';
 
 	$text=$text.'<h3>values '.__('and','extensions-leaflet-map').' groups</h3><p>';
 	$text=$text.'<ul>
-	<li><code>values</code> - '.sprintf( __('comma separated strings to distinguish the elements, e.g. the exact string or an unique substring in %s (e.g.%s)',
+	<li><code>values</code> - '.sprintf( __('comma separated strings to distinguish the elements, e.g. the exact string or an unique substring in %1$s (e.g.%2$s)',
 	'extensions-leaflet-map'),
 	"option / property",
 	'<code><span style="color: #4f94d4">value0</span></code>'
 	).'</li>
 
-	<li>'.sprintf(__('The %s are case sensitive.','extensions-leaflet-map'),
+	<li>'.sprintf(__('The %1$s are case sensitive.','extensions-leaflet-map'),
 	'<code>values</code>')
 	.'</li>
 
 	<li><code>substr</code> ('.__('optional','extensions-leaflet-map').') - '.
-	sprintf(__('search substring %s or the exact string %s in %s.','extensions-leaflet-map'),
+	sprintf(__('search substring %1$s or the exact string %2$s in %3$s.','extensions-leaflet-map'),
 	"(<code>substr</code>)",
 	'(<code><span style="color: #d63638">!</span>substr</code>)',
 	"<code>values</code>"
 	).' '.
 	sprintf(
-		__('The default is %s for %s and %s for %s.','extensions-leaflet-map'),
+		__('The default is %1$s for %2$s and %3$s for %4$s.','extensions-leaflet-map'),
 		"<i>true</i>",
 		"<code>leaflet-optiongroup</code>",
 		"<i>false</i>",
@@ -153,10 +153,10 @@ Use %s to group elements by options and %s to group elements by properties.','ex
 		__('comma separated labels appear in the selection menu','extensions-leaflet-map').'.</li>
 
 		<li>'.sprintf(
-			__('The number of %s and %s must match.','extensions-leaflet-map'),"<code>values</code>","<code>groups</code>").'
+			__('The number of %1$s and %2$s must match.','extensions-leaflet-map'),"<code>values</code>","<code>groups</code>").'
 			</li>
 			<li>'.
-			sprintf(__('You can specify multiple %s and %s. If the %s are called the same, the elements will be placed in the same group despite having different options resp. properties.','extensions-leaflet-map'),
+			sprintf(__('You can specify multiple %1$s and %2$s. If the %3$s are called the same, the elements will be placed in the same group despite having different options resp. properties.','extensions-leaflet-map'),
 			'<code>leaflet-optiongroup</code>',
 			'<code>leaflet-featuregroup</code>',
 			'<code>groups</code>').'<br>'.
@@ -164,7 +164,7 @@ Use %s to group elements by options and %s to group elements by properties.','ex
 			.'</li>
 
 			<li><code>visible</code> ('.__('optional','extensions-leaflet-map').') - '.
-			sprintf(__('initial visibility of a group, default: %s. Either %s (valid for all groups) or a comma-separated list of %s and %s, where the number must match those of %s.',
+			sprintf(__('initial visibility of a group, default: %1$s. Either %2$s (valid for all groups) or a comma-separated list of %3$s and %4$s, where the number must match those of %5$s.',
 			'extensions-leaflet-map'),
 			'1',
 			'0',
@@ -177,7 +177,7 @@ Use %s to group elements by options and %s to group elements by properties.','ex
 
 	$text=$text.'<h3>Groups unknown '.__('and','extensions-leaflet-map').' others</h3><p>'.
 	sprintf(
-		__('If %s contains %s and %s, then the elements for which the option / property specified in %s does not apply, are placed in the %s group. Elements whose %s is not known are placed in the %s group. See also the developer console.','extensions-leaflet-map'),
+		__('If %1$s contains %2$s and %3$s, then the elements for which the option / property specified in %4$s does not apply, are placed in the %5$s group. Elements whose %6$s is not known are placed in the %7$s group. See also the developer console.','extensions-leaflet-map'),
 		"<code>groups</code>",
 		'"unknown"',
 		'"others"',
@@ -196,15 +196,32 @@ if (is_singular() || is_archive() ) {
 	$clusterref = '?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=markercluster';
 }
 
+$text = $text.'<h3>'.__('Group Control','extensions-leaflet-map').'</h3>'.'<p>'.
+
+'<pre><code>&#091;leaflet-optiongroup ... position=topleft|topright|bottomleft|bottomright collapsed=true|false]
+//
+&#091;leaflet-featuregroup ... position=topleft|topright|bottomleft|bottomright collapsed=true|false]</code></pre>'.
+'<p>'.__('The specification in the first command applies.','extensions-leaflet-map').'</p>'.
+'<ul>
+<li>'.
+__('optional: <code>position</code> - position of group control','extensions-leaflet-map').': topleft, topright, bottomleft, bottomright. '.
+__('Default','extensions-leaflet-map').': topright.
+</li>
+<li>'.
+__('optional: <code>collapsed</code> - group control collapsed or not:','extensions-leaflet-map').' true, false. '.
+__('Default','extensions-leaflet-map').': false.
+</li>
+</ul>';
+
 $text = $text.'<h3>'.__('Notes','extensions-leaflet-map').'</h3>'.'<p>'.
-sprintf ( __('When markers are grouped, %s is automatically active and the parameter and settings for %s are valid too.','extensions-leaflet-map'),
+sprintf ( __('When markers are grouped, %1$s is automatically active and the parameter and settings for %2$s are valid too.','extensions-leaflet-map'),
 'Leaflet.markercluster',
 '<a href="'.$clusterref.'"><code>cluster</code></a>').'</p>';
 
 if (is_singular() || is_archive() ) {
 	//$text = $text;
 } else {
-	$text = $text.'<p>'.sprintf(__('The shortcode %s is a special case of %s respectively %s.','extensions-leaflet-map'),
+	$text = $text.'<p>'.sprintf(__('The shortcode %1$s is a special case of %2$s respectively %3$s.','extensions-leaflet-map'),
 	'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=markerclustergroup"><code>markerClusterGroup</code></a>',
 	'<code>leaflet-optiongroup</code>',
 	'<code>leaflet-featuregroup</code>')

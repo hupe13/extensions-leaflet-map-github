@@ -1,4 +1,4 @@
-function leafext_zoomhome_js(maps,map_id,allfit) {
+function leafext_zoomhome_js(maps,map_id,allfit,position) {
   //console.log("map_id* "+map_id);
 
   if(typeof maps[map_id].zoomControl !== "undefined") {
@@ -10,7 +10,7 @@ function leafext_zoomhome_js(maps,map_id,allfit) {
   bounds[map_id] = new L.latLngBounds();
 
   var zoomHome = [];
-  zoomHome[map_id] = L.Control.zoomHome();
+  zoomHome[map_id] = L.Control.zoomHome({position: position});
   zoomHome[map_id].addTo(maps[map_id]);
 
   // Some elements zooming to be ready on map

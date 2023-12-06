@@ -8,7 +8,7 @@
 defined( 'ABSPATH' ) or die();
 
 //Shortcode: [geojsonmarker]
-function leafext_geojsonmarker_script($propertyoptions,$extramarkericon,$clusteroptions,$featuregroupoptions){
+function leafext_geojsonmarker_script($propertyoptions,$extramarkericon,$clusteroptions,$featuregroupoptions,$options){
 	$text = '<script><!--';
 	ob_start();
 	?>/*<script>*/
@@ -36,7 +36,10 @@ function leafext_geojsonmarker_script($propertyoptions,$extramarkericon,$cluster
 			<?php echo leafext_java_params ($clusteroptions);?>
 		});
 		let extramarkericon = <?php echo wp_json_encode($extramarkericon);?>;
-		leafext_geojsonmarker_js(property,iconprops,icondefault,auto,groups,visible,clmarkers,extramarkericon);
+		//
+		let position = <?php echo wp_json_encode($options['position']);?>;
+		let collapsed = <?php echo wp_json_encode($options['collapsed']);?>;
+		leafext_geojsonmarker_js(property,iconprops,icondefault,auto,groups,visible,clmarkers,extramarkericon,position,collapsed);
 	});
 	<?php
 	$javascript = ob_get_clean();
@@ -185,7 +188,11 @@ function leafext_geojsonmarker_function($atts,$content,$shortcode) {
 				leafext_enqueue_clustergroup ();
 			}
 			//
-			return leafext_geojsonmarker_script($propertyoptions,$extramarkericon,$clusteroptions,$featuregroupoptions);
+			$control = array('position' => "bottomright",'collapsed' => false);
+			$atts1 = leafext_clear_params($atts);
+	    $options = shortcode_atts($control, $atts1);
+			if (!leafext_check_position_control($options['position'])) $options['position'] = "bottomright";
+			return leafext_geojsonmarker_script($propertyoptions,$extramarkericon,$clusteroptions,$featuregroupoptions,$options);
 		}
 	}
 	add_shortcode('geojsonmarker', 'leafext_geojsonmarker_function');

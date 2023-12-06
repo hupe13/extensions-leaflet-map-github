@@ -20,10 +20,10 @@ function leafext_search_params() {
     // | propertyName	  | 'title'	 | property in marker.options(or feature.properties for vector layer) trough filter elements in layer, |
     array(
       'param' => 'propertyName',
-      'desc' => sprintf(__('a option / property for marker, polygon, circle, line or a %s for geojson layer. Can also be a comma-separated list of options or properties.',"extensions-leaflet-map"),
+      'desc' => sprintf(__('a option / property for marker, polygon, circle, line or a %1$s for geojson layer. Can also be a comma-separated list of options or properties.',"extensions-leaflet-map"),
       'feature.property'),
       'default' => 'title',
-      'values' => sprintf(__('for example %s for marker, additional for example %s for extramarkers; %s for polygon, circle, line; %s depending on geojson layer; %s for all',"extensions-leaflet-map"),
+      'values' => sprintf(__('for example %1$s for marker, additional for example %2$s for extramarkers; %3$s for polygon, circle, line; %4$s depending on geojson layer; %5$s for all',"extensions-leaflet-map"),
       'title, iconclass',
       'number',
       'color, className',
@@ -101,25 +101,24 @@ function leafext_search_params() {
       'param' => 'marker',
       'desc' => __('show or hide marker at the position found',"extensions-leaflet-map"),
       'default' => '',
-      'values' => sprintf(__("not specified for default (red circle), %s for no marker, or a definition like on an %sexample page%s.","extensions-leaflet-map"),
+      'values' => sprintf(__('not specified for default (red circle), %1$s for no marker, or a definition like on an %2$sexample page%3$s.',"extensions-leaflet-map"),
       'false',
       '<a href="https://leafext.de/leafletsearch/leafletsearchmarker/">',
-      '</a>'
+      '</a>'),
     ),
-  ),
-  // | marker.icon	  | false	 | custom L.Icon for maker location or false for hide |
-  // | marker.animate  | true	 | animate a circle over location found |
-  // | marker.circle	  | L.CircleMarker options |	draw a circle in location found |
-  // hupe13 open popup when location found
-  array(
-    'param' => 'openPopup',
-    'desc' => __('show or hide popup when position found',"extensions-leaflet-map"),
-    'default' => true,
-    'values' => "true, false",
-  ),
+    // | marker.icon	  | false	 | custom L.Icon for maker location or false for hide |
+    // | marker.animate  | true	 | animate a circle over location found |
+    // | marker.circle	  | L.CircleMarker options |	draw a circle in location found |
+    // hupe13 open popup when location found
+    array(
+      'param' => 'openPopup',
+      'desc' => __('show or hide popup when position found',"extensions-leaflet-map"),
+      'default' => true,
+      'values' => "true, false",
+    ),
 
-);
-return $params;
+  );
+  return $params;
 }
 
 function leafext_leafletsearch_function($atts,$content,$shortcode) {
@@ -455,57 +454,56 @@ function leafext_leafletsearch_script($options,$jsoptions,$allproperties){
             map.setView(latlng, zoom);
           }
         }
-      }
-    );
+      });
 
-    map.addControl( SearchControl );
+      map.addControl( SearchControl );
 
-    SearchControl.on("search:locationfound", function(e) {
-      //console.log(e);
-      //console.log("search:locationfound");
-      if(e.target._map.hasLayer(e.layer)){
-        //console.log("layer is visible, do nothing");
-      } else {
-        //console.log("layer is not on map, _adding");
-        e.layer.addTo(map);
-        this._markerSearch._markeradd = e.layer;
-      }
-      <?php
-      if ($options['openPopup']) {?>
-        if ( e.layer.getPopup() )// e.layer.openPopup();
-        e.layer.openPopup([e.latlng.lat, e.latlng.lng]);
+      SearchControl.on("search:locationfound", function(e) {
+        //console.log(e);
+        //console.log("search:locationfound");
+        if(e.target._map.hasLayer(e.layer)){
+          //console.log("layer is visible, do nothing");
+        } else {
+          //console.log("layer is not on map, _adding");
+          e.layer.addTo(map);
+          this._markerSearch._markeradd = e.layer;
+        }
         <?php
-      } ?>
-      e.sourceTarget._input.blur();
-    });
-    SearchControl.on("search:cancel", function(e) {
-      //console.log("search:cancel");
-      //console.log(e);
-      //console.log(this);
-      //console.log(this._markerSearch);
-      //console.log(this._markerSearch._markeradd);
-      if ( this._markerSearch && this._markerSearch._markeradd ) {
-        e.target._map.removeLayer(this._markerSearch._markeradd);
-      }
-      <?php
-      if ($options['openPopup']) {?>
-        map.closePopup();
-        //e.layer.openPopup([e.latlng.lat, e.latlng.lng]);
+        if ($options['openPopup']) {?>
+          if ( e.layer.getPopup() )// e.layer.openPopup();
+          e.layer.openPopup([e.latlng.lat, e.latlng.lng]);
+          <?php
+        } ?>
+        e.sourceTarget._input.blur();
+      });
+      SearchControl.on("search:cancel", function(e) {
+        //console.log("search:cancel");
+        //console.log(e);
+        //console.log(this);
+        //console.log(this._markerSearch);
+        //console.log(this._markerSearch._markeradd);
+        if ( this._markerSearch && this._markerSearch._markeradd ) {
+          e.target._map.removeLayer(this._markerSearch._markeradd);
+        }
         <?php
-      } ?>
-      if (e.target.options.hideMarkerOnCollapse && this._markerSearch) {
-        //console.log(e.target._map);
-        e.target._map.removeLayer(this._markerSearch);
-      }
-      e.sourceTarget._input.blur();
-    });
-    map.addLayer(searchLayer);
-  }
-});
+        if ($options['openPopup']) {?>
+          map.closePopup();
+          //e.layer.openPopup([e.latlng.lat, e.latlng.lng]);
+          <?php
+        } ?>
+        if (e.target.options.hideMarkerOnCollapse && this._markerSearch) {
+          //console.log(e.target._map);
+          e.target._map.removeLayer(this._markerSearch);
+        }
+        e.sourceTarget._input.blur();
+      });
+      map.addLayer(searchLayer);
+    }
+  });
 
-<?php
-$javascript = ob_get_clean();
-$text = $text . $javascript . '//-->'."\n".'</script>';
-$text = \JShrink\Minifier::minify($text);
-return "\n".$text."\n";
+  <?php
+  $javascript = ob_get_clean();
+  $text = $text . $javascript . '//-->'."\n".'</script>';
+  $text = \JShrink\Minifier::minify($text);
+  return "\n".$text."\n";
 }

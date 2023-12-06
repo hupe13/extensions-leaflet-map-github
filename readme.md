@@ -178,19 +178,9 @@ these js files from caching:
 
 ## Changelog
 
-### 3.5.5 / 23112x
+### 3.5.6 / 2312xx
 
-* fixing bug elevation colors
-* new option: Delete all plugin settings when deleting the plugin?
-
-### 3.5.4 / 231119
-
-* new version leaflet-search
-* new version leaflet.fullscreen
-* new version leaflet-providers.js
-* solved: Polyline layer turns black after turning off all legend filters
-* you can change the track color over the ruler filter now
-* some corrections that [Plugin Check](https://github.com/WordPress/plugin-check) has found
+* every control has a position and collapse option now.
 
 ### Previous
 

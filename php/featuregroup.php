@@ -21,7 +21,9 @@ function leafext_featuregroup_script($options,$params){
 		let	alle = new L.markerClusterGroup({
 			<?php echo leafext_java_params ($params);?>
 		});
-		leafext_featuregroup_js(att_property,att_option,groups,visible,substr,alle);
+		let position = <?php echo wp_json_encode($options['position']);?>;
+		let collapsed = <?php echo wp_json_encode($options['collapsed']);?>;
+		leafext_featuregroup_js(att_property,att_option,groups,visible,substr,alle,position,collapsed);
 	});
 	<?php
 	$javascript = ob_get_clean();
@@ -111,6 +113,11 @@ function leafext_featuregroup_function($atts,$content,$shortcode) {
 			}
 		}
 
+		$control = array('position' => "topright",'collapsed' => false);
+		$atts1 = leafext_clear_params($atts);
+		$ctl_options = shortcode_atts($control, $atts1);
+		if (!leafext_check_position_control($ctl_options['position'])) $ctl_options['position'] = "topright";
+
 		$options = array(
 			'property' => sanitize_text_field($options['property']),
 			'option' => sanitize_text_field($options['option']),
@@ -118,6 +125,8 @@ function leafext_featuregroup_function($atts,$content,$shortcode) {
 			'groups'  => array_combine($cl_values, $cl_groups),
 			'substr' => (bool)$options['substr'],
 			'visible' => array_combine($cl_values, $cl_on),
+			'position' => $ctl_options['position'],
+			'collapsed' => $ctl_options['collapsed'],
 		);
 
 		$clusteroptions = leafext_cluster_atts ($atts);

@@ -122,7 +122,7 @@ function leafext_ele_help_text () {
 	$text = $text.'<p><img src="'.LEAFEXT_PLUGIN_PICTS.'elevation.png" alt="elevation"></p>
 	<h2>'.__('Translation','extensions-leaflet-map').'</h2><p>';
 	$text = $text.__("Your web site language isn't english? You can speak english?",'extensions-leaflet-map').' ';
-	$text = $text.sprintf(__('%s has some english strings in the frontend. Go to %s, choose your language and %s or %s, filter %s and translate these 36 short strings.','extensions-leaflet-map'),
+	$text = $text.sprintf(__('%1$s has some english strings in the frontend. Go to %2$s, choose your language and %3$s or %4$s, filter %5$s and translate these 36 short strings.','extensions-leaflet-map'),
 	'<code>elevation</code>',
 	'<a href="https://translate.wordpress.org/projects/wp-plugins/extensions-leaflet-map/">Translating WordPress</a>',
 	'"Development"',
@@ -134,13 +134,13 @@ function leafext_ele_help_text () {
 	$text = $text.'<h2>'.__('Note','extensions-leaflet-map').'</h2>';
 	$text = $text.sprintf(
 				__(
-				'If you want to display a track only, use %s functions. If you want to display a track with an elevation profile use %s.',"extensions-leaflet-map"),
+				'If you want to display a track only, use %1$s functions. If you want to display a track with an elevation profile use %2$s.',"extensions-leaflet-map"),
 				"<code>[leaflet-...]</code>",
 				"<code>[elevation]</code>");
 	$text = $text." ";
 	$text = $text.sprintf(
 				__(
-				'The %s parameter is called %s, but it works with gpx, kml, geojson and tcx files.',"extensions-leaflet-map"),
+				'The %1$s parameter is called %2$s, but it works with gpx, kml, geojson and tcx files.',"extensions-leaflet-map"),
 				"<code>[elevation]</code>",
 				"<code>gpx</code>");
 	$text = $text."<p>";
@@ -162,7 +162,7 @@ function leafext_ele_help_text () {
 		echo $text;
 		echo '<h2>'.__('Detailed documentation and examples',"extensions-leaflet-map").'</h2>';
 		echo '<p>'.sprintf(
-			__('in %sGerman%s and %sEnglish%s',
+			__('in %1$sGerman%2$s and %3$sEnglish%4$s',
 				"extensions-leaflet-map"),
 				'<a href="https://leafext.de/elevation/">',
 				'</a>',

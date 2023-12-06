@@ -42,9 +42,10 @@ _For a working example see one of the following demos:_
 - [edge scale control](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_edge-scale.html)
 - [follow marker](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_follow-marker.html)
 - [layer almostover](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_almost-over.html)
-- [linear gradient](https://raruto.github.io/leaflet-elevation/examples/leaflet-linear-gradient.html)
+- [linear gradient](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_linear-gradient.html)
 - [slope chart](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_slope-chart.html)
 - [speed chart](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_speed-chart.html)
+- [temperature chart](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_temperature-chart.html)
 - [walking marker](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_dynamic-runner.html)
 
 ---
