@@ -74,7 +74,7 @@ $text = $text.'
    __('optional: <code>mapids</code> - a comma separated list with shortnames for providers. These appear in the switching control.',
    'extensions-leaflet-map').' '.sprintf(
      __('The number of %1$s and %2$s must match.','extensions-leaflet-map'),"<code>mapids</code>","<code>providers</code>").'
-   </li><li> '.sprintf(__('with %1$s you can specify the mapids and/or providers for which opacity should be regulated.','extensions-leaflet-map'),'<code>opacity</code>').
+   </li><li> '.sprintf(__('with %s you can specify the mapids and/or providers for which opacity should be regulated.','extensions-leaflet-map'),'<code>opacity</code>').
    '</li>
 
    <li>'.

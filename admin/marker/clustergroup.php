@@ -124,7 +124,7 @@ __('If %1$s contains %2$s and %3$s, then markers (respectively Points) for which
 			'</p><h3>Shortcode groups unknown '.__('and','extensions-leaflet-map').' others</h3>
 <pre><code>&#091;markerClusterGroup feat="..." strings="...,...,others,unknown" groups="...,...,Other properties,Unknown properties"]</code></pre>';
 
-	$textoptions = '<p>'.sprintf ( __('The parameter and settings for %1$s are valid too.','extensions-leaflet-map'),
+	$textoptions = '<p>'.sprintf ( __('The parameter and settings for %s are valid too.','extensions-leaflet-map'),
 			'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=markercluster">Leaflet.markercluster</a>');
 	$textoptions = $textoptions.'</p>';
 	if (is_singular() || is_archive() ) {

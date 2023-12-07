@@ -20,7 +20,7 @@ function leafext_search_params() {
     // | propertyName	  | 'title'	 | property in marker.options(or feature.properties for vector layer) trough filter elements in layer, |
     array(
       'param' => 'propertyName',
-      'desc' => sprintf(__('a option / property for marker, polygon, circle, line or a %1$s for geojson layer. Can also be a comma-separated list of options or properties.',"extensions-leaflet-map"),
+      'desc' => sprintf(__('a option / property for marker, polygon, circle, line or a %s for geojson layer. Can also be a comma-separated list of options or properties.',"extensions-leaflet-map"),
       'feature.property'),
       'default' => 'title',
       'values' => sprintf(__('for example %1$s for marker, additional for example %2$s for extramarkers; %3$s for polygon, circle, line; %4$s depending on geojson layer; %5$s for all',"extensions-leaflet-map"),

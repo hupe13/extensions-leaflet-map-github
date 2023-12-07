@@ -52,9 +52,9 @@ Use %4$s to group elements by options and %5$s to group elements by properties.'
 //suitable for leaflet-geojson, leaflet-gpx, leaflet-kml.
 &#091;leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." <span style="color: #d63638">!</span>substr visible=...]</code></pre>';
 	$text=$text.'<h3>leaflet-optiongroup option</h3>'.
-	sprintf(__('Each of the above leaflet elements has options. These are from the shortcode %1$s and are fixed.','extensions-leaflet-map'),'<code>leaflet-...</code>').' ';
+	sprintf(__('Each of the above leaflet elements has options. These are from the shortcode %s and are fixed.','extensions-leaflet-map'),'<code>leaflet-...</code>').' ';
 
-	sprintf(__('For %1$s you can use any option of the leaflet element.','extensions-leaflet-map'),'<code>option</code>').' '.
+	sprintf(__('For %s you can use any option of the leaflet element.','extensions-leaflet-map'),'<code>option</code>').' '.
 	__('Not every option is suitable for every element.','extensions-leaflet-map');
 
 	$text=$text.' '.__('Meaningful options may be:','extensions-leaflet-map');
@@ -74,13 +74,13 @@ Use %4$s to group elements by options and %5$s to group elements by properties.'
 	'leaflet-geojson (-gpx, -kml): iconUrl, alt, className, color'.
 	'<ul>
 	<li>'.
-	sprintf(__('%1$s switches only the markers.','extensions-leaflet-map'),'iconurl').
+	sprintf(__('%s switches only the markers.','extensions-leaflet-map'),'iconurl').
 	'</li>'.
 	'<li>'.
-	sprintf(__('Every marker with an icon has the option %1$s as default.','extensions-leaflet-map'),'<code>alt="Marker"</code>')
+	sprintf(__('Every marker with an icon has the option %s as default.','extensions-leaflet-map'),'<code>alt="Marker"</code>')
 	.'</li>
 	<li>'.
-	sprintf(__('You can use %1$s for grouping, it is not used by leaflet-geojson but passed through.','extensions-leaflet-map'),'className')
+	sprintf(__('You can use %s for grouping, it is not used by leaflet-geojson but passed through.','extensions-leaflet-map'),'className')
 	.'</li>
 	</ul>'.
 	'</li>'.
@@ -92,7 +92,7 @@ Use %4$s to group elements by options and %5$s to group elements by properties.'
 
 	$text=$text.'<h3>leaflet-featuregroup property</h3>';
 	$text=$text.'<p>'.__('In a geojson file there are features and properties. They are different for each application.','extensions-leaflet-map').' ';
-	$text=$text.sprintf(__('gpx and kml are similar to geojson, so you can also use %1$s there. But it is not that easy to find relevant features.',
+	$text=$text.sprintf(__('gpx and kml are similar to geojson, so you can also use %s there. But it is not that easy to find relevant features.',
 	'extensions-leaflet-map'),
 	'<code>leaflet-featuregroup</code>').'</p>';
 
@@ -120,7 +120,7 @@ Use %4$s to group elements by options and %5$s to group elements by properties.'
       },...</pre>
 		 </p>';
 
-	$text=$text.'<p>'.sprintf(__('%1$s is case sensitive.','extensions-leaflet-map'),
+	$text=$text.'<p>'.sprintf(__('%s is case sensitive.','extensions-leaflet-map'),
 	'<code>property</code>').'</p>';
 
 	$text=$text.'<h3>values '.__('and','extensions-leaflet-map').' groups</h3><p>';
@@ -131,7 +131,7 @@ Use %4$s to group elements by options and %5$s to group elements by properties.'
 	'<code><span style="color: #4f94d4">value0</span></code>'
 	).'</li>
 
-	<li>'.sprintf(__('The %1$s are case sensitive.','extensions-leaflet-map'),
+	<li>'.sprintf(__('The %s are case sensitive.','extensions-leaflet-map'),
 	'<code>values</code>')
 	.'</li>
 

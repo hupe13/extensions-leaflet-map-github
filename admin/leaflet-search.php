@@ -46,7 +46,7 @@ function leafext_leafletsearch_help(){
   // $text=$text.'<h3>'.__('Examples for',"extensions-leaflet-map").' marker:</h3>';
   // $text=$text.'<p><a href="https://leafext.de/leafletsearch/leafletsearchmarker/">'.__('Examples',"extensions-leaflet-map").'</a></p>';
   $text=$text.'<h3>'.__('Option',"extensions-leaflet-map").' container</h3>';
-  $text=$text.'<p>'.sprintf(__('If you want the search field to be outside the map, define a div element with a custom html block on the post / page and give it an id. This id you then specify in option %1$s.',"extensions-leaflet-map"),'container').'</p>';
+  $text=$text.'<p>'.sprintf(__('If you want the search field to be outside the map, define a div element with a custom html block on the post / page and give it an id. This id you then specify in option %s.',"extensions-leaflet-map"),'container').'</p>';
   $text=$text.'<code>&lt;div id="myId" style="height:3em; border:2px solid gray; width:200px;">&lt;/div></code>';
   $text=$text.'<p>'.__('Define some css:',"extensions-leaflet-map").'</p>';
   $text=$text.'<pre><code>&lt;style>

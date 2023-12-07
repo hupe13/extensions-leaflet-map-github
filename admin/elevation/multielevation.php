@@ -126,7 +126,7 @@ if (is_singular()|| is_archive() ) {
 $text = $text.'<code>leaflet-directory</code></a></p>
 <h3>'.__('Options','extensions-leaflet-map').' elevation-track</h3>
 <ul><li>'.
-	sprintf ( __('%1$s is the url of the trackfile.','extensions-leaflet-map'),'<code>file</code>').
+	sprintf ( __('%s is the url of the trackfile.','extensions-leaflet-map'),'<code>file</code>').
 		'</li><li>'.
 	sprintf ( __('%1$s, %2$s and %3$s describe the %4$sstart point%5$s and are optional.','extensions-leaflet-map'),
 		'<code>lat</code>',
@@ -175,7 +175,7 @@ $text = $text.'<code>leaflet-directory</code></a></p>
 		'<span style="color: #4f94d4">',
 		'</span>').
 	'</li><ol><li>'.
-	sprintf(__('If %1$s (in options below or in shortcode) is true, the filename (without extension) is used.','extensions-leaflet-map'),
+	sprintf(__('If %s (in options below or in shortcode) is true, the filename (without extension) is used.','extensions-leaflet-map'),
 		'<code>filename</code>').
 	'</li><li>'.
 	__('If it is false, an attempt is made to read the trackname from the file.','extensions-leaflet-map').

@@ -106,10 +106,10 @@ function leafext_elevation_params($typ = array()) {
 			'shortdesc' => __('Toggle chart legend filter.',"extensions-leaflet-map"),
 			'desc' => '<img src="'.LEAFEXT_PLUGIN_PICTS.'on.png" alt="on"/>
 			<p>'.
-			sprintf(__('You can always toggle the charts individually by clicking on %1$s.',"extensions-leaflet-map"),
+			sprintf(__('You can always toggle the charts individually by clicking on %s.',"extensions-leaflet-map"),
 			'<img src="'.LEAFEXT_PLUGIN_PICTS.'switcher.png" alt="switch"/>')
 			.' '.
-			sprintf(__('If %1$s is disabled, you can\'t see all charts at the same time (except at the beginning).',"extensions-leaflet-map"),
+			sprintf(__('If %s is disabled, you can\'t see all charts at the same time (except at the beginning).',"extensions-leaflet-map"),
 			'<code>legend</code>').'</p>',
 			'default' => true,
 			'values' => 1,

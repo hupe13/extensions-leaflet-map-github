@@ -5,14 +5,14 @@ defined( 'ABSPATH' ) or die();
 function leafext_help_hover() {
   $text='<h2 id="hover">Hovering</h2>
   <img src="'.LEAFEXT_PLUGIN_PICTS.'hover.png" alt="hover">
-  <p>'.sprintf(__('Use it to highlight a %1$s element and get a tooltip on mouse over.','extensions-leaflet-map'),
+  <p>'.sprintf(__('Use it to highlight a %s element and get a tooltip on mouse over.','extensions-leaflet-map'),
   "leaflet-*");
   $text = $text. '</p>';
 
   $text = $text. '<h2>Shortcode</h2>
   <h4>'.__('Create Map','extensions-leaflet-map').'</h4>
   <pre><code>&#091;leaflet-map ...]</code></pre>
-  <h4>'.sprintf(__('Load any elements with any %1$s shortcode','extensions-leaflet-map'),
+  <h4>'.sprintf(__('Load any elements with any %s shortcode','extensions-leaflet-map'),
   'leaflet-*').'</h4>';
   $text = $text.'<ul>';
   $text = $text.'<li>';

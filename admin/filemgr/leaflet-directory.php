@@ -13,10 +13,10 @@ function leafext_directory_help_text() {
   $text=$text.'<ul>
   <li> url - '.__('url to directory, default: URL from upload directory.','extensions-leaflet-map').'</li>
   <li> src - '.__('(relative) path to directory, accessible both from path and from url','extensions-leaflet-map').'</li>
-  <li> elevation - '.sprintf(__('(default) prepare the tracks for %1$s','extensions-leaflet-map'),' <code>multielevation</code>').'</li>
-  <li> leaflet - '.sprintf(__('draw the content with %1$scommands ','extensions-leaflet-map'),'<code>leaflet-</code>').'</li>
+  <li> elevation - '.sprintf(__('(default) prepare the tracks for %s','extensions-leaflet-map'),' <code>multielevation</code>').'</li>
+  <li> leaflet - '.sprintf(__('draw the content with %scommands ','extensions-leaflet-map'),'<code>leaflet-</code>').'</li>
   <li> type - '.sprintf(__('For %1$s it is ignored. For %2$s a list of %3$s. Default is %4$s.','extensions-leaflet-map'),'"elevation"','"leaflet"','gpx,kml,geojson,json','"gpx"').'</li>
-  <li> start - (optional). '.sprintf(__('If %1$s and a file is a gpx file, display start point and cluster','extensions-leaflet-map'),'"leaflet"').'.</li>
+  <li> start - (optional). '.sprintf(__('If %s and a file is a gpx file, display start point and cluster','extensions-leaflet-map'),'"leaflet"').'.</li>
   </ul>';
   if (is_singular() || is_archive() ) {
     //

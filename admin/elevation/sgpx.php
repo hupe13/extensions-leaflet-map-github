@@ -119,10 +119,10 @@ function leafext_sgpx_help_text () {
 	echo '<ul>';
 	if ( LEAFEXT_SGPX_ACTIVE ) {
 		echo '<li>';
-		echo sprintf(__('Configure your default %1$s settings.',"extensions-leaflet-map"),'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">elevation</a>');
+		echo sprintf(__('Configure your default %s settings.',"extensions-leaflet-map"),'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=elevation">elevation</a>');
 		echo '</li><li>';
 		echo sprintf(__('Select %1$s to interpret the %2$s parameters as %3$s.',"extensions-leaflet-map"),'"1"','sgpx','elevation').' ';
-		echo sprintf(__('It may be that %1$s does not work with your theme. Then this is the only option.',"extensions-leaflet-map"),
+		echo sprintf(__('It may be that %s does not work with your theme. Then this is the only option.',"extensions-leaflet-map"),
 		'WP GPX Maps');
 		echo '</li><li>';
 		echo sprintf(__('If you want to test it first: select %1$s and write in your test page / post %2$s.',"extensions-leaflet-map"),'"leaflet"','<code>[leaflet-map height="1"]</code>');

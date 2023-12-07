@@ -12,7 +12,7 @@ function leafext_help_hoverlap() {
   $text = $text. '<h2>Shortcode</h2>
   <h4>'.__('Create Map','extensions-leaflet-map').'</h4>
   <pre><code>&#091;leaflet-map ...]</code></pre>
-  <h4>'.sprintf(__('Load any elements with any %1$s shortcode.','extensions-leaflet-map'),
+  <h4>'.sprintf(__('Load any elements with any %s shortcode.','extensions-leaflet-map'),
   'leaflet-*').'</h4>';
 
   $text = $text.'<pre><code>// some, but not ovarlapping with other markers

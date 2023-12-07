@@ -183,7 +183,7 @@ $text = $text.'<ul>
 
 <li>'
 	.sprintf(__(
-	'If you need more special characters than %1$s for your waypoints, please ask in the forum.',
+	'If you need more special characters than %s for your waypoints, please ask in the forum.',
 	'extensions-leaflet-map'),
 	' <code>- ,</code> ').'</li>
 
