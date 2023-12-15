@@ -210,12 +210,12 @@ function leafext_elevation_params($typ = array()) {
 		),
 		// Position of track control
 		array(
-			'param' => 'trackposition',
-			'shortdesc' => __('position of track control',"extensions-leaflet-map"),
-			'desc' => '',
-			'default' => 'topright',
-			'values' => "topleft, topright, bottomleft, bottomright",
-			'typ' => array('changeable','look',),
+			'param'     => 'trackposition',
+			'shortdesc' => __( 'position of track control', 'extensions-leaflet-map' ),
+			'desc'      => '',
+			'default'   => 'topright',
+			'values'    => array( 'topright', 'topleft', 'bottomleft', 'bottomright' ),
+			'typ'       => array( 'changeable', 'look' ),
 		),
 		// Collapsed track control
 		array(
@@ -802,10 +802,12 @@ function leafext_elevation_script($gpx,$settings){
 
 		<?php if ( $settings['track'] ) {
 			echo 'var switchtrack = L.control.layers(null, null, {';
-			//if ( $settings['trackcollapsed'] )
-			echo 'collapsed:'.$settings['trackcollapsed'].',';
-			//if ( $settings['trackposition'] )
-			echo 'position:"'.$settings['trackposition'].'",';
+			if ( $settings['trackcollapsed'] ) {
+				echo 'collapsed:' . $settings['trackcollapsed'] . ',';
+			}
+			if ( $settings['trackposition'] ) {
+				echo 'position:"' . $settings['trackposition'] . '"';
+			}
 			echo '});';
 		} ?>
 
@@ -914,7 +916,7 @@ function leafext_elevation_color($options) {
 					'.elevation-control .background {background-color: '.$typ.' !important;}'.
 					'</style>';
 					break;
-					default;
+					default:
 					$text=$text.'<style>'.
 					'.'.$options['theme'].'.elevation-control .area path.'.$key.','.
 					'.'.$options['theme'].' .legend-'.$key.' rect {fill: '.$typ.';}'.

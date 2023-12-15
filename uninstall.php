@@ -6,18 +6,18 @@
  */
 
 // if uninstall.php is not called by WordPress, die
-if (!defined('WP_UNINSTALL_PLUGIN')) {
-    die;
+if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+	die;
 }
 
 global $wpdb;
 
-$setting = get_option('leafext_deleting');
-if ( ! ( isset( $setting['on']) && $setting['on'] == '0' )) {
-  $option_names = $wpdb->get_results( "SELECT option_name FROM $wpdb->options WHERE option_name LIKE 'leafext_%' " );
-  foreach ( $option_names as $key=>$value ) {
-    delete_option($value->option_name);
-    // for site options in Multisite
-    delete_site_option($value->option_name);
-  }
+$setting = get_option( 'leafext_deleting' );
+if ( ! ( isset( $setting['on'] ) && $setting['on'] == '0' ) ) {
+	$option_names = $wpdb->get_results( "SELECT option_name FROM $wpdb->options WHERE option_name LIKE 'leafext_%' " );
+	foreach ( $option_names as $key => $value ) {
+		delete_option( $value->option_name );
+		// for site options in Multisite
+		delete_site_option( $value->option_name );
+	}
 }
