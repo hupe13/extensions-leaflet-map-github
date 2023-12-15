@@ -153,10 +153,10 @@ function leafext_admin_tabs() {
 	$active_tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : 'help';
 
 	echo '<h3 class="nav-tab-wrapper">';
-		echo '<a href="?page=' . $leafext_plugin_name . '&tab=help" class="nav-tab';
+	echo '<a href="?page=' . $leafext_plugin_name . '&tab=help" class="nav-tab';
 	echo $active_tab == 'help' ? ' nav-tab-active' : '';
 	echo '">' . __( 'Help', 'extensions-leaflet-map' ) . '</a>' . "\n";
-		echo '<a href="?page=' . $leafext_plugin_name . '&tab=elevation" class="nav-tab';
+	echo '<a href="?page=' . $leafext_plugin_name . '&tab=elevation" class="nav-tab';
 	if ( strpos( $active_tab, 'elevation' ) !== false ) {
 		echo ' nav-tab-active';
 	}
@@ -172,68 +172,68 @@ function leafext_admin_tabs() {
 		echo $active_tab == 'filemgr-list' ? ' nav-tab-active' : '';
 		echo '">' . __( 'Files for Leaflet Map', 'extensions-leaflet-map' ) . '</a>' . "\n";
 	}
-		$tabs = array(
-			array(
-				'tab'    => 'markercluster',
-				'title'  => __( 'Functions for Markers', 'extensions-leaflet-map' ),
-				'strpos' => 'marker',
-			),
-			array(
-				'tab'   => 'featuregroup',
-				'title' => __( 'Grouping by options and features', 'extensions-leaflet-map' ),
-			),
-			array(
-				'tab'   => 'leafletsearch',
-				'title' => __( 'Search markers/features', 'extensions-leaflet-map' ),
-			),
-			array(
-				'tab'    => 'tiles',
-				'title'  => __( 'Switching Tile Servers', 'extensions-leaflet-map' ),
-				'strpos' => 'tiles',
-			),
-			array(
-				'tab'    => 'hover',
-				'title'  => __( 'Hovering and Tooltips', 'extensions-leaflet-map' ),
-				'strpos' => 'hover',
-			),
-			array(
-				'tab'   => 'overviewmap',
-				'title' => __( 'Overview Map', 'extensions-leaflet-map' ),
-			),
-			array(
-				'tab'   => 'zoomhome',
-				'title' => __( 'Reset the map', 'extensions-leaflet-map' ),
-			),
-			array(
-				'tab'   => 'fullscreen',
-				'title' => __( 'Fullscreen', 'extensions-leaflet-map' ),
-			),
-			array(
-				'tab'   => 'gesture',
-				'title' => __( 'Gesture Handling', 'extensions-leaflet-map' ),
-			),
-			array(
-				'tab'   => 'choropleth',
-				'title' => 'Choropleth Map',
-			),
+	$tabs = array(
+		array(
+			'tab'    => 'markercluster',
+			'title'  => __( 'Functions for Markers', 'extensions-leaflet-map' ),
+			'strpos' => 'marker',
+		),
+		array(
+			'tab'   => 'featuregroup',
+			'title' => __( 'Grouping by options and features', 'extensions-leaflet-map' ),
+		),
+		array(
+			'tab'   => 'leafletsearch',
+			'title' => __( 'Search markers/features', 'extensions-leaflet-map' ),
+		),
+		array(
+			'tab'    => 'tiles',
+			'title'  => __( 'Switching Tile Servers', 'extensions-leaflet-map' ),
+			'strpos' => 'tiles',
+		),
+		array(
+			'tab'    => 'hover',
+			'title'  => __( 'Hovering and Tooltips', 'extensions-leaflet-map' ),
+			'strpos' => 'hover',
+		),
+		array(
+			'tab'   => 'overviewmap',
+			'title' => __( 'Overview Map', 'extensions-leaflet-map' ),
+		),
+		array(
+			'tab'   => 'zoomhome',
+			'title' => __( 'Reset the map', 'extensions-leaflet-map' ),
+		),
+		array(
+			'tab'   => 'fullscreen',
+			'title' => __( 'Fullscreen', 'extensions-leaflet-map' ),
+		),
+		array(
+			'tab'   => 'gesture',
+			'title' => __( 'Gesture Handling', 'extensions-leaflet-map' ),
+		),
+		array(
+			'tab'   => 'choropleth',
+			'title' => 'Choropleth Map',
+		),
 		// array(
 		// 'tab' => '',
 		// 'title' => '',
 		// ),
-		);
+	);
 
-		foreach ( $tabs as $tab ) {
-			echo '<a href="?page=' . $leafext_plugin_name . '&tab=' . $tab['tab'] . '" class="nav-tab';
-			$active = ( $active_tab == $tab['tab'] ) ? ' nav-tab-active' : '';
-			if ( isset( $tab['strpos'] ) ) {
-				if ( strpos( $active_tab, $tab['strpos'] ) !== false ) {
-					$active = ' nav-tab-active';
-				}
+	foreach ( $tabs as $tab ) {
+		echo '<a href="?page=' . $leafext_plugin_name . '&tab=' . $tab['tab'] . '" class="nav-tab';
+		$active = ( $active_tab == $tab['tab'] ) ? ' nav-tab-active' : '';
+		if ( isset( $tab['strpos'] ) ) {
+			if ( strpos( $active_tab, $tab['strpos'] ) !== false ) {
+				$active = ' nav-tab-active';
 			}
-			echo $active;
-			echo '">' . $tab['title'] . '</a>' . "\n";
 		}
-		echo '</h3>';
+		echo $active;
+		echo '">' . $tab['title'] . '</a>' . "\n";
+	}
+	echo '</h3>';
 }
 
 function leafext_admin_style() {
