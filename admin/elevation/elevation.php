@@ -216,9 +216,9 @@ function leafext_ele_help_chart () {
 	$options = leafext_elevation_settings(array("changeable"));
 	$summary = $options['summary'];
 	$span_off='</span>';
-	$sum_on    = ($options['summary'] == "0")              ? '<span style="color: #c3c4c7">' : "";
-	$leg_on    = ($options['legend']  == "0")              ? '<span style="color: #c3c4c7">' : "";
-	$marker_on = ($options['marker']  != "elevation-line") ? '<span style="color: #c3c4c7">' : "";
+	$sum_on    = ($options['summary'] == "0")              ? '<span style="color: #c3c4c7">' : "<span>";
+	$leg_on    = ($options['legend']  == "0")              ? '<span style="color: #c3c4c7">' : "<span>";
+	$marker_on = ($options['marker']  != "elevation-line") ? '<span style="color: #c3c4c7">' : "<span>";
 	echo '
 	<figure class="wp-block-table aligncenter is-style-stripes">
 	<table class="form-table" border="1" >
