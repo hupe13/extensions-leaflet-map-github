@@ -181,7 +181,7 @@ these js files from caching:
 ### 3.5.6 / 231216
 
 * every control has a position and collapse option now.
-* translation: sprintf argnum %S
+* translation: sprintf argnum %s
 
 ### Previous
 
