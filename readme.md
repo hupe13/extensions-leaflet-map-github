@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, elevation, markercluster, Leaflet Plugins   
 Tested up to: 6.4  
-Stable tag: 3.5.6  
+Stable tag: 3.5.7  
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later
@@ -177,6 +177,10 @@ these js files from caching:
 * Go to Settings - Leaflet Map - Extensions for Leaflet Map and get documentation and settings options.
 
 ## Changelog
+
+### 3.5.7 / 23121x
+
+* markerClusterGroup control has a position and collapse option now.
 
 ### 3.5.6 / 231216
 

@@ -1,8 +1,6 @@
 # Differences to the WordPress Repository version
 
-* every control has a position and collapse option now.
-* translation placeholder
-* new leaflet-providers.js
+* markerClusterGroup control has a position and collapse option now.
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

@@ -55,11 +55,18 @@ function leafext_clustergroup_function($atts,$content,$shortcode) {
 			'visible' => array_combine($cl_strings, $cl_on),
 		);
 
+		$control = array('position' => "topright",'collapsed' => false);
+		$atts1 = leafext_clear_params($atts);
+		$ctl_options = shortcode_atts($control, $atts1);
+		if (!leafext_check_position_control($ctl_options['position'])) $ctl_options['position'] = "topright";
+
 		$options = array(
 			'property' => '',
 			'option' => '',
 			'groups'  => $featuregroups['groups'],
 			'visible' => $featuregroups['visible'],
+			'position' => $ctl_options['position'],
+			'collapsed' => $ctl_options['collapsed'],
 		);
 		if (strpos($featuregroups['feat'],"properties") !== false) {
 			$options['property'] = substr($featuregroups['feat'],11);

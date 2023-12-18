@@ -124,11 +124,33 @@ __('If %1$s contains %2$s and %3$s, then markers (respectively Points) for which
 			'</p><h3>Shortcode groups unknown '.__('and','extensions-leaflet-map').' others</h3>
 <pre><code>&#091;markerClusterGroup feat="..." strings="...,...,others,unknown" groups="...,...,Other properties,Unknown properties"]</code></pre>';
 
-	$textoptions = '<p>'.sprintf ( __('The parameter and settings for %s are valid too.','extensions-leaflet-map'),
-			'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=markercluster">Leaflet.markercluster</a>');
+if (is_singular() || is_archive() ) {
+	if (strpos($_SERVER["REQUEST_URI"], "/en/") !==  false) {
+		$lang = '/en';
+	} else {
+		$lang = '';
+	}
+	$clusterurl = $lang.'/doku/markercluster/';
+} else {
+	$clusterurl = '?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=markercluster';
+}
+
+	$textoptions = '<h3>'.__('More options','extensions-leaflet-map').'</h3><p>'.sprintf ( __('The parameter and settings for %s are valid too.','extensions-leaflet-map'),
+			'<a href="'.$clusterurl.'">Leaflet.markercluster</a>');
 	$textoptions = $textoptions.'</p>';
+	$textoptions = $textoptions.'<ul>
+	<li>'.
+	__('optional: <code>position</code> - position of group control','extensions-leaflet-map').': topleft, topright, bottomleft, bottomright. '.
+	__('Default','extensions-leaflet-map').': topright.
+	</li>
+	<li>'.
+	__('optional: <code>collapsed</code> - group control collapsed or not:','extensions-leaflet-map').' true, false. '.
+	__('Default','extensions-leaflet-map').': false.
+	</li>
+	</ul>';
+
 	if (is_singular() || is_archive() ) {
-		return $note.$text;
+		return $note.$text.$textoptions;
 	} else {
 		echo $firsttext.$text.$textoptions;
 	}
