@@ -180,7 +180,7 @@ these js files from caching:
 
 ### 3.5.7 / 23122x
 
-* markerClusterGroup control has a position and collapse option now.
+* markerclustergroup control has a position and collapse option now.
 
 ### 3.5.6 / 231216
 
