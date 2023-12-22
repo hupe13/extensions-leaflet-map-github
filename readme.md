@@ -151,8 +151,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 <b>It doesn't work!</b>
 </summary>
 
-* Are you using any caching plugin? Try to exclude at least
-these js files from caching:
+* Are you using any caching plugin? Try to exclude at least these js files from caching:
  - /wp-content/plugins/extensions-leaflet-map/leaflet-plugins/leaflet-elevation-*
  - /wp-content/plugins/extensions-leaflet-map/leaflet-plugins/leaflet-gesture-handling-*
 * Are you using any plugin to comply with the GDPR/DSGVO? There might be a problem with that.
