@@ -222,7 +222,7 @@ if (is_singular() || is_archive() ) {
 	//$text = $text;
 } else {
 	$text = $text.'<p>'.sprintf(__('The shortcode %1$s is a special case of %2$s respectively %3$s.','extensions-leaflet-map'),
-	'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=markerclustergroup"><code>markerClusterGroup</code></a>',
+	'<a href="?page='.LEAFEXT_PLUGIN_SETTINGS.'&tab=markerclustergroup"><code>markerclustergroup</code></a>',
 	'<code>leaflet-optiongroup</code>',
 	'<code>leaflet-featuregroup</code>')
 	.'</p>';

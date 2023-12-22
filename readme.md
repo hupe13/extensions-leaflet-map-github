@@ -178,7 +178,7 @@ these js files from caching:
 
 ## Changelog
 
-### 3.5.7 / 23121x
+### 3.5.7 / 23122x
 
 * markerClusterGroup control has a position and collapse option now.
 

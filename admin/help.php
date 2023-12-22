@@ -61,7 +61,7 @@ function leafext_help_table($leafext_plugin_name="") {
 // leaflet-featuregroup
 // leaflet-optiongroup
 // leaflet-search
-// markerClusterGroup
+// markerclustergroup
 // multielevation
 // overviewmap
 // placementstrategies
@@ -112,12 +112,12 @@ function leafext_help_table($leafext_plugin_name="") {
 		),
 		array(
 			'function' => __('Clustering and Grouping of Markers','extensions-leaflet-map'),
-			'shortcode' => 'markerClusterGroup',
+			'shortcode' => 'markerclustergroup',
 			'tab' => 'markerclustergroup',
 			'plugins' => '<a href="https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup">Leaflet.FeatureGroup.SubGroup</a>',
 			'doku' => '/doku/markerclustergroup/',
 			'kategorie' => '',
-			'examples' => '',
+			'examples' => '/grouping/markerclustergroup/',
 		),
 		array(
 			'function' => __('Styling Markercluster','extensions-leaflet-map'),
