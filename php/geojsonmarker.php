@@ -1,54 +1,55 @@
 <?php
 /**
-* Functions for geojsonmarker
-* extensions-leaflet-map
-*/
+ * Functions for geojsonmarker
+ *
+ * @package Extensions for Leaflet Map
+ */
 
-// Direktzugriff auf diese Datei verhindern:
-defined( 'ABSPATH' ) or die();
+// Direktzugriff auf diese Datei verhindern.
+defined( 'ABSPATH' ) || die();
 
 //Shortcode: [geojsonmarker]
-function leafext_geojsonmarker_script($propertyoptions,$extramarkericon,$clusteroptions,$featuregroupoptions,$options){
+function leafext_geojsonmarker_script( $propertyoptions, $extramarkericon, $clusteroptions, $featuregroupoptions, $options ) {
 	$text = '<script><!--';
 	ob_start();
 	?>/*<script>*/
 	function leafext_geojsonmarker_extramarker_js(markerColor) {
-		var markericon = L.ExtraMarkers.icon({<?php echo $extramarkericon;?>,markerColor:markerColor});
+		var markericon = L.ExtraMarkers.icon({<?php echo $extramarkericon; ?>,markerColor:markerColor});
 		return markericon;
 	}
 	//
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
-		let property = <?php echo wp_json_encode($propertyoptions['property']);?>;
+		let property = <?php echo wp_json_encode( $propertyoptions['property'] ); ?>;
 		// console.log("property: "+property);
-		let iconprops = <?php echo wp_json_encode($propertyoptions['iconprops']);?>;
+		let iconprops = <?php echo wp_json_encode( $propertyoptions['iconprops'] ); ?>;
 		// console.log(iconprops);
-		let icondefault = <?php echo wp_json_encode($propertyoptions['icondefault']);?>;
+		let icondefault = <?php echo wp_json_encode( $propertyoptions['icondefault'] ); ?>;
 		// console.log(icondefault);
-		let auto = <?php echo wp_json_encode($propertyoptions['auto']);?>;
+		let auto = <?php echo wp_json_encode( $propertyoptions['auto'] ); ?>;
 		// console.log(auto);
 		//
-		let groups  = <?php echo wp_json_encode($featuregroupoptions['groups']);?>;
+		let groups  = <?php echo wp_json_encode( $featuregroupoptions['groups'] ); ?>;
 		// console.log(groups);
-		let visible = <?php echo wp_json_encode($featuregroupoptions['visible']);?>;
+		let visible = <?php echo wp_json_encode( $featuregroupoptions['visible'] ); ?>;
 		//
 		let clmarkers = L.markerClusterGroup({
-			<?php echo leafext_java_params ($clusteroptions);?>
+			<?php echo leafext_java_params( $clusteroptions ); ?>
 		});
-		let extramarkericon = <?php echo wp_json_encode($extramarkericon);?>;
+		let extramarkericon = <?php echo wp_json_encode( $extramarkericon ); ?>;
 		//
-		let position = <?php echo wp_json_encode($options['position']);?>;
-		let collapsed = <?php echo wp_json_encode($options['collapsed']);?>;
+		let position = <?php echo wp_json_encode( $options['position'] ); ?>;
+		let collapsed = <?php echo wp_json_encode( $options['collapsed'] ); ?>;
 		leafext_geojsonmarker_js(property,iconprops,icondefault,auto,groups,visible,clmarkers,extramarkericon,position,collapsed);
 	});
 	<?php
 	$javascript = ob_get_clean();
-	$text = $text . $javascript . '//-->'."\n".'</script>';
-	$text = \JShrink\Minifier::minify($text);
-	return "\n".$text."\n";
+	$text       = $text . $javascript . '//-->' . "\n" . '</script>';
+	$text       = \JShrink\Minifier::minify( $text );
+	return "\n" . $text . "\n";
 }
 
-function leafext_geojsonmarker_function($atts,$content,$shortcode) {
+function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 	// property - required
 	// values - required for leaflet-featuregroup and markers with iconURL, otherwise optional, if not specified collect
 	// groups - required for leaflet-featuregroup, otherwise no grouping
@@ -58,141 +59,147 @@ function leafext_geojsonmarker_function($atts,$content,$shortcode) {
 
 	// auto: values werden gesammelt, farben erzeugt, alles wird gruppiert und angezeigt
 
-	$text = leafext_should_interpret_shortcode($shortcode,$atts);
-	if ( $text != "" ) {
+	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
+	if ( $text != '' ) {
 		return $text;
 	} else {
 		$propertyoptions = shortcode_atts(
 			array(
-				'property' => "",
-				'values' => '',
-				'iconprops' => '',
-				'icondefault' => "blue",
-				'auto' => 0,
-			), leafext_clear_params($atts));
+				'property'    => '',
+				'values'      => '',
+				'iconprops'   => '',
+				'icondefault' => 'blue',
+				'auto'        => 0,
+			),
+			leafext_clear_params( $atts )
+		);
 			//
 
 			// property - required
-			if ( $propertyoptions['property'] == '' ) {
+		if ( $propertyoptions['property'] == '' ) {
+			$text = "['.$shortcode.' ";
+			if ( is_array( $atts ) ) {
+				foreach ( $atts as $key => $item ) {
+					$text = $text . "$key=$item ";
+				}
+			}
+			$text = $text . ' - NO PROPERTY ';
+			$text = $text . ']';
+			return $text;
+		}
+
+		if ( $propertyoptions['values'] != '' ) {
+			$prop_values = array_map( 'trim', explode( ',', $propertyoptions['values'] ) );
+		} else {
+			$prop_values = array();
+		}
+
+		if ( $propertyoptions['iconprops'] == '' ) {
+			$propertyoptions['iconprops'] = array();
+		} else {
+			$iconprops = array_map( 'trim', explode( ',', $propertyoptions['iconprops'] ) );
+			if ( count( $prop_values ) == count( $iconprops ) ) {
+				$propertyoptions['iconprops'] = array_combine( $prop_values, $iconprops );
+				// } else if (($key = array_search('others', $prop_values)) !== false) {
+				//  unset($prop_values[$key]);
+				//  $propertyoptions['iconprops'] = array_combine($prop_values,$iconprops);
+			} else {
 				$text = "['.$shortcode.' ";
-				if (is_array($atts)){
-					foreach ($atts as $key=>$item){
-						$text = $text. "$key=$item ";
+				if ( is_array( $atts ) ) {
+					foreach ( $atts as $key => $item ) {
+						$text = $text . "$key=$item ";
 					}
 				}
-				$text = $text." - NO PROPERTY ";
-				$text = $text. "]";
+				$text = $text . ' - property values and iconprops do not match. ';
+				$text = $text . ']';
 				return $text;
 			}
-
-			if ( $propertyoptions['values'] != "" ) {
-				$prop_values = array_map('trim', explode( ',', $propertyoptions['values'] ));
-			} else {
-				$prop_values = array();
-			}
-
-			if ( $propertyoptions['iconprops'] == "" ) {
-				$propertyoptions['iconprops'] = array();
-			} else {
-				$iconprops = array_map('trim', explode( ',', $propertyoptions['iconprops'] ));
-				if ( count($prop_values) == count($iconprops) ) {
-					$propertyoptions['iconprops'] = array_combine($prop_values,$iconprops);
-					// } else if (($key = array_search('others', $prop_values)) !== false) {
-					// 	unset($prop_values[$key]);
-					// 	$propertyoptions['iconprops'] = array_combine($prop_values,$iconprops);
-				} else {
-					$text = "['.$shortcode.' ";
-					if (is_array($atts)){
-						foreach ($atts as $key=>$item){
-							$text = $text. "$key=$item ";
-						}
-					}
-					$text = $text." - property values and iconprops do not match. ";
-					$text = $text. "]";
-					return $text;
-				}
-			}
-			leafext_enqueue_leafext("geojsonmarker","leaflet_subgroup");
+		}
+			leafext_enqueue_leafext( 'geojsonmarker', 'leaflet_subgroup' );
 			//
-			leafext_enqueue_extramarker ();
-			$extramarker = leafext_case(array_keys(leafext_extramarker_defaults()),leafext_clear_params($atts));
-			$extramarkeroptions = shortcode_atts(leafext_extramarker_defaults(), $extramarker);
-			$extramarkericon = leafext_extramarkers_params ($extramarkeroptions).'tooltipAnchor:[12,-24]';
+			leafext_enqueue_extramarker();
+			$extramarker        = leafext_case( array_keys( leafext_extramarker_defaults() ), leafext_clear_params( $atts ) );
+			$extramarkeroptions = shortcode_atts( leafext_extramarker_defaults(), $extramarker );
+			$extramarkericon    = leafext_extramarkers_params( $extramarkeroptions ) . 'tooltipAnchor:[12,-24]';
 			//
-			leafext_enqueue_markercluster ();
-			$clusteroptions = leafext_cluster_atts ($atts);
+			leafext_enqueue_markercluster();
+			$clusteroptions = leafext_cluster_atts( $atts );
 			//
 			$groupingoptions = shortcode_atts(
 				array(
 					//'property' => '',
-					'values' => '',
-					'groups' => '',
+					'values'  => '',
+					'groups'  => '',
 					'visible' => false,
-				), leafext_clear_params($atts)
+				),
+				leafext_clear_params( $atts )
 			);
 
-			if ( substr_count($groupingoptions['values'],',') != substr_count($groupingoptions['groups'],',')
-			&& substr_count($groupingoptions['groups'],',') != 0 ) {
-				$text = "['.$shortcode.' ";
-				if (is_array($atts)){
-					foreach ($atts as $key=>$item){
-						$text = $text. "$key=$item ";
-					}
+		if ( substr_count( $groupingoptions['values'], ',' ) != substr_count( $groupingoptions['groups'], ',' )
+			&& substr_count( $groupingoptions['groups'], ',' ) != 0 ) {
+			$text = "['.$shortcode.' ";
+			if ( is_array( $atts ) ) {
+				foreach ( $atts as $key => $item ) {
+					$text = $text . "$key=$item ";
 				}
-				$text = $text." - values and groups do not match. ";
-				$text = $text. "]";
-				return $text;
 			}
-
-			if ($groupingoptions['groups'] != "") {
-
-				$cl_values= array_map('trim', explode( ',', $groupingoptions['values'] ));
-				$cl_groups = array_map('trim', explode( ',', $groupingoptions['groups'] ));
-
-				if ($groupingoptions['visible'] === false) {
-					$groupingoptions['visible'] = array_fill(0, count($cl_values), '1');
-					$cl_on = array_fill(0, count($cl_values), '1');
-				} else {
-					$cl_on = array_map('trim', explode( ',', $groupingoptions['visible'] ));
-					if (count($cl_on) == 1) {
-						$cl_on = array_fill(0, count($cl_values), '0');
-					} else {
-						if ( count($cl_values) != count($cl_on) ) {
-							$text = "['.$shortcode.' ";
-							foreach ($atts as $key=>$item){
-								$text = $text. "$key=$item ";
-							}
-							$text = $text." - groups and visible do not match. ";
-							$text = $text. "]";
-							return $text;
-						}
-					}
-				}
-				if (!in_array('others',$cl_groups)) {
-					$cl_values[] = 'others';
-					$cl_groups[] = 'others';
-					$cl_on['others'] = '1';
-				}
-
-				$featuregroupoptions = array(
-					//'property' => sanitize_text_field($groupingoptions['property']),
-					'values' => sanitize_text_field($groupingoptions['values']),
-					'groups'  => array_combine($cl_values, $cl_groups),
-					'visible' => array_combine($cl_values, $cl_on),
-				);
-				leafext_enqueue_clustergroup ();
-			} else {
-				$featuregroupoptions = array();
-			}
-			if ($propertyoptions['auto']) {
-				leafext_enqueue_clustergroup ();
-			}
-			//
-			$control = array('position' => "bottomright",'collapsed' => false);
-			$atts1 = leafext_clear_params($atts);
-	    $options = shortcode_atts($control, $atts1);
-			if (!leafext_check_position_control($options['position'])) $options['position'] = "bottomright";
-			return leafext_geojsonmarker_script($propertyoptions,$extramarkericon,$clusteroptions,$featuregroupoptions,$options);
+			$text = $text . ' - values and groups do not match. ';
+			$text = $text . ']';
+			return $text;
 		}
+
+		if ( $groupingoptions['groups'] != '' ) {
+
+			$cl_values = array_map( 'trim', explode( ',', $groupingoptions['values'] ) );
+			$cl_groups = array_map( 'trim', explode( ',', $groupingoptions['groups'] ) );
+
+			if ( $groupingoptions['visible'] === false ) {
+				$groupingoptions['visible'] = array_fill( 0, count( $cl_values ), '1' );
+				$cl_on                      = array_fill( 0, count( $cl_values ), '1' );
+			} else {
+				$cl_on = array_map( 'trim', explode( ',', $groupingoptions['visible'] ) );
+				if ( count( $cl_on ) == 1 ) {
+					$cl_on = array_fill( 0, count( $cl_values ), '0' );
+				} elseif ( count( $cl_values ) != count( $cl_on ) ) {
+						$text = "['.$shortcode.' ";
+					foreach ( $atts as $key => $item ) {
+						$text = $text . "$key=$item ";
+					}
+						$text = $text . ' - groups and visible do not match. ';
+						$text = $text . ']';
+						return $text;
+				}
+			}
+			if ( ! in_array( 'others', $cl_groups, true ) ) {
+				$cl_values[]     = 'others';
+				$cl_groups[]     = 'others';
+				$cl_on['others'] = '1';
+			}
+
+			$featuregroupoptions = array(
+				//'property' => sanitize_text_field($groupingoptions['property']),
+				'values'  => sanitize_text_field( $groupingoptions['values'] ),
+				'groups'  => array_combine( $cl_values, $cl_groups ),
+				'visible' => array_combine( $cl_values, $cl_on ),
+			);
+			leafext_enqueue_clustergroup();
+		} else {
+			$featuregroupoptions = array();
+		}
+		if ( $propertyoptions['auto'] ) {
+			leafext_enqueue_clustergroup();
+		}
+			//
+			$control = array(
+				'position'  => 'bottomright',
+				'collapsed' => false,
+			);
+			$atts1   = leafext_clear_params( $atts );
+			$options = shortcode_atts( $control, $atts1 );
+			if ( ! leafext_check_position_control( $options['position'] ) ) {
+				$options['position'] = 'bottomright';
+			}
+			return leafext_geojsonmarker_script( $propertyoptions, $extramarkericon, $clusteroptions, $featuregroupoptions, $options );
 	}
-	add_shortcode('geojsonmarker', 'leafext_geojsonmarker_function');
+}
+	add_shortcode( 'geojsonmarker', 'leafext_geojsonmarker_function' );

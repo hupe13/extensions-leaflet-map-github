@@ -1,15 +1,17 @@
 <?php
 /**
-* Functions for hidemarkers shortcode
-* extensions-leaflet-map
-*/
-// Direktzugriff auf diese Datei verhindern:
-defined( 'ABSPATH' ) or die();
+ * Functions for hidemarkers shortcode
+ *
+ * @package Extensions for Leaflet Map
+ */
+
+// Direktzugriff auf diese Datei verhindern.
+defined( 'ABSPATH' ) || die();
 
 //Shortcode: [hidemarkers]
-function leafext_hidemarkers_function(){
-	$text = leafext_should_interpret_shortcode('hidemarkers',0);
-	if ( $text != "" ) {
+function leafext_hidemarkers_function() {
+	$text = leafext_should_interpret_shortcode( 'hidemarkers', 0 );
+	if ( $text != '' ) {
 		return $text;
 	} else {
 		$text = '<script><!--';
@@ -35,9 +37,9 @@ function leafext_hidemarkers_function(){
 		});
 		<?php
 		$javascript = ob_get_clean();
-		$text = $text . $javascript . '//-->'."\n".'</script>';
-		$text = \JShrink\Minifier::minify($text);
+		$text       = $text . $javascript . '//-->' . "\n" . '</script>';
+		$text       = \JShrink\Minifier::minify( $text );
 		return $text;
 	}
 }
-add_shortcode('hidemarkers', 'leafext_hidemarkers_function' );
+add_shortcode( 'hidemarkers', 'leafext_hidemarkers_function' );

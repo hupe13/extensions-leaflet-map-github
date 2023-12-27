@@ -1,6 +1,7 @@
 # Differences to the WordPress Repository version
 
-* markerClusterGroup control has a position and collapse option now.
+* Bug in leaflet-search (marker=false) fixed.
+* WordPress Codex (only some files)
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
