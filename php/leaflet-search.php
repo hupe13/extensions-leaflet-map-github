@@ -147,7 +147,7 @@ function leafext_leafletsearch_function( $atts, $content, $shortcode ) {
 		$options = shortcode_atts( $defaults, $atts1 );
 		//var_dump($options);wp_die();
 		if ( $options['marker'] == 'false' ) {
-			$options['marker'] = ' {icon:false}';
+			$options['marker'] = '{icon:false, circle:{radius:0,weight:0}}';
 		}
 		if ( $options['marker'] != '{}' ) {
 			$pattern           = array( "/:\s*'\s*(-?\d+)\s*,\s*(-?\d+)\s*'/" );
