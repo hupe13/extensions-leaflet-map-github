@@ -43,13 +43,13 @@ function leafext_overviewmap_settings() {
 			'default' => 'overview-icon',
 			'values'  => '',
 		),
-	// array(
-	//  'param' => '',
-	//  'desc' => '',
-	//  'content' => '',
-	//  'default' => '',
-	//  'values' => '',
-	// ),
+		// array(
+		//  'param' => '',
+		//  'desc' => '',
+		//  'content' => '',
+		//  'default' => '',
+		//  'values' => '',
+		// ),
 	);
 	return $params;
 }
@@ -122,40 +122,31 @@ function leafext_extramarker_options() {
 function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 	global $wpdb;
 
-	if( get_transient( 'overviewmap'.get_the_ID() ) ) {
-		$startTime = microtime(true);
-	    $pageposts = get_transient( 'overviewmap'.get_the_ID() );
-			echo number_format((microtime(true) - $startTime), 5);
-	} else {
-
-
-	echo "<br>".' 1: ';
-	$startTime = microtime(true);
-	$querystr = "
-	SELECT DISTINCT wposts.*
-	FROM $wpdb->posts wposts
-	LEFT JOIN $wpdb->postmeta wpostmeta ON wposts.ID = wpostmeta.post_id
-	WHERE wpostmeta.meta_key = '".$latlngs."'
-	AND wposts.post_status = 'publish'
-	AND (wposts.post_type = 'post' OR wposts.post_type = 'page')
-	";
-	$pageposts = $wpdb->get_results($querystr, OBJECT);
-	echo number_format((microtime(true) - $startTime), 5);
-	echo "<br>".' 2: ';
-	$startTime = microtime(true);
-	$query     = new WP_Query(
-		array(
-			'meta_key'    => $latlngs,
-			'post_type'   => array( 'post', 'page' ),
-			'post_status' => 'publish',
-		)
-	);
-	echo number_format((microtime(true) - $startTime), 5);
-	$pageposts = $query->posts;
-
-	set_transient( 'overviewmap'.get_the_ID(), $pageposts, DAY_IN_SECONDS );
-}
-	//var_dump($pageposts);
+	// $startTime = microtime(true);
+	// Check for transient. If none, then execute WP_Query
+	$pageposts = get_transient( 'leafext_ovm_' . $latlngs );
+	if ( false === $pageposts ) {
+		// $querystr = "
+		// SELECT DISTINCT wposts.*
+		// FROM $wpdb->posts wposts
+		// LEFT JOIN $wpdb->postmeta wpostmeta ON wposts.ID = wpostmeta.post_id
+		// WHERE wpostmeta.meta_key = '".$latlngs."'
+		// AND wposts.post_status = 'publish'
+		// AND (wposts.post_type = 'post' OR wposts.post_type = 'page')
+		// ";
+		// $pageposts = $wpdb->get_results($querystr, OBJECT);
+		$query     = new WP_Query(
+			array(
+				'meta_key'    => $latlngs,
+				'post_type'   => array( 'post', 'page' ),
+				'post_status' => 'publish',
+			)
+		);
+		$pageposts = $query->posts;
+		set_transient( 'leafext_ovm_' . $latlngs, $pageposts, DAY_IN_SECONDS );
+	}
+	//  echo number_format((microtime(true) - $startTime), 5);
+	// var_dump($pageposts);
 	$catposts = array();
 	if ( $pageposts ) {
 		foreach ( $pageposts as $post ) {
@@ -171,6 +162,18 @@ function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 	//var_dump($pageposts);
 	return $pageposts;
 }
+
+// Create a function to delete our transient
+function leafext_delete_ovm_transient() {
+	$meta = get_post_meta( get_the_ID() );
+	foreach ( $meta as $key => $val ) {
+		if ( false !== get_transient( 'leafext_ovm_' . $key ) ) {
+			delete_transient( 'leafext_ovm_' . $key );
+		}
+	}
+}
+// Add the function to the edit_term hook so it runs when categories/tags are edited
+add_action( 'save_post', 'leafext_delete_ovm_transient' );
 
 function leafext_check_duplicates_meta( $postid, $meta ) {
 	$fields = get_post_meta( $postid, $meta, false );
@@ -268,7 +271,6 @@ function leafext_ovm_setup_icon( $overview_data, $atts ) {
 			$leaflet_marker_cmd = 'leaflet-extramarker';
 			$iconoptions        = leafext_extramarker_options();
 		} elseif ( strpos( $overview_data['icon'], 'leaflet-marker' ) === 0 ) {
-			// phpcs:ignore
 			//
 		} elseif ( strpos( $overview_data['icon'], '=' ) === false ) {
 			$overview_data['icon'] = sanitize_file_name( $overview_data['icon'] );
@@ -315,8 +317,8 @@ function leafext_ovm_setup_icon( $overview_data, $atts ) {
 			)
 		);
 	}
-	//
-	return array( $leaflet_marker_cmd, $markeroptions, $iconerror );
+			//
+			return array( $leaflet_marker_cmd, $markeroptions, $iconerror );
 }
 
 function leafext_ovm_setup_leafletmarker( $overview_data, $atts ) {
@@ -367,7 +369,7 @@ function leafext_overview_debug( $overview_data, $post ) {
 	return $overview_data;
 }
 
-// Shortcode für Wegpunkte aus Posts:
+		// Shortcode für Wegpunkte aus Posts:
 function leafext_overviewmap_function( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
 	if ( $text != '' ) {
@@ -429,4 +431,4 @@ function leafext_overviewmap_function( $atts, $content, $shortcode ) {
 		return $text;
 	}
 }
-add_shortcode( 'overviewmap', 'leafext_overviewmap_function' );
+		add_shortcode( 'overviewmap', 'leafext_overviewmap_function' );
