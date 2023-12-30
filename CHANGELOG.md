@@ -1,3 +1,12 @@
+### 3.5.7 / 231222
+
+* markerclustergroup control has a position and collapse option now.
+
+### 3.5.6 / 231216
+
+* every control has a position and collapse option now.
+* translation: sprintf argnum %s
+
 ### 3.5.5 / 231125
 
 * fixing bug elevation colors

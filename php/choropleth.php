@@ -1,7 +1,6 @@
 <?php
 /**
  * Functions for choropleth shortcode
- * extensions-leaflet-map
  *
  * @package Extensions for Leaflet Map
  */

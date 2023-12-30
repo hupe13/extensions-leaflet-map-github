@@ -317,8 +317,8 @@ function leafext_ovm_setup_icon( $overview_data, $atts ) {
 			)
 		);
 	}
-			//
-			return array( $leaflet_marker_cmd, $markeroptions, $iconerror );
+	//
+	return array( $leaflet_marker_cmd, $markeroptions, $iconerror );
 }
 
 function leafext_ovm_setup_leafletmarker( $overview_data, $atts ) {
@@ -431,4 +431,4 @@ function leafext_overviewmap_function( $atts, $content, $shortcode ) {
 		return $text;
 	}
 }
-		add_shortcode( 'overviewmap', 'leafext_overviewmap_function' );
+add_shortcode( 'overviewmap', 'leafext_overviewmap_function' );

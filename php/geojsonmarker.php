@@ -73,9 +73,9 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 			),
 			leafext_clear_params( $atts )
 		);
-			//
+		//
 
-			// property - required
+		// property - required
 		if ( $propertyoptions['property'] == '' ) {
 			$text = "['.$shortcode.' ";
 			if ( is_array( $atts ) ) {
@@ -115,8 +115,8 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 				return $text;
 			}
 		}
-			leafext_enqueue_leafext( 'geojsonmarker', 'leaflet_subgroup' );
-			//
+		leafext_enqueue_leafext( 'geojsonmarker', 'leaflet_subgroup' );
+		//
 			leafext_enqueue_extramarker();
 			$extramarker        = leafext_case( array_keys( leafext_extramarker_defaults() ), leafext_clear_params( $atts ) );
 			$extramarkeroptions = shortcode_atts( leafext_extramarker_defaults(), $extramarker );
@@ -189,17 +189,17 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 		if ( $propertyoptions['auto'] ) {
 			leafext_enqueue_clustergroup();
 		}
-			//
-			$control = array(
-				'position'  => 'bottomright',
-				'collapsed' => false,
-			);
-			$atts1   = leafext_clear_params( $atts );
-			$options = shortcode_atts( $control, $atts1 );
-			if ( ! leafext_check_position_control( $options['position'] ) ) {
-				$options['position'] = 'bottomright';
-			}
-			return leafext_geojsonmarker_script( $propertyoptions, $extramarkericon, $clusteroptions, $featuregroupoptions, $options );
+		//
+		$control = array(
+			'position'  => 'bottomright',
+			'collapsed' => false,
+		);
+		$atts1   = leafext_clear_params( $atts );
+		$options = shortcode_atts( $control, $atts1 );
+		if ( ! leafext_check_position_control( $options['position'] ) ) {
+			$options['position'] = 'bottomright';
+		}
+		return leafext_geojsonmarker_script( $propertyoptions, $extramarkericon, $clusteroptions, $featuregroupoptions, $options );
 	}
 }
-	add_shortcode( 'geojsonmarker', 'leafext_geojsonmarker_function' );
+add_shortcode( 'geojsonmarker', 'leafext_geojsonmarker_function' );

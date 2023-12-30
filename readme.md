@@ -177,14 +177,11 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.5.7 / 23122x
+### 3.5.8 / 2xxxxx
 
-* markerclustergroup control has a position and collapse option now.
-
-### 3.5.6 / 231216
-
-* every control has a position and collapse option now.
-* translation: sprintf argnum %s
+* Bug in leaflet-search (marker=false) fixed.
+* WordPress Codex (only some files)
+* overviewmap: using transients
 
 ### Previous
 
