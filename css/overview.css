@@ -1,67 +1,67 @@
 .leafext-overview-tooltip {
-  background-color: #eee !important;
-  /* border: 1px solid #eee !important; */
-  white-space: normal !important;
-  min-width: 120px;
-  /* max-width: 200px; */
+	background-color: #eee !important;
+	/* border: 1px solid #eee !important; */
+	white-space: normal !important;
+	min-width: 120px;
+	/* max-width: 200px; */
 }
 .leafext-overview-popup
 {
-  max-width: 200px;
-  display: grid;
-  gap: 0.5em;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto 1fr;
-  text-align: center;
-  align-items: center;
-  justify-items: center;
+	max-width: 200px;
+	display: grid;
+	gap: 0.5em;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto 1fr;
+	text-align: center;
+	align-items: center;
+	justify-items: center;
 }
 .leafext-overview-popup .leafext-overview-popup-header {
-  grid-column: 1/3;
-  grid-row: 1/2;
-  padding-bottom: 10px;
-  overflow-wrap: break-word;
+	grid-column: 1/3;
+	grid-row: 1/2;
+	padding-bottom: 10px;
+	overflow-wrap: break-word;
 }
 .leafext-overview-popup .leafext-overview-popup-img
 {
-  grid-column: 1/2;
-  grid-row: 2/3;
-  width: 75px;
-  height: 75px;
-  padding: 1px;
+	grid-column: 1/2;
+	grid-row: 2/3;
+	width: 75px;
+	height: 75px;
+	padding: 1px;
 }
 .leafext-overview-popup .leafext-overview-popup-cat {
-  grid-column: 2/3;
-  grid-row: 2/3;
-  overflow-wrap: break-word;
+	grid-column: 2/3;
+	grid-row: 2/3;
+	overflow-wrap: break-word;
 }
 .leafext-overview-popup-one {
-  max-width: 200px;
-  display: grid;
-  gap: 0.5em;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  text-align: center;
-  align-items: center;
-  justify-items: center;
+	max-width: 200px;
+	display: grid;
+	gap: 0.5em;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto;
+	text-align: center;
+	align-items: center;
+	justify-items: center;
 }
 .leafext-overview-popup-one .leafext-overview-popup-header {
-  grid-column: 1/2;
-  grid-row: 1/2;
-  padding-bottom: 10px;
-  overflow-wrap: break-word;
+	grid-column: 1/2;
+	grid-row: 1/2;
+	padding-bottom: 10px;
+	overflow-wrap: break-word;
 }
 .leafext-overview-popup-one .leafext-overview-popup-img {
-  grid-column: 1/2;
-  grid-row: 2/3;
-  width: 75px;
-  height: 75px;
-  padding: 1px;
+	grid-column: 1/2;
+	grid-row: 2/3;
+	width: 75px;
+	height: 75px;
+	padding: 1px;
 }
 .leafext-overview-popup-one .leafext-overview-popup-cat {
-  grid-column: 1/2;
-  grid-row: 2/3;
-  overflow-wrap: break-word;
+	grid-column: 1/2;
+	grid-row: 2/3;
+	overflow-wrap: break-word;
 }
 
 /* .leafext-overview-popup-header,
@@ -69,6 +69,6 @@
 .leafext-overview-popup-cat,
 .leafext-overview-popup-img
 {
-  border: 1px solid;
-  padding: 2px;
+	border: 1px solid;
+	padding: 2px;
 } */

@@ -1,12 +1,12 @@
 /* No tooltip on mobiles */
 @media (hover: none) {
-  .leaflet-tooltip-pane { display: none; }
+	.leaflet-tooltip-pane { display: none; }
 }
 
 /* obiges klappt bei elevation (und Samsung Smartphone) nicht, deshalb
 https://github.com/Artuar/css-test-device-or-desktop */
 @media not all and (pointer: fine) {
-  .leaflet-tooltip-pane { display: none; }
+	.leaflet-tooltip-pane { display: none; }
 }
 
 /* multielevation tracks list top right */
@@ -25,9 +25,9 @@ https://github.com/Artuar/css-test-device-or-desktop */
 
 .chart-placeholder {
 	height: auto;
- 	width: 100%;
+	width: 100%;
 	padding: 60px 0px 60px 0;
- 	margin: 0 0px;
+	margin: 0 0px;
 	font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial, Helvetica, sans-serif;
 	font-style: italic;
 	opacity: 0.5;
@@ -36,22 +36,22 @@ https://github.com/Artuar/css-test-device-or-desktop */
 }
 
 /* .elevation-control .background {
-  height: min-content;
+	height: min-content;
 } */
 /* .elevation-expanded {
-  width: 70%;
+	width: 70%;
 } */
 
 /* + and - should have not underline */
 .leaflet-control-zoomhome-out {
-  text-decoration: none !important;
+	text-decoration: none !important;
 }
 .leaflet-control-zoomhome-in {
-  text-decoration: none !important;
+	text-decoration: none !important;
 }
 .leaflet-control-zoom-out {
-  text-decoration: none !important;
+	text-decoration: none !important;
 }
 .leaflet-control-zoom-in {
-  text-decoration: none !important;
+	text-decoration: none !important;
 }

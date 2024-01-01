@@ -166,9 +166,12 @@ function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 // Create a function to delete our transient
 function leafext_delete_ovm_transient() {
 	$meta = get_post_meta( get_the_ID() );
-	foreach ( $meta as $key => $val ) {
-		if ( false !== get_transient( 'leafext_ovm_' . $key ) ) {
-			delete_transient( 'leafext_ovm_' . $key );
+	//var_dump($meta);
+	if ( is_array( $meta ) ) {
+		foreach ( $meta as $key => $val ) {
+			if ( false !== get_transient( 'leafext_ovm_' . $key ) ) {
+				delete_transient( 'leafext_ovm_' . $key );
+			}
 		}
 	}
 }

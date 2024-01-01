@@ -177,11 +177,12 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.5.8 / 2xxxxx
+### 3.5.8 / 24010x
 
-* Bug in leaflet-search (marker=false) fixed.
-* WordPress Codex (only some files)
+* Bug in leaflet-search fixed.
+* WordPress Coding Standards (css and some php files)
 * overviewmap: using transients
+* fontawesome-free-6.5.1-web
 
 ### Previous
 
