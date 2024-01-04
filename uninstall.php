@@ -14,6 +14,7 @@ global $wpdb;
 
 $setting = get_option( 'leafext_deleting' );
 if ( ! ( isset( $setting['on'] ) && $setting['on'] == '0' ) ) {
+	// phpcs:ignore
 	$option_names = $wpdb->get_results( "SELECT option_name FROM $wpdb->options WHERE option_name LIKE 'leafext_%' " );
 	foreach ( $option_names as $key => $value ) {
 		delete_option( $value->option_name );
