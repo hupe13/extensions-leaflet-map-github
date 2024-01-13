@@ -8,7 +8,7 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-//Shortcode: [geojsonmarker]
+// Shortcode: [geojsonmarker]
 function leafext_geojsonmarker_script( $propertyoptions, $extramarkericon, $clusteroptions, $featuregroupoptions, $options ) {
 	$text = '<script><!--';
 	ob_start();
@@ -73,7 +73,6 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 			),
 			leafext_clear_params( $atts )
 		);
-		//
 
 		// property - required
 		if ( $propertyoptions['property'] == '' ) {
@@ -101,8 +100,8 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 			if ( count( $prop_values ) == count( $iconprops ) ) {
 				$propertyoptions['iconprops'] = array_combine( $prop_values, $iconprops );
 				// } else if (($key = array_search('others', $prop_values)) !== false) {
-				//  unset($prop_values[$key]);
-				//  $propertyoptions['iconprops'] = array_combine($prop_values,$iconprops);
+				// unset($prop_values[$key]);
+				// $propertyoptions['iconprops'] = array_combine($prop_values,$iconprops);
 			} else {
 				$text = "['.$shortcode.' ";
 				if ( is_array( $atts ) ) {
@@ -116,24 +115,21 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 			}
 		}
 		leafext_enqueue_leafext( 'geojsonmarker', 'leaflet_subgroup' );
-		//
-			leafext_enqueue_extramarker();
+					leafext_enqueue_extramarker();
 			$extramarker        = leafext_case( array_keys( leafext_extramarker_defaults() ), leafext_clear_params( $atts ) );
 			$extramarkeroptions = shortcode_atts( leafext_extramarker_defaults(), $extramarker );
 			$extramarkericon    = leafext_extramarkers_params( $extramarkeroptions ) . 'tooltipAnchor:[12,-24]';
-			//
-			leafext_enqueue_markercluster();
-			$clusteroptions = leafext_cluster_atts( $atts );
-			//
-			$groupingoptions = shortcode_atts(
-				array(
-					//'property' => '',
-					'values'  => '',
-					'groups'  => '',
-					'visible' => false,
-				),
-				leafext_clear_params( $atts )
-			);
+						leafext_enqueue_markercluster();
+			$clusteroptions              = leafext_cluster_atts( $atts );
+						$groupingoptions = shortcode_atts(
+							array(
+								// 'property' => '',
+								'values'  => '',
+								'groups'  => '',
+								'visible' => false,
+							),
+							leafext_clear_params( $atts )
+						);
 
 		if ( substr_count( $groupingoptions['values'], ',' ) != substr_count( $groupingoptions['groups'], ',' )
 			&& substr_count( $groupingoptions['groups'], ',' ) != 0 ) {
@@ -177,7 +173,7 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 			}
 
 			$featuregroupoptions = array(
-				//'property' => sanitize_text_field($groupingoptions['property']),
+				// 'property' => sanitize_text_field($groupingoptions['property']),
 				'values'  => sanitize_text_field( $groupingoptions['values'] ),
 				'groups'  => array_combine( $cl_values, $cl_groups ),
 				'visible' => array_combine( $cl_values, $cl_on ),
@@ -189,17 +185,16 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 		if ( $propertyoptions['auto'] ) {
 			leafext_enqueue_clustergroup();
 		}
-		//
-		$control = array(
-			'position'  => 'bottomright',
-			'collapsed' => false,
-		);
-		$atts1   = leafext_clear_params( $atts );
-		$options = shortcode_atts( $control, $atts1 );
-		if ( ! leafext_check_position_control( $options['position'] ) ) {
-			$options['position'] = 'bottomright';
-		}
-		return leafext_geojsonmarker_script( $propertyoptions, $extramarkericon, $clusteroptions, $featuregroupoptions, $options );
+				$control = array(
+					'position'  => 'bottomright',
+					'collapsed' => false,
+				);
+				$atts1   = leafext_clear_params( $atts );
+				$options = shortcode_atts( $control, $atts1 );
+				if ( ! leafext_check_position_control( $options['position'] ) ) {
+					$options['position'] = 'bottomright';
+				}
+				return leafext_geojsonmarker_script( $propertyoptions, $extramarkericon, $clusteroptions, $featuregroupoptions, $options );
 	}
 }
 add_shortcode( 'geojsonmarker', 'leafext_geojsonmarker_function' );

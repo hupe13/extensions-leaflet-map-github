@@ -19,7 +19,7 @@ function leafext_overviewmap_settings() {
 			'<li>' . __( 'either a comma or space separated pair of lat and lng', 'extensions-leaflet-map' ) . '</li>' .
 			'<li>' . __( 'or', 'extensions-leaflet-map' ) . ' <code>lat=... lng=...</code> ' . __( 'like in', 'extensions-leaflet-map' ) . ' leaflet-marker</li>' .
 			// '<li>'.' <s>'.__('or',"extensions-leaflet-map").' <code>leaflet-gpx / leaflet-kml src=... </code> '.
-			//      __('(like shortcode without brackets)',"extensions-leaflet-map").'</s>'.'</li>'.
+			// __('(like shortcode without brackets)',"extensions-leaflet-map").'</s>'.'</li>'.
 			'</ul>',
 			'default' => 'overview-latlng',
 			'values'  => '',
@@ -44,11 +44,11 @@ function leafext_overviewmap_settings() {
 			'values'  => '',
 		),
 		// array(
-		//  'param' => '',
-		//  'desc' => '',
-		//  'content' => '',
-		//  'default' => '',
-		//  'values' => '',
+		// 'param' => '',
+		// 'desc' => '',
+		// 'content' => '',
+		// 'default' => '',
+		// 'values' => '',
 		// ),
 	);
 	return $params;
@@ -137,6 +137,7 @@ function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 		// $pageposts = $wpdb->get_results($querystr, OBJECT);
 		$query     = new WP_Query(
 			array(
+				// phpcs:ignore
 				'meta_key'    => $latlngs,
 				'post_type'   => array( 'post', 'page' ),
 				'post_status' => 'publish',
@@ -145,7 +146,7 @@ function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 		$pageposts = $query->posts;
 		set_transient( 'leafext_ovm_' . $latlngs, $pageposts, DAY_IN_SECONDS );
 	}
-	//  echo number_format((microtime(true) - $startTime), 5);
+	// echo number_format((microtime(true) - $startTime), 5);
 	// var_dump($pageposts);
 	$catposts = array();
 	if ( $pageposts ) {
@@ -155,18 +156,18 @@ function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 			}
 		}
 	}
-	//var_dump($catposts);
+	// var_dump($catposts);
 	if ( ! empty( $catposts ) ) {
 		return $catposts;
 	}
-	//var_dump($pageposts);
+	// var_dump($pageposts);
 	return $pageposts;
 }
 
 // Create a function to delete our transient
 function leafext_delete_ovm_transient() {
 	$meta = get_post_meta( get_the_ID() );
-	//var_dump($meta);
+	// var_dump($meta);
 	if ( is_array( $meta ) ) {
 		foreach ( $meta as $key => $val ) {
 			if ( false !== get_transient( 'leafext_ovm_' . $key ) ) {
@@ -230,7 +231,7 @@ function leafext_get_overview_data( $post, $overview_options ) {
 	if ( count( $latlng ) == 2 ) {
 		if ( strpos( $leaflet_latlng, '=' ) !== false ) {
 			$latlng_atts = shortcode_parse_atts( $leaflet_latlng );
-			//var_dump($latlng_atts);
+			// var_dump($latlng_atts);
 			if ( isset( $latlng_atts['lat'] ) && isset( $latlng_atts['lng'] ) ) {
 				$leaflet_latlng = 'lat=' . trim( $latlng_atts['lat'], ', ' ) . ' lng=' . trim( $latlng_atts['lng'], ', ' );
 			} else {
@@ -255,8 +256,7 @@ function leafext_get_overview_data( $post, $overview_options ) {
 	// the marker icon
 	$overview_data['icon']           = trim( get_post_meta( $post->ID, $overview_options['icons'], true ) );
 	$overview_data['multiple_icons'] = leafext_check_duplicates_meta( $post->ID, $overview_options['icons'] );
-	//
-	wp_reset_postdata();
+		wp_reset_postdata();
 	return $overview_data;
 }
 
@@ -269,12 +269,12 @@ function leafext_ovm_setup_icon( $overview_data, $atts ) {
 	if ( $overview_data['icon'] != '' ) {
 		// var_dump($overview_data['icon']);
 		$params = array();
-		if ( strpos( $overview_data['icon'], 'leaflet-extramarker' ) === 0 ) { //beginnt mit leaflet-extramarker
+		if ( strpos( $overview_data['icon'], 'leaflet-extramarker' ) === 0 ) { // beginnt mit leaflet-extramarker
 			leafext_enqueue_extramarker();
 			$leaflet_marker_cmd = 'leaflet-extramarker';
 			$iconoptions        = leafext_extramarker_options();
 		} elseif ( strpos( $overview_data['icon'], 'leaflet-marker' ) === 0 ) {
-			//
+			$noop = true; // phpcs
 		} elseif ( strpos( $overview_data['icon'], '=' ) === false ) {
 			$overview_data['icon'] = sanitize_file_name( $overview_data['icon'] );
 			$pathinfo              = pathinfo( $overview_data['icon'] );
@@ -320,8 +320,7 @@ function leafext_ovm_setup_icon( $overview_data, $atts ) {
 			)
 		);
 	}
-	//
-	return array( $leaflet_marker_cmd, $markeroptions, $iconerror );
+		return array( $leaflet_marker_cmd, $markeroptions, $iconerror );
 }
 
 function leafext_ovm_setup_leafletmarker( $overview_data, $atts ) {
@@ -346,7 +345,6 @@ function leafext_ovm_setup_leafletmarker( $overview_data, $atts ) {
 	if ( $overview_data['latlng'] == '*' ) {
 		$leaflet_marker_cmd = '**' . $leaflet_marker_cmd;
 	}
-	//
 	if ( $overview_data['thumbnail'] == '' || $overview_data['categories'] == '' ) {
 		$popupcss = 'leafext-overview-popup-one';
 	} else {
@@ -411,7 +409,7 @@ function leafext_overviewmap_function( $atts, $content, $shortcode ) {
 			}
 			if ( $overview_options['debug'] == true ) {
 				$debugtable = array_map( 'array_filter', $debugtable ); // entferne alle leeren Felder, also mit value == ''
-				//var_dump(max($debugtable));
+				// var_dump(max($debugtable));
 				$header   = array();
 				$newtable = array();
 				foreach ( max( $debugtable ) as $key => $value ) {

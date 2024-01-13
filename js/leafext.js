@@ -11,17 +11,17 @@
  */
 function leafext_make_overstyle(element) {
 	if ( element.setStyle ) {
-		//console.log(element.options);
+		// console.log(element.options);
 		if ( ! element.options.mouseover) {
 			element.options.mouseover = true;
 			if ( ! element.options.weight ) {
-				var highweight = 5; //leaflet default +2
+				var highweight = 5; // leaflet default +2
 			} else {
 				element.options.origweight = element.options.weight;
 				var highweight             = element.options.weight + 2;
 			}
 			if ( ! element.options.fillOpacity ) {
-				var highfillOpacity = 0.4; //leaflet default + 0.2
+				var highfillOpacity = 0.4; // leaflet default + 0.2
 			} else {
 				element.options.origfillOpacity = element.options.fillOpacity;
 				var highfillOpacity             = element.options.fillOpacity + 0.2;
@@ -49,12 +49,12 @@ function leafext_make_styleback(element) {
 			if ( element.options.origweight ) {
 				var origweight = element.options.origweight;
 			} else {
-				var origweight = 3; //leaflet default
+				var origweight = 3; // leaflet default
 			}
 			if ( element.options.origfillOpacity ) {
 				var origfillOpacity = element.options.origfillOpacity;
 			} else {
-				var origfillOpacity = 0.2; //leaflet default
+				var origfillOpacity = 0.2; // leaflet default
 			}
 			element.setStyle(
 				{
@@ -79,7 +79,7 @@ function leafext_map_popups(map) {
 	map.eachLayer(
 		function (layer) {
 			if ( layer instanceof L.Popup ) {
-				//console.log("popup is open");
+				// console.log("popup is open");
 				popup = true;
 			}
 		}

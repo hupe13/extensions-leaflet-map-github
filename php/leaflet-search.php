@@ -5,6 +5,9 @@
  * @package Extensions for Leaflet Map
  */
 
+// Direktzugriff auf diese Datei verhindern.
+defined( 'ABSPATH' ) || die();
+
 /*
  * The Leaflet plugin leaflet-search knows:
  * L.Marker L.CircleMarker L.LayerGroup L.Path L.Polyline L.Polygon L.LayerGroup, GeoJson
@@ -12,10 +15,7 @@
  * Leaflet-Map knows CircleMarker only in leaflet-geojson
  */
 
-// Direktzugriff auf diese Datei verhindern.
-defined( 'ABSPATH' ) || die();
-
-//Parameter and Values
+// Parameter and Values
 function leafext_search_params() {
 	$params = array(
 		// | url             | ''       | url for search by ajax request, ex: "search.php?q={s}". Can be function to returns string for dynamic parameter setting | |
@@ -92,7 +92,7 @@ function leafext_search_params() {
 			'values'  => '',
 		),
 		// // | hideMarkerOnCollapse         | false     | remove circle and marker on search control collapsed      |
-		//hupe13: default true
+		// hupe13: default true
 		array(
 			'param'   => 'hideMarkerOnCollapse',
 			'desc'    => __( 'remove circle and marker on search control collapsed or search canceled', 'extensions-leaflet-map' ),
@@ -145,7 +145,7 @@ function leafext_leafletsearch_function( $atts, $content, $shortcode ) {
 		}
 		$atts1   = leafext_case( array_keys( $defaults ), leafext_clear_params( $atts ) );
 		$options = shortcode_atts( $defaults, $atts1 );
-		//var_dump($options);wp_die();
+		// var_dump($options);wp_die();
 		if ( $options['marker'] == 'false' ) {
 			$options['marker'] = '{icon:false, circle:{radius:0,weight:0}}';
 		}
@@ -163,9 +163,9 @@ function leafext_leafletsearch_function( $atts, $content, $shortcode ) {
 			$options['textPlaceholder'] = str_replace( '"', '\"', $options['textPlaceholder'] );
 		}
 		$allproperties           = array_map( 'trim', explode( ',', $options['propertyName'] ) );
-		$options['propertyName'] = implode( $allproperties ) . wp_rand( 1, 20 ); //"leafextsearch";
+		$options['propertyName'] = implode( $allproperties ) . wp_rand( 1, 20 ); // "leafextsearch";
 		leafext_enqueue_leafletsearch();
-		//var_dump(leafext_java_params($options));wp_die();
+		// var_dump(leafext_java_params($options));wp_die();
 		return leafext_leafletsearch_script( $options, trim( preg_replace( '/\s+/', ' ', leafext_java_params( $options ) ) ), $allproperties );
 	}
 }

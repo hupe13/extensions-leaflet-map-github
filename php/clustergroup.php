@@ -13,7 +13,7 @@ function leafext_clustergroup_function( $atts, $content, $shortcode ) {
 	if ( $text != '' ) {
 		return $text;
 	} else {
-		//var_dump($atts); wp_die();
+		// var_dump($atts); wp_die();
 		leafext_enqueue_leafext( 'featuregroup' );
 		leafext_enqueue_markercluster();
 		leafext_enqueue_clustergroup();
@@ -27,7 +27,7 @@ function leafext_clustergroup_function( $atts, $content, $shortcode ) {
 			),
 			$atts
 		);
-		//var_dump($featuregroups); wp_die();
+		// var_dump($featuregroups); wp_die();
 
 		$cl_strings = array_map( 'trim', explode( ',', $featuregroups['strings'] ) );
 		$cl_groups  = array_map( 'trim', explode( ',', $featuregroups['groups'] ) );

@@ -1,3 +1,10 @@
+### 3.5.8 / 240102
+
+* Bug in leaflet-search fixed.
+* WordPress Coding Standards (css and some php files)
+* overviewmap: using transients
+* fontawesome-free-6.5.1-web
+
 ### 3.5.7 / 231222
 
 * markerclustergroup control has a position and collapse option now.

@@ -42,7 +42,7 @@ function leafext_gesture_settings() {
 		$defaults[ $param['param'] ] = $param['default'];
 	}
 	$options = shortcode_atts( $defaults, get_option( 'leafext_gesture' ) );
-	//var_dump($options); wp_die();
+	// var_dump($options); wp_die();
 	return $options;
 }
 
@@ -141,7 +141,7 @@ function leafext_gestures_function() {
 	}
 }
 // darf nicht per default geladen werden!! auskommentiert lassen!
-//add_action( 'wp_enqueue_scripts', 'leafext_gestures_function' );
+// add_action( 'wp_enqueue_scripts', 'leafext_gestures_function' );
 
 add_filter(
 	'pre_do_shortcode_tag',
@@ -168,7 +168,7 @@ function leafext_gestures_shortcode() {
 		$options = leafext_gesture_settings();
 		if ( ! (bool) $options['leafext_gesture_on'] ) {
 			leafext_enqueue_gestures();
-			//var_dump($options);
+			// var_dump($options);
 			$lang = leafext_gestures_lang( $options );
 			return leafext_gesture_script( $lang );
 		}

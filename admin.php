@@ -38,7 +38,8 @@ add_action( 'admin_menu', 'leafext_add_page', 99 );
  */
 function leafext_do_page() {
 	$leafext_plugin_name = basename( __DIR__ );
-	$active_tab          = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : 'help';
+	$get                 = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
+	$active_tab          = isset( $get['tab'] ) ? $get['tab'] : 'help';
 	leafext_admin_tabs();
 	if ( strpos( $active_tab, 'elevation' ) !== false ) {
 		leafext_admin_elevation( $active_tab );
@@ -105,7 +106,8 @@ add_action( 'admin_menu', 'leafext_add_nonadmin_page', 99 );
 
 function leafext_do_nonadmin_page() {
 	$leafext_plugin_name = basename( __DIR__ );
-	$active_tab          = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : 'help';
+	$get                 = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
+	$active_tab          = isset( $get['tab'] ) ? $get['tab'] : 'help';
 	leafext_admin_tabs();
 	if ( strpos( $active_tab, 'elevation' ) !== false ) {
 		leafext_admin_elevation( $active_tab );
@@ -150,7 +152,8 @@ function leafext_admin_tabs() {
 	echo '<div class="wrap nothickbox">
 	<h2>Extensions for Leaflet Map Options and Help</h2></div>' . "\n";
 
-	$active_tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : 'help';
+	$get        = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
+	$active_tab = isset( $get['tab'] ) ? $get['tab'] : 'help';
 
 	echo '<h3 class="nav-tab-wrapper">';
 	echo '<a href="?page=' . $leafext_plugin_name . '&tab=help" class="nav-tab';
@@ -237,11 +240,12 @@ function leafext_admin_tabs() {
 }
 
 function leafext_admin_style() {
-	$page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
+	$get  = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
+	$page = isset( $get['page'] ) ? $get['page'] : '';
 	if ( $page == LEAFEXT_PLUGIN_SETTINGS ) {
 		wp_enqueue_style(
 			'leafext_admin_css',
-			plugins_url( 'css/leafext-admin.css', LEAFEXT_PLUGIN_FILE )
+			plugins_url( 'css/leafext-admin.min.css', LEAFEXT_PLUGIN_FILE )
 		);
 	}
 }

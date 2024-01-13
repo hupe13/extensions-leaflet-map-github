@@ -8,7 +8,7 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-//Interpretiere !parameter und parameter als false und true
+// Interpretiere !parameter und parameter als false und true
 function leafext_clear_params( $atts ) {
 	if ( is_array( $atts ) ) {
 		$count_atts = count( $atts );
@@ -26,8 +26,8 @@ function leafext_clear_params( $atts ) {
 	return( $atts );
 }
 
-//shortcode_atts gibt nur Kleinbuchstaben zurueck, Javascript braucht aber gross und klein
-//Parameter: array mit keys wie es sein soll, array mit keys in klein von shortcode_atts
+// shortcode_atts gibt nur Kleinbuchstaben zurueck, Javascript braucht aber gross und klein
+// Parameter: array mit keys wie es sein soll, array mit keys in klein von shortcode_atts
 function leafext_case( $params, $atts_array ) {
 	foreach ( $params as $param ) {
 		if ( strtolower( $param ) != $param ) {
@@ -40,32 +40,30 @@ function leafext_case( $params, $atts_array ) {
 	return $atts_array;
 }
 
-//Suche bestimmten Wert in array im admin interface
+// Suche bestimmten Wert in array im admin interface
 function leafext_array_find( $needle, $haystack ) {
 	foreach ( $haystack as $item ) {
 		if ( $item[0] == $needle ) {
 			return $item;
-			break;
 		}
 	}
 }
 
-//Suche bestimmten Wert in array im admin interface
+// Suche bestimmten Wert in array im admin interface
 function leafext_array_find2( $needle, $haystack ) {
 	foreach ( $haystack as $item ) {
 		if ( $item['param'] == $needle ) {
 			return $item;
-			break;
 		}
 	}
 }
 
-//Trage php array keys und values in javascript script ein.
+// Trage php array keys und values in javascript script ein.
 function leafext_java_params( $params ) {
-	///var_dump($params); wp_die();
+	// var_dump($params); wp_die();
 	$text = '';
 	foreach ( $params as $k => $v ) {
-		//var_dump($v,gettype($v),strpos($v,"["));
+		// var_dump($v,gettype($v),strpos($v,"["));
 		$text = $text . "$k: ";
 		switch ( gettype( $v ) ) {
 			case 'string':
@@ -98,22 +96,23 @@ function leafext_java_params( $params ) {
 				$value = $v;
 				break;
 			default:
+			  // phpcs:ignore
 				var_dump( $k, $v, gettype( $v ) );
 				wp_die( 'Type' );
 		}
 		$text = $text . $value;
 		$text = $text . ",\n";
 	}
-	//var_dump($text); wp_die();
+	// var_dump($text); wp_die();
 	return $text;
 }
 
 /**
  * This function replaces the keys of an associate array by those supplied in the keys array
  *
- * @param $atts_array target associative array in which the keys are intended to be replaced
- * @param $keys associate array where search key => replace by key, for replacing respective keys
- * @return  array with replaced keys
+ * @param array $atts_array target associative array in which the keys are intended to be replaced
+ * @param string $keys associate array where search key => replace by key, for replacing respective keys
+ * @return array with replaced keys
  * from https://www.php.net/manual/de/function.array-replace.php
  */
 function leafext_array_replace_keys( $atts_array, $keys ) {
@@ -129,12 +128,13 @@ function leafext_array_replace_keys( $atts_array, $keys ) {
 // check position
 function leafext_check_position_control( $value ) {
 	$valid = array( 'topright', 'topleft', 'bottomleft', 'bottomright' );
-	return in_array( $value, $valid );
+	return in_array( $value, $valid, true );
 }
 
 // Backend Plugin extension-leaflet-map
 function leafext_backend() {
-	$backend_page = isset( $_GET['page'] ) ? sanitize_text_field( wp_unslash( $_GET['page'] ) ) : '';
+	$get          = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
+	$backend_page = isset( $get['page'] ) ? sanitize_text_field( wp_unslash( $get['page'] ) ) : '';
 	$server       = map_deep( wp_unslash( $_SERVER ), 'sanitize_text_field' );
 	$url          = $server['REQUEST_URI'];
 	if ( strpos( $backend_page, 'extensions-leaflet-map' ) !== false && strpos( $url, '/wp-admin/admin.php' ) !== false ) {
@@ -171,7 +171,7 @@ function leafext_should_interpret_shortcode( $shortcode, $atts ) {
 	// ! is_home() &&
 	// ! is_front_page()
 
-//Display array as table
+// Display array as table
 function leafext_html_table_alt( $data = array() ) {
 	$rows = array();
 	foreach ( $data as $row ) {
@@ -197,4 +197,10 @@ function leafext_html_table( $data = array() ) {
 	$head = '<div style="width:' . ( ( is_singular() || is_archive() ) ? '100' : '80' ) . '%;">';
 	$head = $head . '<figure class="wp-block-table aligncenter is-style-stripes"><table border=1>';
 	return $head . implode( '', $rows ) . '</table></figure></div>';
+}
+
+function leafext_escape_output( $output ) {
+	// https://wp-mix.com/allowed-html-tags-wp_kses/
+	$allowed_tags = wp_kses_allowed_html( 'post' );
+	echo wp_kses( $output, $allowed_tags );
 }

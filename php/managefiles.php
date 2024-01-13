@@ -8,10 +8,9 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-//Display content from Media Library in Permalink (Attachmentseite)
+// Display content from Media Library in Permalink (Attachmentseite)
 function leafext_media_library_content( $content ) {
 	global $post;
-	//
 	if ( is_attachment() && 'application/gpx+xml' == get_post_mime_type( $post->ID ) ) {
 		$content  = '[leaflet-map fitbounds !scrollwheel !dragging][leaflet-gpx src="' . $post->guid . '"]';
 		$gpx_data = leafext_get_gpx_data( $post->guid );
@@ -32,7 +31,6 @@ function leafext_media_library_content( $content ) {
 		}
 		$content = $content . leafext_html_table( $fields );
 	}
-	//
 	if ( is_attachment() && 'application/vnd.google-earth.kml+xml' == get_post_mime_type( $post->ID ) ) {
 		$content  = '[leaflet-map fitbounds !scrollwheel !dragging][leaflet-kml src="' . $post->guid . '"]';
 		$fields   = array();
@@ -46,7 +44,6 @@ function leafext_media_library_content( $content ) {
 		);
 		$content  = $content . leafext_html_table( $fields );
 	}
-	//
 	if ( is_attachment() && 'application/geo+json' == get_post_mime_type( $post->ID ) ) {
 		$content  = '[leaflet-map fitbounds !scrollwheel !dragging][leaflet-geojson src="' . $post->guid . '"]';
 		$fields   = array();
@@ -60,13 +57,12 @@ function leafext_media_library_content( $content ) {
 		);
 		$content  = $content . leafext_html_table( $fields );
 	}
-	//
-	return $content;
+		return $content;
 }
 add_filter( 'the_content', 'leafext_media_library_content' );
 
-//Display on edit page in Media Library
-//Klappt nicht im Grid Mode, da modal -> Ansatz: map.invalidateSize()?
+// Display on edit page in Media Library
+// Klappt nicht im Grid Mode, da modal -> Ansatz: map.invalidateSize()?
 function leafext_attachment_fields_to_edit( $form_fields, $post ) {
 	libxml_use_internal_errors( true );
 	// get post mime type
@@ -120,7 +116,7 @@ function leafext_attachment_fields_to_edit( $form_fields, $post ) {
 }
 add_filter( 'attachment_fields_to_edit', 'leafext_attachment_fields_to_edit', 10, 2 );
 
-//Get Name and Date from gpx track
+// Get Name and Date from gpx track
 function leafext_get_gpx_data( $file ) {
 	$gpxdata = array();
 	$gpx     = simplexml_load_file( $file );
@@ -137,7 +133,7 @@ function leafext_get_gpx_data( $file ) {
 	return $gpxdata;
 }
 
-//Get Name from kml
+// Get Name from kml
 function leafext_get_kml_data( $file ) {
 	$kmldata = array();
 	$kml     = simplexml_load_file( $file, 'SimpleXMLElement', LIBXML_NOCDATA );

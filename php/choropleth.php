@@ -6,7 +6,7 @@
  */
 
 /*
- *   Doku choropleth deutsch https://doc.arcgis.com/de/insights/latest/create/choropleth-maps.htm
+ * Doku choropleth deutsch https://doc.arcgis.com/de/insights/latest/create/choropleth-maps.htm
  * https://gisgeography.com/choropleth-maps-data-classification/
  */
 
@@ -18,7 +18,7 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-//Parameter and Values
+// Parameter and Values
 function leafext_choropleth_params() {
 	$params = array(
 		array( 'valueproperty', __( 'which property in the features to use', 'extensions-leaflet-map' ), '', 'property' ),
@@ -32,7 +32,7 @@ function leafext_choropleth_params() {
 	return $params;
 }
 
-//Shortcode: [choropleth]
+// Shortcode: [choropleth]
 function leafext_choropleth_script( $atts, $content ) {
 	$text = '<script><!--';
 	ob_start();
@@ -71,7 +71,7 @@ function leafext_choropleth_function( $atts, $content, $shortcode ) {
 		foreach ( $params as $param ) {
 			$defaults[ $param[0] ] = $param[2];
 		}
-		//var_dump($params,$defaults);
+		// var_dump($params,$defaults);
 		$options          = shortcode_atts( $defaults, leafext_clear_params( $atts ) );
 		$options['scale'] = str_replace( ' ', '', $options['scale'] );
 		if ( $content == '' ) {
@@ -80,7 +80,7 @@ function leafext_choropleth_function( $atts, $content, $shortcode ) {
 		$content = str_replace( '{', '+{', $content );
 		$content = str_replace( '}', '}+', $content );
 		$content = preg_split( '/\+/', $content );
-		//var_dump($atts); wp_die("test");
+		// var_dump($atts); wp_die("test");
 		return leafext_choropleth_script( $options, $content );
 	}
 }

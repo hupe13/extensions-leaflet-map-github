@@ -9,5 +9,5 @@ module.exports = {
 	meta:                     require('@turf/meta')
 };
 
-./node_modules/.bin/browserify main.js -s turf > leafext-turf.js
+~/node_modules/.bin/browserify main.js -s turf > leafext-turf.js
 ~/node_modules/.bin/uglifyjs leafext-turf.js > leafext-turf.min.js

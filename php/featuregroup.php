@@ -8,7 +8,7 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-//both Shortcodes
+// both Shortcodes
 function leafext_featuregroup_script( $options, $params ) {
 	$text = '<script><!--';
 	ob_start();
@@ -40,7 +40,7 @@ function leafext_featuregroup_function( $atts, $content, $shortcode ) {
 	if ( $text != '' ) {
 		return $text;
 	} else {
-		//var_dump($atts); wp_die();
+		// var_dump($atts); wp_die();
 		leafext_enqueue_leafext( 'featuregroup' );
 		leafext_enqueue_markercluster();
 		leafext_enqueue_clustergroup();

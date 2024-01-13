@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, elevation, markercluster, Leaflet Plugins   
 Tested up to: 6.4  
-Stable tag: 3.5.8  
+Stable tag: 4.0
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later
@@ -177,12 +177,10 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 3.5.8 / 24010x
+### 4.0 /240xxx
 
-* Bug in leaflet-search fixed.
-* WordPress Coding Standards (css and some php files)
-* overviewmap: using transients
-* fontawesome-free-6.5.1-web
+* WordPress Coding Standards (see [readme-wpcs.md](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/readme-wpcs.md))
+* New shortcode parentgroup for nested groups from leaflet-optiongroup and -featuregroup
 
 ### Previous
 

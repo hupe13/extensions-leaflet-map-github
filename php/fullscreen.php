@@ -8,7 +8,7 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-//Shortcode: [fullscreen]
+// Shortcode: [fullscreen]
 function leafext_fullscreen_script( $position ) {
 	$text = '<script><!--';
 	ob_start();

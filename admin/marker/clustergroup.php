@@ -1,7 +1,6 @@
 <?php
 /**
  * Help for markerclustergroup shortcode
- * extensions-leaflet-map
  *
  * @package Extensions for Leaflet Map
  */

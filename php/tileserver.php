@@ -1,12 +1,14 @@
 <?php
 /**
-* Functions for layerswitch shortcode
-* extensions-leaflet-map
-*/
-// Direktzugriff auf diese Datei verhindern:
-defined( 'ABSPATH' ) or die();
+ * Functions for layerswitch shortcode
+ *
+ * @package Extensions for Leaflet Map
+ */
 
-function leafext_providers_registration () {
+// Direktzugriff auf diese Datei verhindern.
+defined( 'ABSPATH' ) || die();
+
+function leafext_providers_registration() {
 	$tiles = array(
 		array(
 			'name' => 'HEREv3',
@@ -17,69 +19,69 @@ function leafext_providers_registration () {
 		array(
 			'name' => 'HERE',
 			'keys' => array(
-				'app_id' => '<insert ID here>',
-				'app_code' =>  '<insert ID here>',
+				'app_id'   => '<insert ID here>',
+				'app_code' => '<insert ID here>',
 			),
 		),
 		array(
 			'name' => 'Jawg',
 			'keys' => array(
-				'variant' =>  '<insert map id here or blank for default variant>',
-				'accessToken' =>  '<insert access token here>',
+				'variant'     => '<insert map id here or blank for default variant>',
+				'accessToken' => '<insert access token here>',
 			),
 		),
 		array(
 			'name' => 'MapBox',
 			'keys' => array(
-				'id' =>  '<insert map_ID here>',
-				'accessToken' =>  '<insert ACCESS_TOKEN here>',
+				'id'          => '<insert map_ID here>',
+				'accessToken' => '<insert ACCESS_TOKEN here>',
 			),
 		),
 		array(
 			'name' => 'MapTiler',
 			'keys' => array(
-				'key' =>  '<insert key here>',
+				'key' => '<insert key here>',
 			),
 		),
 		array(
 			'name' => 'MapTiles API',
 			'keys' => array(
-				'apikey' =>  '<insert key here>',
+				'apikey' => '<insert key here>',
 			),
 		),
 		array(
 			'name' => 'Thunderforest',
 			'keys' => array(
-				'apikey' =>  '<insert api_key here>',
+				'apikey' => '<insert api_key here>',
 			),
 		),
-		//Esri/ArcGIS - register
+		// Esri/ArcGIS - register
 		array(
 			'name' => 'TomTom',
 			'keys' => array(
-				'apikey' =>  '<insert your API key here>',
+				'apikey' => '<insert your API key here>',
 			),
 		),
 		array(
 			'name' => 'GeoportailFrance',
 			'keys' => array(
-				'variant' =>  '<insert resource ID here>',
-				'apikey' =>  '<insert api key here>',
+				'variant' => '<insert resource ID here>',
+				'apikey'  => '<insert api key here>',
 			),
 		),
-		//Stadia Maps - register
+		// Stadia Maps - register
 	);
 	return $tiles;
 }
 
-function leafext_providers_regnames () {
-	$tiles = leafext_providers_registration ();
-	return array_column($tiles, 'name');
+function leafext_providers_regnames() {
+	$tiles = leafext_providers_registration();
+	return array_column( $tiles, 'name' );
 }
 
-//[leaflet-map mapid=" "]
-//Shortcodes:
-//[layerswitch mapids= providers= tiles= opacity=]
+// [leaflet-map mapid=" "]
+// Shortcodes:
+// [layerswitch mapids= providers= tiles= opacity=]
 
 function leafext_layerswitch_begin_script() {
 	$text = '<script><!--';
@@ -128,16 +130,17 @@ function leafext_layerswitch_begin_script() {
 		});
 	<?php
 	$javascript = ob_get_clean();
-	$text = $text . $javascript . '//-->'."\n";
+	$text       = $text . $javascript . '//-->' . "\n";
 	return $text;
 }
 
-//defined tile server in tab=tileswitch
-function leafext_layerswitch_tiles_script($tiles){
+// defined tile server in tab=tileswitch
+function leafext_layerswitch_tiles_script( $tiles ) {
 	$text = '<!--';
 	ob_start();
-	?>/*<script>*/
-	var tilelayers = <?php echo wp_json_encode($tiles); ?>;
+	?>
+	/*<script>*/
+	var tilelayers = <?php echo wp_json_encode( $tiles ); ?>;
 	//console.log(tilelayers);
 	tilelayers.forEach(tilelayer => {
 		var layer = L.tileLayer(tilelayer.tile, tilelayer.options);
@@ -155,15 +158,16 @@ function leafext_layerswitch_tiles_script($tiles){
 	});
 	<?php
 	$javascript = ob_get_clean();
-	$text = $text . $javascript . '//-->'."\n";
+	$text       = $text . $javascript . '//-->' . "\n";
 	return $text;
 }
 
 function leafext_providers_fkt_script() {
-	//https://github.com/leaflet-extras/leaflet-providers/blob/b7be4769ccb5cd66cf7c5bd2f6e1042ba7a10b5c/preview/preview.js#L60-L70
+	// https://github.com/leaflet-extras/leaflet-providers/blob/b7be4769ccb5cd66cf7c5bd2f6e1042ba7a10b5c/preview/preview.js#L60-L70
 	$text = '<!--';
 	ob_start();
-	?>/*<script>*/
+	?>
+	/*<script>*/
 	function isOverlay (providerName, layer) {
 		if (layer.options.opacity && layer.options.opacity < 1) {
 			return true;
@@ -183,47 +187,48 @@ function leafext_providers_fkt_script() {
 	};
 	<?php
 	$javascript = ob_get_clean();
-	$text = $text . $javascript . '//-->'."\n";
+	$text       = $text . $javascript . '//-->' . "\n";
 	return $text;
 }
 
-//providers
-function leafext_providers_script($mapids,$providers) {
-	$regtiles = get_option('leafext_providers',array());
-	$text = "";
-	if (count($providers) == count($mapids)) {
-		$names = array_combine($providers,$mapids);
+// providers
+function leafext_providers_script( $mapids, $providers ) {
+	$regtiles = get_option( 'leafext_providers', array() );
+	$text     = '';
+	if ( count( $providers ) == count( $mapids ) ) {
+		$names = array_combine( $providers, $mapids );
 	} else {
-		$names = array_combine($providers,$providers);
+		$names = array_combine( $providers, $providers );
 	}
-	foreach ($providers as $provider) {
-		$id = array_search(explode ( '.', $provider )[0], array_column($regtiles, 'name'));
-		if ($id !== false) {
-			$text = $text.'var layer = L.tileLayer.provider("'.$provider.'", {';
-				foreach ( $regtiles[$id]['keys'] as $key => $value ) {
-					$text = $text.$key.': "';
-					$text = $text.$value.'",';
-				}
-				$text = $text.'
+	foreach ( $providers as $provider ) {
+		$id = array_search( explode( '.', $provider )[0], array_column( $regtiles, 'name' ), true );
+		if ( $id !== false ) {
+			$text = $text . 'var layer = L.tileLayer.provider("' . $provider . '", {';
+			foreach ( $regtiles[ $id ]['keys'] as $key => $value ) {
+				$text = $text . $key . ': "';
+				$text = $text . $value . '",';
+			}
+				$text = $text . '
 			} );';
 		} else {
-			$text = $text.'var layer = L.tileLayer.provider("'.$provider.'");';
+			$text = $text . 'var layer = L.tileLayer.provider("' . $provider . '");';
 		}
-		$text = $text.'
-		if (isOverlay("'.$provider.'", layer)) {
-			overlays["'.$names[$provider].'"] = layer;
+		$text = $text . '
+		if (isOverlay("' . $provider . '", layer)) {
+			overlays["' . $names[ $provider ] . '"] = layer;
 		} else {
-			baselayers["'.$names[$provider].'"] = layer;
+			baselayers["' . $names[ $provider ] . '"] = layer;
 		}';
 	}
 	return $text;
 }
 
-function leafext_opacity_script($opacities) {
+function leafext_opacity_script( $opacities ) {
 	$text = '<!--';
 	ob_start();
-	?>/*<script>*/
-	var opacities = <?php echo wp_json_encode($opacities);?>;
+	?>
+	/*<script>*/
+	var opacities = <?php echo wp_json_encode( $opacities ); ?>;
 	//console.log(opacities);
 	opacities.forEach(function(opid) {
 		if ( baselayers[opid] ) {
@@ -235,14 +240,15 @@ function leafext_opacity_script($opacities) {
 	});
 	<?php
 	$javascript = ob_get_clean();
-	$text = $text . $javascript . '//-->'."\n";
+	$text       = $text . $javascript . '//-->' . "\n";
 	return $text;
 }
 
-function leafext_layerswitch_end_script($settings) {
+function leafext_layerswitch_end_script( $settings ) {
 	$text = '<!--';
 	ob_start();
-	?>/*<script>*/
+	?>
+	/*<script>*/
 	//console.log(baselayers);
 	//console.log(overlays);
 
@@ -257,137 +263,141 @@ function leafext_layerswitch_end_script($settings) {
 		}).addTo(map);
 	}
 });
-<?php
-$javascript = ob_get_clean();
-$text = $text . $javascript . '//-->'."\n".'</script>';
-return "\n".$text."\n";
+	<?php
+	$javascript = ob_get_clean();
+	$text       = $text . $javascript . '//-->' . "\n" . '</script>';
+	return "\n" . $text . "\n";
 }
 
-function leafext_layerswitch_function($atts,$content,$shortcode) {
-	//var_dump($atts,$content,$shortcode);
-	$text = leafext_should_interpret_shortcode($shortcode,$atts);
-	if ( $text != "" ) {
+function leafext_layerswitch_function( $atts, $content, $shortcode ) {
+	// var_dump($atts,$content,$shortcode);
+	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
+	if ( $text != '' ) {
 		return $text;
 	} else {
-		$tiles = array();
-		$mapids = array();
-		$providers = array();
-		$opacities = array();
-		//
-		$defined_tileservers = get_option('leafext_maps',array());
-		//
-		if (is_array($atts)){
-			if ( array_key_exists('tiles',$atts) && count($defined_tileservers) > 0 ) {
-				$only = array();
-				$atts_maps = explode(',',$atts['tiles']);
+		$tiles                       = array();
+		$mapids                      = array();
+		$providers                   = array();
+		$opacities                   = array();
+				$defined_tileservers = get_option( 'leafext_maps', array() );
+		if ( is_array( $atts ) ) {
+			if ( array_key_exists( 'tiles', $atts ) && count( $defined_tileservers ) > 0 ) {
+				$only      = array();
+				$atts_maps = explode( ',', $atts['tiles'] );
 				foreach ( $atts_maps as $atts_map ) {
-					foreach ($defined_tileservers as $defined_tileserver) {
-						if ($defined_tileserver['mapid'] == $atts_map) {
-							$only[]=$defined_tileserver;
+					foreach ( $defined_tileservers as $defined_tileserver ) {
+						if ( $defined_tileserver['mapid'] == $atts_map ) {
+							$only[] = $defined_tileserver;
 						}
 					}
 				}
 				$defined_tileservers = $only;
 			}
-			//
-			if ( array_key_exists('providers',$atts) ) {
-				if ( ! array_key_exists('tiles',$atts )) {
+			if ( array_key_exists( 'providers', $atts ) ) {
+				if ( ! array_key_exists( 'tiles', $atts ) ) {
 					$defined_tileservers = array();
 				}
 				leafext_enqueue_providers();
-				$providers = explode ( ',', $atts['providers'] );
-				if (array_key_exists('mapids',$atts) ) {
-					$mapids = explode ( ',', $atts['mapids'] );
+				$providers = explode( ',', $atts['providers'] );
+				if ( array_key_exists( 'mapids', $atts ) ) {
+					$mapids = explode( ',', $atts['mapids'] );
 				}
-				if (count($providers) != count($mapids)) {
+				if ( count( $providers ) != count( $mapids ) ) {
 					$mapids = $providers;
 				}
 
-				if ( array_key_exists('opacity',$atts) ) {
-					$atts_opacity = explode ( ',', $atts['opacity'] );
-					for ($i = 0; $i < count($providers); $i++) {
-						if (in_array($providers[$i],$atts_opacity)) {
-							$opacities[] = $mapids[$i];
+				if ( array_key_exists( 'opacity', $atts ) ) {
+					$atts_opacity = explode( ',', $atts['opacity'] );
+					$count        = count( $providers );
+					for ( $i = 0; $i < $count; $i++ ) {
+						if ( in_array( $providers[ $i ], $atts_opacity, true ) ) {
+							$opacities[] = $mapids[ $i ];
 						}
-						if (in_array($mapids[$i],$atts_opacity)) {
-							$opacities[] = $mapids[$i];
+						if ( in_array( $mapids[ $i ], $atts_opacity, true ) ) {
+							$opacities[] = $mapids[ $i ];
 						}
 					}
 				}
 			}
 		}
 
-		foreach ($defined_tileservers as $defined_tileserver) {
-			$overlay = $defined_tileserver['overlay'] == "1" ?  "1" : "";
-			$opacity = $defined_tileserver['opacity'] == "1" ?  "1" : "";
+		foreach ( $defined_tileservers as $defined_tileserver ) {
+			$overlay = $defined_tileserver['overlay'] == '1' ? '1' : '';
+			$opacity = $defined_tileserver['opacity'] == '1' ? '1' : '';
 
-			$tileoptions = array();
+			$tileoptions                = array();
 			$tileoptions['attribution'] = $defined_tileserver['attr'];
 
-			$javas=explode(',',str_replace(' ','',$defined_tileserver['options']));
+			$javas = explode( ',', str_replace( ' ', '', $defined_tileserver['options'] ) );
 
-			$key="";
-			$value="";
-			foreach ($javas as $java) {
-			  $parts = [];
-			  $tok = strtok($java, ":");
-			  while ($tok !== false) {
-			    $parts[] = $tok;
-			    $tok = strtok(":");
-			  }
-			  if (count($parts) > 1 ) {
-			    if ($key != "") {
-			      $tileoptions[$key] = trim($value,',');
-			    }
-			    $key = $parts[0];
-			    $value="";
-			    for ($i = 1; $i < count($parts); $i++) {
-			      $value = $value.':'.$parts[$i];
-			      $value = trim($value,':');
-			    }
-			  } else {
-			    if (count($parts) == 1) {
-			      $value = $value.','.$parts[0];
-			    }
-			  }
+			$key   = '';
+			$value = '';
+			foreach ( $javas as $java ) {
+				$parts = array();
+				$tok   = strtok( $java, ':' );
+				while ( $tok !== false ) {
+					$parts[] = $tok;
+					$tok     = strtok( ':' );
+				}
+				if ( count( $parts ) > 1 ) {
+					if ( $key != '' ) {
+						$tileoptions[ $key ] = trim( $value, ',' );
+					}
+					$key   = $parts[0];
+					$value = '';
+					$count = count( $parts );
+					for ( $i = 1; $i < $count; $i++ ) {
+						$value = $value . ':' . $parts[ $i ];
+						$value = trim( $value, ':' );
+					}
+				} elseif ( count( $parts ) == 1 ) {
+						$value = $value . ',' . $parts[0];
+				}
 			}
-			if ($key != "") {
-			  $tileoptions[$key] = trim($value,',');
+			if ( $key != '' ) {
+				$tileoptions[ $key ] = trim( $value, ',' );
 			}
 
 			$tiles[] = array(
-				'mapid' => $defined_tileserver['mapid'],
-				'tile' => $defined_tileserver['tile'],
+				'mapid'   => $defined_tileserver['mapid'],
+				'tile'    => $defined_tileserver['tile'],
 				'overlay' => $overlay,
 				'opacity' => $opacity,
 				'options' => $tileoptions,
 			);
 		}
 
-		if ( count($tiles) == 0 && count($providers) == 0 ) return;
-		leafext_enqueue_opacity ();
+		if ( count( $tiles ) == 0 && count( $providers ) == 0 ) {
+			return;
+		}
+		leafext_enqueue_opacity();
 
 		$text = leafext_layerswitch_begin_script();
-		if ( count($tiles) > 0 ) {
-			$text = $text.leafext_layerswitch_tiles_script($tiles);
+		if ( count( $tiles ) > 0 ) {
+			$text = $text . leafext_layerswitch_tiles_script( $tiles );
 		}
-		if (count($providers) > 0 ) {
-			$text = $text.leafext_providers_fkt_script();
-			$text = $text.leafext_providers_script($mapids,$providers);
+		if ( count( $providers ) > 0 ) {
+			$text = $text . leafext_providers_fkt_script();
+			$text = $text . leafext_providers_script( $mapids, $providers );
 		}
-		if (is_array($atts)){
-			if ( array_key_exists('opacity',$atts) ) {
-				$opacities = array_unique(array_merge($opacities,explode(',',$atts['opacity'])));
-				$text = $text.leafext_opacity_script($opacities);
+		if ( is_array( $atts ) ) {
+			if ( array_key_exists( 'opacity', $atts ) ) {
+				$opacities = array_unique( array_merge( $opacities, explode( ',', $atts['opacity'] ) ) );
+				$text      = $text . leafext_opacity_script( $opacities );
 			}
 		}
-		$control = array('position' => "topright",'collapsed' => true);
-		$atts1 = leafext_clear_params($atts);
-		$options = shortcode_atts($control, $atts1);
-		if (!leafext_check_position_control($options['position'])) $options['position'] = "topright";
-		$text = $text.leafext_layerswitch_end_script($options);
-		$text = \JShrink\Minifier::minify($text);
-		return "\n".$text."\n";
+		$control = array(
+			'position'  => 'topright',
+			'collapsed' => true,
+		);
+		$atts1   = leafext_clear_params( $atts );
+		$options = shortcode_atts( $control, $atts1 );
+		if ( ! leafext_check_position_control( $options['position'] ) ) {
+			$options['position'] = 'topright';
+		}
+		$text = $text . leafext_layerswitch_end_script( $options );
+		$text = \JShrink\Minifier::minify( $text );
+		return "\n" . $text . "\n";
 	}
 }
-add_shortcode('layerswitch', 'leafext_layerswitch_function');
+add_shortcode( 'layerswitch', 'leafext_layerswitch_function' );
