@@ -111,25 +111,31 @@ function leafext_validate_placement_options( $options ) {
 
 // Helptext
 function leafext_placement_help_text() {
-	echo '<h2>Leaflet.MarkerCluster.PlacementStrategies</h2>';
-	echo '<p>';
-	echo '<a href="https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies">' . __( 'Demo and Documentation', 'extensions-leaflet-map' ) . '</a>';
-	echo ' - ' . __( 'Not all parameters are implemented in the plugin.', 'extensions-leaflet-map' ) . '';
-	echo '</p>';
-	echo '<h3>Shortcode</h3>
-	<pre><code>[leaflet-map ....]
+	$text = '<h2>Leaflet.MarkerCluster.PlacementStrategies</h2>';
+	$text = $text . '<p>';
+	$text = $text . '<a href="https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies">' . __( 'Demo and Documentation', 'extensions-leaflet-map' ) . '</a>';
+	$text = $text . ' - ' . __( 'Not all parameters are implemented in the plugin.', 'extensions-leaflet-map' ) . '';
+	$text = $text . '</p>';
+	$text = $text . '<h3>Shortcode</h3>
+	<pre><code>&#091;leaflet-map ....]
 // many markers
-[leaflet-marker lat=... lng=... ...]poi1[/leaflet-marker]
-[leaflet-marker lat=... lng=... ...]poi2[/leaflet-marker]
+&#091;leaflet-marker lat=... lng=... ...]poi1[/leaflet-marker]
+&#091;leaflet-marker lat=... lng=... ...]poi2[/leaflet-marker]
 ...
-[leaflet-marker lat=... lng=... ...]poixx[/leaflet-marker]
-[placementstrategies ...]
+&#091;leaflet-marker lat=... lng=... ...]poixx[/leaflet-marker]
+&#091;placementstrategies ...]
 //optional
-[hover]
-[zoomhomemap]
+&#091;hover]
+&#091;zoomhomemap]
 </code></pre><p>
-' . __( 'It also works with', 'extensions-leaflet-map' ) . '<code>leaflet-extramarkers]</code>. </p>
-	<h3>' . __( 'Options', 'extensions-leaflet-map' ) . '</h3>
+' . __( 'It also works with', 'extensions-leaflet-map' ) . ' <code>leaflet-extramarkers</code>. </p>
+	<h3>' . __( 'Options', 'extensions-leaflet-map' ) . '</h3>';
 
-	<p>' . sprintf( __( 'The parameter maxZoom has been removed, please use %s instead.', 'extensions-leaflet-map' ), '<code>[leaflet-map max_zoom="xx" ...]</code>' ) . '</p>';
+	if ( is_singular() || is_archive() ) {
+		$text = $text . '<p>' . __( 'Please see the admin page for options.', 'extensions-leaflet-map' ) . '</p>';
+		return $text;
+	} else {
+		$text = $text . '<p>' . sprintf( __( 'The parameter maxZoom has been removed, please use %s instead.', 'extensions-leaflet-map' ), '<code>[leaflet-map max_zoom="xx" ...]</code>' ) . '</p>';
+		echo $text;
+	}
 }

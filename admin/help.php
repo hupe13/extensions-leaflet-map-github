@@ -128,9 +128,9 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 		array(
 			'function'  => __( 'Styling Markercluster', 'extensions-leaflet-map' ),
 			'shortcode' => 'placementstrategies',
-			'tab'       => 'clusterplacementstrategies',
+			'tab'       => 'markerclusterplacementstrategies',
 			'plugins'   => '<a href="https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies">Leaflet.MarkerCluster.PlacementStrategies</a>',
-			'doku'      => '',
+			'doku'      => '/doku/placementstrategies/',
 			'kategorie' => '',
 			'examples'  => '/cluster/placementstrategies/',
 		),
@@ -160,6 +160,15 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 			'doku'      => '/doku/overviewmap/',
 			'kategorie' => '',
 			'examples'  => '/extra/category/overviewmap/',
+		),
+		array(
+			'function'  => __( 'Target Marker', 'extensions-leaflet-map' ),
+			'shortcode' => 'targetmarker',
+			'tab'       => 'target',
+			'plugins'   => '',
+			'doku'      => '/doku/targetmarker/',
+			'kategorie' => '',
+			'examples'  => '/targetmarker/targetmarker/?lat=3.44&lng=-23.9',
 		),
 		array(
 			'function'  => __( 'Hide Markers', 'extensions-leaflet-map' ),

@@ -2,6 +2,7 @@
 
 * WordPress Coding Standards (see [readme-wpcs.md](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/readme-wpcs.md))
 * New shortcode parentgroup for nested groups from leaflet-optiongroup and -featuregroup
+* try to fix problems with Elementor
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

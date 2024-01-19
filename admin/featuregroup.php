@@ -55,6 +55,20 @@ Use %5$s to group elements by options and %6$s to group elements by properties.'
 // optional one or more
 &#091;parentgroup parent=... childs=... visible=...]</code></pre>';
 
+	if ( is_singular() || is_archive() ) {
+		$clusterref = get_site_url() . '/doku/cluster/';
+	} else {
+		$clusterref = '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=markercluster';
+	}
+
+	$text = $text . '<h3>' . __( 'Note', 'extensions-leaflet-map' ) . '</h3>' .
+	'<p>' .
+	sprintf(
+		__( 'When markers are grouped, %1$s is automatically active and the parameter and settings for %2$s are valid too.', 'extensions-leaflet-map' ),
+		'Leaflet.markercluster',
+		'<a href="' . $clusterref . '"><code>cluster</code></a>'
+	) . '</p>';
+
 	$text = $text . '<h3>leaflet-optiongroup options</h3>' .
 	sprintf( __( 'Each of the above leaflet elements has options. These are from the shortcode %s and are fixed.', 'extensions-leaflet-map' ), '<code>leaflet-...</code>' ) . ' ';
 
@@ -250,20 +264,6 @@ Use %5$s to group elements by options and %6$s to group elements by properties.'
 	__( 'Default', 'extensions-leaflet-map' ) . ': false.
 </li>
 </ul>';
-
-	if ( is_singular() || is_archive() ) {
-		$clusterref = get_site_url() . '/doku/cluster/';
-	} else {
-		$clusterref = '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=markercluster';
-	}
-
-	$text = $text . '<h3>' . __( 'Notes', 'extensions-leaflet-map' ) . '</h3>' .
-	'<p>' .
-	sprintf(
-		__( 'When markers are grouped, %1$s is automatically active and the parameter and settings for %2$s are valid too.', 'extensions-leaflet-map' ),
-		'Leaflet.markercluster',
-		'<a href="' . $clusterref . '"><code>cluster</code></a>'
-	) . '</p>';
 
 	if ( ! ( is_singular() || is_archive() ) ) {
 		$text = $text . '<p>' . sprintf(

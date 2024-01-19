@@ -145,22 +145,31 @@ function leafext_backend() {
 }
 
 function leafext_should_interpret_shortcode( $shortcode, $atts ) {
+	global $button;
+	//var_dump($button);
+	$server     = map_deep( wp_unslash( $_SERVER ), 'sanitize_text_field' );
+	$scriptname = $server['SCRIPT_NAME'];
 	if ( is_singular() || is_archive() || is_home() || is_front_page() || leafext_backend() ) {
-		return '';
-	} else {
-		$text = "['.$shortcode.' ";
-		if ( is_array( $atts ) ) {
-			foreach ( $atts as $key => $item ) {
-				if ( is_int( $key ) ) {
-					$text = $text . "$item ";
-				} else {
-					$text = $text . "$key=$item ";
-				}
+		if ( strpos( $scriptname, '/wp-admin/post.php' ) === false ) {
+			//return 'should interpret '.$shortcode;
+			return '';
+		} elseif ( ! isset( $button ) ) {
+				$button = true;
+				echo '<input type="button" value="' . __( 'Click to interpret shortcodes.', 'extensions-leaflet-map' ) . '" onclick="window.location.reload()">';
+		}
+	}
+	$text = '[' . $shortcode . ' ';
+	if ( is_array( $atts ) ) {
+		foreach ( $atts as $key => $item ) {
+			if ( is_int( $key ) ) {
+				$text = $text . "$item ";
+			} else {
+				$text = $text . "$key=$item ";
 			}
 		}
-		$text = $text . ']';
-		return $text;
 	}
+	$text = $text . ']';
+	return $text;
 }
 
 	// ! is_admin() ||

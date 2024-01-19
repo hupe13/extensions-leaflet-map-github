@@ -45,6 +45,9 @@ function leafext_do_page() {
 		leafext_admin_elevation( $active_tab );
 	} elseif ( strpos( $active_tab, 'filemgr' ) !== false ) {
 		leafext_admin_filemgr( $active_tab );
+	} elseif ( $active_tab == 'target' ) {
+		include LEAFEXT_PLUGIN_DIR . '/admin/targetmarker.php';
+		leafext_targetmarker_help();
 	} elseif ( strpos( $active_tab, 'marker' ) !== false ) {
 		leafext_admin_marker( $active_tab );
 	} elseif ( strpos( $active_tab, 'tiles' ) !== false ) {
@@ -113,6 +116,9 @@ function leafext_do_nonadmin_page() {
 		leafext_admin_elevation( $active_tab );
 	} elseif ( strpos( $active_tab, 'filemgr' ) !== false ) {
 		leafext_admin_filemgr( $active_tab );
+	} elseif ( $active_tab == 'target' ) {
+		include LEAFEXT_PLUGIN_DIR . '/admin/targetmarker.php';
+		leafext_targetmarker_help();
 	} elseif ( strpos( $active_tab, 'marker' ) !== false ) {
 		leafext_admin_marker( $active_tab );
 	} elseif ( strpos( $active_tab, 'tiles' ) !== false ) {
@@ -218,6 +224,10 @@ function leafext_admin_tabs() {
 		array(
 			'tab'   => 'choropleth',
 			'title' => 'Choropleth Map',
+		),
+		array(
+			'tab'   => 'target',
+			'title' => 'Target Marker',
 		),
 		// array(
 		// 'tab' => '',

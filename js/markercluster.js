@@ -8,14 +8,26 @@
  * Create Javascript code for cluster.
  */
 
-function leafext_markercluster_js(clmarkers) {
+function leafext_markercluster_js(cloptions) {
 	var map    = window.WPLeafletMapPlugin.getCurrentMap();
 	var map_id = map._leaflet_id;
-	if ( WPLeafletMapPlugin.markers.length > 0 ) {
-		// console.log("map.options.maxZoom "+map.options.maxZoom);
-		if ( ! map.options.maxZoom ) {
-			map.options.maxZoom = 19;
+	// console.log("map.options.maxZoom "+map.options.maxZoom);
+	if ( ! map.options.maxZoom ) {
+		map.options.maxZoom = 19;
+	}
+	// console.log(cloptions);
+	if (cloptions.disableClusteringAtZoom > map.options.maxZoom) {
+		cloptions.disableClusteringAtZoom = map.options.maxZoom + 1;
+	}
+	cloptions.spiderfyOnMaxZoom = true;
+	var clmarkers               = L.markerClusterGroup(
+		{
+			cloptions,
 		}
+	);
+	// console.log(cloptions);
+
+	if ( WPLeafletMapPlugin.markers.length > 0 ) {
 		// console.log("WPLeafletMapPlugin.markers.length "+WPLeafletMapPlugin.markers.length);
 		var length = WPLeafletMapPlugin.markers.length;
 		for (var i = 0; i < length; i++) {

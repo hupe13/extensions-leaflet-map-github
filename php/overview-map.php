@@ -389,7 +389,7 @@ function leafext_overviewmap_function( $atts, $content, $shortcode ) {
 		$overview_options = shortcode_atts( $defaults, leafext_clear_params( $atts ) );
 		// var_dump($overview_options);
 
-		if ( strpos( ',', $overview_options['category'] ) !== false ) {
+		if ( $overview_options['category'] != '' && strpos( ',', $overview_options['category'] ) !== false ) {
 			$overview_options['category'] = explode( ',', esc_sql( $overview_options['category'] ) );
 		}
 		$pageposts = leafext_overview_wpdb_query( esc_sql( $overview_options['latlngs'] ), $overview_options['category'] );

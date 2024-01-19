@@ -115,24 +115,24 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 			}
 		}
 		leafext_enqueue_leafext( 'geojsonmarker', 'leaflet_subgroup' );
-					leafext_enqueue_extramarker();
-			$extramarker        = leafext_case( array_keys( leafext_extramarker_defaults() ), leafext_clear_params( $atts ) );
-			$extramarkeroptions = shortcode_atts( leafext_extramarker_defaults(), $extramarker );
-			$extramarkericon    = leafext_extramarkers_params( $extramarkeroptions ) . 'tooltipAnchor:[12,-24]';
-						leafext_enqueue_markercluster();
-			$clusteroptions              = leafext_cluster_atts( $atts );
-						$groupingoptions = shortcode_atts(
-							array(
-								// 'property' => '',
-								'values'  => '',
-								'groups'  => '',
-								'visible' => false,
-							),
-							leafext_clear_params( $atts )
-						);
+		leafext_enqueue_extramarker();
+		$extramarker        = leafext_case( array_keys( leafext_extramarker_defaults() ), leafext_clear_params( $atts ) );
+		$extramarkeroptions = shortcode_atts( leafext_extramarker_defaults(), $extramarker );
+		$extramarkericon    = leafext_extramarkers_params( $extramarkeroptions ) . 'tooltipAnchor:[12,-24]';
+		leafext_enqueue_markercluster();
+		$clusteroptions  = leafext_cluster_atts( $atts );
+		$groupingoptions = shortcode_atts(
+			array(
+				// 'property' => '',
+				'values'  => '',
+				'groups'  => '',
+				'visible' => false,
+			),
+			leafext_clear_params( $atts )
+		);
 
 		if ( substr_count( $groupingoptions['values'], ',' ) != substr_count( $groupingoptions['groups'], ',' )
-			&& substr_count( $groupingoptions['groups'], ',' ) != 0 ) {
+		&& substr_count( $groupingoptions['groups'], ',' ) != 0 ) {
 			$text = "['.$shortcode.' ";
 			if ( is_array( $atts ) ) {
 				foreach ( $atts as $key => $item ) {
@@ -157,13 +157,13 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 				if ( count( $cl_on ) == 1 ) {
 					$cl_on = array_fill( 0, count( $cl_values ), '0' );
 				} elseif ( count( $cl_values ) != count( $cl_on ) ) {
-						$text = "['.$shortcode.' ";
+					$text = "['.$shortcode.' ";
 					foreach ( $atts as $key => $item ) {
 						$text = $text . "$key=$item ";
 					}
-						$text = $text . ' - groups and visible do not match. ';
-						$text = $text . ']';
-						return $text;
+					$text = $text . ' - groups and visible do not match. ';
+					$text = $text . ']';
+					return $text;
 				}
 			}
 			if ( ! in_array( 'others', $cl_groups, true ) ) {
@@ -185,16 +185,16 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 		if ( $propertyoptions['auto'] ) {
 			leafext_enqueue_clustergroup();
 		}
-				$control = array(
-					'position'  => 'bottomright',
-					'collapsed' => false,
-				);
-				$atts1   = leafext_clear_params( $atts );
-				$options = shortcode_atts( $control, $atts1 );
-				if ( ! leafext_check_position_control( $options['position'] ) ) {
-					$options['position'] = 'bottomright';
-				}
-				return leafext_geojsonmarker_script( $propertyoptions, $extramarkericon, $clusteroptions, $featuregroupoptions, $options );
+		$control = array(
+			'position'  => 'bottomright',
+			'collapsed' => false,
+		);
+		$atts1   = leafext_clear_params( $atts );
+		$options = shortcode_atts( $control, $atts1 );
+		if ( ! leafext_check_position_control( $options['position'] ) ) {
+			$options['position'] = 'bottomright';
+		}
+		return leafext_geojsonmarker_script( $propertyoptions, $extramarkericon, $clusteroptions, $featuregroupoptions, $options );
 	}
 }
 add_shortcode( 'geojsonmarker', 'leafext_geojsonmarker_function' );
