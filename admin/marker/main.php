@@ -12,6 +12,7 @@ require LEAFEXT_PLUGIN_DIR . '/admin/marker/markercluster.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/marker/placementstrategies.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/marker/extramarker.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/marker/geojsonmarker.php';
+require LEAFEXT_PLUGIN_DIR . '/admin/marker/targetmarker.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/marker/hidemarkers.php';
 
 function leafext_marker_tab() {
@@ -39,6 +40,10 @@ function leafext_marker_tab() {
 		array(
 			'tab'   => 'geojsonmarker',
 			'title' => __( 'Design and Group markers from geojson files', 'extensions-leaflet-map' ),
+		),
+		array(
+			'tab'   => 'targetmarker',
+			'title' => __( 'Target Marker', 'extensions-leaflet-map' ),
 		),
 		array(
 			'tab'   => 'hidemarkers',
@@ -78,6 +83,8 @@ function leafext_admin_marker( $active_tab ) {
 	} elseif ( $active_tab == 'geojsonmarker' ) {
 		echo '<h2>' . leafext_marker_tab() . '</h2>';
 		leafext_help_geojsonmarker();
+	} elseif ( $active_tab == 'targetmarker' ) {
+		leafext_targetmarker_help();
 	} elseif ( $active_tab == 'hidemarkers' ) {
 		echo '<h2>' . leafext_marker_tab() . '</h2>';
 		leafext_help_hidemarkers();

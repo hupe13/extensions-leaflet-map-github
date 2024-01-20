@@ -23,19 +23,6 @@
 
 - A function call to __() with texts containing placeholders was found, but was not accompanied by a "translators:" comment on the line above to clarify the meaning of the placeholders. (WordPress.WP.I18n.MissingTranslatorsComment)
 
-
-```
-257 Squiz.Commenting.FunctionComment
-684 Squiz.Commenting.InlineComment
-182 Squiz.PHP.CommentedOutCode
-311 Universal.Operators.StrictComparisons
-242 WordPress.PHP.YodaConditions
-391 WordPress.Security.EscapeOutput
-22 WordPress.Security.NonceVerification
-49 WordPress.WP.EnqueuedResourceParameters
-138 WordPress.WP.I18n
-```
-
 ## Ignored:
 
 - see phpcs comments in some files

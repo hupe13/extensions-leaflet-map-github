@@ -164,7 +164,7 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 		array(
 			'function'  => __( 'Target Marker', 'extensions-leaflet-map' ),
 			'shortcode' => 'targetmarker',
-			'tab'       => 'target',
+			'tab'       => 'targetmarker',
 			'plugins'   => '',
 			'doku'      => '/doku/targetmarker/',
 			'kategorie' => '',

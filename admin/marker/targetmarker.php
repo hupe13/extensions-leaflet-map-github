@@ -26,7 +26,7 @@ function leafext_targetmarker_help() {
 	$text = $text . '</ul>';
 
 	$text = $text . '<h3>Shortcode</h3>';
-	$text = $text . '<ul><li><code>fitbounds, zoomhomemap, targetmarker</code> ' . __( 'are mandandory!', 'extensions-leaflet-map' ) . '</li>';
+	$text = $text . '<ul><li><code>fitbounds, zoomhomemap, targetmarker</code> ' . __( 'are mandatory!', 'extensions-leaflet-map' ) . '</li>';
 	$text = $text . '<li>' . __( 'The order of the shortcodes is fixed!', 'extensions-leaflet-map' );
 	$text = $text . ' <code>cluster - zoomhomemap - targetmarker</code>.</li></ul>';
 	$text = $text . '<pre><code>&#091;leaflet-map fitbounds]
