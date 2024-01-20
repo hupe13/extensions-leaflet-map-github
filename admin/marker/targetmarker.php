@@ -51,7 +51,7 @@ function leafext_targetmarker_help() {
 		'popup - ' . __( 'popup content, if the target marker has not a popup. Default:', 'extensions-leaflet-map' ) . ' "Target"'
 		. '</li>
 		<li>' .
-		'zoom - ' . __( 'valid if the target marker is not clustered. zoom level to zoom to the target marker. Default: zoom level if map is ready.', 'extensions-leaflet-map' )
+		'zoom - ' . __( 'valid if the target marker is not clustered. zoom level for move to location for target marker. Default: zoom level if map is ready.', 'extensions-leaflet-map' )
 		. '</li>
 		<li>' .
 		'debug - ' . __( 'if true, log some infos to the developer console and add circles about the target on the map.', 'extensions-leaflet-map' ) .
