@@ -168,7 +168,7 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 			'plugins'   => '',
 			'doku'      => '/doku/targetmarker/',
 			'kategorie' => '',
-			'examples'  => '/targetmarker/targetmarker/?lat=3.44&lng=-23.9',
+			'examples'  => '/examples/targetmarker/',
 		),
 		array(
 			'function'  => __( 'Hide Markers', 'extensions-leaflet-map' ),

@@ -9,7 +9,7 @@
 defined( 'ABSPATH' ) || die();
 
 define( 'LEAFEXT_MINI', '.min' );
-//define( 'LEAFEXT_MINI', '' );
+// define( 'LEAFEXT_MINI', '' );
 
 /**
  * Enqueue js and css from Leaflet plugins

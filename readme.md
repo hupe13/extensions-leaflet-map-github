@@ -177,11 +177,13 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.0 /240xxx
+### 4.0 /2401xx
 
 * WordPress Coding Standards (see [readme-wpcs.md](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/readme-wpcs.md))
-* New shortcode parentgroup for nested groups from leaflet-optiongroup and -featuregroup
+* new shortcode parentgroup for nested groups from leaflet-optiongroup and -featuregroup
+* new shortcode targetmarker - Jump to a position in a map with many markers and get the nearest marker
 * try to fix problems with Elementor
+* new version leaflet.fullscreen
 
 ### Previous
 
