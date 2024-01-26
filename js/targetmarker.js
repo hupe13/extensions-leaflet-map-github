@@ -1,5 +1,5 @@
 /**
- * Javascript function for targetmarker (marker in geojson files)
+ * Javascript function for targetmarker
  *
  * @package Extensions for Leaflet Map
  */
@@ -73,8 +73,8 @@ function leafext_targetmarker_js(lat,lng,target,zoom,debug) {
 					// original end ****
 					// console.log( layer.__parent._zoom,this._map._zoom );
 					if (typeof layer.__parent._childClusters !== "undefined" ) {
-								this._map.on( 'moveend', showMarker, this );
-								this.on( 'animationend', showMarker, this );
+						this._map.on( 'moveend', showMarker, this );
+						this.on( 'animationend', showMarker, this );
 						if (layer.__parent._childClusters.length > 0) {
 							// console.log( "layer.__parent._childClusters.length ist " + layer.__parent._childClusters.length );
 							// console.log( "Childs > 0, SetView to " + layer.__parent._zoom );
@@ -85,7 +85,7 @@ function leafext_targetmarker_js(lat,lng,target,zoom,debug) {
 							map.setView( layer.getLatLng(),layer.__parent._zoom );
 						}
 						// } else {
-						// 	console.log( "layer.__parent._childClusters nicht vorhanden" );
+						// 		console.log( "layer.__parent._childClusters nicht vorhanden" );
 					}
 					// changed end ****
 				}

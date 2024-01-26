@@ -75,8 +75,8 @@ function leafext_featuregroup_js(att_property,att_option,groups,visible,substr,a
 					// console.log("Icon");
 					// console.log(a.getIcon().options);
 
-						let found        = false;
-						let this_options = a.getIcon().options;
+					let found        = false;
+					let this_options = a.getIcon().options;
 					if (this_options.hasOwnProperty( att_option )) {
 						if ( a.options[att_option] ) {
 							if (this_options[att_option] != a.options[att_option] && typeof a.options[att_option] == "string") {
@@ -161,9 +161,9 @@ function leafext_featuregroup_js(att_property,att_option,groups,visible,substr,a
 							if (layer instanceof L.Marker) {
 								// console.log("is_marker");
 							} else if (layer instanceof L.Polygon || layer instanceof L.Circle || layer instanceof L.Polyline ) {
-									// console.log("markergroup");
-									let found    = false;
-									this_options = layer.options;
+								// console.log("markergroup");
+								let found    = false;
+								this_options = layer.options;
 								for (const key in this_options) {
 									if (this_options.hasOwnProperty( key )) {
 										if (key == att_option) {
@@ -286,8 +286,8 @@ function leafext_featuregroup_js(att_property,att_option,groups,visible,substr,a
 											console.log( layer.options );
 										}
 									}
-                    // phpcs:ignore
-                  } // end att_option != ''
+									// phpcs:ignore
+								} // end att_option != ''
 								else if (att_property != '') {
 									let found = false;
 									// console.log(layer.feature.properties);

@@ -13,18 +13,24 @@ function leafext_formatTime(t) {
 	var days  = Math.floor( t / (1000 * 60 * 60 * 24) );
 	var hours = date.getUTCHours();
 	if (days == 0 && hours == 0) {
-		hours = ""; } else {
-		hours = hours + ":";}
-		var minutes = "0" + date.getUTCMinutes();
-		minutes     = minutes.substr( -2 ) + "\'";
-		var seconds = "0" + date.getUTCSeconds();
-		if (days > 0) {
-			seconds = ""; } else {
-				seconds = seconds.substr( -2 ) + "\'\'";}
-			if (days == 0) {
-				days = ""; } else {
-				days = days + "d ";}
-				return (days + hours + minutes + seconds);
+		hours = "";
+	} else {
+		hours = hours + ":";
+	}
+	var minutes = "0" + date.getUTCMinutes();
+	minutes     = minutes.substr( -2 ) + "\'";
+	var seconds = "0" + date.getUTCSeconds();
+	if (days > 0) {
+		seconds = "";
+	} else {
+		seconds = seconds.substr( -2 ) + "\'\'";
+	}
+	if (days == 0) {
+		days = "";
+	} else {
+		days = days + "d ";
+	}
+	return (days + hours + minutes + seconds);
 }
 
 function leafext_elevation_prep_js() {

@@ -56,8 +56,8 @@ function leafext_markercluster_js(cloptions) {
 						// console.log(this.layer);
 						this.layer.eachLayer(
 							function (layer) {
-									// console.log(layer.feature);
-									// console.log(layer.feature.properties);
+								// console.log(layer.feature);
+								// console.log(layer.feature.properties);
 								if (layer.feature.geometry.type == "Point" ) {
 									// console.log(layer);
 									// console.log(layer.feature.properties.name);

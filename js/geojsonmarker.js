@@ -224,13 +224,13 @@ function leafext_geojsonmarker_js(property,iconprops,icondefault,auto,groups,vis
 											markericon.options = Object.entries( layer.getIcon().options );
 											thisproperty       = 'others';
 											if ( layer.feature.properties[property] ) {
-														thisproperty = layer.feature.properties[property];
-														// console.log(thisproperty,icondefaults[map_id],iconproperties[map_id][thisproperty]);
+												thisproperty = layer.feature.properties[property];
+												// console.log(thisproperty,icondefaults[map_id],iconproperties[map_id][thisproperty]);
 												if (iconproperties[map_id][thisproperty]) {
 													thismarker = new markericon(
 														{
 															iconUrl: layer.options.iconUrl.replace( icondefaults[map_id], iconproperties[map_id][thisproperty] ),
-															}
+														}
 													);
 													layer.setIcon( thismarker );
 												} else {
@@ -255,7 +255,7 @@ function leafext_geojsonmarker_js(property,iconprops,icondefault,auto,groups,vis
 											if ( layer.feature.properties[property] ) {
 												thisproperty = layer.feature.properties[property];
 												if (iconproperties[map_id][thisproperty]) {
-															var markericon = leafext_geojsonmarker_extramarker_js( iconproperties[map_id][thisproperty] );
+													var markericon = leafext_geojsonmarker_extramarker_js( iconproperties[map_id][thisproperty] );
 												} else {
 													thisproperty = 'others';
 													if (iconproperties[map_id][thisproperty] != icondefaults[map_id]) {
@@ -273,9 +273,9 @@ function leafext_geojsonmarker_js(property,iconprops,icondefault,auto,groups,vis
 
 									if (autogroups[map_id] !== null && ! auto) {
 										if (thisproperty in autogroups[map_id]) {
-												// console.log("Found geojson on map "+map_id+" "+thisproperty+" "+autogroups[map_id][thisproperty]);
-												maps[map_id].removeLayer( layer );
-												layer.addTo( featGroups[map_id][autogroups[map_id][thisproperty]] );
+											// console.log("Found geojson on map "+map_id+" "+thisproperty+" "+autogroups[map_id][thisproperty]);
+											maps[map_id].removeLayer( layer );
+											layer.addTo( featGroups[map_id][autogroups[map_id][thisproperty]] );
 										} else {
 											maps[map_id].removeLayer( layer );
 											layer.addTo( featGroups[map_id][autogroups[map_id]["others"]] );
@@ -305,8 +305,8 @@ function leafext_geojsonmarker_js(property,iconprops,icondefault,auto,groups,vis
 						// geojson asynchron
 						if (autogroups[map_id] !== null) {
 							for (group in featGroups[map_id]) {
-									control[map_id].removeLayer( featGroups[map_id][group] );
-									control[map_id].addOverlay( featGroups[map_id][group], group );
+								control[map_id].removeLayer( featGroups[map_id][group] );
+								control[map_id].addOverlay( featGroups[map_id][group], group );
 							}
 						} else {
 							// clmarkers.addTo( map );
@@ -318,7 +318,7 @@ function leafext_geojsonmarker_js(property,iconprops,icondefault,auto,groups,vis
 						}
 						// console.log(Object.entries(featGroups[map_id]['others']).length);
 						if (Object.entries( featGroups[map_id]['others'] ) && Object.entries( featGroups[map_id]['others'] ).length == 0) {
-								control[map_id].removeLayer( featGroups[map_id]['others'] );
+							control[map_id].removeLayer( featGroups[map_id]['others'] );
 						}
 					}
 				); // geojson ready

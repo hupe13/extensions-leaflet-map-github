@@ -213,8 +213,8 @@ function leafext_hoverlap_js(all_options) {
 	}
 
 	var markergroups = window.WPLeafletMapPlugin.markergroups;
-  // phpcs:disable
-  Object.entries(markergroups).forEach(([key, value]) => {
+	// phpcs:disable
+	Object.entries(markergroups).forEach(([key, value]) => {
 		if ( markergroups[key]._map !== null ) {
 			// phpcs:enable
 			if (map_id == markergroups[key]._map._leaflet_id) {
@@ -354,9 +354,9 @@ function leafext_hoverlap_js(all_options) {
 									layer.eachLayer(
 										function (point) {
 											if (point instanceof L.Marker == true) {
-													layer.off( 'click' );
-													// console.log("is icon Marker");
-													// console.log(point);
+												layer.off( 'click' );
+												// console.log("is icon Marker");
+												// console.log(point);
 												if ( layer.getPopup() ) {
 													// point.unbindTooltip();
 													// point.bindTooltip(layer.getPopup().getContent());
@@ -503,8 +503,8 @@ function leafext_hoverlap_js(all_options) {
 			// console.log(mouselayers);
 			// }
 			if ( ! leafext_map_popups( map ) && event == "mousemove" && ! leafext_markertooltip( map )) {
-					// if (event == "mousemove") {
-					leafext_close_tooltips( map );
+				// if (event == "mousemove") {
+				leafext_close_tooltips( map );
 				if (mouselayers.length > 0) {
 					// console.log("tooltip map mouseover");
 					var tooltip = L.tooltip( {className: all_options['class']} )

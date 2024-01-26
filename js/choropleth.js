@@ -75,12 +75,12 @@ function leafext_choropleth_js(map,att_valueProperty,att_scale,att_steps,att_mod
 												if ( layer.getPopup() ) {
 													// console.log("popup defined");
 													if (layer.getPopup().isOpen()) {
-															// console.log("mouseover open "+layer.getPopup().isOpen());
-															layer.unbindTooltip();
+														// console.log("mouseover open "+layer.getPopup().isOpen());
+														layer.unbindTooltip();
 													} else {
-																// console.log("need tooltip");
-																var content = layer.getPopup().getContent();
-																layer.bindTooltip( content );
+														// console.log("need tooltip");
+														var content = layer.getPopup().getContent();
+														layer.bindTooltip( content );
 													}
 												}
 											}
@@ -93,12 +93,12 @@ function leafext_choropleth_js(map,att_valueProperty,att_scale,att_steps,att_mod
 											if (att_hover) {
 												if ( layer.getPopup() ) {
 													if (layer.getPopup().isOpen()) {
-															// console.log("mousemove open "+layer.getPopup().isOpen());
-															layer.unbindTooltip();
+														// console.log("mousemove open "+layer.getPopup().isOpen());
+														layer.unbindTooltip();
 													} else {
-																// console.log("mousemove close "+layer.getPopup().isOpen());
-																map.closePopup();
-																layer.openTooltip( e.latlng );
+														// console.log("mousemove close "+layer.getPopup().isOpen());
+														map.closePopup();
+														layer.openTooltip( e.latlng );
 													}
 												}
 											}
@@ -111,7 +111,7 @@ function leafext_choropleth_js(map,att_valueProperty,att_scale,att_steps,att_mod
 											if (att_hover) {
 												if ( layer.getPopup() ) {
 													if (layer.getPopup().isOpen()) {
-																layer.unbindTooltip();
+														layer.unbindTooltip();
 													}
 												}
 											}
@@ -125,23 +125,23 @@ function leafext_choropleth_js(map,att_valueProperty,att_scale,att_steps,att_mod
 
 						// Add legend (don't forget to add the CSS from index.html)
 						if (att_legend) {
-								var legend   = L.control( { position: 'bottomright' } );
-								legend.onAdd = function (map) {
-									var div    = L.DomUtil.create( 'div', 'info legend' );
-									var limits = choropleth.options.limits;
-									var colors = choropleth.options.colors;
-									var labels = [];
-									// Add min & max
-									div.innerHTML  = '<div class="labels"><div class="min">' + limits[0] + '</div> \
-            <div class="max">' + limits[limits.length - 1] + '</div></div>';
-									limits.forEach(
-										function (limit, index) {
-											labels.push( '<li style="background-color: ' + colors[index] + '; opacity: ' + att_fillOpacity + ';"></li>' );
-										}
-									)
-									div.innerHTML += '<ul>' + labels.join( '' ) + '</ul>';
-									return div;
-								}
+							var legend   = L.control( { position: 'bottomright' } );
+							legend.onAdd = function (map) {
+								var div    = L.DomUtil.create( 'div', 'info legend' );
+								var limits = choropleth.options.limits;
+								var colors = choropleth.options.colors;
+								var labels = [];
+								// Add min & max
+								div.innerHTML  = '<div class="labels"><div class="min">' + limits[0] + '</div> \
+								<div class="max">' + limits[limits.length - 1] + '</div></div>';
+								limits.forEach(
+									function (limit, index) {
+										labels.push( '<li style="background-color: ' + colors[index] + '; opacity: ' + att_fillOpacity + ';"></li>' );
+									}
+								)
+								div.innerHTML += '<ul>' + labels.join( '' ) + '</ul>';
+								return div;
+							}
 							legend.addTo( map );
 						}
 

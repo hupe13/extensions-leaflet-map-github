@@ -154,12 +154,12 @@ function leafext_hover_geojsonstyle_js(all_options) {
 							} else {
 								map.eachLayer(
 									function (layer) {
-											leafext_make_styleback( layer );
+										leafext_make_styleback( layer );
 									}
 								);
 								e.target.eachLayer(
 									function (layer) {
-											leafext_make_overstyle( layer );
+										leafext_make_overstyle( layer );
 									}
 								);
 							} //end else i
@@ -172,7 +172,7 @@ function leafext_hover_geojsonstyle_js(all_options) {
 						function (e) {
 								e.target.eachLayer(
 									function (layer) {
-											leafext_make_styleback( layer );
+										leafext_make_styleback( layer );
 									}
 								);
 						}
@@ -241,7 +241,7 @@ function leafext_hover_markergroupstyle_js(all_options) {
 												leafext_make_styleback( layer );
 											}
 										);
-											leafext_make_overstyle( e.sourceTarget );
+										leafext_make_overstyle( e.sourceTarget );
 									}
 								);
 								layer.on(
@@ -296,23 +296,24 @@ function leafext_hover_geojsontooltip_js(tooltip,all_options) {
 				geojson.layer.on(
 					"mousemove",
 					function (e) {
-							// console.log("geojson mousemove");
-							let i = 0;
-							e.target.eachLayer(
-								function () {
-									i += 1; }
-							);
-							// console.log("mousemove has", i, "layers.");
+						// console.log("geojson mousemove");
+						let i = 0;
+						e.target.eachLayer(
+							function () {
+								i += 1;
+							}
+						);
+						// console.log("mousemove has", i, "layers.");
 
-							e.target.eachLayer(
-								function (layer) {
-									if (i == 1) {
-										leafext_hover_geojsonlayer( e,map,layer,tooltip,all_options );
-									} else {
-										leafext_hover_geojsonlayer( e,map,e.sourceTarget,tooltip,all_options );
-									}
+						e.target.eachLayer(
+							function (layer) {
+								if (i == 1) {
+									leafext_hover_geojsonlayer( e,map,layer,tooltip,all_options );
+								} else {
+									leafext_hover_geojsonlayer( e,map,e.sourceTarget,tooltip,all_options );
 								}
-							);
+							}
+						);
 					}
 				); // mousemove end
 			} //geojson foreach
