@@ -177,7 +177,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.0 /2401xx
+### 4.0 /240126
 
 * WordPress Coding Standards (see [readme-wpcs.md](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/readme-wpcs.md))
 * new shortcode parentgroup for nested groups from leaflet-optiongroup and -featuregroup
