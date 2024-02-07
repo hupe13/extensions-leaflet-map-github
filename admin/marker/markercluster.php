@@ -152,8 +152,8 @@ function leafext_markercluster_help_text() {
 
 	$textoptions = $textoptions . '<p>';
 	$textoptions = $textoptions . __( 'For boolean values applies', 'extensions-leaflet-map' ) . ':<br>';
-	$textoptions = $textoptions . '<code>false</code> = <code>!parameter</code> || <code>parameter="0"</code> || <code>parameter=0</code></br>';
-	$textoptions = $textoptions . '<code>true</code> = <code>parameter</code> || <code>parameter="1"</code> || <code>parameter=1</code>';
+	$textoptions = $textoptions . '<code>false</code> = <code>!option</code> || <code>option="0"</code> || <code>option=0</code></br>';
+	$textoptions = $textoptions . '<code>true</code> = <code>option</code> || <code>option="1"</code> || <code>option=1</code>';
 	$textoptions = $textoptions . '</p>';
 
 	$defaults = get_option( 'leafext_cluster' );
@@ -162,7 +162,7 @@ function leafext_markercluster_help_text() {
 		array_key_exists( 'radius', $defaults ) ||
 		array_key_exists( 'spiderfy', $defaults ) ) {
 			$textoptions = $textoptions . '<p>';
-			$textoptions = $textoptions . __( 'The parameters zoom, radius and spiderfy have been renamed to disableClusteringAtZoom, maxClusterRadius and spiderfyOnMaxZoom, but they are still valid. Your settings:', 'extensions-leaflet-map' );
+			$textoptions = $textoptions . __( 'The options zoom, radius and spiderfy have been renamed to disableClusteringAtZoom, maxClusterRadius and spiderfyOnMaxZoom, but they are still valid. Your settings:', 'extensions-leaflet-map' );
 			 // phpcs:ignore
 			$textoptions = $textoptions . '<pre>' . substr( substr( print_r( get_option( 'leafext_cluster' ), true ), 8 ), 0, -3 ) . '</pre>';
 			$textoptions = $textoptions . __( 'Before you click the submit button, please compare your settings with the new ones and change them if they are different.', 'extensions-leaflet-map' );

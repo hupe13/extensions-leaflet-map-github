@@ -180,7 +180,11 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 			);
 			leafext_enqueue_clustergroup();
 		} else {
-			$featuregroupoptions = array();
+			$featuregroupoptions = array(
+				//'values'  => '',
+				'groups'  => '',
+				'visible' => '',
+			);
 		}
 		if ( $propertyoptions['auto'] ) {
 			leafext_enqueue_clustergroup();

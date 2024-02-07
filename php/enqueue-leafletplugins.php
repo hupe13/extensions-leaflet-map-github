@@ -81,6 +81,9 @@ function leafext_enqueue_elevation() {
 		null
 	);
 	leafext_enqueue_css();
+	if ( get_locale() === 'sv_SE' || get_locale() === 'it_IT' ) {
+		wp_set_script_translations( 'elevation_js', 'extensions-leaflet-map', LEAFEXT_PLUGIN_DIR . '/lang/' );
+	}
 }
 
 function leafext_enqueue_rotate() {

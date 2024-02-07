@@ -178,7 +178,7 @@ function leafext_admin_tabs() {
 	$tabs = array(
 		array(
 			'tab'    => 'markercluster',
-			'title'  => __( 'Marker and Icons', 'extensions-leaflet-map' ),
+			'title'  => __( 'Markers and Icons', 'extensions-leaflet-map' ),
 			'strpos' => 'marker',
 		),
 		array(

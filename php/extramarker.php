@@ -179,17 +179,20 @@ function leafext_extramarker_function( $atts, $content, $shortcode ) {
 		return $text;
 	} else {
 		leafext_enqueue_extramarker();
-		if ( isset( $atts['lat'] ) && isset( $atts['lng'] ) ) {
-			$latlng = 'lat=' . $atts['lat'] . ' lng=' . $atts['lng'];
-		} else {
-			$latlng = '';
+		$marker_shortcode = '[leaflet-marker ';
+		if ( is_array( $atts ) ) {
+			foreach ( $atts as $key => $item ) {
+				if ( is_int( $key ) ) {
+					$marker_shortcode = $marker_shortcode . "$item ";
+				} else {
+					$marker_shortcode = $marker_shortcode . "$key=$item ";
+				}
+			}
 		}
-		if ( isset( $atts['title'] ) ) {
-			$title = "title='" . $atts['title'] . "'";
-		} else {
-			$title = ''; }
-		$marker_shortcode = '[leaflet-marker ' . $latlng . ' ' . $title . ']' . $content . '[/leaflet-marker]';
-		$text             = do_shortcode( $marker_shortcode );
+		$marker_shortcode = $marker_shortcode . ']' . $content . '[/leaflet-marker]';
+
+		$text = do_shortcode( $marker_shortcode );
+		// $text             =  $marker_shortcode ;
 
 		$text    = \JShrink\Minifier::minify( $text );
 		$atts1   = leafext_case( array_keys( leafext_extramarker_defaults() ), leafext_clear_params( $atts ) );

@@ -54,12 +54,12 @@ function leafext_elevation_prep_js() {
 							props.summary.minacceleration.value = (track, unit) => toPrecision( track.acceleration_min || 0, 2 ) + "&nbsp;" + unit;
 							props.summary.maxacceleration.value = (track, unit) => toPrecision( track.acceleration_max || 0, 2 ) + "&nbsp;" + unit;
 							props.summary.avgacceleration.value = (track, unit) => toPrecision( track.acceleration_avg || 0, 2 ) + "&nbsp;" + unit;
-								break;
+						break;
 						case "altitude":
 							props.summary.minele.value = (track, unit) => (track.elevation_min || 0).toFixed( 0 ) + "&nbsp;" + unit;
 							props.summary.maxele.value = (track, unit) => (track.elevation_max || 0).toFixed( 0 ) + "&nbsp;" + unit;
 							props.summary.avgele.value = (track, unit) => (track.elevation_avg || 0).toFixed( 0 ) + "&nbsp;" + unit;
-								break;
+						break;
 						// cadence
 						case "distance":
 							if (this.options.distance) {
@@ -83,7 +83,7 @@ function leafext_elevation_prep_js() {
 						case "slope":
 							let slopeLabel      = this.options.slopeLabel || "%";
 							props.tooltip.chart = (item) => L._( "m: " ) + Math.round( item.slope ) + slopeLabel;
-			break;
+						break;
 						case "speed":
 							//console.log( this.options.speed );
 							if (this.options.speed) {
@@ -95,13 +95,13 @@ function leafext_elevation_prep_js() {
 								props.summary.avgspeed.value = (track, unit) => toPrecision( track.speed_avg || 0, 2 ) + "&nbsp;" + unit;
 								// props.summary.avgspeed.value = (track, unit) => (track.speed_avg || 0) + "&nbsp;" + unit;
 							}
-			break;
+						break;
 						case "time":
 							if (this.options.time) {
 								props.tooltips.find( ({ name }) => name === "time" ).chart = (item) => L._( "T: " ) + leafext_formatTime( item.duration || 0 );
 								props.summary.tottime.value                                = (track) => leafext_formatTime( track.time || 0 );
 							}
-			break;
+						break;
 					}
 				}
 				elevationProto._registerHandler.apply( this, [props] );

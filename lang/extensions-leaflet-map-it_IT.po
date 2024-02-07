@@ -1,17 +1,15 @@
-# Translation of Plugins - Extensions for Leaflet Map - Development (trunk) in Swedish
-# This file is distributed under the same license as the Plugins - Extensions for Leaflet Map - Development (trunk) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-02-05 12:54+0000\n"
+"PO-Revision-Date: 2024-02-05 14:25+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Loco https://localise.biz/\n"
-"Language: sv_SE\n"
-"Project-Id-Version: Plugins - Extensions for Leaflet Map - Development "
-"(trunk)\n"
-"Language-Team: Swedish"
+"Language: it_IT\n"
+"Project-Id-Version: Plugins - Extensions for Leaflet Map - Stable (latest "
+"release)\n"
+"Language-Team: Italian"
 
 #: admin/marker/placementstrategies.php:53
 msgid ""
@@ -63,7 +61,7 @@ msgstr ""
 #: admin/filemgr/leaflet-directory.php:23
 #, php-format
 msgid "(default) prepare the tracks for %s"
-msgstr ""
+msgstr "(predefinito) prepara le tracce per %s"
 
 #: php/overview-map.php:39 php/overview-map.php:41
 msgid "(like shortcode without brackets)"
@@ -76,7 +74,7 @@ msgstr ""
 
 #: admin/filemgr/leaflet-directory.php:22
 msgid "(relative) path to directory, accessible both from path and from url"
-msgstr ""
+msgstr "path (relativo) della directory, accessibile sia dal path che dall'URL"
 
 #: admin/overview-map.php:84
 msgid ""
@@ -152,7 +150,7 @@ msgstr ""
 
 #: php/elevation.php:157
 msgid "a number (px) or an expression like the default value"
-msgstr ""
+msgstr "un numero (in px) o un'espressione come il valore predefinito"
 
 #: php/leaflet-search.php:30
 #, php-format
@@ -221,11 +219,11 @@ msgstr ""
 
 #: admin/filemgr/filemgr-settings.php:17
 msgid "Allow upload to media library"
-msgstr ""
+msgstr "Consenti il ​​caricamento nel catalogo multimediale"
 
 #: php/elevation.php:425 php/elevation.php:658
 msgid "Altitude chart profile"
-msgstr ""
+msgstr "Profilo del grafico dell'altitudine"
 
 #: admin/help.php:309
 msgid "An extension that contains configurations for various tile providers."
@@ -254,7 +252,7 @@ msgstr ""
 
 #: admin/hover/hoverlap.php:59
 msgid "and maybe other things."
-msgstr ""
+msgstr "e forse altre cose."
 
 #: admin/filemgr/filemgr.php:19
 msgid "and show at the same time"
@@ -273,7 +271,7 @@ msgstr ""
 
 #: admin/elevation/elevation.php:204
 msgid "Appearance"
-msgstr ""
+msgstr "Aspetto"
 
 #: admin/tiles/layerswitch.php:139
 msgid ""
@@ -306,7 +304,7 @@ msgstr ""
 
 #: admin/elevation/elevation.php:261
 msgid "Axis display"
-msgstr ""
+msgstr "Visualizza gli assi"
 
 #: admin/marker/markercluster.php:168
 msgid ""
@@ -329,6 +327,8 @@ msgid ""
 "By default, all elements react to hover. If you don't want this, you have "
 "the following options."
 msgstr ""
+"Per impostazione predefinita, tutti gli elementi reagiscono al passaggio del "
+"puntatore del mouse. Se non lo desideri, hai le seguenti opzioni."
 
 #: admin/hover/hover.php:102
 msgid ""
@@ -338,7 +338,7 @@ msgstr ""
 
 #: admin/hover/hover.php:83
 msgid "Change style on hover."
-msgstr ""
+msgstr "Cambia stile al passaggio del puntatore del mouse"
 
 #: php/elevation.php:700
 msgid "Chart background color"
@@ -351,10 +351,11 @@ msgstr ""
 #: php/elevation.php:518
 msgid "Chart distance/elevation units imperial or metric."
 msgstr ""
+"Unità di distanza/elevazione del grafico in formato imperiale o metrico."
 
 #: admin/elevation/elevation.php:246
 msgid "Charts"
-msgstr ""
+msgstr "Grafici"
 
 #: admin/featuregroup.php:250
 msgid ""
@@ -459,7 +460,7 @@ msgstr ""
 
 #: admin/help.php:297
 msgid "Convert KML, GPX, and TCX to GeoJSON."
-msgstr ""
+msgstr "Converti KML, GPX, e TCX in GeoJSON."
 
 #: admin/marker/targetmarker.php:21
 msgid "Create a source page / post with a link to the target page / post."
@@ -518,7 +519,7 @@ msgstr ""
 
 #: admin/help.php:24 admin/elevation/main.php:30
 msgid "Customize waypoints"
-msgstr ""
+msgstr "Peronalizza waypoint"
 
 #: admin/filemgr/managefiles-functions.php:143
 msgid "Date"
@@ -586,7 +587,7 @@ msgstr ""
 
 #: admin/elevation/elevation.php:185
 msgid "Detailed documentation and examples"
-msgstr ""
+msgstr "Documentazione dettagliata ed esempi"
 
 #: admin/help.php:392
 #, php-format
@@ -605,23 +606,23 @@ msgstr ""
 
 #: admin/filemgr/filemgr.php:235
 msgid "Directory"
-msgstr ""
+msgstr "Directory"
 
 #: php/elevation.php:274
 msgid "Display circle marker on End"
-msgstr ""
+msgstr "Visualizza marker circolare alla fine"
 
 #: php/elevation.php:264
 msgid "Display circle marker on Start"
-msgstr ""
+msgstr "Visualizza marker circolare all'inizio"
 
 #: php/elevation.php:398
 msgid "Display date and clock time"
-msgstr ""
+msgstr "Visualizza la data e l'ora dell'orologio"
 
 #: admin/elevation/elevation.php:260
 msgid "Display diagram"
-msgstr ""
+msgstr "Visualizza il diagramma"
 
 #: php/elevation.php:374
 msgid "Display distance info"
@@ -633,7 +634,7 @@ msgstr ""
 
 #: php/elevation.php:386
 msgid "Display time info (duration)"
-msgstr ""
+msgstr "Visualizza informazioni sul tempo (durata)"
 
 #: php/elevation.php:306
 msgid "Display track waypoints"
@@ -643,10 +644,12 @@ msgstr ""
 msgid ""
 "Display waypoints in map and in chart / only in map / only in chart / none"
 msgstr ""
+"Mostra i waypoint sulla mappa e sul grafico / solo sulla mappa / solo sul "
+"grafico / nessuno"
 
 #: admin/elevation/elevation.php:218
 msgid "Distance and time"
-msgstr ""
+msgstr "Distanza e tempo"
 
 #: php/hover.php:17
 #, php-format
@@ -664,7 +667,7 @@ msgstr ""
 
 #: admin/filemgr/filemgr.php:248
 msgid "does only work with gpx files"
-msgstr ""
+msgstr "funziona solamente con i file gpx"
 
 #: admin/filemgr/managefiles-functions.php:251
 #, php-format
@@ -728,7 +731,7 @@ msgstr ""
 
 #: admin/filemgr/filemgr.php:149
 msgid "entries"
-msgstr ""
+msgstr "inserimenti"
 
 #: admin/choropleth.php:72
 msgid "equidistant: divide the classes into equal groups."
@@ -736,7 +739,7 @@ msgstr ""
 
 #: php/leaflet-search.php:82
 msgid "error message"
-msgstr ""
+msgstr "messaggio di errore"
 
 #: admin/featuregroup.php:99
 #, php-format
@@ -749,7 +752,7 @@ msgstr ""
 
 #: admin/help.php:435 admin/help.php:437
 msgid "Examples"
-msgstr ""
+msgstr "Esempi"
 
 #: php/hover.php:128 php/hoverlap.php:15
 msgid ""
@@ -771,7 +774,7 @@ msgstr ""
 
 #: php/multielevation.php:16
 msgid "Filename as name"
-msgstr ""
+msgstr "Nome del file come nome"
 
 #: admin/filemgr/filemgr.php:83
 msgid "Files"
@@ -780,7 +783,7 @@ msgstr ""
 #: admin.php:172 admin.php:176 admin/help.php:240 admin/help.php:242
 #: admin/help.php:243 admin/filemgr/main.php:26
 msgid "Files for Leaflet Map"
-msgstr ""
+msgstr "File per Leaflet Map"
 
 #: admin/filemgr/leaflet-directory.php:25
 #, php-format
@@ -828,7 +831,7 @@ msgstr ""
 
 #: admin/filemgr/filemgr.php:237
 msgid "for showing all files of this directory on a map"
-msgstr ""
+msgstr "per mostrare tutti i file di questa directory su una mappa"
 
 #: php/overview-map.php:30
 #, php-format
@@ -884,6 +887,8 @@ msgid ""
 "gpx and kml are similar to geojson, so you can also use %s there. But it is "
 "not that easy to find relevant features."
 msgstr ""
+"gpx e kml sono simili a geojson, quindi puoi usare anche %s lì. Ma non è "
+"così facile trovare caratteristiche rilevanti."
 
 #: admin/featuregroup.php:252
 msgid "Group Control"
@@ -903,7 +908,7 @@ msgstr ""
 
 #: php/elevation.php:141
 msgid "Height of the chart"
-msgstr ""
+msgstr "Altezza del grafico"
 
 #: admin.php:161
 msgid "Help"
@@ -935,23 +940,23 @@ msgstr ""
 
 #: admin/elevation/elevation.php:307
 msgid "hidden"
-msgstr ""
+msgstr "nascosto"
 
 #: admin/help.php:129 admin/marker/main.php:50
 msgid "Hide Markers"
-msgstr ""
+msgstr "Nascondi i marker"
 
 #: php/multielevation.php:40
 msgid "Highlight color"
-msgstr ""
+msgstr "Colore evidenziato"
 
 #: admin/hover/main.php:19
 msgid "hover"
-msgstr ""
+msgstr "passa il mouse"
 
 #: admin/hover/hover.php:100
 msgid "hover only for geojsons, gpx, kml:"
-msgstr ""
+msgstr "reagire al puntatore del mouse solo se geojson, gpx, kml:"
 
 #: admin/help.php:219
 msgid "Hovering"
@@ -967,7 +972,7 @@ msgstr ""
 
 #: admin/hover/main.php:23
 msgid "hoverlap"
-msgstr ""
+msgstr "hoverlap"
 
 #: php/hover.php:146
 #, php-format
@@ -989,7 +994,7 @@ msgstr ""
 #. URI of the plugin
 #. Author URI of the plugin
 msgid "https://leafext.de/en/"
-msgstr ""
+msgstr "https://leafext.de/en/"
 
 #. Author of the plugin
 msgid "hupe13"
@@ -997,7 +1002,7 @@ msgstr ""
 
 #: admin/hover/hoverlap.php:61
 msgid "I am glad about (code-)suggestions."
-msgstr ""
+msgstr "Sono contento dei suggerimenti (sul codice)."
 
 #: admin/tiles/providers.php:113
 msgid ""
@@ -1073,6 +1078,8 @@ msgid ""
 "If %s is disabled, you can't see all charts at the same time (except at the "
 "beginning)."
 msgstr ""
+"Se %s è disabilitato, non puoi vedere tutti i grafici contemporaneamente "
+"(tranne all'inizio)."
 
 #: admin/gesture.php:120
 #, php-format
@@ -1085,13 +1092,15 @@ msgstr ""
 
 #: php/elevation.php:153
 msgid "If (!detached) width of the chart"
-msgstr ""
+msgstr "Se (!detached) larghezza del grafico"
 
 #: admin/marker/hidemarkers.php:13
 msgid ""
 "If a GPX track loaded with leaflet-gpx contains waypoints that you do not "
 "want to display"
 msgstr ""
+"Se una traccia GPX caricata con leaflet-gpx contiene waypoint che non "
+"desideri visualizzare"
 
 #: admin/elevation/multielevation.php:222
 msgid "If it is false, an attempt is made to read the trackname from the file."
@@ -1179,6 +1188,8 @@ msgid ""
 "If you need more special characters than %s for your waypoints, please ask "
 "in the forum."
 msgstr ""
+"Se hai bisogno di più caratteri speciali di %s per i tuoi waypoint, chiedi "
+"nel forum."
 
 #: admin/elevation/multielevation.php:231
 #, php-format
@@ -1253,137 +1264,137 @@ msgstr ""
 #: js/elevation.js:120
 msgctxt "In Frontend"
 msgid "Acceleration"
-msgstr "Acceleration"
+msgstr "Accelerazione"
 
 #: js/elevation.js:121
 msgctxt "In Frontend"
 msgid "Altitude"
-msgstr "Altitud"
+msgstr "Quota"
 
 #: js/elevation.js:139
 msgctxt "In Frontend"
 msgid "Avg Acceleration"
-msgstr "Medelvärde acceleration"
+msgstr "Accelerazione Media"
 
 #: js/elevation.js:128
 msgctxt "In Frontend"
 msgid "Avg Elevation"
-msgstr "Medelvärde elevation"
+msgstr "Quota Media"
 
 #: js/elevation.js:143
 msgctxt "In Frontend"
 msgid "Avg Pace"
-msgstr "Genomsnittligt tempo"
+msgstr "Ritmo Medio"
 
 #: js/elevation.js:133
 msgctxt "In Frontend"
 msgid "Avg Slope"
-msgstr "Genomsnittlig lutning"
+msgstr "Pendenza Media"
 
 #: js/elevation.js:136
 msgctxt "In Frontend"
 msgid "Avg Speed"
-msgstr "Medelvärde hastighet"
+msgstr "Velocità Media"
 
 #: js/elevation.js:144
 msgctxt "In Frontend"
 msgid "Download"
-msgstr "Ladda ned"
+msgstr "Scarica"
 
 #: js/elevation.js:145
 msgctxt "In Frontend"
 msgid "Elevation"
-msgstr "Elevation"
+msgstr "Altimetria"
 
 #: js/elevation.js:138
 msgctxt "In Frontend"
 msgid "Max Acceleration"
-msgstr "Max acceleration"
+msgstr "Accelerazione Massima"
 
 #: js/elevation.js:126
 msgctxt "In Frontend"
 msgid "Max Elevation"
-msgstr "Max elevation"
+msgstr "Quota Massima"
 
 #: js/elevation.js:142
 msgctxt "In Frontend"
 msgid "Max Pace"
-msgstr "Max tempo"
+msgstr "Ritmo Massimo"
 
 #: js/elevation.js:132
 msgctxt "In Frontend"
 msgid "Max Slope"
-msgstr "Max lutning"
+msgstr "Pendenza Massima"
 
 #: js/elevation.js:135
 msgctxt "In Frontend"
 msgid "Max Speed"
-msgstr "Max hastighet"
+msgstr "Velocità Massima"
 
 #: js/elevation.js:137
 msgctxt "In Frontend"
 msgid "Min Acceleration"
-msgstr "Min acceleration"
+msgstr "Accelerazione Minima"
 
 #: js/elevation.js:127
 msgctxt "In Frontend"
 msgid "Min Elevation"
-msgstr "Min elevation"
+msgstr "Quota Minima"
 
 #: js/elevation.js:141
 msgctxt "In Frontend"
 msgid "Min Pace"
-msgstr "Min tempo"
+msgstr "Ritmo Minimo"
 
 #: js/elevation.js:131
 msgctxt "In Frontend"
 msgid "Min Slope"
-msgstr "Min lutning"
+msgstr "Pendenza Minima"
 
 #: js/elevation.js:134
 msgctxt "In Frontend"
 msgid "Min Speed"
-msgstr "Min hastighet"
+msgstr "Velocità Minima"
 
 #: js/elevation.js:140
 msgctxt "In Frontend"
 msgid "Pace"
-msgstr "Tempo"
+msgstr ""
 
 #: js/elevation.js:122
 msgctxt "In Frontend"
 msgid "Slope"
-msgstr "Lutning"
+msgstr "Pendenza"
 
 #: js/elevation.js:123
 msgctxt "In Frontend"
 msgid "Speed"
-msgstr "Hastighet"
+msgstr "Velocità"
 
 #: js/elevation.js:129
 msgctxt "In Frontend"
 msgid "Total Ascent"
-msgstr "Total stigning"
+msgstr "Totale Salita"
 
 #: js/elevation.js:130
 msgctxt "In Frontend"
 msgid "Total Descent"
-msgstr "Total nedstigning"
+msgstr "Totale Discesa"
 
 #: js/elevation.js:125
 msgctxt "In Frontend"
 msgid "Total Length"
-msgstr "Total sträcka"
+msgstr "Totale Lunghezza"
 
 #: js/elevation.js:124
 msgctxt "In Frontend"
 msgid "Total Time"
-msgstr "Total tid"
+msgstr "Totale Tempo"
 
 #: js/elevation.js:147
 msgctxt "In Frontend: Abbreviation for acceleration in the chart"
 msgid "a"
-msgstr "a"
+msgstr ""
 
 #: js/elevation.js:156
 msgctxt "In Frontend: Abbreviation for altitude in the chart"
@@ -1393,7 +1404,7 @@ msgstr "y"
 #: js/elevation.js:148
 msgctxt "In Frontend: Abbreviation for cadence in the chart"
 msgid "cad"
-msgstr "kad"
+msgstr ""
 
 #: js/elevation.js:153
 msgctxt "In Frontend: Abbreviation for duration in the chart"
@@ -1403,7 +1414,7 @@ msgstr "T"
 #: js/elevation.js:149
 msgctxt "In Frontend: Abbreviation for heart rate in the chart"
 msgid "hr"
-msgstr "hr"
+msgstr ""
 
 #: js/elevation.js:155
 msgctxt "In Frontend: Abbreviation for length in the chart"
@@ -1413,12 +1424,12 @@ msgstr "x"
 #: js/elevation.js:151
 msgctxt "In Frontend: Abbreviation for pace in the chart"
 msgid "pace"
-msgstr "tempo"
+msgstr "ritmo"
 
 #: js/elevation.js:150
 msgctxt "In Frontend: Abbreviation for slope in the chart"
 msgid "m"
-msgstr "m"
+msgstr ""
 
 #: js/elevation.js:154
 msgctxt "In Frontend: Abbreviation for speed in the chart"
@@ -1428,7 +1439,7 @@ msgstr "v"
 #: js/elevation.js:152
 msgctxt "In Frontend: Abbreviation for time in the chart"
 msgid "t"
-msgstr "t"
+msgstr ""
 
 #: admin/elevation/owntheme.php:149
 msgid "In your elevation.css put the styles like the theme styles in"
@@ -1440,7 +1451,7 @@ msgstr ""
 
 #: admin/elevation/elevation.php:228
 msgid "Information display"
-msgstr ""
+msgstr "Informazioni da visualizzare"
 
 #: admin/zoomhome.php:42 admin/zoomhome.php:84 admin/zoomhome.php:112
 msgid "initial state of the map"
@@ -1467,7 +1478,7 @@ msgstr ""
 
 #: admin/elevation/waypoints.php:147
 msgid "Introduction"
-msgstr ""
+msgstr "Introduzione"
 
 #: admin/gesture.php:130
 msgid "is"
@@ -1527,7 +1538,7 @@ msgstr ""
 
 #: admin/filemgr/managefiles-functions.php:250
 msgid "It works with gpx and kml files."
-msgstr ""
+msgstr "Funziona con i file gpx e kml."
 
 #: admin/marker/targetmarker.php:17
 msgid ""
@@ -1544,11 +1555,11 @@ msgstr ""
 
 #: php/elevation.php:352
 msgid "Labels degrees"
-msgstr ""
+msgstr "Gradi delle etichette"
 
 #: php/extramarker.php:16
 msgid "Latitude"
-msgstr ""
+msgstr "Latitudine"
 
 #: admin/marker/targetmarker.php:48
 msgid "Latitude and Longitude taken from URL parameters, e.g."
@@ -1576,7 +1587,7 @@ msgstr ""
 
 #: php/elevation.php:63
 msgid "linearGradient"
-msgstr ""
+msgstr "linearGradient"
 
 #: admin/filemgr/main.php:31
 msgid "List Files"
@@ -1584,7 +1595,7 @@ msgstr ""
 
 #: admin/filemgr/filemgr.php:226
 msgid "List files"
-msgstr ""
+msgstr "Elenca file"
 
 #: admin/filemgr/managefiles-functions.php:74
 msgid "Listing - page"
@@ -1610,7 +1621,7 @@ msgstr ""
 
 #: php/extramarker.php:22
 msgid "Longitude"
-msgstr ""
+msgstr "Longitudine"
 
 #: admin/help.php:315
 msgid "Makes multiple tile layers transparent."
@@ -1656,7 +1667,7 @@ msgstr ""
 
 #: admin/elevation/elevation.php:211
 msgid "Markers and Waypoints"
-msgstr ""
+msgstr "Marker e Waypoint"
 
 #: admin/featuregroup.php:78
 msgid "Meaningful options may be:"
@@ -1676,15 +1687,15 @@ msgstr ""
 
 #: admin/elevation/sgpx.php:128
 msgid "Migration"
-msgstr "Migration"
+msgstr ""
 
 #: admin/help.php:42
 msgid "Migration from"
-msgstr "Migration från"
+msgstr ""
 
 #: php/elevation.php:519
 msgid "miles or kilometers"
-msgstr "miles eller kilometer"
+msgstr ""
 
 #: admin/help.php:107
 msgid "More for Markers"
@@ -1749,7 +1760,7 @@ msgstr ""
 #: admin/elevation/elevation.php:316 admin/elevation/elevation.php:317
 #: admin/elevation/elevation.php:318 admin/elevation/elevation.php:319
 msgid "no"
-msgstr ""
+msgstr "no"
 
 #: php/sgpx.php:148
 #, php-format
@@ -1797,7 +1808,7 @@ msgstr ""
 #: admin/elevation/elevation.php:150 admin/marker/clustergroup.php:18
 #: admin/marker/clustergroup.php:31
 msgid "Note"
-msgstr "Notera"
+msgstr ""
 
 #: php/elevation.php:75
 msgid "nothing"
@@ -1805,7 +1816,7 @@ msgstr ""
 
 #: admin/hover/hover.php:81
 msgid "Nothing happens."
-msgstr ""
+msgstr "Non succede niente."
 
 #: php/hover.php:94
 msgid "nothing or a string like the popup content for geojsons"
@@ -1813,7 +1824,7 @@ msgstr ""
 
 #: php/elevation.php:89 php/elevation.php:100
 msgid "number"
-msgstr ""
+msgstr "numero"
 
 #: php/choropleth.php:27
 msgid "number of breaks or steps in range"
@@ -1945,15 +1956,15 @@ msgstr ""
 
 #: admin/elevation/elevation.php:336
 msgid "Others"
-msgstr ""
+msgstr "Altri"
 
 #: admin.php:204 admin/help.php:109 admin/overview-map.php:15
 msgid "Overview Map"
-msgstr ""
+msgstr "Mappa Panoramica"
 
 #: php/elevation.php:473 php/elevation.php:682
 msgid "Pace profile - time per distance"
-msgstr ""
+msgstr "Profilo ritmo: tempo per distanza"
 
 #: admin/tiles/help.php:33
 #, php-format
@@ -2214,7 +2225,7 @@ msgstr ""
 
 #: admin/elevation/elevation.php:259
 msgid "Setting"
-msgstr ""
+msgstr "Impostazione"
 
 #: admin/elevation/waypoints.php:255 admin/filemgr/filemgr-settings.php:46
 #: admin/tiles/layerswitch.php:136 admin/tiles/providers.php:121
@@ -2263,6 +2274,8 @@ msgid ""
 "show distance data in graph and summary / show distance data in summary only "
 "/ don't show distance data"
 msgstr ""
+"mostra i dati sulla distanza nel grafico e nel riepilogo/mostra i dati sulla "
+"distanza solo nel riepilogo/non mostrare i dati sulla distanza"
 
 #: admin/filemgr/filemgr.php:16
 msgid "Show files of type"
@@ -2293,6 +2306,8 @@ msgstr ""
 #: admin/hover/hover.php:80
 msgid "Show tooltip and change style on hover."
 msgstr ""
+"Mostra la descrizione del comando e cambia stile al passaggio del puntatore "
+"del mouse"
 
 #: php/hover.php:16
 #, php-format
@@ -2301,7 +2316,7 @@ msgstr ""
 
 #: admin/hover/hover.php:82
 msgid "Show tooltip on hover."
-msgstr ""
+msgstr "Mostra la descrizione del comando al passaggio del puntatore del mouse"
 
 #: admin/hover/hover.php:101
 msgid "show tooltips on hover:"
@@ -2311,6 +2326,8 @@ msgstr ""
 msgid ""
 "Show waypoint labels in map and in chart / only in map / only in chart / none"
 msgstr ""
+"Mostra le etichette dei waypoint sulla mappa e sul grafico / solo sulla "
+"mappa / solo sul grafico / nessuna"
 
 #: admin/help.php:363
 msgid "Simple plugin for Leaflet that adds fullscreen button to your maps."
@@ -2322,7 +2339,7 @@ msgstr ""
 
 #: php/elevation.php:450 php/elevation.php:676
 msgid "Slope chart profile"
-msgstr "Diagram höjdprofil"
+msgstr ""
 
 #: admin/hover/hover.php:98
 msgid "So can you write:"
@@ -2348,7 +2365,7 @@ msgstr ""
 
 #: php/elevation.php:462 php/elevation.php:664
 msgid "Speed chart profile"
-msgstr "Diagram hastighetsprofil"
+msgstr ""
 
 #: php/placementstrategies.php:18
 msgid "Strategy for placing markers in cluster"
@@ -2368,7 +2385,7 @@ msgstr ""
 
 #: php/multielevation.php:24 admin/elevation/elevation.php:263
 msgid "Summary"
-msgstr "Sammanfattning"
+msgstr ""
 
 #: php/elevation.php:409
 msgid "Summary track info style"
@@ -2380,7 +2397,7 @@ msgstr ""
 
 #: php/elevation.php:213
 msgid "Switch Track on and off"
-msgstr ""
+msgstr "Attiva e disattiva la traccia"
 
 #: admin.php:194 admin/help.php:161
 msgid "Switching Tile Servers"
@@ -2416,7 +2433,7 @@ msgstr ""
 
 #: php/multielevation.php:41
 msgid "The active track is displayed in this color."
-msgstr ""
+msgstr "La traccia attiva viene visualizzata con questo colore."
 
 #: admin/overview-map.php:27
 msgid ""
@@ -2561,7 +2578,7 @@ msgstr ""
 
 #: admin/hover/hover.php:22
 msgid "The tooltip content is the same as the popup content."
-msgstr ""
+msgstr "I contenuti della descrizione del comando e del popup sono identici"
 
 #: admin/hover/hover.php:112
 #, php-format
@@ -2576,11 +2593,11 @@ msgstr ""
 
 #: admin/elevation/waypoints.php:150
 msgid "the waypoint in the track file,"
-msgstr ""
+msgstr "il waypoint nel file traccia"
 
 #: admin/elevation/main.php:26
 msgid "Theme / Colors"
-msgstr ""
+msgstr "Tema / Colori"
 
 #: php/elevation.php:20
 msgid "Theme Colors"
@@ -2622,6 +2639,8 @@ msgid ""
 "To change the display of waypoints in the elevation profile, 3 things are "
 "important:"
 msgstr ""
+"Per modificare la visualizzazione dei waypoint nel profilo altimetrico, sono "
+"importanti 3 cose:"
 
 #: admin/hover/hover.php:26
 #, php-format
@@ -2633,6 +2652,7 @@ msgstr ""
 #, php-format
 msgid "To manage your tracks now, you can use %1$sFiles for Leaflet Map%2$s."
 msgstr ""
+"Per gestire ora i tuoi percorsi, puoi utilizzare %sFiles for Leaflet Map%s."
 
 #: admin/marker/markercluster.php:148
 msgid "To reset all values to their defaults, simply click the Reset button"
@@ -2652,7 +2672,7 @@ msgstr ""
 
 #: php/elevation.php:165
 msgid "Toggle chart"
-msgstr ""
+msgstr "Attiva/disattiva il grafico"
 
 #: php/elevation.php:108
 msgid "Toggle chart legend filter."
@@ -2680,11 +2700,11 @@ msgstr ""
 
 #: admin/elevation/elevation.php:262
 msgid "Tooltip display"
-msgstr ""
+msgstr "Visualizza la descrizione del comando"
 
 #: php/elevation.php:688
 msgid "Track color"
-msgstr ""
+msgstr "Colore della traccia"
 
 #: php/elevation.php:694
 msgid "Track color over the ruler filter"
@@ -2692,7 +2712,7 @@ msgstr ""
 
 #: php/elevation.php:48
 msgid "Track colors according to the values of elevation"
-msgstr ""
+msgstr "Colori della traccia in base ai valori di elevazione"
 
 #: php/elevation.php:231
 msgid "track control collapsed"
@@ -2700,7 +2720,7 @@ msgstr ""
 
 #: admin/filemgr/managefiles-functions.php:149
 msgid "track in multielevation<sup>1,2</sup>"
-msgstr ""
+msgstr "traccia in multielevation<sup>1,2</sup>"
 
 #: admin/help.php:16
 msgid "Track with an elevation profile"
@@ -2709,7 +2729,7 @@ msgstr ""
 #: admin/help.php:251 admin/filemgr/leaflet-directory.php:12
 #: admin/filemgr/main.php:35
 msgid "Tracks from all files in a directory"
-msgstr ""
+msgstr "Tracce da tutti i file in una directory"
 
 #: admin/elevation/elevation.php:137
 msgid "Translation"
@@ -2721,11 +2741,11 @@ msgstr ""
 
 #: admin/filemgr/filemgr-settings.php:16
 msgid "Types"
-msgstr ""
+msgstr "Tipi"
 
 #: admin/filemgr/filemgr-settings.php:23
 msgid "Upload gpx files into the directory"
-msgstr ""
+msgstr "Carica i file GPX nella directory"
 
 #: admin/filemgr/leaflet-directory.php:21
 msgid "url to directory, default: URL from upload directory."
@@ -2801,7 +2821,7 @@ msgstr ""
 
 #: php/elevation.php:353
 msgid "Waypoint labels rotation (degrees) in chart"
-msgstr ""
+msgstr "Rotazione delle etichette dei waypoint (in gradi) nel grafico"
 
 #: admin/elevation/waypoints.php:176
 msgid "Waypoint specified in file"
@@ -2878,11 +2898,11 @@ msgstr ""
 
 #: php/elevation.php:85
 msgid "y Axis Max"
-msgstr ""
+msgstr "max Asse y"
 
 #: php/elevation.php:96
 msgid "y Axis Min"
-msgstr ""
+msgstr "min Asse y"
 
 #: admin/deleting.php:31 admin/elevation/elevation.php:290
 #: admin/elevation/elevation.php:291 admin/elevation/elevation.php:293
@@ -2891,7 +2911,7 @@ msgstr ""
 #: admin/elevation/elevation.php:310 admin/elevation/elevation.php:311
 #: admin/elevation/elevation.php:312
 msgid "yes"
-msgstr ""
+msgstr "sì"
 
 #: php/sgpx.php:186
 msgid ""
@@ -2904,11 +2924,13 @@ msgid ""
 "You are using the sgpx shortcode from plugin wp-gpx-maps. wp-gpx-maps and "
 "leaflet-map don't work together."
 msgstr ""
+"Stai utilizzando lo shortcode sgpx dal plugin wp-gpx-maps. wp-gpx-maps e "
+"leaflet-map non funzionano insieme."
 
 #: php/elevation.php:112
 #, php-format
 msgid "You can always toggle the charts individually by clicking on %s."
-msgstr ""
+msgstr "Puoi sempre attivare i grafici individualmente facendo clic su %s."
 
 #: admin/elevation/elevation.php:40 admin/hover/settings.php:49
 #: admin/marker/markercluster.php:53 admin/marker/placementstrategies.php:56
@@ -2928,6 +2950,8 @@ msgid ""
 "You can display all gpx, kml, geojson, json and tcx files in subdirectories "
 "of uploads directory."
 msgstr ""
+"È possibile visualizzare tutti i file gpx, kml, geojson, json e tcx nelle "
+"sottodirectory della directory dei caricamenti."
 
 #: admin/gesture.php:99
 msgid "You can enable it for all maps or for individual maps."
@@ -2947,6 +2971,8 @@ msgid ""
 "You can of course use %1$s and define waypoints with additional %2$s and "
 "%3$s shortcodes."
 msgstr ""
+"Ovviamente puoi usare %s e definire waypoint con ulteriori shortcodes %s e "
+"%s."
 
 #: admin/tiles/layerswitch.php:127
 msgid ""
@@ -3017,12 +3043,10 @@ msgid ""
 "You have wp-gpx-maps uninstalled, but some of its options exist in the "
 "database. You should delete them."
 msgstr ""
-"Du har avinstallerat wp-gpx-maps, men en del inställningar finns kvar i "
-"databasen. Du bör ta bort dem."
 
 #: admin/help.php:473
 msgid "You may be interested in"
-msgstr "Måhända är du intresserad av"
+msgstr ""
 
 #: admin/gesture.php:126
 #, php-format
@@ -3036,7 +3060,7 @@ msgstr ""
 #: admin/elevation/elevation.php:270 admin/elevation/elevation.php:275
 #: admin/elevation/elevation.php:281 admin/elevation/elevation.php:286
 msgid "Your setting:"
-msgstr ""
+msgstr "La tua impostazione:"
 
 #: admin/elevation/owncolors.php:108
 msgid "Your theme is the"

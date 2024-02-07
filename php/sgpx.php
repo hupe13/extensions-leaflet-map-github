@@ -34,7 +34,7 @@ define( 'LEAFEXT_SGPX_SGPX', $sgpx_opts );
 // Erstmal alles von wp-gpx-map entfernen
 if ( LEAFEXT_SGPX_ACTIVE ) {
 	function leafext_dequeue_sgpx() {
-				wp_dequeue_script( 'chartjs' );
+		wp_dequeue_script( 'chartjs' );
 		wp_dequeue_script( 'jquery' );
 		wp_dequeue_script( 'leaflet.fullscreen' );
 		wp_dequeue_script( 'leaflet.markercluster' );

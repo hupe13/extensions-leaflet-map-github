@@ -1,6 +1,9 @@
 # Differences to the WordPress Repository version
 
-* Nothing
+* small bugs in leaflet-extramarker and geojsonmarker
+* documentation
+* update turf
+* elevation italian language
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
