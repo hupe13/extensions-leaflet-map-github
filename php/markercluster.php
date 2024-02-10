@@ -86,9 +86,12 @@ function leafext_cluster_script( $params ) {
 	?>/*<script>*/
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
-		// console.log(<?php echo wp_json_encode( $params ); ?>);
-		let cloptions = <?php echo wp_json_encode( $params ); ?>;
-		leafext_markercluster_js(cloptions);
+		var clmarkers               = L.markerClusterGroup(
+			{
+				<?php echo leafext_java_params( $params ); ?>
+			}
+		);
+		leafext_markercluster_js(clmarkers);
 	});
 	<?php
 	$javascript = ob_get_clean();

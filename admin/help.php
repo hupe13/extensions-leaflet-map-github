@@ -461,7 +461,7 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 		}
 	}
 	$text = $text . '</ul>';
-	$text = $text . '<h3>' . __( 'Helpers', 'extensions-leaflet-map' ) . '</h3>';
+	$text = $text . '<h3>' . __( 'Helper Plugins', 'extensions-leaflet-map' ) . '</h3>';
 	$text = $text . '<ul>';
 	foreach ( $plugins as $plugin ) {
 		if ( $plugin['shortcode'] == '' ) {

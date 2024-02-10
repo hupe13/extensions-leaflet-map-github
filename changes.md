@@ -1,6 +1,7 @@
 # Differences to the WordPress Repository version
 
 * small bugs in leaflet-extramarker and geojsonmarker
+* bug in cluster
 * documentation
 * update turf
 * elevation italian language

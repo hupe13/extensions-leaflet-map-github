@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, elevation, markercluster, Leaflet Plugins   
 Tested up to: 6.4  
-Stable tag: 4.0     
+Stable tag: 4.1     
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later
@@ -177,13 +177,13 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.0 /240126
+### 4.1 /2402xx
 
-* WordPress Coding Standards (see [readme-wpcs.md](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/readme-wpcs.md))
-* new shortcode parentgroup for nested groups from leaflet-optiongroup and -featuregroup
-* new shortcode targetmarker - Jump to a position in a map with many markers and get the nearest marker
-* try to fix problems with Elementor
-* new version leaflet.fullscreen
+* small bugs in leaflet-extramarker and geojsonmarker
+* bug in cluster
+* documentation
+* update turf
+* elevation italian language
 
 ### Previous
 
