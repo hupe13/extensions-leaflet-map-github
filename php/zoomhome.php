@@ -43,16 +43,16 @@ function leafext_zoomhome_function( $atts, $content, $shortcode ) {
 	} else {
 		leafext_enqueue_zoomhome();
 		leafext_enqueue_leafext( 'zoomhome', 'zoomhome' );
-				$defaults = array(
-					'fit'      => 1,
-					'position' => 'topleft',
-				);
-				$atts1    = leafext_clear_params( $atts );
-				$params   = shortcode_atts( $defaults, $atts1 );
-				if ( ! leafext_check_position_control( $params['position'] ) ) {
-					$params['position'] = 'topleft';
-				}
-				return leafext_zoomhome_script( $params );
+		$defaults = array(
+			'fit'      => 1,
+			'position' => 'topleft',
+		);
+		$atts1    = leafext_clear_params( $atts );
+		$params   = shortcode_atts( $defaults, $atts1 );
+		if ( ! leafext_check_position_control( $params['position'] ) ) {
+			$params['position'] = 'topleft';
+		}
+		return leafext_zoomhome_script( $params );
 	}
 }
 add_shortcode( 'zoomhomemap', 'leafext_zoomhome_function' );

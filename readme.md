@@ -179,11 +179,11 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ### 4.1 /2402xx
 
-* small bugs in leaflet-extramarker and geojsonmarker
-* bug in cluster
+* fixed small bugs in leaflet-extramarker and geojsonmarker
+* fixed bug in cluster
 * documentation
 * update turf
-* elevation italian language
+* elevation: italian translation
 
 ### Previous
 

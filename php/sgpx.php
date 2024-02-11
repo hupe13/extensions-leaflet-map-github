@@ -58,7 +58,7 @@ if ( LEAFEXT_SGPX_ACTIVE ) {
 		wp_deregister_style( 'leaflet.Photo' );
 		wp_deregister_style( 'leaflet' );
 		wp_deregister_style( 'output-style' );
-				unload_textdomain( 'wp-gpx-maps' );
+		unload_textdomain( 'wp-gpx-maps' );
 	}
 	add_action( 'wp_enqueue_scripts', 'leafext_dequeue_sgpx', 100 );
 
@@ -218,7 +218,7 @@ function leafext_sgpx_function( $atts, $content, $shortcode ) {
 					$maptext = $maptext . ' ' . $k . '=' . $v . ' ';
 				}
 			}
-						$eleele = array();
+			$eleele = array();
 
 			$eleele['waypoints']    = isset( $atts['waypoints'] ) ? $atts['waypoints'] : '';
 			$eleele['downloadLink'] = isset( $atts['download'] ) ? $atts['download'] : '';
