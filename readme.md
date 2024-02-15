@@ -182,7 +182,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 * fixed small bugs in leaflet-extramarker and geojsonmarker
 * fixed bug in cluster
 * documentation
-* update turf
+* update turf, JShrink
 * elevation: italian translation
 
 ### Previous

@@ -3,7 +3,7 @@
 * small bugs in leaflet-extramarker and geojsonmarker
 * bug in cluster
 * documentation
-* update turf
+* update turf, JShrink
 * elevation italian language
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
