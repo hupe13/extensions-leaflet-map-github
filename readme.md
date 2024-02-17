@@ -177,7 +177,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.1 /2402xx
+### 4.1 /240216
 
 * fixed small bugs in leaflet-extramarker and geojsonmarker
 * fixed bug in cluster
