@@ -1,4 +1,4 @@
-# Extensions for Leaflet Map Github Version
+=== Extensions for Leaflet Map Github Version ===
 
 Contributors: hupe13
 Tags: leaflet, elevation, markercluster, Leaflet Plugins
@@ -12,7 +12,7 @@ This is the Github Version.
 
 [Differences](changes.md) to the <a href="https://wordpress.org/plugins/extensions-leaflet-map/">WordPress version</a>.
 
-## Description
+== Description ==
 
 Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
 
