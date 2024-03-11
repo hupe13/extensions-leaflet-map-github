@@ -131,18 +131,18 @@ if ( is_admin() && leafext_is_github() ) {
 			$token = '';
 		}
 		if ( false === $perm_denied || ( false !== $perm_denied && $token !== '' ) ) {
-			$my_update_checker = PucFactory::buildUpdateChecker(
+			$github_update_checker = PucFactory::buildUpdateChecker(
 				'https://github.com/hupe13/extensions-leaflet-map-github/',
 				__FILE__,
 				LEAFEXT_PLUGIN_SETTINGS
 			);
 
 			// Set the branch that contains the stable release.
-			$my_update_checker->setBranch( 'main' );
+			$github_update_checker->setBranch( 'main' );
 
 			if ( $token !== '' ) {
 				// Optional: If you're using a private repository, specify the access token like this:
-				$my_update_checker->setAuthentication( $token );
+				$github_update_checker->setAuthentication( $token );
 			}
 
 			function leafext_github_puc_error( $error, $response = null, $url = null, $slug = null ) {
