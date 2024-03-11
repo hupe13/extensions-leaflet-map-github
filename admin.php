@@ -80,6 +80,7 @@ function leafext_do_page() {
 			echo '</form>';
 		}
 		if ( leafext_is_github() ) {
+			echo '<p>Updates do not work yet.</p>';
 			if ( is_main_site() ) {
 				echo '<form method="post" action="options.php">';
 				settings_fields( 'leafext_settings_updating' );
