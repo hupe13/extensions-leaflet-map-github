@@ -6,7 +6,7 @@
  * Primary Branch:    main
  * Description:       Extensions for the WordPress plugin Leaflet Map Github Version
  * Requires Plugins:  leaflet-map
- * Version:           4.1-2402xx
+ * Version:           4.1-240311
  * Requires PHP:      7.4
  * Author:            hupe13
  * Author URI:        https://leafext.de/en/
