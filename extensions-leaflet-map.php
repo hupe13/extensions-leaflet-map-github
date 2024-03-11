@@ -5,7 +5,8 @@
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
  * Primary Branch:    main
  * Description:       Extensions for the WordPress plugin Leaflet Map Github Version
- * Version:           4.1-240217
+ * Requires Plugins:  leaflet-map
+ * Version:           4.1-2402xx
  * Requires PHP:      7.4
  * Author:            hupe13
  * Author URI:        https://leafext.de/en/
@@ -26,7 +27,7 @@ define( 'LEAFEXT_PLUGIN_SETTINGS', dirname( plugin_basename( __FILE__ ) ) ); // 
 
 function leafext_plugin_init() {
 	if ( is_admin() ) {
-		if ( ! defined( 'LEAFLET_MAP__PLUGIN_DIR' ) ) {
+		if ( ! defined( 'LEAFLET_MAP__PLUGIN_DIR' ) && ! is_main_site() ) {
 			function leafext_require_leaflet_map_plugin() {
 				echo '<div class="notice notice-error" ><p> ';
 				printf(
@@ -103,3 +104,57 @@ function leafext_extra_textdomain() {
 	}
 }
 add_action( 'plugins_loaded', 'leafext_extra_textdomain' );
+
+function leafext_is_github() {
+	$local = get_file_data(
+		LEAFEXT_PLUGIN_DIR . 'extensions-leaflet-map.php',
+		array(
+			'Title' => 'Plugin Name',
+		)
+	);
+	if ( strpos( $local['Title'], 'Github' ) !== false ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+if ( is_admin() && leafext_is_github() ) {
+	if ( is_main_site() ) {
+		require_once LEAFEXT_PLUGIN_DIR . '/pkg/plugin-update-checker/plugin-update-checker.php';
+		$perm_denied = get_transient( 'leafext_github_403' );
+		$setting     = get_option( 'leafext_updating', array( 'token' => '' ) );
+		if ( $setting && isset( $setting['token'] ) && $setting['token'] !== '' ) {
+			$token = $setting['token'];
+		} else {
+			$token = '';
+		}
+		if ( false === $perm_denied || ( false !== $perm_denied && $token !== '' ) ) {
+			$my_update_checker = PucFactory::buildUpdateChecker(
+				'https://github.com/hupe13/extensions-leaflet-map-github/',
+				__FILE__,
+				LEAFEXT_PLUGIN_SETTINGS
+			);
+
+			// Set the branch that contains the stable release.
+			$my_update_checker->setBranch( 'main' );
+
+			if ( $token !== '' ) {
+				// Optional: If you're using a private repository, specify the access token like this:
+				$my_update_checker->setAuthentication( $token );
+			}
+
+			function leafext_github_puc_error( $error, $response = null, $url = null, $slug = null ) {
+				if ( isset( $slug ) && $slug !== LEAFEXT_PLUGIN_SETTINGS ) {
+					return;
+				}
+				if ( wp_remote_retrieve_response_code( $response ) === 403 ) {
+					// var_dump("Permission denied");
+					set_transient( 'leafext_github_403', true, DAY_IN_SECONDS );
+				}
+			}
+			add_action( 'puc_api_error', 'leafext_github_puc_error', 10, 4 );
+		}
+	}
+}

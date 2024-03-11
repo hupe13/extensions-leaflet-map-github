@@ -170,7 +170,7 @@ function leafext_markercluster_help_text() {
 		}
 	}
 	if ( is_singular() || is_archive() ) {
-		$text = $text . '<p>' . __( 'Please see the admin page for options.', 'extensions-leaflet-map' ) . '</p>';
+		$text = $text . '<h3>' . __( 'Options', 'extensions-leaflet-map' ) . '</h3>';
 		return $text;
 	} else {
 		echo $text . $textoptions;

@@ -277,7 +277,7 @@ function leafext_plugins() {
 	$plugins[] = array(
 		'name'      => 'Leaflet.i18n',
 		'desc'      => __( 'Internationalisation module for Leaflet plugins.', 'extensions-leaflet-map' ),
-		'link'      => 'https://github.com/yohanboniface/Leaflet.i18n',
+		'link'      => 'https://github.com/umap-project/Leaflet.i18n',
 		'shortcode' => '',
 	);
 	$plugins[] = array(
@@ -380,14 +380,55 @@ function leafext_plugins() {
 }
 
 function leafext_help_table( $leafext_plugin_name = '' ) {
-	$header     = '<h3>' .
+	$header = '<h3>' .
 	__( 'Found an issue? Do you have a question?', 'extensions-leaflet-map' ) . '</h3>
 	<p>' .
 	__( 'Post it to the support forum', 'extensions-leaflet-map' ) .
 	': <a href="https://wordpress.org/support/plugin/extensions-leaflet-map/" target="_blank">Extensions for Leaflet Map</a></p>';
-		$header = $header . '<h3>' .
+
+	$header .= '<h3>' .
 	__( 'Documentation', 'extensions-leaflet-map' ) . '</h3><p>';
-	$header     = $header .
+
+	if ( ! defined( 'LEAFEXT_DSGVO_PLUGIN_DIR' ) ) {
+		$header .= '<p>' . __( 'You may be interested in', 'extensions-leaflet-map' ) .
+		' <a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>.</p>';
+	} else {
+		$header .= '<p>' . __( 'Thank you for using', 'extensions-leaflet-map' ) .
+		' <a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>.';
+		if ( function_exists( 'leafext_dsgvo_meta_links' ) ) {
+			$update = leafext_dsgvo_meta_links( array(), LEAFEXT_DSGVO_PLUGIN_FILE );
+			if ( count( $update ) > 0 ) {
+				$header .= $update[0];
+			}
+		} else {
+			$header .= ' ' . __( 'It may be an update available.', 'extensions-leaflet-map' );
+		}
+		$header .= '</p>';
+	}
+
+	$local = get_file_data(
+		LEAFEXT_PLUGIN_DIR . 'extensions-leaflet-map.php',
+		array(
+			'Version' => 'Version',
+
+			'Title'   => 'Plugin Name',
+		)
+	);
+	if ( strpos( $local['Title'], 'Github' ) !== false ) {
+		//$update = leafext_plugin_meta_links( array(), LEAFEXT_PLUGIN_FILE );
+		$update = array();
+		if ( count( $update ) > 0 ) {
+			$header .= '<p>' . sprintf(
+				__( 'You are using %1s, there is an %2sUpdate available%3s', 'extensions-leaflet-map' ),
+				'Extensions for Leaflet Map Github',
+				'<a href="https://github.com/hupe13/extensions-leaflet-map-github"><span class="update-message notice inline notice-warning notice-alt">',
+				'</span></a>'
+			) .
+			'</p>';
+		}
+	}
+
+	$header = $header .
 	sprintf(
 		__(
 			'Detailed documentation and examples in %1$sGerman%2$s and %3$sEnglish%4$s',
@@ -398,7 +439,7 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 		'<a href="https://leafext.de/en/">',
 		'</a>'
 	);
-	$header     = $header . '.</p>';
+	$header = $header . '.</p>';
 
 	if ( is_singular() || is_archive() ) {
 		$style = '<style>td,th { border:1px solid #195b7a !important; }</style>';
@@ -448,37 +489,33 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 
 	$text = $text . '</tbody></table></figure></p>';
 
-	$text = $text .
-	'<h2 id="leaflet-plugins">' . __( 'Included and used Leaflet Plugins', 'extensions-leaflet-map' ) . '</h2>';
-	include_once LEAFEXT_PLUGIN_DIR . '../extensions-leaflet-map-github/admin/help.php';
-
-	$plugins = leafext_plugins();
-	$text    = $text . '<h3>Shortcodes</h3>';
-	$text    = $text . '<ul>';
-	foreach ( $plugins as $plugin ) {
-		if ( $plugin['shortcode'] != '' ) {
-			$text = $text . '<li><a href="' . $plugin['link'] . '">' . $plugin['name'] . '</a> - ' . $plugin['desc'] . ' (' . $plugin['shortcode'] . ')</li>';
-		}
-	}
-	$text = $text . '</ul>';
-	$text = $text . '<h3>' . __( 'Helper Plugins', 'extensions-leaflet-map' ) . '</h3>';
-	$text = $text . '<ul>';
-	foreach ( $plugins as $plugin ) {
-		if ( $plugin['shortcode'] == '' ) {
-			$text = $text . '<li><a href="' . $plugin['link'] . '">' . $plugin['name'] . '</a> - ' . $plugin['desc'] . '</li>';
-		}
-	}
-	$text = $text . '</ul>';
-
-	$ende = '<p>' . __( 'You may be interested in', 'extensions-leaflet-map' ) .
-	' <a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>.</p>';
-
 	if ( is_singular() || is_archive() ) {
-		return $style . $text;
+		$pluginstext =
+		'<h2 id="leaflet-plugins">' . __( 'Included and used Leaflet Plugins', 'extensions-leaflet-map' ) . '</h2>';
+
+		$plugins      = leafext_plugins();
+		$pluginstext .= '<h3>Shortcodes</h3>';
+		$pluginstext .= '<ul>';
+		foreach ( $plugins as $plugin ) {
+			if ( $plugin['shortcode'] != '' ) {
+				$pluginstext .= '<li><a href="' . $plugin['link'] . '">' . $plugin['name'] . '</a> - ' . $plugin['desc'] . ' (' . $plugin['shortcode'] . ')</li>';
+			}
+		}
+		$pluginstext .= '</ul>';
+		$pluginstext .= '<h3>' . __( 'Helper Plugins', 'extensions-leaflet-map' ) . '</h3>';
+		$pluginstext .= '<ul>';
+		foreach ( $plugins as $plugin ) {
+			if ( $plugin['shortcode'] == '' ) {
+				$pluginstext .= '<li><a href="' . $plugin['link'] . '">' . $plugin['name'] . '</a> - ' . $plugin['desc'] . '</li>';
+			}
+		}
+		$pluginstext .= '</ul>';
+
+		return $style . $text . $pluginstext;
 	} else {
 		leafext_escape_output( $header );
 		// phpcs:ignore
 		echo $style;
-		leafext_escape_output( $text . $ende );
+		leafext_escape_output( $text );
 	}
 }

@@ -15,6 +15,7 @@ require LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/tiles/main.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/filemgr/main.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/hover/main.php';
+require LEAFEXT_PLUGIN_DIR . '/admin/check-update.php';
 
 /**
  * Add menu page for admin
@@ -40,75 +41,10 @@ function leafext_do_page() {
 	$leafext_plugin_name = basename( __DIR__ );
 	$get                 = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
 	$active_tab          = isset( $get['tab'] ) ? $get['tab'] : 'help';
-	leafext_admin_tabs();
-	if ( strpos( $active_tab, 'elevation' ) !== false ) {
-		leafext_admin_elevation( $active_tab );
-	} elseif ( strpos( $active_tab, 'filemgr' ) !== false ) {
-		leafext_admin_filemgr( $active_tab );
-	} elseif ( strpos( $active_tab, 'marker' ) !== false ) {
-		leafext_admin_marker( $active_tab );
-	} elseif ( strpos( $active_tab, 'tiles' ) !== false ) {
-		leafext_admin_tiles( $active_tab );
-	} elseif ( strpos( $active_tab, 'hover' ) !== false ) {
-		leafext_admin_hover( $active_tab );
-	} elseif ( $active_tab == 'gesture' ) {
-		echo '<form method="post" action="options.php">';
-		settings_fields( 'leafext_settings_gesture' );
-		do_settings_sections( 'leafext_settings_gesture' );
-		wp_nonce_field( 'leafext_gesture', 'leafext_gesture_nonce' );
-		submit_button();
-		echo '</form>';
-	} elseif ( $active_tab == 'zoomhome' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/zoomhome.php';
-		leafext_zoomhome_help();
-	} elseif ( $active_tab == 'help' ) {
-		echo '<form method="post" action="options.php">';
-		settings_fields( 'leafext_settings_deleting' );
-		do_settings_sections( 'leafext_settings_deleting' );
-		wp_nonce_field( 'leafext_deleting', 'leafext_deleting_nonce' );
-		submit_button();
-		echo '</form>';
-		include LEAFEXT_PLUGIN_DIR . '/admin/help.php';
-		leafext_help_table( $leafext_plugin_name );
-	} elseif ( $active_tab == 'fullscreen' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/fullscreen.php';
-		leafext_help_fullscreen();
-	} elseif ( $active_tab == 'choropleth' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/choropleth.php';
-		leafext_choropleth_help();
-	} elseif ( $active_tab == 'featuregroup' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/featuregroup.php';
-	} elseif ( $active_tab == 'leafletsearch' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/leaflet-search.php';
-		leafext_leafletsearch_help();
-	} elseif ( $active_tab == 'overviewmap' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/overview-map.php';
-		leafext_overviewmap_help();
+
+	if ( is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
+		leafext_admin_tabs();
 	}
-}
-
-/**
- * Add Menu for others
- */
-function leafext_add_nonadmin_page() {
-	$leafext_plugin_name = basename( __DIR__ );
-	// Add Submenu.
-	$leafext_autor_page = add_submenu_page(
-		'leaflet-shortcode-helper',
-		'Extensions for Leaflet Map Options',
-		'Extensions for Leaflet Map',
-		'edit_posts',
-		$leafext_plugin_name,
-		'leafext_do_nonadmin_page'
-	);
-}
-add_action( 'admin_menu', 'leafext_add_nonadmin_page', 99 );
-
-function leafext_do_nonadmin_page() {
-	$leafext_plugin_name = basename( __DIR__ );
-	$get                 = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
-	$active_tab          = isset( $get['tab'] ) ? $get['tab'] : 'help';
-	leafext_admin_tabs();
 	if ( strpos( $active_tab, 'elevation' ) !== false ) {
 		leafext_admin_elevation( $active_tab );
 	} elseif ( strpos( $active_tab, 'filemgr' ) !== false ) {
@@ -120,16 +56,55 @@ function leafext_do_nonadmin_page() {
 	} elseif ( strpos( $active_tab, 'hover' ) !== false ) {
 		leafext_admin_hover( $active_tab );
 	} elseif ( $active_tab == 'gesture' ) {
-		echo '<form>';
+		echo '<form method="post" action="options.php">';
 		settings_fields( 'leafext_settings_gesture' );
 		do_settings_sections( 'leafext_settings_gesture' );
+		if ( current_user_can( 'manage_options' ) ) {
+			wp_nonce_field( 'leafext_gesture', 'leafext_gesture_nonce' );
+			submit_button();
+		}
 		echo '</form>';
 	} elseif ( $active_tab == 'zoomhome' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/zoomhome.php';
 		leafext_zoomhome_help();
 	} elseif ( $active_tab == 'help' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/help.php';
-		leafext_help_table( $leafext_plugin_name );
+		if ( is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
+			include LEAFEXT_PLUGIN_DIR . '/admin/help.php';
+			echo '<form method="post" action="options.php">';
+			settings_fields( 'leafext_settings_deleting' );
+			do_settings_sections( 'leafext_settings_deleting' );
+			if ( current_user_can( 'manage_options' ) ) {
+				wp_nonce_field( 'leafext_deleting', 'leafext_deleting_nonce' );
+				submit_button();
+			}
+			echo '</form>';
+		}
+		if ( leafext_is_github() ) {
+			if ( is_main_site() ) {
+				echo '<form method="post" action="options.php">';
+				settings_fields( 'leafext_settings_updating' );
+				do_settings_sections( 'leafext_settings_updating' );
+				if ( current_user_can( 'manage_options' ) ) {
+					wp_nonce_field( 'leafext_updating', 'leafext_updating_nonce' );
+					submit_button();
+				}
+				echo '</form>';
+			} else {
+				$main_site_id  = get_main_site_id();
+				$main_site_url = get_site_url( $main_site_id );
+				printf(
+					__(
+						'If you want to receive updates in WordPress way, go to the %1$smain site dashboard%2$s, activate the plugin there and set a Github token if necessary.',
+						'extensions-leaflet-map'
+					),
+					'<a href="' . $main_site_url . '/wp-admin/">',
+					'</a>'
+				);
+			}
+		}
+		if ( is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
+			leafext_help_table( $leafext_plugin_name );
+		}
 	} elseif ( $active_tab == 'fullscreen' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/fullscreen.php';
 		leafext_help_fullscreen();

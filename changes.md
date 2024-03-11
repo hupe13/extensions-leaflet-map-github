@@ -1,6 +1,7 @@
-# Differences to the WordPress Repository version
+# Differences to the Plugins WordPress version
 
-* none at the moment
+* Updates with https://github.com/YahnisElsts/plugin-update-checker
+* new version leaflet-rotate
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
