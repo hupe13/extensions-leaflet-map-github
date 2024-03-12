@@ -15,7 +15,6 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 This is the Plugins Github Version.
 
-The Changelog is from the Plugins WordPress Version.
 
 == Installation ==
 
@@ -33,6 +32,7 @@ Releases are the same as the WordPress versions. If you want test the Github ver
 
 You will get updates with the [Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker).
 Maybe you need a Github token.
+
 
 == Changelog ==
 
