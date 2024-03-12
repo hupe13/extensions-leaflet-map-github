@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, elevation, markercluster, Leaflet Plugins
 Tested up to: 6.4
-Stable tag: 4.1
+Stable tag: 4.2
 Requires at least: 5.5.3
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -17,4 +17,24 @@ This is the Plugins Github Version.
 
 The Changelog is from the Plugins WordPress Version.
 
-[Differences](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/changes.md) to the Plugins <a href="https://wordpress.org/plugins/extensions-leaflet-map/">WordPress version</a>.
+== Installation ==
+
+Releases are the same as the WordPress versions. If you want test the Github version, download from [tags](https://github.com/hupe13/extensions-leaflet-map-github/tags).
+
+- Download the ZIP file.
+- Sign in to your WordPress installation.
+- In the left-hand menu, select Plugins > Add New.
+- Select Upload Plugin.
+- Select Choose File.
+- Locate and select the plugin .zip file on your local computer and then select Open.
+- Select Install Now.
+- Deactivate the WordPress version Extensions for Leaflet Map.
+- Activate the Github version Extensions for Leaflet Map Github.
+
+You will get updates with the [Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker).
+Maybe you need a Github token.
+
+== Changelog ==
+
+* Updates with https://github.com/YahnisElsts/plugin-update-checker
+* new version leaflet-rotate
