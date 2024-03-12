@@ -1,3 +1,11 @@
+### 4.1 /240216
+
+* fixed small bugs in leaflet-extramarker and geojsonmarker
+* fixed bug in cluster
+* documentation
+* update turf, JShrink
+* elevation: italian translation
+
 ### 4.0 /240126
 
 * WordPress Coding Standards (see [readme-wpcs.md](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/readme-wpcs.md))

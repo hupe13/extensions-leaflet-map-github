@@ -35,6 +35,7 @@ if ( leafext_is_github() ) {
 	add_filter( 'plugin_row_meta', 'leafext_plugin_meta_links', 9, 2 );
 
 	function leafext_updating_help() {
+		echo '<h3>'.__( 'Github token to receive updates in WordPress way', 'extensions-leaflet-map' ).'</h3>';
 		$setting = get_option( 'leafext_updating', array( 'token' => '' ) );
 		if ( $setting && isset( $setting['token'] ) && $setting['token'] !== '' ) {
 			$token = $setting['token'];
@@ -89,7 +90,7 @@ if ( leafext_is_github() ) {
 			}
 		}
 		if ( isset( $_POST['delete'] ) ) {
-			delete_site_option( 'leafext_updating' );
+			delete_option( 'leafext_updating' );
 		}
 		return false;
 	}

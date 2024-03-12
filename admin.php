@@ -80,7 +80,6 @@ function leafext_do_page() {
 			echo '</form>';
 		}
 		if ( leafext_is_github() ) {
-			echo '<p>Updates do not work yet.</p>';
 			if ( is_main_site() ) {
 				echo '<form method="post" action="options.php">';
 				settings_fields( 'leafext_settings_updating' );
@@ -98,7 +97,7 @@ function leafext_do_page() {
 						'If you want to receive updates in WordPress way, go to the %1$smain site dashboard%2$s, activate the plugin there and set a Github token if necessary.',
 						'extensions-leaflet-map'
 					),
-					'<a href="' . $main_site_url . '/wp-admin/">',
+					'<a href="' . $main_site_url . '/wp-admin/plugins.php">',
 					'</a>'
 				);
 			}
