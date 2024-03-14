@@ -178,7 +178,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.1 /2403xx
+### 4.2 /2403xx
 
 * Updates with https://github.com/YahnisElsts/plugin-update-checker
 * new version leaflet-rotate
