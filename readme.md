@@ -178,13 +178,11 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.1 /240216
+### 4.1 /2403xx
 
-* fixed small bugs in leaflet-extramarker and geojsonmarker
-* fixed bug in cluster
-* documentation
-* update turf, JShrink
-* elevation: italian translation
+* Updates with https://github.com/YahnisElsts/plugin-update-checker
+* new version leaflet-rotate
+* some changes for WPCS
 
 ### Previous
 

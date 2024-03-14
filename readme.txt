@@ -38,3 +38,4 @@ Maybe you need a Github token.
 
 * Updates with https://github.com/YahnisElsts/plugin-update-checker
 * new version leaflet-rotate
+* some changes for WPCS

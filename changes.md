@@ -2,6 +2,7 @@
 
 * Updates with https://github.com/YahnisElsts/plugin-update-checker
 * new version leaflet-rotate
+* some changes for WPCS
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
