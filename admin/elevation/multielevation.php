@@ -43,14 +43,14 @@ function leafext_form_multielevation( $field ) {
 		echo '<p>' . $option['desc'] . '</p>';
 	}
 
-	echo __( 'You can change it with', 'extensions-leaflet-map' ) . ' <code>' . $option['param'] . '</code><br>';
+	echo esc_html__( 'You can change it with', 'extensions-leaflet-map' ) . ' <code>' . $option['param'] . '</code><br>';
 
 	if ( is_array( $option['values'] ) ) {
 		$plugindefault = is_string( $option['default'] ) ? $option['default'] : ( $option['default'] ? '1' : '0' );
 		$setting       = is_string( $setting ) ? $setting : ( $setting ? '1' : '0' );
 		if ( $setting != $plugindefault ) {
 			// var_dump("Option: ",$option['default'],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
-			echo __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault . '<br>';
+			echo esc_html__( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault . '<br>';
 		}
 		echo '<select name="leafext_multieleparams[' . $option['param'] . ']">';
 		foreach ( $option['values'] as $para ) {
@@ -78,7 +78,7 @@ function leafext_form_multielevation( $field ) {
 
 		if ( $setting != $option['default'] ) {
 			// var_dump($setting,$option['default']);
-			echo __( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
+			echo esc_html__( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
 			echo $option['default'];
 			echo '<br>';
 		}
@@ -94,7 +94,7 @@ function leafext_form_multielevation( $field ) {
 
 		if ( $setting != $option['default'] ) {
 			// var_dump($setting,$option['default']);
-			echo __( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
+			echo esc_html__( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
 			echo $option['default'] ? 'true' : 'false';
 			echo '<br>';
 		}

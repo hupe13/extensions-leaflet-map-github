@@ -79,7 +79,9 @@ add_filter( 'wp_handle_upload_prefilter', 'leafext_pre_upload' );
 function leafext_custom_upload_dir( $path ) {
 	$options = leafext_filemgr_settings();
 	if ( $options['gpxupload'] == true ) {
-		$post      = map_deep( wp_unslash( $_POST ), 'sanitize_text_field' );
+		if ( ! empty( $_POST ) && check_admin_referer( 'leafext_file', 'leafext_file_nonce' ) ) {
+			$post = map_deep( wp_unslash( $_POST ), 'sanitize_text_field' );
+		}
 		$extension = substr( strrchr( $post['name'], '.' ), 1 );
 		if ( ! empty( $path['error'] ) || $extension != 'gpx' ) {
 			return $path;

@@ -76,7 +76,7 @@ function leafext_form_other_theme() {
 		}
 	}
 	echo '<input id="leafext_eleother" type="text" name="leafext_values[othertheme]" placeholder="my-theme"
-		pattern=".*-theme" title="' . __( 'must end with', 'extensions-leaflet-map' ) . ' \'-theme\'"
+		pattern=".*-theme" title="' . esc_html__( 'must end with', 'extensions-leaflet-map' ) . ' \'-theme\'"
 		value="' . $othertheme . '" ';
 	echo ( $othertheme != '' ) ? '' : ' readonly ';
 	echo '/>';

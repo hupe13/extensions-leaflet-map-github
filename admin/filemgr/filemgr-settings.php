@@ -91,7 +91,7 @@ function leafext_form_filemgr( $field ) {
 	} else {
 		if ( $setting != $option['default'] ) {
 			// var_dump($setting,$option['default']);
-			echo __( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
+			echo esc_html__( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
 			echo $option['default'] ? 'true' : 'false';
 			echo '<br>';
 		}

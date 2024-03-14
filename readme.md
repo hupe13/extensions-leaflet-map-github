@@ -2,7 +2,7 @@
 
 Contributors: hupe13    
 Tags: leaflet, elevation, markercluster, Leaflet Plugins   
-Tested up to: 6.4  
+Tested up to: 6.5  
 Stable tag: 4.2     
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
@@ -11,7 +11,6 @@ License: GPLv2 or later
 This is the Github Version.
 
 [Differences](changes.md) to the <a href="https://wordpress.org/plugins/extensions-leaflet-map/">WordPress version</a>.
-
 Releases are the same as the WordPress versions. If you want test the Github version, download from [tags](https://github.com/hupe13/extensions-leaflet-map-github/tags).
 
 ## Description

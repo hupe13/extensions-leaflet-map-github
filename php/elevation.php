@@ -827,6 +827,7 @@ function leafext_elevation_script( $gpx, $settings ) {
 		?>
 
 		// Instantiate elevation control.
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable (phpcs ignoriert die Anweisung!)
 		L.Control.Elevation.prototype.__btnIcon = "<?php echo LEAFEXT_ELEVATION_URL; ?>/images/elevation.svg";
 		var controlElevation = L.control.elevation(elevation_options);
 		var track_options= { url: "<?php echo $gpx; ?>" };

@@ -50,8 +50,13 @@ function leafext_list_dir( $directory, $extensions ) {
 
 // Unterteile Liste aller Files in pages
 function leafext_list_paginate( $files, $anzahl ) {
-	$post = map_deep( wp_unslash( $_POST ), 'sanitize_text_field' );
-	$get  = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
+	if ( ! empty( $_POST ) && check_admin_referer( 'leafext_file', 'leafext_file_nonce' ) ) {
+		$post = map_deep( wp_unslash( $_POST ), 'sanitize_text_field' );
+	} else {
+		$post = array();
+	}
+	//phpcs:disable WordPress.Security.NonceVerification.Recommended -- form is with $_POST
+	$get = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
 	if ( count( $files ) > 0 ) {
 		$page = isset( $get['page'] ) ? filter_input( INPUT_GET, 'page', FILTER_SANITIZE_SPECIAL_CHARS ) : '';
 		$tab  = isset( $get['tab'] ) ? filter_input( INPUT_GET, 'tab', FILTER_SANITIZE_SPECIAL_CHARS ) : '';
@@ -71,7 +76,7 @@ function leafext_list_paginate( $files, $anzahl ) {
 		$pagenr    = max( 1, isset( $get['nr'] ) ? $get['nr'] : '1' );
 		$pagefiles = array_chunk( $files, $anzahl );
 
-		echo '<h2>' . __( 'Listing - page', 'extensions-leaflet-map' ) . ' ' . $pagenr . '/' . $pages . '</h2>';
+		echo '<h2>' . esc_html__( 'Listing - page', 'extensions-leaflet-map' ) . ' ' . $pagenr . '/' . $pages . '</h2>';
 		echo '<p>';
 		if ( count( $pagefiles ) > 1 ) {
 			echo paginate_links(
@@ -99,9 +104,9 @@ function leafext_list_paginate( $files, $anzahl ) {
 		echo leafext_files_table( $pagefiles[ $pagenr - 1 ] );
 		echo '</p>';
 	} else {
-		echo '<h2>' . __( 'Listing Files', 'extensions-leaflet-map' ) . '</h2>';
+		echo '<h2>' . esc_html__( 'Listing Files', 'extensions-leaflet-map' ) . '</h2>';
 		echo '<p>';
-		echo __( 'no files', 'extensions-leaflet-map' );
+		echo esc_html__( 'no files', 'extensions-leaflet-map' );
 		echo '</p>';
 	}
 }

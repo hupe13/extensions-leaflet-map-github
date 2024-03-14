@@ -59,7 +59,7 @@ function leafext_form_maps() {
 		}
 		echo '<td>';
 		if ( $option['options'] == '' ) {
-			echo __( 'The syntax is not checked!', 'extensions-leaflet-map' ) . '<br>';
+			echo esc_html__( 'The syntax is not checked!', 'extensions-leaflet-map' ) . '<br>';
 		}
 		echo '<input ' . $disabled . ' type="text" size="80"
 			placeholder="' .

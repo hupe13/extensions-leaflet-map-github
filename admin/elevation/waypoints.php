@@ -37,7 +37,7 @@ function leafext_form_waypoints() {
 	foreach ( $options as $option ) {
 		if ( $i > 0 ) {
 			echo '<tr><th colspan=2 style="border-top: 3px solid #646970"> </th></tr>';
-			echo '<tr><th scope="row-title"><span style="color: #4f94d4">' . __( 'Text of GPS symbol name', 'extensions-leaflet-map' ) . '</span>:</th>';
+			echo '<tr><th scope="row-title"><span style="color: #4f94d4">' . esc_html__( 'Text of GPS symbol name', 'extensions-leaflet-map' ) . '</span>:</th>';
 			echo '<td>';
 			// } else {
 			// echo '<td>';
@@ -49,13 +49,13 @@ function leafext_form_waypoints() {
 		}
 		echo 'name="leafext_waypoints[' . $i . '][sym]" value="' . $option['sym'] . '" pattern="[a-zA-Z]+[a-zA-Z0-9\- ,]*" />';
 		if ( $option['sym'] == '' && $option['js'] != '' ) {
-			echo ' (' . __( 'Default', 'extensions-leaflet-map' ) . ')';
+			echo ' (' . esc_html__( 'Default', 'extensions-leaflet-map' ) . ')';
 		}
 		if ( ( $option['sym'] == '' && $option['js'] == '' ) ) {
-			echo '<p>' . __( 'Valid characters: lowercase, uppercase, numbers, -, comma, blank character.', 'extensions-leaflet-map' ) . '</p>';
+			echo '<p>' . esc_html__( 'Valid characters: lowercase, uppercase, numbers, -, comma, blank character.', 'extensions-leaflet-map' ) . '</p>';
 			$symkey = array_search( '', array_column( $options, 'sym' ), true );
 			if ( $options[ $symkey ]['js'] == '' ) {
-				echo '<p>' . __( 'It may be empty, then its javascript is the default for all waypoints.', 'extensions-leaflet-map' ) . '</p>';
+				echo '<p>' . esc_html__( 'It may be empty, then its javascript is the default for all waypoints.', 'extensions-leaflet-map' ) . '</p>';
 			}
 		}
 		echo '</td>';
@@ -73,7 +73,7 @@ function leafext_form_waypoints() {
 		}
 		echo '<td>';
 		if ( $option['js'] == '' ) {
-			echo __( 'The syntax is not checked!', 'extensions-leaflet-map' ) . '<br>';
+			echo esc_html__( 'The syntax is not checked!', 'extensions-leaflet-map' ) . '<br>';
 		}
 		echo '<input type="text" name="leafext_waypoints[' . $i . '][js]"
 		placeholder=' . "'" . 'iconSize: [xx,xx], iconAnchor: [xx,xx], popupAnchor: [xx,xx],'
@@ -81,7 +81,7 @@ function leafext_form_waypoints() {
 
 		if ( $option['sym'] != '' || $option['js'] != '' ) {
 			echo '</td></tr>';
-			echo '<tr><th scope="row-title">' . __( 'Delete', 'extensions-leaflet-map' ) . '</th>';
+			echo '<tr><th scope="row-title">' . esc_html__( 'Delete', 'extensions-leaflet-map' ) . '</th>';
 			echo '<td><input type="checkbox" name="leafext_waypoints[' . $i . '][delete]" value="1" />';
 		}
 		++$i;

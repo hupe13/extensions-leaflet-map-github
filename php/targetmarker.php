@@ -45,6 +45,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 			leafext_clear_params( $atts )
 		);
 
+		//phpcs:disable WordPress.Security.NonceVerification.Recommended -- no form
 		$get            = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
 		$options['lat'] = isset( $get['lat'] ) ? $get['lat'] : '';
 		$options['lng'] = isset( $get['lng'] ) ? $get['lng'] : '';

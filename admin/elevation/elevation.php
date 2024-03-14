@@ -37,7 +37,7 @@ function leafext_form_elevation( $field ) {
 	}
 
 	if ( $option['param'] != 'testing' ) {
-		echo __( 'You can change it for each map with', 'extensions-leaflet-map' ) . ' <code>' . $option['param'] . '</code><br>';
+		echo esc_html__( 'You can change it for each map with', 'extensions-leaflet-map' ) . ' <code>' . $option['param'] . '</code><br>';
 	}
 
 	if ( ! current_user_can( 'manage_options' ) ) {
@@ -49,14 +49,14 @@ function leafext_form_elevation( $field ) {
 	switch ( gettype( $option['values'] ) ) {
 		case 'string':   // z.B. Height
 			if ( $setting != $option['default'] ) {
-				echo __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $option['default'] . '<br>';
+				echo esc_html__( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $option['default'] . '<br>';
 			}
 			echo '<input ' . $disabled . 'name="' . $name_id . '" value="' . $setting . '" ' . $option['values'] . '/>';
 			break;
 		case 'integer': // true/false
 			if ( $setting != $option['default'] ) {
 				// var_dump($setting,$option['default']);
-				echo __( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
+				echo esc_html__( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
 				echo $option['default'] ? 'true' : 'false';
 				echo '<br>';
 			}
@@ -71,7 +71,7 @@ function leafext_form_elevation( $field ) {
 			$plugindefault = is_string( $option['default'] ) ? $option['default'] : ( $option['default'] ? '1' : '0' );
 			$setting       = is_string( $setting ) ? $setting : ( $setting ? '1' : '0' );
 			if ( $setting != $plugindefault ) {
-				echo __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault . '<br>';
+				echo esc_html__( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault . '<br>';
 			}
 			if ( ! current_user_can( 'manage_options' ) ) {
 				$select_disabled = ' disabled multiple size=' . count( $option['values'] ) . ' ';
@@ -182,9 +182,9 @@ function leafext_ele_help_text() {
 		return $text;
 	} else {
 		echo $text;
-		echo '<h2>' . __( 'Detailed documentation and examples', 'extensions-leaflet-map' ) . '</h2>';
+		echo '<h2>' . esc_html__( 'Detailed documentation and examples', 'extensions-leaflet-map' ) . '</h2>';
 		echo '<p>' . sprintf(
-			__(
+			esc_html__(
 				'in %1$sGerman%2$s and %3$sEnglish%4$s',
 				'extensions-leaflet-map'
 			),
@@ -201,21 +201,21 @@ function leafext_ele_help_text() {
 function leafext_ele_help_look() {
 	echo '<div style="border-top: 3px solid #646970"></div>';
 	echo '<h3>';
-	echo __( 'Appearance', 'extensions-leaflet-map' );
+	echo esc_html__( 'Appearance', 'extensions-leaflet-map' );
 	echo '</h3>';
 }
 
 function leafext_ele_help_points() {
 	echo '<div style="border-top: 3px solid #646970"></div>';
 	echo '<h3 id="markers">';
-	echo __( 'Markers and Waypoints', 'extensions-leaflet-map' );
+	echo esc_html__( 'Markers and Waypoints', 'extensions-leaflet-map' );
 	echo '</h3>';
 }
 
 function leafext_ele_help_info() {
 	echo '<div style="border-top: 3px solid #646970"></div>';
 	echo '<h3>';
-	echo __( 'Distance and time', 'extensions-leaflet-map' );
+	echo esc_html__( 'Distance and time', 'extensions-leaflet-map' );
 	echo '</h3>';
 }
 
@@ -225,7 +225,7 @@ function leafext_ele_help_chartlook() {
 	echo '</h3>';
 	// echo '<div style="border-top: 3px solid #646970"></div>';
 	echo '<h3>';
-	echo __( 'Information display', 'extensions-leaflet-map' );
+	echo esc_html__( 'Information display', 'extensions-leaflet-map' );
 	echo '</h3>';
 }
 
@@ -243,7 +243,7 @@ function leafext_ele_help_chart() {
 	);
 	echo '<div style="border-top: 3px solid #646970"></div>';
 	echo '<h3>';
-	echo __( 'Charts', 'extensions-leaflet-map' );
+	echo esc_html__( 'Charts', 'extensions-leaflet-map' );
 	echo '</h3>';
 	$options   = leafext_elevation_settings( array( 'changeable' ) );
 	$summary   = $options['summary'];
@@ -256,72 +256,72 @@ function leafext_ele_help_chart() {
 	<table class="form-table" border="1" >
 	<thead>
 	<tr class="alternate">
-	<th style="text-align:center">' . __( 'Setting', 'extensions-leaflet-map' ) . '</th>
-	<th style="text-align:center" colspan="2">' . __( 'Display diagram', 'extensions-leaflet-map' ) . '</th>
-	<th style="text-align:center">' . __( 'Axis display', 'extensions-leaflet-map' ) . '</th>
-	<th style="text-align:center">' . $marker_on . __( 'Tooltip display', 'extensions-leaflet-map' ) . $span_off . '</th>
-	<th style="text-align:center">' . $sum_on . __( 'Summary', 'extensions-leaflet-map' ) . $span_off . '</th>
+	<th style="text-align:center">' . esc_html__( 'Setting', 'extensions-leaflet-map' ) . '</th>
+	<th style="text-align:center" colspan="2">' . esc_html__( 'Display diagram', 'extensions-leaflet-map' ) . '</th>
+	<th style="text-align:center">' . esc_html__( 'Axis display', 'extensions-leaflet-map' ) . '</th>
+	<th style="text-align:center">' . $marker_on . esc_html__( 'Tooltip display', 'extensions-leaflet-map' ) . $span_off . '</th>
+	<th style="text-align:center">' . $sum_on . esc_html__( 'Summary', 'extensions-leaflet-map' ) . $span_off . '</th>
 	</tr></thead>
 	<tbody>
 	<tr>
 	<td style="text-align:center"> </td>
 	<td style="text-align:center">';
 	if ( $leg_on != '' ) {
-		echo __( 'Your setting:', 'extensions-leaflet-map' ) . '<br>';
+		echo esc_html__( 'Your setting:', 'extensions-leaflet-map' ) . '<br>';
 	}
 	echo '<code>legend="0"</code></td>
 	<td style="text-align:center">';
 	if ( $leg_on == '' ) {
-		echo __( 'Your setting:', 'extensions-leaflet-map' ) . '<br>';
+		echo esc_html__( 'Your setting:', 'extensions-leaflet-map' ) . '<br>';
 	}
 	echo '<code>legend="1"</code></td>
 	<td style="text-align:center"><img src="' . LEAFEXT_PLUGIN_PICTS . 'yachse.png" alt="yachse"></td>
 	<td style="text-align:center">';
 	if ( $marker_on != '' ) {
-		echo __( 'Your setting:', 'extensions-leaflet-map' ) . '<br><code>marker="' . $options['marker'] . '"</code><br>';
+		echo esc_html__( 'Your setting:', 'extensions-leaflet-map' ) . '<br><code>marker="' . $options['marker'] . '"</code><br>';
 	}
 	echo $marker_on . '<code>marker="elevation-line"</code>' . $span_off . '<br>
 	<img src="' . LEAFEXT_PLUGIN_PICTS . 'tooltip_values.png" alt="tooltip_values">
 	<img src="' . LEAFEXT_PLUGIN_PICTS . 'marker_values.png" alt="marker_values"></td>
-	<td style="text-align:center">' . __( 'Your setting:', 'extensions-leaflet-map' ) . '<br><code>summary="' . $options['summary'] . '"</code></td>
+	<td style="text-align:center">' . esc_html__( 'Your setting:', 'extensions-leaflet-map' ) . '<br><code>summary="' . $options['summary'] . '"</code></td>
 	</tr>
 	<tr class="alternate">
 	<td style="text-align:center">1</td>
-	<td style="text-align:center">' . __( 'yes', 'extensions-leaflet-map' ) . '</td>
-	<td style="text-align:center">' . __( 'yes', 'extensions-leaflet-map' ) . '<br>
+	<td style="text-align:center">' . esc_html__( 'yes', 'extensions-leaflet-map' ) . '</td>
+	<td style="text-align:center">' . esc_html__( 'yes', 'extensions-leaflet-map' ) . '<br>
 	<img src="' . LEAFEXT_PLUGIN_PICTS . 'on_speed.png" alt="on_speed"></td>
-	<td style="text-align:center">' . __( 'yes', 'extensions-leaflet-map' ) . '</td>
-	<td style="text-align:center">' . $marker_on . __( 'yes', 'extensions-leaflet-map' ) . $span_off . '</td>
-	<td style="text-align:center">' . $sum_on . __( 'yes', 'extensions-leaflet-map' ) . $span_off . '</td>
+	<td style="text-align:center">' . esc_html__( 'yes', 'extensions-leaflet-map' ) . '</td>
+	<td style="text-align:center">' . $marker_on . esc_html__( 'yes', 'extensions-leaflet-map' ) . $span_off . '</td>
+	<td style="text-align:center">' . $sum_on . esc_html__( 'yes', 'extensions-leaflet-map' ) . $span_off . '</td>
 	</tr>
 	<tr>
 	<td style="text-align:center">summary</td>
-	<td style="text-align:center" colspan="2">' . __( 'no', 'extensions-leaflet-map' ) . ' </td>
-	<td style="text-align:center">' . __( 'no', 'extensions-leaflet-map' ) . '</td>
-	<td style="text-align:center">' . $marker_on . __( 'yes', 'extensions-leaflet-map' ) . $span_off . '</td>
-	<td style="text-align:center">' . $sum_on . __( 'yes', 'extensions-leaflet-map' ) . $span_off . '</td>
+	<td style="text-align:center" colspan="2">' . esc_html__( 'no', 'extensions-leaflet-map' ) . ' </td>
+	<td style="text-align:center">' . esc_html__( 'no', 'extensions-leaflet-map' ) . '</td>
+	<td style="text-align:center">' . $marker_on . esc_html__( 'yes', 'extensions-leaflet-map' ) . $span_off . '</td>
+	<td style="text-align:center">' . $sum_on . esc_html__( 'yes', 'extensions-leaflet-map' ) . $span_off . '</td>
 	</tr>
 	<tr  class="alternate">
 	<td style="text-align:center">disabled</td>
-	<td style="text-align:center">' . __( 'no', 'extensions-leaflet-map' ) . '</td>
-	<td style="text-align:center">' . $leg_on . __( 'hidden', 'extensions-leaflet-map' ) . $span_off . ' <br>
+	<td style="text-align:center">' . esc_html__( 'no', 'extensions-leaflet-map' ) . '</td>
+	<td style="text-align:center">' . $leg_on . esc_html__( 'hidden', 'extensions-leaflet-map' ) . $span_off . ' <br>
 	<img src="' . LEAFEXT_PLUGIN_PICTS . 'off_speed.png" alt="off_speed"></td>
 
-	<td style="text-align:center">' . __( 'yes', 'extensions-leaflet-map' ) . '</td>
-	<td style="text-align:center">' . $marker_on . __( 'yes', 'extensions-leaflet-map' ) . $span_off . '</td>
-	<td style="text-align:center">' . $sum_on . __( 'yes', 'extensions-leaflet-map' ) . $span_off . '</td>
+	<td style="text-align:center">' . esc_html__( 'yes', 'extensions-leaflet-map' ) . '</td>
+	<td style="text-align:center">' . $marker_on . esc_html__( 'yes', 'extensions-leaflet-map' ) . $span_off . '</td>
+	<td style="text-align:center">' . $sum_on . esc_html__( 'yes', 'extensions-leaflet-map' ) . $span_off . '</td>
 	</tr>
 	<tr>
 	<td style="text-align:center">0</td>
-	<td style="text-align:center" colspan="2">' . __( 'no', 'extensions-leaflet-map' ) . '</td>
-	<td style="text-align:center">' . __( 'no', 'extensions-leaflet-map' ) . '</td>
-	<td style="text-align:center">' . $marker_on . __( 'no', 'extensions-leaflet-map' ) . $span_off . '</td>
-	<td style="text-align:center">' . $sum_on . __( 'no', 'extensions-leaflet-map' ) . $span_off . '</td>
+	<td style="text-align:center" colspan="2">' . esc_html__( 'no', 'extensions-leaflet-map' ) . '</td>
+	<td style="text-align:center">' . esc_html__( 'no', 'extensions-leaflet-map' ) . '</td>
+	<td style="text-align:center">' . $marker_on . esc_html__( 'no', 'extensions-leaflet-map' ) . $span_off . '</td>
+	<td style="text-align:center">' . $sum_on . esc_html__( 'no', 'extensions-leaflet-map' ) . $span_off . '</td>
 	</tr></tbody></table></figure>
 	';
 	echo '</p>';
 
-	echo __( 'If summary is displayed, you can customize the information to display with css, e.g. show Total Length, Total Time, Total Ascent, Total Descent, Avg Speed, Avg Pace only:', 'extensions-leaflet-map' );
+	echo esc_html__( 'If summary is displayed, you can customize the information to display with css, e.g. show Total Length, Total Time, Total Ascent, Total Descent, Avg Speed, Avg Pace only:', 'extensions-leaflet-map' );
 	echo '</p>';
 	echo '<pre class="language-css"><code class="language-css">';
 	echo '.elevation-summary > :not(.totlen, .tottime, .ascent, .descent, .avgspeed, .avgpace) {' . "\n";
@@ -333,6 +333,6 @@ function leafext_ele_help_chart() {
 function leafext_ele_help_other() {
 	echo '<div style="border-top: 3px solid #646970"></div>';
 	echo '<h3>';
-	echo __( 'Others', 'extensions-leaflet-map' );
+	echo esc_html__( 'Others', 'extensions-leaflet-map' );
 	echo '</h3>';
 }

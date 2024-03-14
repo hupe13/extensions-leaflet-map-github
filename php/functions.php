@@ -133,6 +133,7 @@ function leafext_check_position_control( $value ) {
 
 // Backend Plugin extension-leaflet-map
 function leafext_backend() {
+	//phpcs:disable WordPress.Security.NonceVerification.Recommended -- no form
 	$get          = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
 	$backend_page = isset( $get['page'] ) ? sanitize_text_field( wp_unslash( $get['page'] ) ) : '';
 	$server       = map_deep( wp_unslash( $_SERVER ), 'sanitize_text_field' );
@@ -155,7 +156,7 @@ function leafext_should_interpret_shortcode( $shortcode, $atts ) {
 			return '';
 		} elseif ( ! isset( $button ) ) {
 				$button = true;
-				echo '<input type="button" value="' . __( 'Click to interpret shortcodes.', 'extensions-leaflet-map' ) . '" onclick="window.location.reload()">';
+				echo '<input type="button" value="' . esc_html__( 'Click to interpret shortcodes.', 'extensions-leaflet-map' ) . '" onclick="window.location.reload()">';
 		}
 	}
 	$text = '[' . $shortcode . ' ';

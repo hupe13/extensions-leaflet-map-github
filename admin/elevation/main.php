@@ -44,6 +44,7 @@ function leafext_elevation_tab() {
 		}
 	}
 
+	//phpcs:disable WordPress.Security.NonceVerification.Recommended -- no form
 	$get        = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
 	$active_tab = isset( $get['tab'] ) ? $get['tab'] : '';
 	$textheader = '<div class="nav-tab-wrapper">';
@@ -145,7 +146,7 @@ function leafext_admin_elevation( $active_tab ) {
 			}
 		} else {
 			echo '<h2>' . leafext_elevation_tab() . '</h2>';
-			echo __( 'wp-gpx-maps is not installed and nothing is configured.', 'extensions-leaflet-map' );
+			echo esc_html__( 'wp-gpx-maps is not installed and nothing is configured.', 'extensions-leaflet-map' );
 		}
 		echo '</form>';
 	} elseif ( $active_tab == 'elevationwaypoints' ) {

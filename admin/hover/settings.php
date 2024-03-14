@@ -46,9 +46,9 @@ function leafext_form_hover( $field ) {
 
 	foreach ( $options as $key => $value ) {
 		if ( $key == $field ) {
-			echo __( 'You can change it for each map with', 'extensions-leaflet-map' ) . ' <code>' . $key . '</code><br>';
+			echo esc_html__( 'You can change it for each map with', 'extensions-leaflet-map' ) . ' <code>' . $key . '</code><br>';
 			if ( $value != $defaults[ $key ] ) {
-				echo __( 'Plugins Default', 'extensions-leaflet-map' ) . ': ' . $defaults[ $key ] . '<br>';
+				echo esc_html__( 'Plugins Default', 'extensions-leaflet-map' ) . ': ' . $defaults[ $key ] . '<br>';
 			}
 			if ( $key == 'class' ) {
 				echo '<input ' . $disabled . ' type="text" size=15 name="leafext_hover[' . $key . ']" value="' . $value . '" />';

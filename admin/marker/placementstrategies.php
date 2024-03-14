@@ -50,15 +50,15 @@ function leafext_form_placement( $field ) {
 	}
 
 	if ( $option[0] == 'elementsPlacementStrategy' ) {
-		echo '<p>' . __( '"default" means: one-circle strategy up to 8 elements, else spiral strategy', 'extensions-leaflet-map' ) . '</p>';
+		echo '<p>' . esc_html__( '"default" means: one-circle strategy up to 8 elements, else spiral strategy', 'extensions-leaflet-map' ) . '</p>';
 	}
 
-	echo __( 'You can change it for each map with', 'extensions-leaflet-map' ) . ' <code>' . $option[0] . '</code><br>';
+	echo esc_html__( 'You can change it for each map with', 'extensions-leaflet-map' ) . ' <code>' . $option[0] . '</code><br>';
 	if ( ! is_array( $option[3] ) ) {
 
 		if ( $setting != $option[2] ) {
 			// var_dump($setting,$option[2]);
-			echo __( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
+			echo esc_html__( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
 			echo $option[2] ? '1' : '0';
 			echo '<br>';
 		}
@@ -74,7 +74,7 @@ function leafext_form_placement( $field ) {
 		$setting       = is_string( $setting ) ? $setting : ( $setting ? '1' : '0' );
 		if ( $setting != $plugindefault ) {
 			// var_dump("Option: ",$option[2],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
-			echo __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault . '<br>';
+			echo esc_html__( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault . '<br>';
 		}
 		if ( ! current_user_can( 'manage_options' ) ) {
 			$select_disabled = ' disabled multiple size=' . count( $option[3] ) . ' ';

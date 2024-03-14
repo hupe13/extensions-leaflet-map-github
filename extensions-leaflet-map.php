@@ -5,7 +5,7 @@
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
  * Primary Branch:    main
  * Description:       Extensions for the WordPress plugin Leaflet Map Github Version
- * Version:           4.2-240312
+ * Version:           4.2-240314
  * Requires PHP:      7.4
  * Author:            hupe13
  * Author URI:        https://leafext.de/en/
@@ -26,11 +26,11 @@ define( 'LEAFEXT_PLUGIN_SETTINGS', dirname( plugin_basename( __FILE__ ) ) ); // 
 
 function leafext_plugin_init() {
 	if ( is_admin() ) {
-		if ( ! defined( 'LEAFLET_MAP__PLUGIN_DIR' ) && ! is_main_site() ) {
+		if ( ! defined( 'LEAFLET_MAP__PLUGIN_DIR' ) && ( ! leafext_is_github() || ( leafext_is_github() && ! is_main_site() ) ) ) {
 			function leafext_require_leaflet_map_plugin() {
 				echo '<div class="notice notice-error" ><p> ';
 				printf(
-					__( 'Please install and activate %1$s before using %2$s.', 'extensions-leaflet-map' ),
+					esc_html__( 'Please install and activate %1$s before using %2$s.', 'extensions-leaflet-map' ),
 					'<a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>',
 					'Extensions for Leaflet Map'
 				);
@@ -104,6 +104,7 @@ function leafext_extra_textdomain() {
 }
 add_action( 'plugins_loaded', 'leafext_extra_textdomain' );
 
+// Github update
 function leafext_is_github() {
 	$local = get_file_data(
 		LEAFEXT_PLUGIN_DIR . 'extensions-leaflet-map.php',
@@ -122,15 +123,14 @@ use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 use YahnisElsts\PluginUpdateChecker\v5p4\Vcs\GitHubApi;
 if ( is_admin() && leafext_is_github() ) {
 	if ( is_main_site() ) {
+		require_once LEAFEXT_PLUGIN_DIR . '/admin/check-update.php';
+		global $leafext_github_main_active;
+		global $leafext_update_token;
+		global $leafext_github_denied;
+
 		require_once LEAFEXT_PLUGIN_DIR . '/pkg/plugin-update-checker/plugin-update-checker.php';
-		$perm_denied = get_transient( 'leafext_github_403' );
-		$setting     = get_option( 'leafext_updating', array( 'token' => '' ) );
-		if ( $setting && isset( $setting['token'] ) && $setting['token'] !== '' ) {
-			$token = $setting['token'];
-		} else {
-			$token = '';
-		}
-		if ( false === $perm_denied || $token !== '' ) {
+
+		if ( false === $leafext_github_denied || $leafext_update_token !== '' ) {
 			$github_update_checker = PucFactory::buildUpdateChecker(
 				'https://github.com/hupe13/extensions-leaflet-map-github/',
 				__FILE__,
@@ -148,9 +148,9 @@ if ( is_admin() && leafext_is_github() ) {
 			// Set the branch that contains the stable release.
 			$github_update_checker->setBranch( 'main' );
 
-			if ( $token !== '' ) {
+			if ( $leafext_update_token !== '' ) {
 				// Optional: If you're using a private repository, specify the access token like this:
-				$github_update_checker->setAuthentication( $token );
+				$github_update_checker->setAuthentication( $leafext_update_token );
 			}
 
 			function leafext_github_puc_error( $error, $response = null, $url = null, $slug = null ) {

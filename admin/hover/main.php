@@ -24,6 +24,7 @@ function leafext_hover_tab() {
 		),
 	);
 
+	//phpcs:disable WordPress.Security.NonceVerification.Recommended -- no form
 	$get        = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
 	$active_tab = isset( $get['tab'] ) ? $get['tab'] : '';
 	$textheader = '<div class="nav-tab-wrapper">';

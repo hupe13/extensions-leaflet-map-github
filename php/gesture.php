@@ -12,10 +12,10 @@ function leafext_gesture_params() {
 	$params = array(
 		array(
 			'param'     => 'leafext_gesture_on',
-			'shortdesc' => __( 'valid for whole site or only for one map', 'extensions-leaflet-map' ),
+			'shortdesc' => esc_html__( 'valid for whole site or only for one map', 'extensions-leaflet-map' ),
 			'desc'      => '<p>' .
 			sprintf(
-				__( 'If it is true, it is valid for any map (depending on %1$s respectively %2$s) and you can\'t change it. If it is false, you can enable it for a map:', 'extensions-leaflet-map' ),
+				esc_html__( 'If it is true, it is valid for any map (depending on %1$s respectively %2$s) and you can\'t change it. If it is false, you can enable it for a map:', 'extensions-leaflet-map' ),
 				'<code>scrollwheel</code>',
 				'<code>dragging</code>'
 			) .
@@ -25,7 +25,7 @@ function leafext_gesture_params() {
 		),
 		array(
 			'param'     => 'lang',
-			'shortdesc' => __( 'Site Language or Browser Language', 'extensions-leaflet-map' ),
+			'shortdesc' => esc_html__( 'Site Language or Browser Language', 'extensions-leaflet-map' ),
 			'desc'      => '<p>
 			</p>',
 			'default'   => 'Browser',

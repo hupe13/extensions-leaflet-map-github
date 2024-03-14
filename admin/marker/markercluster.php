@@ -50,11 +50,11 @@ function leafext_form_markercluster( $field ) {
 		$disabled = '';
 	}
 
-	echo __( 'You can change it for each map with', 'extensions-leaflet-map' ) . ' <code>' . $option['param'] . '</code><br>';
+	echo esc_html__( 'You can change it for each map with', 'extensions-leaflet-map' ) . ' <code>' . $option['param'] . '</code><br>';
 	if ( ! is_array( $option['values'] ) ) {
 
 		if ( $setting != $option['default'] ) {
-			echo __( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
+			echo esc_html__( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
 			echo $option['default'] ? '1' : '0';
 			echo '<br>';
 		}
@@ -70,7 +70,7 @@ function leafext_form_markercluster( $field ) {
 		$setting       = is_string( $setting ) ? $setting : ( $setting ? '1' : '0' );
 		if ( $setting != $plugindefault ) {
 			// var_dump("Option: ",$option[2],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
-			echo __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault . '<br>';
+			echo esc_html__( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault . '<br>';
 		}
 		if ( ! current_user_can( 'manage_options' ) ) {
 			$select_disabled = ' disabled multiple size=' . count( $option['values'] ) . ' ';

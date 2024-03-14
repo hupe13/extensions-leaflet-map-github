@@ -14,6 +14,7 @@ require LEAFEXT_PLUGIN_DIR . '/admin/filemgr/filemgr.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/filemgr/managefiles-functions.php';
 
 function leafext_filemgr_tab() {
+	//phpcs:disable WordPress.Security.NonceVerification.Recommended -- no form
 	$get       = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
 	$tb_iframe = isset( $get['TB_iframe'] ) ? $get['TB_iframe'] : '';
 	if ( $tb_iframe == true ) {
