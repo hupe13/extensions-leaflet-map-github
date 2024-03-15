@@ -1,3 +1,8 @@
+### 4.2 /2403xx
+
+* new version leaflet-rotate, d3
+* some changes for WPCS
+
 ### 4.1 /240216
 
 * fixed small bugs in leaflet-extramarker and geojsonmarker

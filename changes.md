@@ -1,7 +1,7 @@
 # Differences to the Plugins WordPress version
 
 * Updates with https://github.com/YahnisElsts/plugin-update-checker
-* new version leaflet-rotate
+* new version leaflet-rotate, d3
 * some changes for WPCS
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).

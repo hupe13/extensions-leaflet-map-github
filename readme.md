@@ -180,7 +180,6 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ### 4.2 /2403xx
 
-* Updates with https://github.com/YahnisElsts/plugin-update-checker
 * new version leaflet-rotate
 * some changes for WPCS
 

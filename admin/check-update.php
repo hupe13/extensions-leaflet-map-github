@@ -8,12 +8,17 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-	// define some globals
-	global $leafext_github_main_active;
-	global $leafext_update_token;
-	global $leafext_github_denied;
+function leafext_github_textdomain() {
+	load_plugin_textdomain( 'extensions-leaflet-map-github', false, LEAFEXT_PLUGIN_SETTINGS . '/lang/' );
+}
+add_action( 'plugins_loaded', 'leafext_github_textdomain' );
 
-	$main_site_id = get_main_site_id();
+// define some globals
+global $leafext_github_main_active;
+global $leafext_update_token;
+global $leafext_github_denied;
+
+$main_site_id = get_main_site_id();
 
 if ( is_multisite() ) {
 	$setting = get_blog_option( $main_site_id, 'leafext_updating', array( 'token' => '' ) );
@@ -55,7 +60,7 @@ if ( is_multisite() ) {
 		$leafext_github_main_active = false;
 	}
 }
-	// end globals
+// end globals
 
 function leafext_github_meta_links( $links, $file ) {
 	global $leafext_github_main_active;
@@ -79,7 +84,7 @@ function leafext_github_meta_links( $links, $file ) {
 			if ( $local['Version'] !== $remote['Version'] ) {
 				$links[] = '<a href="' . get_site_url() . '/wp-admin/admin.php?page=' . LEAFEXT_PLUGIN_SETTINGS . '">' .
 				'<span class="update-message notice inline notice-warning notice-alt">' .
-				esc_html__( 'Update available', 'extensions-leaflet-map-github' ) .
+				esc_html__( 'New version available.' ) .
 				'</span>' .
 				'</a>';
 			}
@@ -87,13 +92,13 @@ function leafext_github_meta_links( $links, $file ) {
 	}
 	return $links;
 }
-	add_filter( 'plugin_row_meta', 'leafext_github_meta_links', 10, 2 );
+add_filter( 'plugin_row_meta', 'leafext_github_meta_links', 10, 2 );
 
 	// Init settings fuer update
 if ( ! function_exists( 'leafext_updating_init' ) ) {
 	function leafext_updating_init() {
 		add_settings_section( 'updating_settings', '', '', 'leafext_settings_updating' );
-		add_settings_field( 'leafext_updating', esc_html__( 'Github token', 'extensions-leaflet-map' ), 'leafext_form_updating', 'leafext_settings_updating', 'updating_settings' );
+		add_settings_field( 'leafext_updating', esc_html__( 'Github token', 'extensions-leaflet-map-github' ), 'leafext_form_updating', 'leafext_settings_updating', 'updating_settings' );
 		register_setting( 'leafext_settings_updating', 'leafext_updating', 'leafext_validate_updating' );
 	}
 }
@@ -136,27 +141,27 @@ function leafext_github_update_admin() {
 
 	// var_dump( $leafext_github_main_active, $leafext_update_token, $leafext_github_denied );
 
-	echo '<h3>' . esc_html__( 'Github token to receive updates in WordPress way', 'extensions-leaflet-map-dsgvo' ) . '</h3>';
+	echo '<h3>' . esc_html__( 'Github token to receive updates in WordPress way', 'extensions-leaflet-map-github' ) . '</h3>';
 	if ( is_main_site() ) {
 		if ( $leafext_update_token === '' ) {
 			// var_dump($leafext_github_denied);
 			if ( false !== $leafext_github_denied ) {
 				echo sprintf(
-					esc_html__( 'You need a %1$sGithub token%2$s to receive updates successfully.', 'extensions-leaflet-map-dsgvo' ),
+					esc_html__( 'You need a %1$sGithub token%2$s to receive updates successfully.', 'extensions-leaflet-map-github' ),
 					'<a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">',
 					'</a>'
 				) . '<br>';
 			} else {
 				echo sprintf(
-					esc_html__( 'Maybe you need a %1$sGithub token%2$s to receive updates successfully.', 'extensions-leaflet-map-dsgvo' ),
+					esc_html__( 'Maybe you need a %1$sGithub token%2$s to receive updates successfully.', 'extensions-leaflet-map-github' ),
 					'<a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">',
 					'</a>'
 				) . '<br>';
 			}
 		}
-				echo '<form method="post" action="options.php">';
-				settings_fields( 'leafext_settings_updating' );
-				do_settings_sections( 'leafext_settings_updating' );
+		echo '<form method="post" action="options.php">';
+		settings_fields( 'leafext_settings_updating' );
+		do_settings_sections( 'leafext_settings_updating' );
 		if ( current_user_can( 'manage_options' ) ) {
 			wp_nonce_field( 'leafext_updating', 'leafext_updating_nonce' );
 			submit_button();
@@ -169,16 +174,16 @@ function leafext_github_update_admin() {
 		if ( $leafext_github_main_active ) {
 			$main_active = ' ';
 		} else {
-			$main_active = ', ' . esc_html__( 'activate the plugin there', 'extensions-leaflet-map-dsgvo' );
+			$main_active = ', ' . esc_html__( 'activate the plugin there', 'extensions-leaflet-map-github' );
 		}
 
 		if ( $leafext_github_main_active && ( false === $leafext_github_denied || $leafext_update_token !== '' ) ) {
-			echo esc_html__( 'You receive updates in WordPress way.', 'extensions-leaflet-map-dsgvo' );
+			echo esc_html__( 'You receive updates in WordPress way.', 'extensions-leaflet-map-github' );
 		} else {
 			printf(
 				esc_html__(
 					'If you want to receive updates in WordPress way, go to the %1$smain site dashboard%2$s%3$s and set a Github token if necessary.',
-					'extensions-leaflet-map-dsgvo'
+					'extensions-leaflet-map-github'
 				),
 				'<a href="' . $main_site_url . '/wp-admin/plugins.php">', //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
 				'</a>',
@@ -190,7 +195,7 @@ function leafext_github_update_admin() {
 
 if ( ! function_exists( 'leafext_updating_help' ) ) {
 	function leafext_updating_help() {
-		echo '<h3>' . esc_html__( 'Github token to receive updates in WordPress way', 'extensions-leaflet-map' ) . '</h3>';
+		echo '<h3>' . esc_html__( 'Github token to receive updates in WordPress way', 'extensions-leaflet-map-github' ) . '</h3>';
 		$setting = get_option( 'leafext_updating', array( 'token' => '' ) );
 		if ( $setting && isset( $setting['token'] ) && $setting['token'] !== '' ) {
 			$token = $setting['token'];
@@ -202,16 +207,16 @@ if ( ! function_exists( 'leafext_updating_help' ) ) {
 			// var_dump($perm_denied);
 			if ( false !== $perm_denied ) {
 				echo sprintf(
-					esc_html__( 'You need a %1$sGithub token%2$s to receive updates successfully.', 'extensions-leaflet-map' ),
+					esc_html__( 'You need a %1$sGithub token%2$s to receive updates successfully.', 'extensions-leaflet-map-github' ),
 					'<a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">',
 					'</a>'
 				) . '<br>';
 			} else {
-						echo sprintf(
-							esc_html__( 'Maybe you need a %1$sGithub token%2$s to receive updates successfully.', 'extensions-leaflet-map' ),
-							'<a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">',
-							'</a>'
-						) . '<br>';
+				echo sprintf(
+					esc_html__( 'Maybe you need a %1$sGithub token%2$s to receive updates successfully.', 'extensions-leaflet-map-github' ),
+					'<a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">',
+					'</a>'
+				) . '<br>';
 			}
 		}
 	}

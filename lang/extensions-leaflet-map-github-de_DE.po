@@ -1,0 +1,58 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: DSGVO Snippet for Extensions for Leaflet Map\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-15 15:43+0000\n"
+"PO-Revision-Date: 2024-03-15 17:46+0000\n"
+"Last-Translator: \n"
+"Language-Team: Deutsch\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.6; wp-6.4.3\n"
+"X-Domain: extensions-leaflet-map-dsgvo"
+
+#: admin/check-update.php:177
+msgid "activate the plugin there"
+msgstr "aktiviere das Plugin dort"
+
+#: admin/check-update.php:101
+msgid "Github token"
+msgstr "Github Token"
+
+#: admin/check-update.php:144 admin/check-update.php:198
+msgid "Github token to receive updates in WordPress way"
+msgstr "Github Token um Updates auf WordPress-Art zu erhalten"
+
+#: admin/check-update.php:184
+#, php-format
+#| msgid ""
+#| "If you want to receive updates in WordPress way, go to the %1$smain site "
+#| "dashboard%2$s, activate the plugin there and set a Github token if "
+#| "necessary."
+msgid ""
+"If you want to receive updates in WordPress way, go to the %1$smain site "
+"dashboard%2$s%3$s and set a Github token if necessary."
+msgstr ""
+"Um Updates auf WordPress-Art zu erhalten, gehe zum %1$sDashboard der Main "
+"Site%2$s%3$s und setze ggf. ein Github-Token."
+
+#: admin/check-update.php:156 admin/check-update.php:216
+#, php-format
+msgid "Maybe you need a %1$sGithub token%2$s to receive updates successfully."
+msgstr ""
+"Möglicherweise benötigst du ein %1$sGithub-Token%2$s, um erfolgreich Updates "
+"zu erhalten."
+
+#: admin/check-update.php:150 admin/check-update.php:210
+#, php-format
+msgid "You need a %1$sGithub token%2$s to receive updates successfully."
+msgstr ""
+"Du benötigst ein %1$sGithub-Token%2$s, um erfolgreich Updates zu erhalten."
+
+#: admin/check-update.php:181
+msgid "You receive updates in WordPress way."
+msgstr "Updates werden auf WordPress-Art durchgeführt."

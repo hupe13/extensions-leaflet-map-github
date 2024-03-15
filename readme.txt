@@ -8,13 +8,11 @@ Requires at least: 5.5.3
 Requires PHP: 7.4
 License: GPLv2 or later
 
-
 == Description ==
 
 Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
 
 This is the Plugins Github Version.
-
 
 == Installation ==
 
@@ -37,5 +35,5 @@ Maybe you need a Github token.
 == Changelog ==
 
 * Updates with https://github.com/YahnisElsts/plugin-update-checker
-* new version leaflet-rotate
+* new version leaflet-rotate, d3
 * some changes for WPCS

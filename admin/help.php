@@ -389,44 +389,39 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 	$header .= '<h3>' .
 	__( 'Documentation', 'extensions-leaflet-map' ) . '</h3><p>';
 
+	// LEAFEXT_DSGVO_PLUGIN_DIR is known since initial release, and URL, others not
 	if ( ! defined( 'LEAFEXT_DSGVO_PLUGIN_DIR' ) ) {
-		$header .= '<p>' . __( 'You may be interested in', 'extensions-leaflet-map' ) .
-		' <a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>.</p>';
+		$header .= '<p>' . sprintf(
+			__( 'You may be interested in %1$s.', 'extensions-leaflet-map' ),
+			'<a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>'
+		) . '</p>';
 	} else {
-		$header .= '<p>' . __( 'Thank you for using', 'extensions-leaflet-map' ) .
-		' <a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>.';
-		if ( function_exists( 'leafext_dsgvo_meta_links' ) ) {
-			$update = leafext_dsgvo_meta_links( array(), LEAFEXT_DSGVO_PLUGIN_FILE );
-			if ( count( $update ) > 0 ) {
-				$header .= $update[0];
-			}
-		} else {
-			$header .= ' ' . __( 'It may be an update available.', 'extensions-leaflet-map' );
-		}
-		$header .= '</p>';
-	}
+		$header .= '<p>' . sprintf(
+			__( 'Thank you for using %1$s.', 'extensions-leaflet-map' ),
+			'<a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>'
+		);
 
-	$local = get_file_data(
-		LEAFEXT_PLUGIN_DIR . 'extensions-leaflet-map.php',
-		array(
-			'Version' => 'Version',
+		$local  = get_file_data(
+			LEAFEXT_DSGVO_PLUGIN_DIR . '/leafext-dsgvo.php',
+			array(
+				'Version' => 'Version',
+			)
+		);
+		$remote = get_file_data(
+			'https://raw.githubusercontent.com/hupe13/extensions-leaflet-map-dsgvo/main/leafext-dsgvo.php',
+			array( 'Version' => 'Version' )
+		);
+		// var_dump($local,$remote);
 
-			'Title'   => 'Plugin Name',
-		)
-	);
-	if ( strpos( $local['Title'], 'Github' ) !== false ) {
-		//$update = leafext_plugin_meta_links( array(), LEAFEXT_PLUGIN_FILE );
-		$update = array();
-		if ( count( $update ) > 0 ) {
-			$header .= '<p>' . sprintf(
-				__( 'You are using %1s, there is an %2sUpdate available%3s', 'extensions-leaflet-map' ),
-				'Extensions for Leaflet Map Github',
-				'<a href="https://github.com/hupe13/extensions-leaflet-map-github"><span class="update-message notice inline notice-warning notice-alt">',
-				'</span></a>'
-			) .
-			'</p>';
+		if ( $local['Version'] !== $remote['Version'] ) {
+			$header .= '<a href="https://github.com/hupe13/extensions-leaflet-map-dsgvo">' .
+			'<span class="update-message notice inline notice-warning notice-alt">' .
+			esc_html__( 'New version available.' ) .
+			'</span>' .
+			'</a>';
 		}
 	}
+	$header .= '</p>';
 
 	$header = $header .
 	sprintf(
