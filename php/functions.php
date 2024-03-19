@@ -182,17 +182,6 @@ function leafext_should_interpret_shortcode( $shortcode, $atts ) {
 	// ! is_front_page()
 
 // Display array as table
-function leafext_html_table_alt( $data = array() ) {
-	$rows = array();
-	foreach ( $data as $row ) {
-		$cells = array();
-		foreach ( $row as $cell ) {
-			$cells[] = "<td>{$cell}</td>";
-		}
-		$rows[] = '<tr>' . implode( '', $cells ) . '</tr>';
-	}
-	return "<table border='1'>" . implode( '', $rows ) . '</table>';
-}
 
 function leafext_html_table( $data = array() ) {
 	$rows      = array();
