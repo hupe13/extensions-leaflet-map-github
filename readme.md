@@ -181,6 +181,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 ### 4.2 /2403xx
 
 * new version leaflet-rotate, d3
+* grouping: html tags in menu
 * some changes for WPCS
 
 ### Previous

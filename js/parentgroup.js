@@ -8,7 +8,7 @@
  * Create Javascript code for parentgroup
  */
 
-function leafext_parentgroup_js(parent, childs, visible) {
+function leafext_parentgroup_js(parent, childs, grouptext, visible) {
 	var map    = window.WPLeafletMapPlugin.getCurrentMap();
 	var map_id = map._leaflet_id;
 
@@ -20,10 +20,9 @@ function leafext_parentgroup_js(parent, childs, visible) {
 
 	for (key in childs) {
 		featGroups[map_id][childs[key]].remove();
-		//featGroups[map_id][childs[key]].addTo( map );
 		control[map_id].removeLayer( featGroups[map_id][childs[key]] );
 		featGroups[map_id][childs[key]].setParentGroupSafe( parentGroup );
-		control[map_id].addOverlay( featGroups[map_id][childs[key]], '__' + [childs[key]] );
+		control[map_id].addOverlay( featGroups[map_id][childs[key]], '__' + leafext_unescapeHTML( [grouptext[childs[key]]] ) );
 	}
 
 	for (key in childs) {

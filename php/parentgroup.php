@@ -8,7 +8,7 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-function leafext_parentgroup_script( $parentgroup, $childs, $visible ) {
+function leafext_parentgroup_script( $parentgroup, $childs, $grouptext, $visible ) {
 	$text = '<script><!--';
 	ob_start();
 	?>/*<script>*/
@@ -16,8 +16,9 @@ function leafext_parentgroup_script( $parentgroup, $childs, $visible ) {
 	window.WPLeafletMapPlugin.push(function () {
 		let parent = <?php echo wp_json_encode( $parentgroup ); ?>;
 		let childs = <?php echo wp_json_encode( $childs ); ?>;
+		let grouptext = <?php echo wp_json_encode( $grouptext ); ?>;
 		let visible = <?php echo wp_json_encode( $visible ); ?>;
-		leafext_parentgroup_js(parent,childs,visible);
+		leafext_parentgroup_js(parent,childs,grouptext, visible);
 	});
 	<?php
 	$javascript = ob_get_clean();
@@ -44,7 +45,11 @@ function leafext_parentgroup_function( $atts, $content, $shortcode ) {
 		);
 
 		$parentgroup = sanitize_text_field( $options['parent'] );
-		$childs      = array_map( 'trim', explode( ',', sanitize_text_field( $options['childs'] ) ) );
+
+		$childs = array();
+		foreach ( array_map( 'trim', explode( ',', $options['childs'] ) ) as $group ) {
+			$childs[] = trim( wp_strip_all_tags( $group ) );
+		}
 
 		if ( $options['visible'] === false ) {
 			$cl_on = array_fill( 0, count( $childs ), '1' );
@@ -65,7 +70,9 @@ function leafext_parentgroup_function( $atts, $content, $shortcode ) {
 
 		$visible = array_combine( $childs, $cl_on );
 
-		return leafext_parentgroup_script( $parentgroup, $childs, $visible );
+		global $leafext_group_menu;
+
+		return leafext_parentgroup_script( $parentgroup, $childs, $leafext_group_menu, $visible );
 	}
 }
 add_shortcode( 'parentgroup', 'leafext_parentgroup_function' );

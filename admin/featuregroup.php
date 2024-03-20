@@ -116,7 +116,7 @@ Use %5$s to group elements by options and %6$s to group elements by properties.'
 	$text = $text . '<p>' . __( 'In a geojson file there are features and properties. They are different for each application.', 'extensions-leaflet-map' ) . ' ';
 	$text = $text . sprintf(
 		__(
-			'gpx and kml are similar to geojson, so you can also use %s there. But it is not that easy to find relevant features.',
+			'gpx and kml are similar to geojson, so you can also use %s there. But here it is not that easy to find relevant features.',
 			'extensions-leaflet-map'
 		),
 		'<code>leaflet-featuregroup</code>'
@@ -148,7 +148,7 @@ Use %5$s to group elements by options and %6$s to group elements by properties.'
           "<span style="color: #d63638">prop0</span>": "<span style="color: #4f94d4">value0</span>"
         }
       },...</pre>
-		 </p>';
+	</p>';
 
 	$text = $text . '<p>' . sprintf(
 		__( '%s is case sensitive.', 'extensions-leaflet-map' ),
@@ -186,41 +186,44 @@ Use %5$s to group elements by options and %6$s to group elements by properties.'
 		'<i>false</i>',
 		'<code>leaflet-featuregroup</code>'
 	) . '
-		</li>
+	</li>
 
-		<li><code>groups</code> - ' .
-		__( 'comma separated labels appear in the selection menu', 'extensions-leaflet-map' ) . '.</li>
+	<li><code>groups</code> - ' .
+	__( 'comma separated labels appear in the selection menu', 'extensions-leaflet-map' ) . '.</li>
 
-		<li>' . sprintf(
-			__( 'The number of %1$s and %2$s must match.', 'extensions-leaflet-map' ),
-			'<code>values</code>',
-			'<code>groups</code>'
-		) . '
-			</li>
-			<li>' .
-			sprintf(
-				__( 'You can specify multiple %1$s and %2$s. If the %3$s are called the same, the elements will be placed in the same group despite having different options resp. properties.', 'extensions-leaflet-map' ),
-				'<code>leaflet-optiongroup</code>',
-				'<code>leaflet-featuregroup</code>',
-				'<code>groups</code>'
-			) . '<br>' .
-			__( 'However, make sure that they are unique. Otherwise unwanted, but sometimes interesting effects can occur. Test it with your application!', 'extensions-leaflet-map' )
-			. '</li>
+	<li>' . sprintf(
+		__( 'The number of %1$s and %2$s must match.', 'extensions-leaflet-map' ),
+		'<code>values</code>',
+		'<code>groups</code>'
+	) . '
+	</li>
+	<li>' .
+	sprintf(
+		__( 'You can specify multiple %1$s and %2$s. If the %3$s are called the same, the elements will be placed in the same group despite having different options resp. properties.', 'extensions-leaflet-map' ),
+		'<code>leaflet-optiongroup</code>',
+		'<code>leaflet-featuregroup</code>',
+		'<code>groups</code>'
+	) . '<br>' .
+	__( 'However, make sure that they are unique. Otherwise unwanted, but sometimes interesting effects can occur. Test it with your application!', 'extensions-leaflet-map' )
+	. '</li>
 
-			<li><code>visible</code> (' . __( 'optional', 'extensions-leaflet-map' ) . ') - ' .
-			sprintf(
-				__(
-					'initial visibility of a group, default: %1$s. Either %2$s (valid for all groups) or a comma-separated list of %3$s and %4$s, where the number must match those of %5$s.',
-					'extensions-leaflet-map'
-				),
-				'1',
-				'0',
-				'0',
-				'1',
-				'<code>groups</code>',
-			) . '</li>
+	<li><code>visible</code> (' . __( 'optional', 'extensions-leaflet-map' ) . ') - ' .
+	sprintf(
+		__(
+			'initial visibility of a group, default: %1$s. Either %2$s (valid for all groups) or a comma-separated list of %3$s and %4$s, where the number must match those of %5$s.',
+			'extensions-leaflet-map'
+		),
+		'1',
+		'0',
+		'0',
+		'1',
+		'<code>groups</code>',
+	) . '</li>
 
-			</ul></p>';
+	</ul></p>';
+
+	$text = $text . '<pre><code>&#091;leaflet-optiongroup option="..." values="..., ..." groups="..., ..." visible=...]
+&#091;leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." visible=...]</code></pre>';
 
 	$text = $text . '<h3>Groups unknown ' . __( 'and', 'extensions-leaflet-map' ) . ' others</h3><p>' .
 	sprintf(
@@ -233,7 +236,7 @@ Use %5$s to group elements by options and %6$s to group elements by properties.'
 		'<code>option / property</code>',
 		'unknown'
 	) .
-		'</p>
+	'</p>
 	<pre><code>&#091;leaflet-optiongroup option="..." values="...,...,others,unknown" groups="...,...,Other elements,Unknown elements"]
 &#091;leaflet-featuregroup property="..." values="...,...,others,unknown" groups="...,...,Other elements,Unknown elements"]</code></pre>';
 
@@ -245,9 +248,11 @@ Use %5$s to group elements by options and %6$s to group elements by properties.'
 		'extensions-leaflet-map'
 	);
 	$text = $text . '<ul>
-<li><code>parent</code> - ' . __( 'Name of the parent', 'extensions-leaflet-map' ) . '</li>
-	 <li><code>childs</code> - ' .
-	__( 'child names - comma separated group names (the same as in <code>groups</code> above) ', 'extensions-leaflet-map' ) . '.</li>';
+	<li><code>parent</code> - ' . __( 'Name of the parent', 'extensions-leaflet-map' ) . '</li>
+	<li><code>childs</code> - ' .
+	__( 'child names - comma separated group names (the same as in <code>groups</code> above)', 'extensions-leaflet-map' ) . '. ' .
+	__( 'If you have html tags there, you can omit these here', 'extensions-leaflet-map' ) .
+	'.</li>';
 	$text = $text . '<li><code>visible</code> (' . __( 'optional, like above', 'extensions-leaflet-map' ) . ')</li></ul>';
 	$text = $text . '<h3>' . __( 'Group Control', 'extensions-leaflet-map' ) . '</h3>' .
 	'<p>' .
@@ -255,15 +260,15 @@ Use %5$s to group elements by options and %6$s to group elements by properties.'
 &#091;leaflet-featuregroup ... position=topleft|topright|bottomleft|bottomright collapsed=true|false]</code></pre>' .
 	'<p>' . __( 'The specification in the first command applies.', 'extensions-leaflet-map' ) . '</p>' .
 	'<ul>
-<li>' .
+  <li>' .
 	__( 'optional: <code>position</code> - position of group control', 'extensions-leaflet-map' ) . ': topleft, topright, bottomleft, bottomright. ' .
 	__( 'Default', 'extensions-leaflet-map' ) . ': topright.
-</li>
-<li>' .
+	</li>
+	<li>' .
 	__( 'optional: <code>collapsed</code> - group control collapsed or not:', 'extensions-leaflet-map' ) . ' true, false. ' .
 	__( 'Default', 'extensions-leaflet-map' ) . ': false.
-</li>
-</ul>';
+	</li>
+	</ul>';
 
 	if ( ! ( is_singular() || is_archive() ) ) {
 		$text = $text . '<p>' . sprintf(
@@ -274,8 +279,6 @@ Use %5$s to group elements by options and %6$s to group elements by properties.'
 		)
 		. '</p>';
 	}
-	$text = $text . '<pre><code>&#091;leaflet-optiongroup option="..." values="..., ..." groups="..., ..." visible=...]
-&#091;leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." visible=...]</code></pre>';
 	if ( is_singular() || is_archive() ) {
 		return $text;
 	} else {

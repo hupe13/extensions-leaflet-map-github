@@ -31,9 +31,9 @@ Releases are the same as the WordPress versions. If you want test the Github ver
 You will get updates with the [Plugin Update Checker](https://github.com/YahnisElsts/plugin-update-checker).
 Maybe you need a Github token.
 
-
 == Changelog ==
 
 * Updates with https://github.com/YahnisElsts/plugin-update-checker
 * new version leaflet-rotate, d3
+* grouping: html tags in menu
 * some changes for WPCS

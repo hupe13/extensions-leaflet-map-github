@@ -8,7 +8,7 @@
  * Create Javascript code for featuregroup and optiongroup
  */
 
-function leafext_featuregroup_js(att_property,att_option,groups,visible,substr,alle,position,collapsed) {
+function leafext_featuregroup_js(att_property,att_option,groups,grouptext,visible,substr,alle,position,collapsed) {
 	var map    = window.WPLeafletMapPlugin.getCurrentMap();
 	var map_id = map._leaflet_id;
 
@@ -335,7 +335,7 @@ function leafext_featuregroup_js(att_property,att_option,groups,visible,substr,a
 						// geojson asynchron
 						for (group in featGroups[map_id]) {
 							control[map_id].removeLayer( featGroups[map_id][group] );
-							control[map_id].addOverlay( featGroups[map_id][group], group );
+							control[map_id].addOverlay( featGroups[map_id][group], leafext_unescapeHTML( grouptext[group] ) );
 						}
 					}
 				); // geojson ready
@@ -345,12 +345,12 @@ function leafext_featuregroup_js(att_property,att_option,groups,visible,substr,a
 
 	if (durchlauf[map_id] == 0 ) {
 		for (group in featGroups[map_id]) {
-			control[map_id].addOverlay( featGroups[map_id][group], group );
+			control[map_id].addOverlay( featGroups[map_id][group], leafext_unescapeHTML( grouptext[group] ) );
 		}
 	} else {
 		for (group in featGroups[map_id]) {
 			control[map_id].removeLayer( featGroups[map_id][group] );
-			control[map_id].addOverlay( featGroups[map_id][group], group );
+			control[map_id].addOverlay( featGroups[map_id][group], leafext_unescapeHTML( grouptext[group] ) );
 		}
 	}
 
@@ -362,4 +362,10 @@ function leafext_featuregroup_js(att_property,att_option,groups,visible,substr,a
 			featGroups[map_id][key].addTo( map );
 		}
 	}
+}
+
+function leafext_unescapeHTML(string) {
+	var elt       = document.createElement( "span" );
+	elt.innerHTML = string;
+	return elt.innerText;
 }

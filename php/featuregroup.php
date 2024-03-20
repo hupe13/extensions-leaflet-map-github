@@ -18,6 +18,7 @@ function leafext_featuregroup_script( $options, $params ) {
 		let att_property = <?php echo wp_json_encode( $options['property'] ); ?>;
 		let att_option = <?php echo wp_json_encode( $options['option'] ); ?>;
 		let groups  = <?php echo wp_json_encode( $options['groups'] ); ?>;
+		let grouptext  = <?php echo wp_json_encode( $options['grouptext'] ); ?>;
 		let visible = <?php echo wp_json_encode( $options['visible'] ); ?>;
 		let substr = <?php echo wp_json_encode( $options['substr'] ); ?>;
 		let	alle = new L.markerClusterGroup({
@@ -25,7 +26,7 @@ function leafext_featuregroup_script( $options, $params ) {
 		});
 		let position = <?php echo wp_json_encode( $options['position'] ); ?>;
 		let collapsed = <?php echo wp_json_encode( $options['collapsed'] ); ?>;
-		leafext_featuregroup_js(att_property,att_option,groups,visible,substr,alle,position,collapsed);
+		leafext_featuregroup_js(att_property,att_option,groups,grouptext,visible,substr,alle,position,collapsed);
 	});
 	<?php
 	$javascript = ob_get_clean();
@@ -93,8 +94,22 @@ function leafext_featuregroup_function( $atts, $content, $shortcode ) {
 			return $text;
 		}
 
-		$cl_values = array_map( 'trim', explode( ',', $options['values'] ) );
-		$cl_groups = array_map( 'trim', explode( ',', $options['groups'] ) );
+		$cl_values    = array_map( 'trim', explode( ',', $options['values'] ) );
+		$groups_array = array_map( 'trim', explode( ',', $options['groups'] ) );
+
+		$grouptext = array();
+		$cl_groups = array();
+		foreach ( $groups_array as $group ) {
+			$grouptext[] = esc_html( $group );
+			$cl_groups[] = trim( wp_strip_all_tags( $group ) );
+		}
+
+		global $leafext_group_menu;
+		if ( ! isset( $leafext_group_menu ) ) {
+			$leafext_group_menu = array_combine( $cl_groups, $grouptext );
+		} else {
+			$leafext_group_menu = array_merge( $leafext_group_menu, array_combine( $cl_groups, $grouptext ) );
+		}
 
 		if ( $options['visible'] === false ) {
 			$options['visible'] = array_fill( 0, count( $cl_values ), '1' );
@@ -104,13 +119,13 @@ function leafext_featuregroup_function( $atts, $content, $shortcode ) {
 			if ( count( $cl_on ) == 1 ) {
 				$cl_on = array_fill( 0, count( $cl_values ), '0' );
 			} elseif ( count( $cl_values ) != count( $cl_on ) ) {
-					$text = "['.$shortcode.' ";
+				$text = "['.$shortcode.' ";
 				foreach ( $atts as $key => $item ) {
 					$text = $text . "$key=$item ";
 				}
-					$text = $text . ' - groups and visible do not match. ';
-					$text = $text . ']';
-					return $text;
+				$text = $text . ' - groups and visible do not match. ';
+				$text = $text . ']';
+				return $text;
 			}
 		}
 
@@ -129,6 +144,7 @@ function leafext_featuregroup_function( $atts, $content, $shortcode ) {
 			'option'    => sanitize_text_field( $options['option'] ),
 			'values'    => sanitize_text_field( $options['values'] ),
 			'groups'    => array_combine( $cl_values, $cl_groups ),
+			'grouptext' => $leafext_group_menu,
 			'substr'    => (bool) $options['substr'],
 			'visible'   => array_combine( $cl_values, $cl_on ),
 			'position'  => $ctl_options['position'],
