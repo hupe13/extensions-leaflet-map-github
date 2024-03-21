@@ -8,6 +8,20 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
+add_filter(
+	'pre_do_shortcode_tag',
+	function ( $output, $shortcode ) {
+		global $leafext_gesture_loaded;
+		if ( 'leaflet-map' == $shortcode ) {
+			global $leafext_group_menu;
+			$leafext_group_menu = array();
+		}
+		return $output;
+	},
+	10,
+	2
+);
+
 // both Shortcodes
 function leafext_featuregroup_script( $options, $params ) {
 	$text = '<script><!--';
@@ -105,11 +119,7 @@ function leafext_featuregroup_function( $atts, $content, $shortcode ) {
 		}
 
 		global $leafext_group_menu;
-		if ( ! isset( $leafext_group_menu ) ) {
-			$leafext_group_menu = array_combine( $cl_groups, $grouptext );
-		} else {
-			$leafext_group_menu = array_merge( $leafext_group_menu, array_combine( $cl_groups, $grouptext ) );
-		}
+		$leafext_group_menu = array_merge( $leafext_group_menu, array_combine( $cl_groups, $grouptext ) );
 
 		if ( $options['visible'] === false ) {
 			$options['visible'] = array_fill( 0, count( $cl_values ), '1' );
