@@ -484,7 +484,6 @@ add_filter(
 /**
  * Enqueue css for Extensions Leaflet Map
  */
-
 function leafext_enqueue_css() {
 	wp_enqueue_style(
 		'leafext_css',
@@ -513,7 +512,6 @@ function leafext_enqueue_overview() {
 /**
  * Enqueue js for Extensions Leaflet Map
  */
-
 function leafext_enqueue_js() {
 		wp_enqueue_script(
 			'leafext_js',

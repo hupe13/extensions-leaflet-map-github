@@ -12,16 +12,16 @@ function leafext_targetmarker_js(lat,lng,target,zoom,debug) {
 		console.log( "targetmarker",lat,lng,target,zoom );
 		// console.log(map);
 		// map.on(
-		// 	"zoomend",
-		// 	function (e) {
-		// 		console.log( "zoomend zoom " + map.getZoom() );
-		// 	}
+		// "zoomend",
+		// function (e) {
+		// console.log( "zoomend zoom " + map.getZoom() );
+		// }
 		// );
 		// map.on(
-		// 	"moveend",
-		// 	function (e) {
-		// 		console.log( "moveend zoom " + map.getZoom() );
-		// 	}
+		// "moveend",
+		// function (e) {
+		// console.log( "moveend zoom " + map.getZoom() );
+		// }
 		// );
 	}
 	thismapbounds = [];
@@ -33,7 +33,7 @@ function leafext_targetmarker_js(lat,lng,target,zoom,debug) {
 			// https://unpkg.com/browse/leaflet.markercluster@1.5.3/dist/leaflet.markercluster-src.js
 			// from line 560
 
-			//Zoom down to show the given layer (spiderfying if necessary) then calls the callback
+			// Zoom down to show the given layer (spiderfying if necessary) then calls the callback
 			leafextZoomToShowLayer: function (layer, callback) {
 
 				// original begin ****
@@ -60,10 +60,10 @@ function leafext_targetmarker_js(lat,lng,target,zoom,debug) {
 				};
 
 				if (layer._icon && this._map.getBounds().contains( layer.getLatLng() )) {
-					//Layer is visible ond on screen, immediate return
+					// Layer is visible ond on screen, immediate return
 					callback();
 				} else if (layer.__parent._zoom < Math.round( this._map._zoom )) {
-					//Layer should be visible at this zoom level. It must not be on screen so just pan over to it
+					// Layer should be visible at this zoom level. It must not be on screen so just pan over to it
 					this._map.on( 'moveend', showMarker, this );
 					this._map.panTo( layer.getLatLng() );
 				} else {
@@ -85,7 +85,7 @@ function leafext_targetmarker_js(lat,lng,target,zoom,debug) {
 							map.setView( layer.getLatLng(),layer.__parent._zoom );
 						}
 						// } else {
-						// 		console.log( "layer.__parent._childClusters nicht vorhanden" );
+						// console.log( "layer.__parent._childClusters nicht vorhanden" );
 					}
 					// changed end ****
 				}
@@ -344,8 +344,8 @@ function leafext_zoomto_clmarker(closestMarker, target, markerClusterGroup, map,
 					leafext_zoomto_clmarker( closestMarker, target, markerClusterGroup, map, debug );
 				}
 				// } else {
-				// 	// console.log( "leafext_zoomto_clmarker visibleOne._childClusters nicht vorhanden" );
-				// 	console.log( visibleOne.__parent._zoom,map._zoom );
+				// console.log( "leafext_zoomto_clmarker visibleOne._childClusters nicht vorhanden" );
+				// console.log( visibleOne.__parent._zoom,map._zoom );
 			}
 
 			if ( closestMarker.getPopup() ) {

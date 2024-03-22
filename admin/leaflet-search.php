@@ -90,7 +90,7 @@ function leafext_leafletsearch_help() {
 	if ( is_singular() || is_archive() ) {
 		return $text;
 	} else {
-		//leafext_escape_output( $text );
+		// leafext_escape_output( $text );
 		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- all escaped, see above
 		echo $text;
 	}

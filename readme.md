@@ -178,7 +178,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.2 /2403xx
+### 4.2 /240322
 
 * new version leaflet-rotate, d3
 * grouping: html tags in menu

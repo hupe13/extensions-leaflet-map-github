@@ -15,7 +15,7 @@ function leafext_markercluster_js(clmarkers) {
 	if ( ! map.options.maxZoom ) {
 		map.options.maxZoom = 19;
 	}
-	//console.log(clmarkers);
+	// console.log(clmarkers);
 	if (clmarkers.options.disableClusteringAtZoom > map.options.maxZoom) {
 		clmarkers.options.disableClusteringAtZoom = map.options.maxZoom + 1;
 	}

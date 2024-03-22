@@ -110,7 +110,7 @@ function leafext_java_params( $params ) {
 /**
  * This function replaces the keys of an associate array by those supplied in the keys array
  *
- * @param array $atts_array target associative array in which the keys are intended to be replaced
+ * @param array  $atts_array target associative array in which the keys are intended to be replaced
  * @param string $keys associate array where search key => replace by key, for replacing respective keys
  * @return array with replaced keys
  * from https://www.php.net/manual/de/function.array-replace.php
@@ -147,12 +147,12 @@ function leafext_backend() {
 
 function leafext_should_interpret_shortcode( $shortcode, $atts ) {
 	global $button;
-	//var_dump($button);
+	// var_dump($button);
 	$server     = map_deep( wp_unslash( $_SERVER ), 'sanitize_text_field' );
 	$scriptname = $server['SCRIPT_NAME'];
 	if ( is_singular() || is_archive() || is_home() || is_front_page() || leafext_backend() ) {
 		if ( strpos( $scriptname, '/wp-admin/post.php' ) === false ) {
-			//return 'should interpret '.$shortcode;
+			// return 'should interpret '.$shortcode;
 			return '';
 		} elseif ( ! isset( $button ) ) {
 				$button = true;

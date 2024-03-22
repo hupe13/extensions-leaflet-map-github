@@ -8,6 +8,23 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
+add_filter(
+	'pre_do_shortcode_tag',
+	function ( $output, $shortcode ) {
+		if ( 'leaflet-map' == $shortcode ) {
+			global $all_files;
+			$all_files = array();
+			global $all_points;
+			$all_points = array();
+		}
+		return $output;
+	},
+	10,
+	2
+);
+
+
+
 // Parameter and Values
 function leafext_multielevation_params( $typ = array( 'changeable' ) ) {
 	$params = array(
@@ -175,13 +192,7 @@ function leafext_elevation_track( $atts, $content, $shortcode ) {
 		}
 
 		global $all_files;
-		if ( ! is_array( $all_files ) ) {
-			$all_files = array();
-		}
 		global $all_points;
-		if ( ! is_array( $all_points ) ) {
-			$all_points = array();
-		}
 
 		$defaults = array(
 			'lat'  => '',

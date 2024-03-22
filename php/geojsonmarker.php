@@ -181,7 +181,7 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 			leafext_enqueue_clustergroup();
 		} else {
 			$featuregroupoptions = array(
-				//'values'  => '',
+				// 'values'  => '',
 				'groups'  => '',
 				'visible' => '',
 			);

@@ -11,7 +11,6 @@ defined( 'ABSPATH' ) || die();
 add_filter(
 	'pre_do_shortcode_tag',
 	function ( $output, $shortcode ) {
-		global $leafext_gesture_loaded;
 		if ( 'leaflet-map' == $shortcode ) {
 			global $leafext_group_menu;
 			$leafext_group_menu = array();
