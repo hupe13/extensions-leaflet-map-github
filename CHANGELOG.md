@@ -1,3 +1,8 @@
+### 4.2.1 /240325
+
+* fixed bugs in markerclustergroup
+* fixed bug in uploader
+
 ### 4.2 /240322
 
 * new version leaflet-rotate, d3

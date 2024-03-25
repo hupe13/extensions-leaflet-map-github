@@ -1,9 +1,7 @@
 # Differences to the Plugins WordPress version
 
-* Updates with https://github.com/YahnisElsts/plugin-update-checker
-* new version leaflet-rotate, d3
-* grouping: html tags in menu
-* some changes for WPCS
+* fixed bugs in markerclustergroup
+* fixed bug in uploader
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

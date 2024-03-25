@@ -8,6 +8,19 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
+add_filter(
+	'pre_do_shortcode_tag',
+	function ( $output, $shortcode ) {
+		if ( 'leaflet-map' == $shortcode ) {
+			global $leafext_group_menu;
+			$leafext_group_menu = array();
+		}
+		return $output;
+	},
+	10,
+	2
+);
+
 function leafext_clustergroup_function( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
 	if ( $text != '' ) {
@@ -31,6 +44,18 @@ function leafext_clustergroup_function( $atts, $content, $shortcode ) {
 
 		$cl_strings = array_map( 'trim', explode( ',', $featuregroups['strings'] ) );
 		$cl_groups  = array_map( 'trim', explode( ',', $featuregroups['groups'] ) );
+
+		$groups_array = array_map( 'trim', explode( ',', $featuregroups['groups'] ) );
+		$grouptext    = array();
+		$cl_groups    = array();
+		foreach ( $groups_array as $group ) {
+			$grouptext[] = esc_html( $group );
+			$cl_groups[] = trim( wp_strip_all_tags( $group ) );
+		}
+
+		global $leafext_group_menu;
+		$leafext_group_menu = array_merge( $leafext_group_menu, array_combine( $cl_groups, $grouptext ) );
+
 		if ( $featuregroups['visible'] === false ) {
 			$featuregroups['visible'] = array_fill( 0, count( $cl_strings ), '1' );
 			$cl_on                    = array_fill( 0, count( $cl_strings ), '1' );
@@ -73,10 +98,12 @@ function leafext_clustergroup_function( $atts, $content, $shortcode ) {
 			'property'  => '',
 			'option'    => '',
 			'groups'    => $featuregroups['groups'],
+			'grouptext' => $leafext_group_menu,
 			'visible'   => $featuregroups['visible'],
 			'position'  => $ctl_options['position'],
 			'collapsed' => $ctl_options['collapsed'],
 		);
+
 		if ( strpos( $featuregroups['feat'], 'properties' ) !== false ) {
 			$options['property'] = substr( $featuregroups['feat'], 11 );
 			$options['substr']   = false;

@@ -79,7 +79,8 @@ add_filter( 'wp_handle_upload_prefilter', 'leafext_pre_upload' );
 function leafext_custom_upload_dir( $path ) {
 	$options = leafext_filemgr_settings();
 	if ( $options['gpxupload'] == true ) {
-		if ( ! empty( $_POST ) && check_admin_referer( 'leafext_file', 'leafext_file_nonce' ) ) {
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- media uploader does this check
+		if ( ! empty( $_POST ) ) {
 			$post = map_deep( wp_unslash( $_POST ), 'sanitize_text_field' );
 		}
 		$extension = substr( strrchr( $post['name'], '.' ), 1 );

@@ -5,7 +5,7 @@
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
  * Primary Branch:    main
  * Description:       Extensions for the WordPress plugin Leaflet Map Github Version
- * Version:           4.2-240322
+ * Version:           4.2-240326
  * Requires PHP:      7.4
  * Author:            hupe13
  * Author URI:        https://leafext.de/en/
@@ -23,25 +23,6 @@ define( 'LEAFEXT_PLUGIN_DIR', plugin_dir_path( __FILE__ ) ); // /pfad/wp-content
 define( 'LEAFEXT_PLUGIN_URL', WP_PLUGIN_URL . '/' . basename( LEAFEXT_PLUGIN_DIR ) ); // https://url/wp-content/plugins/extensions-leaflet-map-github/ .
 define( 'LEAFEXT_PLUGIN_PICTS', LEAFEXT_PLUGIN_URL . '/pict/' ); // https://url/wp-content/plugins/extensions-leaflet-map-github/pict/ .
 define( 'LEAFEXT_PLUGIN_SETTINGS', dirname( plugin_basename( __FILE__ ) ) ); // extensions-leaflet-map .
-
-function leafext_plugin_init() {
-	if ( is_admin() ) {
-		if ( ! defined( 'LEAFLET_MAP__PLUGIN_DIR' ) && ( ! leafext_is_github() || ( leafext_is_github() && ! is_main_site() ) ) ) {
-			function leafext_require_leaflet_map_plugin() {
-				echo '<div class="notice notice-error" ><p> ';
-				printf(
-					esc_html__( 'Please install and activate %1$s before using %2$s.', 'extensions-leaflet-map' ),
-					'<a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>',
-					'Extensions for Leaflet Map'
-				);
-				echo '</p></div>';
-			}
-			add_action( 'admin_notices', 'leafext_require_leaflet_map_plugin' );
-			// register_activation_hook( __FILE__, 'leafext_require_leaflet_map_plugin' ); //?
-		}
-	}
-}
-add_action( 'plugins_loaded', 'leafext_plugin_init' );
 
 if ( is_admin() ) {
 	require_once LEAFEXT_PLUGIN_DIR . 'admin.php';
@@ -104,24 +85,32 @@ function leafext_extra_textdomain() {
 }
 add_action( 'plugins_loaded', 'leafext_extra_textdomain' );
 
-// Github update
-function leafext_is_github() {
-	$local = get_file_data(
-		LEAFEXT_PLUGIN_DIR . 'extensions-leaflet-map.php',
-		array(
-			'Title' => 'Plugin Name',
-		)
-	);
-	if ( strpos( $local['Title'], 'Github' ) !== false ) {
-		return true;
-	} else {
-		return false;
+// Github Version only
+function leafext_plugin_init() {
+	if ( is_admin() ) {
+		if ( ! defined( 'LEAFLET_MAP__PLUGIN_DIR' ) ) {
+			if ( ( is_multisite() && ! is_main_site() ) || ! is_multisite() ) {
+				function leafext_require_leaflet_map_plugin() {
+					echo '<div class="notice notice-error" ><p> ';
+					printf(
+						esc_html__( 'Please install and activate %1$s before using %2$s.', 'extensions-leaflet-map' ),
+						'<a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>',
+						'Extensions for Leaflet Map'
+					);
+					echo '</p></div>';
+				}
+				add_action( 'admin_notices', 'leafext_require_leaflet_map_plugin' );
+				// register_activation_hook( __FILE__, 'leafext_require_leaflet_map_plugin' ); //?
+			}
+		}
 	}
 }
+add_action( 'plugins_loaded', 'leafext_plugin_init' );
 
+// Github update
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 use YahnisElsts\PluginUpdateChecker\v5p4\Vcs\GitHubApi;
-if ( is_admin() && leafext_is_github() ) {
+if ( is_admin() ) {
 	if ( is_main_site() ) {
 		require_once LEAFEXT_PLUGIN_DIR . '/admin/check-update.php';
 		global $leafext_github_main_active;

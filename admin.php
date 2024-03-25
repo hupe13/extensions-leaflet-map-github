@@ -78,7 +78,8 @@ function leafext_do_page() {
 			}
 			echo '</form>';
 		}
-		if ( leafext_is_github() ) {
+		// Github only
+		if ( function_exists( 'leafext_github_update_admin' ) ) {
 			leafext_github_update_admin();
 		}
 		if ( is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {

@@ -38,7 +38,7 @@ function leafext_featuregroup_script( $options, $params ) {
 			<?php echo leafext_java_params( $params ); ?>
 		});
 		let position = <?php echo wp_json_encode( $options['position'] ); ?>;
-		let collapsed = <?php echo wp_json_encode( $options['collapsed'] ); ?>;
+		let collapsed = <?php echo $options['collapsed']; ?>;
 		leafext_featuregroup_js(att_property,att_option,groups,grouptext,visible,substr,alle,position,collapsed);
 	});
 	<?php
@@ -140,7 +140,7 @@ function leafext_featuregroup_function( $atts, $content, $shortcode ) {
 
 		$control     = array(
 			'position'  => 'topright',
-			'collapsed' => false,
+			'collapsed' => 'false',
 		);
 		$atts1       = leafext_clear_params( $atts );
 		$ctl_options = shortcode_atts( $control, $atts1 );
