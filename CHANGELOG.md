@@ -1,3 +1,8 @@
+### 4.2.2 /2404xx
+
+* catalan
+* bug markerclustergroup
+
 ### 4.2.1 /240325
 
 * fixed bugs in markerclustergroup

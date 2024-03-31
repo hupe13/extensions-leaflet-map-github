@@ -86,7 +86,7 @@ function leafext_clustergroup_function( $atts, $content, $shortcode ) {
 
 		$control     = array(
 			'position'  => 'topright',
-			'collapsed' => false,
+			'collapsed' => 'false',
 		);
 		$atts1       = leafext_clear_params( $atts );
 		$ctl_options = shortcode_atts( $control, $atts1 );

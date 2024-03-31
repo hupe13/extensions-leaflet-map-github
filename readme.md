@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, elevation, markercluster, Leaflet Plugins   
 Tested up to: 6.5  
-Stable tag: 4.2.1     
+Stable tag: 4.2.2     
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later
@@ -178,16 +178,10 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.2.1 /240325
+### 4.2.2 /2404xx
 
-* fixed bugs in markerclustergroup
-* fixed bug in uploader
-
-### 4.2 /240322
-
-* new version leaflet-rotate, d3
-* grouping: html tags in menu
-* some changes for WPCS
+* catalan
+* bug markerclustergroup
 
 ### Previous
 

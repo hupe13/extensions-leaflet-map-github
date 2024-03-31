@@ -5,7 +5,7 @@
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
  * Primary Branch:    main
  * Description:       Extensions for the WordPress plugin Leaflet Map Github Version
- * Version:           4.2-240326
+ * Version:           4.2-240331
  * Requires PHP:      7.4
  * Author:            hupe13
  * Author URI:        https://leafext.de/en/
@@ -79,7 +79,7 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'leafext_add_a
  * For translating a plugin.
  */
 function leafext_extra_textdomain() {
-	if ( get_locale() === 'sv_SE' || get_locale() === 'it_IT' ) {
+	if ( get_locale() === 'sv_SE' || get_locale() === 'it_IT' || get_locale() === 'ca' ) {
 		load_plugin_textdomain( 'extensions-leaflet-map', false, LEAFEXT_PLUGIN_SETTINGS . '/lang/' );
 	}
 }

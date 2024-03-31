@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, elevation, markercluster, Leaflet Plugins
 Tested up to: 6.5
-Stable tag: 4.2.1
+Stable tag: 4.2.2
 Requires at least: 5.5.3
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -33,5 +33,5 @@ Maybe you need a Github token.
 
 == Changelog ==
 
-* fixed bugs in markerclustergroup
-* fixed bug in uploader
+* catalan
+* bug markerclustergroup
