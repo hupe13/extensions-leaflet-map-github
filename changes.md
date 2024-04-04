@@ -1,7 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* fixed bugs in markerclustergroup
-* fixed bug in uploader
+* nothing
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
