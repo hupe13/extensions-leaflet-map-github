@@ -26,13 +26,8 @@ function leafext_overviewmap_settings() {
 		),
 		array(
 			'param'   => 'icons',
-			'desc'    => sprintf(
-				__(
-					'for the marker icon, optional.%s Default is taken from the overviewmap shortcode or it is the blue marker icon.',
-					'extensions-leaflet-map'
-				),
-				'<br>'
-			),
+			'desc'    => __( 'for the marker icon, optional.', 'extensions-leaflet-map' ) . '<br>' .
+			__( 'Default is taken from the overviewmap shortcode or it is the blue marker icon.', 'extensions-leaflet-map' ),
 			'content' => '<ul>' .
 			'<li>' . __( 'either a icon filename', 'extensions-leaflet-map' ) . ' <code>filename.ext</code></li>' .
 			'<li>' . __( 'or', 'extensions-leaflet-map' ) . ' <code>leaflet-marker iconurl=... option=... ...</code> ' .
@@ -137,10 +132,11 @@ function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 		// $pageposts = $wpdb->get_results($querystr, OBJECT);
 		$query     = new WP_Query(
 			array(
-				// phpcs:ignore
-				'meta_key'    => $latlngs,
-				'post_type'   => array( 'post', 'page' ),
-				'post_status' => 'publish',
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+				'meta_key'       => $latlngs,
+				'post_type'      => array( 'post', 'page' ),
+				'post_status'    => 'publish',
+				'posts_per_page' => -1,
 			)
 		);
 		$pageposts = $query->posts;
@@ -185,7 +181,7 @@ function leafext_check_duplicates_meta( $postid, $meta ) {
 	// An array of values if $single is false.
 	// The value of the meta field if $single is true.
 	if ( count( $fields ) > 1 ) {
-		echo '<script>console.log("Multiple keys ' . $postid . ' ' . $meta . '");</script>';
+		echo '<script>console.log("Multiple keys ' . esc_js( $postid ) . ' ' . esc_js( $meta ) . '");</script>';
 		return '*';
 	}
 	return '';
@@ -245,7 +241,7 @@ function leafext_get_overview_data( $post, $overview_options ) {
 	}
 	$leaflet_latlng = str_replace( ',', '.', $leaflet_latlng );
 	if ( ! preg_match( '/^[ 0123456789\.latlng=]+$/', $leaflet_latlng ) ) {
-		echo '<script>console.log("Error detecting lanlngs ' . $post->ID . ': ' . $overview_options['latlngs'] . ' = ' . $leaflet_latlng . '");</script>';
+		echo '<script>console.log("Error detecting lanlngs ' . esc_js( $post->ID ) . ': ' . esc_js( $overview_options['latlngs'] ) . ' = ' . esc_js( $leaflet_latlng ) . '");</script>';
 		$leaflet_latlng = '*';
 	}
 	$overview_data['latlng'] = $leaflet_latlng;
@@ -279,11 +275,11 @@ function leafext_ovm_setup_icon( $overview_data, $atts ) {
 			$overview_data['icon'] = sanitize_file_name( $overview_data['icon'] );
 			$pathinfo              = pathinfo( $overview_data['icon'] );
 			if ( ! ( array_key_exists( 'filename', $pathinfo ) && array_key_exists( 'extension', $pathinfo ) ) ) {
-				echo '<script>console.log("Error - no valid filename: ' . $overview_options['icons'] . ' - ' . $overview_data['icon'] . '");</script>';
+				echo '<script>console.log("Error - no valid filename: ' . esc_js( $overview_options['icons'] ) . ' - ' . esc_js( $overview_data['icon'] ) . '");</script>';
 				$iconerror = '*';
 			}
 		} else {
-			echo '<script>console.log("Error - please check data: ' . $overview_options['icons'] . ' - ' . $overview_data['icon'] . '");</script>';
+			echo '<script>console.log("Error - please check data: ' . esc_js( $overview_options['icons'] ) . ' - ' . esc_js( $overview_data['icon'] ) . '");</script>';
 			$iconerror = '*';
 		}
 		// atts from overviewmap shortcode
@@ -389,7 +385,7 @@ function leafext_overviewmap_function( $atts, $content, $shortcode ) {
 		$overview_options = shortcode_atts( $defaults, leafext_clear_params( $atts ) );
 		// var_dump($overview_options);
 
-		if ( $overview_options['category'] != '' && strpos( ',', $overview_options['category'] ) !== false ) {
+		if ( $overview_options['category'] != '' && strpos( $overview_options['category'], ',' ) !== false ) {
 			$overview_options['category'] = explode( ',', esc_sql( $overview_options['category'] ) );
 		}
 		$pageposts = leafext_overview_wpdb_query( esc_sql( $overview_options['latlngs'] ), $overview_options['category'] );

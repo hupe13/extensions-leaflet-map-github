@@ -35,10 +35,10 @@ function leafext_featuregroup_script( $options, $params ) {
 		let visible = <?php echo wp_json_encode( $options['visible'] ); ?>;
 		let substr = <?php echo wp_json_encode( $options['substr'] ); ?>;
 		let	alle = new L.markerClusterGroup({
-			<?php echo leafext_java_params( $params ); ?>
+			<?php echo leafext_java_params( $params ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		});
 		let position = <?php echo wp_json_encode( $options['position'] ); ?>;
-		let collapsed = <?php echo $options['collapsed']; ?>;
+		let collapsed = <?php echo $options['collapsed']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>;
 		leafext_featuregroup_js(att_property,att_option,groups,grouptext,visible,substr,alle,position,collapsed);
 	});
 	<?php

@@ -47,6 +47,7 @@ function leafext_form_waypoints() {
 		if ( $option['js'] == '' ) {
 			echo 'placeholder="name" ';
 		}
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo 'name="leafext_waypoints[' . $i . '][sym]" value="' . $option['sym'] . '" pattern="[a-zA-Z]+[a-zA-Z0-9\- ,]*" />';
 		if ( $option['sym'] == '' && $option['js'] != '' ) {
 			echo ' (' . esc_html__( 'Default', 'extensions-leaflet-map' ) . ')';
@@ -75,13 +76,16 @@ function leafext_form_waypoints() {
 		if ( $option['js'] == '' ) {
 			echo esc_html__( 'The syntax is not checked!', 'extensions-leaflet-map' ) . '<br>';
 		}
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<input type="text" name="leafext_waypoints[' . $i . '][js]"
 		placeholder=' . "'" . 'iconSize: [xx,xx], iconAnchor: [xx,xx], popupAnchor: [xx,xx],'
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		. "'" . ' value = "' . $option['js'] . '" size="80">';
 
 		if ( $option['sym'] != '' || $option['js'] != '' ) {
 			echo '</td></tr>';
 			echo '<tr><th scope="row-title">' . esc_html__( 'Delete', 'extensions-leaflet-map' ) . '</th>';
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo '<td><input type="checkbox" name="leafext_waypoints[' . $i . '][delete]" value="1" />';
 		}
 		++$i;
@@ -135,6 +139,7 @@ function leafext_waypoints_help_text() {
 	}
 
 	$text = $text . '<p>' . sprintf(
+		/* translators: %s are shortcodes. */
 		__(
 			'You can of course use %1$s and define waypoints with additional %2$s and %3$s shortcodes.',
 			'extensions-leaflet-map'
@@ -161,12 +166,14 @@ function leafext_waypoints_help_text() {
 
 	if ( is_singular() || is_archive() ) {
 		$text = $text . '<p>' . sprintf(
+			/* translators: %s is a href. */
 			__( 'Or set this in the %1$selevation settings%2$s.', 'extensions-leaflet-map' ),
 			'<a href="' . get_site_url() . '/elevation/wpts/">',
 			'</a>'
 		);
 	} else {
 		$text = $text . '<p>' . sprintf(
+			/* translators: %s is a href. */
 			__( 'Or set this in the %1$selevation settings%2$s.', 'extensions-leaflet-map' ),
 			'<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=elevation#markers">',
 			'</a>'
@@ -187,6 +194,7 @@ function leafext_waypoints_help_text() {
 
 <li>'
 	. sprintf(
+		/* translators: %s is code. */
 		__( 'CSS to define as HTML block (between %1$s and %2$s) or in css file', 'extensions-leaflet-map' ),
 		'<code>&lt;style&gt;</code>',
 		'<code>&lt;/style&gt;</code>'
@@ -206,6 +214,7 @@ function leafext_waypoints_help_text() {
 
 <li>'
 	. sprintf(
+		/* translators: %s is styling. */
 		__(
 			'Any blank character from %1$sText of GPS symbol name%2$s is converted to a minus sign, uppercase to lowercase, a comma will be escaped.',
 			'extensions-leaflet-map'
@@ -220,6 +229,7 @@ function leafext_waypoints_help_text() {
 
 <li>'
 	. sprintf(
+		/* translators: %s are special characters. */
 		__(
 			'If you need more special characters than %s for your waypoints, please ask in the forum.',
 			'extensions-leaflet-map'
@@ -257,6 +267,6 @@ function leafext_waypoints_help_text() {
 	if ( is_singular() || is_archive() ) {
 		return $text;
 	} else {
-		echo $text;
+		echo wp_kses_post( $text );
 	}
 }

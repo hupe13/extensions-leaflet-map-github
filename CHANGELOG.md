@@ -1,4 +1,9 @@
-### 4.2.2 /2404xx
+### 4.2.3 /240999
+
+* Bug in overviewmap (thank you @cocade!)
+* WPCS
+
+### 4.2.2 /240401
 
 * catalan
 * bug markerclustergroup

@@ -29,7 +29,11 @@ function leafext_filemgr_params() {
 			'param'     => 'nonadmin',
 			'shortdesc' => __( 'Allow non admin', 'extensions-leaflet-map' ),
 			'desc'      => sprintf(
-				__( 'Allow all users who have access to the backend to see the files. A permission check %s only done if the files are registered in the media library.', 'extensions-leaflet-map' ),
+				/* translators: %s is code */
+				__(
+					'Allow all users who have access to the backend to see the files. A permission check %s only done if the files are registered in the media library.',
+					'extensions-leaflet-map'
+				),
 				'(<code>current_user_can("edit_post / read", this_post)</code>)'
 			),
 			'default'   => '0',
@@ -79,13 +83,15 @@ function leafext_form_filemgr( $field ) {
 	$settings = leafext_filemgr_settings();
 	$setting  = $settings[ $field ];
 	if ( $option['desc'] != '' ) {
-		echo '<p>' . $option['desc'] . '</p>';
+		echo '<p>' . esc_html( $option['desc'] ) . '</p>';
 	}
 
 	if ( $field == 'types' ) {
 		foreach ( $option['values'] as $typ ) {
 			$checked = in_array( $typ, $setting, true ) ? ' checked ' : '';
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo ' <input type="checkbox" name="leafext_filemgr[' . $option['param'] . '][]" value="' . $typ . '" id="' . $typ . '" ' . $checked . '>';
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo ' <label for="' . $typ . '" >' . $typ . '</label> ';
 		}
 	} else {
@@ -95,9 +101,11 @@ function leafext_form_filemgr( $field ) {
 			echo $option['default'] ? 'true' : 'false';
 			echo '<br>';
 		}
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<input type="radio" name="leafext_filemgr[' . $option['param'] . ']" value="1" ';
 		echo $setting ? 'checked' : '';
 		echo '> true &nbsp;&nbsp; ';
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<input type="radio" name="leafext_filemgr[' . $option['param'] . ']" value="0" ';
 		echo ( ! $setting ) ? 'checked' : '';
 		echo '> false ';
@@ -146,6 +154,6 @@ function leafext_managefiles_help() {
 	if ( is_singular() || is_archive() ) {
 		return $text;
 	} else {
-		echo $text;
+		echo wp_kses_post( $text );
 	}
 }

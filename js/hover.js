@@ -200,8 +200,8 @@ function leafext_hover_markergroupstyle_js(all_options) {
 
 	var markergroups = window.WPLeafletMapPlugin.markergroups;
 	Object.entries( markergroups ).forEach(
-		([key, value]) => {
-			// phpcs:ignore
+		([key, value]) =>
+		{
 			if ( markergroups[key]._map !== null ) {
 				if (map_id == markergroups[key]._map._leaflet_id) {
 					// console.log("markergroups loop");
@@ -332,8 +332,8 @@ function leafext_hover_markergrouptooltip_js(all_options) {
 
 	var markergroups = window.WPLeafletMapPlugin.markergroups;
 	Object.entries( markergroups ).forEach(
-		([key, value]) => {
-			// phpcs:ignore
+		([key, value]) =>
+		{
 			if ( markergroups[key]._map !== null ) {
 				if (map_id == markergroups[key]._map._leaflet_id) {
 					// console.log("markergroups loop");
@@ -384,7 +384,6 @@ function leafext_hover_markergrouptooltip_js(all_options) {
 								// console.log("other");
 								// console.log(layer);
 							}
-							// phpcs:ignore
 						}
 					);
 				}

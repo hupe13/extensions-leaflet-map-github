@@ -32,106 +32,106 @@ function leafext_zoomhome_js(maps,map_id,allfit,position) {
 	var maplines     = 0;
 	var mapcircles   = 0;
 
-	// phpcs:ignore
-	Object.entries(markergroups).forEach(([key, value]) => {
-		if ( markergroups[key]._map !== null ) {
-			if (map_id == markergroups[key]._map._leaflet_id) {
-				// console.log("markergroups loop");
-				markergroups[key].eachLayer(
-					function (layer) {
-						// console.log(layer);
-						if (layer instanceof L.Marker) {
-							// markers do not have fitbounds
-							// console.log("is_marker");
-							// console.log("_shouldFitBounds "+maps[map_id]._shouldFitBounds);
-							// console.log("allfit[map_id] "+allfit[map_id]);
-							mapmarkers++;
-							if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
-								// console.log("marker in all map");
-								bounds[map_id].extend( layer._latlng );
-							} else if ( typeof allfit[map_id] !== "undefined") {
-								// console.log("marker should fit Homebutton");
-								allfit[map_id].extend( layer._latlng );
-								// console.log("allfit marker");
-							} else {
-								// console.log("marker was nun?");
-							}
-						} else if (layer instanceof L.Polygon) {
-							// console.log("is_Polygon");
-							mappolygon++;
-							if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
-								bounds[map_id].extend( layer.getBounds() );
-							} else if ( typeof allfit[map_id] !== "undefined") {
-								// console.log("allfit polygon wird groesser");
-								allfit[map_id].extend( layer.getBounds() );
-							} else {
-								// console.log("polygon was nun?");
-							}
-						} else if (layer instanceof L.Polyline) {
-							// console.log("is_Line");
-							maplines++;
-							if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
-								// console.log("all lines should fit to map");
-								bounds[map_id].extend( layer.getBounds() );
-								ende[map_id] = 1;
-								maps[map_id].on(
-									"zoomend",
-									function (e) {
-										if ( ende[map_id] ) {
-											// console.log("lines zooming");
-											maps[map_id].fitBounds( bounds[map_id] );
-										}
-										ende[map_id] = 0;
-									}
-								);
-								// phpcs:ignore
-							} else if ( typeof allfit[map_id] !== "undefined" ) {
-								// console.log("allfit line wird groesser");
-								allfit[map_id].extend( layer.getBounds() );
-							} else {
-								// console.log("line was nun?");
-								ende[map_id] = 1;
-								maps[map_id].on(
-									"zoomend",
-									function (e) {
-										if ( ende[map_id] ) {
-											// console.log(map_id+ "ready zoomend");
-											// Uncaught Error: Attempted to load an infinite number of tiles
-											// zoomHome[map_id].setHomeZoom(maps[map_id].getBounds());
-											zoomHome[map_id].setHomeCoordinates( maps[map_id].getCenter() );
-											zoomHome[map_id].setHomeZoom( maps[map_id].getZoom() );
+	Object.entries( markergroups ).forEach(
+		([key, value]) =>
+		{
+			if ( markergroups[key]._map !== null ) {
+				if (map_id == markergroups[key]._map._leaflet_id) {
+					// console.log("markergroups loop");
+					markergroups[key].eachLayer(
+						function (layer) {
+							// console.log(layer);
+							if (layer instanceof L.Marker) {
+								// markers do not have fitbounds
+								// console.log("is_marker");
+								// console.log("_shouldFitBounds "+maps[map_id]._shouldFitBounds);
+								// console.log("allfit[map_id] "+allfit[map_id]);
+								mapmarkers++;
+								if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
+									// console.log("marker in all map");
+									bounds[map_id].extend( layer._latlng );
+								} else if ( typeof allfit[map_id] !== "undefined") {
+									// console.log("marker should fit Homebutton");
+									allfit[map_id].extend( layer._latlng );
+									// console.log("allfit marker");
+								} else {
+									// console.log("marker was nun?");
+								}
+							} else if (layer instanceof L.Polygon) {
+								// console.log("is_Polygon");
+								mappolygon++;
+								if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
+									bounds[map_id].extend( layer.getBounds() );
+								} else if ( typeof allfit[map_id] !== "undefined") {
+									// console.log("allfit polygon wird groesser");
+									allfit[map_id].extend( layer.getBounds() );
+								} else {
+									// console.log("polygon was nun?");
+								}
+							} else if (layer instanceof L.Polyline) {
+								// console.log("is_Line");
+								maplines++;
+								if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
+									// console.log("all lines should fit to map");
+									bounds[map_id].extend( layer.getBounds() );
+									ende[map_id] = 1;
+									maps[map_id].on(
+										"zoomend",
+										function (e) {
+											if ( ende[map_id] ) {
+												// console.log("lines zooming");
+												maps[map_id].fitBounds( bounds[map_id] );
+											}
 											ende[map_id] = 0;
 										}
-									}
-								);
-							}
-						} else if (layer instanceof L.Circle) {
-							// console.log("is_Circle");
-							// console.log(layer);
-							mapcircles++;
-							if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
-								// https://github.com/Leaflet/Leaflet/issues/4978
-								if ( layer._map ) {
-									// console.log("has map");
-									bounds[map_id].extend( layer.getBounds() );
+									);
+								} else if ( typeof allfit[map_id] !== "undefined" ) {
+									// console.log("allfit line wird groesser");
+									allfit[map_id].extend( layer.getBounds() );
 								} else {
-									// console.log("has no map");
-									maps[map_id].addLayer( layer );
-									bounds[map_id].extend( layer.getBounds() );
-									maps[map_id].removeLayer( layer );
+									// console.log("line was nun?");
+									ende[map_id] = 1;
+									maps[map_id].on(
+										"zoomend",
+										function (e) {
+											if ( ende[map_id] ) {
+												// console.log(map_id+ "ready zoomend");
+												// Uncaught Error: Attempted to load an infinite number of tiles
+												// zoomHome[map_id].setHomeZoom(maps[map_id].getBounds());
+												zoomHome[map_id].setHomeCoordinates( maps[map_id].getCenter() );
+												zoomHome[map_id].setHomeZoom( maps[map_id].getZoom() );
+												ende[map_id] = 0;
+											}
+										}
+									);
 								}
-							} else if ( typeof allfit[map_id] !== "undefined") {
-								allfit[map_id].extend( layer.getBounds() );
+							} else if (layer instanceof L.Circle) {
+								// console.log("is_Circle");
+								// console.log(layer);
+								mapcircles++;
+								if ( typeof maps[map_id]._shouldFitBounds !== "undefined") {
+									// https://github.com/Leaflet/Leaflet/issues/4978
+									if ( layer._map ) {
+										// console.log("has map");
+										bounds[map_id].extend( layer.getBounds() );
+									} else {
+										// console.log("has no map");
+										maps[map_id].addLayer( layer );
+										bounds[map_id].extend( layer.getBounds() );
+										maps[map_id].removeLayer( layer );
+									}
+								} else if ( typeof allfit[map_id] !== "undefined") {
+									allfit[map_id].extend( layer.getBounds() );
+								}
+							} else {
+								// console.log(layer);
 							}
-						} else {
-							// console.log(layer);
 						}
-					}
-				);
+					);
+				}
 			}
 		}
-		// phpcs:ignore
-  });
+	);
 	// console.log("markers "+mapmarkers);
 	// console.log("polygon "+mappolygon);
 	// console.log("lines "+maplines);
@@ -198,12 +198,12 @@ function leafext_zoomhome_js(maps,map_id,allfit,position) {
 									function (e) {
 										// console.log("zoomend "+map_id+" funktion definiert "+ende[map_id]);
 										if ( ende[map_id] ) {
-												// console.log("geojson "+map_id+ " ready zoomend");
-												// zoomHome[map_id].setHomeZoom(maps[map_id].getBounds());
-												// Uncaught Error: Attempted to load an infinite number of tiles
-												zoomHome[map_id].setHomeCoordinates( maps[map_id].getCenter() );
-												zoomHome[map_id].setHomeZoom( maps[map_id].getZoom() );
-												ende[map_id] = 0;
+											// console.log("geojson "+map_id+ " ready zoomend");
+											// zoomHome[map_id].setHomeZoom(maps[map_id].getBounds());
+											// Uncaught Error: Attempted to load an infinite number of tiles
+											zoomHome[map_id].setHomeCoordinates( maps[map_id].getCenter() );
+											zoomHome[map_id].setHomeZoom( maps[map_id].getZoom() );
+											ende[map_id] = 0;
 										}
 									}
 								);
@@ -218,9 +218,9 @@ function leafext_zoomhome_js(maps,map_id,allfit,position) {
 							// maps[map_id].fitBounds(bounds[map_id]);
 						}
 						if ( typeof allfit[map_id] !== "undefined") {
-									// console.log("allfit geojson wird groesser");
-									allfit[map_id].extend( this.getBounds() );
-									zoomHome[map_id].setHomeBounds( allfit[map_id] );
+							// console.log("allfit geojson wird groesser");
+							allfit[map_id].extend( this.getBounds() );
+							zoomHome[map_id].setHomeBounds( allfit[map_id] );
 						}
 					}
 				);

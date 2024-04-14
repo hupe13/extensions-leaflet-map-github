@@ -253,13 +253,13 @@ function leafext_layerswitch_end_script( $settings ) {
 	//console.log(overlays);
 
 	L.control.layers(baselayers,overlays,{
-		collapsed:<?php echo $settings['collapsed']; ?>,
-		position:"<?php echo $settings['position']; ?>",
+		collapsed:<?php echo esc_js( $settings['collapsed'] ); ?>,
+		position:"<?php echo esc_js( $settings['position'] ); ?>",
 	}).addTo(map);
 	if ( Object.entries(opacity).length !==  0) {
 		L.control.opacity(opacity,{
-			collapsed:<?php echo $settings['collapsed']; ?>,
-			position:"<?php echo $settings['position']; ?>",
+			collapsed:<?php echo esc_js( $settings['collapsed'] ); ?>,
+			position:"<?php echo esc_js( $settings['position'] ); ?>",
 		}).addTo(map);
 	}
 });

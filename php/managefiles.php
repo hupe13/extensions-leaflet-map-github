@@ -137,10 +137,10 @@ function leafext_get_gpx_data( $file ) {
 function leafext_get_kml_data( $file ) {
 	$kmldata = array();
 	$kml     = simplexml_load_file( $file, 'SimpleXMLElement', LIBXML_NOCDATA );
-	// phpcs:disable
-	if (isset($kml->Document->name)) {
+	// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- is gpx
+	if ( isset( $kml->Document->name ) ) {
+		// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- is gpx
 		$kmldata['name'] = $kml->Document->name;
-		// phpcs:enable
 	} else {
 		$kmldata['name'] = ' ';
 	}

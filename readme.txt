@@ -1,7 +1,7 @@
 === Extensions for Leaflet Map Github Version ===
 
 Contributors: hupe13
-Tags: leaflet, elevation, markercluster, Leaflet Plugins
+Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 6.5
 Stable tag: 4.2.2
 Requires at least: 5.5.3
@@ -33,5 +33,5 @@ Maybe you need a Github token.
 
 == Changelog ==
 
-* catalan
-* bug markerclustergroup
+* Bug in overviewmap (thank you @cocade!)
+* WPCS

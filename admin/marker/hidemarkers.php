@@ -18,6 +18,6 @@ function leafext_help_hidemarkers() {
 	if ( is_singular() || is_archive() ) {
 		return $text;
 	} else {
-		echo $text;
+		echo wp_kses_post( $text );
 	}
 }

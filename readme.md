@@ -1,9 +1,9 @@
 # Extensions for Leaflet Map Github Version
 
 Contributors: hupe13    
-Tags: leaflet, elevation, markercluster, Leaflet Plugins   
+Tags: leaflet, gpx, geojson, hover, marker   
 Tested up to: 6.5  
-Stable tag: 4.2.2     
+Stable tag: 4.2.3     
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later
@@ -178,10 +178,10 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.2.2 /2404xx
+### 4.2.3 /240999
 
-* catalan
-* bug markerclustergroup
+* Bug in overviewmap (thank you @cocade!)
+* WPCS
 
 ### Previous
 

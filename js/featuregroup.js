@@ -150,8 +150,8 @@ function leafext_featuregroup_js(att_property,att_option,groups,grouptext,visibl
 
 	var markergroups = window.WPLeafletMapPlugin.markergroups;
 	Object.entries( markergroups ).forEach(
-		([key, value]) => {
-			// phpcs:ignore
+		([key, value]) =>
+		{
 			if ( markergroups[key]._map !== null ) {
 				if (map_id == markergroups[key]._map._leaflet_id) {
 					// console.log("markergroups loop");
@@ -218,7 +218,6 @@ function leafext_featuregroup_js(att_property,att_option,groups,grouptext,visibl
 							}
 						}
 					);
-					// phpcs:ignore
 				}
 			}
 		}
@@ -286,9 +285,8 @@ function leafext_featuregroup_js(att_property,att_option,groups,grouptext,visibl
 											console.log( layer.options );
 										}
 									}
-									// phpcs:ignore
-								} // end att_option != ''
-								else if (att_property != '') {
+									// end att_option != ''
+								} else if (att_property != '') {
 									let found = false;
 									// console.log(layer.feature.properties);
 									if ( layer.feature.properties[att_property] ) {

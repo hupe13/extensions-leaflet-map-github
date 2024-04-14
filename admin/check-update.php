@@ -147,12 +147,14 @@ function leafext_github_update_admin() {
 			// var_dump($leafext_github_denied);
 			if ( false !== $leafext_github_denied ) {
 				echo sprintf(
+					/* translators: %s is an href. */
 					esc_html__( 'You need a %1$sGithub token%2$s to receive updates successfully.', 'extensions-leaflet-map-github' ),
 					'<a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">',
 					'</a>'
 				) . '<br>';
 			} else {
 				echo sprintf(
+					/* translators: %s is an href. */
 					esc_html__( 'Maybe you need a %1$sGithub token%2$s to receive updates successfully.', 'extensions-leaflet-map-github' ),
 					'<a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">',
 					'</a>'
@@ -181,13 +183,13 @@ function leafext_github_update_admin() {
 			echo esc_html__( 'You receive updates in WordPress way.', 'extensions-leaflet-map-github' );
 		} else {
 			printf(
+				/* translators: %s is an href. */
 				esc_html__(
-					'If you want to receive updates in WordPress way, go to the %1$smain site dashboard%2$s%3$s and set a Github token if necessary.',
+					'If you want to receive updates in WordPress way, go to the %1$smain site dashboard%2$s and set a Github token if necessary.',
 					'extensions-leaflet-map-github'
 				),
 				'<a href="' . $main_site_url . '/wp-admin/plugins.php">', //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-				'</a>',
-				$main_active //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- esc_html__ used
+				'</a>' . $main_active //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- esc_html__ used
 			);
 		}
 	}
@@ -207,12 +209,14 @@ if ( ! function_exists( 'leafext_updating_help' ) ) {
 			// var_dump($perm_denied);
 			if ( false !== $perm_denied ) {
 				echo sprintf(
+					/* translators: %s is an href. */
 					esc_html__( 'You need a %1$sGithub token%2$s to receive updates successfully.', 'extensions-leaflet-map-github' ),
 					'<a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">',
 					'</a>'
 				) . '<br>';
 			} else {
 				echo sprintf(
+					/* translators: %s is an href. */
 					esc_html__( 'Maybe you need a %1$sGithub token%2$s to receive updates successfully.', 'extensions-leaflet-map-github' ),
 					'<a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens">',
 					'</a>'

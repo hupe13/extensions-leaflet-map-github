@@ -37,7 +37,7 @@ add_action( 'admin_menu', 'leafext_add_page', 99 );
  * Draw the menu page itself.
  */
 function leafext_do_page() {
-	//phpcs:disable WordPress.Security.NonceVerification.Recommended -- no form
+	//phpcs:ignore WordPress.Security.NonceVerification.Recommended -- no form
 	$get        = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
 	$active_tab = isset( $get['tab'] ) ? $get['tab'] : 'help';
 
@@ -106,7 +106,7 @@ function leafext_admin_tabs() {
 	echo '<div class="wrap nothickbox">
 	<h2>Extensions for Leaflet Map Options and Help</h2></div>' . "\n";
 
-	//phpcs:disable WordPress.Security.NonceVerification.Recommended -- no form
+	//phpcs:ignore WordPress.Security.NonceVerification.Recommended -- no form
 	$get        = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
 	$active_tab = isset( $get['tab'] ) ? $get['tab'] : 'help';
 
@@ -202,7 +202,7 @@ function leafext_admin_tabs() {
 }
 
 function leafext_admin_style() {
-	//phpcs:disable WordPress.Security.NonceVerification.Recommended -- no form
+	//phpcs:ignore WordPress.Security.NonceVerification.Recommended -- no form
 	$get  = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
 	$page = isset( $get['page'] ) ? $get['page'] : '';
 	if ( $page == LEAFEXT_PLUGIN_SETTINGS ) {

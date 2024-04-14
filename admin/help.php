@@ -354,6 +354,7 @@ function leafext_plugins() {
 	);
 	$plugins[] = array(
 		'name'      => 'leaflet.zoomhome',
+		/* translators: %s is an href. */
 		'desc'      => sprintf( __( 'Provides a zoom control with a %1$sHome%2$s button to reset the view.', 'extensions-leaflet-map' ), '&quot;', '&quot;' ),
 		'link'      => 'https://github.com/torfsen/leaflet.zoomhome',
 		'shortcode' => 'zoomhomemap',
@@ -392,15 +393,16 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 	// LEAFEXT_DSGVO_PLUGIN_DIR is known since initial release, and URL, others not
 	if ( ! defined( 'LEAFEXT_DSGVO_PLUGIN_DIR' ) ) {
 		$header .= '<p>' . sprintf(
+			/* translators: %s is a link. */
 			__( 'You may be interested in %1$s.', 'extensions-leaflet-map' ),
 			'<a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>'
 		) . '</p>';
 	} else {
 		$header .= '<p>' . sprintf(
+			/* translators: %s is a link. */
 			__( 'Thank you for using %1$s.', 'extensions-leaflet-map' ),
 			'<a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>'
 		);
-
 		$local  = get_file_data(
 			LEAFEXT_DSGVO_PLUGIN_DIR . '/leafext-dsgvo.php',
 			array(
@@ -425,6 +427,7 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 
 	$header = $header .
 	sprintf(
+		/* translators: %s are hrefs. */
 		__(
 			'Detailed documentation and examples in %1$sGerman%2$s and %3$sEnglish%4$s',
 			'extensions-leaflet-map'
@@ -508,9 +511,9 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 
 		return $style . $text . $pluginstext;
 	} else {
-		leafext_escape_output( $header );
-		// phpcs:ignore
+		echo wp_kses_post( $header );
+		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo $style;
-		leafext_escape_output( $text );
+		echo wp_kses_post( $text );
 	}
 }

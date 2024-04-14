@@ -88,7 +88,10 @@ function leafext_cluster_script( $params ) {
 	window.WPLeafletMapPlugin.push(function () {
 		var clmarkers               = L.markerClusterGroup(
 			{
-				<?php echo leafext_java_params( $params ); ?>
+				<?php
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo leafext_java_params( $params );
+				?>
 			}
 		);
 		leafext_markercluster_js(clmarkers);

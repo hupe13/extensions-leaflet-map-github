@@ -30,17 +30,18 @@ function leafext_thickbox( $track ) {
 	esc_html_e( 'Details' );
 	echo '</h2><div><strong>';
 	esc_html_e( 'Uploaded on:' );
-	echo '</strong> ' . get_date_from_gmt( gmdate( 'Y-m-d G:i:s', filemtime( $upload_path . $track ) ) ) . '</div><div><strong>';
+	echo '</strong> ' . esc_html( get_date_from_gmt( gmdate( 'Y-m-d G:i:s', filemtime( $upload_path . $track ) ) ) ) . '</div><div><strong>';
 	esc_html_e( 'File name:' );
-	echo '</strong> ' . basename( $track ) . '</div>';
+	echo '</strong> ' . esc_html( basename( $track ) ) . '</div>';
 	// echo '<div ><strong>';
 	// esc_html_e( "File type:" );
 	// $type=mime_content_type($upload_path.$track); gibt nur text/xml zurueck
 	// echo '</strong> '.$type.'</div>';
 	echo '<div ><strong>';
 	esc_html_e( 'File size: ' );
-	echo '</strong> ' . size_format( filesize( $upload_path . $track ) ) . '</div></div><p>';
+	echo '</strong> ' . esc_html( size_format( filesize( $upload_path . $track ) ) ) . '</div></div><p>';
 	$content = do_shortcode( '[leaflet-map  height=300 width=300 !scrollwheel !dragging fitbounds][leaflet-' . $type . ' src="' . $upload_url . $track . '"]{name}[/leaflet-' . $type . ']' );
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	echo $content;
 	echo '</p></div>';
 
@@ -59,6 +60,6 @@ function leafext_thickbox( $track ) {
 				'value' => $value,
 			);
 		}
-		echo leafext_html_table( $form_fields );
+		echo wp_kses_post( leafext_html_table( $form_fields ) );
 	}
 }

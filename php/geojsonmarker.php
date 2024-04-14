@@ -14,7 +14,12 @@ function leafext_geojsonmarker_script( $propertyoptions, $extramarkericon, $clus
 	ob_start();
 	?>/*<script>*/
 	function leafext_geojsonmarker_extramarker_js(markerColor) {
-		var markericon = L.ExtraMarkers.icon({<?php echo $extramarkericon; ?>,markerColor:markerColor});
+		var markericon = L.ExtraMarkers.icon({
+		<?php
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $extramarkericon;
+		?>
+			,markerColor:markerColor});
 		return markericon;
 	}
 	//
@@ -34,7 +39,10 @@ function leafext_geojsonmarker_script( $propertyoptions, $extramarkericon, $clus
 		let visible = <?php echo wp_json_encode( $featuregroupoptions['visible'] ); ?>;
 		//
 		let clmarkers = L.markerClusterGroup({
-			<?php echo leafext_java_params( $clusteroptions ); ?>
+			<?php
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo leafext_java_params( $clusteroptions );
+			?>
 		});
 		let extramarkericon = <?php echo wp_json_encode( $extramarkericon ); ?>;
 		//

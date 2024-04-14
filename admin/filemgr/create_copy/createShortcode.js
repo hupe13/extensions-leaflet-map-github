@@ -16,8 +16,8 @@ function leafext_create_shortcode(shortcode,uploadurl,file,end) {
 	if (navigator.clipboard) {
 		navigator.clipboard.writeText( leafext_short.value )
 		.then(
-			() => {
-				// phpcs:disable
+			() =>
+			{
 				zwsp               = target.textContent;
 				target.textContent = "Copied: " + leafext_short.value;
 				console.log( leafext_short.value );
@@ -25,9 +25,9 @@ function leafext_create_shortcode(shortcode,uploadurl,file,end) {
 					() =>
 					{
 						target.textContent = zwsp;
-					},5000
+					},
+					5000
 				);
-				// phpcs:enable
 			}
 		)
 	} else {

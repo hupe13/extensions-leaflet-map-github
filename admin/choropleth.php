@@ -35,6 +35,7 @@ function leafext_choropleth_help() {
 
 	$text = $text . '<h2>' . __( 'Popup Content', 'extensions-leaflet-map' ) . '</h2><p>';
 	$text = $text . sprintf(
+		/* translators: %s is an example code. */
 		__( 'You can specify %s as you like.', 'extensions-leaflet-map' ),
 		'<code>Property1 {property1}&lt;br>{property2} Property2</code>'
 	);
@@ -77,6 +78,6 @@ function leafext_choropleth_help() {
 	if ( is_singular() || is_archive() ) {
 		return $text;
 	} else {
-		leafext_escape_output( $text );
+		echo wp_kses_post( $text );
 	}
 }

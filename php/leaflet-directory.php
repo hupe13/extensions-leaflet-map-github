@@ -24,7 +24,7 @@ function leafext_color_name_to_hex( $color_name ) {
 	}
 }
 
-// Shortcode: [leaflet_dir dir=...]
+// Shortcode: [leaflet-directory dir=...]
 function leafext_directory_function( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
 	if ( $text != '' ) {
@@ -46,7 +46,7 @@ function leafext_directory_function( $atts, $content, $shortcode ) {
 
 		if ( $options['src'] == '' ) {
 			$options['src'] = '...missing...';
-			$text           = '[leaflet_dir ';
+			$text           = '[leaflet-directory ';
 			foreach ( $options as $key => $item ) {
 				$text = $text . $key . '="' . $item . '" ';
 			}
@@ -66,7 +66,7 @@ function leafext_directory_function( $atts, $content, $shortcode ) {
 				$upload_url  = $upload_dir['url'];
 			}
 			if ( ! is_dir( $upload_path . '/' . $dir ) ) {
-				$text           = '[leaflet_dir ';
+				$text           = '[leaflet-directory ';
 				$options['src'] = '...not exists... ' . $options['src'];
 				foreach ( $options as $key => $item ) {
 					$text = $text . $key . '="' . $item . '" ';
@@ -94,7 +94,7 @@ function leafext_directory_function( $atts, $content, $shortcode ) {
 			$valid = array_diff( explode( ',', $options['type'] ), array( 'gpx', 'kml', 'geojson', 'json' ) );
 			if ( count( $valid ) > 0 ) {
 				$options['type'] = '...not valid... ' . $options['type'];
-				$text            = '[leaflet_dir ';
+				$text            = '[leaflet-directory ';
 				foreach ( $options as $key => $item ) {
 					$text = $text . $key . '="' . $item . '" ';
 				}
@@ -107,7 +107,7 @@ function leafext_directory_function( $atts, $content, $shortcode ) {
 
 		$files = glob( $dirpath . $dir . '/*.{' . $type . '}', GLOB_BRACE );
 		if ( count( $files ) == 0 ) {
-			$text = '[leaflet_dir ';
+			$text = '[leaflet-directory ';
 			foreach ( $options as $key => $item ) {
 				$text = $text . $key . '="' . $item . '" ';
 			}
@@ -132,7 +132,7 @@ function leafext_directory_function( $atts, $content, $shortcode ) {
 					$ext = 'geojson';
 				}
 				if ( ! in_array( $ext, array( 'gpx', 'kml', 'geojson' ), true ) ) {
-					$text = '[leaflet_dir ... ';
+					$text = '[leaflet-directory ... ';
 					$text = $text . $ext . ' not valid ... ';
 					foreach ( $options as $key => $item ) {
 						$text = $text . $key . '="' . $item . '" ';

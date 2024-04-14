@@ -13,8 +13,11 @@ function leafext_hover_params( $typ = '' ) {
 		array(
 			'param'      => 'marker',
 			'desc'       => '<ul style="list-style-type:disc;margin-left:1em;">' .
+			/* translators: %s is an option. */
 			'<li><code>true</code> - ' . sprintf( __( 'show tooltip and hide %s if present', 'extensions-leaflet-map' ), '<em>title</em>' ) . '</li>' .
+			/* translators: %s is an option. */
 			'<li><code>false</code> - ' . sprintf( __( 'do not show tooltip and hide %s', 'extensions-leaflet-map' ), '<em>title</em>' ) . '</li>' .
+			/* translators: %s is an option. */
 			'<li><code>title</code> - ' . sprintf( __( 'do not show tooltip but show %s', 'extensions-leaflet-map' ), '<em>title</em>' ) . '</li>' .
 			'</ul>',
 			'default'    => true,
@@ -79,7 +82,7 @@ function leafext_hover_params( $typ = '' ) {
 		),
 		array(
 			'param'      => 'markertooltip',
-			'desc'       => __( 'alias for', 'extensions-leaflet-map' ) . ' <code>[hover marker=true circle/polygon/line/geojson/gpx/kml=false]</code>',
+			'desc'       => __( 'alias for', 'extensions-leaflet-map' ) . ' <code>&#091;hover marker=true circle/polygon/line/geojson/gpx/kml=false]</code>',
 			'default'    => false,
 			'values'     => '',
 			'element'    => false,
@@ -88,7 +91,7 @@ function leafext_hover_params( $typ = '' ) {
 		),
 		array(
 			'param'      => 'geojsontooltip',
-			'desc'       => __( 'alias for', 'extensions-leaflet-map' ) . ' <code>[hover geojson/gpx/kml=tooltip marker/circle/polygon/line=false]</code>, ' .
+			'desc'       => __( 'alias for', 'extensions-leaflet-map' ) . ' <code>&#091;hover geojson/gpx/kml=tooltip marker/circle/polygon/line=false]</code>, ' .
 					__( 'specify a short string as parameter, if the popup is too big.', 'extensions-leaflet-map' ),
 			'default'    => false,
 			'values'     => __( 'nothing or a string like the popup content for geojsons', 'extensions-leaflet-map' ) . ': <code>Field A = {field_a}</code>.',
@@ -98,7 +101,7 @@ function leafext_hover_params( $typ = '' ) {
 		),
 		array(
 			'param'      => 'geojsonstyle',
-			'desc'       => __( 'alias for', 'extensions-leaflet-map' ) . ' <code>[hover geojson/gpx/kml=style marker/circle/polygon/line=false]</code>',
+			'desc'       => __( 'alias for', 'extensions-leaflet-map' ) . ' <code>&#091;hover geojson/gpx/kml=style marker/circle/polygon/line=false]</code>',
 			'default'    => false,
 			'values'     => '',
 			'element'    => false,
@@ -107,7 +110,7 @@ function leafext_hover_params( $typ = '' ) {
 		),
 		array(
 			'param'      => 'markergrouptooltip',
-			'desc'       => __( 'alias for', 'extensions-leaflet-map' ) . ' <code>[hover circle/polygon/line=tooltip marker/geojson/gpx/kml=false]</code>',
+			'desc'       => __( 'alias for', 'extensions-leaflet-map' ) . ' <code>&#091;hover circle/polygon/line=tooltip marker/geojson/gpx/kml=false]</code>',
 			'default'    => false,
 			'values'     => '',
 			'element'    => false,
@@ -116,7 +119,7 @@ function leafext_hover_params( $typ = '' ) {
 		),
 		array(
 			'param'      => 'markergroupstyle',
-			'desc'       => __( 'alias for', 'extensions-leaflet-map' ) . ' <code>[hover circle/polygon/line=style marker/geojson/gpx/kml=false]</code>',
+			'desc'       => __( 'alias for', 'extensions-leaflet-map' ) . ' <code>&#091;hover circle/polygon/line=style marker/geojson/gpx/kml=false]</code>',
 			'default'    => false,
 			'values'     => '',
 			'element'    => false,
@@ -143,6 +146,7 @@ function leafext_hover_params( $typ = '' ) {
 		),
 		array(
 			'param'      => 'tolerance',
+			/* translators: %s is an option. */
 			'desc'       => sprintf( __( 'How much to extend click tolerance round an object on the map, only valid for %s', 'extensions-leaflet-map' ), 'leaflet-geojson, gpx, kml' ),
 			'default'    => 0,
 			'values'     => __( 'a number', 'extensions-leaflet-map' ),
@@ -202,8 +206,13 @@ function leafext_canvas_script( $tolerance ) {
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
-		map.options.renderer=L.canvas({ tolerance: <?php echo $tolerance; ?> });
-		console.log("tolerance "+<?php echo $tolerance; ?>);
+		map.options.renderer=L.canvas({ tolerance:
+		<?php
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $tolerance;
+		?>
+		});
+		console.log("tolerance "+<?php echo esc_js( $tolerance ); ?>);
 		console.log(map.options.renderer);
 	});
 	<?php

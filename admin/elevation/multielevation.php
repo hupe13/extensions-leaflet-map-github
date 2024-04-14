@@ -37,21 +37,22 @@ function leafext_form_multielevation( $field ) {
 	$settings = leafext_multielevation_settings();
 	$setting  = $settings[ $field ];
 	if ( isset( $option['next'] ) ) {
-		echo '<div style="border-top: ' . $option['next'] . 'px solid #646970"></div>';
+		echo '<div style="border-top: ' . esc_html( $option['next'] ) . 'px solid #646970"></div>';
 	}
 	if ( $option['desc'] != '' ) {
-		echo '<p>' . $option['desc'] . '</p>';
+		echo '<p>' . wp_kses_post( $option['desc'] ) . '</p>';
 	}
 
-	echo esc_html__( 'You can change it with', 'extensions-leaflet-map' ) . ' <code>' . $option['param'] . '</code><br>';
+	echo esc_html__( 'You can change it with', 'extensions-leaflet-map' ) . ' <code>' . esc_html( $option['param'] ) . '</code><br>';
 
 	if ( is_array( $option['values'] ) ) {
 		$plugindefault = is_string( $option['default'] ) ? $option['default'] : ( $option['default'] ? '1' : '0' );
 		$setting       = is_string( $setting ) ? $setting : ( $setting ? '1' : '0' );
 		if ( $setting != $plugindefault ) {
 			// var_dump("Option: ",$option['default'],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
-			echo esc_html__( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault . '<br>';
+			echo esc_html( __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault ) . '<br>';
 		}
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<select name="leafext_multieleparams[' . $option['param'] . ']">';
 		foreach ( $option['values'] as $para ) {
 			echo '<option ';
@@ -61,6 +62,7 @@ function leafext_form_multielevation( $field ) {
 			if ( $para === $setting ) {
 				echo ' selected="selected" ';
 			}
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo 'value="' . $para . '" >' . $para . '</option>';
 		}
 		echo '</select>';
@@ -78,10 +80,9 @@ function leafext_form_multielevation( $field ) {
 
 		if ( $setting != $option['default'] ) {
 			// var_dump($setting,$option['default']);
-			echo esc_html__( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
-			echo $option['default'];
-			echo '<br>';
+			echo esc_html( __( 'Plugins Default', 'extensions-leaflet-map' ) . ': ' . $option['default'] ) . '<br>';
 		}
+		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		if ( current_user_can( 'manage_options' ) ) {
 			echo '<input type="text" class="colorPicker" id="leafext_multieleparams[' . $option['param'] . ']" name="leafext_multieleparams[' . $option['param'] . ']"
 	 		data-default-color = "' . $option['default'] . '" value = "' . $setting . '"/>';
@@ -90,6 +91,7 @@ function leafext_form_multielevation( $field ) {
 			<rect width="25" height="25" style="fill:' . $option['default'] . ';stroke-width:1;stroke:rgb(0,0,0)" />
 			</svg>';
 		}
+		// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 	} else {
 
 		if ( $setting != $option['default'] ) {
@@ -98,10 +100,11 @@ function leafext_form_multielevation( $field ) {
 			echo $option['default'] ? 'true' : 'false';
 			echo '<br>';
 		}
-
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<input ' . $disabled . ' type="radio" name="leafext_multieleparams[' . $option['param'] . ']" value="1" ';
 		echo $setting ? 'checked' : '';
 		echo '> true &nbsp;&nbsp; ';
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<input ' . $disabled . ' type="radio" name="leafext_multieleparams[' . $option['param'] . ']" value="0" ';
 		echo ( ! $setting ) ? 'checked' : '';
 		echo '> false ';
@@ -147,9 +150,14 @@ function leafext_multiele_help_text() {
 	$text = $text . '<code>leaflet-directory</code></a></p>
 <h3>' . __( 'Options', 'extensions-leaflet-map' ) . ' elevation-track</h3>
 <ul><li>' .
-	sprintf( __( '%s is the url of the trackfile.', 'extensions-leaflet-map' ), '<code>file</code>' ) .
+	sprintf(
+		/* translators: %s is an option. */
+		__( '%s is the url of the trackfile.', 'extensions-leaflet-map' ),
+		'<code>file</code>'
+	) .
 		'</li><li>' .
 	sprintf(
+		/* translators: %s are options, %4$s and %5$s are styling. */
 		__( '%1$s, %2$s and %3$s describe the %4$sstart point%5$s and are optional.', 'extensions-leaflet-map' ),
 		'<code>lat</code>',
 		'<code>lng</code>',
@@ -159,12 +167,14 @@ function leafext_multiele_help_text() {
 	) .
 	'</li><li>' .
 	sprintf(
+		/* translators: %s are options. */
 		__( 'If %1$s and %2$s are not specified, they are read from the file.', 'extensions-leaflet-map' ),
 		'<code>lat</code>',
 		'<code>lng</code>'
 	) .
 	'</li><li>' .
 	sprintf(
+		/* translators: %s is styling. */
 		__(
 			'The name of the %1$sstart point%2$s is determined in this order:',
 			'extensions-leaflet-map'
@@ -174,6 +184,7 @@ function leafext_multiele_help_text() {
 	) .
 	'<ol><li>' .
 		sprintf(
+			/* translators: %s are options. */
 			__(
 				'If %1$s (in options below or in shortcode) is true, the filename (without extension) is used, no matter how %2$s is.',
 				'extensions-leaflet-map'
@@ -183,6 +194,7 @@ function leafext_multiele_help_text() {
 		) .
 	'</li><li>' .
 		sprintf(
+			/* translators: %s are options. */
 			__( 'If %1$s is false and %2$s is specified, it is used.', 'extensions-leaflet-map' ),
 			'<code>filename</code>',
 			'<code>name</code>'
@@ -202,6 +214,7 @@ function leafext_multiele_help_text() {
 		$link = '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=elevation';
 	}
 	$text = $text . sprintf(
+		/* translators: %s is a href. */
 		__( 'You can use these options like in %1$sElevation Profile%2$s', 'extensions-leaflet-map' ),
 		'<a href="' . $link . '">',
 		'</a>'
@@ -209,12 +222,14 @@ function leafext_multiele_help_text() {
 	leafext_eleparams_for_multi() .
 	'.</li><li>' .
 	sprintf(
+		/* translators: %s is styling. */
 		__( 'The name of a %1$strack%2$s is determined in this order:', 'extensions-leaflet-map' ),
 		'<span style="color: #4f94d4">',
 		'</span>'
 	) .
 	'</li><ol><li>' .
 	sprintf(
+		/* translators: %s is an option. */
 		__( 'If %s (in options below or in shortcode) is true, the filename (without extension) is used.', 'extensions-leaflet-map' ),
 		'<code>filename</code>'
 	) .
@@ -228,11 +243,13 @@ function leafext_multiele_help_text() {
 	'<h3>' . __( 'Options', 'extensions-leaflet-map' ) . ' elevation-tracks</h3>
 	<ul><li>' .
 	sprintf(
+		/* translators: %s are options. */
 		__( 'If you use %1$s instead of %2$s, you get an elevation profile only with or without a summary line.', 'extensions-leaflet-map' ),
 		'<code>[elevation-<span style="color: #d63638">tracks</span>]</code>',
-		'<code>[multielevation]</code>'
+		'<code>&#091;multielevation]</code>'
 	) . ' ' .
 	sprintf(
+		/* translators: %s is styling. */
 		__( 'The name of a %1$strack%2$s is determined as described above.', 'extensions-leaflet-map' ),
 		'<span style="color: #4f94d4">',
 		'</span>'
@@ -261,6 +278,6 @@ function leafext_multiele_help_text() {
 	if ( is_singular() || is_archive() ) {
 		return $text;
 	} else {
-		echo $text;
+		echo wp_kses_post( $text );
 	}
 }

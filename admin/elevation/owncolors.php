@@ -65,7 +65,7 @@ function leafext_form_colors( $field ) {
 	} else {
 		$setting = $option['default'];
 	}
-
+	// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 	if ( current_user_can( 'manage_options' ) ) {
 		echo '<input type="text" class="colorPicker" id="leafext_color_' . $theme . '[' . $option['param'] . ']" name="leafext_color_' . $theme . '[' . $option['param'] . ']"
 			data-default-color = "' . $option['default'] . '" value = "' . $setting . '"/>';
@@ -74,6 +74,7 @@ function leafext_form_colors( $field ) {
 		<rect width="25" height="25" style="fill:' . $option['default'] . ';stroke-width:1;stroke:rgb(0,0,0)" />
 		</svg>';
 	}
+	// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
@@ -111,5 +112,5 @@ function leafext_color_help_text() {
 	}
 	$text = $text . '<div style="border-top: 1px solid #646970"></div>';
 	$text = $text . '<h2>' . __( 'Colors', 'extensions-leaflet-map' ) . '</h2>';
-	echo $text;
+	echo wp_kses_post( $text );
 }

@@ -140,6 +140,6 @@ function leafext_zoomhome_help() {
 	if ( is_singular() || is_archive() ) {
 		return $text;
 	} else {
-		leafext_escape_output( $text );
+		echo wp_kses_post( $text );
 	}
 }

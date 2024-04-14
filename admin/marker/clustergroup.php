@@ -17,12 +17,14 @@ function leafext_clustergroup_help_text() {
 	'.</p>';
 	$firsttext = $firsttext . '<h3>' . __( 'Note', 'extensions-leaflet-map' ) . '</h3>' .
 	'<p>' . sprintf(
+		/* translators: %s are shortcodes. */
 		__( 'The shortcode %1$s is a special case of %2$s respectively %3$s.', 'extensions-leaflet-map' ),
 		'<code>markerclustergroup</code>',
 		'<code>leaflet-optiongroup</code>',
 		'<code>leaflet-featuregroup</code>'
 	)
 	. '<br>' . sprintf(
+		/* translators: %s is a href. */
 		__( 'If you want more options see %1$shere%2$s.', 'extensions-leaflet-map' ),
 		'<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=featuregroup">',
 		'</a>'
@@ -30,12 +32,14 @@ function leafext_clustergroup_help_text() {
 
 	$note = '<h3>' . __( 'Note', 'extensions-leaflet-map' ) . '</h3>' .
 	'<p>' . sprintf(
+		/* translators: %s are shortcodes. */
 		__( 'The shortcode %1$s is a special case of %2$s respectively %3$s.', 'extensions-leaflet-map' ),
 		'<code>markerclustergroup</code>',
 		'<code>leaflet-optiongroup</code>',
 		'<code>leaflet-featuregroup</code>'
 	)
 	. '<br>' . sprintf(
+		/* translators: %s is a href. */
 		__( 'If you don\'t use this shortcode yet, start %1$sthere%2$s.', 'extensions-leaflet-map' ),
 		'<a href="/doku/featuregroup/">',
 		'</a>'
@@ -45,6 +49,7 @@ function leafext_clustergroup_help_text() {
 	<ul>
 	<li><code>feat</code> - ' . __( 'possible meaningful values', 'extensions-leaflet-map' ) . ': <code>iconUrl</code>, <code>title</code></li>
 		<li><code>strings</code> - ' . sprintf(
+			/* translators: %s are options. */
 		__(
 			'comma separated strings to distinguish the markers, e.g. an unique string in %1$s or %2$s',
 			'extensions-leaflet-map'
@@ -55,6 +60,7 @@ function leafext_clustergroup_help_text() {
 			<li><code>groups</code> - ' .
 			__( 'comma separated labels appear in the selection menu', 'extensions-leaflet-map' ) . '</li>
 		<li>' . sprintf(
+			/* translators: %s are options. */
 				__( 'The number of %1$s and %2$s must match.', 'extensions-leaflet-map' ),
 				'<code>strings</code>',
 				'<code>groups</code>'
@@ -62,6 +68,7 @@ function leafext_clustergroup_help_text() {
 			</li>
 			<li><code>visible</code> (' . __( 'optional', 'extensions-leaflet-map' ) . ') - ' .
 			sprintf(
+				/* translators: %s are options / values. */
 				__(
 					'initial visibility of a group, default: %1$s. Either %2$s (valid for all groups) or a comma-separated list of %3$s and %4$s, where the number must match those of %5$s.',
 					'extensions-leaflet-map'
@@ -104,6 +111,7 @@ function leafext_clustergroup_help_text() {
 			 '
 			. '</li>
 			<li><code>strings</code> - ' . sprintf(
+				/* translators: %s are options / values. */
 				__(
 					'comma separated strings to distinguish the markers, e.g. an unique substring in %1$s or the exact string (e.g.%2$s) in %3$s',
 					'extensions-leaflet-map'
@@ -115,6 +123,7 @@ function leafext_clustergroup_help_text() {
 				<li><code>groups</code> - ' .
 				__( 'comma separated labels appear in the selection menu', 'extensions-leaflet-map' ) . '</li>
 				<li>' . sprintf(
+					/* translators: %s are options. */
 					__( 'The number of %1$s and %2$s must match.', 'extensions-leaflet-map' ),
 					'<code>strings</code>',
 					'<code>groups</code>'
@@ -122,6 +131,7 @@ function leafext_clustergroup_help_text() {
 					</li>
 					<li><code>visible</code> (' . __( 'optional', 'extensions-leaflet-map' ) . ') - ' .
 					sprintf(
+						/* translators: %s are options / values. */
 						__(
 							'initial visibility of a group, default: %1$s. Either %2$s (valid for all groups) or a comma-separated list of %3$s and %4$s, where the number must match those of %5$s.',
 							'extensions-leaflet-map'
@@ -144,6 +154,7 @@ function leafext_clustergroup_help_text() {
 &#091;markerclustergroup feat="properties.<span style="color: #d63638">prop0</span>" strings="<span style="color: #4f94d4">value0</span>,..." groups="Description0,..." visible=...]</code></pre>
 <h3>groups unknown ' . __( 'and', 'extensions-leaflet-map' ) . ' others</h3><p>' .
 	sprintf(
+		/* translators: %s are options / values. */
 		__( 'If %1$s contains %2$s and %3$s, then markers (respectively Points) for which the property %4$s does not apply are placed in the %5$s group. Markers (respectively Points) whose property is not known are placed in the %6$s group. See also the developer console.', 'extensions-leaflet-map' ),
 		'<code>groups</code>',
 		'"unknown"',
@@ -168,17 +179,24 @@ function leafext_clustergroup_help_text() {
 	}
 
 	$textoptions = '<h3>' . __( 'More options', 'extensions-leaflet-map' ) . '</h3><p>' . sprintf(
+		/* translators: %s is a shortcode. */
 		__( 'The parameter and settings for %s are valid too.', 'extensions-leaflet-map' ),
 		'<a href="' . $clusterurl . '">Leaflet.markercluster</a>'
 	);
 	$textoptions = $textoptions . '</p>';
 	$textoptions = $textoptions . '<ul>
-	<li>' .
-	__( 'optional: <code>position</code> - position of group control', 'extensions-leaflet-map' ) . ': topleft, topright, bottomleft, bottomright. ' .
+	<li>' . sprintf(
+	/* translators: %s is an option. */
+		__( 'optional: %s - position of group control', 'extensions-leaflet-map' ),
+		'<code>position</code>'
+	) . ': topleft, topright, bottomleft, bottomright. ' .
 	__( 'Default', 'extensions-leaflet-map' ) . ': topright.
 	</li>
-	<li>' .
-	__( 'optional: <code>collapsed</code> - group control collapsed or not:', 'extensions-leaflet-map' ) . ' true, false. ' .
+	<li>' . sprintf(
+	/* translators: %s is an option. */
+		__( 'optional: %s - group control collapsed or not:', 'extensions-leaflet-map' ),
+		'<code>collapsed</code>'
+	) . ' true, false. ' .
 	__( 'Default', 'extensions-leaflet-map' ) . ': false.
 	</li>
 	</ul>';
@@ -186,7 +204,7 @@ function leafext_clustergroup_help_text() {
 	if ( is_singular() || is_archive() ) {
 		return $note . $text . $textoptions;
 	} else {
-		echo $firsttext . $text . $textoptions;
+		echo wp_kses_post( $firsttext . $text . $textoptions );
 	}
 }
 leafext_clustergroup_help_text();

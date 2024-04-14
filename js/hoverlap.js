@@ -213,45 +213,45 @@ function leafext_hoverlap_js(all_options) {
 	}
 
 	var markergroups = window.WPLeafletMapPlugin.markergroups;
-	// phpcs:disable
-	Object.entries(markergroups).forEach(([key, value]) => {
-		if ( markergroups[key]._map !== null ) {
-			// phpcs:enable
-			if (map_id == markergroups[key]._map._leaflet_id) {
-				// console.log("markergroups loop");
-				markergroups[key].eachLayer(
-					function (layer) {
-						if ( layer.getPopup() ) {
-							if (layer.getPopup().getContent()) {
-								layer.options.popupContent = layer.getPopup().getContent();
+
+	Object.entries( markergroups ).forEach(
+		([key, value]) =>
+		{
+			if ( markergroups[key]._map !== null ) {
+				if (map_id == markergroups[key]._map._leaflet_id) {
+					// console.log("markergroups loop");
+					markergroups[key].eachLayer(
+						function (layer) {
+							if ( layer.getPopup() ) {
+								if (layer.getPopup().getContent()) {
+									layer.options.popupContent = layer.getPopup().getContent();
+								}
+							}
+							if (layer instanceof L.Marker) {
+								// console.log("is_marker");
+								layer.on(
+									"mouseover click",
+									function (e) {
+										leafext_marker_click( e,map,map_id,layer,all_options );
+									}
+								);
+							} else if (
+							layer instanceof L.Polygon ||
+							layer instanceof L.Circle ||
+							layer instanceof L.Polyline
+							) {
+								overlaplayers[map_id].addLayer( layer );
+								layer.off( 'click' );
+							} else {
+								// console.log("other");
+								// console.log(layer);
 							}
 						}
-						if (layer instanceof L.Marker) {
-							// console.log("is_marker");
-							layer.on(
-								"mouseover click",
-								function (e) {
-									leafext_marker_click( e,map,map_id,layer,all_options );
-								}
-							);
-						} else if (
-						layer instanceof L.Polygon ||
-						layer instanceof L.Circle ||
-						layer instanceof L.Polyline
-						) {
-							overlaplayers[map_id].addLayer( layer );
-							layer.off( 'click' );
-						} else {
-							// console.log("other");
-							// console.log(layer);
-						}
-					}
-				);
+					);
+				}
 			}
-			// phpcs:disable
-			}
-  }); //Object.entries(markergroups).forEach(([key, value])
-  // phpcs:enable
+		}
+	); // Object.entries(markergroups).forEach(([key, value])
 	var geojsons = window.WPLeafletMapPlugin.geojsons;
 	var geocount = geojsons.length;
 

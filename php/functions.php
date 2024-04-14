@@ -96,7 +96,7 @@ function leafext_java_params( $params ) {
 				$value = $v;
 				break;
 			default:
-			  // phpcs:ignore
+			  // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_dump
 				var_dump( $k, $v, gettype( $v ) );
 				wp_die( 'Type' );
 		}
@@ -133,7 +133,7 @@ function leafext_check_position_control( $value ) {
 
 // Backend Plugin extension-leaflet-map
 function leafext_backend() {
-	//phpcs:disable WordPress.Security.NonceVerification.Recommended -- no form
+	//phpcs:ignore WordPress.Security.NonceVerification.Recommended -- no form
 	$get          = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
 	$backend_page = isset( $get['page'] ) ? sanitize_text_field( wp_unslash( $get['page'] ) ) : '';
 	$server       = map_deep( wp_unslash( $_SERVER ), 'sanitize_text_field' );
@@ -196,10 +196,4 @@ function leafext_html_table( $data = array() ) {
 	$head = '<div style="width:' . ( ( is_singular() || is_archive() ) ? '100' : '80' ) . '%;">';
 	$head = $head . '<figure class="wp-block-table aligncenter is-style-stripes"><table border=1>';
 	return $head . implode( '', $rows ) . '</table></figure></div>';
-}
-
-function leafext_escape_output( $output ) {
-	// https://wp-mix.com/allowed-html-tags-wp_kses/
-	$allowed_tags = wp_kses_allowed_html( 'post' );
-	echo wp_kses( $output, $allowed_tags );
 }

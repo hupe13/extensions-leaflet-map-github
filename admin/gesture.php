@@ -27,8 +27,7 @@ function leafext_form_gesture( $field ) {
 	$settings = leafext_gesture_settings();
 	$setting  = $settings[ $field ];
 	if ( $option['desc'] != '' ) {
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in php/gesture.php
-		echo '<p>' . $option['desc'] . '</p>';
+		echo '<p>' . wp_kses_post( $option['desc'] ) . '</p>';
 	}
 	// echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option['param']. '</code><br>';
 
@@ -58,8 +57,7 @@ function leafext_form_gesture( $field ) {
 		$setting       = is_string( $setting ) ? $setting : ( $setting ? '1' : '0' );
 		if ( $setting != $plugindefault ) {
 			// var_dump("Option: ",$option['default'],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
-			//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- plugindefault not changeable
-			echo esc_html__( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault . '<br>';
+			echo wp_kses_post( __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault . '<br>' );
 		}
 		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
 		echo '<select ' . $disabled . ' name="leafext_gesture[' . $option['param'] . ']">';
@@ -117,17 +115,20 @@ function leafext_gesture_help_text() {
 	$text = $text . '<ul><p>';
 	$text = $text . '<li> ' .
 	sprintf(
+		/* translators: %s is an option. */
 		__( 'If Scroll Wheel Zoom (%s) is enabled, it becomes active on both desktop and touch devices.', 'extensions-leaflet-map' ),
 		'<code>scrollwheel</code>'
 	) . '</li>';
 	$text = $text . '<li> ' .
 	sprintf(
+		/* translators: %s is an option. */
 		__( 'If %s is enabled, it becomes active on touch devices only.', 'extensions-leaflet-map' ),
 		'<code>dragging</code>'
 	) . '</li>';
 	if ( ! ( is_singular() || is_archive() ) ) {
 		$text = $text . '<li> ' .
 		sprintf(
+		/* translators: %s is the link to Leaflet Map setting. */
 			__( 'Your %s setting for', 'extensions-leaflet-map' ),
 			'<a href="' . get_admin_url() . 'admin.php?page=leaflet-map">Leaflet Map</a>'
 		) .
@@ -148,6 +149,7 @@ function leafext_gesture_help_text() {
 	$text = $text . '</p></ul></li></ul>';
 	if ( ! ( is_singular() || is_archive() ) ) {
 		$text = $text . '<p>' . sprintf(
+			/* translators: %s is a href. */
 			__( 'You can test it yourself on a %1$sseparate page%2$s.', 'extensions-leaflet-map' ),
 			'<a href="https://leafext.de/extra/gesture/">',
 			'</a>'
@@ -156,7 +158,6 @@ function leafext_gesture_help_text() {
 	if ( is_singular() || is_archive() ) {
 		return $text;
 	} else {
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
-		echo $text;
+		echo wp_kses_post( $text );
 	}
 }

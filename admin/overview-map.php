@@ -52,7 +52,6 @@ function leafext_overviewmap_help() {
 &#091;hover class=leafext-overview-tooltip]
 </code></pre>';
 
-	// $text = $text.'<p>'.__('You can use in shortcode <code>overviewmap</code> any of the options below.','extensions-leaflet-map').'</p>';
 	$text = $text . '<h3>' . __( 'Options for overviewmap', 'extensions-leaflet-map' ) . '</h3>';
 
 	$options = leafext_overviewmap_params();
@@ -77,20 +76,30 @@ function leafext_overviewmap_help() {
 	$text = $text . leafext_html_table( $new );
 
 	$text = $text . '<h3>' . __( 'Options for marker', 'extensions-leaflet-map' ) . '</h3>';
-	$text = $text . '<p>' . __( 'You can use these in the custom field for the icon and in shortcode <code>overviewmap</code>.', 'extensions-leaflet-map' ) . '</p>';
+	$text = $text . '<p>' . sprintf(
+		/* translators: %s is a shortcode. */
+		__( 'You can use these in the custom field for the icon and in shortcode %s.', 'extensions-leaflet-map' ),
+		'<code>overviewmap</code>'
+	) . '</p>';
 
 	$text = $text . '<h4>leafext_marker</h4>';
 	$text = $text . '<p>' . implode( ', ', leafext_marker_options() ) . '</p>';
-	$text = $text . '<p>' . __( '<b>iconUrl</b> is for icon filename required. The icons directory must be the same as from <b>iconUrl</b>.', 'extensions-leaflet-map' ) . '</p>';
+	$text = $text . '<p>' . sprintf(
+		/* translators: %s are options. */
+		__( '%1$s is for icon filename required. The icons directory must be the same as from %2$s.', 'extensions-leaflet-map' ),
+		'<b>iconUrl</b>',
+		'<b>iconUrl</b>'
+	) . '</p>';
 
 	$text = $text . '<h4>leafext_extramarker</h4>';
 	$text = $text . '<p>' . implode( ', ', leafext_extramarker_options() ) . '</p>';
 
+	/* translators: %s is an href. */
 	$text = $text . '<p>' . sprintf( __( 'See %1$sexamples%2$s.', 'extensions-leaflet-map' ), '<a href="https://leafext.de/extra/category/overviewmap/">', '</a>' ) . '</p>';
 
 	if ( is_singular() || is_archive() ) {
 		return $text;
 	} else {
-		leafext_escape_output( $text );
+		echo wp_kses_post( $text );
 	}
 }

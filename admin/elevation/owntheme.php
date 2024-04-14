@@ -53,6 +53,7 @@ function leafext_form_owntheme() {
 	} else {
 		$select_disabled = '';
 	}
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	echo '<select ' . $select_disabled . ' id="leafext_elecolor" name="leafext_values[theme]" onchange = "leafext_EnableDisableOtherTheme(this)">';
 	$colors[] = 'other';
 	foreach ( $colors as $color ) {
@@ -61,6 +62,7 @@ function leafext_form_owntheme() {
 		} else {
 			echo '<option ';
 		}
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo 'value="' . $color . '">' . $color . '</option>';
 	}
 	echo '</select>';
@@ -75,9 +77,10 @@ function leafext_form_other_theme() {
 			$othertheme = $ownoptions['othertheme'];
 		}
 	}
+
 	echo '<input id="leafext_eleother" type="text" name="leafext_values[othertheme]" placeholder="my-theme"
 		pattern=".*-theme" title="' . esc_html__( 'must end with', 'extensions-leaflet-map' ) . ' \'-theme\'"
-		value="' . $othertheme . '" ';
+		value="' . $othertheme . '" '; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	echo ( $othertheme != '' ) ? '' : ' readonly ';
 	echo '/>';
 }
@@ -149,7 +152,12 @@ add_filter("pre_do_shortcode_tag", function ( &#36;output, &#36;shortcode ) {
 	__( 'In your elevation.css put the styles like the theme styles in', 'extensions-leaflet-map' )
 	. ' <a href="https://unpkg.com/@raruto/leaflet-elevation@' . LEAFEXT_ELEVATION_VERSION . '/dist/leaflet-elevation.css"
 >https://unpkg.com/@raruto/leaflet-elevation@' . LEAFEXT_ELEVATION_VERSION . '/dist/leaflet-elevation.css</a> ' .
-	sprintf( __( 'or check out Raruto\'s %1$sexamples%2$s', 'extensions-leaflet-map' ), '<a href="https://github.com/Raruto/leaflet-elevation">', '</a>' )
+	sprintf(
+	/* translators: %s is a href. */
+		__( 'or check out Raruto\'s %1$sexamples%2$s', 'extensions-leaflet-map' ),
+		'<a href="https://github.com/Raruto/leaflet-elevation">',
+		'</a>'
+	)
 	. '.</p>' .
 	'</details><!--/.primer--><p>';
 
@@ -161,5 +169,5 @@ add_filter("pre_do_shortcode_tag", function ( &#36;output, &#36;shortcode ) {
 		$text = $text . __( 'Please reset these settings, if you are not using an own theme!', 'extensions-leaflet-map' );
 		$text = $text . '</span>';
 	}
-	echo $text;
+	echo wp_kses_post( $text );
 }

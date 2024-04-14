@@ -27,11 +27,13 @@ function leafext_search_params() {
 		array(
 			'param'   => 'propertyName',
 			'desc'    => sprintf(
+				/* translators: %s is an option. */
 				__( 'a option / property for marker, polygon, circle, line or a %s for geojson layer. Can also be a comma-separated list of options or properties.', 'extensions-leaflet-map' ),
 				'feature.property'
 			),
 			'default' => 'title',
 			'values'  => sprintf(
+				/* translators: %s are properties. */
 				__( 'for example %1$s for marker, additional for example %2$s for extramarkers; %3$s for polygon, circle, line; %4$s depending on geojson layer; %5$s for all', 'extensions-leaflet-map' ),
 				'title, iconclass',
 				'number',
@@ -112,6 +114,7 @@ function leafext_search_params() {
 			'desc'    => __( 'show or hide marker at the position found', 'extensions-leaflet-map' ),
 			'default' => '{}',
 			'values'  => sprintf(
+				/* translators: %1$s is an option, %2$s and %3$s is a href */
 				__( 'not specified for default (red circle), %1$s for no marker, or a definition like on an %2$sexample page%3$s.', 'extensions-leaflet-map' ),
 				'false',
 				'<a href="https://leafext.de/leafletsearch/leafletsearchmarker/">',
@@ -431,7 +434,10 @@ function leafext_leafletsearch_script( $options, $jsoptions, $allproperties ) {
 
 				var SearchControl = new L.Control.Search({
 					layer: searchLayer,
-				<?php echo $jsoptions; ?>
+					<?php
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo $jsoptions;
+					?>
 					initial: false,
 					moveToLocation: function(latlng, title, map) {
 						//console.log("moveToLocation");

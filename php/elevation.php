@@ -109,11 +109,13 @@ function leafext_elevation_params( $typ = array() ) {
 			'desc'      => '<img src="' . LEAFEXT_PLUGIN_PICTS . 'on.png" alt="on"/>
 			<p>' .
 			sprintf(
+				/* translators: %s is an option. */
 				__( 'You can always toggle the charts individually by clicking on %s.', 'extensions-leaflet-map' ),
 				'<img src="' . LEAFEXT_PLUGIN_PICTS . 'switcher.png" alt="switch"/>'
 			)
 			. ' ' .
 			sprintf(
+				/* translators: %s is an option. */
 				__( 'If %s is disabled, you can\'t see all charts at the same time (except at the beginning).', 'extensions-leaflet-map' ),
 				'<code>legend</code>'
 			) . '</p>',
@@ -164,6 +166,7 @@ function leafext_elevation_params( $typ = array() ) {
 			'param'     => 'chart',
 			'shortdesc' => __( 'Toggle chart', 'extensions-leaflet-map' ),
 			'desc'      => sprintf(
+				/* translators: %s are pictures. */
 				__( 'show always the chart / show the chart and toggle %1$s to hide / hide the chart and toggle %2$s to show', 'extensions-leaflet-map' ),
 				'&#10006;',
 				'<img src="' . LEAFEXT_PLUGIN_PICTS . '/elevation-lime.svg" alt="lime" />'
@@ -178,6 +181,7 @@ function leafext_elevation_params( $typ = array() ) {
 		array(
 			'param'     => 'detached',
 			'shortdesc' => __( 'Chart container outside/inside map container', 'extensions-leaflet-map' ),
+			/* translators: %s are options. */
 			'desc'      => sprintf( __( '%1$s outside, %2$s inside', 'extensions-leaflet-map' ), 'true - ', 'false - ' ),
 			'default'   => true,
 			'values'    => 1,
@@ -325,6 +329,7 @@ function leafext_elevation_params( $typ = array() ) {
 			'desc'      => '<p>true / "defined" / false</p>
 			<p>' . __( 'Only meaningful, if waypoints are shown in the map.', 'extensions-leaflet-map' ) . '</p>
 			<p>' . sprintf(
+				/* translators: %1$s is an option, %2$s is a link. */
 				__( 'If %1$s is selected, you must define some %2$ssettings for the icons', 'extensions-leaflet-map' ),
 				'"defined"',
 				'<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=elevationwaypoints">'
@@ -341,7 +346,13 @@ function leafext_elevation_params( $typ = array() ) {
 			'param'     => 'wptLabels',
 			'shortdesc' => __( 'Toggle waypoint labels', 'extensions-leaflet-map' ),
 			'desc'      => '<p>' . __( 'Show waypoint labels in map and in chart / only in map / only in chart / none', 'extensions-leaflet-map' ) . '</p>
-			<p>' . sprintf( __( 'Only meaningful, if %1$swaypoints%2$s is not %3$s.', 'extensions-leaflet-map' ), '<code>', '</code>', '<code>0</code>' ) . '</p>',
+			<p>' . sprintf(
+				/* translators: %s are codes. */
+				__( 'Only meaningful, if %1$swaypoints%2$s is not %3$s.', 'extensions-leaflet-map' ),
+				'<code>',
+				'</code>',
+				'<code>0</code>'
+			) . '</p>',
 			'default'   => true,
 			'values'    => array( true, 'markers', 'dots', false ),
 			'typ'       => array( 'changeable', 'points' ),
@@ -801,8 +812,12 @@ function leafext_elevation_script( $gpx, $settings ) {
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
 		var elevation_options = {
-			<?php echo $elevation_settings; ?>
-			<?php echo leafext_java_params( $settings ); ?>
+			<?php
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $elevation_settings;
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo leafext_java_params( $settings );
+			?>
 		};
 
 		leafext_elevation_locale_js();
@@ -817,9 +832,11 @@ function leafext_elevation_script( $gpx, $settings ) {
 		if ( $settings['track'] ) {
 			echo 'var switchtrack = L.control.layers(null, null, {';
 			if ( $settings['trackcollapsed'] ) {
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo 'collapsed:' . $settings['trackcollapsed'] . ',';
 			}
 			if ( $settings['trackposition'] ) {
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo 'position:"' . $settings['trackposition'] . '"';
 			}
 			echo '});';
@@ -827,10 +844,9 @@ function leafext_elevation_script( $gpx, $settings ) {
 		?>
 
 		// Instantiate elevation control.
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable (phpcs ignoriert die Anweisung!)
-		L.Control.Elevation.prototype.__btnIcon = "<?php echo LEAFEXT_ELEVATION_URL; ?>/images/elevation.svg";
+		L.Control.Elevation.prototype.__btnIcon = "<?php echo esc_url( LEAFEXT_ELEVATION_URL ); ?>/images/elevation.svg";
 		var controlElevation = L.control.elevation(elevation_options);
-		var track_options= { url: "<?php echo $gpx; ?>" };
+		var track_options= { url: "<?php echo esc_url( $gpx ); ?>" };
 		controlElevation.addTo(map);
 		<?php
 		if ( $settings['track'] ) {
@@ -864,11 +880,13 @@ function leafext_elevation_script( $gpx, $settings ) {
 			} else {
 				$switchname = 'e.name';
 			}
+			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo '
 			controlElevation.on("eledata_loaded", function(e) {
 				switchtrack.addOverlay(e.layer, ' . $switchname . ');
 			});
 			';
+			// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 		?>
 	});

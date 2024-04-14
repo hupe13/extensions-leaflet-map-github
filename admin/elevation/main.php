@@ -44,7 +44,7 @@ function leafext_elevation_tab() {
 		}
 	}
 
-	//phpcs:disable WordPress.Security.NonceVerification.Recommended -- no form
+	//phpcs:ignore WordPress.Security.NonceVerification.Recommended -- no form
 	$get        = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
 	$active_tab = isset( $get['tab'] ) ? $get['tab'] : '';
 	$textheader = '<div class="nav-tab-wrapper">';
@@ -145,7 +145,7 @@ function leafext_admin_elevation( $active_tab ) {
 				submit_button( __( "I don't need this anymore. sgpx is always interpreted as elevation.", 'extensions-leaflet-map' ), 'delete', 'delete', false );
 			}
 		} else {
-			echo '<h2>' . leafext_elevation_tab() . '</h2>';
+			echo '<h2>' . wp_kses_post( leafext_elevation_tab() ) . '</h2>';
 			echo esc_html__( 'wp-gpx-maps is not installed and nothing is configured.', 'extensions-leaflet-map' );
 		}
 		echo '</form>';
@@ -164,7 +164,7 @@ function leafext_admin_elevation( $active_tab ) {
 		}
 		echo '</form>';
 	} elseif ( $active_tab == 'elevation' ) { // Last tab!!!
-		echo '<h2>' . leafext_elevation_tab() . '</h2>';
+		echo '<h2>' . wp_kses_post( leafext_elevation_tab() ) . '</h2>';
 		if ( current_user_can( 'manage_options' ) ) {
 			echo '<form method="post" action="options.php">';
 		} else {

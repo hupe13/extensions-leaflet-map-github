@@ -51,7 +51,7 @@ function leafext_marker_tab() {
 		),
 	);
 
-	//phpcs:disable WordPress.Security.NonceVerification.Recommended -- no form
+	//phpcs:ignore WordPress.Security.NonceVerification.Recommended -- no form
 	$get        = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
 	$active_tab = isset( $get['tab'] ) ? $get['tab'] : '';
 	$textheader = '<div class="nav-tab-wrapper">';
@@ -71,23 +71,23 @@ function leafext_admin_marker( $active_tab ) {
 	if ( $active_tab == 'markercluster' ) {
 		leafext_admin_markercluster();
 	} elseif ( $active_tab == 'markerclustergroup' ) {
-		echo '<h2>' . leafext_marker_tab() . '</h2>';
+		echo '<h2>' . wp_kses_post( leafext_marker_tab() ) . '</h2>';
 		include LEAFEXT_PLUGIN_DIR . '/admin/marker/clustergroup.php';
 	} elseif ( $active_tab == 'extramarker' ) {
-		echo '<h2>' . leafext_marker_tab() . '</h2>';
+		echo '<h2>' . wp_kses_post( leafext_marker_tab() ) . '</h2>';
 		leafext_extramarker_help();
 	} elseif ( $active_tab == 'markerclusterplacementstrategies' ) {
 		leafext_admin_placementstrategies();
 	} elseif ( $active_tab == 'extramarker' ) {
-		echo leafext_marker_tab();
+		echo wp_kses_post( leafext_marker_tab() );
 		leafext_extramarker_help();
 	} elseif ( $active_tab == 'geojsonmarker' ) {
-		echo '<h2>' . leafext_marker_tab() . '</h2>';
+		echo '<h2>' . wp_kses_post( leafext_marker_tab() ) . '</h2>';
 		leafext_help_geojsonmarker();
 	} elseif ( $active_tab == 'targetmarker' ) {
 		leafext_targetmarker_help();
 	} elseif ( $active_tab == 'hidemarkers' ) {
-		echo '<h2>' . leafext_marker_tab() . '</h2>';
+		echo '<h2>' . wp_kses_post( leafext_marker_tab() ) . '</h2>';
 		leafext_help_hidemarkers();
 	}
 }

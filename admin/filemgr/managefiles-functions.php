@@ -55,7 +55,7 @@ function leafext_list_paginate( $files, $anzahl ) {
 	} else {
 		$post = array();
 	}
-	//phpcs:disable WordPress.Security.NonceVerification.Recommended -- form is with $_POST
+	//phpcs:ignore WordPress.Security.NonceVerification.Recommended -- form is with $_POST
 	$get = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
 	if ( count( $files ) > 0 ) {
 		$page = isset( $get['page'] ) ? filter_input( INPUT_GET, 'page', FILTER_SANITIZE_SPECIAL_CHARS ) : '';
@@ -76,31 +76,34 @@ function leafext_list_paginate( $files, $anzahl ) {
 		$pagenr    = max( 1, isset( $get['nr'] ) ? $get['nr'] : '1' );
 		$pagefiles = array_chunk( $files, $anzahl );
 
-		echo '<h2>' . esc_html__( 'Listing - page', 'extensions-leaflet-map' ) . ' ' . $pagenr . '/' . $pages . '</h2>';
+		echo '<h2>' . esc_html__( 'Listing - page', 'extensions-leaflet-map' ) . ' ' . esc_html( $pagenr . '/' . $pages ) . '</h2>';
 		echo '<p>';
 		if ( count( $pagefiles ) > 1 ) {
-			echo paginate_links(
-				array(
-					'base'               => $pageurl, // http://example.com/all_posts.php%_% : %_% is replaced by format (below).
-					'format'             => '%#%', // ?page=%#% : %#% is replaced by the page number.
-					'total'              => $pages,
-					'current'            => $pagenr,
-					'aria_current'       => 'page',
-					'show_all'           => false,
-					'prev_next'          => true,
-					'prev_text'          => __( '&laquo; Previous' ),
-					'next_text'          => __( 'Next &raquo;' ),
-					'end_size'           => 1,
-					'mid_size'           => 2,
-					'type'               => 'plain',
-					'add_args'           => array( 'leafext_file_nonce' => wp_create_nonce( 'leafext_file' ) ),
-					'add_fragment'       => '',
-					'before_page_number' => '',
-					'after_page_number'  => '',
+			echo wp_kses_post(
+				paginate_links(
+					array(
+						'base'               => $pageurl, // http://example.com/all_posts.php%_% : %_% is replaced by format (below).
+						'format'             => '%#%', // ?page=%#% : %#% is replaced by the page number.
+						'total'              => $pages,
+						'current'            => $pagenr,
+						'aria_current'       => 'page',
+						'show_all'           => false,
+						'prev_next'          => true,
+						'prev_text'          => __( '&laquo; Previous' ),
+						'next_text'          => __( 'Next &raquo;' ),
+						'end_size'           => 1,
+						'mid_size'           => 2,
+						'type'               => 'plain',
+						'add_args'           => array( 'leafext_file_nonce' => wp_create_nonce( 'leafext_file' ) ),
+						'add_fragment'       => '',
+						'before_page_number' => '',
+						'after_page_number'  => '',
+					)
 				)
 			);
 		}
 		echo '</p><p>';
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo leafext_files_table( $pagefiles[ $pagenr - 1 ] );
 		echo '</p>';
 	} else {
@@ -136,6 +139,7 @@ function leafext_create_shortcode_css() {
 
 // Baue Tabelle
 function leafext_files_table( $track_files ) {
+	//phpcs:ignore WordPress.Security.NonceVerification.Recommended
 	$get = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
 
 	// https://codex.wordpress.org/Javascript_Reference/ThickBox
@@ -149,9 +153,10 @@ function leafext_files_table( $track_files ) {
 		'<b>' . __( 'Name', 'extensions-leaflet-map' ) . '</b>',
 		'<b>' . __( 'Preview', 'extensions-leaflet-map' ) . '</b>',
 		'<b>' . __( 'Media Library', 'extensions-leaflet-map' ) . '</b>',
-		'<b>' . __( 'leaflet Shortcode', 'extensions-leaflet-map' ) . '</b>',
-		'<b>' . __( 'elevation<sup>1</sup> Shortcode', 'extensions-leaflet-map' ) . '</b>',
-		'<b>' . __( 'track in multielevation<sup>1,2</sup>', 'extensions-leaflet-map' ) . '</b>',
+		'<b>leaflet Shortcode</b>',
+		'<b>elevation<sup>1</sup> Shortcode</b>',
+		/* translators: %s is a shortcode. */
+		'<b>' . sprintf( __( 'track in %s', 'extensions-leaflet-map' ), 'multielevation<sup>1,2</sup>' ) . '</b>',
 	);
 	$track_table[] = $entry;
 
@@ -180,7 +185,7 @@ function leafext_files_table( $track_files ) {
 		}
 		global $wpdb;
 		$sql = "SELECT post_id FROM $wpdb->postmeta WHERE meta_value LIKE '" . substr( $myfile, 1 ) . "'";
-		// phpcs:ignore
+		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		$results = $wpdb->get_results( $sql );
 		if ( count( $results ) > 0 ) {
 			foreach ( $results as $result ) {
@@ -253,6 +258,7 @@ function leafext_files_table( $track_files ) {
 	$text = leafext_html_table( $track_table );
 	$text = $text . '<small>&nbsp;&nbsp;<sup>1</sup> - ' . __( 'It is not checked whether the file contains a track with elevation data.', 'extensions-leaflet-map' ) . '</small>';
 	$text = $text . '<br><small>&nbsp;&nbsp;<sup>2</sup> - ' . __( 'It works with gpx and kml files.', 'extensions-leaflet-map' ) . ' ';
+	/* translators: %s is a shortcode. */
 	$text = $text . sprintf( __( "Don't forget to declare %s at last statement.", 'extensions-leaflet-map' ), '<code>[multielevation]</code>' ) . '</small>';
 	return $text;
 }

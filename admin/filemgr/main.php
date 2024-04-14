@@ -14,7 +14,7 @@ require LEAFEXT_PLUGIN_DIR . '/admin/filemgr/filemgr.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/filemgr/managefiles-functions.php';
 
 function leafext_filemgr_tab() {
-	//phpcs:disable WordPress.Security.NonceVerification.Recommended -- no form
+	//phpcs:ignore WordPress.Security.NonceVerification.Recommended -- no form
 	$get       = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
 	$tb_iframe = isset( $get['TB_iframe'] ) ? $get['TB_iframe'] : '';
 	if ( $tb_iframe == true ) {
@@ -52,7 +52,7 @@ function leafext_filemgr_tab() {
 }
 
 function leafext_admin_filemgr( $active_tab ) {
-	echo '<h2>' . leafext_filemgr_tab() . '</h2>';
+	echo '<h2>' . wp_kses_post( leafext_filemgr_tab() ) . '</h2>';
 	if ( $active_tab == 'filemgr' ) {
 		echo '<form method="post" action="options.php">';
 		settings_fields( 'leafext_settings_filemgr' );
@@ -65,6 +65,6 @@ function leafext_admin_filemgr( $active_tab ) {
 		leafext_managefiles();
 	} elseif ( $active_tab == 'filemgr-dir' ) {
 		include 'leaflet-directory.php';
-		echo leafext_directory_help_text();
+		echo wp_kses_post( leafext_directory_help_text() );
 	}
 }

@@ -40,6 +40,7 @@ function leafext_multielevation_params( $typ = array( 'changeable' ) ) {
 			'param'     => 'summary',
 			'shortdesc' => __( 'Summary', 'extensions-leaflet-map' ),
 			'desc'      => sprintf(
+				/* translators: %s is an option. */
 				__( 'Valid for %s: Only elevation profile with or without summary line will be displayed.', 'extensions-leaflet-map' ),
 				'<code>[elevation-<span style="color: #d63638">tracks</span>]</code>'
 			),
@@ -227,7 +228,7 @@ function leafext_elevation_track( $atts, $content, $shortcode ) {
 					(float) $gpx->trk->trkseg->trkpt[0]->attributes()->lon,
 				);
 			} elseif ( $path_parts['extension'] == 'kml' ) {
-				// phpcs:ignore
+				// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- is gpx
 				$allcoordinates = $gpx->Document->Folder->Folder->Placemark->LineString->coordinates;
 				$coords_array   = explode( "\n", $allcoordinates );
 				$count          = count( $coords_array );
@@ -254,7 +255,7 @@ function leafext_elevation_track( $atts, $content, $shortcode ) {
 			if ( $path_parts['extension'] == 'gpx' ) {
 				$params['name'] = (string) $gpx->trk->name;
 			} elseif ( $path_parts['extension'] == 'kml' ) {
-				// phpcs:ignore
+				// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- is gpx
 				$params['name'] = (string) $gpx->Document->name;
 			}
 		}
@@ -412,15 +413,22 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 		var opts = {
 			points: {
 				icon: {
-					iconUrl: "<?php echo LEAFEXT_ELEVATION_URL; ?>images/elevation-poi.png",
+					iconUrl: "<?php echo esc_url( LEAFEXT_ELEVATION_URL ); ?>images/elevation-poi.png",
 					iconSize: [12, 12],
 				},
 			},
 			elevation: {
-				<?php echo $elevation_settings; ?>
-				<?php echo leafext_java_params( $settings ); ?>
+				<?php
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo $elevation_settings;
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo leafext_java_params( $settings );
+				?>
 			},
-			distanceMarkers: <?php echo $multioptions['distanceMarkers_options']; ?>
+			distanceMarkers: <?php // phpcs:ignore Squiz.PHP.EmbeddedPhp.ContentBeforeOpen, Squiz.PHP.EmbeddedPhp.ContentAfterOpen
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $multioptions['distanceMarkers_options'];
+			?>
 		};
 		console.log(opts.elevation);
 		leafext_elevation_locale_js();
@@ -456,14 +464,17 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 				position: "topright",
 				collapsed: true,
 			},
-			<?php echo leafext_java_params( $multioptions ); ?>
+			<?php
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo leafext_java_params( $multioptions );
+			?>
 		});
 		//console.log(routes);
 		routes.addTo(map);
 
-		L.Control.Elevation.prototype.__btnIcon = "<?php echo LEAFEXT_ELEVATION_URL; ?>/images/elevation.svg";
+		L.Control.Elevation.prototype.__btnIcon = "<?php echo esc_url( LEAFEXT_ELEVATION_URL ); ?>/images/elevation.svg";
 		map.on("eledata_added eledata_clear", function(e) {
-			var p = document.querySelector(".chart-placeholder-<?php echo $rand; ?>");
+			var p = document.querySelector(".chart-placeholder-<?php echo $rand; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>");
 			if(p) {
 				p.style.display = e.type=="eledata_added" ? "none" : "";
 			}

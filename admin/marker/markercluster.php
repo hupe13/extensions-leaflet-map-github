@@ -50,7 +50,7 @@ function leafext_form_markercluster( $field ) {
 		$disabled = '';
 	}
 
-	echo esc_html__( 'You can change it for each map with', 'extensions-leaflet-map' ) . ' <code>' . $option['param'] . '</code><br>';
+	echo wp_kses_post( __( 'You can change it for each map with', 'extensions-leaflet-map' ) . ' <code>' . $option['param'] . '</code><br>' );
 	if ( ! is_array( $option['values'] ) ) {
 
 		if ( $setting != $option['default'] ) {
@@ -58,10 +58,11 @@ function leafext_form_markercluster( $field ) {
 			echo $option['default'] ? '1' : '0';
 			echo '<br>';
 		}
-
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<input ' . $disabled . ' type="radio" name="leafext_cluster[' . $option['param'] . ']" value="1" ';
 		echo $setting ? 'checked' : '';
 		echo '> true &nbsp;&nbsp; ';
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<input ' . $disabled . ' type="radio" name="leafext_cluster[' . $option['param'] . ']" value="0" ';
 		echo ( ! $setting ) ? 'checked' : '';
 		echo '> false ';
@@ -70,13 +71,14 @@ function leafext_form_markercluster( $field ) {
 		$setting       = is_string( $setting ) ? $setting : ( $setting ? '1' : '0' );
 		if ( $setting != $plugindefault ) {
 			// var_dump("Option: ",$option[2],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
-			echo esc_html__( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault . '<br>';
+			echo esc_html( __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault ) . '<br>';
 		}
 		if ( ! current_user_can( 'manage_options' ) ) {
 			$select_disabled = ' disabled multiple size=' . count( $option['values'] ) . ' ';
 		} else {
 			$select_disabled = '';
 		}
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<select ' . $select_disabled . ' name="leafext_cluster[' . $option['param'] . ']">';
 		foreach ( $option['values'] as $para ) {
 			echo '<option ';
@@ -86,6 +88,7 @@ function leafext_form_markercluster( $field ) {
 			if ( $para === $setting ) {
 				echo ' selected="selected" ';
 			}
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo 'value="' . $para . '" >' . $para . '</option>';
 		}
 		echo '</select>';
@@ -139,6 +142,7 @@ function leafext_markercluster_help_text() {
 
 <p>' .
 	sprintf(
+		/* translators: %s is a link. */
 		__(
 			'Please see the %s page for options. If you want to change other ones, please post it to the forum.',
 			'extensions-leaflet-map'
@@ -163,7 +167,7 @@ function leafext_markercluster_help_text() {
 		array_key_exists( 'spiderfy', $defaults ) ) {
 			$textoptions = $textoptions . '<p>';
 			$textoptions = $textoptions . __( 'The options zoom, radius and spiderfy have been renamed to disableClusteringAtZoom, maxClusterRadius and spiderfyOnMaxZoom, but they are still valid. Your settings:', 'extensions-leaflet-map' );
-			 // phpcs:ignore
+			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 			$textoptions = $textoptions . '<pre>' . substr( substr( print_r( get_option( 'leafext_cluster' ), true ), 8 ), 0, -3 ) . '</pre>';
 			$textoptions = $textoptions . __( 'Before you click the submit button, please compare your settings with the new ones and change them if they are different.', 'extensions-leaflet-map' );
 			$textoptions = $textoptions . '</p>';
@@ -173,6 +177,6 @@ function leafext_markercluster_help_text() {
 		$text = $text . '<h3>' . __( 'Options', 'extensions-leaflet-map' ) . '</h3>';
 		return $text;
 	} else {
-		echo $text . $textoptions;
+		echo wp_kses_post( $text . $textoptions );
 	}
 }

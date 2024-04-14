@@ -44,22 +44,26 @@ function leafext_providers_form() {
 	$count                = count( $regtiles );
 	for ( $i = 0; $i < $count; $i++ ) {
 		$allnames = array_diff( $allnames, array( $regtiles[ $i ]['name'] ) );
-		echo '<h4>' . $regtiles[ $i ]['name'] . '</h4>' . "\n";
+		echo '<h4>' . esc_html( $regtiles[ $i ]['name'] ) . '</h4>' . "\n";
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<input type="hidden" name="leafext_providers[' . $i . '][name]" value="' . $regtiles[ $i ]['name'] . '">' . "\n";
 		$size = max( array_map( 'strlen', $regtiles[ $i ]['keys'] ) );
 		foreach ( $regtiles[ $i ]['keys'] as $key => $value ) {
-			echo '<p>' . $key . ': ';
+			echo '<p>' . esc_html( $key ) . ': ';
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo '<input type="text" size=' . $size . ' name="leafext_providers[' . $i . '][keys][' . $key . ']" value="' . $value . '"></p>' . "\n";
 		}
 	}
 	$i = $count;
 	foreach ( $allnames as $name ) {
 		$id = array_search( $name, array_column( $require_registration, 'name' ), true );
-		echo '<h4>' . $require_registration[ $id ]['name'] . '</h4>' . "\n";
+		echo '<h4>' . esc_html( $require_registration[ $id ]['name'] ) . '</h4>' . "\n";
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<input type="hidden" name="leafext_providers[' . $i . '][name]" value="' . $require_registration[ $id ]['name'] . '">' . "\n";
 		$size = max( array_map( 'strlen', $require_registration[ $id ]['keys'] ) );
 		foreach ( $require_registration[ $id ]['keys'] as $key => $value ) {
-			echo '<p>' . $key . ': ';
+			echo '<p>' . esc_html( $key ) . ': ';
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo '<input type="text" size=' . $size . ' name="leafext_providers[' . $i . '][keys][' . $key . ']" placeholder="' . $value . '" value=""></p>' . "\n";
 		}
 		++$i;
@@ -93,13 +97,23 @@ function leafext_providers_help() {
 	"\n" .
 	'[leaflet-map mapid="OSM"]' . "\n" .
 	'[layerswitch mapids="hiking,OPNV" providers="WaymarkedTrails.hiking,OPNVKarte"]</code></pre><p>' .
-	__( 'The option <code>mapids</code> is optional.', 'extensions-leaflet-map' ) . ' ' .
-	__( 'You can use the parameter <code>tiles</code> also.', 'extensions-leaflet-map' ) .
+	sprintf(
+		/* translators: %s is an option. */
+		__( 'The option %s is optional.', 'extensions-leaflet-map' ),
+		'<code>mapids</code>'
+	) . ' ' .
+	sprintf(
+		/* translators: %s is an option. */
+		__( 'You can use the parameter %s also.', 'extensions-leaflet-map' ),
+		'<code>tiles</code>'
+	) .
 	'</p><p>' .
 	__( 'For a list of providers see', 'extensions-leaflet-map' ) .
 	' <a href="http://leaflet-extras.github.io/leaflet-providers/preview/">http://leaflet-extras.github.io/leaflet-providers/preview/</a>.'
-	. '</p><b>' . sprintf(
-		__( 'Please note %s (Quote from Leaflet Providers page):', 'extensions-leaflet-map' ),
+	. '</p>' . sprintf(
+		/* translators: %s is styling (bold). */
+		__( '%1$sPlease note%2$s (Quote from Leaflet Providers page):', 'extensions-leaflet-map' ),
+		'<b>',
 		'</b>'
 	) . '<p> <i>' .
 	__(
@@ -120,7 +134,7 @@ function leafext_providers_help() {
 		if ( current_user_can( 'manage_options' ) ) {
 			$text = $text . '<h2>' . __( 'Settings', 'extensions-leaflet-map' ) . '</h2>';
 		}
-		echo $text;
+		echo wp_kses_post( $text );
 	}
 }
 

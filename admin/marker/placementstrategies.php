@@ -53,7 +53,7 @@ function leafext_form_placement( $field ) {
 		echo '<p>' . esc_html__( '"default" means: one-circle strategy up to 8 elements, else spiral strategy', 'extensions-leaflet-map' ) . '</p>';
 	}
 
-	echo esc_html__( 'You can change it for each map with', 'extensions-leaflet-map' ) . ' <code>' . $option[0] . '</code><br>';
+	echo wp_kses_post( __( 'You can change it for each map with', 'extensions-leaflet-map' ) . ' <code>' . $option[0] . '</code><br>' );
 	if ( ! is_array( $option[3] ) ) {
 
 		if ( $setting != $option[2] ) {
@@ -63,9 +63,11 @@ function leafext_form_placement( $field ) {
 			echo '<br>';
 		}
 
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<input ' . $disabled . ' type="radio" name="leafext_placementparams[' . $option[0] . ']" value="1" ';
 		echo $setting ? 'checked' : '';
 		echo '> true &nbsp;&nbsp; ';
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<input ' . $disabled . ' type="radio" name="leafext_placementparams[' . $option[0] . ']" value="0" ';
 		echo ( ! $setting ) ? 'checked' : '';
 		echo '> false ';
@@ -74,13 +76,14 @@ function leafext_form_placement( $field ) {
 		$setting       = is_string( $setting ) ? $setting : ( $setting ? '1' : '0' );
 		if ( $setting != $plugindefault ) {
 			// var_dump("Option: ",$option[2],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
-			echo esc_html__( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault . '<br>';
+			echo esc_html( __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault ) . '<br>';
 		}
 		if ( ! current_user_can( 'manage_options' ) ) {
 			$select_disabled = ' disabled multiple size=' . count( $option[3] ) . ' ';
 		} else {
 			$select_disabled = '';
 		}
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<select ' . $select_disabled . ' name="leafext_placementparams[' . $option[0] . ']">';
 		foreach ( $option[3] as $para ) {
 			echo '<option ';
@@ -90,6 +93,7 @@ function leafext_form_placement( $field ) {
 			if ( $para === $setting ) {
 				echo ' selected="selected" ';
 			}
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo 'value="' . $para . '" >' . $para . '</option>';
 		}
 		echo '</select>';
@@ -135,7 +139,8 @@ function leafext_placement_help_text() {
 		$text = $text . '<p>' . __( 'Please see the admin page for options.', 'extensions-leaflet-map' ) . '</p>';
 		return $text;
 	} else {
+		/* translators: %s is code. */
 		$text = $text . '<p>' . sprintf( __( 'The parameter maxZoom has been removed, please use %s instead.', 'extensions-leaflet-map' ), '<code>[leaflet-map max_zoom="xx" ...]</code>' ) . '</p>';
-		echo $text;
+		echo wp_kses_post( $text );
 	}
 }
