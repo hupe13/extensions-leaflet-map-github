@@ -1,6 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* Bug in overviewmap (thank you @cocade!)
+* Bug in overviewmap
 * WPCS
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).

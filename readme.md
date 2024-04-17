@@ -31,7 +31,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 * Du kannst Elemente auf der Karte nach Kriterien gruppieren und ein- und ausblenden.
 
-* Erstelle eine Übersichtskarte mit den auf den Seiten und Beiträgen hinterlegten Geopositionen. (Idee von @codade)
+* Erstelle eine Übersichtskarte mit den auf den Seiten und Beiträgen hinterlegten Geopositionen.
 
 * Erhalte einen Tooltip beim Überfahren eines Elementes mit der Maus.
 
@@ -61,7 +61,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 * You can group the elements on the map by criteria and show/hide them.
 
-* Create an overview map with geo-locations provided in the pages and posts (idea from @codade).
+* Create an overview map with geo-locations provided in the pages and posts.
 
 * Get a tooltip when hovering over an element.
 
@@ -180,7 +180,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ### 4.2.3 /240999
 
-* Bug in overviewmap (thank you @cocade!)
+* Bug in overviewmap
 * WPCS
 
 ### Previous

@@ -144,7 +144,7 @@ function leafext_waypoints_help_text() {
 			'You can of course use %1$s and define waypoints with additional %2$s and %3$s shortcodes.',
 			'extensions-leaflet-map'
 		),
-		'<code>[elevation ... waypoints=0 ...]</code>',
+		'<code>&#091;elevation ... waypoints=0 ...]</code>',
 		'<code>leaflet-marker</code>',
 		'<code>leaflet-extramarker</code>'
 	) . '</p>';
@@ -158,10 +158,10 @@ function leafext_waypoints_help_text() {
 </ul>';
 
 	$text = $text . '<h3>Shortcode</h3>
-<pre><code>[leaflet-map ....]
-[elevation gpx="url_gpx_file" waypoints=1 wptIcons=defined ...]
+<pre><code>&#091;leaflet-map ....]
+&#091;elevation gpx="url_gpx_file" waypoints=1 wptIcons=defined ...]
 //or
-[elevation gpx="url_gpx_file" waypoints=markers wptIcons=defined ...]
+&#091;elevation gpx="url_gpx_file" waypoints=markers wptIcons=defined ...]
 </code></pre>';
 
 	if ( is_singular() || is_archive() ) {

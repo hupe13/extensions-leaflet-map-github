@@ -33,5 +33,5 @@ Maybe you need a Github token.
 
 == Changelog ==
 
-* Bug in overviewmap (thank you @cocade!)
+* Bug in overviewmap
 * WPCS

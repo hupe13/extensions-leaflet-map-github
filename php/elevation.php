@@ -332,7 +332,7 @@ function leafext_elevation_params( $typ = array() ) {
 				/* translators: %1$s is an option, %2$s is a link. */
 				__( 'If %1$s is selected, you must define some %2$ssettings for the icons', 'extensions-leaflet-map' ),
 				'"defined"',
-				'<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=elevationwaypoints">'
+				( ( is_singular() || is_archive() ) ? '<a href="/doku/elevationwaypoints/">' : '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=elevationwaypoints">' )
 			) . '</a>.'
 			. '</p>',
 			'default'   => true,
