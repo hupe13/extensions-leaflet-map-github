@@ -1,5 +1,6 @@
 ### 4.2.3 /240999
 
+* new option for hover: opacity
 * Bug in overviewmap
 * WPCS
 

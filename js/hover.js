@@ -89,12 +89,13 @@ function leafext_hover_geojsonstyle_js(all_options) {
 									let i = 0;
 									e.target.eachLayer(
 										function () {
-											i += 1; }
+											i += 1;
+										}
 									);
 									// console.log("mouseover has", i, "layers.");
 								if (i > 1) {
-											// z.B leaflet-gpx mit Track und Marker
-											leafext_make_overstyle( e.sourceTarget );
+									// z.B leaflet-gpx mit Track und Marker
+									leafext_make_overstyle( e.sourceTarget );
 								} else {
 									e.target.eachLayer(
 										function (layer) {
@@ -116,7 +117,8 @@ function leafext_hover_geojsonstyle_js(all_options) {
 								let i = 0;
 								e.target.eachLayer(
 									function () {
-										i += 1; }
+										i += 1;
+									}
 								);
 								// console.log("mouseout has", i, "layers.");
 								if (i > 1) {
@@ -170,11 +172,11 @@ function leafext_hover_geojsonstyle_js(all_options) {
 					geojson.layer.on(
 						"popupclose",
 						function (e) {
-								e.target.eachLayer(
-									function (layer) {
-										leafext_make_styleback( layer );
-									}
-								);
+							e.target.eachLayer(
+								function (layer) {
+									leafext_make_styleback( layer );
+								}
+							);
 						}
 					);
 
@@ -476,17 +478,16 @@ function leafext_hover_markertooltip_js(all_options) {
 				a.on(
 					"click",
 					function (e) {
-							console.log( "click marker" );
-							map.eachLayer(
-								function (layer) {
-									leafext_make_styleback( layer );
-								}
-							);
-							e.sourceTarget.unbindTooltip();
-							e.sourceTarget.bindTooltip( "", {visibility: 'hidden', opacity: 0} ).closeTooltip();
+						// console.log( "click marker" );
+						map.eachLayer(
+							function (layer) {
+								leafext_make_styleback( layer );
+							}
+						);
+						e.sourceTarget.unbindTooltip();
+						e.sourceTarget.bindTooltip( "", {visibility: 'hidden', opacity: 0} ).closeTooltip();
 					}
 				);
-
 			}
 		}
 	}

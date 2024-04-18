@@ -127,6 +127,15 @@ function leafext_hover_params( $typ = '' ) {
 			'changeable' => false,
 		),
 		array(
+			'param'      => 'opacity',
+			'desc'       => __( 'Opacity of other elements', 'extensions-leaflet-map' ) . '',
+			'default'    => false,
+			'values'     => '0.1 ... 0.9 ' . __( 'or nothing', 'extensions-leaflet-map' ),
+			'element'    => false,
+			'only'       => false,
+			'changeable' => true,
+		),
+		array(
 			'param'      => 'exclude',
 			'desc'       => __( 'exclude any geojson, gpx, kml with a defined substring in the src url from changing its style on hovering, the tooltip is not affected', 'extensions-leaflet-map' ),
 			'default'    => '',
@@ -240,6 +249,10 @@ function leafext_hover_function( $atts, $content, $shortcode ) {
 		// var_dump($atts);
 		$options = shortcode_atts( $settings, leafext_clear_params( $atts ) );
 		// var_dump($atts,$settings,$options); wp_die();
+		if ( $options['opacity'] ) {
+			leafext_enqueue_leafext( 'hover-opacity' );
+		}
+
 		$text = '';
 		if ( $options['tolerance'] != 0 ) {
 			$text = $text . leafext_canvas_script( $options['tolerance'] );
@@ -318,6 +331,13 @@ function leafext_hover_function( $atts, $content, $shortcode ) {
 				// $text = $text.leafext_markertitle_script($options);
 				?>
 				leafext_hover_markertitle_js();
+				<?php
+			}
+			if ( $options['opacity'] != false ) {
+				?>
+				leafext_hovertransp_markergroup_js(<?php echo (float) $options['opacity']; ?>);
+				leafext_hovertransp_geojson_js(<?php echo (float) $options['opacity']; ?>);
+				leafext_hovertransp_marker_js(<?php echo (float) $options['opacity']; ?>);
 				<?php
 			}
 			?>

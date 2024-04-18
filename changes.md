@@ -1,5 +1,6 @@
 # Differences to the Plugins WordPress version
 
+* new option for hover: opacity
 * Bug in overviewmap
 * WPCS
 
