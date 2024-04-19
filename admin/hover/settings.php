@@ -66,9 +66,9 @@ function leafext_validate_hover( $options ) {
 	$post = map_deep( wp_unslash( $_POST ), 'sanitize_text_field' );
 	if ( ! empty( $post ) && check_admin_referer( 'leafext_hover', 'leafext_hover_nonce' ) ) {
 		if ( isset( $post['submit'] ) ) {
-			$options['class']     = sanitize_text_field( $options['class'] );
-			$options['tolerance'] = (int) $options['tolerance'];
-			$options['popupclose']      = (int) $options['popupclose'];
+			$options['class']      = sanitize_text_field( $options['class'] );
+			$options['tolerance']  = (int) $options['tolerance'];
+			$options['popupclose'] = (int) $options['popupclose'];
 			delete_option( 'leafext_canvas' ); // old option
 			return $options;
 		}

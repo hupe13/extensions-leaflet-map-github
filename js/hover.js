@@ -574,33 +574,46 @@ function leafext_hover_markertooltip_js(all_options) {
 				);
 
 				if (all_options['opacity']) {
-				a.on(
-					"mouseover",
-					function (e) {
-						if (leafext_map_popups( map ) == false) {
-							// console.log(e);
-							// console.log( "make marker transparent" )
-							map.getPane( 'overlayPane' ).style.opacity = all_options['opacity'];
-							//map.getPane('shadowPane').style.opacity = 1;
-							//map.getPane('markerPane').style.opacity = 1;
+					a.on(
+						"mouseover",
+						function (e) {
+							if (leafext_map_popups( map ) == false) {
+								// console.log(e);
+								// console.log( "make marker transparent" )
+								map.getPane( 'overlayPane' ).style.opacity = all_options['opacity'];
+								//map.getPane('shadowPane').style.opacity = 1;
+								//map.getPane('markerPane').style.opacity = 1;
 
-							for (var j = 0; j < markers_length; j++) {
-								if (WPLeafletMapPlugin.markers[j]._map._leaflet_id == map_id) {
-									if (WPLeafletMapPlugin.markers[j] != e.sourceTarget) {
-										WPLeafletMapPlugin.markers[j].setOpacity( all_options['opacity'] );
+								for (var j = 0; j < markers_length; j++) {
+									if (WPLeafletMapPlugin.markers[j]._map._leaflet_id == map_id) {
+										if (WPLeafletMapPlugin.markers[j] != e.sourceTarget) {
+											WPLeafletMapPlugin.markers[j].setOpacity( all_options['opacity'] );
+										}
 									}
 								}
 							}
 						}
-					}
-				);
-				// mousemove
-				a.on(
-					"mouseout",
-					function (e) {
-						if (leafext_map_popups( map ) == false) {
-							// console.log( "make marker back" )
-							// console.log(e);
+					);
+					// mousemove
+					a.on(
+						"mouseout",
+						function (e) {
+							if (leafext_map_popups( map ) == false) {
+								// console.log( "make marker back" )
+								// console.log(e);
+								map.getPane( 'overlayPane' ).style.opacity = 1;
+								//map.getPane('shadowPane').style.opacity = 1;
+								//map.getPane('markerPane').style.opacity = 1;
+
+								for (var j = 0; j < markers_length; j++) {
+									WPLeafletMapPlugin.markers[j].setOpacity( 1 );
+								}
+							}
+						}
+					);
+					a.on(
+						"popupclose",
+						function (e) {
 							map.getPane( 'overlayPane' ).style.opacity = 1;
 							//map.getPane('shadowPane').style.opacity = 1;
 							//map.getPane('markerPane').style.opacity = 1;
@@ -609,21 +622,8 @@ function leafext_hover_markertooltip_js(all_options) {
 								WPLeafletMapPlugin.markers[j].setOpacity( 1 );
 							}
 						}
-					}
-				);
-				a.on(
-					"popupclose",
-					function (e) {
-						map.getPane( 'overlayPane' ).style.opacity = 1;
-						//map.getPane('shadowPane').style.opacity = 1;
-						//map.getPane('markerPane').style.opacity = 1;
-
-						for (var j = 0; j < markers_length; j++) {
-							WPLeafletMapPlugin.markers[j].setOpacity( 1 );
-						}
-					}
-				);
-			}
+					);
+				}
 			}
 		}
 	}
