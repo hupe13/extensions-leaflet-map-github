@@ -68,7 +68,7 @@ function leafext_validate_hover( $options ) {
 		if ( isset( $post['submit'] ) ) {
 			$options['class']     = sanitize_text_field( $options['class'] );
 			$options['tolerance'] = (int) $options['tolerance'];
-			$options['snap']      = (int) $options['snap'];
+			$options['popupclose']      = (int) $options['popupclose'];
 			delete_option( 'leafext_canvas' ); // old option
 			return $options;
 		}
