@@ -34,5 +34,6 @@ Maybe you need a Github token.
 == Changelog ==
 
 * new option for hover: opacity
+* hover: new default for popupclose: 0
 * Bug in overviewmap
 * WPCS

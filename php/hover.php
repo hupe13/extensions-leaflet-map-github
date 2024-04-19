@@ -133,7 +133,7 @@ function leafext_hover_params( $typ = '' ) {
 			'values'     => '0.1 ... 0.9 ' . __( 'or nothing', 'extensions-leaflet-map' ),
 			'element'    => false,
 			'only'       => false,
-			'changeable' => true,
+			'changeable' => false,
 		),
 		array(
 			'param'      => 'exclude',
@@ -166,7 +166,7 @@ function leafext_hover_params( $typ = '' ) {
 		array(
 			'param'      => 'popupclose',
 			'desc'       => __( 'At which distance of the mouse from a popup the popup closes. If it is 0, this is disabled, i.e. keep the popup open.', 'extensions-leaflet-map' ),
-			'default'    => 50,
+			'default'    => 0,
 			'values'     => __( 'a number', 'extensions-leaflet-map' ),
 			'element'    => false,
 			'only'       => false,
@@ -249,9 +249,6 @@ function leafext_hover_function( $atts, $content, $shortcode ) {
 		// var_dump($atts);
 		$options = shortcode_atts( $settings, leafext_clear_params( $atts ) );
 		// var_dump($atts,$settings,$options); wp_die();
-		if ( $options['opacity'] ) {
-			leafext_enqueue_leafext( 'hover-opacity' );
-		}
 
 		$text = '';
 		if ( $options['tolerance'] != 0 ) {
@@ -331,13 +328,6 @@ function leafext_hover_function( $atts, $content, $shortcode ) {
 				// $text = $text.leafext_markertitle_script($options);
 				?>
 				leafext_hover_markertitle_js();
-				<?php
-			}
-			if ( $options['opacity'] != false ) {
-				?>
-				leafext_hovertransp_markergroup_js(<?php echo (float) $options['opacity']; ?>);
-				leafext_hovertransp_geojson_js(<?php echo (float) $options['opacity']; ?>);
-				leafext_hovertransp_marker_js(<?php echo (float) $options['opacity']; ?>);
 				<?php
 			}
 			?>

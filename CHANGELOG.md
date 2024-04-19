@@ -1,10 +1,11 @@
-### 4.2.3 /240999
+### 4.2.3 / 240999
 
 * new option for hover: opacity
+* hover: new default for popupclose: 0
 * Bug in overviewmap
 * WPCS
 
-### 4.2.2 /240401
+### 4.2.2 / 240401
 
 * catalan
 * bug markerclustergroup
@@ -14,13 +15,13 @@
 * fixed bugs in markerclustergroup
 * fixed bug in uploader
 
-### 4.2 /240322
+### 4.2 / 240322
 
 * new version leaflet-rotate, d3
 * grouping: html tags in menu
 * some changes for WPCS
 
-### 4.1 /240216
+### 4.1 / 240216
 
 * fixed small bugs in leaflet-extramarker and geojsonmarker
 * fixed bug in cluster
@@ -28,7 +29,7 @@
 * update turf, JShrink
 * elevation: italian translation
 
-### 4.0 /240126
+### 4.0 / 240126
 
 * WordPress Coding Standards (see [readme-wpcs.md](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/readme-wpcs.md))
 * new shortcode parentgroup for nested groups from leaflet-optiongroup and -featuregroup
