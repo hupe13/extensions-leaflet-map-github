@@ -584,13 +584,27 @@ function leafext_hover_markertooltip_js(all_options) {
 								//map.getPane('shadowPane').style.opacity = 1;
 								//map.getPane('markerPane').style.opacity = 1;
 
-								for (var j = 0; j < markers_length; j++) {
-									if (WPLeafletMapPlugin.markers[j]._map._leaflet_id == map_id) {
-										if (WPLeafletMapPlugin.markers[j] != e.sourceTarget) {
-											WPLeafletMapPlugin.markers[j].setOpacity( all_options['opacity'] );
+								var markergroups = window.WPLeafletMapPlugin.markergroups;
+								Object.entries( markergroups ).forEach(
+									([key, value]) =>
+									{
+										if ( markergroups[key]._map !== null ) {
+											if (map_id == markergroups[key]._map._leaflet_id) {
+												// console.log("markergroups loop");
+												markergroups[key].eachLayer(
+													function (layer) {
+														// console.log(layer);
+														if (layer instanceof L.Marker) {
+															if (layer != e.sourceTarget) {
+																layer.setOpacity( all_options['opacity'] );
+															}
+														}
+													}
+												);
+											}
 										}
 									}
-								}
+								);
 							}
 						}
 					);
@@ -605,9 +619,27 @@ function leafext_hover_markertooltip_js(all_options) {
 								//map.getPane('shadowPane').style.opacity = 1;
 								//map.getPane('markerPane').style.opacity = 1;
 
-								for (var j = 0; j < markers_length; j++) {
-									WPLeafletMapPlugin.markers[j].setOpacity( 1 );
-								}
+								var markergroups = window.WPLeafletMapPlugin.markergroups;
+								Object.entries( markergroups ).forEach(
+									([key, value]) =>
+									{
+										if ( markergroups[key]._map !== null ) {
+											if (map_id == markergroups[key]._map._leaflet_id) {
+												// console.log("markergroups loop");
+												markergroups[key].eachLayer(
+													function (layer) {
+														// console.log(layer);
+														if (layer instanceof L.Marker) {
+															if (layer != e.sourceTarget) {
+																layer.setOpacity( 1 );
+															}
+														}
+													}
+												);
+											}
+										}
+									}
+								);
 							}
 						}
 					);
@@ -618,9 +650,27 @@ function leafext_hover_markertooltip_js(all_options) {
 							//map.getPane('shadowPane').style.opacity = 1;
 							//map.getPane('markerPane').style.opacity = 1;
 
-							for (var j = 0; j < markers_length; j++) {
-								WPLeafletMapPlugin.markers[j].setOpacity( 1 );
-							}
+							var markergroups = window.WPLeafletMapPlugin.markergroups;
+							Object.entries( markergroups ).forEach(
+								([key, value]) =>
+								{
+									if ( markergroups[key]._map !== null ) {
+										if (map_id == markergroups[key]._map._leaflet_id) {
+											// console.log("markergroups loop");
+											markergroups[key].eachLayer(
+												function (layer) {
+													// console.log(layer);
+													if (layer instanceof L.Marker) {
+														if (layer != e.sourceTarget) {
+															layer.setOpacity( 1 );
+														}
+													}
+												}
+											);
+										}
+									}
+								}
+							);
 						}
 					);
 				}
@@ -688,21 +738,6 @@ function leafext_make_transparent_geojson( map, layer, onoff, opacity ) {
 	var map_id = map._leaflet_id;
 	// console.log(map_id);
 
-	var markers        = window.WPLeafletMapPlugin.markers;
-	var markers_length = WPLeafletMapPlugin.markers.length;
-	if (markers_length > 0) {
-		for (var i = 0; i < markers_length; i++) {
-			var a = WPLeafletMapPlugin.markers[i];
-			if (( a._map != null && a._map._leaflet_id == map_id) ) {
-				if (onoff) {
-					a.setOpacity( opacity );
-				} else {
-					a.setOpacity( 1 );
-				}
-			}
-		}
-	}
-
 	var markergroups = window.WPLeafletMapPlugin.markergroups;
 	Object.entries( markergroups ).forEach(
 		([key, value]) =>
@@ -715,6 +750,11 @@ function leafext_make_transparent_geojson( map, layer, onoff, opacity ) {
 							// console.log(layer);
 							if (layer instanceof L.Marker) {
 								// console.log("is_marker");
+								if (onoff) {
+									layer.setOpacity( opacity );
+								} else {
+									layer.setOpacity( 1 );
+								}
 							} else if (
 								layer instanceof L.Polygon ||
 								layer instanceof L.Circle ||
