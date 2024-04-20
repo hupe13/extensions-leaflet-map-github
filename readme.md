@@ -178,7 +178,9 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.2.3 / 240999
+Many thanks to everyone who found errors and provided ideas for new functions.
+
+### 4.2.3 / 240420
 
 * new option for hover: opacity
 * hover: new default for popupclose: 0

@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 6.5
-Stable tag: 4.2.2
+Stable tag: 4.2.3
 Requires at least: 5.5.3
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -32,6 +32,8 @@ You will get updates with the [Plugin Update Checker](https://github.com/YahnisE
 Maybe you need a Github token.
 
 == Changelog ==
+
+Many thanks to everyone who found errors and provided ideas for new functions.
 
 * new option for hover: opacity
 * hover: new default for popupclose: 0

@@ -1,4 +1,4 @@
-### 4.2.3 / 240999
+### 4.2.3 / 240420
 
 * new option for hover: opacity
 * hover: new default for popupclose: 0
