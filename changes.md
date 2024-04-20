@@ -3,7 +3,7 @@
 * new option for hover: opacity
 * hover: new default for popupclose: 0
 * Bug in overviewmap
-* WPCS
+* WPCS, translations
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

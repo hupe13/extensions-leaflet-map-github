@@ -3,7 +3,7 @@
 * new option for hover: opacity
 * hover: new default for popupclose: 0
 * Bug in overviewmap
-* WPCS
+* WPCS, translations
 
 ### 4.2.2 / 240401
 

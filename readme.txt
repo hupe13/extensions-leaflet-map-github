@@ -38,4 +38,4 @@ Many thanks to everyone who found errors and provided ideas for new functions.
 * new option for hover: opacity
 * hover: new default for popupclose: 0
 * Bug in overviewmap
-* WPCS
+* WPCS, translations
