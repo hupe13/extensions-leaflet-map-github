@@ -121,6 +121,10 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 Detailed documentation and examples in <a href="https://leafext.de/">German</a> and <a href="https://leafext.de/en/">English</a>.
 
+## Thank you
+
+Many thanks to everyone who found errors and provided ideas for new functions.
+
 ## Frequently Asked Questions
 
 <p>
@@ -177,8 +181,6 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 * Go to Settings - Leaflet Map - Extensions for Leaflet Map and get documentation and settings options.
 
 ## Changelog
-
-Many thanks to everyone who found errors and provided ideas for new functions.
 
 ### 4.2.3 / 240420
 
