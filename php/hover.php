@@ -137,7 +137,7 @@ function leafext_hover_params( $typ = '' ) {
 		),
 		array(
 			'param'      => 'opacity',
-			'desc'       => __( 'If an element is hovered over, the other elements become transparent. If you specify any other option as the default, the effect may not be consistent', 'extensions-leaflet-map' ),
+			'desc'       => __( 'If an element is hovered over, the other elements become transparent. If you specify any other option as the default, the effect may not be consistent.', 'extensions-leaflet-map' ),
 			'default'    => false,
 			'values'     => '0.1 ... 0.9',
 			'element'    => false,
