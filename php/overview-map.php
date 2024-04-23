@@ -366,7 +366,7 @@ function leafext_ovm_setup_leafletmarker( $overview_data, $atts ) {
 	'</div>' .
 	'[/' . $leaflet_marker_cmd . ']';
 	if ( $overview_data['latlng'] == '*' ) {
-		echo '<script>console.log("' . esc_html__( 'Error - please check overmap data: Some data are wrong.', 'extensions-leaflet-map' ) . '");</script>';
+		echo '<script>console.log("' . esc_html__( 'Error - please check overviewmap data: Some data are wrong.', 'extensions-leaflet-map' ) . '");</script>';
 		return '';
 	} else {
 		return $leaflet_marker_code;
