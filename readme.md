@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, gpx, geojson, hover, marker   
 Tested up to: 6.5  
-Stable tag: 4.2.4     
+Stable tag: 4.2.4.1     
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later
@@ -182,7 +182,8 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.2.4 / 240499
+### 4.2.4.1 / 240423
+### 4.2.4 / 240423
 
 * Bug in overviewmap (negative lat, lng)
 
