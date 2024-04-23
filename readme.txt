@@ -35,7 +35,4 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* new option for hover: opacity
-* hover: new default for popupclose: 0
-* Bug in overviewmap
-* WPCS, translations
+* Bug in overviewmap (negative lat, lng)

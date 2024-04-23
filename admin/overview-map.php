@@ -75,6 +75,8 @@ function leafext_overviewmap_help() {
 	}
 	$text = $text . leafext_html_table( $new );
 
+	$text = $text . '<p>' . __( 'If it does not work as expected, see the developer console of your browser.', 'extensions-leaflet-map' ) . '</p>';
+
 	$text = $text . '<h3>' . __( 'Options for marker', 'extensions-leaflet-map' ) . '</h3>';
 	$text = $text . '<p>' . sprintf(
 		/* translators: %s is a shortcode. */

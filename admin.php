@@ -15,7 +15,9 @@ require LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/tiles/main.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/filemgr/main.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/hover/main.php';
-require_once LEAFEXT_PLUGIN_DIR . '/admin/check-update.php';
+if ( file_exists( LEAFEXT_PLUGIN_DIR . '/admin/check-update.php' ) ) {
+	require_once LEAFEXT_PLUGIN_DIR . '/admin/check-update.php';
+}
 
 /**
  * Add menu page for admin

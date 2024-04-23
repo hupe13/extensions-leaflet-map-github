@@ -182,12 +182,9 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.2.3 / 240420
+### 4.2.4 / 240499
 
-* new option for hover: opacity
-* hover: new default for popupclose: 0
-* Bug in overviewmap
-* WPCS, translations
+* Bug in overviewmap (negative lat, lng)
 
 ### Previous
 

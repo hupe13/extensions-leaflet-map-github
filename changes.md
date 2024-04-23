@@ -1,9 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* new option for hover: opacity
-* hover: new default for popupclose: 0
-* Bug in overviewmap
-* WPCS, translations
+* Bug in overviewmap (negative lat, lng)
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

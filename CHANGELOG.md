@@ -1,3 +1,7 @@
+### 4.2.4 / 240499
+
+* Bug in overviewmap (negative lat, lng)
+
 ### 4.2.3 / 240420
 
 * new option for hover: opacity
