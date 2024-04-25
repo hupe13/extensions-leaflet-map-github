@@ -85,28 +85,34 @@ function leafext_extra_textdomain() {
 }
 add_action( 'plugins_loaded', 'leafext_extra_textdomain' );
 
-// Github Version only
-function leafext_plugin_init() {
-	if ( is_admin() ) {
-		if ( ! defined( 'LEAFLET_MAP__PLUGIN_DIR' ) ) {
-			if ( ( is_multisite() && ! is_main_site() ) || ! is_multisite() ) {
-				function leafext_require_leaflet_map_plugin() {
-					echo '<div class="notice notice-error" ><p> ';
-					printf(
-						/* translators: %s are plugin names. */
-						esc_html__( 'Please install and activate %1$s before using %2$s.', 'extensions-leaflet-map' ),
-						'<a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>',
-						'Extensions for Leaflet Map'
-					);
-					echo '</p></div>';
+define( 'LEAFEXT_PLUGIN_GITHUB', true );
+// define( 'LEAFEXT_PLUGIN_GITHUB', false );
+
+// WP < 6.5 or Github
+global $wp_version;
+if ( $wp_version < "6.5" || LEAFEXT_PLUGIN_GITHUB ) {
+	function leafext_plugin_init() {
+		if ( is_admin() ) {
+			if ( ! defined( 'LEAFLET_MAP__PLUGIN_DIR' ) ) {
+				if ( ( is_multisite() && ! is_main_site() ) || ! is_multisite() ) {
+					function leafext_require_leaflet_map_plugin() {
+						echo '<div class="notice notice-error" ><p> ';
+						printf(
+							/* translators: %s are plugin names. */
+							esc_html__( 'Please install and activate %1$s before using %2$s.', 'extensions-leaflet-map' ),
+							'<a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>',
+							'Extensions for Leaflet Map'
+						);
+						echo '</p></div>';
+					}
+					add_action( 'admin_notices', 'leafext_require_leaflet_map_plugin' );
+					// register_activation_hook( __FILE__, 'leafext_require_leaflet_map_plugin' ); //?
 				}
-				add_action( 'admin_notices', 'leafext_require_leaflet_map_plugin' );
-				// register_activation_hook( __FILE__, 'leafext_require_leaflet_map_plugin' ); //?
 			}
 		}
 	}
+	add_action( 'plugins_loaded', 'leafext_plugin_init' );
 }
-add_action( 'plugins_loaded', 'leafext_plugin_init' );
 
 // Github update
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;

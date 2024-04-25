@@ -1,6 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* Bug in overviewmap (negative lat, lng)
+* nothing
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
