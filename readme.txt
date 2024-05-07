@@ -35,4 +35,8 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* Bug in overviewmap (negative lat, lng)
+* extramarker admin interface
+* overviewmap target=_blank deleted
+* fontawesome-free-6.5.2-web
+* new version Control.FullScreen.js
+* geojsonmarkers: groups unknown and others will be deleted if empty
