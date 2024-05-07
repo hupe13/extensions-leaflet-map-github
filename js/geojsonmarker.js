@@ -317,6 +317,20 @@ function leafext_geojsonmarker_js(property,iconprops,icondefault,auto,groups,vis
 							}
 						}
 						// console.log(Object.entries(featGroups[map_id]['others']).length);
+
+						Object.entries( Object.entries( featGroups[map_id]['others'] ) ).forEach(
+							([key, value]) =>
+							{
+								if (value[0] == '_layers') {
+									// console.log(value[1]);
+									console.log( Object.keys( value[1] ).length );
+									if (Object.keys( value[1] ).length == 0 ) {
+										control[map_id].removeLayer( featGroups[map_id]['others'] );
+									}
+								}
+							}
+						);
+
 						if (Object.entries( featGroups[map_id]['others'] ) && Object.entries( featGroups[map_id]['others'] ).length == 0) {
 							control[map_id].removeLayer( featGroups[map_id]['others'] );
 						}

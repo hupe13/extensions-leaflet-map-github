@@ -437,7 +437,7 @@ function leafext_enqueue_awesome() {
 	wp_enqueue_style(
 		'font-awesome',
 		plugins_url(
-			'fonts/fontawesome-free-6.5.1-web/css/all.min.css',
+			'fonts/fontawesome-free-6.5.2-web/css/all.min.css',
 			LEAFEXT_PLUGIN_FILE
 		),
 		array( 'leaflet_stylesheet' ),

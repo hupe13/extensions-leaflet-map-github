@@ -581,8 +581,8 @@ function leafext_hover_markertooltip_js(all_options) {
 								// console.log(e);
 								// console.log( "make marker transparent" )
 								map.getPane( 'overlayPane' ).style.opacity = all_options['opacity'];
-								//map.getPane('shadowPane').style.opacity = 1;
-								//map.getPane('markerPane').style.opacity = 1;
+								// map.getPane('shadowPane').style.opacity = 1;
+								// map.getPane('markerPane').style.opacity = 1;
 
 								var markergroups = window.WPLeafletMapPlugin.markergroups;
 								Object.entries( markergroups ).forEach(
@@ -616,8 +616,8 @@ function leafext_hover_markertooltip_js(all_options) {
 								// console.log( "make marker back" )
 								// console.log(e);
 								map.getPane( 'overlayPane' ).style.opacity = 1;
-								//map.getPane('shadowPane').style.opacity = 1;
-								//map.getPane('markerPane').style.opacity = 1;
+								// map.getPane('shadowPane').style.opacity = 1;
+								// map.getPane('markerPane').style.opacity = 1;
 
 								var markergroups = window.WPLeafletMapPlugin.markergroups;
 								Object.entries( markergroups ).forEach(
@@ -647,8 +647,8 @@ function leafext_hover_markertooltip_js(all_options) {
 						"popupclose",
 						function (e) {
 							map.getPane( 'overlayPane' ).style.opacity = 1;
-							//map.getPane('shadowPane').style.opacity = 1;
-							//map.getPane('markerPane').style.opacity = 1;
+							// map.getPane('shadowPane').style.opacity = 1;
+							// map.getPane('markerPane').style.opacity = 1;
 
 							var markergroups = window.WPLeafletMapPlugin.markergroups;
 							Object.entries( markergroups ).forEach(

@@ -84,7 +84,7 @@ function leafext_overviewmap_help() {
 		'<code>overviewmap</code>'
 	) . '</p>';
 
-	$text = $text . '<h4>leafext_marker</h4>';
+	$text = $text . '<h4>leaflet-marker</h4>';
 	$text = $text . '<p>' . implode( ', ', leafext_marker_options() ) . '</p>';
 	$text = $text . '<p>' . sprintf(
 		/* translators: %s are options. */
@@ -93,7 +93,7 @@ function leafext_overviewmap_help() {
 		'<b>iconUrl</b>'
 	) . '</p>';
 
-	$text = $text . '<h4>leafext_extramarker</h4>';
+	$text = $text . '<h4>leaflet-extramarker</h4>';
 	$text = $text . '<p>' . implode( ', ', leafext_extramarker_options() ) . '</p>';
 
 	/* translators: %s is an href. */

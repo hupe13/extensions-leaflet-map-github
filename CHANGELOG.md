@@ -1,3 +1,12 @@
+### 4.2.5 / 2405xx
+
+* extramarker admin interface
+* overviewmap target=_blank deleted
+* fontawesome-free-6.5.2-web
+* new version Control.FullScreen.js
+* geojsonmarkers: groups unknown and others will be deleted if empty
+* 
+
 ### 4.2.4 / 240499
 
 * Bug in overviewmap (negative lat, lng)

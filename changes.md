@@ -1,6 +1,11 @@
 # Differences to the Plugins WordPress version
 
-* nothing
+* extramarker admin interface
+* overviewmap target=_blank deleted
+* fontawesome-free-6.5.2-web
+* new version Control.FullScreen.js
+* geojsonmarkers: groups unknown and others will be deleted if empty
+* 
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

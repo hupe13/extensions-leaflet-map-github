@@ -344,7 +344,7 @@ function leafext_ovm_setup_leafletmarker( $overview_data, $atts ) {
 	}
 	//
 	// Link
-	$link_to_page = '<a href="' . $overview_data['permalink'] . '" target="_blank" rel="noopener"><strong>' . $overview_data['title'] . '</strong></a>';
+	$link_to_page = '<a href="' . $overview_data['permalink'] . '"><strong>' . $overview_data['title'] . '</strong></a>';
 	//
 	// the marker icon
 	list($leaflet_marker_cmd, $markeroptions, $overview_data['iconerror']) = leafext_ovm_setup_icon( $overview_data, $atts );

@@ -19,7 +19,8 @@ function leafext_zoomhome_js(maps,map_id,allfit,position) {
 	var bounds     = [];
 	bounds[map_id] = new L.latLngBounds();
 
-	var zoomHome     = [];
+	// global for targetmarker
+	zoomHome         = [];
 	zoomHome[map_id] = L.Control.zoomHome( {position: position} );
 	zoomHome[map_id].addTo( maps[map_id] );
 
