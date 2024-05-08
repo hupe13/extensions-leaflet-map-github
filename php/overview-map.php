@@ -327,8 +327,41 @@ function leafext_ovm_setup_icon( $overview_data, $atts ) {
 				array_values( $params )
 			)
 		);
+	} else {
+		// var_dump("icon from shortcode");
+		$params      = array();
+		$iconoptions = leafext_marker_options();
+		foreach ( $atts as $key => $value ) {
+			if ( in_array( strtolower( $key ), array_map( 'strtolower', $iconoptions ), true ) ) {
+				$params[ strtolower( $key ) ] = $value;
+			}
+		}
+		if ( count( $params ) > 0 ) {
+			$leaflet_marker_cmd = 'leaflet-marker';
+		} else {
+			$iconoptions = leafext_extramarker_options();
+			foreach ( $atts as $key => $value ) {
+				if ( in_array( strtolower( $key ), array_map( 'strtolower', $iconoptions ), true ) ) {
+					$params[ strtolower( $key ) ] = $value;
+				}
+			}
+			if ( count( $params ) > 0 ) {
+				$leaflet_marker_cmd = 'leaflet-extramarker';
+			}
+		}
+		if ( is_array( $params ) ) {
+			$markeroptions = implode(
+				' ',
+				array_map(
+					function ( $a, $b ) {
+						return "$a=\"$b\""; },
+					array_keys( $params ),
+					array_values( $params )
+				)
+			);
+		}
 	}
-		return array( $leaflet_marker_cmd, $markeroptions, $iconerror );
+	return array( $leaflet_marker_cmd, $markeroptions, $iconerror );
 }
 
 function leafext_ovm_setup_leafletmarker( $overview_data, $atts ) {

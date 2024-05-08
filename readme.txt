@@ -35,8 +35,9 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* extramarker admin interface
-* overviewmap target=_blank deleted
+* extramarker: admin interface
 * fontawesome-free-6.5.2-web
-* new version Control.FullScreen.js
 * geojsonmarkers: groups unknown and others will be deleted if empty
+* new version Control.FullScreen.js
+* overviewmap: same icon options for all markers
+* overviewmap: target=_blank deleted
