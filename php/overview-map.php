@@ -241,7 +241,7 @@ function leafext_check_duplicates_meta( $postid, $meta ) {
 	// An array of values if $single is false.
 	// The value of the meta field if $single is true.
 	if ( count( $fields ) > 1 ) {
-		echo '<script>console.log("' . esc_js( __( 'Multiple keys ', 'extensions-leaflet-map' ) ) . ' ' . esc_js( $postid ) . ' ' . esc_js( $meta ) . '");</script>';
+		echo '<script>console.log("' . esc_js( __( 'Multiple custom fields with the same name', 'extensions-leaflet-map' ) ) . ' ' . esc_js( $postid ) . ' ' . esc_js( $meta ) . '");</script>';
 		return '*';
 	}
 	return '';

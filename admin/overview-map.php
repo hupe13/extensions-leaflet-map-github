@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || die();
 
 // init settings fuer overviewmap
 function leafext_overviewmap_init() {
-	add_settings_section( 'overviewmap_settings', __( 'Overviewmap Handling', 'extensions-leaflet-map' ), 'leafext_overviewmap_help', 'leafext_settings_overviewmap' );
+	add_settings_section( 'overviewmap_settings', '', 'leafext_overviewmap_help', 'leafext_settings_overviewmap' );
 	$fields = leafext_overviewmap_admin_params();
 	foreach ( $fields as $field ) {
 		add_settings_field( 'leafext_overviewmap[' . $field['param'] . ']', $field['shortdesc'], 'leafext_form_overviewmap', 'leafext_settings_overviewmap', 'overviewmap_settings', $field['param'] );
