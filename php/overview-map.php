@@ -73,6 +73,14 @@ function leafext_overviewmap_params() {
 			'values'  => __( 'a comma separated list of category names, slugs or IDs', 'extensions-leaflet-map' ),
 		),
 		array(
+			'param'   => 'leaflet-extramarker',
+			/* translators: %s are "leaflet-marker" and "leaflet-extramarker". */
+			'desc'    => sprintf( __( 'Specify this, if there are no any marker information in custom fields and the icons appear as %1$s instead of %2$s.', 'extensions-leaflet-map' ), '<code>leaflet-marker</code>', '<code>leaflet-extramarker</code>' ),
+			'content' => '',
+			'default' => false,
+			'values'  => 'true / false',
+		),
+		array(
 			'param'   => 'debug',
 			'desc'    => __( 'Creates an overview table of posts / pages instead of markers to see any mistakes', 'extensions-leaflet-map' ),
 			'content' => '',
@@ -81,6 +89,38 @@ function leafext_overviewmap_params() {
 		),
 	);
 	return $params;
+}
+
+function leafext_overviewmap_admin_params() {
+	$params = array(
+		array(
+			'param'     => 'transients',
+			'shortdesc' => __( 'Use transients', 'extensions-leaflet-map' ),
+			/* translators: %s is "false". */
+			'desc'      => sprintf( __( 'Set this to %s, if you have trouble to get the right markers.', 'extensions-leaflet-map' ), '<code>false</code>' ),
+			'default'   => '',
+			'values'    => 1,
+		),
+		// array(
+		// 'param' => 'delete',
+		// 'shortdesc' => __( 'Delete actual transients', 'extensions-leaflet-map' ),
+		// 'desc' => '',
+		// 'default' => '',
+		// 'values' => 1,
+		// ),
+	);
+	return $params;
+}
+
+function overviewmap_admin_settings() {
+	$defaults = array();
+	$params   = leafext_overviewmap_admin_params();
+	foreach ( $params as $param ) {
+		$defaults[ $param['param'] ] = $param['default'];
+	}
+	$options = shortcode_atts( $defaults, get_option( 'leafext_overviewmap' ) );
+	// var_dump($options); wp_die();
+	return $options;
 }
 
 function leafext_marker_options() {
@@ -117,9 +157,15 @@ function leafext_extramarker_options() {
 function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 	global $wpdb;
 
-	// $startTime = microtime(true);
-	// Check for transient. If none, then execute WP_Query
-	$pageposts = get_transient( 'leafext_ovm_' . $latlngs );
+	$settings = overviewmap_admin_settings();
+	if ( $settings['transients'] ) {
+		echo '<script>console.log("' . esc_js( __( 'Use transients', 'extensions-leaflet-map' ) ) . '");</script>';
+		// $startTime = microtime(true);
+		// Check for transient. If none, then execute WP_Query
+		$pageposts = get_transient( 'leafext_ovm_' . $latlngs );
+	} else {
+		$pageposts = false;
+	}
 	// $pageposts = false;
 	if ( false === $pageposts ) {
 		// $querystr = "
@@ -152,7 +198,9 @@ function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 			)
 		);
 		$pageposts = $query->posts;
-		set_transient( 'leafext_ovm_' . $latlngs, $pageposts, DAY_IN_SECONDS );
+		if ( $settings['transients'] ) {
+			set_transient( 'leafext_ovm_' . $latlngs, $pageposts, DAY_IN_SECONDS );
+		}
 	}
 	// echo number_format((microtime(true) - $startTime), 5);
 	// var_dump($pageposts);
@@ -193,7 +241,7 @@ function leafext_check_duplicates_meta( $postid, $meta ) {
 	// An array of values if $single is false.
 	// The value of the meta field if $single is true.
 	if ( count( $fields ) > 1 ) {
-		echo '<script>console.log("Multiple keys ' . esc_js( $postid ) . ' ' . esc_js( $meta ) . '");</script>';
+		echo '<script>console.log("' . esc_js( __( 'Multiple keys ', 'extensions-leaflet-map' ) ) . ' ' . esc_js( $postid ) . ' ' . esc_js( $meta ) . '");</script>';
 		return '*';
 	}
 	return '';
@@ -253,7 +301,7 @@ function leafext_get_overview_data( $post, $overview_options ) {
 	}
 	$leaflet_latlng = str_replace( ',', '.', $leaflet_latlng );
 	if ( ! preg_match( '/^[ -0123456789\.latlng=]+$/', $leaflet_latlng ) ) {
-		echo '<script>console.log("Error detecting lanlngs ' . esc_js( $post->ID ) . ': ' . esc_js( $overview_options['latlngs'] ) . ' = ' . esc_js( $leaflet_latlng ) . '");</script>';
+		echo '<script>console.log("' . esc_js( __( 'Error detecting lanlngs', 'extensions-leaflet-map' ) ) . ' ' . esc_js( $post->ID ) . ': ' . esc_js( $overview_options['latlngs'] ) . ' = ' . esc_js( $leaflet_latlng ) . '");</script>';
 		$leaflet_latlng = '*';
 	}
 	$overview_data['latlng'] = $leaflet_latlng;
@@ -287,11 +335,11 @@ function leafext_ovm_setup_icon( $overview_data, $atts ) {
 			$overview_data['icon'] = sanitize_file_name( $overview_data['icon'] );
 			$pathinfo              = pathinfo( $overview_data['icon'] );
 			if ( ! ( array_key_exists( 'filename', $pathinfo ) && array_key_exists( 'extension', $pathinfo ) ) ) {
-				echo '<script>console.log("Error - no valid filename: ' . esc_js( $overview_options['icons'] ) . ' - ' . esc_js( $overview_data['icon'] ) . '");</script>';
+				echo '<script>console.log("' . esc_js( __( 'Error - no valid filename:', 'extensions-leaflet-map' ) ) . ' ' . esc_js( $overview_options['icons'] ) . ' - ' . esc_js( $overview_data['icon'] ) . '");</script>';
 				$iconerror = '*';
 			}
 		} else {
-			echo '<script>console.log("Error - please check data: ' . esc_js( $overview_options['icons'] ) . ' - ' . esc_js( $overview_data['icon'] ) . '");</script>';
+			echo '<script>console.log("' . esc_js( __( 'Error - please check data:', 'extensions-leaflet-map' ) ) . ' ' . esc_js( $overview_options['icons'] ) . ' - ' . esc_js( $overview_data['icon'] ) . '");</script>';
 			$iconerror = '*';
 		}
 		// atts from overviewmap shortcode
@@ -329,11 +377,13 @@ function leafext_ovm_setup_icon( $overview_data, $atts ) {
 		);
 	} else {
 		// var_dump("icon from shortcode");
-		$params      = array();
-		$iconoptions = leafext_marker_options();
-		foreach ( $atts as $key => $value ) {
-			if ( in_array( strtolower( $key ), array_map( 'strtolower', $iconoptions ), true ) ) {
-				$params[ strtolower( $key ) ] = $value;
+		$params = array();
+		if ( array_search( 'leaflet-extramarker', $atts, true ) === false ) {
+			$iconoptions = leafext_marker_options();
+			foreach ( $atts as $key => $value ) {
+				if ( in_array( strtolower( $key ), array_map( 'strtolower', $iconoptions ), true ) ) {
+					$params[ strtolower( $key ) ] = $value;
+				}
 			}
 		}
 		if ( count( $params ) > 0 ) {
@@ -399,7 +449,7 @@ function leafext_ovm_setup_leafletmarker( $overview_data, $atts ) {
 	'</div>' .
 	'[/' . $leaflet_marker_cmd . ']';
 	if ( $overview_data['latlng'] == '*' ) {
-		echo '<script>console.log("' . esc_html__( 'Error - please check overviewmap data: Some data are wrong.', 'extensions-leaflet-map' ) . '");</script>';
+		echo '<script>console.log("' . esc_js( __( 'Error - please check overviewmap data: Some data are wrong.', 'extensions-leaflet-map' ) ) . '");</script>';
 		return '';
 	} else {
 		return $leaflet_marker_code;

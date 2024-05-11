@@ -15,6 +15,8 @@ require LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/tiles/main.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/filemgr/main.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/hover/main.php';
+require LEAFEXT_PLUGIN_DIR . '/admin/overview-map.php';
+
 if ( file_exists( LEAFEXT_PLUGIN_DIR . '/admin/check-update.php' ) ) {
 	require_once LEAFEXT_PLUGIN_DIR . '/admin/check-update.php';
 }
@@ -99,8 +101,14 @@ function leafext_do_page() {
 		include LEAFEXT_PLUGIN_DIR . '/admin/leaflet-search.php';
 		leafext_leafletsearch_help();
 	} elseif ( $active_tab == 'overviewmap' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/overview-map.php';
-		leafext_overviewmap_help();
+		echo '<form method="post" action="options.php">';
+		settings_fields( 'leafext_settings_overviewmap' );
+		do_settings_sections( 'leafext_settings_overviewmap' );
+		if ( current_user_can( 'manage_options' ) ) {
+			wp_nonce_field( 'leafext_overviewmap', 'leafext_overviewmap_nonce' );
+			submit_button();
+		}
+		echo '</form>';
 	}
 }
 

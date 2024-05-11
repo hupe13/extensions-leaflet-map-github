@@ -190,6 +190,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 * new version Control.FullScreen.js
 * overviewmap: same icon options for all markers
 * overviewmap: target=_blank deleted
+* overviewmap: disable transients in backend
 
 ### Previous
 

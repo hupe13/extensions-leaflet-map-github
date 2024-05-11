@@ -8,6 +8,65 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
+// init settings fuer overviewmap
+function leafext_overviewmap_init() {
+	add_settings_section( 'overviewmap_settings', __( 'Overviewmap Handling', 'extensions-leaflet-map' ), 'leafext_overviewmap_help', 'leafext_settings_overviewmap' );
+	$fields = leafext_overviewmap_admin_params();
+	foreach ( $fields as $field ) {
+		add_settings_field( 'leafext_overviewmap[' . $field['param'] . ']', $field['shortdesc'], 'leafext_form_overviewmap', 'leafext_settings_overviewmap', 'overviewmap_settings', $field['param'] );
+	}
+	register_setting( 'leafext_settings_overviewmap', 'leafext_overviewmap', 'leafext_validate_overviewmap' );
+}
+add_action( 'admin_init', 'leafext_overviewmap_init' );
+
+// Baue Abfrage der Params
+function leafext_form_overviewmap( $field ) {
+	$options  = leafext_overviewmap_admin_params();
+	$option   = leafext_array_find2( $field, $options );
+	$settings = overviewmap_admin_settings();
+	$setting  = $settings[ $field ];
+	if ( $option['desc'] != '' ) {
+		echo '<p>' . wp_kses_post( $option['desc'] ) . '</p>';
+	}
+	// echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option['param']. '</code><br>';
+
+	if ( ! current_user_can( 'manage_options' ) ) {
+		$disabled = ' disabled ';
+	} else {
+		$disabled = '';
+	}
+
+	if ( ! is_array( $option['values'] ) ) {
+		if ( $setting != $option['default'] ) {
+			// var_dump($setting,$option['default']);
+			echo esc_html__( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
+			echo $option['default'] ? 'true' : 'false';
+			echo '<br>';
+		}
+		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
+		echo '<input ' . $disabled . ' type="radio" name="leafext_overviewmap[' . $option['param'] . ']" value="1" ';
+		echo $setting ? 'checked' : '';
+		echo '> true &nbsp;&nbsp; ';
+		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
+		echo '<input ' . $disabled . ' type="radio" name="leafext_overviewmap[' . $option['param'] . ']" value="0" ';
+		echo ( ! $setting ) ? 'checked' : '';
+		echo '> false ';
+		// } else {
+		//  // others
+	}
+}
+
+// Sanitize and validate input. Accepts an array, return a sanitized array.
+function leafext_validate_overviewmap( $input ) {
+	// var_dump($_REQUEST,$_POST,$input); wp_die();
+	if ( ! empty( $_POST ) && check_admin_referer( 'leafext_overviewmap', 'leafext_overviewmap_nonce' ) ) {
+		if ( isset( $_POST['submit'] ) ) {
+			$input['transients'] = (bool) ( $input['transients'] );
+		}
+		return $input;
+	}
+}
+
 function leafext_overviewmap_help() {
 	if ( is_singular() || is_archive() ) {
 		$text = '';

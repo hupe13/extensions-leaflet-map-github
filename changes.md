@@ -6,6 +6,7 @@
 * new version Control.FullScreen.js
 * overviewmap: same icon options for all markers
 * overviewmap: target=_blank deleted
+* overviewmap: disable transients in backend
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

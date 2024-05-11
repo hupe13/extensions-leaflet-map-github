@@ -41,3 +41,4 @@ Many thanks to everyone who found errors and provided ideas for new functions.
 * new version Control.FullScreen.js
 * overviewmap: same icon options for all markers
 * overviewmap: target=_blank deleted
+* overviewmap: disable transients in backend
