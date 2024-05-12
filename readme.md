@@ -186,7 +186,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 * extramarker: admin interface
 * fontawesome-free-6.5.2-web
-* geojsonmarkers: groups unknown and others will be deleted if empty
+* geojsonmarkers: groups others will be deleted if empty
 * new version Control.FullScreen.js
 * overviewmap: same icon options for all markers
 * overviewmap: target=_blank deleted
