@@ -98,7 +98,7 @@ function leafext_overviewmap_admin_params() {
 			'shortdesc' => __( 'Use transients', 'extensions-leaflet-map' ),
 			/* translators: %s is "false". */
 			'desc'      => sprintf( __( 'Set this to %s, if you have trouble to get the right markers.', 'extensions-leaflet-map' ), '<code>false</code>' ),
-			'default'   => '',
+			'default'   => true,
 			'values'    => 1,
 		),
 		// array(
