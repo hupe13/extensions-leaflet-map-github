@@ -35,10 +35,4 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* extramarker: admin interface
-* fontawesome-free-6.5.2-web
-* geojsonmarkers: groups others will be deleted if empty
-* new version Control.FullScreen.js
-* overviewmap: same icon options for all markers
-* overviewmap: target=_blank deleted
-* overviewmap: disable transients in backend
+* Error in check-update.php (is_plugin_active_for_network unknown)

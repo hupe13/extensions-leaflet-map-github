@@ -41,6 +41,10 @@ if ( is_multisite() ) {
 }
 
 if ( is_multisite() ) {
+	// Makes sure the plugin is defined before trying to use it
+	if ( ! function_exists( 'is_plugin_active_for_network' ) ) {
+		require_once ABSPATH . '/wp-admin/includes/plugin.php';
+	}
 	if ( is_plugin_active_for_network( LEAFEXT_PLUGIN_SETTINGS . '/extensions-leaflet-map.php' ) ) {
 		$leafext_github_main_active = true;
 	} else {
