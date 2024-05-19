@@ -134,12 +134,12 @@ function leafext_multiele_help_text() {
 	}
 	$text = '<img src="' . LEAFEXT_PLUGIN_PICTS . 'multielevation.png" alt = "multielevation">
 		<h2>Shortcode</h2>
-<pre><code>[leaflet-map fitbounds ...]
-[elevation-track file="http(s)://my.domain.tld/url_file_1" lat="..." lng="..." name="..." filename=0/1]
+<pre><code>&#091;leaflet-map fitbounds ...]
+&#091;elevation-track file="http(s)://my.domain.tld/url_file_1" lat="..." lng="..." name="..." filename=0/1]
 // many of this
-[elevation-track file="http(s):/my.domain.tld/url_file_n" lat="..." lng="..." name="..." filename=0/1]
+&#091;elevation-track file="http(s):/my.domain.tld/url_file_n" lat="..." lng="..." name="..." filename=0/1]
 // At last
-[multielevation filename=0/1 option1=value1 option2 !option3 ...]</code></pre><p>' .
+&#091;multielevation filename=0/1 option1=value1 option2 !option3 ...]</code></pre><p>' .
 	__( 'See also', 'extensions-leaflet-map' );
 
 	if ( is_singular() || is_archive() ) {
@@ -255,7 +255,7 @@ function leafext_multiele_help_text() {
 		'</span>'
 	) .
 	'</li></ul>' .
-	'<pre><code>[elevation-tracks filename=0/1 summary=0/1]</code></pre>' .
+	'<pre><code>&#091;elevation-tracks filename=0/1 summary=0/1]</code></pre>' .
 
 	'<h3>Theme</h3><p>' .
 	__( 'The theme is the same as the', 'extensions-leaflet-map' );

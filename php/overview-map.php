@@ -207,7 +207,9 @@ function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 	$catposts = array();
 	if ( $pageposts ) {
 		foreach ( $pageposts as $post ) {
-			if ( in_category( $category, $post->ID ) !== false ) {
+			// if ( in_category( $category, $post->ID ) !== false ) {
+			// @codade
+			if ( ( has_term( $category, 'category', $post->ID ) !== false ) || ( has_term( $category, 'post_tag', $post->ID ) !== false ) ) {
 				$catposts[] = $post;
 			}
 		}

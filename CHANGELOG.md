@@ -1,4 +1,9 @@
-### 4.2.5 / 2405xx
+### 4.3 / 2405xx
+
+* many new possibilities for targetmarker
+* overviewmap: you can use tags like categories
+
+### 4.2.5 / 240512
 
 * extramarker: admin interface
 * fontawesome-free-6.5.2-web

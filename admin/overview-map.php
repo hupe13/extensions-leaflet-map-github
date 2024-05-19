@@ -79,7 +79,7 @@ function leafext_overviewmap_help() {
 
 	$text = $text . '<ul><li>' . __( 'Create for every desired page or post the below mentioned customs fields.', 'extensions-leaflet-map' ) . '</li>';
 	$text = $text . '<li>' . __( 'Optional: Create a featured image for page or post.', 'extensions-leaflet-map' ) . '</li>';
-	$text = $text . '<li>' . __( 'Optional: Place the page or post in one or more categories.', 'extensions-leaflet-map' ) . '</li></ul>';
+	$text = $text . '<li>' . __( 'Optional: Place the page or post in one or more categories or tag it. The word "category" in this documentation means category or tag.', 'extensions-leaflet-map' ) . '</li></ul>';
 
 	$text = $text . '<h3>' . __( 'Custom fields', 'extensions-leaflet-map' ) . '</h3>';
 

@@ -85,6 +85,7 @@ function leafext_admin_marker( $active_tab ) {
 		echo '<h2>' . wp_kses_post( leafext_marker_tab() ) . '</h2>';
 		leafext_help_geojsonmarker();
 	} elseif ( $active_tab == 'targetmarker' ) {
+		echo '<h2>' . wp_kses_post( leafext_marker_tab() ) . '</h2>';
 		leafext_targetmarker_help();
 	} elseif ( $active_tab == 'hidemarkers' ) {
 		echo '<h2>' . wp_kses_post( leafext_marker_tab() ) . '</h2>';

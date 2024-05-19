@@ -117,7 +117,7 @@ function leafext_help_entries() {
 		),
 		array(
 			'function'  => __( 'Target Marker', 'extensions-leaflet-map' ),
-			'shortcode' => 'targetmarker',
+			'shortcode' => 'targetmarker, targetlink',
 			'tab'       => 'targetmarker',
 			'plugins'   => '',
 			'doku'      => '/doku/targetmarker/',

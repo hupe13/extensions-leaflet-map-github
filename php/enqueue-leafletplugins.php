@@ -418,6 +418,30 @@ function leafext_enqueue_leafletsearch() {
 	}
 }
 
+function leafext_enqueue_targetmarker() {
+	leafext_enqueue_markercluster();
+	wp_enqueue_script(
+		'targetmarker-fkt',
+		plugins_url(
+			'js/targetmarker-fkt' . LEAFEXT_MINI . '.js',
+			LEAFEXT_PLUGIN_FILE
+		),
+		array( 'wp_leaflet_map', 'markercluster' ),
+		null,
+		true
+	);
+	wp_enqueue_script(
+		'targetmarker',
+		plugins_url(
+			'js/targetmarker' . LEAFEXT_MINI . '.js',
+			LEAFEXT_PLUGIN_FILE
+		),
+		array( 'wp_leaflet_map', 'targetmarker-fkt' ),
+		null,
+		true
+	);
+}
+
 /**
  * Awesome font
  */

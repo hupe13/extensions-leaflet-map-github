@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, gpx, geojson, hover, marker   
 Tested up to: 6.5  
-Stable tag: 4.2.5     
+Stable tag: 4.3     
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later
@@ -182,15 +182,10 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.2.5 / 2405xx
+### 4.3 / 2405xx
 
-* extramarker: admin interface
-* fontawesome-free-6.5.2-web
-* geojsonmarkers: groups others will be deleted if empty
-* new version Control.FullScreen.js
-* overviewmap: same icon options for all markers
-* overviewmap: target=_blank deleted
-* overviewmap: disable transients in backend
+* many new possibilities for targetmarker
+* overviewmap: you can use tags like categories
 
 ### Previous
 
