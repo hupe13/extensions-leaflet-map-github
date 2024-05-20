@@ -42,7 +42,11 @@ function leafext_target_get_lanlng_js(lat,lng,target,zoom,debug) {
 						"ready",
 						function () {
 							// console.log("ready");
-							leafext_target_latlng_geojson_do( map,lat,lng,this.layer,target,zoom,debug );
+							let mapbounds = map.getBounds();
+							// with bounds because of abuse, POST is better
+							if (mapbounds.contains( L.latLng( lat,lng ) )) {
+								leafext_target_latlng_geojson_do( map,lat,lng,this.layer,target,zoom,debug );
+							}
 						}
 					); // geojson ready
 				}
@@ -65,7 +69,7 @@ function leafext_target_same_lanlng_js(lat,lng,target,zoom,debug) {
 			thismapbounds = [];
 			if ( WPLeafletMapPlugin.markers.length > 0 ) {
 				if (debug) {
-					L.circleMarker( latlng, {radius: 3,color: "red"} ).bindPopup( "latlng" ).addTo( map );
+					L.circleMarker( L.latLng( lat,lng ), {radius: 3,color: "red"} ).bindPopup( "latlng" ).addTo( map );
 					// L.rectangle( mapbounds, {color: "yellow", weight: 1} ).addTo( map );
 				}
 				leafext_target_latlng_marker_do( map,lat,lng,target,zoom,debug );

@@ -69,7 +69,7 @@ function leafext_targetmarker_help() {
 
 	// funktioniert nicht eindeutig.
 	$text = $text . '</li><li>';
-	$text = $text . __( 'jump to any marker nearest lat and lng. But this does not work properly.', 'extensions-leaflet-map' );
+	$text = $text . __( 'jump to any marker nearest lat and lng.', 'extensions-leaflet-map' );
 	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>';
 	$text = $text . '&#091;targetlink lat=... lng=... linktext=... ]' . "\n";
 	$text = $text . '</code></pre>' . "\n";
@@ -85,9 +85,9 @@ function leafext_targetmarker_help() {
 	. __( 'of the target geojson marker', 'extensions-leaflet-map' ) . '</li>
 	<li> value - <code>value</code> '
 	. __( 'of the target geojson marker', 'extensions-leaflet-map' ) . '</li>';
-	$text = $text . '<li> lat, lng - ' . __( 'Latitude and Longitude - does not work properly.', 'extensions-leaflet-map' ) . '</li>';
+	$text = $text . '<li> lat, lng - ' . __( 'latitude and longitude', 'extensions-leaflet-map' ) . '</li>';
 	$text = $text . '<li> linktext - ';
-	$text = $text . __( 'Text of the link. Default:', 'extensions-leaflet-map' ) . ' "Target"</li>';
+	$text = $text . __( 'text of the link. Default:', 'extensions-leaflet-map' ) . ' "Target"</li>';
 	$text = $text . '<li> popup - ';
 	/* translators: %1$s is a title, %2$s is "target". */
 	$text = $text . sprintf( __( 'popup content, if the target marker has not a popup. Default: %1$s, if the marker has one or %2$s.', 'extensions-leaflet-map' ), '<code>title</code>', '"Target"' ) . '</li>

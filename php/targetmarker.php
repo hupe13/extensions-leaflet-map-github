@@ -72,8 +72,8 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 			} elseif ( $options['lat'] != '' && $options['lng'] != '' ) {
 				// lat and lng same page / post -  does not work properly
 				$text = '<a href="javascript:leafext_jump_to_map();" onclick="leafext_target_same_lanlng_js('
-				. '\'' . filter_var( $options['lat'], FILTER_VALIDATE_FLOAT ) . '\','
-				. '\'' . filter_var( $options['lng'], FILTER_VALIDATE_FLOAT ) . '\','
+				. filter_var( $options['lat'], FILTER_VALIDATE_FLOAT ) . ','
+				. filter_var( $options['lng'], FILTER_VALIDATE_FLOAT ) . ','
 				. '\'' . $options['popup'] . '\','
 				. $options['zoom'] . ','
 				. wp_json_encode( $options['debug'] )
