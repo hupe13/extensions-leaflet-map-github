@@ -6,7 +6,7 @@
 
 // jump to leaflet-marker, leaflet-extramarker OR leaflet-geojson with lat and lng in query_string
 function leafext_target_get_lanlng_js(lat,lng,target,zoom,debug) {
-	console.log( "targetmarker",lat,lng,target,zoom,debug );
+	console.log( "leafext_target_get_lanlng_js",lat,lng,target,zoom,debug );
 	var map = window.WPLeafletMapPlugin.getCurrentMap();
 	var markerClusterGroup;
 	thismapbounds = [];
@@ -60,7 +60,7 @@ function leafext_target_get_lanlng_js(lat,lng,target,zoom,debug) {
  * with lat and lng in a map on same site - does not work properly
  */
 function leafext_target_same_lanlng_js(lat,lng,target,zoom,debug) {
-	console.log( "targetpoint",lat,lng,target,zoom,debug );
+	console.log( "leafext_target_same_lanlng_js",lat,lng,target,zoom,debug );
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(
 		function () {
@@ -89,7 +89,7 @@ function leafext_target_same_lanlng_js(lat,lng,target,zoom,debug) {
 }
 
 function leafext_target_latlng_marker_do(map,lat,lng,target,zoom,debug){
-	console.log( 'leafext_target_marker_title_do',lat,lng,target,zoom,debug );
+	console.log( 'leafext_target_latlng_marker_do',lat,lng,target,zoom,debug );
 	var closest = Number.MAX_VALUE;
 	var closestMarker;
 	let latlng = L.latLng( lat,lng );
@@ -103,7 +103,11 @@ function leafext_target_latlng_marker_do(map,lat,lng,target,zoom,debug){
 					layer.eachLayer(
 						function (a) {
 							if (a instanceof L.Marker) {
-								let radius = a.getLatLng().distanceTo( latlng );
+								// console.log(a.options.title,a.getLatLng());
+								// console.log(a);
+								// console.log(a.__parent._cLatLng);
+								// let radius = a.getLatLng().distanceTo( latlng );
+								let radius = a.__parent._cLatLng.distanceTo( latlng );
 								if (radius < closest) {
 									// console.log(a);
 									closest       = radius;
@@ -167,6 +171,7 @@ function leafext_target_latlng_marker_do(map,lat,lng,target,zoom,debug){
 }
 
 function leafext_target_latlng_geojson_do(map,lat,lng,geolayer,target,zoom,debug) {
+	console.log("leafext_target_latlng_geojson_do",lat,lng,target,zoom,debug)
 	let latlng    = L.latLng( lat,lng );
 	let mapbounds = map.getBounds();
 	if (debug) {
@@ -177,13 +182,23 @@ function leafext_target_latlng_geojson_do(map,lat,lng,geolayer,target,zoom,debug
 		var closest = Number.MAX_VALUE;
 		var closestMarker;
 		// console.log(a);
+		let radius = Number.MAX_VALUE;
 		geolayer.eachLayer(
 			function (layer) {
 				if (layer.feature.geometry.type == "Point" ) {
-					let radius = layer.getLatLng().distanceTo( latlng );
+					// console.log(layer);
+					// if (layer.__parent) {
+					// 	console.log(layer.getPopup().getContent());
+					// 	// radius = layer.__parent._cLatLng.distanceTo( latlng );
+					// 	radius = layer.getLatLng().distanceTo( latlng );
+					// 	console.log("cluster ",radius);
+					// 	console.log(layer);
+					// } else {
+					// 	radius = layer.getLatLng().distanceTo( latlng );
+					// 	console.log("no cluster ",radius);
+					// }
+					radius = layer.getLatLng().distanceTo( latlng );
 					if (radius < closest) {
-						// console.log(layer);
-						// console.log(radius);
 						closest       = radius;
 						closestMarker = layer;
 					}
@@ -224,7 +239,7 @@ function leafext_target_latlng_geojson_do(map,lat,lng,geolayer,target,zoom,debug
 
 // targetmarker same site - search with title
 function leafext_target_same_title_js(title,target,zoom,debug) {
-	console.log( "targetpointtitle",title,target,zoom,debug );
+	console.log( "leafext_target_same_title_js",title,target,zoom,debug );
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(
 		function () {
@@ -315,7 +330,7 @@ function leafext_target_marker_title_do(map,title,target,zoom,debug){
 
 // targetmarker geojsonproperty
 function leafext_target_same_geojson_js(geojsonproperty,geojsonvalue,target,zoom,debug) {
-	console.log( "targetgeojson",geojsonproperty,geojsonvalue,target,zoom,debug );
+	console.log( "leafext_target_same_geojson_js",geojsonproperty,geojsonvalue,target,zoom,debug );
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	// console.log(window.WPLeafletMapPlugin);
 	var markerClusterGroup;
