@@ -126,6 +126,12 @@ function leafext_validate_multiele_options( $options ) {
 
 // Helptext
 function leafext_multiele_help_text() {
+	if ( is_singular() || is_archive() ) {
+		$codestyle = '';
+	} else {
+		leafext_enqueue_admin();
+		$codestyle = ' class="language-coffeescript"';
+	}
 	$server = map_deep( wp_unslash( $_SERVER ), 'sanitize_text_field' );
 	if ( strpos( $server['REQUEST_URI'], '/en/' ) !== false ) {
 		$lang = '/en';
@@ -134,7 +140,7 @@ function leafext_multiele_help_text() {
 	}
 	$text = '<img src="' . LEAFEXT_PLUGIN_PICTS . 'multielevation.png" alt = "multielevation">
 		<h2>Shortcode</h2>
-<pre><code>&#091;leaflet-map fitbounds ...]
+<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map fitbounds ...]
 &#091;elevation-track file="http(s)://my.domain.tld/url_file_1" lat="..." lng="..." name="..." filename=0/1]
 // many of this
 &#091;elevation-track file="http(s):/my.domain.tld/url_file_n" lat="..." lng="..." name="..." filename=0/1]
@@ -255,7 +261,7 @@ function leafext_multiele_help_text() {
 		'</span>'
 	) .
 	'</li></ul>' .
-	'<pre><code>&#091;elevation-tracks filename=0/1 summary=0/1]</code></pre>' .
+	'<pre' . $codestyle . '><code' . $codestyle . '>&#091;elevation-tracks filename=0/1 summary=0/1]</code></pre>' .
 
 	'<h3>Theme</h3><p>' .
 	__( 'The theme is the same as the', 'extensions-leaflet-map' );

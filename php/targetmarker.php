@@ -56,21 +56,47 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 				if ( $options['title'] != '' ) {
 					return leafext_target_post_title_script( $options );
 				}
+				$options['property'] = isset( $get['property'] ) ? wp_strip_all_tags( $get['property'] ) : '';
+				$options['value']    = isset( $get['value'] ) ? wp_strip_all_tags( $get['value'] ) : '';
+				if ( $options['property'] != '' && $options['value'] != '' ) {
+					return leafext_target_post_geojson_script( $options );
+				}
 				$error = 'POST - error';
 			} // POST end
 
 		} elseif ( $shortcode == 'targetlink' ) {
 			$error = 'targetlink error';
 			if ( $options['link'] != '' && $options['title'] != '' ) {
-				$text = '<form method="post" action="' . esc_url( $options['link'] ) . '">';
+				$rand = wp_rand( 1, 2000 );
+				$text = '<form id=targetlink_' . $rand . ' style="display: inline-block; method="post" action="' . esc_url( $options['link'] ) . '">';
 				$text = $text . '<input type="hidden" name="title" value="' . wp_strip_all_tags( $options['title'] ) . '">';
 				$text = $text . wp_nonce_field( 'leafext_targetlink', 'leafext_targetlink_nonce' );
 				$text = $text . '<a href="javascript:;" onclick="parentNode.submit();">' . $options['linktext'] . '</a>';
 				$text = $text . '</form>';
+				$text = $text . '<script>';
+				$text = $text . 'if (document.getElementById("targetlink_' . $rand . '").previousElementSibling.nodeName == "P") {
+				document.getElementById("targetlink_' . $rand . '").previousElementSibling.style.display="inline-block";}';
+				// $text = $text.'leafext_target_href('.$rand.');';
+				$text = $text . '</script>';
+				return $text;
+
+			} elseif ( $options['link'] != '' && $options['property'] != '' && $options['value'] != '' ) {
+				$rand = wp_rand( 1, 2000 );
+				$text = '<form id=targetlink_' . $rand . ' style="display: inline-block;" method="post" action="' . esc_url( $options['link'] ) . '">';
+				$text = $text . '<input type="hidden" name="property" value="' . wp_strip_all_tags( $options['property'] ) . '">';
+				$text = $text . '<input type="hidden" name="value" value="' . wp_strip_all_tags( $options['value'] ) . '">';
+				$text = $text . wp_nonce_field( 'leafext_targetlink', 'leafext_targetlink_nonce', true, false );
+				$text = $text . '&nbsp;<a href="javascript:;" onclick="parentNode.submit();">' . $options['linktext'] . '</a>';
+				$text = $text . '</form>';
+				$text = $text . '<script>';
+				$text = $text . 'if (document.getElementById("targetlink_' . $rand . '").previousElementSibling.nodeName == "P") {
+				document.getElementById("targetlink_' . $rand . '").previousElementSibling.style.display="inline-block";}';
+				// $text = $text.'leafext_target_href('.$rand.');';
+				$text = $text . '</script>';
 				return $text;
 
 			} elseif ( $options['lat'] != '' && $options['lng'] != '' ) {
-				// lat and lng same page / post -  does not work properly
+				// lat and lng same page / post
 				$text = '<a href="javascript:leafext_jump_to_map();" onclick="leafext_target_same_lanlng_js('
 				. filter_var( $options['lat'], FILTER_VALIDATE_FLOAT ) . ','
 				. filter_var( $options['lng'], FILTER_VALIDATE_FLOAT ) . ','
@@ -160,6 +186,33 @@ function leafext_target_post_title_script( $options ) {
 		;
 		let debug = <?php echo wp_json_encode( $options['debug'] ); ?>;
 		leafext_target_post_title_js(title,popup,zoom,debug);
+	});
+	<?php
+	$javascript = ob_get_clean();
+	$text       = $text . $javascript . '//-->' . "\n" . '</script>';
+	$text       = \JShrink\Minifier::minify( $text );
+	return "\n" . $text . "\n";
+}
+
+function leafext_target_post_geojson_script( $options ) {
+	$text = '<script><!--';
+	ob_start();
+	?>
+	/*<script>*/
+	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
+	window.WPLeafletMapPlugin.push(function () {
+		let property = <?php echo wp_json_encode( $options['property'] ); ?>;
+		let value = <?php echo wp_json_encode( $options['value'] ); ?>;
+		let target = <?php echo wp_json_encode( $options['target'] ); ?>;
+		let popup = <?php echo wp_json_encode( $options['popup'] ); ?>;
+		let zoom =
+		<?php
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $options['zoom'];
+		?>
+		;
+		let debug = <?php echo wp_json_encode( $options['debug'] ); ?>;
+		leafext_target_post_geojson_js(property,value,target,popup,zoom,debug);
 	});
 	<?php
 	$javascript = ob_get_clean();

@@ -8,8 +8,8 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-define( 'LEAFEXT_MINI', '.min' );
-// define( 'LEAFEXT_MINI', '' );
+// define( 'LEAFEXT_MINI', '.min' );
+define( 'LEAFEXT_MINI', '' );
 
 /**
  * Enqueue js and css from Leaflet plugins
@@ -581,4 +581,18 @@ function leafext_enqueue_leafext_elevation() {
 		true
 	);
 	wp_set_script_translations( 'leafext_elevation', 'extensions-leaflet-map' );
+}
+
+function leafext_enqueue_admin() {
+	wp_enqueue_style(
+		'prism-css',
+		plugins_url( 'pkg/prism/prism.css', LEAFEXT_PLUGIN_FILE )
+	);
+	wp_enqueue_script(
+		'prism-js',
+		plugins_url( 'pkg/prism/prism.js', LEAFEXT_PLUGIN_FILE ),
+		array(),
+		null,
+		true
+	);
 }

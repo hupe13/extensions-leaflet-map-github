@@ -115,13 +115,19 @@ function leafext_validate_placement_options( $options ) {
 
 // Helptext
 function leafext_placement_help_text() {
+	if ( is_singular() || is_archive() ) {
+		$codestyle = '';
+	} else {
+		leafext_enqueue_admin();
+		$codestyle = ' class="language-coffeescript"';
+	}
 	$text = '<h2>Leaflet.MarkerCluster.PlacementStrategies</h2>';
 	$text = $text . '<p>';
 	$text = $text . '<a href="https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies">' . __( 'Demo and Documentation', 'extensions-leaflet-map' ) . '</a>';
 	$text = $text . ' - ' . __( 'Not all parameters are implemented in the plugin.', 'extensions-leaflet-map' ) . '';
 	$text = $text . '</p>';
 	$text = $text . '<h3>Shortcode</h3>
-	<pre><code>&#091;leaflet-map ....]
+	<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map ....]
 // many markers
 &#091;leaflet-marker lat=... lng=... ...]poi1[/leaflet-marker]
 &#091;leaflet-marker lat=... lng=... ...]poi2[/leaflet-marker]

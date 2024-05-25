@@ -47,7 +47,8 @@ function leafext_admin_tiles( $active_tab ) {
 	if ( $active_tab == 'tiles' ) {
 		echo '<h2>' . wp_kses_post( leafext_tiles_tab() ) . '</h2>';
 		include LEAFEXT_PLUGIN_DIR . '/admin/tiles/help.php';
-		echo wp_kses_post( leafext_help_tiles() );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo ( leafext_help_tiles() );
 	} elseif ( $active_tab == 'tileswitch' ) {
 		echo '<h2>' . wp_kses_post( leafext_tiles_tab() ) . '</h2>';
 		if ( current_user_can( 'manage_options' ) ) {

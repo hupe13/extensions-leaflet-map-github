@@ -9,6 +9,12 @@
 defined( 'ABSPATH' ) || die();
 
 function leafext_help_hover() {
+	if ( is_singular() || is_archive() ) {
+		$codestyle = '';
+	} else {
+		leafext_enqueue_admin();
+		$codestyle = ' class="language-coffeescript"';
+	}
 	$text = '<h2 id="hover">Hovering</h2><img src="' . LEAFEXT_PLUGIN_PICTS . 'hover.png" alt="hover"><p>' .
 	/* translators: %s is a shortcode. */
 	sprintf( __( 'Use it to highlight a %s element and get a tooltip on mouse over.', 'extensions-leaflet-map' ), 'leaflet-*' );
@@ -16,7 +22,7 @@ function leafext_help_hover() {
 
 	$text = $text . '<h2>Shortcode</h2>';
 	$text = $text . '<h4>' . __( 'Create Map', 'extensions-leaflet-map' ) . '</h4>';
-	$text = $text . '<pre><code>&#091;leaflet-map ...]</code></pre>';
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map ...]</code></pre>';
 	/* translators: %s is a shortcode. */
 	$text = $text . '<h4>' . sprintf( __( 'Load any elements with any %s shortcode', 'extensions-leaflet-map' ), 'leaflet-*' ) . '</h4>';
 	$text = $text . '<ul>';
@@ -33,7 +39,7 @@ function leafext_help_hover() {
 	$text = $text . '</li>';
 	$text = $text . '</ul>';
 
-	$text = $text . '<pre><code>// any many
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>// any many
 &#091;leaflet-marker ...]Marker ...&#091;/leaflet-marker]
 &#091;leaflet-marker title=... ...]Marker ...&#091;/leaflet-marker]
 &#091;leaflet-extramarker ...]Marker ...&#091;/leaflet-extramarker]
@@ -46,7 +52,7 @@ function leafext_help_hover() {
 &#091;leaflet-line ...]Line ...&#091;/leaflet-line]</code></pre>';
 
 	$text = $text . '<h4>' . __( 'And hover', 'extensions-leaflet-map' ) . '</h4>'
-	. '<pre><code>&#091;hover]</code></pre>' .
+	. '<pre' . $codestyle . '><code' . $codestyle . '>&#091;hover]</code></pre>' .
 	'<h3>' . __( 'Options', 'extensions-leaflet-map' ) . '</h3>';
 
 	$text = $text . '<p>' . __( "By default, all elements react to hover. If you don't want this, you have the following options.", 'extensions-leaflet-map' ) . '</p>';

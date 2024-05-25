@@ -132,6 +132,12 @@ function leafext_validate_waypoints( $options ) {
 
 // Erklaerung / Hilfe
 function leafext_waypoints_help_text() {
+	if ( is_singular() || is_archive() ) {
+		$codestyle = '';
+	} else {
+		leafext_enqueue_admin();
+		$codestyle = ' class="language-coffeescript"';
+	}
 	$text = '';
 	if ( ! ( is_singular() || is_archive() ) ) {
 		$text = $text . '<p>' . __( 'Here you can define extra waypoint options.', 'extensions-leaflet-map' ) . '</p>';
@@ -158,7 +164,7 @@ function leafext_waypoints_help_text() {
 </ul>';
 
 	$text = $text . '<h3>Shortcode</h3>
-<pre><code>&#091;leaflet-map ....]
+<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map ....]
 &#091;elevation gpx="url_gpx_file" waypoints=1 wptIcons=defined ...]
 //or
 &#091;elevation gpx="url_gpx_file" waypoints=markers wptIcons=defined ...]

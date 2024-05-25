@@ -9,6 +9,12 @@
 defined( 'ABSPATH' ) || die();
 
 function leafext_clustergroup_help_text() {
+	if ( is_singular() || is_archive() ) {
+		$codestyle = '';
+	} else {
+		leafext_enqueue_admin();
+		$codestyle = ' class="language-coffeescript"';
+	}
 	$firsttext = '
 	<h2 id="leaflet.featuregroup.subgroup">Leaflet.FeatureGroup.SubGroup</h2>
 	<img src="' . LEAFEXT_PLUGIN_PICTS . 'clustergroup.png">
@@ -82,12 +88,12 @@ function leafext_clustergroup_help_text() {
 			</ul>
 
 			<h3>' . __( 'Shortcode for grouping leaflet-markers', 'extensions-leaflet-map' ) . '</h3>
-			<pre><code>&#091;leaflet-marker iconUrl="...red..." ... ] ... &#091;/leaflet-marker]
+			<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-marker iconUrl="...red..." ... ] ... &#091;/leaflet-marker]
 &#091;leaflet-marker iconUrl="...green..." ... ] ... &#091;/leaflet-marker]
 //many markers
 &#091;markerclustergroup feat="iconUrl" strings="red,green" groups="rot,gruen" visible=...]</code></pre>'
 			. __( 'or', 'extensions-leaflet-map' ) .
-			'<pre><code>&#091;leaflet-marker title="first ..." ... ] ... &#091;/leaflet-marker]
+			'<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-marker title="first ..." ... ] ... &#091;/leaflet-marker]
 &#091;leaflet-marker title="second ..." ... ] ... &#091;/leaflet-marker]
 //many markers
 &#091;markerclustergroup feat="title" strings="first,second" groups="First Group,Second Group" visible=...]</code></pre>
@@ -144,12 +150,12 @@ function leafext_clustergroup_help_text() {
 					) . '</li></ul>
 
 					<h3>' . __( 'Shortcode for grouping markers (points) in leaflet-geojson', 'extensions-leaflet-map' ) . '</h3>
-		<pre><code>&#091;leaflet-geojson src="..." iconUrl="...red..." ... ] ... &#091;/leaflet-geojson]
+		<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-geojson src="..." iconUrl="...red..." ... ] ... &#091;/leaflet-geojson]
 &#091;leaflet-geojson src="..." iconUrl="...green..." ... ] ... &#091;/leaflet-geojson]
 //any more leaflet-geojson
 &#091;markerclustergroup feat="iconUrl" strings="red,green" groups="rot,gruen" visible=...]</code></pre>'
 					. __( 'or', 'extensions-leaflet-map' ) .
-	'<pre><code>&#091;leaflet-geojson src="..."  ... ] ... &#091;/leaflet-geojson]
+	'<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-geojson src="..."  ... ] ... &#091;/leaflet-geojson]
 //any more leaflet-geojson
 &#091;markerclustergroup feat="properties.<span style="color: #d63638">prop0</span>" strings="<span style="color: #4f94d4">value0</span>,..." groups="Description0,..." visible=...]</code></pre>
 <h3>groups unknown ' . __( 'and', 'extensions-leaflet-map' ) . ' others</h3><p>' .
@@ -164,7 +170,7 @@ function leafext_clustergroup_help_text() {
 		'unknown'
 	) .
 			'</p><h3>Shortcode groups unknown ' . __( 'and', 'extensions-leaflet-map' ) . ' others</h3>
-<pre><code>&#091;markerclustergroup feat="..." strings="...,...,others,unknown" groups="...,...,Other properties,Unknown properties"]</code></pre>';
+<pre' . $codestyle . '><code' . $codestyle . '>&#091;markerclustergroup feat="..." strings="...,...,others,unknown" groups="...,...,Other properties,Unknown properties"]</code></pre>';
 
 	if ( is_singular() || is_archive() ) {
 		$server = map_deep( wp_unslash( $_SERVER ), 'sanitize_text_field' );

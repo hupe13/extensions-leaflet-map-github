@@ -116,6 +116,12 @@ function leafext_validate_mapswitch( $options ) {
 
 // Erklaerung / Hilfe
 function leafext_maps_help_text() {
+	if ( is_singular() || is_archive() ) {
+		$codestyle = '';
+	} else {
+		leafext_enqueue_admin();
+		$codestyle = ' class="language-coffeescript"';
+	}
 	$text = '';
 	if ( ! ( is_singular() || is_archive() ) ) {
 		$text = $text . '<img src="' . LEAFEXT_PLUGIN_PICTS . 'layerswitch.png"><p>';
@@ -127,7 +133,7 @@ function leafext_maps_help_text() {
 		'extensions-leaflet-map'
 	);
 	$text = $text . '</p>
-	<pre><code>&#091;leaflet-map mapid="..." ...]
+	<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map mapid="..." ...]
 &#091;layerswitch]
 </code></pre>';
 	$text = $text . '<p>' . sprintf(
@@ -138,7 +144,7 @@ function leafext_maps_help_text() {
 		),
 		'<code>tiles</code>'
 	) . '</p>';
-	$text = $text . '<pre><code>&#091;leaflet-map mapid="..." ...]
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map mapid="..." ...]
 &#091;layerswitch tiles="mapid1,mapid2,..."]
 </code></pre>';
 	$text = $text . '<p>' . sprintf(

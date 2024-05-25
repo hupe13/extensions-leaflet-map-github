@@ -7,11 +7,11 @@
 // extra definition in markercluster orig (bug or Sonderfall?)
 L.MarkerClusterGroup.include(
 	{
-			// original
-			// https://unpkg.com/browse/leaflet.markercluster@1.5.3/dist/leaflet.markercluster-src.js
-			// from line 560
+		// original
+		// https://unpkg.com/browse/leaflet.markercluster@1.5.3/dist/leaflet.markercluster-src.js
+		// from line 560
 
-			// Zoom down to show the given layer (spiderfying if necessary) then calls the callback
+		// Zoom down to show the given layer (spiderfying if necessary) then calls the callback
 		leafextZoomToShowLayer: function (layer, callback) {
 			// console.log("ZoomToShowLayer changed");
 			// original begin ****
@@ -51,7 +51,7 @@ L.MarkerClusterGroup.include(
 				// original end ****
 				// console.log( layer.__parent._zoom,this._map._zoom );
 				if (typeof layer.__parent._childClusters !== "undefined" ) {
-					// console.log( "extra definition in markercluster orig (bug or Sonderfall?)" );
+					console.log( "extra definition in markercluster orig (bug or Sonderfall?)" );
 					this._map.on( 'moveend', showMarker, this );
 					this.on( 'animationend', showMarker, this );
 					if (layer.__parent._childClusters.length > 0) {
@@ -101,30 +101,6 @@ function leafext_fitbounds_off(map) {
 	}
 }
 
-function leafext_zoomto_clgeomarker(closestMarker, target, markerClusterGroup, map, debug) {
-	// leafext_fitbounds_off( map );
-	closestMarker.once(
-		'popupopen',
-		function () {
-			leafext_fitbounds_off( map );
-			map.panTo( this.getLatLng() );
-			leafext_fitbounds_on( map );
-		}
-	);
-	markerClusterGroup.leafextZoomToShowLayer(
-		closestMarker,
-		function () {
-			if ( closestMarker.getPopup() ) {
-				// console.log( "has popup" );
-				closestMarker.openPopup();
-			} else {
-				// console.log( "no popup" );
-				closestMarker.bindPopup( target ).openPopup();
-			}
-		}
-	);
-}
-
 function leafext_zoomto_marker(closestMarker, target, zoom, map, debug) {
 	// console.log("leafext_zoomto_marker",target, zoom, debug);
 	if ( zoom === false) {
@@ -157,35 +133,16 @@ function leafext_zoomto_marker(closestMarker, target, zoom, map, debug) {
 		}
 	);
 	map.setView( closestMarker.getLatLng(), zoom );
-	if ( closestMarker.getPopup() ) {
-		closestMarker.openPopup();
-	} else {
-		closestMarker.bindPopup( target ).openPopup();
-	}
+	closestMarker.openPopup();
 }
 
 function leafext_zoomto_clmarker(closestMarker, target, markerClusterGroup, map, debug) {
-	leafext_fitbounds_off( map );
-	if ( ! closestMarker.getPopup() ) {
-		if ( closestMarker.options.title ) {
-			// console.log( "no popup" );
-			closestMarker.bindPopup( closestMarker.options.title );
-		} else {
-			// console.log( "no popup" );
-			closestMarker.bindPopup( target );
-		}
-		// console.log(closestMarker);
-		closestMarker.once(
-			'popupopen',
-			function () {
-				closestMarker.unbindPopup();
-			}
-		);
-	}
+	console.log( "leafext_zoomto_clmarker" );
+	// leafext_fitbounds_off( map );
 	closestMarker.once(
 		'popupopen',
 		function () {
-			// leafext_fitbounds_off( map );
+			leafext_fitbounds_off( map );
 			map.panTo( this.getLatLng() );
 			leafext_fitbounds_on( map );
 		}
@@ -193,31 +150,45 @@ function leafext_zoomto_clmarker(closestMarker, target, markerClusterGroup, map,
 	markerClusterGroup.leafextZoomToShowLayer(
 		closestMarker,
 		function () {
-			var visibleOne = markerClusterGroup.getVisibleParent( closestMarker );
-			// console.log( typeof visibleOne );
-			if (typeof visibleOne._childClusters !== "undefined" ) {
-				if (visibleOne._childClusters.length > 0) {
-					// console.log( "leafext_zoomto_clmarker visibleOne._childClusters.length ist " + visibleOne._childClusters.length + ", nochmal" );
-					leafext_zoomto_clmarker( closestMarker, target, visibleOne._group, map, debug );
-				} else {
-					// console.log( "leafext_zoomto_clmarker visibleOne._childClusters.length ist 0, fitbounds off/on" );
-					leafext_zoomto_clmarker( closestMarker, target, markerClusterGroup, map, debug );
-				}
-				// } else {
-				// 	console.log( "leafext_zoomto_clmarker visibleOne._childClusters nicht vorhanden" );
-				// 	console.log( visibleOne.__parent._zoom,map._zoom );
-			}
-
 			if ( closestMarker.getPopup() ) {
+				// console.log( "has popup" );
 				closestMarker.openPopup();
 			} else {
+				// console.log( "no popup" );
 				closestMarker.bindPopup( target ).openPopup();
 			}
 		}
 	);
 }
 
+function leafext_zoom_to_closest(type, closest, closestMarker, target, zoom, map, debug) {
+	if (closest < Number.MAX_VALUE ) {
+		if (closestMarker.__parent) {
+			if (debug) {
+				console.log( "closest " + type + " marker in cluster" );
+			}
+			markerClusterGroup = closestMarker.__parent._group;
+			leafext_zoomto_clmarker( closestMarker, target, markerClusterGroup, map, debug );
+		} else {
+			if (debug) {
+				console.log( "closest " + type + " marker not in cluster" );
+			}
+			leafext_zoomto_marker( closestMarker, target, zoom, map, debug );
+		}
+	} else {
+		if (debug) {
+			console.log( type + " marker not found" );
+		}
+	}
+}
+
 function leafext_jump_to_map() {
 	const element = document.getElementsByClassName( "leaflet-map" )[0];
 	element.scrollIntoView( { block: "center" } );
 }
+
+// function leafext_target_href(rand) {
+// 	if (document.getElementById("targetlink_"+rand).previousElementSibling.nodeName == "P") {
+// 		document.getElementById("targetlink_"+rand).previousElementSibling.style.display="inline-block";
+// 	}
+// }

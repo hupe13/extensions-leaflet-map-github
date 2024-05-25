@@ -13,17 +13,7 @@ function leafext_targetmarker_help() {
 		$text      = '';
 		$codestyle = '';
 	} else {
-		wp_enqueue_style(
-			'prism-css',
-			plugins_url( 'pkg/prism/prism.css', LEAFEXT_PLUGIN_FILE )
-		);
-		wp_enqueue_script(
-			'prism-js',
-			plugins_url( 'pkg/prism/prism.js', LEAFEXT_PLUGIN_FILE ),
-			array(),
-			null,
-			true
-		);
+		leafext_enqueue_admin();
 		$codestyle = ' class="language-coffeescript"';
 		$text      = '<h2>' . __( 'Target Marker', 'extensions-leaflet-map' ) . '</h2>';
 	}
@@ -68,13 +58,12 @@ function leafext_targetmarker_help() {
 	$text = $text . '</code></pre>' . "\n";
 	$text = $text . '</li>';
 
-	// funktioniert nicht eindeutig.
-	// $text = $text . '<li>';
-	// $text = $text . __( 'jump to any marker nearest lat and lng.', 'extensions-leaflet-map' );
-	// $text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>';
-	// $text = $text . '&#091;targetlink lat=... lng=... linktext=... ]' . "\n";
-	// $text = $text . '</code></pre>' . "\n";
-	// $text = $text . '</li>';
+	$text = $text . '<li>';
+	$text = $text . __( 'jump to any marker nearest lat and lng.', 'extensions-leaflet-map' );
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>';
+	$text = $text . '&#091;targetlink lat=... lng=... linktext=... ]' . "\n";
+	$text = $text . '</code></pre>' . "\n";
+	$text = $text . '</li>';
 
 	$text = $text . '</ul>';
 
@@ -87,7 +76,7 @@ function leafext_targetmarker_help() {
 	. __( 'of the target geojson marker', 'extensions-leaflet-map' ) . '</li>
 	<li> value - <code>value</code> '
 	. __( 'of the target geojson marker', 'extensions-leaflet-map' ) . '</li>';
-	// $text = $text . '<li> lat, lng - ' . __( 'latitude and longitude', 'extensions-leaflet-map' ) . '</li>';
+	$text = $text . '<li> lat, lng - ' . __( 'latitude and longitude', 'extensions-leaflet-map' ) . '</li>';
 	$text = $text . '<li> linktext - ';
 	$text = $text . __( 'text of the link. Default:', 'extensions-leaflet-map' ) . ' "Target"</li>';
 	$text = $text . '<li> popup - ';
@@ -102,12 +91,11 @@ function leafext_targetmarker_help() {
 
 	$text = $text . '<h4>' . __( 'Target - shortcode for the map', 'extensions-leaflet-map' ) . '</h4>';
 	$text = $text . '<ul><li><code>fitbounds</code>, <code>zoomhomemap</code> ' . __( 'are mandatory!', 'extensions-leaflet-map' ) . '</li>';
-	// /* translators: %1$s is a targetmarker, %2$s is title. */
-	// $text = $text . '<li><code>title</code> ' . sprintf( __( 'is mandatory, if you use %1$s with option %2$s.', 'extensions-leaflet-map' ), '<code>targetlink</code>', '<code>title</code>' ) . '</li></ul>';
-
-	$text = $text . '<li><code>title</code> ' . __( 'is mandatory.', 'extensions-leaflet-map' ) . '</li></ul>';
+	/* translators: %1$s is a targetmarker, %2$s is title. */
+	$text = $text . '<li><code>title</code> ' . sprintf( __( 'is mandatory, if you use %1$s with option %2$s.', 'extensions-leaflet-map' ), '<code>targetlink</code>', '<code>title</code>' ) . '</li></ul>';
 
 	// $text = $text . '<li><code>title</code> ' . __( 'is mandatory.', 'extensions-leaflet-map' ) . '</li></ul>';
+
 	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>' . $targetmap . '</code></pre>' . "\n";
 
 	$text = $text . '<h3>' . __( 'Different source and target', 'extensions-leaflet-map' ) . '</h3>';
@@ -128,9 +116,18 @@ function leafext_targetmarker_help() {
 	' <code>&lt;a href="' . get_site_url() . '/targetpage/">linktext&lt;/a></code>. ';
 	$text = $text . __( 'You can write this shortcode anywhere in your text.', 'extensions-leaflet-map' ) . '</p>';
 
+	$text = $text . '<ul><li>';
+	/* translators: %1$s is leaflet-marker, %2$s is leaflet-extramarker. */
+	$text = $text . sprintf( __( 'jump to %1$s or %2$s on a target page', 'extensions-leaflet-map' ), '<code>leaflet-marker</code>', '<code>leaflet-extramarker</code>' );
 	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>';
-	$text = $text . '&#091;targetlink link=' . get_site_url() . '/targetpage/ title=... linktext=...]';
+	$text = $text . '&#091;targetlink link=' . get_site_url() . '/targetpage/ title=... linktext=...]' . "\n";
 	$text = $text . '</code></pre>' . "\n";
+	$text = $text . '</li><li>';
+	$text = $text . __( 'jump to a marker in a geojson file on a target page', 'extensions-leaflet-map' );
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>';
+	$text = $text . '&#091;targetlink link=' . get_site_url() . '/targetpage/ property=... value=... linktext=...]' . "\n";
+	$text = $text . '</code></pre>' . "\n";
+	$text = $text . '</li></ul>';
 
 	$text = $text . '<h4>' . sprintf( __( 'Target - shortcode for the map', 'extensions-leaflet-map' ), '<code>targetmarker</code>' ) . '</h4>';
 

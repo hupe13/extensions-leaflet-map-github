@@ -92,7 +92,13 @@ function leafext_validate_providers( $options ) {
 
 // Erklaerung / Hilfe
 function leafext_providers_help() {
-	$text = '<pre><code>[leaflet-map]' . "\n" .
+	if ( is_singular() || is_archive() ) {
+		$codestyle = '';
+	} else {
+		leafext_enqueue_admin();
+		$codestyle = ' class="language-coffeescript"';
+	}
+	$text = '<pre' . $codestyle . '><code' . $codestyle . '>[leaflet-map]' . "\n" .
 	'[layerswitch mapids=hiking providers="WaymarkedTrails.hiking"]' . "\n" .
 	"\n" .
 	'[leaflet-map mapid="OSM"]' . "\n" .

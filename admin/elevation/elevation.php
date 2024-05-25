@@ -137,6 +137,12 @@ function leafext_ele_help_test() {
 }
 
 function leafext_ele_help_text() {
+	if ( is_singular() || is_archive() ) {
+		$codestyle = '';
+	} else {
+		leafext_enqueue_admin();
+		$codestyle = ' class="language-coffeescript"';
+	}
 	$text = '';
 	$text = $text . '<p><img src="' . LEAFEXT_PLUGIN_PICTS . 'elevation.png" alt="elevation"></p>
 	<h2>' . __( 'Translation', 'extensions-leaflet-map' ) . '</h2><p>';
@@ -177,7 +183,7 @@ function leafext_ele_help_text() {
 	$text = $text . __( 'The elevation shortcode has many configuration options. Some things are not trivial. If you can\'t configure something, ask in the forum.', 'extensions-leaflet-map' );
 	$text = $text . '</p>';
 	$text = $text . '<h2>Shortcode</h2>
-	<pre><code>[leaflet-map ....]
+	<pre' . $codestyle . '><code' . $codestyle . '>[leaflet-map ....]
 [elevation gpx="url_gpx_file" option1=value1 option2 !option3 ...]</code></pre>
 	<h3>' . __( 'Options', 'extensions-leaflet-map' ) . '</h3>
 	<p>';

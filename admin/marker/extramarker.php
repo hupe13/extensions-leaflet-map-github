@@ -10,9 +10,12 @@ defined( 'ABSPATH' ) || die();
 
 function leafext_extramarker_help() {
 	if ( is_singular() || is_archive() ) {
-		$text = '';
+		$text      = '';
+		$codestyle = '';
 	} else {
-		$text = '<h2>Leaflet.Extramarkers</h2>';
+		leafext_enqueue_admin();
+		$codestyle = ' class="language-coffeescript"';
+		$text      = '<h2>Leaflet.Extramarkers</h2>';
 	}
 
 	$text = $text . '<p>' . sprintf(
@@ -22,7 +25,7 @@ function leafext_extramarker_help() {
 		'Extensions for Leaflet Map'
 	) . '</p>
   <h2>Shortcode</h2>';
-	$text = $text . '<pre><code>&#091;leaflet-map fitbounds ....]' . "\n";
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map fitbounds ....]' . "\n";
 	$text = $text . '&#091;leaflet-extramarker option=... ...]description[/leaflet-extramarker]' . "\n";
 	$text = $text . '&#091;hover]' . "\n";
 	$text = $text . '&#091;zoomhomemap]</code></pre>';

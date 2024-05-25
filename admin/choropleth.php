@@ -20,14 +20,17 @@ defined( 'ABSPATH' ) || die();
 
 function leafext_choropleth_help() {
 	if ( is_singular() || is_archive() ) {
-		$text = '';
+		$codestyle = '';
+		$text      = '';
 	} else {
-		$text = '<h2>Leaflet Choropleth</h2>';
+		leafext_enqueue_admin();
+		$codestyle = ' class="language-coffeescript"';
+		$text      = '<h2>Leaflet Choropleth</h2>';
 	}
 
 	$text = $text . '
   <h2>Shortcode</h2>';
-	$text = $text . '<p><pre><code>&#091;leaflet-map fitbounds ....]' . "\n";
+	$text = $text . '<p><pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map fitbounds ....]' . "\n";
 	$text = $text . '[leaflet-geojson src=https://domain.tld/path/to/file.geojson][/leaflet-geojson]
 [choropleth valueProperty="property1" scale="white, red" steps=5 mode=e legend fillopacity=0.8]Property1 {property1}&lt;br>{property2} Property2[/choropleth]
 [zoomhomemap]';
@@ -44,7 +47,7 @@ function leafext_choropleth_help() {
 		'Use it like the popup content for Geojsons in Leaflet Map: To add feature properties to the popups, use the inner content and curly brackets to substitute the values:',
 		'extensions-leaflet-map'
 	) .
-	'<pre><code>&#91;choropleth ...]Field A = {field_a}[/choropleth]';
+	'<pre' . $codestyle . '><code' . $codestyle . '>&#91;choropleth ...]Field A = {field_a}[/choropleth]';
 	$text = $text . '</code></pre>'
 	. '</p>';
 

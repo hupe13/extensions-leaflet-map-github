@@ -9,6 +9,12 @@
 defined( 'ABSPATH' ) || die();
 
 function leafext_help_featuregroup() {
+	// if ( is_singular() || is_archive() ) {
+		$codestyle = '';
+	// } else {
+	//  leafext_enqueue_admin();
+	//  $codestyle = ' class="language-coffeescript"';
+	// }
 	$text      = '';
 	$admintext = '
 	<h2 id="leaflet.featuregroup.subgroup">Leaflet.FeatureGroup.SubGroup</h2>
@@ -34,7 +40,7 @@ function leafext_help_featuregroup() {
 	. '</p>';
 
 	$text = $text . '<h3>Shortcode</h3>
-  <pre><code>&#091;leaflet-map fitbounds]
+  <pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map fitbounds]
 //any many
 &#091;leaflet-marker      ...] ... &#091;/leaflet-marker]
 &#091;leaflet-extramarker ...] ... &#091;/leaflet-extramarker]
@@ -235,7 +241,7 @@ function leafext_help_featuregroup() {
 
 	</ul></p>';
 
-	$text = $text . '<pre><code>&#091;leaflet-optiongroup option="..." values="..., ..." groups="..., ..." visible=...]
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-optiongroup option="..." values="..., ..." groups="..., ..." visible=...]
 &#091;leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." visible=...]</code></pre>';
 
 	$text = $text . '<h3>Groups unknown ' . __( 'and', 'extensions-leaflet-map' ) . ' others</h3><p>' .
@@ -251,16 +257,24 @@ function leafext_help_featuregroup() {
 		'unknown'
 	) .
 	'</p>
-	<pre><code>&#091;leaflet-optiongroup option="..." values="...,...,others,unknown" groups="...,...,Other elements,Unknown elements"]
+	<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-optiongroup option="..." values="...,...,others,unknown" groups="...,...,Other elements,Unknown elements"]
 &#091;leaflet-featuregroup property="..." values="...,...,others,unknown" groups="...,...,Other elements,Unknown elements"]</code></pre>';
 
 	$text = $text . '<h3>parentgroup</h3><p>
-<pre><code>&#091;parentgroup parent=... childs=... visible=...]</code></pre>';
+<pre' . $codestyle . '><code' . $codestyle . '>&#091;parentgroup parent=... childs=... visible=...]</code></pre>';
 
-	$text = $text . __(
+	$text = $text . '<p>' . __(
 		'Display nested groups.',
 		'extensions-leaflet-map'
 	);
+	$text = $text . ' ' . sprintf(
+		/* translators: %s is leaflet-optiongroup. */
+		__(
+			'It works with %s only.',
+			'extensions-leaflet-map'
+		),
+		'<code>leaflet-optiongroup</code>'
+	) . '</p>';
 	$text = $text . '<ul>
 	<li><code>parent</code> - ' . __( 'Name of the parent', 'extensions-leaflet-map' ) . '</li>
 	<li><code>childs</code> - ' . sprintf(
@@ -273,7 +287,7 @@ function leafext_help_featuregroup() {
 	$text = $text . '<li><code>visible</code> (' . __( 'optional, like above', 'extensions-leaflet-map' ) . ')</li></ul>';
 	$text = $text . '<h3>' . __( 'Group Control', 'extensions-leaflet-map' ) . '</h3>' .
 	'<p>' .
-	'<pre><code>&#091;leaflet-optiongroup ... position=topleft|topright|bottomleft|bottomright collapsed=true|false]
+	'<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-optiongroup ... position=topleft|topright|bottomleft|bottomright collapsed=true|false]
 &#091;leaflet-featuregroup ... position=topleft|topright|bottomleft|bottomright collapsed=true|false]</code></pre>' .
 	'<p>' . __( 'The specification in the first command applies.', 'extensions-leaflet-map' ) . '</p>' .
 	'<ul>
@@ -309,4 +323,3 @@ function leafext_help_featuregroup() {
 		echo wp_kses_post( $admintext . $helptext . $text );
 	}
 }
-leafext_help_featuregroup();

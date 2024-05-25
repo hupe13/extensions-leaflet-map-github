@@ -69,9 +69,12 @@ function leafext_validate_overviewmap( $input ) {
 
 function leafext_overviewmap_help() {
 	if ( is_singular() || is_archive() ) {
-		$text = '';
+		$codestyle = '';
+		$text      = '';
 	} else {
-		$text = '<h2>' . __( 'Overview Map', 'extensions-leaflet-map' ) . '</h2>';
+		leafext_enqueue_admin();
+		$codestyle = ' class="language-coffeescript"';
+		$text      = '<h2>' . __( 'Overview Map', 'extensions-leaflet-map' ) . '</h2>';
 	}
 
 	$text = $text . '<p>' . __( 'Generates an overview map with geo positions provided in the pages and posts.', 'extensions-leaflet-map' ) . '</p>';
@@ -105,7 +108,7 @@ function leafext_overviewmap_help() {
 	$text = $text . leafext_html_table( $new );
 
 	$text = $text . '<h3>Shortcode</h3>
-  <pre><code>&#091;leaflet-map fitbounds]
+  <pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map fitbounds]
 &#091;overviewmap latlngs=... icons=... options= ...]
 // optional
 &#091;hover class=leafext-overview-tooltip]

@@ -110,6 +110,12 @@ function leafext_validate_markercluster_options( $options ) {
 
 // Helptext
 function leafext_markercluster_help_text() {
+	if ( is_singular() || is_archive() ) {
+		$codestyle = '';
+	} else {
+		leafext_enqueue_admin();
+		$codestyle = ' class="language-coffeescript"';
+	}
 	$text = '
 	<h2>Leaflet.markercluster</h2>
 	<img src="' . LEAFEXT_PLUGIN_PICTS . 'cluster.png" alt="cluster">
@@ -117,22 +123,22 @@ function leafext_markercluster_help_text() {
 
 	<h3>Shortcode</h3>
 	<h4>' . __( 'Create Map', 'extensions-leaflet-map' ) . '</h4>
-	<pre><code>&#091;leaflet-map ....]
+	<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map ....]
 </code></pre>
 <h4>' . __( 'and markers with leaflet-marker', 'extensions-leaflet-map' ) . '</h4>
-<pre><code>// many markers
+<pre' . $codestyle . '><code' . $codestyle . '>// many markers
 &#091;leaflet-marker lat=... lng=... ...]poi1&#091;/leaflet-marker]
 &#091;leaflet-marker lat=... lng=... ...]poi2&#091;/leaflet-marker]
 ...
 &#091;leaflet-marker lat=... lng=... ...]poixx&#091;/leaflet-marker]
 </code></pre>
 <h4>' . __( 'and/or with leaflet-gpx and/or leaflet-geojson', 'extensions-leaflet-map' ) . '</h4>
-<pre><code>&#091;leaflet-gpx src="url/to/....gpx" ...]{name}&#091;/leaflet-gpx]
+<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-gpx src="url/to/....gpx" ...]{name}&#091;/leaflet-gpx]
 </code></pre>
-<pre><code>&#091;leaflet-geojson src="url/to/....geojson" ...]{popup-text}&#091;/leaflet-geojson]
+<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-geojson src="url/to/....geojson" ...]{popup-text}&#091;/leaflet-geojson]
 </code></pre>
 <h4>' . __( 'Create cluster', 'extensions-leaflet-map' ) . '</h4>
-<pre><code>&#091;cluster]
+<pre' . $codestyle . '><code' . $codestyle . '>&#091;cluster]
 // or
 &#091;cluster option1=value1 option2 !option3 ...]
 &#091;zoomhomemap]

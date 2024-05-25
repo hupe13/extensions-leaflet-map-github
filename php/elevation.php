@@ -866,13 +866,6 @@ function leafext_elevation_script( $gpx, $settings ) {
 		controlElevation.load(track_options.url);
 
 		<?php
-		if ( $settings['chart'] === 'off' ) {
-			echo 'map.on("eledata_added", function(e) {
-				//console.log(controlElevation);
-				controlElevation._toggle();
-			});';
-		}
-
 		if ( $settings['track'] ) {
 			if ( $settings['track'] == 'filename' ) {
 				$path_parts = pathinfo( $gpx );
@@ -995,6 +988,9 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 			$options['closeBtn'] = true;
 		} else {
 			$options['closeBtn'] = false;
+		}
+		if ( $options['chart'] === 'off' ) {
+			$options['collapsed'] = true;
 		}
 
 		if ( isset( $options['wptIcons'] ) ) {

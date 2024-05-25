@@ -10,15 +10,18 @@ defined( 'ABSPATH' ) || die();
 
 function leafext_leafletsearch_help() {
 	if ( is_singular() || is_archive() ) {
-		$text = '';
+		$codestyle = '';
+		$text      = '';
 	} else {
-		$text = '<h2>Leaflet Control Search</h2>';
+		leafext_enqueue_admin();
+		$codestyle = ' class="language-coffeescript"';
+		$text      = '<h2>Leaflet Control Search</h2>';
 	}
 
 	$text = $text . '<p>' . esc_html__( 'A control for search Markers/Features location by custom property.', 'extensions-leaflet-map' ) . '</p>';
 
 	$text = $text . '<h3>Shortcode</h3><p>
-  <pre><code>&#091;leaflet-map fitbounds]
+  <pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map fitbounds]
 //any many
 &#091;leaflet-marker      ...] ... [/leaflet-marker]
 &#091;leaflet-extramarker ...] ... [/leaflet-extramarker]
@@ -73,7 +76,7 @@ function leafext_leafletsearch_help() {
 	$text = $text . '<p>' . sprintf( esc_html__( 'If you want the search field to be outside the map, define a div element with a custom html block on the post / page and give it an id. This id you then specify in option %s.', 'extensions-leaflet-map' ), 'container' ) . '</p>';
 	$text = $text . '<code>&lt;div id="myId" style="height:3em; border:2px solid gray; width:200px;">&lt;/div></code>';
 	$text = $text . '<p>' . esc_html__( 'Define some css:', 'extensions-leaflet-map' ) . '</p>';
-	$text = $text . '<pre><code>&lt;style>
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&lt;style>
 .leaflet-control-search.search-exp { border: none !important;}
 .search-input {width: 80%;}
 &lt;/style></code></pre>';

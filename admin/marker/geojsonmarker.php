@@ -9,9 +9,9 @@
 defined( 'ABSPATH' ) || die();
 
 function leafext_help_geojsonmarker() {
-
 	if ( is_singular() || is_archive() ) {
-		$server = map_deep( wp_unslash( $_SERVER ), 'sanitize_text_field' );
+		$codestyle = '';
+		$server    = map_deep( wp_unslash( $_SERVER ), 'sanitize_text_field' );
 		if ( strpos( $server['REQUEST_URI'], '/en/' ) !== false ) {
 			$lang = '/en';
 		} else {
@@ -21,6 +21,9 @@ function leafext_help_geojsonmarker() {
 		$cluster      = $lang . '/doku/markercluster/';
 		$extramarker  = $lang . '/doku/extramarker/';
 	} else {
+		leafext_enqueue_admin();
+		// $codestyle    = ' class="language-coffeescript"';
+		$codestyle    = '';
 		$featuregroup = '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=featuregroup';
 		$cluster      = '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=markercluster';
 		$extramarker  = '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=extramarker';
@@ -46,9 +49,9 @@ function leafext_help_geojsonmarker() {
 }</pre></p>';
 
 	$text = $text . '<h3>Shortcode</h3>';
-	$text = $text . '<pre><code>&#091;geojsonmarker property=<span style="color: #d63638">property</span> values=... iconprops=... icondefault=<span style="color: #4f94d4">blue</span> groups=... visible=... <i>cluster-options</i>]</code></pre>';
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;geojsonmarker property=<span style="color: #d63638">property</span> values=... iconprops=... icondefault=<span style="color: #4f94d4">blue</span> groups=... visible=... <i>cluster-options</i>]</code></pre>';
 
-	$text = $text . '<pre><code>&#091;geojsonmarker property=<span style="color: #d63638">property</span> auto <i>cluster-options</i>]</code></pre>';
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;geojsonmarker property=<span style="color: #d63638">property</span> auto <i>cluster-options</i>]</code></pre>';
 
 	$text = $text . '<h3>circleMarker</h3>';
 	$text = $text . sprintf(
@@ -59,7 +62,7 @@ function leafext_help_geojsonmarker() {
 		'<code>radius</code>',
 		'<code>leaflet-geojson</code>'
 	);
-	$text = $text . '<pre><code>&#091;leaflet-geojson src="//url/to/file.geojson" circleMarker color=<span style="color: #4f94d4">blue</span> radius=...]
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-geojson src="//url/to/file.geojson" circleMarker color=<span style="color: #4f94d4">blue</span> radius=...]
 &#091;geojsonmarker property=<span style="color: #d63638">property</span> icondefault=<span style="color: #4f94d4">blue</span> ...]</code></pre>';
 
 	$text = $text . '<h3>' . __( 'Marker with icon', 'extensions-leaflet-map' ) . '</h3>';
@@ -78,7 +81,7 @@ function leafext_help_geojsonmarker() {
 		'<code>iconurl</code>',
 		'<code>iconprops</code>'
 	)
-	. '<pre><code>&#091;leaflet-geojson src="//url/to/file.geojson" iconurl="//url/to/marker-icon-<span style="color: #4f94d4">blue</span>.png" iconsize=... iconanchor="..,.." popupanchor="..,.."  tooltipanchor="..,.." shadowurl="//url/to/marker-shadow.png" shadowsize=... shadowanchor=...]
+	. '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-geojson src="//url/to/file.geojson" iconurl="//url/to/marker-icon-<span style="color: #4f94d4">blue</span>.png" iconsize=... iconanchor="..,.." popupanchor="..,.."  tooltipanchor="..,.." shadowurl="//url/to/marker-shadow.png" shadowsize=... shadowanchor=...]
 &#091;geojsonmarker property=<span style="color: #d63638">property</span> values=... iconprops=... icondefault=<span style="color: #4f94d4">blue</span> ...]</code></pre>';
 
 	$text = $text . '<h3>Extramarker</h3>';
@@ -96,7 +99,7 @@ function leafext_help_geojsonmarker() {
 		'<code>markerColor</code>'
 	);
 
-	$text = $text . '<pre><code>&#091;leaflet-map fitbounds ...]
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map fitbounds ...]
 &#091;leaflet-geojson src="//url/to/file.geojson"]
 &#091;geojsonmarker property=<span style="color: #d63638">property</span> icondefault=<span style="color: #4f94d4">blue</span> markerColor=<span style="color: #4f94d4">blue</span> <i>extramarker-options</i>] ...</code></pre>';
 

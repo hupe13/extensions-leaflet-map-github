@@ -9,6 +9,12 @@
 defined( 'ABSPATH' ) || die();
 
 function leafext_help_tiles() {
+	if ( is_singular() || is_archive() ) {
+		$codestyle = '';
+	} else {
+		leafext_enqueue_admin();
+		$codestyle = ' class="language-coffeescript"';
+	}
 	if ( ! ( is_singular() || is_archive() ) ) { // backend
 		$tilesproviders = '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=tilesproviders';
 		$tileswitch     = '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=tileswitch';
@@ -66,7 +72,7 @@ function leafext_help_tiles() {
 	) . '</p>';
 
 	$text = $text . '<h2>Shortcode</h2>';
-	$text = $text . '<pre><code>&#091;leaflet-map mapid="..."]
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map mapid="..."]
 &#091;layerswitch tiles="mapid1,mapid2,..." mapids="mapid3,mapid4,..." providers="provider1,provider2,..." opacity="mapid1,provider1,..."]
 </code></pre>';
 	$text = $text . '

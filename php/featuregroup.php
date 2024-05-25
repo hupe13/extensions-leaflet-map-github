@@ -71,7 +71,7 @@ function leafext_featuregroup_function( $atts, $content, $shortcode ) {
 		);
 
 		if ( ( $options['values'] == '' || $options['groups'] == '' ) ) {
-			$text = "['.$shortcode.' ";
+			$text = '[' . $shortcode . ' ';
 			foreach ( $atts as $key => $item ) {
 				$text = $text . "$key=$item ";
 			}

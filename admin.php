@@ -97,6 +97,7 @@ function leafext_do_page() {
 		leafext_choropleth_help();
 	} elseif ( $active_tab == 'featuregroup' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/featuregroup.php';
+		leafext_help_featuregroup();
 	} elseif ( $active_tab == 'leafletsearch' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/leaflet-search.php';
 		leafext_leafletsearch_help();
