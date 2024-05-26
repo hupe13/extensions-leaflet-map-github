@@ -76,7 +76,7 @@ function leafext_targetmarker_help() {
 	. __( 'of the target geojson marker', 'extensions-leaflet-map' ) . '</li>
 	<li> value - <code>value</code> '
 	. __( 'of the target geojson marker', 'extensions-leaflet-map' ) . '</li>';
-	$text = $text . '<li> lat, lng - ' . __( 'latitude and longitude', 'extensions-leaflet-map' ) . '</li>';
+	$text = $text . '<li> lat, lng - ' . __( 'latitude and longitude of target', 'extensions-leaflet-map' ) . '</li>';
 	$text = $text . '<li> linktext - ';
 	$text = $text . __( 'text of the link. Default:', 'extensions-leaflet-map' ) . ' "Target"</li>';
 	$text = $text . '<li> popup - ';
