@@ -52,7 +52,7 @@ function leafext_form_overviewmap( $field ) {
 		echo ( ! $setting ) ? 'checked' : '';
 		echo '> false ';
 		// } else {
-		//  // others
+		// others
 	}
 }
 

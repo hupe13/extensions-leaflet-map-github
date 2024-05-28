@@ -182,6 +182,7 @@ function leafext_target_post_title_js(title,target,zoom,debug) {
 	map.whenReady(
 		function () {
 			leafext_target_marker_title_do( map,title,target,zoom,debug );
+			leafext_jump_to_map();
 		}
 	);
 }
@@ -273,6 +274,7 @@ function leafext_target_post_geojson_js(geojsonproperty,geojsonvalue,target,popu
 								leafext_target_geojson_do( geolayer,geojsonproperty,geojsonvalue,target,zoom,map,debug );
 							}
 						);
+						leafext_jump_to_map();
 					}
 				); // geojson ready// console.log(geojson);
 			}

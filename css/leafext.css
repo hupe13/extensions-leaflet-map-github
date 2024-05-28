@@ -55,3 +55,7 @@ https://github.com/Artuar/css-test-device-or-desktop */
 .leaflet-control-zoom-in {
 	text-decoration: none !important;
 }
+
+.targetlink {
+	display:inline;
+}

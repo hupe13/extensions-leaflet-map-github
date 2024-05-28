@@ -64,7 +64,7 @@ L.MarkerClusterGroup.include(
 						map.setView( layer.getLatLng(),layer.__parent._zoom );
 					}
 					// } else {
-					// 	console.log( "layer.__parent._childClusters nicht vorhanden" );
+					// console.log( "layer.__parent._childClusters nicht vorhanden" );
 				}
 				// changed end ****
 			}
@@ -97,7 +97,7 @@ function leafext_fitbounds_off(map) {
 			delete map._shouldFitBounds;
 		}
 		// } else {
-		// 	console.log( "map has no fitbounds" );
+		// console.log( "map has no fitbounds" );
 	}
 }
 
@@ -188,7 +188,7 @@ function leafext_jump_to_map() {
 }
 
 // function leafext_target_href(rand) {
-// 	if (document.getElementById("targetlink_"+rand).previousElementSibling.nodeName == "P") {
-// 		document.getElementById("targetlink_"+rand).previousElementSibling.style.display="inline-block";
-// 	}
+// if (document.getElementById("targetlink_"+rand).previousElementSibling.nodeName == "P") {
+// document.getElementById("targetlink_"+rand).previousElementSibling.style.display="inline-block";
+// }
 // }

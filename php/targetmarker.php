@@ -36,18 +36,6 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- no form
 		if ( $shortcode == 'targetmarker' ) {
 			$error = 'targetmarker error';
-			$get   = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
-			if ( count( $get ) > 0 && count( array_intersect_key( $get, $options ) ) > 0 ) {
-				// QUERY_STRING exists
-				$options['lat'] = isset( $get['lat'] ) ? filter_var( $get['lat'], FILTER_VALIDATE_FLOAT ) : '';
-				$options['lng'] = isset( $get['lng'] ) ? filter_var( $get['lng'], FILTER_VALIDATE_FLOAT ) : '';
-
-				if ( $options['lat'] != '' && $options['lng'] != '' ) {
-					// lat and Lng to a target page
-					return leafext_target_get_lanlng_script( $options );
-				}
-				$error = 'GET - lat lng missing';
-			} // GET end
 
 			if ( ! empty( $_POST ) && check_admin_referer( 'leafext_targetlink', 'leafext_targetlink_nonce' ) ) {
 				// var_dump( $_POST );
@@ -64,19 +52,31 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 				$error = 'POST - error';
 			} // POST end
 
+			$get = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
+			if ( count( $get ) > 0 && count( array_intersect_key( $get, $options ) ) > 0 ) {
+				// QUERY_STRING exists
+				$options['lat'] = isset( $get['lat'] ) ? filter_var( $get['lat'], FILTER_VALIDATE_FLOAT ) : '';
+				$options['lng'] = isset( $get['lng'] ) ? filter_var( $get['lng'], FILTER_VALIDATE_FLOAT ) : '';
+
+				if ( $options['lat'] != '' && $options['lng'] != '' ) {
+					// lat and Lng to a target page
+					return leafext_target_get_lanlng_script( $options );
+				}
+				$error = 'GET - lat lng missing';
+			} // GET end
+
 		} elseif ( $shortcode == 'targetlink' ) {
 			$error = 'targetlink error';
 			if ( $options['link'] != '' && $options['title'] != '' ) {
 				$rand = wp_rand( 1, 2000 );
-				$text = '<form id=targetlink_' . $rand . ' style="display: inline-block; method="post" action="' . esc_url( $options['link'] ) . '">';
+				$text = '<form id=targetlink_' . $rand . ' style="display: inline-block;" method="post" action="' . esc_url( $options['link'] ) . '">';
 				$text = $text . '<input type="hidden" name="title" value="' . wp_strip_all_tags( $options['title'] ) . '">';
 				$text = $text . wp_nonce_field( 'leafext_targetlink', 'leafext_targetlink_nonce' );
 				$text = $text . '<a href="javascript:;" onclick="parentNode.submit();">' . $options['linktext'] . '</a>';
 				$text = $text . '</form>';
 				$text = $text . '<script>';
 				$text = $text . 'if (document.getElementById("targetlink_' . $rand . '").previousElementSibling.nodeName == "P") {
-				document.getElementById("targetlink_' . $rand . '").previousElementSibling.style.display="inline-block";}';
-				// $text = $text.'leafext_target_href('.$rand.');';
+				document.getElementById("targetlink_' . $rand . '").previousElementSibling.classList.add("targetlink");}';
 				$text = $text . '</script>';
 				return $text;
 
@@ -86,12 +86,11 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 				$text = $text . '<input type="hidden" name="property" value="' . wp_strip_all_tags( $options['property'] ) . '">';
 				$text = $text . '<input type="hidden" name="value" value="' . wp_strip_all_tags( $options['value'] ) . '">';
 				$text = $text . wp_nonce_field( 'leafext_targetlink', 'leafext_targetlink_nonce', true, false );
-				$text = $text . '&nbsp;<a href="javascript:;" onclick="parentNode.submit();">' . $options['linktext'] . '</a>';
+				$text = $text . '<a href="javascript:;" onclick="parentNode.submit();">' . $options['linktext'] . '</a>';
 				$text = $text . '</form>';
 				$text = $text . '<script>';
 				$text = $text . 'if (document.getElementById("targetlink_' . $rand . '").previousElementSibling.nodeName == "P") {
-				document.getElementById("targetlink_' . $rand . '").previousElementSibling.style.display="inline-block";}';
-				// $text = $text.'leafext_target_href('.$rand.');';
+				document.getElementById("targetlink_' . $rand . '").previousElementSibling.classList.add("targetlink");}';
 				$text = $text . '</script>';
 				return $text;
 

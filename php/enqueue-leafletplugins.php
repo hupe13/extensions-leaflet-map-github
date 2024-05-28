@@ -8,8 +8,8 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-// define( 'LEAFEXT_MINI', '.min' );
-define( 'LEAFEXT_MINI', '' );
+define( 'LEAFEXT_MINI', '.min' );
+// define( 'LEAFEXT_MINI', '' );
 
 /**
  * Enqueue js and css from Leaflet plugins
@@ -440,6 +440,7 @@ function leafext_enqueue_targetmarker() {
 		null,
 		true
 	);
+	leafext_enqueue_css();
 }
 
 /**
