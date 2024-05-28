@@ -186,9 +186,3 @@ function leafext_jump_to_map() {
 	const element = document.getElementsByClassName( "leaflet-map" )[0];
 	element.scrollIntoView( { block: "center" } );
 }
-
-// function leafext_target_href(rand) {
-// if (document.getElementById("targetlink_"+rand).previousElementSibling.nodeName == "P") {
-// document.getElementById("targetlink_"+rand).previousElementSibling.style.display="inline-block";
-// }
-// }
