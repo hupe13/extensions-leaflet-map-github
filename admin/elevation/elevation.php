@@ -183,8 +183,8 @@ function leafext_ele_help_text() {
 	$text = $text . __( 'The elevation shortcode has many configuration options. Some things are not trivial. If you can\'t configure something, ask in the forum.', 'extensions-leaflet-map' );
 	$text = $text . '</p>';
 	$text = $text . '<h2>Shortcode</h2>
-	<pre' . $codestyle . '><code' . $codestyle . '>[leaflet-map ....]
-[elevation gpx="url_gpx_file" option1=value1 option2 !option3 ...]</code></pre>
+	<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map ....]
+&#091;elevation gpx="url_gpx_file" option1=value1 option2 !option3 ...]</code></pre>
 	<h3>' . __( 'Options', 'extensions-leaflet-map' ) . '</h3>
 	<p>';
 	$text = $text . __( 'For boolean values applies', 'extensions-leaflet-map' ) . ':<br>';

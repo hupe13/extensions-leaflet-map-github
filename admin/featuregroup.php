@@ -9,12 +9,12 @@
 defined( 'ABSPATH' ) || die();
 
 function leafext_help_featuregroup() {
-	// if ( is_singular() || is_archive() ) {
+	if ( is_singular() || is_archive() ) {
 		$codestyle = '';
-	// } else {
-	//  leafext_enqueue_admin();
-	//  $codestyle = ' class="language-coffeescript"';
-	// }
+	} else {
+		leafext_enqueue_admin();
+		$codestyle = ' class="language-coffeescript"';
+	}
 	$text      = '';
 	$admintext = '
 	<h2 id="leaflet.featuregroup.subgroup">Leaflet.FeatureGroup.SubGroup</h2>
@@ -40,7 +40,7 @@ function leafext_help_featuregroup() {
 	. '</p>';
 
 	$text = $text . '<h3>Shortcode</h3>
-  <pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map fitbounds]
+  <pre><code>&#091;leaflet-map fitbounds]
 //any many
 &#091;leaflet-marker      ...] ... &#091;/leaflet-marker]
 &#091;leaflet-extramarker ...] ... &#091;/leaflet-extramarker]
@@ -241,7 +241,7 @@ function leafext_help_featuregroup() {
 
 	</ul></p>';
 
-	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-optiongroup option="..." values="..., ..." groups="..., ..." visible=...]
+	$text = $text . '<pre><code>&#091;leaflet-optiongroup option="..." values="..., ..." groups="..., ..." visible=...]
 &#091;leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." visible=...]</code></pre>';
 
 	$text = $text . '<h3>Groups unknown ' . __( 'and', 'extensions-leaflet-map' ) . ' others</h3><p>' .

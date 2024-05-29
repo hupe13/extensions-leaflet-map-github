@@ -215,7 +215,7 @@ function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 		}
 	}
 	// var_dump($catposts);
-	if ( ! empty( $catposts ) ) {
+	if ( $category != '' ) {
 		return $catposts;
 	}
 	// var_dump($pageposts);

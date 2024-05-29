@@ -155,7 +155,7 @@ function leafext_clustergroup_help_text() {
 //any more leaflet-geojson
 &#091;markerclustergroup feat="iconUrl" strings="red,green" groups="rot,gruen" visible=...]</code></pre>'
 					. __( 'or', 'extensions-leaflet-map' ) .
-	'<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-geojson src="..."  ... ] ... &#091;/leaflet-geojson]
+	'<pre><code>&#091;leaflet-geojson src="..."  ... ] ... &#091;/leaflet-geojson]
 //any more leaflet-geojson
 &#091;markerclustergroup feat="properties.<span style="color: #d63638">prop0</span>" strings="<span style="color: #4f94d4">value0</span>,..." groups="Description0,..." visible=...]</code></pre>
 <h3>groups unknown ' . __( 'and', 'extensions-leaflet-map' ) . ' others</h3><p>' .

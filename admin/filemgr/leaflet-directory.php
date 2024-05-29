@@ -9,12 +9,18 @@
 defined( 'ABSPATH' ) || die();
 
 function leafext_directory_help_text() {
+	if ( is_singular() || is_archive() ) {
+		$codestyle = '';
+	} else {
+		leafext_enqueue_admin();
+		$codestyle = ' class="language-coffeescript"';
+	}
 	$text = '<h3>' . __( 'Tracks from all files in a directory', 'extensions-leaflet-map' ) . '</h3>' . "\n";
-	$text = $text . '<pre><code>&#091;leaflet-map fitbounds]' . "\n";
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map fitbounds]' . "\n";
 	$text = $text . '&#091;leaflet-directory url="..." src="..." elevation]' . "\n";
 	$text = $text . '&#091;multielevation]</code></pre>';
 
-	$text = $text . '<pre><code>&#091;leaflet-map fitbounds]' . "\n";
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map fitbounds]' . "\n";
 	$text = $text . '&#091;leaflet-directory url="..." src="..." leaflet type="..." start]</code></pre>';
 
 	$text = $text . '<ul>

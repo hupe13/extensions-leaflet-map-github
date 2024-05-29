@@ -15,7 +15,7 @@ function leafext_help_hidemarkers() {
 		leafext_enqueue_admin();
 		$codestyle = ' class="language-coffeescript"';
 	}
-	$text = '<h3>Hide Markers</h3>
+	$text = '<h3>' . __( 'Hide Markers', 'extensions-leaflet-map' ) . '</h3>
 	<p>' . __( 'If a GPX track loaded with leaflet-gpx contains waypoints that you do not want to display', 'extensions-leaflet-map' ) . '.</p>
 	<pre' . $codestyle . '><code' . $codestyle . '>[leaflet-map ...]
 [leaflet-gpx src="//url/to/file.gpx" ... ]
