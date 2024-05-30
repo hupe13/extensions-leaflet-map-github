@@ -32,11 +32,11 @@ function leafext_form_elevation( $field ) {
 	$setting  = $settings[ $field ];
 	$name_id  = 'leafext_eleparams[' . $option['param'] . ']';
 
-	if ( $option['desc'] != '' ) {
+	if ( $option['desc'] !== '' ) {
 		echo '<p>' . wp_kses_post( $option['desc'] ) . '</p>';
 	}
 
-	if ( $option['param'] != 'testing' ) {
+	if ( $option['param'] !== 'testing' ) {
 		echo wp_kses_post( __( 'You can change it for each map with', 'extensions-leaflet-map' ) . ' <code>' . $option['param'] . '</code><br>' );
 	}
 
@@ -48,14 +48,14 @@ function leafext_form_elevation( $field ) {
 	// var_dump(gettype($option['values']));
 	switch ( gettype( $option['values'] ) ) {
 		case 'string':   // z.B. Height
-			if ( $setting != $option['default'] ) {
+			if ( $setting !== $option['default'] ) {
 				echo wp_kses_post( __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $option['default'] . '<br>' );
 			}
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo '<input ' . $disabled . 'name="' . $name_id . '" value="' . $setting . '" ' . $option['values'] . '/>';
 			break;
 		case 'integer': // true/false
-			if ( $setting != $option['default'] ) {
+			if ( $setting !== $option['default'] ) {
 				// var_dump($setting,$option['default']);
 				echo esc_html__( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
 				echo $option['default'] ? 'true' : 'false';
@@ -73,7 +73,7 @@ function leafext_form_elevation( $field ) {
 		case 'array':  // array of Values
 			$plugindefault = is_string( $option['default'] ) ? $option['default'] : ( $option['default'] ? '1' : '0' );
 			$setting       = is_string( $setting ) ? $setting : ( $setting ? '1' : '0' );
-			if ( $setting != $plugindefault ) {
+			if ( $setting !== $plugindefault ) {
 				echo wp_kses_post( __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault . '<br>' );
 			}
 			if ( ! current_user_can( 'manage_options' ) ) {
@@ -115,10 +115,10 @@ function leafext_validate_ele_options( $options ) {
 			}
 			$params = get_option( 'leafext_eleparams', $defaults );
 			foreach ( $options as $key => $value ) {
-				if ( $key == 'height' && $value == '' ) {
+				if ( $key === 'height' && $value === '' ) {
 					continue;
 				}
-				if ( $key == 'width' && $value == '' ) {
+				if ( $key === 'width' && $value === '' ) {
 					continue;
 				}
 				$params[ $key ] = $value;
@@ -167,7 +167,7 @@ function leafext_ele_help_text() {
 			'extensions-leaflet-map'
 		),
 		'<code>[leaflet-...]</code>',
-		'<code>[elevation]</code>'
+		'<code>&#091;elevation]</code>'
 	);
 	$text = $text . ' ';
 	$text = $text . sprintf(
@@ -176,7 +176,7 @@ function leafext_ele_help_text() {
 			'The %1$s parameter is called %2$s, but it works with gpx, kml, geojson and tcx files.',
 			'extensions-leaflet-map'
 		),
-		'<code>[elevation]</code>',
+		'<code>&#091;elevation]</code>',
 		'<code>gpx</code>'
 	);
 	$text = $text . '<p>';
@@ -263,9 +263,9 @@ function leafext_ele_help_chart() {
 	$options   = leafext_elevation_settings( array( 'changeable' ) );
 	$summary   = $options['summary'];
 	$span_off  = '</span>';
-	$sum_on    = ( $options['summary'] == '0' ) ? '<span style="color: #c3c4c7">' : '<span>';
-	$leg_on    = ( $options['legend'] == '0' ) ? '<span style="color: #c3c4c7">' : '<span>';
-	$marker_on = ( $options['marker'] != 'elevation-line' ) ? '<span style="color: #c3c4c7">' : '<span>';
+	$sum_on    = ( $options['summary'] === '0' ) ? '<span style="color: #c3c4c7">' : '<span>';
+	$leg_on    = ( $options['legend'] === '0' ) ? '<span style="color: #c3c4c7">' : '<span>';
+	$marker_on = ( $options['marker'] !== 'elevation-line' ) ? '<span style="color: #c3c4c7">' : '<span>';
 	echo wp_kses_post(
 		'
 	<figure class="wp-block-table aligncenter is-style-stripes">
@@ -283,12 +283,12 @@ function leafext_ele_help_chart() {
 	<td style="text-align:center"> </td>
 	<td style="text-align:center">'
 	);
-	if ( $leg_on != '' ) {
+	if ( $leg_on !== '' ) {
 		echo esc_html__( 'Your setting:', 'extensions-leaflet-map' ) . '<br>';
 	}
 	echo '<code>legend="0"</code></td>
 	<td style="text-align:center">';
-	if ( $leg_on == '' ) {
+	if ( $leg_on === '' ) {
 		echo esc_html__( 'Your setting:', 'extensions-leaflet-map' ) . '<br>';
 	}
 	echo wp_kses_post(
@@ -296,7 +296,7 @@ function leafext_ele_help_chart() {
 	<td style="text-align:center"><img src="' . LEAFEXT_PLUGIN_PICTS . 'yachse.png" alt="yachse"></td>
 	<td style="text-align:center">'
 	);
-	if ( $marker_on != '' ) {
+	if ( $marker_on !== '' ) {
 		echo wp_kses_post( __( 'Your setting:', 'extensions-leaflet-map' ) . '<br><code>marker="' . $options['marker'] . '"</code><br>' );
 	}
 	echo wp_kses_post(

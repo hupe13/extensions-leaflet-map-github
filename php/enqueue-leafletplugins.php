@@ -478,7 +478,7 @@ function leafext_enqueue_awesome() {
 add_filter(
 	'pre_do_shortcode_tag',
 	function ( $output, $shortcode, $attr ) {
-		if ( 'leaflet-marker' == $shortcode ) {
+		if ( 'leaflet-marker' === $shortcode ) {
 			if ( isset( $attr['iconclass'] ) && str_contains( $attr['iconclass'], 'dashicons' ) ) {
 				wp_enqueue_style( 'dashicons' );
 			}
@@ -495,7 +495,7 @@ add_filter(
 	function ( $block_content, $block ) {
 		if ( $block['blockName'] === 'core/shortcode' ) {
 			$shortcodes = array( 'leaflet-map', 'leaflet-marker', 'leaflet-extramarker' );
-			$match      = ( str_replace( $shortcodes, '', $block['innerHTML'] ) != $block['innerHTML'] );
+			$match      = ( str_replace( $shortcodes, '', $block['innerHTML'] ) !== $block['innerHTML'] );
 			if ( $match ) {
 				return htmlspecialchars_decode( $block['innerHTML'] );
 			}
@@ -551,7 +551,7 @@ function leafext_enqueue_js() {
 }
 
 function leafext_enqueue_leafext( $file, $dep = '' ) {
-	if ( $dep == '' ) {
+	if ( $dep === '' ) {
 		$deps = array( 'wp_leaflet_map' );
 	} else {
 		$deps = array( 'wp_leaflet_map', $dep );

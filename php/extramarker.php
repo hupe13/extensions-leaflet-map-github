@@ -175,7 +175,7 @@ function leafext_extramarker_filter() {
 // Shortcode: [leaflet-extramarker]
 function leafext_extramarker_function( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
-	if ( $text != '' ) {
+	if ( $text !== '' ) {
 		return $text;
 	} else {
 		leafext_enqueue_extramarker();
@@ -229,10 +229,10 @@ function leafext_extramarkers_params( $params ) {
 	$text = '';
 
 	foreach ( $params as $k => $v ) {
-		if ( $k == 'lat' || $k == 'lng' ) {
+		if ( $k === 'lat' || $k === 'lng' ) {
 			continue;
 		}
-		if ( $v == '' ) {
+		if ( $v === '' ) {
 			continue;
 		}
 		$text = $text . "$k: ";

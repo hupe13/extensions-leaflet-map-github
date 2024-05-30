@@ -39,7 +39,7 @@ function leafext_form_multielevation( $field ) {
 	if ( isset( $option['next'] ) ) {
 		echo '<div style="border-top: ' . esc_html( $option['next'] ) . 'px solid #646970"></div>';
 	}
-	if ( $option['desc'] != '' ) {
+	if ( $option['desc'] !== '' ) {
 		echo '<p>' . wp_kses_post( $option['desc'] ) . '</p>';
 	}
 
@@ -48,7 +48,7 @@ function leafext_form_multielevation( $field ) {
 	if ( is_array( $option['values'] ) ) {
 		$plugindefault = is_string( $option['default'] ) ? $option['default'] : ( $option['default'] ? '1' : '0' );
 		$setting       = is_string( $setting ) ? $setting : ( $setting ? '1' : '0' );
-		if ( $setting != $plugindefault ) {
+		if ( $setting !== $plugindefault ) {
 			// var_dump("Option: ",$option['default'],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
 			echo esc_html( __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault ) . '<br>';
 		}
@@ -67,7 +67,7 @@ function leafext_form_multielevation( $field ) {
 		}
 		echo '</select>';
 
-	} elseif ( $option['values'] == 'color' ) {
+	} elseif ( $option['values'] === 'color' ) {
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_script( 'wp-color-picker' );
 		wp_enqueue_script(
@@ -78,7 +78,7 @@ function leafext_form_multielevation( $field ) {
 			true
 		);
 
-		if ( $setting != $option['default'] ) {
+		if ( $setting !== $option['default'] ) {
 			// var_dump($setting,$option['default']);
 			echo esc_html( __( 'Plugins Default', 'extensions-leaflet-map' ) . ': ' . $option['default'] ) . '<br>';
 		}
@@ -94,7 +94,7 @@ function leafext_form_multielevation( $field ) {
 		// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 	} else {
 
-		if ( $setting != $option['default'] ) {
+		if ( $setting !== $option['default'] ) {
 			// var_dump($setting,$option['default']);
 			echo esc_html__( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
 			echo $option['default'] ? 'true' : 'false';

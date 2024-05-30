@@ -25,7 +25,7 @@ function leafext_form_overviewmap( $field ) {
 	$option   = leafext_array_find2( $field, $options );
 	$settings = overviewmap_admin_settings();
 	$setting  = $settings[ $field ];
-	if ( $option['desc'] != '' ) {
+	if ( $option['desc'] !== '' ) {
 		echo '<p>' . wp_kses_post( $option['desc'] ) . '</p>';
 	}
 	// echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option['param']. '</code><br>';
@@ -37,7 +37,7 @@ function leafext_form_overviewmap( $field ) {
 	}
 
 	if ( ! is_array( $option['values'] ) ) {
-		if ( $setting != $option['default'] ) {
+		if ( $setting !== $option['default'] ) {
 			// var_dump($setting,$option['default']);
 			echo esc_html__( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
 			echo $option['default'] ? 'true' : 'false';

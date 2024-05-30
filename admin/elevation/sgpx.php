@@ -31,14 +31,14 @@ function leafext_form_sgpx( $field ) {
 	if ( isset( $option['next'] ) ) {
 		echo '<div style="border-top: ' . esc_html( $option['next'] ) . 'px solid #646970"></div>';
 	}
-	if ( $option['desc'] != '' ) {
+	if ( $option['desc'] !== '' ) {
 		echo '<p>' . wp_kses_post( $option['desc'] ) . '</p>';
 	}
 
 	// echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option['param']. '</code><br>';
 	if ( ! is_array( $option['values'] ) ) {
 
-		if ( $setting != $option['default'] ) {
+		if ( $setting !== $option['default'] ) {
 			// var_dump($setting,$option['default']);
 			echo esc_html__( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
 			echo $option['default'] ? 'true' : 'false';
@@ -56,7 +56,7 @@ function leafext_form_sgpx( $field ) {
 	} else {
 		$plugindefault = is_string( $option['default'] ) ? $option['default'] : ( $option['default'] ? '1' : '0' );
 		$setting       = is_string( $setting ) ? $setting : ( $setting ? '1' : '0' );
-		if ( $setting != $plugindefault ) {
+		if ( $setting !== $plugindefault ) {
 			// var_dump("Option: ",$option['default'],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
 			echo esc_html( __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault ) . '<br>';
 		}
@@ -105,7 +105,7 @@ function leafext_form_sgpx_unclean_db() {
 function leafext_validate_sgpx_unclean_db() {
 	if ( ! empty( $_POST ) && check_admin_referer( 'leafext_elevation', 'leafext_elevation_nonce' ) ) {
 		if ( isset( $_POST['delete'] ) ) {
-			if ( $_POST['delete'] == esc_html__( 'Delete all settings from wp-gpx-maps!', 'extensions-leaflet-map' ) ) {
+			if ( $_POST['delete'] === esc_html__( 'Delete all settings from wp-gpx-maps!', 'extensions-leaflet-map' ) ) {
 				global $wpdb;
 				// phpcs:ignore
 				$option_names = $wpdb->get_results( "SELECT option_name FROM $wpdb->options WHERE option_name LIKE 'wpgpxmaps_%' " );

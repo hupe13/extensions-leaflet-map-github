@@ -30,7 +30,7 @@ function leafext_parentgroup_script( $parentgroup, $childs, $grouptext, $visible
 
 function leafext_parentgroup_function( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
-	if ( $text != '' ) {
+	if ( $text !== '' ) {
 		return $text;
 	} else {
 		// var_dump($atts); wp_die();
@@ -55,9 +55,9 @@ function leafext_parentgroup_function( $atts, $content, $shortcode ) {
 			$cl_on = array_fill( 0, count( $childs ), '1' );
 		} else {
 			$cl_on = array_map( 'trim', explode( ',', $options['visible'] ) );
-			if ( count( $cl_on ) == 1 ) {
+			if ( count( $cl_on ) === 1 ) {
 				$cl_on = array_fill( 0, count( $childs ), '0' );
-			} elseif ( count( $childs ) != count( $cl_on ) ) {
+			} elseif ( count( $childs ) !== count( $cl_on ) ) {
 					$text = "['.$shortcode.' ";
 				foreach ( $atts as $key => $item ) {
 					$text = $text . "$key=$item ";

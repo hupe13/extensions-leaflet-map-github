@@ -47,7 +47,7 @@ function leafext_gesture_settings() {
 }
 
 function leafext_gestures_lang( $options ) {
-	if ( $options['lang'] == 'Site' ) {
+	if ( $options['lang'] === 'Site' ) {
 		$lang = get_bloginfo( 'language' );
 	} elseif ( isset( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) ) {
 		$server = map_deep( wp_unslash( $_SERVER ), 'sanitize_text_field' );
@@ -86,7 +86,7 @@ function leafext_gestures_script( $lang ) {
 				if ( map.scrollWheelZoom.enabled() || ( map.dragging.enabled() && L.Browser.mobile ) ) {
 					console.log(i,"enabled");
 					<?php
-					if ( $lang != '' ) {
+					if ( $lang !== '' ) {
 						?>
 						map.options.gestureHandlingOptions = {
 							locale: "<?php echo $lang; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>", // set language of the warning message.
@@ -118,7 +118,7 @@ function leafext_gesture_script( $lang ) {
 		if ( map.scrollWheelZoom.enabled() || ( map.dragging.enabled() && L.Browser.mobile ) ) {
 			//console.log("enabled");
 			<?php
-			if ( $lang != '' ) {
+			if ( $lang !== '' ) {
 				?>
 				map.options.gestureHandlingOptions = {
 					locale: "<?php echo $lang; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>", // set language of the warning message.
@@ -154,7 +154,7 @@ add_filter(
 		if ( ! isset( $leafext_gesture_loaded ) ) {
 			$leafext_gesture_loaded = true;
 		}
-		if ( 'leaflet-map' == $shortcode && $leafext_gesture_loaded ) {
+		if ( 'leaflet-map' === $shortcode && $leafext_gesture_loaded ) {
 			leafext_gestures_function();
 			$leafext_gesture_loaded = false;
 		}
@@ -166,7 +166,7 @@ add_filter(
 
 function leafext_gestures_shortcode() {
 	$text = leafext_should_interpret_shortcode( 'gestures', 0 );
-	if ( $text != '' ) {
+	if ( $text !== '' ) {
 		return $text;
 	} else {
 		$options = leafext_gesture_settings();

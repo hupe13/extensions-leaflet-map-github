@@ -61,7 +61,7 @@ function leafext_form_maps() {
 			$option['options'] = '';
 		}
 		echo '<td>';
-		if ( $option['options'] == '' ) {
+		if ( $option['options'] === '' ) {
 			echo esc_html__( 'The syntax is not checked!', 'extensions-leaflet-map' ) . '<br>';
 		}
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -76,7 +76,7 @@ function leafext_form_maps() {
 		if ( ! isset( $option['overlay'] ) ) {
 			$option['overlay'] = '0';
 		}
-		$checked = $option['overlay'] == '1' ? 'checked' : '';
+		$checked = $option['overlay'] === '1' ? 'checked' : '';
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<td><input ' . $disabled . ' type="checkbox" name="leafext_maps[' . $i . '][overlay]" value="1" ' . $checked . '/>';
 		echo '</td></tr>';
@@ -85,7 +85,7 @@ function leafext_form_maps() {
 		if ( ! isset( $option['opacity'] ) ) {
 			$option['opacity'] = '0';
 		}
-		$checked = $option['opacity'] == '1' ? 'checked' : '';
+		$checked = $option['opacity'] === '1' ? 'checked' : '';
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '<td><input ' . $disabled . ' type="checkbox" name="leafext_maps[' . $i . '][opacity]" value="1" ' . $checked . '/>';
 
@@ -100,7 +100,7 @@ function leafext_form_maps() {
 function leafext_validate_mapswitch( $options ) {
 		$maps = array();
 	foreach ( $options as $option ) {
-		if ( $option['mapid'] != '' ) {
+		if ( $option['mapid'] !== '' ) {
 			$map            = array();
 			$map['mapid']   = sanitize_text_field( $option['mapid'] );
 			$map['attr']    = wp_kses_normalize_entities( $option['attr'] );

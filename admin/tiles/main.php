@@ -34,7 +34,7 @@ function leafext_tiles_tab() {
 
 	foreach ( $tabs as $tab ) {
 		$textheader = $textheader . '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=' . $tab['tab'] . '" class="nav-tab';
-		$active     = ( $active_tab == $tab['tab'] ) ? ' nav-tab-active' : '';
+		$active     = ( $active_tab === $tab['tab'] ) ? ' nav-tab-active' : '';
 		$textheader = $textheader . $active;
 		$textheader = $textheader . '">' . $tab['title'] . '</a>' . "\n";
 	}
@@ -44,12 +44,12 @@ function leafext_tiles_tab() {
 }
 
 function leafext_admin_tiles( $active_tab ) {
-	if ( $active_tab == 'tiles' ) {
+	if ( $active_tab === 'tiles' ) {
 		echo '<h2>' . wp_kses_post( leafext_tiles_tab() ) . '</h2>';
 		include LEAFEXT_PLUGIN_DIR . '/admin/tiles/help.php';
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo ( leafext_help_tiles() );
-	} elseif ( $active_tab == 'tileswitch' ) {
+	} elseif ( $active_tab === 'tileswitch' ) {
 		echo '<h2>' . wp_kses_post( leafext_tiles_tab() ) . '</h2>';
 		if ( current_user_can( 'manage_options' ) ) {
 			echo '<form method="post" action="options.php">';
@@ -63,7 +63,7 @@ function leafext_admin_tiles( $active_tab ) {
 			submit_button();
 		}
 		echo '</form>';
-	} elseif ( $active_tab == 'tilesproviders' ) {
+	} elseif ( $active_tab === 'tilesproviders' ) {
 		echo '<h2>' . wp_kses_post( leafext_tiles_tab() ) . '</h2>';
 		if ( current_user_can( 'manage_options' ) ) {
 			echo '<form method="post" action="options.php">';

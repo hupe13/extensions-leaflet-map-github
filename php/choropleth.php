@@ -61,7 +61,7 @@ function leafext_choropleth_script( $atts, $content ) {
 
 function leafext_choropleth_function( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
-	if ( $text != '' ) {
+	if ( $text !== '' ) {
 		return $text;
 	} else {
 		leafext_enqueue_leafext( 'choropleth' );
@@ -74,7 +74,7 @@ function leafext_choropleth_function( $atts, $content, $shortcode ) {
 		// var_dump($params,$defaults);
 		$options          = shortcode_atts( $defaults, leafext_clear_params( $atts ) );
 		$options['scale'] = str_replace( ' ', '', $options['scale'] );
-		if ( $content == '' ) {
+		if ( $content === '' ) {
 			$content = $options['valueproperty'] . ': {' . $options['valueproperty'] . '}';
 		}
 		$content = str_replace( '{', '+{', $content );

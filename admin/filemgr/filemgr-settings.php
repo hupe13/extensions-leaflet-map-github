@@ -82,11 +82,11 @@ function leafext_form_filemgr( $field ) {
 	$option   = leafext_array_find2( $field, $options );
 	$settings = leafext_filemgr_settings();
 	$setting  = $settings[ $field ];
-	if ( $option['desc'] != '' ) {
+	if ( $option['desc'] !== '' ) {
 		echo '<p>' . esc_html( $option['desc'] ) . '</p>';
 	}
 
-	if ( $field == 'types' ) {
+	if ( $field === 'types' ) {
 		foreach ( $option['values'] as $typ ) {
 			$checked = in_array( $typ, $setting, true ) ? ' checked ' : '';
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -95,7 +95,7 @@ function leafext_form_filemgr( $field ) {
 			echo ' <label for="' . $typ . '" >' . $typ . '</label> ';
 		}
 	} else {
-		if ( $setting != $option['default'] ) {
+		if ( $setting !== $option['default'] ) {
 			// var_dump($setting,$option['default']);
 			echo esc_html__( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
 			echo $option['default'] ? 'true' : 'false';

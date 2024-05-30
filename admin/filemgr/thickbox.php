@@ -20,10 +20,10 @@ function leafext_thickbox( $track ) {
 	$upload_url  = $upload_dir['baseurl'];
 	$path_parts  = pathinfo( $track );
 	$type        = strtolower( $path_parts['extension'] );
-	if ( 'kml' != $type && 'gpx' != $type && 'geojson' != $type && 'json' != $type ) {
+	if ( 'kml' !== $type && 'gpx' !== $type && 'geojson' !== $type && 'json' !== $type ) {
 		return;
 	}
-	if ( $type == 'json' ) {
+	if ( $type === 'json' ) {
 		$type = 'geojson';
 	}
 		echo '<div class="attachment-info"><div class="details"><h2>';
@@ -46,10 +46,10 @@ function leafext_thickbox( $track ) {
 	echo '</p></div>';
 
 	$data = '';
-	if ( 'gpx' == $type ) {
+	if ( 'gpx' === $type ) {
 		$data = leafext_get_gpx_data( $upload_path . $track );
 	}
-	if ( 'kml' == $type ) {
+	if ( 'kml' === $type ) {
 		$data = leafext_get_kml_data( $upload_path . $track );
 	}
 	if ( is_array( $data ) ) {

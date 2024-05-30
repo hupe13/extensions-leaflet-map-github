@@ -147,7 +147,7 @@ function leafext_marker_options() {
 function leafext_extramarker_options() {
 	$extramarker_options = array();
 	foreach ( leafext_extramarker_params() as $param ) {
-		if ( $param['param'] != 'lat' && $param['param'] != 'lng' ) {
+		if ( $param['param'] !== 'lat' && $param['param'] !== 'lng' ) {
 			$extramarker_options[] = $param['param'];
 		}
 	}
@@ -215,7 +215,7 @@ function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 		}
 	}
 	// var_dump($catposts);
-	if ( $category != '' ) {
+	if ( $category !== '' ) {
 		return $catposts;
 	}
 	// var_dump($pageposts);
@@ -261,7 +261,7 @@ function leafext_get_overview_data( $post, $overview_options ) {
 	//
 	// check if post has a thumnail
 	$overview_data['thumbnail'] = '';
-	if ( $overview_options['show_thumbnails'] == true ) {
+	if ( $overview_options['show_thumbnails'] === true ) {
 		if ( has_post_thumbnail( $post->ID ) ) {
 			$overview_data['thumbnail'] = get_the_post_thumbnail( $post->ID, array( 75, 75 ), array( 'loading' => false ) );
 		}
@@ -269,7 +269,7 @@ function leafext_get_overview_data( $post, $overview_options ) {
 	//
 	// categories
 	$overview_data['categories'] = '';
-	if ( $overview_options['show_category'] == true ) {
+	if ( $overview_options['show_category'] === true ) {
 		$overview_data['categories'] = get_the_category_list( ', ', '', $post->ID );
 	}
 	//
@@ -283,10 +283,10 @@ function leafext_get_overview_data( $post, $overview_options ) {
 	// var_dump($leaflet_latlng);
 	$leaflet_latlng = preg_replace( '/\s+/', ' ', $leaflet_latlng ); // doppelte Leerzeichen entfernen
 	$latlng         = explode( ' ', $leaflet_latlng );
-	if ( count( $latlng ) != 2 ) {
+	if ( count( $latlng ) !== 2 ) {
 		$latlng = explode( ',', $leaflet_latlng );
 	}
-	if ( count( $latlng ) == 2 ) {
+	if ( count( $latlng ) === 2 ) {
 		if ( strpos( $leaflet_latlng, '=' ) !== false ) {
 			$latlng_atts = shortcode_parse_atts( $leaflet_latlng );
 			// var_dump($latlng_atts);
@@ -307,7 +307,7 @@ function leafext_get_overview_data( $post, $overview_options ) {
 		$leaflet_latlng = '*';
 	}
 	$overview_data['latlng'] = $leaflet_latlng;
-	if ( $overview_data['latlng'] == $overview_data['latlng-orig'] ) {
+	if ( $overview_data['latlng'] === $overview_data['latlng-orig'] ) {
 		$overview_data['latlng-orig'] = '';
 	}
 	//
@@ -324,7 +324,7 @@ function leafext_ovm_setup_icon( $overview_data, $atts ) {
 	$iconerror          = '';
 	$pathinfo           = array();
 	$iconoptions        = leafext_marker_options();
-	if ( $overview_data['icon'] != '' ) {
+	if ( $overview_data['icon'] !== '' ) {
 		// var_dump($overview_data['icon']);
 		$params = array();
 		if ( strpos( $overview_data['icon'], 'leaflet-extramarker' ) === 0 ) { // beginnt mit leaflet-extramarker
@@ -419,12 +419,12 @@ function leafext_ovm_setup_icon( $overview_data, $atts ) {
 function leafext_ovm_setup_leafletmarker( $overview_data, $atts ) {
 
 	// check if post has a thumnail
-	if ( $overview_data['thumbnail'] != '' ) {
+	if ( $overview_data['thumbnail'] !== '' ) {
 		$overview_data['thumbnail'] = '<div class="leafext-overview-popup-img">' . $overview_data['thumbnail'] . '</div>';
 	}
 	//
 	// categories
-	if ( $overview_data['categories'] != '' ) {
+	if ( $overview_data['categories'] !== '' ) {
 		$overview_data['categories'] = '<div class="leafext-overview-popup-cat">' . $overview_data['categories'] . '</div>';
 	}
 	//
@@ -435,10 +435,10 @@ function leafext_ovm_setup_leafletmarker( $overview_data, $atts ) {
 	list($leaflet_marker_cmd, $markeroptions, $overview_data['iconerror']) = leafext_ovm_setup_icon( $overview_data, $atts );
 	//
 	// latlng
-	if ( $overview_data['latlng'] == '*' ) {
+	if ( $overview_data['latlng'] === '*' ) {
 		$leaflet_marker_cmd = '**' . $leaflet_marker_cmd;
 	}
-	if ( $overview_data['thumbnail'] == '' || $overview_data['categories'] == '' ) {
+	if ( $overview_data['thumbnail'] === '' || $overview_data['categories'] === '' ) {
 		$popupcss = 'leafext-overview-popup-one';
 	} else {
 		$popupcss = 'leafext-overview-popup';
@@ -450,7 +450,7 @@ function leafext_ovm_setup_leafletmarker( $overview_data, $atts ) {
 	$overview_data['categories'] .
 	'</div>' .
 	'[/' . $leaflet_marker_cmd . ']';
-	if ( $overview_data['latlng'] == '*' ) {
+	if ( $overview_data['latlng'] === '*' ) {
 		echo '<script>console.log("' . esc_js( __( 'Error - please check overviewmap data: Some data are wrong.', 'extensions-leaflet-map' ) ) . '");</script>';
 		return '';
 	} else {
@@ -471,7 +471,7 @@ function leafext_overview_debug( $overview_data, $post ) {
 // Shortcode für Wegpunkte aus Posts:
 function leafext_overviewmap_function( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
-	if ( $text != '' ) {
+	if ( $text !== '' ) {
 		return $text;
 	} else {
 		leafext_enqueue_overview();
@@ -487,7 +487,7 @@ function leafext_overviewmap_function( $atts, $content, $shortcode ) {
 		$overview_options = shortcode_atts( $defaults, leafext_clear_params( $atts ) );
 		// var_dump($overview_options);
 
-		if ( $overview_options['category'] != '' && strpos( $overview_options['category'], ',' ) !== false ) {
+		if ( $overview_options['category'] !== '' && strpos( $overview_options['category'], ',' ) !== false ) {
 			$overview_options['category'] = explode( ',', esc_sql( $overview_options['category'] ) );
 		}
 		$pageposts = leafext_overview_wpdb_query( esc_sql( $overview_options['latlngs'] ), $overview_options['category'] );
@@ -498,14 +498,14 @@ function leafext_overviewmap_function( $atts, $content, $shortcode ) {
 			$debugtable = array();
 			foreach ( $pageposts as $post ) {
 				$overview_data = leafext_get_overview_data( $post, $overview_options );
-				if ( $overview_options['debug'] == true ) {
+				if ( $overview_options['debug'] === true ) {
 					$debugtable[] = leafext_overview_debug( $overview_data, $post );
 				} else {
 					$leaflet_marker_code = leafext_ovm_setup_leafletmarker( $overview_data, $atts );
 					$text                = $text . do_shortcode( $leaflet_marker_code );
 				}
 			}
-			if ( $overview_options['debug'] == true ) {
+			if ( $overview_options['debug'] === true ) {
 				$debugtable = array_map( 'array_filter', $debugtable ); // entferne alle leeren Felder, also mit value == ''
 				// var_dump(max($debugtable));
 				$header   = array();

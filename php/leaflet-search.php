@@ -138,7 +138,7 @@ function leafext_search_params() {
 
 function leafext_leafletsearch_function( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
-	if ( $text != '' ) {
+	if ( $text !== '' ) {
 		return $text;
 	} else {
 		$defaults = array();
@@ -149,15 +149,15 @@ function leafext_leafletsearch_function( $atts, $content, $shortcode ) {
 		$atts1   = leafext_case( array_keys( $defaults ), leafext_clear_params( $atts ) );
 		$options = shortcode_atts( $defaults, $atts1 );
 		// var_dump($options);wp_die();
-		if ( $options['marker'] == 'false' ) {
+		if ( $options['marker'] === 'false' ) {
 			$options['marker'] = '{icon:false, circle:{radius:0,weight:0}}';
 		}
-		if ( $options['marker'] != '{}' ) {
+		if ( $options['marker'] !== '{}' ) {
 			$pattern           = array( "/:\s*'\s*(-?\d+)\s*,\s*(-?\d+)\s*'/" );
 			$replacement       = array( ':[$1,$2]' );
 			$options['marker'] = preg_replace( $pattern, $replacement, $options['marker'] );
 		}
-		if ( $options['container'] == '' ) {
+		if ( $options['container'] === '' ) {
 			unset( $options['container'] );
 		} else {
 			$options['collapsed'] = false;

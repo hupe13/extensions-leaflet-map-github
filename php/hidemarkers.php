@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || die();
 // Shortcode: [hidemarkers]
 function leafext_hidemarkers_function() {
 	$text = leafext_should_interpret_shortcode( 'hidemarkers', 0 );
-	if ( $text != '' ) {
+	if ( $text !== '' ) {
 		return $text;
 	} else {
 		$text = '<script><!--';

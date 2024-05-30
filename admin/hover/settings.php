@@ -45,12 +45,12 @@ function leafext_form_hover( $field ) {
 	}
 
 	foreach ( $options as $key => $value ) {
-		if ( $key == $field ) {
+		if ( $key === $field ) {
 			echo wp_kses_post( __( 'You can change it for each map with', 'extensions-leaflet-map' ) . ' <code>' . $key . '</code><br>' );
-			if ( $value != $defaults[ $key ] ) {
+			if ( $value !== $defaults[ $key ] ) {
 				echo wp_kses_post( __( 'Plugins Default', 'extensions-leaflet-map' ) . ': ' . $defaults[ $key ] . '<br>' );
 			}
-			if ( $key == 'class' ) {
+			if ( $key === 'class' ) {
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				echo '<input ' . $disabled . ' type="text" size=15 name="leafext_hover[' . $key . ']" value="' . $value . '" />';
 			} else {

@@ -41,9 +41,9 @@ function leafext_form_owntheme() {
 	$colors[]   = $newoptions['theme'];
 	$ownoptions = get_option( 'leafext_values' );
 	if ( is_array( $ownoptions ) ) {
-		if ( $ownoptions['theme'] != $newoptions['theme'] ) {
+		if ( $ownoptions['theme'] !== $newoptions['theme'] ) {
 			$options = $ownoptions;
-			if ( $ownoptions['theme'] != 'other' ) {
+			if ( $ownoptions['theme'] !== 'other' ) {
 				$colors[] = $ownoptions['theme'];
 			}
 		}
@@ -57,7 +57,7 @@ function leafext_form_owntheme() {
 	echo '<select ' . $select_disabled . ' id="leafext_elecolor" name="leafext_values[theme]" onchange = "leafext_EnableDisableOtherTheme(this)">';
 	$colors[] = 'other';
 	foreach ( $colors as $color ) {
-		if ( $color == $options['theme'] ) {
+		if ( $color === $options['theme'] ) {
 			echo '<option selected ';
 		} else {
 			echo '<option ';
@@ -73,7 +73,7 @@ function leafext_form_other_theme() {
 	$othertheme = '';
 	$ownoptions = get_option( 'leafext_values' );
 	if ( is_array( $ownoptions ) ) {
-		if ( $ownoptions['theme'] == 'other' ) {
+		if ( $ownoptions['theme'] === 'other' ) {
 			$othertheme = $ownoptions['othertheme'];
 		}
 	}
@@ -81,7 +81,7 @@ function leafext_form_other_theme() {
 	echo '<input id="leafext_eleother" type="text" name="leafext_values[othertheme]" placeholder="my-theme"
 		pattern=".*-theme" title="' . esc_html__( 'must end with', 'extensions-leaflet-map' ) . ' \'-theme\'"
 		value="' . $othertheme . '" '; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	echo ( $othertheme != '' ) ? '' : ' readonly ';
+	echo ( $othertheme !== '' ) ? '' : ' readonly ';
 	echo '/>';
 }
 
@@ -89,7 +89,7 @@ function leafext_form_other_theme() {
 function leafext_validate_elevationtheme( $input ) {
 	if ( ! empty( $_POST ) && check_admin_referer( 'leafext_elevation', 'leafext_elevation_nonce' ) ) {
 		if ( isset( $_POST['submit'] ) ) {
-			if ( $input['theme'] == 'other' ) {
+			if ( $input['theme'] === 'other' ) {
 				$input['othertheme'] = sanitize_text_field( $input['othertheme'] );
 				if ( strpos( $input['othertheme'], '-theme' ) === false ) {
 					return false;

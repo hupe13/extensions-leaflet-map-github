@@ -86,7 +86,7 @@ function leafext_validate_owncolors( $options ) {
 			$defaults = leafext_elevation_colors();
 			foreach ( $options as $key => $value ) {
 				$param = leafext_array_find2( $key, $defaults );
-				if ( $options[ $key ] == $param['default'] ) {
+				if ( $options[ $key ] === $param['default'] ) {
 					unset( $options[ $key ] );
 				}
 			}

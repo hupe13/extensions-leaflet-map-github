@@ -457,7 +457,7 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 
 	$table = leafext_help_entries();
 
-	if ( get_locale() != 'de_DE' ) {
+	if ( get_locale() !== 'de_DE' ) {
 		$en = '/en';
 	} else {
 		$en = '';
@@ -470,9 +470,9 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 				$text = $text . '<tr><td>' . $entry['function'] . '</td>';
 				if ( is_singular() || is_archive() ) {
 					$text = $text . '<td><a href="' . $entry['doku'] . '">' . $entry['shortcode'] . '</a></td>';
-					if ( $entry['kategorie'] != '' ) {
+					if ( $entry['kategorie'] !== '' ) {
 						$text = $text . '<td><a href="/examples/' . $entry['kategorie'] . '/">' . __( 'Examples', 'extensions-leaflet-map' ) . '</a></td>';
-					} elseif ( $entry['examples'] != '' ) {
+					} elseif ( $entry['examples'] !== '' ) {
 						$text = $text . '<td><a href="' . ( str_starts_with( $entry['examples'], '/extra' ) ? '' : $en ) . $entry['examples'] . '">' . __( 'Examples', 'extensions-leaflet-map' ) . '</a></td>';
 					} else {
 						$text = $text . '<td>&nbsp;</td>';
@@ -495,7 +495,7 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 		$pluginstext .= '<h3>Shortcodes</h3>';
 		$pluginstext .= '<ul>';
 		foreach ( $plugins as $plugin ) {
-			if ( $plugin['shortcode'] != '' ) {
+			if ( $plugin['shortcode'] !== '' ) {
 				$pluginstext .= '<li><a href="' . $plugin['link'] . '">' . $plugin['name'] . '</a> - ' . $plugin['desc'] . ' (' . $plugin['shortcode'] . ')</li>';
 			}
 		}
@@ -503,7 +503,7 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 		$pluginstext .= '<h3>' . __( 'Helper Plugins', 'extensions-leaflet-map' ) . '</h3>';
 		$pluginstext .= '<ul>';
 		foreach ( $plugins as $plugin ) {
-			if ( $plugin['shortcode'] == '' ) {
+			if ( $plugin['shortcode'] === '' ) {
 				$pluginstext .= '<li><a href="' . $plugin['link'] . '">' . $plugin['name'] . '</a> - ' . $plugin['desc'] . '</li>';
 			}
 		}

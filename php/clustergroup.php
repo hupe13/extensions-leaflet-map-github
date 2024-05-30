@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || die();
 add_filter(
 	'pre_do_shortcode_tag',
 	function ( $output, $shortcode ) {
-		if ( 'leaflet-map' == $shortcode ) {
+		if ( 'leaflet-map' === $shortcode ) {
 			global $leafext_group_menu;
 			$leafext_group_menu = array();
 		}
@@ -23,7 +23,7 @@ add_filter(
 
 function leafext_clustergroup_function( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
-	if ( $text != '' ) {
+	if ( $text !== '' ) {
 		return $text;
 	} else {
 		// var_dump($atts); wp_die();
@@ -61,13 +61,13 @@ function leafext_clustergroup_function( $atts, $content, $shortcode ) {
 			$cl_on                    = array_fill( 0, count( $cl_strings ), '1' );
 		} else {
 			$cl_on = array_map( 'trim', explode( ',', $featuregroups['visible'] ) );
-			if ( count( $cl_on ) == 1 ) {
+			if ( count( $cl_on ) === 1 ) {
 				$cl_on = array_fill( 0, count( $cl_strings ), '0' );
 			}
 		}
 
-		if ( count( $cl_strings ) != count( $cl_groups )
-			&& count( $cl_strings ) != count( $cl_on )
+		if ( count( $cl_strings ) !== count( $cl_groups )
+			&& count( $cl_strings ) !== count( $cl_on )
 		) {
 			$text = '[markerclustergroup ';
 			foreach ( $atts as $key => $item ) {

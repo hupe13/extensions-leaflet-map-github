@@ -58,7 +58,7 @@ function leafext_do_page() {
 		leafext_admin_tiles( $active_tab );
 	} elseif ( strpos( $active_tab, 'hover' ) !== false ) {
 		leafext_admin_hover( $active_tab );
-	} elseif ( $active_tab == 'gesture' ) {
+	} elseif ( $active_tab === 'gesture' ) {
 		echo '<form method="post" action="options.php">';
 		settings_fields( 'leafext_settings_gesture' );
 		do_settings_sections( 'leafext_settings_gesture' );
@@ -67,10 +67,10 @@ function leafext_do_page() {
 			submit_button();
 		}
 		echo '</form>';
-	} elseif ( $active_tab == 'zoomhome' ) {
+	} elseif ( $active_tab === 'zoomhome' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/zoomhome.php';
 		leafext_zoomhome_help();
-	} elseif ( $active_tab == 'help' ) {
+	} elseif ( $active_tab === 'help' ) {
 		if ( is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
 			include LEAFEXT_PLUGIN_DIR . '/admin/help.php';
 			echo '<form method="post" action="options.php">';
@@ -89,19 +89,19 @@ function leafext_do_page() {
 		if ( is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
 			leafext_help_table( LEAFEXT_PLUGIN_SETTINGS );
 		}
-	} elseif ( $active_tab == 'fullscreen' ) {
+	} elseif ( $active_tab === 'fullscreen' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/fullscreen.php';
 		leafext_help_fullscreen();
-	} elseif ( $active_tab == 'choropleth' ) {
+	} elseif ( $active_tab === 'choropleth' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/choropleth.php';
 		leafext_choropleth_help();
-	} elseif ( $active_tab == 'featuregroup' ) {
+	} elseif ( $active_tab === 'featuregroup' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/featuregroup.php';
 		leafext_help_featuregroup();
-	} elseif ( $active_tab == 'leafletsearch' ) {
+	} elseif ( $active_tab === 'leafletsearch' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/leaflet-search.php';
 		leafext_leafletsearch_help();
-	} elseif ( $active_tab == 'overviewmap' ) {
+	} elseif ( $active_tab === 'overviewmap' ) {
 		echo '<form method="post" action="options.php">';
 		settings_fields( 'leafext_settings_overviewmap' );
 		do_settings_sections( 'leafext_settings_overviewmap' );
@@ -124,7 +124,7 @@ function leafext_admin_tabs() {
 	echo '<h3 class="nav-tab-wrapper">';
 	//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
 	echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=help" class="nav-tab';
-	echo $active_tab == 'help' ? ' nav-tab-active' : '';
+	echo $active_tab === 'help' ? ' nav-tab-active' : '';
 	echo '">' . esc_html__( 'Help', 'extensions-leaflet-map' ) . '</a>' . "\n";
 	//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
 	echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=elevation" class="nav-tab';
@@ -142,7 +142,7 @@ function leafext_admin_tabs() {
 	} else {
 		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
 		echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=filemgr-list" class="nav-tab';
-		echo $active_tab == 'filemgr-list' ? ' nav-tab-active' : '';
+		echo $active_tab === 'filemgr-list' ? ' nav-tab-active' : '';
 		echo '">' . esc_html__( 'Files for Leaflet Map', 'extensions-leaflet-map' ) . '</a>' . "\n";
 	}
 	$tabs = array(
@@ -198,7 +198,7 @@ function leafext_admin_tabs() {
 	foreach ( $tabs as $tab ) {
 		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
 		echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=' . $tab['tab'] . '" class="nav-tab';
-		$active = ( $active_tab == $tab['tab'] ) ? ' nav-tab-active' : '';
+		$active = ( $active_tab === $tab['tab'] ) ? ' nav-tab-active' : '';
 		if ( isset( $tab['strpos'] ) ) {
 			if ( strpos( $active_tab, $tab['strpos'] ) !== false ) {
 				$active = ' nav-tab-active';
@@ -216,7 +216,7 @@ function leafext_admin_style() {
 	//phpcs:ignore WordPress.Security.NonceVerification.Recommended -- no form
 	$get  = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
 	$page = isset( $get['page'] ) ? $get['page'] : '';
-	if ( $page == LEAFEXT_PLUGIN_SETTINGS ) {
+	if ( $page === LEAFEXT_PLUGIN_SETTINGS ) {
 		wp_enqueue_style(
 			'leafext_admin_css',
 			plugins_url( 'css/leafext-admin.min.css', LEAFEXT_PLUGIN_FILE )

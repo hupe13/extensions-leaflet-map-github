@@ -46,7 +46,7 @@ function leafext_hoverlap_params() {
 
 function leafext_hoverlap_function( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
-	if ( $text != '' ) {
+	if ( $text !== '' ) {
 		return $text;
 	} else {
 		leafext_enqueue_js();
@@ -62,7 +62,7 @@ function leafext_hoverlap_function( $atts, $content, $shortcode ) {
 		$options  = shortcode_atts( $settings, leafext_clear_params( $atts ) );
 		// var_dump($settings,$atts,leafext_clear_params($atts),$options); wp_die();
 		$text = '';
-		if ( $options['tolerance'] != 0 ) {
+		if ( $options['tolerance'] !== 0 ) {
 			$text = $text . leafext_canvas_script( $options['tolerance'] );
 		}
 		$text = $text . leafext_hoverlap_script( $options );

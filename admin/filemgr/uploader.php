@@ -78,14 +78,14 @@ add_filter( 'wp_handle_upload_prefilter', 'leafext_pre_upload' );
 
 function leafext_custom_upload_dir( $path ) {
 	$options = leafext_filemgr_settings();
-	if ( $options['gpxupload'] == true ) {
+	if ( $options['gpxupload'] === true ) {
 		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- media uploader does this check
 		if ( ! empty( $_POST ) ) {
 			//phpcs:ignore WordPress.Security.NonceVerification.Missing
 			$post = map_deep( wp_unslash( $_POST ), 'sanitize_text_field' );
 		}
 		$extension = substr( strrchr( $post['name'], '.' ), 1 );
-		if ( ! empty( $path['error'] ) || $extension != 'gpx' ) {
+		if ( ! empty( $path['error'] ) || $extension !== 'gpx' ) {
 			return $path;
 		} //error or other filetype; do nothing.
 		$customdir      = '/' . $extension;

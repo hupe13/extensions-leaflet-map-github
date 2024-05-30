@@ -32,7 +32,7 @@ function leafext_fullscreen_script( $position ) {
 
 function leafext_fullscreen_function( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
-	if ( $text != '' ) {
+	if ( $text !== '' ) {
 		return $text;
 	} else {
 		leafext_enqueue_fullscreen();

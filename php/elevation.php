@@ -746,7 +746,7 @@ function leafext_ele_java_params( $settings ) {
 				break;
 			case 'distanceMarkers':
 				// distanceMarkers: { lazy: true, distance: true, direction: true },
-				if ( $settings[ $k ] == true ) {
+				if ( $settings[ $k ] === true ) {
 					$text = $text . 'distanceMarkers: {'; // }
 					// if ( $settings['imperial'] == true) {
 					// $text = $text.
@@ -755,13 +755,13 @@ function leafext_ele_java_params( $settings ) {
 					// return Math.round(distance*0.621371/1000);
 					// },';
 					// }
-					if ( $settings['direction'] == true ) {
+					if ( $settings['direction'] === true ) {
 						$text = $text . 'lazy: true, distance: true, direction: true,';
 					} else {
 						$text = $text . 'lazy: true, distance: true, direction: false,';
 					}
 					$text = $text . '},';
-				} elseif ( $settings['direction'] == true ) {
+				} elseif ( $settings['direction'] === true ) {
 						$text = $text . 'distanceMarkers: { lazy: true, distance: false, direction: true },';
 				} else {
 					$text = $text . 'distanceMarkers: false,';
@@ -775,7 +775,7 @@ function leafext_ele_java_params( $settings ) {
 				unset( $settings[ $k ] );
 				break;
 			case 'linearGradient':
-				if ( $settings['linearGradient'] == true ) {
+				if ( $settings['linearGradient'] === true ) {
 					$text = $text . "$k: {
 					attr: 'z',
 					path: 'altitude',
@@ -787,12 +787,12 @@ function leafext_ele_java_params( $settings ) {
 				unset( $settings[ $k ] );
 				break;
 			case 'yAxisMin':
-				if ( $settings['yAxisMin'] == '0' ) {
+				if ( $settings['yAxisMin'] === '0' ) {
 					unset( $settings[ $k ] );
 				}
 				break;
 			case 'yAxisMin':
-				if ( $settings['yAxisMax'] == '0' ) {
+				if ( $settings['yAxisMax'] === '0' ) {
 					unset( $settings[ $k ] );
 				}
 				break;
@@ -867,7 +867,7 @@ function leafext_elevation_script( $gpx, $settings ) {
 
 		<?php
 		if ( $settings['track'] ) {
-			if ( $settings['track'] == 'filename' ) {
+			if ( $settings['track'] === 'filename' ) {
 				$path_parts = pathinfo( $gpx );
 				$switchname = '"' . $path_parts['filename'] . '"';
 			} else {
@@ -906,7 +906,7 @@ function leafext_elevation_settings( $typ ) {
 function leafext_elevation_theme() {
 	$ownoptions = get_option( 'leafext_values' );
 	if ( is_array( $ownoptions ) ) {
-		if ( $ownoptions['theme'] == 'other' ) {
+		if ( $ownoptions['theme'] === 'other' ) {
 			$theme = $ownoptions['othertheme'];
 		} else {
 			$theme = $ownoptions['theme'] . '-theme';
@@ -964,7 +964,7 @@ function leafext_elevation_color( $options ) {
 
 function leafext_elevation_function( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
-	if ( $text != '' ) {
+	if ( $text !== '' ) {
 		return $text;
 	} else {
 		if ( ! $atts['gpx'] ) {
@@ -995,10 +995,10 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 
 		if ( isset( $options['wptIcons'] ) ) {
 			$wpt_icons = $options['wptIcons'];
-			if ( ! is_bool( $wpt_icons ) && $wpt_icons == 'defined' ) {
+			if ( ! is_bool( $wpt_icons ) && $wpt_icons === 'defined' ) {
 				unset( $options['wptIcons'] );
 				$waypoints = get_option( 'leafext_waypoints', '' );
-				if ( $waypoints != '' && ( $options['waypoints'] == 'markers' || $options['waypoints'] == '1' ) ) {
+				if ( $waypoints !== '' && ( $options['waypoints'] === 'markers' || $options['waypoints'] === '1' ) ) {
 					$wptvalue = "{'': L.divIcon({
 						className: 'elevation-waypoint-marker',
 						html: '<i class=\"elevation-waypoint-icon default\"></i>',
@@ -1053,7 +1053,7 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 				$handlers[] = '"Slope"';
 			}
 		}
-		if ( (bool) $options['labelsRotation'] || $options['labelsAlign'] != 'start' ) {
+		if ( (bool) $options['labelsRotation'] || $options['labelsAlign'] !== 'start' ) {
 			$handlers[] = '"Labels"';
 		}
 		if ( (bool) $options['linearGradient'] ) {
@@ -1071,7 +1071,7 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 		// if (count($handlers) > 0) $options['handlers'] = '['.implode(',',$handlers).',...L.Control.Elevation.prototype.options.handlers]';
 		// if (count($handlers) > 0) $options['handlers'] = '[ "Distance", "Time", "Altitude", "Slope", "Speed", "Acceleration", "Labels"]';
 
-		if ( isset( $options['summary'] ) && $options['summary'] == '1' ) {
+		if ( isset( $options['summary'] ) && $options['summary'] === '1' ) {
 			$params = leafext_elevation_params();
 			foreach ( $params as $param ) {
 				$options['param'] = $param['default'];
@@ -1094,13 +1094,13 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 			$options['preferCanvas'] = 'false';
 		}
 
-		if ( $options['hotline'] == 'elevation' ) {
+		if ( $options['hotline'] === 'elevation' ) {
 			unset( $options['polyline'] );
 		}
-		if ( $options['direction'] == true ) {
+		if ( $options['direction'] === true ) {
 			leafext_enqueue_rotate();
 		}
-		if ( $options['distanceMarkers'] == true ) {
+		if ( $options['distanceMarkers'] === true ) {
 			leafext_enqueue_rotate();
 		}
 

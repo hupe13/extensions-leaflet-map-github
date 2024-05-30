@@ -60,7 +60,7 @@ function leafext_list_paginate( $files, $anzahl ) {
 	if ( count( $files ) > 0 ) {
 		$page = isset( $get['page'] ) ? filter_input( INPUT_GET, 'page', FILTER_SANITIZE_SPECIAL_CHARS ) : '';
 		$tab  = isset( $get['tab'] ) ? filter_input( INPUT_GET, 'tab', FILTER_SANITIZE_SPECIAL_CHARS ) : '';
-		if ( count( $post ) != 0 ) {
+		if ( count( $post ) !== 0 ) {
 			// var_dump($_POST);
 			$all  = isset( $post['all'] ) ? '&all="on"' : '';
 			$dir  = isset( $post['dir'] ) ? '&dir=' . $post['dir'] : '';
@@ -210,7 +210,7 @@ function leafext_files_table( $track_files ) {
 		} else {
 			$entry['post_date']  = get_date_from_gmt( gmdate( 'Y-m-d G:i:s', filemtime( $file ) ) );
 			$entry['post_title'] = $myfile;
-			if ( $type != '' ) {
+			if ( $type !== '' ) {
 				$entry['view'] = '<a href="' . esc_url( get_admin_url( null, 'admin.php?page=' . $page ) ) . '&tab=' . $tab . '&track='
 				. $myfile . '&TB_iframe=true" class="thickbox">' . __( 'Preview', 'extensions-leaflet-map' ) . '</a>'; // &width=600&height=550
 			} else {
@@ -221,7 +221,7 @@ function leafext_files_table( $track_files ) {
 
 		$uploadurl = $upload_url;
 		$file      = trim( $myfile, '/' );
-		if ( $type != '' ) {
+		if ( $type !== '' ) {
 			$shortcode        = '[leaflet-' . $path_parts['extension'] . ' src=';
 			$end              = ']';
 			$entry['leaflet'] = '<span class="leafexttooltip" href="#" ' .
@@ -241,7 +241,7 @@ function leafext_files_table( $track_files ) {
 		<span class="leafextcopy" id="leafextTooltip">Copy to clipboard</span>
 		<code>[elevation gpx="..."]</code></span>';
 
-		if ( $path_parts['extension'] == 'gpx' || $path_parts['extension'] == 'kml' ) {
+		if ( $path_parts['extension'] === 'gpx' || $path_parts['extension'] === 'kml' ) {
 			$shortcode               = '[elevation-track file=';
 			$end                     = ']';
 			$entry['multielevation'] = '<span class="leafexttooltip" href="#" ' .

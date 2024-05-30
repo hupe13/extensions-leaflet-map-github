@@ -49,14 +49,14 @@ function leafext_form_placement( $field ) {
 		$disabled = '';
 	}
 
-	if ( $option[0] == 'elementsPlacementStrategy' ) {
+	if ( $option[0] === 'elementsPlacementStrategy' ) {
 		echo '<p>' . esc_html__( '"default" means: one-circle strategy up to 8 elements, else spiral strategy', 'extensions-leaflet-map' ) . '</p>';
 	}
 
 	echo wp_kses_post( __( 'You can change it for each map with', 'extensions-leaflet-map' ) . ' <code>' . $option[0] . '</code><br>' );
 	if ( ! is_array( $option[3] ) ) {
 
-		if ( $setting != $option[2] ) {
+		if ( $setting !== $option[2] ) {
 			// var_dump($setting,$option[2]);
 			echo esc_html__( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
 			echo $option[2] ? '1' : '0';
@@ -74,7 +74,7 @@ function leafext_form_placement( $field ) {
 	} else {
 		$plugindefault = is_string( $option[2] ) ? $option[2] : ( $option[2] ? '1' : '0' );
 		$setting       = is_string( $setting ) ? $setting : ( $setting ? '1' : '0' );
-		if ( $setting != $plugindefault ) {
+		if ( $setting !== $plugindefault ) {
 			// var_dump("Option: ",$option[2],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
 			echo esc_html( __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault ) . '<br>';
 		}

@@ -76,7 +76,7 @@ function leafext_validate_providers( $options ) {
 		if ( isset( $_POST['submit'] ) ) {
 			foreach ( $options as $option ) {
 				foreach ( $option['keys'] as $key => $value ) {
-					if ( $value != '' ) {
+					if ( $value !== '' ) {
 						$providers[] = $option;
 					} break;
 				}

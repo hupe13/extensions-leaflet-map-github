@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || die();
 // Display content from Media Library in Permalink (Attachmentseite)
 function leafext_media_library_content( $content ) {
 	global $post;
-	if ( is_attachment() && 'application/gpx+xml' == get_post_mime_type( $post->ID ) ) {
+	if ( is_attachment() && 'application/gpx+xml' === get_post_mime_type( $post->ID ) ) {
 		$content  = '[leaflet-map fitbounds !scrollwheel !dragging][leaflet-gpx src="' . $post->guid . '"]';
 		$gpx_data = leafext_get_gpx_data( $post->guid );
 		$fields   = array();
@@ -31,7 +31,7 @@ function leafext_media_library_content( $content ) {
 		}
 		$content = $content . leafext_html_table( $fields );
 	}
-	if ( is_attachment() && 'application/vnd.google-earth.kml+xml' == get_post_mime_type( $post->ID ) ) {
+	if ( is_attachment() && 'application/vnd.google-earth.kml+xml' === get_post_mime_type( $post->ID ) ) {
 		$content  = '[leaflet-map fitbounds !scrollwheel !dragging][leaflet-kml src="' . $post->guid . '"]';
 		$fields   = array();
 		$fields[] = array(
@@ -44,7 +44,7 @@ function leafext_media_library_content( $content ) {
 		);
 		$content  = $content . leafext_html_table( $fields );
 	}
-	if ( is_attachment() && 'application/geo+json' == get_post_mime_type( $post->ID ) ) {
+	if ( is_attachment() && 'application/geo+json' === get_post_mime_type( $post->ID ) ) {
 		$content  = '[leaflet-map fitbounds !scrollwheel !dragging][leaflet-geojson src="' . $post->guid . '"]';
 		$fields   = array();
 		$fields[] = array(
@@ -70,7 +70,7 @@ function leafext_attachment_fields_to_edit( $form_fields, $post ) {
 	// get the attachment path
 	$attachment_path = get_attached_file( $post->ID );
 
-	if ( 'application/gpx+xml' == $type ) {
+	if ( 'application/gpx+xml' === $type ) {
 		$gpx_data = leafext_get_gpx_data( $attachment_path );
 		foreach ( $gpx_data as $key => $value ) {
 			$form_fields[ $key ] = array(
@@ -89,7 +89,7 @@ function leafext_attachment_fields_to_edit( $form_fields, $post ) {
 		);
 	}
 
-	if ( 'application/vnd.google-earth.kml+xml' == $type ) {
+	if ( 'application/vnd.google-earth.kml+xml' === $type ) {
 		$name                    = leafext_get_kml_data( $attachment_path )['name'];
 		$form_fields['overview'] = array(
 			'value' => $name,
@@ -100,7 +100,7 @@ function leafext_attachment_fields_to_edit( $form_fields, $post ) {
 		);
 	}
 
-	if ( 'application/geo+json' == $type ) {
+	if ( 'application/geo+json' === $type ) {
 		$form_fields['overview'] = array(
 			'value' => basename( $attachment_path ),
 			'label' => __( 'Overview' ),

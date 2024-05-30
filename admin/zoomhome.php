@@ -14,15 +14,15 @@ function leafext_zoomhome_help() {
 	} else {
 		$text = '';
 	}
-	$text = $text . '<img src="' . LEAFEXT_PLUGIN_PICTS . 'home.png" alt="home"><p>
+	$text = $text . '<p><img src="' . LEAFEXT_PLUGIN_PICTS . 'home.png" alt="home"><p>
 	&quot;Home&quot; ' . __( 'button to reset the view. A must for clustering markers', 'extensions-leaflet-map' ) . '.</p>
 	' . __( 'It resets the view to all markers (leaflet-marker), lines (leaflet-line), circles (leaflet-circle), geojsons (leaflet-geojson, leaflet-gpx, leaflet-kml) and a track (elevation).', 'extensions-leaflet-map' ) . '
-
+	</p>
 	<h2>Shortcode</h2>
-
+	<p>
 	<pre><code>&#091;zoomhomemap fit|<span style="color: #d63638">!fit</span>]</code></pre>
 	<pre><code>&#091;zoomhomemap fit|<span style="color: #d63638">!fit</span> position=topleft|topright|bottomleft|bottomright</code></pre>
-	default position: <code>topleft</code>
+	default position: <code>topleft</code></p>
 
 	<h2>Howto</h2>';
 
@@ -140,6 +140,7 @@ function leafext_zoomhome_help() {
 	if ( is_singular() || is_archive() ) {
 		return $text;
 	} else {
-		echo wp_kses_post( $text );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $text;
 	}
 }

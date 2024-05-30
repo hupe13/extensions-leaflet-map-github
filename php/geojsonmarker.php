@@ -68,7 +68,7 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 	// auto: values werden gesammelt, farben erzeugt, alles wird gruppiert und angezeigt
 
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
-	if ( $text != '' ) {
+	if ( $text !== '' ) {
 		return $text;
 	} else {
 		$propertyoptions = shortcode_atts(
@@ -83,7 +83,7 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 		);
 
 		// property - required
-		if ( $propertyoptions['property'] == '' ) {
+		if ( $propertyoptions['property'] === '' ) {
 			$text = "['.$shortcode.' ";
 			if ( is_array( $atts ) ) {
 				foreach ( $atts as $key => $item ) {
@@ -95,17 +95,17 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 			return $text;
 		}
 
-		if ( $propertyoptions['values'] != '' ) {
+		if ( $propertyoptions['values'] !== '' ) {
 			$prop_values = array_map( 'trim', explode( ',', $propertyoptions['values'] ) );
 		} else {
 			$prop_values = array();
 		}
 
-		if ( $propertyoptions['iconprops'] == '' ) {
+		if ( $propertyoptions['iconprops'] === '' ) {
 			$propertyoptions['iconprops'] = array();
 		} else {
 			$iconprops = array_map( 'trim', explode( ',', $propertyoptions['iconprops'] ) );
-			if ( count( $prop_values ) == count( $iconprops ) ) {
+			if ( count( $prop_values ) === count( $iconprops ) ) {
 				$propertyoptions['iconprops'] = array_combine( $prop_values, $iconprops );
 				// } else if (($key = array_search('others', $prop_values)) !== false) {
 				// unset($prop_values[$key]);
@@ -139,8 +139,8 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 			leafext_clear_params( $atts )
 		);
 
-		if ( substr_count( $groupingoptions['values'], ',' ) != substr_count( $groupingoptions['groups'], ',' )
-		&& substr_count( $groupingoptions['groups'], ',' ) != 0 ) {
+		if ( substr_count( $groupingoptions['values'], ',' ) !== substr_count( $groupingoptions['groups'], ',' )
+		&& substr_count( $groupingoptions['groups'], ',' ) !== 0 ) {
 			$text = "['.$shortcode.' ";
 			if ( is_array( $atts ) ) {
 				foreach ( $atts as $key => $item ) {
@@ -152,7 +152,7 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 			return $text;
 		}
 
-		if ( $groupingoptions['groups'] != '' ) {
+		if ( $groupingoptions['groups'] !== '' ) {
 
 			$cl_values = array_map( 'trim', explode( ',', $groupingoptions['values'] ) );
 			$cl_groups = array_map( 'trim', explode( ',', $groupingoptions['groups'] ) );
@@ -162,9 +162,9 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 				$cl_on                      = array_fill( 0, count( $cl_values ), '1' );
 			} else {
 				$cl_on = array_map( 'trim', explode( ',', $groupingoptions['visible'] ) );
-				if ( count( $cl_on ) == 1 ) {
+				if ( count( $cl_on ) === 1 ) {
 					$cl_on = array_fill( 0, count( $cl_values ), '0' );
-				} elseif ( count( $cl_values ) != count( $cl_on ) ) {
+				} elseif ( count( $cl_values ) !== count( $cl_on ) ) {
 					$text = "['.$shortcode.' ";
 					foreach ( $atts as $key => $item ) {
 						$text = $text . "$key=$item ";

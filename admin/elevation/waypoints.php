@@ -44,25 +44,25 @@ function leafext_form_waypoints() {
 		}
 
 		echo '<input class="full-width" type="text" ';
-		if ( $option['js'] == '' ) {
+		if ( $option['js'] === '' ) {
 			echo 'placeholder="name" ';
 		}
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo 'name="leafext_waypoints[' . $i . '][sym]" value="' . $option['sym'] . '" pattern="[a-zA-Z]+[a-zA-Z0-9\- ,]*" />';
-		if ( $option['sym'] == '' && $option['js'] != '' ) {
+		if ( $option['sym'] === '' && $option['js'] !== '' ) {
 			echo ' (' . esc_html__( 'Default', 'extensions-leaflet-map' ) . ')';
 		}
-		if ( ( $option['sym'] == '' && $option['js'] == '' ) ) {
+		if ( ( $option['sym'] === '' && $option['js'] === '' ) ) {
 			echo '<p>' . esc_html__( 'Valid characters: lowercase, uppercase, numbers, -, comma, blank character.', 'extensions-leaflet-map' ) . '</p>';
 			$symkey = array_search( '', array_column( $options, 'sym' ), true );
-			if ( $options[ $symkey ]['js'] == '' ) {
+			if ( $options[ $symkey ]['js'] === '' ) {
 				echo '<p>' . esc_html__( 'It may be empty, then its javascript is the default for all waypoints.', 'extensions-leaflet-map' ) . '</p>';
 			}
 		}
 		echo '</td>';
 		echo '</tr>';
 
-		if ( $option['sym'] != '' ) {
+		if ( $option['sym'] !== '' ) {
 			echo '<tr><th scope="row-title"><span style="color: #d63638">waypoint-css</span>:</th>';
 			echo '<td>' . esc_attr( $option['css'] ) . '</td>';
 			echo '</tr>';
@@ -73,7 +73,7 @@ function leafext_form_waypoints() {
 			$option['js'] = '';
 		}
 		echo '<td>';
-		if ( $option['js'] == '' ) {
+		if ( $option['js'] === '' ) {
 			echo esc_html__( 'The syntax is not checked!', 'extensions-leaflet-map' ) . '<br>';
 		}
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -82,7 +82,7 @@ function leafext_form_waypoints() {
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		. "'" . ' value = "' . $option['js'] . '" size="80">';
 
-		if ( $option['sym'] != '' || $option['js'] != '' ) {
+		if ( $option['sym'] !== '' || $option['js'] !== '' ) {
 			echo '</td></tr>';
 			echo '<tr><th scope="row-title">' . esc_html__( 'Delete', 'extensions-leaflet-map' ) . '</th>';
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -101,8 +101,8 @@ function leafext_validate_waypoints( $options ) {
 		if ( isset( $_POST['submit'] ) ) {
 			$wpts = array();
 			foreach ( $options as $option ) {
-				if ( $option['sym'] != '' || $option['js'] != '' ) {
-					if ( $option['delete'] == 1 ) {
+				if ( $option['sym'] !== '' || $option['js'] !== '' ) {
+					if ( $option['delete'] === 1 ) {
 						continue;
 					}
 					$wpt = array();
@@ -113,7 +113,7 @@ function leafext_validate_waypoints( $options ) {
 					$wpt['js']  = htmlspecialchars( $option['js'] );
 
 					if ( array_search( $wpt['sym'], array_column( $wpts, 'sym' ), true ) === false ) {
-						if ( $wpt['sym'] == '' ) {
+						if ( $wpt['sym'] === '' ) {
 							array_unshift( $wpts, $wpt );
 						} else {
 							$wpts[] = $wpt;

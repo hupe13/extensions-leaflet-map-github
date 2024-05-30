@@ -143,7 +143,7 @@ function leafext_cluster_atts( $atts ) {
 
 function leafext_cluster_function( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
-	if ( $text != '' ) {
+	if ( $text !== '' ) {
 		return $text;
 	} else {
 		leafext_enqueue_markercluster();

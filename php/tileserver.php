@@ -195,7 +195,7 @@ function leafext_providers_fkt_script() {
 function leafext_providers_script( $mapids, $providers ) {
 	$regtiles = get_option( 'leafext_providers', array() );
 	$text     = '';
-	if ( count( $providers ) == count( $mapids ) ) {
+	if ( count( $providers ) === count( $mapids ) ) {
 		$names = array_combine( $providers, $mapids );
 	} else {
 		$names = array_combine( $providers, $providers );
@@ -272,7 +272,7 @@ function leafext_layerswitch_end_script( $settings ) {
 function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 	// var_dump($atts,$content,$shortcode);
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
-	if ( $text != '' ) {
+	if ( $text !== '' ) {
 		return $text;
 	} else {
 		$tiles                       = array();
@@ -286,7 +286,7 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 				$atts_maps = explode( ',', $atts['tiles'] );
 				foreach ( $atts_maps as $atts_map ) {
 					foreach ( $defined_tileservers as $defined_tileserver ) {
-						if ( $defined_tileserver['mapid'] == $atts_map ) {
+						if ( $defined_tileserver['mapid'] === $atts_map ) {
 							$only[] = $defined_tileserver;
 						}
 					}
@@ -302,7 +302,7 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 				if ( array_key_exists( 'mapids', $atts ) ) {
 					$mapids = explode( ',', $atts['mapids'] );
 				}
-				if ( count( $providers ) != count( $mapids ) ) {
+				if ( count( $providers ) !== count( $mapids ) ) {
 					$mapids = $providers;
 				}
 
@@ -322,8 +322,8 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 		}
 
 		foreach ( $defined_tileservers as $defined_tileserver ) {
-			$overlay = $defined_tileserver['overlay'] == '1' ? '1' : '';
-			$opacity = $defined_tileserver['opacity'] == '1' ? '1' : '';
+			$overlay = $defined_tileserver['overlay'] === '1' ? '1' : '';
+			$opacity = $defined_tileserver['opacity'] === '1' ? '1' : '';
 
 			$tileoptions                = array();
 			$tileoptions['attribution'] = $defined_tileserver['attr'];
@@ -340,7 +340,7 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 					$tok     = strtok( ':' );
 				}
 				if ( count( $parts ) > 1 ) {
-					if ( $key != '' ) {
+					if ( $key !== '' ) {
 						$tileoptions[ $key ] = trim( $value, ',' );
 					}
 					$key   = $parts[0];
@@ -350,11 +350,11 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 						$value = $value . ':' . $parts[ $i ];
 						$value = trim( $value, ':' );
 					}
-				} elseif ( count( $parts ) == 1 ) {
+				} elseif ( count( $parts ) === 1 ) {
 						$value = $value . ',' . $parts[0];
 				}
 			}
-			if ( $key != '' ) {
+			if ( $key !== '' ) {
 				$tileoptions[ $key ] = trim( $value, ',' );
 			}
 
@@ -367,7 +367,7 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 			);
 		}
 
-		if ( count( $tiles ) == 0 && count( $providers ) == 0 ) {
+		if ( count( $tiles ) === 0 && count( $providers ) === 0 ) {
 			return;
 		}
 		leafext_enqueue_opacity();

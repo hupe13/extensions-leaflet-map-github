@@ -181,7 +181,7 @@ function leafext_hover_params( $typ = '' ) {
 		// ),
 	);
 
-	if ( $typ != '' ) {
+	if ( $typ !== '' ) {
 		foreach ( $params as $key => $value ) {
 			if ( ! $params[ $key ][ $typ ] ) {
 				unset( $params[ $key ] );
@@ -233,7 +233,7 @@ function leafext_canvas_script( $tolerance ) {
 
 function leafext_hover_function( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
-	if ( $text != '' ) {
+	if ( $text !== '' ) {
 		return $text;
 	} else {
 		leafext_enqueue_geometry();
@@ -251,7 +251,7 @@ function leafext_hover_function( $atts, $content, $shortcode ) {
 		// var_dump($atts,$settings,$options); wp_die();
 
 		$text = '';
-		if ( $options['tolerance'] != 0 ) {
+		if ( $options['tolerance'] !== 0 ) {
 			$text = $text . leafext_canvas_script( $options['tolerance'] );
 		}
 
@@ -324,7 +324,7 @@ function leafext_hover_function( $atts, $content, $shortcode ) {
 				leafext_hover_geojsonstyle_js(all_options);
 				<?php
 			}
-			if ( $options['marker'] == false ) {
+			if ( $options['marker'] === false ) {
 				// $text = $text.leafext_markertitle_script($options);
 				?>
 				leafext_hover_markertitle_js();

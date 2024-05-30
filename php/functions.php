@@ -30,7 +30,7 @@ function leafext_clear_params( $atts ) {
 // Parameter: array mit keys wie es sein soll, array mit keys in klein von shortcode_atts
 function leafext_case( $params, $atts_array ) {
 	foreach ( $params as $param ) {
-		if ( strtolower( $param ) != $param ) {
+		if ( strtolower( $param ) !== $param ) {
 			if ( isset( $atts_array[ strtolower( $param ) ] ) ) {
 				$atts_array[ $param ] = $atts_array[ strtolower( $param ) ];
 				unset( $atts_array[ strtolower( $param ) ] );
@@ -43,7 +43,7 @@ function leafext_case( $params, $atts_array ) {
 // Suche bestimmten Wert in array im admin interface
 function leafext_array_find( $needle, $haystack ) {
 	foreach ( $haystack as $item ) {
-		if ( $item[0] == $needle ) {
+		if ( $item[0] === $needle ) {
 			return $item;
 		}
 	}
@@ -52,7 +52,7 @@ function leafext_array_find( $needle, $haystack ) {
 // Suche bestimmten Wert in array im admin interface
 function leafext_array_find2( $needle, $haystack ) {
 	foreach ( $haystack as $item ) {
-		if ( $item['param'] == $needle ) {
+		if ( $item['param'] === $needle ) {
 			return $item;
 		}
 	}

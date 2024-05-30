@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || die();
 add_filter(
 	'pre_do_shortcode_tag',
 	function ( $output, $shortcode ) {
-		if ( 'leaflet-map' == $shortcode ) {
+		if ( 'leaflet-map' === $shortcode ) {
 			global $all_files;
 			$all_files = array();
 			global $all_points;
@@ -180,10 +180,10 @@ function leafext_multielevation_settings( $typ = array( 'changeable' ) ) {
 // lat lng name optional
 function leafext_elevation_track( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
-	if ( $text != '' ) {
+	if ( $text !== '' ) {
 		return $text;
 	} else {
-		if ( $atts['file'] == '' ) {
+		if ( $atts['file'] === '' ) {
 			$text = '[elevation-track ';
 			foreach ( $atts as $key => $item ) {
 				$text = $text . "$key=$item ";
@@ -208,7 +208,7 @@ function leafext_elevation_track( $atts, $content, $shortcode ) {
 			$params['name'] = $path_parts['filename'];
 		}
 
-		if ( $params['lat'] == '' || $params['lng'] == '' || $params['name'] == '' ) {
+		if ( $params['lat'] === '' || $params['lng'] === '' || $params['name'] === '' ) {
 			$gpx = simplexml_load_file( $atts['file'] );
 			if ( $gpx === false ) {
 				$text = '[*elevation-track read error ';
@@ -221,20 +221,20 @@ function leafext_elevation_track( $atts, $content, $shortcode ) {
 			}
 		}
 
-		if ( $params['lat'] == '' || $params['lng'] == '' ) {
-			if ( $path_parts['extension'] == 'gpx' ) {
+		if ( $params['lat'] === '' || $params['lng'] === '' ) {
+			if ( $path_parts['extension'] === 'gpx' ) {
 				$latlng = array(
 					(float) $gpx->trk->trkseg->trkpt[0]->attributes()->lat,
 					(float) $gpx->trk->trkseg->trkpt[0]->attributes()->lon,
 				);
-			} elseif ( $path_parts['extension'] == 'kml' ) {
+			} elseif ( $path_parts['extension'] === 'kml' ) {
 				// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- is gpx
 				$allcoordinates = $gpx->Document->Folder->Folder->Placemark->LineString->coordinates;
 				$coords_array   = explode( "\n", $allcoordinates );
 				$count          = count( $coords_array );
 				for ( $i = 0; $i < $count;$i++ ) {
 					$latlonheight = explode( ',', $coords_array[ $i ] );
-					if ( count( $latlonheight ) == 3 ) {
+					if ( count( $latlonheight ) === 3 ) {
 						$startlat = $latlonheight[1];
 						$startlon = $latlonheight[0];
 						break;
@@ -251,16 +251,16 @@ function leafext_elevation_track( $atts, $content, $shortcode ) {
 
 		// filenames as tracknames?
 
-		if ( $params['name'] == '' ) {
-			if ( $path_parts['extension'] == 'gpx' ) {
+		if ( $params['name'] === '' ) {
+			if ( $path_parts['extension'] === 'gpx' ) {
 				$params['name'] = (string) $gpx->trk->name;
-			} elseif ( $path_parts['extension'] == 'kml' ) {
+			} elseif ( $path_parts['extension'] === 'kml' ) {
 				// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- is gpx
 				$params['name'] = (string) $gpx->Document->name;
 			}
 		}
 		// Fallback
-		if ( $params['name'] == '' ) {
+		if ( $params['name'] === '' ) {
 			$path_parts     = pathinfo( $atts['file'] );
 			$params['name'] = $path_parts['filename'];
 		}
@@ -280,7 +280,7 @@ add_shortcode( 'elevation-track', 'leafext_elevation_track' );
 // {multielvation ...}
 function leafext_multielevation( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
-	if ( $text != '' ) {
+	if ( $text !== '' ) {
 		return $text;
 	} else {
 		leafext_enqueue_leafext_elevation();
@@ -299,7 +299,7 @@ function leafext_multielevation( $atts, $content, $shortcode ) {
 			'closeBtn'     => false,
 		);
 
-		if ( $shortcode == 'elevation-tracks' ) {
+		if ( $shortcode === 'elevation-tracks' ) {
 			$options      = array(
 				'acceleration' => false,
 				'almostOver'   => true,
@@ -322,7 +322,7 @@ function leafext_multielevation( $atts, $content, $shortcode ) {
 			$multioptions['distanceMarkers_options'] = 'false';
 		}
 
-		if ( $shortcode == 'multielevation' ) {
+		if ( $shortcode === 'multielevation' ) {
 			$atts1   = leafext_case( array_keys( leafext_elevation_settings( array( 'multielevation' ) ) ), leafext_clear_params( $atts ) );
 			$options = shortcode_atts( leafext_elevation_settings( array( 'multielevation' ) ), $atts1 );
 

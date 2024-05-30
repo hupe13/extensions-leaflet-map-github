@@ -51,13 +51,13 @@ function leafext_leafletsearch_help() {
 		'values'  => '<strong>' . esc_html__( 'Values', 'extensions-leaflet-map' ) . '</strong>',
 	);
 	foreach ( $options as $option ) {
-		if ( $option['default'] == '' && $option['param'] == 'marker' ) {
+		if ( $option['default'] === '' && $option['param'] === 'marker' ) {
 			$option['default'] = '(' . esc_html__( 'red circle', 'extensions-leaflet-map' ) . ')';
 		}
 		$new[] = array(
 			'param'   => $option['param'],
 			'desc'    => $option['desc'],
-			'default' => ( gettype( $option['default'] ) == 'boolean' ) ? ( $option['default'] ? 'true' : 'false' ) : $option['default'],
+			'default' => ( gettype( $option['default'] ) === 'boolean' ) ? ( $option['default'] ? 'true' : 'false' ) : $option['default'],
 			'values'  => $option['values'],
 		);
 	}

@@ -168,12 +168,12 @@ function leafext_sgpx_settings() {
 
 function leafext_sgpx_function( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
-	if ( $text != '' ) {
+	if ( $text !== '' ) {
 		return $text;
 	} else {
 		$options = get_option( 'leafext_sgpxparams' );
 
-		if ( LEAFEXT_SGPX_ACTIVE && LEAFEXT_SGPX_SGPX && $options['sgpx'] == 'leaflet' && ! wp_script_is( 'wp_leaflet_map', 'enqueued' ) ) {
+		if ( LEAFEXT_SGPX_ACTIVE && LEAFEXT_SGPX_SGPX && $options['sgpx'] === 'leaflet' && ! wp_script_is( 'wp_leaflet_map', 'enqueued' ) ) {
 			if ( function_exists( 'enqueue_WP_GPX_Maps_scripts' ) ) {
 				enqueue_WP_GPX_Maps_scripts();
 				wp_dequeue_style( 'leaflet.Photo' );
@@ -217,7 +217,7 @@ function leafext_sgpx_function( $atts, $content, $shortcode ) {
 
 			$maptext = '';
 			foreach ( $elemap as $k => $v ) {
-				if ( $v != '' ) {
+				if ( $v !== '' ) {
 					$maptext = $maptext . ' ' . $k . '=' . $v . ' ';
 				}
 			}
@@ -230,7 +230,7 @@ function leafext_sgpx_function( $atts, $content, $shortcode ) {
 
 			$eletext = '';
 			foreach ( $eleele as $k => $v ) {
-				if ( $v == '' ) {
+				if ( $v === '' ) {
 					continue;
 				}
 				switch ( gettype( $v ) ) {
@@ -270,7 +270,7 @@ function leafext_sgpx_function( $atts, $content, $shortcode ) {
 						var_dump( $k, $v, gettype( $v ) );
 						wp_die( 'Type' );
 				}
-				if ( $value != '' ) {
+				if ( $value !== '' ) {
 					$eletext = $eletext . ' ' . $k . '=' . $value;
 				}
 			}
@@ -311,7 +311,7 @@ add_action( 'init', 'leafext_change_sgpx_shortcode', 20 );
 
 function leafext_insert_jquery() {
 	$options = get_option( 'leafext_sgpxparams' );
-	if ( LEAFEXT_SGPX_ACTIVE && LEAFEXT_SGPX_SGPX && $options['sgpx'] == 'leaflet' && ! wp_script_is( 'wp_leaflet_map', 'enqueued' ) ) {
+	if ( LEAFEXT_SGPX_ACTIVE && LEAFEXT_SGPX_SGPX && $options['sgpx'] === 'leaflet' && ! wp_script_is( 'wp_leaflet_map', 'enqueued' ) ) {
 		wp_enqueue_script( 'jquery-core', false, array(), null, false );
 	}
 }

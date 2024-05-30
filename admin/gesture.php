@@ -26,7 +26,7 @@ function leafext_form_gesture( $field ) {
 	$option   = leafext_array_find2( $field, $options );
 	$settings = leafext_gesture_settings();
 	$setting  = $settings[ $field ];
-	if ( $option['desc'] != '' ) {
+	if ( $option['desc'] !== '' ) {
 		echo '<p>' . wp_kses_post( $option['desc'] ) . '</p>';
 	}
 	// echo __("You can change it for each map with", "extensions-leaflet-map").' <code>'.$option['param']. '</code><br>';
@@ -38,7 +38,7 @@ function leafext_form_gesture( $field ) {
 	}
 
 	if ( ! is_array( $option['values'] ) ) {
-		if ( $setting != $option['default'] ) {
+		if ( $setting !== $option['default'] ) {
 			// var_dump($setting,$option['default']);
 			echo esc_html__( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
 			echo $option['default'] ? 'true' : 'false';
@@ -55,7 +55,7 @@ function leafext_form_gesture( $field ) {
 	} else {
 		$plugindefault = is_string( $option['default'] ) ? $option['default'] : ( $option['default'] ? '1' : '0' );
 		$setting       = is_string( $setting ) ? $setting : ( $setting ? '1' : '0' );
-		if ( $setting != $plugindefault ) {
+		if ( $setting !== $plugindefault ) {
 			// var_dump("Option: ",$option['default'],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
 			echo wp_kses_post( __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault . '<br>' );
 		}
@@ -134,15 +134,15 @@ function leafext_gesture_help_text() {
 		) .
 		' ' . __( 'Scroll Wheel Zoom', 'leaflet-map' ) . ' (<code>scrollwheel</code>) ' .
 		' ' . __( 'is', 'extensions-leaflet-map' ) . ' ';
-		$text = $text . ( get_option( 'leaflet_scroll_wheel_zoom', '0' ) == '1' ? 'true' : 'false' );
+		$text = $text . ( get_option( 'leaflet_scroll_wheel_zoom', '0' ) === '1' ? 'true' : 'false' );
 		$text = $text . ', <code>dragging</code> ' . __( 'is true at default', 'extensions-leaflet-map' ) . '.</li>';
 		$text = $text . '<li>' .
 		__( 'This means for you:', 'extensions-leaflet-map' ) . ' ';
-		$text = $text . ( get_option( 'leaflet_scroll_wheel_zoom', '0' ) == '1' ? __( 'It is enabled on both desktop and touch device by default.', 'extensions-leaflet-map' ) : __( 'It is only enabled on touch devices by default.', 'extensions-leaflet-map' ) );
+		$text = $text . ( get_option( 'leaflet_scroll_wheel_zoom', '0' ) === '1' ? __( 'It is enabled on both desktop and touch device by default.', 'extensions-leaflet-map' ) : __( 'It is only enabled on touch devices by default.', 'extensions-leaflet-map' ) );
 		$text = $text . '</li>' .
 		'<li> ' .
 		__( 'You can change it with', 'extensions-leaflet-map' ) . ' <code>[leaflet-map ';
-		$text = $text . ( get_option( 'leaflet_scroll_wheel_zoom', '0' ) == '1' ? '!' : '' );
+		$text = $text . ( get_option( 'leaflet_scroll_wheel_zoom', '0' ) === '1' ? '!' : '' );
 		$text = $text . 'scrollwheel !dragging]</code>' .
 		'</li>';
 	}

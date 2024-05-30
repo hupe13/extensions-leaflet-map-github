@@ -67,7 +67,7 @@ function leafext_help_hover() {
 	);
 
 	foreach ( $options as $option ) {
-		if ( $option['param'] == 'tolerance' ) {
+		if ( $option['param'] === 'tolerance' ) {
 			$default = shortcode_atts( array( 'tolerance' => 0 ), get_option( 'leafext_canvas' ) )['tolerance'];
 		} elseif ( $option['default'] === true ) {
 				$default = 'true';
