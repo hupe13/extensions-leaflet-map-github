@@ -36,7 +36,6 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- no form
 		if ( $shortcode === 'targetmarker' ) {
 			$error = 'targetmarker error';
-
 			if ( ! empty( $_POST ) && check_admin_referer( 'leafext_targetlink', 'leafext_targetlink_nonce' ) ) {
 				// var_dump( $_POST );
 				$get              = map_deep( wp_unslash( $_POST ), 'sanitize_text_field' );
@@ -46,6 +45,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 				}
 				$options['property'] = isset( $get['property'] ) ? wp_strip_all_tags( $get['property'] ) : '';
 				$options['value']    = isset( $get['value'] ) ? wp_strip_all_tags( $get['value'] ) : '';
+				$options['debug']    = wp_json_encode( $options['debug'] );
 				if ( $options['property'] !== '' && $options['value'] !== '' ) {
 					return leafext_target_post_geojson_script( $options );
 				}
@@ -202,7 +202,6 @@ function leafext_target_post_geojson_script( $options ) {
 	window.WPLeafletMapPlugin.push(function () {
 		let property = <?php echo wp_json_encode( $options['property'] ); ?>;
 		let value = <?php echo wp_json_encode( $options['value'] ); ?>;
-		let target = <?php echo wp_json_encode( $options['target'] ); ?>;
 		let popup = <?php echo wp_json_encode( $options['popup'] ); ?>;
 		let zoom =
 		<?php
@@ -211,7 +210,7 @@ function leafext_target_post_geojson_script( $options ) {
 		?>
 		;
 		let debug = <?php echo wp_json_encode( $options['debug'] ); ?>;
-		leafext_target_post_geojson_js(property,value,target,popup,zoom,debug);
+		leafext_target_post_geojson_js(property,value,popup,zoom,debug);
 	});
 	<?php
 	$javascript = ob_get_clean();

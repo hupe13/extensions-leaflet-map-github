@@ -104,6 +104,13 @@ function leafext_targetmarker_help() {
 
 	$text = $text . '<h4>' . __( 'Source', 'extensions-leaflet-map' ) . ' - GET</h4>';
 
+	$text = $text . '<p>' . sprintf(
+		/* translators: %s is styling */
+		__( 'This is the only way to link to a marker on your map from an %1$sexternal%2$s site.', 'extensions-leaflet-map' ),
+		'<b>',
+		'</b>'
+	) . '</p>';
+
 	$text = $text . '<ul><li>' . __( 'Create a source page / post with a link to the target page / post.', 'extensions-leaflet-map' ) . '</li>';
 	$text = $text . '<li>' . __( 'The parameters (querystring) from this link should be:', 'extensions-leaflet-map' ) .
 	'<code> ?lat=...&lng=...</code></li>';

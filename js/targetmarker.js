@@ -252,8 +252,8 @@ function leafext_target_same_geojson_js(geojsonproperty,geojsonvalue,target,zoom
 	);
 }
 
-function leafext_target_post_geojson_js(geojsonproperty,geojsonvalue,target,popup,zoom,debug) {
-	console.log( "leafext_target_post_geojson_js",geojsonproperty,geojsonvalue,target,popup,zoom,debug );
+function leafext_target_post_geojson_js(geojsonproperty,geojsonvalue,target,zoom,debug) {
+	console.log( "leafext_target_post_geojson_js",geojsonproperty,geojsonvalue,target,zoom,debug );
 	var map       = window.WPLeafletMapPlugin.getCurrentMap();
 	thismapbounds = [];
 	var map_id    = map._leaflet_id;
