@@ -1,7 +1,8 @@
-### 4.3 / 2405xx
+### 4.3 / 2406xx
 
 * many new possibilities for targetmarker
 * overviewmap: you can use tags like categories
+* overviewmap: works for custom post types
 
 ### 4.2.5 / 240512
 

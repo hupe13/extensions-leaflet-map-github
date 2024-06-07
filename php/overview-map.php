@@ -168,6 +168,12 @@ function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 	}
 	// $pageposts = false;
 	if ( false === $pageposts ) {
+		$args       = array(
+			'public' => true,
+		);
+		$post_types = get_post_types( $args, 'names' );
+		unset( $post_types['attachment'] );
+
 		// $querystr = "
 		// SELECT DISTINCT wposts.*
 		// FROM $wpdb->posts wposts
@@ -177,7 +183,7 @@ function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 		// AND (wposts.post_type = 'post' OR wposts.post_type = 'page')
 		// ";
 		// $pageposts = $wpdb->get_results($querystr, OBJECT);
-		$query     = new WP_Query(
+		$query = new WP_Query(
 			array(
 				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
 				'meta_query'     => array(
@@ -192,7 +198,8 @@ function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 						'value'   => '',
 					),
 				),
-				'post_type'      => array( 'post', 'page' ),
+				// 'post_type'      => array( 'post', 'page' ),
+				'post_type'      => $post_types,
 				'post_status'    => 'publish',
 				'posts_per_page' => -1,
 			)
