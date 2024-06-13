@@ -1,9 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* only Github Version: Error in check-update.php (is_plugin_active_for_network unknown)
-* many new possibilities for targetmarker
-* overviewmap: you can use tags like categories
-* overviewmap: works for custom post types
+* none
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
