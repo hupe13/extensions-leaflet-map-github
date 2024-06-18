@@ -522,17 +522,6 @@ function leafext_elevation_params( $typ = array() ) {
 			'typ'       => array( 'changeable', 'other', 'multielevation' ),
 		),
 
-		// Chart distance/elevation units.
-		// imperial: false,
-		array(
-			'param'     => 'imperial',
-			'shortdesc' => __( 'Chart distance/elevation units imperial or metric.', 'extensions-leaflet-map' ),
-			'desc'      => __( 'miles or kilometers', 'extensions-leaflet-map' ),
-			'default'   => false,
-			'values'    => 1,
-			'typ'       => array( 'changeable', 'other', 'multielevation' ),
-		),
-
 		// [Lat, Long] vs [Long, Lat] points. (leaflet default: [Lat, Long])
 		// reverseCoords: false,
 		array(
@@ -598,6 +587,98 @@ function leafext_elevation_params( $typ = array() ) {
 		// 'typ' => array('fixed'),
 		// ),
 
+		// Chart distance/elevation units.
+		// imperial: false,
+		array(
+			'param'     => 'imperial',
+			'shortdesc' => __( 'Chart distance/elevation units imperial or metric.', 'extensions-leaflet-map' ),
+			'desc'      => __( 'miles or kilometers', 'extensions-leaflet-map' ),
+			'default'   => false,
+			'values'    => 1,
+			'typ'       => array( 'changeable', 'units', 'multielevation' ),
+		),
+
+		// Factor:
+		// opts.accelerationFactor = opts.accelerationFactor || 1;  // (Beschleunigung)
+		// opts.paceFactor               = opts.paceFactor || 60; // 1 min = 60 sec
+		// opts.timeFactor         = opts.timeFactor || 3600;
+
+		// Labels:
+		// acceleration.label  = opts.accelerationLabel  || L._(opts.imperial ? 'ft/s²' : 'm/s²');
+		// pace.label            = opts.paceLabel  || L._(opts.imperial ? 'min/mi' : 'min/km');
+		// slope.label         = opts.slopeLabel || '%';
+		// time.label            = opts.timeLabel  || 't';
+
+		// xLabel: "km",
+		// distance.label      = opts.imperial ? "mi" : opts.xLabel;
+		array(
+			'param'     => 'xLabel',
+			'shortdesc' => 'distanceLabel',
+			/* translators: Label for distance in chart, will be ignored if imperial is true. */
+			'desc'      => sprintf( __( 'Label for distance in chart, will be ignored if %1$s is %2$s.', 'extensions-leaflet-map' ), 'imperial', 'true' ) . '<br>' .
+				__( 'Default', 'extensions-leaflet-map' ) . ': "km"',
+			'default'   => '',
+			'values'    => '',
+			'typ'       => array( 'changeable', 'units', 'multielevation' ),
+		),
+
+		// opts.distanceFactor       = opts.imperial ? this.__mileFactor : (opts.distanceFactor || 1); // 1 km = (1000 m)
+		// __mileFactor:     0.621371, // 1 km = (0.621371 mi)
+		array(
+			'param'     => 'distanceFactor',
+			'shortdesc' => 'distanceFactor',
+			'desc'      => __( 'Conversion factor to kilometers, will be ignored if imperial is true.', 'extensions-leaflet-map' ) . '<br>' .
+				__( 'Default', 'extensions-leaflet-map' ) . ': 1',
+			'default'   => '',
+			'values'    => '',
+			'typ'       => array( 'changeable', 'units', 'multielevation' ),
+		),
+
+		// yLabel: "m",
+		// altitude.label      = opts.imperial ? "ft" : opts.yLabel;
+		array(
+			'param'     => 'yLabel',
+			'shortdesc' => 'altitude.label',
+			'desc'      => __( 'Label for altitude in chart', 'extensions-leaflet-map' ) . '<br>' .
+			/* translators: Default: "ft" if imperial is true, "m" otherwise. */
+				sprintf( __( 'Default: %1$s if %2$s is %3$s, %4$s otherwise.', 'extensions-leaflet-map' ), '"ft"', 'imperial', 'true', '"m"' ),
+			'default'   => '',
+			'values'    => '',
+			'typ'       => array( 'changeable', 'units', 'multielevation' ),
+		),
+
+		// opts.altitudeFactor       = opts.imperial ? this.__footFactor : (opts.altitudeFactor || 1); // 1 m = (1 m)
+		array(
+			'param'     => 'altitudeFactor',
+			'shortdesc' => 'altitudeFactor',
+			'desc'      => __( 'Conversion factor to meters, will be ignored if imperial is true', 'extensions-leaflet-map' ) . '<br>' .
+				__( 'Default', 'extensions-leaflet-map' ) . ': 1',
+			'default'   => '',
+			'values'    => '',
+			'typ'       => array( 'changeable', 'units', 'multielevation' ),
+		),
+
+		// speed.label           = opts.speedLabel || L._(opts.imperial ? 'mph' : 'km/h');
+		array(
+			'param'     => 'speedLabel',
+			'shortdesc' => 'speedLabel',
+			'desc'      => __( 'Label for speed', 'extensions-leaflet-map' ) . '<br>' .
+			/* translators: Default: "mph" if imperial is true, "km/h" otherwise. */
+				sprintf( __( 'Default: %1$s if %2$s is %3$s, %4$s otherwise.', 'extensions-leaflet-map' ), '"mph"', 'imperial', 'true', '"km/h"' ),
+			'default'   => '',
+			'values'    => '',
+			'typ'       => array( 'changeable', 'units', 'multielevation' ),
+		),
+
+		// opts.speedFactor        = opts.speedFactor || 1;
+		// array(
+		//  'param'     => 'speedFactor',
+		//  'shortdesc' => 'speedFactor',
+		//  'desc'      => __( 'Conversion factor to km/h, if you want to show m/min', 'extensions-leaflet-map' ) . ': <code>0.016666</code>',
+		//  'default'   => '',
+		//  'values'    => '',
+		//  'typ'       => array( 'changeable', 'units', 'multielevation' ),
+		// ),
 	);
 
 	if ( count( $typ ) > 0 ) {
@@ -796,6 +877,17 @@ function leafext_ele_java_params( $settings ) {
 					unset( $settings[ $k ] );
 				}
 				break;
+			case 'distanceFactor':
+			case 'altitudeFactor':
+			case 'speedLabel':
+			case 'xLabel':
+			case 'yLabel':
+			case 'speedFactor':
+				if ( $settings[ $k ] === '' ) {
+					unset( $settings[ $k ] );
+				}
+				break;
+
 			default:
 		}
 	}

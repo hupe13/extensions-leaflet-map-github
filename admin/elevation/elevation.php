@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || die();
 
 function leafext_eleparams_init() {
 	register_setting( 'leafext_settings_eleparams', 'leafext_eleparams', 'leafext_validate_ele_options' );
-	$ele_settings = array( 'test', 'chartlook', 'chart', 'info', 'look', 'points', 'other' );
+	$ele_settings = array( 'test', 'chartlook', 'chart', 'info', 'look', 'points', 'units', 'other' );
 	foreach ( $ele_settings as $ele_setting ) {
 		add_settings_section( 'eleparams_settings_' . $ele_setting, '', 'leafext_ele_help_' . $ele_setting, 'leafext_settings_eleparams' );
 		$fields = leafext_elevation_params( array( $ele_setting ) );
@@ -355,5 +355,12 @@ function leafext_ele_help_other() {
 	echo '<div style="border-top: 3px solid #646970"></div>';
 	echo '<h3>';
 	echo esc_html__( 'Others', 'extensions-leaflet-map' );
+	echo '</h3>';
+}
+
+function leafext_ele_help_units() {
+	echo '<div style="border-top: 3px solid #646970"></div>';
+	echo '<h3>';
+	echo esc_html__( 'Units and Labels', 'extensions-leaflet-map' );
 	echo '</h3>';
 }

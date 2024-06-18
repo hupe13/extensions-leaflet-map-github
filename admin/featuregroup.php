@@ -270,10 +270,10 @@ function leafext_help_featuregroup() {
 	$text = $text . ' ' . sprintf(
 		/* translators: %s is leaflet-optiongroup. */
 		__(
-			'It works with %s only.',
+			'It works with %s only and the markers are not clustered.',
 			'extensions-leaflet-map'
 		),
-		'<code>leaflet-optiongroup</code>'
+		'<code>leaflet-(extra)marker</code>'
 	) . '</p>';
 	$text = $text . '<ul>
 	<li><code>parent</code> - ' . __( 'Name of the parent', 'extensions-leaflet-map' ) . '</li>
