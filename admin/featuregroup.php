@@ -267,7 +267,7 @@ function leafext_help_featuregroup() {
 		'Display nested groups.',
 		'extensions-leaflet-map'
 	);
-	$text = $text . '<ul>
+	$text = $text . '</p><ul>
 	<li><code>parent</code> - ' . __( 'Name of the parent', 'extensions-leaflet-map' ) . '</li>
 	<li><code>childs</code> - ' . sprintf(
 		/* translators: %s is an option. */
