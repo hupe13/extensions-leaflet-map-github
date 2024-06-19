@@ -443,6 +443,28 @@ function leafext_enqueue_targetmarker() {
 	leafext_enqueue_css();
 }
 
+function leafext_enqueue_groupedlayercontrol() {
+	wp_enqueue_script(
+		'groupedlayercontrol',
+		plugins_url(
+			'leaflet-plugins/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.min.js',
+			LEAFEXT_PLUGIN_FILE
+		),
+		array( 'wp_leaflet_map' ),
+		null,
+		true
+	);
+	wp_enqueue_style(
+		'groupedlayercontrol',
+		plugins_url(
+			'leaflet-plugins/leaflet-groupedlayercontrol/leaflet.groupedlayercontrol.min.css',
+			LEAFEXT_PLUGIN_FILE
+		),
+		array( 'leaflet_stylesheet' ),
+		null
+	);
+}
+
 /**
  * Awesome font
  */

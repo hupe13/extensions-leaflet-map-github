@@ -141,9 +141,18 @@ function leafext_help_entries() {
 		'menu' => __( 'Leaflet Plugins', 'extensions-leaflet-map' ),
 		array(
 			'function'  => __( 'Grouping by options and features', 'extensions-leaflet-map' ),
-			'shortcode' => 'leaflet-optiongroup, leaflet-featuregroup, parentgroup',
+			'shortcode' => 'leaflet-optiongroup, leaflet-featuregroup',
 			'tab'       => 'featuregroup',
 			'plugins'   => '<a href="https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup">Leaflet.FeatureGroup.SubGroup</a>',
+			'doku'      => '/doku/featuregroup/',
+			'kategorie' => 'grouping',
+			'examples'  => '',
+		),
+		array(
+			'function'  => __( 'Nested groups', 'extensions-leaflet-map' ),
+			'shortcode' => 'parentgroup',
+			'tab'       => 'featuregroup',
+			'plugins'   => '<a href="https://github.com/ismyrnow/leaflet-groupedlayercontrol">leaflet-groupedlayercontrol</a>',
 			'doku'      => '/doku/featuregroup/',
 			'kategorie' => 'grouping',
 			'examples'  => '',
@@ -338,7 +347,13 @@ function leafext_plugins() {
 		'name'      => 'Leaflet.FeatureGroup.SubGroup',
 		'desc'      => __( 'Grouping of Leaflet elements by options and features.', 'extensions-leaflet-map' ),
 		'link'      => 'https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup',
-		'shortcode' => 'leaflet-optiongroup, leaflet-featuregroup, parentgroup',
+		'shortcode' => 'leaflet-optiongroup, leaflet-featuregroup',
+	);
+	$plugins[] = array(
+		'name'      => 'leaflet-groupedlayercontrol',
+		'desc'      => __( 'Nested optiongroups and featuregroups.', 'extensions-leaflet-map' ),
+		'link'      => 'https://github.com/ismyrnow/leaflet-groupedlayercontrol',
+		'shortcode' => 'parentgroup',
 	);
 	$plugins[] = array(
 		'name'      => 'Leaflet Control Search',

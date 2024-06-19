@@ -96,6 +96,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 * [Leaflet.MarkerCluster.PlacementStrategies](https://github.com/adammertel/Leaflet.MarkerCluster.PlacementStrategies): Styling Markerclusters.
 * [Leaflet.ExtraMarkers](https://github.com/coryasilva/Leaflet.ExtraMarkers): Shameless copy of Awesome-Markers with more shapes and colors.
 * [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup): Grouping of Leaflet elements by options and features.
+* [leaflet-groupedlayercontrol](https://github.com/ismyrnow/leaflet-groupedlayercontrol): Leaflet layer control with support for grouping overlays together.
 * [Leaflet Control Search](https://github.com/stefanocudini/leaflet-search): Search Markers/Features location by option or custom property.
 * [leaflet-choropleth](https://github.com/timwis/leaflet-choropleth): Choropleth plugin for Leaflet (color scale based on value).
 * [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome): Provides a zoom control with a "Home" button to reset the view.
@@ -185,6 +186,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 ### 4.3.1 / 240xxx
 
 * elevation: units and labels
+* parentgroup: realized with leaflet-groupedlayercontrol, works now with markercluster and geojson.
 
 ### Previous
 

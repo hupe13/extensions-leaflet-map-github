@@ -17,7 +17,7 @@ function leafext_help_featuregroup() {
 	}
 	$text      = '';
 	$admintext = '
-	<h2 id="leaflet.featuregroup.subgroup">Leaflet.FeatureGroup.SubGroup</h2>
+	<h2 id="leaflet.featuregroup.subgroup">Leaflet.FeatureGroup.SubGroup, leaflet-groupedlayercontrol</h2>
 	<img src="' . LEAFEXT_PLUGIN_PICTS . 'clustergroup.png">
 	<p>' .
 	__( 'Group elements and dynamically add/remove from map', 'extensions-leaflet-map' ) .
@@ -267,14 +267,6 @@ function leafext_help_featuregroup() {
 		'Display nested groups.',
 		'extensions-leaflet-map'
 	);
-	$text = $text . ' ' . sprintf(
-		/* translators: %s is leaflet-optiongroup. */
-		__(
-			'It works with %s only and the markers are not clustered.',
-			'extensions-leaflet-map'
-		),
-		'<code>leaflet-(extra)marker</code>'
-	) . '</p>';
 	$text = $text . '<ul>
 	<li><code>parent</code> - ' . __( 'Name of the parent', 'extensions-leaflet-map' ) . '</li>
 	<li><code>childs</code> - ' . sprintf(

@@ -35,6 +35,7 @@ function leafext_parentgroup_function( $atts, $content, $shortcode ) {
 	} else {
 		// var_dump($atts); wp_die();
 		leafext_enqueue_leafext( 'parentgroup', 'leafext_featuregroup' );
+		leafext_enqueue_groupedlayercontrol();
 		$options = shortcode_atts(
 			array(
 				'parent'  => '',

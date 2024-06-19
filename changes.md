@@ -1,6 +1,7 @@
 # Differences to the Plugins WordPress version
 
-* none
+* elevation: units and labels
+* parentgroup: realized with leaflet-groupedlayercontrol, works now with markercluster and geojson.
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
