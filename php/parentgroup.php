@@ -8,7 +8,7 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-function leafext_parentgroup_script( $parentgroup, $childs, $grouptext, $visible ) {
+function leafext_parentgroup_script( $parentgroup, $childs, $grouptext, $expandall, $collapseall ) {
 	$text = '<script><!--';
 	ob_start();
 	?>/*<script>*/
@@ -17,8 +17,10 @@ function leafext_parentgroup_script( $parentgroup, $childs, $grouptext, $visible
 		let parent = <?php echo wp_json_encode( $parentgroup ); ?>;
 		let childs = <?php echo wp_json_encode( $childs ); ?>;
 		let grouptext = <?php echo wp_json_encode( $grouptext ); ?>;
-		let visible = <?php echo wp_json_encode( $visible ); ?>;
-		leafext_parentgroup_js(parent,childs,grouptext, visible);
+		let expandall = <?php echo wp_json_encode( $expandall ); ?>;
+		let collapseall = <?php echo wp_json_encode( $collapseall ); ?>;
+
+		leafext_parentgroup_js(parent,childs,grouptext,expandall,collapseall);
 	});
 	<?php
 	$javascript = ob_get_clean();
@@ -34,46 +36,30 @@ function leafext_parentgroup_function( $atts, $content, $shortcode ) {
 		return $text;
 	} else {
 		// var_dump($atts); wp_die();
-		leafext_enqueue_leafext( 'parentgroup', 'leafext_featuregroup' );
-		leafext_enqueue_groupedlayercontrol();
+		leafext_enqueue_controltree();
+		leafext_enqueue_awesome();
 		$options = shortcode_atts(
 			array(
-				'parent'  => '',
-				'childs'  => '',
-				'visible' => false,
+				'parent'      => '',
+				'childs'      => '',
+				'collapseall' => '',
+				'expandall'   => '',
 			),
 			leafext_clear_params( $atts )
 		);
 
 		$parentgroup = sanitize_text_field( $options['parent'] );
+		$expandall   = sanitize_text_field( $options['expandall'] );
+		$collapseall = sanitize_text_field( $options['collapseall'] );
 
 		$childs = array();
 		foreach ( array_map( 'trim', explode( ',', $options['childs'] ) ) as $group ) {
 			$childs[] = trim( wp_strip_all_tags( $group ) );
 		}
 
-		if ( $options['visible'] === false ) {
-			$cl_on = array_fill( 0, count( $childs ), '1' );
-		} else {
-			$cl_on = array_map( 'trim', explode( ',', $options['visible'] ) );
-			if ( count( $cl_on ) === 1 ) {
-				$cl_on = array_fill( 0, count( $childs ), '0' );
-			} elseif ( count( $childs ) !== count( $cl_on ) ) {
-					$text = "['.$shortcode.' ";
-				foreach ( $atts as $key => $item ) {
-					$text = $text . "$key=$item ";
-				}
-					$text = $text . ' - groups and visible do not match. ';
-					$text = $text . ']';
-					return $text;
-			}
-		}
-
-		$visible = array_combine( $childs, $cl_on );
-
 		global $leafext_group_menu;
 
-		return leafext_parentgroup_script( $parentgroup, $childs, $leafext_group_menu, $visible );
+		return leafext_parentgroup_script( $parentgroup, $childs, $leafext_group_menu, $expandall, $collapseall );
 	}
 }
 add_shortcode( 'parentgroup', 'leafext_parentgroup_function' );

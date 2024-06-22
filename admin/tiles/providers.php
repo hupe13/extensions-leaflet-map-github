@@ -91,6 +91,7 @@ function leafext_validate_providers( $options ) {
 }
 
 // Erklaerung / Hilfe
+
 function leafext_providers_help() {
 	if ( is_singular() || is_archive() ) {
 		$codestyle = '';
@@ -98,11 +99,24 @@ function leafext_providers_help() {
 		leafext_enqueue_admin();
 		$codestyle = ' class="language-coffeescript"';
 	}
-	$text = '<pre' . $codestyle . '><code' . $codestyle . '>[leaflet-map]' . "\n" .
-	'[layerswitch mapids=hiking providers="WaymarkedTrails.hiking"]' . "\n" .
+	if ( ! ( is_singular() || is_archive() ) ) { // backend
+		$tilesproviders = '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=tilesproviders';
+		$tileswitch     = '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=tileswitch';
+	} else { // for my frontend leafext.de
+		$server = map_deep( wp_unslash( $_SERVER ), 'sanitize_text_field' );
+		if ( strpos( $server['REQUEST_URI'], '/en/' ) !== false ) {
+			$lang = '/en';
+		} else {
+			$lang = '';
+		}
+		$tilesproviders = $lang . '/doku/tilesproviders/';
+		$tileswitch     = $lang . '/doku/tileswitch/';
+	}
+	$text = '<pre' . $codestyle . '><code' . $codestyle . '>&#91;leaflet-map]' . "\n" .
+	'&#91;layerswitch mapids=hiking providers="WaymarkedTrails.hiking"]' . "\n" .
 	"\n" .
-	'[leaflet-map mapid="OSM"]' . "\n" .
-	'[layerswitch mapids="hiking,OPNV" providers="WaymarkedTrails.hiking,OPNVKarte"]</code></pre><p>' .
+	'&#91;leaflet-map mapid="OSM"]' . "\n" .
+	'&#91;layerswitch mapids="hiking,OPNV" providers="WaymarkedTrails.hiking,OPNVKarte"]</code></pre><p>' .
 	sprintf(
 		/* translators: %s is an option. */
 		__( 'The option %s is optional.', 'extensions-leaflet-map' ),
@@ -111,7 +125,7 @@ function leafext_providers_help() {
 	sprintf(
 		/* translators: %s is an option. */
 		__( 'You can use the parameter %s also.', 'extensions-leaflet-map' ),
-		'<code>tiles</code>'
+		'<a href="' . $tileswitch . '"><code>tiles</code></a>'
 	) .
 	'</p><p>' .
 	__( 'For a list of providers see', 'extensions-leaflet-map' ) .

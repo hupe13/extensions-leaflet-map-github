@@ -9,33 +9,35 @@
 defined( 'ABSPATH' ) || die();
 
 function leafext_help_featuregroup() {
+
 	if ( is_singular() || is_archive() ) {
 		$codestyle = '';
+		$text      = '';
 	} else {
 		leafext_enqueue_admin();
 		$codestyle = ' class="language-coffeescript"';
+		$text      = '<h2>Leaflet.FeatureGroup.SubGroup, Leaflet.Control.Layers.Tree</h2>';
+		$text      = $text . '
+		<img src="' . LEAFEXT_PLUGIN_PICTS . 'grouping.png">
+		<img src="' . LEAFEXT_PLUGIN_PICTS . 'parent.png">
+		<img src="' . LEAFEXT_PLUGIN_PICTS . 'parentall.png">';
 	}
-	$text      = '';
-	$admintext = '
-	<h2 id="leaflet.featuregroup.subgroup">Leaflet.FeatureGroup.SubGroup, leaflet-groupedlayercontrol</h2>
-	<img src="' . LEAFEXT_PLUGIN_PICTS . 'clustergroup.png">
+
+	$text = $text . '
 	<p>' .
 	__( 'Group elements and dynamically add/remove from map', 'extensions-leaflet-map' ) .
 	'.</p>';
 
-	$helptext = '<p><em>Extensions for Leaflet Map</em> ' .
+	$text = $text .
 	sprintf(
-		/* translators: %1$s is a link, all others are options. */
+		/* translators: %s are shortcodes. */
 		__(
-			'uses %1$s to group leaflet elements like %2$s and others by options and properties. There are two shortcodes: %3$s and %4$s. Use %5$s to group elements by options and %6$s to group elements by properties.',
+			'There are three shortcodes: Use %1$s to group elements by options and %2$s to group elements by properties. Use %3$s to display groups in tree view.',
 			'extensions-leaflet-map'
 		),
-		'<a href="https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup">Leaflet.FeatureGroup.SubGroup</a>',
-		'<code>leaflet-marker</code>, <code>leaflet-geojson</code>',
 		'<code>leaflet-optiongroup</code>',
 		'<code>leaflet-featuregroup</code>',
-		'<code>leaflet-optiongroup</code>',
-		'<code>leaflet-featuregroup</code>'
+		'<code>parentgroup</code>'
 	)
 	. '</p>';
 
@@ -56,7 +58,7 @@ function leafext_help_featuregroup() {
 //suitable for leaflet-geojson, leaflet-gpx, leaflet-kml.
 &#091;leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." <span style="color: #d63638">!</span>substr visible=...]
 // optional one or more
-&#091;parentgroup parent=... childs=... visible=...]</code></pre>';
+&#091;parentgroup parent=... childs=... expandall=... collapseall=...]</code></pre>';
 
 	if ( is_singular() || is_archive() ) {
 		$clusterref = get_site_url() . '/doku/cluster/';
@@ -221,10 +223,12 @@ function leafext_help_featuregroup() {
 		'<code>leaflet-optiongroup</code>',
 		'<code>leaflet-featuregroup</code>',
 		'<code>groups</code>'
-	) . '<br>' .
+	) . ' ' .
 	__( 'However, make sure that they are unique. Otherwise unwanted, but sometimes interesting effects can occur. Test it with your application!', 'extensions-leaflet-map' )
 	. '</li>
-
+	<li>' .
+	__( 'Each element can belong to exactly one group.', 'extensions-leaflet-map' ) .
+	'</li>
 	<li><code>visible</code> (' . __( 'optional', 'extensions-leaflet-map' ) . ') - ' .
 	sprintf(
 		/* translators: %s are options / values. */
@@ -261,10 +265,10 @@ function leafext_help_featuregroup() {
 &#091;leaflet-featuregroup property="..." values="...,...,others,unknown" groups="...,...,Other elements,Unknown elements"]</code></pre>';
 
 	$text = $text . '<h3>parentgroup</h3><p>
-<pre' . $codestyle . '><code' . $codestyle . '>&#091;parentgroup parent=... childs=... visible=...]</code></pre>';
+<pre' . $codestyle . '><code' . $codestyle . '>&#091;parentgroup parent=... childs=... expandall=... collapseall=...]</code></pre>';
 
 	$text = $text . '<p>' . __(
-		'Display nested groups.',
+		'Display groups in tree view.',
 		'extensions-leaflet-map'
 	);
 	$text = $text . '</p><ul>
@@ -276,12 +280,14 @@ function leafext_help_featuregroup() {
 	) . '. ' .
 	__( 'If you have html tags there, you can omit these here', 'extensions-leaflet-map' ) .
 	'.</li>';
-	$text = $text . '<li><code>visible</code> (' . __( 'optional, like above', 'extensions-leaflet-map' ) . ')</li></ul>';
+	$text = $text . '<li><code>expandall</code>, <code>collapseall</code> - ' . __( 'Text for an entry in control that expands or collapses the tree. If empty (default), no entry is created. The specification in the first command applies.', 'extensions-leaflet-map' ) . '</li>';
+	$text = $text . '</ul>';
 	$text = $text . '<h3>' . __( 'Group Control', 'extensions-leaflet-map' ) . '</h3>' .
 	'<p>' .
 	'<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-optiongroup ... position=topleft|topright|bottomleft|bottomright collapsed=true|false]
 &#091;leaflet-featuregroup ... position=topleft|topright|bottomleft|bottomright collapsed=true|false]</code></pre>' .
-	'<p>' . __( 'The specification in the first command applies.', 'extensions-leaflet-map' ) . '</p>' .
+	/* translators: %s is an option. */
+	'<p>' . sprintf( __( 'The specification in the first command applies. It is valid for %s too.', 'extensions-leaflet-map' ), '<code>parentgroup</code>' ) . '</p>' .
 	'<ul>
   <li>' . sprintf(
 		/* translators: %s is an option. */
@@ -312,6 +318,6 @@ function leafext_help_featuregroup() {
 	if ( is_singular() || is_archive() ) {
 		return $text;
 	} else {
-		echo wp_kses_post( $admintext . $helptext . $text );
+		echo wp_kses_post( $text );
 	}
 }

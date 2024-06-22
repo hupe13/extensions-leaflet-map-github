@@ -149,12 +149,12 @@ function leafext_help_entries() {
 			'examples'  => '',
 		),
 		array(
-			'function'  => __( 'Nested groups', 'extensions-leaflet-map' ),
+			'function'  => __( 'Display groups in a tree view', 'extensions-leaflet-map' ),
 			'shortcode' => 'parentgroup',
 			'tab'       => 'featuregroup',
-			'plugins'   => '<a href="https://github.com/ismyrnow/leaflet-groupedlayercontrol">leaflet-groupedlayercontrol</a>',
+			'plugins'   => '<a href="https://github.com/jjimenezshaw/Leaflet.Control.Layers.Tree">Leaflet.Control.Layers.Tree</a>',
 			'doku'      => '/doku/featuregroup/',
-			'kategorie' => 'grouping',
+			'kategorie' => 'parentgroup',
 			'examples'  => '',
 		),
 		array(
@@ -184,7 +184,7 @@ function leafext_help_entries() {
 					'doku'     => '/doku/tileswitch/',
 				),
 			),
-			'kategorie' => '',
+			'kategorie' => 'tileswitch',
 			'examples'  => '',
 		),
 		array(
@@ -350,9 +350,9 @@ function leafext_plugins() {
 		'shortcode' => 'leaflet-optiongroup, leaflet-featuregroup',
 	);
 	$plugins[] = array(
-		'name'      => 'leaflet-groupedlayercontrol',
-		'desc'      => __( 'Nested optiongroups and featuregroups.', 'extensions-leaflet-map' ),
-		'link'      => 'https://github.com/ismyrnow/leaflet-groupedlayercontrol',
+		'name'      => 'Leaflet.Control.Layers.Tree',
+		'desc'      => __( 'Display groups in a tree view', 'extensions-leaflet-map' ),
+		'link'      => 'https://github.com/jjimenezshaw/Leaflet.Control.Layers.Tree',
 		'shortcode' => 'parentgroup',
 	);
 	$plugins[] = array(

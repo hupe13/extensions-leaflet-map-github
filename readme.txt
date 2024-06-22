@@ -36,4 +36,4 @@ Maybe you need a Github token.
 Many thanks to everyone who found errors and provided ideas for new functions.
 
 * elevation: units and labels
-* parentgroup: realized with leaflet-groupedlayercontrol, works now with markercluster and geojson.
+* parentgroup: realized with Leaflet.Control.Layers.Tree, works now with markercluster and geojson.

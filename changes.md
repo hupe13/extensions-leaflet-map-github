@@ -1,7 +1,7 @@
 # Differences to the Plugins WordPress version
 
 * elevation: units and labels
-* parentgroup: realized with leaflet-groupedlayercontrol, works now with markercluster and geojson.
+* parentgroup: realized with Leaflet.Control.Layers.Tree, works now with markercluster and geojson.
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

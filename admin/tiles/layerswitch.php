@@ -122,6 +122,19 @@ function leafext_maps_help_text() {
 		leafext_enqueue_admin();
 		$codestyle = ' class="language-coffeescript"';
 	}
+	if ( ! ( is_singular() || is_archive() ) ) { // backend
+		$tilesproviders = '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=tilesproviders';
+		$tileswitch     = '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=tileswitch';
+	} else { // for my frontend leafext.de
+		$server = map_deep( wp_unslash( $_SERVER ), 'sanitize_text_field' );
+		if ( strpos( $server['REQUEST_URI'], '/en/' ) !== false ) {
+			$lang = '/en';
+		} else {
+			$lang = '';
+		}
+		$tilesproviders = $lang . '/doku/tilesproviders/';
+		$tileswitch     = $lang . '/doku/tileswitch/';
+	}
 	$text = '';
 	if ( ! ( is_singular() || is_archive() ) ) {
 		$text = $text . '<img src="' . LEAFEXT_PLUGIN_PICTS . 'layerswitch.png"><p>';
@@ -150,7 +163,7 @@ function leafext_maps_help_text() {
 	$text = $text . '<p>' . sprintf(
 		/* translators: %s is an option. */
 		__( 'You can use the parameter %s also.', 'extensions-leaflet-map' ),
-		'<code>providers</code>'
+		'<a href="' . $tilesproviders . '"><code>providers</code></a>'
 	) . '</p>';
 	if ( ! ( is_singular() || is_archive() ) ) {
 		$text     = $text . '<h2>' . __( 'Settings', 'extensions-leaflet-map' ) . '</h2>';
