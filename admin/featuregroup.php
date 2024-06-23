@@ -32,7 +32,7 @@ function leafext_help_featuregroup() {
 	sprintf(
 		/* translators: %s are shortcodes. */
 		__(
-			'There are three shortcodes: Use %1$s to group elements by options and %2$s to group elements by properties. Use %3$s to display groups in tree view.',
+			'There are three shortcodes: Use %1$s to group elements by options and %2$s to group elements by properties. Use %3$s to display groups in a tree view.',
 			'extensions-leaflet-map'
 		),
 		'<code>leaflet-optiongroup</code>',
@@ -268,7 +268,7 @@ function leafext_help_featuregroup() {
 <pre' . $codestyle . '><code' . $codestyle . '>&#091;parentgroup parent=... childs=... expandall=... collapseall=...]</code></pre>';
 
 	$text = $text . '<p>' . __(
-		'Display groups in tree view.',
+		'Display groups in a tree view.',
 		'extensions-leaflet-map'
 	);
 	$text = $text . '</p><ul>

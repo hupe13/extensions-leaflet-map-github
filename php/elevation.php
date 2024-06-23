@@ -1071,6 +1071,18 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 		leafext_enqueue_elevation();
 		leafext_enqueue_leafext_elevation();
 
+		if ( isset( $atts['summary'] ) && $atts['summary'] === '1' ) {
+			$atts['slope'] = 0;
+			$atts['speed'] = 0;
+			$atts['acceleration'] = 0;
+			$atts['time'] = 0;
+			$atts['downloadLink'] = 0;
+			$atts['polyline'] = "{ weight: 3, }";
+			$atts['legend'] = 0;
+			$atts['summary'] = 'inline';
+			$atts['legend']  = false;
+		}
+
 		$atts1   = leafext_case( array_keys( leafext_elevation_settings( array( 'changeable', 'fixed' ) ) ), leafext_clear_params( $atts ) );
 		$options = shortcode_atts( leafext_elevation_settings( array( 'changeable', 'fixed' ) ), $atts1 );
 
@@ -1163,14 +1175,6 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 		// if (count($handlers) > 0) $options['handlers'] = '['.implode(',',$handlers).',...L.Control.Elevation.prototype.options.handlers]';
 		// if (count($handlers) > 0) $options['handlers'] = '[ "Distance", "Time", "Altitude", "Slope", "Speed", "Acceleration", "Labels"]';
 
-		if ( isset( $options['summary'] ) && $options['summary'] === '1' ) {
-			$params = leafext_elevation_params();
-			foreach ( $params as $param ) {
-				$options['param'] = $param['default'];
-			}
-			$options['summary'] = 'inline';
-			$options['legend']  = false;
-		}
 		if ( ! array_key_exists( 'theme', $atts ) ) {
 			$options['theme'] = leafext_elevation_theme();
 		}
