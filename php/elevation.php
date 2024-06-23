@@ -1072,15 +1072,15 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 		leafext_enqueue_leafext_elevation();
 
 		if ( isset( $atts['summary'] ) && $atts['summary'] === '1' ) {
-			$atts['slope'] = 0;
-			$atts['speed'] = 0;
+			$atts['slope']        = 0;
+			$atts['speed']        = 0;
 			$atts['acceleration'] = 0;
-			$atts['time'] = 0;
+			$atts['time']         = 0;
 			$atts['downloadLink'] = 0;
-			$atts['polyline'] = "{ weight: 3, }";
-			$atts['legend'] = 0;
-			$atts['summary'] = 'inline';
-			$atts['legend']  = false;
+			$atts['polyline']     = '{ weight: 3, }';
+			$atts['legend']       = 0;
+			$atts['summary']      = 'inline';
+			$atts['legend']       = false;
 		}
 
 		$atts1   = leafext_case( array_keys( leafext_elevation_settings( array( 'changeable', 'fixed' ) ) ), leafext_clear_params( $atts ) );

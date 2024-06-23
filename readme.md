@@ -110,7 +110,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 ## Screenshots
 
-1. Track with elevation and other profiles and Switching tile layers<br>![Track with elevation profile](.wordpress-org/screenshot-1.png)
+1. Track with elevation and speed profiles<br>![Track with elevation profile](.wordpress-org/screenshot-1.png)
 2. ExtraMarkers <br>![ExtraMarkers](.wordpress-org/screenshot-2.png)
 3. Grouping <br>![Grouping](.wordpress-org/screenshot-3.png)
 4. Markercluster PlacementStrategies <br>![PlacementStrategies](.wordpress-org/screenshot-4.png)
