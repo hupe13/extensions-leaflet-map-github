@@ -138,12 +138,12 @@ function leafext_admin_tabs() {
 		if ( strpos( $active_tab, 'filemgr' ) !== false ) {
 			echo ' nav-tab-active';
 		}
-		echo '">' . esc_html__( 'Files for Leaflet Map', 'extensions-leaflet-map' ) . '</a>' . "\n";
+		echo '">' . esc_html__( 'Manage Leaflet Map files', 'extensions-leaflet-map' ) . '</a>' . "\n";
 	} else {
 		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
 		echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=filemgr-list" class="nav-tab';
 		echo $active_tab === 'filemgr-list' ? ' nav-tab-active' : '';
-		echo '">' . esc_html__( 'Files for Leaflet Map', 'extensions-leaflet-map' ) . '</a>' . "\n";
+		echo '">' . esc_html__( 'Manage Leaflet Map files', 'extensions-leaflet-map' ) . '</a>' . "\n";
 	}
 	$tabs = array(
 		array(

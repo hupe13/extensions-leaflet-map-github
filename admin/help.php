@@ -246,10 +246,10 @@ function leafext_help_entries() {
 		),
 	);
 
-	$table[ __( 'Files for Leaflet Map', 'extensions-leaflet-map' ) ] = array(
+	$table[ __( 'Manage Leaflet Map files', 'extensions-leaflet-map' ) ] = array(
 		array(
-			'function'  => __( 'Files for Leaflet Map', 'extensions-leaflet-map' ),
-			'shortcode' => __( 'Files for Leaflet Map', 'extensions-leaflet-map' ),
+			'function'  => __( 'Manage Leaflet Map files', 'extensions-leaflet-map' ),
+			'shortcode' => __( 'Manage Leaflet Map files', 'extensions-leaflet-map' ),
 			'tab'       => 'filemgr' . ( current_user_can( 'manage_options' ) ? '' : '-list' ),
 			'plugins'   => '',
 			'doku'      => '/doku/filemgr/',

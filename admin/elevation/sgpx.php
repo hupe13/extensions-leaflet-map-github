@@ -170,7 +170,7 @@ function leafext_sgpx_help_text() {
 		echo '</li>';
 		echo '<li>';
 		/* translators: %s is a link. */
-		printf( esc_html__( 'To manage your tracks now, you can use %1$sFiles for Leaflet Map%2$s.', 'extensions-leaflet-map' ), '<a href="?page=' . esc_html( LEAFEXT_PLUGIN_SETTINGS ) . '&tab=filemgr">', '</a>' );
+		printf( esc_html__( 'To manage your tracks now, you can use %1$sManage Leaflet Map files%2$s.', 'extensions-leaflet-map' ), '<a href="?page=' . esc_html( LEAFEXT_PLUGIN_SETTINGS ) . '&tab=filemgr">', '</a>' );
 		echo '</li>';
 		echo '<li>';
 		echo esc_html__( 'If you have deleted the plugin, call this page again.', 'extensions-leaflet-map' );
