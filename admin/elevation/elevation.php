@@ -354,13 +354,13 @@ function leafext_ele_help_chart() {
 function leafext_ele_help_other() {
 	echo '<div style="border-top: 3px solid #646970"></div>';
 	echo '<h3>';
-	echo esc_html__( 'Others', 'extensions-leaflet-map' );
+	echo esc_html__( 'Other settings', 'extensions-leaflet-map' );
 	echo '</h3>';
 }
 
 function leafext_ele_help_units() {
 	echo '<div style="border-top: 3px solid #646970"></div>';
 	echo '<h3>';
-	echo esc_html__( 'Units and Labels', 'extensions-leaflet-map' );
+	echo esc_html__( 'Units', 'extensions-leaflet-map' );
 	echo '</h3>';
 }

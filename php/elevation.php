@@ -613,9 +613,9 @@ function leafext_elevation_params( $typ = array() ) {
 		// distance.label      = opts.imperial ? "mi" : opts.xLabel;
 		array(
 			'param'     => 'xLabel',
-			'shortdesc' => 'distanceLabel',
+			'shortdesc' => 'xLabel',
 			/* translators: Label for distance in chart, will be ignored if imperial is true. */
-			'desc'      => sprintf( __( 'Label for distance in chart, will be ignored if %1$s is %2$s.', 'extensions-leaflet-map' ), 'imperial', 'true' ) . '<br>' .
+			'desc'      => sprintf( __( 'Label for distance, will be ignored if %1$s is %2$s.', 'extensions-leaflet-map' ), '<code>imperial</code>', 'true' ) . '<br>' .
 				__( 'Default', 'extensions-leaflet-map' ) . ': "km"',
 			'default'   => '',
 			'values'    => '',
@@ -627,7 +627,8 @@ function leafext_elevation_params( $typ = array() ) {
 		array(
 			'param'     => 'distanceFactor',
 			'shortdesc' => 'distanceFactor',
-			'desc'      => __( 'Conversion factor to kilometers, will be ignored if imperial is true.', 'extensions-leaflet-map' ) . '<br>' .
+			/* translators: ... will be ignored if imperial is true */
+			'desc'      => sprintf( __( 'Conversion factor to kilometers, will be ignored if %1$s is %2$s.', 'extensions-leaflet-map' ), '<code>imperial</code>', 'true' ) . '<br>' .
 				__( 'Default', 'extensions-leaflet-map' ) . ': 1',
 			'default'   => '',
 			'values'    => '',
@@ -638,10 +639,10 @@ function leafext_elevation_params( $typ = array() ) {
 		// altitude.label      = opts.imperial ? "ft" : opts.yLabel;
 		array(
 			'param'     => 'yLabel',
-			'shortdesc' => 'altitude.label',
-			'desc'      => __( 'Label for altitude in chart', 'extensions-leaflet-map' ) . '<br>' .
+			'shortdesc' => 'yLabel',
+			'desc'      => __( 'Label for altitude', 'extensions-leaflet-map' ) . '<br>' .
 			/* translators: Default: "ft" if imperial is true, "m" otherwise. */
-				sprintf( __( 'Default: %1$s if %2$s is %3$s, %4$s otherwise.', 'extensions-leaflet-map' ), '"ft"', 'imperial', 'true', '"m"' ),
+				sprintf( __( 'Default: %1$s if %2$s is %3$s, %4$s otherwise.', 'extensions-leaflet-map' ), '"ft"', '<code>imperial</code>', 'true', '"m"' ),
 			'default'   => '',
 			'values'    => '',
 			'typ'       => array( 'changeable', 'units', 'multielevation' ),
@@ -651,7 +652,8 @@ function leafext_elevation_params( $typ = array() ) {
 		array(
 			'param'     => 'altitudeFactor',
 			'shortdesc' => 'altitudeFactor',
-			'desc'      => __( 'Conversion factor to meters, will be ignored if imperial is true', 'extensions-leaflet-map' ) . '<br>' .
+			/* translators: ... will be ignored if imperial is true */
+			'desc'      => sprintf( __( 'Conversion factor to meters, will be ignored if %1$s is %2$s', 'extensions-leaflet-map' ), '<code>imperial</code>', 'true' ) . '<br>' .
 				__( 'Default', 'extensions-leaflet-map' ) . ': 1',
 			'default'   => '',
 			'values'    => '',
@@ -664,7 +666,7 @@ function leafext_elevation_params( $typ = array() ) {
 			'shortdesc' => 'speedLabel',
 			'desc'      => __( 'Label for speed', 'extensions-leaflet-map' ) . '<br>' .
 			/* translators: Default: "mph" if imperial is true, "km/h" otherwise. */
-				sprintf( __( 'Default: %1$s if %2$s is %3$s, %4$s otherwise.', 'extensions-leaflet-map' ), '"mph"', 'imperial', 'true', '"km/h"' ),
+				sprintf( __( 'Default: %1$s if %2$s is %3$s, %4$s otherwise.', 'extensions-leaflet-map' ), '"mph"', '<code>imperial</code>', 'true', '"km/h"' ),
 			'default'   => '',
 			'values'    => '',
 			'typ'       => array( 'changeable', 'units', 'multielevation' ),
