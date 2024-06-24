@@ -110,13 +110,12 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 ## Screenshots
 
-1. Track with elevation and speed profiles<br>![Track with elevation profile](.wordpress-org/screenshot-1.png)
+1. Track with elevation and speed profiles <br>![Track with elevation profile](.wordpress-org/screenshot-1.png)
 2. ExtraMarkers <br>![ExtraMarkers](.wordpress-org/screenshot-2.png)
-3. Grouping <br>![Grouping](.wordpress-org/screenshot-3.png)
-4. Markercluster PlacementStrategies <br>![PlacementStrategies](.wordpress-org/screenshot-4.png)
-5. Hovering <br>![Hovering](.wordpress-org/screenshot-5.png)
-6. Hovering <br>![Hovering](.wordpress-org/screenshot-6.png)
-7. Files for Leaflet Map <br>![Files for Leaflet Map](.wordpress-org/screenshot-7.png)
+3. Grouping and Tree View <br>![Grouping and Tree View](.wordpress-org/screenshot-3.png)
+4. Markercluster PlacementStrategies <br>![Markercluster PlacementStrategies](.wordpress-org/screenshot-4.png)
+5. Tooltip on Hover <br>![Tooltip on Hover](.wordpress-org/screenshot-5.png)
+6. Manage Leaflet Map files <br>![Manage Leaflet Map files](.wordpress-org/screenshot-6.png)
 
 ## Documentation
 
