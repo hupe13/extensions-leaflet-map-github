@@ -2,8 +2,8 @@
 
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
-Tested up to: 6.5
-Stable tag: 4.3
+Tested up to: 6.6
+Stable tag: 4.3.1
 Requires at least: 5.5.3
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -35,5 +35,5 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* elevation: units and labels
-* parentgroup: realized with Leaflet.Control.Layers.Tree, works now with markercluster and geojson.
+* elevation: units
+* parentgroup: realized with Leaflet.Control.Layers.Tree, works with markercluster and geojson also now.

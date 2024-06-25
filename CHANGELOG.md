@@ -1,3 +1,8 @@
+### 4.3.1 / 24062x
+
+* elevation: units
+* parentgroup: realized with Leaflet.Control.Layers.Tree, works with markercluster and geojson also now.
+
 ### 4.3 / 240613
 
 * many new possibilities for targetmarker

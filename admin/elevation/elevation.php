@@ -267,7 +267,7 @@ function leafext_ele_help_chart() {
 	$leg_on    = ( $options['legend'] === '0' ) ? '<span style="color: #c3c4c7">' : '<span>';
 	$marker_on = ( $options['marker'] !== 'elevation-line' ) ? '<span style="color: #c3c4c7">' : '<span>';
 	echo wp_kses_post(
-		'
+		'<p>
 	<figure class="wp-block-table aligncenter is-style-stripes">
 	<table class="form-table" border="1" >
 	<thead>
@@ -341,11 +341,11 @@ function leafext_ele_help_chart() {
 	'
 	);
 	echo '</p>';
-
+	echo '<p>';
 	echo esc_html__( 'If summary is displayed, you can customize the information to display with css, e.g. show Total Length, Total Time, Total Ascent, Total Descent, Avg Speed, Avg Pace only:', 'extensions-leaflet-map' );
 	echo '</p>';
 	echo '<pre class="language-css"><code class="language-css">';
-	echo '.elevation-summary > :not(.totlen, .tottime, .ascent, .descent, .avgspeed, .avgpace) {' . "\n";
+	echo '.elevation-summary &gt; :not(.totlen, .tottime, .ascent, .descent, .avgspeed, .avgpace) {' . "\n";
 	echo '	display: none !important;' . "\n";
 	echo '}';
 	echo '</code></pre>';

@@ -351,7 +351,7 @@ function leafext_plugins() {
 	);
 	$plugins[] = array(
 		'name'      => 'Leaflet.Control.Layers.Tree',
-		'desc'      => __( 'Display groups in a tree view', 'extensions-leaflet-map' ),
+		'desc'      => __( 'A Tree Layers Control for Leaflet.', 'extensions-leaflet-map' ),
 		'link'      => 'https://github.com/jjimenezshaw/Leaflet.Control.Layers.Tree',
 		'shortcode' => 'parentgroup',
 	);
