@@ -101,21 +101,20 @@ function leafext_clustergroup_help_text() {
 			<ul>
 			<li><code>feat</code> - ' . __( 'possible meaningful values', 'extensions-leaflet-map' ) . ': <code>iconUrl</code>, <code>properties.<i>property</i></code></li>
 			<li><code>properties.<i>property</i></code> - ' . __( 'is the name of a property in properties of the Point in the FeatureCollection', 'extensions-leaflet-map' ) .
-			', e.g. <code>properties.<span style="color: #d63638"><i>prop0</i></span></code> in
-			<pre>{
-       "type": "FeatureCollection",
-       "features": [{
-           "type": "Feature",
-           "geometry": {
-               "type": "Point",
-               "coordinates": [102.0, 0.5]
-           },
-           "properties": {
-               "<span style="color: #d63638">prop0</span>": "<span style="color: #4f94d4">value0</span>"
-           }
-       },...</pre>
-			 '
-			. '</li>
+			', e.g. <code>properties.<span style="color: #d63638"><i>prop0</i></span></code> in';
+			$text = $text . '<pre class="leafext-prismatic"><code class="leafext-prismatic-bg">{' . "\n" .
+			'  "type": "FeatureCollection",' . "\n" .
+			'  "features": [{' . "\n" .
+			'    "type": "Feature",' . "\n" .
+			'    "geometry": {' . "\n" .
+			'      "type": "Point",' . "\n" .
+			'      "coordinates": [102.0, 0.5]' . "\n" .
+			'    },' . "\n" .
+			'    "properties": {' . "\n" .
+			'      "<span style="color: #d63638">prop0</span>": "<span style="color: #4f94d4">value0</span>"' . "\n" .
+			'    }' . "\n" .
+			'  },...</code ></pre></p>';
+			$text = $text . '</li>
 			<li><code>strings</code> - ' . sprintf(
 				/* translators: %s are options / values. */
 				__(
@@ -155,9 +154,9 @@ function leafext_clustergroup_help_text() {
 //any more leaflet-geojson
 &#091;markerclustergroup feat="iconUrl" strings="red,green" groups="rot,gruen" visible=...]</code></pre>'
 					. __( 'or', 'extensions-leaflet-map' ) .
-	'<pre><code>&#091;leaflet-geojson src="..."  ... ] ... &#091;/leaflet-geojson]
-//any more leaflet-geojson
-&#091;markerclustergroup feat="properties.<span style="color: #d63638">prop0</span>" strings="<span style="color: #4f94d4">value0</span>,..." groups="Description0,..." visible=...]</code></pre>
+	'<pre class="leafext-prismatic"><code class="leafext-prismatic-bg"> &#091;leaflet-geojson src="..."  ... ] ... &#091;/leaflet-geojson]
+ //any more leaflet-geojson
+ &#091;markerclustergroup feat="properties.<span style="color: #d63638">prop0</span>" strings="<span style="color: #4f94d4">value0</span>,..." groups="Description0,..." visible=...]</code ></pre >
 <h3>groups unknown ' . __( 'and', 'extensions-leaflet-map' ) . ' others</h3><p>' .
 	sprintf(
 		/* translators: %s are options / values. */

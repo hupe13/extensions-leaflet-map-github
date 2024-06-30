@@ -36,7 +36,7 @@ function leafext_help_geojsonmarker() {
 	$text = $text . '<p>';
 	/* translators: %s is a feature. */
 	$text = $text . sprintf( __( 'A %s in a geojson file is specified like this:', 'extensions-leaflet-map' ), '"Point"' );
-	$text = $text . '<pre>{
+	$text = $text . '<pre class="leafext-prismatic"><code class="leafext-prismatic-bg"> {
   "type": "Feature",
   "geometry": {
     "type": "Point",
@@ -46,12 +46,12 @@ function leafext_help_geojsonmarker() {
     "<span style="color: #d63638">property</span>": "value"
     ....
   }
-}</pre></p>';
+}</code ></pre></p>';
 
 	$text = $text . '<h3>Shortcode</h3>';
-	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;geojsonmarker property=<span style="color: #d63638">property</span> values=... iconprops=... icondefault=<span style="color: #4f94d4">blue</span> groups=... visible=... <i>cluster-options</i>]</code></pre>';
+	$text = $text . '<pre class="leafext-prismatic"><code class="leafext-prismatic-bg"> &#091;geojsonmarker property=<span style="color: #d63638">property</span> values=... iconprops=... icondefault=<span style="color: #4f94d4">blue</span> groups=... visible=... <i>cluster-options</i>]</code ></pre>';
 
-	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;geojsonmarker property=<span style="color: #d63638">property</span> auto <i>cluster-options</i>]</code></pre>';
+	$text = $text . '<pre class="leafext-prismatic"><code class="leafext-prismatic-bg"> &#091;geojsonmarker property=<span style="color: #d63638">property</span> auto <i>cluster-options</i>]</code ></pre>';
 
 	$text = $text . '<h3>circleMarker</h3>';
 	$text = $text . sprintf(
@@ -62,8 +62,8 @@ function leafext_help_geojsonmarker() {
 		'<code>radius</code>',
 		'<code>leaflet-geojson</code>'
 	);
-	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-geojson src="//url/to/file.geojson" circleMarker color=<span style="color: #4f94d4">blue</span> radius=...]
-&#091;geojsonmarker property=<span style="color: #d63638">property</span> icondefault=<span style="color: #4f94d4">blue</span> ...]</code></pre>';
+	$text = $text . '<pre class="leafext-prismatic"><code class="leafext-prismatic-bg"> &#091;leaflet-geojson src="//url/to/file.geojson" circleMarker color=<span style="color: #4f94d4">blue</span> radius=...]
+  &#091;geojsonmarker property=<span style="color: #d63638">property</span> icondefault=<span style="color: #4f94d4">blue</span> ...]</code ></pre>';
 
 	$text = $text . '<h3>' . __( 'Marker with icon', 'extensions-leaflet-map' ) . '</h3>';
 
@@ -81,8 +81,8 @@ function leafext_help_geojsonmarker() {
 		'<code>iconurl</code>',
 		'<code>iconprops</code>'
 	)
-	. '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-geojson src="//url/to/file.geojson" iconurl="//url/to/marker-icon-<span style="color: #4f94d4">blue</span>.png" iconsize=... iconanchor="..,.." popupanchor="..,.."  tooltipanchor="..,.." shadowurl="//url/to/marker-shadow.png" shadowsize=... shadowanchor=...]
-&#091;geojsonmarker property=<span style="color: #d63638">property</span> values=... iconprops=... icondefault=<span style="color: #4f94d4">blue</span> ...]</code></pre>';
+	. '<pre class="leafext-prismatic"><code class="leafext-prismatic-bg"> &#091;leaflet-geojson src="//url/to/file.geojson" iconurl="//url/to/marker-icon-<span style="color: #4f94d4">blue</span>.png" iconsize=... iconanchor="..,.." popupanchor="..,.."  tooltipanchor="..,.." shadowurl="//url/to/marker-shadow.png" shadowsize=... shadowanchor=...]
+  &#091;geojsonmarker property=<span style="color: #d63638">property</span> values=... iconprops=... icondefault=<span style="color: #4f94d4">blue</span> ...]</code ></pre>';
 
 	$text = $text . '<h3>Extramarker</h3>';
 	$text = $text . sprintf(
@@ -99,9 +99,9 @@ function leafext_help_geojsonmarker() {
 		'<code>markerColor</code>'
 	);
 
-	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map fitbounds ...]
-&#091;leaflet-geojson src="//url/to/file.geojson"]
-&#091;geojsonmarker property=<span style="color: #d63638">property</span> icondefault=<span style="color: #4f94d4">blue</span> markerColor=<span style="color: #4f94d4">blue</span> <i>extramarker-options</i>] ...</code></pre>';
+	$text = $text . '<pre class="leafext-prismatic"><code class="leafext-prismatic-bg"> &#091;leaflet-map fitbounds ...]
+  &#091;leaflet-geojson src="//url/to/file.geojson"]
+  &#091;geojsonmarker property=<span style="color: #d63638">property</span> icondefault=<span style="color: #4f94d4">blue</span> markerColor=<span style="color: #4f94d4">blue</span> <i>extramarker-options</i>] ...</code ></pre>';
 
 	$text = $text . '<h3>Options</h3>';
 	$text = $text . '<ul><li><code>property</code> - ' . __( 'required', 'extensions-leaflet-map' ) . '</li>';

@@ -35,5 +35,5 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* elevation: units
+* elevation: units such as knots, nautical miles
 * parentgroup: realized with Leaflet.Control.Layers.Tree, works with markercluster and geojson also now.

@@ -28,22 +28,24 @@ function leafext_help_featuregroup() {
 	__( 'Group elements and dynamically add/remove from map', 'extensions-leaflet-map' ) .
 	'.</p>';
 
-	$text = $text .
+	$text = $text . '<p>' .
 	sprintf(
 		/* translators: %s are shortcodes. */
 		__(
-			'There are three shortcodes: Use %1$s to group elements by options and %2$s to group elements by properties. Use %3$s to display groups in a tree view.',
+			'There are three shortcodes: %1$s to group elements by options%2$s to group elements by properties%3$s to display groups in a tree view',
 			'extensions-leaflet-map'
 		),
-		'<code>leaflet-optiongroup</code>',
-		'<code>leaflet-featuregroup</code>',
-		'<code>parentgroup</code>'
+		'<ul><li> <code>leaflet-optiongroup</code>',
+		'</li><li> <code>leaflet-featuregroup</code>',
+		'</li><li> <code>parentgroup</code>'
 	)
-	. '</p>';
+	. '</li></ul></p>';
 
-	$text = $text . '<h3>Shortcode</h3>
-  <pre><code>&#091;leaflet-map fitbounds]
-//any many
+	$text = $text . '<h3>Shortcode</h3>';
+	$text = $text . '<h4>' . __( 'Create Map', 'extensions-leaflet-map' ) . '</h4>';
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map fitbounds ....]</code></pre>' . "\n";
+	$text = $text . '<h4>' . __( 'and load any leaflet elements', 'extensions-leaflet-map' ) . '</h4>';
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>//any many
 &#091;leaflet-marker      ...] ... &#091;/leaflet-marker]
 &#091;leaflet-extramarker ...] ... &#091;/leaflet-extramarker]
 &#091;leaflet-polygon     ...] ... &#091;/leaflet-polygon]
@@ -52,13 +54,23 @@ function leafext_help_featuregroup() {
 &#091;leaflet-geojson     ...] ... &#091;/leaflet-geojson]
 &#091;leaflet-gpx         ...] ... &#091;/leaflet-gpx]
 &#091;leaflet-kml         ...] ... &#091;/leaflet-kml]
-//one or more
-//suitable for all leaflet-elements above
+</code></pre>';
+
+	$text = $text . '<h4>';
+	/* translators: %s is leaflet-optiongroup. */
+	$text = $text . sprintf( __( 'Create one or more %s', 'extensions-leaflet-map' ), 'leaflet-optiongroup' ) . '</h4>';
+	$text = $text . '<p><pre' . $codestyle . '><code' . $codestyle . '>//suitable for all leaflet-elements above
 &#091;leaflet-optiongroup option="..." values="..., ..." groups="..., ..." substr visible=...]
-//suitable for leaflet-geojson, leaflet-gpx, leaflet-kml.
+</code></pre></p>';
+	/* translators: %s is leaflet-featuregroup. */
+	$text = $text . '<h4>' . sprintf( __( 'Or create one or more %s', 'extensions-leaflet-map' ), 'leaflet-featuregroup' ) . '</h4>';
+	$text = $text . '<p><pre class="leafext-prismatic"><code class="leafext-prismatic-bg">//suitable for leaflet-geojson, leaflet-gpx, leaflet-kml.
 &#091;leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." <span style="color: #d63638">!</span>substr visible=...]
-// optional one or more
-&#091;parentgroup parent=... childs=... expandall=... collapseall=...]</code></pre>';
+</code ></pre></p>';
+	/* translators: %s is parentgroup. */
+	$text = $text . '<h4>' . sprintf( __( 'Optional: Create one or more %s', 'extensions-leaflet-map' ), 'parentgroup' ) . '</h4>';
+	$text = $text . '<p><pre' . $codestyle . '><code' . $codestyle . '>&#091;parentgroup parent=... childs=... expandall=... collapseall=...]
+</code></pre></p>';
 
 	if ( is_singular() || is_archive() ) {
 		$clusterref = get_site_url() . '/doku/cluster/';
@@ -148,20 +160,20 @@ function leafext_help_featuregroup() {
 		'<code>property</code>',
 		'property',
 		'"properties"'
-	) .
-	'<code><span style="color: #d63638">prop0</span></code> in <pre>{
-  "type": "FeatureCollection",
-    "features": [{
-      "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [102.0, 0.5]
-        },
-        "properties": {
-          "<span style="color: #d63638">prop0</span>": "<span style="color: #4f94d4">value0</span>"
-        }
-      },...</pre>
-	</p>';
+	);
+	$text = $text . '<code><span style="color: #d63638">prop0</span></code> in <p>';
+	$text = $text . '<pre class="leafext-prismatic"><code class="leafext-prismatic-bg">{' . "\n" .
+	'  "type": "FeatureCollection",' . "\n" .
+	'  "features": [{' . "\n" .
+	'    "type": "Feature",' . "\n" .
+	'    "geometry": {' . "\n" .
+	'      "type": "Point",' . "\n" .
+	'      "coordinates": [102.0, 0.5]' . "\n" .
+	'    },' . "\n" .
+	'    "properties": {' . "\n" .
+	'      "<span style="color: #d63638">prop0</span>": "<span style="color: #4f94d4">value0</span>"' . "\n" .
+	'    }' . "\n" .
+	'  },...</code ></pre></p>';
 
 	$text = $text . '<p>' . sprintf(
 		/* translators: %s is an option. */
@@ -245,8 +257,8 @@ function leafext_help_featuregroup() {
 
 	</ul></p>';
 
-	$text = $text . '<pre><code>&#091;leaflet-optiongroup option="..." values="..., ..." groups="..., ..." visible=...]
-&#091;leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." visible=...]</code></pre>';
+	$text = $text . '<p><pre class="leafext-prismatic"><code class="leafext-prismatic-bg">&#091;leaflet-optiongroup option="..." values="..., ..." groups="..., ..." visible=...]' . "\n" .
+	'&#091;leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." visible=...]</code ></pre></p>';
 
 	$text = $text . '<h3>Groups unknown ' . __( 'and', 'extensions-leaflet-map' ) . ' others</h3><p>' .
 	sprintf(

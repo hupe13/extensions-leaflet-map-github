@@ -187,12 +187,12 @@ function leafext_waypoints_help_text() {
 	}
 	$text = $text . '</p>';
 	$text = $text . '<h3>' . __( 'Waypoint specified in file', 'extensions-leaflet-map' ) . '</h3>';
-	$text = $text . 'GPX: <pre>&lt;sym&gt;<span style="color: #4f94d4">' . __( 'Text of GPS symbol name', 'extensions-leaflet-map' ) . '</span>&lt;/sym&gt;</pre>';
-	$text = $text . 'Geojson: <pre>"properties": {
+	$text = $text . 'GPX: <pre class="leafext-prismatic"><code class="leafext-prismatic-bg"> &lt;sym&gt;<span style="color: #4f94d4">' . __( 'Text of GPS symbol name', 'extensions-leaflet-map' ) . '</span>&lt;/sym&gt;</code ></pre>';
+	$text = $text . 'Geojson: <pre class="leafext-prismatic"><code class="leafext-prismatic-bg"> "properties": {
   "name": "...",
   "desc": "...",
   "sym": "<span style="color: #4f94d4">' . __( 'Text of GPS symbol name', 'extensions-leaflet-map' ) . '</span>"
-},</pre>';
+},</code ></pre>';
 
 	$text = $text . '<h3>' . __( 'The waypoint CSS class Selector', 'extensions-leaflet-map' ) . '</h3>';
 
@@ -246,27 +246,27 @@ function leafext_waypoints_help_text() {
 </ul>';
 
 	$text = $text . '<h4>' . __( 'Example', 'extensions-leaflet-map' ) . '</h4>';
-	$text = $text . '<pre>.elevation-waypoint-icon.<span style="color: #d63638">waypoint-css</span>:before {
+	$text = $text . '<pre class="leafext-prismatic"><code class="leafext-prismatic-bg"> .elevation-waypoint-icon.<span style="color: #d63638">waypoint-css</span>:before {
 	background: url(https://my-domain.tld/path/to/icon.png) no-repeat 50%/contain;
-}</pre>';
+ }</code ></pre>';
 
 	// waypoint-css: -?[_a-zA-Z]+[_a-zA-Z0-9-]* anderes escapen
 	$text = $text . '<h3>' . __( 'Generated Javascript', 'extensions-leaflet-map' ) . '</h3>';
 	$text = $text .
 	__( 'More options see', 'extensions-leaflet-map' );
 	$text = $text . ' <a href="https://leafletjs.com/reference.html#divicon">Leaflet API reference</a>';
-	$text = $text . '<pre>';
+	$text = $text . '<pre class="leafext-prismatic"><code class="leafext-prismatic-bg"> ';
 	$text = $text . 'wptIcons: {
   "<span style="color: #d63638">waypoint-css</span>": L.divIcon({
-  className: "elevation-waypoint-marker",
-  html: &apos;&lt;i class="elevation-waypoint-icon <span style="color: #d63638">waypoint-css</span>"&gt;&lt;/i&gt;&apos;,
-  <span style="color: #00a32a">iconSize: [xx,xx],
-  iconAnchor: [xx,xx],
-  popupAnchor: [xx,xx],
-  ...</span>
- }),
-},';
-	$text = $text . '</pre>';
+    className: "elevation-waypoint-marker",
+    html: &apos;&lt;i class="elevation-waypoint-icon <span style="color: #d63638">waypoint-css</span>"&gt;&lt;/i&gt;&apos;,
+    <span style="color: #00a32a">iconSize: [xx,xx],
+    iconAnchor: [xx,xx],
+    popupAnchor: [xx,xx],
+    ...</span>
+  }),
+ },';
+	$text = $text . '</code ></pre>';
 	if ( ! ( is_singular() || is_archive() ) ) {
 		$text = $text . '<h3>' . __( 'Settings', 'extensions-leaflet-map' ) . '</h3>';
 	}

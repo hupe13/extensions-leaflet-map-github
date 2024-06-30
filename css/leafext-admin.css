@@ -8,3 +8,66 @@ li {
 	list-style-type: disc;
 	margin-left: 1.5em;
 }
+
+pre[class=leafext-prismatic]>code {
+	/* border-left:10px solid #358ccb !important; */
+	box-shadow:-1px 0 0 0 #358ccb !important,
+	0 0 0 1px #dfdfdf;
+	/* white-space: pre-wrap; */
+}
+
+.leafext-prismatic {
+	background-color:#fdfdfd;
+	background-attachment:local;
+	background-image:linear-gradient(transparent 50%,rgba(69,142,209,.04) 50%);
+	background-origin:content-box;
+	background-size:3em 3em;
+	border-left:10px solid #358ccb;
+	box-shadow:-1px 0 0 0 #358ccb,0 0 0 1px #dfdfdf;
+	box-sizing:border-box;
+	margin-bottom: 0.5em;
+	margin-bottom:1em;
+	margin: .5em 0;
+	overflow: auto;
+	padding: 1px;
+	position:relative;
+	z-index:1;
+}
+
+.leafext-prismatic-bg {
+	/* background-color:#fdfdfd !important; */
+	color: #000;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+}
+
+pre[class="leafext-prismatic-bg"]>code {
+	position: relative;
+	z-index: 1;
+	box-shadow: -1px 0 0 0 #358ccb, 0 0 0 1px #dfdfdf;
+	background-color: #fdfdfd;
+	background-image: linear-gradient(transparent 50%, rgba(69, 142, 209, .04) 50%);
+	background-size: 3em 3em;
+	background-origin: content-box;
+	background-attachment: local;
+}
+
+code[class=leafext-prismatic-bg] {
+	max-height: inherit;
+	height: inherit;
+	padding: 0 1em;
+	display: block;
+	overflow: auto;
+	background: 0 0;
+	background-color: rgba(0, 0, 0, 0);
+	background-attachment: scroll;
+	background-image: none;
+	background-size: auto;
+	background-origin: padding-box;
+	margin: 0 1px;
+}

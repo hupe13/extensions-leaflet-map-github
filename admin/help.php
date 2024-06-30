@@ -121,8 +121,8 @@ function leafext_help_entries() {
 			'tab'       => 'targetmarker',
 			'plugins'   => '',
 			'doku'      => '/doku/targetmarker/',
-			'kategorie' => '',
-			'examples'  => '/examples/targetmarker/',
+			'kategorie' => 'targetmarker',
+			'examples'  => '',
 			'strpos'    => 'marker',
 		),
 		array(

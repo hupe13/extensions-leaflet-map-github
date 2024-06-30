@@ -126,12 +126,6 @@ function leafext_admin_tabs() {
 	echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=help" class="nav-tab';
 	echo $active_tab === 'help' ? ' nav-tab-active' : '';
 	echo '">' . esc_html__( 'Help', 'extensions-leaflet-map' ) . '</a>' . "\n";
-	//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-	echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=elevation" class="nav-tab';
-	if ( strpos( $active_tab, 'elevation' ) !== false ) {
-		echo ' nav-tab-active';
-	}
-	echo '">' . esc_html__( 'Elevation Profiles', 'extensions-leaflet-map' ) . '</a>' . "\n";
 	if ( current_user_can( 'manage_options' ) ) {
 		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
 		echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=filemgr" class="nav-tab';
@@ -145,6 +139,13 @@ function leafext_admin_tabs() {
 		echo $active_tab === 'filemgr-list' ? ' nav-tab-active' : '';
 		echo '">' . esc_html__( 'Manage Leaflet Map files', 'extensions-leaflet-map' ) . '</a>' . "\n";
 	}
+	//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
+	echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=elevation" class="nav-tab';
+	if ( strpos( $active_tab, 'elevation' ) !== false ) {
+		echo ' nav-tab-active';
+	}
+	echo '">' . esc_html__( 'Elevation Profiles', 'extensions-leaflet-map' ) . '</a>' . "\n";
+
 	$tabs = array(
 		array(
 			'tab'    => 'markercluster',
@@ -219,7 +220,7 @@ function leafext_admin_style() {
 	if ( $page === LEAFEXT_PLUGIN_SETTINGS ) {
 		wp_enqueue_style(
 			'leafext_admin_css',
-			plugins_url( 'css/leafext-admin.min.css', LEAFEXT_PLUGIN_FILE )
+			plugins_url( 'css/leafext-admin' . LEAFEXT_MINI . '.css', LEAFEXT_PLUGIN_FILE )
 		);
 	}
 }
