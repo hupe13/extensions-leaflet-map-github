@@ -187,6 +187,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 * elevation: units such as knots, nautical miles
 * parentgroup: realized with Leaflet.Control.Layers.Tree, works with markercluster and geojson also now.
 * leaflet-parentgroup = parentgroup
+* WordPress 6.6
 
 ### Previous
 
