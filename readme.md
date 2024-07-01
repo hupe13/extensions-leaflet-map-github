@@ -182,10 +182,11 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.3.1 / 240630
+### 4.3.1 / 240701
 
 * elevation: units such as knots, nautical miles
 * parentgroup: realized with Leaflet.Control.Layers.Tree, works with markercluster and geojson also now.
+* leaflet-parentgroup = parentgroup
 
 ### Previous
 

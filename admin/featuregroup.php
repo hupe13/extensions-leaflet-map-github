@@ -37,7 +37,7 @@ function leafext_help_featuregroup() {
 		),
 		'<ul><li> <code>leaflet-optiongroup</code>',
 		'</li><li> <code>leaflet-featuregroup</code>',
-		'</li><li> <code>parentgroup</code>'
+		'</li><li> <code>leaflet-parentgroup</code>'
 	)
 	. '</li></ul></p>';
 
@@ -67,9 +67,9 @@ function leafext_help_featuregroup() {
 	$text = $text . '<p><pre class="leafext-prismatic"><code class="leafext-prismatic-bg">//suitable for leaflet-geojson, leaflet-gpx, leaflet-kml.
 &#091;leaflet-featuregroup property="<span style="color: #d63638">prop0</span>" values="<span style="color: #4f94d4">value0</span>,..." groups="..., ..." <span style="color: #d63638">!</span>substr visible=...]
 </code ></pre></p>';
-	/* translators: %s is parentgroup. */
-	$text = $text . '<h4>' . sprintf( __( 'Optional: Create one or more %s', 'extensions-leaflet-map' ), 'parentgroup' ) . '</h4>';
-	$text = $text . '<p><pre' . $codestyle . '><code' . $codestyle . '>&#091;parentgroup parent=... childs=... expandall=... collapseall=...]
+	/* translators: %s is leaflet-parentgroup. */
+	$text = $text . '<h4>' . sprintf( __( 'Optional: Create one or more %s', 'extensions-leaflet-map' ), 'leaflet-parentgroup' ) . '</h4>';
+	$text = $text . '<p><pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-parentgroup parent=... childs=... expandall=... collapseall=...]
 </code></pre></p>';
 
 	if ( is_singular() || is_archive() ) {
@@ -276,8 +276,8 @@ function leafext_help_featuregroup() {
 	<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-optiongroup option="..." values="...,...,others,unknown" groups="...,...,Other elements,Unknown elements"]
 &#091;leaflet-featuregroup property="..." values="...,...,others,unknown" groups="...,...,Other elements,Unknown elements"]</code></pre>';
 
-	$text = $text . '<h3>parentgroup</h3><p>
-<pre' . $codestyle . '><code' . $codestyle . '>&#091;parentgroup parent=... childs=... expandall=... collapseall=...]</code></pre>';
+	$text = $text . '<h3>leaflet-parentgroup</h3><p>
+<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-parentgroup parent=... childs=... expandall=... collapseall=...]</code></pre>';
 
 	$text = $text . '<p>' . __(
 		'Display groups in a tree view.',
@@ -299,7 +299,7 @@ function leafext_help_featuregroup() {
 	'<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-optiongroup ... position=topleft|topright|bottomleft|bottomright collapsed=true|false]
 &#091;leaflet-featuregroup ... position=topleft|topright|bottomleft|bottomright collapsed=true|false]</code></pre>' .
 	/* translators: %s is an option. */
-	'<p>' . sprintf( __( 'The specification in the first command applies. It is valid for %s too.', 'extensions-leaflet-map' ), '<code>parentgroup</code>' ) . '</p>' .
+	'<p>' . sprintf( __( 'The specification in the first command applies. It is valid for %s too.', 'extensions-leaflet-map' ), '<code>leaflet-parentgroup</code>' ) . '</p>' .
 	'<ul>
   <li>' . sprintf(
 		/* translators: %s is an option. */

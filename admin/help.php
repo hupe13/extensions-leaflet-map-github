@@ -150,7 +150,7 @@ function leafext_help_entries() {
 		),
 		array(
 			'function'  => __( 'Display groups in a tree view', 'extensions-leaflet-map' ),
-			'shortcode' => 'parentgroup',
+			'shortcode' => 'leaflet-parentgroup',
 			'tab'       => 'featuregroup',
 			'plugins'   => '<a href="https://github.com/jjimenezshaw/Leaflet.Control.Layers.Tree">Leaflet.Control.Layers.Tree</a>',
 			'doku'      => '/doku/featuregroup/',
@@ -353,7 +353,7 @@ function leafext_plugins() {
 		'name'      => 'Leaflet.Control.Layers.Tree',
 		'desc'      => __( 'A Tree Layers Control for Leaflet.', 'extensions-leaflet-map' ),
 		'link'      => 'https://github.com/jjimenezshaw/Leaflet.Control.Layers.Tree',
-		'shortcode' => 'parentgroup',
+		'shortcode' => 'leaflet-parentgroup',
 	);
 	$plugins[] = array(
 		'name'      => 'Leaflet Control Search',

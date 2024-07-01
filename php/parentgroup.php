@@ -63,3 +63,4 @@ function leafext_parentgroup_function( $atts, $content, $shortcode ) {
 	}
 }
 add_shortcode( 'parentgroup', 'leafext_parentgroup_function' );
+add_shortcode( 'leaflet-parentgroup', 'leafext_parentgroup_function' );
