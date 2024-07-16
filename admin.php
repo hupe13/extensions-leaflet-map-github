@@ -16,6 +16,7 @@ require LEAFEXT_PLUGIN_DIR . '/admin/tiles/main.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/filemgr/main.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/hover/main.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/overview-map.php';
+require LEAFEXT_PLUGIN_DIR . '/admin/grouping/main.php';
 
 if ( file_exists( LEAFEXT_PLUGIN_DIR . '/admin/check-update.php' ) ) {
 	require_once LEAFEXT_PLUGIN_DIR . '/admin/check-update.php';
@@ -95,9 +96,8 @@ function leafext_do_page() {
 	} elseif ( $active_tab === 'choropleth' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/choropleth.php';
 		leafext_choropleth_help();
-	} elseif ( $active_tab === 'featuregroup' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/featuregroup.php';
-		leafext_help_featuregroup();
+	} elseif ( strpos( $active_tab, 'group' ) !== false ) {
+		leafext_admin_grouping( $active_tab );
 	} elseif ( $active_tab === 'leafletsearch' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/leaflet-search.php';
 		leafext_leafletsearch_help();

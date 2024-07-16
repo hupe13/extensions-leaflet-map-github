@@ -1,6 +1,7 @@
 # Differences to the Plugins WordPress version
 
-* none
+* leaflet-parentgroup: you can set more options now.
+* leaflet-extramarker: title with spaces fixed.
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

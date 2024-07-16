@@ -133,7 +133,7 @@ function leafext_search_params() {
 		),
 
 	);
-		return $params;
+	return $params;
 }
 
 function leafext_leafletsearch_function( $atts, $content, $shortcode ) {

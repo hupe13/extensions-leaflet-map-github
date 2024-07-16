@@ -151,9 +151,9 @@ function leafext_help_entries() {
 		array(
 			'function'  => __( 'Display groups in a tree view', 'extensions-leaflet-map' ),
 			'shortcode' => 'leaflet-parentgroup',
-			'tab'       => 'featuregroup',
+			'tab'       => 'parentgroup',
 			'plugins'   => '<a href="https://github.com/jjimenezshaw/Leaflet.Control.Layers.Tree">Leaflet.Control.Layers.Tree</a>',
-			'doku'      => '/doku/featuregroup/',
+			'doku'      => '/doku/parentgroup/',
 			'kategorie' => 'parentgroup',
 			'examples'  => '',
 		),

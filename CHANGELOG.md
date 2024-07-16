@@ -1,3 +1,8 @@
+### 4.3.2 / 2407xx
+
+* leaflet-parentgroup: you can set more options now.
+* leaflet-extramarker: title with spaces fixed.
+
 ### 4.3.1 / 240701
 
 * elevation: units such as knots, nautical miles

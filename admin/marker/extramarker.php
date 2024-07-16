@@ -109,7 +109,16 @@ function leafext_extramarker_help() {
 
 	$text = $text . '<p><a href="https://fontawesome.com/search?o=r&m=free">' . __( 'More icons', 'extensions-leaflet-map' ) . ' ...</a></p>';
 
-	$text    = $text . '<p><h2>' . __( 'Options', 'extensions-leaflet-map' ) . '</h2></p>';
+	$text = $text . '<h2>' . __( 'Options', 'extensions-leaflet-map' ) . '</h2>';
+
+	$text = $text . '<p>' . sprintf(
+		/* translators: %1$s are options, %2$s is a link. */
+		__( 'You can also use some options like %1$s from %2$s.', 'extensions-leaflet-map' ),
+		'<code>title</code>, <code>draggable</code>, <code>opacity</code>',
+		'<a href="https://github.com/bozdoz/wp-plugin-leaflet-map?tab=readme-ov-file#leaflet-marker-options"><code>leaflet-marker</code></a>'
+	)
+	. '</p>';
+
 	$options = leafext_extramarker_params();
 	$new     = array();
 	$new[]   = array(

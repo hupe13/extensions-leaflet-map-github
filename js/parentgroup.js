@@ -8,7 +8,7 @@
  * Create Javascript code for parentgroup
  */
 
-function leafext_parentgroup_js(parent, childs, grouptext,expandall,collapseall) {
+function leafext_parentgroup_js(parent, childs, grouptext,expandall,collapseall,closedSymbol,openedSymbol) {
 	var map    = window.WPLeafletMapPlugin.getCurrentMap();
 	var map_id = map._leaflet_id;
 
@@ -28,8 +28,8 @@ function leafext_parentgroup_js(parent, childs, grouptext,expandall,collapseall)
 			null,
 			parents[map_id],
 			{
-				closedSymbol: '<i class="fa-solid fa-chevron-right"></i>&nbsp; ',
-				openedSymbol: '<i class="fa-solid fa-chevron-down"></i>&nbsp; ',
+				closedSymbol: closedSymbol,
+				openedSymbol: openedSymbol,
 				spaceSymbol: '&nbsp;',
 				collapseAll: collapseall,
 				expandAll: expandall,
