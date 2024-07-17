@@ -532,7 +532,7 @@ function leafext_overviewmap_function( $atts, $content, $shortcode ) {
 				$text = $text . leafext_html_table( $newtable );
 			}
 		} else {
-			$text = 'no leaflet-marker custom fields';
+			$text = '<script>console.log("' . esc_js( __( 'no leaflet-marker custom fields', 'extensions-leaflet-map' ) ) . '");</script>';
 		}
 		return $text;
 	}
