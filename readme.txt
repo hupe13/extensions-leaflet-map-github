@@ -38,3 +38,4 @@ Many thanks to everyone who found errors and provided ideas for new functions.
 * leaflet-parentgroup: you can set more options now.
 * leaflet-extramarker: title with spaces fixed.
 * overviewmap: small change in debugging.
+* overviewmap: marker title

@@ -2,6 +2,7 @@
 
 * leaflet-parentgroup: you can set more options now.
 * leaflet-extramarker: title with spaces fixed.
+* overviewmap: marker title
 
 ### 4.3.1 / 240701
 

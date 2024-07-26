@@ -186,6 +186,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 * leaflet-parentgroup: you can set more options now.
 * leaflet-extramarker: title with spaces fixed.
+* overviewmap: marker title
 
 ### Previous
 

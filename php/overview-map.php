@@ -145,7 +145,11 @@ function leafext_marker_options() {
 }
 
 function leafext_extramarker_options() {
-	$extramarker_options = array();
+	$extramarker_options = array(
+		'draggable',
+		'opacity',
+		'title',
+	);
 	foreach ( leafext_extramarker_params() as $param ) {
 		if ( $param['param'] !== 'lat' && $param['param'] !== 'lng' ) {
 			$extramarker_options[] = $param['param'];
@@ -344,12 +348,11 @@ function leafext_ovm_setup_icon( $overview_data, $atts ) {
 			$overview_data['icon'] = sanitize_file_name( $overview_data['icon'] );
 			$pathinfo              = pathinfo( $overview_data['icon'] );
 			if ( ! ( array_key_exists( 'filename', $pathinfo ) && array_key_exists( 'extension', $pathinfo ) ) ) {
-				echo '<script>console.log("' . esc_js( __( 'Error - no valid filename:', 'extensions-leaflet-map' ) ) . ' ' . esc_js( $overview_options['icons'] ) . ' - ' . esc_js( $overview_data['icon'] ) . '");</script>';
+				echo '<script>console.log("' . esc_js( __( 'Error - no valid filename:', 'extensions-leaflet-map' ) ) . '");</script>';
+				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_export
+				echo '<script>console.log(' . wp_json_encode( var_export( $overview_data, true ) ) . ');</script>';
 				$iconerror = '*';
 			}
-		} else {
-			echo '<script>console.log("' . esc_js( __( 'Error - please check data:', 'extensions-leaflet-map' ) ) . ' ' . esc_js( $overview_options['icons'] ) . ' - ' . esc_js( $overview_data['icon'] ) . '");</script>';
-			$iconerror = '*';
 		}
 		// atts from overviewmap shortcode
 		foreach ( $atts as $key => $value ) {
