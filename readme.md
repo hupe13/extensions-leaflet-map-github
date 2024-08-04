@@ -182,11 +182,13 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.3.2 / 2407xx
+### 4.4 / 240804
 
 * leaflet-parentgroup: you can set more options now.
 * leaflet-extramarker: title with spaces fixed.
-* overviewmap: marker title
+* overviewmap: marker title, categories option AND
+* targetmarker, targetlink: new option - mapid
+* elevation: new languages: portugese, polish
 
 ### Previous
 

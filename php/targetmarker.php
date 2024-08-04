@@ -17,7 +17,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 		leafext_enqueue_targetmarker();
 		$error = 'error';
 		// var_dump($atts);
-		$options         = shortcode_atts(
+		$options          = shortcode_atts(
 			array(
 				'lat'      => '',
 				'lng'      => '',
@@ -29,10 +29,13 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 				'popup'    => 'Target',
 				'zoom'     => false,
 				'debug'    => false,
+				'mapid'    => '',
 			),
 			leafext_clear_params( $atts )
 		);
-		$options['zoom'] = $options['zoom'] ? $options['zoom'] : wp_json_encode( $options['zoom'] );
+		$options['zoom']  = $options['zoom'] ? $options['zoom'] : wp_json_encode( $options['zoom'] );
+		$options['mapid'] = sanitize_text_field( $options['mapid'] );
+
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- no form
 		if ( $shortcode === 'targetmarker' ) {
 			$error = 'targetmarker error';
@@ -100,6 +103,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 				. filter_var( $options['lat'], FILTER_VALIDATE_FLOAT ) . ','
 				. filter_var( $options['lng'], FILTER_VALIDATE_FLOAT ) . ','
 				. '\'' . $options['popup'] . '\','
+				. '\'' . $options['mapid'] . '\','
 				. $options['zoom'] . ','
 				. wp_json_encode( $options['debug'] )
 				. ')">' . $options['linktext'] . '</a>';
@@ -111,6 +115,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 				. '\'' . $options['property'] . '\','
 				. '\'' . $options['value'] . '\','
 				. '\'' . $options['popup'] . '\','
+				. '\'' . $options['mapid'] . '\','
 				. $options['zoom'] . ','
 				. wp_json_encode( $options['debug'] )
 				. ')">' . $options['linktext'] . '</a>';
@@ -121,6 +126,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 				$text = '<a href="javascript:leafext_jump_to_map();" onclick="leafext_target_same_title_js('
 				. '\'' . $options['title'] . '\','
 				. '\'' . $options['popup'] . '\','
+				. '\'' . $options['mapid'] . '\','
 				. $options['zoom'] . ','
 				. wp_json_encode( $options['debug'] )
 				. ')">' . $options['linktext'] . '</a>';
@@ -152,6 +158,7 @@ function leafext_target_get_lanlng_script( $options ) {
 		let lat = <?php echo wp_json_encode( $options['lat'] ); ?>;
 		let lng = <?php echo wp_json_encode( $options['lng'] ); ?>;
 		let target = <?php echo wp_json_encode( $options['popup'] ); ?>;
+		let mapid = <?php echo wp_json_encode( $options['mapid'] ); ?>;
 		let zoom =
 		<?php
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -159,7 +166,7 @@ function leafext_target_get_lanlng_script( $options ) {
 		?>
 		;
 		let debug = <?php echo wp_json_encode( $options['debug'] ); ?>;
-		leafext_target_get_lanlng_js(lat,lng,target,zoom,debug);
+		leafext_target_get_lanlng_js(lat,lng,target,mapid,zoom,debug);
 	});
 	<?php
 	$javascript = ob_get_clean();
@@ -177,6 +184,7 @@ function leafext_target_post_title_script( $options ) {
 	window.WPLeafletMapPlugin.push(function () {
 		let title = <?php echo wp_json_encode( $options['title'] ); ?>;
 		let popup = <?php echo wp_json_encode( $options['popup'] ); ?>;
+		let mapid = <?php echo wp_json_encode( $options['mapid'] ); ?>;
 		let zoom =
 		<?php
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -184,7 +192,7 @@ function leafext_target_post_title_script( $options ) {
 		?>
 		;
 		let debug = <?php echo wp_json_encode( $options['debug'] ); ?>;
-		leafext_target_post_title_js(title,popup,zoom,debug);
+		leafext_target_post_title_js(title,popup,mapid,zoom,debug);
 	});
 	<?php
 	$javascript = ob_get_clean();
@@ -203,6 +211,7 @@ function leafext_target_post_geojson_script( $options ) {
 		let property = <?php echo wp_json_encode( $options['property'] ); ?>;
 		let value = <?php echo wp_json_encode( $options['value'] ); ?>;
 		let popup = <?php echo wp_json_encode( $options['popup'] ); ?>;
+		let mapid = <?php echo wp_json_encode( $options['mapid'] ); ?>;
 		let zoom =
 		<?php
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -210,7 +219,7 @@ function leafext_target_post_geojson_script( $options ) {
 		?>
 		;
 		let debug = <?php echo wp_json_encode( $options['debug'] ); ?>;
-		leafext_target_post_geojson_js(property,value,popup,zoom,debug);
+		leafext_target_post_geojson_js(property,value,popup,mapid,zoom,debug);
 	});
 	<?php
 	$javascript = ob_get_clean();

@@ -70,7 +70,18 @@ function leafext_overviewmap_params() {
 			'desc'    => __( 'Select only pages / posts from these categories', 'extensions-leaflet-map' ),
 			'content' => '',
 			'default' => '',
-			'values'  => __( 'a comma separated list of category names, slugs or IDs', 'extensions-leaflet-map' ),
+			'values'  => __( 'a comma separated list of category names, slugs or IDs', 'extensions-leaflet-map' ) . '. ' .
+				sprintf(
+					/* translators: %s is "ALL". */
+					__(
+						'If the list starts with %s, only pages / posts that are contained in all of them are displayed, otherwise those that are contained in at least one.
+
+
+',
+						'extensions-leaflet-map'
+					),
+					'<i>ALL</i>'
+				),
 		),
 		array(
 			'param'   => 'leaflet-extramarker',
@@ -215,8 +226,26 @@ function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 	}
 	// echo number_format((microtime(true) - $startTime), 5);
 	// var_dump($pageposts);
+
 	$catposts = array();
-	if ( $pageposts ) {
+	if ( is_array( $category ) && $category[0] === 'AND' ) {
+		// var_dump("AND");
+		$all_cats = $category;
+		array_shift( $all_cats );
+		if ( $pageposts ) {
+			foreach ( $pageposts as $post ) {
+				$cats = get_the_terms( $post->ID, array( 'category', 'post_tag' ) );
+				// var_dump($cats);
+				if ( ! empty( $cats ) && ! is_wp_error( $cats ) ) {
+					$cat_names = wp_list_pluck( $cats, 'name' );
+					$cat_slugs = wp_list_pluck( $cats, 'slug' );
+					if ( count( array_diff( $all_cats, array_merge( $cat_names, $cat_slugs ) ) ) === 0 ) {
+						$catposts[] = $post;
+					}
+				}
+			}
+		}
+	} elseif ( $pageposts ) {
 		foreach ( $pageposts as $post ) {
 			// if ( in_category( $category, $post->ID ) !== false ) {
 			// @codade

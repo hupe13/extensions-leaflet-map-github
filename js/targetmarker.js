@@ -5,9 +5,9 @@
  */
 
 // jump to leaflet-marker, leaflet-extramarker OR leaflet-geojson with lat and lng in query_string
-function leafext_target_get_lanlng_js(lat,lng,target,zoom,debug) {
-	console.log( "leafext_target_get_lanlng_js",lat,lng,target,zoom,debug );
-	var map = window.WPLeafletMapPlugin.getCurrentMap();
+function leafext_target_get_lanlng_js(lat,lng,target,mapid,zoom,debug) {
+	console.log( "leafext_target_get_lanlng_js",lat,lng,target,mapid,zoom,debug );
+	var map = leafext_get_map( mapid );
 	var markerClusterGroup;
 	thismapbounds = [];
 
@@ -57,12 +57,12 @@ function leafext_target_get_lanlng_js(lat,lng,target,zoom,debug) {
  * Jump to leaflet-marker, leaflet-extramarker OR leaflet-geojson
  * with lat and lng in a map on same site
  */
-function leafext_target_same_lanlng_js(lat,lng,target,zoom,debug) {
-	console.log( "leafext_target_same_lanlng_js",lat,lng,target,zoom,debug );
+function leafext_target_same_lanlng_js(lat,lng,target,mapid,zoom,debug) {
+	console.log( "leafext_target_same_lanlng_js",lat,lng,target,mapid,zoom,debug );
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(
 		function () {
-			var map = window.WPLeafletMapPlugin.getCurrentMap();
+			var map = leafext_get_map( mapid );
 			var markerClusterGroup;
 			thismapbounds = [];
 			if ( WPLeafletMapPlugin.markers.length > 0 ) {
@@ -164,21 +164,21 @@ function leafext_target_latlng_geojson_do(map,lat,lng,geolayer,target,zoom,debug
 }
 
 // targetmarker same site - search with title
-function leafext_target_same_title_js(title,target,zoom,debug) {
-	console.log( "leafext_target_same_title_js",title,target,zoom,debug );
+function leafext_target_same_title_js(title,target,mapid,zoom,debug) {
+	console.log( "leafext_target_same_title_js",title,target,mapid,zoom,debug );
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(
 		function () {
-			var map = window.WPLeafletMapPlugin.getCurrentMap();
+			var map = leafext_get_map( mapid );
 			leafext_target_marker_title_do( map,title,target,zoom,debug );
 		}
 	);
 }
 
 // targetmarker post remote - search with title
-function leafext_target_post_title_js(title,target,zoom,debug) {
-	console.log( "leafext_target_post_title_js",title,target,zoom,debug );
-	var map = window.WPLeafletMapPlugin.getCurrentMap();
+function leafext_target_post_title_js(title,target,mapid,zoom,debug) {
+	console.log( "leafext_target_post_title_js",title,target,mapid,zoom,debug );
+	var map = leafext_get_map( mapid );
 	map.whenReady(
 		function () {
 			leafext_target_marker_title_do( map,title,target,zoom,debug );
@@ -223,14 +223,14 @@ function leafext_target_marker_title_do(map,title,target,zoom,debug){
 }
 
 // targetmarker geojsonproperty
-function leafext_target_same_geojson_js(geojsonproperty,geojsonvalue,target,zoom,debug) {
-	console.log( "leafext_target_same_geojson_js",geojsonproperty,geojsonvalue,target,zoom,debug );
+function leafext_target_same_geojson_js(geojsonproperty,geojsonvalue,target,mapid,zoom,debug) {
+	console.log( "leafext_target_same_geojson_js",geojsonproperty,geojsonvalue,target,mapid,zoom,debug );
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	var markerClusterGroup;
 
 	window.WPLeafletMapPlugin.push(
 		function () {
-			var map       = window.WPLeafletMapPlugin.getCurrentMap();
+			var map       = leafext_get_map( mapid );
 			thismapbounds = [];
 			var map_id    = map._leaflet_id;
 			var geojsons  = window.WPLeafletMapPlugin.geojsons;
@@ -252,9 +252,9 @@ function leafext_target_same_geojson_js(geojsonproperty,geojsonvalue,target,zoom
 	);
 }
 
-function leafext_target_post_geojson_js(geojsonproperty,geojsonvalue,target,zoom,debug) {
-	console.log( "leafext_target_post_geojson_js",geojsonproperty,geojsonvalue,target,zoom,debug );
-	var map       = window.WPLeafletMapPlugin.getCurrentMap();
+function leafext_target_post_geojson_js(geojsonproperty,geojsonvalue,target,mapid,zoom,debug) {
+	console.log( "leafext_target_post_geojson_js",geojsonproperty,geojsonvalue,target,mapid,zoom,debug );
+	var map       = leafext_get_map( mapid );
 	thismapbounds = [];
 	var map_id    = map._leaflet_id;
 	var geojsons  = window.WPLeafletMapPlugin.geojsons;

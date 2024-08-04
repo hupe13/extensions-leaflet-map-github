@@ -186,3 +186,32 @@ function leafext_jump_to_map() {
 	const element = document.getElementsByClassName( "leaflet-map" )[0];
 	element.scrollIntoView( { block: "center" } );
 }
+
+function leafext_get_map(mapid) {
+	console.log( "leafext_get_map",mapid );
+	let targetmap;
+	if (mapid != '') {
+		window.WPLeafletMapPlugin.maps.forEach(
+			(map) =>
+			{
+				if (typeof targetmap === "undefined") {
+					map.eachLayer(
+						function (layer) {
+							if ( layer instanceof L.TileLayer ) {
+								if ( layer.options.id && layer.options.id == mapid ) {
+									// console.log("map found");
+									targetmap = map;
+								}
+							}
+						}
+					);
+				}
+			}
+		);
+	}
+	// console.log(typeof targetmap);
+	if (typeof targetmap === "undefined") {
+		targetmap = window.WPLeafletMapPlugin.getCurrentMap();
+	}
+	return targetmap;
+}

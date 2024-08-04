@@ -81,8 +81,16 @@ function leafext_targetmarker_help() {
 	$text = $text . __( 'text of the link. Default:', 'extensions-leaflet-map' ) . ' "Target"</li>';
 	$text = $text . '<li> popup - ';
 	/* translators: %1$s is a title, %2$s is "target". */
-	$text = $text . sprintf( __( 'popup content, if the target marker has not a popup. Default: %1$s, if the marker has one or %2$s.', 'extensions-leaflet-map' ), '<code>title</code>', '"Target"' ) . '</li>
-	<li> zoom - '
+	$text = $text . sprintf( __( 'popup content, if the target marker has not a popup. Default: %1$s, if the marker has one or %2$s.', 'extensions-leaflet-map' ), '<code>title</code>', '"Target"' ) . '</li>';
+	$text = $text . sprintf(
+		'<li> mapid - '
+		/* translators: %1$s is "mapid", %2$s is "leaflet-map". */
+		. __( ' %1$s from target map (see %2$s option %1$s). Default: current map.', 'extensions-leaflet-map' ),
+		'mapid',
+		'leaflet-map'
+	)
+	. '</li>';
+	$text = $text . '<li> zoom - '
 	. __( 'valid if the target marker is not clustered. Zoom level for move to location for target marker. Default: actual zoom level.', 'extensions-leaflet-map' )
 	. '</li>
 	<li> debug - '
@@ -162,7 +170,16 @@ function leafext_targetmarker_help() {
 	$text = $text . sprintf( __( 'popup content, if the target marker has not a popup. Default: %1$s, if the marker has one or %2$s.', 'extensions-leaflet-map' ), '<code>title</code>', '"Target"' ) . '</li>
 	<li> zoom - '
 	. __( 'valid only, if the target marker is not clustered. Zoom level if target marker was found. Default: actual zoom level.', 'extensions-leaflet-map' )
-	. '</li>
+	. '</li>';
+	$text = $text . sprintf(
+		'<li> mapid - '
+		/* translators: %1$s is "mapid", %2$s is "leaflet-map". */
+		. __( ' %1$s from target map (see %2$s option %1$s). Default: current map.', 'extensions-leaflet-map' ),
+		'mapid',
+		'leaflet-map'
+	)
+	. '</li>';
+	$text = $text . '
 	<li> debug - '
 	. __( 'if true, log some infos to the developer console and add circles about the target on the map.', 'extensions-leaflet-map' ) .
 	'</li></ul>';
