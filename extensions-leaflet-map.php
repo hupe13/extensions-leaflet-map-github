@@ -79,7 +79,7 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'leafext_add_a
  * For translating a plugin.
  */
 function leafext_extra_textdomain() {
-	if ( file_exists( LEAFEXT_PLUGIN_SETTINGS . '/lang/extensions-leaflet-map-' . get_locale() . '.po' ) ) {
+	if ( file_exists( LEAFEXT_PLUGIN_SETTINGS . '/lang/extensions-leaflet-map-' . get_locale() . '.mo' ) ) {
 		load_plugin_textdomain( 'extensions-leaflet-map', false, LEAFEXT_PLUGIN_SETTINGS . '/lang/' );
 	}
 }
