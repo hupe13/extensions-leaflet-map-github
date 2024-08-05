@@ -85,7 +85,7 @@ function leafext_targetmarker_help() {
 	$text = $text . sprintf(
 		'<li> mapid - '
 		/* translators: %1$s is "mapid", %2$s is "leaflet-map". */
-		. __( ' %1$s from target map (see %2$s option %1$s). Default: current map.', 'extensions-leaflet-map' ),
+		. __( '%1$s from target map (see %2$s option %1$s). Default: current map.', 'extensions-leaflet-map' ),
 		'mapid',
 		'leaflet-map'
 	)

@@ -74,10 +74,7 @@ function leafext_overviewmap_params() {
 				sprintf(
 					/* translators: %s is "ALL". */
 					__(
-						'If the list starts with %s, only pages / posts that are contained in all of them are displayed, otherwise those that are contained in at least one.
-
-
-',
+						'If the list starts with %s, only pages / posts that are contained in all of them are displayed, otherwise those that are contained in at least one.',
 						'extensions-leaflet-map'
 					),
 					'<i>ALL</i>'

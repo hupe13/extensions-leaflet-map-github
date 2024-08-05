@@ -16,11 +16,11 @@ function leafext_grouping_tab() {
 	$tabs = array(
 		array(
 			'tab'   => 'featuregroup',
-			'title' => __( 'featuregroup', 'extensions-leaflet-map' ),
+			'title' => 'featuregroup'
 		),
 		array(
 			'tab'   => 'parentgroup',
-			'title' => __( 'parentgroup', 'extensions-leaflet-map' ),
+			'title' => 'parentgroup',
 		),
 	);
 
