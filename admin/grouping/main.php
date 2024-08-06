@@ -16,7 +16,7 @@ function leafext_grouping_tab() {
 	$tabs = array(
 		array(
 			'tab'   => 'featuregroup',
-			'title' => 'featuregroup'
+			'title' => 'featuregroup',
 		),
 		array(
 			'tab'   => 'parentgroup',

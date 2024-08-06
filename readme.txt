@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 6.6
-Stable tag: 4.3.1
+Stable tag: 4.3.2
 Requires at least: 5.5.3
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -35,10 +35,8 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-### 4.4 / 240804
-
 * leaflet-parentgroup: you can set more options now.
 * leaflet-extramarker: title with spaces fixed.
 * overviewmap: marker title, categories option AND
 * targetmarker, targetlink: new option - mapid
-* elevation: new languages: portugese, polish
+* elevation: new languages: portuguese, polish

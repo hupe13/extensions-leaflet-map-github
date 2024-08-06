@@ -99,7 +99,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 
 			} elseif ( $options['lat'] !== '' && $options['lng'] !== '' ) {
 				// lat and lng same page / post
-				$text = '<a href="javascript:leafext_jump_to_map();" onclick="leafext_target_same_lanlng_js('
+				$text = '<a href="javascript:leafext_jump_to_map(mapid);" onclick="mapid = leafext_target_same_lanlng_js('
 				. filter_var( $options['lat'], FILTER_VALIDATE_FLOAT ) . ','
 				. filter_var( $options['lng'], FILTER_VALIDATE_FLOAT ) . ','
 				. '\'' . $options['popup'] . '\','
@@ -111,7 +111,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 
 			} elseif ( $options['property'] !== '' && $options['value'] !== '' ) {
 				// geojson property and value on the same page / post
-				$text = '<a href="javascript:leafext_jump_to_map();" onclick="leafext_target_same_geojson_js('
+				$text = '<a href="javascript:leafext_jump_to_map(mapid);" onclick="mapid = leafext_target_same_geojson_js('
 				. '\'' . $options['property'] . '\','
 				. '\'' . $options['value'] . '\','
 				. '\'' . $options['popup'] . '\','
@@ -123,7 +123,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 
 			} elseif ( $options['title'] !== '' ) {
 				// marker title on the same page / post
-				$text = '<a href="javascript:leafext_jump_to_map();" onclick="leafext_target_same_title_js('
+				$text = '<a href="javascript:leafext_jump_to_map(mapid);" onclick="mapid = leafext_target_same_title_js('
 				. '\'' . $options['title'] . '\','
 				. '\'' . $options['popup'] . '\','
 				. '\'' . $options['mapid'] . '\','

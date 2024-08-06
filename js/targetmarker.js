@@ -166,13 +166,16 @@ function leafext_target_latlng_geojson_do(map,lat,lng,geolayer,target,zoom,debug
 // targetmarker same site - search with title
 function leafext_target_same_title_js(title,target,mapid,zoom,debug) {
 	console.log( "leafext_target_same_title_js",title,target,mapid,zoom,debug );
+	let leaflet_id;
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(
 		function () {
-			var map = leafext_get_map( mapid );
+			var map    = leafext_get_map( mapid );
+			leaflet_id = map._leaflet_id;
 			leafext_target_marker_title_do( map,title,target,zoom,debug );
 		}
 	);
+	return leaflet_id;
 }
 
 // targetmarker post remote - search with title
@@ -182,7 +185,7 @@ function leafext_target_post_title_js(title,target,mapid,zoom,debug) {
 	map.whenReady(
 		function () {
 			leafext_target_marker_title_do( map,title,target,zoom,debug );
-			leafext_jump_to_map();
+			leafext_jump_to_map( map._leaflet_id );
 		}
 	);
 }
@@ -205,7 +208,7 @@ function leafext_target_marker_title_do(map,title,target,zoom,debug){
 							function (layer) {
 								// console.log(layer);
 								if (layer instanceof L.Marker) {
-									if ( layer.options.title == title ) {
+									if ( layer.options.title == title || layer.options.title_bak == title ) {
 										if (debug) {
 											console.log( title );
 										}
@@ -274,7 +277,7 @@ function leafext_target_post_geojson_js(geojsonproperty,geojsonvalue,target,mapi
 								leafext_target_geojson_do( geolayer,geojsonproperty,geojsonvalue,target,zoom,map,debug );
 							}
 						);
-						leafext_jump_to_map();
+						leafext_jump_to_map( map._leaflet_id );
 					}
 				); // geojson ready// console.log(geojson);
 			}

@@ -1,10 +1,10 @@
-### 4.4 / 240804
+### 4.3.2 / 240806
 
 * leaflet-parentgroup: you can set more options now.
 * leaflet-extramarker: title with spaces fixed.
 * overviewmap: marker title, categories option AND
 * targetmarker, targetlink: new option - mapid
-* elevation: new languages: portugese, polish
+* elevation: new languages: portuguese, polish
 
 ### 4.3.1 / 240701
 

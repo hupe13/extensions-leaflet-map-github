@@ -494,7 +494,8 @@ function leafext_hover_markertitle_js() {
 				// console.log(a.options.title);
 				if ( a.options.title ) {
 					// console.log("has title - deleted");
-					a.options.title = "";
+					a.options.title_bak = a.options.title;
+					a.options.title     = "";
 				}
 				if ( a._icon ) {
 					// console.log("has _icon - title deleted");
@@ -527,7 +528,8 @@ function leafext_hover_markertooltip_js(all_options) {
 				// console.log(a.options.title);
 				if ( a.options.title ) {
 					// console.log("has title - deleted");
-					a.options.title = "";
+					a.options.title_bak = a.options.title;
+					a.options.title     = "";
 				}
 				if ( a._icon ) {
 					// console.log("has _icon - title deleted");
