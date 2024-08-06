@@ -5,6 +5,7 @@
 * overviewmap: marker title, categories option AND
 * targetmarker, targetlink: new option - mapid
 * elevation: new languages: portuguese, polish
+* fontawesome-free-6.6.0-web
 
 ### 4.3.1 / 240701
 

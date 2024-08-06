@@ -189,6 +189,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 * overviewmap: marker title, categories option AND
 * targetmarker, targetlink: new option - mapid
 * elevation: new languages: portuguese, polish
+* fontawesome-free-6.6.0-web
 
 ### Previous
 
