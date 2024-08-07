@@ -35,9 +35,4 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* leaflet-parentgroup: you can set more options now.
-* leaflet-extramarker: title with spaces fixed.
-* overviewmap: marker title, categories option AND
-* targetmarker, targetlink: new option - mapid
-* elevation: new languages: portuguese, polish
-* fontawesome-free-6.6.0-web
+* 

@@ -1,11 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* leaflet-parentgroup: you can set more options now.
-* leaflet-extramarker: title with spaces fixed.
-* overviewmap: marker title, categories option AND
-* targetmarker, targetlink: new option - mapid
-* elevation: new languages: portuguese, polish
-* fontawesome-free-6.6.0-web
+* none
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
