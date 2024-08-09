@@ -229,16 +229,17 @@ function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 		// var_dump("AND");
 		$all_cats = $category;
 		array_shift( $all_cats );
+
 		if ( $pageposts ) {
 			foreach ( $pageposts as $post ) {
-				$cats = get_the_terms( $post->ID, array( 'category', 'post_tag' ) );
-				// var_dump($cats);
-				if ( ! empty( $cats ) && ! is_wp_error( $cats ) ) {
-					$cat_names = wp_list_pluck( $cats, 'name' );
-					$cat_slugs = wp_list_pluck( $cats, 'slug' );
-					if ( count( array_diff( $all_cats, array_merge( $cat_names, $cat_slugs ) ) ) === 0 ) {
-						$catposts[] = $post;
+				$is_in_cats = array();
+				foreach ( $all_cats as $cat ) {
+					if ( ( has_term( $cat, 'category', $post->ID ) !== false ) || ( has_term( $cat, 'post_tag', $post->ID ) !== false ) ) {
+						$is_in_cats[] = $cat;
 					}
+				}
+				if ( count( array_diff( $all_cats, $is_in_cats ) ) === 0 ) {
+					$catposts[] = $post;
 				}
 			}
 		}

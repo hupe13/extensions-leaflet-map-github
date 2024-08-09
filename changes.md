@@ -1,6 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* none
+* overviewmap: bug in ALL categories/tag
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
