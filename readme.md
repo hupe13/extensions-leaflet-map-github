@@ -182,6 +182,10 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
+### 4.3.3 / 240811
+
+* overviewmap: bug in ALL categories/tag
+
 ### 4.3.2 / 240807
 
 * leaflet-parentgroup: you can set more options now.
