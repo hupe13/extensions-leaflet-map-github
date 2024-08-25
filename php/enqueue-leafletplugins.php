@@ -187,7 +187,7 @@ function leafext_enqueue_clustergroup() {
 			'leaflet-plugins/Leaflet.FeatureGroup.SubGroup-1.0.2/leaflet.featuregroup.subgroup.js',
 			LEAFEXT_PLUGIN_FILE
 		),
-		array( 'markercluster' ),
+		array( 'wp_leaflet_map', 'markercluster' ),
 		null,
 		true
 	);
@@ -469,7 +469,7 @@ function leafext_enqueue_controltree() {
 			'js/parentgroup' . LEAFEXT_MINI . '.js',
 			LEAFEXT_PLUGIN_FILE
 		),
-		array( 'controltree' ),
+		array( 'wp_leaflet_map', 'controltree' ),
 		null,
 		true
 	);

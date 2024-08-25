@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 6.6
-Stable tag: 4.3.2
+Stable tag: 4.3.3
 Requires at least: 5.5.3
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -35,4 +35,5 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* overviewmap: bug in ALL categories/tag
+* overviewmap: documentation typo: AND categories/tag
+* overviewmap: custom field for popup

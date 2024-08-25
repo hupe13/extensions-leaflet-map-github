@@ -182,18 +182,9 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.3.3 / 240811
+### 4.x / 240xxx
 
-* overviewmap: bug in ALL categories/tag
-
-### 4.3.2 / 240807
-
-* leaflet-parentgroup: you can set more options now.
-* leaflet-extramarker: title with spaces fixed.
-* overviewmap: marker title, categories option AND
-* targetmarker, targetlink: new option - mapid
-* elevation: new languages: portuguese, polish
-* fontawesome-free-6.6.0-web
+* overviewmap: custom field for popup
 
 ### Previous
 
