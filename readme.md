@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, gpx, geojson, hover, marker   
 Tested up to: 6.6  
-Stable tag: 4.3.3     
+Stable tag: 4.3.4     
 Requires at least: 5.5.3     
 Requires PHP: 7.4     
 License: GPLv2 or later
@@ -182,8 +182,9 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.x / 240xxx
+### 4.3.4 / 24082x
 
+* overviewmap: documentation typo: AND categories/tag
 * overviewmap: custom field for popup
 
 ### Previous

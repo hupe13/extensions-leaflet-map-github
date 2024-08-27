@@ -107,6 +107,30 @@ function leafext_overviewmap_help() {
 	}
 	$text = $text . leafext_html_table( $new );
 
+	$text = $text . '<h3>Popup</h3>';
+
+	$text = $text . '<ul>' .
+	'<li>' . __( 'Default popup is taken from the overviewmap shortcode and is a set of title, permalink, categories, featured image.', 'extensions-leaflet-map' ) . '</li>'
+	. '<li>   ' . sprintf(
+		/* translators: %1$s is "leaflet-marker" */
+		__( 'The content of the popup custom field is like the popup in %1$s.', 'extensions-leaflet-map' ),
+		' <code>leaflet-marker</code>'
+	) . '</li>' .
+	'<li>' . sprintf(
+		/* translators: %1$s a link to ACF plugin. */
+		__( 'You can use an %1$s also.', 'extensions-leaflet-map' ),
+		'<a href="https://wordpress.org/plugins/advanced-custom-fields/">ACF</a>'
+	) . '</li>' .
+	'<li>' . __( 'You can use strings in curly brackets to substitute the values:', 'extensions-leaflet-map' ) .
+	'<p><ul>
+<li>{permalink} - the url to the page / post</li>
+<li>{title} - the title</li>
+<li>{thumbnail} - the featured image</li>
+<li>{categories} - categories</li>
+<li>{link} - <code>&lt;a href="{permalink}">{title}&lt;/a></code></li>
+</ul></p></li>' .
+	'</ul>';
+
 	$text = $text . '<h3>Shortcode</h3>
   <pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map fitbounds]
 &#091;overviewmap latlngs=... icons=... options= ...]

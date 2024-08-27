@@ -42,16 +42,10 @@ function leafext_overviewmap_settings() {
 			'param'   => 'popup',
 			'desc'    => __( 'for the popup content, optional.', 'extensions-leaflet-map' ),
 			'content' => '<ul>' .
-			'<li> false - ' . __( 'Default is taken from the overviewmap shortcode and is a set of title, permalink, categories, featured image.', 'extensions-leaflet-map' ) . '</li>' .
+			'<li> false - ' . __( 'default popup', 'extensions-leaflet-map' ) . '</li>' .
 			'<li> true - ' . __( 'the name of custom field is', 'extensions-leaflet-map' ) . ' <code>overview-popup</code></li>' .
 			'<li>' . __( 'a string - the name of the popup custom field', 'extensions-leaflet-map' ) . '</li>' .
-			'</ul>' .
-			sprintf(
-					/* translators: %1$s is "leaflet-marker" and %2$s a link to ACF plugin. */
-				__( 'The content of the popup custom field is like in %1$s. You can use an %2$s also.', 'extensions-leaflet-map' ),
-				' <code>leaflet-marker</code>',
-				'<a href="https://wordpress.org/plugins/advanced-custom-fields/">ACF</a>'
-			),
+			'</ul>',
 			'default' => false,
 			'values'  => '',
 		),
@@ -67,6 +61,14 @@ function leafext_overviewmap_params() {
 			'content' => '',
 			'default' => false,
 			'values'  => 'true / false',
+		),
+		array(
+			'param'   => 'thumbsize',
+			'desc'    => __( 'Size of featured image', 'extensions-leaflet-map' ),
+			'content' => '',
+			'default' => '75, 75',
+			/* translators: %s is popup. */
+			'values'  => sprintf( __( 'an array of width and height values in pixels. Only makes sense when you use the %s option.', 'extensions-leaflet-map' ), 'popup' ),
 		),
 		array(
 			'param'   => 'show_category',
@@ -311,7 +313,15 @@ function leafext_get_overview_data( $post, $overview_options ) {
 	$overview_data['thumbnail'] = '';
 	if ( $overview_options['show_thumbnails'] === true ) {
 		if ( has_post_thumbnail( $post->ID ) ) {
-			$overview_data['thumbnail'] = get_the_post_thumbnail( $post->ID, array( 75, 75 ), array( 'loading' => false ) );
+			$size = explode( ',', $overview_options['thumbsize'] );
+			if ( count( $size ) === 2 ) {
+				$x = (int) $size[0];
+				$y = (int) $size[1];
+			} else {
+				$x = 75;
+				$y = 75;
+			}
+			$overview_data['thumbnail'] = get_the_post_thumbnail( $post->ID, array( $x, $y ), array( 'loading' => false ) );
 		}
 	}
 	//
@@ -474,27 +484,35 @@ function leafext_ovm_setup_icon( $overview_data, $atts ) {
 	return array( $leaflet_marker_cmd, $markeroptions, $iconerror );
 }
 
-function leafext_overview_popup( $overview_data, $atts ) {
-
-	if ( $overview_data['popup'] !== '' ) {
-		$popupcontent = $overview_data['popup'];
-	} else {
-
+function leafext_overview_popup( $overview_data ) {
 		// check if post has a thumnail
-		if ( $overview_data['thumbnail'] !== '' ) {
-			$overview_data['thumbnail'] = '<div class="leafext-overview-popup-img">' . $overview_data['thumbnail'] . '</div>';
-		}
-		//
+	if ( $overview_data['thumbnail'] !== '' ) {
+		$overview_data['thumbnail'] = '<div class="leafext-overview-popup-img">' . $overview_data['thumbnail'] . '</div>';
+	}
 		// categories
-		if ( $overview_data['categories'] !== '' ) {
-			$overview_data['categories'] = '<div class="leafext-overview-popup-cat">' . $overview_data['categories'] . '</div>';
-		}
-		//
+	if ( $overview_data['categories'] !== '' ) {
+		$overview_data['categories'] = '<div class="leafext-overview-popup-cat">' . $overview_data['categories'] . '</div>';
+	}
 		// Link
 		$link_to_page = '<a href="' . $overview_data['permalink'] . '"><strong>' . $overview_data['title'] . '</strong></a>';
 		//
-		// the marker icon
-		list($leaflet_marker_cmd, $markeroptions, $overview_data['iconerror']) = leafext_ovm_setup_icon( $overview_data, $atts );
+	if ( $overview_data['popup'] !== '' ) {
+		$search       = array(
+			'{permalink}',
+			'{title}',
+			'{thumbnail}',
+			'{categories}',
+			'{link}',
+		);
+		$replace      = array(
+			$overview_data['permalink'],
+			$overview_data['title'],
+			$overview_data['thumbnail'],
+			$overview_data['categories'],
+			$link_to_page,
+		);
+		$popupcontent = str_replace( $search, $replace, $overview_data['popup'] );
+	} else {
 		//
 		if ( $overview_data['thumbnail'] === '' || $overview_data['categories'] === '' ) {
 			$popupcss = 'leafext-overview-popup-one';
@@ -535,7 +553,7 @@ function leafext_ovm_setup_leafletmarker( $overview_data, $atts ) {
 	}
 	//
 	$leaflet_marker_code = '[' . $leaflet_marker_cmd . ' ' . $overview_data['latlng'] . ' ' . $markeroptions . ']' .
-	leafext_overview_popup( $overview_data, $atts ) .
+	leafext_overview_popup( $overview_data ) .
 	'[/' . $leaflet_marker_cmd . ']';
 	if ( $overview_data['latlng'] === '*' ) {
 		echo '<script>console.log("' . esc_js( __( 'Error - please check overviewmap data: Some data are wrong.', 'extensions-leaflet-map' ) ) . '");</script>';
