@@ -184,7 +184,6 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ### 4.3.4 / 24082x
 
-* overviewmap: documentation typo: AND categories/tag
 * overviewmap: custom field for popup
 
 ### Previous

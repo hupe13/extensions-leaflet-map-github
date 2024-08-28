@@ -1,6 +1,5 @@
 ### 4.3.4 / 24082x
 
-* overviewmap: documentation typo: AND categories/tag
 * overviewmap: custom field for popup
 
 ### 4.3.3 / 240811

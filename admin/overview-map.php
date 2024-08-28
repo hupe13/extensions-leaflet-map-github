@@ -110,7 +110,7 @@ function leafext_overviewmap_help() {
 	$text = $text . '<h3>Popup</h3>';
 
 	$text = $text . '<ul>' .
-	'<li>' . __( 'Default popup is taken from the overviewmap shortcode and is a set of title, permalink, categories, featured image.', 'extensions-leaflet-map' ) . '</li>'
+	'<li>' . __( 'Default popup content is taken from the overviewmap shortcode and is a set of title, permalink, categories, featured image.', 'extensions-leaflet-map' ) . '</li>'
 	. '<li>   ' . sprintf(
 		/* translators: %1$s is "leaflet-marker" */
 		__( 'The content of the popup custom field is like the popup in %1$s.', 'extensions-leaflet-map' ),
@@ -123,10 +123,10 @@ function leafext_overviewmap_help() {
 	) . '</li>' .
 	'<li>' . __( 'You can use strings in curly brackets to substitute the values:', 'extensions-leaflet-map' ) .
 	'<p><ul>
-<li>{permalink} - the url to the page / post</li>
-<li>{title} - the title</li>
-<li>{thumbnail} - the featured image</li>
-<li>{categories} - categories</li>
+<li>{permalink} - ' . __( 'the url to the page / post', 'extensions-leaflet-map' ) . '</li>
+<li>{title} - ' . __( 'the title', 'extensions-leaflet-map' ) . '</li>
+<li>{thumbnail} - ' . __( 'the featured image', 'extensions-leaflet-map' ) . '</li>
+<li>{categories} - ' . __( 'categories', 'extensions-leaflet-map' ) . '</li>
 <li>{link} - <code>&lt;a href="{permalink}">{title}&lt;/a></code></li>
 </ul></p></li>' .
 	'</ul>';

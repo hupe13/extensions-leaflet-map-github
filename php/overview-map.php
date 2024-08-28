@@ -42,9 +42,9 @@ function leafext_overviewmap_settings() {
 			'param'   => 'popup',
 			'desc'    => __( 'for the popup content, optional.', 'extensions-leaflet-map' ),
 			'content' => '<ul>' .
-			'<li> false - ' . __( 'default popup', 'extensions-leaflet-map' ) . '</li>' .
+			'<li> false - ' . __( 'default popup content', 'extensions-leaflet-map' ) . '</li>' .
 			'<li> true - ' . __( 'the name of custom field is', 'extensions-leaflet-map' ) . ' <code>overview-popup</code></li>' .
-			'<li>' . __( 'a string - the name of the popup custom field', 'extensions-leaflet-map' ) . '</li>' .
+			'<li>' . __( 'or the name of the popup custom field', 'extensions-leaflet-map' ) . '</li>' .
 			'</ul>',
 			'default' => false,
 			'values'  => '',
@@ -68,7 +68,7 @@ function leafext_overviewmap_params() {
 			'content' => '',
 			'default' => '75, 75',
 			/* translators: %s is popup. */
-			'values'  => sprintf( __( 'an array of width and height values in pixels. Only makes sense when you use the %s option.', 'extensions-leaflet-map' ), 'popup' ),
+			'values'  => sprintf( __( 'a comma separated pair of width and height in pixels. Only makes sense when you use the %s option.', 'extensions-leaflet-map' ), 'popup' ),
 		),
 		array(
 			'param'   => 'show_category',
