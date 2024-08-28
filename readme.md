@@ -182,7 +182,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.3.4 / 24082x
+### 4.3.4 / 240828
 
 * overviewmap: custom field for popup
 
