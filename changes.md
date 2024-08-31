@@ -1,7 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* overviewmap: documentation typo: AND categories/tag
-* overviewmap: custom field for popup
+* None
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

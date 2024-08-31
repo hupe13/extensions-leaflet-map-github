@@ -35,5 +35,4 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* overviewmap: documentation typo: AND categories/tag
-* overviewmap: custom field for popup
+* None
