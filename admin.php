@@ -27,10 +27,18 @@ if ( file_exists( LEAFEXT_PLUGIN_DIR . '/admin/check-update.php' ) ) {
  */
 function leafext_add_page() {
 	// Add Submenu.
+	// $leafext_admin_page = add_submenu_page(
+	// 	'leaflet-map',
+	// 	'Extensions for Leaflet Map Options',
+	// 	'Extensions for Leaflet Map',
+	// 	'manage_options',
+	// 	LEAFEXT_PLUGIN_SETTINGS,
+	// 	'leafext_do_page'
+	// );
 	$leafext_admin_page = add_submenu_page(
 		'leaflet-map',
 		'Extensions for Leaflet Map Options',
-		'Extensions for Leaflet Map',
+		'GIS マップ設定',
 		'manage_options',
 		LEAFEXT_PLUGIN_SETTINGS,
 		'leafext_do_page'
@@ -44,7 +52,8 @@ add_action( 'admin_menu', 'leafext_add_page', 99 );
 function leafext_do_page() {
 	//phpcs:ignore WordPress.Security.NonceVerification.Recommended -- no form
 	$get        = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
-	$active_tab = isset( $get['tab'] ) ? $get['tab'] : 'help';
+	// $active_tab = isset( $get['tab'] ) ? $get['tab'] : 'help';
+	$active_tab = isset( $get['tab'] ) ? $get['tab'] : 'tileswitch';
 
 	if ( is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
 		leafext_admin_tabs();
@@ -115,89 +124,24 @@ function leafext_do_page() {
 
 function leafext_admin_tabs() {
 	echo '<div class="wrap nothickbox">
-	<h2>Extensions for Leaflet Map Options and Help</h2></div>' . "\n";
+	<h2>GIS マップ設定</h2></div>' . "\n";
 
-	//phpcs:ignore WordPress.Security.NonceVerification.Recommended -- no form
 	$get        = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );
-	$active_tab = isset( $get['tab'] ) ? $get['tab'] : 'help';
+	// $active_tab = isset( $get['tab'] ) ? $get['tab'] : 'tiles';
+	$active_tab = isset( $get['tab'] ) ? $get['tab'] : 'tileswitch';
 
 	echo '<h3 class="nav-tab-wrapper">';
-	//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-	echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=help" class="nav-tab';
-	echo $active_tab === 'help' ? ' nav-tab-active' : '';
-	echo '">' . esc_html__( 'Help', 'extensions-leaflet-map' ) . '</a>' . "\n";
-	if ( current_user_can( 'manage_options' ) ) {
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-		echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=filemgr" class="nav-tab';
-		if ( strpos( $active_tab, 'filemgr' ) !== false ) {
-			echo ' nav-tab-active';
-		}
-		echo '">' . esc_html__( 'Manage Leaflet Map files', 'extensions-leaflet-map' ) . '</a>' . "\n";
-	} else {
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-		echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=filemgr-list" class="nav-tab';
-		echo $active_tab === 'filemgr-list' ? ' nav-tab-active' : '';
-		echo '">' . esc_html__( 'Manage Leaflet Map files', 'extensions-leaflet-map' ) . '</a>' . "\n";
-	}
-	//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-	echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=elevation" class="nav-tab';
-	if ( strpos( $active_tab, 'elevation' ) !== false ) {
-		echo ' nav-tab-active';
-	}
-	echo '">' . esc_html__( 'Elevation Profiles', 'extensions-leaflet-map' ) . '</a>' . "\n";
 
 	$tabs = array(
 		array(
-			'tab'    => 'markercluster',
-			'title'  => __( 'Markers and Icons', 'extensions-leaflet-map' ),
-			'strpos' => 'marker',
-		),
-		array(
-			'tab'   => 'featuregroup',
-			'title' => __( 'Grouping by options and features', 'extensions-leaflet-map' ),
-		),
-		array(
-			'tab'   => 'leafletsearch',
-			'title' => __( 'Search markers/features', 'extensions-leaflet-map' ),
-		),
-		array(
 			'tab'    => 'tiles',
 			'title'  => __( 'Switching Tile Servers', 'extensions-leaflet-map' ),
-			'strpos' => 'tiles',
+			'strpos' => 'tileswitch',
 		),
-		array(
-			'tab'    => 'hover',
-			'title'  => __( 'Hovering and Tooltips', 'extensions-leaflet-map' ),
-			'strpos' => 'hover',
-		),
-		array(
-			'tab'   => 'overviewmap',
-			'title' => __( 'Overview Map', 'extensions-leaflet-map' ),
-		),
-		array(
-			'tab'   => 'zoomhome',
-			'title' => __( 'Reset the map', 'extensions-leaflet-map' ),
-		),
-		array(
-			'tab'   => 'fullscreen',
-			'title' => __( 'Fullscreen', 'extensions-leaflet-map' ),
-		),
-		array(
-			'tab'   => 'gesture',
-			'title' => __( 'Gesture Handling', 'extensions-leaflet-map' ),
-		),
-		array(
-			'tab'   => 'choropleth',
-			'title' => 'Choropleth Map',
-		),
-		// array(
-		// 'tab' => '',
-		// 'title' => '',
-		// ),
+		// ... (他のタブは必要に応じて追加)
 	);
 
 	foreach ( $tabs as $tab ) {
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
 		echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=' . $tab['tab'] . '" class="nav-tab';
 		$active = ( $active_tab === $tab['tab'] ) ? ' nav-tab-active' : '';
 		if ( isset( $tab['strpos'] ) ) {
@@ -205,11 +149,15 @@ function leafext_admin_tabs() {
 				$active = ' nav-tab-active';
 			}
 		}
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
 		echo $active;
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
 		echo '">' . $tab['title'] . '</a>' . "\n";
 	}
+
+	// "help" タブを最後に配置
+	echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=help" class="nav-tab';
+	echo $active_tab === 'help' ? ' nav-tab-active' : '';
+	echo '">' . esc_html__( 'Help', 'extensions-leaflet-map' ) . '</a>' . "\n";
+
 	echo '</h3>';
 }
 

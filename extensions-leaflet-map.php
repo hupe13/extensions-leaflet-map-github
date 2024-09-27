@@ -1,14 +1,13 @@
 <?php
 /**
- * Plugin Name:       Extensions for Leaflet Map Github
- * Plugin URI:        https://leafext.de/en/
- * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
- * Primary Branch:    main
- * Description:       Extensions for the WordPress plugin Leaflet Map Github Version
- * Version:           4.3-240831
+ * Plugin Name:       GIS Map Visualizer
+ * Plugin URI:        
+ * Description:       Visualize tiles and GEO json data exported GIS.
+ * Version:           100.0
+ * Requires Plugins:  leaflet-map
  * Requires PHP:      7.4
- * Author:            hupe13
- * Author URI:        https://leafext.de/en/
+ * Author:            Ibuki Fukasawa (@XNOVA Tech)
+ * Author URI:        
  * License:           GPL v2 or later
  * Text Domain:       extensions-leaflet-map
  *
@@ -85,20 +84,9 @@ function leafext_extra_textdomain() {
 }
 add_action( 'plugins_loaded', 'leafext_extra_textdomain' );
 
-define( 'LEAFEXT_PLUGIN_GITHUB', true );
-// define( 'LEAFEXT_PLUGIN_GITHUB', false );
-
-function leafext_extensions_leaflet_map_to_github( $slug ) {
-	if ( 'extensions-leaflet-map' === $slug ) {
-		$slug = '';
-	}
-	return $slug;
-}
-add_filter( 'wp_plugin_dependencies_slug', 'leafext_extensions_leaflet_map_to_github' );
-
-// WP < 6.5 or Github
+// WP < 6.5 
 global $wp_version;
-if ( $wp_version < '6.5' || LEAFEXT_PLUGIN_GITHUB ) {
+if ( $wp_version < '6.5' ) {
 	function leafext_plugin_init() {
 		if ( is_admin() ) {
 			if ( ! defined( 'LEAFLET_MAP__PLUGIN_DIR' ) ) {
@@ -120,53 +108,4 @@ if ( $wp_version < '6.5' || LEAFEXT_PLUGIN_GITHUB ) {
 		}
 	}
 	add_action( 'plugins_loaded', 'leafext_plugin_init' );
-}
-
-// Github update
-use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
-use YahnisElsts\PluginUpdateChecker\v5p4\Vcs\GitHubApi;
-if ( is_admin() ) {
-	if ( is_main_site() ) {
-		require_once LEAFEXT_PLUGIN_DIR . '/admin/check-update.php';
-		global $leafext_github_main_active;
-		global $leafext_update_token;
-		global $leafext_github_denied;
-
-		require_once LEAFEXT_PLUGIN_DIR . '/pkg/plugin-update-checker/plugin-update-checker.php';
-
-		if ( false === $leafext_github_denied || $leafext_update_token !== '' ) {
-			$github_update_checker = PucFactory::buildUpdateChecker(
-				'https://github.com/hupe13/extensions-leaflet-map-github/',
-				__FILE__,
-				LEAFEXT_PLUGIN_SETTINGS
-			);
-
-			$github_update_checker->addFilter(
-				'vcs_update_detection_strategies',
-				function ( $strategies ) {
-					unset( $strategies[ GitHubApi::STRATEGY_LATEST_RELEASE ] );
-					return $strategies;
-				}
-			);
-
-			// Set the branch that contains the stable release.
-			$github_update_checker->setBranch( 'main' );
-
-			if ( $leafext_update_token !== '' ) {
-				// Optional: If you're using a private repository, specify the access token like this:
-				$github_update_checker->setAuthentication( $leafext_update_token );
-			}
-
-			function leafext_github_puc_error( $error, $response = null, $url = null, $slug = null ) {
-				if ( isset( $slug ) && $slug !== LEAFEXT_PLUGIN_SETTINGS ) {
-					return;
-				}
-				if ( wp_remote_retrieve_response_code( $response ) === 403 ) {
-					// var_dump( 'Permission denied' );
-					set_transient( 'leafext_github_403', true, DAY_IN_SECONDS );
-				}
-			}
-			add_action( 'puc_api_error', 'leafext_github_puc_error', 10, 4 );
-		}
-	}
 }

@@ -11,43 +11,43 @@ defined( 'ABSPATH' ) || die();
 function leafext_help_entries() {
 	$table = array();
 
-	$table[ __( 'Elevation Profiles', 'extensions-leaflet-map' ) ] = array(
-		array(
-			'function'  => __( 'Track with an elevation profile', 'extensions-leaflet-map' ),
-			'shortcode' => 'elevation',
-			'tab'       => 'elevation',
-			'plugins'   => '<a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>,
-      <a href="https://github.com/yohanboniface/Leaflet.i18n">Leaflet.i18n</a>',
-			'doku'      => '/doku/elevation/',
-			'moredoku'  => array(
-				array(
-					'function' => __( 'Customize waypoints', 'extensions-leaflet-map' ),
-					'doku'     => '/doku/elevationwaypoints/',
-				),
-			),
-			'kategorie' => 'elevation',
-			'examples'  => '',
-		),
-		array(
-			'function'  => __( 'Multiple tracks with elevation profiles', 'extensions-leaflet-map' ),
-			'shortcode' => 'elevation-track, elevation-tracks, multielevation',
-			'tab'       => 'multielevation',
-			'plugins'   => '<a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>,
-      <a href="https://github.com/makinacorpus/Leaflet.GeometryUtil">Leaflet.GeometryUtil</a>',
-			'doku'      => '/doku/multielevation/',
-			'kategorie' => 'multielevation',
-			'examples'  => '',
-		),
-		array(
-			'function'  => __( 'Migration from', 'extensions-leaflet-map' ) . ' <a href="https://wordpress.org/plugins/wp-gpx-maps/">WP GPX Maps</a>',
-			'shortcode' => 'sgpx',
-			'tab'       => 'sgpxelevation',
-			'plugins'   => '',
-			'doku'      => '/doku/sgpxelevation/',
-			'kategorie' => '',
-			'examples'  => '/extra/category/sgpx/',
-		),
-	);
+	// $table[ __( 'Elevation Profiles', 'extensions-leaflet-map' ) ] = array(
+	// 	array(
+	// 		'function'  => __( 'Track with an elevation profile', 'extensions-leaflet-map' ),
+	// 		'shortcode' => 'elevation',
+	// 		'tab'       => 'elevation',
+	// 		'plugins'   => '<a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>,
+    //   <a href="https://github.com/yohanboniface/Leaflet.i18n">Leaflet.i18n</a>',
+	// 		'doku'      => '/doku/elevation/',
+	// 		'moredoku'  => array(
+	// 			array(
+	// 				'function' => __( 'Customize waypoints', 'extensions-leaflet-map' ),
+	// 				'doku'     => '/doku/elevationwaypoints/',
+	// 			),
+	// 		),
+	// 		'kategorie' => 'elevation',
+	// 		'examples'  => '',
+	// 	),
+	// 	array(
+	// 		'function'  => __( 'Multiple tracks with elevation profiles', 'extensions-leaflet-map' ),
+	// 		'shortcode' => 'elevation-track, elevation-tracks, multielevation',
+	// 		'tab'       => 'multielevation',
+	// 		'plugins'   => '<a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>,
+    //   <a href="https://github.com/makinacorpus/Leaflet.GeometryUtil">Leaflet.GeometryUtil</a>',
+	// 		'doku'      => '/doku/multielevation/',
+	// 		'kategorie' => 'multielevation',
+	// 		'examples'  => '',
+	// 	),
+	// 	array(
+	// 		'function'  => __( 'Migration from', 'extensions-leaflet-map' ) . ' <a href="https://wordpress.org/plugins/wp-gpx-maps/">WP GPX Maps</a>',
+	// 		'shortcode' => 'sgpx',
+	// 		'tab'       => 'sgpxelevation',
+	// 		'plugins'   => '',
+	// 		'doku'      => '/doku/sgpxelevation/',
+	// 		'kategorie' => '',
+	// 		'examples'  => '/extra/category/sgpx/',
+	// 	),
+	// );
 
 	$table[ __( 'Functions for Markers implemented with Leaflet Plugins', 'extensions-leaflet-map' ) ] = array(
 		'menu' => __( 'Marker and Icons', 'extensions-leaflet-map' ),
@@ -246,26 +246,26 @@ function leafext_help_entries() {
 		),
 	);
 
-	$table[ __( 'Manage Leaflet Map files', 'extensions-leaflet-map' ) ] = array(
-		array(
-			'function'  => __( 'Manage Leaflet Map files', 'extensions-leaflet-map' ),
-			'shortcode' => __( 'Manage Leaflet Map files', 'extensions-leaflet-map' ),
-			'tab'       => 'filemgr' . ( current_user_can( 'manage_options' ) ? '' : '-list' ),
-			'plugins'   => '',
-			'doku'      => '/doku/filemgr/',
-			'kategorie' => '',
-			'examples'  => '',
-		),
-		array(
-			'function'  => __( 'Tracks from all files in a directory', 'extensions-leaflet-map' ),
-			'shortcode' => 'leaflet-directory',
-			'tab'       => 'filemgr-dir',
-			'plugins'   => '',
-			'doku'      => '/doku/filemgr/',
-			'kategorie' => 'directory',
-			'examples'  => '',
-		),
-	);
+	// $table[ __( 'Manage Leaflet Map files', 'extensions-leaflet-map' ) ] = array(
+	// 	array(
+	// 		'function'  => __( 'Manage Leaflet Map files', 'extensions-leaflet-map' ),
+	// 		'shortcode' => __( 'Manage Leaflet Map files', 'extensions-leaflet-map' ),
+	// 		'tab'       => 'filemgr' . ( current_user_can( 'manage_options' ) ? '' : '-list' ),
+	// 		'plugins'   => '',
+	// 		'doku'      => '/doku/filemgr/',
+	// 		'kategorie' => '',
+	// 		'examples'  => '',
+	// 	),
+	// 	array(
+	// 		'function'  => __( 'Tracks from all files in a directory', 'extensions-leaflet-map' ),
+	// 		'shortcode' => 'leaflet-directory',
+	// 		'tab'       => 'filemgr-dir',
+	// 		'plugins'   => '',
+	// 		'doku'      => '/doku/filemgr/',
+	// 		'kategorie' => 'directory',
+	// 		'examples'  => '',
+	// 	),
+	// );
 	return $table;
 }
 

@@ -1,4 +1,4 @@
-# Extensions for Leaflet Map Github Version
+# Extensions for Leaflet Map
 
 Contributors: hupe13    
 Tags: leaflet, gpx, geojson, hover, marker   
@@ -8,48 +8,13 @@ Requires at least: 5.5.3
 Requires PHP: 7.4     
 License: GPLv2 or later
 
-This is the Github Version.
-
-[Differences](changes.md) to the <a href="https://wordpress.org/plugins/extensions-leaflet-map/">WordPress version</a>.
-Releases are the same as the WordPress versions. If you want test the Github version, download from [tags](https://github.com/hupe13/extensions-leaflet-map-github/tags).
+Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
 
 ## Description
 
 Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
 
 ### Functions
-
-### Deutsch
-
-* Erstelle ein Höhenprofil eines Tracks. Es gibt ebenso Beschleunigungsdiagramm, Steigungsdiagramm, Geschwindigkeitsdiagramm, Tempodiagramm. Du kannst auch mehrere Tracks auf einer Karte darstellen.
-
-* Standardmäßig verwendet Leaflet Map die Kacheln von openstreetmap.org bzw. die von dir konfigurierten Kachelserver. Du kannst weitere verwenden und zwischen ihnen umschalten.
-
-* Viele Marker auf einer Karte werden unübersichtlich. Du kannst sie clustern und gestalten.
-
-* Du kannst Awesome-Markers verwenden.
-
-* Du kannst Elemente auf der Karte nach Kriterien gruppieren und ein- und ausblenden.
-
-* Erstelle eine Übersichtskarte mit den auf den Seiten und Beiträgen hinterlegten Geopositionen.
-
-* Erhalte einen Tooltip beim Überfahren eines Elementes mit der Maus.
-
-* Du kannst eine Choropleth-Karte gestalten.
-
-* Du kannst dir die Karte im Vollbildmodus anzeigen lassen.
-
-* Setze die Karte zurück.
-
-* Gestensteuerung.
-
-* Verwalte deine Dateien für Leaflet Map.
-
-* Hilfe zum Migrieren von [WP GPX Maps](https://wordpress.org/plugins/wp-gpx-maps/).
-
-* und weitere Funktionen.
-
-### English
 
 * Create an elevation chart profile of a track. There are also acceleration, slope, speed and tempo chart profiles. You can also place multiple tracks on one map.
 
@@ -127,34 +92,20 @@ Many thanks to everyone who found errors and provided ideas for new functions.
 
 ## Frequently Asked Questions
 
-<p>
-<details>
-<summary>
-<b>Is there a widget or other support for the editor?</b>
-</summary>
+**Is there a widget or other support for the editor?**
 
 * Unfortunately both plugins - Leaflet Map and Extensions for Leaflet Map - only work with shortcodes.
 * If you have any questions please ask in the [forum](https://wordpress.org/support/plugin/extensions-leaflet-map/).
-</details>
 
-<details>
-<summary>
-<b>My gpx file is not displayed!</b>
-</summary>
+**My gpx file is not displayed!**
 
 * Is the URL correct?
 * Does the webserver return the correct mime type (application/gpx+xml)?
 Put in your `.htaccess`:
-```
-AddType application/gpx+xml gpx
-RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
-```
-</details>
+<pre><code>AddType application/gpx+xml gpx
+RewriteRule .*\\.gpx$ - [L,T=application/gpx+xml]</code></pre>
 
-<details>
-<summary>
-<b>It doesn't work!</b>
-</summary>
+**It doesn't work!**
 
 * Are you using any caching plugin? Try to exclude at least these js files from caching:
  - /wp-content/plugins/extensions-leaflet-map/leaflet-plugins/leaflet-elevation-*
@@ -162,17 +113,11 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 * Are you using any plugin to comply with the GDPR/DSGVO? There might be a problem with that.
 * If you use a caching plugin and a GDPR/DSGVO plugin you need to distinguish whether the user has accepted the cookie or not.
 * Please ask in the [forum](https://wordpress.org/support/plugin/extensions-leaflet-map/)!
-</details>
 
-<details>
-<summary>
-<b>Apropos GDPR/DSGVO</b>
-</summary>
+**Apropos GDPR/DSGVO**
 
 * If you need a plugin for this try [DSGVO/GDPR Snippet for Extensions for Leaflet Map](https://github.com/hupe13/extensions-leaflet-map-dsgvo).
 * If you use [Complianz | GDPR/CCPA Cookie Consent](https://wordpress.org/plugins/complianz-gdpr/) see [here](https://complianz.io/leaflet-maps/).
-</details>
-</p>
 
 ## Installation
 
