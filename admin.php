@@ -25,24 +25,36 @@ if ( file_exists( LEAFEXT_PLUGIN_DIR . '/admin/check-update.php' ) ) {
 /**
  * Add menu page for admin
  */
+// function leafext_add_page() {
+// 	// Add Submenu.
+// 	// $leafext_admin_page = add_submenu_page(
+// 	// 	'leaflet-map',
+// 	// 	'Extensions for Leaflet Map Options',
+// 	// 	'Extensions for Leaflet Map',
+// 	// 	'manage_options',
+// 	// 	LEAFEXT_PLUGIN_SETTINGS,
+// 	// 	'leafext_do_page'
+// 	// );
+// }
 function leafext_add_page() {
-	// Add Submenu.
-	// $leafext_admin_page = add_submenu_page(
-	// 	'leaflet-map',
-	// 	'Extensions for Leaflet Map Options',
-	// 	'Extensions for Leaflet Map',
-	// 	'manage_options',
-	// 	LEAFEXT_PLUGIN_SETTINGS,
-	// 	'leafext_do_page'
-	// );
-	$leafext_admin_page = add_submenu_page(
-		'leaflet-map',
-		'Extensions for Leaflet Map Options',
-		'GIS マップ設定',
-		'manage_options',
-		LEAFEXT_PLUGIN_SETTINGS,
-		'leafext_do_page'
-	);
+    global $submenu;
+
+    // Extensions for Leaflet Map を追加
+    $leafext_admin_page = add_submenu_page(
+        'leaflet-map',
+        'Extensions for Leaflet Map Options',
+        'GIS マップ設定',
+        'manage_options',
+        LEAFEXT_PLUGIN_SETTINGS,
+        'leafext_do_page'
+    );
+
+    // サブメニューの順序を変更!
+    if (isset($submenu['leaflet-map'])) {
+        // Extensions for Leaflet Map を先頭に移動
+        $extensions_item = array_pop($submenu['leaflet-map']);
+        array_unshift($submenu['leaflet-map'], $extensions_item);
+    }
 }
 add_action( 'admin_menu', 'leafext_add_page', 99 );
 
@@ -83,14 +95,14 @@ function leafext_do_page() {
 	} elseif ( $active_tab === 'help' ) {
 		if ( is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
 			include LEAFEXT_PLUGIN_DIR . '/admin/help.php';
-			echo '<form method="post" action="options.php">';
-			settings_fields( 'leafext_settings_deleting' );
-			do_settings_sections( 'leafext_settings_deleting' );
-			if ( current_user_can( 'manage_options' ) ) {
-				wp_nonce_field( 'leafext_deleting', 'leafext_deleting_nonce' );
-				submit_button();
-			}
-			echo '</form>';
+			// echo '<form method="post" action="options.php">';
+			// settings_fields( 'leafext_settings_deleting' );
+			// do_settings_sections( 'leafext_settings_deleting' );
+			// if ( current_user_can( 'manage_options' ) ) {
+			// 	wp_nonce_field( 'leafext_deleting', 'leafext_deleting_nonce' );
+			// 	submit_button();
+			// }
+			// echo '</form>';
 		}
 		// Github only
 		if ( function_exists( 'leafext_github_update_admin' ) ) {
@@ -135,7 +147,8 @@ function leafext_admin_tabs() {
 	$tabs = array(
 		array(
 			'tab'    => 'tiles',
-			'title'  => __( 'Switching Tile Servers', 'extensions-leaflet-map' ),
+			// 'title'  => __( 'Switching Tile Servers', 'extensions-leaflet-map' ),
+			'title'  => __( 'タイルサーバ設定', 'extensions-leaflet-map' ),
 			'strpos' => 'tileswitch',
 		),
 		// ... (他のタブは必要に応じて追加)
@@ -156,8 +169,8 @@ function leafext_admin_tabs() {
 	// "help" タブを最後に配置
 	echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=help" class="nav-tab';
 	echo $active_tab === 'help' ? ' nav-tab-active' : '';
-	echo '">' . esc_html__( 'Help', 'extensions-leaflet-map' ) . '</a>' . "\n";
-
+	// echo '">' . esc_html__( 'Help', 'extensions-leaflet-map' ) . '</a>' . "\n";
+	echo '">' . esc_html__( '機能一覧', 'extensions-leaflet-map' ) . '</a>' . "\n";
 	echo '</h3>';
 }
 

@@ -23,11 +23,13 @@ function leafext_tiles_tab() {
 		// ),
 		array(
 			'tab'   => 'tileswitch',
-			'title' => __( 'Extra Tile Server', 'extensions-leaflet-map' ),
+			// 'title' => __( 'Extra Tile Server', 'extensions-leaflet-map' ),
+            'title' => __( 'タイルサーバの追加', 'extensions-leaflet-map' ),
 		),
 		array(
 			'tab'   => 'tiles',
-			'title' => __( 'Tile Server', 'extensions-leaflet-map' ),
+			// 'title' => __( 'Tile Server', 'extensions-leaflet-map' ),
+            'title' => __( '現在の設定', 'extensions-leaflet-map' ),
 		),
 	);
 

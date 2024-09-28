@@ -396,63 +396,64 @@ function leafext_plugins() {
 }
 
 function leafext_help_table( $leafext_plugin_name = '' ) {
-	$header = '<h3>' .
-	__( 'Found an issue? Do you have a question?', 'extensions-leaflet-map' ) . '</h3>
-	<p>' .
-	__( 'Post it to the support forum', 'extensions-leaflet-map' ) .
-	': <a href="https://wordpress.org/support/plugin/extensions-leaflet-map/" target="_blank">Extensions for Leaflet Map</a></p>';
+	$header = '';
+	// $header = '<h3>' .
+	// __( 'Found an issue? Do you have a question?', 'extensions-leaflet-map' ) . '</h3>
+	// <p>' .
+	// __( 'Post it to the support forum', 'extensions-leaflet-map' ) .
+	// ': <a href="https://wordpress.org/support/plugin/extensions-leaflet-map/" target="_blank">Extensions for Leaflet Map</a></p>';
 
-	$header .= '<h3>' .
-	__( 'Documentation', 'extensions-leaflet-map' ) . '</h3><p>';
+	// $header .= '<h3>' .
+	// __( 'Documentation', 'extensions-leaflet-map' ) . '</h3><p>';
 
-	// LEAFEXT_DSGVO_PLUGIN_DIR is known since initial release, and URL, others not
-	if ( ! defined( 'LEAFEXT_DSGVO_PLUGIN_DIR' ) ) {
-		$header .= '<p>' . sprintf(
-			/* translators: %s is a link. */
-			__( 'You may be interested in %1$s.', 'extensions-leaflet-map' ),
-			'<a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>'
-		) . '</p>';
-	} elseif ( file_exists( LEAFEXT_DSGVO_PLUGIN_DIR . '/leafext-dsgvo.php' ) ) {
-			$header .= '<p>' . sprintf(
-				/* translators: %s is a link. */
-				__( 'Thank you for using %1$s.', 'extensions-leaflet-map' ),
-				'<a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>'
-			);
-			$local  = get_file_data(
-				LEAFEXT_DSGVO_PLUGIN_DIR . '/leafext-dsgvo.php',
-				array(
-					'Version' => 'Version',
-				)
-			);
-			$remote = get_file_data(
-				'https://raw.githubusercontent.com/hupe13/extensions-leaflet-map-dsgvo/main/leafext-dsgvo.php',
-				array( 'Version' => 'Version' )
-			);
-			// var_dump( $local, $remote );
+	// // LEAFEXT_DSGVO_PLUGIN_DIR is known since initial release, and URL, others not
+	// if ( ! defined( 'LEAFEXT_DSGVO_PLUGIN_DIR' ) ) {
+	// 	$header .= '<p>' . sprintf(
+	// 		/* translators: %s is a link. */
+	// 		__( 'You may be interested in %1$s.', 'extensions-leaflet-map' ),
+	// 		'<a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>'
+	// 	) . '</p>';
+	// } elseif ( file_exists( LEAFEXT_DSGVO_PLUGIN_DIR . '/leafext-dsgvo.php' ) ) {
+	// 		$header .= '<p>' . sprintf(
+	// 			/* translators: %s is a link. */
+	// 			__( 'Thank you for using %1$s.', 'extensions-leaflet-map' ),
+	// 			'<a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>'
+	// 		);
+	// 		$local  = get_file_data(
+	// 			LEAFEXT_DSGVO_PLUGIN_DIR . '/leafext-dsgvo.php',
+	// 			array(
+	// 				'Version' => 'Version',
+	// 			)
+	// 		);
+	// 		$remote = get_file_data(
+	// 			'https://raw.githubusercontent.com/hupe13/extensions-leaflet-map-dsgvo/main/leafext-dsgvo.php',
+	// 			array( 'Version' => 'Version' )
+	// 		);
+	// 		// var_dump( $local, $remote );
 
-		if ( $local['Version'] !== $remote['Version'] ) {
-			$header .= '<a href="https://github.com/hupe13/extensions-leaflet-map-dsgvo">' .
-			'<span class="update-message notice inline notice-warning notice-alt">' .
-			esc_html__( 'New version available.' ) .
-			'</span>' .
-			'</a>';
-		}
-	}
-	$header .= '</p>';
+	// 	if ( $local['Version'] !== $remote['Version'] ) {
+	// 		$header .= '<a href="https://github.com/hupe13/extensions-leaflet-map-dsgvo">' .
+	// 		'<span class="update-message notice inline notice-warning notice-alt">' .
+	// 		esc_html__( 'New version available.' ) .
+	// 		'</span>' .
+	// 		'</a>';
+	// 	}
+	// }
+	// $header .= '</p>';
 
-	$header = $header .
-	sprintf(
-		/* translators: %s are hrefs. */
-		__(
-			'Detailed documentation and examples in %1$sGerman%2$s and %3$sEnglish%4$s',
-			'extensions-leaflet-map'
-		),
-		'<a href="https://leafext.de/">',
-		'</a>',
-		'<a href="https://leafext.de/en/">',
-		'</a>'
-	);
-	$header = $header . '.</p>';
+	// $header = $header .
+	// sprintf(
+	// 	/* translators: %s are hrefs. */
+	// 	__(
+	// 		'Detailed documentation and examples in %1$sGerman%2$s and %3$sEnglish%4$s',
+	// 		'extensions-leaflet-map'
+	// 	),
+	// 	'<a href="https://leafext.de/">',
+	// 	'</a>',
+	// 	'<a href="https://leafext.de/en/">',
+	// 	'</a>'
+	// );
+	// $header = $header . '.</p>';
 
 	if ( is_singular() || is_archive() ) {
 		$style = '<style>td,th { border:1px solid #195b7a !important; }</style>';
