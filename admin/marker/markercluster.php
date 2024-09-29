@@ -50,20 +50,18 @@ function leafext_form_markercluster( $field ) {
 		$disabled = '';
 	}
 
-	echo wp_kses_post( __( 'You can change it for each map with', 'extensions-leaflet-map' ) . ' <code>' . $option['param'] . '</code><br>' );
+	echo wp_kses_post( __( 'You can change it for each map with', 'extensions-leaflet-map' ) . ' <code>' . $option['param'] . '</code><br>' . "\n" );
 	if ( ! is_array( $option['values'] ) ) {
 
 		if ( $setting !== $option['default'] ) {
 			echo esc_html__( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
 			echo $option['default'] ? '1' : '0';
-			echo '<br>';
+			echo '<br>' . "\n";
 		}
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo '<input ' . $disabled . ' type="radio" name="leafext_cluster[' . $option['param'] . ']" value="1" ';
+		echo '<input ' . esc_attr( $disabled ) . ' type="radio" name="' . esc_attr( 'leafext_cluster[' . $option['param'] . ']' ) . '" value="1" ';
 		echo $setting ? 'checked' : '';
 		echo '> true &nbsp;&nbsp; ';
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo '<input ' . $disabled . ' type="radio" name="leafext_cluster[' . $option['param'] . ']" value="0" ';
+		echo '<input ' . esc_attr( $disabled ) . ' type="radio" name="' . esc_attr( 'leafext_cluster[' . $option['param'] . ']' ) . '" value="0" ';
 		echo ( ! $setting ) ? 'checked' : '';
 		echo '> false ';
 	} else {
@@ -71,15 +69,14 @@ function leafext_form_markercluster( $field ) {
 		$setting       = is_string( $setting ) ? $setting : ( $setting ? '1' : '0' );
 		if ( $setting !== $plugindefault ) {
 			// var_dump("Option: ",$option[2],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
-			echo esc_html( __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault ) . '<br>';
+			echo esc_html( __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault ) . '<br>' . "\n";
 		}
 		if ( ! current_user_can( 'manage_options' ) ) {
 			$select_disabled = ' disabled multiple size=' . count( $option['values'] ) . ' ';
 		} else {
 			$select_disabled = '';
 		}
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo '<select ' . $select_disabled . ' name="leafext_cluster[' . $option['param'] . ']">';
+		echo '<select ' . esc_attr( $select_disabled ) . ' name="' . esc_attr( 'leafext_cluster[' . $option['param'] . ']' ) . '">' . "\n";
 		foreach ( $option['values'] as $para ) {
 			echo '<option ';
 			if ( is_bool( $para ) ) {
@@ -88,10 +85,9 @@ function leafext_form_markercluster( $field ) {
 			if ( $para === $setting ) {
 				echo ' selected="selected" ';
 			}
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo 'value="' . $para . '" >' . $para . '</option>';
+			echo 'value="' . esc_attr( $para ) . '" >' . esc_attr( $para ) . '</option>' . "\n";
 		}
-		echo '</select>';
+		echo '</select>' . "\n";
 	}
 }
 

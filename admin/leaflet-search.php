@@ -29,6 +29,8 @@ function leafext_leafletsearch_help() {
 &#091;leaflet-circle      ...] ... [/leaflet-circle]
 &#091;leaflet-line        ...] ... [/leaflet-line]
 &#091;leaflet-geojson     ...] ... [/leaflet-geojson]
+&#091;leaflet-gpx         ...] ... [/leaflet-gpx]
+&#091;leaflet-kml         ...] ... [/leaflet-kml]
 //one or more
 &#091;leaflet-search propertyName="..." ...]</code></pre>';
 

@@ -103,7 +103,7 @@ function leafext_list_paginate( $files, $anzahl ) {
 			);
 		}
 		echo '</p><p>';
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- pagefiles
 		echo leafext_files_table( $pagefiles[ $pagenr - 1 ] );
 		echo '</p>';
 	} else {
@@ -123,7 +123,7 @@ function leafext_create_shortcode_js() {
 			LEAFEXT_PLUGIN_FILE
 		),
 		array(),
-		null,
+		LEAFEXT_VERSION,
 		true
 	);
 }
@@ -133,7 +133,10 @@ function leafext_create_shortcode_css() {
 		plugins_url(
 			'admin/filemgr/create_copy/createShortcode.css',
 			LEAFEXT_PLUGIN_FILE
-		)
+		),
+		array(),
+		LEAFEXT_VERSION,
+		true
 	);
 }
 

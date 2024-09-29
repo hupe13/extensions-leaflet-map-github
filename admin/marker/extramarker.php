@@ -20,7 +20,7 @@ function leafext_extramarker_help() {
 
 	$text = $text . '<p>' . sprintf(
 		/* translators: %1$s is a link, %2$s is the plugin name,. */
-		__( 'The %1$s is included in the plugin %2$s. If you have already installed some yourself, yours will be used.', 'extensions-leaflet-map' ),
+		esc_html__( 'The %1$s is included in the plugin %2$s. If you have already installed some yourself, yours will be used.', 'extensions-leaflet-map' ),
 		'<a href="https://fontawesome.com/download">Font Awesome 6</a>',
 		'Extensions for Leaflet Map'
 	) . '</p>
@@ -62,7 +62,7 @@ function leafext_extramarker_help() {
 	// "icon='archive' prefix='icon'",
 	);
 
-	$text  = $text . '<p><h3>' . __( 'All Colors', 'extensions-leaflet-map' ) . '</h3></p>';
+	$text  = $text . '<p><h3>' . esc_html__( 'All Colors', 'extensions-leaflet-map' ) . '</h3></p>';
 	$text  = $text . do_shortcode( '[leaflet-map fitbounds height=180 width=80%]' ); // lat=0.1 lng=0.36 zoom=10
 	$lat   = 0.1;
 	$lng   = 0.1;
@@ -76,7 +76,7 @@ function leafext_extramarker_help() {
 	$text = $text . do_shortcode( '[hover markertooltip]' );
 	// $text = $text. do_shortcode('[zoomhomemap fit]');
 
-	$text  = $text . '<p><h3>' . __( 'All Shapes without (1) / with (2) SVG', 'extensions-leaflet-map' ) . '</h3></p>';
+	$text  = $text . '<p><h3>' . esc_html__( 'All Shapes without (1) / with (2) SVG', 'extensions-leaflet-map' ) . '</h3></p>';
 	$text  = $text . do_shortcode( '[leaflet-map fitbounds height=180 width=80% max_zoom=11]' ); // lat=0.1 lng=0.23 zoom=10
 	$lat   = 0.1;
 	$lng   = 0.1;
@@ -92,7 +92,7 @@ function leafext_extramarker_help() {
 	$text = $text . do_shortcode( '[hover markertooltip]' );
 	// $text = $text. do_shortcode('[zoomhomemap fit]');
 
-	$text   = $text . '<p><h3>' . __( 'Some Icons', 'extensions-leaflet-map' ) . '</h3></p>';
+	$text   = $text . '<p><h3>' . esc_html__( 'Some Icons', 'extensions-leaflet-map' ) . '</h3></p>';
 	$text   = $text . do_shortcode( '[leaflet-map fitbounds height=180 width=80% max_zoom=10]' ); // lat=0.1 lng=0.3 zoom=10
 	$anzahl = 0;
 	$lat    = 0.1;
@@ -107,13 +107,13 @@ function leafext_extramarker_help() {
 	}
 	$text = $text . do_shortcode( '[hover markertooltip]' );
 
-	$text = $text . '<p><a href="https://fontawesome.com/search?o=r&m=free">' . __( 'More icons', 'extensions-leaflet-map' ) . ' ...</a></p>';
+	$text = $text . '<p><a href="https://fontawesome.com/search?o=r&m=free">' . esc_html__( 'More icons', 'extensions-leaflet-map' ) . ' ...</a></p>';
 
-	$text = $text . '<h2>' . __( 'Options', 'extensions-leaflet-map' ) . '</h2>';
+	$text = $text . '<h2>' . esc_html__( 'Options', 'extensions-leaflet-map' ) . '</h2>';
 
 	$text = $text . '<p>' . sprintf(
 		/* translators: %1$s are options, %2$s is a link. */
-		__( 'You can also use some options like %1$s from %2$s.', 'extensions-leaflet-map' ),
+		esc_html__( 'You can also use some options like %1$s from %2$s.', 'extensions-leaflet-map' ),
 		'<code>title</code>, <code>draggable</code>, <code>opacity</code>',
 		'<a href="https://github.com/bozdoz/wp-plugin-leaflet-map?tab=readme-ov-file#leaflet-marker-options"><code>leaflet-marker</code></a>'
 	)
@@ -123,8 +123,8 @@ function leafext_extramarker_help() {
 	$new     = array();
 	$new[]   = array(
 		'param'   => '<strong>Option</strong>',
-		'default' => '<strong>' . __( 'Default', 'extensions-leaflet-map' ) . '</strong>',
-		'desc'    => '<strong>' . __( 'Description', 'extensions-leaflet-map' ) . '</strong>',
+		'default' => '<strong>' . esc_html__( 'Default', 'extensions-leaflet-map' ) . '</strong>',
+		'desc'    => '<strong>' . esc_html__( 'Description', 'extensions-leaflet-map' ) . '</strong>',
 	);
 	foreach ( $options as $option ) {
 		$new[] = array(
@@ -138,7 +138,7 @@ function leafext_extramarker_help() {
 		return $text;
 	} else {
 		// echo wp_kses_post( $text );
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- esc_html__ used above
 		echo $text;
 	}
 }

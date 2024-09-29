@@ -45,26 +45,22 @@ function leafext_providers_form() {
 	for ( $i = 0; $i < $count; $i++ ) {
 		$allnames = array_diff( $allnames, array( $regtiles[ $i ]['name'] ) );
 		echo '<h4>' . esc_html( $regtiles[ $i ]['name'] ) . '</h4>' . "\n";
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo '<input type="hidden" name="leafext_providers[' . $i . '][name]" value="' . $regtiles[ $i ]['name'] . '">' . "\n";
+		echo '<input type="hidden" name="' . esc_attr( 'leafext_providers[' . $i . '][name]' ) . '" value="' . esc_attr( $regtiles[ $i ]['name'] ) . '">' . "\n";
 		$size = max( array_map( 'strlen', $regtiles[ $i ]['keys'] ) );
 		foreach ( $regtiles[ $i ]['keys'] as $key => $value ) {
 			echo '<p>' . esc_html( $key ) . ': ';
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo '<input type="text" size=' . $size . ' name="leafext_providers[' . $i . '][keys][' . $key . ']" value="' . $value . '"></p>' . "\n";
+			echo '<input type="text" size=' . esc_attr( $size ) . ' name="' . esc_attr( 'leafext_providers[' . $i . '][keys][' . $key . ']' ) . '" value="' . esc_attr( $value ) . '"></p>' . "\n";
 		}
 	}
 	$i = $count;
 	foreach ( $allnames as $name ) {
 		$id = array_search( $name, array_column( $require_registration, 'name' ), true );
 		echo '<h4>' . esc_html( $require_registration[ $id ]['name'] ) . '</h4>' . "\n";
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo '<input type="hidden" name="leafext_providers[' . $i . '][name]" value="' . $require_registration[ $id ]['name'] . '">' . "\n";
+		echo '<input type="hidden" name="' . esc_attr( 'leafext_providers[' . $i . '][name]' ) . '" value="' . esc_attr( $require_registration[ $id ]['name'] ) . '">' . "\n";
 		$size = max( array_map( 'strlen', $require_registration[ $id ]['keys'] ) );
 		foreach ( $require_registration[ $id ]['keys'] as $key => $value ) {
 			echo '<p>' . esc_html( $key ) . ': ';
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo '<input type="text" size=' . $size . ' name="leafext_providers[' . $i . '][keys][' . $key . ']" placeholder="' . $value . '" value=""></p>' . "\n";
+			echo '<input type="text" size=' . esc_attr( $size ) . ' name="' . esc_attr( 'leafext_providers[' . $i . '][keys][' . $key . ']' ) . '" placeholder="' . esc_attr( $value ) . '" value=""></p>' . "\n";
 		}
 		++$i;
 	}

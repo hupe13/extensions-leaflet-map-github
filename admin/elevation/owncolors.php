@@ -51,7 +51,7 @@ function leafext_form_colors( $field ) {
 		'leafext-picker',
 		plugins_url( 'js/colorpicker.min.js', LEAFEXT_PLUGIN_FILE ),
 		array( 'wp-color-picker' ),
-		null,
+		LEAFEXT_VERSION,
 		true
 	);
 
@@ -65,16 +65,15 @@ function leafext_form_colors( $field ) {
 	} else {
 		$setting = $option['default'];
 	}
-	// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 	if ( current_user_can( 'manage_options' ) ) {
-		echo '<input type="text" class="colorPicker" id="leafext_color_' . $theme . '[' . $option['param'] . ']" name="leafext_color_' . $theme . '[' . $option['param'] . ']"
-			data-default-color = "' . $option['default'] . '" value = "' . $setting . '"/>';
+		echo '<input type="text" class="colorPicker" id="' . esc_attr( 'leafext_color_' . $theme . '[' . $option['param'] . ']' ) . '"
+		  name="' . esc_attr( 'leafext_color_' . $theme . '[' . $option['param'] . ']' ) . '"
+			data-default-color = "' . esc_attr( $option['default'] ) . '" value = "' . esc_attr( $setting ) . '"/>';
 	} else {
 		echo '<svg width="25" height="25">
-		<rect width="25" height="25" style="fill:' . $option['default'] . ';stroke-width:1;stroke:rgb(0,0,0)" />
+		<rect width="25" height="25" style="fill:' . esc_attr( $option['default'] ) . ';stroke-width:1;stroke:rgb(0,0,0)" />
 		</svg>';
 	}
-	// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 }
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.

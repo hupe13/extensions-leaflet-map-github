@@ -26,12 +26,10 @@ function leafext_form_deleting() {
 		$disabled = '';
 	}
 
-	//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-	echo '<input ' . $disabled . ' type="radio" name="leafext_deleting[on]" value="1" ';
+	echo '<input ' . esc_attr( $disabled ) . ' type="radio" name="leafext_deleting[on]" value="1" ';
 	checked( ! ( isset( $setting['on'] ) && $setting['on'] === '0' ) );
 	echo '> ' . esc_html__( 'yes', 'extensions-leaflet-map' ) . ' &nbsp;&nbsp; ';
-	//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-	echo '<input ' . $disabled . ' type="radio" name="leafext_deleting[on]" value="0" ';
+	echo '<input ' . esc_attr( $disabled ) . ' type="radio" name="leafext_deleting[on]" value="0" ';
 	checked( isset( $setting['on'] ) && $setting['on'] === '0' );
 	echo '> ' . esc_html__( 'no', 'extensions-leaflet-map' );
 }

@@ -44,12 +44,10 @@ function leafext_form_gesture( $field ) {
 			echo $option['default'] ? 'true' : 'false';
 			echo '<br>';
 		}
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-		echo '<input ' . $disabled . ' type="radio" name="leafext_gesture[' . $option['param'] . ']" value="1" ';
+		echo '<input ' . esc_attr( $disabled ) . ' type="radio" name="leafext_gesture[' . esc_attr( $option['param'] ) . ']" value="1" ';
 		echo $setting ? 'checked' : '';
 		echo '> true &nbsp;&nbsp; ';
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-		echo '<input ' . $disabled . ' type="radio" name="leafext_gesture[' . $option['param'] . ']" value="0" ';
+		echo '<input ' . esc_attr( $disabled ) . ' type="radio" name="leafext_gesture[' . esc_attr( $option['param'] ) . ']" value="0" ';
 		echo ( ! $setting ) ? 'checked' : '';
 		echo '> false ';
 	} else {
@@ -59,8 +57,7 @@ function leafext_form_gesture( $field ) {
 			// var_dump("Option: ",$option['default'],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
 			echo wp_kses_post( __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault . '<br>' );
 		}
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-		echo '<select ' . $disabled . ' name="leafext_gesture[' . $option['param'] . ']">';
+		echo '<select ' . esc_attr( $disabled ) . ' name="leafext_gesture[' . esc_attr( $option['param'] ) . ']">';
 		foreach ( $option['values'] as $para ) {
 			echo '<option ';
 			if ( is_bool( $para ) ) {
@@ -69,8 +66,7 @@ function leafext_form_gesture( $field ) {
 			if ( $para === $setting ) {
 				echo ' selected="selected" ';
 			}
-			//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-			echo 'value="' . $para . '" >' . $para . '</option>';
+			echo 'value="' . esc_attr( $para ) . '" >' . esc_attr( $para ) . '</option>';
 		}
 		echo '</select>';
 	}

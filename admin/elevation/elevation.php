@@ -51,8 +51,7 @@ function leafext_form_elevation( $field ) {
 			if ( $setting !== $option['default'] ) {
 				echo wp_kses_post( __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $option['default'] . '<br>' );
 			}
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo '<input ' . $disabled . 'name="' . $name_id . '" value="' . $setting . '" ' . $option['values'] . '/>';
+			echo '<input ' . esc_attr( $disabled ) . 'name="' . esc_attr( $name_id ) . '" value="' . esc_attr( $setting ) . '" ' . esc_attr( $option['values'] ) . '/>';
 			break;
 		case 'integer': // true/false
 			if ( $setting !== $option['default'] ) {
@@ -61,12 +60,10 @@ function leafext_form_elevation( $field ) {
 				echo $option['default'] ? 'true' : 'false';
 				echo '<br>';
 			}
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo '<input ' . $disabled . 'type="radio" name="' . $name_id . '" value="1" ';
+			echo '<input ' . esc_attr( $disabled ) . 'type="radio" name="' . esc_attr( $name_id ) . '" value="1" ';
 			echo $setting ? 'checked' : '';
 			echo '> true &nbsp;&nbsp; ';
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo '<input ' . $disabled . 'type="radio" name="' . $name_id . '" value="0" ';
+			echo '<input ' . esc_attr( $disabled ) . 'type="radio" name="' . esc_attr( $name_id ) . '" value="0" ';
 			echo ( ! $setting ) ? 'checked' : '';
 			echo '> false ';
 			break;
@@ -81,8 +78,7 @@ function leafext_form_elevation( $field ) {
 			} else {
 				$select_disabled = '';
 			}
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo '<select ' . $select_disabled . ' name="' . $name_id . '">';
+			echo '<select ' . esc_attr( $select_disabled ) . ' name="' . esc_attr( $name_id ) . '">';
 			foreach ( $option['values'] as $para ) {
 				echo '<option ';
 				if ( is_bool( $para ) ) {
@@ -91,8 +87,7 @@ function leafext_form_elevation( $field ) {
 				if ( $para === $setting ) {
 					echo ' selected="selected" ';
 				}
-				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				echo 'value="' . $para . '">' . $para . '</option>';
+				echo 'value="' . esc_attr( $para ) . '">' . esc_attr( $para ) . '</option>';
 			}
 			echo '</select>';
 			break;
@@ -247,13 +242,15 @@ function leafext_ele_help_chartlook() {
 function leafext_ele_help_chart() {
 	wp_enqueue_style(
 		'prism-css',
-		plugins_url( 'pkg/prism/prism.css', LEAFEXT_PLUGIN_FILE )
+		plugins_url( 'pkg/prism/prism.css', LEAFEXT_PLUGIN_FILE ),
+		array(),
+		LEAFEXT_VERSION
 	);
 	wp_enqueue_script(
 		'prism-js',
 		plugins_url( 'pkg/prism/prism.js', LEAFEXT_PLUGIN_FILE ),
 		array(),
-		null,
+		LEAFEXT_VERSION,
 		true
 	);
 	echo '<div style="border-top: 3px solid #646970"></div>';

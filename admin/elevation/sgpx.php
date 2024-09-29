@@ -45,12 +45,11 @@ function leafext_form_sgpx( $field ) {
 			echo '<br>';
 		}
 
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo '<input type="radio" name="leafext_sgpxparams[' . $option['param'] . ']" value="1" ';
+		echo '<input type="radio" name="' . esc_attr( 'leafext_sgpxparams[' . $option['param'] . ']' ) . '" value="1" ';
 		echo $setting ? 'checked' : '';
 		echo '> true &nbsp;&nbsp; ';
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo '<input type="radio" name="leafext_sgpxparams[' . $option['param'] . ']" value="0" ';
+
+		echo '<input type="radio" name="' . esc_attr( 'leafext_sgpxparams[' . $option['param'] . ']' ) . '" value="0" ';
 		echo ( ! $setting ) ? 'checked' : '';
 		echo '> false ';
 	} else {
@@ -60,8 +59,7 @@ function leafext_form_sgpx( $field ) {
 			// var_dump("Option: ",$option['default'],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
 			echo esc_html( __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault ) . '<br>';
 		}
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo '<select name="leafext_sgpxparams[' . $option['param'] . ']">';
+		echo '<select name="' . esc_attr( 'leafext_sgpxparams[' . $option['param'] . ']' ) . '">';
 		foreach ( $option['values'] as $para ) {
 			echo '<option ';
 			if ( is_bool( $para ) ) {
@@ -70,8 +68,7 @@ function leafext_form_sgpx( $field ) {
 			if ( $para === $setting ) {
 				echo ' selected="selected" ';
 			}
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo 'value="' . $para . '" >' . $para . '</option>';
+			echo 'value="' . esc_attr( $para ) . '" >' . esc_attr( $para ) . '</option>';
 		}
 		echo '</select>';
 	}

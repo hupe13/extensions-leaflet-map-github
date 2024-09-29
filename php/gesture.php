@@ -89,7 +89,7 @@ function leafext_gestures_script( $lang ) {
 					if ( $lang !== '' ) {
 						?>
 						map.options.gestureHandlingOptions = {
-							locale: "<?php echo $lang; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>", // set language of the warning message.
+							locale: "<?php echo esc_js( $lang ); ?>", // set language of the warning message.
 						}
 						<?php
 					}
@@ -121,7 +121,7 @@ function leafext_gesture_script( $lang ) {
 			if ( $lang !== '' ) {
 				?>
 				map.options.gestureHandlingOptions = {
-					locale: "<?php echo $lang; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>", // set language of the warning message.
+					locale: "<?php echo esc_js( $lang ); ?>", // set language of the warning message.
 				}
 				<?php
 			}

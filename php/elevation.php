@@ -907,9 +907,9 @@ function leafext_elevation_script( $gpx, $settings ) {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
 		var elevation_options = {
 			<?php
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
 			echo $elevation_settings;
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
 			echo leafext_java_params( $settings );
 			?>
 		};
@@ -926,11 +926,11 @@ function leafext_elevation_script( $gpx, $settings ) {
 		if ( $settings['track'] ) {
 			echo 'var switchtrack = L.control.layers(null, null, {';
 			if ( $settings['trackcollapsed'] ) {
-				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
 				echo 'collapsed:' . $settings['trackcollapsed'] . ',';
 			}
 			if ( $settings['trackposition'] ) {
-				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
 				echo 'position:"' . $settings['trackposition'] . '"';
 			}
 			echo '});';
@@ -967,13 +967,13 @@ function leafext_elevation_script( $gpx, $settings ) {
 			} else {
 				$switchname = 'e.name';
 			}
-			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+			// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
 			echo '
 			controlElevation.on("eledata_loaded", function(e) {
 				switchtrack.addOverlay(e.layer, ' . $switchname . ');
 			});
 			';
-			// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
+			// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
 		}
 		?>
 	});

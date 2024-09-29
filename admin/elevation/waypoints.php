@@ -47,8 +47,7 @@ function leafext_form_waypoints() {
 		if ( $option['js'] === '' ) {
 			echo 'placeholder="name" ';
 		}
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo 'name="leafext_waypoints[' . $i . '][sym]" value="' . $option['sym'] . '" pattern="[a-zA-Z]+[a-zA-Z0-9\- ,]*" />';
+		echo 'name="' . esc_attr( 'leafext_waypoints[' . $i . '][sym]' ) . '" value="' . esc_attr( $option['sym'] ) . '" pattern="[a-zA-Z]+[a-zA-Z0-9\- ,]*" />';
 		if ( $option['sym'] === '' && $option['js'] !== '' ) {
 			echo ' (' . esc_html__( 'Default', 'extensions-leaflet-map' ) . ')';
 		}
@@ -76,17 +75,14 @@ function leafext_form_waypoints() {
 		if ( $option['js'] === '' ) {
 			echo esc_html__( 'The syntax is not checked!', 'extensions-leaflet-map' ) . '<br>';
 		}
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo '<input type="text" name="leafext_waypoints[' . $i . '][js]"
+		echo '<input type="text" name="' . esc_attr( 'leafext_waypoints[' . $i . '][js]' ) . '"
 		placeholder=' . "'" . 'iconSize: [xx,xx], iconAnchor: [xx,xx], popupAnchor: [xx,xx],'
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		. "'" . ' value = "' . $option['js'] . '" size="80">';
+		. "'" . ' value = "' . esc_attr( $option['js'] ) . '" size="80">';
 
 		if ( $option['sym'] !== '' || $option['js'] !== '' ) {
 			echo '</td></tr>';
 			echo '<tr><th scope="row-title">' . esc_html__( 'Delete', 'extensions-leaflet-map' ) . '</th>';
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo '<td><input type="checkbox" name="leafext_waypoints[' . $i . '][delete]" value="1" />';
+			echo '<td><input type="checkbox" name="' . esc_attr( 'leafext_waypoints[' . $i . '][delete]' ) . '" value="1" />';
 		}
 		++$i;
 		if ( $i < $count ) {

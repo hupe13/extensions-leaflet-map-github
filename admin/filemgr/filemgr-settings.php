@@ -14,14 +14,14 @@ function leafext_filemgr_params() {
 		array(
 			'param'     => 'types',
 			'shortdesc' => __( 'Types', 'extensions-leaflet-map' ),
-			'desc'      => __( 'Allow upload to media library', 'extensions-leaflet-map' ),
+			'desc'      => esc_html__( 'Allow upload to media library', 'extensions-leaflet-map' ),
 			'default'   => array(),
 			'values'    => array( 'gpx', 'kml', 'geojson', 'json', 'tcx' ),
 		),
 		array(
 			'param'     => 'gpxupload',
 			'shortdesc' => __( 'Upload gpx files into the directory', 'extensions-leaflet-map' ) . ' /upload_dir()/gpx/',
-			'desc'      => __( 'This may be of interest if you have used wp-gpx-maps.', 'extensions-leaflet-map' ),
+			'desc'      => esc_html__( 'This may be of interest if you have used wp-gpx-maps.', 'extensions-leaflet-map' ),
 			'default'   => '0',
 			'values'    => 1,
 		),
@@ -30,7 +30,7 @@ function leafext_filemgr_params() {
 			'shortdesc' => __( 'Allow non admin', 'extensions-leaflet-map' ),
 			'desc'      => sprintf(
 				/* translators: %s is code */
-				__(
+				esc_html__(
 					'Allow all users who have access to the backend to see the files. A permission check %s only done if the files are registered in the media library.',
 					'extensions-leaflet-map'
 				),
@@ -83,32 +83,29 @@ function leafext_form_filemgr( $field ) {
 	$settings = leafext_filemgr_settings();
 	$setting  = $settings[ $field ];
 	if ( $option['desc'] !== '' ) {
-		echo '<p>' . esc_html( $option['desc'] ) . '</p>';
+		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- esc_html__ used
+		echo '<p>' . $option['desc'] . '</p>';
 	}
 
 	if ( $field === 'types' ) {
 		foreach ( $option['values'] as $typ ) {
 			$checked = in_array( $typ, $setting, true ) ? ' checked ' : '';
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo ' <input type="checkbox" name="leafext_filemgr[' . $option['param'] . '][]" value="' . $typ . '" id="' . $typ . '" ' . $checked . '>';
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo ' <label for="' . $typ . '" >' . $typ . '</label> ';
+			echo ' <input type="checkbox" name="' . esc_attr( 'leafext_filemgr[' . $option['param'] . '][]' ) . '" value="' . esc_attr( $typ ) . '" id="' . esc_attr( $typ ) . '" ' . esc_attr( $checked ) . '>' . "\n";
+			echo ' <label for="' . esc_attr( $typ ) . '" >' . esc_attr( $typ ) . '</label> ' . "\n";
 		}
 	} else {
 		if ( $setting !== $option['default'] ) {
 			// var_dump($setting,$option['default']);
 			echo esc_html__( 'Plugins Default', 'extensions-leaflet-map' ) . ': ';
 			echo $option['default'] ? 'true' : 'false';
-			echo '<br>';
+			echo '<br>' . "\n";
 		}
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo '<input type="radio" name="leafext_filemgr[' . $option['param'] . ']" value="1" ';
+		echo '<input type="radio" name="' . esc_attr( 'leafext_filemgr[' . $option['param'] . ']' ) . '" value="1" ';
 		echo $setting ? 'checked' : '';
-		echo '> true &nbsp;&nbsp; ';
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo '<input type="radio" name="leafext_filemgr[' . $option['param'] . ']" value="0" ';
+		echo '> true &nbsp;&nbsp; ' . "\n";
+		echo '<input type="radio" name="' . esc_attr( 'leafext_filemgr[' . $option['param'] . ']' ) . '" value="0" ';
 		echo ( ! $setting ) ? 'checked' : '';
-		echo '> false ';
+		echo '> false ' . "\n";
 	}
 }
 
@@ -134,22 +131,22 @@ function leafext_managefiles_help() {
 	} else {
 		$text = $text . __( 'You can manage these', 'extensions-leaflet-map' );
 	}
-	$text = $text . '<ul>';
+	$text = $text . '<ul>' . "\n";
 	$text = $text . '<li>';
 	$text = $text . __( 'direct in the Media Library.', 'extensions-leaflet-map' );
-	$text = $text . '</li>';
+	$text = $text . '</li>' . "\n";
 	$text = $text . '<li>';
 	$text = $text . __( 'with any (S)FTP-Client,', 'extensions-leaflet-map' );
-	$text = $text . '</li>';
+	$text = $text . '</li>' . "\n";
 	$text = $text . '<li>';
 	$text = $text . __( 'with any File Manager plugin,', 'extensions-leaflet-map' );
-	$text = $text . '</li>';
+	$text = $text . '</li>' . "\n";
 	$text = $text . '<li>';
 	$text = $text . __( 'with any plugin for importing uploaded files to the Media Library.', 'extensions-leaflet-map' );
-	$text = $text . '</li>';
+	$text = $text . '</li>' . "\n";
 	$text = $text . '<li>';
 	$text = $text . __( 'or in your own way.', 'extensions-leaflet-map' );
-	$text = $text . '</li>';
+	$text = $text . '</li>' . "\n";
 	$text = $text . '</ul>';
 	if ( is_singular() || is_archive() ) {
 		return $text;

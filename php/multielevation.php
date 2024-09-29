@@ -419,14 +419,15 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 			},
 			elevation: {
 				<?php
-				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
 				echo $elevation_settings;
-				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
 				echo leafext_java_params( $settings );
 				?>
 			},
-			distanceMarkers: <?php // phpcs:ignore Squiz.PHP.EmbeddedPhp.ContentBeforeOpen, Squiz.PHP.EmbeddedPhp.ContentAfterOpen
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			distanceMarkers: 
+			<?php
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
 			echo $multioptions['distanceMarkers_options'];
 			?>
 		};
@@ -465,7 +466,7 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 				collapsed: true,
 			},
 			<?php
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
 			echo leafext_java_params( $multioptions );
 			?>
 		});
@@ -474,7 +475,7 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 
 		L.Control.Elevation.prototype.__btnIcon = "<?php echo esc_url( LEAFEXT_ELEVATION_URL ); ?>/images/elevation.svg";
 		map.on("eledata_added eledata_clear", function(e) {
-			var p = document.querySelector(".chart-placeholder-<?php echo $rand; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>");
+			var p = document.querySelector(".chart-placeholder-<?php echo esc_attr( $rand ); ?>");
 			if(p) {
 				p.style.display = e.type=="eledata_added" ? "none" : "";
 			}

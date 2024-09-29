@@ -157,8 +157,10 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 </summary>
 
 * Are you using any caching plugin? Try to exclude at least these js files from caching:
+
  - /wp-content/plugins/extensions-leaflet-map/leaflet-plugins/leaflet-elevation-*
  - /wp-content/plugins/extensions-leaflet-map/leaflet-plugins/leaflet-gesture-handling-*
+
 * Are you using any plugin to comply with the GDPR/DSGVO? There might be a problem with that.
 * If you use a caching plugin and a GDPR/DSGVO plugin you need to distinguish whether the user has accepted the cookie or not.
 * Please ask in the [forum](https://wordpress.org/support/plugin/extensions-leaflet-map/)!
@@ -169,7 +171,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 <b>Apropos GDPR/DSGVO</b>
 </summary>
 
-* If you need a plugin for this try [DSGVO/GDPR Snippet for Extensions for Leaflet Map](https://github.com/hupe13/extensions-leaflet-map-dsgvo).
+* If you need a plugin for this try [DSGVO snippet for Leaflet Map and its Extensions](https://wordpress.org/plugins/dsgvo-leaflet-map/).
 * If you use [Complianz | GDPR/CCPA Cookie Consent](https://wordpress.org/plugins/complianz-gdpr/) see [here](https://complianz.io/leaflet-maps/).
 </details>
 </p>
@@ -182,9 +184,10 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.3.4 / 240828
+### 4.3.5 / 24xxxx
 
-* overviewmap: custom field for popup
+* more WordPress Coding Standards
+* Bugs in Backend: filemgr, parentgroup
 
 ### Previous
 

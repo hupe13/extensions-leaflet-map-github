@@ -126,8 +126,13 @@ function leafext_help_featuregroup() {
 	sprintf( __( 'Every marker with an icon has the option %s as default.', 'extensions-leaflet-map' ), '<code>alt="Marker"</code>' )
 	. '</li>
 	<li>' .
-	/* translators: %s is an option. */
-	sprintf( __( 'You can use %s for grouping, it is not used by leaflet-geojson but passed through.', 'extensions-leaflet-map' ), 'className' )
+	sprintf(
+		/* translators: %s are className, circleMarker, leaflet-geojson. */
+		__( 'You can use %1$s if you use the option %2$s, it is not used by %3$s but passed through.', 'extensions-leaflet-map' ),
+		'className',
+		'circleMarker',
+		'leaflet-geojson'
+	)
 	. '</li>
 	</ul>' .
 	'</li>' .
@@ -282,24 +287,24 @@ function leafext_help_featuregroup() {
 	<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-optiongroup option="..." values="...,...,others,unknown" groups="...,...,Other elements,Unknown elements"]
 &#091;leaflet-featuregroup property="..." values="...,...,others,unknown" groups="...,...,Other elements,Unknown elements"]</code></pre>';
 
-	//  $text = $text . '<h3>leaflet-parentgroup</h3><p>
+	// $text = $text . '<h3>leaflet-parentgroup</h3><p>
 	// <pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-parentgroup parent=... childs=... expandall=... collapseall=...]</code></pre>';
 	//
-	//  $text = $text . '<p>' . __(
-	//      'Display groups in a tree view.',
-	//      'extensions-leaflet-map'
-	//  );
-	//  $text = $text . '</p><ul>
-	//  <li><code>parent</code> - ' . __( 'Name of the parent', 'extensions-leaflet-map' ) . '</li>
-	//  <li><code>childs</code> - ' . sprintf(
-	//      /* translators: %s is an option. */
-	//      __( 'child names - comma separated group names (the same as in %s above)', 'extensions-leaflet-map' ),
-	//      '<code>groups</code>'
-	//  ) . '. ' .
-	//  __( 'If you have html tags there, you can omit these here', 'extensions-leaflet-map' ) .
-	//  '.</li>';
-	//  $text = $text . '<li><code>expandall</code>, <code>collapseall</code> - ' . __( 'Text for an entry in control that expands or collapses the tree. If empty (default), no entry is created. The specification in the first command applies.', 'extensions-leaflet-map' ) . '</li>';
-	//  $text = $text . '</ul>';
+	// $text = $text . '<p>' . __(
+	// 'Display groups in a tree view.',
+	// 'extensions-leaflet-map'
+	// );
+	// $text = $text . '</p><ul>
+	// <li><code>parent</code> - ' . __( 'Name of the parent', 'extensions-leaflet-map' ) . '</li>
+	// <li><code>childs</code> - ' . sprintf(
+	// * translators: %s is an option. */
+	// __( 'child names - comma separated group names (the same as in %s above)', 'extensions-leaflet-map' ),
+	// '<code>groups</code>'
+	// ) . '. ' .
+	// __( 'If you have html tags there, you can omit these here', 'extensions-leaflet-map' ) .
+	// '.</li>';
+	// $text = $text . '<li><code>expandall</code>, <code>collapseall</code> - ' . __( 'Text for an entry in control that expands or collapses the tree. If empty (default), no entry is created. The specification in the first command applies.', 'extensions-leaflet-map' ) . '</li>';
+	// $text = $text . '</ul>';
 	$text = $text . '<h3>' . __( 'Group Control', 'extensions-leaflet-map' ) . '</h3>' .
 	'<p>' .
 	'<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-optiongroup ... position=topleft|topright|bottomleft|bottomright collapsed=true|false]

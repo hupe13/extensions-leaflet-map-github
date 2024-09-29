@@ -51,11 +51,9 @@ function leafext_form_hover( $field ) {
 				echo wp_kses_post( __( 'Plugins Default', 'extensions-leaflet-map' ) . ': ' . $defaults[ $key ] . '<br>' );
 			}
 			if ( $key === 'class' ) {
-				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				echo '<input ' . $disabled . ' type="text" size=15 name="leafext_hover[' . $key . ']" value="' . $value . '" />';
+				echo '<input ' . esc_attr( $disabled ) . ' type="text" size=15 name="' . esc_attr( 'leafext_hover[' . $key . ']' ) . '" value="' . esc_attr( $value ) . '" />';
 			} else {
-				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				echo '<input ' . $disabled . ' type="number" min="0" size=3 name="leafext_hover[' . $key . ']" value="' . $value . '" />';
+				echo '<input ' . esc_attr( $disabled ) . ' type="number" min="0" size=3 name="' . esc_attr( 'leafext_hover[' . $key . ']' ) . '" value="' . esc_attr( $value ) . '" />';
 			}
 		}
 	}

@@ -52,8 +52,7 @@ function leafext_form_multielevation( $field ) {
 			// var_dump("Option: ",$option['default'],"Plugindefault: ",$plugindefault,"Setting: ",$setting);
 			echo esc_html( __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $plugindefault ) . '<br>';
 		}
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo '<select name="leafext_multieleparams[' . $option['param'] . ']">';
+		echo '<select name="leafext_multieleparams[' . esc_attr( $option['param'] ) . ']">';
 		foreach ( $option['values'] as $para ) {
 			echo '<option ';
 			if ( is_bool( $para ) ) {
@@ -62,8 +61,7 @@ function leafext_form_multielevation( $field ) {
 			if ( $para === $setting ) {
 				echo ' selected="selected" ';
 			}
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo 'value="' . $para . '" >' . $para . '</option>';
+			echo 'value="' . esc_attr( $para ) . '" >' . esc_attr( $para ) . '</option>';
 		}
 		echo '</select>';
 
@@ -74,7 +72,7 @@ function leafext_form_multielevation( $field ) {
 			'leafext-picker',
 			plugins_url( 'js/colorpicker.min.js', LEAFEXT_PLUGIN_FILE ),
 			array( 'wp-color-picker' ),
-			null,
+			LEAFEXT_VERSION,
 			true
 		);
 
@@ -82,16 +80,14 @@ function leafext_form_multielevation( $field ) {
 			// var_dump($setting,$option['default']);
 			echo esc_html( __( 'Plugins Default', 'extensions-leaflet-map' ) . ': ' . $option['default'] ) . '<br>';
 		}
-		// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
 		if ( current_user_can( 'manage_options' ) ) {
-			echo '<input type="text" class="colorPicker" id="leafext_multieleparams[' . $option['param'] . ']" name="leafext_multieleparams[' . $option['param'] . ']"
-	 		data-default-color = "' . $option['default'] . '" value = "' . $setting . '"/>';
+			echo '<input type="text" class="colorPicker" id="leafext_multieleparams[' . esc_attr( $option['param'] ) . ']" name="leafext_multieleparams[' . esc_attr( $option['param'] ) . ']"
+	 		data-default-color = "' . esc_attr( $option['default'] ) . '" value = "' . esc_attr( $setting ) . '"/>';
 		} else {
 			echo '<svg width="25" height="25">
-			<rect width="25" height="25" style="fill:' . $option['default'] . ';stroke-width:1;stroke:rgb(0,0,0)" />
+			<rect width="25" height="25" style="fill:' . esc_attr( $option['default'] ) . ';stroke-width:1;stroke:rgb(0,0,0)" />
 			</svg>';
 		}
-		// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
 	} else {
 
 		if ( $setting !== $option['default'] ) {
@@ -100,12 +96,10 @@ function leafext_form_multielevation( $field ) {
 			echo $option['default'] ? 'true' : 'false';
 			echo '<br>';
 		}
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo '<input ' . $disabled . ' type="radio" name="leafext_multieleparams[' . $option['param'] . ']" value="1" ';
+		echo '<input ' . esc_attr( $disabled ) . ' type="radio" name="leafext_multieleparams[' . esc_attr( $option['param'] ) . ']" value="1" ';
 		echo $setting ? 'checked' : '';
 		echo '> true &nbsp;&nbsp; ';
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo '<input ' . $disabled . ' type="radio" name="leafext_multieleparams[' . $option['param'] . ']" value="0" ';
+		echo '<input ' . esc_attr( $disabled ) . ' type="radio" name="leafext_multieleparams[' . esc_attr( $option['param'] ) . ']" value="0" ';
 		echo ( ! $setting ) ? 'checked' : '';
 		echo '> false ';
 	}

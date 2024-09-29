@@ -89,7 +89,7 @@ function leafext_cluster_script( $params ) {
 		var clmarkers               = L.markerClusterGroup(
 			{
 				<?php
-				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
 				echo leafext_java_params( $params );
 				?>
 			}

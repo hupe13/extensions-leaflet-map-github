@@ -32,7 +32,8 @@ function leafext_listing_form_types() {
 	if ( count( $post ) !== 0 ) {
 		$type = isset( $post['type'] ) ? $post['type'] : '';
 	} elseif ( isset( $get['type'] ) ) {
-		$type = array( filter_input( INPUT_GET, 'type', FILTER_SANITIZE_SPECIAL_CHARS ) );
+		$type_tmp = array( filter_input( INPUT_GET, 'type', FILTER_SANITIZE_SPECIAL_CHARS ) );
+		$type     = explode( ',', $type_tmp[0] );
 	} else {
 		$stored = get_option( 'leafext_file_listing_' . get_current_user_id() );
 		if ( is_array( $stored ) ) {
@@ -45,10 +46,8 @@ function leafext_listing_form_types() {
 
 	foreach ( $types as $typ ) {
 		$checked = in_array( $typ, $type, true ) ? ' checked ' : '';
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo ' <input type="checkbox" name="type[]" value="' . $typ . '" id="' . $typ . '" ' . $checked . '>';
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo '<label for="' . $typ . '" >' . $typ . ' </label>';
+		echo ' <input type="checkbox" name="type[]" value="' . esc_attr( $typ ) . '" id="' . esc_attr( $typ ) . '" ' . esc_attr( $checked ) . '>' . "\n";
+		echo '<label for="' . esc_attr( $typ ) . '" >' . esc_attr( $typ ) . ' </label>' . "\n";
 	}
 }
 
@@ -92,9 +91,8 @@ function leafext_listing_form_dirs() {
 	$upload_path = trailingslashit( $upload_dir['basedir'] );
 	$disabled    = ( $all === 'on' ) ? 'disabled' : '';
 
-	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	echo esc_html__( 'with at least', 'extensions-leaflet-map' ) . ' <input ' . $disabled . ' type="number" min="2" name="count" id="leafext_dirListnr" value="' . $count . '" size="3"> ' . esc_html__( 'Files', 'extensions-leaflet-map' ) . ': ';
-	echo '<select name="dir" id="leafext_dirList" ' . $disabled . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo esc_html__( 'with at least', 'extensions-leaflet-map' ) . ' <input ' . esc_attr( $disabled ) . ' type="number" min="2" name="count" id="leafext_dirListnr" value="' . esc_attr( $count ) . '" size="3"> ' . esc_html__( 'Files', 'extensions-leaflet-map' ) . ': ';
+	echo '<select name="dir" id="leafext_dirList" ' . esc_attr( $disabled ) . '>' . "\n";
 	if ( $verz === '' ) {
 		echo '<option selected value="">' . esc_html__( 'Please select', 'extensions-leaflet-map' ) . ' ...</option>';
 	}
@@ -104,9 +102,9 @@ function leafext_listing_form_dirs() {
 		} else {
 			echo '<option ';
 		}
-		echo 'value="' . $dir . '">/' . $dir . '</option>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo 'value="' . esc_attr( $dir ) . '">/' . esc_attr( $dir ) . '</option>' . "\n";
 	}
-	echo '</select>';
+	echo '</select>' . "\n";
 	echo '<p>' . esc_html__( 'If you change the number, submit the form to get the directories you want.', 'extensions-leaflet-map' ) . '</p>';
 }
 
@@ -146,8 +144,7 @@ function leafext_listing_form_all() {
 		}
 	}
 	$checked = ( $all === 'on' ) ? 'checked' : '';
-	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	echo '<input type="checkbox" ' . $checked . ' name="all" id="leafext_filesall" onchange="leafext_EnableDisableDirListing(this)">';
+	echo '<input type="checkbox" ' . esc_attr( $checked ) . ' name="all" id="leafext_filesall" onchange="leafext_EnableDisableDirListing(this)">';
 }
 
 function leafext_listing_form_files() {
@@ -170,8 +167,7 @@ function leafext_listing_form_files() {
 			$anzahl = '10';
 		}
 	}
-	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	echo '<input type="number" min="1" name="anzahl" value="' . $anzahl . '" size="4"> ' . esc_html__( 'entries', 'extensions-leaflet-map' );
+	echo '<input type="number" min="1" name="anzahl" value="' . esc_attr( $anzahl ) . '" size="4"> ' . esc_html__( 'entries', 'extensions-leaflet-map' );
 }
 
 function leafext_listing_form_default() {
@@ -266,21 +262,21 @@ function leafext_managefiles() {
 				$uploadurl = '';
 				$file      = '/' . trim( $dir, '/' ) . '/';
 				$end       = ' elevation][multielevation]';
-				// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+				// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- shortcode begin
 				echo '<span class="leafexttooltip" href="#" ' .
 				'onclick="leafext_create_shortcode(\'' . $shortcode . '\',\'' . $uploadurl . '\',\'' . $file . '\',\'' . $end . '\')" ' .
 				'onmouseout="leafext_outFunc()">' .
 				'<span class="leafextcopy" id="leafextTooltip">Copy to clipboard</span>' .
 				'<code>[leaflet-directory src="/' . trailingslashit( $dir ) . '" elevation]</code>' .
 				'</span>';
-				// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
+				// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped -- shortcode end
 				echo ' (' . esc_html__( 'does only work with gpx files', 'extensions-leaflet-map' ) . ')';
 				echo '<br>';
 				$shortcode = '[leaflet-map fitbounds][leaflet-directory src=';
 				$uploadurl = '';
 				$file      = '/' . trim( $dir, '/' ) . '/';
 				$end       = ' leaflet]';
-				// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
+				// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- on click function javascript begin
 				echo '<span class="leafexttooltip" href="#" ' .
 				'onclick="leafext_create_shortcode(\'' . $shortcode . '\',\'' . $uploadurl . '\',\'' . $file . '\',\'' . $end . '\')" ' .
 				'onmouseout="leafext_outFunc()">' .
@@ -288,7 +284,7 @@ function leafext_managefiles() {
 				'<code>[leaflet-directory src="/' . trailingslashit( $dir ) . '" leaflet]</code>' .
 				'</span>' .
 				'</div>';
-				// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped
+				// phpcs:enable WordPress.Security.EscapeOutput.OutputNotEscaped -- on click function javascript end
 			}
 			echo '<p>';
 			leafext_list_paginate( leafext_list_dir( $dir, $extensions ), $anzahl );

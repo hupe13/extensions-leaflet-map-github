@@ -40,9 +40,7 @@ function leafext_thickbox( $track ) {
 	echo '<div ><strong>';
 	esc_html_e( 'File size: ' );
 	echo '</strong> ' . esc_html( size_format( filesize( $upload_path . $track ) ) ) . '</div></div><p>';
-	$content = do_shortcode( '[leaflet-map  height=300 width=300 !scrollwheel !dragging fitbounds][leaflet-' . $type . ' src="' . $upload_url . $track . '"]{name}[/leaflet-' . $type . ']' );
-	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	echo $content;
+	echo do_shortcode( '[leaflet-map  height=300 width=300 !scrollwheel !dragging fitbounds][leaflet-' . $type . ' src="' . $upload_url . $track . '"]{name}[/leaflet-' . $type . ']' );
 	echo '</p></div>';
 
 	$data = '';

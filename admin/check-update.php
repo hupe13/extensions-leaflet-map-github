@@ -106,9 +106,9 @@ if ( ! function_exists( 'leafext_updating_init' ) ) {
 		register_setting( 'leafext_settings_updating', 'leafext_updating', 'leafext_validate_updating' );
 	}
 }
-	add_action( 'admin_init', 'leafext_updating_init' );
+add_action( 'admin_init', 'leafext_updating_init' );
 
-	// Baue Abfrage der Params
+// Baue Abfrage der Params
 if ( ! function_exists( 'leafext_form_updating' ) ) {
 	function leafext_form_updating() {
 		$setting = get_option( 'leafext_updating', array( 'token' => '' ) );
@@ -118,12 +118,11 @@ if ( ! function_exists( 'leafext_form_updating' ) ) {
 			$disabled = '';
 		}
 		// var_dump($setting);
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-		echo '<input ' . $disabled . ' type="text" size="30" name="leafext_updating[token]" value="' . $setting['token'] . '" />';
+		echo '<input ' . esc_attr( $disabled ) . ' type="text" size="30" name="leafext_updating[token]" value="' . esc_attr( $setting['token'] ) . '" />';
 	}
 }
 
-	// Sanitize and validate input. Accepts an array, return a sanitized array.
+// Sanitize and validate input. Accepts an array, return a sanitized array.
 if ( ! function_exists( 'leafext_validate_updating' ) ) {
 	function leafext_validate_updating( $input ) {
 		if ( ! empty( $_POST ) && check_admin_referer( 'leafext_updating', 'leafext_updating_nonce' ) ) {
@@ -177,11 +176,6 @@ function leafext_github_update_admin() {
 	} else {
 		$main_site_id  = get_main_site_id();
 		$main_site_url = get_site_url( $main_site_id );
-		if ( $leafext_github_main_active ) {
-			$main_active = ' ';
-		} else {
-			$main_active = ', ' . esc_html__( 'activate the plugin there', 'extensions-leaflet-map-github' );
-		}
 
 		if ( $leafext_github_main_active && ( false === $leafext_github_denied || $leafext_update_token !== '' ) ) {
 			echo esc_html__( 'You receive updates in WordPress way.', 'extensions-leaflet-map-github' );
@@ -192,8 +186,8 @@ function leafext_github_update_admin() {
 					'If you want to receive updates in WordPress way, go to the %1$smain site dashboard%2$s and set a Github token if necessary.',
 					'extensions-leaflet-map-github'
 				),
-				'<a href="' . $main_site_url . '/wp-admin/plugins.php">', //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-				'</a>' . $main_active //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- esc_html__ used
+				'<a href="' . esc_url( $main_site_url . '/wp-admin/plugins.php' ) . '">',
+				'</a>' . ( $leafext_github_main_active ? ' ' : ', ' . esc_html__( 'activate the plugin there', 'extensions-leaflet-map-github' ) )
 			);
 		}
 	}

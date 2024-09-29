@@ -1,6 +1,7 @@
 # Differences to the Plugins WordPress version
 
-* None
+* more WordPress Coding Standards
+* Bugs in Backend: filemgr, parentgroup
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

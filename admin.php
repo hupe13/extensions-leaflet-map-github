@@ -122,25 +122,21 @@ function leafext_admin_tabs() {
 	$active_tab = isset( $get['tab'] ) ? $get['tab'] : 'help';
 
 	echo '<h3 class="nav-tab-wrapper">';
-	//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-	echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=help" class="nav-tab';
+	echo '<a href="' . esc_url( '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=help' ) . '" class="nav-tab';
 	echo $active_tab === 'help' ? ' nav-tab-active' : '';
 	echo '">' . esc_html__( 'Help', 'extensions-leaflet-map' ) . '</a>' . "\n";
 	if ( current_user_can( 'manage_options' ) ) {
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-		echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=filemgr" class="nav-tab';
+		echo '<a href="' . esc_url( '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=filemgr' ) . '" class="nav-tab';
 		if ( strpos( $active_tab, 'filemgr' ) !== false ) {
 			echo ' nav-tab-active';
 		}
 		echo '">' . esc_html__( 'Manage Leaflet Map files', 'extensions-leaflet-map' ) . '</a>' . "\n";
 	} else {
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-		echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=filemgr-list" class="nav-tab';
+		echo '<a href="' . esc_url( '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=filemgr-list' ) . '" class="nav-tab';
 		echo $active_tab === 'filemgr-list' ? ' nav-tab-active' : '';
 		echo '">' . esc_html__( 'Manage Leaflet Map files', 'extensions-leaflet-map' ) . '</a>' . "\n";
 	}
-	//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-	echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=elevation" class="nav-tab';
+	echo '<a href="' . esc_url( '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=elevation' ) . '" class="nav-tab';
 	if ( strpos( $active_tab, 'elevation' ) !== false ) {
 		echo ' nav-tab-active';
 	}
@@ -197,18 +193,15 @@ function leafext_admin_tabs() {
 	);
 
 	foreach ( $tabs as $tab ) {
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-		echo '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=' . $tab['tab'] . '" class="nav-tab';
+		echo '<a href="' . esc_url( '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=' . $tab['tab'] ) . '" class="nav-tab';
 		$active = ( $active_tab === $tab['tab'] ) ? ' nav-tab-active' : '';
 		if ( isset( $tab['strpos'] ) ) {
 			if ( strpos( $active_tab, $tab['strpos'] ) !== false ) {
 				$active = ' nav-tab-active';
 			}
 		}
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-		echo $active;
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-		echo '">' . $tab['title'] . '</a>' . "\n";
+		echo esc_attr( $active );
+		echo '">' . esc_html( $tab['title'] ) . '</a>' . "\n";
 	}
 	echo '</h3>';
 }
@@ -220,7 +213,9 @@ function leafext_admin_style() {
 	if ( $page === LEAFEXT_PLUGIN_SETTINGS ) {
 		wp_enqueue_style(
 			'leafext_admin_css',
-			plugins_url( 'css/leafext-admin' . LEAFEXT_MINI . '.css', LEAFEXT_PLUGIN_FILE )
+			plugins_url( 'css/leafext-admin' . LEAFEXT_MINI . '.css', LEAFEXT_PLUGIN_FILE ),
+			array(),
+			LEAFEXT_VERSION,
 		);
 	}
 }

@@ -12,7 +12,7 @@ function leafext_parentgroup_init() {
 	add_settings_section( 'parentgroup_settings', '', '', 'leafext_settings_parentgroup' );
 	$fields = leafext_parentgroup_params();
 	foreach ( $fields as $field ) {
-		//if ( $field['size'] > 0 ) {
+		// if ( $field['size'] > 0 ) {
 			add_settings_field(
 				'leafext_parentgroup[' . $field['param'] . ']',
 				$field['desc'],
@@ -21,7 +21,7 @@ function leafext_parentgroup_init() {
 				'parentgroup_settings',
 				$field['param']
 			);
-		//}
+		// }
 	}
 	register_setting( 'leafext_settings_parentgroup', 'leafext_parentgroup', 'leafext_validate_parentgroup' );
 }
@@ -53,10 +53,9 @@ function leafext_form_parentgroup( $field ) {
 			}
 			if ( $option['size'] > 0 ) {
 				if ( $value !== $defaults[ $key ] ) {
-					echo wp_kses_post( __( 'Plugins Default', 'extensions-leaflet-map' ) . ': <code>' . esc_html( $defaults[ $key ] ) . '</code><br>' );
+					echo wp_kses_post( __( 'Plugins Default', 'extensions-leaflet-map' ) . ': <code>' . esc_html( htmlentities( $defaults[ $key ], ENT_QUOTES ) ) . '</code><br>' );
 				}
-				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-				echo '<input ' . $disabled . ' type="text" size=' . $option['size'] . ' name="leafext_parentgroup[' . $key . ']" value="' . htmlspecialchars_decode( htmlentities( $value, ENT_QUOTES ), ENT_NOQUOTES ) . '" />';
+				echo '<input ' . esc_attr( $disabled ) . ' type="text" size=' . esc_attr( $option['size'] ) . ' name="' . esc_attr( 'leafext_parentgroup[' . $key . ']' ) . '" value="' . esc_attr( htmlentities( $value, ENT_QUOTES ) ) . '" />';
 			}
 		}
 	}

@@ -53,8 +53,7 @@ function leafext_form_owntheme() {
 	} else {
 		$select_disabled = '';
 	}
-	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	echo '<select ' . $select_disabled . ' id="leafext_elecolor" name="leafext_values[theme]" onchange = "leafext_EnableDisableOtherTheme(this)">';
+	echo '<select ' . esc_attr( $select_disabled ) . ' id="leafext_elecolor" name="leafext_values[theme]" onchange = "leafext_EnableDisableOtherTheme(this)">';
 	$colors[] = 'other';
 	foreach ( $colors as $color ) {
 		if ( $color === $options['theme'] ) {
@@ -62,8 +61,7 @@ function leafext_form_owntheme() {
 		} else {
 			echo '<option ';
 		}
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo 'value="' . $color . '">' . $color . '</option>';
+		echo 'value="' . esc_attr( $color ) . '">' . esc_attr( $color ) . '</option>';
 	}
 	echo '</select>';
 }
@@ -80,7 +78,7 @@ function leafext_form_other_theme() {
 
 	echo '<input id="leafext_eleother" type="text" name="leafext_values[othertheme]" placeholder="my-theme"
 		pattern=".*-theme" title="' . esc_html__( 'must end with', 'extensions-leaflet-map' ) . ' \'-theme\'"
-		value="' . $othertheme . '" '; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		value="' . esc_attr( $othertheme ) . '" ';
 	echo ( $othertheme !== '' ) ? '' : ' readonly ';
 	echo '/>';
 }
@@ -111,13 +109,15 @@ function leafext_validate_elevationtheme( $input ) {
 function leafext_elevation_help_text() {
 	wp_enqueue_style(
 		'prism-css',
-		plugins_url( 'pkg/prism/prism.css', LEAFEXT_PLUGIN_FILE )
+		plugins_url( 'pkg/prism/prism.css', LEAFEXT_PLUGIN_FILE ),
+		array(),
+		LEAFEXT_VERSION
 	);
 	wp_enqueue_script(
 		'prism-js',
 		plugins_url( 'pkg/prism/prism.js', LEAFEXT_PLUGIN_FILE ),
 		array(),
-		null,
+		LEAFEXT_VERSION,
 		true
 	);
 	$text = '

@@ -43,12 +43,10 @@ function leafext_form_overviewmap( $field ) {
 			echo $option['default'] ? 'true' : 'false';
 			echo '<br>';
 		}
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-		echo '<input ' . $disabled . ' type="radio" name="leafext_overviewmap[' . $option['param'] . ']" value="1" ';
+		echo '<input ' . esc_attr( $disabled ) . ' type="radio" name="leafext_overviewmap[' . esc_attr( $option['param'] ) . ']" value="1" ';
 		echo $setting ? 'checked' : '';
 		echo '> true &nbsp;&nbsp; ';
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- string not changeable
-		echo '<input ' . $disabled . ' type="radio" name="leafext_overviewmap[' . $option['param'] . ']" value="0" ';
+		echo '<input ' . esc_attr( $disabled ) . ' type="radio" name="leafext_overviewmap[' . esc_attr( $option['param'] ) . ']" value="0" ';
 		echo ( ! $setting ) ? 'checked' : '';
 		echo '> false ';
 		// } else {

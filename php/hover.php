@@ -217,8 +217,7 @@ function leafext_canvas_script( $tolerance ) {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
 		map.options.renderer=L.canvas({ tolerance:
 		<?php
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo $tolerance;
+		echo esc_attr( $tolerance );
 		?>
 		});
 		console.log("tolerance "+<?php echo esc_js( $tolerance ); ?>);
