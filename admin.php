@@ -146,8 +146,9 @@ function leafext_admin_tabs() {
 
 	$tabs = array(
 		array(
-			'tab'    => 'tiles',
+			// 'tab'    => 'tiles',
 			// 'title'  => __( 'Switching Tile Servers', 'extensions-leaflet-map' ),
+			'tab'    => 'tileswitch',
 			'title'  => __( 'タイルサーバ設定', 'extensions-leaflet-map' ),
 			'strpos' => 'tileswitch',
 		),
