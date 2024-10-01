@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || die();
 function leafext_github_textdomain() {
 	load_plugin_textdomain( 'extensions-leaflet-map-github', false, LEAFEXT_PLUGIN_SETTINGS . '/lang/' );
 }
-add_action( 'plugins_loaded', 'leafext_github_textdomain' );
+add_action( 'after_setup_theme', 'leafext_github_textdomain' );
 
 // define some globals
 global $leafext_github_main_active;

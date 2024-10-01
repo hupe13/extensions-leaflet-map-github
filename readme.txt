@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 6.6
-Stable tag: 4.3.4
+Stable tag: 4.3.5
 Requires at least: 5.5.3
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -37,3 +37,5 @@ Many thanks to everyone who found errors and provided ideas for new functions.
 
 * more WordPress Coding Standards
 * Bugs in Backend: filemgr, parentgroup
+* remove < br/> if using Classic editor
+* load_plugin_textdomain (WP 6.7)

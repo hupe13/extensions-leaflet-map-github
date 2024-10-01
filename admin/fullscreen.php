@@ -22,9 +22,5 @@ function leafext_help_fullscreen() {
 	<pre' . $codestyle . '><code' . $codestyle . '>[fullscreen position=topleft|topright|bottomleft|bottomright]</code></pre>';
 	$text .= __( 'default position:', 'extensions-leaflet-map' ) . ' <code>topleft</code>';
 
-	if ( is_singular() || is_archive() ) {
-		return $text;
-	} else {
-		echo wp_kses_post( $text );
-	}
+	return $text;
 }

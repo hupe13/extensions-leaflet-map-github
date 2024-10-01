@@ -1,7 +1,9 @@
-### 4.3.5 / 24xxxx
+### 4.3.5 / 2410xx
 
 * more WordPress Coding Standards
 * Bugs in Backend: filemgr, parentgroup
+* remove < br/> if using Classic editor
+* load_plugin_textdomain (WP 6.7)
 
 ### 4.3.4 / 240828
 

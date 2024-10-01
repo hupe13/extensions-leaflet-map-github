@@ -78,9 +78,5 @@ function leafext_choropleth_help() {
   </ul>';
 
 	$text = $text . '<small>(' . __( "Help me, if I'm wrong.", 'extensions-leaflet-map' ) . ')</small>';
-	if ( is_singular() || is_archive() ) {
-		return $text;
-	} else {
-		echo wp_kses_post( $text );
-	}
+	return $text;
 }

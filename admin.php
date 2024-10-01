@@ -92,10 +92,10 @@ function leafext_do_page() {
 		}
 	} elseif ( $active_tab === 'fullscreen' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/fullscreen.php';
-		leafext_help_fullscreen();
+		echo wp_kses_post( leafext_help_fullscreen() );
 	} elseif ( $active_tab === 'choropleth' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/choropleth.php';
-		leafext_choropleth_help();
+		echo wp_kses_post( leafext_choropleth_help() );
 	} elseif ( strpos( $active_tab, 'group' ) !== false ) {
 		leafext_admin_grouping( $active_tab );
 	} elseif ( $active_tab === 'leafletsearch' ) {
