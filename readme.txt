@@ -38,4 +38,3 @@ Many thanks to everyone who found errors and provided ideas for new functions.
 * more WordPress Coding Standards
 * Bugs in Backend: filemgr, parentgroup
 * remove < br/> if using Classic editor
-* load_plugin_textdomain (WP 6.7)

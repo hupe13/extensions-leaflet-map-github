@@ -540,13 +540,13 @@ add_filter(
 
 // remove </script>*< br/> in Classic Editor
 if ( ! is_admin() ) {
-	add_filter( 'the_content', 'leafext_remove_script_br', 11 );
 	function leafext_remove_script_br( $content ) {
 		$script_br = '/<\/script>\r?\n?<br \/>/';
 		$script    = '</script>';
 		$content   = preg_replace( $script_br, $script, $content );
 		return $content;
 	}
+	add_filter( 'the_content', 'leafext_remove_script_br', 11 );
 }
 
 /**
