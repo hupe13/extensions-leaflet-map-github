@@ -3,6 +3,7 @@
 * more WordPress Coding Standards
 * Bugs in Backend: filemgr, parentgroup
 * remove < br/> if using Classic editor
+* new version leaflet-providers
 
 ### 4.3.4 / 240828
 

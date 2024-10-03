@@ -55,21 +55,12 @@ function leafext_providers_registration() {
 				'apikey' => '<insert api_key here>',
 			),
 		),
-		// Esri/ArcGIS - register
 		array(
 			'name' => 'TomTom',
 			'keys' => array(
 				'apikey' => '<insert your API key here>',
 			),
 		),
-		array(
-			'name' => 'GeoportailFrance',
-			'keys' => array(
-				'variant' => '<insert resource ID here>',
-				'apikey'  => '<insert api key here>',
-			),
-		),
-		// Stadia Maps - register
 	);
 	return $tiles;
 }
