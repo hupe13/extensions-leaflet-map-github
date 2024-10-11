@@ -39,3 +39,4 @@ Many thanks to everyone who found errors and provided ideas for new functions.
 * Bugs in Backend: filemgr, parentgroup
 * remove < br/> if using Classic editor
 * new version leaflet-providers
+* Tests on WordPress 6.7 (beta)

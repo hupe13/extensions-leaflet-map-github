@@ -184,12 +184,13 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.3.5 / 2410xx
+### 4.3.5 / 241012
 
 * more WordPress Coding Standards
 * Bugs in Backend: filemgr, parentgroup
 * remove < br/> if using Classic editor
 * new version leaflet-providers
+* Tests on WordPress 6.7 (beta)
 
 ### Previous
 
