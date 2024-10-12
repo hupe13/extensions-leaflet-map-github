@@ -88,7 +88,7 @@ function leafext_github_meta_links( $links, $file ) {
 			if ( $local['Version'] !== $remote['Version'] ) {
 				$links[] = '<a href="' . get_site_url() . '/wp-admin/admin.php?page=' . LEAFEXT_PLUGIN_SETTINGS . '">' .
 				'<span class="update-message notice inline notice-warning notice-alt">' .
-				esc_html__( 'New version available.' ) .
+				esc_html__( 'New version available.', 'extensions-leaflet-map-github' ) .
 				'</span>' .
 				'</a>';
 			}

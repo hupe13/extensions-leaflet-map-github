@@ -27,18 +27,18 @@ function leafext_thickbox( $track ) {
 		$type = 'geojson';
 	}
 		echo '<div class="attachment-info"><div class="details"><h2>';
-	esc_html_e( 'Details' );
+	esc_html_e( 'Details', 'extensions-leaflet-map' );
 	echo '</h2><div><strong>';
-	esc_html_e( 'Uploaded on:' );
+	esc_html_e( 'Uploaded on:', 'extensions-leaflet-map' );
 	echo '</strong> ' . esc_html( get_date_from_gmt( gmdate( 'Y-m-d G:i:s', filemtime( $upload_path . $track ) ) ) ) . '</div><div><strong>';
-	esc_html_e( 'File name:' );
+	esc_html_e( 'File name:', 'extensions-leaflet-map' );
 	echo '</strong> ' . esc_html( basename( $track ) ) . '</div>';
 	// echo '<div ><strong>';
 	// esc_html_e( "File type:" );
 	// $type=mime_content_type($upload_path.$track); gibt nur text/xml zurueck
 	// echo '</strong> '.$type.'</div>';
 	echo '<div ><strong>';
-	esc_html_e( 'File size: ' );
+	esc_html_e( 'File size: ', 'extensions-leaflet-map' );
 	echo '</strong> ' . esc_html( size_format( filesize( $upload_path . $track ) ) ) . '</div></div><p>';
 	echo do_shortcode( '[leaflet-map  height=300 width=300 !scrollwheel !dragging fitbounds][leaflet-' . $type . ' src="' . $upload_url . $track . '"]{name}[/leaflet-' . $type . ']' );
 	echo '</p></div>';

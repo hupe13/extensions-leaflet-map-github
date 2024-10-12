@@ -128,7 +128,7 @@ function leafext_gesture_help_text() {
 			__( 'Your %s setting for', 'extensions-leaflet-map' ),
 			'<a href="' . get_admin_url() . 'admin.php?page=leaflet-map">Leaflet Map</a>'
 		) .
-		' ' . __( 'Scroll Wheel Zoom', 'leaflet-map' ) . ' (<code>scrollwheel</code>) ' .
+		' ' . __( 'Scroll Wheel Zoom', 'extensions-leaflet-map' ) . ' (<code>scrollwheel</code>) ' .
 		' ' . __( 'is', 'extensions-leaflet-map' ) . ' ';
 		$text = $text . ( get_option( 'leaflet_scroll_wheel_zoom', '0' ) === '1' ? 'true' : 'false' );
 		$text = $text . ', <code>dragging</code> ' . __( 'is true at default', 'extensions-leaflet-map' ) . '.</li>';

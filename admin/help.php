@@ -433,7 +433,7 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 		if ( $local['Version'] !== $remote['Version'] ) {
 			$header .= '<a href="https://github.com/hupe13/extensions-leaflet-map-dsgvo">' .
 			'<span class="update-message notice inline notice-warning notice-alt">' .
-			esc_html__( 'New version available.' ) .
+			esc_html__( 'New version available.', 'extensions-leaflet-map' ) .
 			'</span>' .
 			'</a>';
 		}

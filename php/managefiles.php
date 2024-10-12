@@ -82,7 +82,7 @@ function leafext_attachment_fields_to_edit( $form_fields, $post ) {
 		}
 		$form_fields['overview'] = array(
 			'value' => 'Map',
-			'label' => __( 'Overview' ),
+			'label' => __( 'Overview', 'extensions-leaflet-map' ),
 			'input' => 'html',
 			'html'  => 'Map',
 			'helps' => do_shortcode( '[leaflet-map height=300 width=300 !scrollwheel !dragging fitbounds][leaflet-gpx src="' . wp_get_attachment_url( $post->ID ) . '"]' ),
@@ -93,7 +93,7 @@ function leafext_attachment_fields_to_edit( $form_fields, $post ) {
 		$name                    = leafext_get_kml_data( $attachment_path )['name'];
 		$form_fields['overview'] = array(
 			'value' => $name,
-			'label' => __( 'Overview' ),
+			'label' => __( 'Overview', 'extensions-leaflet-map' ),
 			'input' => 'html',
 			'html'  => $name,
 			'helps' => do_shortcode( '[leaflet-map height=300 width=300 !scrollwheel !dragging fitbounds][leaflet-kml src="' . wp_get_attachment_url( $post->ID ) . '"]' ),
@@ -103,7 +103,7 @@ function leafext_attachment_fields_to_edit( $form_fields, $post ) {
 	if ( 'application/geo+json' === $type ) {
 		$form_fields['overview'] = array(
 			'value' => basename( $attachment_path ),
-			'label' => __( 'Overview' ),
+			'label' => __( 'Overview', 'extensions-leaflet-map' ),
 			'input' => 'html',
 			'html'  => 'Map',
 			'helps' => do_shortcode( '[leaflet-map height=300 width=300 !scrollwheel !dragging fitbounds][leaflet-geojson src="' . wp_get_attachment_url( $post->ID ) . '"]' ),

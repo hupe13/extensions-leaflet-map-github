@@ -89,8 +89,8 @@ function leafext_list_paginate( $files, $anzahl ) {
 						'aria_current'       => 'page',
 						'show_all'           => false,
 						'prev_next'          => true,
-						'prev_text'          => '&laquo; ' . __( 'Previous' ),
-						'next_text'          => __( 'Next' ) . ' &raquo;',
+						'prev_text'          => '&laquo; ' . __( 'Previous', 'extensions-leaflet-map' ),
+						'next_text'          => __( 'Next', 'extensions-leaflet-map' ) . ' &raquo;',
 						'end_size'           => 1,
 						'mid_size'           => 2,
 						'type'               => 'plain',
@@ -199,12 +199,12 @@ function leafext_files_table( $track_files ) {
 					// View as thickbox
 					$entry['view']                     = '<a href="' . esc_url( get_admin_url( null, 'admin.php?page=' . $page ) ) . '&tab=' . $tab . '&track='
 					. $myfile . '&TB_iframe=true" class="thickbox">' . __( 'Preview', 'extensions-leaflet-map' ) . '</a>';
-										$entry['edit'] = '<a href ="' . get_admin_url() . 'post.php?post=' . $key->ID . '&action=edit">' . __( 'Edit' ) . '</a>';
+										$entry['edit'] = '<a href ="' . get_admin_url() . 'post.php?post=' . $key->ID . '&action=edit">' . __( 'Edit', 'extensions-leaflet-map' ) . '</a>';
 				} elseif ( current_user_can( 'read', $key->ID ) ) {
 					// View as thickbox
 					$entry['view']                     = '<a href="' . esc_url( get_admin_url( null, 'admin.php?page=' . $page ) ) . '&tab=' . $tab . '&track='
 					. $myfile . '&TB_iframe=true" class="thickbox">' . __( 'Preview', 'extensions-leaflet-map' ) . '</a>';
-										$entry['edit'] = '<a href ="' . get_admin_url() . 'upload.php?item=' . $key->ID . '">' . __( 'View' ) . '</a>';
+										$entry['edit'] = '<a href ="' . get_admin_url() . 'upload.php?item=' . $key->ID . '">' . __( 'View', 'extensions-leaflet-map' ) . '</a>';
 				} else {
 					$entry['view'] = 'none';
 					$entry['edit'] = 'none';

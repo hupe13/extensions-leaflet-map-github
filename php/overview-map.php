@@ -567,7 +567,7 @@ function leafext_overview_debug( $overview_data, $post ) {
 	// Link
 	$overview_data['permalink'] = '<a href="' . $overview_data['permalink'] . '" target="_blank" rel="noopener"><strong>' . $overview_data['title'] . '</strong></a>';
 	if ( current_user_can( 'edit_post', $post->ID ) ) {
-		$overview_data['permalink'] = $overview_data['permalink'] . '<p><a href="' . get_edit_post_link( $post->ID ) . '">' . __( 'Edit' ) . '</a></p>';
+		$overview_data['permalink'] = $overview_data['permalink'] . '<p><a href="' . get_edit_post_link( $post->ID ) . '">' . __( 'Edit', 'extensions-leaflet-map' ) . '</a></p>';
 	}
 	unset( $overview_data['title'] );
 	return $overview_data;
