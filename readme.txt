@@ -8,6 +8,8 @@ Requires at least: 5.5.3
 Requires PHP: 7.4
 License: GPLv2 or later
 
+Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
+
 == Description ==
 
 Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.

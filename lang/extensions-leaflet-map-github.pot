@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Github Version\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-09-19 18:28+0000\n"
+"POT-Creation-Date: 2024-10-12 16:16+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -40,6 +40,10 @@ msgstr ""
 #: admin/check-update.php:161 admin/check-update.php:218
 #, php-format
 msgid "Maybe you need a %1$sGithub token%2$s to receive updates successfully."
+msgstr ""
+
+#: admin/check-update.php:91
+msgid "New version available."
 msgstr ""
 
 #. %s is an href.

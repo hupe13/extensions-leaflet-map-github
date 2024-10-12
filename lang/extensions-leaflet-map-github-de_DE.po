@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: DSGVO Snippet for Extensions for Leaflet Map\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-15 15:43+0000\n"
-"PO-Revision-Date: 2024-09-19 18:29+0000\n"
+"PO-Revision-Date: 2024-10-12 16:17+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -47,6 +47,10 @@ msgid "Maybe you need a %1$sGithub token%2$s to receive updates successfully."
 msgstr ""
 "Möglicherweise benötigst du ein %1$sGithub-Token%2$s, um erfolgreich Updates "
 "zu erhalten."
+
+#: admin/check-update.php:91
+msgid "New version available."
+msgstr "Neue Version Verfügbar."
 
 #. %s is an href.
 #: admin/check-update.php:154 admin/check-update.php:211
