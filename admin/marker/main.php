@@ -14,6 +14,7 @@ require LEAFEXT_PLUGIN_DIR . '/admin/marker/extramarker.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/marker/geojsonmarker.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/marker/targetmarker.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/marker/hidemarkers.php';
+require LEAFEXT_PLUGIN_DIR . '/admin/marker/listmarker.php';
 
 function leafext_marker_tab() {
 	$tabs = array(
@@ -44,6 +45,10 @@ function leafext_marker_tab() {
 		array(
 			'tab'   => 'targetmarker',
 			'title' => __( 'Target Marker', 'extensions-leaflet-map' ),
+		),
+		array(
+			'tab'   => 'listmarker',
+			'title' => __( 'Listing markers in the map', 'extensions-leaflet-map' ),
 		),
 		array(
 			'tab'   => 'hidemarkers',
@@ -87,6 +92,9 @@ function leafext_admin_marker( $active_tab ) {
 	} elseif ( $active_tab === 'targetmarker' ) {
 		echo '<h2>' . wp_kses_post( leafext_marker_tab() ) . '</h2>';
 		leafext_targetmarker_help();
+	} elseif ( $active_tab === 'listmarker' ) {
+		echo '<h2>' . wp_kses_post( leafext_marker_tab() ) . '</h2>';
+		leafext_help_listmarker();
 	} elseif ( $active_tab === 'hidemarkers' ) {
 		echo '<h2>' . wp_kses_post( leafext_marker_tab() ) . '</h2>';
 		leafext_help_hidemarkers();

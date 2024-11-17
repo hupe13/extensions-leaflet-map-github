@@ -128,9 +128,6 @@ function leafext_validate_ele_options( $options ) {
 }
 
 // Helptext
-function leafext_ele_help_test() {
-}
-
 function leafext_ele_help_text() {
 	if ( is_singular() || is_archive() ) {
 		$codestyle = '';

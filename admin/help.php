@@ -101,6 +101,16 @@ function leafext_help_entries() {
 			'examples'  => '/marker/geojsonmarker/',
 			'strpos'    => 'marker',
 		),
+		array(
+			'function'  => __( 'Listing markers in the map', 'extensions-leaflet-map' ),
+			'shortcode' => 'listmarker',
+			'tab'       => 'listmarker',
+			'plugins'   => '<a href="https://github.com/hupe13/leaflet-list-markers">Leaflet List Markers</a>',
+			'doku'      => '/doku/listmarker/',
+			'kategorie' => '',
+			'examples'  => '/listmarker/listmarker/',
+			'strpos'    => 'marker',
+		),
 	);
 
 	$table[ __( 'More Functions for Markers', 'extensions-leaflet-map' ) ] = array(
@@ -344,6 +354,12 @@ function leafext_plugins() {
 		'shortcode' => 'leaflet-extramarker',
 	);
 	$plugins[] = array(
+		'name'      => 'Leaflet List Markers',
+		'desc'      => __( 'A Leaflet Control for listing visible markers in the map.', 'extensions-leaflet-map' ),
+		'link'      => 'https://github.com/hupe13/leaflet-list-markers',
+		'shortcode' => 'listmarker',
+	);
+	$plugins[] = array(
 		'name'      => 'Leaflet.FeatureGroup.SubGroup',
 		'desc'      => __( 'Grouping of Leaflet elements by options and features.', 'extensions-leaflet-map' ),
 		'link'      => 'https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup',
@@ -410,7 +426,7 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 		$header .= '<p>' . sprintf(
 			/* translators: %s is a link. */
 			__( 'You may be interested in %1$s.', 'extensions-leaflet-map' ),
-			'<a href="https://wordpress.org/plugins/dsgvo-leaflet-map/">DDSGVO snippet for Leaflet Map and its Extensions</a>'
+			'<a href="https://wordpress.org/plugins/dsgvo-leaflet-map/">DSGVO snippet for Leaflet Map and its Extensions</a>'
 		) . '</p>';
 	} elseif ( file_exists( LEAFEXT_DSGVO_PLUGIN_DIR . '/leafext-dsgvo.php' ) ) {
 			$header .= '<p>' . sprintf(

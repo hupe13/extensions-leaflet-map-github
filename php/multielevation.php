@@ -209,16 +209,22 @@ function leafext_elevation_track( $atts, $content, $shortcode ) {
 		}
 
 		if ( $params['lat'] === '' || $params['lng'] === '' || $params['name'] === '' ) {
+			libxml_use_internal_errors( true );
 			$gpx = simplexml_load_file( $atts['file'] );
 			if ( $gpx === false ) {
-				$text = '[*elevation-track read error ';
-				$text = $text . $atts['file'];
-				foreach ( $params as $key => $item ) {
+				$text = '[*elevation-track ';
+				foreach ( $atts as $key => $item ) {
 					$text = $text . "$key=$item ";
 				}
-				$text = $text . ']';
+				$text   = $text . ']';
+				$errors = libxml_get_errors();
+				foreach ( $errors as $error ) {
+					$text = $text . leafext_display_xml_error( $error, $xml );
+				}
+				libxml_clear_errors();
 				return $text;
 			}
+			libxml_clear_errors();
 		}
 
 		if ( $params['lat'] === '' || $params['lng'] === '' ) {
@@ -275,6 +281,35 @@ function leafext_elevation_track( $atts, $content, $shortcode ) {
 	}
 }
 add_shortcode( 'elevation-track', 'leafext_elevation_track' );
+
+// see https://www.php.net/manual/en/function.libxml-get-errors.php
+function leafext_display_xml_error( $error, $xml ) {
+	$return  = $xml[ $error->line - 1 ] . '<br>';
+	$return .= str_repeat( '-', $error->column ) . '<br>';
+
+	switch ( $error->level ) {
+		case LIBXML_ERR_WARNING:
+			$return .= "Warning $error->code: ";
+			break;
+		case LIBXML_ERR_ERROR:
+			$return .= "Error $error->code: ";
+			break;
+		case LIBXML_ERR_FATAL:
+			$return .= "Fatal Error $error->code: ";
+			break;
+	}
+
+	// $return .= trim($error->message) .
+	// "<br>  Line: $error->line" .
+	// "<br>  Column: $error->column";
+	$return .= trim( $error->message );
+
+	if ( $error->file ) {
+		$return .= "<br>  File: $error->file";
+	}
+
+	return $return . '<br>';
+}
 
 // [elevation-tracks summary=0/1]
 // {multielvation ...}
@@ -425,7 +460,7 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 				echo leafext_java_params( $settings );
 				?>
 			},
-			distanceMarkers: 
+			distanceMarkers:
 			<?php
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
 			echo $multioptions['distanceMarkers_options'];

@@ -2,7 +2,7 @@
 
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
-Tested up to: 6.6
+Tested up to: 6.7
 Stable tag: 4.3.5
 Requires at least: 5.5.3
 Requires PHP: 7.4
@@ -37,8 +37,6 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* more WordPress Coding Standards
-* Bugs in Backend: filemgr, parentgroup
-* remove < br/> if using Classic editor
-* new version leaflet-providers
-* Tests on WordPress 6.7 (beta)
+* new shortcode: listmarker
+* error handling multielevation
+* WordPress 6.7

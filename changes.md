@@ -1,9 +1,8 @@
 # Differences to the Plugins WordPress version
 
-* more WordPress Coding Standards
-* Bugs in Backend: filemgr, parentgroup
-* remove < br/> if using Classic editor
-* new version leaflet-providers
+* new shortcode: listmarker
+* error handling multielevation
+* WordPress 6.7
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

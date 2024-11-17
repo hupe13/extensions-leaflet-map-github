@@ -443,6 +443,41 @@ function leafext_enqueue_targetmarker() {
 	leafext_enqueue_css();
 }
 
+function leafext_enqueue_listmarker() {
+	wp_enqueue_script(
+		'listmarker_js',
+		plugins_url(
+			'leaflet-plugins/listmarkers/leaflet-list-markers.min.js',
+			LEAFEXT_PLUGIN_FILE
+		),
+		array( 'wp_leaflet_map' ),
+		LEAFEXT_VERSION,
+		true
+	);
+	wp_enqueue_script(
+		'listmarker',
+		plugins_url(
+			'js/listmarker' . LEAFEXT_MINI . '.js',
+			LEAFEXT_PLUGIN_FILE
+		),
+		array( 'wp_leaflet_map', 'listmarker_js' ),
+		LEAFEXT_VERSION,
+		true
+	);
+	leafext_enqueue_targetmarker();
+	leafext_enqueue_js();
+
+	wp_enqueue_style(
+		'listmarker_css',
+		plugins_url(
+			'leaflet-plugins/listmarkers/leaflet-list-markers.min.css',
+			LEAFEXT_PLUGIN_FILE
+		),
+		array( 'leaflet_stylesheet' ),
+		LEAFEXT_VERSION
+	);
+}
+
 function leafext_enqueue_controltree() {
 	wp_enqueue_script(
 		'controltree',
