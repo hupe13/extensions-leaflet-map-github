@@ -447,7 +447,7 @@ function leafext_enqueue_listmarker() {
 	wp_enqueue_script(
 		'listmarker_js',
 		plugins_url(
-			'leaflet-plugins/listmarkers/leaflet-list-markers.min.js',
+			'leaflet-plugins/leaflet-list-markers/leaflet-list-markers' . LEAFEXT_MINI . '.js',
 			LEAFEXT_PLUGIN_FILE
 		),
 		array( 'wp_leaflet_map' ),
@@ -470,7 +470,7 @@ function leafext_enqueue_listmarker() {
 	wp_enqueue_style(
 		'listmarker_css',
 		plugins_url(
-			'leaflet-plugins/listmarkers/leaflet-list-markers.min.css',
+			'leaflet-plugins/leaflet-list-markers/leaflet-list-markers.min.css',
 			LEAFEXT_PLUGIN_FILE
 		),
 		array( 'leaflet_stylesheet' ),

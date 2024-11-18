@@ -149,7 +149,8 @@ function leafext_listmarker_js(overiconurl,collapse,update,hover,maxheight,maxwi
 				label: 'listtitle',
 				update: update,
 				maxheight: maxheight,
-				maxwidth: maxwidth
+				maxwidth: maxwidth,
+				maxItems: markerlength + 1
 			}
 		);
 		list.on(

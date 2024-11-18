@@ -31,6 +31,7 @@
 
 				map.options._collapse = this.options.collapsed;
 				map.options._greatest = 0;
+				mapupdate             = true;
 				map.on(
 					"update-end",
 					function (e) {
@@ -50,6 +51,28 @@
 								createdlist[i].childNodes[0].style.width = map.options._greatest + 30 + "px";
 							}
 							// console.log("greatest_new",map.options._greatest);
+							if ( mapupdate ) {
+								mapupdate  = false;
+								let center = map.getCenter();
+								// console.log( center );
+								let countlat = center.lat.toString().split( "." );
+								let countlng = center.lng.toString().split( "." );
+								let newlat   = (( center.lat + 0.001 ) * 1000) / 1000;
+								let newlng   = (( center.lng + 0.001 ) * 1000) / 1000;
+								// console.log( newlat, newlng );
+								map.setView( L.latLng( newlat, newlng ) );
+								map.once(
+									"update-end",
+									function (e) {
+										// console.log( "once update-end", mapupdate );
+										if (mapupdate) {
+											map.setView( center );
+										}
+									}
+								);
+							}
+						} else {
+							mapupdate = false;
 						}
 					}
 				);
@@ -88,6 +111,7 @@
 					a,
 					'click',
 					function (e) {
+						mapupdate = false;
 						//this._moveTo( layer.getLatLng() );
 						that.fire( 'item-click', {layer: layer } );
 					},
@@ -120,8 +144,8 @@
 						this._greatest = thislength;
 						// console.log("li",this._greatest);
 						itemstyle           = document.createElement( 'style' );
-						itemstyle.type          = 'text/css';
-						thislength              = 8.5 * thislength;
+						itemstyle.type      = 'text/css';
+						thislength          = 8.5 * thislength;
 						itemstyle.innerHTML = '.list-markers-li a { width: ' + thislength + 'px; }';
 						// console.log(itemstyle);
 						document.getElementsByTagName( 'head' )[0].appendChild( itemstyle );
