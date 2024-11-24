@@ -1,8 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* new shortcode: listmarker
-* error handling multielevation
-* WordPress 6.7
+* none
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

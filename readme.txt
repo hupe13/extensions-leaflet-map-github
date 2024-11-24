@@ -37,6 +37,4 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* new shortcode: listmarker
-* error handling multielevation
-* WordPress 6.7
+* 
