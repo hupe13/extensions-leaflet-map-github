@@ -86,7 +86,7 @@ function leafext_elevation_params( $typ = array() ) {
 			'desc'      => '',
 			'default'   => '0',
 			// form input type,  pattern, help
-			'values'    => 'type="text" pattern="^[0-9]+$" title="' . __( 'number', 'extensions-leaflet-map' ) . '"',
+			'values'    => ' type="text" pattern="^[0-9]+$" title="' . __( 'number', 'extensions-leaflet-map' ) . '"',
 			'typ'       => array( 'changeable', 'look', 'multielevation' ),
 		),
 
@@ -97,7 +97,7 @@ function leafext_elevation_params( $typ = array() ) {
 			'desc'      => '',
 			'default'   => '0',
 			// form input type,  pattern, help
-			'values'    => 'type="text" pattern="^[0-9]+$" title="' . __( 'number', 'extensions-leaflet-map' ) . '"',
+			'values'    => ' type="text" pattern="^[0-9]+$" title="' . __( 'number', 'extensions-leaflet-map' ) . '"',
 			'typ'       => array( 'changeable', 'look', 'multielevation' ),
 		),
 
@@ -144,7 +144,7 @@ function leafext_elevation_params( $typ = array() ) {
 			'desc'      => '',
 			'default'   => '200',
 			// form input type,  pattern, help
-			'values'    => 'type="text" pattern="^[1-4][0-9]{2}$" title="' . __( 'three digit number (px), minimum 100, maximum 499', 'extensions-leaflet-map' ) . '"',
+			'values'    => ' type="text" pattern="^[1-4][0-9]{2}$" title="' . __( 'three digit number (px), minimum 100, maximum 499', 'extensions-leaflet-map' ) . '"',
 			'typ'       => array( 'changeable', 'look', 'multielevation' ),
 		),
 
@@ -155,7 +155,7 @@ function leafext_elevation_params( $typ = array() ) {
 			'shortdesc' => __( 'If (!detached) width of the chart', 'extensions-leaflet-map' ),
 			'desc'      => '',
 			'default'   => '(screen.width * 0.6) || 600',
-			'values'    => 'type="text" placeholder="(screen.width * 0.6) || 600" pattern="^[0-9]{2,4}$|^\(screen.width \* 0.[1-9]\) \|\| [0-9]{2,4}$"
+			'values'    => ' type="text" placeholder="(screen.width * 0.6) || 600" pattern="^[0-9]{2,4}$|^\(screen.width \* 0.[1-9]\) \|\| [0-9]{2,4}$"
 				title="' . __( 'a number (px) or an expression like the default value', 'extensions-leaflet-map' ) . '"',
 			'typ'       => array( 'changeable', 'look', 'multielevation' ),
 		),

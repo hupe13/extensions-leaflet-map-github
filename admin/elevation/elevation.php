@@ -51,7 +51,9 @@ function leafext_form_elevation( $field ) {
 			if ( $setting !== $option['default'] ) {
 				echo wp_kses_post( __( 'Plugins Default:', 'extensions-leaflet-map' ) . ' ' . $option['default'] . '<br>' );
 			}
-			echo '<input ' . esc_attr( $disabled ) . 'name="' . esc_attr( $name_id ) . '" value="' . esc_attr( $setting ) . '" ' . esc_attr( $option['values'] ) . '/>';
+			echo '<input ' . esc_attr( $disabled ) . 'name="' . esc_attr( $name_id ) . '" value="' . esc_attr( $setting ) . '"' .
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			$option['values'] . '/>';
 			break;
 		case 'integer': // true/false
 			if ( $setting !== $option['default'] ) {

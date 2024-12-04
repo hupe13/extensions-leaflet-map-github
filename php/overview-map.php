@@ -78,6 +78,13 @@ function leafext_overviewmap_params() {
 			'values'  => 'true / false',
 		),
 		array(
+			'param'   => 'newtab',
+			'desc'    => __( 'Open post or category links in a new tab', 'extensions-leaflet-map' ),
+			'content' => '',
+			'default' => false,
+			'values'  => 'true / false',
+		),
+		array(
 			'param'   => 'category',
 			'desc'    => __( 'Select only pages / posts from these categories', 'extensions-leaflet-map' ),
 			'content' => '',
@@ -309,6 +316,8 @@ function leafext_get_overview_data( $post, $overview_options ) {
 	$overview_data['permalink'] = get_permalink( $post->ID );
 	$overview_data['title']     = get_the_title( $post->ID );
 	//
+	$overview_data['newtab'] = $overview_options['newtab'] ? ' target="_blank"' : '';
+
 	// check if post has a thumnail
 	$overview_data['thumbnail'] = '';
 	if ( $overview_options['show_thumbnails'] === true ) {
@@ -328,7 +337,12 @@ function leafext_get_overview_data( $post, $overview_options ) {
 	// categories
 	$overview_data['categories'] = '';
 	if ( $overview_options['show_category'] === true ) {
-		$overview_data['categories'] = get_the_category_list( ', ', '', $post->ID );
+		// $overview_data['categories'] = get_the_category_list( ', ', '', $post->ID );
+		$cat_list = get_the_category_list( ', ', '', $post->ID );
+		if ( $overview_options['newtab'] ) {
+			$cat_list = preg_replace( '#<a href="#', '<a target="_blank" href="', $cat_list );
+		}
+		$overview_data['categories'] = $cat_list;
 	}
 	//
 	// the marker latlng
@@ -494,7 +508,9 @@ function leafext_overview_popup( $overview_data ) {
 		$overview_data['categories'] = '<div class="leafext-overview-popup-cat">' . $overview_data['categories'] . '</div>';
 	}
 		// Link
-		$link_to_page = '<a href="' . $overview_data['permalink'] . '"><strong>' . $overview_data['title'] . '</strong></a>';
+		// $link_to_page = '<a href="' . $overview_data['permalink'] . '"><strong>' . $overview_data['title'] . '</strong></a>';
+		$link_to_page = '<a href="' . $overview_data['permalink'] . '"' . $overview_data['newtab'] . '><strong>' . $overview_data['title'] . '</strong></a>';
+
 		//
 	if ( $overview_data['popup'] !== '' ) {
 		$search       = array(
@@ -565,9 +581,9 @@ function leafext_ovm_setup_leafletmarker( $overview_data, $atts ) {
 
 function leafext_overview_debug( $overview_data, $post ) {
 	// Link
-	$overview_data['permalink'] = '<a href="' . $overview_data['permalink'] . '" target="_blank" rel="noopener"><strong>' . $overview_data['title'] . '</strong></a>';
+	$overview_data['permalink'] = '<a href="' . $overview_data['permalink'] . '" target="_blank"><strong>' . $overview_data['title'] . '</strong></a>';
 	if ( current_user_can( 'edit_post', $post->ID ) ) {
-		$overview_data['permalink'] = $overview_data['permalink'] . '<p><a href="' . get_edit_post_link( $post->ID ) . '">' . __( 'Edit', 'extensions-leaflet-map' ) . '</a></p>';
+		$overview_data['permalink'] = $overview_data['permalink'] . '<p><a href="' . get_edit_post_link( $post->ID ) . '" target="_blank">' . __( 'Edit', 'extensions-leaflet-map' ) . '</a></p>';
 	}
 	unset( $overview_data['title'] );
 	return $overview_data;

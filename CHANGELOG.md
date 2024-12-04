@@ -1,4 +1,13 @@
-### 4.4 / 2411xx
+### 4.4.1 / 2412xx
+
+* elevation setting bug
+* overview-map new option newtab: Open post or category links in a new tab
+* listmarker: works with leaflet-extramarker and geojson markers now
+* listmarker new option highlight: color to highlight the list entry
+* listmarker new option background: change the background color of the list entry
+* tmcw/togeojson version 6.0.0
+
+### 4.4 / 241121
 
 * new shortcode: listmarker
 * error handling multielevation

@@ -37,4 +37,9 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* 
+* elevation setting bug
+* overview-map new option newtab: Open post or category links in a new tab
+* listmarker: works with leaflet-extramarker and geojson markers now
+* listmarker new option highlight: color to highlight the list entry
+* listmarker new option background: change the background color of the list entry
+* tmcw/togeojson version 6.0.0

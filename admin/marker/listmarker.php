@@ -27,20 +27,33 @@ function leafext_help_listmarker() {
 		'<a href="https://github.com/stefanocudini/leaflet-list-markers">',
 		'</a>'
 	) . '</p>';
-	$text = $text . '<h3>Shortcode</h3>
-<h4>' . __( 'Create Map', 'extensions-leaflet-map' ) . '</h4>
-<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map ....]
-</code></pre>
-<h4>' . __( 'and markers with leaflet-marker and title option', 'extensions-leaflet-map' ) . '</h4>
-<pre' . $codestyle . '><code' . $codestyle . '>// title is mandandory!
+	$text = $text . '<h3>Shortcode</h3><h4>' .
+	__( 'Create Map', 'extensions-leaflet-map' ) .
+	'</h4><pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map ....]</code></pre>
+	<h4>';
+	$text = $text . sprintf(
+		/* translators: $s are shortcodes and %2$s is an option. */
+		__(
+			'and markers with %1$s and %2$s option and / or %3$s',
+			'extensions-leaflet-map'
+		),
+		'<code>leaflet-marker</code>, <code>leaflet-extramarker</code>',
+		'<code>title</code>',
+		'<code>leaflet-geojson</code>'
+	);
+	$text = $text . '</h4>';
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>// title is mandandory for leaflet-(extra)marker!
 &#091;leaflet-marker lat=... lng=... title=... ...]poi1&#091;/leaflet-marker]
-&#091;leaflet-marker lat=... lng=... title=... ...]poi2&#091;/leaflet-marker]
+... and / or ...
+&#091;leaflet-extramarker lat=... lng=... title=... ...]poi2&#091;/leaflet-extramarker]
+... and / or ...
+&#091;leaflet-geojson src="..."]geojson {name}&#091;/leaflet-geojson]
 ... many any ...
-&#091;leaflet-marker lat=... lng=... title=... ...]poixx&#091;/leaflet-marker]
-</code></pre>
-
-<h4>' . __( 'Create control list', 'extensions-leaflet-map' ) . '</h4>
+</code></pre>';
+	$text = $text . '<h4>' . __( 'Create control list', 'extensions-leaflet-map' ) . '</h4>
 <pre' . $codestyle . '><code' . $codestyle . '>&#091;listmarker options ...]
+...  or for geojson marker ...
+&#091;listmarker propertyname=... options ...]
 // optional - must be after listmarker shortcode!
 &#091;cluster]
 </code></pre>';
@@ -69,7 +82,21 @@ function leafext_help_listmarker() {
 			'default' => $default,
 		);
 	}
-	$text = $text . leafext_html_table( $new );
+	$text = $text . leafext_html_table( $new ) . "\n";
+
+	$text = $text .
+	sprintf(
+		/* translators: $s is an color statement and %2$s is the word css. */
+		__(
+			'To change the background color (default: %1$s) for the whole website define %2$s in customizer or using another method:',
+			'extensions-leaflet-map'
+		),
+		'<code>rgba(255, 255, 255, 0.4)</code>',
+		'css'
+	)
+		. "\n";
+	$text = $text .
+	'<pre' . $codestyle . '><code' . $codestyle . '>ul.list-markers-ul {background-&#99;olor: your&#99;olor;}</code></pre>';
 
 	if ( is_singular() || is_archive() ) {
 		return $text;
