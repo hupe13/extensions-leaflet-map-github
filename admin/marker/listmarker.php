@@ -88,7 +88,7 @@ function leafext_help_listmarker() {
 	sprintf(
 		/* translators: $s is an color statement and %2$s is the word css. */
 		__(
-			'To change the background color (default: %1$s) for the whole website define %2$s in customizer or using another method:',
+			'To define the background color (default: %1$s) for the list in all your maps define %2$s in customizer or using another method:',
 			'extensions-leaflet-map'
 		),
 		'<code>rgba(255, 255, 255, 0.4)</code>',

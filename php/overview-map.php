@@ -79,7 +79,7 @@ function leafext_overviewmap_params() {
 		),
 		array(
 			'param'   => 'newtab',
-			'desc'    => __( 'Open post or category links in a new tab', 'extensions-leaflet-map' ),
+			'desc'    => __( 'Open page, post or category links in a new tab', 'extensions-leaflet-map' ),
 			'content' => '',
 			'default' => false,
 			'values'  => 'true / false',

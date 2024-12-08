@@ -47,7 +47,7 @@ function leafext_listmarker_params() {
 		),
 		array(
 			'param'   => 'background',
-			'desc'    => __( 'background color for the list entry', 'extensions-leaflet-map' ),
+			'desc'    => __( 'background color for the list', 'extensions-leaflet-map' ),
 			'default' => 'rgba(255, 255, 255, 0.4)',
 		),
 		array(
