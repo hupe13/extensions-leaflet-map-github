@@ -66,7 +66,7 @@ function leafext_listmarker_js(propertyName,overiconurl,collapse,update,hover,hi
 			let thismarker = WPLeafletMapPlugin.markers[i];
 			//console.log("thismarker",thismarker);
 			thismarker.options.riseOnHover = true;
-			leafext_set_overicon( thismarker,overiconurl );
+			leafext_define_overicon( thismarker,overiconurl );
 			thismarker.options.listtitle = thismarker.options.title;
 
 			// hide default tooltip
@@ -101,7 +101,7 @@ function leafext_listmarker_js(propertyName,overiconurl,collapse,update,hover,hi
 									// console.log("found");
 									length++;
 									layer.riseOnHover = true;
-									leafext_set_overicon( layer,overiconurl );
+									leafext_define_overicon( layer,overiconurl );
 									layer.options.listtitle = layer.feature.properties[propertyName];
 									markersLayer.addLayer( layer );
 									map.removeLayer( layer );
@@ -292,7 +292,7 @@ function leafext_list_menu(map,markersLayer,collapse,update,highlight,maxheight,
 	map.addControl( list );
 }
 
-function leafext_set_overicon(marker,overiconurl) {
+function leafext_define_overicon(marker,overiconurl) {
 	if (overiconurl != "") {
 		// console.log(marker.getIcon());
 		marker.options._origicon = "";
