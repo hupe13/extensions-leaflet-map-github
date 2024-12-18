@@ -187,7 +187,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.4.1 / 2412xx
+### 4.4.1 / 241218
 
 * elevation setting bug
 * overview-map: new option newtab: Open page, post or category links in a new tab
