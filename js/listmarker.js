@@ -293,13 +293,13 @@ function leafext_list_menu(map,markersLayer,collapse,update,highlight,maxheight,
 }
 
 function leafext_define_overicon(marker,overiconurl) {
+	marker.options._origicon = marker.getIcon();
+	marker.options._overicon = "";
 	if (overiconurl != "") {
 		// console.log(marker.getIcon());
-		marker.options._origicon = "";
 		marker.options._overicon = "";
 		if (marker.getIcon().options.iconUrl) {
 			if (marker.getIcon().options.iconUrl.includes( '/' )) {
-				marker.options._origicon = marker.getIcon();
 				let markeroptions        = marker.getIcon().options;
 				var markericon           = L.Icon.extend(
 					{

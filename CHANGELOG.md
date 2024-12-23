@@ -1,3 +1,7 @@
+### 4.4.2 / 241218
+
+* listmarker: fixed empty overiconurl
+
 ### 4.4.1 / 241218
 
 * elevation setting bug

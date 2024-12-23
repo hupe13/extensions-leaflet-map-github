@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 6.7
-Stable tag: 4.4.1
+Stable tag: 4.4.2
 Requires at least: 5.5.3
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -37,9 +37,4 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* elevation setting bug
-* overview-map: new option newtab: Open page, post or category links in a new tab
-* listmarker: works with leaflet-extramarker and geojson markers now
-* listmarker: new option highlight: color to highlight the list entry
-* listmarker: new option background: define the background color of the list entry
-* tmcw/togeojson version 6.0.0
+* listmarker: fixed empty overiconurl
