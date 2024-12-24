@@ -187,7 +187,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.4.2 / 2412xx
+### 4.4.2 / 241224
 
 * listmarker: fixed empty overiconurl
 
