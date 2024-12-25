@@ -1,6 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* listmarker: fixed empty overiconurl
+* none
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
