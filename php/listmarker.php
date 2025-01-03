@@ -27,7 +27,11 @@ function leafext_listmarker_params() {
 		),
 		array(
 			'param'   => 'overiconurl',
-			'desc'    => __( 'url to the icon when it hover or clicked. If it is an empty string, the icon does not change. Default: red icon', 'extensions-leaflet-map' ),
+			'desc'    => sprintf(
+			/* translators: %s is iconurl */
+				__( 'url to the icon when it hover or clicked. If it is an empty string or the marker has not an %s, the icon does not change. Default: red icon', 'extensions-leaflet-map' ),
+				'<code>iconurl</code>'
+			),
 			'default' => LEAFEXT_PLUGIN_URL . '/pict/marker-icon-red.png',
 		),
 		array(
