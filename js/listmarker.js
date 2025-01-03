@@ -293,7 +293,7 @@ function leafext_list_menu(map,markersLayer,collapse,update,highlight,maxheight,
 }
 
 function leafext_define_overicon(marker,overiconurl) {
-	marker.options._origicon = marker.getIcon();
+	marker.options._origicon = "";
 	marker.options._overicon = "";
 	if (overiconurl != "") {
 		// console.log(marker.getIcon());
@@ -312,6 +312,7 @@ function leafext_define_overicon(marker,overiconurl) {
 					}
 				);
 				marker.options._overicon = overicon;
+				marker.options._origicon = marker.getIcon();
 			}
 		}
 	}

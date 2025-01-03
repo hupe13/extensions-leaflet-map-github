@@ -1,3 +1,8 @@
+### 4.4.3 / 2501xx
+
+* filemgr display issue fixed
+* listmarker svg icon fixed
+
 ### 4.4.2 / 241224
 
 * listmarker: fixed empty overiconurl

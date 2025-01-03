@@ -135,8 +135,7 @@ function leafext_create_shortcode_css() {
 			LEAFEXT_PLUGIN_FILE
 		),
 		array(),
-		LEAFEXT_VERSION,
-		true
+		LEAFEXT_VERSION
 	);
 }
 

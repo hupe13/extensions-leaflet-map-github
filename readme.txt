@@ -37,4 +37,5 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* listmarker: fixed empty overiconurl
+* filemgr display issue fixed
+* listmarker svg icon fixed

@@ -191,7 +191,7 @@ function leafext_html_table( $data = array() ) {
 		foreach ( $row as $cell ) {
 			$cells[] = '<td ' . $cellstyle . ">{$cell}</td>";
 		}
-		$rows[] = '<tr>' . implode( '', $cells ) . '</tr>';
+		$rows[] = '<tr>' . implode( '', $cells ) . '</tr>' . "\n";
 	}
 	$head = '<div style="width:' . ( ( is_singular() || is_archive() ) ? '100' : '80' ) . '%;">';
 	$head = $head . '<figure class="wp-block-table aligncenter is-style-stripes"><table border=1>';

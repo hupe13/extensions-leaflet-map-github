@@ -187,9 +187,10 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.4.2 / 241224
+### 4.4.3 / 2501xx
 
-* listmarker: fixed empty overiconurl
+* filemgr display issue fixed
+* listmarker svg icon fixed
 
 ### Previous
 
