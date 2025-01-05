@@ -1,7 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* filemgr display issue fixed
-* listmarker svg icon fixed
+* none
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
