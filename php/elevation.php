@@ -674,12 +674,12 @@ function leafext_elevation_params( $typ = array() ) {
 
 		// opts.speedFactor        = opts.speedFactor || 1;
 		// array(
-		//  'param'     => 'speedFactor',
-		//  'shortdesc' => 'speedFactor',
-		//  'desc'      => __( 'Conversion factor to km/h, if you want to show m/min', 'extensions-leaflet-map' ) . ': <code>0.016666</code>',
-		//  'default'   => '',
-		//  'values'    => '',
-		//  'typ'       => array( 'changeable', 'units', 'multielevation' ),
+		// 'param'     => 'speedFactor',
+		// 'shortdesc' => 'speedFactor',
+		// 'desc'      => __( 'Conversion factor to km/h, if you want to show m/min', 'extensions-leaflet-map' ) . ': <code>0.016666</code>',
+		// 'default'   => '',
+		// 'values'    => '',
+		// 'typ'       => array( 'changeable', 'units', 'multielevation' ),
 		// ),
 	);
 

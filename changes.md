@@ -1,6 +1,8 @@
 # Differences to the Plugins WordPress version
 
-* none
+* new version L.Control.Layers.Tree.js
+* Plugin Check issues
+* Plugin Update Checker v5p5
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

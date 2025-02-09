@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name:       Extensions for Leaflet Map Github
+ * Plugin Name:       Extensions for Leaflet Map Github Version
  * Plugin URI:        https://leafext.de/en/
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
  * Primary Branch:    main
  * Description:       Extensions for the WordPress plugin Leaflet Map Github Version
- * Version:           4.4-250105
+ * Version:           4.4-250209
  * Requires PHP:      7.4
  * Author:            hupe13
  * Author URI:        https://leafext.de/en/
@@ -94,15 +94,29 @@ function leafext_extra_textdomain() {
 add_action( 'plugins_loaded', 'leafext_extra_textdomain' );
 
 define( 'LEAFEXT_PLUGIN_GITHUB', true );
-// define( 'LEAFEXT_PLUGIN_GITHUB', false );
 
 function leafext_extensions_leaflet_map_to_github( $slug ) {
 	if ( 'extensions-leaflet-map' === $slug ) {
-		$slug = '';
+		$slug = 'extensions-leaflet-map-github';
 	}
 	return $slug;
 }
 add_filter( 'wp_plugin_dependencies_slug', 'leafext_extensions_leaflet_map_to_github' );
+
+// prevent unnecessary API calls to wordpress.org
+function leafext_prevent_requests( $res, $action, $args ) {
+	if ( 'plugin_information' !== $action ) {
+		return $res;
+	}
+	if ( $args->slug !== 'extensions-leaflet-map-github' ) {
+		return $res;
+	}
+	$plugin_data = get_plugin_data( __FILE__, true, false );
+	$res         = new stdClass();
+	$res->name   = $plugin_data['Name'];
+	return $res;
+}
+add_filter( 'plugins_api', 'leafext_prevent_requests', 10, 3 );
 
 // WP < 6.5 or Github
 global $wp_version;
@@ -132,7 +146,7 @@ if ( $wp_version < '6.5' || LEAFEXT_PLUGIN_GITHUB ) {
 
 // Github update
 use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
-use YahnisElsts\PluginUpdateChecker\v5p4\Vcs\GitHubApi;
+use YahnisElsts\PluginUpdateChecker\v5p5\Vcs\GitHubApi;
 if ( is_admin() ) {
 	if ( is_main_site() ) {
 		require_once LEAFEXT_PLUGIN_DIR . '/admin/check-update.php';

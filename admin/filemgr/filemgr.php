@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || die();
 // for listing files
 
 function leafext_file_listing_init() {
-	register_setting( 'leafext_file_listing', 'leafext_listing' );
+	// register_setting( 'leafext_file_listing', 'leafext_listing' );
 	add_settings_section( 'leafext_listing_settings', '', '', 'leafext_file_listing' );
 	add_settings_field( 'leafext_listing_types', __( 'Show files of type', 'extensions-leaflet-map' ), 'leafext_listing_form_types', 'leafext_file_listing', 'leafext_listing_settings' ); // type
 	add_settings_field( 'leafext_listing_all', __( 'Show all files', 'extensions-leaflet-map' ), 'leafext_listing_form_all', 'leafext_file_listing', 'leafext_listing_settings' ); // all

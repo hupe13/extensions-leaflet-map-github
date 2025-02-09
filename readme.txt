@@ -37,5 +37,6 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* filemgr display issue fixed
-* listmarker svg icon fixed
+* new version L.Control.Layers.Tree.js
+* Plugin Check issues
+* Plugin Update Checker v5p5

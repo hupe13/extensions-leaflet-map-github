@@ -187,10 +187,11 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.4.3 / 250105
+### 4.4.4 / 250xxx
 
-* filemgr display issue fixed
-* listmarker svg icon fixed
+* new version L.Control.Layers.Tree.js
+* Plugin Check issues
+* Plugin Update Checker v5p5
 
 ### Previous
 

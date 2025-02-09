@@ -425,34 +425,10 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 	if ( ! defined( 'LEAFEXT_DSGVO_PLUGIN_DIR' ) ) {
 		$header .= '<p>' . sprintf(
 			/* translators: %s is a link. */
-			__( 'You may be interested in %1$s.', 'extensions-leaflet-map' ),
-			'<a href="https://wordpress.org/plugins/dsgvo-leaflet-map/">DSGVO snippet for Leaflet Map and its Extensions</a>'
+			__( 'You may be interested in %1$sDSGVO snippet for Leaflet Map and its Extensions%2$s.', 'extensions-leaflet-map' ),
+			'<a href="https://wordpress.org/plugins/dsgvo-leaflet-map/">',
+			'</a>'
 		) . '</p>';
-	} elseif ( file_exists( LEAFEXT_DSGVO_PLUGIN_DIR . '/leafext-dsgvo.php' ) ) {
-			$header .= '<p>' . sprintf(
-				/* translators: %s is a link. */
-				__( 'Thank you for using %1$s.', 'extensions-leaflet-map' ),
-				'<a href="https://github.com/hupe13/leafext-dsgvo">DSGVO/GDPR Snippet for Extensions for Leaflet Map</a>'
-			);
-			$local  = get_file_data(
-				LEAFEXT_DSGVO_PLUGIN_DIR . '/leafext-dsgvo.php',
-				array(
-					'Version' => 'Version',
-				)
-			);
-			$remote = get_file_data(
-				'https://raw.githubusercontent.com/hupe13/extensions-leaflet-map-dsgvo/main/leafext-dsgvo.php',
-				array( 'Version' => 'Version' )
-			);
-			// var_dump( $local, $remote );
-
-		if ( $local['Version'] !== $remote['Version'] ) {
-			$header .= '<a href="https://github.com/hupe13/extensions-leaflet-map-dsgvo">' .
-			'<span class="update-message notice inline notice-warning notice-alt">' .
-			esc_html__( 'New version available.', 'extensions-leaflet-map' ) .
-			'</span>' .
-			'</a>';
-		}
 	}
 	$header .= '</p>';
 

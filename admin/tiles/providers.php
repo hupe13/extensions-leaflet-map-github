@@ -12,8 +12,7 @@ function leafext_providers_init() {
 	// Create Setting
 	$section_group = 'leafext_providers';
 	$section_name  = 'leafext_providers';
-	$validate      = 'leafext_validate_providers';
-	register_setting( $section_group, $section_name, $validate );
+	register_setting( $section_group, $section_name, 'leafext_validate_providers' );
 
 	// Create section of Page
 	$settings_section = 'leafext_providers_main';

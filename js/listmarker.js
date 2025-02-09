@@ -14,7 +14,7 @@ function leafext_listmarker_js(propertyName,overiconurl,collapse,update,hover,hi
 	map.on(
 		"update-end",
 		function (e) {
-			//console.log("update-end", map.options._collapse);
+			// console.log("update-end", map.options._collapse);
 			// console.log(markersLayer);
 			if (leafext_map_popups( map ) ) {
 				markersLayer.eachLayer(
@@ -38,7 +38,7 @@ function leafext_listmarker_js(propertyName,overiconurl,collapse,update,hover,hi
 	map.on(
 		"zoomstart",
 		function (e) {
-			//console.log("zoomstart");
+			// console.log("zoomstart");
 			map.eachLayer(
 				(l) =>
 				{
@@ -47,7 +47,7 @@ function leafext_listmarker_js(propertyName,overiconurl,collapse,update,hover,hi
 							// console.log( "cluster" );
 							leafext_close_popups( map );
 							// } else {
-							// 	console.log("no cluster");
+							// console.log("no cluster");
 						}
 					}
 				}
@@ -55,7 +55,7 @@ function leafext_listmarker_js(propertyName,overiconurl,collapse,update,hover,hi
 		}
 	);
 
-	markersLayer = new L.LayerGroup();	//global layer contain searched elements
+	markersLayer = new L.LayerGroup();	// global layer contain searched elements
 	map.addLayer( markersLayer );
 
 	leafext_list_menu( map,markersLayer,collapse,update,highlight,maxheight,maxwidth );
@@ -64,7 +64,7 @@ function leafext_listmarker_js(propertyName,overiconurl,collapse,update,hover,hi
 	if ( markerlength > 0 ) {
 		for (var i = 0; i < markerlength; i++) {
 			let thismarker = WPLeafletMapPlugin.markers[i];
-			//console.log("thismarker",thismarker);
+			// console.log("thismarker",thismarker);
 			thismarker.options.riseOnHover = true;
 			leafext_define_overicon( thismarker,overiconurl );
 			thismarker.options.listtitle = thismarker.options.title;
@@ -146,12 +146,12 @@ function leafext_set_list_background( map, thistitle, farbe, scroll ) {
 			if (a.text.substr( 0, a.text.length - 2 ).trim() === thistitle.trim() ) {
 				// console.log(a);
 				if ( scroll ) {
-					//a.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+					// a.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
 					a.scrollIntoView( { behavior: 'smooth', block: 'nearest', inline: 'end' } );
 				}
 				a.style.backgroundColor = farbe;
 				// } else {
-				// 	console.log( "not equal" );
+				// console.log( "not equal" );
 			}
 		}
 	}
@@ -206,9 +206,9 @@ function leafext_events_markerLayer(map, markersLayer, hover, highlight) {
 						}
 						leafext_set_origicon( e.sourceTarget );
 						// e.sourceTarget.closeTooltip();
-						//e.sourceTarget.bindTooltip( "", {visibility: 'hidden', opacity: 0} ).closeTooltip();
+						// e.sourceTarget.bindTooltip( "", {visibility: 'hidden', opacity: 0} ).closeTooltip();
 						// } else {
-						// 	console.log("popup open");
+						// console.log("popup open");
 					}
 				}
 			);
@@ -217,7 +217,7 @@ function leafext_events_markerLayer(map, markersLayer, hover, highlight) {
 				function (e) {
 					// console.log( "layer click" );
 					let thistitle = e.sourceTarget.options.listtitle + " ";
-					//console.log("marker click",thistitle);
+					// console.log("marker click",thistitle);
 					leafext_set_overicon( e.sourceTarget );
 					leafext_set_list_background( map, thistitle, highlight, true, map );
 				}
@@ -235,7 +235,7 @@ function leafext_events_markerLayer(map, markersLayer, hover, highlight) {
 				"popupclose",
 				function (e) {
 					let thistitle = e.sourceTarget.options.listtitle + " ";
-					//console.log("popupclose",thistitle);
+					// console.log("popupclose",thistitle);
 					leafext_set_list_background( map, thistitle, "", false );
 					leafext_set_origicon( e.sourceTarget );
 				}
@@ -247,7 +247,7 @@ function leafext_events_markerLayer(map, markersLayer, hover, highlight) {
 function leafext_list_menu(map,markersLayer,collapse,update,highlight,maxheight,maxwidth) {
 	// console.log("leafext_list_menu",markersLayer);
 
-	//inizialize Leaflet List Markers
+	// inizialize Leaflet List Markers
 	list = new L.Control.ListMarkers(
 		{
 			layer: markersLayer,
@@ -282,7 +282,7 @@ function leafext_list_menu(map,markersLayer,collapse,update,highlight,maxheight,
 			// console.log("item-click");
 			leafext_close_popups( map );
 			let thistitle = e.layer.options.listtitle + " ";
-			//console.log("item-click",thistitle);
+			// console.log("item-click",thistitle);
 			thismapbounds = [];
 			leafext_jumpto_marker( map,e.layer.getLatLng().lat,e.layer.getLatLng().lng,e.layer.getPopup(),map.getZoom(),false );
 			leafext_set_overicon( e.layer );

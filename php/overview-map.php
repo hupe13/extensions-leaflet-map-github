@@ -315,8 +315,7 @@ function leafext_get_overview_data( $post, $overview_options ) {
 	// For the Link
 	$overview_data['permalink'] = get_permalink( $post->ID );
 	$overview_data['title']     = get_the_title( $post->ID );
-	//
-	$overview_data['newtab'] = $overview_options['newtab'] ? ' target="_blank"' : '';
+	$overview_data['newtab']    = $overview_options['newtab'] ? ' target="_blank"' : '';
 
 	// check if post has a thumnail
 	$overview_data['thumbnail'] = '';
@@ -396,7 +395,6 @@ function leafext_get_overview_data( $post, $overview_options ) {
 		$overview_data['popup']          = trim( get_post_meta( $post->ID, $overview_options['popup'], true ) );
 		$overview_data['multiple_popup'] = leafext_check_duplicates_meta( $post->ID, $overview_options['popup'] );
 	}
-	//
 	wp_reset_postdata();
 	return $overview_data;
 }
@@ -499,19 +497,18 @@ function leafext_ovm_setup_icon( $overview_data, $atts ) {
 }
 
 function leafext_overview_popup( $overview_data ) {
-		// check if post has a thumnail
+	// check if post has a thumnail
 	if ( $overview_data['thumbnail'] !== '' ) {
 		$overview_data['thumbnail'] = '<div class="leafext-overview-popup-img">' . $overview_data['thumbnail'] . '</div>';
 	}
-		// categories
+	// categories
 	if ( $overview_data['categories'] !== '' ) {
 		$overview_data['categories'] = '<div class="leafext-overview-popup-cat">' . $overview_data['categories'] . '</div>';
 	}
-		// Link
-		// $link_to_page = '<a href="' . $overview_data['permalink'] . '"><strong>' . $overview_data['title'] . '</strong></a>';
-		$link_to_page = '<a href="' . $overview_data['permalink'] . '"' . $overview_data['newtab'] . '><strong>' . $overview_data['title'] . '</strong></a>';
+	// Link
+	// $link_to_page = '<a href="' . $overview_data['permalink'] . '"><strong>' . $overview_data['title'] . '</strong></a>';
+	$link_to_page = '<a href="' . $overview_data['permalink'] . '"' . $overview_data['newtab'] . '><strong>' . $overview_data['title'] . '</strong></a>';
 
-		//
 	if ( $overview_data['popup'] !== '' ) {
 		$search       = array(
 			'{permalink}',
@@ -529,7 +526,6 @@ function leafext_overview_popup( $overview_data ) {
 		);
 		$popupcontent = str_replace( $search, $replace, $overview_data['popup'] );
 	} else {
-		//
 		if ( $overview_data['thumbnail'] === '' || $overview_data['categories'] === '' ) {
 			$popupcss = 'leafext-overview-popup-one';
 		} else {
@@ -541,7 +537,6 @@ function leafext_overview_popup( $overview_data ) {
 		$overview_data['categories'] .
 		'</div>';
 	}
-	//
 	return $popupcontent;
 }
 
@@ -567,7 +562,6 @@ function leafext_ovm_setup_leafletmarker( $overview_data, $atts ) {
 	if ( $overview_data['latlng'] === '*' ) {
 		$leaflet_marker_cmd = '**' . $leaflet_marker_cmd;
 	}
-	//
 	$leaflet_marker_code = '[' . $leaflet_marker_cmd . ' ' . $overview_data['latlng'] . ' ' . $markeroptions . ']' .
 	leafext_overview_popup( $overview_data ) .
 	'[/' . $leaflet_marker_cmd . ']';

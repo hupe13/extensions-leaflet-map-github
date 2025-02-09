@@ -1,3 +1,9 @@
+### 4.4.4 / 250xxx
+
+* new version L.Control.Layers.Tree.js
+* Plugin Check issues
+* Plugin Update Checker v5p5
+
 ### 4.4.3 / 250105
 
 * filemgr display issue fixed

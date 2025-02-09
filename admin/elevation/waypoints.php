@@ -12,8 +12,7 @@ defined( 'ABSPATH' ) || die();
 function leafext_waypoints_init() {
 	$section_group = 'leafext_waypoints';
 	$section_name  = 'leafext_waypoints';
-	$validate      = 'leafext_validate_waypoints';
-	register_setting( $section_group, $section_name, $validate );
+	register_setting( $section_group, $section_name, 'leafext_validate_waypoints' );
 	$settings_section = 'leafext_waypoints_main';
 	add_settings_section( $settings_section, leafext_elevation_tab(), 'leafext_waypoints_help_text', $section_group );
 	add_settings_field( $section_name, '<span style="color: #4f94d4">' . __( 'Text of GPS symbol name', 'extensions-leaflet-map' ) . '</span>:', 'leafext_form_waypoints', $section_group, $settings_section );

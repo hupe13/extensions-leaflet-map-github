@@ -88,9 +88,9 @@ function leafext_parentgroup_params() {
 			'size'     => 10,
 		),
 		// array(
-		//  'param'   => '',
-		//  'desc'    => __( '', 'extensions-leaflet-map' ),
-		//  'default' => '',
+		// 'param'   => '',
+		// 'desc'    => __( '', 'extensions-leaflet-map' ),
+		// 'default' => '',
 		//
 		// ),
 	);

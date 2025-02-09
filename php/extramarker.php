@@ -142,13 +142,13 @@ function leafext_extramarker_params() {
 		// 'filter' => 'latlon',
 		// ),
 		// array(
-		//  'param'   => 'title',
-		//  'desc'    => __(
-		//      'Add a hover-over message to your marker (different than popup)',
-		//      'extensions-leaflet-map'
-		//  ),
-		//  'default' => '',
-		//  'filter'  => '',
+		// 'param'   => 'title',
+		// 'desc'    => __(
+		// 'Add a hover-over message to your marker (different than popup)',
+		// 'extensions-leaflet-map'
+		// ),
+		// 'default' => '',
+		// 'filter'  => '',
 		// ),
 	);
 	return $params;

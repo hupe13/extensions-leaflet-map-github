@@ -1,0 +1,123 @@
+{
+    "translation-revision-date": "2025-01-28 20:06+0000",
+    "generator": "Loco https://localise.biz/",
+    "source": "js/elevation.min.js",
+    "domain": "extensions-leaflet-map",
+    "locale_data": {
+        "extensions-leaflet-map": {
+            "": {
+                "domain": "",
+                "lang": "de_DE",
+                "plural-forms": "nplurals=2; plural=n != 1;"
+            },
+            "In Frontend\u0004Acceleration": [
+                "Beschleunigung"
+            ],
+            "In Frontend\u0004Altitude": [
+                "H\u00f6he"
+            ],
+            "In Frontend\u0004Avg Acceleration": [
+                "durchschnittliche Beschleunigung"
+            ],
+            "In Frontend\u0004Avg Elevation": [
+                "Durchschnittliche H\u00f6he"
+            ],
+            "In Frontend\u0004Avg Pace": [
+                "Durchschnittliches Tempo"
+            ],
+            "In Frontend\u0004Avg Slope": [
+                "Durchschnittliche Steigung"
+            ],
+            "In Frontend\u0004Avg Speed": [
+                "Durchschnittsgeschwindigkeit"
+            ],
+            "In Frontend\u0004Download": [
+                "Herunterladen"
+            ],
+            "In Frontend\u0004Elevation": [
+                "H\u00f6he"
+            ],
+            "In Frontend\u0004Max Acceleration": [
+                "maximale Beschleunigung"
+            ],
+            "In Frontend\u0004Max Elevation": [
+                "Maximale H\u00f6he"
+            ],
+            "In Frontend\u0004Max Pace": [
+                "Schnellstes Tempo"
+            ],
+            "In Frontend\u0004Max Slope": [
+                "max. Steigung"
+            ],
+            "In Frontend\u0004Max Speed": [
+                "maximale Geschwindigkeit"
+            ],
+            "In Frontend\u0004Min Acceleration": [
+                "minimale Beschleunigung"
+            ],
+            "In Frontend\u0004Min Elevation": [
+                "Minimale H\u00f6he"
+            ],
+            "In Frontend\u0004Min Pace": [
+                "Langsamstes Tempo"
+            ],
+            "In Frontend\u0004Min Slope": [
+                "max. Gef\u00e4lle"
+            ],
+            "In Frontend\u0004Min Speed": [
+                "langsamste Geschwindigkeit"
+            ],
+            "In Frontend\u0004Pace": [
+                "Tempo"
+            ],
+            "In Frontend\u0004Slope": [
+                "Steigung"
+            ],
+            "In Frontend\u0004Speed": [
+                "Geschwindigkeit"
+            ],
+            "In Frontend\u0004Total Ascent": [
+                "Gesamtanstieg"
+            ],
+            "In Frontend\u0004Total Descent": [
+                "Gesamtabstieg"
+            ],
+            "In Frontend\u0004Total Length": [
+                "Gesamtstrecke"
+            ],
+            "In Frontend\u0004Total Time": [
+                "Gesamtzeit"
+            ],
+            "In Frontend: Abbreviation for acceleration in the chart\u0004a": [
+                "a"
+            ],
+            "In Frontend: Abbreviation for altitude in the chart\u0004y": [
+                "y"
+            ],
+            "In Frontend: Abbreviation for cadence in the chart\u0004cad": [
+                "cad"
+            ],
+            "In Frontend: Abbreviation for duration in the chart\u0004T": [
+                "T"
+            ],
+            "In Frontend: Abbreviation for heart rate in the chart\u0004hr": [
+                "hr"
+            ],
+            "In Frontend: Abbreviation for length in the chart\u0004x": [
+                "x"
+            ],
+            "In Frontend: Abbreviation for pace in the chart\u0004pace": [
+                "Tempo"
+            ],
+            "In Frontend: Abbreviation for slope in the chart\u0004m": [
+                "m"
+            ],
+            "In Frontend: Abbreviation for speed in the chart\u0004v": [
+                "v"
+            ],
+            "In Frontend: Abbreviation for time in the chart\u0004t": [
+                "t"
+            ]
+        }
+    }
+}
