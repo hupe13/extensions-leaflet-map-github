@@ -422,7 +422,7 @@ function leafext_help_table( $leafext_plugin_name = '' ) {
 	__( 'Documentation', 'extensions-leaflet-map' ) . '</h3><p>';
 
 	// LEAFEXT_DSGVO_PLUGIN_DIR is known since initial release, and URL, others not
-	if ( ! defined( 'LEAFEXT_DSGVO_PLUGIN_DIR' ) ) {
+	if ( ! leafext_plugin_active( 'dsgvo-leaflet-map' ) ) {
 		$header .= '<p>' . sprintf(
 			/* translators: %s is a link. */
 			__( 'You may be interested in %1$sDSGVO snippet for Leaflet Map and its Extensions%2$s.', 'extensions-leaflet-map' ),

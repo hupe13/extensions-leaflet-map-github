@@ -18,15 +18,7 @@ function leafext_sgpx_unclean_db() {
 	return true;
 }
 
-function leafext_wp_gpx_maps_active() {
-	if ( ! ( strpos( implode( ' ', get_option( 'active_plugins', array() ) ), '/wp-gpx-maps.php' ) === false &&
-	strpos( implode( ' ', array_keys( get_site_option( 'active_sitewide_plugins', array() ) ) ), '/wp-gpx-maps.php' ) === false ) ) {
-		return true;
-	}
-	return false;
-}
-
-define( 'LEAFEXT_SGPX_ACTIVE', leafext_wp_gpx_maps_active() );
+define( 'LEAFEXT_SGPX_ACTIVE', leafext_plugin_active( 'wp-gpx-maps' ) );
 if ( is_admin() ) {
 	define( 'LEAFEXT_SGPX_UNCLEAN_DB', leafext_sgpx_unclean_db() );
 }
