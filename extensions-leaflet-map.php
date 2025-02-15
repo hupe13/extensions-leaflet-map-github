@@ -5,7 +5,7 @@
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
  * Primary Branch:    main
  * Description:       Extensions for the WordPress plugin Leaflet Map Github Version
- * Version:           4.4-250214
+ * Version:           4.4-250215
  * Requires PHP:      7.4
  * Requires Plugins*:  leaflet-map
  * Author:            hupe13
@@ -34,6 +34,17 @@ define( 'LEAFEXT_VERSION', $plugin_data['Version'] );
 
 if ( is_admin() ) {
 	require_once LEAFEXT_PLUGIN_DIR . 'admin.php';
+}
+
+if ( ! function_exists( 'leafext_plugin_active' ) ) {
+	function leafext_plugin_active( $plugin ) {
+		if ( ! ( strpos( implode( ' ', get_option( 'active_plugins', array() ) ), '/' . $plugin . '.php' ) === false &&
+			strpos( implode( ' ', array_keys( get_site_option( 'active_sitewide_plugins', array() ) ) ), '/' . $plugin . '.php' ) === false ) ) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 
 require_once LEAFEXT_PLUGIN_DIR . '/php/enqueue-leafletplugins.php';
@@ -93,17 +104,6 @@ function leafext_extra_textdomain() {
 	}
 }
 add_action( 'plugins_loaded', 'leafext_extra_textdomain' );
-
-if ( ! function_exists( 'leafext_plugin_active' ) ) {
-	function leafext_plugin_active( $plugin ) {
-		if ( ! ( strpos( implode( ' ', get_option( 'active_plugins', array() ) ), '/' . $plugin . '.php' ) === false &&
-			strpos( implode( ' ', array_keys( get_site_option( 'active_sitewide_plugins', array() ) ) ), '/' . $plugin . '.php' ) === false ) ) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-}
 
 function leafext_extensions_leaflet_map_to_github( $slug ) {
 	if ( 'extensions-leaflet-map' === $slug ) {
