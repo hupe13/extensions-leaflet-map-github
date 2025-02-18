@@ -5,9 +5,9 @@
  * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
  * Primary Branch:    main
  * Description:       Extensions for the WordPress plugin Leaflet Map Github Version
- * Version:           4.4-250215
+ * Version:           4.4-250218
  * Requires PHP:      7.4
- * Requires Plugins*:  leaflet-map
+ * Requires Plugins:  leaflet-map
  * Author:            hupe13
  * Author URI:        https://leafext.de/en/
  * License:           GPL v2 or later
@@ -96,7 +96,7 @@ function leafext_add_action_links( $actions ) {
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'leafext_add_action_links' );
 
 /**
- * For translating a plugin.
+ * For translating elevation.
  */
 function leafext_extra_textdomain() {
 	if ( file_exists( LEAFEXT_PLUGIN_DIR . '/lang/extensions-leaflet-map-' . get_locale() . '.mo' ) ) {
@@ -105,33 +105,11 @@ function leafext_extra_textdomain() {
 }
 add_action( 'plugins_loaded', 'leafext_extra_textdomain' );
 
-function leafext_extensions_leaflet_map_to_github( $slug ) {
-	if ( 'extensions-leaflet-map' === $slug ) {
-		$slug = 'extensions-leaflet-map-github';
-	}
-	return $slug;
-}
-add_filter( 'wp_plugin_dependencies_slug', 'leafext_extensions_leaflet_map_to_github' );
-
-// prevent unnecessary API calls to wordpress.org
-function leafext_prevent_requests( $res, $action, $args ) {
-	if ( 'plugin_information' !== $action ) {
-		return $res;
-	}
-	if ( $args->slug !== 'extensions-leaflet-map-github' ) {
-		return $res;
-	}
-	$plugin_data = get_plugin_data( __FILE__, true, false );
-	$res         = new stdClass();
-	$res->name   = $plugin_data['Name'];
-	return $res;
-}
-add_filter( 'plugins_api', 'leafext_prevent_requests', 10, 3 );
-
-// WP < 6.5 or Github
-function leafext_plugin_init() {
-	if ( is_admin() ) {
-		if ( ! leafext_plugin_active( 'leaflet-map' ) ) {
+// WP < 6.5
+global $wp_version;
+if ( version_compare( $wp_version, '6.5', '<' ) ) {
+	function leafext_extensions_require() {
+		if ( ! is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
 			if ( ( is_multisite() && ! is_main_site() ) || ! is_multisite() ) {
 				function leafext_require_leaflet_map_plugin() {
 					echo '<div class="notice notice-error" ><p> ';
@@ -147,55 +125,14 @@ function leafext_plugin_init() {
 			}
 		}
 	}
+	add_action( 'plugins_loaded', 'leafext_extensions_require' );
 }
-	add_action( 'plugins_loaded', 'leafext_plugin_init' );
 
-
-// Github update
-use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
-use YahnisElsts\PluginUpdateChecker\v5p5\Vcs\GitHubApi;
+// Github
 if ( is_admin() ) {
-	if ( is_main_site() ) {
-		require_once LEAFEXT_PLUGIN_DIR . '/admin/check-update.php';
-		global $leafext_github_main_active;
-		global $leafext_update_token;
-		global $leafext_github_denied;
-
-		require_once LEAFEXT_PLUGIN_DIR . '/pkg/plugin-update-checker/plugin-update-checker.php';
-
-		if ( false === $leafext_github_denied || $leafext_update_token !== '' ) {
-			$github_update_checker = PucFactory::buildUpdateChecker(
-				'https://github.com/hupe13/extensions-leaflet-map-github/',
-				__FILE__,
-				LEAFEXT_PLUGIN_SETTINGS
-			);
-
-			$github_update_checker->addFilter(
-				'vcs_update_detection_strategies',
-				function ( $strategies ) {
-					unset( $strategies[ GitHubApi::STRATEGY_LATEST_RELEASE ] );
-					return $strategies;
-				}
-			);
-
-			// Set the branch that contains the stable release.
-			$github_update_checker->setBranch( 'main' );
-
-			if ( $leafext_update_token !== '' ) {
-				// Optional: If you're using a private repository, specify the access token like this:
-				$github_update_checker->setAuthentication( $leafext_update_token );
-			}
-
-			function leafext_github_puc_error( $error, $response = null, $url = null, $slug = null ) {
-				if ( isset( $slug ) && $slug !== LEAFEXT_PLUGIN_SETTINGS ) {
-					return;
-				}
-				if ( wp_remote_retrieve_response_code( $response ) === 403 ) {
-					// var_dump( 'Permission denied' );
-					set_transient( 'leafext_github_403', true, DAY_IN_SECONDS );
-				}
-			}
-			add_action( 'puc_api_error', 'leafext_github_puc_error', 10, 4 );
-		}
-	}
+	require_once LEAFEXT_PLUGIN_DIR . 'github-backend-extensions.php';
+}
+if ( is_admin() && is_main_site() && ! leafext_plugin_active( 'leafext-update-github' ) ) {
+	require_once LEAFEXT_PLUGIN_DIR . 'github-settings.php';
+	require_once LEAFEXT_PLUGIN_DIR . 'github-check-update.php';
 }
