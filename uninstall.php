@@ -2,7 +2,7 @@
 /**
  * Uninstall handler.
  *
- * @package extensions-leaflet-map
+ * @package Extensions for Leaflet Map
  */
 
 // if uninstall.php is not called by WordPress, die

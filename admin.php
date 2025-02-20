@@ -69,12 +69,13 @@ function leafext_do_page() {
 		leafext_zoomhome_help();
 	} elseif ( $active_tab === 'help' ) {
 		// Github only
-		if ( function_exists( 'leafext_extensions_goto_main_site' ) ) {
-			leafext_extensions_goto_main_site();
+		if ( function_exists( 'leafext_goto_main_site' ) ) {
+			leafext_goto_main_site();
 		}
-		if ( is_main_site() && ! leafext_plugin_active( 'leafext-update-github' ) ) {
+		if ( function_exists( 'leafext_token_form' ) && is_main_site() && ! leafext_plugin_active( 'leafext-update-github' ) ) {
 			leafext_token_form();
 		}
+		// End Github only
 		if ( is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
 			include LEAFEXT_PLUGIN_DIR . '/admin/help.php';
 			echo '<form method="post" action="options.php">';

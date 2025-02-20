@@ -1,8 +1,8 @@
 <?php
 /**
- *  Admin Update Management Settings
+ *  Admin PUC Settings
  *
- * @package Update Management for Leaflet Map and its Extensions Github
+ * @package Updates for Leaflet Map Extensions and DSGVO Github Versions
  **/
 
 // Direktzugriff auf diese Datei verhindern.

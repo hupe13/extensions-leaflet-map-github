@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map Github\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-01-28 19:58+0000\n"
+"POT-Creation-Date: 2025-02-20 09:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -880,7 +880,7 @@ msgid ""
 "%s and are fixed."
 msgstr ""
 
-#: php/overview-map.php:586 admin/filemgr/managefiles-functions.php:201
+#: php/overview-map.php:580 admin/filemgr/managefiles-functions.php:201
 msgid "Edit"
 msgstr ""
 
@@ -913,15 +913,15 @@ msgstr ""
 msgid "equidistant: divide the classes into equal groups."
 msgstr ""
 
-#: php/overview-map.php:423
+#: php/overview-map.php:421
 msgid "Error - no valid filename:"
 msgstr ""
 
-#: php/overview-map.php:575
+#: php/overview-map.php:569
 msgid "Error - please check overviewmap data: Some data are wrong."
 msgstr ""
 
-#: php/overview-map.php:378
+#: php/overview-map.php:377
 msgid "Error detecting lanlngs"
 msgstr ""
 
@@ -953,12 +953,14 @@ msgid ""
 "changing its style on hovering, the tooltip is not affected"
 msgstr ""
 
-#. Name of the plugin
-msgid "Extensions for Leaflet Map Github Version"
+#. Description of the plugin
+msgid ""
+"Extends the WordPress Plugin <a href=\"https://wordpress.org/plugins/leaflet-"
+"map/\">Leaflet Map</a> with Leaflet Plugins and other functions."
 msgstr ""
 
-#. Description of the plugin
-msgid "Extensions for the WordPress plugin Leaflet Map Github Version"
+#. Name of the plugin
+msgid "Extensions for Leaflet Map Github Version"
 msgstr ""
 
 #: admin/help.php:193 admin/tiles/layerswitch.php:13 admin/tiles/main.php:26
@@ -2100,7 +2102,7 @@ msgid "no"
 msgstr ""
 
 #. %s is an option.
-#: php/sgpx.php:152
+#: php/sgpx.php:144
 #, php-format
 msgid "No / Yes / Only, when %s is used, e.g. for testing."
 msgstr ""
@@ -2109,7 +2111,7 @@ msgstr ""
 msgid "no files"
 msgstr ""
 
-#: php/overview-map.php:649
+#: php/overview-map.php:643
 msgid "no leaflet-marker custom fields"
 msgstr ""
 
@@ -2384,7 +2386,7 @@ msgid "Please change this only, if you want to use your own theme."
 msgstr ""
 
 #. %s are plugin names.
-#: extensions-leaflet-map.php:128
+#: extensions-leaflet-map.php:116
 #, php-format
 msgid "Please install and activate %1$s before using %2$s."
 msgstr ""
@@ -2520,7 +2522,7 @@ msgid "Render chart profiles as Canvas or SVG Paths."
 msgstr ""
 
 #. %s are shortcodes.
-#: php/sgpx.php:150
+#: php/sgpx.php:142
 #, php-format
 msgid "Replace %1$s with %2$s."
 msgstr ""
@@ -2541,13 +2543,13 @@ msgstr ""
 msgid "required if you want to group like with %s"
 msgstr ""
 
-#: admin/check-update.php:173 admin/elevation/main.php:75
-#: admin/elevation/main.php:104 admin/elevation/main.php:117
-#: admin/elevation/main.php:163 admin/elevation/main.php:178
-#: admin/marker/placementstrategies.php:22 admin/marker/markercluster.php:22
-#: admin/filemgr/filemgr.php:249 admin/filemgr/main.php:62
-#: admin/grouping/settings.php:95 admin/hover/settings.php:93
-#: admin/tiles/main.php:73 admin/tiles/providers.php:168
+#: admin/elevation/main.php:75 admin/elevation/main.php:104
+#: admin/elevation/main.php:117 admin/elevation/main.php:163
+#: admin/elevation/main.php:178 admin/marker/placementstrategies.php:22
+#: admin/marker/markercluster.php:22 admin/filemgr/filemgr.php:249
+#: admin/filemgr/main.php:62 admin/grouping/settings.php:95
+#: admin/hover/settings.php:93 admin/tiles/main.php:73
+#: admin/tiles/providers.php:168
 msgid "Reset"
 msgstr ""
 
@@ -3520,13 +3522,13 @@ msgstr ""
 msgid "yes"
 msgstr ""
 
-#: php/sgpx.php:190
+#: php/sgpx.php:182
 msgid ""
 "You are using the sgpx shortcode from plugin wp-gpx-maps. But the script "
 "cannot detect how to handle it. Please ask in the forum."
 msgstr ""
 
-#: php/sgpx.php:200
+#: php/sgpx.php:192
 msgid ""
 "You are using the sgpx shortcode from plugin wp-gpx-maps. wp-gpx-maps and "
 "leaflet-map don't work together."

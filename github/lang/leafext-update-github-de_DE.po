@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: DSGVO Snippet for Extensions for Leaflet Map\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-15 15:43+0000\n"
-"PO-Revision-Date: 2025-02-18 20:42+0000\n"
+"PO-Revision-Date: 2025-02-20 12:19+0000\n"
 "Last-Translator: \n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -12,46 +12,80 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.6; wp-6.4.3\n"
+"X-Loco-Version: 2.7.1; wp-6.7.2\n"
 "X-Domain: extensions-leaflet-map-dsgvo"
 
-#: github-settings.php:15
+#: leafext-update-menus.php:46
+msgid "Github Repositories managed by this plugin"
+msgstr "Von diesem Plugin verwaltete Github-Repositories"
+
+#: github/github-settings.php:15
 msgid "Github token"
 msgstr "Github token"
 
-#: github-settings.php:82
+#: github/github-settings.php:82
 msgid "Github token to receive updates in WordPress way"
 msgstr "Github Token um Updates auf WordPress-Art zu erhalten"
 
+#. URI of the plugin
+msgid "https://github.com/hupe13/leafext-update-github"
+msgstr "https://github.com/hupe13/leafext-update-github"
+
+#. Author URI of the plugin
+msgid "https://leafext.de/en/"
+msgstr "https://leafext.de/en/"
+
+#. Author of the plugin
+msgid "hupe13"
+msgstr "hupe13"
+
+#. Description of the plugin
+msgid ""
+"If you have installed the Github versions of Leaflet Map plugins from hupe13 "
+"on a multisite, you can receive the updates here."
+msgstr ""
+"Wenn du die Github-Versionen der Leaflet Map Plugins von hupe13 auf einer "
+"Multisite installiert hast, kannst du damit die Updates erhalten."
+
 #. %s is a link.
-#: github-backend-extensions.php:32
+#: github/github-functions.php:105
 #, php-format
 msgid ""
 "If you want to receive updates in WordPress way, go to the %1$smain site "
 "dashboard%2$s and activate the plugin here or install and activate %3$s."
 msgstr ""
-"Um Updates auf Art und Weise von WordPress zu erhalten,, gehe zum "
+"Um Updates auf Art und Weise von WordPress zu erhalten, gehe zum "
 "%1$sDashboard der Main Site%2$s und aktiviere das Plugin hier oder "
 "installiere und aktiviere %3$s."
 
 #. %s is a link.
-#: github-settings.php:95
+#: github/github-settings.php:95
 #, php-format
 msgid "Maybe you need a %1$sGithub token%2$s to receive updates successfully."
 msgstr ""
 "Möglicherweise benötigst du ein %1$sGithub-Token%2$s, um erfolgreich Updates "
 "zu erhalten."
 
-#: github-settings.php:107
+#: github/github-settings.php:107
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: github-backend-extensions.php:29
+#: leafext-update-menus.php:13 leafext-update-menus.php:21
+msgid "Settings"
+msgstr "Einstellungen"
+
+#. Name of the plugin
+msgid "Updates for Leaflet Map Extensions and DSGVO Github Versions"
+msgstr ""
+"Updates für die Github-Versionen der Erweiterungen und DSGVO-Snippets für "
+"Leaflet Map"
+
+#: github/github-functions.php:102
 msgid "Updates in WordPress way"
 msgstr "Updates auf Art und Weise von WordPress"
 
 #. %s is a link.
-#: github-settings.php:88
+#: github/github-settings.php:88
 #, php-format
 msgid "You need a %1$sGithub token%2$s to receive updates successfully."
 msgstr ""

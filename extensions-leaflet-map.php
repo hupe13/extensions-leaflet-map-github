@@ -1,11 +1,9 @@
 <?php
 /**
  * Plugin Name:       Extensions for Leaflet Map Github Version
+ * Description:       Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
  * Plugin URI:        https://leafext.de/en/
- * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
- * Primary Branch:    main
- * Description:       Extensions for the WordPress plugin Leaflet Map Github Version
- * Version:           4.4-250218
+ * Version:           4.4-250220
  * Requires PHP:      7.4
  * Requires Plugins:  leaflet-map
  * Author:            hupe13
@@ -37,13 +35,21 @@ if ( is_admin() ) {
 }
 
 if ( ! function_exists( 'leafext_plugin_active' ) ) {
-	function leafext_plugin_active( $plugin ) {
-		if ( ! ( strpos( implode( ' ', get_option( 'active_plugins', array() ) ), '/' . $plugin . '.php' ) === false &&
-			strpos( implode( ' ', array_keys( get_site_option( 'active_sitewide_plugins', array() ) ) ), '/' . $plugin . '.php' ) === false ) ) {
-			return true;
-		} else {
-			return false;
+	function leafext_plugin_active( $slug ) {
+		$plugins = glob( WP_PLUGIN_DIR . '/*/' . $slug . '.php' );
+		foreach ( $plugins as $plugin ) {
+			$split = array_map( 'strrev', explode( '/', strrev( $plugin ) ) );
+			if ( is_plugin_active( trailingslashit( $split[1] ) . $split[0] ) ) {
+				if ( $split[1] === 'leafext-update-github' ) {
+					return true;
+				}
+				if ( $split[1] !== $slug ) {
+					return 'github';
+				}
+				return true;
+			}
 		}
+		return false;
 	}
 }
 
@@ -131,8 +137,4 @@ if ( version_compare( $wp_version, '6.5', '<' ) ) {
 // Github
 if ( is_admin() ) {
 	require_once LEAFEXT_PLUGIN_DIR . 'github-backend-extensions.php';
-}
-if ( is_admin() && is_main_site() && ! leafext_plugin_active( 'leafext-update-github' ) ) {
-	require_once LEAFEXT_PLUGIN_DIR . 'github-settings.php';
-	require_once LEAFEXT_PLUGIN_DIR . 'github-check-update.php';
 }
