@@ -54,7 +54,7 @@ function leafext_update_puc_error( $error, $response = null, $url = null, $slug 
 	$git_repos  = leafext_get_repos();
 	$valid_slug = false;
 	foreach ( $git_repos as $git_repo => $value ) {
-		if ( $slug === basename( dirname( $git_repos[ $git_repo ]['local'] ) ) ) {
+		if ( $slug === dirname( plugin_basename( $git_repos[ $git_repo ]['local'] ) ) ) {
 			$valid_slug = true;
 		}
 	}

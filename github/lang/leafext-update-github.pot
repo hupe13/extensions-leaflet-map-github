@@ -4,7 +4,7 @@ msgstr ""
 "Project-Id-Version: Updates for Leaflet Map Extensions and DSGVO Github "
 "Versions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-20 19:53+0000\n"
+"POT-Creation-Date: 2025-02-24 20:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -17,8 +17,16 @@ msgstr ""
 "X-Loco-Version: 2.7.1; wp-6.7.2\n"
 "X-Domain: leafext-update-github"
 
-#: leafext-update-menus.php:46
-msgid "Github Repositories managed by this plugin"
+#: github/github-functions.php:244
+msgid "active"
+msgstr ""
+
+#: github/github-functions.php:197
+msgid "Github Repositories managed by Plugin Update Checker"
+msgstr ""
+
+#: github/github-functions.php:123
+msgid "Github Repositories managed on main site"
 msgstr ""
 
 #: github/github-settings.php:15
@@ -47,18 +55,18 @@ msgid ""
 "on a multisite, you can receive the updates here."
 msgstr ""
 
-#. %s is a link.
-#: github/github-functions.php:105
-#, php-format
-msgid ""
-"If you want to receive updates in WordPress way, go to the %1$smain site "
-"dashboard%2$s and activate the plugin here or install and activate %3$s."
+#: github/github-functions.php:245
+msgid "link to blog"
 msgstr ""
 
 #. %s is a link.
 #: github/github-settings.php:95
 #, php-format
 msgid "Maybe you need a %1$sGithub token%2$s to receive updates successfully."
+msgstr ""
+
+#: github/github-functions.php:243
+msgid "Name"
 msgstr ""
 
 #: github/github-settings.php:107
@@ -69,11 +77,25 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
+#. %s is a link.
+#: github/github-functions.php:116
+#, php-format
+msgid "To manage and receive updates, go to the %1$smain site%2$s."
+msgstr ""
+
+#. %s is a link.
+#: github/github-functions.php:104
+#, php-format
+msgid ""
+"To receive updates, go to the %1$smain site dashboard%2$s and activate one "
+"%3$s plugin here or install and activate %4$s."
+msgstr ""
+
 #. Name of the plugin
 msgid "Updates for Leaflet Map Extensions and DSGVO Github Versions"
 msgstr ""
 
-#: github/github-functions.php:102
+#: github/github-functions.php:99
 msgid "Updates in WordPress way"
 msgstr ""
 

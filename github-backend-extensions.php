@@ -44,7 +44,7 @@ add_filter( 'plugins_api', 'leafext_prevent_requests', 10, 3 );
 if ( ! function_exists( 'leafext_get_repos' ) ) {
 	require_once LEAFEXT_PLUGIN_DIR . 'github/github-functions.php';
 }
-if ( is_admin() && is_main_site() && ! leafext_plugin_active( 'leafext-update-github' ) ) {
+if ( is_main_site() ) {
 	require_once LEAFEXT_PLUGIN_DIR . 'github/github-settings.php';
 	require_once LEAFEXT_PLUGIN_DIR . 'github/github-check-update.php';
 }

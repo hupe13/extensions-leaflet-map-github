@@ -56,7 +56,7 @@ function leafext_elevation_tab() {
 		$textheader = $textheader . '">' . $tab['title'] . '</a>' . "\n";
 	}
 
-		$textheader = $textheader . '</div>';
+	$textheader = $textheader . '</div>';
 	return $textheader;
 }
 

@@ -182,18 +182,19 @@ function leafext_should_interpret_shortcode( $shortcode, $atts ) {
 	// ! is_front_page()
 
 // Display array as table
-
-function leafext_html_table( $data = array() ) {
-	$rows      = array();
-	$cellstyle = ( is_singular() || is_archive() ) ? "style='border:1px solid #195b7a;'" : '';
-	foreach ( $data as $row ) {
-		$cells = array();
-		foreach ( $row as $cell ) {
-			$cells[] = '<td ' . $cellstyle . ">{$cell}</td>";
+if ( ! function_exists( 'leafext_html_table' ) ) {
+	function leafext_html_table( $data = array() ) {
+		$rows      = array();
+		$cellstyle = ( is_singular() || is_archive() ) ? "style='border:1px solid #195b7a;'" : '';
+		foreach ( $data as $row ) {
+			$cells = array();
+			foreach ( $row as $cell ) {
+				$cells[] = '<td ' . $cellstyle . ">{$cell}</td>";
+			}
+			$rows[] = '<tr>' . implode( '', $cells ) . '</tr>' . "\n";
 		}
-		$rows[] = '<tr>' . implode( '', $cells ) . '</tr>' . "\n";
+		$head = '<div style="width:' . ( ( is_singular() || is_archive() ) ? '100' : '80' ) . '%;">';
+		$head = $head . '<figure class="wp-block-table aligncenter is-style-stripes"><table border=1>';
+		return $head . implode( '', $rows ) . '</table></figure></div>';
 	}
-	$head = '<div style="width:' . ( ( is_singular() || is_archive() ) ? '100' : '80' ) . '%;">';
-	$head = $head . '<figure class="wp-block-table aligncenter is-style-stripes"><table border=1>';
-	return $head . implode( '', $rows ) . '</table></figure></div>';
 }
