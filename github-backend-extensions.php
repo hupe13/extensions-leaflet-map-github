@@ -20,7 +20,7 @@ add_action( 'plugins_loaded', 'leafext_extensions_textdomain' );
 // https://make.wordpress.org/core/2024/03/05/introducing-plugin-dependencies-in-wordpress-6-5/
 function leafext_extensions_leaflet_map_to_github( $slug ) {
 	if ( 'extensions-leaflet-map' === $slug ) {
-		$slug = 'extensions-leaflet-map-github';
+		$slug = LEAFEXT_PLUGIN_SETTINGS;
 	}
 	return $slug;
 }
@@ -31,7 +31,7 @@ function leafext_prevent_requests( $res, $action, $args ) {
 	if ( 'plugin_information' !== $action ) {
 		return $res;
 	}
-	if ( $args->slug !== 'extensions-leaflet-map-github' ) {
+	if ( $args->slug !== LEAFEXT_PLUGIN_SETTINGS ) {
 		return $res;
 	}
 	$plugin_data = get_plugin_data( __FILE__, true, false );
