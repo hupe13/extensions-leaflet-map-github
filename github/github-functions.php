@@ -250,12 +250,12 @@ function leafext_table_repos() {
 			}
 		}
 	}
-		$header = array(
-			'<b>' . __( 'Name', 'leafext-update-github' ) . '</b>',
-			'<b>' . __( 'active', 'leafext-update-github' ) . '</b>',
-			'<b>' . __( 'link to blog', 'leafext-update-github' ) . '</b>',
-		);
+	$header = array(
+		'<b>' . __( 'Name', 'leafext-update-github' ) . '</b>',
+		'<b>' . __( 'active', 'leafext-update-github' ) . '</b>',
+		'<b>' . __( 'link to blog', 'leafext-update-github' ) . '</b>',
+	);
 
-		array_unshift( $table, $header );
-		echo wp_kses_post( leafext_html_table( $table ) );
+	array_unshift( $table, $header );
+	echo wp_kses_post( leafext_html_table( $table ) );
 }
