@@ -130,7 +130,8 @@ function leafext_leaflet_require() {
 				'response' => '406',
 			)
 		);
-		wp_die( wp_kses_post( $error ), '', wp_kses_post( $error->get_error_data() ) );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- it is an WP Error
+		wp_die( $error, '', wp_kses_post( $error->get_error_data() ) );
 	}
 }
 register_activation_hook( __FILE__, 'leafext_leaflet_require' );
