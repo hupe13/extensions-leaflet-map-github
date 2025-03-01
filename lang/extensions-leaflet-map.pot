@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Extensions for Leaflet Map Github\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-20 09:00+0000\n"
+"POT-Creation-Date: 2025-03-01 20:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -896,7 +896,7 @@ msgstr ""
 msgid "Elevation Profile"
 msgstr ""
 
-#: admin.php:143 admin/help.php:14
+#: admin.php:135 admin/help.php:14
 msgid "Elevation Profiles"
 msgstr ""
 
@@ -1048,7 +1048,7 @@ msgstr ""
 msgid "Found an issue? Do you have a question?"
 msgstr ""
 
-#: admin.php:179 admin/fullscreen.php:18 admin/help.php:210
+#: admin.php:171 admin/fullscreen.php:18 admin/help.php:210
 msgid "Fullscreen"
 msgstr ""
 
@@ -1077,7 +1077,7 @@ msgstr ""
 msgid "Geojson GeometryCollections do not (yet) work in all senses."
 msgstr ""
 
-#: admin.php:183 admin/help.php:219 admin/gesture.php:13
+#: admin.php:175 admin/help.php:219 admin/gesture.php:13
 msgid "Gesture Handling"
 msgstr ""
 
@@ -1101,7 +1101,7 @@ msgstr ""
 msgid "Group elements and dynamically add/remove from map"
 msgstr ""
 
-#: admin.php:153 admin/help.php:153
+#: admin.php:145 admin/help.php:153
 msgid "Grouping by options and features"
 msgstr ""
 
@@ -1113,7 +1113,7 @@ msgstr ""
 msgid "Height of the chart"
 msgstr ""
 
-#: admin.php:127
+#: admin.php:119
 msgid "Help"
 msgstr ""
 
@@ -1165,7 +1165,7 @@ msgstr ""
 msgid "Hovering"
 msgstr ""
 
-#: admin.php:166 admin/help.php:240
+#: admin.php:158 admin/help.php:240
 msgid "Hovering and Tooltips"
 msgstr ""
 
@@ -1924,9 +1924,13 @@ msgstr ""
 msgid "Makes multiple tile layers transparent."
 msgstr ""
 
-#: admin.php:133 admin.php:137 admin/help.php:259 admin/help.php:261
+#: admin.php:125 admin.php:129 admin/help.php:259 admin/help.php:261
 #: admin/help.php:262 admin/filemgr/main.php:27
 msgid "Manage Leaflet Map files"
+msgstr ""
+
+#: extensions-leaflet-map.php:124
+msgid "Manage plugins"
 msgstr ""
 
 #: admin/marker/markercluster.php:118
@@ -1972,7 +1976,7 @@ msgstr ""
 msgid "Marker with icon"
 msgstr ""
 
-#: admin.php:148
+#: admin.php:140
 msgid "Markers and Icons"
 msgstr ""
 
@@ -2353,7 +2357,7 @@ msgstr ""
 msgid "Overview"
 msgstr ""
 
-#: admin.php:171 admin/help.php:119 admin/overview-map.php:75
+#: admin.php:163 admin/help.php:119 admin/overview-map.php:75
 msgid "Overview Map"
 msgstr ""
 
@@ -2386,7 +2390,7 @@ msgid "Please change this only, if you want to use your own theme."
 msgstr ""
 
 #. %s are plugin names.
-#: extensions-leaflet-map.php:116
+#: extensions-leaflet-map.php:120
 #, php-format
 msgid "Please install and activate %1$s before using %2$s."
 msgstr ""
@@ -2409,6 +2413,10 @@ msgstr ""
 
 #: admin/filemgr/filemgr.php:97
 msgid "Please select"
+msgstr ""
+
+#: extensions-leaflet-map.php:129
+msgid "Plugin Error"
 msgstr ""
 
 #: admin/overview-map.php:42 admin/gesture.php:43
@@ -2553,7 +2561,7 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
-#: admin.php:175 admin/help.php:201
+#: admin.php:167 admin/help.php:201
 msgid "Reset the map"
 msgstr ""
 
@@ -2578,7 +2586,7 @@ msgstr ""
 msgid "Scroll Wheel Zoom"
 msgstr ""
 
-#: admin.php:157 admin/help.php:171
+#: admin.php:149 admin/help.php:171
 msgid "Search markers/features"
 msgstr ""
 
@@ -2656,7 +2664,7 @@ msgstr ""
 msgid "Setting"
 msgstr ""
 
-#: extensions-leaflet-map.php:91 admin/elevation/waypoints.php:266
+#: extensions-leaflet-map.php:99 admin/elevation/waypoints.php:266
 #: admin/filemgr/filemgr-settings.php:50 admin/tiles/layerswitch.php:163
 #: admin/tiles/providers.php:150
 msgid "Settings"
@@ -2854,7 +2862,7 @@ msgstr ""
 msgid "Switch Track on and off"
 msgstr ""
 
-#: admin.php:161 admin/help.php:180
+#: admin.php:153 admin/help.php:180
 msgid "Switching Tile Servers"
 msgstr ""
 

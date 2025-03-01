@@ -41,20 +41,15 @@ function leafext_get_repos() {
 // in welchem Verzeichnis ist das Plugin installiert?
 function leafext_github_dir( $slug ) {
 	$leafext_plugins = glob( WP_PLUGIN_DIR . '/*/' . $slug . '.php/' );
-	if ( count( $leafext_plugins ) === 0 ) {
-		return '';
-	} else {
+	if ( count( $leafext_plugins ) > 0 ) {
 		foreach ( $leafext_plugins as $leafext_plugin ) {
-			$dir = basename( dirname( $leafext_plugin ) );
-			if ( $dir === 'leafext-update-github' ) {
-				return $dir;
-			}
-			if ( $dir !== $slug ) {
-				return $dir;
+			$plugin_data = get_plugin_data( $leafext_plugin );
+			if ( strpos( $plugin_data['Name'], 'Github' ) !== false ) {
+				return dirname( plugin_basename( $leafext_plugin ) );
 			}
 		}
-		return '';
 	}
+	return '';
 }
 
 // To get Updates from Github, plugin must be active on main site
@@ -153,7 +148,7 @@ if ( ! is_main_site() ) {
 
 } else {
 	// leaflet Map not active, create new Leaflet Menu
-	function leafext_add_page() {
+	function leafext_add_page_single() {
 		// from Leaflet Map Plugin
 		$leaf = 'data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJsZWFmIiBjbGFzcz0ic3ZnLWlubGluZS0tZmEgZmEtbGVhZiBmYS13LTE4IiByb2xlPSJpbWciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDU3NiA1MTIiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTU0Ni4yIDkuN2MtNS42LTEyLjUtMjEuNi0xMy0yOC4zLTEuMkM0ODYuOSA2Mi40IDQzMS40IDk2IDM2OCA5NmgtODBDMTgyIDk2IDk2IDE4MiA5NiAyODhjMCA3IC44IDEzLjcgMS41IDIwLjVDMTYxLjMgMjYyLjggMjUzLjQgMjI0IDM4NCAyMjRjOC44IDAgMTYgNy4yIDE2IDE2cy03LjIgMTYtMTYgMTZDMTMyLjYgMjU2IDI2IDQxMC4xIDIuNCA0NjhjLTYuNiAxNi4zIDEuMiAzNC45IDE3LjUgNDEuNiAxNi40IDYuOCAzNS0xLjEgNDEuOC0xNy4zIDEuNS0zLjYgMjAuOS00Ny45IDcxLjktOTAuNiAzMi40IDQzLjkgOTQgODUuOCAxNzQuOSA3Ny4yQzQ2NS41IDQ2Ny41IDU3NiAzMjYuNyA1NzYgMTU0LjNjMC01MC4yLTEwLjgtMTAyLjItMjkuOC0xNDQuNnoiLz48L3N2Zz4=';
 		add_menu_page(
@@ -186,7 +181,7 @@ if ( ! is_main_site() ) {
 			'leaflet-map'
 		);
 	}
-	add_action( 'admin_menu', 'leafext_add_page' );
+	add_action( 'admin_menu', 'leafext_add_page_single' );
 }
 
 // Admin page for the plugin

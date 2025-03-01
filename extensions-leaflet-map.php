@@ -3,7 +3,7 @@
  * Plugin Name:       Extensions for Leaflet Map Github Version
  * Description:       Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
  * Plugin URI:        https://leafext.de/en/
- * Version:           4.4-250226
+ * Version:           4.4-250301
  * Requires PHP:      7.4
  * Requires Plugins:  leaflet-map
  * Author:            hupe13
@@ -111,28 +111,29 @@ function leafext_extra_textdomain() {
 }
 add_action( 'plugins_loaded', 'leafext_extra_textdomain' );
 
-// WP < 6.5
-global $wp_version;
-if ( version_compare( $wp_version, '6.5', '<' ) ) {
-	function leafext_extensions_require() {
-		if ( ! is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
-			if ( ( is_multisite() && ! is_main_site() ) || ! is_multisite() ) {
-				function leafext_require_leaflet_map_plugin() {
-					echo '<div class="notice notice-error" ><p> ';
-					printf(
-						/* translators: %s are plugin names. */
-						esc_html__( 'Please install and activate %1$s before using %2$s.', 'extensions-leaflet-map' ),
-						'<a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>',
-						'Extensions for Leaflet Map'
-					);
-					echo '</p></div>';
-				}
-				add_action( 'admin_notices', 'leafext_require_leaflet_map_plugin' );
-			}
-		}
+// WP < 6.5, ClassicPress
+function leafext_leaflet_require() {
+	if ( ! is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
+		deactivate_plugins( plugin_basename( __FILE__ ) );
+		$message = '<div><p>' . sprintf(
+			/* translators: %s are plugin names. */
+			esc_html__( 'Please install and activate %1$s before using %2$s.', 'extensions-leaflet-map' ),
+			'<a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>',
+			'Extensions for Leaflet Map'
+		) . '</p><p><a href="' . esc_html( network_admin_url( 'plugins.php' ) ) . '">' .
+			__( 'Manage plugins', 'extensions-leaflet-map' ) . '</a>.</p></div>';
+		$error = new WP_Error(
+			'error',
+			$message,
+			array(
+				'title'    => __( 'Plugin Error', 'extensions-leaflet-map' ),
+				'response' => '406',
+			)
+		);
+		wp_die( wp_kses_post( $error ), '', wp_kses_post( $error->get_error_data() ) );
 	}
-	add_action( 'plugins_loaded', 'leafext_extensions_require' );
 }
+register_activation_hook( __FILE__, 'leafext_leaflet_require' );
 
 // Disable activation the other of WP / Github Version
 if ( ! function_exists( 'leafext_disable_extensions_activation' ) ) {
