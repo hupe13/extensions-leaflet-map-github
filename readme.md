@@ -190,8 +190,8 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 ### 4.4.4 / 250xxx
 
 * new version L.Control.Layers.Tree.js
-* Plugin Check issues
 * fontawesome-free-6.7.2
+* Plugin Check issues
 * Plugin Update Checker v5p5
 * new organization of Github updates
 

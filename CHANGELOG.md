@@ -1,8 +1,10 @@
-### 4.4.4 / 250xxx
+### 4.4.4 / 2503xx
 
 * new version L.Control.Layers.Tree.js
+* fontawesome-free-6.7.2
 * Plugin Check issues
 * Plugin Update Checker v5p5
+* new organization of Github updates
 
 ### 4.4.3 / 250105
 
