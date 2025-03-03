@@ -43,7 +43,7 @@ function leafext_github_dir( $slug ) {
 	$leafext_plugins = glob( WP_PLUGIN_DIR . '/*/' . $slug . '.php/' );
 	if ( count( $leafext_plugins ) > 0 ) {
 		foreach ( $leafext_plugins as $leafext_plugin ) {
-			$plugin_data = get_plugin_data( $leafext_plugin );
+			$plugin_data = get_plugin_data( $leafext_plugin, true, false );
 			if ( strpos( $plugin_data['Name'], 'Github' ) !== false ) {
 				return dirname( plugin_basename( $leafext_plugin ) );
 			}
@@ -111,7 +111,7 @@ if ( ! is_main_site() ) {
 					'To manage and receive updates, go to the %1$smain site%2$s.',
 					'leafext-update-github'
 				),
-				'<a href="' . esc_url( get_site_url( get_main_site_id() ) ) . '/wp-admin/admin.php?page=leafext-update-github">',
+				'<a href="' . esc_url( get_site_url( get_main_site_id() ) ) . '/wp-admin/admin.php?page=github-settings">',
 				'</a>'
 			);
 			echo '<h3>' . esc_html__( 'Github Repositories managed on main site', 'leafext-update-github' ) . '</h3>';
@@ -140,7 +140,7 @@ if ( ! is_main_site() ) {
 			'Github Update',
 			'Github Update',
 			'manage_options',
-			'leafext-update-github',
+			'github-settings',
 			'leafext_update_admin'
 		);
 	}
