@@ -17,172 +17,194 @@ function leafext_targetmarker_help() {
 		$codestyle = ' class="language-coffeescript"';
 		$text      = '<h2>' . __( 'Target Marker', 'extensions-leaflet-map' ) . '</h2>';
 	}
-	$targetmap = '&#091;leaflet-map fitbounds]' . "\n";
-	$targetmap = $targetmap . '// many any' . "\n";
-	$targetmap = $targetmap . '&#091;leaflet-marker title=... ....]your popupcontent&#091;/leaflet-marker]' . "\n";
-	$targetmap = $targetmap . '&#091;leaflet-extramarker title=... ....]your popupcontent&#091;/leaflet-extramarker]' . "\n";
-	$targetmap = $targetmap . '// or one geojson file with markers' . "\n";
-	$targetmap = $targetmap . '&#091;leaflet-geojson ....]your popupcontent&#091;/leaflet-geojson]' . "\n";
-	$targetmap = $targetmap . '// optional' . "\n";
-	$targetmap = $targetmap . '&#091;cluster ...]' . "\n";
-	$targetmap = $targetmap . '// required' . "\n";
-	$targetmap = $targetmap . '&#091;zoomhomemap]' . "\n";
 
-	$text = $text . '<ul><li>' . __( 'Jump to marker in a map with many markers.', 'extensions-leaflet-map' ) . '</li><li>';
-	$text = $text . sprintf(
+	$text .= '<p><ul>';
+	$text .= '<li>' . __( 'Jump to a marker in a map with many markers.', 'extensions-leaflet-map' ) . '</li>' . "\n";
+	$text .= '<li>' . sprintf(
 		/* translators: %1$s is a leaflet-marker, %2$s is leaflet-extramarker, %3$s is Point */
 		__( 'Markers can be %1$s and %2$s or marker %3$s in geojson files.', 'extensions-leaflet-map' ),
 		'<code>leaflet-marker</code>',
 		'<code>leaflet-extramarker</code>',
 		'(geometry type Point)'
-	) . '</li>';
-	$text = $text . '<li>' . __( 'Source and target can be the same page / post or different pages / posts.', 'extensions-leaflet-map' ) . '</li></ul>';
+	) . '</li>' . "\n";
+	$text .= '<li>' . __( 'Source and target can be the same page or different pages.', 'extensions-leaflet-map' ) . '</li>' . "\n";
+	$text .= '<li>' . __( 'The word "page" in this documentation means page or post.', 'extensions-leaflet-map' ) . '</li>' . "\n";
+	$text .= '</ul></p>' . "\n";
 
-	$text = $text . '<h3>' . __( 'Same source and target', 'extensions-leaflet-map' ) . '</h3>';
+	$text .= '<h2>' . __( 'Code on source page', 'extensions-leaflet-map' ) . '</h2>';
 
-	$text = $text . '<h4>' . __( 'Source - shortcode for', 'extensions-leaflet-map' ) . ' <code>targetlink</code></h4>';
-	$text = $text . '<p>' . __( 'A link similar to this one is created:', 'extensions-leaflet-map' ) .
-	' <code>&lt;a href="' . __( 'Link to the marker on the map on the same page / post', 'extensions-leaflet-map' ) . '">linktext&lt;/a></code>. ';
-	$text = $text . __( 'You can write this shortcode anywhere in your text.', 'extensions-leaflet-map' ) . '</p>';
+	$text .= '<p><ul>';
+	$text .= '<li>' . __( 'Shortcode', 'extensions-leaflet-map' ) . ' <code>targetlink</code></li>' . "\n";
+	$text .= '<li>' . __( 'query string in an URL', 'extensions-leaflet-map' ) . ': "<code>?lat=...&lng=...&zoom=...</code>"</li>' . "\n";
+	// $text .= '<li>' . __( 'Shortcode', 'extensions-leaflet-map' ) . ' <code>targetmarker</code></li>' . "\n";
+	$text .= '</ul></p>' . "\n";
 
-	$text = $text . '<ul><li>';
+	$text .= '<h3>' . __( 'Shortcode <code>targetlink</code>', 'extensions-leaflet-map' ) . '</h3>' . "\n";
+
+	$text .= '<p>' . __( 'A link similar to this one is created:', 'extensions-leaflet-map' ) .
+	' <code>&lt;a href="' . __( 'Link to the marker on a map', 'extensions-leaflet-map' ) . '">linktext&lt;/a></code>. ';
+	$text .= __( 'You can write this shortcode anywhere in your text.', 'extensions-leaflet-map' ) . '</p>' . "\n";
+
+	$text .= '<p><ul>';
 	/* translators: %1$s is a leaflet-marker, %2$s is leaflet-extramarker. */
-	$text = $text . sprintf( __( 'jump to %1$s or %2$s', 'extensions-leaflet-map' ), '<code>leaflet-marker</code>', '<code>leaflet-extramarker</code>' );
-	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>';
-	$text = $text . '&#091;targetlink title=... linktext=... ]' . "\n";
-	$text = $text . '</code></pre>' . "\n";
-	$text = $text . '</li><li>';
-	$text = $text . __( 'jump to a marker in a geojson file', 'extensions-leaflet-map' );
-	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>';
-	$text = $text . '&#091;targetlink property=... value=... linktext=... ]' . "\n";
-	$text = $text . '</code></pre>' . "\n";
-	$text = $text . '</li>';
+	$text .= '<li>' . sprintf( __( 'jump to %1$s or %2$s', 'extensions-leaflet-map' ), '<code>leaflet-marker</code>', '<code>leaflet-extramarker</code>' );
+	$text .= '<pre' . $codestyle . '><code' . $codestyle . '>';
+	$text .= '&#091;targetlink title=... ... ]' . "\n";
+	$text .= '</code></pre>' . "\n";
+	$text .= '</li>';
+	$text .= '<li>' . __( 'jump to a marker in a geojson file', 'extensions-leaflet-map' );
+	$text .= '<pre' . $codestyle . '><code' . $codestyle . '>';
+	$text .= '&#091;targetlink property=... value=... ... ]' . "\n";
+	$text .= '</code></pre>' . "\n";
+	$text .= '</li>';
+	$text .= '<li>' . __( 'jump to any marker nearest lat and lng', 'extensions-leaflet-map' );
+	$text .= '<pre' . $codestyle . '><code' . $codestyle . '>';
+	$text .= '&#091;targetlink lat=... lng=... ... ]' . "\n";
+	$text .= '</code></pre>' . "\n";
+	$text .= '</li>';
+	$text .= '</ul></p>' . "\n";
 
-	$text = $text . '<li>';
-	$text = $text . __( 'jump to any marker nearest lat and lng.', 'extensions-leaflet-map' );
-	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>';
-	$text = $text . '&#091;targetlink lat=... lng=... linktext=... ]' . "\n";
-	$text = $text . '</code></pre>' . "\n";
-	$text = $text . '</li>';
+	$text .= '<h3>' . __( 'Options for <code>targetlink</code>', 'extensions-leaflet-map' ) . '</h3>' . "\n";
 
-	$text = $text . '</ul>';
+	$text .= '<p><ul>';
+	$text .= '<li>required: one of these';
+	$text .= '<p><ul>';
+	$text .= '<li> title - <code>title</code> ';
+	$text .= sprintf(
+		/* translators: %1$s is a leaflet-marker, %2$s is leaflet-extramarker. */
+		__( 'of the target %1$s or %2$s', 'extensions-leaflet-map' ),
+		'<code>leaflet-marker</code>',
+		'<code>leaflet-extramarker</code>'
+	) . '</li>' . "\n";
+	$text .= '<li> property, value - ' .
+	sprintf(
+		/* translators: %1$s, %2$s are property and value. */
+		__( '%1$s and %2$s of the target geojson marker', 'extensions-leaflet-map' ),
+		'<code>property</code>',
+		'<code>value</code>'
+	)
+	. '</li>';
 
-	$text = $text . '<h4>' . __( 'Source - options for', 'extensions-leaflet-map' ) . ' <code>targetlink</code></h4>';
-	$text = $text . '<ul>';
-	$text = $text . '<li> title - <code>title</code> ';
-	/* translators: %1$s is a leaflet-marker, %2$s is leaflet-extramarker. */
-	$text = $text . sprintf( __( 'of the target %1$s or %2$s', 'extensions-leaflet-map' ), '<code>leaflet-marker</code>', '<code>leaflet-extramarker</code>' ) . '</li>';
-	$text = $text . '<li> property - <code>property</code> '
-	. __( 'of the target geojson marker', 'extensions-leaflet-map' ) . '</li>
-	<li> value - <code>value</code> '
-	. __( 'of the target geojson marker', 'extensions-leaflet-map' ) . '</li>';
-	$text = $text . '<li> lat, lng - ' . __( 'latitude and longitude of target', 'extensions-leaflet-map' ) . '</li>';
-	$text = $text . '<li> linktext - ';
-	$text = $text . __( 'text of the link. Default:', 'extensions-leaflet-map' ) . ' "Target"</li>';
-	$text = $text . '<li> popup - ';
-	/* translators: %1$s is a title, %2$s is "target". */
-	$text = $text . sprintf( __( 'popup content, if the target marker has not a popup. Default: %1$s, if the marker has one or %2$s.', 'extensions-leaflet-map' ), '<code>title</code>', '"Target"' ) . '</li>';
-	$text = $text . sprintf(
+	$text .= '<li> lat, lng - ' . __( 'latitude and longitude of target', 'extensions-leaflet-map' ) . '</li>' . "\n";
+	$text .= '</ul></p></li>' . "\n";
+	$text .= '<li>optional:';
+	$text .= '<p><ul>';
+	$text .= '<li> popup - ';
+	$text .= sprintf(
+		/* translators: %1$s is title, %2$s is Target. */
+		__( 'popup content, if the target marker has not a popup text. Default: content of %1$s, if the marker has one or %2$s', 'extensions-leaflet-map' ),
+		'<code>title</code>',
+		'"Target"'
+	) . '</li>' . "\n";
+	$text .= '<li> linktext - ';
+	$text .= __( 'text of the link. Default:', 'extensions-leaflet-map' ) . ' "Target"</li>' . "\n";
+	$text .= '<li> link - ';
+	$text .= __( 'URL to the target page. Default: same page', 'extensions-leaflet-map' ) . '</li>' . "\n";
+	$text .= sprintf(
 		'<li> mapid - '
 		/* translators: %1$s is "mapid", %2$s is "leaflet-map". */
-		. __( '%1$s from target map (see %2$s option %1$s). Default: current map.', 'extensions-leaflet-map' ),
+		. __( '%1$s from target map (see %2$s option %1$s). Default: current map', 'extensions-leaflet-map' ),
 		'mapid',
 		'leaflet-map'
 	)
 	. '</li>';
-	$text = $text . '<li> zoom - '
-	. __( 'valid if the target marker is not clustered. Zoom level for move to location for target marker. Default: actual zoom level.', 'extensions-leaflet-map' )
-	. '</li>
+	$text .= '<li> zoom - '
+	. __( 'see below', 'extensions-leaflet-map' ) . '</li>
 	<li> debug - '
-	. __( 'if true, log some infos to the developer console and add circles about the target on the map.', 'extensions-leaflet-map' ) .
-	'</li></ul>';
+	. __( 'if true, log some infos to the developer console and add circles about the target on the map', 'extensions-leaflet-map' ) . '</li>';
+	$text .= '</ul></p></li></ul></p>' . "\n";
 
-	$text = $text . '<h4>' . __( 'Target - shortcode for the map', 'extensions-leaflet-map' ) . '</h4>';
-	$text = $text . '<ul><li><code>fitbounds</code>, <code>zoomhomemap</code> ' . __( 'are mandatory!', 'extensions-leaflet-map' ) . '</li>';
-	/* translators: %1$s is a targetmarker, %2$s is title. */
-	$text = $text . '<li><code>title</code> ' . sprintf( __( 'is mandatory, if you use %1$s with option %2$s.', 'extensions-leaflet-map' ), '<code>targetlink</code>', '<code>title</code>' ) . '</li></ul>';
+	$text .= '<h3>' . __( 'Options for query string', 'extensions-leaflet-map' ) . '</h3>' . "\n";
 
-	// $text = $text . '<li><code>title</code> ' . __( 'is mandatory.', 'extensions-leaflet-map' ) . '</li></ul>';
-
-	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>' . $targetmap . '</code></pre>' . "\n";
-
-	$text = $text . '<h3>' . __( 'Different source and target', 'extensions-leaflet-map' ) . '</h3>';
-	/* translators: %1$s is GET, %2$s is POST. */
-	$text = $text . '<p>' . sprintf( __( 'There are two ways to the target: %1$s or %2$s.', 'extensions-leaflet-map' ), 'GET', 'POST' ) . '</p>';
-
-	$text = $text . '<h4>' . __( 'Source', 'extensions-leaflet-map' ) . ' - GET</h4>';
-
-	$text = $text . '<p>' . sprintf(
+	$text .= '<p>' . sprintf(
 		/* translators: %s is styling */
 		__( 'This is the only way to link to a marker on your map from an %1$sexternal%2$s site.', 'extensions-leaflet-map' ),
 		'<b>',
 		'</b>'
-	) . '</p>';
+	) . '</p>' . "\n";
 
-	$text = $text . '<ul><li>' . __( 'Create a source page / post with a link to the target page / post.', 'extensions-leaflet-map' ) . '</li>';
-	$text = $text . '<li>' . __( 'The parameters (querystring) from this link should be:', 'extensions-leaflet-map' ) .
-	'<code> ?lat=...&lng=...</code></li>';
-	$text = $text . '<li>' . __( 'example URL for the link', 'extensions-leaflet-map' ) . ': <code>' . get_site_url() . '/targetpage/?lat=...&lng=...</code></li>';
-	$text = $text . '</ul>';
+	$text .= '<p><ul><li>' . __( 'Create a source page with a link to the target page.', 'extensions-leaflet-map' ) . '</li>' . "\n";
+	$text .= '<li>' . __( 'The parameters (querystring) from this link should be:', 'extensions-leaflet-map' ) .
+	' "<code>?lat=...&lng=...&zoom=...</code>" - <code>zoom</code> ' . __( 'is optional.', 'extensions-leaflet-map' ) . '</li>' . "\n";
+	$text .= '<li>' . __( 'example URL for the link', 'extensions-leaflet-map' ) . ': <code>' . get_site_url() . '/targetpage/?lat=...&lng=...</code></li>' . "\n";
+	$text .= '<li>' . __( 'The URL can be link to a page on your website or to a remote one.', 'extensions-leaflet-map' ) . '</li>';
+	$text .= '</ul></p>' . "\n";
 
-	$text = $text . '<h4>' . __( 'Source', 'extensions-leaflet-map' ) . ' - POST</h4>';
+	$text .= '<h2>' . __( 'Shortcodes on target map', 'extensions-leaflet-map' ) . '</h2>' . "\n";
 
-	$text = $text . '<p>' . __( 'A link similar to this one is created:', 'extensions-leaflet-map' ) .
-	' <code>&lt;a href="' . get_site_url() . '/targetpage/">linktext&lt;/a></code>. ';
-	$text = $text . __( 'You can write this shortcode anywhere in your text.', 'extensions-leaflet-map' ) . '</p>';
+	$targetmap  = '&#091;leaflet-map fitbounds]' . "\n";
+	$targetmap .= '// many any' . "\n";
+	$targetmap .= '&#091;leaflet-marker title=... ....]your popupcontent&#091;/leaflet-marker]' . "\n";
+	$targetmap .= '&#091;leaflet-extramarker title=... ....]your popupcontent&#091;/leaflet-extramarker]' . "\n";
+	$targetmap .= '// or one geojson file with markers' . "\n";
+	$targetmap .= '&#091;leaflet-geojson ....]your popupcontent&#091;/leaflet-geojson]' . "\n";
+	$targetmap .= '// optional' . "\n";
+	$targetmap .= '&#091;cluster ...]' . "\n";
+	$targetmap .= '// required' . "\n";
+	$targetmap .= '&#091;zoomhomemap]' . "\n";
 
-	$text = $text . '<ul><li>';
-	/* translators: %1$s is leaflet-marker, %2$s is leaflet-extramarker. */
-	$text = $text . sprintf( __( 'jump to %1$s or %2$s on a target page', 'extensions-leaflet-map' ), '<code>leaflet-marker</code>', '<code>leaflet-extramarker</code>' );
-	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>';
-	$text = $text . '&#091;targetlink link=' . get_site_url() . '/targetpage/ title=... linktext=...]' . "\n";
-	$text = $text . '</code></pre>' . "\n";
-	$text = $text . '</li><li>';
-	$text = $text . __( 'jump to a marker in a geojson file on a target page', 'extensions-leaflet-map' );
-	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>';
-	$text = $text . '&#091;targetlink link=' . get_site_url() . '/targetpage/ property=... value=... linktext=...]' . "\n";
-	$text = $text . '</code></pre>' . "\n";
-	$text = $text . '</li></ul>';
+	$text .= '<p><pre' . $codestyle . '><code' . $codestyle . '>' . $targetmap . '</code></pre></p>' . "\n";
 
-	$text = $text . '<h4>' . sprintf( __( 'Target - shortcode for the map', 'extensions-leaflet-map' ), '<code>targetmarker</code>' ) . '</h4>';
+	$text .= __( 'Required, if source page and target page are not the same:', 'extensions-leaflet-map' );
 
-	$text = $text . '<ul><li><code>fitbounds, zoomhomemap, targetmarker</code> ' . __( 'are mandatory!', 'extensions-leaflet-map' ) . '</li>';
-	$text = $text . '<li>' . __( 'The order of the shortcodes is fixed!', 'extensions-leaflet-map' );
-	$text = $text . ' <code>cluster - zoomhomemap - targetmarker</code>.</li>';
-	/* translators: %1$s is a targetmarker, %2$s is title. */
-	$text = $text . '<li><code>title</code> ' . sprintf( __( 'is mandatory, if you use %1$s with option %2$s.', 'extensions-leaflet-map' ), '<code>targetlink</code>', '<code>title</code>' ) . '</li>';
-	$text = $text . '</ul>';
+	$text .= '<pre' . $codestyle . '><code' . $codestyle . '>';
+	$text .= '// popup, zoom, debug are optional' . "\n";
+	$text .= '&#091;targetmarker popup=... zoom=... debug=...]</code></pre>';
 
-	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>' . $targetmap;
-	$text = $text . '// popup, zoom, debug are optional' . "\n";
-	$text = $text . '&#091;targetmarker popup=... zoom=... debug=...]</code></pre>';
-	$text = $text . '<h4>' . __( 'Target - options for', 'extensions-leaflet-map' ) . ' <code>targetmarker</code></h4>';
+	$text .= '<p><ul><li><code>fitbounds</code>, <code>zoomhomemap</code> ' . __( 'are required!', 'extensions-leaflet-map' ) . '</li>' . "\n";
+	$text .= '<li><code>title</code> ' .
+	sprintf(
+		/* translators: %1$s is a targetmarker, %2$s is title. */
+		__( 'is required, if you use %1$s with option %2$s.', 'extensions-leaflet-map' ),
+		'<code>targetlink</code>',
+		'<code>title</code>'
+	) . '</li>' . "\n";
 
-	// $text = $text . '<ul><li>' .
-	// 'lat, lng - (GET) ' . __( 'Latitude and Longitude are taken from URL parameters, e.g.', 'extensions-leaflet-map' ) . ': <code>' . get_site_url() . '/targetpage/?lat=...&lng=...</code>'
-	// . '</li>';
-	// $text = $text .
-	// '<li>' .
-	// 'title - (POST) <code>title</code> ' . __( 'is taken from POST parameters', 'extensions-leaflet-map' )
-	// . '</li>';
-	$text = $text . '<ul><li> popup - ';
-	/* translators: %1$s is title, %2$s is Target. */
-	$text = $text . sprintf( __( 'popup content, if the target marker has not a popup. Default: %1$s, if the marker has one or %2$s.', 'extensions-leaflet-map' ), '<code>title</code>', '"Target"' ) . '</li>
-	<li> zoom - '
-	. __( 'valid only, if the target marker is not clustered. Zoom level if target marker was found. Default: actual zoom level.', 'extensions-leaflet-map' )
-	. '</li>';
-	$text = $text . sprintf(
-		'<li> mapid - '
-		/* translators: %1$s is "mapid", %2$s is "leaflet-map". */
-		. __( ' %1$s from target map (see %2$s option %1$s). Default: current map.', 'extensions-leaflet-map' ),
-		'mapid',
-		'leaflet-map'
+	$text .= '<li><code>targetmarker</code> ' .
+	__( 'is required, if source page and target page are different.', 'extensions-leaflet-map' ) . ' ' .
+	sprintf(
+		/* translators: %s is targetmarker. */
+		__( 'If the page is the same, %s does not need to be defined.', 'extensions-leaflet-map' ),
+		'<code>targetmarker</code>'
 	)
-	. '</li>';
-	$text = $text . '
+	. '</li>' . "\n";
+
+	$text .= '<li>' . __( 'The order of the shortcodes is fixed!', 'extensions-leaflet-map' );
+	$text .= ' <code>cluster - zoomhomemap - targetmarker</code>.</li>' . "\n";
+	$text .= '<li>' . sprintf(
+		/* translators: %s is targetmarker. */
+		__( 'If you have more than one map on a page: %s may only appear exactly once and must be the last shortcode.', 'extensions-leaflet-map' ),
+		'<code>targetmarker</code>'
+	) . '</li>' . "\n";
+	$text .= '</ul></p>' . "\n";
+
+	// $text .= '<h4>' . __( 'Options for', 'extensions-leaflet-map' ) . ' <code>targetmarker</code></h4>' . "\n";
+	$text .= '<h3>' . __( 'Shortcode <code>targetmarker</code>', 'extensions-leaflet-map' ) . '</h3>' . "\n";
+
+	$text .= '<p>' . __( 'All these options are optional.', 'extensions-leaflet-map' ) . '</p>' . "\n";
+	$text .= '<ul><li> popup - ';
+	/* translators: %1$s is title, %2$s is Target. */
+	$text .= sprintf( __( 'popup content, if the target marker has not a popup. Default: %1$s, if the marker has one or %2$s.', 'extensions-leaflet-map' ), '<code>title</code>', '"Target"' ) . '</li>
+	<li> zoom - '
+	. __( 'see below.', 'extensions-leaflet-map' )
+	. '</li>' . "\n";
+	$text .= '
 	<li> debug - '
 	. __( 'if true, log some infos to the developer console and add circles about the target on the map.', 'extensions-leaflet-map' ) .
 	'</li></ul>';
+
+	$text .= '<h3>' . __( 'Option', 'extensions-leaflet-map' ) . ' zoom</h3>' . "\n";
+	$text .= '<p>'
+	. __( 'This is the zoom level for zooming to the target marker.', 'extensions-leaflet-map' );
+	$text .= ' <code>zoom</code> '
+	. __( 'is considered only, if the target marker is not in a cluster.', 'extensions-leaflet-map' )
+	. '</p>' . "\n";
+	$text .= '<b>' . __( 'Priority:', 'extensions-leaflet-map' ) . '</b>' . "\n";
+	$text .= '<p><ol>' .
+	'<li><code>zoom</code> in querystring or in <code>targetlink</code></li>' . "\n" .
+	'<li><code>zoom</code> in <code>targetmarker</code></li>' . "\n" .
+	'<li>' . __( 'Default: actual zoom level of the map', 'extensions-leaflet-map' ) . '</li>' . "\n" .
+	'</ol></p>' . "\n";
 
 	if ( is_singular() || is_archive() ) {
 		return $text;

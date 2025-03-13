@@ -15,17 +15,12 @@ function leafext_target_get_lanlng_js(lat,lng,target,mapid,zoom,debug) {
 		map.whenReady(
 			function () {
 				// console.log("ready target");
-				let mapbounds = map.getBounds();
 				if (debug) {
 					L.circleMarker( L.latLng( lat,lng ), {radius: 3,color: "red"} ).bindPopup( "latlng" ).addTo( map );
+					let mapbounds = map.getBounds();
 					L.rectangle( mapbounds, {color: "yellow", weight: 1} ).addTo( map );
 				}
-				// with bounds because of abuse, POST is better
-				if (mapbounds.contains( L.latLng( lat,lng ) )) {
-					leafext_target_latlng_marker_do( map,lat,lng,target,zoom,debug );
-				} else {
-					console.log( "lat, lng not in marker bounds or no marker" );
-				}
+				leafext_target_latlng_marker_do( map,lat,lng,target,zoom,debug );
 			}
 		);
 	} else {
@@ -119,13 +114,13 @@ function leafext_target_latlng_marker_do(map,lat,lng,target,zoom,debug){
 			}
 		}
 	);
-
 	if (debug) {
 		// console.log(closestMarker);
 		L.circle( latlng, {radius: closest,color: "red"} ).bindPopup( "radius" ).addTo( map );
 		L.circle( closestMarker.getLatLng(), {radius: closest,color: "blue"} ).bindPopup( "closestMarker" ).addTo( map );
 	}
 	leafext_zoom_to_closest( "latlng", closest, closestMarker, target, zoom, map, debug );
+	leafext_jump_to_map( map._leaflet_id );
 }
 
 function leafext_target_latlng_geojson_do(map,lat,lng,geolayer,target,zoom,debug) {
@@ -198,31 +193,32 @@ function leafext_target_marker_title_do(map,title,target,zoom,debug){
 	var closestMarker;
 
 	var markergroups = window.WPLeafletMapPlugin.markergroups;
-		Object.entries( markergroups ).forEach(
-			([key, value]) =>
-			{
-				if ( markergroups[key]._map !== null ) {
-					if (map._leaflet_id == markergroups[key]._map._leaflet_id) {
-						// console.log("markergroups loop");
-						markergroups[key].eachLayer(
-							function (layer) {
-								// console.log(layer);
-								if (layer instanceof L.Marker) {
-									if ( layer.options.title == title || layer.options.title_bak == title ) {
-										if (debug) {
-											console.log( title );
-										}
-										closestMarker = layer;
-										closest       = 0;
+	Object.entries( markergroups ).forEach(
+		([key, value]) =>
+		{
+			if ( markergroups[key]._map !== null ) {
+				if (map._leaflet_id == markergroups[key]._map._leaflet_id) {
+					// console.log("markergroups loop");
+					markergroups[key].eachLayer(
+						function (layer) {
+							// console.log(layer);
+							if (layer instanceof L.Marker) {
+								if ( layer.options.title == title || layer.options.title_bak == title ) {
+									if (debug) {
+										console.log( title );
 									}
+									closestMarker = layer;
+									closest       = 0;
 								}
 							}
-						);
-					}
+						}
+					);
 				}
 			}
-		);
+		}
+	);
 	leafext_zoom_to_closest( "title", closest, closestMarker, target, zoom, map, debug );
+	leafext_jump_to_map( map._leaflet_id );
 }
 
 // targetmarker geojsonproperty
@@ -248,6 +244,7 @@ function leafext_target_same_geojson_js(geojsonproperty,geojsonvalue,target,mapi
 								leafext_target_geojson_do( geolayer,geojsonproperty,geojsonvalue,target,zoom,map,debug );
 							}
 						);
+						leafext_jump_to_map( map._leaflet_id );
 					}
 				}
 			}
@@ -263,7 +260,7 @@ function leafext_target_post_geojson_js(geojsonproperty,geojsonvalue,target,mapi
 	var geojsons  = window.WPLeafletMapPlugin.geojsons;
 	var geocount  = geojsons.length;
 	if (geocount > 0) {
-		console.log( "geojsons " + geojsons.length );
+		// console.log( "geojsons " + geojsons.length );
 		for (var j = 0, len = geocount; j < len; j++) {
 			var geojson = geojsons[j];
 			if (map_id == geojson._map._leaflet_id) {

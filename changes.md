@@ -3,6 +3,7 @@
 * new version L.Control.Layers.Tree.js
 * fontawesome-free-6.7.2
 * Plugin Check issues
+* targetmarker: different zoom, documentation
 * Plugin Update Checker v5p5
 * new organization of Github updates
 

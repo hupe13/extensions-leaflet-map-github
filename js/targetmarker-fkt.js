@@ -185,15 +185,17 @@ function leafext_zoom_to_closest(type, closest, closestMarker, target, zoom, map
 function leafext_jump_to_map(mapid) {
 	// console.log("leafext_jump_to_map");
 	// console.log(mapid);
-	let allmaps = document.getElementsByClassName( "leaflet-map" );
-	Object.entries( allmaps ).forEach(
-		([key, map]) =>
-		{
-			if (mapid == map._leaflet_id - 1 ) {
-				map.scrollIntoView( { block: "center" } );
+	if ( typeof mapid !== "undefined") {
+		let allmaps = document.getElementsByClassName( "leaflet-map" );
+		Object.entries( allmaps ).forEach(
+			([key, map]) =>
+			{
+				if (mapid == map._leaflet_id - 1 ) {
+					map.scrollIntoView( { block: "center" } );
+				}
 			}
-		}
-	);
+		);
+	}
 }
 
 function leafext_get_map(mapid) {

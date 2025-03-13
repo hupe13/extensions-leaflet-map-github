@@ -41,16 +41,26 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 			$error = 'targetmarker error';
 			if ( ! empty( $_POST ) && check_admin_referer( 'leafext_targetlink', 'leafext_targetlink_nonce' ) ) {
 				// var_dump( $_POST );
-				$get              = map_deep( wp_unslash( $_POST ), 'sanitize_text_field' );
-				$options['title'] = isset( $get['title'] ) ? wp_strip_all_tags( $get['title'] ) : '';
+				$get                 = map_deep( wp_unslash( $_POST ), 'sanitize_text_field' );
+				$options['title']    = isset( $get['title'] ) ? wp_strip_all_tags( $get['title'] ) : '';
+				$options['property'] = isset( $get['property'] ) ? wp_strip_all_tags( $get['property'] ) : '';
+				$options['value']    = isset( $get['value'] ) ? wp_strip_all_tags( $get['value'] ) : '';
+				$options['lat']      = isset( $get['lat'] ) ? filter_var( $get['lat'], FILTER_VALIDATE_FLOAT ) : '';
+				$options['lng']      = isset( $get['lng'] ) ? filter_var( $get['lng'], FILTER_VALIDATE_FLOAT ) : '';
+				$options['debug']    = isset( $get['debug'] ) ? true : false;
+				$options['mapid']    = sanitize_text_field( $get['mapid'] );
+
+				if ( isset( $get['zoom'] ) && $get['zoom'] !== 'false' ) {
+					$options['zoom'] = isset( $get['zoom'] ) ? wp_strip_all_tags( $get['zoom'] ) : $options['zoom'];
+				}
 				if ( $options['title'] !== '' ) {
 					return leafext_target_post_title_script( $options );
 				}
-				$options['property'] = isset( $get['property'] ) ? wp_strip_all_tags( $get['property'] ) : '';
-				$options['value']    = isset( $get['value'] ) ? wp_strip_all_tags( $get['value'] ) : '';
-				$options['debug']    = wp_json_encode( $options['debug'] );
 				if ( $options['property'] !== '' && $options['value'] !== '' ) {
 					return leafext_target_post_geojson_script( $options );
+				}
+				if ( $options['lat'] !== '' && $options['lng'] !== '' ) {
+					return leafext_target_get_latlng_script( $options );
 				}
 				$error = 'POST - error';
 			} // POST end
@@ -60,10 +70,13 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 				// QUERY_STRING exists
 				$options['lat'] = isset( $get['lat'] ) ? filter_var( $get['lat'], FILTER_VALIDATE_FLOAT ) : '';
 				$options['lng'] = isset( $get['lng'] ) ? filter_var( $get['lng'], FILTER_VALIDATE_FLOAT ) : '';
-
+				if ( isset( $get['zoom'] ) && $get['zoom'] !== 'false' ) {
+					$options['zoom'] = isset( $get['zoom'] ) ? wp_strip_all_tags( $get['zoom'] ) : $options['zoom'];
+				}
+				$options['mapid'] = isset( $get['mapid'] ) ? sanitize_text_field( $get['mapid'] ) : '';
 				if ( $options['lat'] !== '' && $options['lng'] !== '' ) {
 					// lat and Lng to a target page
-					return leafext_target_get_lanlng_script( $options );
+					return leafext_target_get_latlng_script( $options );
 				}
 				$error = 'GET - lat lng missing';
 			} // GET end
@@ -71,35 +84,57 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 		} elseif ( $shortcode === 'targetlink' ) {
 			$error = 'targetlink error';
 			if ( $options['link'] !== '' && $options['title'] !== '' ) {
-				$rand = wp_rand( 1, 2000 );
-				$text = '<form id=targetlink_' . $rand . ' style="display: inline-block;" method="post" action="' . esc_url( $options['link'] ) . '">';
-				$text = $text . '<input type="hidden" name="title" value="' . wp_strip_all_tags( $options['title'] ) . '">';
-				$text = $text . wp_nonce_field( 'leafext_targetlink', 'leafext_targetlink_nonce' );
-				$text = $text . '<a href="javascript:;" onclick="parentNode.submit();">' . $options['linktext'] . '</a>';
-				$text = $text . '</form>';
-				$text = $text . '<script>';
-				$text = $text . 'if (document.getElementById("targetlink_' . $rand . '").previousElementSibling.nodeName == "P") {
+				$rand  = wp_rand( 1, 2000 );
+				$text  = '<form id=targetlink_' . $rand . ' style="display: inline-block;" method="post" action="' . esc_url( $options['link'] ) . '">';
+				$text .= '<input type="hidden" name="title" value="' . wp_strip_all_tags( $options['title'] ) . '">';
+				$text .= '<input type="hidden" name="zoom" value="' . $options['zoom'] . '">';
+				$text .= '<input type="hidden" name="mapid" value="' . sanitize_text_field( $options['mapid'] ) . '">';
+				$text .= '<input type="hidden" name="debug" value="' . $options['debug'] . '">';
+				$text .= wp_nonce_field( 'leafext_targetlink', 'leafext_targetlink_nonce' );
+				$text .= '<a href="javascript:;" onclick="parentNode.submit();">' . $options['linktext'] . '</a>';
+				$text .= '</form>';
+				$text .= '<script>';
+				$text .= 'if (document.getElementById("targetlink_' . $rand . '").previousElementSibling.nodeName == "P") {
 				document.getElementById("targetlink_' . $rand . '").previousElementSibling.classList.add("targetlink");}';
-				$text = $text . '</script>';
+				$text .= '</script>';
 				return $text;
 
 			} elseif ( $options['link'] !== '' && $options['property'] !== '' && $options['value'] !== '' ) {
-				$rand = wp_rand( 1, 2000 );
-				$text = '<form id=targetlink_' . $rand . ' style="display: inline-block;" method="post" action="' . esc_url( $options['link'] ) . '">';
-				$text = $text . '<input type="hidden" name="property" value="' . wp_strip_all_tags( $options['property'] ) . '">';
-				$text = $text . '<input type="hidden" name="value" value="' . wp_strip_all_tags( $options['value'] ) . '">';
-				$text = $text . wp_nonce_field( 'leafext_targetlink', 'leafext_targetlink_nonce', true, false );
-				$text = $text . '<a href="javascript:;" onclick="parentNode.submit();">' . $options['linktext'] . '</a>';
-				$text = $text . '</form>';
-				$text = $text . '<script>';
-				$text = $text . 'if (document.getElementById("targetlink_' . $rand . '").previousElementSibling.nodeName == "P") {
+				$rand  = wp_rand( 1, 2000 );
+				$text  = '<form id=targetlink_' . $rand . ' style="display: inline-block;" method="post" action="' . esc_url( $options['link'] ) . '">';
+				$text .= '<input type="hidden" name="property" value="' . wp_strip_all_tags( $options['property'] ) . '">';
+				$text .= '<input type="hidden" name="value" value="' . wp_strip_all_tags( $options['value'] ) . '">';
+				$text .= '<input type="hidden" name="zoom" value="' . $options['zoom'] . '">';
+				$text .= '<input type="hidden" name="mapid" value="' . sanitize_text_field( $options['mapid'] ) . '">';
+				$text .= wp_nonce_field( 'leafext_targetlink', 'leafext_targetlink_nonce', true, false );
+				$text .= '<a href="javascript:;" onclick="parentNode.submit();">' . $options['linktext'] . '</a>';
+				$text .= '</form>';
+				$text .= '<script>';
+				$text .= 'if (document.getElementById("targetlink_' . $rand . '").previousElementSibling.nodeName == "P") {
 				document.getElementById("targetlink_' . $rand . '").previousElementSibling.classList.add("targetlink");}';
-				$text = $text . '</script>';
+				$text .= '</script>';
+				return $text;
+
+			} elseif ( $options['link'] !== '' && $options['lat'] !== '' && $options['lng'] !== '' ) {
+				// lat and lng post
+				$rand  = wp_rand( 1, 2000 );
+				$text  = '<form id=targetlink_' . $rand . ' style="display: inline-block;" method="post" action="' . esc_url( $options['link'] ) . '">';
+				$text .= '<input type="hidden" name="lat" value="' . filter_var( $options['lat'], FILTER_VALIDATE_FLOAT ) . '">';
+				$text .= '<input type="hidden" name="lng" value="' . filter_var( $options['lng'], FILTER_VALIDATE_FLOAT ) . '">';
+				$text .= '<input type="hidden" name="zoom" value="' . $options['zoom'] . '">';
+				$text .= '<input type="hidden" name="mapid" value="' . sanitize_text_field( $options['mapid'] ) . '">';
+				$text .= wp_nonce_field( 'leafext_targetlink', 'leafext_targetlink_nonce', true, false );
+				$text .= '<a href="javascript:;" onclick="parentNode.submit();">' . $options['linktext'] . '</a>';
+				$text .= '</form>';
+				$text .= '<script>';
+				$text .= 'if (document.getElementById("targetlink_' . $rand . '").previousElementSibling.nodeName == "P") {
+				document.getElementById("targetlink_' . $rand . '").previousElementSibling.classList.add("targetlink");}';
+				$text .= '</script>';
 				return $text;
 
 			} elseif ( $options['lat'] !== '' && $options['lng'] !== '' ) {
-				// lat and lng same page / post
-				$text = '<a href="javascript:leafext_jump_to_map(mapid);" onclick="mapid = leafext_target_same_lanlng_js('
+				// lat and lng same page
+				$text = '<a href="javascript:;" onclick="mapid = leafext_target_same_lanlng_js('
 				. filter_var( $options['lat'], FILTER_VALIDATE_FLOAT ) . ','
 				. filter_var( $options['lng'], FILTER_VALIDATE_FLOAT ) . ','
 				. '\'' . $options['popup'] . '\','
@@ -111,7 +146,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 
 			} elseif ( $options['property'] !== '' && $options['value'] !== '' ) {
 				// geojson property and value on the same page / post
-				$text = '<a href="javascript:leafext_jump_to_map(mapid);" onclick="mapid = leafext_target_same_geojson_js('
+				$text = '<a href="javascript:;" onclick="mapid = leafext_target_same_geojson_js('
 				. '\'' . $options['property'] . '\','
 				. '\'' . $options['value'] . '\','
 				. '\'' . $options['popup'] . '\','
@@ -123,7 +158,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 
 			} elseif ( $options['title'] !== '' ) {
 				// marker title on the same page / post
-				$text = '<a href="javascript:leafext_jump_to_map(mapid);" onclick="mapid = leafext_target_same_title_js('
+				$text = '<a href="javascript:;" onclick="mapid = leafext_target_same_title_js('
 				. '\'' . $options['title'] . '\','
 				. '\'' . $options['popup'] . '\','
 				. '\'' . $options['mapid'] . '\','
@@ -137,10 +172,10 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 		$text = '[' . $shortcode . ' ';
 		if ( is_array( $atts ) ) {
 			foreach ( $atts as $key => $item ) {
-				$text = $text . "$key=$item ";
+				$text .= "$key=$item ";
 			}
 		}
-		$text = $text . ' - something is wrong. ' . $error . ']';
+		$text .= ' - something is wrong. ' . $error . ']';
 		return '<script>console.log("' . esc_js( $text ) . '");</script>';
 	}
 }
@@ -148,7 +183,7 @@ add_shortcode( 'targetmarker', 'leafext_targetmarker_function' );
 add_shortcode( 'targetlink', 'leafext_targetmarker_function' );
 
 // Shortcode: [targetmarker] if lat and lng in QUERY_STRING
-function leafext_target_get_lanlng_script( $options ) {
+function leafext_target_get_latlng_script( $options ) {
 	$text = '<script><!--';
 	ob_start();
 	?>

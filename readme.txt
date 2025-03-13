@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 6.7
-Stable tag: 4.4-250303
+Stable tag: 4.4-250313
 Requires at least: 5.5.3
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -40,5 +40,6 @@ Many thanks to everyone who found errors and provided ideas for new functions.
 * new version L.Control.Layers.Tree.js
 * fontawesome-free-6.7.2
 * Plugin Check issues
+* targetmarker: different zoom, documentation
 * Plugin Update Checker v5p5
 * new organization of Github updates
