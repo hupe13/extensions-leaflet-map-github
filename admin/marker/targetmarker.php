@@ -39,7 +39,7 @@ function leafext_targetmarker_help() {
 	// $text .= '<li>' . __( 'Shortcode', 'extensions-leaflet-map' ) . ' <code>targetmarker</code></li>' . "\n";
 	$text .= '</ul></p>' . "\n";
 
-	$text .= '<h3>' . __( 'Shortcode <code>targetlink</code>', 'extensions-leaflet-map' ) . '</h3>' . "\n";
+	$text .= '<h3>' . __( 'Shortcode', 'extensions-leaflet-map' ) . ' <code>targetlink</code></h3>' . "\n";
 
 	$text .= '<p>' . __( 'A link similar to this one is created:', 'extensions-leaflet-map' ) .
 	' <code>&lt;a href="' . __( 'Link to the marker on a map', 'extensions-leaflet-map' ) . '">linktext&lt;/a></code>. ';
@@ -64,7 +64,7 @@ function leafext_targetmarker_help() {
 	$text .= '</li>';
 	$text .= '</ul></p>' . "\n";
 
-	$text .= '<h3>' . __( 'Options for <code>targetlink</code>', 'extensions-leaflet-map' ) . '</h3>' . "\n";
+	$text .= '<h3>' . __( 'Options for', 'extensions-leaflet-map' ) . ' <code>targetlink</code></h3>' . "\n";
 
 	$text .= '<p><ul>';
 	$text .= '<li>required: one of these';
@@ -178,8 +178,7 @@ function leafext_targetmarker_help() {
 	) . '</li>' . "\n";
 	$text .= '</ul></p>' . "\n";
 
-	// $text .= '<h4>' . __( 'Options for', 'extensions-leaflet-map' ) . ' <code>targetmarker</code></h4>' . "\n";
-	$text .= '<h3>' . __( 'Shortcode <code>targetmarker</code>', 'extensions-leaflet-map' ) . '</h3>' . "\n";
+	$text .= '<h3>' . __( 'Shortcode', 'extensions-leaflet-map' ) . ' <code>targetmarker</code></h3>' . "\n";
 
 	$text .= '<p>' . __( 'All these options are optional.', 'extensions-leaflet-map' ) . '</p>' . "\n";
 	$text .= '<ul><li> popup - ';
@@ -201,8 +200,18 @@ function leafext_targetmarker_help() {
 	. '</p>' . "\n";
 	$text .= '<b>' . __( 'Priority:', 'extensions-leaflet-map' ) . '</b>' . "\n";
 	$text .= '<p><ol>' .
-	'<li><code>zoom</code> in querystring or in <code>targetlink</code></li>' . "\n" .
-	'<li><code>zoom</code> in <code>targetmarker</code></li>' . "\n" .
+	'<li>' . sprintf(
+		/* translators: %1$s is zoom, %2$s is targetlink. */
+		__( '%1$s in querystring or in %2$s', 'extensions-leaflet-map' ),
+		'<code>zoom</code>',
+		'<code>targetlink</code>'
+	) . '</li>' . "\n" .
+	'<li>' . sprintf(
+		/* translators: %1$s is zoom, %2$s is targetmarker. */
+		__( '%1$s in %2$s', 'extensions-leaflet-map' ),
+		'<code>zoom</code>',
+		'<code>targetmarker</code>'
+	) . '</li>' . "\n" .
 	'<li>' . __( 'Default: actual zoom level of the map', 'extensions-leaflet-map' ) . '</li>' . "\n" .
 	'</ol></p>' . "\n";
 
