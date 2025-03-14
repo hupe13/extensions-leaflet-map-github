@@ -67,7 +67,7 @@ function leafext_targetmarker_help() {
 	$text .= '<h3>' . __( 'Options for', 'extensions-leaflet-map' ) . ' <code>targetlink</code></h3>' . "\n";
 
 	$text .= '<p><ul>';
-	$text .= '<li>required: one of these';
+	$text .= '<li>' . __( 'required: one of these', 'extensions-leaflet-map' );
 	$text .= '<p><ul>';
 	$text .= '<li> title - <code>title</code> ';
 	$text .= sprintf(
@@ -182,8 +182,15 @@ function leafext_targetmarker_help() {
 
 	$text .= '<p>' . __( 'All these options are optional.', 'extensions-leaflet-map' ) . '</p>' . "\n";
 	$text .= '<ul><li> popup - ';
-	/* translators: %1$s is title, %2$s is Target. */
-	$text .= sprintf( __( 'popup content, if the target marker has not a popup. Default: %1$s, if the marker has one or %2$s.', 'extensions-leaflet-map' ), '<code>title</code>', '"Target"' ) . '</li>
+	$text .= sprintf(
+		/* translators: %1$s is title, %2$s is Target. */
+		__(
+			'popup content, if the target marker has not a popup text. Default: content of %1$s, if the marker has one or %2$s',
+			'extensions-leaflet-map'
+		),
+		'<code>title</code>',
+		'"Target"'
+	) . '.</li>
 	<li> zoom - '
 	. __( 'see below.', 'extensions-leaflet-map' )
 	. '</li>' . "\n";
