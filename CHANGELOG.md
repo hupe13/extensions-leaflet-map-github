@@ -1,6 +1,6 @@
-### 4.4.4 / 2503xx
+### 4.4.4 / 250316
 
-* new version L.Control.Layers.Tree.js
+* new version L.Control.Layers.Tree.js, leaflet-providers.js, Control.FullScreen, togeojson.umd.js
 * fontawesome-free-6.7.2
 * Plugin Check issues
 * targetmarker: different zoom, documentation

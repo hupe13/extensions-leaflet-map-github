@@ -1,4 +1,4 @@
-(function (root, factory) {
+(function(root, factory) {
 	if (typeof define === 'function' && define.amd) {
 		// AMD. Register as an anonymous module.
 		define(['leaflet'], factory);
@@ -9,11 +9,11 @@
 		// Assume Leaflet is loaded into global object L already
 		factory(L);
 	}
-}(this, function (L) {
+}(this, function(L) {
 	'use strict';
 
 	L.TileLayer.Provider = L.TileLayer.extend({
-		initialize: function (arg, options) {
+		initialize: function(arg, options) {
 			var providers = L.TileLayer.Provider.providers;
 
 			var parts = arg.split('.');
@@ -52,12 +52,13 @@
 
 			// replace attribution placeholders with their values from toplevel provider attribution,
 			// recursively
-			var attributionReplacer = function (attr) {
+			var attributionReplacer = function(attr) {
 				if (attr.indexOf('{attribution.') === -1) {
 					return attr;
 				}
-				return attr.replace(/\{attribution.(\w*)\}/g,
-					function (match, attributionName) {
+				return attr.replace(
+					/\{attribution.(\w*)\}/g,
+					function(match, attributionName) {
 						return attributionReplacer(providers[attributionName].options.attribution);
 					}
 				);
@@ -342,7 +343,7 @@
 			}
 		},
 		Thunderforest: {
-			url: 'https://{s}.tile.thunderforest.com/{variant}/{z}/{x}/{y}.png?apikey={apikey}',
+			url: 'https://{s}.tile.thunderforest.com/{variant}/{z}/{x}/{y}{r}.png?apikey={apikey}',
 			options: {
 				attribution:
 					'&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, {attribution.OpenStreetMap}',
@@ -374,17 +375,17 @@
 				Neighbourhood: 'neighbourhood'
 			}
 		},
-	        BaseMapDE: {
-	            url: 'https://sgx.geodatenzentrum.de/wmts_basemapde/tile/1.0.0/{variant}/default/GLOBAL_WEBMERCATOR/{z}/{y}/{x}.png',
-	            options: {
-	                attribution: 'Map data: &copy; <a href="http://www.govdata.de/dl-de/by-2-0">dl-de/by-2-0</a>',
-	                variant: 'de_basemapde_web_raster_farbe',
-	            },
-	            variants: {
-	                Color: 'de_basemapde_web_raster_farbe',
-	                Grey: 'de_basemapde_web_raster_grau'
-	            }
-	        },		
+		BaseMapDE: {
+			url: 'https://sgx.geodatenzentrum.de/wmts_basemapde/tile/1.0.0/{variant}/default/GLOBAL_WEBMERCATOR/{z}/{y}/{x}.png',
+			options: {
+				attribution: 'Map data: &copy; <a href="http://www.govdata.de/dl-de/by-2-0">dl-de/by-2-0</a>',
+				variant: 'de_basemapde_web_raster_farbe',
+			},
+			variants: {
+				Color: 'de_basemapde_web_raster_farbe',
+				Grey: 'de_basemapde_web_raster_grau'
+			}
+		},
 		CyclOSM: {
 			url: 'https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png',
 			options: {
@@ -443,9 +444,9 @@
 				maxZoom: 21
 			},
 			variants: {
-				Streets: 'streets',
-				Basic: 'basic',
-				Bright: 'bright',
+				Streets: 'streets-v2',
+				Basic: 'basic-v2',
+				Bright: 'bright-v2',
 				Pastel: 'pastel',
 				Positron: 'positron',
 				Hybrid: {
@@ -454,12 +455,35 @@
 						ext: 'jpg'
 					}
 				},
-				Toner: 'toner',
-				Topo: 'topo',
-				Voyager: 'voyager',
+				Toner: 'toner-v2',
+				Topo: 'topo-v2',
+				Voyager: 'voyager-v2',
 				Ocean: 'ocean',
 				Backdrop: 'backdrop',
-				Dataviz: 'dataviz'
+				Dataviz: 'dataviz',
+				DatavizLight: 'dataviz-light',
+				DatavizDark: 'dataviz-dark',
+				Aquarelle: {
+					options: {
+						variant: 'aquarelle',
+						ext: 'webp'
+					}
+				},
+				Landscape: 'landscape',
+				Openstreetmap: {
+					options: {
+						variant: 'openstreetmap',
+						ext: 'jpg'
+					}
+				},
+				Outdoor: 'outdoor-v2',
+				Satellite: {
+					options: {
+						variant: 'satellite',
+						ext: 'jpg'
+					}
+				},
+				Winter: 'winter-v2',
 			}
 		},
 		TomTom: {
@@ -579,6 +603,7 @@
 			}
 		},
 		HERE: {
+
 			/*
 			 * HERE maps, formerly Nokia maps.
 			 * These basemaps are free, but you need an api id and app key. Please sign up at
@@ -593,8 +618,8 @@
 					'Map &copy; 1987-' + new Date().getFullYear() + ' <a href="http://developer.here.com">HERE</a>',
 				subdomains: '1234',
 				mapID: 'newest',
-				'app_id': '<insert your app_id here>',
-				'app_code': '<insert your app_code here>',
+				app_id: '<insert your app_id here>',
+				app_code: '<insert your app_code here>',
 				base: 'base',
 				variant: 'normal.day',
 				maxZoom: 20,
@@ -698,6 +723,7 @@
 			}
 		},
 		HEREv3: {
+
 			/*
 			 * HERE maps API Version 3.
 			 * These basemaps are free, but you need an API key. Please sign up at
@@ -918,12 +944,12 @@
 				attribution: 'Kaartgegevens &copy; <a href="https://www.kadaster.nl">Kadaster</a>'
 			},
 			variants: {
-				'standaard': 'standaard',
-				'pastel': 'pastel',
-				'grijs': 'grijs',
-				'water': 'water',
-				'luchtfoto': {
-					'url': 'https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/Actueel_ortho25/EPSG:3857/{z}/{x}/{y}.jpeg',
+				standaard: 'standaard',
+				pastel: 'pastel',
+				grijs: 'grijs',
+				water: 'water',
+				luchtfoto: {
+					url: 'https://service.pdok.nl/hwh/luchtfotorgb/wmts/v1_0/Actueel_ortho25/EPSG:3857/{z}/{x}/{y}.jpeg',
 				}
 			}
 		},
@@ -1135,9 +1161,9 @@
 			}
 		},
 		AzureMaps: {
-			url: 
-				'https://atlas.microsoft.com/map/tile?api-version={apiVersion}'+
-				'&tilesetId={variant}&x={x}&y={y}&zoom={z}&language={language}'+
+			url:
+				'https://atlas.microsoft.com/map/tile?api-version={apiVersion}' +
+				'&tilesetId={variant}&x={x}&y={y}&zoom={z}&language={language}' +
 				'&subscription-key={subscriptionKey}',
 			options: {
 				attribution: 'See https://docs.microsoft.com/en-us/rest/api/maps/render-v2/get-map-tile for details.',
@@ -1153,9 +1179,9 @@
 				MicrosoftBaseHybridRoad: 'microsoft.base.hybrid.road',
 				MicrosoftTerraMain: 'microsoft.terra.main',
 				MicrosoftWeatherInfraredMain: {
-					url: 
-					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}'+
-					'&tilesetId={variant}&x={x}&y={y}&zoom={z}'+
+					url:
+					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}' +
+					'&tilesetId={variant}&x={x}&y={y}&zoom={z}' +
 					'&timeStamp={timeStamp}&language={language}' +
 					'&subscription-key={subscriptionKey}',
 					options: {
@@ -1165,9 +1191,9 @@
 					},
 				},
 				MicrosoftWeatherRadarMain: {
-					url: 
-					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}'+
-					'&tilesetId={variant}&x={x}&y={y}&zoom={z}'+
+					url:
+					'https://atlas.microsoft.com/map/tile?api-version={apiVersion}' +
+					'&tilesetId={variant}&x={x}&y={y}&zoom={z}' +
 					'&timeStamp={timeStamp}&language={language}' +
 					'&subscription-key={subscriptionKey}',
 					options: {
@@ -1197,21 +1223,21 @@
 				}
 			}
 		},
-	        TopPlusOpen: {
-	            url: 'http://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/{variant}/default/WEBMERCATOR/{z}/{y}/{x}.png',
-	            options: {
-	                maxZoom: 18,
-	                attribution: 'Map data: &copy; <a href="http://www.govdata.de/dl-de/by-2-0">dl-de/by-2-0</a>',
-	                variant: 'web',
-	            },
-	            variants: {
-	                Color: 'web',
-	                Grey: 'web_grau'
-	            }
-	        }
+		TopPlusOpen: {
+			url: 'http://sgx.geodatenzentrum.de/wmts_topplus_open/tile/1.0.0/{variant}/default/WEBMERCATOR/{z}/{y}/{x}.png',
+			options: {
+				maxZoom: 18,
+				attribution: 'Map data: &copy; <a href="http://www.govdata.de/dl-de/by-2-0">dl-de/by-2-0</a>',
+				variant: 'web',
+			},
+			variants: {
+				Color: 'web',
+				Grey: 'web_grau'
+			}
+		}
 	};
 
-	L.tileLayer.provider = function (provider, options) {
+	L.tileLayer.provider = function(provider, options) {
 		return new L.TileLayer.Provider(provider, options);
 	};
 

@@ -169,14 +169,14 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 			}
 		}
 		// error
-		$text = '[' . $shortcode . ' ';
+		$text = $shortcode . ' ';
 		if ( is_array( $atts ) ) {
 			foreach ( $atts as $key => $item ) {
 				$text .= "$key=$item ";
 			}
 		}
-		$text .= ' - something is wrong. ' . $error . ']';
-		return '<script>console.log("' . esc_js( $text ) . '");</script>';
+		$text .= ' - something is wrong. ' . $error;
+		return '<script> console.log("' . esc_js( $text ) . '"); </script>';
 	}
 }
 add_shortcode( 'targetmarker', 'leafext_targetmarker_function' );
