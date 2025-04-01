@@ -37,9 +37,9 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* new version L.Control.Layers.Tree.js, leaflet-providers.js, Control.FullScreen, togeojson.umd.js
-* fontawesome-free-6.7.2
-* Plugin Check issues
-* targetmarker: different zoom, documentation
-* Plugin Update Checker v5p5
-* new organization of Github updates
+### 4.4.5 / 2504xx
+
+* leaflet.markercluster-1.5.4 ( self compiled )
+* leafext_providers_fkt_script - small correction
+* dutch nl_NL
+* WordPress 6.8
