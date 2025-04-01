@@ -154,7 +154,7 @@ function leafext_ele_help_text() {
 		'"in Frontend"'
 	);
 	$text = $text . ' ' . __( 'I will include these translations in the plugin. Swedish and italian are already included.', 'extensions-leaflet-map' ) . ' ';
-	$text = $text . ' ' . __( 'A language pack will be generated, if at least 90% of all strings are translated, like german or spanish.', 'extensions-leaflet-map' ) . ' ';
+	$text = $text . ' ' . __( 'A language pack will be generated, if at least 90% of all strings are translated, like dutch, spanish or german.', 'extensions-leaflet-map' ) . ' ';
 	$text = $text . __( 'Many thanks to the translators.', 'extensions-leaflet-map' ) . '</p>';
 	$text = $text . '<h2>' . __( 'Note', 'extensions-leaflet-map' ) . '</h2>';
 	$text = $text . sprintf(
