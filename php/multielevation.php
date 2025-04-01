@@ -23,8 +23,6 @@ add_filter(
 	2
 );
 
-
-
 // Parameter and Values
 function leafext_multielevation_params( $typ = array( 'changeable' ) ) {
 	$params = array(

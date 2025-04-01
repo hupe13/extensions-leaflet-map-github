@@ -154,7 +154,7 @@ function leafext_layerswitch_tiles_script( $tiles ) {
 }
 
 function leafext_providers_fkt_script() {
-	// https://github.com/leaflet-extras/leaflet-providers/blob/b7be4769ccb5cd66cf7c5bd2f6e1042ba7a10b5c/preview/preview.js#L60-L70
+	// https://github.com/leaflet-extras/leaflet-providers/blob/65df099ba50665242c954cf2be411d6babd96a75/preview/preview.js#L56C2-L74C4
 	$text = '<!--';
 	ob_start();
 	?>
@@ -166,7 +166,8 @@ function leafext_providers_fkt_script() {
 		var overlayPatterns = [
 			'^(OpenWeatherMap|OpenSeaMap|OpenSnowMap)',
 			'OpenMapSurfer.(Hybrid|AdminBounds|ContourLines|Hillshade|ElementsAtRisk)',
-			'Stamen.Toner(Hybrid|Lines|Labels)',
+			'Stadia.StamenToner(Lines|Labels)',
+			'Stadia.StamenTerrain(Lines|Labels)',
 			'^JusticeMap',
 			'OpenAIP',
 			'OpenRailwayMap',

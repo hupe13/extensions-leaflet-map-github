@@ -32,8 +32,9 @@ $languages = array(
 	array( 'default', 'pl_PL', '' , 'stable/'),
 	array( 'default', 'pt_PT', '' , 'stable/'),
 	array( 'default', 'sv_SE', '' , 'stable/'),
-	// array( 'formal', 'de_DE_formal', '' , 'stable/'),
-	array('default', 'de_DE', '', 'dev/'),
+	array( 'default', 'nl_NL', '' , 'stable/'),
+	array( 'formal', 'de_DE_formal', '' , 'stable/'),
+	array( 'default', 'de_DE', '', 'dev/'),
 );
 $formats   = array( 'mo', 'php', 'jed1x' );
 // 'po',

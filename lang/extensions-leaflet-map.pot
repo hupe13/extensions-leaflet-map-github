@@ -1,1389 +1,464 @@
-#, fuzzy
+# Copyright (C) 2025 hupe13
+# This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Extensions for Leaflet Map Github\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-01 20:13+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Project-Id-Version: Extensions for Leaflet Map Github Version 4.4-250401\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/extensions-leaflet-map-github\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.7.1; wp-6.7.1\n"
-"X-Domain: extensions-leaflet-map"
-
-#. %1$s is "mapid", %2$s is "leaflet-map".
-#: admin/marker/targetmarker.php:177
-#, php-format
-msgid " %1$s from target map (see %2$s option %1$s). Default: current map."
-msgstr ""
-
-#: admin/marker/placementstrategies.php:53
-msgid ""
-"\"default\" means: one-circle strategy up to 8 elements, else spiral strategy"
-msgstr ""
-
-#. %1$s is "mapid", %2$s is "leaflet-map".
-#: admin/marker/targetmarker.php:88
-#, php-format
-msgid "%1$s from target map (see %2$s option %1$s). Default: current map."
-msgstr ""
-
-#. %1$s - shortcode, %2$s - link, all others help strings.
-#: admin/elevation/elevation.php:149
-#, php-format
-msgid ""
-"%1$s has some english strings in the frontend. Go to %2$s, choose your "
-"language and %3$s or %4$s, filter %5$s and translate these 36 short strings."
-msgstr ""
-
-#. %s are options.
-#: admin/overview-map.php:175
-#, php-format
-msgid ""
-"%1$s is for icon filename required. The icons directory must be the same as "
-"from %2$s."
-msgstr ""
-
-#. %s are plugin names / option.
-#: admin/elevation/sgpx.php:177
-#, php-format
-msgid "%1$s is not active, %2$s parameters will interpreted with %3$s."
-msgstr ""
-
-#. %s are options.
-#: admin/leaflet-search.php:40
-#, php-format
-msgid "%1$s must be before %2$s."
-msgstr ""
-
-#. %s are options.
-#: php/elevation.php:185
-#, php-format
-msgid "%1$s outside, %2$s inside"
-msgstr ""
-
-#. %s are options, %4$s and %5$s are styling.
-#: admin/elevation/multielevation.php:161
-#, php-format
-msgid "%1$s, %2$s and %3$s describe the %4$sstart point%5$s and are optional."
-msgstr ""
-
-#. %s is styling (bold).
-#: admin/tiles/providers.php:130
-#, php-format
-msgid "%1$sPlease note%2$s (Quote from Leaflet Providers page):"
-msgstr ""
-
-#. %s is an option.
-#: admin/grouping/featuregroup.php:191
-#, php-format
-msgid "%s is case sensitive."
-msgstr ""
-
-#. %s is an option.
-#: admin/elevation/multielevation.php:155
-#, php-format
-msgid "%s is the url of the trackfile."
-msgstr ""
-
-#. %s is an option.
-#: admin/grouping/featuregroup.php:122
-#, php-format
-msgid "%s switches only the markers."
-msgstr ""
-
-#. %s is a shortcode.
-#: admin/filemgr/leaflet-directory.php:33
-#, php-format
-msgid "(default) prepare the tracks for %s"
-msgstr ""
-
-#: php/overview-map.php:34 php/overview-map.php:36
-msgid "(like shortcode without brackets)"
-msgstr ""
-
-#. %s are options / values.
-#: admin/marker/geojsonmarker.php:128
-#, php-format
-msgid "(max 16 %1$s for %2$s, 14 for %3$s)"
-msgstr ""
-
-#: admin/filemgr/leaflet-directory.php:29
-msgid "(relative) path to directory, accessible both from path and from url"
-msgstr ""
-
-#: php/elevation.php:529
-msgid "[Lat, Long] vs [Long, Lat] points. (leaflet default: [Lat, Long])"
-msgstr ""
-
-#. %1$s is "feature.property", %2$s is a shortcode, %3$s is an option.
-#: php/listmarker.php:18
-#, php-format
-msgid "a %1$s for geojson marker. For %2$s it is always %3$s and is ignored."
-msgstr ""
-
-#. %s are options / features.
-#: admin/grouping/featuregroup.php:163
-#, php-format
-msgid ""
-"A %1$s has %2$s, each of them has a %3$s and %4$s. %5$s is the label of a "
-"%6$s in %7$s, e.g."
-msgstr ""
-
-#. %s is a feature.
-#: admin/marker/geojsonmarker.php:38
-#, php-format
-msgid "A %s in a geojson file is specified like this:"
-msgstr ""
-
-#: php/hoverlap.php:33 php/hover.php:151
-msgid "a className"
-msgstr ""
-
-#. %s is a href.
-#: admin/tiles/help.php:107
-#, php-format
-msgid "a comma separated list of any %1$sproviders%2$s"
-msgstr ""
-
-#. %s is a href.
-#: admin/tiles/help.php:100
-#, php-format
-msgid "a comma separated list of any your defined %1$stile servers%2$s"
-msgstr ""
-
-#: php/overview-map.php:92
-msgid "a comma separated list of category names, slugs or IDs"
-msgstr ""
-
-#: php/choropleth.php:25
-msgid ""
-"a comma separated list of colors for scale - include as many as you like"
-msgstr ""
-
-#. %s is popup.
-#: php/overview-map.php:71
-#, php-format
-msgid ""
-"a comma separated pair of width and height in pixels. Only makes sense when "
-"you use the %s option."
-msgstr ""
-
-#: admin/leaflet-search.php:21
-msgid "A control for search Markers/Features location by custom property."
-msgstr ""
-
-#: admin/elevation/elevation.php:157
-msgid ""
-"A language pack will be generated, if at least 90% of all strings are "
-"translated, like german or spanish."
-msgstr ""
-
-#: admin/help.php:358
-msgid "A Leaflet Control for listing visible markers in the map."
-msgstr ""
-
-#: admin/help.php:286
-msgid "A Leaflet plugin that allows to add elevation profiles using d3js."
-msgstr ""
-
-#: admin/help.php:304
-msgid "A Leaflet plugin that allows to add rotation functionality to map tiles"
-msgstr ""
-
-#: admin/help.php:401
-msgid ""
-"A Leaflet plugin that allows to prevent default map scroll/touch behaviours."
-msgstr ""
-
-#: admin/marker/targetmarker.php:44 admin/marker/targetmarker.php:130
-msgid "A link similar to this one is created:"
-msgstr ""
-
-#: php/hoverlap.php:25 php/hover.php:161 php/hover.php:170
-msgid "a number"
-msgstr ""
-
-#: php/elevation.php:159
-msgid "a number (px) or an expression like the default value"
-msgstr ""
-
-#. %s is an option.
-#: php/leaflet-search.php:31
-#, php-format
-msgid ""
-"a option / property for marker, polygon, circle, line or a %s for geojson "
-"layer. Can also be a comma-separated list of options or properties."
-msgstr ""
-
-#: admin/help.php:370
-msgid "A Tree Layers Control for Leaflet."
-msgstr ""
-
-#: admin/tiles/help.php:21
-msgid "About Tile servers"
-msgstr ""
-
-#: php/elevation.php:449 php/elevation.php:764
-msgid "Acceleration chart profile"
-msgstr ""
-
-#: php/extramarker.php:29
-msgid ""
-"Additional classes in the created &lt;i&gt; tag, Possible values: fa-"
-"rotate90 myclass; space delimited classes to add"
-msgstr ""
-
-#. %2$s and %3$s is a href, %1$s is an option
-#: admin/tiles/help.php:68
-#, php-format
-msgid ""
-"Additionally you can use some predefined Tile Providers with %1$s or you can "
-"define %2$syour Tile Servers%3$s."
-msgstr ""
-
-#: admin/help.php:407
-msgid "Advanced geospatial analysis for browsers and Node.js"
-msgstr ""
-
-#: php/hover.php:85 php/hover.php:94 php/hover.php:104 php/hover.php:113
-#: php/hover.php:122
-msgid "alias for"
-msgstr ""
-
-#: admin/marker/extramarker.php:65
-msgid "All Colors"
-msgstr ""
-
-#: admin/marker/extramarker.php:79
-msgid "All Shapes without (1) / with (2) SVG"
-msgstr ""
-
-#: admin/hover/hoverlap.php:62
-msgid "All this is not ready yet."
-msgstr ""
-
-#. %s is code
-#: admin/filemgr/filemgr-settings.php:33
-#, php-format
-msgid ""
-"Allow all users who have access to the backend to see the files. A "
-"permission check %s only done if the files are registered in the media "
-"library."
-msgstr ""
-
-#: admin/filemgr/filemgr-settings.php:30
-msgid "Allow non admin"
-msgstr ""
-
-#: admin/filemgr/filemgr-settings.php:17
-msgid "Allow upload to media library"
-msgstr ""
-
-#: php/elevation.php:436 php/elevation.php:752
-msgid "Altitude chart profile"
-msgstr ""
-
-#: admin/help.php:328
-msgid "An extension that contains configurations for various tile providers."
-msgstr ""
-
-#: admin/marker/clustergroup.php:160 admin/marker/clustergroup.php:171
-#: admin/grouping/featuregroup.php:195 admin/grouping/featuregroup.php:274
-msgid "and"
-msgstr ""
-
-#: admin/hover/hover.php:54
-msgid "And hover"
-msgstr ""
-
-#: admin/hover/hoverlap.php:41
-msgid "And hoverlap"
-msgstr ""
-
-#: admin/elevation/waypoints.php:158
-msgid "and Javascript to describe the icon."
-msgstr ""
-
-#: admin/grouping/featuregroup.php:53
-msgid "and load any leaflet elements"
-msgstr ""
-
-#. $s are shortcodes and %2$s is an option.
-#: admin/marker/listmarker.php:36
-#, php-format
-msgid "and markers with %1$s and %2$s option and / or %3$s"
-msgstr ""
-
-#: admin/marker/markercluster.php:124
-msgid "and markers with leaflet-marker"
-msgstr ""
-
-#: admin/hover/hoverlap.php:68
-msgid "and maybe other things."
-msgstr ""
-
-#: admin/filemgr/filemgr.php:19
-msgid "and show at the same time"
-msgstr ""
-
-#: admin/marker/markercluster.php:131
-msgid "and/or with leaflet-gpx and/or leaflet-geojson"
-msgstr ""
-
-#. %s is styling.
-#: admin/elevation/waypoints.php:219
-#, php-format
-msgid ""
-"Any blank character from %1$sText of GPS symbol name%2$s is converted to a "
-"minus sign, uppercase to lowercase, a comma will be escaped."
-msgstr ""
-
-#: admin/elevation/elevation.php:216
-msgid "Appearance"
-msgstr ""
-
-#: admin/tiles/layerswitch.php:166
-msgid ""
-"appears in the switching control. To delete a server simply clear the field "
-"mapid."
-msgstr ""
-
-#: admin/marker/targetmarker.php:101 admin/marker/targetmarker.php:149
-msgid "are mandatory!"
-msgstr ""
-
-#: php/hover.php:168
-msgid ""
-"At which distance of the mouse from a popup the popup closes. If it is 0, "
-"this is disabled, i.e. keep the popup open."
-msgstr ""
-
-#. %s are options.
-#: admin/marker/geojsonmarker.php:145
-#, php-format
-msgid "automatic generation of %1$s, %2$s (color) and %3$s"
-msgstr ""
-
-#: php/elevation.php:518
-msgid "Autoupdate map bounds on chart update."
-msgstr ""
-
-#: php/elevation.php:497
-msgid "Autoupdate map center on chart mouseover."
-msgstr ""
-
-#: admin/elevation/elevation.php:276
-msgid "Axis display"
-msgstr ""
-
-#: php/listmarker.php:54
-msgid "background color for the list"
-msgstr ""
-
-#: admin/marker/markercluster.php:174
-msgid ""
-"Before you click the submit button, please compare your settings with the "
-"new ones and change them if they are different."
-msgstr ""
-
-#: admin/gesture.php:94
-msgid ""
-"Brings the basic functionality of Gesture Handling into Leaflet Map. "
-"Prevents users from getting trapped on the map when scrolling a long page."
-msgstr ""
-
-#: admin/zoomhome.php:18
-msgid "button to reset the view. A must for clustering markers"
-msgstr ""
-
-#: admin/hover/hover.php:58
-msgid ""
-"By default, all elements react to hover. If you don't want this, you have "
-"the following options."
-msgstr ""
-
-#: admin/overview-map.php:127
-msgid "categories"
-msgstr ""
-
-#: admin/hover/hover.php:112
-msgid ""
-"change style but do not show tooltips on hover (geojson, gpx, kml, circle, "
-"polygon, line):"
-msgstr ""
-
-#: admin/hover/hover.php:92
-msgid "Change style on hover."
-msgstr ""
-
-#: php/elevation.php:794
-msgid "Chart background color"
-msgstr ""
-
-#: php/elevation.php:183
-msgid "Chart container outside/inside map container"
-msgstr ""
-
-#: php/elevation.php:594
-msgid "Chart distance/elevation units imperial or metric."
-msgstr ""
-
-#: admin/elevation/elevation.php:260
-msgid "Charts"
-msgstr ""
-
-#: php/parentgroup.php:45
-msgid "child names"
-msgstr ""
-
-#: admin/help.php:382
-msgid "Choropleth plugin for Leaflet (color scale based on value)."
-msgstr ""
-
-#: php/hoverlap.php:31 php/hover.php:149
-msgid "className for the tooltip"
-msgstr ""
-
-#: php/functions.php:159
-msgid "Click to interpret shortcodes."
-msgstr ""
-
-#: admin/help.php:65 admin/marker/main.php:29
-msgid "Clustering and Grouping of Markers"
-msgstr ""
-
-#: php/markercluster.php:43
-msgid ""
-"Clusters and markers too far from the viewport are removed from the map for "
-"performance."
-msgstr ""
-
-#: php/extramarker.php:49
-msgid ""
-"Color of the icon, Possible values: 'white', 'black' or css code (hex, rgba "
-"etc)"
-msgstr ""
-
-#: php/extramarker.php:79
-msgid ""
-"Color of the marker (css class), Possible values: 'red', 'orange-dark', "
-"'orange', 'yellow', 'blue-dark', 'cyan', 'purple', 'violet', 'pink', 'green-"
-"dark', 'green', 'green-light', 'black', 'white', or color hex code if svg is "
-"true"
-msgstr ""
-
-#: php/listmarker.php:59
-msgid "color to highlight the list entry"
-msgstr ""
-
-#: admin/elevation/owncolors.php:113
-msgid "Colors"
-msgstr ""
-
-#. %s is an option.
-#: admin/marker/geojsonmarker.php:122
-#, php-format
-msgid ""
-"comma separated colors for marker or substrings in %s for marker to "
-"distinguish the values"
-msgstr ""
-
-#. %s is option groups.
-#: php/parentgroup.php:48
-#, php-format
-msgid ""
-"Comma separated group names. These are the same as in %s. If you have html "
-"tags there, you can omit these here"
-msgstr ""
-
-#: admin/marker/clustergroup.php:67 admin/marker/clustergroup.php:129
-#: admin/grouping/featuregroup.php:233
-msgid "comma separated labels appear in the selection menu"
-msgstr ""
-
-#: admin/marker/geojsonmarker.php:109
-msgid "comma separated strings of property values"
-msgstr ""
-
-#. %s is an option.
-#: admin/grouping/featuregroup.php:199
-#, php-format
-msgid ""
-"comma separated strings to distinguish the elements, e.g. the exact string "
-"or an unique substring in %1$s (e.g.%2$s)"
-msgstr ""
-
-#. %s are options.
-#: admin/marker/clustergroup.php:59
-#, php-format
-msgid ""
-"comma separated strings to distinguish the markers, e.g. an unique string in "
-"%1$s or %2$s"
-msgstr ""
-
-#. %s are options / values.
-#: admin/marker/clustergroup.php:120
-#, php-format
-msgid ""
-"comma separated strings to distinguish the markers, e.g. an unique substring "
-"in %1$s or the exact string (e.g.%2$s) in %3$s"
-msgstr ""
-
-#: admin/tiles/layerswitch.php:165
-msgid "Configure a mapid, attribution and a tile url for each tile server."
-msgstr ""
-
-#. %s is a link.
-#: admin/elevation/sgpx.php:152
-#, php-format
-msgid "Configure your default %s settings."
-msgstr ""
-
-#: php/leaflet-search.php:52
-msgid ""
-"container id to style the control panel (outside the map) with custom css"
-msgstr ""
-
-#: admin/overview-map.php:93
-msgid "Content"
-msgstr ""
-
-#. ... will be ignored if imperial is true
-#: php/elevation.php:631
-#, php-format
-msgid "Conversion factor to kilometers, will be ignored if %1$s is %2$s."
-msgstr ""
-
-#. ... will be ignored if imperial is true
-#: php/elevation.php:656
-#, php-format
-msgid "Conversion factor to meters, will be ignored if %1$s is %2$s"
-msgstr ""
-
-#: admin/help.php:316
-msgid "Convert KML, GPX, and TCX to GeoJSON."
-msgstr ""
-
-#: admin/marker/targetmarker.php:122
-msgid "Create a source page / post with a link to the target page / post."
-msgstr ""
-
-#: admin/marker/markercluster.php:136
-msgid "Create cluster"
-msgstr ""
-
-#: admin/marker/listmarker.php:53
-msgid "Create control list"
-msgstr ""
-
-#: admin/overview-map.php:81
-msgid ""
-"Create for every desired page or post the below mentioned customs fields."
-msgstr ""
-
-#: admin/marker/markercluster.php:121 admin/marker/listmarker.php:31
-#: admin/grouping/featuregroup.php:51 admin/hover/hoverlap.php:22
-#: admin/hover/hover.php:24
-msgid "Create Map"
-msgstr ""
-
-#. %s is leaflet-optiongroup.
-#: admin/grouping/featuregroup.php:67
-#, php-format
-msgid "Create one or more %s"
-msgstr ""
-
-#: php/overview-map.php:112
-msgid ""
-"Creates an overview table of posts / pages instead of markers to see any "
-"mistakes"
-msgstr ""
-
-#: admin/elevation/waypoints.php:157
-msgid "css describing the waypoint, e.g. the definition of the icon url,"
-msgstr ""
-
-#. %s is code.
-#: admin/elevation/waypoints.php:199
-#, php-format
-msgid "CSS to define as HTML block (between %1$s and %2$s) or in css file"
-msgstr ""
-
-#: admin/tiles/help.php:56
-msgid "Current Settings"
-msgstr ""
-
-#: admin/overview-map.php:92
-msgid "Custom field"
-msgstr ""
-
-#: admin/overview-map.php:85
-msgid "Custom fields"
-msgstr ""
-
-#: php/extramarker.php:69
-msgid ""
-"Custom HTML code, Possible values: &lt;svg&gt;, images, or other HTML; a "
-"truthy assignment will override the default html icon creation behavior"
-msgstr ""
-
-#: admin/help.php:24 admin/elevation/main.php:30
-msgid "Customize waypoints"
-msgstr ""
-
-#: admin/filemgr/managefiles-functions.php:154
-msgid "Date"
-msgstr ""
-
-#: php/elevation.php:619 php/elevation.php:632 php/elevation.php:657
-#: admin/leaflet-search.php:52 admin/choropleth.php:59
-#: admin/overview-map.php:147 admin/elevation/waypoints.php:51
-#: admin/marker/clustergroup.php:198 admin/marker/clustergroup.php:205
-#: admin/marker/extramarker.php:126 admin/marker/listmarker.php:68
-#: admin/grouping/featuregroup.php:302 admin/grouping/featuregroup.php:309
-#: admin/hover/hover.php:65 admin/tiles/help.php:136 admin/tiles/help.php:143
-msgid "Default"
-msgstr ""
-
-#: admin/tiles/help.php:60
-msgid "Default Attribution"
-msgstr ""
-
-#: admin/marker/geojsonmarker.php:133
-msgid "default color"
-msgstr ""
-
-#: php/overview-map.php:30
-msgid ""
-"Default is taken from the overviewmap shortcode or it is the blue marker "
-"icon."
-msgstr ""
-
-#: admin/tiles/help.php:62
-msgid "Default Max Zoom"
-msgstr ""
-
-#: admin/tiles/help.php:61
-msgid "Default Min Zoom"
-msgstr ""
-
-#: admin/overview-map.php:94
-msgid "Default name"
-msgstr ""
-
-#: php/overview-map.php:45
-msgid "default popup content"
-msgstr ""
-
-#: admin/overview-map.php:111
-msgid ""
-"Default popup content is taken from the overviewmap shortcode and is a set "
-"of title, permalink, categories, featured image."
-msgstr ""
-
-#: admin/fullscreen.php:23
-msgid "default position:"
-msgstr ""
-
-#. Default: "ft" if imperial is true, "m" otherwise.
-#. Default: "mph" if imperial is true, "km/h" otherwise.
-#: php/elevation.php:645 php/elevation.php:669
-#, php-format
-msgid "Default: %1$s if %2$s is %3$s, %4$s otherwise."
-msgstr ""
-
-#: admin/leaflet-search.php:86
-msgid "Define a leaflet-search command with the option container:"
-msgstr ""
-
-#: admin/leaflet-search.php:80
-msgid "Define some css:"
-msgstr ""
-
-#: php/leaflet-search.php:77
-msgid "delay for autoclosing alert and collapse after blur"
-msgstr ""
-
-#: admin/elevation/waypoints.php:83
-msgid "Delete"
-msgstr ""
-
-#: admin/deleting.php:14
-msgid "Delete all plugin settings when deleting the plugin?"
-msgstr ""
-
-#: admin/elevation/sgpx.php:105 admin/elevation/main.php:138
-msgid "Delete all settings from wp-gpx-maps!"
-msgstr ""
-
-#: admin/marker/placementstrategies.php:122
-msgid "Demo and Documentation"
-msgstr ""
-
-#: admin/leaflet-search.php:51 admin/choropleth.php:60
-#: admin/overview-map.php:145 admin/marker/extramarker.php:127
-#: admin/marker/listmarker.php:67 admin/hover/hover.php:64
-msgid "Description"
-msgstr ""
-
-#: admin/help.php:95 admin/marker/main.php:43
-msgid "Design and Group markers from geojson files"
-msgstr ""
-
-#: admin/marker/geojsonmarker.php:32
-msgid ""
-"Design and group markers from geojson files according to their properties"
-msgstr ""
-
-#: admin/elevation/elevation.php:196
-msgid "Detailed documentation and examples"
-msgstr ""
-
-#. %s are hrefs.
-#: admin/help.php:438
-#, php-format
-msgid ""
-"Detailed documentation and examples in %1$sGerman%2$s and %3$sEnglish%4$s"
-msgstr ""
-
-#: admin/filemgr/thickbox.php:30
-msgid "Details"
-msgstr ""
-
-#: php/hoverlap.php:23
-msgid ""
-"determines how much to extend click tolerance round an object on the map"
-msgstr ""
-
-#: admin/marker/targetmarker.php:109
-msgid "Different source and target"
-msgstr ""
-
-#: admin/filemgr/filemgr-settings.php:136
-msgid "direct in the Media Library."
-msgstr ""
-
-#: admin/filemgr/filemgr.php:258
-msgid "Directory"
-msgstr ""
-
-#: php/elevation.php:278
-msgid "Display circle marker on End"
-msgstr ""
-
-#: php/elevation.php:268
-msgid "Display circle marker on Start"
-msgstr ""
-
-#: php/elevation.php:409
-msgid "Display date and clock time"
-msgstr ""
-
-#: admin/elevation/elevation.php:275
-msgid "Display diagram"
-msgstr ""
-
-#: php/elevation.php:385
-msgid "Display distance info"
-msgstr ""
-
-#: admin/help.php:162
-msgid "Display groups in a tree view"
-msgstr ""
-
-#: admin/grouping/parentgroup.php:25
-msgid "Display groups in a tree view."
-msgstr ""
-
-#: php/elevation.php:397
-msgid "Display time info (duration)"
-msgstr ""
-
-#: php/elevation.php:310
-msgid "Display track waypoints"
-msgstr ""
-
-#: php/elevation.php:311
-msgid ""
-"Display waypoints in map and in chart / only in map / only in chart / none"
-msgstr ""
-
-#: admin/elevation/elevation.php:230
-msgid "Distance and time"
-msgstr ""
-
-#. %s is an option.
-#: php/hover.php:19
-#, php-format
-msgid "do not show tooltip and hide %s"
-msgstr ""
-
-#. %s is an option.
-#: php/hover.php:21
-#, php-format
-msgid "do not show tooltip but show %s"
-msgstr ""
-
-#: admin/help.php:422
-msgid "Documentation"
-msgstr ""
-
-#: admin/filemgr/filemgr.php:273
-msgid "does only work with gpx files"
-msgstr ""
-
-#. %s is a shortcode.
-#: admin/filemgr/managefiles-functions.php:264
-#, php-format
-msgid "Don't forget to declare %s at last statement."
-msgstr ""
-
-#: php/elevation.php:256
-msgid "Download Link"
-msgstr ""
-
-#. %s is a shortcode.
-#: admin/filemgr/leaflet-directory.php:39
-#, php-format
-msgid "draw the content with %scommands "
-msgstr ""
-
-#: php/elevation.php:552
-msgid ""
-"Due to a problem in MacOS and iOS, it is automatically set to false in "
-"Safari."
-msgstr ""
-
-#: admin/marker/clustergroup.php:22
-msgid "Dynamically add/remove groups of markers from Marker Cluster"
-msgstr ""
-
-#: admin/elevation/waypoints.php:228
-msgid "e.g."
-msgstr ""
-
-#: admin/grouping/featuregroup.php:253
-msgid "Each element can belong to exactly one group."
-msgstr ""
-
-#. %s is a shortcode.
-#: admin/grouping/featuregroup.php:98
-#, php-format
-msgid ""
-"Each of the above leaflet elements has options. These are from the shortcode "
-"%s and are fixed."
-msgstr ""
-
-#: php/overview-map.php:580 admin/filemgr/managefiles-functions.php:201
-msgid "Edit"
-msgstr ""
-
-#: php/overview-map.php:19
-msgid "either a comma or space separated pair of lat and lng"
-msgstr ""
-
-#: php/overview-map.php:32
-msgid "either a icon filename"
-msgstr ""
-
-#: admin/elevation/main.php:22
-msgid "Elevation Profile"
-msgstr ""
-
-#: admin.php:135 admin/help.php:14
-msgid "Elevation Profiles"
-msgstr ""
-
-#: admin/elevation/multielevation.php:264
-#: admin/elevation/multielevation.php:268
-msgid "Elevation Theme"
-msgstr ""
-
-#: admin/filemgr/filemgr.php:170
-msgid "entries"
-msgstr ""
-
-#: admin/choropleth.php:76
-msgid "equidistant: divide the classes into equal groups."
-msgstr ""
-
-#: php/overview-map.php:421
-msgid "Error - no valid filename:"
-msgstr ""
-
-#: php/overview-map.php:569
-msgid "Error - please check overviewmap data: Some data are wrong."
-msgstr ""
-
-#: php/overview-map.php:377
-msgid "Error detecting lanlngs"
-msgstr ""
-
-#: php/leaflet-search.php:84
-msgid "error message"
-msgstr ""
-
-#. %s is an option.
-#: admin/grouping/featuregroup.php:126
-#, php-format
-msgid "Every marker with an icon has the option %s as default."
-msgstr ""
-
-#: admin/choropleth.php:61 admin/elevation/waypoints.php:243
-msgid "Example"
-msgstr ""
-
-#: admin/marker/targetmarker.php:125
-msgid "example URL for the link"
-msgstr ""
-
-#: admin/help.php:475 admin/help.php:477
-msgid "Examples"
-msgstr ""
-
-#: php/hoverlap.php:15 php/hover.php:131
-msgid ""
-"exclude any geojson, gpx, kml with a defined substring in the src url from "
-"changing its style on hovering, the tooltip is not affected"
-msgstr ""
-
-#. Description of the plugin
-msgid ""
-"Extends the WordPress Plugin <a href=\"https://wordpress.org/plugins/leaflet-"
-"map/\">Leaflet Map</a> with Leaflet Plugins and other functions."
-msgstr ""
-
-#. Name of the plugin
+"POT-Creation-Date: 2025-04-01T21:27:32+02:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: extensions-leaflet-map\n"
+
+#. Plugin Name of the plugin
+#: extensions-leaflet-map.php
 msgid "Extensions for Leaflet Map Github Version"
 msgstr ""
 
-#: admin/help.php:193 admin/tiles/layerswitch.php:13 admin/tiles/main.php:26
-msgid "Extra Tile Server"
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: extensions-leaflet-map.php
+msgid "https://leafext.de/en/"
 msgstr ""
 
-#: admin/filemgr/thickbox.php:34
-msgid "File name:"
+#. Description of the plugin
+#: extensions-leaflet-map.php
+msgid "Extends the WordPress Plugin <a href=\"https://wordpress.org/plugins/leaflet-map/\">Leaflet Map</a> with Leaflet Plugins and other functions."
 msgstr ""
 
-#: admin/filemgr/thickbox.php:41
-msgid "File size: "
-msgstr ""
-
-#: php/multielevation.php:33
-msgid "Filename as name"
-msgstr ""
-
-#: admin/filemgr/filemgr.php:94
-msgid "Files"
-msgstr ""
-
-#. %s are options / values.
-#: admin/filemgr/leaflet-directory.php:45
-#, php-format
-msgid "For %1$s it is ignored. For %2$s a list of %3$s. Default is %4$s."
-msgstr ""
-
-#. %s is option.
-#: admin/grouping/featuregroup.php:100
-#, php-format
-msgid "For %s you can use any option of the leaflet element."
-msgstr ""
-
-#: admin/tiles/providers.php:126
-msgid "For a list of providers see"
-msgstr ""
-
-#: admin/elevation/multielevation.php:273 admin/elevation/elevation.php:187
-#: admin/marker/markercluster.php:160 admin/hover/hover.php:116
-msgid "For boolean values applies"
-msgstr ""
-
-#. %s are properties.
-#: php/leaflet-search.php:37
-#, php-format
-msgid ""
-"for example %1$s for marker, additional for example %2$s for extramarkers; "
-"%3$s for polygon, circle, line; %4$s depending on geojson layer; %5$s for all"
-msgstr ""
-
-#: admin/marker/geojsonmarker.php:141
-msgid "for grouping"
-msgstr ""
-
-#: php/overview-map.php:17
-msgid "for markers lat and lng, required"
-msgstr ""
-
-#. %s are options.
-#: admin/marker/geojsonmarker.php:97
-#, php-format
-msgid "For now, %1$s are mapped to %2$s. Maybe there are other options."
-msgstr ""
-
-#. %1$s is a shortcode and %2$s is a link.
-#: admin/hover/hoverlap.php:54
-#, php-format
-msgid "For overlapping markers see %1$s or %2$s."
-msgstr ""
-
-#: admin/filemgr/filemgr.php:260
-msgid "for showing all files of this directory on a map"
-msgstr ""
-
-#: php/overview-map.php:29
-msgid "for the marker icon, optional."
-msgstr ""
-
-#: php/overview-map.php:43
-msgid "for the popup content, optional."
-msgstr ""
-
-#: admin/help.php:416
-msgid "Found an issue? Do you have a question?"
-msgstr ""
-
-#: admin.php:171 admin/fullscreen.php:18 admin/help.php:210
-msgid "Fullscreen"
-msgstr ""
-
-#: admin/help.php:452 admin/help.php:453
-msgid "Function"
-msgstr ""
-
-#: admin/help.php:52
-msgid "Functions for Markers implemented with Leaflet Plugins"
-msgstr ""
-
-#: admin/help.php:150
-msgid "Functions implemented with Leaflet Plugins"
-msgstr ""
-
-#: admin/elevation/waypoints.php:249
-msgid "Generated Javascript"
-msgstr ""
-
-#: admin/overview-map.php:78
-msgid ""
-"Generates an overview map with geo positions provided in the pages and posts."
-msgstr ""
-
-#: admin/hover/hoverlap.php:66
-msgid "Geojson GeometryCollections do not (yet) work in all senses."
-msgstr ""
-
-#: admin.php:175 admin/help.php:219 admin/gesture.php:13
-msgid "Gesture Handling"
-msgstr ""
-
-#: php/choropleth.php:30
-msgid "get a tooltip on mouse over"
-msgstr ""
-
-#. %s is a shortcode.
-#: admin/grouping/featuregroup.php:153
-#, php-format
-msgid ""
-"gpx and kml are similar to geojson, so you can also use %s there. But here "
-"it is not that easy to find relevant features."
-msgstr ""
-
-#: admin/grouping/featuregroup.php:290
-msgid "Group Control"
-msgstr ""
-
-#: admin/grouping/featuregroup.php:28
-msgid "Group elements and dynamically add/remove from map"
-msgstr ""
-
-#: admin.php:145 admin/help.php:153
-msgid "Grouping by options and features"
-msgstr ""
-
-#: admin/help.php:364
-msgid "Grouping of Leaflet elements by options and features."
-msgstr ""
-
-#: php/elevation.php:143
-msgid "Height of the chart"
+#. Author of the plugin
+#: extensions-leaflet-map.php
+msgid "hupe13"
 msgstr ""
 
 #: admin.php:119
 msgid "Help"
 msgstr ""
 
+#: admin.php:125
+#: admin.php:129
+#: admin/filemgr/main.php:27
+#: admin/help.php:259
+#: admin/help.php:261
+#: admin/help.php:262
+msgid "Manage Leaflet Map files"
+msgstr ""
+
+#: admin.php:135
+#: admin/help.php:14
+msgid "Elevation Profiles"
+msgstr ""
+
+#: admin.php:140
+msgid "Markers and Icons"
+msgstr ""
+
+#: admin.php:145
+#: admin/help.php:153
+msgid "Grouping by options and features"
+msgstr ""
+
+#: admin.php:149
+#: admin/help.php:171
+msgid "Search markers/features"
+msgstr ""
+
+#: admin.php:153
+#: admin/help.php:180
+msgid "Switching Tile Servers"
+msgstr ""
+
+#: admin.php:158
+#: admin/help.php:240
+msgid "Hovering and Tooltips"
+msgstr ""
+
+#: admin.php:163
+#: admin/help.php:119
+#: admin/overview-map.php:75
+msgid "Overview Map"
+msgstr ""
+
+#: admin.php:167
+#: admin/help.php:201
+msgid "Reset the map"
+msgstr ""
+
+#: admin.php:171
+#: admin/fullscreen.php:18
+#: admin/help.php:210
+msgid "Fullscreen"
+msgstr ""
+
+#: admin.php:175
+#: admin/gesture.php:13
+#: admin/help.php:219
+msgid "Gesture Handling"
+msgstr ""
+
+#: admin/choropleth.php:39
+msgid "Popup Content"
+msgstr ""
+
+#. translators: %s is an example code.
+#: admin/choropleth.php:42
+msgid "You can specify %s as you like."
+msgstr ""
+
+#: admin/choropleth.php:46
+msgid "Use it like the popup content for Geojsons in Leaflet Map: To add feature properties to the popups, use the inner content and curly brackets to substitute the values:"
+msgstr ""
+
+#: admin/choropleth.php:54
+#: admin/elevation/elevation.php:185
+#: admin/elevation/multielevation.php:151
+#: admin/elevation/multielevation.php:209
+#: admin/elevation/multielevation.php:243
+#: admin/elevation/multielevation.php:271
+#: admin/grouping/parentgroup.php:34
+#: admin/hover/hover.php:56
+#: admin/hover/hoverlap.php:43
+#: admin/leaflet-search.php:45
+#: admin/marker/extramarker.php:112
+#: admin/marker/listmarker.php:61
+#: admin/marker/markercluster.php:145
+#: admin/marker/markercluster.php:181
+#: admin/marker/placementstrategies.php:138
+msgid "Options"
+msgstr ""
+
+#: admin/choropleth.php:59
+#: admin/elevation/waypoints.php:51
+#: admin/grouping/featuregroup.php:302
+#: admin/grouping/featuregroup.php:309
+#: admin/hover/hover.php:65
+#: admin/leaflet-search.php:52
+#: admin/marker/clustergroup.php:198
+#: admin/marker/clustergroup.php:205
+#: admin/marker/extramarker.php:126
+#: admin/marker/listmarker.php:68
+#: admin/overview-map.php:147
+#: admin/tiles/help.php:136
+#: admin/tiles/help.php:143
+#: php/elevation.php:619
+#: php/elevation.php:632
+#: php/elevation.php:657
+msgid "Default"
+msgstr ""
+
+#: admin/choropleth.php:60
+#: admin/hover/hover.php:64
+#: admin/leaflet-search.php:51
+#: admin/marker/extramarker.php:127
+#: admin/marker/listmarker.php:67
+#: admin/overview-map.php:145
+msgid "Description"
+msgstr ""
+
+#: admin/choropleth.php:61
+#: admin/elevation/waypoints.php:243
+msgid "Example"
+msgstr ""
+
+#: admin/choropleth.php:75
+msgid "quantile maps try to arrange groups so they have the same quantity."
+msgstr ""
+
+#: admin/choropleth.php:76
+msgid "equidistant: divide the classes into equal groups."
+msgstr ""
+
+#: admin/choropleth.php:77
+msgid "k-means: each standard deviation becomes a class."
+msgstr ""
+
 #: admin/choropleth.php:80
 msgid "Help me, if I'm wrong."
 msgstr ""
 
-#: admin/help.php:504
-msgid "Helper Plugins"
+#: admin/deleting.php:14
+msgid "Delete all plugin settings when deleting the plugin?"
 msgstr ""
 
-#: admin/elevation/waypoints.php:138
-msgid "Here you can define extra waypoint options."
+#: admin/deleting.php:31
+#: admin/elevation/elevation.php:309
+#: admin/elevation/elevation.php:310
+#: admin/elevation/elevation.php:312
+#: admin/elevation/elevation.php:313
+#: admin/elevation/elevation.php:314
+#: admin/elevation/elevation.php:320
+#: admin/elevation/elevation.php:321
+#: admin/elevation/elevation.php:329
+#: admin/elevation/elevation.php:330
+#: admin/elevation/elevation.php:331
+msgid "yes"
 msgstr ""
 
-#: admin/tiles/layerswitch.php:135
-msgid ""
-"Here you can define your Tile servers. Additionally you can specify if "
-"opacity should be regulated."
+#: admin/deleting.php:34
+#: admin/elevation/elevation.php:318
+#: admin/elevation/elevation.php:319
+#: admin/elevation/elevation.php:325
+#: admin/elevation/elevation.php:335
+#: admin/elevation/elevation.php:336
+#: admin/elevation/elevation.php:337
+#: admin/elevation/elevation.php:338
+msgid "no"
 msgstr ""
 
-#: admin/filemgr/filemgr-settings.php:127
-msgid ""
-"Here you can display all gpx, kml, geojson, json and tcx files in "
-"subdirectories of uploads directory."
+#: admin/elevation/elevation.php:40
+#: admin/hover/settings.php:49
+#: admin/marker/markercluster.php:53
+#: admin/marker/placementstrategies.php:56
+msgid "You can change it for each map with"
+msgstr ""
+
+#: admin/elevation/elevation.php:52
+#: admin/elevation/elevation.php:76
+#: admin/elevation/multielevation.php:53
+#: admin/elevation/sgpx.php:60
+#: admin/gesture.php:58
+#: admin/marker/markercluster.php:72
+#: admin/marker/placementstrategies.php:77
+msgid "Plugins Default:"
+msgstr ""
+
+#: admin/elevation/elevation.php:61
+#: admin/elevation/multielevation.php:81
+#: admin/elevation/multielevation.php:95
+#: admin/elevation/sgpx.php:43
+#: admin/filemgr/filemgr-settings.php:99
+#: admin/gesture.php:43
+#: admin/grouping/settings.php:56
+#: admin/hover/settings.php:51
+#: admin/marker/markercluster.php:57
+#: admin/marker/placementstrategies.php:61
+#: admin/overview-map.php:42
+msgid "Plugins Default"
+msgstr ""
+
+#: admin/elevation/elevation.php:145
+msgid "Translation"
+msgstr ""
+
+#: admin/elevation/elevation.php:146
+msgid "Your web site language isn't english? You can speak english?"
+msgstr ""
+
+#. translators: %1$s - shortcode, %2$s - link, all others help strings.
+#: admin/elevation/elevation.php:149
+msgid "%1$s has some english strings in the frontend. Go to %2$s, choose your language and %3$s or %4$s, filter %5$s and translate these 36 short strings."
+msgstr ""
+
+#: admin/elevation/elevation.php:156
+msgid "I will include these translations in the plugin. Swedish and italian are already included."
+msgstr ""
+
+#: admin/elevation/elevation.php:157
+msgid "A language pack will be generated, if at least 90% of all strings are translated, like german or spanish."
+msgstr ""
+
+#: admin/elevation/elevation.php:158
+msgid "Many thanks to the translators."
+msgstr ""
+
+#: admin/elevation/elevation.php:159
+#: admin/grouping/featuregroup.php:87
+#: admin/leaflet-search.php:37
+#: admin/marker/clustergroup.php:24
+#: admin/marker/clustergroup.php:39
+msgid "Note"
+msgstr ""
+
+#. translators: %s are shortcodes.
+#: admin/elevation/elevation.php:162
+msgid "If you want to display a track only, use %1$s functions. If you want to display a track with an elevation profile use %2$s."
+msgstr ""
+
+#. translators: %s are shortcodes / values.
+#: admin/elevation/elevation.php:172
+msgid "The %1$s parameter is called %2$s, but it works with gpx, kml, geojson and tcx files."
+msgstr ""
+
+#: admin/elevation/elevation.php:180
+msgid "The elevation shortcode has many configuration options. Some things are not trivial. If you can't configure something, ask in the forum."
+msgstr ""
+
+#: admin/elevation/elevation.php:187
+#: admin/elevation/multielevation.php:273
+#: admin/hover/hover.php:116
+#: admin/marker/markercluster.php:162
+msgid "For boolean values applies"
+msgstr ""
+
+#: admin/elevation/elevation.php:196
+msgid "Detailed documentation and examples"
+msgstr ""
+
+#. translators: %s are hrefs.
+#: admin/elevation/elevation.php:199
+msgid "in %1$sGerman%2$s and %3$sEnglish%4$s"
+msgstr ""
+
+#: admin/elevation/elevation.php:216
+msgid "Appearance"
+msgstr ""
+
+#: admin/elevation/elevation.php:223
+msgid "Markers and Waypoints"
+msgstr ""
+
+#: admin/elevation/elevation.php:230
+msgid "Distance and time"
+msgstr ""
+
+#: admin/elevation/elevation.php:240
+msgid "Information display"
+msgstr ""
+
+#: admin/elevation/elevation.php:260
+msgid "Charts"
+msgstr ""
+
+#: admin/elevation/elevation.php:274
+msgid "Setting"
+msgstr ""
+
+#: admin/elevation/elevation.php:275
+msgid "Display diagram"
+msgstr ""
+
+#: admin/elevation/elevation.php:276
+msgid "Axis display"
+msgstr ""
+
+#: admin/elevation/elevation.php:277
+msgid "Tooltip display"
+msgstr ""
+
+#: admin/elevation/elevation.php:278
+#: php/multielevation.php:39
+msgid "Summary"
+msgstr ""
+
+#: admin/elevation/elevation.php:286
+#: admin/elevation/elevation.php:291
+#: admin/elevation/elevation.php:299
+#: admin/elevation/elevation.php:305
+msgid "Your setting:"
 msgstr ""
 
 #: admin/elevation/elevation.php:326
 msgid "hidden"
 msgstr ""
 
-#: admin/help.php:139 admin/marker/hidemarkers.php:18 admin/marker/main.php:55
-msgid "Hide Markers"
+#: admin/elevation/elevation.php:344
+msgid "If summary is displayed, you can customize the information to display with css, e.g. show Total Length, Total Time, Total Ascent, Total Descent, Avg Speed, Avg Pace only:"
 msgstr ""
 
-#: php/multielevation.php:58
-msgid "Highlight color"
+#: admin/elevation/elevation.php:356
+msgid "Other settings"
 msgstr ""
 
-#: admin/hover/main.php:19
-msgid "hover"
+#: admin/elevation/elevation.php:363
+msgid "Units"
 msgstr ""
 
-#: admin/hover/hover.php:110
-msgid "hover only for geojsons, gpx, kml:"
+#: admin/elevation/main.php:22
+msgid "Elevation Profile"
 msgstr ""
 
-#: admin/help.php:238
-msgid "Hovering"
+#: admin/elevation/main.php:26
+msgid "Theme / Colors"
 msgstr ""
 
-#: admin.php:158 admin/help.php:240
-msgid "Hovering and Tooltips"
+#: admin/elevation/main.php:30
+#: admin/help.php:24
+msgid "Customize waypoints"
 msgstr ""
 
-#: admin/help.php:249
-msgid "Hovering overlapping elements"
+#: admin/elevation/main.php:34
+msgid "Multiple hoverable tracks"
 msgstr ""
 
-#: admin/hover/main.php:23
-msgid "hoverlap"
+#: admin/elevation/main.php:42
+msgid "Migrate from wp-gpx-maps"
 msgstr ""
 
-#. %s is an option.
-#: php/hover.php:159
-#, php-format
-msgid ""
-"How much to extend click tolerance round an object on the map, only valid "
-"for %s"
+#: admin/elevation/main.php:75
+#: admin/elevation/main.php:104
+#: admin/elevation/main.php:117
+#: admin/elevation/main.php:163
+#: admin/elevation/main.php:178
+#: admin/filemgr/filemgr.php:249
+#: admin/filemgr/main.php:62
+#: admin/grouping/settings.php:95
+#: admin/hover/settings.php:93
+#: admin/marker/markercluster.php:22
+#: admin/marker/placementstrategies.php:22
+#: admin/tiles/main.php:73
+#: admin/tiles/providers.php:168
+msgid "Reset"
 msgstr ""
 
-#: admin/hover/hoverlap.php:64
-msgid "How to deal with the sometimes large contents of popups?"
-msgstr ""
-
-#: admin/grouping/featuregroup.php:250
-msgid ""
-"However, make sure that they are unique. Otherwise unwanted, but sometimes "
-"interesting effects can occur. Test it with your application!"
-msgstr ""
-
-#. URI of the plugin
-#. Author URI of the plugin
-msgid "https://leafext.de/en/"
-msgstr ""
-
-#. Author of the plugin
-msgid "hupe13"
-msgstr ""
-
-#: admin/hover/hoverlap.php:70
-msgid "I am glad about (code-)suggestions."
-msgstr ""
-
-#: admin/tiles/providers.php:142
-msgid ""
-"I did not tested all, I have only checked the Javascript code. If something "
-"is not working, please let me know."
+#: admin/elevation/main.php:138
+#: admin/elevation/sgpx.php:105
+msgid "Delete all settings from wp-gpx-maps!"
 msgstr ""
 
 #: admin/elevation/main.php:145
 msgid "I don't need this anymore. sgpx is always interpreted as elevation."
 msgstr ""
 
-#: admin/elevation/elevation.php:156
-msgid ""
-"I will include these translations in the plugin. Swedish and italian are "
-"already included."
+#: admin/elevation/main.php:149
+msgid "wp-gpx-maps is not installed and nothing is configured."
 msgstr ""
 
-#. %s are options.
-#: admin/elevation/multielevation.php:188
-#, php-format
-msgid ""
-"If %1$s (in options below or in shortcode) is true, the filename (without "
-"extension) is used, no matter how %2$s is."
+#: admin/elevation/multielevation.php:46
+#: admin/gesture.php:140
+#: admin/grouping/settings.php:50
+msgid "You can change it with"
 msgstr ""
 
-#. %s are options.
+#: admin/elevation/multielevation.php:143
+msgid "See also"
+msgstr ""
+
+#. translators: %s is an option.
+#: admin/elevation/multielevation.php:155
+msgid "%s is the url of the trackfile."
+msgstr ""
+
+#. translators: %s are options, %4$s and %5$s are styling.
+#: admin/elevation/multielevation.php:161
+msgid "%1$s, %2$s and %3$s describe the %4$sstart point%5$s and are optional."
+msgstr ""
+
+#. translators: %s are options.
 #: admin/elevation/multielevation.php:171
-#, php-format
 msgid "If %1$s and %2$s are not specified, they are read from the file."
 msgstr ""
 
-#. %s are options / values.
-#: admin/marker/clustergroup.php:163
-#, php-format
-msgid ""
-"If %1$s contains %2$s and %3$s, then markers (respectively Points) for which "
-"the property %4$s does not apply are placed in the %5$s group. Markers "
-"(respectively Points) whose property is not known are placed in the %6$s "
-"group. See also the developer console."
+#. translators: %s is styling.
+#: admin/elevation/multielevation.php:178
+msgid "The name of the %1$sstart point%2$s is determined in this order:"
 msgstr ""
 
-#. %s are options / values.
-#: admin/grouping/featuregroup.php:277
-#, php-format
-msgid ""
-"If %1$s contains %2$s and %3$s, then the elements for which the option / "
-"property specified in %4$s does not apply, are placed in the %5$s group. "
-"Elements whose %6$s is not known are placed in the %7$s group. See also the "
-"developer console."
+#. translators: %s are options.
+#: admin/elevation/multielevation.php:188
+msgid "If %1$s (in options below or in shortcode) is true, the filename (without extension) is used, no matter how %2$s is."
 msgstr ""
 
-#. %s are options.
+#. translators: %s are options.
 #: admin/elevation/multielevation.php:198
-#, php-format
 msgid "If %1$s is false and %2$s is specified, it is used."
-msgstr ""
-
-#. %1$s is an option, %2$s is a link.
-#: php/elevation.php:333
-#, php-format
-msgid "If %1$s is selected, you must define some %2$ssettings for the icons"
-msgstr ""
-
-#. %s is an option.
-#: admin/elevation/multielevation.php:233
-#, php-format
-msgid ""
-"If %s (in options below or in shortcode) is true, the filename (without "
-"extension) is used."
-msgstr ""
-
-#. %s is an option.
-#: admin/filemgr/leaflet-directory.php:54
-#, php-format
-msgid "If %s and a file is a gpx file, display start point and cluster"
-msgstr ""
-
-#. %s is an option.
-#: php/elevation.php:119
-#, php-format
-msgid ""
-"If %s is disabled, you can't see all charts at the same time (except at the "
-"beginning)."
-msgstr ""
-
-#. %s is an option.
-#: admin/gesture.php:121
-#, php-format
-msgid "If %s is enabled, it becomes active on touch devices only."
-msgstr ""
-
-#: php/elevation.php:207
-msgid "If (!detached) control position on one of map corners."
-msgstr ""
-
-#: php/elevation.php:155
-msgid "If (!detached) width of the chart"
-msgstr ""
-
-#: admin/marker/hidemarkers.php:19
-msgid ""
-"If a GPX track loaded with leaflet-gpx contains waypoints that you do not "
-"want to display"
-msgstr ""
-
-#: php/hover.php:140
-msgid ""
-"If an element is hovered over, the other elements become transparent. If you "
-"specify any other option as the default, the effect may not be consistent."
-msgstr ""
-
-#: php/parentgroup.php:57 php/parentgroup.php:64
-msgid "If empty, no entry is created."
-msgstr ""
-
-#: admin/overview-map.php:162
-msgid ""
-"If it does not work as expected, see the developer console of your browser."
-msgstr ""
-
-#: admin/elevation/multielevation.php:237
-msgid "If it is false, an attempt is made to read the trackname from the file."
-msgstr ""
-
-#. %s are options.
-#: php/gesture.php:19
-#, php-format
-msgid ""
-"If it is true, it is valid for any map (depending on %1$s respectively %2$s) "
-"and you can't change it. If it is false, you can enable it for a map:"
-msgstr ""
-
-#: admin/marker/geojsonmarker.php:110
-msgid "if not specified collect values from property"
-msgstr ""
-
-#: admin/marker/geojsonmarker.php:125
-msgid "if not specified colors are generated"
 msgstr ""
 
 #: admin/elevation/multielevation.php:203
 msgid "If not, an attempt is made to read the trackname from the file."
-msgstr ""
-
-#. %s is an option.
-#: admin/gesture.php:115
-#, php-format
-msgid ""
-"If Scroll Wheel Zoom (%s) is enabled, it becomes active on both desktop and "
-"touch devices."
-msgstr ""
-
-#: php/markercluster.php:55
-msgid ""
-"If set, at this zoom level and below, markers will not be clustered. If 0, "
-"it is disabled."
-msgstr ""
-
-#. %s is an option.
-#: admin/marker/geojsonmarker.php:130
-#, php-format
-msgid "if specified the count must match the count of %s"
-msgstr ""
-
-#: admin/elevation/elevation.php:344
-msgid ""
-"If summary is displayed, you can customize the information to display with "
-"css, e.g. show Total Length, Total Time, Total Ascent, Total Descent, Avg "
-"Speed, Avg Pace only:"
-msgstr ""
-
-#. %s is "AND".
-#: php/overview-map.php:95
-#, php-format
-msgid ""
-"If the list starts with %s, only pages / posts that are contained in all of "
-"them are displayed, otherwise those that are contained in at least one."
 msgstr ""
 
 #: admin/elevation/multielevation.php:205
@@ -1391,2100 +466,304 @@ msgstr ""
 msgid "If this is not available, the filename (without extension) is used."
 msgstr ""
 
-#: admin/marker/targetmarker.php:97 admin/marker/targetmarker.php:184
-msgid ""
-"if true, log some infos to the developer console and add circles about the "
-"target on the map."
+#. translators: %s is a href.
+#: admin/elevation/multielevation.php:218
+msgid "You can use these options like in %1$sElevation Profile%2$s"
 msgstr ""
 
-#. %s are a plugin name.
-#: admin/elevation/sgpx.php:166
-#, php-format
-msgid ""
-"If you are happy with this and if you don't use the track management of %1$s,"
-" you can deactivate and delete the plugin %2$s."
-msgstr ""
-
-#: admin/filemgr/filemgr.php:108
-msgid ""
-"If you change the number, submit the form to get the directories you want."
-msgstr ""
-
-#. %s is a href.
-#: admin/marker/clustergroup.php:49
-#, php-format
-msgid "If you don't use this shortcode yet, start %1$sthere%2$s."
-msgstr ""
-
-#: admin/elevation/sgpx.php:173
-msgid "If you have deleted the plugin, call this page again."
-msgstr ""
-
-#. %s are special characters.
-#: admin/elevation/waypoints.php:234
-#, php-format
-msgid ""
-"If you need more special characters than %s for your waypoints, please ask "
-"in the forum."
-msgstr ""
-
-#. %s are options.
-#: admin/elevation/multielevation.php:247
-#, php-format
-msgid ""
-"If you use %1$s instead of %2$s, you get an elevation profile only with or "
-"without a summary line."
-msgstr ""
-
-#. %s are options.
-#: admin/hover/hover.php:99
-#, php-format
-msgid ""
-"If you use one or multiple options from %1$s, then the options %2$s will be "
-"ignored. "
-msgstr ""
-
-#. %s is a href.
-#: admin/marker/clustergroup.php:34
-#, php-format
-msgid "If you want more options see %1$shere%2$s."
-msgstr ""
-
-#. %s is a div element.
-#: admin/leaflet-search.php:78
-#, php-format
-msgid ""
-"If you want the search field to be outside the map, define a div element "
-"with a custom html block on the post / page and give it an id. This id you "
-"then specify in option %s."
-msgstr ""
-
-#. %s are shortcodes.
-#: admin/elevation/elevation.php:162
-#, php-format
-msgid ""
-"If you want to display a track only, use %1$s functions. If you want to "
-"display a track with an elevation profile use %2$s."
-msgstr ""
-
-#. %s are shortcodes / values.
-#: admin/elevation/sgpx.php:163
-#, php-format
-msgid ""
-"If you want to test it first: select %1$s and write in your test page / post "
-"%2$s."
-msgstr ""
-
-#. %s are shortcodes / options.
-#: admin/marker/geojsonmarker.php:59
-#, php-format
-msgid ""
-"If you want to use CircleMarker you must specify %1$s and optional %2$s and "
-"%3$s in %4$s shortcode."
-msgstr ""
-
-#. %s is a link.
-#: admin/marker/geojsonmarker.php:90
-#, php-format
-msgid "If you want to use ExtraMarkers you can specify %s options."
-msgstr ""
-
-#: admin/elevation/owntheme.php:126
-msgid ""
-"If you want use an own style, select \"other\" theme and give it a name. Put "
-"in your functions.php following code:"
-msgstr ""
-
-#. %s are hrefs.
-#: admin/elevation/elevation.php:199
-#, php-format
-msgid "in %1$sGerman%2$s and %3$sEnglish%4$s"
-msgstr ""
-
-#: admin/grouping/featuregroup.php:150
-msgid ""
-"In a geojson file there are features and properties. They are different for "
-"each application."
-msgstr ""
-
-#: js/elevation.js:120
-msgctxt "In Frontend"
-msgid "Acceleration"
-msgstr ""
-
-#: js/elevation.js:121
-msgctxt "In Frontend"
-msgid "Altitude"
-msgstr ""
-
-#: js/elevation.js:139
-msgctxt "In Frontend"
-msgid "Avg Acceleration"
-msgstr ""
-
-#: js/elevation.js:128
-msgctxt "In Frontend"
-msgid "Avg Elevation"
-msgstr ""
-
-#: js/elevation.js:143
-msgctxt "In Frontend"
-msgid "Avg Pace"
-msgstr ""
-
-#: js/elevation.js:133
-msgctxt "In Frontend"
-msgid "Avg Slope"
-msgstr ""
-
-#: js/elevation.js:136
-msgctxt "In Frontend"
-msgid "Avg Speed"
-msgstr ""
-
-#: js/elevation.js:144
-msgctxt "In Frontend"
-msgid "Download"
-msgstr ""
-
-#: js/elevation.js:145
-msgctxt "In Frontend"
-msgid "Elevation"
-msgstr ""
-
-#: js/elevation.js:138
-msgctxt "In Frontend"
-msgid "Max Acceleration"
-msgstr ""
-
-#: js/elevation.js:126
-msgctxt "In Frontend"
-msgid "Max Elevation"
-msgstr ""
-
-#: js/elevation.js:142
-msgctxt "In Frontend"
-msgid "Max Pace"
-msgstr ""
-
-#: js/elevation.js:132
-msgctxt "In Frontend"
-msgid "Max Slope"
-msgstr ""
-
-#: js/elevation.js:135
-msgctxt "In Frontend"
-msgid "Max Speed"
-msgstr ""
-
-#: js/elevation.js:137
-msgctxt "In Frontend"
-msgid "Min Acceleration"
-msgstr ""
-
-#: js/elevation.js:127
-msgctxt "In Frontend"
-msgid "Min Elevation"
-msgstr ""
-
-#: js/elevation.js:141
-msgctxt "In Frontend"
-msgid "Min Pace"
-msgstr ""
-
-#: js/elevation.js:131
-msgctxt "In Frontend"
-msgid "Min Slope"
-msgstr ""
-
-#: js/elevation.js:134
-msgctxt "In Frontend"
-msgid "Min Speed"
-msgstr ""
-
-#: js/elevation.js:140
-msgctxt "In Frontend"
-msgid "Pace"
-msgstr ""
-
-#: js/elevation.js:122
-msgctxt "In Frontend"
-msgid "Slope"
-msgstr ""
-
-#: js/elevation.js:123
-msgctxt "In Frontend"
-msgid "Speed"
-msgstr ""
-
-#: js/elevation.js:129
-msgctxt "In Frontend"
-msgid "Total Ascent"
-msgstr ""
-
-#: js/elevation.js:130
-msgctxt "In Frontend"
-msgid "Total Descent"
-msgstr ""
-
-#: js/elevation.js:125
-msgctxt "In Frontend"
-msgid "Total Length"
-msgstr ""
-
-#: js/elevation.js:124
-msgctxt "In Frontend"
-msgid "Total Time"
-msgstr ""
-
-#: js/elevation.js:147
-msgctxt "In Frontend: Abbreviation for acceleration in the chart"
-msgid "a"
-msgstr ""
-
-#: js/elevation.js:156
-msgctxt "In Frontend: Abbreviation for altitude in the chart"
-msgid "y"
-msgstr ""
-
-#: js/elevation.js:148
-msgctxt "In Frontend: Abbreviation for cadence in the chart"
-msgid "cad"
-msgstr ""
-
-#: js/elevation.js:153
-msgctxt "In Frontend: Abbreviation for duration in the chart"
-msgid "T"
-msgstr ""
-
-#: js/elevation.js:149
-msgctxt "In Frontend: Abbreviation for heart rate in the chart"
-msgid "hr"
-msgstr ""
-
-#: js/elevation.js:155
-msgctxt "In Frontend: Abbreviation for length in the chart"
-msgid "x"
-msgstr ""
-
-#: js/elevation.js:151
-msgctxt "In Frontend: Abbreviation for pace in the chart"
-msgid "pace"
-msgstr ""
-
-#: js/elevation.js:150
-msgctxt "In Frontend: Abbreviation for slope in the chart"
-msgid "m"
-msgstr ""
-
-#: js/elevation.js:154
-msgctxt "In Frontend: Abbreviation for speed in the chart"
-msgid "v"
-msgstr ""
-
-#: js/elevation.js:152
-msgctxt "In Frontend: Abbreviation for time in the chart"
-msgid "t"
-msgstr ""
-
-#: admin/elevation/owntheme.php:152
-msgid "In your elevation.css put the styles like the theme styles in"
-msgstr ""
-
-#: admin/help.php:493
-msgid "Included and used Leaflet Plugins"
-msgstr ""
-
-#: admin/elevation/elevation.php:240
-msgid "Information display"
-msgstr ""
-
-#: admin/zoomhome.php:42 admin/zoomhome.php:84 admin/zoomhome.php:112
-msgid "initial state of the map"
-msgstr ""
-
-#. %s are options / values.
-#: admin/marker/clustergroup.php:78 admin/marker/clustergroup.php:140
-#: admin/grouping/featuregroup.php:258
-#, php-format
-msgid ""
-"initial visibility of a group, default: %1$s. Either %2$s (valid for all "
-"groups) or a comma-separated list of %3$s and %4$s, where the number must "
-"match those of %5$s."
-msgstr ""
-
-#: php/extramarker.php:89
-msgid ""
-"Instead of an icon, define a plain text, Possible values: '1' or 'A', must "
-"set icon: 'fa-number'"
-msgstr ""
-
-#: admin/help.php:298
-msgid "Internationalisation module for Leaflet plugins."
-msgstr ""
-
-#: admin/elevation/waypoints.php:153
-msgid "Introduction"
-msgstr ""
-
-#: admin/gesture.php:132
-msgid "is"
-msgstr ""
-
-#. %1$s is a targetmarker, %2$s is title.
-#: admin/marker/targetmarker.php:103 admin/marker/targetmarker.php:153
-#, php-format
-msgid "is mandatory, if you use %1$s with option %2$s."
-msgstr ""
-
-#: admin/marker/clustergroup.php:103
-msgid ""
-"is the name of a property in properties of the Point in the FeatureCollection"
-msgstr ""
-
-#: admin/gesture.php:134
-msgid "is true at default"
-msgstr ""
-
-#: admin/marker/placementstrategies.php:137
-msgid "It also works with"
-msgstr ""
-
-#: admin/gesture.php:106
-msgid "It is disabled by default. You can enable it for a map with"
-msgstr ""
-
-#: admin/gesture.php:104
-msgid "It is enabled for all maps."
-msgstr ""
-
-#: admin/gesture.php:137
-msgid "It is enabled on both desktop and touch device by default."
-msgstr ""
-
-#: admin/filemgr/managefiles-functions.php:261
-msgid ""
-"It is not checked whether the file contains a track with elevation data."
-msgstr ""
-
-#: admin/gesture.php:137
-msgid "It is only enabled on touch devices by default."
-msgstr ""
-
-#: admin/elevation/waypoints.php:57
-msgid "It may be empty, then its javascript is the default for all waypoints."
-msgstr ""
-
-#. %s is a plugin name.
-#: admin/elevation/sgpx.php:158
-#, php-format
-msgid ""
-"It may be that %s does not work with your theme. Then this is the only "
-"option."
-msgstr ""
-
-#: admin/zoomhome.php:19
-msgid ""
-"It resets the view to all markers (leaflet-marker), lines (leaflet-line), "
-"circles (leaflet-circle), geojsons (leaflet-geojson, leaflet-gpx, leaflet-"
-"kml) and a track (elevation)."
-msgstr ""
-
-#: admin/filemgr/managefiles-functions.php:262
-msgid "It works with gpx and kml files."
-msgstr ""
-
-#. %1$s is a leaflet-marker, %2$s is leaflet-extramarker.
-#: admin/marker/targetmarker.php:50
-#, php-format
-msgid "jump to %1$s or %2$s"
-msgstr ""
-
-#. %1$s is leaflet-marker, %2$s is leaflet-extramarker.
-#: admin/marker/targetmarker.php:136
-#, php-format
-msgid "jump to %1$s or %2$s on a target page"
-msgstr ""
-
-#: admin/marker/targetmarker.php:55
-msgid "jump to a marker in a geojson file"
-msgstr ""
-
-#: admin/marker/targetmarker.php:141
-msgid "jump to a marker in a geojson file on a target page"
-msgstr ""
-
-#: admin/marker/targetmarker.php:62
-msgid "jump to any marker nearest lat and lng."
-msgstr ""
-
-#: admin/marker/targetmarker.php:31
-msgid "Jump to marker in a map with many markers."
-msgstr ""
-
-#: admin/choropleth.php:77
-msgid "k-means: each standard deviation becomes a class."
-msgstr ""
-
-#: php/elevation.php:643
-msgid "Label for altitude"
-msgstr ""
-
-#. Label for distance in chart, will be ignored if imperial is true.
-#: php/elevation.php:618
-#, php-format
-msgid "Label for distance, will be ignored if %1$s is %2$s."
-msgstr ""
-
-#: php/elevation.php:667
-msgid "Label for speed"
-msgstr ""
-
-#: php/elevation.php:372
-msgid "Labels align"
-msgstr ""
-
-#: php/elevation.php:363
-msgid "Labels degrees"
-msgstr ""
-
-#: php/extramarker.php:16
-msgid "Latitude"
-msgstr ""
-
-#: admin/marker/targetmarker.php:79
-msgid "latitude and longitude of target"
-msgstr ""
-
-#: admin/help.php:228
-msgid "Leaflet Choropleth"
-msgstr ""
-
-#: admin/help.php:151
-msgid "Leaflet Plugins"
-msgstr ""
-
-#: admin/help.php:189 admin/tiles/main.php:22
-msgid "Leaflet-providers"
-msgstr ""
-
-#: php/overview-map.php:20
-msgid "like in"
-msgstr ""
-
-#: php/elevation.php:63
-msgid "linearGradient"
-msgstr ""
-
-#: admin/marker/targetmarker.php:45
-msgid "Link to the marker on the map on the same page / post"
-msgstr ""
-
-#: admin/filemgr/main.php:32
-msgid "List Files"
-msgstr ""
-
-#: admin/filemgr/filemgr.php:248
-msgid "List files"
-msgstr ""
-
-#: admin/filemgr/managefiles-functions.php:79
-msgid "Listing - page"
-msgstr ""
-
-#: admin/filemgr/managefiles-functions.php:110
-msgid "Listing Files"
-msgstr ""
-
-#: admin/help.php:105 admin/marker/main.php:51 admin/marker/listmarker.php:19
-msgid "Listing markers in the map"
-msgstr ""
-
-#. %s is a shortcode.
-#: admin/hover/hover.php:27
-#, php-format
-msgid "Load any elements with any %s shortcode"
-msgstr ""
-
-#. %s is a shortcode.
-#: admin/hover/hoverlap.php:26
-#, php-format
-msgid "Load any elements with any %s shortcode."
-msgstr ""
-
-#: php/leaflet-search.php:85
-msgid "Location not found"
-msgstr ""
-
-#: php/extramarker.php:22
-msgid "Longitude"
-msgstr ""
-
-#: admin/help.php:334
-msgid "Makes multiple tile layers transparent."
-msgstr ""
-
-#: admin.php:125 admin.php:129 admin/help.php:259 admin/help.php:261
-#: admin/help.php:262 admin/filemgr/main.php:27
-msgid "Manage Leaflet Map files"
-msgstr ""
-
-#: extensions-leaflet-map.php:124
-msgid "Manage plugins"
-msgstr ""
-
-#: admin/marker/markercluster.php:118
-msgid "Many markers on a map become confusing. That is why they are clustered"
-msgstr ""
-
-#. %1$s - a name ,%2$s %3$s - href, %4$s %5$s - shortcodes
-#: admin/elevation/sgpx.php:123
-#, php-format
-msgid ""
-"Many thanks to %1$s for his %2$sexcellent plugin%3$s, which I used myself "
-"for a long time. Unfortunately it needed some rework, especially to make wp-"
-"gpx-maps and leaflet-map work together. At some point it didn't work for me "
-"at all. So some of its features are included in the shortcode %4$s. Since "
-"version 2.2. it interprets the shortcode %5$s."
-msgstr ""
-
-#: admin/elevation/elevation.php:158
-msgid "Many thanks to the translators."
-msgstr ""
-
-#: admin/zoomhome.php:133 admin/zoomhome.php:134
-msgid "map like defined"
-msgstr ""
-
-#: admin/tiles/help.php:58
-msgid "Map Tile URL"
-msgstr ""
-
-#: admin/tiles/help.php:59
-msgid "Map Tile URL Subdomains"
-msgstr ""
-
-#: admin/help.php:53
-msgid "Marker and Icons"
-msgstr ""
-
-#: admin/help.php:55 admin/marker/main.php:24
-msgid "Marker Clustering"
-msgstr ""
-
-#: admin/marker/geojsonmarker.php:68
-msgid "Marker with icon"
-msgstr ""
-
-#: admin.php:140
-msgid "Markers and Icons"
-msgstr ""
-
-#: admin/elevation/elevation.php:223
-msgid "Markers and Waypoints"
-msgstr ""
-
-#. %1$s is a leaflet-marker, %2$s is leaflet-extramarker, %3$s is Point
-#: admin/marker/targetmarker.php:34
-#, php-format
-msgid "Markers can be %1$s and %2$s or marker %3$s in geojson files."
-msgstr ""
-
-#: php/listmarker.php:64
-msgid "maximum height of list in relation to the height of the map"
-msgstr ""
-
-#: php/listmarker.php:69
-msgid "maximum width of list in relation to the width of the map"
-msgstr ""
-
-#: admin/grouping/featuregroup.php:103
-msgid "Meaningful options may be:"
-msgstr ""
-
-#: admin/zoomhome.php:137
-msgid "means"
-msgstr ""
-
-#: admin/filemgr/managefiles-functions.php:157
-msgid "Media Library"
-msgstr ""
-
-#: admin/elevation/main.php:42
-msgid "Migrate from wp-gpx-maps"
-msgstr ""
-
-#: admin/elevation/sgpx.php:130
-msgid "Migration"
-msgstr ""
-
-#: admin/help.php:42
-msgid "Migration from"
-msgstr ""
-
-#: php/elevation.php:595
-msgid "miles or kilometers"
-msgstr ""
-
-#: admin/help.php:117
-msgid "More for Markers"
-msgstr ""
-
-#: admin/help.php:116
-msgid "More Functions for Markers"
-msgstr ""
-
-#: admin/marker/extramarker.php:110
-msgid "More icons"
-msgstr ""
-
-#: admin/marker/clustergroup.php:186
-msgid "More options"
-msgstr ""
-
-#: admin/elevation/waypoints.php:251
-msgid "More options see"
-msgstr ""
-
-#: php/multielevation.php:420
-msgid "move mouse over a track or select one in control panel ..."
-msgstr ""
-
-#: php/overview-map.php:303
-msgid "Multiple custom fields with the same name"
-msgstr ""
-
-#: admin/elevation/main.php:34
-msgid "Multiple hoverable tracks"
-msgstr ""
-
-#: admin/help.php:32
-msgid "Multiple tracks with elevation profiles"
-msgstr ""
-
-#: php/placementstrategies.php:47
-msgid "Multiplicator of elements number for the next circle"
-msgstr ""
-
-#: admin/elevation/waypoints.php:205
-msgid "Must be defined for each waypoint, also for the default."
-msgstr ""
-
-#: admin/elevation/owntheme.php:80
-msgid "must end with"
-msgstr ""
-
-#. %1$s is "Leaflet Plugin", other is a href.
-#: admin/marker/listmarker.php:22
-#, php-format
-msgid "My own %1$s based on the %2$swork%3$s of Stefano Cudini."
-msgstr ""
-
-#: admin/filemgr/managefiles-functions.php:155
-msgid "Name"
-msgstr ""
-
-#: php/extramarker.php:39
-msgid ""
-"Name of the icon with prefix, Possible values: fa-coffee (see icon library's "
-"documentation)"
-msgstr ""
-
-#: php/parentgroup.php:39
-msgid "Name of the parent"
-msgstr ""
-
-#: admin/filemgr/managefiles-functions.php:93
-msgid "Next"
-msgstr ""
-
-#: admin/deleting.php:34 admin/elevation/elevation.php:318
-#: admin/elevation/elevation.php:319 admin/elevation/elevation.php:325
-#: admin/elevation/elevation.php:335 admin/elevation/elevation.php:336
-#: admin/elevation/elevation.php:337 admin/elevation/elevation.php:338
-msgid "no"
-msgstr ""
-
-#. %s is an option.
-#: php/sgpx.php:144
-#, php-format
-msgid "No / Yes / Only, when %s is used, e.g. for testing."
-msgstr ""
-
-#: admin/filemgr/managefiles-functions.php:112
-msgid "no files"
-msgstr ""
-
-#: php/overview-map.php:643
-msgid "no leaflet-marker custom fields"
-msgstr ""
-
-#. %s are options / values.
-#: admin/marker/geojsonmarker.php:154
-#, php-format
-msgid "no more than 14 different %1$s for %2$s"
-msgstr ""
-
-#. %s are options / values.
-#: admin/marker/geojsonmarker.php:152
-#, php-format
-msgid "no more than 16 different %1$s for %2$s"
-msgstr ""
-
-#: php/elevation.php:218
-msgid "none - show filename in control - show trackname in control"
-msgstr ""
-
-#: admin/marker/placementstrategies.php:123
-msgid "Not all parameters are implemented in the plugin."
-msgstr ""
-
-#: admin/grouping/featuregroup.php:101
-msgid "Not every option is suitable for every element."
-msgstr ""
-
-#: admin/marker/geojsonmarker.php:150
-msgid "not for markers with iconUrl"
-msgstr ""
-
-#. %1$s is an option, %2$s and %3$s is a href
-#: php/leaflet-search.php:118
-#, php-format
-msgid ""
-"not specified for default (red circle), %1$s for no marker, or a definition "
-"like on an %2$sexample page%3$s."
-msgstr ""
-
-#: admin/leaflet-search.php:37 admin/elevation/elevation.php:159
-#: admin/marker/clustergroup.php:24 admin/marker/clustergroup.php:39
-#: admin/grouping/featuregroup.php:87
-msgid "Note"
-msgstr ""
-
-#: php/elevation.php:75
-msgid "nothing"
-msgstr ""
-
-#: admin/hover/hover.php:90
-msgid "Nothing happens."
-msgstr ""
-
-#: php/hover.php:97
-msgid "nothing or a string like the popup content for geojsons"
-msgstr ""
-
-#: php/elevation.php:89 php/elevation.php:100
-msgid "number"
-msgstr ""
-
-#: php/choropleth.php:27
-msgid "number of breaks or steps in range"
-msgstr ""
-
-#: php/placementstrategies.php:39
-msgid "Number of elements in the first circle"
-msgstr ""
-
-#. %1$s is a leaflet-marker, %2$s is leaflet-extramarker.
-#: admin/marker/targetmarker.php:74
-#, php-format
-msgid "of the target %1$s or %2$s"
-msgstr ""
-
-#: admin/marker/targetmarker.php:76 admin/marker/targetmarker.php:78
-msgid "of the target geojson marker"
-msgstr ""
-
-#. %s are codes.
-#: php/elevation.php:351
-#, php-format
-msgid "Only meaningful, if %1$swaypoints%2$s is not %3$s."
-msgstr ""
-
-#: php/elevation.php:330
-msgid "Only meaningful, if waypoints are shown in the map."
-msgstr ""
-
-#: php/choropleth.php:26
-msgid "opacity of the colors in scale"
-msgstr ""
-
-#: php/overview-map.php:82
-msgid "Open page, post or category links in a new tab"
-msgstr ""
-
-#: admin/leaflet-search.php:76 admin/marker/listmarker.php:66
-msgid "Option"
-msgstr ""
-
-#: admin/overview-map.php:95
-msgid "Option to change"
-msgstr ""
-
-#: admin/marker/clustergroup.php:75 admin/marker/clustergroup.php:137
-#: admin/grouping/featuregroup.php:214 admin/grouping/featuregroup.php:255
-msgid "optional"
-msgstr ""
-
-#. %s is an option.
-#: admin/tiles/help.php:114
-#, php-format
-msgid ""
-"optional: %s - a comma separated list with shortnames for providers. These "
-"appear in the switching control."
-msgstr ""
-
-#. %s is an option.
-#: admin/marker/clustergroup.php:202 admin/marker/geojsonmarker.php:169
-#: admin/grouping/featuregroup.php:306
-#, php-format
-msgid "optional: %s - group control collapsed or not:"
-msgstr ""
-
-#. %s is an option.
-#: admin/marker/clustergroup.php:195 admin/marker/geojsonmarker.php:163
-#: admin/grouping/featuregroup.php:299
-#, php-format
-msgid "optional: %s - position of group control"
-msgstr ""
-
-#. %s is an option
-#: admin/tiles/help.php:133
-#, php-format
-msgid "optional: %s - position of tiles control"
-msgstr ""
-
-#. %s is an option.
-#: admin/tiles/help.php:86
-#, php-format
-msgid "optional: %s - This appears in the switching control."
-msgstr ""
-
-#. %s are options
-#: admin/tiles/help.php:140
-#, php-format
-msgid "optional: %s - tiles control collapsed or not:"
-msgstr ""
-
-#: admin/overview-map.php:82
-msgid "Optional: Create a featured image for page or post."
-msgstr ""
-
-#. %s is leaflet-parentgroup.
-#: admin/grouping/featuregroup.php:77
-#, php-format
-msgid "Optional: Create one or more %s"
-msgstr ""
-
-#: admin/overview-map.php:83
-msgid ""
-"Optional: Place the page or post in one or more categories or tag it. The "
-"word \"category\" in this documentation means category or tag."
-msgstr ""
-
-#: admin/leaflet-search.php:45 admin/choropleth.php:54
-#: admin/elevation/multielevation.php:151
-#: admin/elevation/multielevation.php:209
-#: admin/elevation/multielevation.php:243
-#: admin/elevation/multielevation.php:271 admin/elevation/elevation.php:185
-#: admin/marker/extramarker.php:112 admin/marker/placementstrategies.php:138
-#: admin/marker/markercluster.php:143 admin/marker/markercluster.php:179
-#: admin/marker/listmarker.php:61 admin/grouping/parentgroup.php:34
-#: admin/hover/hoverlap.php:43 admin/hover/hover.php:56
-msgid "Options"
-msgstr ""
-
-#: admin/marker/clustergroup.php:54
-msgid "Options for grouping leaflet-markers"
-msgstr ""
-
-#: admin/marker/clustergroup.php:100
-msgid "Options for grouping markers (points) in leaflet-geojson"
-msgstr ""
-
-#: admin/overview-map.php:164
-msgid "Options for marker"
-msgstr ""
-
-#: admin/overview-map.php:139
-msgid "Options for overviewmap"
-msgstr ""
-
-#: php/overview-map.php:20 php/overview-map.php:33 php/overview-map.php:35
-#: admin/marker/clustergroup.php:95 admin/marker/clustergroup.php:156
-msgid "or"
-msgstr ""
-
-#. %s is a href.
-#: admin/elevation/owntheme.php:157
-#, php-format
-msgid "or check out Raruto's %1$sexamples%2$s"
-msgstr ""
-
-#. %s is leaflet-featuregroup.
-#: admin/grouping/featuregroup.php:72
-#, php-format
-msgid "Or create one or more %s"
-msgstr ""
-
-#: admin/filemgr/filemgr.php:18
-msgid "or in the directory"
-msgstr ""
-
-#: admin/filemgr/filemgr-settings.php:148
-msgid "or in your own way."
-msgstr ""
-
-#. %s is a href.
-#: admin/elevation/waypoints.php:171 admin/elevation/waypoints.php:178
-#, php-format
-msgid "Or set this in the %1$selevation settings%2$s."
-msgstr ""
-
-#: php/overview-map.php:47
-msgid "or the name of the popup custom field"
-msgstr ""
-
-#: admin/elevation/elevation.php:356
-msgid "Other settings"
-msgstr ""
-
-#: admin/elevation/owntheme.php:16
-msgid "Other Theme"
-msgstr ""
-
-#: php/managefiles.php:85 php/managefiles.php:96 php/managefiles.php:106
-msgid "Overview"
-msgstr ""
-
-#: admin.php:163 admin/help.php:119 admin/overview-map.php:75
-msgid "Overview Map"
-msgstr ""
-
-#: php/elevation.php:484 php/elevation.php:776
-msgid "Pace profile - time per distance"
-msgstr ""
-
-#: php/parentgroup.php:85
-msgid "padding of the subentries"
-msgstr ""
-
-#. %2$s and %3$s is a href, %1$s is an option
-#: admin/tiles/help.php:41
-#, php-format
-msgid ""
-"Pay attention to the setting for %1$s, it depends on the used Map Tiles, see "
-"%2$shere%3$s."
-msgstr ""
-
-#: admin/tiles/layerswitch.php:138
-msgid "Per default all defined tile servers appear."
-msgstr ""
-
-#: php/leaflet-search.php:92
-msgid "placeholder value"
-msgstr ""
-
-#: admin/elevation/owntheme.php:166
-msgid "Please change this only, if you want to use your own theme."
-msgstr ""
-
-#. %s are plugin names.
-#: extensions-leaflet-map.php:120
-#, php-format
-msgid "Please install and activate %1$s before using %2$s."
-msgstr ""
-
-#: admin/elevation/owntheme.php:169
-msgid "Please reset these settings, if you are not using an own theme!"
-msgstr ""
-
-#. %s is a link.
-#: admin/marker/markercluster.php:148
-#, php-format
-msgid ""
-"Please see the %s page for options. If you want to change other ones, please "
-"post it to the forum."
-msgstr ""
-
-#: admin/marker/placementstrategies.php:141
-msgid "Please see the admin page for options."
-msgstr ""
-
-#: admin/filemgr/filemgr.php:97
-msgid "Please select"
-msgstr ""
-
-#: extensions-leaflet-map.php:129
-msgid "Plugin Error"
-msgstr ""
-
-#: admin/overview-map.php:42 admin/gesture.php:43
-#: admin/elevation/multielevation.php:81 admin/elevation/multielevation.php:95
-#: admin/elevation/sgpx.php:43 admin/elevation/elevation.php:61
-#: admin/marker/placementstrategies.php:61 admin/marker/markercluster.php:57
-#: admin/filemgr/filemgr-settings.php:99 admin/grouping/settings.php:56
-#: admin/hover/settings.php:51
-msgid "Plugins Default"
-msgstr ""
-
-#: admin/gesture.php:58 admin/elevation/multielevation.php:53
-#: admin/elevation/sgpx.php:60 admin/elevation/elevation.php:52
-#: admin/elevation/elevation.php:76 admin/marker/placementstrategies.php:77
-#: admin/marker/markercluster.php:72
-msgid "Plugins Default:"
-msgstr ""
-
-#: php/elevation.php:38
-msgid "Polyline weight"
-msgstr ""
-
-#: admin/choropleth.php:39
-msgid "Popup Content"
-msgstr ""
-
-#. %1$s is a title, %2$s is "target".
-#. %1$s is title, %2$s is Target.
-#: admin/marker/targetmarker.php:84 admin/marker/targetmarker.php:170
-#, php-format
-msgid ""
-"popup content, if the target marker has not a popup. Default: %1$s, if the "
-"marker has one or %2$s."
-msgstr ""
-
-#: admin/hover/hoverlap.php:18
-msgid "Popups and highlighting overlapping elements"
-msgstr ""
-
-#: php/leaflet-search.php:107
-msgid "position in the map"
-msgstr ""
-
-#: php/elevation.php:226
-msgid "position of track control"
-msgstr ""
-
-#: php/elevation.php:73
-msgid "position/height indicator marker drawn onto the map"
-msgstr ""
-
-#: admin/marker/clustergroup.php:56 admin/marker/clustergroup.php:102
-msgid "possible meaningful values"
-msgstr ""
-
-#: admin/overview-map.php:148
-msgid "Possible values"
-msgstr ""
-
-#: admin/help.php:418
-msgid "Post it to the support forum"
-msgstr ""
-
-#: admin/overview-map.php:79
-msgid "Preparation"
-msgstr ""
-
-#: admin/filemgr/managefiles-functions.php:156
-#: admin/filemgr/managefiles-functions.php:200
-#: admin/filemgr/managefiles-functions.php:205
-#: admin/filemgr/managefiles-functions.php:217
-msgid "Preview"
-msgstr ""
-
-#: admin/filemgr/managefiles-functions.php:92
-msgid "Previous"
-msgstr ""
-
-#: admin/tiles/providers.php:30
-msgid "Providers requiring registration"
-msgstr ""
-
-#. %s is an href.
-#: admin/help.php:389
-#, php-format
-msgid "Provides a zoom control with a %1$sHome%2$s button to reset the view."
-msgstr ""
-
-#: admin/help.php:340
-msgid "Provides Beautiful Animated Marker Clustering functionality."
-msgstr ""
-
-#: php/choropleth.php:28
-msgid "q for quantile, e for equidistant, k for k-means"
-msgstr ""
-
-#: admin/choropleth.php:75
-msgid "quantile maps try to arrange groups so they have the same quantity."
-msgstr ""
-
-#: admin/leaflet-search.php:57
-msgid "red circle"
-msgstr ""
-
-#: php/leaflet-search.php:100
-msgid "remove circle and marker on search control collapsed or search canceled"
-msgstr ""
-
-#: php/elevation.php:551
-msgid "Render chart profiles as Canvas or SVG Paths."
-msgstr ""
-
-#. %s are shortcodes.
-#: php/sgpx.php:142
-#, php-format
-msgid "Replace %1$s with %2$s."
-msgstr ""
-
-#: admin/marker/geojsonmarker.php:107
-msgid "required"
-msgstr ""
-
-#. %s is an option.
-#: admin/marker/geojsonmarker.php:112 admin/marker/geojsonmarker.php:124
-#, php-format
-msgid "required for markers with %s"
-msgstr ""
-
-#. %s is a shortcode.
-#: admin/marker/geojsonmarker.php:115 admin/marker/geojsonmarker.php:138
-#, php-format
-msgid "required if you want to group like with %s"
-msgstr ""
-
-#: admin/elevation/main.php:75 admin/elevation/main.php:104
-#: admin/elevation/main.php:117 admin/elevation/main.php:163
-#: admin/elevation/main.php:178 admin/marker/placementstrategies.php:22
-#: admin/marker/markercluster.php:22 admin/filemgr/filemgr.php:249
-#: admin/filemgr/main.php:62 admin/grouping/settings.php:95
-#: admin/hover/settings.php:93 admin/tiles/main.php:73
-#: admin/tiles/providers.php:168
-msgid "Reset"
-msgstr ""
-
-#: admin.php:167 admin/help.php:201
-msgid "Reset the map"
-msgstr ""
-
-#: admin/marker/geojsonmarker.php:135
-msgid "resp. substring of "
-msgstr ""
-
-#: php/extramarker.php:59
-msgid ""
-"Rotates the icon with css transformations, Possible values: numeric degrees"
-msgstr ""
-
-#: admin/marker/targetmarker.php:41
-msgid "Same source and target"
-msgstr ""
-
-#: admin/filemgr/filemgr.php:20
-msgid "Save query"
-msgstr ""
-
-#: admin/gesture.php:131
-msgid "Scroll Wheel Zoom"
-msgstr ""
-
-#: admin.php:149 admin/help.php:171
-msgid "Search markers/features"
-msgstr ""
-
-#: admin/help.php:376
-msgid "Search Markers/Features location by option or custom property."
-msgstr ""
-
-#. %s are options / values.
-#: admin/grouping/featuregroup.php:217
-#, php-format
-msgid "search substring %1$s or the exact string %2$s in %3$s."
-msgstr ""
-
-#: php/leaflet-search.php:93
-msgid "Search..."
-msgstr ""
-
-#. %s is an href.
-#: admin/overview-map.php:184
-#, php-format
-msgid "See %1$sexamples%2$s."
-msgstr ""
-
-#. %1$s and %2$s is a href, %3$s is an option
-#: admin/leaflet-search.php:70
-#, php-format
-msgid ""
-"See %1$sLeaflet Map Github page%2$s for more or less useful and possible "
-"options for %3$s."
-msgstr ""
-
-#. %s is a href.
-#: admin/grouping/featuregroup.php:141
-#, php-format
-msgid ""
-"See %1$sLeaflet Map Github page%2$s for more or less useful and possible "
-"options."
-msgstr ""
-
-#: admin/elevation/multielevation.php:143
-msgid "See also"
-msgstr ""
-
-#: php/leaflet-search.php:54
-msgid "see below"
-msgstr ""
-
-#. %s is a href.
-#: admin/elevation/sgpx.php:140
-#, php-format
-msgid "See documentation and examples in %1$shere%2$s."
-msgstr ""
-
-#: admin/tiles/help.php:83
-msgid "see Leaflet Map documentation"
-msgstr ""
-
-#. %s are values.
-#: admin/elevation/sgpx.php:155
-#, php-format
-msgid "Select %1$s to interpret the %2$s parameters as %3$s."
-msgstr ""
-
-#: php/overview-map.php:89
-msgid "Select only pages / posts from these categories"
-msgstr ""
-
-#. %s is "false".
-#: php/overview-map.php:127
-#, php-format
-msgid "Set this to %s, if you have trouble to get the right markers."
-msgstr ""
-
-#: admin/elevation/elevation.php:274
-msgid "Setting"
-msgstr ""
-
-#: extensions-leaflet-map.php:99 admin/elevation/waypoints.php:266
-#: admin/filemgr/filemgr-settings.php:50 admin/tiles/layerswitch.php:163
-#: admin/tiles/providers.php:150
-msgid "Settings"
-msgstr ""
-
-#: admin/help.php:352
-msgid "Shameless copy of Awesome-Markers with more shapes and colors."
-msgstr ""
-
-#: php/extramarker.php:109
-msgid ""
-"Shape of the marker (css class), Possible values: 'circle', 'square', 'star',"
-" or 'penta'"
-msgstr ""
-
-#: admin/marker/clustergroup.php:90
-msgid "Shortcode for grouping leaflet-markers"
-msgstr ""
-
-#: admin/marker/clustergroup.php:151
-msgid "Shortcode for grouping markers (points) in leaflet-geojson"
-msgstr ""
-
-#: php/overview-map.php:75
-msgid "Show a link to category page"
-msgstr ""
-
-#: admin/hover/hover.php:113
-msgid "show a short tooltip, if the popup is too big:"
-msgstr ""
-
-#: admin/filemgr/filemgr.php:17
-msgid "Show all files"
-msgstr ""
-
-#. %s are pictures.
-#: php/elevation.php:170
-#, php-format
-msgid ""
-"show always the chart / show the chart and toggle %1$s to hide / hide the "
-"chart and toggle %2$s to show"
-msgstr ""
-
-#: php/elevation.php:387
-msgid ""
-"show distance data in graph and summary / show distance data in summary only "
-"/ don't show distance data"
-msgstr ""
-
-#: admin/filemgr/filemgr.php:16
-msgid "Show files of type"
-msgstr ""
-
-#: php/choropleth.php:29
-msgid "show legend"
-msgstr ""
-
-#: php/leaflet-search.php:114
-msgid "show or hide marker at the position found"
-msgstr ""
-
-#: php/leaflet-search.php:130
-msgid "show or hide popup when position found"
-msgstr ""
-
-#: php/overview-map.php:60
-msgid "Show page / post featured image"
-msgstr ""
-
-#: php/elevation.php:399
-msgid ""
-"show time data in graph and summary / show time data in summary only / "
-"nothing"
-msgstr ""
-
-#: admin/hover/hover.php:89
-msgid "Show tooltip and change style on hover."
-msgstr ""
-
-#. %s is an option.
-#: php/hover.php:17
-#, php-format
-msgid "show tooltip and hide %s if present"
-msgstr ""
-
-#: admin/hover/hover.php:91
-msgid "Show tooltip on hover."
-msgstr ""
-
-#: admin/hover/hover.php:111
-msgid "show tooltips on hover:"
-msgstr ""
-
-#: php/elevation.php:348
-msgid ""
-"Show waypoint labels in map and in chart / only in map / only in chart / none"
-msgstr ""
-
-#: admin/help.php:395
-msgid "Simple plugin for Leaflet that adds fullscreen button to your maps."
-msgstr ""
-
-#: php/gesture.php:29
-msgid "Site Language or Browser Language"
-msgstr ""
-
-#: php/overview-map.php:67
-msgid "Size of featured image"
-msgstr ""
-
-#: php/elevation.php:461 php/elevation.php:770
-msgid "Slope chart profile"
-msgstr ""
-
-#: admin/hover/hover.php:108
-msgid "So can you write:"
-msgstr ""
-
-#: admin/marker/extramarker.php:95
-msgid "Some Icons"
-msgstr ""
-
-#: php/elevation.php:422
-msgid ""
-"some predefined settings / summary on one line / summary on multiple lines / "
-"without summary"
-msgstr ""
-
-#: admin/zoomhome.php:138
-msgid "sometimes to first zoom"
-msgstr ""
-
-#: admin/marker/targetmarker.php:113 admin/marker/targetmarker.php:128
-msgid "Source"
-msgstr ""
-
-#: admin/marker/targetmarker.php:70
-msgid "Source - options for"
-msgstr ""
-
-#: admin/marker/targetmarker.php:43
-msgid "Source - shortcode for"
-msgstr ""
-
-#: admin/marker/targetmarker.php:39
-msgid ""
-"Source and target can be the same page / post or different pages / posts."
-msgstr ""
-
-#: php/hover.php:95
-msgid "specify a short string as parameter, if the popup is too big."
-msgstr ""
-
-#. %s are "leaflet-marker" and "leaflet-extramarker".
-#: php/overview-map.php:105
-#, php-format
-msgid ""
-"Specify this, if there are no any marker information in custom fields and "
-"the icons appear as %1$s instead of %2$s."
-msgstr ""
-
-#: php/elevation.php:473 php/elevation.php:758
-msgid "Speed chart profile"
-msgstr ""
-
-#: php/placementstrategies.php:18
-msgid "Strategy for placing markers in cluster"
-msgstr ""
-
-#: admin/help.php:75 admin/marker/main.php:33
-msgid "Styling Markercluster"
-msgstr ""
-
-#: admin/help.php:346
-msgid "Styling Markerclusters."
-msgstr ""
-
-#: php/hoverlap.php:17 php/hover.php:133
-msgid "substring from url to geojson, gpx, kml file"
-msgstr ""
-
-#: php/multielevation.php:41 admin/elevation/elevation.php:278
-msgid "Summary"
-msgstr ""
-
-#: php/elevation.php:420
-msgid "Summary track info style"
-msgstr ""
-
-#: php/placementstrategies.php:61
-msgid "Switch drawing helping circles on"
-msgstr ""
-
-#: php/elevation.php:217
-msgid "Switch Track on and off"
-msgstr ""
-
-#: admin.php:153 admin/help.php:180
-msgid "Switching Tile Servers"
-msgstr ""
-
-#: php/parentgroup.php:78
-msgid "Symbol displayed on a closed node (that you can click to open)"
-msgstr ""
-
-#: php/parentgroup.php:70
-msgid "Symbol displayed on a opened node (that you can click to close)"
-msgstr ""
-
-#: admin/marker/targetmarker.php:159
-msgid "Target - options for"
-msgstr ""
-
-#: admin/marker/targetmarker.php:100 admin/marker/targetmarker.php:147
-msgid "Target - shortcode for the map"
-msgstr ""
-
-#: admin/help.php:129 admin/marker/targetmarker.php:18 admin/marker/main.php:47
-msgid "Target Marker"
-msgstr ""
-
-#: php/parentgroup.php:56
-msgid "Text for an entry in control that collapses the tree"
-msgstr ""
-
-#: php/parentgroup.php:63
-msgid "Text for an entry in control that expands the tree"
-msgstr ""
-
-#: admin/elevation/waypoints.php:18 admin/elevation/waypoints.php:39
-#: admin/elevation/waypoints.php:185 admin/elevation/waypoints.php:189
-msgid "Text of GPS symbol name"
-msgstr ""
-
-#: admin/marker/targetmarker.php:81
-msgid "text of the link. Default:"
-msgstr ""
-
-#. %1$s is a link, %2$s is the plugin name,.
-#: admin/marker/extramarker.php:23
-#, php-format
-msgid ""
-"The %1$s is included in the plugin %2$s. If you have already installed some "
-"yourself, yours will be used."
-msgstr ""
-
-#. %s are shortcodes / values.
-#: admin/elevation/elevation.php:172
-#, php-format
-msgid ""
-"The %1$s parameter is called %2$s, but it works with gpx, kml, geojson and "
-"tcx files."
-msgstr ""
-
-#. %s is "values".
-#: admin/grouping/featuregroup.php:209
-#, php-format
-msgid "The %s are case sensitive."
-msgstr ""
-
-#: php/multielevation.php:59
-msgid "The active track is displayed in this color."
-msgstr ""
-
-#. %1$s is "leaflet-marker"
-#: admin/overview-map.php:114
-#, php-format
-msgid "The content of the popup custom field is like the popup in %1$s."
-msgstr ""
-
-#: admin/overview-map.php:87
-msgid ""
-"The custom fields names are as you like. You can these specify in "
-"overviewmap options."
-msgstr ""
-
-#. %s are options / values.
-#: admin/grouping/featuregroup.php:224
-#, php-format
-msgid "The default is %1$s for %2$s and %3$s for %4$s."
-msgstr ""
-
-#. %s is a href.
-#: admin/tiles/help.php:24
-#, php-format
-msgid "The default Map Tiles are defined in the %1$s Settings%2$s."
-msgstr ""
-
-#: admin/tiles/help.php:37
-msgid "The default Map Tiles are defined in the Leaflet Map Settings."
-msgstr ""
-
-#: php/leaflet-search.php:61
-msgid ""
-"The default value is the same as the setting for the Leaflet Map plugin."
-msgstr ""
-
-#: admin/elevation/elevation.php:180
-msgid ""
-"The elevation shortcode has many configuration options. Some things are not "
-"trivial. If you can't configure something, ask in the forum."
-msgstr ""
-
-#: admin/overview-map.php:126
-msgid "the featured image"
-msgstr ""
-
-#: php/extramarker.php:99
-msgid ""
-"The icon library's base class, Possible values: fa (see icon library's "
-"documentation)"
-msgstr ""
-
-#. %s is a shortcode.
-#: admin/marker/geojsonmarker.php:158
-#, php-format
-msgid "The markers are clustered. Optional you can specify options from %s."
-msgstr ""
-
-#. %s are options.
-#: admin/marker/geojsonmarker.php:72
-#, php-format
-msgid "The markers should have the same %1$s, only %2$s differs."
-msgstr ""
-
-#: php/placementstrategies.php:77 php/markercluster.php:63
-msgid ""
-"The maximum radius that a cluster will cover from the central marker (in "
-"pixels). Decreasing will make more, smaller clusters."
-msgstr ""
-
-#. %s is styling.
-#: admin/elevation/multielevation.php:253
-#, php-format
-msgid "The name of a %1$strack%2$s is determined as described above."
-msgstr ""
-
-#. %s is styling.
+#. translators: %s is styling.
 #: admin/elevation/multielevation.php:226
-#, php-format
 msgid "The name of a %1$strack%2$s is determined in this order:"
 msgstr ""
 
-#: php/overview-map.php:46
-msgid "the name of custom field is"
+#. translators: %s is an option.
+#: admin/elevation/multielevation.php:233
+msgid "If %s (in options below or in shortcode) is true, the filename (without extension) is used."
 msgstr ""
 
-#. %s is styling.
-#: admin/elevation/multielevation.php:178
-#, php-format
-msgid "The name of the %1$sstart point%2$s is determined in this order:"
+#: admin/elevation/multielevation.php:237
+msgid "If it is false, an attempt is made to read the trackname from the file."
 msgstr ""
 
-#. %s are options.
-#: admin/marker/clustergroup.php:70 admin/marker/clustergroup.php:132
-#: admin/grouping/featuregroup.php:237 admin/tiles/help.php:121
-#, php-format
-msgid "The number of %1$s and %2$s must match."
+#. translators: %s are options.
+#: admin/elevation/multielevation.php:247
+msgid "If you use %1$s instead of %2$s, you get an elevation profile only with or without a summary line."
 msgstr ""
 
-#. %s is an option.
-#: admin/tiles/providers.php:117
-#, php-format
-msgid "The option %s is optional."
-msgstr ""
-
-#. %s are options / shortcode.
-#: admin/hover/hoverlap.php:47
-#, php-format
-msgid "The options %1$s and %2$s are the same as for the %3$s shortcode."
-msgstr ""
-
-#: admin/grouping/featuregroup.php:145
-msgid "The options are case sensitive."
-msgstr ""
-
-#: admin/marker/markercluster.php:171
-msgid ""
-"The options zoom, radius and spiderfy have been renamed to "
-"disableClusteringAtZoom, maxClusterRadius and spiderfyOnMaxZoom, but they "
-"are still valid. Your settings:"
-msgstr ""
-
-#: admin/marker/targetmarker.php:150
-msgid "The order of the shortcodes is fixed!"
-msgstr ""
-
-#. %s is a shortcode.
-#: admin/marker/clustergroup.php:188
-#, php-format
-msgid "The parameter and settings for %s are valid too."
-msgstr ""
-
-#. %s is code.
-#: admin/marker/placementstrategies.php:145
-#, php-format
-msgid "The parameter maxZoom has been removed, please use %s instead."
-msgstr ""
-
-#: admin/marker/targetmarker.php:123
-msgid "The parameters (querystring) from this link should be:"
-msgstr ""
-
-#. %s are shortcodes.
-#: admin/marker/clustergroup.php:27 admin/marker/clustergroup.php:42
-#: admin/grouping/featuregroup.php:316
-#, php-format
-msgid "The shortcode %1$s is a special case of %2$s respectively %3$s."
-msgstr ""
-
-#. %s is an href.
-#: admin/leaflet-search.php:95
-#, php-format
-msgid "The specific style and css depends on your %1$stheme and taste%2$s"
-msgstr ""
-
-#. %s is an option.
-#: admin/grouping/featuregroup.php:295
-#, php-format
-msgid "The specification in the first command applies. It is valid for %s too."
-msgstr ""
-
-#. %s are options.
-#: admin/marker/geojsonmarker.php:79
-#, php-format
-msgid ""
-"The substring %1$s will be replaced in the path of the %2$s with any of %3$s."
-msgstr ""
-
-#: admin/elevation/waypoints.php:75 admin/tiles/layerswitch.php:62
-msgid "The syntax is not checked!"
+#. translators: %s is styling.
+#: admin/elevation/multielevation.php:253
+msgid "The name of a %1$strack%2$s is determined as described above."
 msgstr ""
 
 #: admin/elevation/multielevation.php:261
 msgid "The theme is the same as the"
 msgstr ""
 
-#: admin/overview-map.php:125
-msgid "the title"
+#: admin/elevation/multielevation.php:264
+#: admin/elevation/multielevation.php:268
+msgid "Elevation Theme"
 msgstr ""
 
-#: admin/hover/hover.php:30
-msgid "The tooltip content is the same as the popup content."
-msgstr ""
-
-#. %s are options.
-#: admin/hover/hover.php:124
-#, php-format
-msgid ""
-"The tooltip has a %1$s, its default is %2$s. You can style the tooltip with "
-"css, e.g."
-msgstr ""
-
-#: admin/overview-map.php:124
-msgid "the url to the page / post"
-msgstr ""
-
-#: admin/elevation/waypoints.php:192
-msgid "The waypoint CSS class Selector"
-msgstr ""
-
-#: admin/elevation/waypoints.php:156
-msgid "the waypoint in the track file,"
-msgstr ""
-
-#: admin/elevation/main.php:26
-msgid "Theme / Colors"
-msgstr ""
-
-#: php/elevation.php:20
-msgid "Theme Colors"
-msgstr ""
-
-#. %s are shortcodes.
-#: admin/grouping/featuregroup.php:40
-#, php-format
-msgid ""
-"There are three shortcodes: %1$s to group elements by options%2$s to group "
-"elements by properties%3$s to display groups in a tree view"
-msgstr ""
-
-#. %1$s is GET, %2$s is POST.
-#: admin/marker/targetmarker.php:111
-#, php-format
-msgid "There are two ways to the target: %1$s or %2$s."
-msgstr ""
-
-#. %s is styling
-#: admin/marker/targetmarker.php:117
-#, php-format
-msgid ""
-"This is the only way to link to a marker on your map from an "
-"%1$sexternal%2$s site."
-msgstr ""
-
-#: admin/filemgr/filemgr-settings.php:24
-msgid "This may be of interest if you have used wp-gpx-maps."
-msgstr ""
-
-#: admin/gesture.php:136
-msgid "This means for you:"
-msgstr ""
-
-#. %s are shortcodes.
-#: admin/elevation/sgpx.php:133
-#, php-format
-msgid "This page helps you to migrate from %1$s to %2$s."
-msgstr ""
-
-#: admin/help.php:310
-msgid ""
-"This plugin allows to detect mouse click and overing events on lines, with a "
-"tolerance distance."
-msgstr ""
-
-#: php/elevation.php:147
-msgid "three digit number (px), minimum 100, maximum 499"
-msgstr ""
-
-#: admin/tiles/help.php:57
-msgid "Tile Id"
-msgstr ""
-
-#: admin/tiles/main.php:18
-msgid "Tile Server"
+#: admin/elevation/owncolors.php:108
+msgid "Your theme is the"
 msgstr ""
 
 #: admin/elevation/owncolors.php:110
 msgid "To change it see the bottom of the page."
 msgstr ""
 
-#: admin/elevation/waypoints.php:154
-msgid ""
-"To change the display of waypoints in the elevation profile, 3 things are "
-"important:"
+#: admin/elevation/owncolors.php:113
+msgid "Colors"
 msgstr ""
 
-#. %s is a href.
-#: admin/hover/hover.php:35
-#, php-format
-msgid ""
-"To customize the popup content for geojsons, see %1$sgeojson options%2$s."
+#: admin/elevation/owntheme.php:16
+msgid "Other Theme"
 msgstr ""
 
-#. $s is an color statement and %2$s is the word css.
-#: admin/marker/listmarker.php:90
-#, php-format
-msgid ""
-"To define the background color (default: %1$s) for the list in all your maps "
-"define %2$s in customizer or using another method:"
+#: admin/elevation/owntheme.php:80
+msgid "must end with"
 msgstr ""
 
-#. %s is a link.
+#: admin/elevation/owntheme.php:126
+msgid "If you want use an own style, select \"other\" theme and give it a name. Put in your functions.php following code:"
+msgstr ""
+
+#: admin/elevation/owntheme.php:152
+msgid "In your elevation.css put the styles like the theme styles in"
+msgstr ""
+
+#. translators: %s is a href.
+#: admin/elevation/owntheme.php:157
+msgid "or check out Raruto's %1$sexamples%2$s"
+msgstr ""
+
+#: admin/elevation/owntheme.php:166
+msgid "Please change this only, if you want to use your own theme."
+msgstr ""
+
+#: admin/elevation/owntheme.php:169
+msgid "Please reset these settings, if you are not using an own theme!"
+msgstr ""
+
+#. translators: %1$s - a name ,%2$s %3$s - href, %4$s %5$s - shortcodes
+#: admin/elevation/sgpx.php:123
+msgid "Many thanks to %1$s for his %2$sexcellent plugin%3$s, which I used myself for a long time. Unfortunately it needed some rework, especially to make wp-gpx-maps and leaflet-map work together. At some point it didn't work for me at all. So some of its features are included in the shortcode %4$s. Since version 2.2. it interprets the shortcode %5$s."
+msgstr ""
+
+#: admin/elevation/sgpx.php:130
+msgid "Migration"
+msgstr ""
+
+#. translators: %s are shortcodes.
+#: admin/elevation/sgpx.php:133
+msgid "This page helps you to migrate from %1$s to %2$s."
+msgstr ""
+
+#. translators: %s is a href.
+#: admin/elevation/sgpx.php:140
+msgid "See documentation and examples in %1$shere%2$s."
+msgstr ""
+
+#. translators: %s is a link.
+#: admin/elevation/sgpx.php:152
+msgid "Configure your default %s settings."
+msgstr ""
+
+#. translators: %s are values.
+#: admin/elevation/sgpx.php:155
+msgid "Select %1$s to interpret the %2$s parameters as %3$s."
+msgstr ""
+
+#. translators: %s is a plugin name.
+#: admin/elevation/sgpx.php:158
+msgid "It may be that %s does not work with your theme. Then this is the only option."
+msgstr ""
+
+#. translators: %s are shortcodes / values.
+#: admin/elevation/sgpx.php:163
+msgid "If you want to test it first: select %1$s and write in your test page / post %2$s."
+msgstr ""
+
+#. translators: %s are a plugin name.
+#: admin/elevation/sgpx.php:166
+msgid "If you are happy with this and if you don't use the track management of %1$s, you can deactivate and delete the plugin %2$s."
+msgstr ""
+
+#. translators: %s is a link.
 #: admin/elevation/sgpx.php:170
-#, php-format
-msgid ""
-"To manage your tracks now, you can use %1$sManage Leaflet Map files%2$s."
+msgid "To manage your tracks now, you can use %1$sManage Leaflet Map files%2$s."
 msgstr ""
 
-#: admin/marker/markercluster.php:154
-msgid "To reset all values to their defaults, simply click the Reset button"
+#: admin/elevation/sgpx.php:173
+msgid "If you have deleted the plugin, call this page again."
 msgstr ""
 
-#: php/multielevation.php:102 php/elevation.php:540
-msgid "Toggle \"leaflet-almostover\" integration"
+#. translators: %s are plugin names / option.
+#: admin/elevation/sgpx.php:177
+msgid "%1$s is not active, %2$s parameters will interpreted with %3$s."
 msgstr ""
 
-#: php/multielevation.php:81 php/elevation.php:289
-msgid "Toggle \"leaflet-distance-markers\" integration"
+#: admin/elevation/sgpx.php:179
+msgid "You have wp-gpx-maps uninstalled, but some of its options exist in the database. You should delete them."
 msgstr ""
 
-#: php/elevation.php:131
-msgid "Toggle \"leaflet-edgescale\" integration"
+#: admin/elevation/sgpx.php:181
+msgid "You can delete all settings on this page."
 msgstr ""
 
-#: php/elevation.php:167
-msgid "Toggle chart"
-msgstr ""
-
-#: php/elevation.php:108
-msgid "Toggle chart legend filter."
-msgstr ""
-
-#: php/elevation.php:246
-msgid "Toggle chart ruler filter."
-msgstr ""
-
-#: php/elevation.php:328
-msgid "Toggle custom waypoint icons"
-msgstr ""
-
-#: php/multielevation.php:91 php/elevation.php:299
-msgid "Toggle direction arrows"
-msgstr ""
-
-#: php/elevation.php:347
-msgid "Toggle waypoint labels"
-msgstr ""
-
-#: admin/hover/hover.php:121
-msgid "Tooltip className"
-msgstr ""
-
-#: admin/elevation/elevation.php:277
-msgid "Tooltip display"
-msgstr ""
-
-#: php/elevation.php:782
-msgid "Track color"
-msgstr ""
-
-#: php/elevation.php:788
-msgid "Track color over the ruler filter"
-msgstr ""
-
-#: php/elevation.php:48
-msgid "Track colors according to the values of elevation"
-msgstr ""
-
-#: php/elevation.php:235
-msgid "track control collapsed"
-msgstr ""
-
-#. %s is a shortcode.
-#: admin/filemgr/managefiles-functions.php:161
-#, php-format
-msgid "track in %s"
-msgstr ""
-
-#: admin/help.php:16
-msgid "Track with an elevation profile"
-msgstr ""
-
-#: admin/help.php:270 admin/filemgr/main.php:36
-#: admin/filemgr/leaflet-directory.php:18
-msgid "Tracks from all files in a directory"
-msgstr ""
-
-#: admin/elevation/elevation.php:145
-msgid "Translation"
-msgstr ""
-
-#: php/listmarker.php:49
-msgid "true or false - show marker in list when hover"
-msgstr ""
-
-#: php/listmarker.php:44
-msgid ""
-"true or false - show only visible marker in list (default) / show all marker "
-"in list"
-msgstr ""
-
-#: php/listmarker.php:39
-msgid "true or false - the list is collapsed or not (default)"
-msgstr ""
-
-#: php/placementstrategies.php:29
-msgid "Type of marker"
-msgstr ""
-
-#: admin/filemgr/filemgr-settings.php:16
-msgid "Types"
-msgstr ""
-
-#: admin/elevation/elevation.php:363
-msgid "Units"
-msgstr ""
-
-#: admin/filemgr/filemgr-settings.php:23
-msgid "Upload gpx files into the directory"
-msgstr ""
-
-#: admin/filemgr/thickbox.php:32
-msgid "Uploaded on:"
-msgstr ""
-
-#: admin/filemgr/leaflet-directory.php:27
-msgid "url to directory, default: URL from upload directory."
-msgstr ""
-
-#. %s is iconurl
-#: php/listmarker.php:32
-#, php-format
-msgid ""
-"URL to the icon when it hover or clicked. If it is an empty string or the "
-"marker icon has not an %s, the icon does not change. Default: red icon"
-msgstr ""
-
-#: php/multielevation.php:34
-msgid "Use filename (without extension) as name of the point and track."
-msgstr ""
-
-#: admin/choropleth.php:46
-msgid ""
-"Use it like the popup content for Geojsons in Leaflet Map: To add feature "
-"properties to the popups, use the inner content and curly brackets to "
-"substitute the values:"
-msgstr ""
-
-#. %s is a shortcode.
-#: admin/hover/hover.php:20
-#, php-format
-msgid "Use it to highlight a %s element and get a tooltip on mouse over."
-msgstr ""
-
-#: php/extramarker.php:119
-msgid "Use SVG version, Possible values: true or false"
-msgstr ""
-
-#. %s is a href.
-#: admin/filemgr/leaflet-directory.php:63
-#, php-format
-msgid "Use the %1$sdirectory listing%2$s for simplicity."
-msgstr ""
-
-#: php/overview-map.php:125 php/overview-map.php:193
-msgid "Use transients"
+#: admin/elevation/waypoints.php:18
+#: admin/elevation/waypoints.php:39
+#: admin/elevation/waypoints.php:185
+#: admin/elevation/waypoints.php:189
+msgid "Text of GPS symbol name"
 msgstr ""
 
 #: admin/elevation/waypoints.php:54
-msgid ""
-"Valid characters: lowercase, uppercase, numbers, -, comma, blank character."
+msgid "Valid characters: lowercase, uppercase, numbers, -, comma, blank character."
 msgstr ""
 
-#. %s is an option.
-#: php/multielevation.php:44
-#, php-format
-msgid ""
-"Valid for %s: Only elevation profile with or without summary line will be "
-"displayed."
+#: admin/elevation/waypoints.php:57
+msgid "It may be empty, then its javascript is the default for all waypoints."
 msgstr ""
 
-#: php/parentgroup.php:86
-msgid "Valid for all maps on the page/post."
+#: admin/elevation/waypoints.php:75
+#: admin/tiles/layerswitch.php:62
+msgid "The syntax is not checked!"
 msgstr ""
 
-#: php/gesture.php:15
-msgid "valid for whole site or only for one map"
+#: admin/elevation/waypoints.php:83
+msgid "Delete"
 msgstr ""
 
-#: admin/marker/targetmarker.php:94
-msgid ""
-"valid if the target marker is not clustered. Zoom level for move to location "
-"for target marker. Default: actual zoom level."
+#: admin/elevation/waypoints.php:138
+msgid "Here you can define extra waypoint options."
 msgstr ""
 
-#: admin/marker/targetmarker.php:172
-msgid ""
-"valid only, if the target marker is not clustered. Zoom level if target "
-"marker was found. Default: actual zoom level."
+#. translators: %s are shortcodes.
+#: admin/elevation/waypoints.php:144
+msgid "You can of course use %1$s and define waypoints with additional %2$s and %3$s shortcodes."
 msgstr ""
 
-#: php/placementstrategies.php:55
-msgid "Value to be added to each new circle distance value"
+#: admin/elevation/waypoints.php:153
+msgid "Introduction"
 msgstr ""
 
-#: admin/leaflet-search.php:53 admin/hover/hover.php:66
-msgid "Values"
+#: admin/elevation/waypoints.php:154
+msgid "To change the display of waypoints in the elevation profile, 3 things are important:"
 msgstr ""
 
-#: admin/filemgr/managefiles-functions.php:206
-msgid "View"
+#: admin/elevation/waypoints.php:156
+msgid "the waypoint in the track file,"
 msgstr ""
 
-#: php/elevation.php:373
-msgid "Waypoint labels alignment in chart"
+#: admin/elevation/waypoints.php:157
+msgid "css describing the waypoint, e.g. the definition of the icon url,"
 msgstr ""
 
-#: php/elevation.php:364
-msgid "Waypoint labels rotation (degrees) in chart"
+#: admin/elevation/waypoints.php:158
+msgid "and Javascript to describe the icon."
+msgstr ""
+
+#. translators: %s is a href.
+#: admin/elevation/waypoints.php:171
+#: admin/elevation/waypoints.php:178
+msgid "Or set this in the %1$selevation settings%2$s."
 msgstr ""
 
 #: admin/elevation/waypoints.php:184
 msgid "Waypoint specified in file"
 msgstr ""
 
-#: admin/tiles/providers.php:134
-msgid ""
-"We try to maintain leaflet-providers in such a way that you'll be able to "
-"use the layers we include without paying money.<br>\n"
-"\tThis doesn't mean no limits apply, you should always check before using "
-"these layers for anything serious."
+#: admin/elevation/waypoints.php:192
+msgid "The waypoint CSS class Selector"
 msgstr ""
 
-#: admin/gesture.php:110
-msgid "When Gesture Handling is enabled:"
+#. translators: %s is code.
+#: admin/elevation/waypoints.php:199
+msgid "CSS to define as HTML block (between %1$s and %2$s) or in css file"
 msgstr ""
 
-#. %s are options.
-#: admin/grouping/featuregroup.php:91
-#, php-format
-msgid ""
-"When markers are grouped, %1$s is automatically active and the parameter and "
-"settings for %2$s are valid too."
+#: admin/elevation/waypoints.php:205
+msgid "Must be defined for each waypoint, also for the default."
 msgstr ""
 
-#: php/placementstrategies.php:71 php/markercluster.php:35
-msgid ""
-"When you click a cluster at the bottom zoom level we spiderfy it so you can "
-"see all of its markers."
+#: admin/elevation/waypoints.php:211
+msgid "You can use any css describing the waypoint."
 msgstr ""
 
-#: php/markercluster.php:27
-msgid "When you click a cluster we zoom to its bounds."
+#. translators: %s is styling.
+#: admin/elevation/waypoints.php:219
+msgid "Any blank character from %1$sText of GPS symbol name%2$s is converted to a minus sign, uppercase to lowercase, a comma will be escaped."
 msgstr ""
 
-#: php/markercluster.php:19
-msgid "When you mouse over a cluster it shows the bounds of its markers."
+#: admin/elevation/waypoints.php:228
+msgid "e.g."
 msgstr ""
 
-#: php/choropleth.php:24
-msgid "which property in the features to use"
+#. translators: %s are special characters.
+#: admin/elevation/waypoints.php:234
+msgid "If you need more special characters than %s for your waypoints, please ask in the forum."
 msgstr ""
 
-#. %s is an option.
-#: admin/tiles/help.php:127
-#, php-format
-msgid ""
-"with %s you can specify the mapids and/or providers for which opacity should "
-"be regulated."
+#: admin/elevation/waypoints.php:249
+msgid "Generated Javascript"
+msgstr ""
+
+#: admin/elevation/waypoints.php:251
+msgid "More options see"
+msgstr ""
+
+#: admin/elevation/waypoints.php:266
+#: admin/filemgr/filemgr-settings.php:50
+#: admin/tiles/layerswitch.php:163
+#: admin/tiles/providers.php:150
+#: extensions-leaflet-map.php:100
+msgid "Settings"
+msgstr ""
+
+#: admin/filemgr/filemgr-settings.php:16
+msgid "Types"
+msgstr ""
+
+#: admin/filemgr/filemgr-settings.php:17
+msgid "Allow upload to media library"
+msgstr ""
+
+#: admin/filemgr/filemgr-settings.php:23
+msgid "Upload gpx files into the directory"
+msgstr ""
+
+#: admin/filemgr/filemgr-settings.php:24
+msgid "This may be of interest if you have used wp-gpx-maps."
+msgstr ""
+
+#: admin/filemgr/filemgr-settings.php:30
+msgid "Allow non admin"
+msgstr ""
+
+#. translators: %s is code
+#: admin/filemgr/filemgr-settings.php:33
+msgid "Allow all users who have access to the backend to see the files. A permission check %s only done if the files are registered in the media library."
+msgstr ""
+
+#: admin/filemgr/filemgr-settings.php:125
+msgid "You can display all gpx, kml, geojson, json and tcx files in subdirectories of uploads directory."
+msgstr ""
+
+#: admin/filemgr/filemgr-settings.php:127
+msgid "Here you can display all gpx, kml, geojson, json and tcx files in subdirectories of uploads directory."
+msgstr ""
+
+#: admin/filemgr/filemgr-settings.php:130
+msgid "You can manage these according to your permissions"
+msgstr ""
+
+#: admin/filemgr/filemgr-settings.php:132
+msgid "You can manage these"
+msgstr ""
+
+#: admin/filemgr/filemgr-settings.php:136
+msgid "direct in the Media Library."
 msgstr ""
 
 #: admin/filemgr/filemgr-settings.php:139
@@ -3499,231 +778,2705 @@ msgstr ""
 msgid "with any plugin for importing uploaded files to the Media Library."
 msgstr ""
 
+#: admin/filemgr/filemgr-settings.php:148
+msgid "or in your own way."
+msgstr ""
+
+#: admin/filemgr/filemgr.php:16
+msgid "Show files of type"
+msgstr ""
+
+#: admin/filemgr/filemgr.php:17
+msgid "Show all files"
+msgstr ""
+
+#: admin/filemgr/filemgr.php:18
+msgid "or in the directory"
+msgstr ""
+
+#: admin/filemgr/filemgr.php:19
+msgid "and show at the same time"
+msgstr ""
+
+#: admin/filemgr/filemgr.php:20
+msgid "Save query"
+msgstr ""
+
 #: admin/filemgr/filemgr.php:94
 msgid "with at least"
 msgstr ""
 
-#. %s is a href.
-#: admin/tiles/help.php:94
-#, php-format
-msgid "without any parameter: All your defined %1$stile servers%2$s are used."
+#: admin/filemgr/filemgr.php:94
+msgid "Files"
 msgstr ""
 
-#: admin/elevation/main.php:149
-msgid "wp-gpx-maps is not installed and nothing is configured."
+#: admin/filemgr/filemgr.php:97
+msgid "Please select"
 msgstr ""
 
-#: php/elevation.php:85
-msgid "y Axis Max"
+#: admin/filemgr/filemgr.php:108
+msgid "If you change the number, submit the form to get the directories you want."
 msgstr ""
 
-#: php/elevation.php:96
-msgid "y Axis Min"
+#: admin/filemgr/filemgr.php:170
+msgid "entries"
 msgstr ""
 
-#: admin/deleting.php:31 admin/elevation/elevation.php:309
-#: admin/elevation/elevation.php:310 admin/elevation/elevation.php:312
-#: admin/elevation/elevation.php:313 admin/elevation/elevation.php:314
-#: admin/elevation/elevation.php:320 admin/elevation/elevation.php:321
-#: admin/elevation/elevation.php:329 admin/elevation/elevation.php:330
-#: admin/elevation/elevation.php:331
-msgid "yes"
+#: admin/filemgr/filemgr.php:248
+msgid "List files"
 msgstr ""
 
-#: php/sgpx.php:182
-msgid ""
-"You are using the sgpx shortcode from plugin wp-gpx-maps. But the script "
-"cannot detect how to handle it. Please ask in the forum."
+#: admin/filemgr/filemgr.php:258
+msgid "Directory"
 msgstr ""
 
-#: php/sgpx.php:192
-msgid ""
-"You are using the sgpx shortcode from plugin wp-gpx-maps. wp-gpx-maps and "
-"leaflet-map don't work together."
+#: admin/filemgr/filemgr.php:260
+msgid "for showing all files of this directory on a map"
 msgstr ""
 
-#. %1$s are options, %2$s is a link.
-#: admin/marker/extramarker.php:116
-#, php-format
-msgid "You can also use some options like %1$s from %2$s."
+#: admin/filemgr/filemgr.php:273
+msgid "does only work with gpx files"
 msgstr ""
 
-#. %s is an option.
-#: php/elevation.php:113
-#, php-format
-msgid "You can always toggle the charts individually by clicking on %s."
+#: admin/filemgr/leaflet-directory.php:18
+#: admin/filemgr/main.php:36
+#: admin/help.php:270
+msgid "Tracks from all files in a directory"
 msgstr ""
 
-#: admin/elevation/elevation.php:40 admin/marker/placementstrategies.php:56
-#: admin/marker/markercluster.php:53 admin/hover/settings.php:49
-msgid "You can change it for each map with"
+#: admin/filemgr/leaflet-directory.php:27
+msgid "url to directory, default: URL from upload directory."
 msgstr ""
 
-#: admin/gesture.php:140 admin/elevation/multielevation.php:46
-#: admin/grouping/settings.php:50
-msgid "You can change it with"
+#: admin/filemgr/leaflet-directory.php:29
+msgid "(relative) path to directory, accessible both from path and from url"
 msgstr ""
 
-#: admin/elevation/sgpx.php:181
-msgid "You can delete all settings on this page."
+#. translators: %s is a shortcode.
+#: admin/filemgr/leaflet-directory.php:33
+msgid "(default) prepare the tracks for %s"
 msgstr ""
 
-#: admin/filemgr/filemgr-settings.php:125
-msgid ""
-"You can display all gpx, kml, geojson, json and tcx files in subdirectories "
-"of uploads directory."
+#. translators: %s is a shortcode.
+#: admin/filemgr/leaflet-directory.php:39
+msgid "draw the content with %scommands "
+msgstr ""
+
+#. translators: %s are options / values.
+#: admin/filemgr/leaflet-directory.php:45
+msgid "For %1$s it is ignored. For %2$s a list of %3$s. Default is %4$s."
+msgstr ""
+
+#. translators: %s is an option.
+#: admin/filemgr/leaflet-directory.php:54
+msgid "If %s and a file is a gpx file, display start point and cluster"
+msgstr ""
+
+#. translators: %s is a href.
+#: admin/filemgr/leaflet-directory.php:63
+msgid "Use the %1$sdirectory listing%2$s for simplicity."
+msgstr ""
+
+#: admin/filemgr/main.php:32
+msgid "List Files"
+msgstr ""
+
+#: admin/filemgr/managefiles-functions.php:79
+msgid "Listing - page"
+msgstr ""
+
+#: admin/filemgr/managefiles-functions.php:92
+msgid "Previous"
+msgstr ""
+
+#: admin/filemgr/managefiles-functions.php:93
+msgid "Next"
+msgstr ""
+
+#: admin/filemgr/managefiles-functions.php:110
+msgid "Listing Files"
+msgstr ""
+
+#: admin/filemgr/managefiles-functions.php:112
+msgid "no files"
+msgstr ""
+
+#: admin/filemgr/managefiles-functions.php:154
+msgid "Date"
+msgstr ""
+
+#: admin/filemgr/managefiles-functions.php:155
+msgid "Name"
+msgstr ""
+
+#: admin/filemgr/managefiles-functions.php:156
+#: admin/filemgr/managefiles-functions.php:200
+#: admin/filemgr/managefiles-functions.php:205
+#: admin/filemgr/managefiles-functions.php:217
+msgid "Preview"
+msgstr ""
+
+#: admin/filemgr/managefiles-functions.php:157
+msgid "Media Library"
+msgstr ""
+
+#. translators: %s is a shortcode.
+#: admin/filemgr/managefiles-functions.php:161
+msgid "track in %s"
+msgstr ""
+
+#: admin/filemgr/managefiles-functions.php:201
+#: php/overview-map.php:580
+msgid "Edit"
+msgstr ""
+
+#: admin/filemgr/managefiles-functions.php:206
+msgid "View"
+msgstr ""
+
+#: admin/filemgr/managefiles-functions.php:261
+msgid "It is not checked whether the file contains a track with elevation data."
+msgstr ""
+
+#: admin/filemgr/managefiles-functions.php:262
+msgid "It works with gpx and kml files."
+msgstr ""
+
+#. translators: %s is a shortcode.
+#: admin/filemgr/managefiles-functions.php:264
+msgid "Don't forget to declare %s at last statement."
+msgstr ""
+
+#: admin/filemgr/thickbox.php:30
+msgid "Details"
+msgstr ""
+
+#: admin/filemgr/thickbox.php:32
+msgid "Uploaded on:"
+msgstr ""
+
+#: admin/filemgr/thickbox.php:34
+msgid "File name:"
+msgstr ""
+
+#: admin/filemgr/thickbox.php:41
+msgid "File size: "
+msgstr ""
+
+#: admin/fullscreen.php:23
+msgid "default position:"
+msgstr ""
+
+#: admin/gesture.php:94
+msgid "Brings the basic functionality of Gesture Handling into Leaflet Map. Prevents users from getting trapped on the map when scrolling a long page."
 msgstr ""
 
 #: admin/gesture.php:98
 msgid "You can enable it for all maps or for individual maps."
 msgstr ""
 
-#: admin/filemgr/filemgr-settings.php:132
-msgid "You can manage these"
+#: admin/gesture.php:104
+msgid "It is enabled for all maps."
 msgstr ""
 
-#: admin/filemgr/filemgr-settings.php:130
-msgid "You can manage these according to your permissions"
+#: admin/gesture.php:106
+msgid "It is disabled by default. You can enable it for a map with"
 msgstr ""
 
-#. %s are shortcodes.
-#: admin/elevation/waypoints.php:144
-#, php-format
-msgid ""
-"You can of course use %1$s and define waypoints with additional %2$s and "
-"%3$s shortcodes."
+#: admin/gesture.php:110
+msgid "When Gesture Handling is enabled:"
 msgstr ""
 
-#. %s is an option.
-#: admin/tiles/layerswitch.php:148
-#, php-format
-msgid ""
-"You can select your defined Tile Server with parameter %s as comma separated "
-"list in the shortcode:"
+#. translators: %s is an option.
+#: admin/gesture.php:115
+msgid "If Scroll Wheel Zoom (%s) is enabled, it becomes active on both desktop and touch devices."
 msgstr ""
 
-#: admin/zoomhome.php:34
-msgid "You can set following and the Home button works as shown in the table."
+#. translators: %s is an option.
+#: admin/gesture.php:121
+msgid "If %s is enabled, it becomes active on touch devices only."
 msgstr ""
 
-#. %s is an example code.
-#: admin/choropleth.php:42
-#, php-format
-msgid "You can specify %s as you like."
+#. translators: %s is the link to Leaflet Map setting.
+#: admin/gesture.php:128
+msgid "Your %s setting for"
 msgstr ""
 
-#. %s are shortcodes / options.
-#: admin/grouping/featuregroup.php:245
-#, php-format
-msgid ""
-"You can specify multiple %1$s and %2$s. If the %3$s are called the same, the "
-"elements will be placed in the same group despite having different options "
-"resp. properties."
+#: admin/gesture.php:131
+msgid "Scroll Wheel Zoom"
 msgstr ""
 
-#. %s is a href.
+#: admin/gesture.php:132
+msgid "is"
+msgstr ""
+
+#: admin/gesture.php:134
+msgid "is true at default"
+msgstr ""
+
+#: admin/gesture.php:136
+msgid "This means for you:"
+msgstr ""
+
+#: admin/gesture.php:137
+msgid "It is enabled on both desktop and touch device by default."
+msgstr ""
+
+#: admin/gesture.php:137
+msgid "It is only enabled on touch devices by default."
+msgstr ""
+
+#. translators: %s is a href.
 #: admin/gesture.php:149
-#, php-format
 msgid "You can test it yourself on a %1$sseparate page%2$s."
 msgstr ""
 
-#. %s are className, circleMarker, leaflet-geojson.
-#: admin/grouping/featuregroup.php:131
-#, php-format
-msgid ""
-"You can use %1$s if you use the option %2$s, it is not used by %3$s but "
-"passed through."
+#: admin/grouping/featuregroup.php:28
+msgid "Group elements and dynamically add/remove from map"
 msgstr ""
 
-#. %1$s a link to ACF plugin.
-#: admin/overview-map.php:119
-#, php-format
-msgid "You can use an %1$s also."
+#. translators: %s are shortcodes.
+#: admin/grouping/featuregroup.php:40
+msgid "There are three shortcodes: %1$s to group elements by options%2$s to group elements by properties%3$s to display groups in a tree view"
 msgstr ""
 
-#: admin/elevation/waypoints.php:211
-msgid "You can use any css describing the waypoint."
+#: admin/grouping/featuregroup.php:51
+#: admin/hover/hover.php:24
+#: admin/hover/hoverlap.php:22
+#: admin/marker/listmarker.php:31
+#: admin/marker/markercluster.php:121
+msgid "Create Map"
+msgstr ""
+
+#: admin/grouping/featuregroup.php:53
+msgid "and load any leaflet elements"
+msgstr ""
+
+#. translators: %s is leaflet-optiongroup.
+#: admin/grouping/featuregroup.php:67
+msgid "Create one or more %s"
+msgstr ""
+
+#. translators: %s is leaflet-featuregroup.
+#: admin/grouping/featuregroup.php:72
+msgid "Or create one or more %s"
+msgstr ""
+
+#. translators: %s is leaflet-parentgroup.
+#: admin/grouping/featuregroup.php:77
+msgid "Optional: Create one or more %s"
+msgstr ""
+
+#. translators: %s are options.
+#: admin/grouping/featuregroup.php:91
+msgid "When markers are grouped, %1$s is automatically active and the parameter and settings for %2$s are valid too."
+msgstr ""
+
+#. translators: %s is a shortcode.
+#: admin/grouping/featuregroup.php:98
+msgid "Each of the above leaflet elements has options. These are from the shortcode %s and are fixed."
+msgstr ""
+
+#. translators: %s is option.
+#: admin/grouping/featuregroup.php:100
+msgid "For %s you can use any option of the leaflet element."
+msgstr ""
+
+#: admin/grouping/featuregroup.php:101
+msgid "Not every option is suitable for every element."
+msgstr ""
+
+#: admin/grouping/featuregroup.php:103
+msgid "Meaningful options may be:"
 msgstr ""
 
 #: admin/grouping/featuregroup.php:109
-msgid ""
-"You can use iconclass to group, regardless of whether they affect the "
-"appearance of the icon or not."
+msgid "You can use iconclass to group, regardless of whether they affect the appearance of the icon or not."
+msgstr ""
+
+#. translators: %s is an option.
+#: admin/grouping/featuregroup.php:122
+msgid "%s switches only the markers."
+msgstr ""
+
+#. translators: %s is an option.
+#: admin/grouping/featuregroup.php:126
+msgid "Every marker with an icon has the option %s as default."
+msgstr ""
+
+#. translators: %s are className, circleMarker, leaflet-geojson.
+#: admin/grouping/featuregroup.php:131
+msgid "You can use %1$s if you use the option %2$s, it is not used by %3$s but passed through."
+msgstr ""
+
+#. translators: %s is a href.
+#: admin/grouping/featuregroup.php:141
+msgid "See %1$sLeaflet Map Github page%2$s for more or less useful and possible options."
+msgstr ""
+
+#: admin/grouping/featuregroup.php:145
+msgid "The options are case sensitive."
+msgstr ""
+
+#: admin/grouping/featuregroup.php:150
+msgid "In a geojson file there are features and properties. They are different for each application."
+msgstr ""
+
+#. translators: %s is a shortcode.
+#: admin/grouping/featuregroup.php:153
+msgid "gpx and kml are similar to geojson, so you can also use %s there. But here it is not that easy to find relevant features."
+msgstr ""
+
+#. translators: %s are options / features.
+#: admin/grouping/featuregroup.php:163
+msgid "A %1$s has %2$s, each of them has a %3$s and %4$s. %5$s is the label of a %6$s in %7$s, e.g."
+msgstr ""
+
+#. translators: %s is an option.
+#: admin/grouping/featuregroup.php:191
+msgid "%s is case sensitive."
+msgstr ""
+
+#: admin/grouping/featuregroup.php:195
+#: admin/grouping/featuregroup.php:274
+#: admin/marker/clustergroup.php:160
+#: admin/marker/clustergroup.php:171
+msgid "and"
+msgstr ""
+
+#. translators: %s is an option.
+#: admin/grouping/featuregroup.php:199
+msgid "comma separated strings to distinguish the elements, e.g. the exact string or an unique substring in %1$s (e.g.%2$s)"
+msgstr ""
+
+#. translators: %s is "values".
+#: admin/grouping/featuregroup.php:209
+msgid "The %s are case sensitive."
+msgstr ""
+
+#: admin/grouping/featuregroup.php:214
+#: admin/grouping/featuregroup.php:255
+#: admin/marker/clustergroup.php:75
+#: admin/marker/clustergroup.php:137
+msgid "optional"
+msgstr ""
+
+#. translators: %s are options / values.
+#: admin/grouping/featuregroup.php:217
+msgid "search substring %1$s or the exact string %2$s in %3$s."
+msgstr ""
+
+#. translators: %s are options / values.
+#: admin/grouping/featuregroup.php:224
+msgid "The default is %1$s for %2$s and %3$s for %4$s."
+msgstr ""
+
+#: admin/grouping/featuregroup.php:233
+#: admin/marker/clustergroup.php:67
+#: admin/marker/clustergroup.php:129
+msgid "comma separated labels appear in the selection menu"
+msgstr ""
+
+#. translators: %s are options.
+#. translators: %s are options
+#: admin/grouping/featuregroup.php:237
+#: admin/marker/clustergroup.php:70
+#: admin/marker/clustergroup.php:132
+#: admin/tiles/help.php:121
+msgid "The number of %1$s and %2$s must match."
+msgstr ""
+
+#. translators: %s are shortcodes / options.
+#: admin/grouping/featuregroup.php:245
+msgid "You can specify multiple %1$s and %2$s. If the %3$s are called the same, the elements will be placed in the same group despite having different options resp. properties."
+msgstr ""
+
+#: admin/grouping/featuregroup.php:250
+msgid "However, make sure that they are unique. Otherwise unwanted, but sometimes interesting effects can occur. Test it with your application!"
+msgstr ""
+
+#: admin/grouping/featuregroup.php:253
+msgid "Each element can belong to exactly one group."
+msgstr ""
+
+#. translators: %s are options / values.
+#: admin/grouping/featuregroup.php:258
+#: admin/marker/clustergroup.php:78
+#: admin/marker/clustergroup.php:140
+msgid "initial visibility of a group, default: %1$s. Either %2$s (valid for all groups) or a comma-separated list of %3$s and %4$s, where the number must match those of %5$s."
+msgstr ""
+
+#. translators: %s are options / values.
+#: admin/grouping/featuregroup.php:277
+msgid "If %1$s contains %2$s and %3$s, then the elements for which the option / property specified in %4$s does not apply, are placed in the %5$s group. Elements whose %6$s is not known are placed in the %7$s group. See also the developer console."
+msgstr ""
+
+#: admin/grouping/featuregroup.php:290
+msgid "Group Control"
+msgstr ""
+
+#. translators: %s is an option.
+#: admin/grouping/featuregroup.php:295
+msgid "The specification in the first command applies. It is valid for %s too."
+msgstr ""
+
+#. translators: %s is an option.
+#: admin/grouping/featuregroup.php:299
+#: admin/marker/clustergroup.php:195
+#: admin/marker/geojsonmarker.php:163
+msgid "optional: %s - position of group control"
+msgstr ""
+
+#. translators: %s is an option.
+#: admin/grouping/featuregroup.php:306
+#: admin/marker/clustergroup.php:202
+#: admin/marker/geojsonmarker.php:169
+msgid "optional: %s - group control collapsed or not:"
+msgstr ""
+
+#. translators: %s are shortcodes.
+#: admin/grouping/featuregroup.php:316
+#: admin/marker/clustergroup.php:27
+#: admin/marker/clustergroup.php:42
+msgid "The shortcode %1$s is a special case of %2$s respectively %3$s."
+msgstr ""
+
+#: admin/grouping/parentgroup.php:25
+msgid "Display groups in a tree view."
+msgstr ""
+
+#: admin/help.php:16
+msgid "Track with an elevation profile"
+msgstr ""
+
+#: admin/help.php:32
+msgid "Multiple tracks with elevation profiles"
+msgstr ""
+
+#: admin/help.php:42
+msgid "Migration from"
+msgstr ""
+
+#: admin/help.php:52
+msgid "Functions for Markers implemented with Leaflet Plugins"
+msgstr ""
+
+#: admin/help.php:53
+msgid "Marker and Icons"
+msgstr ""
+
+#: admin/help.php:55
+#: admin/marker/main.php:24
+msgid "Marker Clustering"
+msgstr ""
+
+#: admin/help.php:65
+#: admin/marker/main.php:29
+msgid "Clustering and Grouping of Markers"
+msgstr ""
+
+#: admin/help.php:75
+#: admin/marker/main.php:33
+msgid "Styling Markercluster"
+msgstr ""
+
+#: admin/help.php:95
+#: admin/marker/main.php:43
+msgid "Design and Group markers from geojson files"
+msgstr ""
+
+#: admin/help.php:105
+#: admin/marker/listmarker.php:19
+#: admin/marker/main.php:51
+msgid "Listing markers in the map"
+msgstr ""
+
+#: admin/help.php:116
+msgid "More Functions for Markers"
+msgstr ""
+
+#: admin/help.php:117
+msgid "More for Markers"
+msgstr ""
+
+#: admin/help.php:129
+#: admin/marker/main.php:47
+#: admin/marker/targetmarker.php:18
+msgid "Target Marker"
+msgstr ""
+
+#: admin/help.php:139
+#: admin/marker/hidemarkers.php:18
+#: admin/marker/main.php:55
+msgid "Hide Markers"
+msgstr ""
+
+#: admin/help.php:150
+msgid "Functions implemented with Leaflet Plugins"
+msgstr ""
+
+#: admin/help.php:151
+msgid "Leaflet Plugins"
+msgstr ""
+
+#: admin/help.php:162
+msgid "Display groups in a tree view"
+msgstr ""
+
+#: admin/help.php:189
+#: admin/tiles/main.php:22
+msgid "Leaflet-providers"
+msgstr ""
+
+#: admin/help.php:193
+#: admin/tiles/layerswitch.php:13
+#: admin/tiles/main.php:26
+msgid "Extra Tile Server"
+msgstr ""
+
+#: admin/help.php:228
+msgid "Leaflet Choropleth"
+msgstr ""
+
+#: admin/help.php:238
+msgid "Hovering"
+msgstr ""
+
+#: admin/help.php:249
+msgid "Hovering overlapping elements"
+msgstr ""
+
+#: admin/help.php:286
+msgid "A Leaflet plugin that allows to add elevation profiles using d3js."
+msgstr ""
+
+#: admin/help.php:298
+msgid "Internationalisation module for Leaflet plugins."
+msgstr ""
+
+#: admin/help.php:304
+msgid "A Leaflet plugin that allows to add rotation functionality to map tiles"
+msgstr ""
+
+#: admin/help.php:310
+msgid "This plugin allows to detect mouse click and overing events on lines, with a tolerance distance."
+msgstr ""
+
+#: admin/help.php:316
+msgid "Convert KML, GPX, and TCX to GeoJSON."
+msgstr ""
+
+#: admin/help.php:328
+msgid "An extension that contains configurations for various tile providers."
+msgstr ""
+
+#: admin/help.php:334
+msgid "Makes multiple tile layers transparent."
+msgstr ""
+
+#: admin/help.php:340
+msgid "Provides Beautiful Animated Marker Clustering functionality."
+msgstr ""
+
+#: admin/help.php:346
+msgid "Styling Markerclusters."
+msgstr ""
+
+#: admin/help.php:352
+msgid "Shameless copy of Awesome-Markers with more shapes and colors."
+msgstr ""
+
+#: admin/help.php:358
+msgid "A Leaflet Control for listing visible markers in the map."
+msgstr ""
+
+#: admin/help.php:364
+msgid "Grouping of Leaflet elements by options and features."
+msgstr ""
+
+#: admin/help.php:370
+msgid "A Tree Layers Control for Leaflet."
+msgstr ""
+
+#: admin/help.php:376
+msgid "Search Markers/Features location by option or custom property."
+msgstr ""
+
+#: admin/help.php:382
+msgid "Choropleth plugin for Leaflet (color scale based on value)."
+msgstr ""
+
+#. translators: %s is an href.
+#: admin/help.php:389
+msgid "Provides a zoom control with a %1$sHome%2$s button to reset the view."
+msgstr ""
+
+#: admin/help.php:395
+msgid "Simple plugin for Leaflet that adds fullscreen button to your maps."
+msgstr ""
+
+#: admin/help.php:401
+msgid "A Leaflet plugin that allows to prevent default map scroll/touch behaviours."
+msgstr ""
+
+#: admin/help.php:407
+msgid "Advanced geospatial analysis for browsers and Node.js"
+msgstr ""
+
+#: admin/help.php:416
+msgid "Found an issue? Do you have a question?"
+msgstr ""
+
+#: admin/help.php:418
+msgid "Post it to the support forum"
+msgstr ""
+
+#: admin/help.php:422
+msgid "Documentation"
+msgstr ""
+
+#. translators: %s is a link.
+#: admin/help.php:428
+msgid "You may be interested in %1$sDSGVO snippet for Leaflet Map and its Extensions%2$s."
+msgstr ""
+
+#. translators: %s are hrefs.
+#: admin/help.php:438
+msgid "Detailed documentation and examples in %1$sGerman%2$s and %3$sEnglish%4$s"
+msgstr ""
+
+#: admin/help.php:452
+#: admin/help.php:453
+msgid "Function"
+msgstr ""
+
+#: admin/help.php:475
+#: admin/help.php:477
+msgid "Examples"
+msgstr ""
+
+#: admin/help.php:493
+msgid "Included and used Leaflet Plugins"
+msgstr ""
+
+#: admin/help.php:504
+msgid "Helper Plugins"
+msgstr ""
+
+#. translators: %s is a shortcode.
+#: admin/hover/hover.php:20
+msgid "Use it to highlight a %s element and get a tooltip on mouse over."
+msgstr ""
+
+#. translators: %s is a shortcode.
+#: admin/hover/hover.php:27
+msgid "Load any elements with any %s shortcode"
+msgstr ""
+
+#: admin/hover/hover.php:30
+msgid "The tooltip content is the same as the popup content."
+msgstr ""
+
+#. translators: %s is a href.
+#: admin/hover/hover.php:35
+msgid "To customize the popup content for geojsons, see %1$sgeojson options%2$s."
+msgstr ""
+
+#: admin/hover/hover.php:54
+msgid "And hover"
+msgstr ""
+
+#: admin/hover/hover.php:58
+msgid "By default, all elements react to hover. If you don't want this, you have the following options."
+msgstr ""
+
+#: admin/hover/hover.php:66
+#: admin/leaflet-search.php:53
+msgid "Values"
+msgstr ""
+
+#: admin/hover/hover.php:89
+msgid "Show tooltip and change style on hover."
+msgstr ""
+
+#: admin/hover/hover.php:90
+msgid "Nothing happens."
+msgstr ""
+
+#: admin/hover/hover.php:91
+msgid "Show tooltip on hover."
+msgstr ""
+
+#: admin/hover/hover.php:92
+msgid "Change style on hover."
+msgstr ""
+
+#. translators: %s are options.
+#: admin/hover/hover.php:99
+msgid "If you use one or multiple options from %1$s, then the options %2$s will be ignored. "
+msgstr ""
+
+#: admin/hover/hover.php:108
+msgid "So can you write:"
+msgstr ""
+
+#: admin/hover/hover.php:110
+msgid "hover only for geojsons, gpx, kml:"
+msgstr ""
+
+#: admin/hover/hover.php:111
+msgid "show tooltips on hover:"
+msgstr ""
+
+#: admin/hover/hover.php:112
+msgid "change style but do not show tooltips on hover (geojson, gpx, kml, circle, polygon, line):"
+msgstr ""
+
+#: admin/hover/hover.php:113
+msgid "show a short tooltip, if the popup is too big:"
+msgstr ""
+
+#: admin/hover/hover.php:121
+msgid "Tooltip className"
+msgstr ""
+
+#. translators: %s are options.
+#: admin/hover/hover.php:124
+msgid "The tooltip has a %1$s, its default is %2$s. You can style the tooltip with css, e.g."
+msgstr ""
+
+#: admin/hover/hoverlap.php:18
+msgid "Popups and highlighting overlapping elements"
+msgstr ""
+
+#. translators: %s is a shortcode.
+#: admin/hover/hoverlap.php:26
+msgid "Load any elements with any %s shortcode."
+msgstr ""
+
+#: admin/hover/hoverlap.php:41
+msgid "And hoverlap"
+msgstr ""
+
+#. translators: %s are options / shortcode.
+#: admin/hover/hoverlap.php:47
+msgid "The options %1$s and %2$s are the same as for the %3$s shortcode."
+msgstr ""
+
+#. translators: %1$s is a shortcode and %2$s is a link.
+#: admin/hover/hoverlap.php:54
+msgid "For overlapping markers see %1$s or %2$s."
+msgstr ""
+
+#: admin/hover/hoverlap.php:62
+msgid "All this is not ready yet."
+msgstr ""
+
+#: admin/hover/hoverlap.php:64
+msgid "How to deal with the sometimes large contents of popups?"
+msgstr ""
+
+#: admin/hover/hoverlap.php:66
+msgid "Geojson GeometryCollections do not (yet) work in all senses."
+msgstr ""
+
+#: admin/hover/hoverlap.php:68
+msgid "and maybe other things."
+msgstr ""
+
+#: admin/hover/hoverlap.php:70
+msgid "I am glad about (code-)suggestions."
+msgstr ""
+
+#: admin/hover/main.php:19
+msgid "hover"
+msgstr ""
+
+#: admin/hover/main.php:23
+msgid "hoverlap"
+msgstr ""
+
+#: admin/leaflet-search.php:21
+msgid "A control for search Markers/Features location by custom property."
+msgstr ""
+
+#. translators: %s are options.
+#: admin/leaflet-search.php:40
+msgid "%1$s must be before %2$s."
+msgstr ""
+
+#: admin/leaflet-search.php:57
+msgid "red circle"
+msgstr ""
+
+#. translators: %1$s and %2$s is a href, %3$s is an option
+#: admin/leaflet-search.php:70
+msgid "See %1$sLeaflet Map Github page%2$s for more or less useful and possible options for %3$s."
+msgstr ""
+
+#: admin/leaflet-search.php:76
+#: admin/marker/listmarker.php:66
+#: admin/marker/targetmarker.php:202
+msgid "Option"
+msgstr ""
+
+#. translators: %s is a div element.
+#: admin/leaflet-search.php:78
+msgid "If you want the search field to be outside the map, define a div element with a custom html block on the post / page and give it an id. This id you then specify in option %s."
+msgstr ""
+
+#: admin/leaflet-search.php:80
+msgid "Define some css:"
+msgstr ""
+
+#: admin/leaflet-search.php:86
+msgid "Define a leaflet-search command with the option container:"
+msgstr ""
+
+#. translators: %s is an href.
+#: admin/leaflet-search.php:95
+msgid "The specific style and css depends on your %1$stheme and taste%2$s"
+msgstr ""
+
+#: admin/marker/clustergroup.php:22
+msgid "Dynamically add/remove groups of markers from Marker Cluster"
+msgstr ""
+
+#. translators: %s is a href.
+#: admin/marker/clustergroup.php:34
+msgid "If you want more options see %1$shere%2$s."
+msgstr ""
+
+#. translators: %s is a href.
+#: admin/marker/clustergroup.php:49
+msgid "If you don't use this shortcode yet, start %1$sthere%2$s."
+msgstr ""
+
+#: admin/marker/clustergroup.php:54
+msgid "Options for grouping leaflet-markers"
+msgstr ""
+
+#: admin/marker/clustergroup.php:56
+#: admin/marker/clustergroup.php:102
+msgid "possible meaningful values"
+msgstr ""
+
+#. translators: %s are options.
+#: admin/marker/clustergroup.php:59
+msgid "comma separated strings to distinguish the markers, e.g. an unique string in %1$s or %2$s"
+msgstr ""
+
+#: admin/marker/clustergroup.php:90
+msgid "Shortcode for grouping leaflet-markers"
+msgstr ""
+
+#: admin/marker/clustergroup.php:95
+#: admin/marker/clustergroup.php:156
+#: php/overview-map.php:20
+#: php/overview-map.php:33
+#: php/overview-map.php:35
+msgid "or"
+msgstr ""
+
+#: admin/marker/clustergroup.php:100
+msgid "Options for grouping markers (points) in leaflet-geojson"
+msgstr ""
+
+#: admin/marker/clustergroup.php:103
+msgid "is the name of a property in properties of the Point in the FeatureCollection"
+msgstr ""
+
+#. translators: %s are options / values.
+#: admin/marker/clustergroup.php:120
+msgid "comma separated strings to distinguish the markers, e.g. an unique substring in %1$s or the exact string (e.g.%2$s) in %3$s"
+msgstr ""
+
+#: admin/marker/clustergroup.php:151
+msgid "Shortcode for grouping markers (points) in leaflet-geojson"
+msgstr ""
+
+#. translators: %s are options / values.
+#: admin/marker/clustergroup.php:163
+msgid "If %1$s contains %2$s and %3$s, then markers (respectively Points) for which the property %4$s does not apply are placed in the %5$s group. Markers (respectively Points) whose property is not known are placed in the %6$s group. See also the developer console."
+msgstr ""
+
+#: admin/marker/clustergroup.php:186
+msgid "More options"
+msgstr ""
+
+#. translators: %s is a shortcode.
+#: admin/marker/clustergroup.php:188
+msgid "The parameter and settings for %s are valid too."
+msgstr ""
+
+#. translators: %1$s is a link, %2$s is the plugin name,.
+#: admin/marker/extramarker.php:23
+msgid "The %1$s is included in the plugin %2$s. If you have already installed some yourself, yours will be used."
+msgstr ""
+
+#: admin/marker/extramarker.php:65
+msgid "All Colors"
+msgstr ""
+
+#: admin/marker/extramarker.php:79
+msgid "All Shapes without (1) / with (2) SVG"
+msgstr ""
+
+#: admin/marker/extramarker.php:95
+msgid "Some Icons"
+msgstr ""
+
+#: admin/marker/extramarker.php:110
+msgid "More icons"
+msgstr ""
+
+#. translators: %1$s are options, %2$s is a link.
+#: admin/marker/extramarker.php:116
+msgid "You can also use some options like %1$s from %2$s."
+msgstr ""
+
+#: admin/marker/geojsonmarker.php:32
+msgid "Design and group markers from geojson files according to their properties"
+msgstr ""
+
+#. translators: %s is a feature.
+#: admin/marker/geojsonmarker.php:38
+msgid "A %s in a geojson file is specified like this:"
+msgstr ""
+
+#. translators: %s are shortcodes / options.
+#: admin/marker/geojsonmarker.php:59
+msgid "If you want to use CircleMarker you must specify %1$s and optional %2$s and %3$s in %4$s shortcode."
+msgstr ""
+
+#: admin/marker/geojsonmarker.php:68
+msgid "Marker with icon"
+msgstr ""
+
+#. translators: %s are options.
+#: admin/marker/geojsonmarker.php:72
+msgid "The markers should have the same %1$s, only %2$s differs."
+msgstr ""
+
+#. translators: %s are options.
+#: admin/marker/geojsonmarker.php:79
+msgid "The substring %1$s will be replaced in the path of the %2$s with any of %3$s."
+msgstr ""
+
+#. translators: %s is a link.
+#: admin/marker/geojsonmarker.php:90
+msgid "If you want to use ExtraMarkers you can specify %s options."
+msgstr ""
+
+#. translators: %s are options.
+#: admin/marker/geojsonmarker.php:97
+msgid "For now, %1$s are mapped to %2$s. Maybe there are other options."
+msgstr ""
+
+#: admin/marker/geojsonmarker.php:107
+msgid "required"
+msgstr ""
+
+#: admin/marker/geojsonmarker.php:109
+msgid "comma separated strings of property values"
+msgstr ""
+
+#: admin/marker/geojsonmarker.php:110
+msgid "if not specified collect values from property"
+msgstr ""
+
+#. translators: %s is an option.
+#: admin/marker/geojsonmarker.php:112
+#: admin/marker/geojsonmarker.php:124
+msgid "required for markers with %s"
+msgstr ""
+
+#. translators: %s is a shortcode.
+#: admin/marker/geojsonmarker.php:115
+#: admin/marker/geojsonmarker.php:138
+msgid "required if you want to group like with %s"
+msgstr ""
+
+#. translators: %s is an option.
+#: admin/marker/geojsonmarker.php:122
+msgid "comma separated colors for marker or substrings in %s for marker to distinguish the values"
+msgstr ""
+
+#: admin/marker/geojsonmarker.php:125
+msgid "if not specified colors are generated"
+msgstr ""
+
+#. translators: %s are options / values.
+#: admin/marker/geojsonmarker.php:128
+msgid "(max 16 %1$s for %2$s, 14 for %3$s)"
+msgstr ""
+
+#. translators: %s is an option.
+#: admin/marker/geojsonmarker.php:130
+msgid "if specified the count must match the count of %s"
+msgstr ""
+
+#: admin/marker/geojsonmarker.php:133
+msgid "default color"
+msgstr ""
+
+#: admin/marker/geojsonmarker.php:135
+msgid "resp. substring of "
+msgstr ""
+
+#: admin/marker/geojsonmarker.php:141
+msgid "for grouping"
+msgstr ""
+
+#. translators: %s are options.
+#: admin/marker/geojsonmarker.php:145
+msgid "automatic generation of %1$s, %2$s (color) and %3$s"
+msgstr ""
+
+#: admin/marker/geojsonmarker.php:150
+msgid "not for markers with iconUrl"
+msgstr ""
+
+#. translators: %s are options / values.
+#: admin/marker/geojsonmarker.php:152
+msgid "no more than 16 different %1$s for %2$s"
+msgstr ""
+
+#. translators: %s are options / values.
+#: admin/marker/geojsonmarker.php:154
+msgid "no more than 14 different %1$s for %2$s"
+msgstr ""
+
+#. translators: %s is a shortcode.
+#: admin/marker/geojsonmarker.php:158
+msgid "The markers are clustered. Optional you can specify options from %s."
+msgstr ""
+
+#: admin/marker/hidemarkers.php:19
+msgid "If a GPX track loaded with leaflet-gpx contains waypoints that you do not want to display"
+msgstr ""
+
+#. translators: %1$s is "Leaflet Plugin", other is a href.
+#: admin/marker/listmarker.php:22
+msgid "My own %1$s based on the %2$swork%3$s of Stefano Cudini."
+msgstr ""
+
+#. translators: $s are shortcodes and %2$s is an option.
+#: admin/marker/listmarker.php:36
+msgid "and markers with %1$s and %2$s option and / or %3$s"
+msgstr ""
+
+#: admin/marker/listmarker.php:53
+msgid "Create control list"
+msgstr ""
+
+#. translators: $s is an color statement and %2$s is the word css.
+#: admin/marker/listmarker.php:90
+msgid "To define the background color (default: %1$s) for the list in all your maps define %2$s in customizer or using another method:"
+msgstr ""
+
+#: admin/marker/markercluster.php:118
+msgid "Many markers on a map become confusing. That is why they are clustered"
+msgstr ""
+
+#: admin/marker/markercluster.php:124
+msgid "and markers with leaflet-marker"
+msgstr ""
+
+#: admin/marker/markercluster.php:131
+msgid "and/or with leaflet-gpx and/or leaflet-kml and/or leaflet-geojson"
+msgstr ""
+
+#: admin/marker/markercluster.php:138
+msgid "Create cluster"
+msgstr ""
+
+#. translators: %s is a link.
+#: admin/marker/markercluster.php:150
+msgid "Please see the %s page for options. If you want to change other ones, please post it to the forum."
+msgstr ""
+
+#: admin/marker/markercluster.php:156
+msgid "To reset all values to their defaults, simply click the Reset button"
+msgstr ""
+
+#: admin/marker/markercluster.php:173
+msgid "The options zoom, radius and spiderfy have been renamed to disableClusteringAtZoom, maxClusterRadius and spiderfyOnMaxZoom, but they are still valid. Your settings:"
+msgstr ""
+
+#: admin/marker/markercluster.php:176
+msgid "Before you click the submit button, please compare your settings with the new ones and change them if they are different."
+msgstr ""
+
+#: admin/marker/placementstrategies.php:53
+msgid "\"default\" means: one-circle strategy up to 8 elements, else spiral strategy"
+msgstr ""
+
+#: admin/marker/placementstrategies.php:122
+msgid "Demo and Documentation"
+msgstr ""
+
+#: admin/marker/placementstrategies.php:123
+msgid "Not all parameters are implemented in the plugin."
+msgstr ""
+
+#: admin/marker/placementstrategies.php:137
+msgid "It also works with"
+msgstr ""
+
+#: admin/marker/placementstrategies.php:141
+msgid "Please see the admin page for options."
+msgstr ""
+
+#. translators: %s is code.
+#: admin/marker/placementstrategies.php:145
+msgid "The parameter maxZoom has been removed, please use %s instead."
+msgstr ""
+
+#: admin/marker/targetmarker.php:22
+msgid "Jump to a marker in a map with many markers."
+msgstr ""
+
+#. translators: %1$s is a leaflet-marker, %2$s is leaflet-extramarker, %3$s is Point
+#: admin/marker/targetmarker.php:25
+msgid "Markers can be %1$s and %2$s or marker %3$s in geojson files."
+msgstr ""
+
+#: admin/marker/targetmarker.php:30
+msgid "Source and target can be the same page or different pages."
+msgstr ""
+
+#: admin/marker/targetmarker.php:31
+msgid "The word \"page\" in this documentation means page or post."
+msgstr ""
+
+#: admin/marker/targetmarker.php:34
+msgid "Code on source page"
+msgstr ""
+
+#: admin/marker/targetmarker.php:37
+#: admin/marker/targetmarker.php:42
+#: admin/marker/targetmarker.php:181
+msgid "Shortcode"
+msgstr ""
+
+#: admin/marker/targetmarker.php:38
+msgid "query string in an URL"
+msgstr ""
+
+#: admin/marker/targetmarker.php:44
+msgid "A link similar to this one is created:"
+msgstr ""
+
+#: admin/marker/targetmarker.php:45
+msgid "Link to the marker on a map"
+msgstr ""
+
+#: admin/marker/targetmarker.php:46
+msgid "You can write this shortcode anywhere in your text."
+msgstr ""
+
+#. translators: %1$s is a leaflet-marker, %2$s is leaflet-extramarker.
+#: admin/marker/targetmarker.php:50
+msgid "jump to %1$s or %2$s"
+msgstr ""
+
+#: admin/marker/targetmarker.php:55
+msgid "jump to a marker in a geojson file"
+msgstr ""
+
+#: admin/marker/targetmarker.php:60
+msgid "jump to any marker nearest lat and lng"
+msgstr ""
+
+#: admin/marker/targetmarker.php:67
+msgid "Options for"
+msgstr ""
+
+#: admin/marker/targetmarker.php:70
+msgid "required: one of these"
+msgstr ""
+
+#. translators: %1$s is a leaflet-marker, %2$s is leaflet-extramarker.
+#: admin/marker/targetmarker.php:75
+msgid "of the target %1$s or %2$s"
+msgstr ""
+
+#. translators: %1$s, %2$s are property and value.
+#: admin/marker/targetmarker.php:82
+msgid "%1$s and %2$s of the target geojson marker"
+msgstr ""
+
+#: admin/marker/targetmarker.php:88
+msgid "latitude and longitude of target"
+msgstr ""
+
+#. translators: %1$s is title, %2$s is Target.
+#: admin/marker/targetmarker.php:95
+#: admin/marker/targetmarker.php:187
+msgid "popup content, if the target marker has not a popup text. Default: content of %1$s, if the marker has one or %2$s"
+msgstr ""
+
+#: admin/marker/targetmarker.php:100
+msgid "text of the link. Default:"
+msgstr ""
+
+#: admin/marker/targetmarker.php:102
+msgid "URL to the target page. Default: same page"
+msgstr ""
+
+#. translators: %1$s is "mapid", %2$s is "leaflet-map".
+#: admin/marker/targetmarker.php:106
+msgid "%1$s from target map (see %2$s option %1$s). Default: current map"
+msgstr ""
+
+#: admin/marker/targetmarker.php:112
+#: php/leaflet-search.php:54
+msgid "see below"
+msgstr ""
+
+#: admin/marker/targetmarker.php:114
+msgid "if true, log some infos to the developer console and add circles about the target on the map"
+msgstr ""
+
+#: admin/marker/targetmarker.php:117
+msgid "Options for query string"
+msgstr ""
+
+#. translators: %s is styling
+#: admin/marker/targetmarker.php:121
+msgid "This is the only way to link to a marker on your map from an %1$sexternal%2$s site."
+msgstr ""
+
+#: admin/marker/targetmarker.php:126
+msgid "Create a source page with a link to the target page."
+msgstr ""
+
+#: admin/marker/targetmarker.php:127
+msgid "The parameters (querystring) from this link should be:"
+msgstr ""
+
+#: admin/marker/targetmarker.php:128
+msgid "is optional."
+msgstr ""
+
+#: admin/marker/targetmarker.php:129
+msgid "example URL for the link"
+msgstr ""
+
+#: admin/marker/targetmarker.php:130
+msgid "The URL can be link to a page on your website or to a remote one."
+msgstr ""
+
+#: admin/marker/targetmarker.php:133
+msgid "Shortcodes on target map"
+msgstr ""
+
+#: admin/marker/targetmarker.php:148
+msgid "Required, if source page and target page are not the same:"
+msgstr ""
+
+#: admin/marker/targetmarker.php:154
+msgid "are required!"
+msgstr ""
+
+#. translators: %1$s is a targetmarker, %2$s is title.
+#: admin/marker/targetmarker.php:158
+msgid "is required, if you use %1$s with option %2$s."
+msgstr ""
+
+#: admin/marker/targetmarker.php:164
+msgid "is required, if source page and target page are different."
+msgstr ""
+
+#. translators: %s is targetmarker.
+#: admin/marker/targetmarker.php:167
+msgid "If the page is the same, %s does not need to be defined."
+msgstr ""
+
+#: admin/marker/targetmarker.php:172
+msgid "The order of the shortcodes is fixed!"
+msgstr ""
+
+#. translators: %s is targetmarker.
+#: admin/marker/targetmarker.php:176
+msgid "If you have more than one map on a page: %s may only appear exactly once and must be the last shortcode."
+msgstr ""
+
+#: admin/marker/targetmarker.php:183
+msgid "All these options are optional."
+msgstr ""
+
+#: admin/marker/targetmarker.php:195
+msgid "see below."
+msgstr ""
+
+#: admin/marker/targetmarker.php:199
+msgid "if true, log some infos to the developer console and add circles about the target on the map."
+msgstr ""
+
+#: admin/marker/targetmarker.php:204
+msgid "This is the zoom level for zooming to the target marker."
+msgstr ""
+
+#: admin/marker/targetmarker.php:206
+msgid "is considered only, if the target marker is not in a cluster."
+msgstr ""
+
+#: admin/marker/targetmarker.php:208
+msgid "Priority:"
+msgstr ""
+
+#. translators: %1$s is zoom, %2$s is targetlink.
+#: admin/marker/targetmarker.php:212
+msgid "%1$s in querystring or in %2$s"
+msgstr ""
+
+#. translators: %1$s is zoom, %2$s is targetmarker.
+#: admin/marker/targetmarker.php:218
+msgid "%1$s in %2$s"
+msgstr ""
+
+#: admin/marker/targetmarker.php:222
+msgid "Default: actual zoom level of the map"
+msgstr ""
+
+#: admin/overview-map.php:78
+msgid "Generates an overview map with geo positions provided in the pages and posts."
+msgstr ""
+
+#: admin/overview-map.php:79
+msgid "Preparation"
+msgstr ""
+
+#: admin/overview-map.php:81
+msgid "Create for every desired page or post the below mentioned customs fields."
+msgstr ""
+
+#: admin/overview-map.php:82
+msgid "Optional: Create a featured image for page or post."
+msgstr ""
+
+#: admin/overview-map.php:83
+msgid "Optional: Place the page or post in one or more categories or tag it. The word \"category\" in this documentation means category or tag."
+msgstr ""
+
+#: admin/overview-map.php:85
+msgid "Custom fields"
+msgstr ""
+
+#: admin/overview-map.php:87
+msgid "The custom fields names are as you like. You can these specify in overviewmap options."
+msgstr ""
+
+#: admin/overview-map.php:92
+msgid "Custom field"
+msgstr ""
+
+#: admin/overview-map.php:93
+msgid "Content"
+msgstr ""
+
+#: admin/overview-map.php:94
+msgid "Default name"
+msgstr ""
+
+#: admin/overview-map.php:95
+msgid "Option to change"
+msgstr ""
+
+#: admin/overview-map.php:111
+msgid "Default popup content is taken from the overviewmap shortcode and is a set of title, permalink, categories, featured image."
+msgstr ""
+
+#. translators: %1$s is "leaflet-marker"
+#: admin/overview-map.php:114
+msgid "The content of the popup custom field is like the popup in %1$s."
+msgstr ""
+
+#. translators: %1$s a link to ACF plugin.
+#: admin/overview-map.php:119
+msgid "You can use an %1$s also."
 msgstr ""
 
 #: admin/overview-map.php:122
 msgid "You can use strings in curly brackets to substitute the values:"
 msgstr ""
 
-#. %s is an option.
-#: admin/tiles/layerswitch.php:159 admin/tiles/providers.php:122
-#, php-format
-msgid "You can use the parameter %s also."
+#: admin/overview-map.php:124
+msgid "the url to the page / post"
 msgstr ""
 
-#. %s is a shortcode.
+#: admin/overview-map.php:125
+msgid "the title"
+msgstr ""
+
+#: admin/overview-map.php:126
+msgid "the featured image"
+msgstr ""
+
+#: admin/overview-map.php:127
+msgid "categories"
+msgstr ""
+
+#: admin/overview-map.php:139
+msgid "Options for overviewmap"
+msgstr ""
+
+#: admin/overview-map.php:148
+msgid "Possible values"
+msgstr ""
+
+#: admin/overview-map.php:162
+msgid "If it does not work as expected, see the developer console of your browser."
+msgstr ""
+
+#: admin/overview-map.php:164
+msgid "Options for marker"
+msgstr ""
+
+#. translators: %s is a shortcode.
 #: admin/overview-map.php:167
-#, php-format
 msgid "You can use these in the custom field for the icon and in shortcode %s."
 msgstr ""
 
-#. %s is a href.
-#: admin/elevation/multielevation.php:218
-#, php-format
-msgid "You can use these options like in %1$sElevation Profile%2$s"
+#. translators: %s are options.
+#: admin/overview-map.php:175
+msgid "%1$s is for icon filename required. The icons directory must be the same as from %2$s."
 msgstr ""
 
-#: admin/marker/targetmarker.php:46 admin/marker/targetmarker.php:132
-msgid "You can write this shortcode anywhere in your text."
+#. translators: %s is an href.
+#: admin/overview-map.php:184
+msgid "See %1$sexamples%2$s."
 msgstr ""
 
-#. %s is &lt;.
-#: php/parentgroup.php:72
-#, php-format
-msgid "You can't use the character %s allone."
+#: admin/tiles/help.php:21
+msgid "About Tile servers"
 msgstr ""
 
-#: admin/elevation/sgpx.php:179
-msgid ""
-"You have wp-gpx-maps uninstalled, but some of its options exist in the "
-"database. You should delete them."
+#. translators: %s is a href.
+#: admin/tiles/help.php:24
+msgid "The default Map Tiles are defined in the %1$s Settings%2$s."
 msgstr ""
 
-#. %s is a link.
-#: admin/help.php:428
-#, php-format
-msgid ""
-"You may be interested in %1$sDSGVO snippet for Leaflet Map and its "
-"Extensions%2$s."
+#: admin/tiles/help.php:37
+msgid "The default Map Tiles are defined in the Leaflet Map Settings."
 msgstr ""
 
-#. %s is the link to Leaflet Map setting.
-#: admin/gesture.php:128
-#, php-format
-msgid "Your %s setting for"
+#. translators: %2$s and %3$s is a href, %1$s is an option
+#: admin/tiles/help.php:41
+msgid "Pay attention to the setting for %1$s, it depends on the used Map Tiles, see %2$shere%3$s."
 msgstr ""
 
 #: admin/tiles/help.php:49
 msgid "Your Leaflet Map Settings"
 msgstr ""
 
-#: admin/elevation/elevation.php:286 admin/elevation/elevation.php:291
-#: admin/elevation/elevation.php:299 admin/elevation/elevation.php:305
-msgid "Your setting:"
+#: admin/tiles/help.php:56
+msgid "Current Settings"
 msgstr ""
 
-#: admin/elevation/owncolors.php:108
-msgid "Your theme is the"
+#: admin/tiles/help.php:57
+msgid "Tile Id"
 msgstr ""
 
-#: admin/elevation/elevation.php:146
-msgid "Your web site language isn't english? You can speak english?"
+#: admin/tiles/help.php:58
+msgid "Map Tile URL"
+msgstr ""
+
+#: admin/tiles/help.php:59
+msgid "Map Tile URL Subdomains"
+msgstr ""
+
+#: admin/tiles/help.php:60
+msgid "Default Attribution"
+msgstr ""
+
+#: admin/tiles/help.php:61
+msgid "Default Min Zoom"
+msgstr ""
+
+#: admin/tiles/help.php:62
+msgid "Default Max Zoom"
+msgstr ""
+
+#. translators: %2$s and %3$s is a href, %1$s is an option
+#: admin/tiles/help.php:68
+msgid "Additionally you can use some predefined Tile Providers with %1$s or you can define %2$syour Tile Servers%3$s."
+msgstr ""
+
+#: admin/tiles/help.php:83
+msgid "see Leaflet Map documentation"
+msgstr ""
+
+#. translators: %s is an option.
+#: admin/tiles/help.php:86
+msgid "optional: %s - This appears in the switching control."
+msgstr ""
+
+#. translators: %s is a href.
+#: admin/tiles/help.php:94
+msgid "without any parameter: All your defined %1$stile servers%2$s are used."
+msgstr ""
+
+#. translators: %s is a href.
+#: admin/tiles/help.php:100
+msgid "a comma separated list of any your defined %1$stile servers%2$s"
+msgstr ""
+
+#. translators: %s is a href.
+#: admin/tiles/help.php:107
+msgid "a comma separated list of any %1$sproviders%2$s"
+msgstr ""
+
+#. translators: %s is an option.
+#: admin/tiles/help.php:114
+msgid "optional: %s - a comma separated list with shortnames for providers. These appear in the switching control."
+msgstr ""
+
+#. translators: %s is an option.
+#: admin/tiles/help.php:127
+msgid "with %s you can specify the mapids and/or providers for which opacity should be regulated."
+msgstr ""
+
+#. translators: %s is an option
+#: admin/tiles/help.php:133
+msgid "optional: %s - position of tiles control"
+msgstr ""
+
+#. translators: %s are options
+#: admin/tiles/help.php:140
+msgid "optional: %s - tiles control collapsed or not:"
+msgstr ""
+
+#: admin/tiles/layerswitch.php:135
+msgid "Here you can define your Tile servers. Additionally you can specify if opacity should be regulated."
+msgstr ""
+
+#: admin/tiles/layerswitch.php:138
+msgid "Per default all defined tile servers appear."
+msgstr ""
+
+#. translators: %s is an option.
+#: admin/tiles/layerswitch.php:148
+msgid "You can select your defined Tile Server with parameter %s as comma separated list in the shortcode:"
+msgstr ""
+
+#. translators: %s is an option.
+#: admin/tiles/layerswitch.php:159
+#: admin/tiles/providers.php:122
+msgid "You can use the parameter %s also."
+msgstr ""
+
+#: admin/tiles/layerswitch.php:165
+msgid "Configure a mapid, attribution and a tile url for each tile server."
+msgstr ""
+
+#: admin/tiles/layerswitch.php:166
+msgid "appears in the switching control. To delete a server simply clear the field mapid."
+msgstr ""
+
+#: admin/tiles/main.php:18
+msgid "Tile Server"
+msgstr ""
+
+#: admin/tiles/providers.php:30
+msgid "Providers requiring registration"
+msgstr ""
+
+#. translators: %s is an option.
+#: admin/tiles/providers.php:117
+msgid "The option %s is optional."
+msgstr ""
+
+#: admin/tiles/providers.php:126
+msgid "For a list of providers see"
+msgstr ""
+
+#. translators: %s is styling (bold).
+#: admin/tiles/providers.php:130
+msgid "%1$sPlease note%2$s (Quote from Leaflet Providers page):"
+msgstr ""
+
+#: admin/tiles/providers.php:134
+msgid ""
+"We try to maintain leaflet-providers in such a way that you'll be able to use the layers we include without paying money.<br>\n"
+"\tThis doesn't mean no limits apply, you should always check before using these layers for anything serious."
+msgstr ""
+
+#: admin/tiles/providers.php:142
+msgid "I did not tested all, I have only checked the Javascript code. If something is not working, please let me know."
+msgstr ""
+
+#: admin/zoomhome.php:18
+msgid "button to reset the view. A must for clustering markers"
+msgstr ""
+
+#: admin/zoomhome.php:19
+msgid "It resets the view to all markers (leaflet-marker), lines (leaflet-line), circles (leaflet-circle), geojsons (leaflet-geojson, leaflet-gpx, leaflet-kml) and a track (elevation)."
+msgstr ""
+
+#: admin/zoomhome.php:34
+msgid "You can set following and the Home button works as shown in the table."
+msgstr ""
+
+#: admin/zoomhome.php:42
+#: admin/zoomhome.php:84
+#: admin/zoomhome.php:112
+msgid "initial state of the map"
+msgstr ""
+
+#: admin/zoomhome.php:133
+#: admin/zoomhome.php:134
+msgid "map like defined"
+msgstr ""
+
+#: admin/zoomhome.php:137
+msgid "means"
+msgstr ""
+
+#: admin/zoomhome.php:138
+msgid "sometimes to first zoom"
+msgstr ""
+
+#. translators: %s are plugin names.
+#: extensions-leaflet-map.php:121
+msgid "Please install and activate %1$s before using %2$s."
+msgstr ""
+
+#: extensions-leaflet-map.php:125
+msgid "Manage plugins"
+msgstr ""
+
+#: extensions-leaflet-map.php:130
+msgid "Plugin Error"
+msgstr ""
+
+#: php/choropleth.php:24
+msgid "which property in the features to use"
+msgstr ""
+
+#: php/choropleth.php:25
+msgid "a comma separated list of colors for scale - include as many as you like"
+msgstr ""
+
+#: php/choropleth.php:26
+msgid "opacity of the colors in scale"
+msgstr ""
+
+#: php/choropleth.php:27
+msgid "number of breaks or steps in range"
+msgstr ""
+
+#: php/choropleth.php:28
+msgid "q for quantile, e for equidistant, k for k-means"
+msgstr ""
+
+#: php/choropleth.php:29
+msgid "show legend"
+msgstr ""
+
+#: php/choropleth.php:30
+msgid "get a tooltip on mouse over"
+msgstr ""
+
+#: php/elevation.php:20
+msgid "Theme Colors"
+msgstr ""
+
+#: php/elevation.php:38
+msgid "Polyline weight"
+msgstr ""
+
+#: php/elevation.php:48
+msgid "Track colors according to the values of elevation"
+msgstr ""
+
+#: php/elevation.php:63
+msgid "linearGradient"
+msgstr ""
+
+#: php/elevation.php:73
+msgid "position/height indicator marker drawn onto the map"
+msgstr ""
+
+#: php/elevation.php:75
+msgid "nothing"
+msgstr ""
+
+#: php/elevation.php:85
+msgid "y Axis Max"
+msgstr ""
+
+#: php/elevation.php:89
+#: php/elevation.php:100
+msgid "number"
+msgstr ""
+
+#: php/elevation.php:96
+msgid "y Axis Min"
+msgstr ""
+
+#: php/elevation.php:108
+msgid "Toggle chart legend filter."
+msgstr ""
+
+#. translators: %s is an option.
+#: php/elevation.php:113
+msgid "You can always toggle the charts individually by clicking on %s."
+msgstr ""
+
+#. translators: %s is an option.
+#: php/elevation.php:119
+msgid "If %s is disabled, you can't see all charts at the same time (except at the beginning)."
+msgstr ""
+
+#: php/elevation.php:131
+msgid "Toggle \"leaflet-edgescale\" integration"
+msgstr ""
+
+#: php/elevation.php:143
+msgid "Height of the chart"
+msgstr ""
+
+#: php/elevation.php:147
+msgid "three digit number (px), minimum 100, maximum 499"
+msgstr ""
+
+#: php/elevation.php:155
+msgid "If (!detached) width of the chart"
+msgstr ""
+
+#: php/elevation.php:159
+msgid "a number (px) or an expression like the default value"
+msgstr ""
+
+#: php/elevation.php:167
+msgid "Toggle chart"
+msgstr ""
+
+#. translators: %s are pictures.
+#: php/elevation.php:170
+msgid "show always the chart / show the chart and toggle %1$s to hide / hide the chart and toggle %2$s to show"
+msgstr ""
+
+#: php/elevation.php:183
+msgid "Chart container outside/inside map container"
+msgstr ""
+
+#. translators: %s are options.
+#: php/elevation.php:185
+msgid "%1$s outside, %2$s inside"
+msgstr ""
+
+#: php/elevation.php:207
+msgid "If (!detached) control position on one of map corners."
+msgstr ""
+
+#: php/elevation.php:217
+msgid "Switch Track on and off"
+msgstr ""
+
+#: php/elevation.php:218
+msgid "none - show filename in control - show trackname in control"
+msgstr ""
+
+#: php/elevation.php:226
+msgid "position of track control"
+msgstr ""
+
+#: php/elevation.php:235
+msgid "track control collapsed"
+msgstr ""
+
+#: php/elevation.php:246
+msgid "Toggle chart ruler filter."
+msgstr ""
+
+#: php/elevation.php:256
+msgid "Download Link"
+msgstr ""
+
+#: php/elevation.php:268
+msgid "Display circle marker on Start"
+msgstr ""
+
+#: php/elevation.php:278
+msgid "Display circle marker on End"
+msgstr ""
+
+#: php/elevation.php:289
+#: php/multielevation.php:79
+msgid "Toggle \"leaflet-distance-markers\" integration"
+msgstr ""
+
+#: php/elevation.php:299
+#: php/multielevation.php:89
+msgid "Toggle direction arrows"
+msgstr ""
+
+#: php/elevation.php:310
+msgid "Display track waypoints"
+msgstr ""
+
+#: php/elevation.php:311
+msgid "Display waypoints in map and in chart / only in map / only in chart / none"
+msgstr ""
+
+#: php/elevation.php:328
+msgid "Toggle custom waypoint icons"
+msgstr ""
+
+#: php/elevation.php:330
+msgid "Only meaningful, if waypoints are shown in the map."
+msgstr ""
+
+#. translators: %1$s is an option, %2$s is a link.
+#: php/elevation.php:333
+msgid "If %1$s is selected, you must define some %2$ssettings for the icons"
+msgstr ""
+
+#: php/elevation.php:347
+msgid "Toggle waypoint labels"
+msgstr ""
+
+#: php/elevation.php:348
+msgid "Show waypoint labels in map and in chart / only in map / only in chart / none"
+msgstr ""
+
+#. translators: %s are codes.
+#: php/elevation.php:351
+msgid "Only meaningful, if %1$swaypoints%2$s is not %3$s."
+msgstr ""
+
+#: php/elevation.php:363
+msgid "Labels degrees"
+msgstr ""
+
+#: php/elevation.php:364
+msgid "Waypoint labels rotation (degrees) in chart"
+msgstr ""
+
+#: php/elevation.php:372
+msgid "Labels align"
+msgstr ""
+
+#: php/elevation.php:373
+msgid "Waypoint labels alignment in chart"
+msgstr ""
+
+#: php/elevation.php:385
+msgid "Display distance info"
+msgstr ""
+
+#: php/elevation.php:387
+msgid "show distance data in graph and summary / show distance data in summary only / don't show distance data"
+msgstr ""
+
+#: php/elevation.php:397
+msgid "Display time info (duration)"
+msgstr ""
+
+#: php/elevation.php:399
+msgid "show time data in graph and summary / show time data in summary only / nothing"
+msgstr ""
+
+#: php/elevation.php:409
+msgid "Display date and clock time"
+msgstr ""
+
+#: php/elevation.php:420
+msgid "Summary track info style"
+msgstr ""
+
+#: php/elevation.php:422
+msgid "some predefined settings / summary on one line / summary on multiple lines / without summary"
+msgstr ""
+
+#: php/elevation.php:436
+#: php/elevation.php:752
+msgid "Altitude chart profile"
+msgstr ""
+
+#: php/elevation.php:449
+#: php/elevation.php:764
+msgid "Acceleration chart profile"
+msgstr ""
+
+#: php/elevation.php:461
+#: php/elevation.php:770
+msgid "Slope chart profile"
+msgstr ""
+
+#: php/elevation.php:473
+#: php/elevation.php:758
+msgid "Speed chart profile"
+msgstr ""
+
+#: php/elevation.php:484
+#: php/elevation.php:776
+msgid "Pace profile - time per distance"
+msgstr ""
+
+#: php/elevation.php:497
+msgid "Autoupdate map center on chart mouseover."
 msgstr ""
 
 #: php/elevation.php:507
 msgid "zFollow zoom"
 msgstr ""
 
+#: php/elevation.php:518
+msgid "Autoupdate map bounds on chart update."
+msgstr ""
+
+#: php/elevation.php:529
+msgid "[Lat, Long] vs [Long, Lat] points. (leaflet default: [Lat, Long])"
+msgstr ""
+
+#: php/elevation.php:540
+#: php/multielevation.php:100
+msgid "Toggle \"leaflet-almostover\" integration"
+msgstr ""
+
+#: php/elevation.php:551
+msgid "Render chart profiles as Canvas or SVG Paths."
+msgstr ""
+
+#: php/elevation.php:552
+msgid "Due to a problem in MacOS and iOS, it is automatically set to false in Safari."
+msgstr ""
+
+#: php/elevation.php:594
+msgid "Chart distance/elevation units imperial or metric."
+msgstr ""
+
+#: php/elevation.php:595
+msgid "miles or kilometers"
+msgstr ""
+
+#. translators: Label for distance in chart, will be ignored if imperial is true.
+#: php/elevation.php:618
+msgid "Label for distance, will be ignored if %1$s is %2$s."
+msgstr ""
+
+#. translators: ... will be ignored if imperial is true
+#: php/elevation.php:631
+msgid "Conversion factor to kilometers, will be ignored if %1$s is %2$s."
+msgstr ""
+
+#: php/elevation.php:643
+msgid "Label for altitude"
+msgstr ""
+
+#. translators: Default: "ft" if imperial is true, "m" otherwise.
+#. translators: Default: "mph" if imperial is true, "km/h" otherwise.
+#: php/elevation.php:645
+#: php/elevation.php:669
+msgid "Default: %1$s if %2$s is %3$s, %4$s otherwise."
+msgstr ""
+
+#. translators: ... will be ignored if imperial is true
+#: php/elevation.php:656
+msgid "Conversion factor to meters, will be ignored if %1$s is %2$s"
+msgstr ""
+
+#: php/elevation.php:667
+msgid "Label for speed"
+msgstr ""
+
+#: php/elevation.php:782
+msgid "Track color"
+msgstr ""
+
+#: php/elevation.php:788
+msgid "Track color over the ruler filter"
+msgstr ""
+
+#: php/elevation.php:794
+msgid "Chart background color"
+msgstr ""
+
+#: php/extramarker.php:16
+msgid "Latitude"
+msgstr ""
+
+#: php/extramarker.php:22
+msgid "Longitude"
+msgstr ""
+
+#: php/extramarker.php:29
+msgid "Additional classes in the created &lt;i&gt; tag, Possible values: fa-rotate90 myclass; space delimited classes to add"
+msgstr ""
+
+#: php/extramarker.php:39
+msgid "Name of the icon with prefix, Possible values: fa-coffee (see icon library's documentation)"
+msgstr ""
+
+#: php/extramarker.php:49
+msgid "Color of the icon, Possible values: 'white', 'black' or css code (hex, rgba etc)"
+msgstr ""
+
+#: php/extramarker.php:59
+msgid "Rotates the icon with css transformations, Possible values: numeric degrees"
+msgstr ""
+
+#: php/extramarker.php:69
+msgid "Custom HTML code, Possible values: &lt;svg&gt;, images, or other HTML; a truthy assignment will override the default html icon creation behavior"
+msgstr ""
+
+#: php/extramarker.php:79
+msgid "Color of the marker (css class), Possible values: 'red', 'orange-dark', 'orange', 'yellow', 'blue-dark', 'cyan', 'purple', 'violet', 'pink', 'green-dark', 'green', 'green-light', 'black', 'white', or color hex code if svg is true"
+msgstr ""
+
+#: php/extramarker.php:89
+msgid "Instead of an icon, define a plain text, Possible values: '1' or 'A', must set icon: 'fa-number'"
+msgstr ""
+
+#: php/extramarker.php:99
+msgid "The icon library's base class, Possible values: fa (see icon library's documentation)"
+msgstr ""
+
+#: php/extramarker.php:109
+msgid "Shape of the marker (css class), Possible values: 'circle', 'square', 'star', or 'penta'"
+msgstr ""
+
+#: php/extramarker.php:119
+msgid "Use SVG version, Possible values: true or false"
+msgstr ""
+
+#: php/functions.php:159
+msgid "Click to interpret shortcodes."
+msgstr ""
+
+#: php/gesture.php:15
+msgid "valid for whole site or only for one map"
+msgstr ""
+
+#. translators: %s are options.
+#: php/gesture.php:19
+msgid "If it is true, it is valid for any map (depending on %1$s respectively %2$s) and you can't change it. If it is false, you can enable it for a map:"
+msgstr ""
+
+#: php/gesture.php:29
+msgid "Site Language or Browser Language"
+msgstr ""
+
+#. translators: %s is an option.
+#: php/hover.php:17
+msgid "show tooltip and hide %s if present"
+msgstr ""
+
+#. translators: %s is an option.
+#: php/hover.php:19
+msgid "do not show tooltip and hide %s"
+msgstr ""
+
+#. translators: %s is an option.
+#: php/hover.php:21
+msgid "do not show tooltip but show %s"
+msgstr ""
+
+#: php/hover.php:85
+#: php/hover.php:94
+#: php/hover.php:104
+#: php/hover.php:113
+#: php/hover.php:122
+msgid "alias for"
+msgstr ""
+
+#: php/hover.php:95
+msgid "specify a short string as parameter, if the popup is too big."
+msgstr ""
+
+#: php/hover.php:97
+msgid "nothing or a string like the popup content for geojsons"
+msgstr ""
+
+#: php/hover.php:131
+#: php/hoverlap.php:15
+msgid "exclude any geojson, gpx, kml with a defined substring in the src url from changing its style on hovering, the tooltip is not affected"
+msgstr ""
+
+#: php/hover.php:133
+#: php/hoverlap.php:17
+msgid "substring from url to geojson, gpx, kml file"
+msgstr ""
+
+#: php/hover.php:140
+msgid "If an element is hovered over, the other elements become transparent. If you specify any other option as the default, the effect may not be consistent."
+msgstr ""
+
+#: php/hover.php:149
+#: php/hoverlap.php:31
+msgid "className for the tooltip"
+msgstr ""
+
+#: php/hover.php:151
+#: php/hoverlap.php:33
+msgid "a className"
+msgstr ""
+
+#. translators: %s is an option.
+#: php/hover.php:159
+msgid "How much to extend click tolerance round an object on the map, only valid for %s"
+msgstr ""
+
+#: php/hover.php:161
+#: php/hover.php:170
+#: php/hoverlap.php:25
+msgid "a number"
+msgstr ""
+
+#: php/hover.php:168
+msgid "At which distance of the mouse from a popup the popup closes. If it is 0, this is disabled, i.e. keep the popup open."
+msgstr ""
+
+#: php/hoverlap.php:23
+msgid "determines how much to extend click tolerance round an object on the map"
+msgstr ""
+
+#. translators: %s is an option.
+#: php/leaflet-search.php:31
+msgid "a option / property for marker, polygon, circle, line or a %s for geojson layer. Can also be a comma-separated list of options or properties."
+msgstr ""
+
+#. translators: %s are properties.
+#: php/leaflet-search.php:37
+msgid "for example %1$s for marker, additional for example %2$s for extramarkers; %3$s for polygon, circle, line; %4$s depending on geojson layer; %5$s for all"
+msgstr ""
+
+#: php/leaflet-search.php:52
+msgid "container id to style the control panel (outside the map) with custom css"
+msgstr ""
+
 #: php/leaflet-search.php:59
 msgid "zoom level for move to location for searching markers"
+msgstr ""
+
+#: php/leaflet-search.php:61
+msgid "The default value is the same as the setting for the Leaflet Map plugin."
+msgstr ""
+
+#: php/leaflet-search.php:77
+msgid "delay for autoclosing alert and collapse after blur"
+msgstr ""
+
+#: php/leaflet-search.php:84
+msgid "error message"
+msgstr ""
+
+#: php/leaflet-search.php:85
+msgid "Location not found"
+msgstr ""
+
+#: php/leaflet-search.php:92
+msgid "placeholder value"
+msgstr ""
+
+#: php/leaflet-search.php:93
+msgid "Search..."
+msgstr ""
+
+#: php/leaflet-search.php:100
+msgid "remove circle and marker on search control collapsed or search canceled"
+msgstr ""
+
+#: php/leaflet-search.php:107
+msgid "position in the map"
+msgstr ""
+
+#: php/leaflet-search.php:114
+msgid "show or hide marker at the position found"
+msgstr ""
+
+#. translators: %1$s is an option, %2$s and %3$s is a href
+#: php/leaflet-search.php:118
+msgid "not specified for default (red circle), %1$s for no marker, or a definition like on an %2$sexample page%3$s."
+msgstr ""
+
+#: php/leaflet-search.php:130
+msgid "show or hide popup when position found"
+msgstr ""
+
+#. translators: %1$s is "feature.property", %2$s is a shortcode, %3$s is an option.
+#: php/listmarker.php:18
+msgid "a %1$s for geojson marker. For %2$s it is always %3$s and is ignored."
+msgstr ""
+
+#. translators: %s is iconurl
+#: php/listmarker.php:32
+msgid "URL to the icon when it hover or clicked. If it is an empty string or the marker icon has not an %s, the icon does not change. Default: red icon"
+msgstr ""
+
+#: php/listmarker.php:39
+msgid "true or false - the list is collapsed or not (default)"
+msgstr ""
+
+#: php/listmarker.php:44
+msgid "true or false - show only visible marker in list (default) / show all marker in list"
+msgstr ""
+
+#: php/listmarker.php:49
+msgid "true or false - show marker in list when hover"
+msgstr ""
+
+#: php/listmarker.php:54
+msgid "background color for the list"
+msgstr ""
+
+#: php/listmarker.php:59
+msgid "color to highlight the list entry"
+msgstr ""
+
+#: php/listmarker.php:64
+msgid "maximum height of list in relation to the height of the map"
+msgstr ""
+
+#: php/listmarker.php:69
+msgid "maximum width of list in relation to the width of the map"
+msgstr ""
+
+#: php/managefiles.php:85
+#: php/managefiles.php:96
+#: php/managefiles.php:106
+msgid "Overview"
+msgstr ""
+
+#: php/markercluster.php:19
+msgid "When you mouse over a cluster it shows the bounds of its markers."
+msgstr ""
+
+#: php/markercluster.php:27
+msgid "When you click a cluster we zoom to its bounds."
+msgstr ""
+
+#: php/markercluster.php:35
+#: php/placementstrategies.php:71
+msgid "When you click a cluster at the bottom zoom level we spiderfy it so you can see all of its markers."
+msgstr ""
+
+#: php/markercluster.php:43
+msgid "Clusters and markers too far from the viewport are removed from the map for performance."
+msgstr ""
+
+#: php/markercluster.php:55
+msgid "If set, at this zoom level and below, markers will not be clustered. If 0, it is disabled."
+msgstr ""
+
+#: php/markercluster.php:63
+#: php/placementstrategies.php:77
+msgid "The maximum radius that a cluster will cover from the central marker (in pixels). Decreasing will make more, smaller clusters."
+msgstr ""
+
+#: php/multielevation.php:31
+msgid "Filename as name"
+msgstr ""
+
+#: php/multielevation.php:32
+msgid "Use filename (without extension) as name of the point and track."
+msgstr ""
+
+#. translators: %s is an option.
+#: php/multielevation.php:42
+msgid "Valid for %s: Only elevation profile with or without summary line will be displayed."
+msgstr ""
+
+#: php/multielevation.php:56
+msgid "Highlight color"
+msgstr ""
+
+#: php/multielevation.php:57
+msgid "The active track is displayed in this color."
+msgstr ""
+
+#: php/multielevation.php:418
+msgid "move mouse over a track or select one in control panel ..."
+msgstr ""
+
+#: php/overview-map.php:17
+msgid "for markers lat and lng, required"
+msgstr ""
+
+#: php/overview-map.php:19
+msgid "either a comma or space separated pair of lat and lng"
+msgstr ""
+
+#: php/overview-map.php:20
+msgid "like in"
+msgstr ""
+
+#: php/overview-map.php:29
+msgid "for the marker icon, optional."
+msgstr ""
+
+#: php/overview-map.php:30
+msgid "Default is taken from the overviewmap shortcode or it is the blue marker icon."
+msgstr ""
+
+#: php/overview-map.php:32
+msgid "either a icon filename"
+msgstr ""
+
+#: php/overview-map.php:34
+#: php/overview-map.php:36
+msgid "(like shortcode without brackets)"
+msgstr ""
+
+#: php/overview-map.php:43
+msgid "for the popup content, optional."
+msgstr ""
+
+#: php/overview-map.php:45
+msgid "default popup content"
+msgstr ""
+
+#: php/overview-map.php:46
+msgid "the name of custom field is"
+msgstr ""
+
+#: php/overview-map.php:47
+msgid "or the name of the popup custom field"
+msgstr ""
+
+#: php/overview-map.php:60
+msgid "Show page / post featured image"
+msgstr ""
+
+#: php/overview-map.php:67
+msgid "Size of featured image"
+msgstr ""
+
+#. translators: %s is popup.
+#: php/overview-map.php:71
+msgid "a comma separated pair of width and height in pixels. Only makes sense when you use the %s option."
+msgstr ""
+
+#: php/overview-map.php:75
+msgid "Show a link to category page"
+msgstr ""
+
+#: php/overview-map.php:82
+msgid "Open page, post or category links in a new tab"
+msgstr ""
+
+#: php/overview-map.php:89
+msgid "Select only pages / posts from these categories"
+msgstr ""
+
+#: php/overview-map.php:92
+msgid "a comma separated list of category names, slugs or IDs"
+msgstr ""
+
+#. translators: %s is "AND".
+#: php/overview-map.php:95
+msgid "If the list starts with %s, only pages / posts that are contained in all of them are displayed, otherwise those that are contained in at least one."
+msgstr ""
+
+#. translators: %s are "leaflet-marker" and "leaflet-extramarker".
+#: php/overview-map.php:105
+msgid "Specify this, if there are no any marker information in custom fields and the icons appear as %1$s instead of %2$s."
+msgstr ""
+
+#: php/overview-map.php:112
+msgid "Creates an overview table of posts / pages instead of markers to see any mistakes"
+msgstr ""
+
+#: php/overview-map.php:125
+#: php/overview-map.php:193
+msgid "Use transients"
+msgstr ""
+
+#. translators: %s is "false".
+#: php/overview-map.php:127
+msgid "Set this to %s, if you have trouble to get the right markers."
+msgstr ""
+
+#: php/overview-map.php:303
+msgid "Multiple custom fields with the same name"
+msgstr ""
+
+#: php/overview-map.php:377
+msgid "Error detecting lanlngs"
+msgstr ""
+
+#: php/overview-map.php:421
+msgid "Error - no valid filename:"
+msgstr ""
+
+#: php/overview-map.php:569
+msgid "Error - please check overviewmap data: Some data are wrong."
+msgstr ""
+
+#: php/overview-map.php:643
+msgid "no leaflet-marker custom fields"
+msgstr ""
+
+#: php/parentgroup.php:39
+msgid "Name of the parent"
+msgstr ""
+
+#: php/parentgroup.php:45
+msgid "child names"
+msgstr ""
+
+#. translators: %s is option groups.
+#: php/parentgroup.php:48
+msgid "Comma separated group names. These are the same as in %s. If you have html tags there, you can omit these here"
+msgstr ""
+
+#: php/parentgroup.php:56
+msgid "Text for an entry in control that collapses the tree"
+msgstr ""
+
+#: php/parentgroup.php:57
+#: php/parentgroup.php:64
+msgid "If empty, no entry is created."
+msgstr ""
+
+#: php/parentgroup.php:63
+msgid "Text for an entry in control that expands the tree"
+msgstr ""
+
+#: php/parentgroup.php:70
+msgid "Symbol displayed on a opened node (that you can click to close)"
+msgstr ""
+
+#. translators: %s is &lt;.
+#: php/parentgroup.php:72
+msgid "You can't use the character %s allone."
+msgstr ""
+
+#: php/parentgroup.php:78
+msgid "Symbol displayed on a closed node (that you can click to open)"
+msgstr ""
+
+#: php/parentgroup.php:85
+msgid "padding of the subentries"
+msgstr ""
+
+#: php/parentgroup.php:86
+msgid "Valid for all maps on the page/post."
+msgstr ""
+
+#: php/placementstrategies.php:18
+msgid "Strategy for placing markers in cluster"
+msgstr ""
+
+#: php/placementstrategies.php:29
+msgid "Type of marker"
+msgstr ""
+
+#: php/placementstrategies.php:39
+msgid "Number of elements in the first circle"
+msgstr ""
+
+#: php/placementstrategies.php:47
+msgid "Multiplicator of elements number for the next circle"
+msgstr ""
+
+#: php/placementstrategies.php:55
+msgid "Value to be added to each new circle distance value"
+msgstr ""
+
+#: php/placementstrategies.php:61
+msgid "Switch drawing helping circles on"
+msgstr ""
+
+#. translators: %s are shortcodes.
+#: php/sgpx.php:142
+msgid "Replace %1$s with %2$s."
+msgstr ""
+
+#. translators: %s is an option.
+#: php/sgpx.php:144
+msgid "No / Yes / Only, when %s is used, e.g. for testing."
+msgstr ""
+
+#: php/sgpx.php:182
+msgid "You are using the sgpx shortcode from plugin wp-gpx-maps. But the script cannot detect how to handle it. Please ask in the forum."
+msgstr ""
+
+#: php/sgpx.php:192
+msgid "You are using the sgpx shortcode from plugin wp-gpx-maps. wp-gpx-maps and leaflet-map don't work together."
+msgstr ""
+
+#: js/elevation.js:120
+msgctxt "In Frontend"
+msgid "Acceleration"
+msgstr ""
+
+#: js/elevation.js:121
+msgctxt "In Frontend"
+msgid "Altitude"
+msgstr ""
+
+#: js/elevation.js:122
+msgctxt "In Frontend"
+msgid "Slope"
+msgstr ""
+
+#: js/elevation.js:123
+msgctxt "In Frontend"
+msgid "Speed"
+msgstr ""
+
+#: js/elevation.js:124
+msgctxt "In Frontend"
+msgid "Total Time"
+msgstr ""
+
+#: js/elevation.js:125
+msgctxt "In Frontend"
+msgid "Total Length"
+msgstr ""
+
+#: js/elevation.js:126
+msgctxt "In Frontend"
+msgid "Max Elevation"
+msgstr ""
+
+#: js/elevation.js:127
+msgctxt "In Frontend"
+msgid "Min Elevation"
+msgstr ""
+
+#: js/elevation.js:128
+msgctxt "In Frontend"
+msgid "Avg Elevation"
+msgstr ""
+
+#: js/elevation.js:129
+msgctxt "In Frontend"
+msgid "Total Ascent"
+msgstr ""
+
+#: js/elevation.js:130
+msgctxt "In Frontend"
+msgid "Total Descent"
+msgstr ""
+
+#: js/elevation.js:131
+msgctxt "In Frontend"
+msgid "Min Slope"
+msgstr ""
+
+#: js/elevation.js:132
+msgctxt "In Frontend"
+msgid "Max Slope"
+msgstr ""
+
+#: js/elevation.js:133
+msgctxt "In Frontend"
+msgid "Avg Slope"
+msgstr ""
+
+#: js/elevation.js:134
+msgctxt "In Frontend"
+msgid "Min Speed"
+msgstr ""
+
+#: js/elevation.js:135
+msgctxt "In Frontend"
+msgid "Max Speed"
+msgstr ""
+
+#: js/elevation.js:136
+msgctxt "In Frontend"
+msgid "Avg Speed"
+msgstr ""
+
+#: js/elevation.js:137
+msgctxt "In Frontend"
+msgid "Min Acceleration"
+msgstr ""
+
+#: js/elevation.js:138
+msgctxt "In Frontend"
+msgid "Max Acceleration"
+msgstr ""
+
+#: js/elevation.js:139
+msgctxt "In Frontend"
+msgid "Avg Acceleration"
+msgstr ""
+
+#: js/elevation.js:140
+msgctxt "In Frontend"
+msgid "Pace"
+msgstr ""
+
+#: js/elevation.js:141
+msgctxt "In Frontend"
+msgid "Min Pace"
+msgstr ""
+
+#: js/elevation.js:142
+msgctxt "In Frontend"
+msgid "Max Pace"
+msgstr ""
+
+#: js/elevation.js:143
+msgctxt "In Frontend"
+msgid "Avg Pace"
+msgstr ""
+
+#: js/elevation.js:144
+msgctxt "In Frontend"
+msgid "Download"
+msgstr ""
+
+#: js/elevation.js:145
+msgctxt "In Frontend"
+msgid "Elevation"
+msgstr ""
+
+#: js/elevation.js:147
+msgctxt "In Frontend: Abbreviation for acceleration in the chart"
+msgid "a"
+msgstr ""
+
+#: js/elevation.js:148
+msgctxt "In Frontend: Abbreviation for cadence in the chart"
+msgid "cad"
+msgstr ""
+
+#: js/elevation.js:149
+msgctxt "In Frontend: Abbreviation for heart rate in the chart"
+msgid "hr"
+msgstr ""
+
+#: js/elevation.js:150
+msgctxt "In Frontend: Abbreviation for slope in the chart"
+msgid "m"
+msgstr ""
+
+#: js/elevation.js:151
+msgctxt "In Frontend: Abbreviation for pace in the chart"
+msgid "pace"
+msgstr ""
+
+#: js/elevation.js:152
+msgctxt "In Frontend: Abbreviation for time in the chart"
+msgid "t"
+msgstr ""
+
+#: js/elevation.js:153
+msgctxt "In Frontend: Abbreviation for duration in the chart"
+msgid "T"
+msgstr ""
+
+#: js/elevation.js:154
+msgctxt "In Frontend: Abbreviation for speed in the chart"
+msgid "v"
+msgstr ""
+
+#: js/elevation.js:155
+msgctxt "In Frontend: Abbreviation for length in the chart"
+msgid "x"
+msgstr ""
+
+#: js/elevation.js:156
+msgctxt "In Frontend: Abbreviation for altitude in the chart"
+msgid "y"
 msgstr ""

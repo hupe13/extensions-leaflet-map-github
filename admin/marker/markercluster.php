@@ -128,8 +128,10 @@ function leafext_markercluster_help_text() {
 ...
 &#091;leaflet-marker lat=... lng=... ...]poixx&#091;/leaflet-marker]
 </code></pre>
-<h4>' . __( 'and/or with leaflet-gpx and/or leaflet-geojson', 'extensions-leaflet-map' ) . '</h4>
+<h4>' . __( 'and/or with leaflet-gpx and/or leaflet-kml and/or leaflet-geojson', 'extensions-leaflet-map' ) . '</h4>
 <pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-gpx src="url/to/....gpx" ...]{name}&#091;/leaflet-gpx]
+</code></pre>
+<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-kml src="url/to/....kml" ...]{name}&#091;/leaflet-kml]
 </code></pre>
 <pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-geojson src="url/to/....geojson" ...]{popup-text}&#091;/leaflet-geojson]
 </code></pre>

@@ -3,7 +3,8 @@
  * Plugin Name:       Extensions for Leaflet Map Github Version
  * Description:       Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
  * Plugin URI:        https://leafext.de/en/
- * Version:           4.4-250316
+ * Update URI:        https://github.com/hupe13/extensions-leaflet-map-github
+ * Version:           4.4-250401
  * Requires PHP:      7.4
  * Requires Plugins:  leaflet-map
  * Author:            hupe13

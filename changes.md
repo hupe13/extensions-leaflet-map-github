@@ -1,6 +1,9 @@
 # Differences to the Plugins WordPress version
 
-* none
+* leaflet.markercluster-1.5.4 ( self compiled )
+* leafext_providers_fkt_script - small correction
+* dutch nl_NL
+* WordPress 6.8
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

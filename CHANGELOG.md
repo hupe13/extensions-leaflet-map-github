@@ -1,3 +1,10 @@
+### 4.4.5 / 2504xx
+
+* leaflet.markercluster-1.5.4 ( self compiled )
+* leafext_providers_fkt_script - small correction
+* dutch nl_NL
+* WordPress 6.8
+
 ### 4.4.4 / 250316
 
 * new version L.Control.Layers.Tree.js, leaflet-providers.js, Control.FullScreen, togeojson.umd.js
