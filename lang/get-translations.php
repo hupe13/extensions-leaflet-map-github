@@ -33,6 +33,7 @@ $languages = array(
 	array( 'default', 'pt_PT', '' , 'stable/'),
 	array( 'default', 'sv_SE', '' , 'stable/'),
 	array( 'default', 'nl_NL', '' , 'stable/'),
+	array( 'default', 'es_ES', '_or_changesrequested' , 'stable/'),
 	array( 'formal', 'de_DE_formal', '' , 'stable/'),
 	array( 'default', 'de_DE', '', 'dev/'),
 );
