@@ -9,6 +9,7 @@
  */
 
 function leafext_featuregroup_js(att_property,att_option,groups,grouptext,visible,substr,alle,position,collapsed) {
+	// console.log("leafext_featuregroup_js",att_property,att_option,groups,grouptext,visible,substr,alle,position,collapsed);
 	var map    = window.WPLeafletMapPlugin.getCurrentMap();
 	var map_id = map._leaflet_id;
 

@@ -1,7 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* leaflet.markercluster-1.5.4 ( self compiled )
-* leafext_providers_fkt_script - small correction
+* layerswitch - bug fixed
 * dutch nl_NL
 * WordPress 6.8
 

@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 6.8
-Stable tag: 4.4-250401
+Stable tag: 4.4-250402
 Requires at least: 5.5.3
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -37,9 +37,6 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-### 4.4.5 / 2504xx
-
-* leaflet.markercluster-1.5.4 ( self compiled )
-* leafext_providers_fkt_script - small correction
+* layerswitch - bug fixed
 * dutch nl_NL
 * WordPress 6.8

@@ -140,7 +140,7 @@ function leafext_enqueue_markercluster() {
 	wp_enqueue_style(
 		'markercluster_default',
 		plugins_url(
-			'leaflet-plugins/leaflet.markercluster-1.5.4/css/MarkerCluster.Default.css',
+			'leaflet-plugins/leaflet.markercluster-1.5.3/css/MarkerCluster.Default.css',
 			LEAFEXT_PLUGIN_FILE
 		),
 		array( 'leaflet_stylesheet' ),
@@ -149,7 +149,7 @@ function leafext_enqueue_markercluster() {
 	wp_enqueue_style(
 		'markercluster',
 		plugins_url(
-			'leaflet-plugins/leaflet.markercluster-1.5.4/css/MarkerCluster.css',
+			'leaflet-plugins/leaflet.markercluster-1.5.3/css/MarkerCluster.css',
 			LEAFEXT_PLUGIN_FILE
 		),
 		array( 'leaflet_stylesheet' ),
@@ -158,7 +158,7 @@ function leafext_enqueue_markercluster() {
 	wp_enqueue_script(
 		'markercluster',
 		plugins_url(
-			'leaflet-plugins/leaflet.markercluster-1.5.4/js/leaflet.markercluster.js',
+			'leaflet-plugins/leaflet.markercluster-1.5.3/js/leaflet.markercluster.js',
 			LEAFEXT_PLUGIN_FILE
 		),
 		array( 'wp_leaflet_map' ),

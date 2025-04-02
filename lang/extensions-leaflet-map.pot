@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Extensions for Leaflet Map Github Version 4.4-250401\n"
+"Project-Id-Version: Extensions for Leaflet Map Github Version 4.4-250402\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/extensions-leaflet-map-github\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-01T21:27:32+02:00\n"
+"POT-Creation-Date: 2025-04-02T17:34:19+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: extensions-leaflet-map\n"
@@ -258,7 +258,7 @@ msgid "I will include these translations in the plugin. Swedish and italian are 
 msgstr ""
 
 #: admin/elevation/elevation.php:157
-msgid "A language pack will be generated, if at least 90% of all strings are translated, like german or spanish."
+msgid "A language pack will be generated, if at least 90% of all strings are translated, like dutch, spanish or german."
 msgstr ""
 
 #: admin/elevation/elevation.php:158
