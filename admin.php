@@ -107,7 +107,7 @@ function leafext_do_page() {
 
 function leafext_admin_tabs() {
 	echo '<div class="wrap nothickbox">
-	<h2>Extensions for Leaflet Map Options and Help</h2></div>' . "\n";
+	<h2>' . esc_html__( 'Extensions for Leaflet Map Options and Help', 'extensions-leaflet-map' ) . '</h2></div>' . "\n";
 
 	//phpcs:ignore WordPress.Security.NonceVerification.Recommended -- no form
 	$get        = map_deep( wp_unslash( $_GET ), 'sanitize_text_field' );

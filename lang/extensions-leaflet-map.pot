@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-02T17:34:19+02:00\n"
+"POT-Creation-Date: 2025-04-03T19:48:03+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: extensions-leaflet-map\n"
@@ -33,6 +33,10 @@ msgstr ""
 #. Author of the plugin
 #: extensions-leaflet-map.php
 msgid "hupe13"
+msgstr ""
+
+#: admin.php:110
+msgid "Extensions for Leaflet Map Options and Help"
 msgstr ""
 
 #: admin.php:119
