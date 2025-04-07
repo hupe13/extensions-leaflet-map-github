@@ -187,10 +187,10 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.4.5 / 2504xx
+### 4.4.5 / 250407
 
-* layerswitch - bug fixed
-* dutch nl_NL
+* layerswitch - bug if min_zoom > 0 fixed
+* new translation: dutch nl_NL
 * WordPress 6.8
 
 ### Previous

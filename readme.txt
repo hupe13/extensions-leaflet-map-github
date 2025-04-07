@@ -37,6 +37,6 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* layerswitch - bug fixed
-* dutch nl_NL
+* layerswitch - bug if min_zoom > 0 fixed
+* new translation: dutch nl_NL
 * WordPress 6.8

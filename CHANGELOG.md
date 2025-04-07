@@ -1,7 +1,7 @@
 ### 4.4.5 / 2504xx
 
-* layerswitch - bug fixed
-* dutch nl_NL
+* layerswitch - bug if min_zoom > 0 fixed
+* new translation: dutch nl_NL
 * WordPress 6.8
 
 ### 4.4.4 / 250316

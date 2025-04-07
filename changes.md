@@ -1,7 +1,7 @@
 # Differences to the Plugins WordPress version
 
-* layerswitch - bug fixed
-* dutch nl_NL
+* layerswitch - bug if min_zoom > 0 fixed
+* new translation: dutch nl_NL
 * WordPress 6.8
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
