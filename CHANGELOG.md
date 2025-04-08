@@ -1,4 +1,4 @@
-### 4.4.5 / 2504xx
+### 4.4.5 / 250407
 
 * layerswitch - bug if min_zoom > 0 fixed
 * new translation: dutch nl_NL
