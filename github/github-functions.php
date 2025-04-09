@@ -40,7 +40,7 @@ function leafext_get_repos() {
 // param name of php file, returns dir
 // in welchem Verzeichnis ist das Plugin installiert?
 function leafext_github_dir( $slug ) {
-	$leafext_plugins = glob( WP_PLUGIN_DIR . '/*/' . $slug . '.php/' );
+	$leafext_plugins = glob( WP_PLUGIN_DIR . '/*/' . $slug . '.php' );
 	if ( count( $leafext_plugins ) > 0 ) {
 		foreach ( $leafext_plugins as $leafext_plugin ) {
 			$plugin_data = get_plugin_data( $leafext_plugin, true, false );
