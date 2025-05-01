@@ -1,6 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* none
+* Bug zoomhomemmap with elevation fixed
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

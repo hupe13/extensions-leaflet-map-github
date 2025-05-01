@@ -241,7 +241,13 @@ function leafext_zoomhome_js(maps,map_id,allfit,position) {
 			if (bounds[map_id].isValid()) {
 				// console.log("ele bounds valid");
 				zoomHome[map_id].setHomeBounds( bounds[map_id] );
-				maps[map_id].fitBounds( bounds[map_id] );
+				// maps[map_id].fitBounds( bounds[map_id] );
+				setTimeout(
+					function () {
+						maps[map_id].fitBounds( bounds[map_id] );
+					},
+					100
+				);
 			} else {
 				// console.log("ele bounds not valid");
 				// console.log("animate "+maps[map_id]._zoom);

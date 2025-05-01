@@ -1,3 +1,7 @@
+### 4.4.6 / 2505xx
+
+* Bug zoomhomemmap with elevation fixed
+
 ### 4.4.5 / 250407
 
 * layerswitch - bug if min_zoom > 0 fixed

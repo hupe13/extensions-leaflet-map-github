@@ -1,10 +1,10 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Updates for Leaflet Map Extensions and DSGVO Github "
+"Project-Id-Version: Updates for plugins from hupe13 hosted on Github "
 "Versions\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-24 20:29+0000\n"
+"POT-Creation-Date: 2025-04-25 11:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -17,15 +17,15 @@ msgstr ""
 "X-Loco-Version: 2.7.1; wp-6.7.2\n"
 "X-Domain: leafext-update-github"
 
-#: github/github-functions.php:244
+#: github/github-functions.php:289
 msgid "active"
 msgstr ""
 
-#: github/github-functions.php:197
+#: github/github-functions.php:223
 msgid "Github Repositories managed by Plugin Update Checker"
 msgstr ""
 
-#: github/github-functions.php:123
+#: github/github-functions.php:146
 msgid "Github Repositories managed on main site"
 msgstr ""
 
@@ -35,6 +35,10 @@ msgstr ""
 
 #: github/github-settings.php:82
 msgid "Github token to receive updates in WordPress way"
+msgstr ""
+
+#: github/github-functions.php:288
+msgid "hosted on"
 msgstr ""
 
 #. URI of the plugin
@@ -51,11 +55,11 @@ msgstr ""
 
 #. Description of the plugin
 msgid ""
-"If you have installed the Github versions of Leaflet Map plugins from hupe13 "
-"on a multisite, you can receive the updates here."
+"If you have installed the Github versions of plugins from hupe13 on a "
+"multisite, you can receive the updates here."
 msgstr ""
 
-#: github/github-functions.php:245
+#: github/github-functions.php:290
 msgid "link to blog"
 msgstr ""
 
@@ -65,7 +69,7 @@ msgstr ""
 msgid "Maybe you need a %1$sGithub token%2$s to receive updates successfully."
 msgstr ""
 
-#: github/github-functions.php:243
+#: github/github-functions.php:287
 msgid "Name"
 msgstr ""
 
@@ -78,13 +82,13 @@ msgid "Settings"
 msgstr ""
 
 #. %s is a link.
-#: github/github-functions.php:116
+#: github/github-functions.php:139
 #, php-format
 msgid "To manage and receive updates, go to the %1$smain site%2$s."
 msgstr ""
 
 #. %s is a link.
-#: github/github-functions.php:104
+#: github/github-functions.php:127
 #, php-format
 msgid ""
 "To receive updates, go to the %1$smain site dashboard%2$s and activate one "
@@ -92,10 +96,10 @@ msgid ""
 msgstr ""
 
 #. Name of the plugin
-msgid "Updates for Leaflet Map Extensions and DSGVO Github Versions"
+msgid "Updates for plugins from hupe13 hosted on Github"
 msgstr ""
 
-#: github/github-functions.php:99
+#: github/github-functions.php:122
 msgid "Updates in WordPress way"
 msgstr ""
 

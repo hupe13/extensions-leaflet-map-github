@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: DSGVO Snippet for Extensions for Leaflet Map\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-15 15:43+0000\n"
-"PO-Revision-Date: 2025-02-25 06:31+0000\n"
+"PO-Revision-Date: 2025-04-25 13:18+0000\n"
 "Last-Translator: hupe13\n"
 "Language-Team: Deutsch\n"
 "Language: de_DE\n"
@@ -13,18 +13,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.7.1; wp-6.7.2\n"
-"X-Domain: extensions-leaflet-map-dsgvo"
 
-#: github/github-functions.php:244
+#: github/github-functions.php:289
 msgid "active"
 msgstr "aktiv"
 
-#: github/github-functions.php:197
+#: github/github-functions.php:223
 msgid "Github Repositories managed by Plugin Update Checker"
 msgstr ""
 "Github Repositories welche das Update über den Plugin Update Checker erhalten"
 
-#: github/github-functions.php:123
+#: github/github-functions.php:146
 msgid "Github Repositories managed on main site"
 msgstr "Auf der Hauptseite verwaltete Github Repositories "
 
@@ -35,6 +34,10 @@ msgstr "Github token"
 #: github/github-settings.php:82
 msgid "Github token to receive updates in WordPress way"
 msgstr "Github Token um Updates auf WordPress-Art zu erhalten"
+
+#: github/github-functions.php:288
+msgid "hosted on"
+msgstr "gehostet auf"
 
 #. URI of the plugin
 msgid "https://github.com/hupe13/leafext-update-github"
@@ -50,13 +53,13 @@ msgstr "hupe13"
 
 #. Description of the plugin
 msgid ""
-"If you have installed the Github versions of Leaflet Map plugins from hupe13 "
-"on a multisite, you can receive the updates here."
+"If you have installed the Github versions of plugins from hupe13 on a "
+"multisite, you can receive the updates here."
 msgstr ""
-"Wenn du die Github-Versionen der Leaflet Map Plugins von hupe13 auf einer "
-"Multisite installiert hast, kannst du hiermit die Updates erhalten."
+"Wenn du die Github-Versionen der Plugins von hupe13 auf einer Multisite "
+"installiert hast, kannst du die Updates hier erhalten."
 
-#: github/github-functions.php:245
+#: github/github-functions.php:290
 msgid "link to blog"
 msgstr "Link zum Blog"
 
@@ -68,7 +71,7 @@ msgstr ""
 "Möglicherweise benötigst du ein %1$sGithub-Token%2$s, um erfolgreich Updates "
 "zu erhalten."
 
-#: github/github-functions.php:243
+#: github/github-functions.php:287
 msgid "Name"
 msgstr "Name"
 
@@ -81,13 +84,13 @@ msgid "Settings"
 msgstr "Einstellungen"
 
 #. %s is a link.
-#: github/github-functions.php:116
+#: github/github-functions.php:139
 #, php-format
 msgid "To manage and receive updates, go to the %1$smain site%2$s."
 msgstr "Um Updates zu erhalten und zu verwalten, gehe zur %1$sHauptseite%2$s."
 
 #. %s is a link.
-#: github/github-functions.php:104
+#: github/github-functions.php:127
 #, php-format
 msgid ""
 "To receive updates, go to the %1$smain site dashboard%2$s and activate one "
@@ -97,12 +100,10 @@ msgstr ""
 "aktiviere eines der %3$s Plugins hier oder installiere und aktiviere %4$s."
 
 #. Name of the plugin
-msgid "Updates for Leaflet Map Extensions and DSGVO Github Versions"
-msgstr ""
-"Updates für die Github-Versionen der Erweiterungen und DSGVO-Snippets für "
-"Leaflet Map"
+msgid "Updates for plugins from hupe13 hosted on Github"
+msgstr "Updates für Plugins von hupe13, die auf Github gehostet werden"
 
-#: github/github-functions.php:99
+#: github/github-functions.php:122
 msgid "Updates in WordPress way"
 msgstr "Updates auf Art und Weise von WordPress"
 

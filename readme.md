@@ -187,11 +187,9 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.4.5 / 250407
+### 4.4.6 / 2505xx
 
-* layerswitch - bug if min_zoom > 0 fixed
-* new translation: dutch nl_NL
-* WordPress 6.8
+* Bug zoomhomemmap with elevation fixed
 
 ### Previous
 

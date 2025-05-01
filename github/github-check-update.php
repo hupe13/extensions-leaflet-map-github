@@ -2,7 +2,7 @@
 /**
  *  Github Plugin Update Checker
  *
- * @package Updates for Leaflet Map Extensions and DSGVO Github Versions
+ * @package Updates for plugins from hupe13 hosted on Github
  **/
 
 // Direktzugriff auf diese Datei verhindern.

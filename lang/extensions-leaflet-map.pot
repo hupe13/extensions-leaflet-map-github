@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Extensions for Leaflet Map Github Version 4.4-250402\n"
+"Project-Id-Version: Extensions for Leaflet Map Github Version 4.4-250422\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/extensions-leaflet-map-github\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-04-03T19:48:03+02:00\n"
+"POT-Creation-Date: 2025-04-25T14:53:53+02:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: extensions-leaflet-map\n"
@@ -36,7 +36,7 @@ msgid "hupe13"
 msgstr ""
 
 #: admin.php:110
-msgid "Extensions for Leaflet Map Options and Help"
+msgid "Extensions for Leaflet Map - Help and Documentation"
 msgstr ""
 
 #: admin.php:119
@@ -721,7 +721,7 @@ msgstr ""
 #: admin/filemgr/filemgr-settings.php:50
 #: admin/tiles/layerswitch.php:163
 #: admin/tiles/providers.php:150
-#: extensions-leaflet-map.php:100
+#: extensions-leaflet-map.php:92
 msgid "Settings"
 msgstr ""
 
@@ -2444,15 +2444,15 @@ msgid "sometimes to first zoom"
 msgstr ""
 
 #. translators: %s are plugin names.
-#: extensions-leaflet-map.php:121
+#: extensions-leaflet-map.php:113
 msgid "Please install and activate %1$s before using %2$s."
 msgstr ""
 
-#: extensions-leaflet-map.php:125
+#: extensions-leaflet-map.php:117
 msgid "Manage plugins"
 msgstr ""
 
-#: extensions-leaflet-map.php:130
+#: extensions-leaflet-map.php:122
 msgid "Plugin Error"
 msgstr ""
 

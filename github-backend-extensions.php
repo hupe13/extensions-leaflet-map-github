@@ -11,7 +11,6 @@ defined( 'ABSPATH' ) || die();
 // for translating a plugin
 function leafext_extensions_textdomain() {
 	if ( get_locale() === 'de_DE' ) {
-		load_plugin_textdomain( 'leafext-update-github', false, LEAFEXT_PLUGIN_SETTINGS . '/github/lang/' );
 		load_plugin_textdomain( 'extensions-leaflet-map', false, LEAFEXT_PLUGIN_SETTINGS . '/lang/' );
 	}
 }
