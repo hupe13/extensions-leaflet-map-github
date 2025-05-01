@@ -37,6 +37,5 @@ Maybe you need a Github token.
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* layerswitch - bug if min_zoom > 0 fixed
-* new translation: dutch nl_NL
-* WordPress 6.8
+* Bug zoomhomemmap with elevation fixed
+* changed Github updates because of https://github.com/hupe13/album-medialib-github
