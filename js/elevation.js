@@ -46,7 +46,7 @@ function leafext_elevation_prep_js() {
 			_registerHandler: function (props) {
 				if (typeof props === "object") {
 					switch (props.name) {
-							// ref: https://github.com/Raruto/leaflet-elevation/blob/c58250e7c20d52490aa3a50b611dbb282ff00a57/src/handlers/acceleration.js#L41-L61
+						// ref: https://github.com/Raruto/leaflet-elevation/blob/c58250e7c20d52490aa3a50b611dbb282ff00a57/src/handlers/acceleration.js#L41-L61
 						case "acceleration":
 							let accelerationLabel               = this.options.accelerationLabel || L._( this.options.imperial ? "ft/s²" : "m/s²" );
 							props.tooltip.chart                 = (item)        => L._( "a: " ) + toPrecision( item.acceleration || 0, 2 ) + " " + accelerationLabel;
@@ -63,9 +63,9 @@ function leafext_elevation_prep_js() {
 						// cadence
 						case "distance":
 							if (this.options.distance) {
-									let distlabel              = this.options.distance.label || L._( this.options.imperial ? "mi" : this.options.xLabel );
-									props.tooltip.chart        = (item) => L._( "x: " ) + toPrecision( item.dist, (item.dist > 10) ? 3 : 2 ) + " " + distlabel;
-									props.summary.totlen.value = (track) => toPrecision( track.distance || 0, 3 ) + "&nbsp;" + distlabel;
+								let distlabel              = this.options.distance.label || L._( this.options.imperial ? "mi" : this.options.xLabel );
+								props.tooltip.chart        = (item) => L._( "x: " ) + toPrecision( item.dist, (item.dist > 10) ? 3 : 2 ) + " " + distlabel;
+								props.summary.totlen.value = (track) => toPrecision( track.distance || 0, 3 ) + "&nbsp;" + distlabel;
 							}
 						break;
 						case "pace":
