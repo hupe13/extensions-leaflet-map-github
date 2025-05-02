@@ -488,6 +488,17 @@ function leafext_elevation_params( $typ = array() ) {
 			'typ'       => array( 'changeable', 'chart', 'multielevation' ),
 		),
 
+		// heart
+		// "minbpm" "maxbpm" "avgbpm"
+		array(
+			'param'     => 'heart',
+			'shortdesc' => __( 'Heart profile', 'extensions-leaflet-map' ),
+			'desc'      => 'css: .minbpm, .maxbpm, .avgbpm,',
+			'default'   => false,
+			'values'    => array( true, 'summary', 'disabled', false ),
+			'typ'       => array( 'changeable', 'chart', 'multielevation' ),
+		),
+
 		// Verhalten u.a.
 
 		// Autoupdate map center on chart mouseover.
@@ -570,17 +581,6 @@ function leafext_elevation_params( $typ = array() ) {
 		// array(
 		// 'param' => 'cadence',
 		// 'shortdesc' => __('cadence - ??',"extensions-leaflet-map"),
-		// 'desc' => "",
-		// 'default' => false,
-		// 'values' => 1,
-		// 'typ' => array('fixed'),
-		// ),
-
-		// heart
-		// "minbpm" "maxbpm" "avgbpm"
-		// array(
-		// 'param' => 'heart',
-		// 'shortdesc' => __('heart - ??',"extensions-leaflet-map"),
 		// 'desc' => "",
 		// 'default' => false,
 		// 'values' => 1,
@@ -778,6 +778,12 @@ function leafext_elevation_colors() {
 				'default'   => isset( $themes[ $theme ]['pace'] ) ? $themes[ $theme ]['pace'] : '#03ffff',
 			),
 			array(
+				'param'     => 'heart',
+				'shortdesc' => __( 'Line color of the heart profile', 'extensions-leaflet-map' ),
+				'desc'      => '',
+				'default'   => isset( $themes[ $theme ]['heart'] ) ? $themes[ $theme ]['heart'] : '#ff0000',
+			),
+			array(
 				'param'     => 'polyline',
 				'shortdesc' => __( 'Track color', 'extensions-leaflet-map' ),
 				'desc'      => '',
@@ -889,7 +895,6 @@ function leafext_ele_java_params( $settings ) {
 					unset( $settings[ $k ] );
 				}
 				break;
-
 			default:
 		}
 	}
@@ -1042,6 +1047,11 @@ function leafext_elevation_color( $options ) {
 						'.elevation-control .background {background-color: ' . $typ . ' !important;}' .
 						'</style>';
 						break;
+					case 'heart':
+						$text = $text . '<style>' .
+						'.heart {stroke: ' . $typ . ' !important;}' .
+						'</style>';
+						break;
 					default:
 						$text = $text . '<style>' .
 						'.' . $options['theme'] . '.elevation-control .area path.' . $key . ',' .
@@ -1131,7 +1141,7 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 		// altitude.js
 		// // cadence.js
 		// distance.js
-		// // heart.js
+		// heart.js
 		// labels.js
 		// lineargradient.js
 		// pace.js
@@ -1157,6 +1167,12 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 			}
 			if ( (bool) $options['slope'] ) {
 				$handlers[] = '"Slope"';
+			}
+		}
+		if ( (bool) $options['heart'] ) {
+			$handlers[] = '"Heart"';
+			if ( ! (bool) $options['time'] ) {
+				$options['time'] = 'summary';
 			}
 		}
 		if ( (bool) $options['labelsRotation'] || $options['labelsAlign'] !== 'start' ) {
