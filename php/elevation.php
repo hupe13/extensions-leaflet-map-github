@@ -1098,7 +1098,7 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 
 		leafext_enqueue_elevation();
 		// https://github.com/placemark/togeojson/issues/145
-		if ($options['heart']) {
+		if ( $options['heart'] ) {
 			leafext_enqueue_mapbox_togeojson();
 		} else {
 			leafext_enqueue_tmcw_togeojson();
