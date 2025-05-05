@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 6.8
-Stable tag: 4.5-250502
+Stable tag: 4.5-250505
 Requires at least: 5.5.3
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -38,5 +38,5 @@ Maybe you need a Github token.
 Many thanks to everyone who found errors and provided ideas for new functions.
 
 * Bug zoomhomemmap with elevation fixed
-* elevation: heart profile
+* elevation: heart rate profile
 * changed Github updates because of https://github.com/hupe13/album-medialib-github

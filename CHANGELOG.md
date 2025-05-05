@@ -1,6 +1,7 @@
 ### 4.4.6 / 2505xx
 
 * Bug zoomhomemmap with elevation fixed
+* elevation: heart rate profile
 
 ### 4.4.5 / 250407
 

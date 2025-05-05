@@ -8,13 +8,22 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-// for translating a plugin
-function leafext_extensions_textdomain() {
-	if ( get_locale() === 'de_DE' ) {
-		load_plugin_textdomain( 'extensions-leaflet-map', false, LEAFEXT_PLUGIN_SETTINGS . '/lang/' );
+// for translating, geklaut von PUC
+function leafext_extensions_update_textdomain() {
+	$domain  = 'extensions-leaflet-map';
+	unload_textdomain( $domain );
+	$locale  = apply_filters(
+		'plugin_locale',
+		( is_admin() && function_exists( 'get_user_locale' ) ) ? get_user_locale() : get_locale(),
+		$domain
+	);
+	$mo_file = $domain . '-' . $locale . '.mo';
+	$path    = LEAFEXT_PLUGIN_DIR . '/lang/';
+	if ( $path && file_exists( $path ) ) {
+		load_textdomain( $domain, $path . $mo_file );
 	}
 }
-add_action( 'plugins_loaded', 'leafext_extensions_textdomain' );
+add_action( 'plugins_loaded', 'leafext_extensions_update_textdomain' );
 
 // https://make.wordpress.org/core/2024/03/05/introducing-plugin-dependencies-in-wordpress-6-5/
 function leafext_extensions_leaflet_map_to_github( $slug ) {

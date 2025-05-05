@@ -492,7 +492,7 @@ function leafext_elevation_params( $typ = array() ) {
 		// "minbpm" "maxbpm" "avgbpm"
 		array(
 			'param'     => 'heart',
-			'shortdesc' => __( 'Heart profile', 'extensions-leaflet-map' ),
+			'shortdesc' => __( 'Heart rate profile', 'extensions-leaflet-map' ),
 			'desc'      => 'css: .minbpm, .maxbpm, .avgbpm,',
 			'default'   => false,
 			'values'    => array( true, 'summary', 'disabled', false ),
@@ -779,7 +779,7 @@ function leafext_elevation_colors() {
 			),
 			array(
 				'param'     => 'heart',
-				'shortdesc' => __( 'Line color of the heart profile', 'extensions-leaflet-map' ),
+				'shortdesc' => __( 'Line color of the heart rate', 'extensions-leaflet-map' ),
 				'desc'      => '',
 				'default'   => isset( $themes[ $theme ]['heart'] ) ? $themes[ $theme ]['heart'] : '#ff0000',
 			),
@@ -1050,6 +1050,7 @@ function leafext_elevation_color( $options ) {
 					case 'heart':
 						$text = $text . '<style>' .
 						'.heart {stroke: ' . $typ . ' !important;}' .
+						'.legend-' . $key . ' rect {fill: ' . $typ . ' !important; fill-opacity: 0.7; }' .
 						'</style>';
 						break;
 					default:
@@ -1080,9 +1081,6 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 			return $text;
 		}
 
-		leafext_enqueue_elevation();
-		leafext_enqueue_leafext_elevation();
-
 		if ( isset( $atts['summary'] ) && $atts['summary'] === '1' ) {
 			$atts['slope']        = 0;
 			$atts['speed']        = 0;
@@ -1097,6 +1095,15 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 
 		$atts1   = leafext_case( array_keys( leafext_elevation_settings( array( 'changeable', 'fixed' ) ) ), leafext_clear_params( $atts ) );
 		$options = shortcode_atts( leafext_elevation_settings( array( 'changeable', 'fixed' ) ), $atts1 );
+
+		leafext_enqueue_elevation();
+		// https://github.com/placemark/togeojson/issues/145
+		if ($options['heart']) {
+			leafext_enqueue_mapbox_togeojson();
+		} else {
+			leafext_enqueue_tmcw_togeojson();
+		}
+		leafext_enqueue_leafext_elevation();
 
 		$track = $atts['gpx'];
 

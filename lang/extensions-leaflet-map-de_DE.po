@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-04-25 12:04+0000\n"
+"PO-Revision-Date: 2025-05-05 15:09+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -135,7 +135,7 @@ msgstr ""
 "(relativer) Pfad zum Verzeichnis, der sowohl über den Pfad als auch über die "
 "URL zugänglich ist"
 
-#: php/elevation.php:529
+#: php/elevation.php:540
 msgid "[Lat, Long] vs [Long, Lat] points. (leaflet default: [Lat, Long])"
 msgstr ""
 "[Lat, Long] vs [Long, Lat] Koordinaten. (leaflet Standard: [Lat, Long])"
@@ -426,13 +426,13 @@ msgstr ""
 msgid "automatic generation of %1$s, %2$s (color) and %3$s"
 msgstr "automatische Generierung von %1$s, %2$s (Farbe) und %3$s"
 
-#: php/elevation.php:518
+#: php/elevation.php:529
 msgid "Autoupdate map bounds on chart update."
 msgstr ""
 "Automatische Aktualisierung der Kartengrenzen bei Aktualisierung des "
 "Diagramms."
 
-#: php/elevation.php:497
+#: php/elevation.php:508
 msgid "Autoupdate map center on chart mouseover."
 msgstr ""
 "Automatisches Zentrieren der Karte beim Überfahren des Diagramms mit der "
@@ -491,7 +491,7 @@ msgstr ""
 msgid "Change style on hover."
 msgstr "Ändere den Style bei Mauszeigerkontakt."
 
-#: php/elevation.php:794
+#: php/elevation.php:800
 msgid "Chart background color"
 msgstr "Hintergrundfarbe des Diagramms"
 
@@ -973,7 +973,7 @@ msgstr "Download-Link"
 msgid "draw the content with %scommands "
 msgstr "stelle den Inhalt mit %sBefehlen dar "
 
-#: php/elevation.php:552
+#: php/elevation.php:563
 msgid ""
 "Due to a problem in MacOS and iOS, it is automatically set to false in "
 "Safari."
@@ -1253,6 +1253,10 @@ msgstr "Gruppieren nach Optionen und Eigenschaften"
 #: admin/help.php:364
 msgid "Grouping of Leaflet elements by options and features."
 msgstr "Gruppieren von Leaflet-Elementen nach Optionen und Eigenschaften."
+
+#: php/elevation.php:495
+msgid "Heart rate profile"
+msgstr "Profil der Herzfrequenz"
 
 #: php/elevation.php:143
 msgid "Height of the chart"
@@ -1757,182 +1761,202 @@ msgstr ""
 "In einer Geojson-Datei gibt es features und properties. Sie sind für jede "
 "Anwendung unterschiedlich."
 
-#: js/elevation.js:120
+#: js/elevation.js:119
 msgctxt "In Frontend"
 msgid "Acceleration"
 msgstr "Beschleunigung"
 
-#: js/elevation.js:121
+#: js/elevation.js:120
 msgctxt "In Frontend"
 msgid "Altitude"
 msgstr "Höhe"
 
-#: js/elevation.js:139
+#: js/elevation.js:138
 msgctxt "In Frontend"
 msgid "Avg Acceleration"
 msgstr "durchschnittliche Beschleunigung"
 
-#: js/elevation.js:128
+#: js/elevation.js:146
+msgctxt "In Frontend"
+msgid "Avg BPM"
+msgstr "durchschnittliche Herzfrequenz"
+
+#: js/elevation.js:127
 msgctxt "In Frontend"
 msgid "Avg Elevation"
 msgstr "durchschnittliche Höhe"
 
-#: js/elevation.js:143
+#: js/elevation.js:142
 msgctxt "In Frontend"
 msgid "Avg Pace"
 msgstr "durchschnittliches Tempo"
 
-#: js/elevation.js:133
+#: js/elevation.js:132
 msgctxt "In Frontend"
 msgid "Avg Slope"
 msgstr "durchschnittliche Steigung"
 
-#: js/elevation.js:136
+#: js/elevation.js:135
 msgctxt "In Frontend"
 msgid "Avg Speed"
 msgstr "Durchschnittsgeschwindigkeit"
 
-#: js/elevation.js:144
+#: js/elevation.js:147
 msgctxt "In Frontend"
 msgid "Download"
 msgstr "Herunterladen"
 
-#: js/elevation.js:145
+#: js/elevation.js:143
+msgctxt "In Frontend"
+msgid "ECG"
+msgstr "Herzfrequenz"
+
+#: js/elevation.js:148
 msgctxt "In Frontend"
 msgid "Elevation"
 msgstr "Höhe"
 
-#: js/elevation.js:138
+#: js/elevation.js:137
 msgctxt "In Frontend"
 msgid "Max Acceleration"
 msgstr "maximale Beschleunigung"
 
-#: js/elevation.js:126
+#: js/elevation.js:145
+msgctxt "In Frontend"
+msgid "Max BPM"
+msgstr "Maximale Herzfrequenz"
+
+#: js/elevation.js:125
 msgctxt "In Frontend"
 msgid "Max Elevation"
 msgstr "maximale Höhe"
 
-#: js/elevation.js:142
+#: js/elevation.js:141
 msgctxt "In Frontend"
 msgid "Max Pace"
 msgstr "schnellstes Tempo"
 
-#: js/elevation.js:132
+#: js/elevation.js:131
 msgctxt "In Frontend"
 msgid "Max Slope"
 msgstr "maximale Steigung"
 
-#: js/elevation.js:135
+#: js/elevation.js:134
 msgctxt "In Frontend"
 msgid "Max Speed"
 msgstr "maximale Geschwindigkeit"
 
-#: js/elevation.js:137
+#: js/elevation.js:136
 msgctxt "In Frontend"
 msgid "Min Acceleration"
 msgstr "minimale Beschleunigung"
 
-#: js/elevation.js:127
+#: js/elevation.js:144
+msgctxt "In Frontend"
+msgid "Min BPM"
+msgstr "Minimale Herzfrequenz"
+
+#: js/elevation.js:126
 msgctxt "In Frontend"
 msgid "Min Elevation"
 msgstr "minimale Höhe"
 
-#: js/elevation.js:141
+#: js/elevation.js:140
 msgctxt "In Frontend"
 msgid "Min Pace"
 msgstr "langsamstes Tempo"
 
-#: js/elevation.js:131
+#: js/elevation.js:130
 msgctxt "In Frontend"
 msgid "Min Slope"
 msgstr "maximales Gefälle"
 
-#: js/elevation.js:134
+#: js/elevation.js:133
 msgctxt "In Frontend"
 msgid "Min Speed"
 msgstr "langsamste Geschwindigkeit"
 
-#: js/elevation.js:140
+#: js/elevation.js:139
 msgctxt "In Frontend"
 msgid "Pace"
 msgstr "Tempo"
 
-#: js/elevation.js:122
+#: js/elevation.js:121
 msgctxt "In Frontend"
 msgid "Slope"
 msgstr "Steigung"
 
-#: js/elevation.js:123
+#: js/elevation.js:122
 msgctxt "In Frontend"
 msgid "Speed"
 msgstr "Geschwindigkeit"
 
-#: js/elevation.js:129
+#: js/elevation.js:128
 msgctxt "In Frontend"
 msgid "Total Ascent"
 msgstr "Gesamtanstieg"
 
-#: js/elevation.js:130
+#: js/elevation.js:129
 msgctxt "In Frontend"
 msgid "Total Descent"
 msgstr "Gesamtabstieg"
 
-#: js/elevation.js:125
+#: js/elevation.js:124
 msgctxt "In Frontend"
 msgid "Total Length"
 msgstr "Gesamtstrecke"
 
-#: js/elevation.js:124
+#: js/elevation.js:123
 msgctxt "In Frontend"
 msgid "Total Time"
 msgstr "Gesamtzeit"
 
-#: js/elevation.js:147
+#: js/elevation.js:150
 msgctxt "In Frontend: Abbreviation for acceleration in the chart"
 msgid "a"
 msgstr "a"
 
-#: js/elevation.js:156
+#: js/elevation.js:159
 msgctxt "In Frontend: Abbreviation for altitude in the chart"
 msgid "y"
 msgstr "y"
 
-#: js/elevation.js:148
+#: js/elevation.js:151
 msgctxt "In Frontend: Abbreviation for cadence in the chart"
 msgid "cad"
 msgstr "cad"
 
-#: js/elevation.js:153
+#: js/elevation.js:156
 msgctxt "In Frontend: Abbreviation for duration in the chart"
 msgid "T"
 msgstr "T"
 
-#: js/elevation.js:149
+#: js/elevation.js:152
 msgctxt "In Frontend: Abbreviation for heart rate in the chart"
 msgid "hr"
 msgstr "hr"
 
-#: js/elevation.js:155
+#: js/elevation.js:158
 msgctxt "In Frontend: Abbreviation for length in the chart"
 msgid "x"
 msgstr "x"
 
-#: js/elevation.js:151
+#: js/elevation.js:154
 msgctxt "In Frontend: Abbreviation for pace in the chart"
 msgid "pace"
 msgstr "Tempo"
 
-#: js/elevation.js:150
+#: js/elevation.js:153
 msgctxt "In Frontend: Abbreviation for slope in the chart"
 msgid "m"
 msgstr "m"
 
-#: js/elevation.js:154
+#: js/elevation.js:157
 msgctxt "In Frontend: Abbreviation for speed in the chart"
 msgid "v"
 msgstr "v"
 
-#: js/elevation.js:152
+#: js/elevation.js:155
 msgctxt "In Frontend: Abbreviation for time in the chart"
 msgid "t"
 msgstr "t"
@@ -2143,6 +2167,11 @@ msgstr "Leaflet-providers"
 msgid "like in"
 msgstr "wie bei"
 
+#: php/elevation.php:782
+#| msgid "Line color of the heart rate profile"
+msgid "Line color of the heart rate"
+msgstr "Farbe der Linie der Herzfrequenz"
+
 #: php/elevation.php:63
 msgid "linearGradient"
 msgstr "linearGradient"
@@ -2200,7 +2229,7 @@ msgstr "Macht Kartenkacheln transparent."
 msgid "Manage Leaflet Map files"
 msgstr "Leaflet Map Dateien verwalten"
 
-#: extensions-leaflet-map.php:117
+#: extensions-leaflet-map.php:116
 msgid "Manage plugins"
 msgstr "Plugins verwalten"
 
@@ -2689,7 +2718,7 @@ msgstr ""
 "Bitte ändere diese Einstellung nur, wenn du dein eigenes Theme verwendest."
 
 #. %s are plugin names.
-#: extensions-leaflet-map.php:113
+#: extensions-leaflet-map.php:112
 #, php-format
 msgid "Please install and activate %1$s before using %2$s."
 msgstr "Bitte installiere und aktiviere %1$s, bevor du %2$s verwendest."
@@ -2718,7 +2747,7 @@ msgstr "Die Optionen können auf der Adminseite eingestellt werden."
 msgid "Please select"
 msgstr "Bitte auswählen"
 
-#: extensions-leaflet-map.php:122
+#: extensions-leaflet-map.php:121
 msgid "Plugin Error"
 msgstr "Pluginfehler"
 
@@ -2842,7 +2871,7 @@ msgstr ""
 "entferne Kreismarker beim Schließen des Kontrollfeldes oder wenn die Suche "
 "abgebrochen wird"
 
-#: php/elevation.php:551
+#: php/elevation.php:562
 msgid "Render chart profiles as Canvas or SVG Paths."
 msgstr "Diagramme als Canvas oder SVG rendern."
 
@@ -2997,7 +3026,7 @@ msgstr ""
 msgid "Setting"
 msgstr "Einstellung"
 
-#: extensions-leaflet-map.php:92 admin/elevation/waypoints.php:266
+#: extensions-leaflet-map.php:91 admin/elevation/waypoints.php:266
 #: admin/filemgr/filemgr-settings.php:50 admin/tiles/layerswitch.php:163
 #: admin/tiles/providers.php:150
 msgid "Settings"
@@ -3625,7 +3654,7 @@ msgstr ""
 "Um alle Werte auf ihre Standardwerte zurückzusetzen, drücke einfach "
 "\"Zurücksetzen\""
 
-#: php/multielevation.php:100 php/elevation.php:540
+#: php/multielevation.php:100 php/elevation.php:551
 msgid "Toggle \"leaflet-almostover\" integration"
 msgstr "Umschalten der \"leaflet-almostover\"-Integration"
 
@@ -3669,11 +3698,11 @@ msgstr "Tooltip className"
 msgid "Tooltip display"
 msgstr "Anzeige Tooltip"
 
-#: php/elevation.php:782
+#: php/elevation.php:788
 msgid "Track color"
 msgstr "Trackfarbe"
 
-#: php/elevation.php:788
+#: php/elevation.php:794
 msgid "Track color over the ruler filter"
 msgstr "Trackfarbe oberhalb des Lineals im Höhendiagramm"
 
@@ -4177,7 +4206,7 @@ msgstr ""
 "Die Sprache deiner Website ist nicht englisch oder deutsch? Du kannst "
 "englisch?"
 
-#: php/elevation.php:507
+#: php/elevation.php:518
 msgid "zFollow zoom"
 msgstr "zFollow zoom"
 

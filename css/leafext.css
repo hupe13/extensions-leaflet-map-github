@@ -59,3 +59,12 @@ https://github.com/Artuar/css-test-device-or-desktop */
 .targetlink {
 	display:inline;
 }
+
+.legend-heart rect {
+	fill: #ff0000;
+	fill-opacity: 0.7;
+}
+
+.elevation-control .background {
+	touch-action: pan-y !important;
+}

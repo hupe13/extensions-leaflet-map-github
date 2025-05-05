@@ -190,7 +190,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 ### 4.4.6 / 2505xx
 
 * Bug zoomhomemmap with elevation fixed
-* elevation: heart profile
+* elevation: heart rate profile
 
 ### Previous
 
