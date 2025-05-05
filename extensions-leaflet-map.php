@@ -105,7 +105,7 @@ add_action( 'plugins_loaded', 'leafext_extra_textdomain' );
 
 // WP < 6.5, ClassicPress
 function leafext_leaflet_require() {
-	if ( ! is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
+	if ( ! leafext_plugin_active( 'leaflet-map' ) ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 		$message = '<div><p>' . sprintf(
 			/* translators: %s are plugin names. */
@@ -114,14 +114,7 @@ function leafext_leaflet_require() {
 			'Extensions for Leaflet Map'
 		) . '</p><p><a href="' . esc_html( network_admin_url( 'plugins.php' ) ) . '">' .
 			__( 'Manage plugins', 'extensions-leaflet-map' ) . '</a>.</p></div>';
-		$error = new WP_Error(
-			'error',
-			$message,
-			array(
-				'title'    => __( 'Plugin Error', 'extensions-leaflet-map' ),
-				'response' => '406',
-			)
-		);
+		$error = new WP_Error( 'error', $message );
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- it is an WP Error
 		wp_die( $error, '', wp_kses_post( $error->get_error_data() ) );
 	}
