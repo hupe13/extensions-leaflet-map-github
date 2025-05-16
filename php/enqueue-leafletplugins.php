@@ -90,20 +90,6 @@ function leafext_enqueue_tmcw_togeojson() {
 	);
 }
 
-function leafext_enqueue_mapbox_togeojson() {
-	wp_enqueue_script(
-		'togeojson',
-		plugins_url(
-			// https://app.unpkg.com/@mapbox/togeojson@0.16.2 // in Leaflet Map ist eine ältere Version Standard
-			'leaflet-plugins/mapbox/togeojson.js',
-			LEAFEXT_PLUGIN_FILE
-		),
-		array( 'elevation_js' ),
-		LEAFEXT_VERSION,
-		true
-	);
-}
-
 function leafext_enqueue_rotate() {
 	wp_enqueue_script(
 		'Leaflet_rotate',

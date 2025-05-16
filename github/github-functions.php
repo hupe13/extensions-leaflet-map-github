@@ -116,16 +116,12 @@ function leafext_can_updates() {
 function leafext_submenu_of() {
 	$groups = array();
 	// from Leaflet Map Plugin
-	$leaf                     = 'data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJsZWFmIiBjbGFzcz0ic3ZnLWlubGluZS0tZmEgZmEtbGVhZiBmYS13LTE4IiByb2xlPSJpbWciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDU3NiA1MTIiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTU0Ni4yIDkuN2MtNS42LTEyLjUtMjEuNi0xMy0yOC4zLTEuMkM0ODYuOSA2Mi40IDQzMS40IDk2IDM2OCA5NmgtODBDMTgyIDk2IDk2IDE4MiA5NiAyODhjMCA3IC44IDEzLjcgMS41IDIwLjVDMTYxLjMgMjYyLjggMjUzLjQgMjI0IDM4NCAyMjRjOC44IDAgMTYgNy4yIDE2IDE2cy03LjIgMTYtMTYgMTZDMTMyLjYgMjU2IDI2IDQxMC4xIDIuNCA0NjhjLTYuNiAxNi4zIDEuMiAzNC45IDE3LjUgNDEuNiAxNi40IDYuOCAzNS0xLjEgNDEuOC0xNy4zIDEuNS0zLjYgMjAuOS00Ny45IDcxLjktOTAuNiAzMi40IDQzLjkgOTQgODUuOCAxNzQuOSA3Ny4yQzQ2NS41IDQ2Ny41IDU3NiAzMjYuNyA1NzYgMTU0LjNjMC01MC4yLTEwLjgtMTAyLjItMjkuOC0xNDQuNnoiLz48L3N2Zz4=';
-	$groups['leaflet-map']    = array(
+	$leaf                  = 'data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgZm9jdXNhYmxlPSJmYWxzZSIgZGF0YS1wcmVmaXg9ImZhcyIgZGF0YS1pY29uPSJsZWFmIiBjbGFzcz0ic3ZnLWlubGluZS0tZmEgZmEtbGVhZiBmYS13LTE4IiByb2xlPSJpbWciIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDU3NiA1MTIiPjxwYXRoIGZpbGw9ImN1cnJlbnRDb2xvciIgZD0iTTU0Ni4yIDkuN2MtNS42LTEyLjUtMjEuNi0xMy0yOC4zLTEuMkM0ODYuOSA2Mi40IDQzMS40IDk2IDM2OCA5NmgtODBDMTgyIDk2IDk2IDE4MiA5NiAyODhjMCA3IC44IDEzLjcgMS41IDIwLjVDMTYxLjMgMjYyLjggMjUzLjQgMjI0IDM4NCAyMjRjOC44IDAgMTYgNy4yIDE2IDE2cy03LjIgMTYtMTYgMTZDMTMyLjYgMjU2IDI2IDQxMC4xIDIuNCA0NjhjLTYuNiAxNi4zIDEuMiAzNC45IDE3LjUgNDEuNiAxNi40IDYuOCAzNS0xLjEgNDEuOC0xNy4zIDEuNS0zLjYgMjAuOS00Ny45IDcxLjktOTAuNiAzMi40IDQzLjkgOTQgODUuOCAxNzQuOSA3Ny4yQzQ2NS41IDQ2Ny41IDU3NiAzMjYuNyA1NzYgMTU0LjNjMC01MC4yLTEwLjgtMTAyLjItMjkuOC0xNDQuNnoiLz48L3N2Zz4=';
+	$groups['leaflet-map'] = array(
 		'name' => 'Leaflet Map',
 		'icon' => $leaf,
 	);
-	$groups['album-medialib'] = array(
-		'name' => 'Album Media Library',
-		'icon' => '',
-	);
-	$git_repos                = leafext_get_repos();
+	$git_repos = leafext_get_repos();
 	foreach ( $git_repos as $git_repo => $value ) {
 		if ( is_plugin_active( plugin_basename( $git_repos[ $git_repo ]['local'] ) ) ) {
 			foreach ( $groups as $key => $group ) {
@@ -182,19 +178,31 @@ if ( ! is_main_site() ) {
 
 	function leafext_update_add_page() {
 		$github_menu = leafext_submenu_of();
-		// Add Submenu.
-		add_submenu_page(
-			$github_menu['slug'],
-			'Github Update Options',
-			'Github Update',
-			'manage_options',
-			'leafext-update-github',
-			'leafext_goto_main_site'
-		);
+		if ( $github_menu['slug'] !== 'github' ) {
+			// Add Leaflet Map Submenu.
+			add_submenu_page(
+				$github_menu['slug'],
+				'Github Update Options',
+				'Github Update',
+				'manage_options',
+				'leafext-update-github',
+				'leafext_goto_main_site'
+			);
+		} else {
+			add_menu_page(
+				$github_menu['slug'],
+				$github_menu['name'],
+				'manage_options',
+				$github_menu['slug'],
+				'leafext_goto_main_site',
+				$github_menu['icon']
+			);
+		}
 	}
 	add_action( 'admin_menu', 'leafext_update_add_page', 100 );
 
 } else {
+	// is main site
 	$github_menu = leafext_submenu_of();
 	if ( $github_menu['slug'] !== 'github' ) {
 		function leafext_update_add_page() {

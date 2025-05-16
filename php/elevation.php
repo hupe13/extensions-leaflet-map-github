@@ -1097,12 +1097,7 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 		$options = shortcode_atts( leafext_elevation_settings( array( 'changeable', 'fixed' ) ), $atts1 );
 
 		leafext_enqueue_elevation();
-		// https://github.com/placemark/togeojson/issues/145
-		if ( $options['heart'] ) {
-			leafext_enqueue_mapbox_togeojson();
-		} else {
-			leafext_enqueue_tmcw_togeojson();
-		}
+		leafext_enqueue_tmcw_togeojson();
 		leafext_enqueue_leafext_elevation();
 
 		$track = $atts['gpx'];
