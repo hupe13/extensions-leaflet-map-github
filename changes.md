@@ -1,8 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* Bug zoomhomemap with elevation fixed
-* elevation: heart rate profile
-* changed Github updates because of https://github.com/hupe13/album-medialib-github
+* none
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
