@@ -102,7 +102,7 @@ function leafext_form_sgpx_unclean_db() {
 function leafext_validate_sgpx_unclean_db() {
 	if ( ! empty( $_POST ) && check_admin_referer( 'leafext_elevation', 'leafext_elevation_nonce' ) ) {
 		if ( isset( $_POST['delete'] ) ) {
-			if ( $_POST['delete'] === esc_html__( 'Delete all settings from wp-gpx-maps!', 'extensions-leaflet-map' ) ) {
+			if ( $_POST['delete'] === esc_html__( 'Delete all settings from WP GPX Maps!', 'extensions-leaflet-map' ) ) {
 				global $wpdb;
 				// phpcs:ignore
 				$option_names = $wpdb->get_results( "SELECT option_name FROM $wpdb->options WHERE option_name LIKE 'wpgpxmaps_%' " );
@@ -116,70 +116,112 @@ function leafext_validate_sgpx_unclean_db() {
 }
 
 // Helptext
+
 function leafext_sgpx_help_text() {
+	leafext_sgpx_help_text_0();
+	echo '<h2>' . esc_html__( 'Migration', 'extensions-leaflet-map' ) . '</h2>';
+	leafext_sgpx_help_text_1();
+	echo '<ul>';
+	if ( LEAFEXT_SGPX_ACTIVE ) {
+		leafext_sgpx_help_text_2();
+	} else { // nicht mehr aktiv
+		leafext_sgpx_help_text_3();
+	}
+	echo '</ul>';
+}
+
+function leafext_sgpx_help_text_0() {
 	echo '<h2>WP GPX Maps</h2>';
 	printf(
 		/* translators: %1$s - a name ,%2$s %3$s - href, %4$s %5$s - shortcodes  */
-		esc_html__( 'Many thanks to %1$s for his %2$sexcellent plugin%3$s, which I used myself for a long time. Unfortunately it needed some rework, especially to make wp-gpx-maps and leaflet-map work together. At some point it didn\'t work for me at all. So some of its features are included in the shortcode %4$s. Since version 2.2. it interprets the shortcode %5$s.', 'extensions-leaflet-map' ),
+		esc_html__( 'Many thanks to %1$s for his %2$sexcellent plugin%3$s, which I used myself for a long time. Unfortunately it needed some rework, especially to make WP GPX Maps and Leaflet Map work together. At some point it didn\'t work for me at all. So some of its features are included in the shortcode %4$s. Since version 2.2. it interprets the shortcode %5$s.', 'extensions-leaflet-map' ),
 		'<a href="https://profiles.wordpress.org/bastianonm/">Bastianon Massimo</a>',
 		'<a href="https://wordpress.org/plugins/wp-gpx-maps/">',
 		'</a>',
 		'<code>elevation</code>',
 		'<code>sgpx</code>'
 	);
-	echo '<h2>' . esc_html__( 'Migration', 'extensions-leaflet-map' ) . '</h2>';
+}
+
+function leafext_sgpx_help_text_1() {
 	printf(
 		/* translators: %s are shortcodes. */
 		esc_html__( 'This page helps you to migrate from %1$s to %2$s.', 'extensions-leaflet-map' ),
 		'<code>sgpx</code>',
 		'<code>elevation</code>'
 	);
-
-	echo ' ' . sprintf(
+	echo ' ';
+	printf(
 		/* translators: %s is a href. */
 		esc_html__(
-			'See documentation and examples in %1$shere%2$s.',
+			'See documentation and examples %1$shere%2$s.',
 			'extensions-leaflet-map'
 		),
 		'<a href="https://leafext.de/en/doku/sgpxelevation/">',
 		'</a>'
 	);
+}
 
-	echo '<ul>';
-	if ( LEAFEXT_SGPX_ACTIVE ) {
-		echo '<li>';
+function leafext_sgpx_help_text_2() {
+	echo '<li>';
+	printf(
 		/* translators: %s is a link. */
-		printf( esc_html__( 'Configure your default %s settings.', 'extensions-leaflet-map' ), '<a href="?page=' . esc_html( LEAFEXT_PLUGIN_SETTINGS ) . '&tab=elevation">elevation</a>' );
-		echo '</li><li>';
+		esc_html__( 'Configure your default %s settings.', 'extensions-leaflet-map' ),
+		is_admin() ? '<a href="?page=' . esc_html( LEAFEXT_PLUGIN_SETTINGS ) . '&tab=elevation"><code>elevation</code></a>' : '<code>elevation</code>'
+	);
+	echo '</li><li>';
+	printf(
 		/* translators: %s are values. */
-		echo sprintf( esc_html__( 'Select %1$s to interpret the %2$s parameters as %3$s.', 'extensions-leaflet-map' ), '"1"', 'sgpx', 'elevation' ) . ' ';
-		printf(
-			/* translators: %s is a plugin name. */
-			esc_html__( 'It may be that %s does not work with your theme. Then this is the only option.', 'extensions-leaflet-map' ),
-			'WP GPX Maps'
-		);
-		echo '</li><li>';
+		esc_html__( 'Select %1$s to interpret the %2$s parameters as %3$s.', 'extensions-leaflet-map' ),
+		'"1"',
+		'<code>sgpx</code>',
+		'<code>elevation</code>'
+	);
+	echo ' ';
+	printf(
+		/* translators: %s is a plugin name. */
+		esc_html__( 'It may be that %s does not work with your theme. Then this is the only option.', 'extensions-leaflet-map' ),
+		'WP GPX Maps'
+	);
+	echo '</li><li>';
+	printf(
 		/* translators: %s are shortcodes / values. */
-		printf( esc_html__( 'If you want to test it first: select %1$s and write in your test page / post %2$s.', 'extensions-leaflet-map' ), '"leaflet"', '<code>[leaflet-map height="1"]</code>' );
-		echo '</li><li>';
+		esc_html__( 'If you want to test it first: select %1$s and write in your test page / post %2$s.', 'extensions-leaflet-map' ),
+		'"leaflet"',
+		'<code>&#091;leaflet-map height="1"]</code>'
+	);
+	echo '</li><li>';
+	printf(
 		/* translators: %s are a plugin name. */
-		printf( esc_html__( 'If you are happy with this and if you don\'t use the track management of %1$s, you can deactivate and delete the plugin %2$s.', 'extensions-leaflet-map' ), 'wp-gpx-maps', 'wp-gpx-maps' );
-		echo '</li>';
-		echo '<li>';
+		esc_html__( 'If you are happy with this and if you don\'t use the track management of %1$s, you can deactivate and delete the plugin %1$s.', 'extensions-leaflet-map' ),
+		'WP GPX Maps'
+	);
+	echo '</li>';
+	echo '<li>';
+	printf(
 		/* translators: %s is a link. */
-		printf( esc_html__( 'To manage your tracks now, you can use %1$sManage Leaflet Map files%2$s.', 'extensions-leaflet-map' ), '<a href="?page=' . esc_html( LEAFEXT_PLUGIN_SETTINGS ) . '&tab=filemgr">', '</a>' );
-		echo '</li>';
-		echo '<li>';
-		echo esc_html__( 'If you have deleted the plugin, call this page again.', 'extensions-leaflet-map' );
-		echo '</li>';
-	} else { // nicht mehr aktiv
+		esc_html__( 'To manage your tracks now, you can use %1$sManage Leaflet Map files%2$s.', 'extensions-leaflet-map' ),
+		is_admin() ? '<a href="?page=' . esc_html( LEAFEXT_PLUGIN_SETTINGS ) . '&tab=filemgr">' : '<a href="https://leafext.de/doku/filemgr/">',
+		'</a>'
+	);
+	echo '</li>';
+	echo '<li>';
+	echo esc_html__( 'If you have deleted the plugin, call this page again.', 'extensions-leaflet-map' );
+	echo '</li>';
+}
+
+function leafext_sgpx_help_text_3() {
+	echo '<li>';
+	printf(
 		/* translators: %s are plugin names / option. */
-		echo '<li>' . sprintf( esc_html__( '%1$s is not active, %2$s parameters will interpreted with %3$s.', 'extensions-leaflet-map' ), 'wp-gpx-maps', 'sgpx', 'elevation' ) . '</li>';
-		if ( LEAFEXT_SGPX_UNCLEAN_DB ) {
-			echo '<li>' . esc_html__( 'You have wp-gpx-maps uninstalled, but some of its options exist in the database. You should delete them.', 'extensions-leaflet-map' ) . '</li>';
-		} elseif ( LEAFEXT_SGPX_SGPX ) {
-			echo '<li>' . esc_html__( 'You can delete all settings on this page.', 'extensions-leaflet-map' ) . '</li>';
-		}
+		esc_html__( '%1$s is not active, %2$s parameters will interpreted with %3$s.', 'extensions-leaflet-map' ),
+		'WP GPX Maps',
+		'sgpx',
+		'elevation'
+	) . '</li>';
+	if ( LEAFEXT_SGPX_UNCLEAN_DB ) {
+		echo '<li>' . esc_html__( 'You have WP GPX Maps uninstalled, but some of its options exist in the database. You should delete them.', 'extensions-leaflet-map' ) . '</li>';
+	} elseif ( LEAFEXT_SGPX_SGPX ) {
+		echo '<li>' . esc_html__( 'You can delete all settings on this page.', 'extensions-leaflet-map' ) . '</li>';
 	}
-	echo '</ul>';
 }

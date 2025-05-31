@@ -135,7 +135,7 @@ function leafext_admin_elevation( $active_tab ) {
 			do_settings_sections( 'leafext_settings_sgpx_unclean_db' );
 			if ( current_user_can( 'manage_options' ) ) {
 				wp_nonce_field( 'leafext_elevation', 'leafext_elevation_nonce' );
-				submit_button( __( 'Delete all settings from wp-gpx-maps!', 'extensions-leaflet-map' ), 'delete', 'delete', false );
+				submit_button( esc_html__( 'Delete all settings from WP GPX Maps!', 'extensions-leaflet-map' ), 'delete', 'delete', false );
 			}
 		} elseif ( LEAFEXT_SGPX_SGPX ) {
 			settings_fields( 'leafext_settings_sgpxparams' );

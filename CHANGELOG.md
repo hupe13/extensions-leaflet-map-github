@@ -1,3 +1,7 @@
+### 4.5.1 / 2506xx
+
+* new togeojson.js library fixes heart rate profile of track segments (elevation).
+
 ### 4.5 / 250520
 
 * Bug zoomhomemap with elevation fixed

@@ -1,6 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* none
+* new togeojson.js library fixes heart rate profile of track segments (elevation).
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

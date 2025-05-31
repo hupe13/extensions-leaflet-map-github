@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, gpx, geojson, hover, marker   
 Tested up to: 6.8  
-Stable tag: 4.5     
+Stable tag: trunk     
 Requires at least: 6.0     
 Requires PHP: 7.4     
 License: GPLv2 or later
@@ -187,10 +187,9 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.5 / 250520
+### 4.5.1 / 2506xx
 
-* Bug zoomhomemap with elevation fixed
-* elevation: heart rate profile
+* new togeojson.js library fixes heart rate profile of track segments (elevation).
 
 ### Previous
 
