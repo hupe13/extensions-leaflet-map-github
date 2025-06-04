@@ -131,7 +131,7 @@ function leafext_sgpx_help_text() {
 }
 
 function leafext_sgpx_help_text_0() {
-	echo '<h2>WP GPX Maps</h2>';
+	echo '<h2>WP GPX Maps</h2><p>';
 	printf(
 		/* translators: %1$s - a name ,%2$s %3$s - href, %4$s %5$s - shortcodes  */
 		esc_html__( 'Many thanks to %1$s for his %2$sexcellent plugin%3$s, which I used myself for a long time. Unfortunately it needed some rework, especially to make WP GPX Maps and Leaflet Map work together. At some point it didn\'t work for me at all. So some of its features are included in the shortcode %4$s. Since version 2.2. it interprets the shortcode %5$s.', 'extensions-leaflet-map' ),
@@ -141,9 +141,11 @@ function leafext_sgpx_help_text_0() {
 		'<code>elevation</code>',
 		'<code>sgpx</code>'
 	);
+	echo '</p>';
 }
 
 function leafext_sgpx_help_text_1() {
+	echo '<p>';
 	printf(
 		/* translators: %s are shortcodes. */
 		esc_html__( 'This page helps you to migrate from %1$s to %2$s.', 'extensions-leaflet-map' ),
@@ -160,6 +162,7 @@ function leafext_sgpx_help_text_1() {
 		'<a href="https://leafext.de/en/doku/sgpxelevation/">',
 		'</a>'
 	);
+	echo '</p>';
 }
 
 function leafext_sgpx_help_text_2() {
@@ -176,12 +179,6 @@ function leafext_sgpx_help_text_2() {
 		'"1"',
 		'<code>sgpx</code>',
 		'<code>elevation</code>'
-	);
-	echo ' ';
-	printf(
-		/* translators: %s is a plugin name. */
-		esc_html__( 'It may be that %s does not work with your theme. Then this is the only option.', 'extensions-leaflet-map' ),
-		'WP GPX Maps'
 	);
 	echo '</li><li>';
 	printf(
