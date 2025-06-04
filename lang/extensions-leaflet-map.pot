@@ -11,7 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-05 15:06+0000\n"
+"POT-Creation-Date: 2025-06-04 18:56+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: extensions-leaflet-map\n"
@@ -64,7 +64,7 @@ msgid ""
 msgstr ""
 
 #. %s are plugin names / option.
-#: admin/elevation/sgpx.php:177
+#: admin/elevation/sgpx.php:214
 #, php-format
 msgid "%1$s is not active, %2$s parameters will interpreted with %3$s."
 msgstr ""
@@ -562,7 +562,7 @@ msgid "Configure a mapid, attribution and a tile url for each tile server."
 msgstr ""
 
 #. %s is a link.
-#: admin/elevation/sgpx.php:152
+#: admin/elevation/sgpx.php:172
 #, php-format
 msgid "Configure your default %s settings."
 msgstr ""
@@ -745,7 +745,7 @@ msgid "Delete all plugin settings when deleting the plugin?"
 msgstr ""
 
 #: admin/elevation/sgpx.php:105 admin/elevation/main.php:138
-msgid "Delete all settings from wp-gpx-maps!"
+msgid "Delete all settings from WP GPX Maps!"
 msgstr ""
 
 #: admin/marker/placementstrategies.php:122
@@ -1440,11 +1440,11 @@ msgid ""
 msgstr ""
 
 #. %s are a plugin name.
-#: admin/elevation/sgpx.php:166
+#: admin/elevation/sgpx.php:193
 #, php-format
 msgid ""
 "If you are happy with this and if you don't use the track management of %1$s,"
-" you can deactivate and delete the plugin %2$s."
+" you can deactivate and delete the plugin %1$s."
 msgstr ""
 
 #: admin/filemgr/filemgr.php:108
@@ -1458,7 +1458,7 @@ msgstr ""
 msgid "If you don't use this shortcode yet, start %1$sthere%2$s."
 msgstr ""
 
-#: admin/elevation/sgpx.php:173
+#: admin/elevation/sgpx.php:206
 msgid "If you have deleted the plugin, call this page again."
 msgstr ""
 
@@ -1518,7 +1518,7 @@ msgid ""
 msgstr ""
 
 #. %s are shortcodes / values.
-#: admin/elevation/sgpx.php:163
+#: admin/elevation/sgpx.php:186
 #, php-format
 msgid ""
 "If you want to test it first: select %1$s and write in your test page / post "
@@ -1857,14 +1857,6 @@ msgstr ""
 msgid "It may be empty, then its javascript is the default for all waypoints."
 msgstr ""
 
-#. %s is a plugin name.
-#: admin/elevation/sgpx.php:158
-#, php-format
-msgid ""
-"It may be that %s does not work with your theme. Then this is the only "
-"option."
-msgstr ""
-
 #: admin/zoomhome.php:19
 msgid ""
 "It resets the view to all markers (leaflet-marker), lines (leaflet-line), "
@@ -2014,12 +2006,12 @@ msgid "Many markers on a map become confusing. That is why they are clustered"
 msgstr ""
 
 #. %1$s - a name ,%2$s %3$s - href, %4$s %5$s - shortcodes
-#: admin/elevation/sgpx.php:123
+#: admin/elevation/sgpx.php:137
 #, php-format
 msgid ""
 "Many thanks to %1$s for his %2$sexcellent plugin%3$s, which I used myself "
-"for a long time. Unfortunately it needed some rework, especially to make wp-"
-"gpx-maps and leaflet-map work together. At some point it didn't work for me "
+"for a long time. Unfortunately it needed some rework, especially to make WP "
+"GPX Maps and Leaflet Map work together. At some point it didn't work for me "
 "at all. So some of its features are included in the shortcode %4$s. Since "
 "version 2.2. it interprets the shortcode %5$s."
 msgstr ""
@@ -2090,7 +2082,7 @@ msgstr ""
 msgid "Migrate from wp-gpx-maps"
 msgstr ""
 
-#: admin/elevation/sgpx.php:130
+#: admin/elevation/sgpx.php:122
 msgid "Migration"
 msgstr ""
 
@@ -2496,10 +2488,6 @@ msgstr ""
 msgid "Please select"
 msgstr ""
 
-#: extensions-leaflet-map.php:121
-msgid "Plugin Error"
-msgstr ""
-
 #: admin/overview-map.php:42 admin/gesture.php:43
 #: admin/elevation/multielevation.php:81 admin/elevation/multielevation.php:95
 #: admin/elevation/sgpx.php:43 admin/elevation/elevation.php:61
@@ -2731,9 +2719,9 @@ msgid "see below."
 msgstr ""
 
 #. %s is a href.
-#: admin/elevation/sgpx.php:140
+#: admin/elevation/sgpx.php:158
 #, php-format
-msgid "See documentation and examples in %1$shere%2$s."
+msgid "See documentation and examples %1$shere%2$s."
 msgstr ""
 
 #: admin/tiles/help.php:83
@@ -2741,7 +2729,7 @@ msgid "see Leaflet Map documentation"
 msgstr ""
 
 #. %s are values.
-#: admin/elevation/sgpx.php:155
+#: admin/elevation/sgpx.php:178
 #, php-format
 msgid "Select %1$s to interpret the %2$s parameters as %3$s."
 msgstr ""
@@ -3259,7 +3247,7 @@ msgid "This means for you:"
 msgstr ""
 
 #. %s are shortcodes.
-#: admin/elevation/sgpx.php:133
+#: admin/elevation/sgpx.php:151
 #, php-format
 msgid "This page helps you to migrate from %1$s to %2$s."
 msgstr ""
@@ -3308,7 +3296,7 @@ msgid ""
 msgstr ""
 
 #. %s is a link.
-#: admin/elevation/sgpx.php:170
+#: admin/elevation/sgpx.php:200
 #, php-format
 msgid ""
 "To manage your tracks now, you can use %1$sManage Leaflet Map files%2$s."
@@ -3646,7 +3634,7 @@ msgstr ""
 msgid "You can change it with"
 msgstr ""
 
-#: admin/elevation/sgpx.php:181
+#: admin/elevation/sgpx.php:222
 msgid "You can delete all settings on this page."
 msgstr ""
 
@@ -3765,9 +3753,9 @@ msgstr ""
 msgid "You can't use the character %s allone."
 msgstr ""
 
-#: admin/elevation/sgpx.php:179
+#: admin/elevation/sgpx.php:220
 msgid ""
-"You have wp-gpx-maps uninstalled, but some of its options exist in the "
+"You have WP GPX Maps uninstalled, but some of its options exist in the "
 "database. You should delete them."
 msgstr ""
 

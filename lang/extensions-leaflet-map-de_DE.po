@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-05-05 15:09+0000\n"
+"PO-Revision-Date: 2025-06-04 19:01+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -64,7 +64,7 @@ msgstr ""
 "muss sich im Verzeichnis der %2$s befinden."
 
 #. %s are plugin names / option.
-#: admin/elevation/sgpx.php:177
+#: admin/elevation/sgpx.php:214
 #, php-format
 msgid "%1$s is not active, %2$s parameters will interpreted with %3$s."
 msgstr ""
@@ -633,7 +633,7 @@ msgid "Configure a mapid, attribution and a tile url for each tile server."
 msgstr "Definiere ein mapid, das Copyright und die URL für jeden Kachelserver."
 
 #. %s is a link.
-#: admin/elevation/sgpx.php:152
+#: admin/elevation/sgpx.php:172
 #, php-format
 msgid "Configure your default %s settings."
 msgstr "Konfiguriere deine Standardeinstellungen für %s."
@@ -834,8 +834,9 @@ msgid "Delete all plugin settings when deleting the plugin?"
 msgstr "Alle Plugin-Einstellungen löschen, wenn das Plugin gelöscht wird?"
 
 #: admin/elevation/sgpx.php:105 admin/elevation/main.php:138
-msgid "Delete all settings from wp-gpx-maps!"
-msgstr "Lösche alle Einstellungen von wp-gpx-maps!"
+#| msgid "Delete all settings from wp-gpx-maps!"
+msgid "Delete all settings from WP GPX Maps!"
+msgstr "Lösche alle Einstellungen von WP GPX Maps!"
 
 #: admin/marker/placementstrategies.php:122
 msgid "Demo and Documentation"
@@ -1618,14 +1619,17 @@ msgstr ""
 "das Ziel auf der Karte."
 
 #. %s are a plugin name.
-#: admin/elevation/sgpx.php:166
+#: admin/elevation/sgpx.php:193
 #, php-format
+#| msgid ""
+#| "If you are happy with this and if you don't use the track management of "
+#| "%1$s, you can deactivate and delete the plugin %2$s."
 msgid ""
 "If you are happy with this and if you don't use the track management of %1$s,"
-" you can deactivate and delete the plugin %2$s."
+" you can deactivate and delete the plugin %1$s."
 msgstr ""
 "Wenn du nun damit zufrieden bist und die Track-Verwaltung von %1$s nicht "
-"nutzt, kannst du das Plugin %2$s deaktivieren und löschen."
+"nutzt, kannst du das Plugin %1$s deaktivieren und löschen."
 
 #: admin/filemgr/filemgr.php:108
 msgid ""
@@ -1641,7 +1645,7 @@ msgid "If you don't use this shortcode yet, start %1$sthere%2$s."
 msgstr ""
 "Wenn du diesen Shortcode noch nicht verwendet hast, verwende %1$sdiese%2$s."
 
-#: admin/elevation/sgpx.php:173
+#: admin/elevation/sgpx.php:206
 msgid "If you have deleted the plugin, call this page again."
 msgstr "Wenn du das Plugin gelöscht hast, rufe diese Seite erneut auf."
 
@@ -1714,7 +1718,7 @@ msgstr ""
 "Wenn du einen Track mit einem Höhenprofil anzeigen möchtest, verwende %2$s."
 
 #. %s are shortcodes / values.
-#: admin/elevation/sgpx.php:163
+#: admin/elevation/sgpx.php:186
 #, php-format
 msgid ""
 "If you want to test it first: select %1$s and write in your test page / post "
@@ -2075,16 +2079,6 @@ msgid "It may be empty, then its javascript is the default for all waypoints."
 msgstr ""
 "Es kann leer sein, dann ist das Javascript der Standard für alle Wegpunkte."
 
-#. %s is a plugin name.
-#: admin/elevation/sgpx.php:158
-#, php-format
-msgid ""
-"It may be that %s does not work with your theme. Then this is the only "
-"option."
-msgstr ""
-"Es kann sein, dass %s nicht mit deinem Theme zusammenarbeitet. Dann ist dies "
-"die einzige Option."
-
 #: admin/zoomhome.php:19
 msgid ""
 "It resets the view to all markers (leaflet-marker), lines (leaflet-line), "
@@ -2240,18 +2234,24 @@ msgstr ""
 "geclustert"
 
 #. %1$s - a name ,%2$s %3$s - href, %4$s %5$s - shortcodes
-#: admin/elevation/sgpx.php:123
+#: admin/elevation/sgpx.php:137
 #, php-format
+#| msgid ""
+#| "Many thanks to %1$s for his %2$sexcellent plugin%3$s, which I used myself "
+#| "for a long time. Unfortunately it needed some rework, especially to make "
+#| "wp-gpx-maps and leaflet-map work together. At some point it didn't work "
+#| "for me at all. So some of its features are included in the shortcode %4$s."
+#| " Since version 2.2. it interprets the shortcode %5$s."
 msgid ""
 "Many thanks to %1$s for his %2$sexcellent plugin%3$s, which I used myself "
-"for a long time. Unfortunately it needed some rework, especially to make wp-"
-"gpx-maps and leaflet-map work together. At some point it didn't work for me "
+"for a long time. Unfortunately it needed some rework, especially to make WP "
+"GPX Maps and Leaflet Map work together. At some point it didn't work for me "
 "at all. So some of its features are included in the shortcode %4$s. Since "
 "version 2.2. it interprets the shortcode %5$s."
 msgstr ""
 "Vielen Dank an %1$s für sein %2$sexzellentes Plugin%3$s, das ich selbst "
 "lange Zeit benutzt habe. Leider musste einiges angepasst werden, vor allem "
-"damit wp-gpx-maps mit leaflet-map zusammen arbeitet. Irgendwann "
+"damit WP GPX Maps mit Leaflet Map zusammen arbeitet. Irgendwann "
 "funktionierte es bei mir überhaupt nicht mehr. Einige seiner Funktionen sind "
 "in dem Shortcode %4$s enthalten. Seit Version 2.2. interpretiert dieser den "
 "Shortcode %5$s."
@@ -2323,7 +2323,7 @@ msgstr "Mediathek"
 msgid "Migrate from wp-gpx-maps"
 msgstr "Migration von wp-gpx-maps"
 
-#: admin/elevation/sgpx.php:130
+#: admin/elevation/sgpx.php:122
 msgid "Migration"
 msgstr "Migration"
 
@@ -2747,10 +2747,6 @@ msgstr "Die Optionen können auf der Adminseite eingestellt werden."
 msgid "Please select"
 msgstr "Bitte auswählen"
 
-#: extensions-leaflet-map.php:121
-msgid "Plugin Error"
-msgstr "Pluginfehler"
-
 #: admin/overview-map.php:42 admin/gesture.php:43
 #: admin/elevation/multielevation.php:81 admin/elevation/multielevation.php:95
 #: admin/elevation/sgpx.php:43 admin/elevation/elevation.php:61
@@ -2995,9 +2991,10 @@ msgid "see below."
 msgstr "siehe unten."
 
 #. %s is a href.
-#: admin/elevation/sgpx.php:140
+#: admin/elevation/sgpx.php:158
 #, php-format
-msgid "See documentation and examples in %1$shere%2$s."
+#| msgid "See documentation and examples in %1$shere%2$s."
+msgid "See documentation and examples %1$shere%2$s."
 msgstr "Siehe %1$sDokumentation und Beispiele%2$s."
 
 #: admin/tiles/help.php:83
@@ -3005,7 +3002,7 @@ msgid "see Leaflet Map documentation"
 msgstr "siehe die Dokumentation von Leaflet Map"
 
 #. %s are values.
-#: admin/elevation/sgpx.php:155
+#: admin/elevation/sgpx.php:178
 #, php-format
 msgid "Select %1$s to interpret the %2$s parameters as %3$s."
 msgstr "Wähle %1$s, um die %2$s-Parameter als %3$s zu interpretieren."
@@ -3584,7 +3581,7 @@ msgid "This means for you:"
 msgstr "Das bedeutet für dich:"
 
 #. %s are shortcodes.
-#: admin/elevation/sgpx.php:133
+#: admin/elevation/sgpx.php:151
 #, php-format
 msgid "This page helps you to migrate from %1$s to %2$s."
 msgstr "Diese Seite hilft dir, von %1$s zu %2$s zu migrieren."
@@ -3640,7 +3637,7 @@ msgstr ""
 "festzulegen, definiere das %2$s im Customizer oder mit einer anderen Methode:"
 
 #. %s is a link.
-#: admin/elevation/sgpx.php:170
+#: admin/elevation/sgpx.php:200
 #, php-format
 msgid ""
 "To manage your tracks now, you can use %1$sManage Leaflet Map files%2$s."
@@ -4023,7 +4020,7 @@ msgstr "Du kannst es für jede Karte ändern mit"
 msgid "You can change it with"
 msgstr "Du kannst es ändern mit"
 
-#: admin/elevation/sgpx.php:181
+#: admin/elevation/sgpx.php:222
 msgid "You can delete all settings on this page."
 msgstr "Du kannst alle Einstellungen auf dieser Seite löschen."
 
@@ -4163,12 +4160,15 @@ msgstr "Du kannst diesen Shortcode irgendwo in deinem Text schreiben."
 msgid "You can't use the character %s allone."
 msgstr "Das Zeichen %s kann nicht allein verwendet werden."
 
-#: admin/elevation/sgpx.php:179
+#: admin/elevation/sgpx.php:220
+#| msgid ""
+#| "You have wp-gpx-maps uninstalled, but some of its options exist in the "
+#| "database. You should delete them."
 msgid ""
-"You have wp-gpx-maps uninstalled, but some of its options exist in the "
+"You have WP GPX Maps uninstalled, but some of its options exist in the "
 "database. You should delete them."
 msgstr ""
-"Du hast wp-gpx-maps deinstalliert, aber einige seiner Optionen sind in der "
+"Du hast WP GPX Maps deinstalliert, aber einige seiner Optionen sind in der "
 "Datenbank noch vorhanden. Du solltest sie löschen."
 
 #. %s is a link.
