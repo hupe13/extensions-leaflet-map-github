@@ -187,7 +187,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.5.1 / 2506xx
+### 4.5.1 / 250604
 
 * new togeojson.js library fixes heart rate profile of track segments (elevation).
 
