@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || die();
 
 // for translating, geklaut von PUC
 function leafext_extensions_update_textdomain() {
-	$domain  = 'extensions-leaflet-map';
+	$domain = 'extensions-leaflet-map';
 	unload_textdomain( $domain );
 	$locale  = apply_filters(
 		'plugin_locale',

@@ -1,6 +1,8 @@
 # Differences to the Plugins WordPress version
 
-* none
+* fixed: leafext_plugin_active did not work with network activated plugins
+* new Jshrink
+* new leaflet.fullscreen
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

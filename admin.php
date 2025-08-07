@@ -25,8 +25,8 @@ function leafext_add_page() {
 	// Add Submenu.
 	$leafext_admin_page = add_submenu_page(
 		'leaflet-map',
-		'Extensions for Leaflet Map Options',
-		'Extensions for Leaflet Map',
+		esc_html__( 'Extensions for Leaflet Map Options', 'extensions-leaflet-map' ),
+		esc_html__( 'Extensions for Leaflet Map', 'extensions-leaflet-map' ),
 		'manage_options',
 		LEAFEXT_PLUGIN_SETTINGS,
 		'leafext_do_page'
