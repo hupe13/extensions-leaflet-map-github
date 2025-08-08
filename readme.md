@@ -192,6 +192,8 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 ### 4.5.2 / 2508xx
 
 * fixed: leafext_plugin_active did not work with network activated plugins
+* new Jshrink
+* new leaflet.fullscreen
 
 ### Previous
 
