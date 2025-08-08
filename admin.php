@@ -68,6 +68,9 @@ function leafext_do_page() {
 		include LEAFEXT_PLUGIN_DIR . '/admin/zoomhome.php';
 		leafext_zoomhome_help();
 	} elseif ( $active_tab === 'help' ) {
+		if ( function_exists( 'leafext_updates_from_github' ) ) {
+			leafext_updates_from_github();
+		}
 		if ( is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
 			include LEAFEXT_PLUGIN_DIR . '/admin/help.php';
 			echo '<form method="post" action="options.php">';

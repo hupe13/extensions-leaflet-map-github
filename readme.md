@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, gpx, geojson, hover, marker   
 Tested up to: 6.8  
-Stable tag: 4.5-250807     
+Stable tag: 4.5.1    
 Requires at least: 6.0     
 Requires PHP: 7.4     
 License: GPLv2 or later
@@ -18,6 +18,8 @@ This is the Github Version.
 
 [Differences](changes.md) to the <a href="https://wordpress.org/plugins/extensions-leaflet-map/">WordPress version</a>.
 Releases are the same as the WordPress versions. If you want test the Github version, download from [tags](https://github.com/hupe13/extensions-leaflet-map-github/tags).
+
+Please install [leafext-update-github](https://github.com/hupe13/leafext-update-github) to get updates and keep an eye on this repository in case I've made any mistakes.
 
 ### Functions
 
