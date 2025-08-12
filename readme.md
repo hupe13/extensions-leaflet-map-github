@@ -194,6 +194,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 * fixed: leafext_plugin_active did not work with network activated plugins
 * new Jshrink
 * new leaflet.fullscreen
+* zoomhomemap has some options now
 
 ### Previous
 
