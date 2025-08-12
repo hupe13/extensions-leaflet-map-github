@@ -521,24 +521,24 @@ function leafext_enqueue_controltree() {
 // For checking to load awesome (Home character, extra-marker)
 function leafext_enqueue_awesome() {
 	// Font awesome
-	$font_awesome = array( 'font-awesome', 'fontawesome' );
-	global $wp_styles;
-	foreach ( $wp_styles->queue as $style ) {
-		foreach ( $font_awesome as $css ) {
-			if ( false !== strpos( $style, $css ) ) {
+	$checking = get_option( 'leafext_awesome' );
+	if ( ! ( isset( $checking['on'] ) && $checking['on'] === '0' ) ) {
+		global $wp_styles;
+		foreach ( $wp_styles->queue as $style ) {
+			if ( false !== stripos( $style, 'awesome' ) ) {
 				return;
 			}
 		}
+		wp_enqueue_style(
+			'font-awesome-leaflet',
+			plugins_url(
+				'fonts/fontawesome-free-6.7.2-web/css/all.min.css',
+				LEAFEXT_PLUGIN_FILE
+			),
+			array( 'leaflet_stylesheet' ),
+			LEAFEXT_VERSION
+		);
 	}
-	wp_enqueue_style(
-		'font-awesome',
-		plugins_url(
-			'fonts/fontawesome-free-6.7.2-web/css/all.min.css',
-			LEAFEXT_PLUGIN_FILE
-		),
-		array( 'leaflet_stylesheet' ),
-		LEAFEXT_VERSION
-	);
 }
 
 /**

@@ -20,11 +20,28 @@ function leafext_zoomhome_help() {
 	</p>
 	<h2>Shortcode</h2>
 	<p>
-	<pre><code>&#091;zoomhomemap fit|<span style="color: #d63638">!fit</span>]</code></pre>
-	<pre><code>&#091;zoomhomemap fit|<span style="color: #d63638">!fit</span> position=topleft|topright|bottomleft|bottomright</code></pre>
-	default position: <code>topleft</code></p>
+	<pre><code>&#091;zoomhomemap fit|<span style="color: #d63638">!fit</span> ....]</code></pre>
+	</p>';
 
-	<h2>Howto</h2>';
+	$text = $text . '<h2>' . __( 'Options', 'extensions-leaflet-map' ) . '</h2>';
+
+	$header = array(
+		'param'   => '<b>' . __( 'Option', 'extensions-leaflet-map' ) . '</b>',
+		'desc'    => '<b>' . __( 'Description', 'extensions-leaflet-map' ) . '</b>',
+		'default' => '<b>' . __( 'Default', 'extensions-leaflet-map' ) . '</b>',
+	);
+
+	$table = leafext_zoomhome_params();
+	array_unshift( $table, $header );
+	$text = $text . leafext_html_table( $table );
+
+	$text = $text . '<h2>' .
+		sprintf(
+			/* translators: %s is "fit". */
+			__( 'How the %s option works', 'extensions-leaflet-map' ),
+			'<code>fit</code>'
+		)
+		. '</h2>';
 
 	$text = $text . '<style>tr:nth-child(even) { background-color: #fcfcfc; }</style>';
 	if ( is_singular() || is_archive() ) {

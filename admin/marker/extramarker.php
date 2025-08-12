@@ -18,13 +18,7 @@ function leafext_extramarker_help() {
 		$text      = '<h2>Leaflet.Extramarkers</h2>';
 	}
 
-	$text = $text . '<p>' . sprintf(
-		/* translators: %1$s is a link, %2$s is the plugin name,. */
-		esc_html__( 'The %1$s is included in the plugin %2$s. If you have already installed some yourself, yours will be used.', 'extensions-leaflet-map' ),
-		'<a href="https://fontawesome.com/download">Font Awesome 6</a>',
-		'Extensions for Leaflet Map'
-	) . '</p>
-  <h2>Shortcode</h2>';
+	$text .= '<h2>Shortcode</h2>';
 	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map fitbounds ....]' . "\n";
 	$text = $text . '&#091;leaflet-extramarker option=... ...]description[/leaflet-extramarker]' . "\n";
 	$text = $text . '&#091;hover]' . "\n";

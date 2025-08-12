@@ -8,9 +8,9 @@
  * Create Javascript code for zoomhomemap.
  */
 
-function leafext_zoomhome_js(maps,map_id,allfit,position) {
+function leafext_zoomhome_js(maps,map_id,allfit,position,all_options) {
 	// console.log("map_id* "+map_id);
-
+	console.log( all_options );
 	if (typeof maps[map_id].zoomControl !== "undefined") {
 		maps[map_id].zoomControl._zoomOutButton.remove();
 		maps[map_id].zoomControl._zoomInButton.remove();
@@ -20,7 +20,7 @@ function leafext_zoomhome_js(maps,map_id,allfit,position) {
 	bounds[map_id] = new L.latLngBounds();
 
 	var zoomHome     = [];
-	zoomHome[map_id] = L.Control.zoomHome( {position: position} );
+	zoomHome[map_id] = L.Control.zoomHome( all_options );
 	zoomHome[map_id].addTo( maps[map_id] );
 
 	// Some elements zooming to be ready on map
@@ -259,9 +259,9 @@ function leafext_zoomhome_js(maps,map_id,allfit,position) {
 	);
 
 	// maps[map_id].on(
-	// 	"zoomend",
-	// 	function (e) {
-	// 		console.log( "zoomend zoom " + map_id + " " + maps[map_id].getZoom() );
-	// 	}
+	// "zoomend",
+	// function (e) {
+	// console.log( "zoomend zoom " + map_id + " " + maps[map_id].getZoom() );
+	// }
 	// );
 }

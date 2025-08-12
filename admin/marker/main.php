@@ -80,12 +80,18 @@ function leafext_admin_marker( $active_tab ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/marker/clustergroup.php';
 	} elseif ( $active_tab === 'extramarker' ) {
 		echo '<h2>' . wp_kses_post( leafext_marker_tab() ) . '</h2>';
+		leafext_help_awesome();
+		echo '<form method="post" action="options.php">';
+		settings_fields( 'leafext_settings_awesome' );
+		do_settings_sections( 'leafext_settings_awesome' );
+		if ( current_user_can( 'manage_options' ) ) {
+			wp_nonce_field( 'leafext_awesome', 'leafext_awesome_nonce' );
+			submit_button();
+		}
+		echo '</form>';
 		leafext_extramarker_help();
 	} elseif ( $active_tab === 'markerclusterplacementstrategies' ) {
 		leafext_admin_placementstrategies();
-	} elseif ( $active_tab === 'extramarker' ) {
-		echo wp_kses_post( leafext_marker_tab() );
-		leafext_extramarker_help();
 	} elseif ( $active_tab === 'geojsonmarker' ) {
 		echo '<h2>' . wp_kses_post( leafext_marker_tab() ) . '</h2>';
 		leafext_help_geojsonmarker();

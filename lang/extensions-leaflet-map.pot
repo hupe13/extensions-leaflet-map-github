@@ -11,7 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-06-05 16:18+0000\n"
+"POT-Creation-Date: 2025-08-12 18:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: extensions-leaflet-map\n"
@@ -270,11 +270,11 @@ msgstr ""
 msgid "alias for"
 msgstr ""
 
-#: admin/marker/extramarker.php:65
+#: admin/marker/extramarker.php:59
 msgid "All Colors"
 msgstr ""
 
-#: admin/marker/extramarker.php:79
+#: admin/marker/extramarker.php:73
 msgid "All Shapes without (1) / with (2) SVG"
 msgstr ""
 
@@ -454,6 +454,10 @@ msgstr ""
 
 #: admin/elevation/elevation.php:260
 msgid "Charts"
+msgstr ""
+
+#: admin/awesome.php:16
+msgid "Check"
 msgstr ""
 
 #: php/parentgroup.php:45
@@ -664,10 +668,10 @@ msgid "Date"
 msgstr ""
 
 #: php/elevation.php:619 php/elevation.php:632 php/elevation.php:657
-#: admin/leaflet-search.php:52 admin/choropleth.php:59
+#: admin/zoomhome.php:31 admin/leaflet-search.php:52 admin/choropleth.php:59
 #: admin/overview-map.php:147 admin/elevation/waypoints.php:51
 #: admin/marker/clustergroup.php:198 admin/marker/clustergroup.php:205
-#: admin/marker/extramarker.php:126 admin/marker/listmarker.php:68
+#: admin/marker/extramarker.php:120 admin/marker/listmarker.php:68
 #: admin/grouping/featuregroup.php:302 admin/grouping/featuregroup.php:309
 #: admin/hover/hover.php:65 admin/tiles/help.php:136 admin/tiles/help.php:143
 msgid "Default"
@@ -752,8 +756,8 @@ msgstr ""
 msgid "Demo and Documentation"
 msgstr ""
 
-#: admin/leaflet-search.php:51 admin/choropleth.php:60
-#: admin/overview-map.php:145 admin/marker/extramarker.php:127
+#: admin/zoomhome.php:30 admin/leaflet-search.php:51 admin/choropleth.php:60
+#: admin/overview-map.php:145 admin/marker/extramarker.php:121
 #: admin/marker/listmarker.php:67 admin/hover/hover.php:64
 msgid "Description"
 msgstr ""
@@ -793,6 +797,10 @@ msgstr ""
 
 #: admin/filemgr/filemgr.php:258
 msgid "Directory"
+msgstr ""
+
+#: admin/awesome.php:42
+msgid "disable"
 msgstr ""
 
 #: php/elevation.php:278
@@ -918,13 +926,17 @@ msgstr ""
 msgid "Elevation Profile"
 msgstr ""
 
-#: admin.php:135 admin/help.php:14
+#: admin.php:148 admin/help.php:14
 msgid "Elevation Profiles"
 msgstr ""
 
 #: admin/elevation/multielevation.php:264
 #: admin/elevation/multielevation.php:268
 msgid "Elevation Theme"
+msgstr ""
+
+#: admin/awesome.php:39
+msgid "enable (default)"
 msgstr ""
 
 #: admin/filemgr/filemgr.php:170
@@ -981,11 +993,11 @@ msgid ""
 "map/\">Leaflet Map</a> with Leaflet Plugins and other functions."
 msgstr ""
 
-#: admin.php:29
+#: admin.php:30
 msgid "Extensions for Leaflet Map"
 msgstr ""
 
-#: admin.php:110
+#: admin.php:123
 msgid "Extensions for Leaflet Map - Help and Documentation"
 msgstr ""
 
@@ -993,7 +1005,7 @@ msgstr ""
 msgid "Extensions for Leaflet Map Github Version"
 msgstr ""
 
-#: admin.php:28
+#: admin.php:29
 msgid "Extensions for Leaflet Map Options"
 msgstr ""
 
@@ -1015,6 +1027,12 @@ msgstr ""
 
 #: admin/filemgr/filemgr.php:94
 msgid "Files"
+msgstr ""
+
+#. %s is "fa-".
+#: php/zoomhome.php:36
+#, php-format
+msgid "Font-Awesome icon name for the home button (without %s)."
 msgstr ""
 
 #. %s are options / values.
@@ -1082,7 +1100,7 @@ msgstr ""
 msgid "Found an issue? Do you have a question?"
 msgstr ""
 
-#: admin.php:171 admin/fullscreen.php:18 admin/help.php:210
+#: admin.php:184 admin/fullscreen.php:18 admin/help.php:210
 msgid "Fullscreen"
 msgstr ""
 
@@ -1111,7 +1129,7 @@ msgstr ""
 msgid "Geojson GeometryCollections do not (yet) work in all senses."
 msgstr ""
 
-#: admin.php:175 admin/help.php:219 admin/gesture.php:13
+#: admin.php:188 admin/help.php:219 admin/gesture.php:13
 msgid "Gesture Handling"
 msgstr ""
 
@@ -1135,7 +1153,7 @@ msgstr ""
 msgid "Group elements and dynamically add/remove from map"
 msgstr ""
 
-#: admin.php:145 admin/help.php:153
+#: admin.php:158 admin/help.php:153
 msgid "Grouping by options and features"
 msgstr ""
 
@@ -1151,7 +1169,7 @@ msgstr ""
 msgid "Height of the chart"
 msgstr ""
 
-#: admin.php:119
+#: admin.php:132
 msgid "Help"
 msgstr ""
 
@@ -1191,6 +1209,10 @@ msgstr ""
 msgid "Highlight color"
 msgstr ""
 
+#: php/zoomhome.php:44
+msgid "Home"
+msgstr ""
+
 #: admin/hover/main.php:19
 msgid "hover"
 msgstr ""
@@ -1203,7 +1225,7 @@ msgstr ""
 msgid "Hovering"
 msgstr ""
 
-#: admin.php:158 admin/help.php:240
+#: admin.php:171 admin/help.php:240
 msgid "Hovering and Tooltips"
 msgstr ""
 
@@ -1221,6 +1243,11 @@ msgstr ""
 msgid ""
 "How much to extend click tolerance round an object on the map, only valid "
 "for %s"
+msgstr ""
+
+#: admin/zoomhome.php:38
+#, php-format
+msgid "How the %s option works"
 msgstr ""
 
 #: admin/hover/hoverlap.php:64
@@ -1414,6 +1441,12 @@ msgid ""
 "If summary is displayed, you can customize the information to display with "
 "css, e.g. show Total Length, Total Time, Total Ascent, Total Descent, Avg "
 "Speed, Avg Pace only:"
+msgstr ""
+
+#: admin/awesome.php:67
+msgid ""
+"If the check does not work for you, you can disable it so that your fonts "
+"are loaded."
 msgstr ""
 
 #. %s is "AND".
@@ -1777,7 +1810,7 @@ msgstr ""
 msgid "Information display"
 msgstr ""
 
-#: admin/zoomhome.php:42 admin/zoomhome.php:84 admin/zoomhome.php:112
+#: admin/zoomhome.php:53 admin/zoomhome.php:95 admin/zoomhome.php:123
 msgid "initial state of the map"
 msgstr ""
 
@@ -2000,12 +2033,12 @@ msgstr ""
 msgid "Makes multiple tile layers transparent."
 msgstr ""
 
-#: admin.php:125 admin.php:129 admin/help.php:259 admin/help.php:261
+#: admin.php:138 admin.php:142 admin/help.php:259 admin/help.php:261
 #: admin/help.php:262 admin/filemgr/main.php:27
 msgid "Manage Leaflet Map files"
 msgstr ""
 
-#: extensions-leaflet-map.php:116
+#: extensions-leaflet-map.php:125
 msgid "Manage plugins"
 msgstr ""
 
@@ -2028,7 +2061,7 @@ msgstr ""
 msgid "Many thanks to the translators."
 msgstr ""
 
-#: admin/zoomhome.php:133 admin/zoomhome.php:134
+#: admin/zoomhome.php:144 admin/zoomhome.php:145
 msgid "map like defined"
 msgstr ""
 
@@ -2052,7 +2085,7 @@ msgstr ""
 msgid "Marker with icon"
 msgstr ""
 
-#: admin.php:140
+#: admin.php:153
 msgid "Markers and Icons"
 msgstr ""
 
@@ -2078,7 +2111,7 @@ msgstr ""
 msgid "Meaningful options may be:"
 msgstr ""
 
-#: admin/zoomhome.php:137
+#: admin/zoomhome.php:148
 msgid "means"
 msgstr ""
 
@@ -2110,7 +2143,7 @@ msgstr ""
 msgid "More Functions for Markers"
 msgstr ""
 
-#: admin/marker/extramarker.php:110
+#: admin/marker/extramarker.php:104
 msgid "More icons"
 msgstr ""
 
@@ -2285,8 +2318,8 @@ msgstr ""
 msgid "Open page, post or category links in a new tab"
 msgstr ""
 
-#: admin/leaflet-search.php:76 admin/marker/targetmarker.php:202
-#: admin/marker/listmarker.php:66
+#: admin/zoomhome.php:29 admin/leaflet-search.php:76
+#: admin/marker/targetmarker.php:202 admin/marker/listmarker.php:66
 msgid "Option"
 msgstr ""
 
@@ -2360,7 +2393,7 @@ msgstr ""
 #: admin/elevation/multielevation.php:209
 #: admin/elevation/multielevation.php:243
 #: admin/elevation/multielevation.php:271 admin/elevation/elevation.php:185
-#: admin/marker/extramarker.php:112 admin/marker/placementstrategies.php:138
+#: admin/marker/extramarker.php:106 admin/marker/placementstrategies.php:138
 #: admin/marker/markercluster.php:145 admin/marker/markercluster.php:181
 #: admin/marker/listmarker.php:61 admin/grouping/parentgroup.php:34
 #: admin/hover/hoverlap.php:43 admin/hover/hover.php:56
@@ -2438,7 +2471,7 @@ msgstr ""
 msgid "Overview"
 msgstr ""
 
-#: admin.php:163 admin/help.php:119 admin/overview-map.php:75
+#: admin.php:176 admin/help.php:119 admin/overview-map.php:75
 msgid "Overview Map"
 msgstr ""
 
@@ -2471,7 +2504,7 @@ msgid "Please change this only, if you want to use your own theme."
 msgstr ""
 
 #. %s are plugin names.
-#: extensions-leaflet-map.php:112
+#: extensions-leaflet-map.php:121
 #, php-format
 msgid "Please install and activate %1$s before using %2$s."
 msgstr ""
@@ -2538,6 +2571,10 @@ msgstr ""
 
 #: php/elevation.php:226
 msgid "position of track control"
+msgstr ""
+
+#: php/zoomhome.php:53
+msgid "position on the map:"
 msgstr ""
 
 #: php/elevation.php:73
@@ -2653,7 +2690,7 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
-#: admin.php:167 admin/help.php:201
+#: admin.php:180 admin/help.php:201
 msgid "Reset the map"
 msgstr ""
 
@@ -2674,7 +2711,7 @@ msgstr ""
 msgid "Scroll Wheel Zoom"
 msgstr ""
 
-#: admin.php:149 admin/help.php:171
+#: admin.php:162 admin/help.php:171
 msgid "Search markers/features"
 msgstr ""
 
@@ -2736,6 +2773,10 @@ msgstr ""
 msgid "see Leaflet Map documentation"
 msgstr ""
 
+#: php/zoomhome.php:48
+msgid "see table"
+msgstr ""
+
 #. %s are values.
 #: admin/elevation/sgpx.php:178
 #, php-format
@@ -2756,7 +2797,7 @@ msgstr ""
 msgid "Setting"
 msgstr ""
 
-#: extensions-leaflet-map.php:91 admin/elevation/waypoints.php:266
+#: extensions-leaflet-map.php:98 admin/elevation/waypoints.php:266
 #: admin/filemgr/filemgr-settings.php:50 admin/tiles/layerswitch.php:163
 #: admin/tiles/providers.php:150
 msgid "Settings"
@@ -2884,7 +2925,7 @@ msgstr ""
 msgid "So can you write:"
 msgstr ""
 
-#: admin/marker/extramarker.php:95
+#: admin/marker/extramarker.php:89
 msgid "Some Icons"
 msgstr ""
 
@@ -2894,7 +2935,7 @@ msgid ""
 "without summary"
 msgstr ""
 
-#: admin/zoomhome.php:138
+#: admin/zoomhome.php:149
 msgid "sometimes to first zoom"
 msgstr ""
 
@@ -2950,7 +2991,7 @@ msgstr ""
 msgid "Switch Track on and off"
 msgstr ""
 
-#: admin.php:153 admin/help.php:180
+#: admin.php:166 admin/help.php:180
 msgid "Switching Tile Servers"
 msgstr ""
 
@@ -2981,14 +3022,6 @@ msgstr ""
 
 #: admin/marker/targetmarker.php:100
 msgid "text of the link. Default:"
-msgstr ""
-
-#. %1$s is a link, %2$s is the plugin name,.
-#: admin/marker/extramarker.php:23
-#, php-format
-msgid ""
-"The %1$s is included in the plugin %2$s. If you have already installed some "
-"yourself, yours will be used."
 msgstr ""
 
 #. %s are shortcodes / values.
@@ -3148,6 +3181,10 @@ msgstr ""
 msgid "The parameters (querystring) from this link should be:"
 msgstr ""
 
+#: admin/awesome.php:66
+msgid "The plugin checks this and only loads its own if no others are found."
+msgstr ""
+
 #. %s are shortcodes.
 #: admin/marker/clustergroup.php:27 admin/marker/clustergroup.php:42
 #: admin/grouping/featuregroup.php:316
@@ -3266,6 +3303,18 @@ msgid ""
 "tolerance distance."
 msgstr ""
 
+#. %1$s is zoomhomemap, %2$s is leaflet-extramarker, %3$s parentgroup.
+#: admin/awesome.php:81
+#, php-format
+msgid "This setting is valid for %1$s, %2$s and %3$s."
+msgstr ""
+
+#. %1$s is a link, %2$s is the plugin name,.
+#: admin/awesome.php:62
+#, php-format
+msgid "This shortcode requires %1$s, version 6 is included in the plugin."
+msgstr ""
+
 #: php/elevation.php:147
 msgid "three digit number (px), minimum 100, maximum 499"
 msgstr ""
@@ -3356,6 +3405,17 @@ msgstr ""
 
 #: admin/elevation/elevation.php:277
 msgid "Tooltip display"
+msgstr ""
+
+#. %s is "zoom in".
+#. %s is "zoom out".
+#: php/zoomhome.php:18 php/zoomhome.php:27
+#, php-format
+msgid "Tooltip text of the %s button."
+msgstr ""
+
+#: php/zoomhome.php:43
+msgid "Tooltip text of the home button."
 msgstr ""
 
 #: php/elevation.php:788
@@ -3608,6 +3668,12 @@ msgstr ""
 msgid "yes"
 msgstr ""
 
+#. %1$s is Elentor, %2$s is the link to the bug.
+#: admin/awesome.php:72
+#, php-format
+msgid "You are using %1$s, there is a %2$sbug%3$s."
+msgstr ""
+
 #: php/sgpx.php:182
 msgid ""
 "You are using the sgpx shortcode from plugin wp-gpx-maps. But the script "
@@ -3621,7 +3687,7 @@ msgid ""
 msgstr ""
 
 #. %1$s are options, %2$s is a link.
-#: admin/marker/extramarker.php:116
+#: admin/marker/extramarker.php:110
 #, php-format
 msgid "You can also use some options like %1$s from %2$s."
 msgstr ""
@@ -3680,7 +3746,7 @@ msgid ""
 "list in the shortcode:"
 msgstr ""
 
-#: admin/zoomhome.php:34
+#: admin/zoomhome.php:45
 msgid "You can set following and the Home button works as shown in the table."
 msgstr ""
 
@@ -3794,6 +3860,10 @@ msgstr ""
 msgid "Your theme is the"
 msgstr ""
 
+#: admin/awesome.php:65
+msgid "Your theme or one of your plugins may provide Font Awesome."
+msgstr ""
+
 #: admin/elevation/elevation.php:146
 msgid "Your web site language isn't english? You can speak english?"
 msgstr ""
@@ -3802,6 +3872,14 @@ msgstr ""
 msgid "zFollow zoom"
 msgstr ""
 
+#: php/zoomhome.php:21
+msgid "Zoom in"
+msgstr ""
+
 #: php/leaflet-search.php:59
 msgid "zoom level for move to location for searching markers"
+msgstr ""
+
+#: php/zoomhome.php:30
+msgid "Zoom out"
 msgstr ""

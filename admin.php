@@ -17,6 +17,7 @@ require LEAFEXT_PLUGIN_DIR . '/admin/filemgr/main.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/hover/main.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/overview-map.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/grouping/main.php';
+require LEAFEXT_PLUGIN_DIR . '/admin/awesome.php';
 
 /**
  * Add menu page for admin
@@ -66,6 +67,15 @@ function leafext_do_page() {
 		echo '</form>';
 	} elseif ( $active_tab === 'zoomhome' ) {
 		include LEAFEXT_PLUGIN_DIR . '/admin/zoomhome.php';
+		leafext_help_awesome();
+		echo '<form method="post" action="options.php">';
+		settings_fields( 'leafext_settings_awesome' );
+		do_settings_sections( 'leafext_settings_awesome' );
+		if ( current_user_can( 'manage_options' ) ) {
+			wp_nonce_field( 'leafext_awesome', 'leafext_awesome_nonce' );
+			submit_button();
+		}
+		echo '</form>';
 		leafext_zoomhome_help();
 	} elseif ( $active_tab === 'help' ) {
 		if ( function_exists( 'leafext_updates_from_github' ) ) {

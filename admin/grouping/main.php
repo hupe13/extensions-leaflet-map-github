@@ -46,6 +46,15 @@ function leafext_admin_grouping( $active_tab ) {
 		leafext_help_featuregroup();
 	} elseif ( $active_tab === 'parentgroup' ) {
 		echo '<h2>' . wp_kses_post( leafext_grouping_tab() ) . '</h2>';
+		leafext_help_awesome();
+		echo '<form method="post" action="options.php">';
+		settings_fields( 'leafext_settings_awesome' );
+		do_settings_sections( 'leafext_settings_awesome' );
+		if ( current_user_can( 'manage_options' ) ) {
+			wp_nonce_field( 'leafext_awesome', 'leafext_awesome_nonce' );
+			submit_button();
+		}
+		echo '</form>';
 		leafext_help_parentgroup();
 		leafext_parentgroup_admin_page();
 	} else {
