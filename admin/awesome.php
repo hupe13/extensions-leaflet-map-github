@@ -79,9 +79,9 @@ function leafext_help_awesome() {
 	$text .= '<p>' . sprintf(
 		/* translators: %1$s is zoomhomemap, %2$s is leaflet-extramarker, %3$s parentgroup. */
 		__( 'This setting is valid for %1$s, %2$s and %3$s.', 'extensions-leaflet-map' ),
-		'<code>zoomhomemap</code>',
-		'<code>leaflet-extramarker</code>',
-		'<code>parentgroup</code>'
+		'<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=zoomhome"><code>zoomhomemap</code></a>',
+		'<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=extramarker"><code>leaflet-extramarker</code></a>',
+		'<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=parentgroup"><code>parentgroup</code></a>'
 	) . '</p>';
 
 	if ( is_singular() || is_archive() ) {

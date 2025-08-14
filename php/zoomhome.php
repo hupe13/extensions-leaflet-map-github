@@ -15,33 +15,29 @@ function leafext_zoomhome_params() {
 			'param'   => 'zoomInTitle',
 			'desc'    => sprintf(
 				/* translators: %s is "zoom in". */
-				__( 'Tooltip text of the %s button.', 'extensions-leaflet-map' ),
+				__( 'Tooltip text of the %s button', 'extensions-leaflet-map' ),
 				"'zoom in'"
 			),
-			'default' => __( 'Zoom in', 'extensions-leaflet-map' ),
+			'default' => 'Zoom in',
 		),
 		array(
 			'param'   => 'zoomOutTitle',
 			'desc'    => sprintf(
 				/* translators: %s is "zoom out". */
-				__( 'Tooltip text of the %s button.', 'extensions-leaflet-map' ),
+				__( 'Tooltip text of the %s button', 'extensions-leaflet-map' ),
 				"'zoom out'"
 			),
-			'default' => __( 'Zoom out', 'extensions-leaflet-map' ),
+			'default' => 'Zoom out',
 		),
 		array(
 			'param'   => 'zoomHomeIcon',
-			'desc'    => sprintf(
-				/* translators: %s is "fa-". */
-				__( 'Font-Awesome icon name for the home button (without %s).', 'extensions-leaflet-map' ),
-				'"fa-"'
-			),
+			'desc'    => __( 'Font-Awesome icon name for the home button without prefix', 'extensions-leaflet-map' ),
 			'default' => 'home',
 		),
 		array(
 			'param'   => 'zoomHomeTitle',
-			'desc'    => __( 'Tooltip text of the home button.', 'extensions-leaflet-map' ),
-			'default' => __( 'Home', 'extensions-leaflet-map' ),
+			'desc'    => __( 'Tooltip text of the home button', 'extensions-leaflet-map' ),
+			'default' => 'Home',
 		),
 		array(
 			'param'   => 'fit',
@@ -50,27 +46,30 @@ function leafext_zoomhome_params() {
 		),
 		array(
 			'param'   => 'position',
-			'desc'    => __( 'position on the map:', 'extensions-leaflet-map' ) . ' <code>topleft</code>, <code>topright</code>, <code>bottomleft</code> or <code>bottomright</code>',
+			'desc'    => __( 'position on the map:', 'extensions-leaflet-map' ) . ' <code>topleft</code>, <code>topright</code>, <code>bottomleft</code>, <code>bottomright</code>',
 			'default' => 'topleft',
 		),
 	);
 	return $params;
 }
 
-function leafext_zoomhome_settings( $atts ) {
+function leafext_zoomhome_options( $atts ) {
+	$settings = leafext_zoomhome_settings();
+	$atts1    = leafext_case( array_keys( $settings ), leafext_clear_params( $atts ) );
+	$params   = shortcode_atts( $settings, $atts1 );
+	return $params;
+}
+
+function leafext_zoomhome_settings() {
 	$defaults = array();
 	$params   = leafext_zoomhome_params();
 	foreach ( $params as $param ) {
 		$defaults[ $param['param'] ] = $param['default'];
 	}
 
-	$atts1  = leafext_case( array_keys( $defaults ), leafext_clear_params( $atts ) );
-	$params = shortcode_atts( $defaults, $atts1 );
-
-	if ( ! leafext_check_position_control( $params['position'] ) ) {
-		$params['position'] = 'topleft';
-	}
-	return $params;
+	$options = shortcode_atts( $defaults, get_option( 'leafext_zoomhome' ) );
+	// var_dump($options); wp_die();
+	return $options;
 }
 
 function leafext_zoomhome_script( $options ) {
@@ -109,7 +108,8 @@ function leafext_zoomhome_function( $atts, $content, $shortcode ) {
 	} else {
 		leafext_enqueue_zoomhome();
 		leafext_enqueue_leafext( 'zoomhome', 'zoomhome' );
-		$params = leafext_zoomhome_settings( $atts );
+		$params = leafext_zoomhome_options( $atts );
+		$params['fit'] = (bool) $params['fit'];
 		return leafext_zoomhome_script( $params );
 	}
 }
