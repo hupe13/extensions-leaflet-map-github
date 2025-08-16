@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, gpx, geojson, hover, marker   
 Tested up to: 6.8  
-Stable tag: 4.5.1    
+Stable tag: 4.6    
 Requires at least: 6.0     
 Requires PHP: 7.4     
 License: GPLv2 or later
@@ -189,12 +189,12 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.5.2 / 2508xx
+### 4.5.2 / 250816
 
+* zoomhomemap has some options now
 * fixed: leafext_plugin_active did not work with network activated plugins
 * new Jshrink
 * new leaflet.fullscreen
-* zoomhomemap has some options now
 
 ### Previous
 

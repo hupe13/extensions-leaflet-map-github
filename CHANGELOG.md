@@ -1,9 +1,9 @@
-### 4.5.2 / 2508xx
+### 4.5.2 / 250816
 
+* zoomhomemap has some options now
 * fixed: leafext_plugin_active did not work with network activated plugins
 * new Jshrink
 * new leaflet.fullscreen
-* zoomhomemap has some options now
 
 ### 4.5.1 / 250604
 
