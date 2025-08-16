@@ -1,4 +1,4 @@
-### 4.5.2 / 250816
+### 4.6 / 250816
 
 * zoomhomemap has some options now
 * fixed: leafext_plugin_active did not work with network activated plugins
