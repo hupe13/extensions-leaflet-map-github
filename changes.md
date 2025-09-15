@@ -1,9 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* zoomhomemap has some options now
-* fixed: leafext_plugin_active did not work with network activated plugins
-* new Jshrink
-* new leaflet.fullscreen
+* solved issue https://github.com/Raruto/leaflet-elevation/issues/270#event-3062506453
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

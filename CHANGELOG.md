@@ -1,3 +1,7 @@
+### 4.7 / 25xxxx
+
+* solved issue https://github.com/Raruto/leaflet-elevation/issues/270#event-3062506453
+
 ### 4.6 / 250816
 
 * zoomhomemap has some options now
