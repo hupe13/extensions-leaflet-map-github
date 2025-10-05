@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 6.8
-Stable tag: 4.6-250915
+Stable tag: 4.6-251005
 Requires at least: 6.0
 Requires PHP: 7.4
 License: GPLv2 or later
@@ -36,4 +36,4 @@ Please install [leafext-update-github](https://github.com/hupe13/leafext-update-
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* solved issue https://github.com/Raruto/leaflet-elevation/issues/270#event-3062506453
+* solved: Clamp cursor position to prevent dragging out of bounds on mobile (https://github.com/Raruto/leaflet-elevation/issues/270)

@@ -1,6 +1,6 @@
 ### 4.7 / 25xxxx
 
-* solved issue https://github.com/Raruto/leaflet-elevation/issues/270#event-3062506453
+* solved: Clamp cursor position to prevent dragging out of bounds on mobile (https://github.com/Raruto/leaflet-elevation/issues/270)
 
 ### 4.6 / 250816
 

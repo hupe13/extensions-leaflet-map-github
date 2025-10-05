@@ -33,7 +33,7 @@ export var Chart = L.Control.Elevation.Chart = L.Class.extend({
 
 		opts.xTicks = this._xTicks();
 		opts.yTicks = this._yTicks();
-
+		
 		let chart       = this._chart = D3.Chart(opts);
 
 		// SVG Container
@@ -158,8 +158,7 @@ export var Chart = L.Control.Elevation.Chart = L.Class.extend({
 			if (this._data.length && (e.type != 'brush' /*|| e.sourceEvent*/)) {
 				let rect    = this._chart.panes.brush.select('.overlay').node();
 				let coords  = d3.pointers(e, rect)[0];
-				// let xCoord  = coords[0];
-				let xCoord  = _.clamp(coords[0], [0, this._width()]); // Clamps the cursor position to the chart's bounds.
+				let xCoord  = _.clamp(coords[0], [0, this._width()]); // Clamps cursor position to chart's bounds (see issues: #270, #301)
 				let item    = this._data[this._findIndexForXCoord(xCoord)];
 
 				this.fire("mouse_move", { item: item, xCoord: xCoord });
@@ -431,7 +430,7 @@ export var Chart = L.Control.Elevation.Chart = L.Class.extend({
 			x    = this._x(point[xAttr]);
 			item = this._data[this._findIndexForXCoord(x)]
 			y    = this._y(item[yAttr]);
-		}
+		} 
 
 		this._point.call(D3.CheckPoint({
 			point: point,
@@ -539,7 +538,7 @@ export var Chart = L.Control.Elevation.Chart = L.Class.extend({
 
 	_updateLegend: function () {
 		let xAxesB  = this._axis.selectAll('.x.axis.bottom').nodes().length;
-
+		
 		// Get legend items
 		let items = Object.keys(this._paths);
 
@@ -582,7 +581,7 @@ export var Chart = L.Control.Elevation.Chart = L.Class.extend({
 				})
 			);
 		}
-
+		
 		_.each(items, (name, i) => {
 			// Adjust legend item positions
 			this._legend.select('[data-name=' + name + ']').attr("transform", "translate(" + (v[i] * 55) + ", " + (xAxesB * 2) + ")");

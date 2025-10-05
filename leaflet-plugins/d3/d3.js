@@ -1,4 +1,5 @@
 // https://d3js.org v7.9.0 Copyright 2010-2023 Mike Bostock, changed by hupe13 (PR from dronesflier)
+// https://github.com/hupe13/extensions-leaflet-map-github/blob/374059ded109715630b64017321f964fa4e671d9/leaflet-plugins/d3/d3.js#L5866-L5876
 (function (global, factory) {
 typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
 typeof define === 'function' && define.amd ? define(['exports'], factory) :
