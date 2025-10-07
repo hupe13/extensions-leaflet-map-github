@@ -1,6 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* solved: Clamp cursor position to prevent dragging out of bounds on mobile (https://github.com/Raruto/leaflet-elevation/issues/270)
+* evelation on mobile: solved: Clamp cursor position to prevent dragging out of bounds on mobile (https://github.com/Raruto/leaflet-elevation/issues/270)
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
