@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, gpx, geojson, hover, marker   
 Tested up to: 6.8  
-Stable tag: 4.6    
+Stable tag: 4.7    
 Requires at least: 6.0     
 Requires PHP: 7.4     
 License: GPLv2 or later
@@ -189,7 +189,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.7 / 2510xx
+### 4.7 / 251012
 
 * evelation on mobile: solved: Clamp cursor position to prevent dragging out of bounds on mobile (https://github.com/Raruto/leaflet-elevation/issues/270)
 

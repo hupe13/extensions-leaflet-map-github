@@ -1,4 +1,4 @@
-### 4.7 / 2510xx
+### 4.7 / 251012
 
 * evelation on mobile: solved: Clamp cursor position to prevent dragging out of bounds on mobile (https://github.com/Raruto/leaflet-elevation/issues/270)
 
