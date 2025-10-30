@@ -5,7 +5,7 @@
  * Plugin URI:        https://leafext.de/en/
  * Update URI:        https://github.com/hupe13/extensions-leaflet-map-github
  * Version:           4.7-251030
- * Requires PHP:      7.4
+ * Requires PHP:      8.1
  * Requires Plugins:  leaflet-map
  * Author:            hupe13
  * Author URI:        https://leafext.de/en/
