@@ -19,10 +19,10 @@ function leafext_extramarker_help() {
 	}
 
 	$text .= '<h2>Shortcode</h2>';
-	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map fitbounds ....]' . "\n";
-	$text = $text . '&#091;leaflet-extramarker option=... ...]description[/leaflet-extramarker]' . "\n";
-	$text = $text . '&#091;hover]' . "\n";
-	$text = $text . '&#091;zoomhomemap]</code></pre>';
+	$text  = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map fitbounds ....]' . "\n";
+	$text  = $text . '&#091;leaflet-extramarker option=... ...]description[/leaflet-extramarker]' . "\n";
+	$text  = $text . '&#091;hover]' . "\n";
+	$text  = $text . '&#091;zoomhomemap]</code></pre>';
 
 	// Setup map
 	$shapes = array( 'circle', 'square', 'star', 'penta' );

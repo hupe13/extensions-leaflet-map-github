@@ -92,7 +92,7 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 			}
 			$text = $text . ' - NO PROPERTY ';
 			$text = $text . ']';
-			return $text;
+			return wp_kses_post( $text );
 		}
 
 		if ( $propertyoptions['values'] !== '' ) {
@@ -119,7 +119,8 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 				}
 				$text = $text . ' - property values and iconprops do not match. ';
 				$text = $text . ']';
-				return $text;
+				return wp_kses_post( $text );
+
 			}
 		}
 		leafext_enqueue_leafext( 'geojsonmarker', 'leaflet_subgroup' );
@@ -149,7 +150,8 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 			}
 			$text = $text . ' - values and groups do not match. ';
 			$text = $text . ']';
-			return $text;
+			return wp_kses_post( $text );
+
 		}
 
 		if ( $groupingoptions['groups'] !== '' ) {
@@ -171,7 +173,8 @@ function leafext_geojsonmarker_function( $atts, $content, $shortcode ) {
 					}
 					$text = $text . ' - groups and visible do not match. ';
 					$text = $text . ']';
-					return $text;
+					return wp_kses_post( $text );
+
 				}
 			}
 			if ( ! in_array( 'others', $cl_groups, true ) ) {

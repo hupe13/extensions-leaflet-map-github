@@ -108,7 +108,7 @@ function leafext_zoomhome_function( $atts, $content, $shortcode ) {
 	} else {
 		leafext_enqueue_zoomhome();
 		leafext_enqueue_leafext( 'zoomhome', 'zoomhome' );
-		$params = leafext_zoomhome_options( $atts );
+		$params        = leafext_zoomhome_options( $atts );
 		$params['fit'] = (bool) $params['fit'];
 		return leafext_zoomhome_script( $params );
 	}
