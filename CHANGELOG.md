@@ -1,3 +1,9 @@
+### 4.8 / 251xxx
+
+* XSS security issue resolved.
+* new version leaflet-providers.js
+* new version Control.Layers.Tree
+
 ### 4.7 / 251012
 
 * evelation on mobile: solved: Clamp cursor position to prevent dragging out of bounds on mobile (https://github.com/Raruto/leaflet-elevation/issues/270)

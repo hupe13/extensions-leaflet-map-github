@@ -1,6 +1,8 @@
 # Differences to the Plugins WordPress version
 
-* none
+* XSS security issue resolved.
+* new version leaflet-providers.js
+* new version Control.Layers.Tree
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

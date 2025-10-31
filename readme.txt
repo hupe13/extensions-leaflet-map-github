@@ -3,9 +3,9 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 6.8
-Stable tag: 4.7-251030
+Stable tag: 4.8-251031
 Requires at least: 6.0
-Requires PHP: 7.4
+Requires PHP: 8.1
 License: GPLv2 or later
 
 Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
@@ -36,4 +36,6 @@ Please install [leafext-update-github](https://github.com/hupe13/leafext-update-
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* WP Version 4.7
+* XSS security issue resolved.
+* new version leaflet-providers.js
+* new version Control.Layers.Tree
