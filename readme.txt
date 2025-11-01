@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 6.8
-Stable tag: 4.8-251031
+Stable tag: 4.8-251101
 Requires at least: 6.0
 Requires PHP: 8.1
 License: GPLv2 or later
@@ -39,3 +39,4 @@ Many thanks to everyone who found errors and provided ideas for new functions.
 * XSS security issue resolved.
 * new version leaflet-providers.js
 * new version Control.Layers.Tree
+* Plugin Check Plugin error: load_plugin_textdomain -> load_textdomain_mofile

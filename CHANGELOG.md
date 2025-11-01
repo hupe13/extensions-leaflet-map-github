@@ -1,4 +1,8 @@
-### 4.8 / 251xxx
+### 4.x.x / 251xxx
+
+* Plugin Check Plugin error: load_plugin_textdomain -> load_textdomain_mofile
+
+### 4.8 / 251031
 
 * XSS security issue resolved.
 * new version leaflet-providers.js

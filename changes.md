@@ -1,8 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* XSS security issue resolved.
-* new version leaflet-providers.js
-* new version Control.Layers.Tree
+* Plugin Check Plugin error: load_plugin_textdomain -> load_textdomain_mofile
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

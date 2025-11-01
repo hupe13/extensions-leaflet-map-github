@@ -27,16 +27,18 @@ $what = '/export-translations/?filters[term]=&filters[term_scope]=scope_any&filt
 // https://translate.wordpress.org/projects/wp-plugins/extensions-leaflet-map/dev/de/default/export-translations/?format=mo
 
 $languages = array(
+	// Sprachpakete: englisch, deutsch, niederlaendisch (dutch), spanisch
+	array( 'default', 'de_DE', '', 'dev/'),
+	array( 'default', 'nl_NL', '' , 'stable/'),
+	//array( 'default', 'nl_NL', '' , 'dev/'),
+	array( 'default', 'es_ES', '_or_changesrequested' , 'stable/'),
+	//
 	array( 'default', 'ca', '_or_changesrequested' , 'stable/'),
 	array( 'default', 'it_IT', '' , 'stable/'),
 	array( 'default', 'pl_PL', '' , 'stable/'),
 	array( 'default', 'pt_PT', '' , 'stable/'),
 	array( 'default', 'sv_SE', '' , 'stable/'),
-	//array( 'default', 'nl_NL', '' , 'stable/'),
-	array( 'default', 'nl_NL', '' , 'dev/'),
-	array( 'default', 'es_ES', '_or_changesrequested' , 'stable/'),
 	array( 'formal', 'de_DE_formal', '' , 'stable/'),
-	array( 'default', 'de_DE', '', 'dev/'),
 );
 $formats   = array( 'mo', 'php', 'jed1x' );
 // 'po',

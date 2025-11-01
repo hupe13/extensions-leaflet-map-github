@@ -189,11 +189,15 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.8 / 251xxx
+### 4.8 / 251031
 
 * XSS security issue resolved.
 * new version leaflet-providers.js
 * new version Control.Layers.Tree
+
+### 251101 Github
+
+* Plugin Check Plugin error: load_plugin_textdomain -> load_textdomain_mofile
 
 ### Previous
 

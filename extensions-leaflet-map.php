@@ -4,7 +4,7 @@
  * Description:       Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
  * Plugin URI:        https://leafext.de/en/
  * Update URI:        https://github.com/hupe13/extensions-leaflet-map-github
- * Version:           4.8-251031
+ * Version:           4.8-251101
  * Requires PHP:      8.1
  * Requires Plugins:  leaflet-map
  * Author:            hupe13
@@ -103,12 +103,15 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'leafext_add_a
 /**
  * For translating elevation.
  */
-function leafext_extra_textdomain() {
-	if ( file_exists( LEAFEXT_PLUGIN_DIR . '/lang/extensions-leaflet-map-' . get_locale() . '.mo' ) ) {
-		load_plugin_textdomain( 'extensions-leaflet-map', false, LEAFEXT_PLUGIN_SETTINGS . '/lang/' );
+function leafext_extra_textdomain( $mofile, $domain ) {
+	if ( 'extensions-leaflet-map' === $domain ) {
+		if ( file_exists( LEAFEXT_PLUGIN_DIR . '/lang/extensions-leaflet-map-' . get_locale() . '.mo' ) ) {
+			$mofile = LEAFEXT_PLUGIN_DIR . '/lang/extensions-leaflet-map-' . get_locale() . '.mo';
+		}
 	}
+	return $mofile;
 }
-add_action( 'plugins_loaded', 'leafext_extra_textdomain' );
+add_filter( 'load_textdomain_mofile', 'leafext_extra_textdomain', 10, 2 );
 
 // WP < 6.5, ClassicPress
 if ( function_exists( 'classicpress_version' ) ||
