@@ -139,7 +139,7 @@ function leafext_overviewmap_admin_params() {
 	return $params;
 }
 
-function overviewmap_admin_settings() {
+function leafext_overviewmap_admin_settings() {
 	$defaults = array();
 	$params   = leafext_overviewmap_admin_params();
 	foreach ( $params as $param ) {
@@ -188,7 +188,7 @@ function leafext_extramarker_options() {
 function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 	global $wpdb;
 
-	$settings = overviewmap_admin_settings();
+	$settings = leafext_overviewmap_admin_settings();
 	if ( $settings['transients'] ) {
 		echo '<script>console.log("' . esc_js( __( 'Use transients', 'extensions-leaflet-map' ) ) . '");</script>';
 		// $startTime = microtime(true);

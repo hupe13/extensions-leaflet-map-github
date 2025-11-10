@@ -16,8 +16,8 @@ global $wp_filesystem;
 require_once ABSPATH . 'wp-admin/includes/file.php';
 WP_Filesystem();
 
-$url  = 'https://translate.wordpress.org/projects/wp-plugins/extensions-leaflet-map/';
-$what = '/export-translations/?filters[term]=&filters[term_scope]=scope_any&filters[status]=current_or_waiting';
+$leafext_url  = 'https://translate.wordpress.org/projects/wp-plugins/extensions-leaflet-map/';
+$leafext_what = '/export-translations/?filters[term]=&filters[term_scope]=scope_any&filters[status]=current_or_waiting';
 
 // /ca/default/export-translations/
 //
@@ -26,7 +26,7 @@ $what = '/export-translations/?filters[term]=&filters[term_scope]=scope_any&filt
 // dev
 // https://translate.wordpress.org/projects/wp-plugins/extensions-leaflet-map/dev/de/default/export-translations/?format=mo
 
-$languages = array(
+$leafext_languages = array(
 	// Sprachpakete: englisch, deutsch, niederlaendisch (dutch), spanisch
 	array( 'default', 'de_DE', '', 'dev/'),
 	array( 'default', 'nl_NL', '' , 'stable/'),
@@ -40,29 +40,29 @@ $languages = array(
 	array( 'default', 'sv_SE', '' , 'stable/'),
 	array( 'formal', 'de_DE_formal', '' , 'stable/'),
 );
-$formats   = array( 'mo', 'php', 'jed1x' );
+$leafext_formats   = array( 'mo', 'php', 'jed1x' );
 // 'po',
 
 echo '<ul>';
 
-foreach ( $languages as $language ) {
-	echo '<li>' . esc_html( $language[1] );
+foreach ( $leafext_languages as $leafext_language ) {
+	echo '<li>' . esc_html( $leafext_language[1] );
 	echo '<ul>';
-	foreach ( $formats as $format ) {
-		$file     = LEAFEXT_PLUGIN_DIR . '/lang/extensions-leaflet-map-' . $language[1] . '.' . $format;
-		$query    = substr( $language[1], 0, 2 ) . '/' . $language[0] . $what . $language[2] . '&format=' . $format;
-		// var_dump($url . $language[3] . $query);
-		$thisurl = $url . $language[3] . $query;
-		$response = wp_remote_get( $thisurl );
-		if ( wp_remote_retrieve_response_code( $response ) === 200 ) {
-			if ( is_array( $response ) && ! is_wp_error( $response ) ) {
-				if ( $format === 'php' ) {
-					$file = dirname( $file ) . '/' . basename( $file, '.php' ) . '.l10n.php';
-				} elseif ( $format === 'jed1x' ) {
-					$file = dirname( $file ) . '/' . basename( $file, '.jed1x' ) . '-elevation_js.json';
+	foreach ( $leafext_formats as $leafext_format ) {
+		$leafext_file     = LEAFEXT_PLUGIN_DIR . '/lang/extensions-leaflet-map-' . $leafext_language[1] . '.' . $leafext_format;
+		$leafext_query    = substr( $leafext_language[1], 0, 2 ) . '/' . $leafext_language[0] . $leafext_what . $leafext_language[2] . '&format=' . $leafext_format;
+		// var_dump($leafext_url . $leafext_language[3] . $leafext_query);
+		$leafext_thisurl = $leafext_url . $leafext_language[3] . $leafext_query;
+		$leafext_response = wp_remote_get( $leafext_thisurl );
+		if ( wp_remote_retrieve_response_code( $leafext_response ) === 200 ) {
+			if ( is_array( $leafext_response ) && ! is_wp_error( $leafext_response ) ) {
+				if ( $leafext_format === 'php' ) {
+					$leafext_file = dirname( $leafext_file ) . '/' . basename( $leafext_file, '.php' ) . '.l10n.php';
+				} elseif ( $leafext_format === 'jed1x' ) {
+					$leafext_file = dirname( $leafext_file ) . '/' . basename( $leafext_file, '.jed1x' ) . '-elevation_js.json';
 				}
-				echo '<li>' . esc_url( $thisurl ) . '<br>' . esc_html( basename( $file ) ) . '</li>';
-				if ( ! $wp_filesystem->put_contents( $file, $response['body'] ) ) {
+				echo '<li>' . esc_url( $leafext_thisurl ) . '<br>' . esc_html( basename( $leafext_file ) ) . '</li>';
+				if ( ! $wp_filesystem->put_contents( $leafext_file, $leafext_response['body'] ) ) {
 					echo 'error saving file!';
 				}
 			}

@@ -185,10 +185,17 @@ function leafext_files_table( $track_files ) {
 			default:
 				$type = '';
 		}
+
 		global $wpdb;
-		$sql = "SELECT post_id FROM $wpdb->postmeta WHERE meta_value LIKE '" . substr( $myfile, 1 ) . "'";
-		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-		$results = $wpdb->get_results( $sql );
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$results = $wpdb->get_results(
+			$wpdb->prepare(
+				'SELECT post_id FROM %i WHERE meta_value LIKE %s',
+				$wpdb->postmeta,
+				substr( $myfile, 1 )
+			),
+		);
+
 		if ( count( $results ) > 0 ) {
 			foreach ( $results as $result ) {
 				$key                 = get_post( get_object_vars( $result )['post_id'] );

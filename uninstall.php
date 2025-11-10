@@ -12,13 +12,13 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 
 global $wpdb;
 
-$setting = get_option( 'leafext_deleting' );
-if ( ! ( isset( $setting['on'] ) && $setting['on'] === '0' ) ) {
+$leafext_setting = get_option( 'leafext_deleting' );
+if ( ! ( isset( $leafext_setting['on'] ) && $leafext_setting['on'] === '0' ) ) {
 	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-	$option_names = $wpdb->get_results( "SELECT option_name FROM $wpdb->options WHERE option_name LIKE 'leafext_%' " );
-	foreach ( $option_names as $key => $value ) {
-		delete_option( $value->option_name );
+	$leafext_option_names = $wpdb->get_results( "SELECT option_name FROM $wpdb->options WHERE option_name LIKE 'leafext_%' " );
+	foreach ( $leafext_option_names as $leafext_key => $leafext_value ) {
+		delete_option( $leafext_value->option_name );
 		// for site options in Multisite
-		delete_site_option( $value->option_name );
+		delete_site_option( $leafext_value->option_name );
 	}
 }

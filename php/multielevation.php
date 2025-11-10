@@ -12,10 +12,10 @@ add_filter(
 	'pre_do_shortcode_tag',
 	function ( $output, $shortcode ) {
 		if ( 'leaflet-map' === $shortcode ) {
-			global $all_files;
-			$all_files = array();
-			global $all_points;
-			$all_points = array();
+			global $leafext_all_files;
+			$leafext_all_files = array();
+			global $leafext_all_points;
+			$leafext_all_points = array();
 		}
 		return $output;
 	},
@@ -190,8 +190,8 @@ function leafext_elevation_track( $atts, $content, $shortcode ) {
 			return $text;
 		}
 
-		global $all_files;
-		global $all_points;
+		global $leafext_all_files;
+		global $leafext_all_points;
 
 		$defaults = array(
 			'lat'  => '',
@@ -274,8 +274,8 @@ function leafext_elevation_track( $atts, $content, $shortcode ) {
 			'name'   => $params['name'],
 		);
 
-		$all_points[] = $point;
-		$all_files[]  = $atts['file'];
+		$leafext_all_points[] = $point;
+		$leafext_all_files[]  = $atts['file'];
 	}
 }
 add_shortcode( 'elevation-track', 'leafext_elevation_track' );
@@ -320,8 +320,8 @@ function leafext_multielevation( $atts, $content, $shortcode ) {
 		leafext_enqueue_multielevation();
 		leafext_enqueue_zoomhome();
 
-		global $all_files;
-		global $all_points;
+		global $leafext_all_files;
+		global $leafext_all_points;
 
 		$ele_options = array(
 			'detachedView' => true,
@@ -409,22 +409,22 @@ function leafext_multielevation( $atts, $content, $shortcode ) {
 
 		list($options, $style) = leafext_elevation_color( $options );
 
-		// var_dump($all_files, $all_points, $options, $multioptions); wp_die();
+		// var_dump($leafext_all_files, $leafext_all_points, $options, $multioptions); wp_die();
 		// var_dump($options,$multioptions);
 		$rand = wp_rand( 1, 20 );
-		$text = $style . leafext_multielevation_script( $all_files, $all_points, $options, $multioptions, $rand );
+		$text = $style . leafext_multielevation_script( $leafext_all_files, $leafext_all_points, $options, $multioptions, $rand );
 
-		$text       = $text . '<p class="chart-placeholder chart-placeholder-' . $rand . '">';
-		$text       = $text . __( 'move mouse over a track or select one in control panel ...', 'extensions-leaflet-map' ) . '</p>';
-		$all_files  = array();
-		$all_points = array();
+		$text               = $text . '<p class="chart-placeholder chart-placeholder-' . $rand . '">';
+		$text               = $text . __( 'move mouse over a track or select one in control panel ...', 'extensions-leaflet-map' ) . '</p>';
+		$leafext_all_files  = array();
+		$leafext_all_points = array();
 		return $text;
 	}
 }
 add_shortcode( 'elevation-tracks', 'leafext_multielevation' );
 add_shortcode( 'multielevation', 'leafext_multielevation' );
 
-function leafext_multielevation_script( $all_files, $all_points, $settings, $multioptions, $rand ) {
+function leafext_multielevation_script( $leafext_all_files, $leafext_all_points, $settings, $multioptions, $rand ) {
 	// var_dump($settings,$multioptions); wp_die();
 	list($elevation_settings, $settings) = leafext_ele_java_params( $settings );
 	$text                                = '<script><!--';
@@ -433,8 +433,8 @@ function leafext_multielevation_script( $all_files, $all_points, $settings, $mul
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
 	window.WPLeafletMapPlugin.push(function () {
 		var map = window.WPLeafletMapPlugin.getCurrentMap();
-		var points = <?php echo wp_json_encode( $all_points ); ?>;
-		var tracks = <?php echo wp_json_encode( $all_files ); ?>;
+		var points = <?php echo wp_json_encode( $leafext_all_points ); ?>;
+		var tracks = <?php echo wp_json_encode( $leafext_all_files ); ?>;
 		//console.log(points);
 		//console.log(tracks);
 

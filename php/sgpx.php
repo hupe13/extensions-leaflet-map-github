@@ -22,8 +22,7 @@ define( 'LEAFEXT_SGPX_ACTIVE', leafext_plugin_active( 'wp-gpx-maps' ) );
 if ( is_admin() ) {
 	define( 'LEAFEXT_SGPX_UNCLEAN_DB', leafext_sgpx_unclean_db() );
 }
-$sgpx_opts = is_bool( get_option( 'leafext_sgpxparams', false ) ) === true ? false : true;
-define( 'LEAFEXT_SGPX_SGPX', $sgpx_opts );
+define( 'LEAFEXT_SGPX_SGPX', is_bool( get_option( 'leafext_sgpxparams', false ) ) === true ? false : true );
 
 // Erstmal alles von wp-gpx-map entfernen
 if ( LEAFEXT_SGPX_ACTIVE ) {

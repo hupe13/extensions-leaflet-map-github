@@ -2,9 +2,9 @@
 
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
-Tested up to: 6.8
-Stable tag: 4.8-251101
-Requires at least: 6.0
+Tested up to: 6.9
+Stable tag: 4.8-251110
+Requires at least: 6.3
 Requires PHP: 8.1
 License: GPLv2 or later
 
@@ -30,13 +30,13 @@ Releases are the same as the WordPress versions. If you want test the Github ver
 - Deactivate the WordPress version Extensions for Leaflet Map.
 - Activate the Github version Extensions for Leaflet Map Github.
 
-Please install [leafext-update-github](https://github.com/hupe13/leafext-update-github) to get updates.
+Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get updates.
 
 == Changelog ==
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* XSS security issue resolved.
-* new version leaflet-providers.js
-* new version Control.Layers.Tree
 * Plugin Check Plugin error: load_plugin_textdomain -> load_textdomain_mofile
+* PCP V 1.7.0 checks reviewed
+* Tested with WordPress 6.9
+* ready for ghu-update-puc
