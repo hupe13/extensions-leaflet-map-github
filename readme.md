@@ -189,7 +189,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.8.1 / 251xxx
+### 4.9 / 2511xx
 
 * Plugin Check Plugin error: load_plugin_textdomain -> load_textdomain_mofile
 * PCP V 1.7.0 checks reviewed
