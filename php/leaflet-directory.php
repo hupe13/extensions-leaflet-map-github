@@ -51,7 +51,7 @@ function leafext_directory_function( $atts, $content, $shortcode ) {
 				$text = $text . $key . '="' . $item . '" ';
 			}
 			$text = $text . ']';
-			return $text;
+			return esc_attr( $text );
 		}
 		$dir = $atts['src'];
 
@@ -72,7 +72,7 @@ function leafext_directory_function( $atts, $content, $shortcode ) {
 					$text = $text . $key . '="' . $item . '" ';
 				}
 				$text = $text . ']';
-				return $text;
+				return esc_attr( $text );
 			}
 		}
 
@@ -99,7 +99,7 @@ function leafext_directory_function( $atts, $content, $shortcode ) {
 					$text = $text . $key . '="' . $item . '" ';
 				}
 				$text = $text . ']';
-				return $text;
+				return esc_attr( $text );
 			} else {
 				$type = $options['type'];
 			}
@@ -113,7 +113,7 @@ function leafext_directory_function( $atts, $content, $shortcode ) {
 			}
 			$text = $text . ']';
 			$text = $text . ' * no any ' . $options['type'] . ' files found in directory ' . $dirpath . $dir;
-			return $text;
+			return esc_attr( $text );
 		}
 
 		if ( $options['leaflet'] ) {
@@ -138,7 +138,7 @@ function leafext_directory_function( $atts, $content, $shortcode ) {
 						$text = $text . $key . '="' . $item . '" ';
 					}
 					$text = $text . ']';
-					return $text;
+					return esc_attr( $text );
 				}
 				$shortcode = $shortcode . '[leaflet-' . $ext . ' src="' . $url . $file . '" color="' . $farbe . '"]{name}[/leaflet-' . $ext . ']';
 			}

@@ -185,7 +185,7 @@ function leafext_sgpx_function( $atts, $content, $shortcode ) {
 				}
 				$text = $text . ']</p>';
 			}
-			return $text;
+			return esc_attr( $text );
 
 		} elseif ( LEAFEXT_SGPX_ACTIVE && ( ( LEAFEXT_SGPX_SGPX && ! $options['sgpx'] ) || ! LEAFEXT_SGPX_SGPX ) ) {
 			$text = __( "You are using the sgpx shortcode from plugin wp-gpx-maps. wp-gpx-maps and leaflet-map don't work together.", 'extensions-leaflet-map' ) . ' ';
@@ -200,7 +200,7 @@ function leafext_sgpx_function( $atts, $content, $shortcode ) {
 				$text = $text . "$key = $item ";
 			}
 			$text = $text . ']</p>';
-			return $text;
+			return esc_attr( $text );
 		} else {
 			$elemap = array();
 

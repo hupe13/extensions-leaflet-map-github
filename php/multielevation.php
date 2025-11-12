@@ -187,7 +187,7 @@ function leafext_elevation_track( $atts, $content, $shortcode ) {
 				$text = $text . "$key=$item ";
 			}
 			$text = $text . ']';
-			return $text;
+			return esc_attr( $text );
 		}
 
 		global $leafext_all_files;

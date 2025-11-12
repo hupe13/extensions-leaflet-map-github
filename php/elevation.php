@@ -1078,7 +1078,7 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 				$text = $text . "$key=$item ";
 			}
 			$text = $text . ']';
-			return $text;
+			return esc_attr( $text );
 		}
 
 		if ( isset( $atts['summary'] ) && $atts['summary'] === '1' ) {

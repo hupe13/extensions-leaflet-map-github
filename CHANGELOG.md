@@ -1,5 +1,6 @@
 ### 4.9 / 2511xx
 
+* XSS security issues resolved.
 * Plugin Check Plugin error: load_plugin_textdomain -> load_textdomain_mofile
 * PCP V 1.7.0 checks reviewed
 * Tested with WordPress 6.9

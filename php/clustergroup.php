@@ -75,7 +75,7 @@ function leafext_clustergroup_function( $atts, $content, $shortcode ) {
 			}
 			$text = $text . ']';
 			$text = $text . ' - strings and groups (and visible) do not match. ';
-			return $text;
+			return esc_attr( $text );
 		}
 
 		$featuregroups = array(

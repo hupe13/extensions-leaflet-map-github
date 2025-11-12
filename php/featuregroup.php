@@ -77,7 +77,7 @@ function leafext_featuregroup_function( $atts, $content, $shortcode ) {
 			}
 			$text = $text . ']';
 			$text = $text . ' - no values and/or groups. ';
-			return $text;
+			return esc_attr( $text );
 		}
 
 		if ( $options['property'] === '' && $options['option'] === '' ) {
@@ -92,7 +92,7 @@ function leafext_featuregroup_function( $atts, $content, $shortcode ) {
 			}
 			$text = $text . ' - ' . $missing . ' is missing. ';
 			$text = $text . ']';
-			return $text;
+			return esc_attr( $text );
 		}
 
 		if ( substr_count( $options['values'], ',' ) !== substr_count( $options['groups'], ',' ) ) {
@@ -104,7 +104,7 @@ function leafext_featuregroup_function( $atts, $content, $shortcode ) {
 			}
 			$text = $text . ' - values and groups do not match. ';
 			$text = $text . ']';
-			return $text;
+			return esc_attr( $text );
 		}
 
 		$cl_values    = array_map( 'trim', explode( ',', $options['values'] ) );
@@ -134,7 +134,7 @@ function leafext_featuregroup_function( $atts, $content, $shortcode ) {
 				}
 				$text = $text . ' - groups and visible do not match. ';
 				$text = $text . ']';
-				return $text;
+				return esc_attr( $text );
 			}
 		}
 
