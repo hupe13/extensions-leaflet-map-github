@@ -145,7 +145,7 @@ function leafext_markercluster_help_text() {
 	$textoptions = '<h3>' . __( 'Options', 'extensions-leaflet-map' ) . '</h3>
 
 <p>' .
-	sprintf(
+	wp_sprintf(
 		/* translators: %s is a link. */
 		__(
 			'Please see the %s page for options. If you want to change other ones, please post it to the forum.',

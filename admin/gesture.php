@@ -110,20 +110,20 @@ function leafext_gesture_help_text() {
 	'<li> ' . __( 'When Gesture Handling is enabled:', 'extensions-leaflet-map' );
 	$text = $text . '<ul><p>';
 	$text = $text . '<li> ' .
-	sprintf(
+	wp_sprintf(
 		/* translators: %s is an option. */
 		__( 'If Scroll Wheel Zoom (%s) is enabled, it becomes active on both desktop and touch devices.', 'extensions-leaflet-map' ),
 		'<code>scrollwheel</code>'
 	) . '</li>';
 	$text = $text . '<li> ' .
-	sprintf(
+	wp_sprintf(
 		/* translators: %s is an option. */
 		__( 'If %s is enabled, it becomes active on touch devices only.', 'extensions-leaflet-map' ),
 		'<code>dragging</code>'
 	) . '</li>';
 	if ( ! ( is_singular() || is_archive() ) ) {
 		$text = $text . '<li> ' .
-		sprintf(
+		wp_sprintf(
 		/* translators: %s is the link to Leaflet Map setting. */
 			__( 'Your %s setting for', 'extensions-leaflet-map' ),
 			'<a href="' . get_admin_url() . 'admin.php?page=leaflet-map">Leaflet Map</a>'
@@ -144,7 +144,7 @@ function leafext_gesture_help_text() {
 	}
 	$text = $text . '</p></ul></li></ul>';
 	if ( ! ( is_singular() || is_archive() ) ) {
-		$text = $text . '<p>' . sprintf(
+		$text = $text . '<p>' . wp_sprintf(
 			/* translators: %s is a href. */
 			__( 'You can test it yourself on a %1$sseparate page%2$s.', 'extensions-leaflet-map' ),
 			'<a href="https://leafext.de/extra/gesture/">',

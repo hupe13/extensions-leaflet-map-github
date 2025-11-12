@@ -37,7 +37,7 @@ function leafext_multielevation_params( $typ = array( 'changeable' ) ) {
 		array(
 			'param'     => 'summary',
 			'shortdesc' => __( 'Summary', 'extensions-leaflet-map' ),
-			'desc'      => sprintf(
+			'desc'      => wp_sprintf(
 				/* translators: %s is an option. */
 				__( 'Valid for %s: Only elevation profile with or without summary line will be displayed.', 'extensions-leaflet-map' ),
 				'<code>[elevation-<span style="color: #d63638">tracks</span>]</code>'

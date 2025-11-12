@@ -14,7 +14,7 @@ function leafext_gesture_params() {
 			'param'     => 'leafext_gesture_on',
 			'shortdesc' => __( 'valid for whole site or only for one map', 'extensions-leaflet-map' ),
 			'desc'      => '<p>' .
-			sprintf(
+			wp_sprintf(
 				/* translators: %s are options. */
 				__( 'If it is true, it is valid for any map (depending on %1$s respectively %2$s) and you can\'t change it. If it is false, you can enable it for a map:', 'extensions-leaflet-map' ),
 				'<code>scrollwheel</code>',

@@ -109,12 +109,12 @@ function leafext_overviewmap_help() {
 
 	$text = $text . '<ul>' .
 	'<li>' . __( 'Default popup content is taken from the overviewmap shortcode and is a set of title, permalink, categories, featured image.', 'extensions-leaflet-map' ) . '</li>'
-	. '<li>   ' . sprintf(
+	. '<li>   ' . wp_sprintf(
 		/* translators: %1$s is "leaflet-marker" */
 		__( 'The content of the popup custom field is like the popup in %1$s.', 'extensions-leaflet-map' ),
 		' <code>leaflet-marker</code>'
 	) . '</li>' .
-	'<li>' . sprintf(
+	'<li>' . wp_sprintf(
 		/* translators: %1$s a link to ACF plugin. */
 		__( 'You can use an %1$s also.', 'extensions-leaflet-map' ),
 		'<a href="https://wordpress.org/plugins/advanced-custom-fields/">ACF</a>'
@@ -162,7 +162,7 @@ function leafext_overviewmap_help() {
 	$text = $text . '<p>' . __( 'If it does not work as expected, see the developer console of your browser.', 'extensions-leaflet-map' ) . '</p>';
 
 	$text = $text . '<h3>' . __( 'Options for marker', 'extensions-leaflet-map' ) . '</h3>';
-	$text = $text . '<p>' . sprintf(
+	$text = $text . '<p>' . wp_sprintf(
 		/* translators: %s is a shortcode. */
 		__( 'You can use these in the custom field for the icon and in shortcode %s.', 'extensions-leaflet-map' ),
 		'<code>overviewmap</code>'
@@ -170,7 +170,7 @@ function leafext_overviewmap_help() {
 
 	$text = $text . '<h4>leaflet-marker</h4>';
 	$text = $text . '<p>' . implode( ', ', leafext_marker_options() ) . '</p>';
-	$text = $text . '<p>' . sprintf(
+	$text = $text . '<p>' . wp_sprintf(
 		/* translators: %s are options. */
 		__( '%1$s is for icon filename required. The icons directory must be the same as from %2$s.', 'extensions-leaflet-map' ),
 		'<b>iconUrl</b>',
@@ -181,7 +181,7 @@ function leafext_overviewmap_help() {
 	$text = $text . '<p>' . implode( ', ', leafext_extramarker_options() ) . '</p>';
 
 	/* translators: %s is an href. */
-	$text = $text . '<p>' . sprintf( __( 'See %1$sexamples%2$s.', 'extensions-leaflet-map' ), '<a href="https://leafext.de/extra/category/overviewmap/">', '</a>' ) . '</p>';
+	$text = $text . '<p>' . wp_sprintf( __( 'See %1$sexamples%2$s.', 'extensions-leaflet-map' ), '<a href="https://leafext.de/extra/category/overviewmap/">', '</a>' ) . '</p>';
 
 	if ( is_singular() || is_archive() ) {
 		return $text;

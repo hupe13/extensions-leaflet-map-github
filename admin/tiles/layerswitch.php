@@ -143,7 +143,7 @@ function leafext_maps_help_text() {
 	<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map mapid="..." ...]
 &#091;layerswitch]
 </code></pre>';
-	$text = $text . '<p>' . sprintf(
+	$text = $text . '<p>' . wp_sprintf(
 		/* translators: %s is an option. */
 		__(
 			'You can select your defined Tile Server with parameter %s as comma separated list in the shortcode:',
@@ -154,7 +154,7 @@ function leafext_maps_help_text() {
 	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map mapid="..." ...]
 &#091;layerswitch tiles="mapid1,mapid2,..."]
 </code></pre>';
-	$text = $text . '<p>' . sprintf(
+	$text = $text . '<p>' . wp_sprintf(
 		/* translators: %s is an option. */
 		__( 'You can use the parameter %s also.', 'extensions-leaflet-map' ),
 		'<a href="' . $tilesproviders . '"><code>providers</code></a>'

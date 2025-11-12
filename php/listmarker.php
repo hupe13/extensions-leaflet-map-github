@@ -13,7 +13,7 @@ function leafext_listmarker_params() {
 	$params = array(
 		array(
 			'param'   => 'propertyName',
-			'desc'    => sprintf(
+			'desc'    => wp_sprintf(
 				/* translators: %1$s is "feature.property", %2$s is a shortcode, %3$s is an option. */
 				__(
 					'a %1$s for geojson marker. For %2$s it is always %3$s and is ignored.',
@@ -27,7 +27,7 @@ function leafext_listmarker_params() {
 		),
 		array(
 			'param'   => 'overiconurl',
-			'desc'    => sprintf(
+			'desc'    => wp_sprintf(
 			/* translators: %s is iconurl */
 				__( 'URL to the icon when it hover or clicked. If it is an empty string or the marker icon has not an %s, the icon does not change. Default: red icon', 'extensions-leaflet-map' ),
 				'<code>iconurl</code>'

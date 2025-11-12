@@ -28,7 +28,7 @@ function leafext_filemgr_params() {
 		array(
 			'param'     => 'nonadmin',
 			'shortdesc' => __( 'Allow non admin', 'extensions-leaflet-map' ),
-			'desc'      => sprintf(
+			'desc'      => wp_sprintf(
 				/* translators: %s is code */
 				esc_html__(
 					'Allow all users who have access to the backend to see the files. A permission check %s only done if the files are registered in the media library.',

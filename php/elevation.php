@@ -108,13 +108,13 @@ function leafext_elevation_params( $typ = array() ) {
 			'shortdesc' => __( 'Toggle chart legend filter.', 'extensions-leaflet-map' ),
 			'desc'      => '<img src="' . LEAFEXT_PLUGIN_PICTS . 'on.png" alt="on"/>
 			<p>' .
-			sprintf(
+			wp_sprintf(
 				/* translators: %s is an option. */
 				__( 'You can always toggle the charts individually by clicking on %s.', 'extensions-leaflet-map' ),
 				'<img src="' . LEAFEXT_PLUGIN_PICTS . 'switcher.png" alt="switch"/>'
 			)
 			. ' ' .
-			sprintf(
+			wp_sprintf(
 				/* translators: %s is an option. */
 				__( 'If %s is disabled, you can\'t see all charts at the same time (except at the beginning).', 'extensions-leaflet-map' ),
 				'<code>legend</code>'
@@ -165,7 +165,7 @@ function leafext_elevation_params( $typ = array() ) {
 		array(
 			'param'     => 'chart',
 			'shortdesc' => __( 'Toggle chart', 'extensions-leaflet-map' ),
-			'desc'      => sprintf(
+			'desc'      => wp_sprintf(
 				/* translators: %s are pictures. */
 				__( 'show always the chart / show the chart and toggle %1$s to hide / hide the chart and toggle %2$s to show', 'extensions-leaflet-map' ),
 				'&#10006;',
@@ -182,7 +182,7 @@ function leafext_elevation_params( $typ = array() ) {
 			'param'     => 'detached',
 			'shortdesc' => __( 'Chart container outside/inside map container', 'extensions-leaflet-map' ),
 			/* translators: %s are options. */
-			'desc'      => sprintf( __( '%1$s outside, %2$s inside', 'extensions-leaflet-map' ), 'true - ', 'false - ' ),
+			'desc'      => wp_sprintf( __( '%1$s outside, %2$s inside', 'extensions-leaflet-map' ), 'true - ', 'false - ' ),
 			'default'   => true,
 			'values'    => 1,
 			// 'typ' => array('fixed'),
@@ -328,7 +328,7 @@ function leafext_elevation_params( $typ = array() ) {
 			'shortdesc' => __( 'Toggle custom waypoint icons', 'extensions-leaflet-map' ),
 			'desc'      => '<p>true / "defined" / false</p>
 			<p>' . __( 'Only meaningful, if waypoints are shown in the map.', 'extensions-leaflet-map' ) . '</p>
-			<p>' . sprintf(
+			<p>' . wp_sprintf(
 				/* translators: %1$s is an option, %2$s is a link. */
 				__( 'If %1$s is selected, you must define some %2$ssettings for the icons', 'extensions-leaflet-map' ),
 				'"defined"',
@@ -346,7 +346,7 @@ function leafext_elevation_params( $typ = array() ) {
 			'param'     => 'wptLabels',
 			'shortdesc' => __( 'Toggle waypoint labels', 'extensions-leaflet-map' ),
 			'desc'      => '<p>' . __( 'Show waypoint labels in map and in chart / only in map / only in chart / none', 'extensions-leaflet-map' ) . '</p>
-			<p>' . sprintf(
+			<p>' . wp_sprintf(
 				/* translators: %s are codes. */
 				__( 'Only meaningful, if %1$swaypoints%2$s is not %3$s.', 'extensions-leaflet-map' ),
 				'<code>',
@@ -615,7 +615,7 @@ function leafext_elevation_params( $typ = array() ) {
 			'param'     => 'xLabel',
 			'shortdesc' => 'xLabel',
 			/* translators: Label for distance in chart, will be ignored if imperial is true. */
-			'desc'      => sprintf( __( 'Label for distance, will be ignored if %1$s is %2$s.', 'extensions-leaflet-map' ), '<code>imperial</code>', 'true' ) . '<br>' .
+			'desc'      => wp_sprintf( __( 'Label for distance, will be ignored if %1$s is %2$s.', 'extensions-leaflet-map' ), '<code>imperial</code>', 'true' ) . '<br>' .
 				__( 'Default', 'extensions-leaflet-map' ) . ': "km"',
 			'default'   => '',
 			'values'    => '',
@@ -628,7 +628,7 @@ function leafext_elevation_params( $typ = array() ) {
 			'param'     => 'distanceFactor',
 			'shortdesc' => 'distanceFactor',
 			/* translators: ... will be ignored if imperial is true */
-			'desc'      => sprintf( __( 'Conversion factor to kilometers, will be ignored if %1$s is %2$s.', 'extensions-leaflet-map' ), '<code>imperial</code>', 'true' ) . '<br>' .
+			'desc'      => wp_sprintf( __( 'Conversion factor to kilometers, will be ignored if %1$s is %2$s.', 'extensions-leaflet-map' ), '<code>imperial</code>', 'true' ) . '<br>' .
 				__( 'Default', 'extensions-leaflet-map' ) . ': 1',
 			'default'   => '',
 			'values'    => '',
@@ -642,7 +642,7 @@ function leafext_elevation_params( $typ = array() ) {
 			'shortdesc' => 'yLabel',
 			'desc'      => __( 'Label for altitude', 'extensions-leaflet-map' ) . '<br>' .
 			/* translators: Default: "ft" if imperial is true, "m" otherwise. */
-				sprintf( __( 'Default: %1$s if %2$s is %3$s, %4$s otherwise.', 'extensions-leaflet-map' ), '"ft"', '<code>imperial</code>', 'true', '"m"' ),
+				wp_sprintf( __( 'Default: %1$s if %2$s is %3$s, %4$s otherwise.', 'extensions-leaflet-map' ), '"ft"', '<code>imperial</code>', 'true', '"m"' ),
 			'default'   => '',
 			'values'    => '',
 			'typ'       => array( 'changeable', 'units', 'multielevation' ),
@@ -653,7 +653,7 @@ function leafext_elevation_params( $typ = array() ) {
 			'param'     => 'altitudeFactor',
 			'shortdesc' => 'altitudeFactor',
 			/* translators: ... will be ignored if imperial is true */
-			'desc'      => sprintf( __( 'Conversion factor to meters, will be ignored if %1$s is %2$s', 'extensions-leaflet-map' ), '<code>imperial</code>', 'true' ) . '<br>' .
+			'desc'      => wp_sprintf( __( 'Conversion factor to meters, will be ignored if %1$s is %2$s', 'extensions-leaflet-map' ), '<code>imperial</code>', 'true' ) . '<br>' .
 				__( 'Default', 'extensions-leaflet-map' ) . ': 1',
 			'default'   => '',
 			'values'    => '',
@@ -666,7 +666,7 @@ function leafext_elevation_params( $typ = array() ) {
 			'shortdesc' => 'speedLabel',
 			'desc'      => __( 'Label for speed', 'extensions-leaflet-map' ) . '<br>' .
 			/* translators: Default: "mph" if imperial is true, "km/h" otherwise. */
-				sprintf( __( 'Default: %1$s if %2$s is %3$s, %4$s otherwise.', 'extensions-leaflet-map' ), '"mph"', '<code>imperial</code>', 'true', '"km/h"' ),
+				wp_sprintf( __( 'Default: %1$s if %2$s is %3$s, %4$s otherwise.', 'extensions-leaflet-map' ), '"mph"', '<code>imperial</code>', 'true', '"km/h"' ),
 			'default'   => '',
 			'values'    => '',
 			'typ'       => array( 'changeable', 'units', 'multielevation' ),

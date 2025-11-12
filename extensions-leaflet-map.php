@@ -119,7 +119,7 @@ if ( function_exists( 'classicpress_version' ) ||
 	function leafext_leaflet_require() {
 		if ( ! leafext_plugin_active( 'leaflet-map' ) ) {
 			deactivate_plugins( plugin_basename( __FILE__ ) );
-			$message = '<div><p>' . sprintf(
+			$message = '<div><p>' . wp_sprintf(
 			/* translators: %s are plugin names. */
 				esc_html__( 'Please install and activate %1$s before using %2$s.', 'extensions-leaflet-map' ),
 				'<a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a>',

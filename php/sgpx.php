@@ -138,9 +138,9 @@ function leafext_sgpx_params() {
 		array(
 			'param'     => 'sgpx',
 			/* translators: %s are shortcodes. */
-			'shortdesc' => sprintf( __( 'Replace %1$s with %2$s.', 'extensions-leaflet-map' ), '<code>sgpx</code> (wp-gpx-maps)', '<code>elevation</code>' ),
+			'shortdesc' => wp_sprintf( __( 'Replace %1$s with %2$s.', 'extensions-leaflet-map' ), '<code>sgpx</code> (wp-gpx-maps)', '<code>elevation</code>' ),
 			/* translators: %s is an option. */
-			'desc'      => sprintf( __( 'No / Yes / Only, when %s is used, e.g. for testing.', 'extensions-leaflet-map' ), '<code>[leaflet-map height="1"]</code>' ),
+			'desc'      => wp_sprintf( __( 'No / Yes / Only, when %s is used, e.g. for testing.', 'extensions-leaflet-map' ), '<code>[leaflet-map height="1"]</code>' ),
 			'default'   => false,
 			'values'    => array( false, true, 'leaflet' ),
 			'next'      => '0',
@@ -162,7 +162,7 @@ function leafext_sgpx_settings() {
 function leafext_sgpx_function( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
 	if ( $text !== '' ) {
-		return $text;
+		return esc_attr( $text );
 	} else {
 		$options = get_option( 'leafext_sgpxparams' );
 
@@ -179,23 +179,23 @@ function leafext_sgpx_function( $atts, $content, $shortcode ) {
 				$text = wpgpxmaps_handle_shortcodes( $atts );
 			} else {
 				$text = __( 'You are using the sgpx shortcode from plugin wp-gpx-maps. But the script cannot detect how to handle it. Please ask in the forum.', 'extensions-leaflet-map' );
-				$text = $text . '<p>[sgpx ';
+				$text = $text . '<p>&#91;sgpx ';
 				foreach ( $atts as $key => $item ) {
 					$text = $text . "$key = $item ";
 				}
 				$text = $text . ']</p>';
 			}
-			return esc_attr( $text );
+			return $text;
 
 		} elseif ( LEAFEXT_SGPX_ACTIVE && ( ( LEAFEXT_SGPX_SGPX && ! isset( $options['sgpx'] ) ) || ! LEAFEXT_SGPX_SGPX ) ) {
 			$text = __( "You are using the sgpx shortcode from plugin wp-gpx-maps. wp-gpx-maps and leaflet-map don't work together.", 'extensions-leaflet-map' ) . ' ';
 			/* translators: %s is an href. */
-			$text = $text . sprintf(
+			$text = $text . wp_sprintf(
 				'See %1$sadmin settings page%2$s.',
 				'<a href="' . get_admin_url() . 'admin.php?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=sgpxelevation">',
 				'</a>'
 			);
-			$text = $text . '<p>[sgpx ';
+			$text = $text . '<p>&#91;sgpx ';
 			foreach ( $atts as $key => $item ) {
 				$text = $text . "$key = $item ";
 			}

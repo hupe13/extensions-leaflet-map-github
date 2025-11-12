@@ -139,7 +139,7 @@ function leafext_waypoints_help_text() {
 		// } else {
 	}
 
-	$text = $text . '<p>' . sprintf(
+	$text = $text . '<p>' . wp_sprintf(
 		/* translators: %s are shortcodes. */
 		__(
 			'You can of course use %1$s and define waypoints with additional %2$s and %3$s shortcodes.',
@@ -166,14 +166,14 @@ function leafext_waypoints_help_text() {
 </code></pre>';
 
 	if ( is_singular() || is_archive() ) {
-		$text = $text . '<p>' . sprintf(
+		$text = $text . '<p>' . wp_sprintf(
 			/* translators: %s is a href. */
 			__( 'Or set this in the %1$selevation settings%2$s.', 'extensions-leaflet-map' ),
 			'<a href="' . get_site_url() . '/elevation/wpts/">',
 			'</a>'
 		);
 	} else {
-		$text = $text . '<p>' . sprintf(
+		$text = $text . '<p>' . wp_sprintf(
 			/* translators: %s is a href. */
 			__( 'Or set this in the %1$selevation settings%2$s.', 'extensions-leaflet-map' ),
 			'<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=elevation#markers">',
@@ -194,7 +194,7 @@ function leafext_waypoints_help_text() {
 	$text = $text . '<ul>
 
 <li>'
-	. sprintf(
+	. wp_sprintf(
 		/* translators: %s is code. */
 		__( 'CSS to define as HTML block (between %1$s and %2$s) or in css file', 'extensions-leaflet-map' ),
 		'<code>&lt;style&gt;</code>',
@@ -214,7 +214,7 @@ function leafext_waypoints_help_text() {
 	) . '</li>
 
 <li>'
-	. sprintf(
+	. wp_sprintf(
 		/* translators: %s is styling. */
 		__(
 			'Any blank character from %1$sText of GPS symbol name%2$s is converted to a minus sign, uppercase to lowercase, a comma will be escaped.',
@@ -229,7 +229,7 @@ function leafext_waypoints_help_text() {
 	. ' "<span style="color: #4f94d4">Flag, Blue</span>" --&gt; "<span style="color: #d63638">flag\,-blue</span>"</li>
 
 <li>'
-	. sprintf(
+	. wp_sprintf(
 		/* translators: %s are special characters. */
 		__(
 			'If you need more special characters than %s for your waypoints, please ask in the forum.',

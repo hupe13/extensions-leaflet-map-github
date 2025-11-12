@@ -158,7 +158,7 @@ function leafext_files_table( $track_files ) {
 		'<b>leaflet Shortcode</b>',
 		'<b>elevation<sup>1</sup> Shortcode</b>',
 		/* translators: %s is a shortcode. */
-		'<b>' . sprintf( __( 'track in %s', 'extensions-leaflet-map' ), 'multielevation<sup>1,2</sup>' ) . '</b>',
+		'<b>' . wp_sprintf( __( 'track in %s', 'extensions-leaflet-map' ), 'multielevation<sup>1,2</sup>' ) . '</b>',
 	);
 	$track_table[] = $entry;
 
@@ -268,7 +268,7 @@ function leafext_files_table( $track_files ) {
 	$text = $text . '<small>&nbsp;&nbsp;<sup>1</sup> - ' . __( 'It is not checked whether the file contains a track with elevation data.', 'extensions-leaflet-map' ) . '</small>';
 	$text = $text . '<br><small>&nbsp;&nbsp;<sup>2</sup> - ' . __( 'It works with gpx and kml files.', 'extensions-leaflet-map' ) . ' ';
 	/* translators: %s is a shortcode. */
-	$text = $text . sprintf( __( "Don't forget to declare %s at last statement.", 'extensions-leaflet-map' ), '<code>[multielevation]</code>' ) . '</small>';
+	$text = $text . wp_sprintf( __( "Don't forget to declare %s at last statement.", 'extensions-leaflet-map' ), '<code>[multielevation]</code>' ) . '</small>';
 	return $text;
 }
 

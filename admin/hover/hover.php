@@ -17,20 +17,20 @@ function leafext_help_hover() {
 	}
 	$text = '<h2 id="hover">Hovering</h2><img src="' . LEAFEXT_PLUGIN_PICTS . 'hover.png" alt="hover"><p>' .
 	/* translators: %s is a shortcode. */
-	sprintf( __( 'Use it to highlight a %s element and get a tooltip on mouse over.', 'extensions-leaflet-map' ), 'leaflet-*' );
+	wp_sprintf( __( 'Use it to highlight a %s element and get a tooltip on mouse over.', 'extensions-leaflet-map' ), 'leaflet-*' );
 	$text = $text . '</p>';
 
 	$text = $text . '<h2>Shortcode</h2>';
 	$text = $text . '<h4>' . __( 'Create Map', 'extensions-leaflet-map' ) . '</h4>';
 	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map ...]</code></pre>';
 	/* translators: %s is a shortcode. */
-	$text = $text . '<h4>' . sprintf( __( 'Load any elements with any %s shortcode', 'extensions-leaflet-map' ), 'leaflet-*' ) . '</h4>';
+	$text = $text . '<h4>' . wp_sprintf( __( 'Load any elements with any %s shortcode', 'extensions-leaflet-map' ), 'leaflet-*' ) . '</h4>';
 	$text = $text . '<ul>';
 	$text = $text . '<li>';
 	$text = $text . __( 'The tooltip content is the same as the popup content.', 'extensions-leaflet-map' );
 	$text = $text . '</li>';
 	$text = $text . '<li>';
-	$text = $text . sprintf(
+	$text = $text . wp_sprintf(
 		/* translators: %s is a href. */
 		__( 'To customize the popup content for geojsons, see %1$sgeojson options%2$s.', 'extensions-leaflet-map' ),
 		'<a href="https://github.com/bozdoz/wp-plugin-leaflet-map#leaflet-geojson-options">',
@@ -94,7 +94,7 @@ function leafext_help_hover() {
 
 	$do_only    = leafext_hover_params( 'only' );
 	$do_element = leafext_hover_params( 'element' );
-	$text       = $text . '<p>' . sprintf(
+	$text       = $text . '<p>' . wp_sprintf(
 		/* translators: %s are options. */
 		__(
 			'If you use one or multiple options from %1$s, then the options %2$s will be ignored. ',
@@ -119,7 +119,7 @@ function leafext_help_hover() {
 	$text = $text . '</p>';
 
 	$text = $text . '<h4>' . __( 'Tooltip className', 'extensions-leaflet-map' ) . '</h4>';
-	$text = $text . '<p>' . sprintf(
+	$text = $text . '<p>' . wp_sprintf(
 		/* translators: %s are options. */
 		__( 'The tooltip has a %1$s, its default is %2$s. You can style the tooltip with css, e.g.', 'extensions-leaflet-map' ),
 		'className',

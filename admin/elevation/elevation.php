@@ -144,7 +144,7 @@ function leafext_ele_help_text() {
 	$text = $text . '<p><img src="' . LEAFEXT_PLUGIN_PICTS . 'elevation.png" alt="elevation"></p>
 	<h2>' . __( 'Translation', 'extensions-leaflet-map' ) . '</h2><p>';
 	$text = $text . __( "Your web site language isn't english? You can speak english?", 'extensions-leaflet-map' ) . ' ';
-	$text = $text . sprintf(
+	$text = $text . wp_sprintf(
 		/* translators: %1$s - shortcode, %2$s - link, all others help strings. */
 		__( '%1$s has some english strings in the frontend. Go to %2$s, choose your language and %3$s or %4$s, filter %5$s and translate these 36 short strings.', 'extensions-leaflet-map' ),
 		'<code>elevation</code>',
@@ -157,7 +157,7 @@ function leafext_ele_help_text() {
 	$text = $text . ' ' . __( 'A language pack will be generated, if at least 90% of all strings are translated, like dutch, spanish or german.', 'extensions-leaflet-map' ) . ' ';
 	$text = $text . __( 'Many thanks to the translators.', 'extensions-leaflet-map' ) . '</p>';
 	$text = $text . '<h2>' . __( 'Note', 'extensions-leaflet-map' ) . '</h2>';
-	$text = $text . sprintf(
+	$text = $text . wp_sprintf(
 		/* translators: %s are shortcodes. */
 		__(
 			'If you want to display a track only, use %1$s functions. If you want to display a track with an elevation profile use %2$s.',
@@ -167,7 +167,7 @@ function leafext_ele_help_text() {
 		'<code>&#091;elevation]</code>'
 	);
 	$text = $text . ' ';
-	$text = $text . sprintf(
+	$text = $text . wp_sprintf(
 		/* translators: %s are shortcodes / values. */
 		__(
 			'The %1$s parameter is called %2$s, but it works with gpx, kml, geojson and tcx files.',
@@ -194,7 +194,7 @@ function leafext_ele_help_text() {
 	} else {
 		echo wp_kses_post( $text );
 		echo '<h2>' . esc_html__( 'Detailed documentation and examples', 'extensions-leaflet-map' ) . '</h2>';
-		echo '<p>' . sprintf(
+		echo '<p>' . wp_sprintf(
 			/* translators: %s are hrefs. */
 			esc_html__(
 				'in %1$sGerman%2$s and %3$sEnglish%4$s',

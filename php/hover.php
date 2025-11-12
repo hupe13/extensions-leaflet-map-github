@@ -14,11 +14,11 @@ function leafext_hover_params( $typ = '' ) {
 			'param'      => 'marker',
 			'desc'       => '<ul style="list-style-type:disc;margin-left:1em;">' .
 			/* translators: %s is an option. */
-			'<li><code>true</code> - ' . sprintf( __( 'show tooltip and hide %s if present', 'extensions-leaflet-map' ), '<em>title</em>' ) . '</li>' .
+			'<li><code>true</code> - ' . wp_sprintf( __( 'show tooltip and hide %s if present', 'extensions-leaflet-map' ), '<em>title</em>' ) . '</li>' .
 			/* translators: %s is an option. */
-			'<li><code>false</code> - ' . sprintf( __( 'do not show tooltip and hide %s', 'extensions-leaflet-map' ), '<em>title</em>' ) . '</li>' .
+			'<li><code>false</code> - ' . wp_sprintf( __( 'do not show tooltip and hide %s', 'extensions-leaflet-map' ), '<em>title</em>' ) . '</li>' .
 			/* translators: %s is an option. */
-			'<li><code>title</code> - ' . sprintf( __( 'do not show tooltip but show %s', 'extensions-leaflet-map' ), '<em>title</em>' ) . '</li>' .
+			'<li><code>title</code> - ' . wp_sprintf( __( 'do not show tooltip but show %s', 'extensions-leaflet-map' ), '<em>title</em>' ) . '</li>' .
 			'</ul>',
 			'default'    => true,
 			'values'     => 'true, false, title',
@@ -156,7 +156,7 @@ function leafext_hover_params( $typ = '' ) {
 		array(
 			'param'      => 'tolerance',
 			/* translators: %s is an option. */
-			'desc'       => sprintf( __( 'How much to extend click tolerance round an object on the map, only valid for %s', 'extensions-leaflet-map' ), 'leaflet-geojson, gpx, kml' ),
+			'desc'       => wp_sprintf( __( 'How much to extend click tolerance round an object on the map, only valid for %s', 'extensions-leaflet-map' ), 'leaflet-geojson, gpx, kml' ),
 			'default'    => 0,
 			'values'     => __( 'a number', 'extensions-leaflet-map' ),
 			'element'    => false,

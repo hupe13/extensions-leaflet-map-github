@@ -142,7 +142,7 @@ function leafext_placement_help_text() {
 		return $text;
 	} else {
 		/* translators: %s is code. */
-		$text = $text . '<p>' . sprintf( __( 'The parameter maxZoom has been removed, please use %s instead.', 'extensions-leaflet-map' ), '<code>[leaflet-map max_zoom="xx" ...]</code>' ) . '</p>';
+		$text = $text . '<p>' . wp_sprintf( __( 'The parameter maxZoom has been removed, please use %s instead.', 'extensions-leaflet-map' ), '<code>[leaflet-map max_zoom="xx" ...]</code>' ) . '</p>';
 		echo wp_kses_post( $text );
 	}
 }

@@ -13,7 +13,7 @@ function leafext_zoomhome_params() {
 	$params = array(
 		array(
 			'param'   => 'zoomInTitle',
-			'desc'    => sprintf(
+			'desc'    => wp_sprintf(
 				/* translators: %s is "zoom in". */
 				__( 'Tooltip text of the %s button', 'extensions-leaflet-map' ),
 				"'zoom in'"
@@ -22,7 +22,7 @@ function leafext_zoomhome_params() {
 		),
 		array(
 			'param'   => 'zoomOutTitle',
-			'desc'    => sprintf(
+			'desc'    => wp_sprintf(
 				/* translators: %s is "zoom out". */
 				__( 'Tooltip text of the %s button', 'extensions-leaflet-map' ),
 				"'zoom out'"

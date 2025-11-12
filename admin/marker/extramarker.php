@@ -105,7 +105,7 @@ function leafext_extramarker_help() {
 
 	$text = $text . '<h2>' . esc_html__( 'Options', 'extensions-leaflet-map' ) . '</h2>';
 
-	$text = $text . '<p>' . sprintf(
+	$text = $text . '<p>' . wp_sprintf(
 		/* translators: %1$s are options, %2$s is a link. */
 		esc_html__( 'You can also use some options like %1$s from %2$s.', 'extensions-leaflet-map' ),
 		'<code>title</code>, <code>draggable</code>, <code>opacity</code>',

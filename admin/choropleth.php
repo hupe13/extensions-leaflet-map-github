@@ -37,7 +37,7 @@ function leafext_choropleth_help() {
 	$text = $text . '</code></pre></p>';
 
 	$text = $text . '<h2>' . __( 'Popup Content', 'extensions-leaflet-map' ) . '</h2><p>';
-	$text = $text . sprintf(
+	$text = $text . wp_sprintf(
 		/* translators: %s is an example code. */
 		__( 'You can specify %s as you like.', 'extensions-leaflet-map' ),
 		'<code>Property1 {property1}&lt;br>{property2} Property2</code>'

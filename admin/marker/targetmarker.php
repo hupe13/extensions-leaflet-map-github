@@ -20,7 +20,7 @@ function leafext_targetmarker_help() {
 
 	$text .= '<p><ul>';
 	$text .= '<li>' . __( 'Jump to a marker in a map with many markers.', 'extensions-leaflet-map' ) . '</li>' . "\n";
-	$text .= '<li>' . sprintf(
+	$text .= '<li>' . wp_sprintf(
 		/* translators: %1$s is a leaflet-marker, %2$s is leaflet-extramarker, %3$s is Point */
 		__( 'Markers can be %1$s and %2$s or marker %3$s in geojson files.', 'extensions-leaflet-map' ),
 		'<code>leaflet-marker</code>',
@@ -47,7 +47,7 @@ function leafext_targetmarker_help() {
 
 	$text .= '<p><ul>';
 	/* translators: %1$s is a leaflet-marker, %2$s is leaflet-extramarker. */
-	$text .= '<li>' . sprintf( __( 'jump to %1$s or %2$s', 'extensions-leaflet-map' ), '<code>leaflet-marker</code>', '<code>leaflet-extramarker</code>' );
+	$text .= '<li>' . wp_sprintf( __( 'jump to %1$s or %2$s', 'extensions-leaflet-map' ), '<code>leaflet-marker</code>', '<code>leaflet-extramarker</code>' );
 	$text .= '<pre' . $codestyle . '><code' . $codestyle . '>';
 	$text .= '&#091;targetlink title=... ... ]' . "\n";
 	$text .= '</code></pre>' . "\n";
@@ -70,14 +70,14 @@ function leafext_targetmarker_help() {
 	$text .= '<li>' . __( 'required: one of these', 'extensions-leaflet-map' );
 	$text .= '<p><ul>';
 	$text .= '<li> title - <code>title</code> ';
-	$text .= sprintf(
+	$text .= wp_sprintf(
 		/* translators: %1$s is a leaflet-marker, %2$s is leaflet-extramarker. */
 		__( 'of the target %1$s or %2$s', 'extensions-leaflet-map' ),
 		'<code>leaflet-marker</code>',
 		'<code>leaflet-extramarker</code>'
 	) . '</li>' . "\n";
 	$text .= '<li> property, value - ' .
-	sprintf(
+	wp_sprintf(
 		/* translators: %1$s, %2$s are property and value. */
 		__( '%1$s and %2$s of the target geojson marker', 'extensions-leaflet-map' ),
 		'<code>property</code>',
@@ -90,7 +90,7 @@ function leafext_targetmarker_help() {
 	$text .= '<li>optional:';
 	$text .= '<p><ul>';
 	$text .= '<li> popup - ';
-	$text .= sprintf(
+	$text .= wp_sprintf(
 		/* translators: %1$s is title, %2$s is Target. */
 		__( 'popup content, if the target marker has not a popup text. Default: content of %1$s, if the marker has one or %2$s', 'extensions-leaflet-map' ),
 		'<code>title</code>',
@@ -100,7 +100,7 @@ function leafext_targetmarker_help() {
 	$text .= __( 'text of the link. Default:', 'extensions-leaflet-map' ) . ' "Target"</li>' . "\n";
 	$text .= '<li> link - ';
 	$text .= __( 'URL to the target page. Default: same page', 'extensions-leaflet-map' ) . '</li>' . "\n";
-	$text .= sprintf(
+	$text .= wp_sprintf(
 		'<li> mapid - '
 		/* translators: %1$s is "mapid", %2$s is "leaflet-map". */
 		. __( '%1$s from target map (see %2$s option %1$s). Default: current map', 'extensions-leaflet-map' ),
@@ -116,7 +116,7 @@ function leafext_targetmarker_help() {
 
 	$text .= '<h3>' . __( 'Options for query string', 'extensions-leaflet-map' ) . '</h3>' . "\n";
 
-	$text .= '<p>' . sprintf(
+	$text .= '<p>' . wp_sprintf(
 		/* translators: %s is styling */
 		__( 'This is the only way to link to a marker on your map from an %1$sexternal%2$s site.', 'extensions-leaflet-map' ),
 		'<b>',
@@ -153,7 +153,7 @@ function leafext_targetmarker_help() {
 
 	$text .= '<p><ul><li><code>fitbounds</code>, <code>zoomhomemap</code> ' . __( 'are required!', 'extensions-leaflet-map' ) . '</li>' . "\n";
 	$text .= '<li><code>title</code> ' .
-	sprintf(
+	wp_sprintf(
 		/* translators: %1$s is a targetmarker, %2$s is title. */
 		__( 'is required, if you use %1$s with option %2$s.', 'extensions-leaflet-map' ),
 		'<code>targetlink</code>',
@@ -162,7 +162,7 @@ function leafext_targetmarker_help() {
 
 	$text .= '<li><code>targetmarker</code> ' .
 	__( 'is required, if source page and target page are different.', 'extensions-leaflet-map' ) . ' ' .
-	sprintf(
+	wp_sprintf(
 		/* translators: %s is targetmarker. */
 		__( 'If the page is the same, %s does not need to be defined.', 'extensions-leaflet-map' ),
 		'<code>targetmarker</code>'
@@ -171,7 +171,7 @@ function leafext_targetmarker_help() {
 
 	$text .= '<li>' . __( 'The order of the shortcodes is fixed!', 'extensions-leaflet-map' );
 	$text .= ' <code>cluster - zoomhomemap - targetmarker</code>.</li>' . "\n";
-	$text .= '<li>' . sprintf(
+	$text .= '<li>' . wp_sprintf(
 		/* translators: %s is targetmarker. */
 		__( 'If you have more than one map on a page: %s may only appear exactly once and must be the last shortcode.', 'extensions-leaflet-map' ),
 		'<code>targetmarker</code>'
@@ -182,7 +182,7 @@ function leafext_targetmarker_help() {
 
 	$text .= '<p>' . __( 'All these options are optional.', 'extensions-leaflet-map' ) . '</p>' . "\n";
 	$text .= '<ul><li> popup - ';
-	$text .= sprintf(
+	$text .= wp_sprintf(
 		/* translators: %1$s is title, %2$s is Target. */
 		__(
 			'popup content, if the target marker has not a popup text. Default: content of %1$s, if the marker has one or %2$s',
@@ -207,13 +207,13 @@ function leafext_targetmarker_help() {
 	. '</p>' . "\n";
 	$text .= '<b>' . __( 'Priority:', 'extensions-leaflet-map' ) . '</b>' . "\n";
 	$text .= '<p><ol>' .
-	'<li>' . sprintf(
+	'<li>' . wp_sprintf(
 		/* translators: %1$s is zoom, %2$s is targetlink. */
 		__( '%1$s in querystring or in %2$s', 'extensions-leaflet-map' ),
 		'<code>zoom</code>',
 		'<code>targetlink</code>'
 	) . '</li>' . "\n" .
-	'<li>' . sprintf(
+	'<li>' . wp_sprintf(
 		/* translators: %1$s is zoom, %2$s is targetmarker. */
 		__( '%1$s in %2$s', 'extensions-leaflet-map' ),
 		'<code>zoom</code>',

@@ -43,7 +43,7 @@ function leafext_parentgroup_params() {
 		array(
 			'param'    => 'childs',
 			'desc'     => __( 'child names', 'extensions-leaflet-map' ),
-			'moredesc' => sprintf(
+			'moredesc' => wp_sprintf(
 				/* translators: %s is option groups. */
 				__( 'Comma separated group names. These are the same as in %s. If you have html tags there, you can omit these here', 'extensions-leaflet-map' ),
 				'<code>groups</code>'
@@ -69,7 +69,7 @@ function leafext_parentgroup_params() {
 			'param'    => 'closedsymbol',
 			'desc'     => __( 'Symbol displayed on a opened node (that you can click to close)', 'extensions-leaflet-map' ),
 			/* translators: %s is &lt;. */
-			'moredesc' => sprintf( __( "You can't use the character %s allone.", 'extensions-leaflet-map' ), '<code>&lt;</code>' ),
+			'moredesc' => wp_sprintf( __( "You can't use the character %s allone.", 'extensions-leaflet-map' ), '<code>&lt;</code>' ),
 			'default'  => '<i class="fas fa-chevron-right"></i>&nbsp; ',
 			'size'     => 50,
 		),

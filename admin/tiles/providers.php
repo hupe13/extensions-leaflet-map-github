@@ -112,12 +112,12 @@ function leafext_providers_help() {
 	"\n" .
 	'&#91;leaflet-map mapid="OSM"]' . "\n" .
 	'&#91;layerswitch mapids="hiking,OPNV" providers="WaymarkedTrails.hiking,OPNVKarte"]</code></pre><p>' .
-	sprintf(
+	wp_sprintf(
 		/* translators: %s is an option. */
 		__( 'The option %s is optional.', 'extensions-leaflet-map' ),
 		'<code>mapids</code>'
 	) . ' ' .
-	sprintf(
+	wp_sprintf(
 		/* translators: %s is an option. */
 		__( 'You can use the parameter %s also.', 'extensions-leaflet-map' ),
 		'<a href="' . $tileswitch . '"><code>tiles</code></a>'
@@ -125,7 +125,7 @@ function leafext_providers_help() {
 	'</p><p>' .
 	__( 'For a list of providers see', 'extensions-leaflet-map' ) .
 	' <a href="http://leaflet-extras.github.io/leaflet-providers/preview/">http://leaflet-extras.github.io/leaflet-providers/preview/</a>.'
-	. '</p>' . sprintf(
+	. '</p>' . wp_sprintf(
 		/* translators: %s is styling (bold). */
 		__( '%1$sPlease note%2$s (Quote from Leaflet Providers page):', 'extensions-leaflet-map' ),
 		'<b>',

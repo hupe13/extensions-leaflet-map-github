@@ -68,7 +68,7 @@ function leafext_overviewmap_params() {
 			'content' => '',
 			'default' => '75, 75',
 			/* translators: %s is popup. */
-			'values'  => sprintf( __( 'a comma separated pair of width and height in pixels. Only makes sense when you use the %s option.', 'extensions-leaflet-map' ), 'popup' ),
+			'values'  => wp_sprintf( __( 'a comma separated pair of width and height in pixels. Only makes sense when you use the %s option.', 'extensions-leaflet-map' ), 'popup' ),
 		),
 		array(
 			'param'   => 'show_category',
@@ -90,7 +90,7 @@ function leafext_overviewmap_params() {
 			'content' => '',
 			'default' => '',
 			'values'  => __( 'a comma separated list of category names, slugs or IDs', 'extensions-leaflet-map' ) . '. ' .
-				sprintf(
+				wp_sprintf(
 					/* translators: %s is "AND". */
 					__(
 						'If the list starts with %s, only pages / posts that are contained in all of them are displayed, otherwise those that are contained in at least one.',
@@ -102,7 +102,7 @@ function leafext_overviewmap_params() {
 		array(
 			'param'   => 'leaflet-extramarker',
 			/* translators: %s are "leaflet-marker" and "leaflet-extramarker". */
-			'desc'    => sprintf( __( 'Specify this, if there are no any marker information in custom fields and the icons appear as %1$s instead of %2$s.', 'extensions-leaflet-map' ), '<code>leaflet-marker</code>', '<code>leaflet-extramarker</code>' ),
+			'desc'    => wp_sprintf( __( 'Specify this, if there are no any marker information in custom fields and the icons appear as %1$s instead of %2$s.', 'extensions-leaflet-map' ), '<code>leaflet-marker</code>', '<code>leaflet-extramarker</code>' ),
 			'content' => '',
 			'default' => false,
 			'values'  => 'true / false',
@@ -124,7 +124,7 @@ function leafext_overviewmap_admin_params() {
 			'param'     => 'transients',
 			'shortdesc' => __( 'Use transients', 'extensions-leaflet-map' ),
 			/* translators: %s is "false". */
-			'desc'      => sprintf( __( 'Set this to %s, if you have trouble to get the right markers.', 'extensions-leaflet-map' ), '<code>false</code>' ),
+			'desc'      => wp_sprintf( __( 'Set this to %s, if you have trouble to get the right markers.', 'extensions-leaflet-map' ), '<code>false</code>' ),
 			'default'   => true,
 			'values'    => 1,
 		),

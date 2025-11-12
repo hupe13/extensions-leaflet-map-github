@@ -17,7 +17,7 @@ function leafext_help_listmarker() {
 	}
 
 	$text = '<h2>' . __( 'Listing markers in the map', 'extensions-leaflet-map' ) . '</h2>';
-	$text = $text . '<p>' . sprintf(
+	$text = $text . '<p>' . wp_sprintf(
 	/* translators: %1$s is "Leaflet Plugin", other is a href. */
 		__(
 			'My own %1$s based on the %2$swork%3$s of Stefano Cudini.',
@@ -31,7 +31,7 @@ function leafext_help_listmarker() {
 	__( 'Create Map', 'extensions-leaflet-map' ) .
 	'</h4><pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map ....]</code></pre>
 	<h4>';
-	$text = $text . sprintf(
+	$text = $text . wp_sprintf(
 		/* translators: $s are shortcodes and %2$s is an option. */
 		__(
 			'and markers with %1$s and %2$s option and / or %3$s',
@@ -85,7 +85,7 @@ function leafext_help_listmarker() {
 	$text = $text . leafext_html_table( $new ) . "\n";
 
 	$text = $text .
-	sprintf(
+	wp_sprintf(
 		/* translators: $s is an color statement and %2$s is the word css. */
 		__(
 			'To define the background color (default: %1$s) for the list in all your maps define %2$s in customizer or using another method:',

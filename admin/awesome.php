@@ -57,7 +57,7 @@ function leafext_help_awesome() {
 	} else {
 		$text = '';
 	}
-	$text = $text . '<p>' . sprintf(
+	$text = $text . '<p>' . wp_sprintf(
 		/* translators: %1$s is a link, %2$s is the plugin name,. */
 		esc_html__( 'This shortcode requires %1$s, version 6 is included in the plugin.', 'extensions-leaflet-map' ),
 		'<a href="https://fontawesome.com/download">Font Awesome</a>'
@@ -67,7 +67,7 @@ function leafext_help_awesome() {
 	$text .= __( 'If the check does not work for you, you can disable it so that your fonts are loaded.', 'extensions-leaflet-map' ) . '</p>';
 
 	if ( leafext_plugin_active( 'elementor' ) ) {
-		$text .= '<p>' . sprintf(
+		$text .= '<p>' . wp_sprintf(
 			/* translators: %1$s is Elentor, %2$s is the link to the bug. */
 			__( 'You are using %1$s, there is a %2$sbug%3$s.', 'extensions-leaflet-map' ),
 			'Elementor',
@@ -76,7 +76,7 @@ function leafext_help_awesome() {
 		) . '</p>';
 	}
 
-	$text .= '<p>' . sprintf(
+	$text .= '<p>' . wp_sprintf(
 		/* translators: %1$s is zoomhomemap, %2$s is leaflet-extramarker, %3$s parentgroup. */
 		__( 'This setting is valid for %1$s, %2$s and %3$s.', 'extensions-leaflet-map' ),
 		'<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=zoomhome"><code>zoomhomemap</code></a>',

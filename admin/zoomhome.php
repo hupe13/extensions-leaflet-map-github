@@ -133,7 +133,7 @@ function leafext_zoomhome_help_options() {
 
 function leafext_zoomhome_help_table() {
 	$text = '<h2>' .
-		sprintf(
+		wp_sprintf(
 			/* translators: %s is "fit". */
 			__( 'How the %s option works', 'extensions-leaflet-map' ),
 			'<code>fit</code>'

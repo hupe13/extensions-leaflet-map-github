@@ -35,7 +35,7 @@ function leafext_leafletsearch_help() {
 &#091;leaflet-search propertyName="..." ...]</code></pre>';
 
 	$text = $text . '</p><h3>' . esc_html__( 'Note', 'extensions-leaflet-map' ) . '</h3>';
-	$text = $text . '<p>' . sprintf(
+	$text = $text . '<p>' . wp_sprintf(
 		/* translators: %s are options. */
 		esc_html__( '%1$s must be before %2$s.', 'extensions-leaflet-map' ),
 		'<code>leaflet-search</code>',
@@ -65,7 +65,7 @@ function leafext_leafletsearch_help() {
 	}
 	$text = $text . leafext_html_table( $new );
 
-	$text = $text . '<p>' . sprintf(
+	$text = $text . '<p>' . wp_sprintf(
 		/* translators: %1$s and %2$s is a href, %3$s is an option */
 		esc_html__( 'See %1$sLeaflet Map Github page%2$s for more or less useful and possible options for %3$s.', 'extensions-leaflet-map' ),
 		'<a href="https://github.com/bozdoz/wp-plugin-leaflet-map#leaflet-marker">',
@@ -75,7 +75,7 @@ function leafext_leafletsearch_help() {
 
 	$text = $text . '<h3>' . esc_html__( 'Option', 'extensions-leaflet-map' ) . ' container</h3>';
 	/* translators: %s is a div element. */
-	$text = $text . '<p>' . sprintf( esc_html__( 'If you want the search field to be outside the map, define a div element with a custom html block on the post / page and give it an id. This id you then specify in option %s.', 'extensions-leaflet-map' ), 'container' ) . '</p>';
+	$text = $text . '<p>' . wp_sprintf( esc_html__( 'If you want the search field to be outside the map, define a div element with a custom html block on the post / page and give it an id. This id you then specify in option %s.', 'extensions-leaflet-map' ), 'container' ) . '</p>';
 	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&lt;div id="myId" style="height:3em; border:2px solid gray; width:200px;">&lt;/div></code></pre>';
 	$text = $text . '<p>' . esc_html__( 'Define some css:', 'extensions-leaflet-map' ) . '</p>';
 	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&lt;style>
@@ -90,7 +90,7 @@ function leafext_leafletsearch_help() {
 	$text = $text . do_shortcode( '[leaflet-marker lat=0.0 lng=0.0]Marker[/leaflet-marker]' );
 	$text = $text . do_shortcode( '[leaflet-search container=myId propertyName=popupContent textPlaceholder="M ..."]' );
 	$text = $text . '<p>' .
-	sprintf(
+	wp_sprintf(
 		/* translators: %s is an href. */
 		esc_html__( 'The specific style and css depends on your %1$stheme and taste%2$s', 'extensions-leaflet-map' ),
 		'<a href="https://leafext.de/leafletsearch/searchcontainer/">',
