@@ -183,7 +183,7 @@ function leafext_hover_params( $typ = '' ) {
 
 	if ( $typ !== '' ) {
 		foreach ( $params as $key => $value ) {
-			if ( ! $params[ $key ][ $typ ] ) {
+			if ( ! isset( $params[ $key ][ $typ ] ) ) {
 				unset( $params[ $key ] );
 			}
 		}
