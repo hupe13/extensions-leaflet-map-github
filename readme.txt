@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 6.9
-Stable tag: 4.8-251112
+Stable tag: 4.9-251114
 Requires at least: 6.3
 Requires PHP: 8.1
 License: GPLv2 or later
@@ -38,6 +38,6 @@ Many thanks to everyone who found errors and provided ideas for new functions.
 
 * XSS security issues resolved.
 * Plugin Check Plugin error: load_plugin_textdomain -> load_textdomain_mofile
-* PCP V 1.7.0 checks reviewed
+* PCP V 1.7.0 passed
 * Tested with WordPress 6.9
 * ready for ghu-update-puc
