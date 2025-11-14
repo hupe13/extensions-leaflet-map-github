@@ -1,9 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* XSS security issues resolved.
-* Plugin Check Plugin error: load_plugin_textdomain -> load_textdomain_mofile
-* PCP V 1.7.0 passed
-* Tested with WordPress 6.9
+* nothing
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
