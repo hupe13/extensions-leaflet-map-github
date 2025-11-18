@@ -45,7 +45,7 @@ function leafext_help_entries() {
 			'plugins'   => '',
 			'doku'      => '/doku/sgpxelevation/',
 			'kategorie' => '',
-			'examples'  => '/extra/category/sgpx/',
+			'examples'  => '/extra/categories/sgpx/',
 		),
 	);
 
@@ -122,7 +122,7 @@ function leafext_help_entries() {
 			'plugins'   => '',
 			'doku'      => '/doku/overviewmap/',
 			'kategorie' => '',
-			'examples'  => '/extra/category/overviewmap/',
+			'examples'  => '/extra/categories/overviewmap/',
 			'strpos'    => 'marker',
 		),
 		array(

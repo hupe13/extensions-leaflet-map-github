@@ -282,7 +282,7 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 		$mapids                      = array();
 		$providers                   = array();
 		$opacities                   = array();
-				$defined_tileservers = get_option( 'leafext_maps', array() );
+		$defined_tileservers         = get_option( 'leafext_maps', array() );
 		if ( is_array( $atts ) ) {
 			if ( array_key_exists( 'tiles', $atts ) && count( $defined_tileservers ) > 0 ) {
 				$only      = array();
