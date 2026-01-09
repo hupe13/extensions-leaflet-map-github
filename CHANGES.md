@@ -1,6 +1,8 @@
 # Differences to the Plugins WordPress version
 
-* nothing
+* PCP V 1.8.0 passed
+* new in multielevation: sort tracks in legend
+* new version leaflet-providers
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

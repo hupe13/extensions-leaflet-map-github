@@ -278,6 +278,26 @@
 						variant: 'stamen_toner_lite'
 					}
 				},
+				StamenTonerDark: {
+					options: {
+						attribution:
+							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
+							'&copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> ' +
+							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
+							'{attribution.OpenStreetMap}',
+						variant: 'stamen_toner_dark'
+					}
+				},
+				StamenTonerBlacklite: {
+					options: {
+						attribution:
+							'&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> ' +
+							'&copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> ' +
+							'&copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> ' +
+							'{attribution.OpenStreetMap}',
+						variant: 'stamen_toner_blacklite'
+					}
+				},
 				StamenWatercolor: {
 					url: 'https://tiles.stadiamaps.com/tiles/{variant}/{z}/{x}/{y}.{ext}',
 					options: {
@@ -616,7 +636,7 @@
 			url:
 				'https://maps.hereapi.com/v3/base/mc/' + // new base url for HERE maptile v3 api
 				'{z}/{x}/{y}/{format}?style={variant}&size={size}' + // slightly modified parameters
-				'&apiKey={app_id}&lg={language}', // replacing app-id with apikey
+				'&apiKey={apiKey}&lg={language}', // replacing app-id with apikey
 			options: {
 				attribution:
 					'Map &copy; 1987-' + new Date().getFullYear() + ' <a href="http://platform.here.com">HERE</a>',

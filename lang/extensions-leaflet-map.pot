@@ -11,7 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-08-14 16:16+0000\n"
+"POT-Creation-Date: 2026-01-09 20:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: extensions-leaflet-map\n"
@@ -869,7 +869,7 @@ msgid "does only work with gpx files"
 msgstr ""
 
 #. %s is a shortcode.
-#: admin/filemgr/managefiles-functions.php:264
+#: admin/filemgr/managefiles-functions.php:271
 #, php-format
 msgid "Don't forget to declare %s at last statement."
 msgstr ""
@@ -910,7 +910,7 @@ msgid ""
 "%s and are fixed."
 msgstr ""
 
-#: php/overview-map.php:580 admin/filemgr/managefiles-functions.php:201
+#: php/overview-map.php:580 admin/filemgr/managefiles-functions.php:208
 msgid "Edit"
 msgstr ""
 
@@ -930,8 +930,8 @@ msgstr ""
 msgid "Elevation Profiles"
 msgstr ""
 
-#: admin/elevation/multielevation.php:264
-#: admin/elevation/multielevation.php:268
+#: admin/elevation/multielevation.php:275
+#: admin/elevation/multielevation.php:279
 msgid "Elevation Theme"
 msgstr ""
 
@@ -1049,7 +1049,7 @@ msgstr ""
 msgid "For a list of providers see"
 msgstr ""
 
-#: admin/elevation/multielevation.php:273 admin/elevation/elevation.php:187
+#: admin/elevation/multielevation.php:284 admin/elevation/elevation.php:187
 #: admin/marker/markercluster.php:162 admin/hover/hover.php:116
 msgid "For boolean values applies"
 msgstr ""
@@ -1203,7 +1203,7 @@ msgstr ""
 msgid "Hide Markers"
 msgstr ""
 
-#: php/multielevation.php:56
+#: php/multielevation.php:68
 msgid "Highlight color"
 msgstr ""
 
@@ -1438,6 +1438,12 @@ msgid ""
 "Speed, Avg Pace only:"
 msgstr ""
 
+#. %s is an option.
+#: admin/elevation/multielevation.php:248
+#, php-format
+msgid "If the %s option is missed the tracks are unsorted."
+msgstr ""
+
 #: admin/awesome.php:67
 msgid ""
 "If the check does not work for you, you can disable it so that your fonts "
@@ -1515,7 +1521,7 @@ msgid ""
 msgstr ""
 
 #. %s are options.
-#: admin/elevation/multielevation.php:247
+#: admin/elevation/multielevation.php:258
 #, php-format
 msgid ""
 "If you use %1$s instead of %2$s, you get an elevation profile only with or "
@@ -1880,7 +1886,7 @@ msgstr ""
 msgid "It is enabled on both desktop and touch device by default."
 msgstr ""
 
-#: admin/filemgr/managefiles-functions.php:261
+#: admin/filemgr/managefiles-functions.php:268
 msgid ""
 "It is not checked whether the file contains a track with elevation data."
 msgstr ""
@@ -1900,7 +1906,7 @@ msgid ""
 "kml) and a track (elevation)."
 msgstr ""
 
-#: admin/filemgr/managefiles-functions.php:262
+#: admin/filemgr/managefiles-functions.php:269
 msgid "It works with gpx and kml files."
 msgstr ""
 
@@ -2033,7 +2039,7 @@ msgstr ""
 msgid "Manage Leaflet Map files"
 msgstr ""
 
-#: extensions-leaflet-map.php:125
+#: extensions-leaflet-map.php:128
 msgid "Manage plugins"
 msgstr ""
 
@@ -2150,7 +2156,7 @@ msgstr ""
 msgid "More options see"
 msgstr ""
 
-#: php/multielevation.php:418
+#: php/multielevation.php:430
 msgid "move mouse over a track or select one in control panel ..."
 msgstr ""
 
@@ -2210,7 +2216,7 @@ msgid "no"
 msgstr ""
 
 #. %s is an option.
-#: php/sgpx.php:144
+#: php/sgpx.php:143
 #, php-format
 msgid "No / Yes / Only, when %s is used, e.g. for testing."
 msgstr ""
@@ -2386,8 +2392,8 @@ msgstr ""
 #: admin.php:84 admin/zoomhome.php:114 admin/leaflet-search.php:45
 #: admin/choropleth.php:54 admin/elevation/multielevation.php:151
 #: admin/elevation/multielevation.php:209
-#: admin/elevation/multielevation.php:243
-#: admin/elevation/multielevation.php:271 admin/elevation/elevation.php:185
+#: admin/elevation/multielevation.php:254
+#: admin/elevation/multielevation.php:282 admin/elevation/elevation.php:185
 #: admin/marker/extramarker.php:106 admin/marker/placementstrategies.php:138
 #: admin/marker/markercluster.php:145 admin/marker/markercluster.php:181
 #: admin/marker/listmarker.php:61 admin/grouping/parentgroup.php:34
@@ -2499,7 +2505,7 @@ msgid "Please change this only, if you want to use your own theme."
 msgstr ""
 
 #. %s are plugin names.
-#: extensions-leaflet-map.php:121
+#: extensions-leaflet-map.php:124
 #, php-format
 msgid "Please install and activate %1$s before using %2$s."
 msgstr ""
@@ -2593,9 +2599,9 @@ msgid "Preparation"
 msgstr ""
 
 #: admin/filemgr/managefiles-functions.php:156
-#: admin/filemgr/managefiles-functions.php:200
-#: admin/filemgr/managefiles-functions.php:205
-#: admin/filemgr/managefiles-functions.php:217
+#: admin/filemgr/managefiles-functions.php:207
+#: admin/filemgr/managefiles-functions.php:212
+#: admin/filemgr/managefiles-functions.php:224
 msgid "Preview"
 msgstr ""
 
@@ -2646,7 +2652,7 @@ msgid "Render chart profiles as Canvas or SVG Paths."
 msgstr ""
 
 #. %s are shortcodes.
-#: php/sgpx.php:142
+#: php/sgpx.php:141
 #, php-format
 msgid "Replace %1$s with %2$s."
 msgstr ""
@@ -2934,6 +2940,10 @@ msgstr ""
 msgid "sometimes to first zoom"
 msgstr ""
 
+#: php/multielevation.php:39
+msgid "Sorting"
+msgstr ""
+
 #: admin/marker/targetmarker.php:30
 msgid "Source and target can be the same page or different pages."
 msgstr ""
@@ -2970,7 +2980,7 @@ msgstr ""
 msgid "substring from url to geojson, gpx, kml file"
 msgstr ""
 
-#: php/multielevation.php:39 admin/elevation/elevation.php:278
+#: php/multielevation.php:51 admin/elevation/elevation.php:278
 msgid "Summary"
 msgstr ""
 
@@ -3033,7 +3043,7 @@ msgstr ""
 msgid "The %s are case sensitive."
 msgstr ""
 
-#: php/multielevation.php:57
+#: php/multielevation.php:69
 msgid "The active track is displayed in this color."
 msgstr ""
 
@@ -3105,7 +3115,7 @@ msgid ""
 msgstr ""
 
 #. %s is styling.
-#: admin/elevation/multielevation.php:253
+#: admin/elevation/multielevation.php:264
 #, php-format
 msgid "The name of a %1$strack%2$s is determined as described above."
 msgstr ""
@@ -3210,7 +3220,7 @@ msgstr ""
 msgid "The syntax is not checked!"
 msgstr ""
 
-#: admin/elevation/multielevation.php:261
+#: admin/elevation/multielevation.php:272
 msgid "The theme is the same as the"
 msgstr ""
 
@@ -3358,11 +3368,11 @@ msgstr ""
 msgid "To reset all values to their defaults, simply click the Reset button"
 msgstr ""
 
-#: php/multielevation.php:100 php/elevation.php:551
+#: php/multielevation.php:112 php/elevation.php:551
 msgid "Toggle \"leaflet-almostover\" integration"
 msgstr ""
 
-#: php/multielevation.php:79 php/elevation.php:289
+#: php/multielevation.php:91 php/elevation.php:289
 msgid "Toggle \"leaflet-distance-markers\" integration"
 msgstr ""
 
@@ -3386,7 +3396,7 @@ msgstr ""
 msgid "Toggle custom waypoint icons"
 msgstr ""
 
-#: php/multielevation.php:89 php/elevation.php:299
+#: php/multielevation.php:101 php/elevation.php:299
 msgid "Toggle direction arrows"
 msgstr ""
 
@@ -3535,11 +3545,17 @@ msgid ""
 msgstr ""
 
 #. %s is an option.
-#: php/multielevation.php:42
+#: php/multielevation.php:54
 #, php-format
 msgid ""
 "Valid for %s: Only elevation profile with or without summary line will be "
 "displayed."
+msgstr ""
+
+#. %s is an option.
+#: php/multielevation.php:42
+#, php-format
+msgid "Valid for %s: Sort tracks in legend by name or by date."
 msgstr ""
 
 #: php/parentgroup.php:86
@@ -3558,7 +3574,7 @@ msgstr ""
 msgid "Values"
 msgstr ""
 
-#: admin/filemgr/managefiles-functions.php:206
+#: admin/filemgr/managefiles-functions.php:213
 msgid "View"
 msgstr ""
 
@@ -3669,13 +3685,13 @@ msgstr ""
 msgid "You are using %1$s, there is a %2$sbug%3$s."
 msgstr ""
 
-#: php/sgpx.php:182
+#: php/sgpx.php:181
 msgid ""
 "You are using the sgpx shortcode from plugin wp-gpx-maps. But the script "
 "cannot detect how to handle it. Please ask in the forum."
 msgstr ""
 
-#: php/sgpx.php:192
+#: php/sgpx.php:191
 msgid ""
 "You are using the sgpx shortcode from plugin wp-gpx-maps. wp-gpx-maps and "
 "leaflet-map don't work together."
@@ -3743,6 +3759,11 @@ msgstr ""
 
 #: admin/zoomhome.php:148
 msgid "You can set following and the Home button works as shown in the table."
+msgstr ""
+
+#: admin/elevation/multielevation.php:243
+#, php-format
+msgid "You can sort the tracks in legend by name or by date: %s or %s"
 msgstr ""
 
 #. %s is an example code.

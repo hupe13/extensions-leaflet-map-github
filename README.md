@@ -189,12 +189,11 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.9 / 251114
+### 4.9 / 2601xx
 
-* XSS security issues resolved.
-* Plugin Check Plugin error: load_plugin_textdomain -> load_textdomain_mofile
-* PCP V 1.7.0 passed
-* Tested with WordPress 6.9
+* PCP V 1.8.0 passed
+* new in multielevation: sort tracks in legend
+* new version leaflet-providers
 
 ### Previous
 

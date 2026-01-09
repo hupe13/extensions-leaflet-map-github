@@ -238,6 +238,17 @@ function leafext_multiele_help_text() {
 	'</li><li>' .
 	__( 'If this is not available, the filename (without extension) is used.', 'extensions-leaflet-map' ) .
 	'</li></ol>' .
+	'<li>' .
+	wp_sprintf(
+		__( 'You can sort the tracks in legend by name or by date: %s or %s', 'extensions-leaflet-map' ),
+	'<code>sort=name</code>',
+	 '<code>sort=date</code>. ') .
+	wp_sprintf(
+		/* translators: %s is an option. */
+		__( 'If the %s option is missed the tracks are unsorted.', 'extensions-leaflet-map' ),
+		'<code>sort</code>'
+	) .
+	'</li>' .
 	'</ul>' .
 
 	'<h3>' . __( 'Options', 'extensions-leaflet-map' ) . ' elevation-tracks</h3>

@@ -35,6 +35,18 @@ function leafext_multielevation_params( $typ = array( 'changeable' ) ) {
 			'typ'       => array( 'changeable', 'point', 'multielevation', 'tracks' ),
 		),
 		array(
+			'param'     => 'sort',
+			'shortdesc' => __( 'Sorting', 'extensions-leaflet-map' ),
+			'desc'      => wp_sprintf(
+				/* translators: %s is an option. */
+				__( 'Valid for %s: Sort tracks in legend by name or by date.', 'extensions-leaflet-map' ),
+				'<code>[multielevation]</code>'
+			),
+			'default'   => 'false',
+			'values'    => array( 'false', 'name', 'date' ),
+			'typ'       => array( 'changeable', 'multielevation' ),
+		),
+		array(
 			'param'     => 'summary',
 			'shortdesc' => __( 'Summary', 'extensions-leaflet-map' ),
 			'desc'      => wp_sprintf(
@@ -497,13 +509,24 @@ function leafext_multielevation_script( $leafext_all_files, $leafext_all_points,
 			legend_options: {
 				position: "topright",
 				collapsed: true,
+				<?php
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
+				if ( $multioptions['sort'] !== false ) {
+					echo 'sortLayers: true,';
+					if ( $multioptions['sort'] === 'name' ) {
+						echo 'sortFunction: (a, b) => a.options.name.toLocaleLowerCase() < b.options.name.toLocaleLowerCase() ? -1 : 1,';
+					} elseif ( $multioptions['sort'] === 'date' ) {
+						echo 'sortFunction: (a, b) => a.getLayers()[0].feature.properties.time < b.getLayers()[0].feature.properties.time ? -1 : 1,';
+					}
+				}
+				?>
 			},
 			<?php
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
 			echo leafext_java_params( $multioptions );
 			?>
 		});
-		//console.log(routes);
+		// console.log(routes);
 		routes.addTo(map);
 
 		L.Control.Elevation.prototype.__btnIcon = "<?php echo esc_url( LEAFEXT_ELEVATION_URL ); ?>/images/elevation.svg";
