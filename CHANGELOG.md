@@ -1,3 +1,9 @@
+### 4.10 / 2601xx
+
+* PCP V 1.8.0 passed
+* new in multielevation: sort tracks in legend
+* new version leaflet-providers
+
 ### 4.9 / 251114
 
 * XSS security issues resolved.

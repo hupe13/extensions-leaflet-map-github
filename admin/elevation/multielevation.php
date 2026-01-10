@@ -240,9 +240,11 @@ function leafext_multiele_help_text() {
 	'</li></ol>' .
 	'<li>' .
 	wp_sprintf(
-		__( 'You can sort the tracks in legend by name or by date: %s or %s', 'extensions-leaflet-map' ),
-	'<code>sort=name</code>',
-	 '<code>sort=date</code>. ') .
+		/* translators: %s are options. */
+		__( 'You can sort the tracks in legend by name or by date: %1$s or %2$s', 'extensions-leaflet-map' ),
+		'<code>sort=name</code>',
+		'<code>sort=date</code>. '
+	) .
 	wp_sprintf(
 		/* translators: %s is an option. */
 		__( 'If the %s option is missed the tracks are unsorted.', 'extensions-leaflet-map' ),

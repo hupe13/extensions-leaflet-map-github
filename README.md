@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, gpx, geojson, hover, marker   
 Tested up to: 6.9  
-Stable tag: 4.8    
+Stable tag: 4.9    
 Requires at least: 6.3     
 Requires PHP: 8.1     
 License: GPLv2 or later
@@ -189,7 +189,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.9 / 2601xx
+### 4.10 / 2601xx
 
 * PCP V 1.8.0 passed
 * new in multielevation: sort tracks in legend
