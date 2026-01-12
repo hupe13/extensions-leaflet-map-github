@@ -278,11 +278,11 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 	if ( $text !== '' ) {
 		return $text;
 	} else {
-		$tiles                       = array();
-		$mapids                      = array();
-		$providers                   = array();
-		$opacities                   = array();
-		$defined_tileservers         = get_option( 'leafext_maps', array() );
+		$tiles               = array();
+		$mapids              = array();
+		$providers           = array();
+		$opacities           = array();
+		$defined_tileservers = get_option( 'leafext_maps', array() );
 		if ( is_array( $atts ) ) {
 			if ( array_key_exists( 'tiles', $atts ) && count( $defined_tileservers ) > 0 ) {
 				$only      = array();

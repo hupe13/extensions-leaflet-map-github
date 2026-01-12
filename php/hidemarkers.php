@@ -21,7 +21,7 @@ function leafext_hidemarkers_function() {
 		window.WPLeafletMapPlugin.push(function () {
 			var map = window.WPLeafletMapPlugin.getCurrentMap();
 			map.eachLayer(function(layer) {
-				if (layer.options.type == "gpx" ) {
+				if ( layer.options.type == "gpx" || layer.options.type == "kml" ) {
 					//console.log("gpx");
 					layer.options.filter = function (geoJsonFeature) {
 						if (geoJsonFeature.geometry.type == "Point" ) {

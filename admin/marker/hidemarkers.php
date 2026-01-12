@@ -16,7 +16,14 @@ function leafext_help_hidemarkers() {
 		$codestyle = ' class="language-coffeescript"';
 	}
 	$text = '<h3>' . __( 'Hide Markers', 'extensions-leaflet-map' ) . '</h3>
-	<p>' . __( 'If a GPX track loaded with leaflet-gpx contains waypoints that you do not want to display', 'extensions-leaflet-map' ) . '.</p>
+	<p>' .
+	wp_sprintf(
+		/* translators: %s are shortcodes. */
+		__( 'If a track loaded with %1$s or %2$s contains waypoints that you do not want to display, hide them.', 'extensions-leaflet-map' ),
+		'<code>leaflet-gpx</code>',
+		'<code>leaflet-kml</code>'
+	)
+	. '.</p>
 	<pre' . $codestyle . '><code' . $codestyle . '>[leaflet-map ...]
 [leaflet-gpx src="//url/to/file.gpx" ... ]
 [hidemarkers]</code></pre>';
