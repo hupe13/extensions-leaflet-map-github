@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 6.9
-Stable tag: 4.9-260109
+Stable tag: 4.9-260112
 Requires at least: 6.3
 Requires PHP: 8.1
 License: GPLv2 or later
@@ -39,3 +39,4 @@ Many thanks to everyone who found errors and provided ideas for new functions.
 * PCP V 1.8.0 passed
 * new in multielevation: sort tracks in legend
 * new version leaflet-providers
+* hidemarkers supports leaflet-kml now

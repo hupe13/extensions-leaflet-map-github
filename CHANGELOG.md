@@ -3,6 +3,7 @@
 * PCP V 1.8.0 passed
 * new in multielevation: sort tracks in legend
 * new version leaflet-providers
+* hidemarkers supports leaflet-kml now
 
 ### 4.9 / 251114
 
