@@ -11,7 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-01-09 20:15+0000\n"
+"POT-Creation-Date: 2026-01-29 19:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: extensions-leaflet-map\n"
@@ -56,7 +56,7 @@ msgid "%1$s in querystring or in %2$s"
 msgstr ""
 
 #. %s are options.
-#: admin/overview-map.php:175
+#: admin/overviewmap/overview-map.php:175
 #, php-format
 msgid ""
 "%1$s is for icon filename required. The icons directory must be the same as "
@@ -117,7 +117,7 @@ msgstr ""
 msgid "(default) prepare the tracks for %s"
 msgstr ""
 
-#: php/overview-map.php:34 php/overview-map.php:36
+#: php/overview-map.php:40 php/overview-map.php:42
 msgid "(like shortcode without brackets)"
 msgstr ""
 
@@ -171,7 +171,7 @@ msgstr ""
 msgid "a comma separated list of any your defined %1$stile servers%2$s"
 msgstr ""
 
-#: php/overview-map.php:92
+#: php/overview-map.php:98
 msgid "a comma separated list of category names, slugs or IDs"
 msgstr ""
 
@@ -181,7 +181,7 @@ msgid ""
 msgstr ""
 
 #. %s is popup.
-#: php/overview-map.php:71
+#: php/overview-map.php:77
 #, php-format
 msgid ""
 "a comma separated pair of width and height in pixels. Only makes sense when "
@@ -426,7 +426,7 @@ msgid ""
 "the following options."
 msgstr ""
 
-#: admin/overview-map.php:127
+#: admin/overviewmap/overview-map.php:127
 msgid "categories"
 msgstr ""
 
@@ -576,7 +576,7 @@ msgid ""
 "container id to style the control panel (outside the map) with custom css"
 msgstr ""
 
-#: admin/overview-map.php:93
+#: admin/overviewmap/overview-map.php:93
 msgid "Content"
 msgstr ""
 
@@ -608,9 +608,13 @@ msgstr ""
 msgid "Create control list"
 msgstr ""
 
-#: admin/overview-map.php:81
+#: admin/overviewmap/featured-map.php:99
+msgid "Create following custom fields for the page / post:"
+msgstr ""
+
+#: admin/overviewmap/overview-map.php:81
 msgid ""
-"Create for every desired page or post the below mentioned customs fields."
+"Create for every desired page or post the below mentioned custom fields."
 msgstr ""
 
 #: admin/marker/markercluster.php:121 admin/marker/listmarker.php:31
@@ -625,7 +629,7 @@ msgstr ""
 msgid "Create one or more %s"
 msgstr ""
 
-#: php/overview-map.php:112
+#: php/overview-map.php:118
 msgid ""
 "Creates an overview table of posts / pages instead of markers to see any "
 "mistakes"
@@ -645,11 +649,19 @@ msgstr ""
 msgid "Current Settings"
 msgstr ""
 
-#: admin/overview-map.php:92
+#: admin/overviewmap/overview-map.php:92
 msgid "Custom field"
 msgstr ""
 
-#: admin/overview-map.php:85
+#: php/featured-map.php:16
+msgid "custom field name for lat and lng"
+msgstr ""
+
+#: php/featured-map.php:30
+msgid "custom field name of popup or popup content, default: no popup"
+msgstr ""
+
+#: admin/overviewmap/overview-map.php:85
 msgid "Custom fields"
 msgstr ""
 
@@ -669,7 +681,7 @@ msgstr ""
 
 #: php/elevation.php:619 php/elevation.php:632 php/elevation.php:657
 #: admin/zoomhome.php:118 admin/leaflet-search.php:52 admin/choropleth.php:59
-#: admin/overview-map.php:147 admin/elevation/waypoints.php:51
+#: admin/elevation/waypoints.php:51 admin/overviewmap/overview-map.php:147
 #: admin/marker/clustergroup.php:198 admin/marker/clustergroup.php:205
 #: admin/marker/extramarker.php:120 admin/marker/listmarker.php:68
 #: admin/grouping/featuregroup.php:302 admin/grouping/featuregroup.php:309
@@ -685,7 +697,7 @@ msgstr ""
 msgid "default color"
 msgstr ""
 
-#: php/overview-map.php:30
+#: php/overview-map.php:36
 msgid ""
 "Default is taken from the overviewmap shortcode or it is the blue marker "
 "icon."
@@ -699,15 +711,15 @@ msgstr ""
 msgid "Default Min Zoom"
 msgstr ""
 
-#: admin/overview-map.php:94
+#: admin/overviewmap/overview-map.php:94
 msgid "Default name"
 msgstr ""
 
-#: php/overview-map.php:45
+#: php/overview-map.php:51
 msgid "default popup content"
 msgstr ""
 
-#: admin/overview-map.php:111
+#: admin/overviewmap/overview-map.php:111
 msgid ""
 "Default popup content is taken from the overviewmap shortcode and is a set "
 "of title, permalink, categories, featured image."
@@ -726,6 +738,16 @@ msgstr ""
 
 #: admin/marker/targetmarker.php:222
 msgid "Default: actual zoom level of the map"
+msgstr ""
+
+#: php/featured-map.php:38
+msgid "Default: blue marker icon"
+msgstr ""
+
+#. %s is "leaflet-map"
+#: php/featured-map.php:66
+#, php-format
+msgid "Defaults from %1$s settings:"
 msgstr ""
 
 #: admin/leaflet-search.php:86
@@ -757,7 +779,7 @@ msgid "Demo and Documentation"
 msgstr ""
 
 #: admin/zoomhome.php:117 admin/leaflet-search.php:51 admin/choropleth.php:60
-#: admin/overview-map.php:145 admin/marker/extramarker.php:121
+#: admin/overviewmap/overview-map.php:145 admin/marker/extramarker.php:121
 #: admin/marker/listmarker.php:67 admin/hover/hover.php:64
 msgid "Description"
 msgstr ""
@@ -910,7 +932,7 @@ msgid ""
 "%s and are fixed."
 msgstr ""
 
-#: php/overview-map.php:580 admin/filemgr/managefiles-functions.php:208
+#: php/overview-map.php:625 admin/filemgr/managefiles-functions.php:208
 msgid "Edit"
 msgstr ""
 
@@ -918,7 +940,7 @@ msgstr ""
 msgid "either a comma or space separated pair of lat and lng"
 msgstr ""
 
-#: php/overview-map.php:32
+#: php/overview-map.php:38
 msgid "either a icon filename"
 msgstr ""
 
@@ -926,17 +948,25 @@ msgstr ""
 msgid "Elevation Profile"
 msgstr ""
 
-#: admin.php:163 admin/help.php:14
+#: admin.php:166 admin/help.php:14
 msgid "Elevation Profiles"
 msgstr ""
 
-#: admin/elevation/multielevation.php:275
-#: admin/elevation/multielevation.php:279
+#: admin/elevation/multielevation.php:277
+#: admin/elevation/multielevation.php:281
 msgid "Elevation Theme"
 msgstr ""
 
 #: admin/awesome.php:39
 msgid "enable (default)"
+msgstr ""
+
+#. %s are leaflet-marker, leaflet-extramarker, lat, lng
+#: php/featured-map.php:42
+#, php-format
+msgid ""
+"Enter here either the default icons custom field name or a shortcode for "
+"%1$s or %2$s without brackets and the options for %3$s and %4$s."
 msgstr ""
 
 #: admin/filemgr/filemgr.php:170
@@ -947,15 +977,15 @@ msgstr ""
 msgid "equidistant: divide the classes into equal groups."
 msgstr ""
 
-#: php/overview-map.php:421
+#: php/overview-map.php:466
 msgid "Error - no valid filename:"
 msgstr ""
 
-#: php/overview-map.php:569
+#: php/overview-map.php:614
 msgid "Error - please check overviewmap data: Some data are wrong."
 msgstr ""
 
-#: php/overview-map.php:377
+#: php/overview-map.php:422
 msgid "Error detecting lanlngs"
 msgstr ""
 
@@ -993,11 +1023,11 @@ msgid ""
 "map/\">Leaflet Map</a> with Leaflet Plugins and other functions."
 msgstr ""
 
-#: admin.php:31
+#: admin.php:32
 msgid "Extensions for Leaflet Map"
 msgstr ""
 
-#: admin.php:138
+#: admin.php:141
 msgid "Extensions for Leaflet Map - Help and Documentation"
 msgstr ""
 
@@ -1005,12 +1035,16 @@ msgstr ""
 msgid "Extensions for Leaflet Map Github Version"
 msgstr ""
 
-#: admin.php:30
+#: admin.php:31
 msgid "Extensions for Leaflet Map Options"
 msgstr ""
 
 #: admin/help.php:193 admin/tiles/layerswitch.php:13 admin/tiles/main.php:26
 msgid "Extra Tile Server"
+msgstr ""
+
+#: admin.php:198 admin/overviewmap/featured-map.php:79
+msgid "Featured Map"
 msgstr ""
 
 #: admin/filemgr/thickbox.php:34
@@ -1049,7 +1083,7 @@ msgstr ""
 msgid "For a list of providers see"
 msgstr ""
 
-#: admin/elevation/multielevation.php:284 admin/elevation/elevation.php:187
+#: admin/elevation/multielevation.php:286 admin/elevation/elevation.php:187
 #: admin/marker/markercluster.php:162 admin/hover/hover.php:116
 msgid "For boolean values applies"
 msgstr ""
@@ -1064,6 +1098,13 @@ msgstr ""
 
 #: admin/marker/geojsonmarker.php:141
 msgid "for grouping"
+msgstr ""
+
+#. %s are options and a link
+#: admin/overviewmap/featured-map.php:103
+#, php-format
+msgid ""
+"For latitude and longitude: %1$s and %2$s or %3$s like in %4$s (required)"
 msgstr ""
 
 #: php/overview-map.php:17
@@ -1082,15 +1123,30 @@ msgstr ""
 msgid "For overlapping markers see %1$s or %2$s."
 msgstr ""
 
+#. %s are options and a link
+#: admin/overviewmap/featured-map.php:111
+#, php-format
+msgid ""
+"For popup content: a custom field named %1$s or any other name (optional)"
+msgstr ""
+
 #: admin/filemgr/filemgr.php:260
 msgid "for showing all files of this directory on a map"
 msgstr ""
 
-#: php/overview-map.php:29
+#. %s are options and a link
+#: admin/overviewmap/featured-map.php:116
+#, php-format
+msgid ""
+"For the icon: a custom field with a shortcode for %1$s or %2$s, but without "
+"%3$s and %4$s and brackets (optional)"
+msgstr ""
+
+#: php/overview-map.php:35
 msgid "for the marker icon, optional."
 msgstr ""
 
-#: php/overview-map.php:43
+#: php/overview-map.php:49
 msgid "for the popup content, optional."
 msgstr ""
 
@@ -1098,7 +1154,7 @@ msgstr ""
 msgid "Found an issue? Do you have a question?"
 msgstr ""
 
-#: admin.php:199 admin/fullscreen.php:18 admin/help.php:210
+#: admin.php:206 admin/fullscreen.php:18 admin/help.php:210
 msgid "Fullscreen"
 msgstr ""
 
@@ -1118,7 +1174,11 @@ msgstr ""
 msgid "Generated Javascript"
 msgstr ""
 
-#: admin/overview-map.php:78
+#: admin/overviewmap/featured-map.php:82
+msgid "Generates a map from geo information in pages and posts."
+msgstr ""
+
+#: admin/overviewmap/overview-map.php:78
 msgid ""
 "Generates an overview map with geo positions provided in the pages and posts."
 msgstr ""
@@ -1127,7 +1187,7 @@ msgstr ""
 msgid "Geojson GeometryCollections do not (yet) work in all senses."
 msgstr ""
 
-#: admin.php:203 admin/help.php:219 admin/gesture.php:13
+#: admin.php:210 admin/help.php:219 admin/gesture.php:13
 msgid "Gesture Handling"
 msgstr ""
 
@@ -1151,7 +1211,7 @@ msgstr ""
 msgid "Group elements and dynamically add/remove from map"
 msgstr ""
 
-#: admin.php:173 admin/help.php:153
+#: admin.php:176 admin/help.php:153
 msgid "Grouping by options and features"
 msgstr ""
 
@@ -1167,7 +1227,7 @@ msgstr ""
 msgid "Height of the chart"
 msgstr ""
 
-#: admin.php:147
+#: admin.php:150
 msgid "Help"
 msgstr ""
 
@@ -1219,7 +1279,7 @@ msgstr ""
 msgid "Hovering"
 msgstr ""
 
-#: admin.php:186 admin/help.php:240
+#: admin.php:189 admin/help.php:240
 msgid "Hovering and Tooltips"
 msgstr ""
 
@@ -1366,10 +1426,12 @@ msgstr ""
 msgid "If (!detached) width of the chart"
 msgstr ""
 
-#: admin/marker/hidemarkers.php:19
+#. %s are shortcodes.
+#: admin/marker/hidemarkers.php:22
+#, php-format
 msgid ""
-"If a GPX track loaded with leaflet-gpx contains waypoints that you do not "
-"want to display"
+"If a track loaded with %1$s or %2$s contains waypoints that you do not want "
+"to display, hide them."
 msgstr ""
 
 #: php/hover.php:140
@@ -1382,7 +1444,7 @@ msgstr ""
 msgid "If empty, no entry is created."
 msgstr ""
 
-#: admin/overview-map.php:162
+#: admin/overviewmap/overview-map.php:162
 msgid ""
 "If it does not work as expected, see the developer console of your browser."
 msgstr ""
@@ -1439,7 +1501,7 @@ msgid ""
 msgstr ""
 
 #. %s is an option.
-#: admin/elevation/multielevation.php:248
+#: admin/elevation/multielevation.php:250
 #, php-format
 msgid "If the %s option is missed the tracks are unsorted."
 msgstr ""
@@ -1451,7 +1513,7 @@ msgid ""
 msgstr ""
 
 #. %s is "AND".
-#: php/overview-map.php:95
+#: php/overview-map.php:101
 #, php-format
 msgid ""
 "If the list starts with %s, only pages / posts that are contained in all of "
@@ -1521,7 +1583,7 @@ msgid ""
 msgstr ""
 
 #. %s are options.
-#: admin/elevation/multielevation.php:258
+#: admin/elevation/multielevation.php:260
 #, php-format
 msgid ""
 "If you use %1$s instead of %2$s, you get an elevation profile only with or "
@@ -2034,12 +2096,12 @@ msgstr ""
 msgid "Makes multiple tile layers transparent."
 msgstr ""
 
-#: admin.php:153 admin.php:157 admin/help.php:259 admin/help.php:261
+#: admin.php:156 admin.php:160 admin/help.php:259 admin/help.php:261
 #: admin/help.php:262 admin/filemgr/main.php:27
 msgid "Manage Leaflet Map files"
 msgstr ""
 
-#: extensions-leaflet-map.php:128
+#: extensions-leaflet-map.php:129
 msgid "Manage plugins"
 msgstr ""
 
@@ -2086,7 +2148,7 @@ msgstr ""
 msgid "Marker with icon"
 msgstr ""
 
-#: admin.php:168
+#: admin.php:171
 msgid "Markers and Icons"
 msgstr ""
 
@@ -2156,11 +2218,11 @@ msgstr ""
 msgid "More options see"
 msgstr ""
 
-#: php/multielevation.php:430
+#: php/multielevation.php:431
 msgid "move mouse over a track or select one in control panel ..."
 msgstr ""
 
-#: php/overview-map.php:303
+#: php/overview-map.php:341
 msgid "Multiple custom fields with the same name"
 msgstr ""
 
@@ -2225,7 +2287,7 @@ msgstr ""
 msgid "no files"
 msgstr ""
 
-#: php/overview-map.php:643
+#: php/overview-map.php:688
 msgid "no leaflet-marker custom fields"
 msgstr ""
 
@@ -2315,7 +2377,7 @@ msgstr ""
 msgid "opacity of the colors in scale"
 msgstr ""
 
-#: php/overview-map.php:82
+#: php/overview-map.php:88
 msgid "Open page, post or category links in a new tab"
 msgstr ""
 
@@ -2324,7 +2386,7 @@ msgstr ""
 msgid "Option"
 msgstr ""
 
-#: admin/overview-map.php:95
+#: admin/overviewmap/overview-map.php:95
 msgid "Option to change"
 msgstr ""
 
@@ -2373,7 +2435,7 @@ msgstr ""
 msgid "optional: %s - tiles control collapsed or not:"
 msgstr ""
 
-#: admin/overview-map.php:82
+#: admin/overviewmap/overview-map.php:82
 msgid "Optional: Create a featured image for page or post."
 msgstr ""
 
@@ -2383,22 +2445,27 @@ msgstr ""
 msgid "Optional: Create one or more %s"
 msgstr ""
 
-#: admin/overview-map.php:83
+#: admin/overviewmap/overview-map.php:83
 msgid ""
 "Optional: Place the page or post in one or more categories or tag it. The "
 "word \"category\" in this documentation means category or tag."
 msgstr ""
 
-#: admin.php:84 admin/zoomhome.php:114 admin/leaflet-search.php:45
+#: admin.php:85 admin/zoomhome.php:114 admin/leaflet-search.php:45
 #: admin/choropleth.php:54 admin/elevation/multielevation.php:151
 #: admin/elevation/multielevation.php:209
-#: admin/elevation/multielevation.php:254
-#: admin/elevation/multielevation.php:282 admin/elevation/elevation.php:185
-#: admin/marker/extramarker.php:106 admin/marker/placementstrategies.php:138
-#: admin/marker/markercluster.php:145 admin/marker/markercluster.php:181
-#: admin/marker/listmarker.php:61 admin/grouping/parentgroup.php:34
-#: admin/hover/hoverlap.php:43 admin/hover/hover.php:56
+#: admin/elevation/multielevation.php:256
+#: admin/elevation/multielevation.php:284 admin/elevation/elevation.php:185
+#: admin/overviewmap/featured-map.php:127 admin/marker/extramarker.php:106
+#: admin/marker/placementstrategies.php:138 admin/marker/markercluster.php:145
+#: admin/marker/markercluster.php:181 admin/marker/listmarker.php:61
+#: admin/grouping/parentgroup.php:34 admin/hover/hoverlap.php:43
+#: admin/hover/hover.php:56
 msgid "Options"
+msgstr ""
+
+#: php/featured-map.php:63
+msgid "options"
 msgstr ""
 
 #: admin/marker/targetmarker.php:67
@@ -2413,11 +2480,11 @@ msgstr ""
 msgid "Options for grouping markers (points) in leaflet-geojson"
 msgstr ""
 
-#: admin/overview-map.php:164
+#: admin/overviewmap/overview-map.php:164
 msgid "Options for marker"
 msgstr ""
 
-#: admin/overview-map.php:139
+#: admin/overviewmap/overview-map.php:139
 msgid "Options for overviewmap"
 msgstr ""
 
@@ -2425,7 +2492,7 @@ msgstr ""
 msgid "Options for query string"
 msgstr ""
 
-#: php/overview-map.php:20 php/overview-map.php:33 php/overview-map.php:35
+#: php/overview-map.php:20 php/overview-map.php:39 php/overview-map.php:41
 #: admin/marker/clustergroup.php:95 admin/marker/clustergroup.php:156
 msgid "or"
 msgstr ""
@@ -2456,8 +2523,12 @@ msgstr ""
 msgid "Or set this in the %1$selevation settings%2$s."
 msgstr ""
 
-#: php/overview-map.php:47
+#: php/overview-map.php:53
 msgid "or the name of the popup custom field"
+msgstr ""
+
+#: php/overview-map.php:21
+msgid "or the word"
 msgstr ""
 
 #: admin/elevation/elevation.php:356
@@ -2472,7 +2543,7 @@ msgstr ""
 msgid "Overview"
 msgstr ""
 
-#: admin.php:191 admin/help.php:119 admin/overview-map.php:75
+#: admin.php:194 admin/help.php:119 admin/overviewmap/overview-map.php:75
 msgid "Overview Map"
 msgstr ""
 
@@ -2505,7 +2576,7 @@ msgid "Please change this only, if you want to use your own theme."
 msgstr ""
 
 #. %s are plugin names.
-#: extensions-leaflet-map.php:124
+#: extensions-leaflet-map.php:125
 #, php-format
 msgid "Please install and activate %1$s before using %2$s."
 msgstr ""
@@ -2530,9 +2601,9 @@ msgstr ""
 msgid "Please select"
 msgstr ""
 
-#: admin/overview-map.php:42 admin/gesture.php:43
-#: admin/elevation/multielevation.php:81 admin/elevation/multielevation.php:95
-#: admin/elevation/sgpx.php:43 admin/elevation/elevation.php:61
+#: admin/gesture.php:43 admin/elevation/multielevation.php:81
+#: admin/elevation/multielevation.php:95 admin/elevation/sgpx.php:43
+#: admin/elevation/elevation.php:61 admin/overviewmap/overview-map.php:42
 #: admin/marker/placementstrategies.php:61 admin/marker/markercluster.php:57
 #: admin/filemgr/filemgr-settings.php:99 admin/grouping/settings.php:56
 #: admin/hover/settings.php:51
@@ -2586,7 +2657,7 @@ msgstr ""
 msgid "possible meaningful values"
 msgstr ""
 
-#: admin/overview-map.php:148
+#: admin/overviewmap/overview-map.php:148
 msgid "Possible values"
 msgstr ""
 
@@ -2594,7 +2665,7 @@ msgstr ""
 msgid "Post it to the support forum"
 msgstr ""
 
-#: admin/overview-map.php:79
+#: admin/overviewmap/featured-map.php:83 admin/overviewmap/overview-map.php:79
 msgid "Preparation"
 msgstr ""
 
@@ -2681,17 +2752,17 @@ msgstr ""
 msgid "required: one of these"
 msgstr ""
 
-#: admin.php:91 admin/elevation/main.php:75 admin/elevation/main.php:104
+#: admin.php:92 admin/elevation/main.php:75 admin/elevation/main.php:104
 #: admin/elevation/main.php:117 admin/elevation/main.php:163
-#: admin/elevation/main.php:178 admin/marker/placementstrategies.php:22
-#: admin/marker/markercluster.php:22 admin/filemgr/filemgr.php:249
-#: admin/filemgr/main.php:62 admin/grouping/settings.php:95
-#: admin/hover/settings.php:93 admin/tiles/main.php:73
-#: admin/tiles/providers.php:168
+#: admin/elevation/main.php:178 admin/overviewmap/featured-map.php:24
+#: admin/marker/placementstrategies.php:22 admin/marker/markercluster.php:22
+#: admin/filemgr/filemgr.php:249 admin/filemgr/main.php:62
+#: admin/grouping/settings.php:95 admin/hover/settings.php:93
+#: admin/tiles/main.php:73 admin/tiles/providers.php:168
 msgid "Reset"
 msgstr ""
 
-#: admin.php:195 admin/help.php:201
+#: admin.php:202 admin/help.php:201
 msgid "Reset the map"
 msgstr ""
 
@@ -2712,7 +2783,7 @@ msgstr ""
 msgid "Scroll Wheel Zoom"
 msgstr ""
 
-#: admin.php:177 admin/help.php:171
+#: admin.php:180 admin/help.php:171
 msgid "Search markers/features"
 msgstr ""
 
@@ -2730,8 +2801,15 @@ msgstr ""
 msgid "Search..."
 msgstr ""
 
+#. %s are "overviewmap" and "codex".
+#: php/featured-map.php:19
+#, php-format
+msgid "see %1$s, default: %2$s"
+msgstr ""
+
 #. %s is an href.
-#: admin/overview-map.php:184
+#: admin/overviewmap/featured-map.php:146
+#: admin/overviewmap/overview-map.php:184
 #, php-format
 msgid "See %1$sexamples%2$s."
 msgstr ""
@@ -2784,12 +2862,12 @@ msgstr ""
 msgid "Select %1$s to interpret the %2$s parameters as %3$s."
 msgstr ""
 
-#: php/overview-map.php:89
+#: php/overview-map.php:95
 msgid "Select only pages / posts from these categories"
 msgstr ""
 
 #. %s is "false".
-#: php/overview-map.php:127
+#: php/overview-map.php:133
 #, php-format
 msgid "Set this to %s, if you have trouble to get the right markers."
 msgstr ""
@@ -2798,7 +2876,7 @@ msgstr ""
 msgid "Setting"
 msgstr ""
 
-#: extensions-leaflet-map.php:98 admin/elevation/waypoints.php:266
+#: extensions-leaflet-map.php:99 admin/elevation/waypoints.php:266
 #: admin/filemgr/filemgr-settings.php:50 admin/tiles/layerswitch.php:163
 #: admin/tiles/providers.php:150
 msgid "Settings"
@@ -2831,7 +2909,7 @@ msgstr ""
 msgid "Shortcodes on target map"
 msgstr ""
 
-#: php/overview-map.php:75
+#: php/overview-map.php:81
 msgid "Show a link to category page"
 msgstr ""
 
@@ -2873,7 +2951,7 @@ msgstr ""
 msgid "show or hide popup when position found"
 msgstr ""
 
-#: php/overview-map.php:60
+#: php/overview-map.php:66
 msgid "Show page / post featured image"
 msgstr ""
 
@@ -2914,7 +2992,7 @@ msgstr ""
 msgid "Site Language or Browser Language"
 msgstr ""
 
-#: php/overview-map.php:67
+#: php/overview-map.php:73
 msgid "Size of featured image"
 msgstr ""
 
@@ -2952,8 +3030,17 @@ msgstr ""
 msgid "specify a short string as parameter, if the popup is too big."
 msgstr ""
 
+#. %s are leaflet-marker, leaflet-extramarker, lat, lng
+#: php/featured-map.php:52
+#, php-format
+msgid ""
+"Specify in %1$s shortcode either the icons custom field name or %2$s "
+"respectively %3$s and all options for the marker shortcode as usual but "
+"without %4$s and %5$s."
+msgstr ""
+
 #. %s are "leaflet-marker" and "leaflet-extramarker".
-#: php/overview-map.php:105
+#: php/overview-map.php:111
 #, php-format
 msgid ""
 "Specify this, if there are no any marker information in custom fields and "
@@ -2996,7 +3083,7 @@ msgstr ""
 msgid "Switch Track on and off"
 msgstr ""
 
-#: admin.php:181 admin/help.php:180
+#: admin.php:184 admin/help.php:180
 msgid "Switching Tile Servers"
 msgstr ""
 
@@ -3048,12 +3135,12 @@ msgid "The active track is displayed in this color."
 msgstr ""
 
 #. %1$s is "leaflet-marker"
-#: admin/overview-map.php:114
+#: admin/overviewmap/overview-map.php:114
 #, php-format
 msgid "The content of the popup custom field is like the popup in %1$s."
 msgstr ""
 
-#: admin/overview-map.php:87
+#: admin/overviewmap/overview-map.php:87
 msgid ""
 "The custom fields names are as you like. You can these specify in "
 "overviewmap options."
@@ -3086,7 +3173,7 @@ msgid ""
 "trivial. If you can't configure something, ask in the forum."
 msgstr ""
 
-#: admin/overview-map.php:126
+#: admin/overviewmap/overview-map.php:126
 msgid "the featured image"
 msgstr ""
 
@@ -3115,7 +3202,7 @@ msgid ""
 msgstr ""
 
 #. %s is styling.
-#: admin/elevation/multielevation.php:264
+#: admin/elevation/multielevation.php:266
 #, php-format
 msgid "The name of a %1$strack%2$s is determined as described above."
 msgstr ""
@@ -3126,7 +3213,7 @@ msgstr ""
 msgid "The name of a %1$strack%2$s is determined in this order:"
 msgstr ""
 
-#: php/overview-map.php:46
+#: php/overview-map.php:52
 msgid "the name of custom field is"
 msgstr ""
 
@@ -3220,11 +3307,11 @@ msgstr ""
 msgid "The syntax is not checked!"
 msgstr ""
 
-#: admin/elevation/multielevation.php:272
+#: admin/elevation/multielevation.php:274
 msgid "The theme is the same as the"
 msgstr ""
 
-#: admin/overview-map.php:125
+#: admin/overviewmap/overview-map.php:125
 msgid "the title"
 msgstr ""
 
@@ -3244,7 +3331,7 @@ msgstr ""
 msgid "The URL can be link to a page on your website or to a remote one."
 msgstr ""
 
-#: admin/overview-map.php:124
+#: admin/overviewmap/overview-map.php:124
 msgid "the url to the page / post"
 msgstr ""
 
@@ -3268,12 +3355,26 @@ msgstr ""
 msgid "Theme Colors"
 msgstr ""
 
+#. %s are "geo_latitude" and "geo_longitude".
+#: php/overview-map.php:24
+#, php-format
+msgid "Then the page/post must have the custom fields %1$s and %2$s."
+msgstr ""
+
 #. %s are shortcodes.
 #: admin/grouping/featuregroup.php:40
 #, php-format
 msgid ""
 "There are three shortcodes: %1$s to group elements by options%2$s to group "
 "elements by properties%3$s to display groups in a tree view"
+msgstr ""
+
+#. %s are link and options
+#: admin/overviewmap/featured-map.php:87
+#, php-format
+msgid ""
+"There is a %1$s for %2$s. It defines 4 meta keys, this shortcode uses 3: "
+"%3$s and %4$s."
 msgstr ""
 
 #. %s is styling
@@ -3535,7 +3636,7 @@ msgstr ""
 msgid "Use the %1$sdirectory listing%2$s for simplicity."
 msgstr ""
 
-#: php/overview-map.php:125 php/overview-map.php:193
+#: php/overview-map.php:131 php/overview-map.php:198
 msgid "Use transients"
 msgstr ""
 
@@ -3703,14 +3804,22 @@ msgstr ""
 msgid "You can also use some options like %1$s from %2$s."
 msgstr ""
 
+#. %s is link
+#: admin/overviewmap/featured-map.php:95
+#, php-format
+msgid ""
+"You can also use the custom fields you defined for %s for the Featured Map."
+msgstr ""
+
 #. %s is an option.
 #: php/elevation.php:113
 #, php-format
 msgid "You can always toggle the charts individually by clicking on %s."
 msgstr ""
 
-#: admin/elevation/elevation.php:40 admin/marker/placementstrategies.php:56
-#: admin/marker/markercluster.php:53 admin/hover/settings.php:49
+#: admin/elevation/elevation.php:40 admin/overviewmap/featured-map.php:54
+#: admin/marker/placementstrategies.php:56 admin/marker/markercluster.php:53
+#: admin/hover/settings.php:49
 msgid "You can change it for each map with"
 msgstr ""
 
@@ -3761,9 +3870,10 @@ msgstr ""
 msgid "You can set following and the Home button works as shown in the table."
 msgstr ""
 
-#: admin/elevation/multielevation.php:243
+#. %s are options.
+#: admin/elevation/multielevation.php:244
 #, php-format
-msgid "You can sort the tracks in legend by name or by date: %s or %s"
+msgid "You can sort the tracks in legend by name or by date: %1$s or %2$s"
 msgstr ""
 
 #. %s is an example code.
@@ -3796,7 +3906,7 @@ msgid ""
 msgstr ""
 
 #. %1$s a link to ACF plugin.
-#: admin/overview-map.php:119
+#: admin/overviewmap/overview-map.php:119
 #, php-format
 msgid "You can use an %1$s also."
 msgstr ""
@@ -3805,13 +3915,19 @@ msgstr ""
 msgid "You can use any css describing the waypoint."
 msgstr ""
 
+#. %s is a shortcode.
+#: php/featured-map.php:72
+#, php-format
+msgid "You can use following options from %s here and in shortcode:"
+msgstr ""
+
 #: admin/grouping/featuregroup.php:109
 msgid ""
 "You can use iconclass to group, regardless of whether they affect the "
 "appearance of the icon or not."
 msgstr ""
 
-#: admin/overview-map.php:122
+#: admin/overviewmap/overview-map.php:122
 msgid "You can use strings in curly brackets to substitute the values:"
 msgstr ""
 
@@ -3822,7 +3938,7 @@ msgid "You can use the parameter %s also."
 msgstr ""
 
 #. %s is a shortcode.
-#: admin/overview-map.php:167
+#: admin/overviewmap/overview-map.php:167
 #, php-format
 msgid "You can use these in the custom field for the icon and in shortcode %s."
 msgstr ""

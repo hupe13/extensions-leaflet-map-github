@@ -15,7 +15,8 @@ require LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/tiles/main.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/filemgr/main.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/hover/main.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/overview-map.php';
+require LEAFEXT_PLUGIN_DIR . '/admin/overviewmap/overview-map.php';
+require LEAFEXT_PLUGIN_DIR . '/admin/overviewmap/featured-map.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/grouping/main.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/awesome.php';
 require LEAFEXT_PLUGIN_DIR . '/admin/zoomhome.php';
@@ -130,6 +131,8 @@ function leafext_do_page() {
 			submit_button();
 		}
 		echo '</form>';
+	} elseif ( $active_tab === 'featuredmap' ) {
+		leafext_featuredmap_admin();
 	}
 }
 
@@ -189,6 +192,10 @@ function leafext_admin_tabs() {
 		array(
 			'tab'   => 'overviewmap',
 			'title' => __( 'Overview Map', 'extensions-leaflet-map' ),
+		),
+		array(
+			'tab'   => 'featuredmap',
+			'title' => __( 'Featured Map', 'extensions-leaflet-map' ),
 		),
 		array(
 			'tab'   => 'zoomhome',

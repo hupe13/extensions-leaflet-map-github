@@ -189,12 +189,10 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.10 / 2601xx
+### 4.11 / 260xxx
 
-* PCP V 1.8.0 passed
-* new in multielevation: sort tracks in legend
-* new version leaflet-providers
-* hidemarkers supports leaflet-kml now
+* new shortcode - featured-map: Generates a map from geo information in pages and posts.
+* fixed small things in overviewmap
 
 ### Previous
 

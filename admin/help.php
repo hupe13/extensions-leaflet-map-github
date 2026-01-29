@@ -116,6 +116,16 @@ function leafext_help_entries() {
 	$table[ __( 'More Functions for Markers', 'extensions-leaflet-map' ) ] = array(
 		'menu' => __( 'More for Markers', 'extensions-leaflet-map' ),
 		array(
+			'function'  => __( 'Featured Map', 'extensions-leaflet-map' ),
+			'shortcode' => 'featured-map',
+			'tab'       => 'featuredmap',
+			'plugins'   => '',
+			'doku'      => '/doku/featuredmap/',
+			'kategorie' => '',
+			'examples'  => '/extra/categories/featuredmap/',
+			'strpos'    => 'marker',
+		),
+		array(
 			'function'  => __( 'Overview Map', 'extensions-leaflet-map' ),
 			'shortcode' => 'overviewmap',
 			'tab'       => 'overviewmap',

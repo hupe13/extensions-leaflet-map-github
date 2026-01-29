@@ -1,3 +1,8 @@
+### 4.11 / 260xxx
+
+* new shortcode - featured-map: Generates a map from geo information in pages and posts.
+* fixed small things in overviewmap
+
 ### 4.10 / 2601xx
 
 * PCP V 1.8.0 passed

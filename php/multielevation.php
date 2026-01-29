@@ -365,6 +365,7 @@ function leafext_multielevation( $atts, $content, $shortcode ) {
 			}
 			$multioptions['distanceMarkers']         = false;
 			$multioptions['distanceMarkers_options'] = 'false';
+			$multioptions['sort']                    = false;
 		}
 
 		if ( $shortcode === 'multielevation' ) {

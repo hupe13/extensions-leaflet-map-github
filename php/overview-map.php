@@ -18,8 +18,14 @@ function leafext_overviewmap_settings() {
 			'content' => '<ul>' .
 			'<li>' . __( 'either a comma or space separated pair of lat and lng', 'extensions-leaflet-map' ) . '</li>' .
 			'<li>' . __( 'or', 'extensions-leaflet-map' ) . ' <code>lat=... lng=...</code> ' . __( 'like in', 'extensions-leaflet-map' ) . ' leaflet-marker</li>' .
-			// '<li>'.' <s>'.__('or',"extensions-leaflet-map").' <code>leaflet-gpx / leaflet-kml src=... </code> '.
-			// __('(like shortcode without brackets)',"extensions-leaflet-map").'</s>'.'</li>'.
+			'<li>' . __( 'or the word', 'extensions-leaflet-map' ) . ' <code>codex</code>. ' .
+			wp_sprintf(
+				/* translators: %s are "geo_latitude" and "geo_longitude". */
+				__( 'Then the page/post must have the custom fields %1$s and %2$s.', 'extensions-leaflet-map' ),
+				'<code>geo_latitude</code>',
+				'<code>geo_longitude</code>'
+			) .
+			'</li>' .
 			'</ul>',
 			'default' => 'overview-latlng',
 			'values'  => '',
@@ -90,14 +96,14 @@ function leafext_overviewmap_params() {
 			'content' => '',
 			'default' => '',
 			'values'  => __( 'a comma separated list of category names, slugs or IDs', 'extensions-leaflet-map' ) . '. ' .
-				wp_sprintf(
-					/* translators: %s is "AND". */
-					__(
-						'If the list starts with %s, only pages / posts that are contained in all of them are displayed, otherwise those that are contained in at least one.',
-						'extensions-leaflet-map'
-					),
-					'<i>AND</i>'
+			wp_sprintf(
+				/* translators: %s is "AND". */
+				__(
+					'If the list starts with %s, only pages / posts that are contained in all of them are displayed, otherwise those that are contained in at least one.',
+					'extensions-leaflet-map'
 				),
+				'<i>AND</i>'
+			),
 		),
 		array(
 			'param'   => 'leaflet-extramarker',
@@ -173,7 +179,6 @@ function leafext_marker_options() {
 
 function leafext_extramarker_options() {
 	$extramarker_options = array(
-		'draggable',
 		'opacity',
 		'title',
 	);
@@ -205,36 +210,69 @@ function leafext_overview_wpdb_query( $latlngs, $category = '' ) {
 		$post_types = get_post_types( $args, 'names' );
 		unset( $post_types['attachment'] );
 
-		// $querystr = "
-		// SELECT DISTINCT wposts.*
-		// FROM $wpdb->posts wposts
-		// LEFT JOIN $wpdb->postmeta wpostmeta ON wposts.ID = wpostmeta.post_id
-		// WHERE wpostmeta.meta_key = '".$latlngs."'
-		// AND wposts.post_status = 'publish'
-		// AND (wposts.post_type = 'post' OR wposts.post_type = 'page')
-		// ";
-		// $pageposts = $wpdb->get_results($querystr, OBJECT);
-		$query = new WP_Query(
-			array(
-				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
-				'meta_query'     => array(
-					'relation' => 'AND',
-					array(
-						'key'     => $latlngs,
-						'compare' => 'EXISTS',
+		if ( $latlngs === 'codex' ) {
+			$query = new WP_Query(
+				array(
+					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+					'meta_query'     => array(
+						'relation' => 'AND',
+						array(
+							'key'     => 'geo_latitude',
+							'compare' => 'EXISTS',
+						),
+						array(
+							'key'     => 'geo_latitude',
+							'compare' => '!=',
+							'value'   => '',
+						),
+						array(
+							'key'     => 'geo_longitude',
+							'compare' => 'EXISTS',
+						),
+						array(
+							'key'     => 'geo_longitude',
+							'compare' => '!=',
+							'value'   => '',
+						),
 					),
-					array(
-						'key'     => $latlngs,
-						'compare' => '!=',
-						'value'   => '',
+					// 'post_type'      => array( 'post', 'page' ),
+					'post_type'      => $post_types,
+					'post_status'    => 'publish',
+					'posts_per_page' => -1,
+				)
+			);
+		} else {
+			// $querystr = "
+			// SELECT DISTINCT wposts.*
+			// FROM $wpdb->posts wposts
+			// LEFT JOIN $wpdb->postmeta wpostmeta ON wposts.ID = wpostmeta.post_id
+			// WHERE wpostmeta.meta_key = '".$latlngs."'
+			// AND wposts.post_status = 'publish'
+			// AND (wposts.post_type = 'post' OR wposts.post_type = 'page')
+			// ";
+			// $pageposts = $wpdb->get_results($querystr, OBJECT);
+			$query = new WP_Query(
+				array(
+					// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query
+					'meta_query'     => array(
+						'relation' => 'AND',
+						array(
+							'key'     => $latlngs,
+							'compare' => 'EXISTS',
+						),
+						array(
+							'key'     => $latlngs,
+							'compare' => '!=',
+							'value'   => '',
+						),
 					),
-				),
-				// 'post_type'      => array( 'post', 'page' ),
-				'post_type'      => $post_types,
-				'post_status'    => 'publish',
-				'posts_per_page' => -1,
-			)
-		);
+					// 'post_type'      => array( 'post', 'page' ),
+					'post_type'      => $post_types,
+					'post_status'    => 'publish',
+					'posts_per_page' => -1,
+				)
+			);
+		}
 		$pageposts = $query->posts;
 		if ( $settings['transients'] ) {
 			set_transient( 'leafext_ovm_' . $latlngs, $pageposts, DAY_IN_SECONDS );
@@ -307,6 +345,7 @@ function leafext_check_duplicates_meta( $postid, $meta ) {
 }
 
 function leafext_get_overview_data( $post, $overview_options ) {
+	// var_dump($overview_options);
 	$leaflet_error = '';
 	// setup data for specific post
 	setup_postdata( $post );
@@ -345,13 +384,19 @@ function leafext_get_overview_data( $post, $overview_options ) {
 	}
 	//
 	// the marker latlng
-	$overview_data['latlng']           = ''; // wegen der Reihenfolge in der Tabelle
-	$leaflet_latlng                    = get_post_meta( $post->ID, $overview_options['latlngs'], true );
+	$overview_data['latlng'] = ''; // wegen der Reihenfolge in der Tabelle
+	if ( $overview_options['latlngs'] === 'codex' ) {
+		$lat = get_post_meta( $post->ID, 'geo_latitude', true );
+		$lng = get_post_meta( $post->ID, 'geo_longitude', true );
+		// var_dump($lat,$lng);
+		$leaflet_latlng = 'lat=' . $lat . ' lng=' . $lng;
+	} else {
+		$leaflet_latlng = get_post_meta( $post->ID, $overview_options['latlngs'], true );
+	}
 	$overview_data['latlng-orig']      = $leaflet_latlng;
 	$overview_data['error_latlng']     = '';
 	$overview_data['multiple_latlngs'] = leafext_check_duplicates_meta( $post->ID, $overview_options['latlngs'] );
 
-	// var_dump($leaflet_latlng);
 	$leaflet_latlng = preg_replace( '/\s+/', ' ', $leaflet_latlng ); // doppelte Leerzeichen entfernen
 	$latlng         = explode( ' ', $leaflet_latlng );
 	if ( count( $latlng ) !== 2 ) {

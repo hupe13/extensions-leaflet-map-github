@@ -4,7 +4,7 @@
  * Description:       Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
  * Plugin URI:        https://leafext.de/en/
  * Update URI:        https://github.com/hupe13/extensions-leaflet-map-github
- * Version:           4.9-260112
+ * Version:           4.9-260129
  * Requires PHP:      8.1
  * Requires Plugins:  leaflet-map
  * Author:            hupe13
@@ -88,6 +88,7 @@ require_once LEAFEXT_PLUGIN_DIR . '/php/leaflet-directory.php';
 require_once LEAFEXT_PLUGIN_DIR . '/php/managefiles.php';
 
 require_once LEAFEXT_PLUGIN_DIR . '/php/overview-map.php';
+require_once LEAFEXT_PLUGIN_DIR . '/php/featured-map.php';
 require_once LEAFEXT_PLUGIN_DIR . '/php/targetmarker.php';
 require_once LEAFEXT_PLUGIN_DIR . '/php/listmarker.php';
 

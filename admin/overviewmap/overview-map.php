@@ -23,7 +23,7 @@ add_action( 'admin_init', 'leafext_overviewmap_init' );
 function leafext_form_overviewmap( $field ) {
 	$options  = leafext_overviewmap_admin_params();
 	$option   = leafext_array_find2( $field, $options );
-	$settings = overviewmap_admin_settings();
+	$settings = leafext_overviewmap_admin_settings();
 	$setting  = $settings[ $field ];
 	if ( $option['desc'] !== '' ) {
 		echo '<p>' . wp_kses_post( $option['desc'] ) . '</p>';
@@ -78,7 +78,7 @@ function leafext_overviewmap_help() {
 	$text = $text . '<p>' . __( 'Generates an overview map with geo positions provided in the pages and posts.', 'extensions-leaflet-map' ) . '</p>';
 	$text = $text . '<h3>' . __( 'Preparation', 'extensions-leaflet-map' ) . '</h3>';
 
-	$text = $text . '<ul><li>' . __( 'Create for every desired page or post the below mentioned customs fields.', 'extensions-leaflet-map' ) . '</li>';
+	$text = $text . '<ul><li>' . __( 'Create for every desired page or post the below mentioned custom fields.', 'extensions-leaflet-map' ) . '</li>';
 	$text = $text . '<li>' . __( 'Optional: Create a featured image for page or post.', 'extensions-leaflet-map' ) . '</li>';
 	$text = $text . '<li>' . __( 'Optional: Place the page or post in one or more categories or tag it. The word "category" in this documentation means category or tag.', 'extensions-leaflet-map' ) . '</li></ul>';
 
@@ -181,7 +181,7 @@ function leafext_overviewmap_help() {
 	$text = $text . '<p>' . implode( ', ', leafext_extramarker_options() ) . '</p>';
 
 	/* translators: %s is an href. */
-	$text = $text . '<p>' . wp_sprintf( __( 'See %1$sexamples%2$s.', 'extensions-leaflet-map' ), '<a href="https://leafext.de/extra/category/overviewmap/">', '</a>' ) . '</p>';
+	$text = $text . '<p>' . wp_sprintf( __( 'See %1$sexamples%2$s.', 'extensions-leaflet-map' ), '<a href="https://leafext.de/extra/categories/overviewmap/">', '</a>' ) . '</p>';
 
 	if ( is_singular() || is_archive() ) {
 		return $text;
