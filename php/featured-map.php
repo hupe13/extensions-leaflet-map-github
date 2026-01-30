@@ -16,7 +16,7 @@ function leafext_featuredmap_params() {
 		$overmapref     = '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=overviewmap"><code>overviewmap</code></a>';
 		$extramarkerref = '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=extramarker"><code>leaflet-extramarker</code></a>';
 	}
-	$mapoptions = 'width=' . get_option( 'leaflet_default_width' ) . ' height=' . get_option( 'leaflet_default_height' ) . ' zoom=' . get_option( 'leaflet_default_zoom' );
+	$mapoptions = 'width=' . get_option( 'leaflet_default_width', '100%' ) . ' height=' . get_option( 'leaflet_default_height', '250' ) . ' zoom=' . get_option( 'leaflet_default_zoom', '12' );
 	$params     = array(
 		array(
 			'param'       => 'latlngs',
@@ -126,10 +126,8 @@ function leafext_leaflet_options( $atts = false ) {
 			)
 		);
 	} else {
-		$options = get_option( 'leafext_featuredmap' );
-		if ( array_key_exists( 'leaflet-map', $options ) ) {
-			$params = $options['leaflet-map'];
-		}
+		$options = leafext_featuredmap_settings();
+		$params  = $options['leaflet-map'];
 	}
 	return $params;
 }
@@ -169,12 +167,10 @@ function leafext_featured_setup_icon( $atts ) {
 			);
 		}
 	} else {
-		$options = get_option( 'leafext_featuredmap' );
-		if ( array_key_exists( 'marker', $options ) ) {
+		$options                = leafext_featuredmap_settings();
 			$markeroptions      = $options['marker'];
 			$leaflet_marker_cmd = strtok( $markeroptions, ' ' );
 			$markeroptions      = substr( $markeroptions, strpos( $markeroptions, ' ' ) );
-		}
 	}
 	return array( $leaflet_marker_cmd, $markeroptions );
 }

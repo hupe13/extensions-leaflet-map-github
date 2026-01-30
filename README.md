@@ -65,6 +65,8 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 
 * You can group the elements on the map by criteria and show/hide them.
 
+* Create a "featured map".
+
 * Create an overview map with geo-locations provided in the pages and posts.
 
 * Get a tooltip when hovering over an element.

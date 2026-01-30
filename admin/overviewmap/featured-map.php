@@ -71,15 +71,15 @@ function leafext_featuredmap_validate( $input ) {
 
 function leafext_featuredmap_help1() {
 	if ( is_singular() || is_archive() ) {
-		$codestyle = '';
-		$text      = '';
-		$overmapref = '<code>overviewmap</code>';
+		$codestyle      = '';
+		$text           = '';
+		$overmapref     = '<code>overviewmap</code>';
 		$extramarkerref = '<code>leaflet-extramarker</code>';
 	} else {
 		leafext_enqueue_admin();
-		$codestyle = ' class="language-coffeescript"';
-		$text      = '<h2>' . __( 'Featured Map', 'extensions-leaflet-map' ) . '</h2>';
-		$overmapref = '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=overviewmap"><code>overviewmap</code></a>';
+		$codestyle      = ' class="language-coffeescript"';
+		$text           = '<h2>' . __( 'Featured Map', 'extensions-leaflet-map' ) . '</h2>';
+		$overmapref     = '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=overviewmap"><code>overviewmap</code></a>';
 		$extramarkerref = '<a href="?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=extramarker"><code>leaflet-extramarker</code></a>';
 	}
 
@@ -88,7 +88,7 @@ function leafext_featuredmap_help1() {
 
 	$text .= '<p>' . wp_sprintf(
 		/* translators: %s are link and options */
-		__( 'There is a %1$s for %2$s. It defines 4 meta keys, this shortcode uses 3: %3$s and %4$s.', 'extensions-leaflet-map' ),
+		__( 'There is a %1$s for %2$s. The codex lists metadata, of which the shortcode uses the following in custom fields: %3$s and %4$s.', 'extensions-leaflet-map' ),
 		'<a href="https://codex.wordpress.org/Geodata">Codex</a>',
 		'WordPress Geodata',
 		'<code>geo_latitude</code>, <code>geo_longitude</code>',
