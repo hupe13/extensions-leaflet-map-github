@@ -35,6 +35,8 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 
 * Du kannst Elemente auf der Karte nach Kriterien gruppieren und ein- und ausblenden.
 
+* Erstelle eine "Beitragskarte" (Featured Map)
+
 * Erstelle eine Übersichtskarte mit den auf den Seiten und Beiträgen hinterlegten Geopositionen.
 
 * Erhalte einen Tooltip beim Überfahren eines Elementes mit der Maus.
