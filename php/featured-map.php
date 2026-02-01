@@ -132,49 +132,6 @@ function leafext_leaflet_options( $atts = false ) {
 	return $params;
 }
 
-function leafext_featured_setup_icon( $atts ) {
-	$markeroptions      = '';
-	$leaflet_marker_cmd = 'leaflet-marker';
-	$params             = array();
-
-	if ( array_key_exists( 'marker', $atts ) ) {
-		if ( $atts['marker'] === 'leaflet-extramarker' ) {
-			$leaflet_marker_cmd = 'leaflet-extramarker';
-			$iconoptions        = leafext_extramarker_options();
-			foreach ( $atts as $key => $value ) {
-				//var_dump($key,$value);
-				if ( in_array( strtolower( $key ), array_map( 'strtolower', $iconoptions ), true ) ) {
-					$params[ strtolower( $key ) ] = $value;
-				}
-			}
-		} elseif ( $atts['marker'] === 'leaflet-marker' ) {
-			$iconoptions = leafext_marker_options();
-			foreach ( $atts as $key => $value ) {
-				if ( in_array( strtolower( $key ), array_map( 'strtolower', $iconoptions ), true ) ) {
-					$params[ strtolower( $key ) ] = $value;
-				}
-			}
-		}
-		if ( count( $params ) > 0 ) {
-			$markeroptions = implode(
-				' ',
-				array_map(
-					function ( $a, $b ) {
-						return "$a=\"$b\""; },
-					array_keys( $params ),
-					array_values( $params )
-				)
-			);
-		}
-	} else {
-		$options                = leafext_featuredmap_settings();
-			$markeroptions      = $options['marker'];
-			$leaflet_marker_cmd = strtok( $markeroptions, ' ' );
-			$markeroptions      = substr( $markeroptions, strpos( $markeroptions, ' ' ) );
-	}
-	return array( $leaflet_marker_cmd, $markeroptions );
-}
-
 // Shortcode für featured map for pages and posts
 function leafext_featuredmap_function( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
@@ -185,10 +142,15 @@ function leafext_featuredmap_function( $atts, $content, $shortcode ) {
 		$lat = get_post_meta( get_the_ID(), 'geo_latitude', true );
 		$lng = get_post_meta( get_the_ID(), 'geo_longitude', true );
 		if ( $lat === '' || $lng === '' ) {
-			return '[' . $shortcode . ' ERROR lat=??? lng=???]';
+			echo '<script>console.log("' . esc_js( '[*' . $shortcode . ' ERROR custom fields geo_latitude=??? geo_longitude=???]' ) . '");</script>';
+			return '';
 		}
 	} elseif ( array_key_exists( 'latlngs', $atts ) ) {
 		$leaflet_latlng = get_post_meta( get_the_ID(), $atts['latlngs'], true );
+		if ( $leaflet_latlng === '' ) {
+			echo '<script>console.log("' . esc_js( '[*' . $shortcode . ' ERROR - custom field for latlngs ' . $atts['latlngs'] . ' does not exist.]' ) . '");</script>';
+			return '';
+		}
 		$leaflet_latlng = preg_replace( '/\s+/', ' ', $leaflet_latlng ); // doppelte Leerzeichen entfernen
 		$latlng         = explode( ' ', $leaflet_latlng );
 		if ( count( $latlng ) !== 2 ) {
@@ -216,33 +178,81 @@ function leafext_featuredmap_function( $atts, $content, $shortcode ) {
 			$leaflet_latlng = '*';
 		}
 		if ( $leaflet_latlng === '*' ) {
-			return '[' . $shortcode . ' ERROR lat=??? lng=??? ' . $atts['latlngs'] . ']';
+			echo '<script>console.log("' . esc_js( '[*' . $shortcode . ' ERROR format ' . $atts['latlngs'] . ': ' . get_post_meta( get_the_ID(), $atts['latlngs'], true ) . ']' ) . '");</script>';
+			return '';
 		}
-	} else {
-		return '[' . $shortcode . ' ERROR lat=??? lng=???]';
 	}
 
 	// popup
+	$popup = '';
 	if ( array_key_exists( 'popup', $atts ) ) {
 		$popup = get_post_meta( get_the_ID(), $atts['popup'], true );
-		if ( ! $popup ) {
+		if ( $popup === '' ) {
 			$popup = $atts['popup'];
 		}
-	} else {
-		$popup = '';
 	}
 	// var_dump( $popup );
 
 	// icon
-	$marker    = 'leaflet-marker';
-	$markerend = 'leaflet-marker';
+	$marker        = 'leaflet-marker';
+	$markerend     = 'leaflet-marker';
+	$markeroptions = '';
 	if ( array_key_exists( 'marker', $atts ) ) {
 		$marker = get_post_meta( get_the_ID(), $atts['marker'], true );
 		if ( $marker !== '' ) {
+			// icon from named custom field
 			$markerend = strtok( $marker, ' ' );
+		} elseif ( $atts['marker'] === 'leaflet-marker' ) {
+			$markerend   = $atts['marker'];
+			$iconoptions = leafext_marker_options();
+			foreach ( $atts as $key => $value ) {
+				if ( in_array( strtolower( $key ), array_map( 'strtolower', $iconoptions ), true ) ) {
+					$params[ strtolower( $key ) ] = $value;
+				}
+			}
+			if ( count( $params ) > 0 ) {
+				$markeroptions = implode(
+					' ',
+					array_map(
+						function ( $a, $b ) {
+							return "$a=\"$b\""; },
+						array_keys( $params ),
+						array_values( $params )
+					)
+				);
+			}
+			$marker = $atts['marker'] . ' ' . $markeroptions;
+		} elseif ( $atts['marker'] === 'leaflet-extramarker' ) {
+			$markerend   = $atts['marker'];
+			$iconoptions = leafext_extramarker_options();
+			foreach ( $atts as $key => $value ) {
+				//var_dump($key,$value);
+				if ( in_array( strtolower( $key ), array_map( 'strtolower', $iconoptions ), true ) ) {
+					$params[ strtolower( $key ) ] = $value;
+				}
+			}
+			if ( count( $params ) > 0 ) {
+				$markeroptions = implode(
+					' ',
+					array_map(
+						function ( $a, $b ) {
+							return "$a=\"$b\""; },
+						array_keys( $params ),
+						array_values( $params )
+					)
+				);
+			}
+			$marker = $atts['marker'] . ' ' . $markeroptions;
 		} else {
-			list ($markerend, $markeroptions) = leafext_featured_setup_icon( $atts );
-			$marker                           = $markerend . ' ' . $markeroptions;
+			echo '<script>console.log("' . esc_js( '[*' . $shortcode . ' ERROR - custom field for marker ' . $atts['marker'] . ' does not exist.]' ) . '");</script>';
+		}
+	} else {
+		// icon from featured-map setting
+		$options       = leafext_featuredmap_settings();
+		$markeroptions = $options['marker'];
+		if ( $markeroptions !== '' ) {
+			$markerend = strtok( $markeroptions, ' ' );
+			$marker    = $markeroptions;
 		}
 	}
 
