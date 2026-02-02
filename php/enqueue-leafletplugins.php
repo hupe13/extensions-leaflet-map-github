@@ -211,7 +211,7 @@ function leafext_enqueue_fullscreen() {
 	wp_enqueue_script(
 		'leaflet_fullscreen_plugin',
 		plugins_url(
-			'leaflet-plugins/leaflet.fullscreen/Control.FullScreen.js',
+			'leaflet-plugins/leaflet.fullscreen/Control.FullScreen.umd.js',
 			LEAFEXT_PLUGIN_FILE
 		),
 		array( 'wp_leaflet_map' ),

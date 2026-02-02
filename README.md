@@ -197,6 +197,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 * new shortcode - featured-map: Generates a map from geo information in pages and posts.
 * fixed small things in overviewmap
+* new Version Fullscreen
 
 ### Previous
 
