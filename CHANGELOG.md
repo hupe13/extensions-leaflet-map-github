@@ -1,4 +1,4 @@
-### 4.11 / 260xxx
+### 4.11 / 260202
 
 * new shortcode - featured-map: Generates a map from geo information in pages and posts.
 * fixed small things in overviewmap
