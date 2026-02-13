@@ -372,7 +372,7 @@ function leafext_enqueue_choropleth() {
 			'leaflet-plugins/leaflet-choropleth/choropleth.js',
 			LEAFEXT_PLUGIN_FILE
 		),
-		array( 'leaflet_ajax_geojson_js' ),
+		array( 'wp_leaflet_map' ),
 		LEAFEXT_VERSION,
 		true
 	);
@@ -558,23 +558,6 @@ add_filter(
 	},
 	10,
 	3
-);
-
-// Disable handling of html chars in shortcode block
-add_filter(
-	'render_block',
-	function ( $block_content, $block ) {
-		if ( $block['blockName'] === 'core/shortcode' ) {
-			$shortcodes = array( 'leaflet-map', 'leaflet-marker', 'leaflet-extramarker' );
-			$match      = ( str_replace( $shortcodes, '', $block['innerHTML'] ) !== $block['innerHTML'] );
-			if ( $match ) {
-				return htmlspecialchars_decode( $block['innerHTML'] );
-			}
-		}
-		return $block_content;
-	},
-	10,
-	2
 );
 
 // remove </script>*< br/> in Classic Editor

@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 6.9
-Stable tag: 4.11-260202
+Stable tag: 4.12-260213
 Requires at least: 6.2
 Requires PHP: 8.1
 License: GPLv2 or later
@@ -36,5 +36,5 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* new shortcode - featured-map: Generates a map from geo information in pages and posts.
-* fixed small things in overviewmap
+* new option in Search Control: collapsed
+* filter render_block for core/shortcode is no longer needed

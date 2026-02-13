@@ -11,7 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-01-30 12:43+0000\n"
+"POT-Creation-Date: 2026-02-13 17:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: extensions-leaflet-map\n"
@@ -490,6 +490,10 @@ msgstr ""
 msgid "Code on source page"
 msgstr ""
 
+#: php/leaflet-search.php:75
+msgid "collapse search control at startup"
+msgstr ""
+
 #: php/extramarker.php:49
 msgid ""
 "Color of the icon, Possible values: 'white', 'black' or css code (hex, rgba "
@@ -758,7 +762,7 @@ msgstr ""
 msgid "Define some css:"
 msgstr ""
 
-#: php/leaflet-search.php:77
+#: php/leaflet-search.php:83
 msgid "delay for autoclosing alert and collapse after blur"
 msgstr ""
 
@@ -989,7 +993,7 @@ msgstr ""
 msgid "Error detecting lanlngs"
 msgstr ""
 
-#: php/leaflet-search.php:84
+#: php/leaflet-search.php:90
 msgid "error message"
 msgstr ""
 
@@ -2084,7 +2088,7 @@ msgstr ""
 msgid "Load any elements with any %s shortcode."
 msgstr ""
 
-#: php/leaflet-search.php:85
+#: php/leaflet-search.php:91
 msgid "Location not found"
 msgstr ""
 
@@ -2320,7 +2324,7 @@ msgid "not for markers with iconUrl"
 msgstr ""
 
 #. %1$s is an option, %2$s and %3$s is a href
-#: php/leaflet-search.php:118
+#: php/leaflet-search.php:124
 #, php-format
 msgid ""
 "not specified for default (red circle), %1$s for no marker, or a definition "
@@ -2567,7 +2571,7 @@ msgstr ""
 msgid "Per default all defined tile servers appear."
 msgstr ""
 
-#: php/leaflet-search.php:92
+#: php/leaflet-search.php:98
 msgid "placeholder value"
 msgstr ""
 
@@ -2637,7 +2641,7 @@ msgstr ""
 msgid "Popups and highlighting overlapping elements"
 msgstr ""
 
-#: php/leaflet-search.php:107
+#: php/leaflet-search.php:113
 msgid "position in the map"
 msgstr ""
 
@@ -2714,7 +2718,7 @@ msgstr ""
 msgid "red circle"
 msgstr ""
 
-#: php/leaflet-search.php:100
+#: php/leaflet-search.php:106
 msgid "remove circle and marker on search control collapsed or search canceled"
 msgstr ""
 
@@ -2797,7 +2801,7 @@ msgstr ""
 msgid "search substring %1$s or the exact string %2$s in %3$s."
 msgstr ""
 
-#: php/leaflet-search.php:93
+#: php/leaflet-search.php:99
 msgid "Search..."
 msgstr ""
 
@@ -2943,11 +2947,11 @@ msgstr ""
 msgid "show legend"
 msgstr ""
 
-#: php/leaflet-search.php:114
+#: php/leaflet-search.php:120
 msgid "show or hide marker at the position found"
 msgstr ""
 
-#: php/leaflet-search.php:130
+#: php/leaflet-search.php:136
 msgid "show or hide popup when position found"
 msgstr ""
 

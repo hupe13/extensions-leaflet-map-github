@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-01-30 12:44+0000\n"
+"PO-Revision-Date: 2026-02-13 17:04+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-12 16:42+0000\n"
 "Last-Translator: hupe13\n"
-"X-Loco-Version: 2.8.1; wp-6.9; php-8.3.29-nmm1"
+"X-Loco-Version: 2.8.1; wp-6.9.1; php-8.3.29-nmm1"
 
 #: admin/marker/placementstrategies.php:53
 msgid ""
@@ -547,6 +547,10 @@ msgstr ""
 msgid "Code on source page"
 msgstr "Code auf der Quellseite"
 
+#: php/leaflet-search.php:75
+msgid "collapse search control at startup"
+msgstr "Das Suche-Kontrollfeld ist am Anfang geschlossen"
+
 #: php/extramarker.php:49
 msgid ""
 "Color of the icon, Possible values: 'white', 'black' or css code (hex, rgba "
@@ -854,7 +858,7 @@ msgstr "Definiere leaflet-search mit der Option container:"
 msgid "Define some css:"
 msgstr "Definiere das CSS:"
 
-#: php/leaflet-search.php:77
+#: php/leaflet-search.php:83
 msgid "delay for autoclosing alert and collapse after blur"
 msgstr ""
 "Verzögerung zum Schließen der Fehlernachricht, wenn ein Suchbegriff falsch "
@@ -1108,7 +1112,7 @@ msgstr ""
 msgid "Error detecting lanlngs"
 msgstr "Fehler beim Erkennen von latlngs"
 
-#: php/leaflet-search.php:84
+#: php/leaflet-search.php:90
 msgid "error message"
 msgstr "Fehlernachricht"
 
@@ -2337,7 +2341,7 @@ msgstr "Lade ein beliebiges Element mit einem %s Shortcode"
 msgid "Load any elements with any %s shortcode."
 msgstr "Lade ein beliebiges Element mit einem %s Shortcode."
 
-#: php/leaflet-search.php:85
+#: php/leaflet-search.php:91
 msgid "Location not found"
 msgstr "Standort nicht gefunden"
 
@@ -2592,7 +2596,7 @@ msgid "not for markers with iconUrl"
 msgstr "nicht für Marker mit iconUrl"
 
 #. %1$s is an option, %2$s and %3$s is a href
-#: php/leaflet-search.php:118
+#: php/leaflet-search.php:124
 #, php-format
 msgid ""
 "not specified for default (red circle), %1$s for no marker, or a definition "
@@ -2848,7 +2852,7 @@ msgstr ""
 msgid "Per default all defined tile servers appear."
 msgstr "Standardmäßig werden alle definierten Kachelserver angezeigt."
 
-#: php/leaflet-search.php:92
+#: php/leaflet-search.php:98
 msgid "placeholder value"
 msgstr "Platzhalter"
 
@@ -2925,7 +2929,7 @@ msgstr ""
 msgid "Popups and highlighting overlapping elements"
 msgstr "Popups und Hervorhebung von sich überlappenden Elementen"
 
-#: php/leaflet-search.php:107
+#: php/leaflet-search.php:113
 msgid "position in the map"
 msgstr "Position in der Karte"
 
@@ -3005,7 +3009,7 @@ msgstr "eine Querystring in der URL"
 msgid "red circle"
 msgstr "roter Kreis"
 
-#: php/leaflet-search.php:100
+#: php/leaflet-search.php:106
 msgid "remove circle and marker on search control collapsed or search canceled"
 msgstr ""
 "entferne Kreismarker beim Schließen des Kontrollfeldes oder wenn die Suche "
@@ -3092,7 +3096,7 @@ msgid "search substring %1$s or the exact string %2$s in %3$s."
 msgstr ""
 "suche eine Zeichenkette %1$s oder die genaue Zeichenfolge %2$s in %3$s."
 
-#: php/leaflet-search.php:93
+#: php/leaflet-search.php:99
 msgid "Search..."
 msgstr "Suche..."
 
@@ -3251,11 +3255,11 @@ msgstr "Zeige Dateien vom Typ"
 msgid "show legend"
 msgstr "Legende anzeigen"
 
-#: php/leaflet-search.php:114
+#: php/leaflet-search.php:120
 msgid "show or hide marker at the position found"
 msgstr "Zeige Marker an der gefundenen Position oder nicht"
 
-#: php/leaflet-search.php:130
+#: php/leaflet-search.php:136
 msgid "show or hide popup when position found"
 msgstr "Zeige Popup an der gefundenen Position oder nicht"
 

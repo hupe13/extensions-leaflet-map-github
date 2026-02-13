@@ -70,6 +70,12 @@ function leafext_search_params() {
 		// | firstTipSubmit  | false     | auto select first result con enter click |
 		// | autoResize   | true     | autoresize on input change |
 		// | collapsed        | true     | collapse search control at startup |
+		array(
+			'param'   => 'collapsed',
+			'desc'    => __( 'collapse search control at startup', 'extensions-leaflet-map' ),
+			'default' => true,
+			'values'  => 'true, false',
+		),
 		// | autoCollapse     | false    | collapse search control after submit(on button or on tips if enabled tipAutoSubmit) |
 		// | autoCollapseTime| 1200  | delay for autoclosing alert and collapse after blur |
 		array(

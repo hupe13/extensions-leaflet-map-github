@@ -1,10 +1,15 @@
+### 4.12 / 2602xx
+
+* new option in Search Control: collapsed
+* filter render_block for core/shortcode is no longer needed
+
 ### 4.11 / 260202
 
 * new shortcode - featured-map: Generates a map from geo information in pages and posts.
 * fixed small things in overviewmap
 * new Version Fullscreen
 
-### 4.10 / 2601xx
+### 4.10 / 260114
 
 * PCP V 1.8.0 passed
 * new in multielevation: sort tracks in legend
