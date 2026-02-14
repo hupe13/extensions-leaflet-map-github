@@ -1,6 +1,7 @@
 ### 4.12 / 2602xx
 
 * new option in Search Control: collapsed
+* new option multielevation: flyToBounds - fit map to all tracks
 * filter render_block for core/shortcode is no longer needed
 
 ### 4.11 / 260202

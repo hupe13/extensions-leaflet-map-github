@@ -193,11 +193,11 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.11 / 260202
+### 4.12 / 2602xx
 
-* new shortcode - featured-map: Generates a map from geo information in pages and posts.
-* fixed small things in overviewmap
-* new Version Fullscreen
+* new option in Search Control: collapsed
+* new option multielevation: flyToBounds - fit map to all tracks
+* filter render_block for core/shortcode is no longer needed
 
 ### Previous
 

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-02-13 17:04+0000\n"
+"PO-Revision-Date: 2026-02-14 22:39+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1192,6 +1192,10 @@ msgstr "Dateiname als Name"
 msgid "Files"
 msgstr "Dateien"
 
+#: php/multielevation.php:78
+msgid "fit map to all tracks"
+msgstr "Passe den Kartenausschnitt an alle Tracks an"
+
 #: php/zoomhome.php:34
 #| msgid "Font-Awesome icon name for the home button (without %s)."
 msgid "Font-Awesome icon name for the home button without prefix"
@@ -2115,6 +2119,7 @@ msgid "Information display"
 msgstr "Anzeige der Informationen"
 
 #: admin/zoomhome.php:156 admin/zoomhome.php:198 admin/zoomhome.php:226
+#: admin/zoomhome.php:255
 msgid "initial state of the map"
 msgstr "Ausgangszustand der Karte"
 
@@ -2395,7 +2400,8 @@ msgstr ""
 msgid "Many thanks to the translators."
 msgstr "Vielen Dank an die Übersetzer."
 
-#: admin/zoomhome.php:247 admin/zoomhome.php:248
+#: admin/zoomhome.php:247 admin/zoomhome.php:248 admin/zoomhome.php:270
+#: admin/zoomhome.php:271
 msgid "map like defined"
 msgstr "Karte wie definiert"
 
@@ -2446,7 +2452,7 @@ msgstr "maximale Breite der Liste im Verhältnis zur Breite der Karte"
 msgid "Meaningful options may be:"
 msgstr "Sinnvolle Optionen können sein:"
 
-#: admin/zoomhome.php:251
+#: admin/zoomhome.php:275
 msgid "means"
 msgstr "bedeutet"
 
@@ -3334,7 +3340,7 @@ msgstr ""
 "vordefinierte Einstellungen / Zusammenfassung in einer Zeile / "
 "Zusammenfassung in mehreren Zeilen / keine Zusammenfassung"
 
-#: admin/zoomhome.php:252
+#: admin/zoomhome.php:276
 msgid "sometimes to first zoom"
 msgstr "manchmal zum ersten Zoom"
 

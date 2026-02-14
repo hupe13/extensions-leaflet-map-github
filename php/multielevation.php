@@ -73,14 +73,14 @@ function leafext_multielevation_params( $typ = array( 'changeable' ) ) {
 		),
 
 		// flyToBounds: true,
-		// array(
-		// 'param' => 'flyToBounds',
-		// 'shortdesc' => __('flyToBounds',"extensions-leaflet-map"),
-		// 'desc' =>   '',
-		// 'default' => true,
-		// 'values' => 1,
-		// 'typ' => array('changeable','multielevation'),
-		// ),
+		array(
+			'param'     => 'flyToBounds',
+			'shortdesc' => __( 'fit map to all tracks', 'extensions-leaflet-map' ),
+			'desc'      => '',
+			'default'   => true,
+			'values'    => 1,
+			'typ'       => array( 'changeable', 'multielevation' ),
+		),
 
 		// distanceMarkers: true,
 		// distanceMarkers_options: {

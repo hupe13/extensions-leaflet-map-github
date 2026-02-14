@@ -247,6 +247,30 @@ function leafext_zoomhome_help_table() {
 	<td>' . __( 'map like defined', 'extensions-leaflet-map' ) . '</td>
 	<td>' . __( 'map like defined', 'extensions-leaflet-map' ) . '</td>
 	</tr>
+
+	<tr>
+	<th class="row-title" style="text-align:center">leaflet-map</th>
+	<th style="text-align:center">multielevation</th>
+	<th style="text-align:center">zoomhomemap</th>
+	<th style="text-align:center">' . __( 'initial state of the map', 'extensions-leaflet-map' ) . '</th>
+	<th style="text-align:center">Home button</th>
+	</tr>
+
+	<tr valign="top">
+	<td>-</td>
+	<td>flyToBounds</td>
+	<td>-</td>
+	<td>tracks</td>
+	<td>map</td>
+	</tr>
+	<tr valign="top">
+	<td>-</td>
+	<td><span style="color: #d63638">!flyToBounds</span></td>
+	<td>-</td>
+	<td>' . __( 'map like defined', 'extensions-leaflet-map' ) . '</td>
+	<td>' . __( 'map like defined', 'extensions-leaflet-map' ) . '</td>
+	</tr>
+
 	</table></figure>
 	* leaflet-element ' . __( 'means', 'extensions-leaflet-map' ) . ' leaflet-line, leaflet-polygon, leaflet-circle, leaflet-geojson, leaflet-gpx, leaflet-kml.<br>
 	** ' . __( 'sometimes to first zoom', 'extensions-leaflet-map' ) . '

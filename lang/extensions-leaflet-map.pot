@@ -11,7 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-13 17:02+0000\n"
+"POT-Creation-Date: 2026-02-14 22:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: extensions-leaflet-map\n"
@@ -1067,6 +1067,10 @@ msgstr ""
 msgid "Files"
 msgstr ""
 
+#: php/multielevation.php:78
+msgid "fit map to all tracks"
+msgstr ""
+
 #: php/zoomhome.php:34
 msgid "Font-Awesome icon name for the home button without prefix"
 msgstr ""
@@ -1878,6 +1882,7 @@ msgid "Information display"
 msgstr ""
 
 #: admin/zoomhome.php:156 admin/zoomhome.php:198 admin/zoomhome.php:226
+#: admin/zoomhome.php:255
 msgid "initial state of the map"
 msgstr ""
 
@@ -2128,7 +2133,8 @@ msgstr ""
 msgid "Many thanks to the translators."
 msgstr ""
 
-#: admin/zoomhome.php:247 admin/zoomhome.php:248
+#: admin/zoomhome.php:247 admin/zoomhome.php:248 admin/zoomhome.php:270
+#: admin/zoomhome.php:271
 msgid "map like defined"
 msgstr ""
 
@@ -2178,7 +2184,7 @@ msgstr ""
 msgid "Meaningful options may be:"
 msgstr ""
 
-#: admin/zoomhome.php:251
+#: admin/zoomhome.php:275
 msgid "means"
 msgstr ""
 
@@ -3018,7 +3024,7 @@ msgid ""
 "without summary"
 msgstr ""
 
-#: admin/zoomhome.php:252
+#: admin/zoomhome.php:276
 msgid "sometimes to first zoom"
 msgstr ""
 
