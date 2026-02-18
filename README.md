@@ -197,6 +197,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 * new option in Search Control: collapsed
 * new option multielevation: flyToBounds - fit map to all tracks
+* new function cluster: if showCoverageOnHover, zoomToBoundsOnClick, spiderfyOnMaxZoom are false, spiderfy on each click on cluster
 * filter render_block for core/shortcode is no longer needed
 
 ### Previous

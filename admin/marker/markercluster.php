@@ -153,32 +153,49 @@ function leafext_markercluster_help_text() {
 		),
 		'<a href="https://github.com/Leaflet/Leaflet.markercluster#options">Leaflet.markercluster</a>'
 	) . ' ';
-	$textoptions = $textoptions . __(
+	$textoptions .= __(
 		'To reset all values to their defaults, simply click the Reset button',
 		'extensions-leaflet-map'
 	) . '.</p>';
 
-	$textoptions = $textoptions . '<p>';
-	$textoptions = $textoptions . __( 'For boolean values applies', 'extensions-leaflet-map' ) . ':<br>';
-	$textoptions = $textoptions . '<code>false</code> = <code>!option</code> || <code>option="0"</code> || <code>option=0</code></br>';
-	$textoptions = $textoptions . '<code>true</code> = <code>option</code> || <code>option="1"</code> || <code>option=1</code>';
-	$textoptions = $textoptions . '</p>';
+	$textoptions .= '<p>';
+	$textoptions .= __( 'For boolean values applies', 'extensions-leaflet-map' ) . ':<br>';
+	$textoptions .= '<code>false</code> = <code>!option</code> || <code>option="0"</code> || <code>option=0</code></br>';
+	$textoptions .= '<code>true</code> = <code>option</code> || <code>option="1"</code> || <code>option=1</code>';
+	$textoptions .= '</p>';
+
+	$textoptions .= '<p>' .
+	wp_sprintf(
+		/* translators: %s are options. */
+		__( 'If %1$s and %2$s are %3$s, spiderfy each time the cluster is clicked.', 'extensions-leaflet-map' ),
+		'<code>showCoverageOnHover</code>, <code>zoomToBoundsOnClick</code>',
+		'<code>spiderfyOnMaxZoom</code>',
+		'<code>false</code>'
+	) . '</p>';
 
 	$defaults = get_option( 'leafext_cluster' );
 	if ( is_array( $defaults ) ) {
 		if ( array_key_exists( 'zoom', $defaults ) ||
 		array_key_exists( 'radius', $defaults ) ||
 		array_key_exists( 'spiderfy', $defaults ) ) {
-			$textoptions = $textoptions . '<p>';
-			$textoptions = $textoptions . __( 'The options zoom, radius and spiderfy have been renamed to disableClusteringAtZoom, maxClusterRadius and spiderfyOnMaxZoom, but they are still valid. Your settings:', 'extensions-leaflet-map' );
+			$textoptions .= '<p>';
+			$textoptions .= __( 'The options zoom, radius and spiderfy have been renamed to disableClusteringAtZoom, maxClusterRadius and spiderfyOnMaxZoom, but they are still valid. Your settings:', 'extensions-leaflet-map' );
 			// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
-			$textoptions = $textoptions . '<pre>' . substr( substr( print_r( get_option( 'leafext_cluster' ), true ), 8 ), 0, -3 ) . '</pre>';
-			$textoptions = $textoptions . __( 'Before you click the submit button, please compare your settings with the new ones and change them if they are different.', 'extensions-leaflet-map' );
-			$textoptions = $textoptions . '</p>';
+			$textoptions .= '<pre>' . substr( substr( print_r( get_option( 'leafext_cluster' ), true ), 8 ), 0, -3 ) . '</pre>';
+			$textoptions .= __( 'Before you click the submit button, please compare your settings with the new ones and change them if they are different.', 'extensions-leaflet-map' );
+			$textoptions .= '</p>';
 		}
 	}
+
 	if ( is_singular() || is_archive() ) {
-		$text = $text . '<h3>' . __( 'Options', 'extensions-leaflet-map' ) . '</h3>';
+		$text .= '<h3>' . __( 'Options', 'extensions-leaflet-map' ) . '</h3>' .
+		wp_sprintf(
+			/* translators: %s are options. */
+			__( 'If %1$s and %2$s are %3$s, spiderfy each time the cluster is clicked.', 'extensions-leaflet-map' ),
+			'<code>showCoverageOnHover</code>, <code>zoomToBoundsOnClick</code>',
+			'<code>spiderfyOnMaxZoom</code>',
+			'<code>false</code>'
+		) . '</p>';
 		return $text;
 	} else {
 		echo wp_kses_post( $text . $textoptions );

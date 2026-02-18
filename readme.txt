@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 6.9
-Stable tag: 4.12-260214
+Stable tag: 4.12-260218
 Requires at least: 6.2
 Requires PHP: 8.1
 License: GPLv2 or later
@@ -38,4 +38,5 @@ Many thanks to everyone who found errors and provided ideas for new functions.
 
 * new option in Search Control: collapsed
 * new option multielevation: flyToBounds - fit map to all tracks
+* new function cluster: if showCoverageOnHover, zoomToBoundsOnClick, spiderfyOnMaxZoom are false, spiderfy on each click on cluster
 * filter render_block for core/shortcode is no longer needed

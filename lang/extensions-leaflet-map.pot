@@ -11,7 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-14 22:33+0000\n"
+"POT-Creation-Date: 2026-02-18 14:10+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: extensions-leaflet-map\n"
@@ -404,7 +404,7 @@ msgstr ""
 msgid "background color for the list"
 msgstr ""
 
-#: admin/marker/markercluster.php:176
+#: admin/marker/markercluster.php:185
 msgid ""
 "Before you click the submit button, please compare your settings with the "
 "new ones and change them if they are different."
@@ -1358,6 +1358,12 @@ msgstr ""
 msgid ""
 "If %1$s (in options below or in shortcode) is true, the filename (without "
 "extension) is used, no matter how %2$s is."
+msgstr ""
+
+#. %s are options.
+#: admin/marker/markercluster.php:170 admin/marker/markercluster.php:194
+#, php-format
+msgid "If %1$s and %2$s are %3$s, spiderfy each time the cluster is clicked."
 msgstr ""
 
 #. %s are options.
@@ -2468,7 +2474,7 @@ msgstr ""
 #: admin/elevation/multielevation.php:284 admin/elevation/elevation.php:185
 #: admin/overviewmap/featured-map.php:131 admin/marker/extramarker.php:106
 #: admin/marker/placementstrategies.php:138 admin/marker/markercluster.php:145
-#: admin/marker/markercluster.php:181 admin/marker/listmarker.php:61
+#: admin/marker/markercluster.php:191 admin/marker/listmarker.php:61
 #: admin/grouping/parentgroup.php:34 admin/hover/hoverlap.php:43
 #: admin/hover/hover.php:56
 msgid "Options"
@@ -3256,7 +3262,7 @@ msgstr ""
 msgid "The options are case sensitive."
 msgstr ""
 
-#: admin/marker/markercluster.php:173
+#: admin/marker/markercluster.php:182
 msgid ""
 "The options zoom, radius and spiderfy have been renamed to "
 "disableClusteringAtZoom, maxClusterRadius and spiderfyOnMaxZoom, but they "
