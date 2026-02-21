@@ -1,4 +1,4 @@
-### 4.12 / 2602xx
+### 4.12 / 260221
 
 * new option in Search Control: collapsed
 * new option multielevation: flyToBounds - fit map to all tracks
