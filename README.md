@@ -193,12 +193,9 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.12 / 2602xx
+### 4.13 / 260xxx
 
-* new option in Search Control: collapsed
-* new option multielevation: flyToBounds - fit map to all tracks
-* new function cluster: if showCoverageOnHover, zoomToBoundsOnClick, spiderfyOnMaxZoom are false, spiderfy on each click on cluster
-* filter render_block for core/shortcode is no longer needed
+* fixed problem with complianz plugin and media library grid view
 
 ### Previous
 

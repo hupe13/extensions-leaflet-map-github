@@ -1,3 +1,7 @@
+### 4.13 / 260xxx
+
+* fixed problem with complianz plugin and media library grid view
+
 ### 4.12 / 260221
 
 * new option in Search Control: collapsed
