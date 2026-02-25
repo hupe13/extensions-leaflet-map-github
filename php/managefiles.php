@@ -73,20 +73,21 @@ add_filter( 'the_content', 'leafext_media_library_content' );
 
 function leafext_media_library_help( $postid ) {
 	$current_screen = get_current_screen();
-	if ( $current_screen->base === 'post' && $current_screen->post_type === 'attachment' ) {
-		$file = wp_get_attachment_url( $postid );
-		$type = pathinfo( $file, PATHINFO_EXTENSION );
-		return do_shortcode(
-			'[leaflet-map height=300 width=300 !scrollwheel !dragging fitbounds]' .
-			'[leaflet-' . $type . ' src="' . $file . '"]'
-		);
-	} else {
-		return '';
+	if ( $current_screen !== null ) {
+		if ( isset( $current_screen->base ) && $current_screen->base === 'post' &&
+			isset( $current_screen->post_type ) && $current_screen->post_type === 'attachment' ) {
+			$file = wp_get_attachment_url( $postid );
+			$type = pathinfo( $file, PATHINFO_EXTENSION );
+			return do_shortcode(
+				'[leaflet-map height=300 width=300 !scrollwheel !dragging fitbounds]' .
+				'[leaflet-' . $type . ' src="' . $file . '"]'
+			);
+		}
 	}
+	return '';
 }
 
 // Display on edit page in Media Library
-// Klappt nicht im Grid Mode, da modal -> Ansatz: map.invalidateSize()?
 function leafext_attachment_fields_to_edit( $form_fields, $post ) {
 	libxml_use_internal_errors( true );
 	// get post mime type
