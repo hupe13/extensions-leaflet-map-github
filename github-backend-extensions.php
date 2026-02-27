@@ -11,15 +11,10 @@ defined( 'ABSPATH' ) || die();
 /**
  * For translating
  */
-function leafext_extensions_update_textdomain( $mofile, $domain ) {
-	if ( 'extensions-leaflet-map' === $domain ) {
-		if ( file_exists( LEAFEXT_PLUGIN_DIR . '/lang/extensions-leaflet-map-' . get_locale() . '.mo' ) ) {
-			$mofile = LEAFEXT_PLUGIN_DIR . '/lang/extensions-leaflet-map-' . get_locale() . '.mo';
-		}
-	}
-	return $mofile;
+function leafext_extensions_load_textdomain() {
+	load_plugin_textdomain( 'extensions-leaflet-map', false, LEAFEXT_PLUGIN_DIR . '/lang' );
 }
-add_filter( 'load_textdomain_mofile', 'leafext_extensions_update_textdomain', 10, 2 );
+add_action( 'plugins_loaded', 'leafext_extensions_load_textdomain' );
 
 // https://make.wordpress.org/core/2024/03/05/introducing-plugin-dependencies-in-wordpress-6-5/
 function leafext_extensions_leaflet_map_to_github( $slug ) {

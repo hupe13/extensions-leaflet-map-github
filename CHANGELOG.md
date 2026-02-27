@@ -1,6 +1,7 @@
 ### 4.13 / 260xxx
 
 * fixed problem with complianz plugin and media library grid view
+* Github version: german translation
 
 ### 4.12 / 260221
 
