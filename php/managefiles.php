@@ -80,10 +80,13 @@ function leafext_media_library_help( $postid ) {
 			isset( $current_screen->post_type ) && $current_screen->post_type === 'attachment' ) {
 			$file = wp_get_attachment_url( $postid );
 			$type = pathinfo( $file, PATHINFO_EXTENSION );
-			return do_shortcode(
-				'[leaflet-map height=300 width=300 !scrollwheel !dragging fitbounds]' .
-				'[leaflet-' . $type . ' src="' . $file . '"]'
-			);
+			$type = ( $type === 'json' ) ? 'geojson' : $type;
+			if ( in_array( $type, array( 'kml', 'gpx', 'geojson' ), true ) ) {
+				return do_shortcode(
+					'[leaflet-map height=300 width=300 !scrollwheel !dragging fitbounds]' .
+					'[leaflet-' . $type . ' src="' . $file . '"]'
+				);
+			}
 		}
 	}
 	return '';
