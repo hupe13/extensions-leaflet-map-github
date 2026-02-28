@@ -193,7 +193,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.13 / 260xxx
+### 4.13 / 260228
 
 * fixed problem with complianz plugin and media library grid view
 

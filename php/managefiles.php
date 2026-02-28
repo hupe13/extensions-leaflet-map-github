@@ -11,9 +11,11 @@ defined( 'ABSPATH' ) || die();
 function leafext_display_attachment_page( $file ) {
 	if ( is_singular() ) {
 		$type = pathinfo( $file, PATHINFO_EXTENSION );
-		// var_dump($type);
-		return '[leaflet-map fitbounds !scrollwheel !dragging][leaflet-' . $type . ' src="' . $file . '"]';
-	} else {
+		$type = ( $type === 'json' ) ? 'geojson' : $type;
+		if ( in_array( $type, array( 'kml', 'gpx', 'geojson' ), true ) ) {
+			// var_dump($type);
+			return '[leaflet-map fitbounds !scrollwheel !dragging][leaflet-' . $type . ' src="' . $file . '"]';
+		}
 		return '';
 	}
 }
