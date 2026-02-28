@@ -1,6 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* fixed problem with complianz plugin and media library grid view
+* none
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
