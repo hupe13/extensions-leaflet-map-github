@@ -193,9 +193,9 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.13 / 260228
+### 4.14 / 2603xx
 
-* fixed problem with complianz plugin and media library grid view
+* layerswitch: new option visible - a list of mapids of Overlay Layers that should be displayed from the start
 
 ### Previous
 

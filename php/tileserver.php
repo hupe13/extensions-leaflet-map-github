@@ -195,7 +195,7 @@ function leafext_providers_fkt_script() {
 }
 
 // providers
-function leafext_providers_script( $mapids, $providers ) {
+function leafext_providers_script( $mapids, $providers, $visible ) {
 	$regtiles = get_option( 'leafext_providers', array() );
 	$text     = '';
 	if ( count( $providers ) === count( $mapids ) ) {
@@ -219,6 +219,13 @@ function leafext_providers_script( $mapids, $providers ) {
 		$text = $text . '
 		if (isOverlay("' . $provider . '", layer)) {
 			overlays["' . $names[ $provider ] . '"] = layer;
+			';
+		if ( in_array( $names[ $provider ], $visible, true ) ) {
+			$text = $text . '
+			layer.addTo(map);
+			';
+		}
+			$text = $text . '
 		} else {
 			baselayers["' . $names[ $provider ] . '"] = layer;
 		}';
@@ -282,6 +289,7 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 		$mapids              = array();
 		$providers           = array();
 		$opacities           = array();
+		$visible             = array();
 		$defined_tileservers = get_option( 'leafext_maps', array() );
 		if ( is_array( $atts ) ) {
 			if ( array_key_exists( 'tiles', $atts ) && count( $defined_tileservers ) > 0 ) {
@@ -320,6 +328,10 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 							$opacities[] = $mapids[ $i ];
 						}
 					}
+				}
+
+				if ( array_key_exists( 'visible', $atts ) ) {
+					$visible = explode( ',', $atts['visible'] );
 				}
 			}
 		}
@@ -381,7 +393,7 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 		}
 		if ( count( $providers ) > 0 ) {
 			$text = $text . leafext_providers_fkt_script();
-			$text = $text . leafext_providers_script( $mapids, $providers );
+			$text = $text . leafext_providers_script( $mapids, $providers, $visible );
 		}
 		if ( is_array( $atts ) ) {
 			if ( array_key_exists( 'opacity', $atts ) ) {

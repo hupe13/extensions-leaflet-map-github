@@ -1,3 +1,7 @@
+### 4.14 / 2603xx
+
+* layerswitch: new option visible - a list of mapids of Overlay Layers that should be displayed from the start
+
 ### 4.13 / 260228
 
 * fixed problem with complianz plugin and media library grid view

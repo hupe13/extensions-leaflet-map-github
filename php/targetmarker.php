@@ -39,7 +39,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- no form
 		if ( $shortcode === 'targetmarker' ) {
 			$error = 'targetmarker error';
-			if ( ! empty( $_POST ) && check_admin_referer( 'leafext_targetlink', 'leafext_targetlink_nonce' ) ) {
+			if ( ! empty( $_POST ) && isset( $_POST['leafext_targetlink_nonce'] ) && check_admin_referer( 'leafext_targetlink', 'leafext_targetlink_nonce' ) ) {
 				// var_dump( $_POST );
 				$get                 = map_deep( wp_unslash( $_POST ), 'sanitize_text_field' );
 				$options['title']    = isset( $get['title'] ) ? wp_strip_all_tags( $get['title'] ) : '';

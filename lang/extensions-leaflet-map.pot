@@ -11,7 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-18 14:10+0000\n"
+"POT-Creation-Date: 2026-03-04 15:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: extensions-leaflet-map\n"
@@ -689,7 +689,7 @@ msgstr ""
 #: admin/marker/clustergroup.php:198 admin/marker/clustergroup.php:205
 #: admin/marker/extramarker.php:120 admin/marker/listmarker.php:68
 #: admin/grouping/featuregroup.php:302 admin/grouping/featuregroup.php:309
-#: admin/hover/hover.php:65 admin/tiles/help.php:136 admin/tiles/help.php:143
+#: admin/hover/hover.php:65 admin/tiles/help.php:145 admin/tiles/help.php:152
 msgid "Default"
 msgstr ""
 
@@ -2420,6 +2420,14 @@ msgid ""
 msgstr ""
 
 #. %s is an option.
+#: admin/tiles/help.php:134
+#, php-format
+msgid ""
+"optional: %s - a comma-separated list of the mapids of Overlay Layers that "
+"should be displayed from the start."
+msgstr ""
+
+#. %s is an option.
 #: admin/marker/clustergroup.php:202 admin/marker/geojsonmarker.php:169
 #: admin/grouping/featuregroup.php:306
 #, php-format
@@ -2434,7 +2442,7 @@ msgid "optional: %s - position of group control"
 msgstr ""
 
 #. %s is an option
-#: admin/tiles/help.php:133
+#: admin/tiles/help.php:142
 #, php-format
 msgid "optional: %s - position of tiles control"
 msgstr ""
@@ -2446,7 +2454,7 @@ msgid "optional: %s - This appears in the switching control."
 msgstr ""
 
 #. %s are options
-#: admin/tiles/help.php:140
+#: admin/tiles/help.php:149
 #, php-format
 msgid "optional: %s - tiles control collapsed or not:"
 msgstr ""
@@ -2555,7 +2563,7 @@ msgstr ""
 msgid "Other Theme"
 msgstr ""
 
-#: php/managefiles.php:85 php/managefiles.php:96 php/managefiles.php:106
+#: php/managefiles.php:115 php/managefiles.php:126 php/managefiles.php:136
 msgid "Overview"
 msgstr ""
 

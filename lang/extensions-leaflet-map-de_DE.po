@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-02-18 14:12+0000\n"
+"PO-Revision-Date: 2026-03-04 15:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-12 16:42+0000\n"
 "Last-Translator: hupe13\n"
-"X-Loco-Version: 2.8.1; wp-6.9.1; php-8.3.29-nmm1"
+"X-Loco-Version: 2.8.2; wp-6.9.1; php-8.3.29-nmm1"
 
 #: admin/marker/placementstrategies.php:53
 msgid ""
@@ -781,7 +781,7 @@ msgstr "Datum"
 #: admin/marker/clustergroup.php:198 admin/marker/clustergroup.php:205
 #: admin/marker/extramarker.php:120 admin/marker/listmarker.php:68
 #: admin/grouping/featuregroup.php:302 admin/grouping/featuregroup.php:309
-#: admin/hover/hover.php:65 admin/tiles/help.php:136 admin/tiles/help.php:143
+#: admin/hover/hover.php:65 admin/tiles/help.php:145 admin/tiles/help.php:152
 msgid "Default"
 msgstr "Standard"
 
@@ -2697,6 +2697,16 @@ msgstr ""
 "diese werden im Auswahlmenü angezeigt."
 
 #. %s is an option.
+#: admin/tiles/help.php:134
+#, php-format
+msgid ""
+"optional: %s - a comma-separated list of the mapids of Overlay Layers that "
+"should be displayed from the start."
+msgstr ""
+"optional: %s - eine durch Komma getrennte Liste der mapids von Overlay "
+"Layern, welche von Anfang an angezeigt werden sollen."
+
+#. %s is an option.
 #: admin/marker/clustergroup.php:202 admin/marker/geojsonmarker.php:169
 #: admin/grouping/featuregroup.php:306
 #, php-format
@@ -2711,7 +2721,7 @@ msgid "optional: %s - position of group control"
 msgstr "optional: %s - Position des Gruppen-Auswahlmenüs"
 
 #. %s is an option
-#: admin/tiles/help.php:133
+#: admin/tiles/help.php:142
 #, php-format
 msgid "optional: %s - position of tiles control"
 msgstr "optional: %s - Position des Auswahlmenüs"
@@ -2723,7 +2733,7 @@ msgid "optional: %s - This appears in the switching control."
 msgstr "optional: %s - Dies erscheint im Auswahlmenü."
 
 #. %s are options
-#: admin/tiles/help.php:140
+#: admin/tiles/help.php:149
 #, php-format
 msgid "optional: %s - tiles control collapsed or not:"
 msgstr "optional: %s - Auswahlmenü geschlossen oder nicht:"
@@ -2835,7 +2845,7 @@ msgstr "Weitere Einstellungen"
 msgid "Other Theme"
 msgstr "Anderes Theme"
 
-#: php/managefiles.php:85 php/managefiles.php:96 php/managefiles.php:106
+#: php/managefiles.php:115 php/managefiles.php:126 php/managefiles.php:136
 msgid "Overview"
 msgstr "Übersicht"
 

@@ -73,7 +73,7 @@ function leafext_help_tiles() {
 
 	$text = $text . '<h2>Shortcode</h2>';
 	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-map mapid="..."]
-&#091;layerswitch tiles="mapid1,mapid2,..." mapids="mapid3,mapid4,..." providers="provider1,provider2,..." opacity="mapid1,provider1,..."]
+&#091;layerswitch tiles="mapid1,mapid2,..." mapids="mapid3,mapid4,..." providers="provider1,provider2,..." opacity="mapid1,provider1,..." visible="mapidx,..."]
 </code></pre>';
 	$text = $text . '
   <h3>Parameter</h3>
@@ -128,6 +128,15 @@ function leafext_help_tiles() {
 		'<code>opacity</code>'
 	) .
 	'</li>';
+	$text = $text . '<li>' .
+	wp_sprintf(
+		/* translators: %s is an option. */
+		__(
+			'optional: %s - a comma-separated list of the mapids of Overlay Layers that should be displayed from the start.',
+			'extensions-leaflet-map'
+		),
+		'<code>visible</code>'
+	) . '</li>';
 	$text = $text . '<li>' . wp_sprintf(
 		/* translators: %s is an option */
 		__( 'optional: %s - position of tiles control', 'extensions-leaflet-map' ),

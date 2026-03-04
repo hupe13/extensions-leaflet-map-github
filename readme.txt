@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 6.9
-Stable tag: 4.13-260228
+Stable tag: 4.14-260304
 Requires at least: 6.2
 Requires PHP: 8.1
 License: GPLv2 or later
@@ -36,4 +36,4 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 
 Many thanks to everyone who found errors and provided ideas for new functions.
 
-* fixed problem with complianz plugin and media library grid view
+* layerswitch: new option visible - a list of mapids of Overlay Layers that should be displayed from the start
