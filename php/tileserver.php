@@ -151,6 +151,9 @@ function leafext_layerswitch_tiles_script( $tiles ) {
 			if (tilelayer.opacity == 1) {
 				opacity[tilelayer.mapid] = overlays[tilelayer.mapid];
 			}
+			if ( tilelayer.visible == 1 ) {
+				layer.addTo(map);
+			}
 		} else {
 			baselayers[tilelayer.mapid] = layer;
 			if (tilelayer.opacity == 1) {
@@ -292,6 +295,9 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 		$visible             = array();
 		$defined_tileservers = get_option( 'leafext_maps', array() );
 		if ( is_array( $atts ) ) {
+			if ( array_key_exists( 'visible', $atts ) ) {
+				$visible = explode( ',', $atts['visible'] );
+			}
 			if ( array_key_exists( 'tiles', $atts ) && count( $defined_tileservers ) > 0 ) {
 				$only      = array();
 				$atts_maps = explode( ',', $atts['tiles'] );
@@ -328,10 +334,6 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 							$opacities[] = $mapids[ $i ];
 						}
 					}
-				}
-
-				if ( array_key_exists( 'visible', $atts ) ) {
-					$visible = explode( ',', $atts['visible'] );
 				}
 			}
 		}
@@ -373,11 +375,18 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 				$tileoptions[ $key ] = trim( $value, ',' );
 			}
 
+			if ( in_array( $defined_tileserver['mapid'], $visible, true ) ) {
+				$is_visible = '1';
+			} else {
+				$is_visible = '0';
+			}
+
 			$tiles[] = array(
 				'mapid'   => $defined_tileserver['mapid'],
 				'tile'    => $defined_tileserver['tile'],
 				'overlay' => $overlay,
 				'opacity' => $opacity,
+				'visible' => $is_visible,
 				'options' => $tileoptions,
 			);
 		}
