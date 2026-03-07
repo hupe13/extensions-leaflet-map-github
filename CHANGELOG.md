@@ -1,4 +1,4 @@
-### 4.14 / 2603xx
+### 4.14 / 260307
 
 * layerswitch: new option visible - a list of mapids of Overlay Layers that should be displayed from the start
 

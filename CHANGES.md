@@ -1,6 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* layerswitch: new option visible - a list of mapids of Overlay Layers that should be displayed from the start
+* layerswitch: none
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
