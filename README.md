@@ -3,7 +3,7 @@
 Contributors: hupe13    
 Tags: leaflet, gpx, geojson, hover, marker   
 Tested up to: 6.9  
-Stable tag: 4.13    
+Stable tag: 4.14    
 Requires at least: 6.2     
 Requires PHP: 8.1     
 License: GPLv2 or later
@@ -193,7 +193,7 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 
 ## Changelog
 
-### 4.14 / 2603xx
+### 4.14 / 260307
 
 * layerswitch: new option visible - a list of mapids of Overlay Layers that should be displayed from the start
 
