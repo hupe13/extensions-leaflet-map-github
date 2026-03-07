@@ -10,6 +10,8 @@
  * Author:            hupe13
  * Author URI:        https://leafext.de/en/
  * License:           GPL v2 or later
+ * GitHub Plugin URI: https://github.com/hupe13/extensions-leaflet-map-github
+ * Primary Branch:    main
  *
  * @package Extensions for Leaflet Map
  **/
