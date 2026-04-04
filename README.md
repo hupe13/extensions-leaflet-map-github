@@ -87,7 +87,7 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 
 * and more functions.
 
-### Included Leaflet Plugins and fonts
+### Included Leaflet Plugins
 
 #### Leaflet Plugins
 
@@ -113,7 +113,7 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 * [Leaflet.GestureHandling](https://github.com/Raruto/leaflet-gesture-handling): A Leaflet plugin that allows to prevent default map scroll/touch behaviours.
 * [turf](https://github.com/Turfjs/turf): Advanced geospatial analysis for browsers and Node.js
 
-#### Font
+#### Included Font
 
 * [Font Awesome 6](https://fontawesome.com/download)
 
@@ -136,7 +136,6 @@ Many thanks to everyone who found errors and provided ideas for new functions.
 
 ## Frequently Asked Questions
 
-<p>
 <details>
 <summary>
 <b>Is there a widget or other support for the editor?</b>
@@ -192,13 +191,5 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 * Go to Settings - Leaflet Map - Extensions for Leaflet Map and get documentation and settings options.
 
 ## Changelog
-
-### 4.2 / 26040x
-
-* Tested up to WordPress 7.0
-* PHPStan checks - a few issues have been fixed
-* Fixed XSS Vulnerability
-
-### Previous
 
 [Changelog](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/CHANGELOG.md)
