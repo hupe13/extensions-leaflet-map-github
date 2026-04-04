@@ -64,7 +64,7 @@ function leafext_java_params( $params ) {
 	$text = '';
 	foreach ( $params as $k => $v ) {
 		// var_dump($v,gettype($v),strpos($v,"["));
-		$text = $text . "$k: ";
+		$text .= "$k: ";
 		switch ( gettype( $v ) ) {
 			case 'string':
 				switch ( $v ) {
@@ -100,8 +100,8 @@ function leafext_java_params( $params ) {
 				var_dump( $k, $v, gettype( $v ) );
 				wp_die( 'Type' );
 		}
-		$text = $text . $value;
-		$text = $text . ",\n";
+		$text .= $value;
+		$text .= ",\n";
 	}
 	// var_dump($text); wp_die();
 	return $text;
@@ -116,10 +116,12 @@ function leafext_java_params( $params ) {
  * from https://www.php.net/manual/de/function.array-replace.php
  */
 function leafext_array_replace_keys( $atts_array, $keys ) {
-	foreach ( $keys as $search => $replace ) {
-		if ( isset( $atts_array[ $search ] ) ) {
-			$atts_array[ $replace ] = $atts_array[ $search ];
-			unset( $atts_array[ $search ] );
+	if ( is_array( $keys ) ) {
+		foreach ( $keys as $search => $replace ) {
+			if ( isset( $atts_array[ $search ] ) ) {
+				$atts_array[ $replace ] = $atts_array[ $search ];
+				unset( $atts_array[ $search ] );
+			}
 		}
 	}
 	return $atts_array;
@@ -163,13 +165,13 @@ function leafext_should_interpret_shortcode( $shortcode, $atts ) {
 	if ( is_array( $atts ) ) {
 		foreach ( $atts as $key => $item ) {
 			if ( is_int( $key ) ) {
-				$text = $text . "$item ";
+				$text .= esc_html( "$item " );
 			} else {
-				$text = $text . "$key=$item ";
+				$text .= esc_html( "$key=$item " );
 			}
 		}
 	}
-	$text = $text . ']';
+	$text .= ']';
 	return $text;
 }
 

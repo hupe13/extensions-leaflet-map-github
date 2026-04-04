@@ -15,7 +15,15 @@ function leafext_overviewmap_init() {
 	foreach ( $fields as $field ) {
 		add_settings_field( 'leafext_overviewmap[' . $field['param'] . ']', $field['shortdesc'], 'leafext_form_overviewmap', 'leafext_settings_overviewmap', 'overviewmap_settings', $field['param'] );
 	}
-	register_setting( 'leafext_settings_overviewmap', 'leafext_overviewmap', 'leafext_validate_overviewmap' );
+	register_setting(
+		'leafext_settings_overviewmap',
+		'leafext_overviewmap',
+		array(
+			'type'              => 'array',
+			'sanitize_callback' => 'leafext_validate_overviewmap',
+			'default'           => array(),
+		)
+	);
 }
 add_action( 'admin_init', 'leafext_overviewmap_init' );
 

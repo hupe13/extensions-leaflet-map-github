@@ -8,12 +8,12 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-require LEAFEXT_PLUGIN_DIR . '/admin/elevation/elevation.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/elevation/owntheme.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/elevation/waypoints.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/elevation/owncolors.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/elevation/sgpx.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/elevation/multielevation.php';
+require __DIR__ . '/elevation.php';
+require __DIR__ . '/owntheme.php';
+require __DIR__ . '/waypoints.php';
+require __DIR__ . '/owncolors.php';
+require __DIR__ . '/sgpx.php';
+require __DIR__ . '/multielevation.php';
 
 function leafext_elevation_tab() {
 	$tabs = array(

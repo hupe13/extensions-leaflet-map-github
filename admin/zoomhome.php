@@ -10,12 +10,20 @@ defined( 'ABSPATH' ) || die();
 
 // init settings fuer zoomhome
 function leafext_zoomhome_init() {
-	add_settings_section( 'zoomhome_settings', '', '', 'leafext_settings_zoomhome' );
+	add_settings_section( 'zoomhome_settings', '', '__return_empty_string', 'leafext_settings_zoomhome' );
 	$fields = leafext_zoomhome_params();
 	foreach ( $fields as $field ) {
 		add_settings_field( 'leafext_zoomhome[' . $field['param'] . ']', $field['param'], 'leafext_form_zoomhome', 'leafext_settings_zoomhome', 'zoomhome_settings', $field['param'] );
 	}
-	register_setting( 'leafext_settings_zoomhome', 'leafext_zoomhome', 'leafext_validate_zoomhome' );
+	register_setting(
+		'leafext_settings_zoomhome',
+		'leafext_zoomhome',
+		array(
+			'type'              => 'array',
+			'sanitize_callback' => 'leafext_validate_zoomhome',
+			'default'           => array(),
+		)
+	);
 }
 add_action( 'admin_init', 'leafext_zoomhome_init' );
 

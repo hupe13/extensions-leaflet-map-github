@@ -73,25 +73,25 @@ function leafext_featuregroup_function( $atts, $content, $shortcode ) {
 		if ( ( $options['values'] === '' || $options['groups'] === '' ) ) {
 			$text = '[' . $shortcode . ' ';
 			foreach ( $atts as $key => $item ) {
-				$text = $text . "$key=$item ";
+				$text .= esc_html( "$key=$item " );
 			}
-			$text = $text . ']';
-			$text = $text . ' - no values and/or groups. ';
+			$text .= ']';
+			$text .= ' - no values and/or groups. ';
 			return esc_attr( $text );
 		}
 
 		if ( $options['property'] === '' && $options['option'] === '' ) {
 			$text = "['.$shortcode.' ";
 			foreach ( $atts as $key => $item ) {
-				$text = $text . "$key=$item ";
+				$text .= esc_html( "$key=$item " );
 			}
 			if ( $shortcode === 'leaflet-featuregroup' ) {
 				$missing = 'property';
 			} else {
 				$missing = 'option';
 			}
-			$text = $text . ' - ' . $missing . ' is missing. ';
-			$text = $text . ']';
+			$text .= ' - ' . $missing . ' is missing. ';
+			$text .= ']';
 			return esc_attr( $text );
 		}
 
@@ -99,11 +99,11 @@ function leafext_featuregroup_function( $atts, $content, $shortcode ) {
 			$text = "['.$shortcode.' ";
 			if ( is_array( $atts ) ) {
 				foreach ( $atts as $key => $item ) {
-					$text = $text . "$key=$item ";
+					$text .= esc_html( "$key=$item " );
 				}
 			}
-			$text = $text . ' - values and groups do not match. ';
-			$text = $text . ']';
+			$text .= ' - values and groups do not match. ';
+			$text .= ']';
 			return esc_attr( $text );
 		}
 
@@ -130,10 +130,10 @@ function leafext_featuregroup_function( $atts, $content, $shortcode ) {
 			} elseif ( count( $cl_values ) !== count( $cl_on ) ) {
 				$text = "['.$shortcode.' ";
 				foreach ( $atts as $key => $item ) {
-					$text = $text . "$key=$item ";
+					$text .= esc_html( "$key=$item " );
 				}
-				$text = $text . ' - groups and visible do not match. ';
-				$text = $text . ']';
+				$text .= ' - groups and visible do not match. ';
+				$text .= ']';
 				return esc_attr( $text );
 			}
 		}

@@ -48,9 +48,9 @@ function leafext_directory_function( $atts, $content, $shortcode ) {
 			$options['src'] = '...missing...';
 			$text           = '[leaflet-directory ';
 			foreach ( $options as $key => $item ) {
-				$text = $text . $key . '="' . $item . '" ';
+				$text .= $key . '="' . $item . '" ';
 			}
-			$text = $text . ']';
+			$text .= ']';
 			return esc_attr( $text );
 		}
 		$dir = $atts['src'];
@@ -69,9 +69,9 @@ function leafext_directory_function( $atts, $content, $shortcode ) {
 				$text           = '[leaflet-directory ';
 				$options['src'] = '...not exists... ' . $options['src'];
 				foreach ( $options as $key => $item ) {
-					$text = $text . $key . '="' . $item . '" ';
+					$text .= $key . '="' . $item . '" ';
 				}
-				$text = $text . ']';
+				$text .= ']';
 				return esc_attr( $text );
 			}
 		}
@@ -96,9 +96,9 @@ function leafext_directory_function( $atts, $content, $shortcode ) {
 				$options['type'] = '...not valid... ' . $options['type'];
 				$text            = '[leaflet-directory ';
 				foreach ( $options as $key => $item ) {
-					$text = $text . $key . '="' . $item . '" ';
+					$text .= $key . '="' . $item . '" ';
 				}
-				$text = $text . ']';
+				$text .= ']';
 				return esc_attr( $text );
 			} else {
 				$type = $options['type'];
@@ -109,10 +109,10 @@ function leafext_directory_function( $atts, $content, $shortcode ) {
 		if ( count( $files ) === 0 ) {
 			$text = '[leaflet-directory ';
 			foreach ( $options as $key => $item ) {
-				$text = $text . $key . '="' . $item . '" ';
+				$text .= $key . '="' . $item . '" ';
 			}
-			$text = $text . ']';
-			$text = $text . ' * no any ' . $options['type'] . ' files found in directory ' . $dirpath . $dir;
+			$text .= ']';
+			$text .= ' * no any ' . $options['type'] . ' files found in directory ' . $dirpath . $dir;
 			return esc_attr( $text );
 		}
 
@@ -133,11 +133,11 @@ function leafext_directory_function( $atts, $content, $shortcode ) {
 				}
 				if ( ! in_array( $ext, array( 'gpx', 'kml', 'geojson' ), true ) ) {
 					$text = '[leaflet-directory ... ';
-					$text = $text . $ext . ' not valid ... ';
+					$text .= $ext . ' not valid ... ';
 					foreach ( $options as $key => $item ) {
-						$text = $text . $key . '="' . $item . '" ';
+						$text .= $key . '="' . $item . '" ';
 					}
-					$text = $text . ']';
+					$text .= ']';
 					return esc_attr( $text );
 				}
 				$shortcode = $shortcode . '[leaflet-' . $ext . ' src="' . $url . $file . '" color="' . $farbe . '"]{name}[/leaflet-' . $ext . ']';

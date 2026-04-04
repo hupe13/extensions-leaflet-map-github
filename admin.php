@@ -8,18 +8,18 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-require LEAFEXT_PLUGIN_DIR . '/admin/deleting.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/elevation/main.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/marker/main.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/gesture.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/tiles/main.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/filemgr/main.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/hover/main.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/overviewmap/overview-map.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/overviewmap/featured-map.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/grouping/main.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/awesome.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/zoomhome.php';
+require __DIR__ . '/admin/deleting.php';
+require __DIR__ . '/admin/elevation/main.php';
+require __DIR__ . '/admin/marker/main.php';
+require __DIR__ . '/admin/gesture.php';
+require __DIR__ . '/admin/tiles/main.php';
+require __DIR__ . '/admin/filemgr/main.php';
+require __DIR__ . '/admin/hover/main.php';
+require __DIR__ . '/admin/overviewmap/overview-map.php';
+require __DIR__ . '/admin/overviewmap/featured-map.php';
+require __DIR__ . '/admin/grouping/main.php';
+require __DIR__ . '/admin/awesome.php';
+require __DIR__ . '/admin/zoomhome.php';
 
 /**
  * Add menu page for admin
@@ -98,7 +98,7 @@ function leafext_do_page() {
 			leafext_updates_from_github();
 		}
 		if ( is_plugin_active( 'leaflet-map/leaflet-map.php' ) ) {
-			include LEAFEXT_PLUGIN_DIR . '/admin/help.php';
+			include __DIR__ . '/admin/help.php';
 			echo '<form method="post" action="options.php">';
 			settings_fields( 'leafext_settings_deleting' );
 			do_settings_sections( 'leafext_settings_deleting' );
@@ -112,15 +112,15 @@ function leafext_do_page() {
 			leafext_help_table( LEAFEXT_PLUGIN_SETTINGS );
 		}
 	} elseif ( $active_tab === 'fullscreen' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/fullscreen.php';
+		include __DIR__ . '/admin/fullscreen.php';
 		echo wp_kses_post( leafext_help_fullscreen() );
 	} elseif ( $active_tab === 'choropleth' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/choropleth.php';
+		include __DIR__ . '/admin/choropleth.php';
 		echo wp_kses_post( leafext_choropleth_help() );
 	} elseif ( strpos( $active_tab, 'group' ) !== false ) {
 		leafext_admin_grouping( $active_tab );
 	} elseif ( $active_tab === 'leafletsearch' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/leaflet-search.php';
+		include __DIR__ . '/admin/leaflet-search.php';
 		leafext_leafletsearch_help();
 	} elseif ( $active_tab === 'overviewmap' ) {
 		echo '<form method="post" action="options.php">';

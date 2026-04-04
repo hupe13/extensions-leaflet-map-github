@@ -167,7 +167,7 @@ function leafext_eleparams_for_multi( $options = array() ) {
 		$text = '';
 		sort( $multi );
 		foreach ( $multi as $param ) {
-			$text = $text . '<code>' . $param . '</code>, ';
+			$text .= '<code>' . $param . '</code>, ';
 		}
 		$text = substr( $text, 0, -2 );
 		return $text;
@@ -196,9 +196,9 @@ function leafext_elevation_track( $atts, $content, $shortcode ) {
 		if ( $atts['file'] === '' ) {
 			$text = '[elevation-track ';
 			foreach ( $atts as $key => $item ) {
-				$text = $text . "$key=$item ";
+				$text .= esc_html( "$key=$item " );
 			}
-			$text = $text . ']';
+			$text .= ']';
 			return esc_attr( $text );
 		}
 
@@ -218,18 +218,19 @@ function leafext_elevation_track( $atts, $content, $shortcode ) {
 			$params['name'] = $path_parts['filename'];
 		}
 
+		$gpx = false;
 		if ( $params['lat'] === '' || $params['lng'] === '' || $params['name'] === '' ) {
 			libxml_use_internal_errors( true );
 			$gpx = simplexml_load_file( $atts['file'] );
 			if ( $gpx === false ) {
 				$text = '[*elevation-track ';
 				foreach ( $atts as $key => $item ) {
-					$text = $text . "$key=$item ";
+					$text .= esc_html( "$key=$item " );
 				}
 				$text   = $text . ']';
 				$errors = libxml_get_errors();
 				foreach ( $errors as $error ) {
-					$text = $text . leafext_display_xml_error( $error, $xml );
+					$text .= leafext_display_xml_error( $error, $gpx );
 				}
 				libxml_clear_errors();
 				return $text;
@@ -237,6 +238,7 @@ function leafext_elevation_track( $atts, $content, $shortcode ) {
 			libxml_clear_errors();
 		}
 
+		$latlng = array();
 		if ( $params['lat'] === '' || $params['lng'] === '' ) {
 			if ( $path_parts['extension'] === 'gpx' ) {
 				$latlng = array(
@@ -244,6 +246,8 @@ function leafext_elevation_track( $atts, $content, $shortcode ) {
 					(float) $gpx->trk->trkseg->trkpt[0]->attributes()->lon,
 				);
 			} elseif ( $path_parts['extension'] === 'kml' ) {
+				$startlat = null;
+				$startlon = null;
 				// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- is gpx
 				$allcoordinates = $gpx->Document->Folder->Folder->Placemark->LineString->coordinates;
 				$coords_array   = explode( "\n", $allcoordinates );
@@ -334,6 +338,8 @@ function leafext_multielevation( $atts, $content, $shortcode ) {
 
 		global $leafext_all_files;
 		global $leafext_all_points;
+		$options      = array();
+		$multioptions = array();
 
 		$ele_options = array(
 			'detachedView' => true,

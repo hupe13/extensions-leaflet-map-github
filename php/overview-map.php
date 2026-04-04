@@ -682,7 +682,7 @@ function leafext_overviewmap_function( $atts, $content, $shortcode ) {
 					}
 					$newtable[] = $entry;
 				}
-				$text = $text . leafext_html_table( $newtable );
+				$text .= leafext_html_table( $newtable );
 			}
 		} else {
 			$text = '<script>console.log("' . esc_js( __( 'no leaflet-marker custom fields', 'extensions-leaflet-map' ) ) . '");</script>';

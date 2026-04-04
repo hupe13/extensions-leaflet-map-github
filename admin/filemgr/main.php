@@ -8,10 +8,10 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-require LEAFEXT_PLUGIN_DIR . '/admin/filemgr/uploader.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/filemgr/filemgr-settings.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/filemgr/filemgr.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/filemgr/managefiles-functions.php';
+require __DIR__ . '/uploader.php';
+require __DIR__ . '/filemgr-settings.php';
+require __DIR__ . '/filemgr.php';
+require __DIR__ . '/managefiles-functions.php';
 
 function leafext_filemgr_tab() {
 	//phpcs:ignore WordPress.Security.NonceVerification.Recommended -- no form

@@ -11,7 +11,7 @@ defined( 'ABSPATH' ) || die();
 // init Wahl des theme, leafext_validate_ele_options und leafext_form_elevation ist in elevation.php
 function leafext_themes_init() {
 	// leafext_eleparams ist in der Datenbank!
-	add_settings_section( 'elethemes_settings', leafext_elevation_tab() . '<p><div style="border-top: 1px solid #646970"></div></p>', '', 'leafext_settings_elethemes' );
+	add_settings_section( 'elethemes_settings', leafext_elevation_tab() . '<p><div style="border-top: 1px solid #646970"></div></p>', '__return_empty_string', 'leafext_settings_elethemes' );
 	$fields = leafext_elevation_params( array( 'theme' ) );
 	foreach ( $fields as $field ) {
 		$trenn = '';
@@ -20,7 +20,15 @@ function leafext_themes_init() {
 		}
 		add_settings_field( 'leafext_eleparams[' . $field['param'] . ']', $trenn . $field['shortdesc'], 'leafext_form_elevation', 'leafext_settings_elethemes', 'elethemes_settings', $field['param'] );
 	}
-	register_setting( 'leafext_settings_elethemes', 'leafext_eleparams', 'leafext_validate_ele_options' );
+	register_setting(
+		'leafext_settings_elethemes',
+		'leafext_eleparams',
+		array(
+			'type'              => 'array',
+			'sanitize_callback' => 'leafext_validate_ele_options',
+			'default'           => array(),
+		)
+	);
 }
 add_action( 'admin_init', 'leafext_themes_init' );
 
@@ -39,7 +47,15 @@ function leafext_elevation_color_init() {
 	foreach ( $fields as $field ) {
 		add_settings_field( 'leafext_color_' . $theme . '[' . $field['param'] . ']', $field['shortdesc'], 'leafext_form_colors', 'leafext_settings_color', 'elecolors_settings', $field['param'] );
 	}
-	register_setting( 'leafext_settings_color', 'leafext_color_' . $theme, 'leafext_validate_owncolors' );
+	register_setting(
+		'leafext_settings_color',
+		'leafext_color_' . $theme,
+		array(
+			'type'              => 'array',
+			'sanitize_callback' => 'leafext_validate_owncolors',
+			'default'           => leafext_elevation_theme(),
+		)
+	);
 }
 add_action( 'admin_init', 'leafext_elevation_color_init' );
 

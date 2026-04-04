@@ -30,7 +30,15 @@ function leafext_cluster_init() {
 	foreach ( $fields as $field ) {
 		add_settings_field( 'leafext_cluster[' . $field['param'] . ']', $field['desc'], 'leafext_form_markercluster', 'leafext_settings_clusterparams', 'clusterparams_settings', $field['param'] );
 	}
-	register_setting( 'leafext_settings_clusterparams', 'leafext_cluster', 'leafext_validate_markercluster_options' );
+	register_setting(
+		'leafext_settings_clusterparams',
+		'leafext_cluster',
+		array(
+			'type'              => 'array',
+			'sanitize_callback' => 'leafext_validate_markercluster_options',
+			'default'           => array(),
+		)
+	);
 }
 add_action( 'admin_init', 'leafext_cluster_init' );
 

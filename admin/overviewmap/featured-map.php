@@ -29,12 +29,20 @@ function leafext_featuredmap_admin() {
 
 // Init settings
 function leafext_featuredmap_init() {
-	add_settings_section( 'leafext_featuredmap_settings', '', '', 'leafext_featuredmap_settings' );
+	add_settings_section( 'leafext_featuredmap_settings', '', '__return_empty_string', 'leafext_featuredmap_settings' );
 	$fields = leafext_featuredmap_params();
 	foreach ( $fields as $field ) {
 		add_settings_field( 'leafext_featuredmap[' . $field['param'] . ']', $field['shortdesc'], 'leafext_featuredmap_form', 'leafext_featuredmap_settings', 'leafext_featuredmap_settings', $field['param'] );
 	}
-	register_setting( 'leafext_featuredmap_settings', 'leafext_featuredmap', 'leafext_featuredmap_validate' );
+	register_setting(
+		'leafext_featuredmap_settings',
+		'leafext_featuredmap',
+		array(
+			'type'              => 'array',
+			'sanitize_callback' => 'leafext_featuredmap_validate',
+			'default'           => array(),
+		)
+	);
 }
 add_action( 'admin_init', 'leafext_featuredmap_init' );
 

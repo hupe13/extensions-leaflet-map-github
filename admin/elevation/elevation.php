@@ -9,7 +9,15 @@
 defined( 'ABSPATH' ) || die();
 
 function leafext_eleparams_init() {
-	register_setting( 'leafext_settings_eleparams', 'leafext_eleparams', 'leafext_validate_ele_options' );
+	register_setting(
+		'leafext_settings_eleparams',
+		'leafext_eleparams',
+		array(
+			'type'              => 'array',
+			'sanitize_callback' => 'leafext_validate_ele_options',
+			'default'           => array(),
+		)
+	);
 	$ele_settings = array( 'test', 'chartlook', 'chart', 'info', 'look', 'points', 'units', 'other' );
 	foreach ( $ele_settings as $ele_setting ) {
 		add_settings_section( 'eleparams_settings_' . $ele_setting, '', 'leafext_ele_help_' . $ele_setting, 'leafext_settings_eleparams' );
@@ -282,22 +290,16 @@ function leafext_ele_help_chart() {
 	<td style="text-align:center"> </td>
 	<td style="text-align:center">'
 	);
-	if ( $leg_on !== '' ) {
-		echo esc_html__( 'Your setting:', 'extensions-leaflet-map' ) . '<br>';
-	}
+	echo esc_html__( 'Your setting:', 'extensions-leaflet-map' ) . '<br>';
 	echo '<code>legend="0"</code></td>
 	<td style="text-align:center">';
-	if ( $leg_on === '' ) {
-		echo esc_html__( 'Your setting:', 'extensions-leaflet-map' ) . '<br>';
-	}
+	echo esc_html__( 'Your setting:', 'extensions-leaflet-map' ) . '<br>';
 	echo wp_kses_post(
 		'<code>legend="1"</code></td>
 	<td style="text-align:center"><img src="' . LEAFEXT_PLUGIN_PICTS . 'yachse.png" alt="yachse"></td>
 	<td style="text-align:center">'
 	);
-	if ( $marker_on !== '' ) {
-		echo wp_kses_post( __( 'Your setting:', 'extensions-leaflet-map' ) . '<br><code>marker="' . $options['marker'] . '"</code><br>' );
-	}
+	echo wp_kses_post( __( 'Your setting:', 'extensions-leaflet-map' ) . '<br><code>marker="' . $options['marker'] . '"</code><br>' );
 	echo wp_kses_post(
 		$marker_on . '<code>marker="elevation-line"</code>' . $span_off . '<br>
 	<img src="' . LEAFEXT_PLUGIN_PICTS . 'tooltip_values.png" alt="tooltip_values">

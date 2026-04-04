@@ -18,7 +18,15 @@ function leafext_sgpxparams_init() {
 		}
 		add_settings_field( 'leafext_sgpxparams[' . $field['param'] . ']', $trenn . $field['shortdesc'], 'leafext_form_sgpx', 'leafext_settings_sgpxparams', 'sgpxparams_settings', $field['param'] );
 	}
-	register_setting( 'leafext_settings_sgpxparams', 'leafext_sgpxparams', 'leafext_validate_sgpx_options' );
+	register_setting(
+		'leafext_settings_sgpxparams',
+		'leafext_sgpxparams',
+		array(
+			'type'              => 'array',
+			'sanitize_callback' => 'leafext_validate_sgpx_options',
+			'default'           => array(),
+		)
+	);
 }
 add_action( 'admin_init', 'leafext_sgpxparams_init' );
 
@@ -91,7 +99,15 @@ function leafext_validate_sgpx_options( $options ) {
 function leafext_sgpx_unclean_db_init() {
 	add_settings_section( 'leafext_sgpx_unclean_db', leafext_elevation_tab(), 'leafext_sgpx_help_text', 'leafext_settings_sgpx_unclean_db' );
 	add_settings_field( 'leafext_sgpx_unclean_db', 'leafext_sgpx_unclean_db', 'leafext_form_sgpx_unclean_db', 'leafext_settings_sgpx_unclean_db', 'leafext_sgpx_unclean_db_settings' );
-	register_setting( 'leafext_settings_sgpx_unclean_db', 'leafext_sgpx_unclean_db', 'leafext_validate_sgpx_unclean_db' );
+	register_setting(
+		'leafext_settings_sgpx_unclean_db',
+		'leafext_sgpx_unclean_db',
+		array(
+			//  'type'              => 'array',
+					'sanitize_callback' => 'leafext_validate_sgpx_unclean_db',
+		//  'default'           => array(),
+		)
+	);
 }
 add_action( 'admin_init', 'leafext_sgpx_unclean_db_init' );
 

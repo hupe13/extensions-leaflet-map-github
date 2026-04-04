@@ -45,7 +45,15 @@ function leafext_filemgr_params() {
 
 // init settings
 function leafext_filemgr_init() {
-	register_setting( 'leafext_settings_filemgr', 'leafext_filemgr', 'leafext_validate_filemgr_options' );
+	register_setting(
+		'leafext_settings_filemgr',
+		'leafext_filemgr',
+		array(
+			'type'              => 'array',
+			'sanitize_callback' => 'leafext_validate_filemgr_options',
+			'default'           => array(),
+		)
+	);
 	// register_setting( 'leafext_settings_filemgr', 'leafext_filemgr' );
 	add_settings_section( 'filemgr_settings', __( 'Settings', 'extensions-leaflet-map' ), 'leafext_managefiles_help', 'leafext_settings_filemgr' );
 	$fields = leafext_filemgr_params();

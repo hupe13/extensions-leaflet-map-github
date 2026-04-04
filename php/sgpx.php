@@ -179,27 +179,27 @@ function leafext_sgpx_function( $atts, $content, $shortcode ) {
 				$text = wpgpxmaps_handle_shortcodes( $atts );
 			} else {
 				$text = __( 'You are using the sgpx shortcode from plugin wp-gpx-maps. But the script cannot detect how to handle it. Please ask in the forum.', 'extensions-leaflet-map' );
-				$text = $text . '<p>&#91;sgpx ';
+				$text .= '<p>&#91;sgpx ';
 				foreach ( $atts as $key => $item ) {
-					$text = $text . "$key = $item ";
+					$text .= "$key = $item ";
 				}
-				$text = $text . ']</p>';
+				$text .= ']</p>';
 			}
 			return $text;
 
 		} elseif ( LEAFEXT_SGPX_ACTIVE && ( ( LEAFEXT_SGPX_SGPX && ! isset( $options['sgpx'] ) ) || ! LEAFEXT_SGPX_SGPX ) ) {
 			$text = __( "You are using the sgpx shortcode from plugin wp-gpx-maps. wp-gpx-maps and leaflet-map don't work together.", 'extensions-leaflet-map' ) . ' ';
 			/* translators: %s is an href. */
-			$text = $text . wp_sprintf(
+			$text .= wp_sprintf(
 				'See %1$sadmin settings page%2$s.',
 				'<a href="' . get_admin_url() . 'admin.php?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=sgpxelevation">',
 				'</a>'
 			);
-			$text = $text . '<p>&#91;sgpx ';
+			$text .= '<p>&#91;sgpx ';
 			foreach ( $atts as $key => $item ) {
-				$text = $text . "$key = $item ";
+				$text .= "$key = $item ";
 			}
-			$text = $text . ']</p>';
+			$text .= ']</p>';
 			return esc_attr( $text );
 		} else {
 			$elemap = array();
@@ -305,7 +305,7 @@ add_action( 'init', 'leafext_change_sgpx_shortcode', 20 );
 function leafext_insert_jquery() {
 	$options = get_option( 'leafext_sgpxparams' );
 	if ( LEAFEXT_SGPX_ACTIVE && LEAFEXT_SGPX_SGPX && $options['sgpx'] === 'leaflet' && ! wp_script_is( 'wp_leaflet_map', 'enqueued' ) ) {
-		wp_enqueue_script( 'jquery-core', false, array(), LEAFEXT_VERSION, false );
+		wp_enqueue_script( 'jquery-core', '/wp-includes/js/jquery/jquery/jquery.min.js', array(), LEAFEXT_VERSION, false );
 	}
 }
 add_filter( 'wp_enqueue_scripts', 'leafext_insert_jquery', 1 );

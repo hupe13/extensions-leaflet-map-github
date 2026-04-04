@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || die();
 
 function leafext_file_listing_init() {
 	// register_setting( 'leafext_file_listing', 'leafext_listing' );
-	add_settings_section( 'leafext_listing_settings', '', '', 'leafext_file_listing' );
+	add_settings_section( 'leafext_listing_settings', '', '__return_empty_string', 'leafext_file_listing' );
 	add_settings_field( 'leafext_listing_types', __( 'Show files of type', 'extensions-leaflet-map' ), 'leafext_listing_form_types', 'leafext_file_listing', 'leafext_listing_settings' ); // type
 	add_settings_field( 'leafext_listing_all', __( 'Show all files', 'extensions-leaflet-map' ), 'leafext_listing_form_all', 'leafext_file_listing', 'leafext_listing_settings' ); // all
 	add_settings_field( 'leafext_listing_dirs', __( 'or in the directory', 'extensions-leaflet-map' ), 'leafext_listing_form_dirs', 'leafext_file_listing', 'leafext_listing_settings' ); // verz, count,
@@ -182,7 +182,7 @@ function leafext_managefiles() {
 	$track = isset( $get['track'] ) ? filter_input( INPUT_GET, 'track', FILTER_SANITIZE_SPECIAL_CHARS ) : '';
 
 	if ( $track !== '' ) {
-		include LEAFEXT_PLUGIN_DIR . '/admin/filemgr/thickbox.php';
+		include __DIR__ . '/thickbox.php';
 		leafext_thickbox( $track );
 	} else {
 		// echo '<pre>';

@@ -63,9 +63,9 @@ function leafext_hoverlap_function( $atts, $content, $shortcode ) {
 		// var_dump($settings,$atts,leafext_clear_params($atts),$options); wp_die();
 		$text = '';
 		if ( $options['tolerance'] !== 0 ) {
-			$text = $text . leafext_canvas_script( $options['tolerance'] );
+			$text .= leafext_canvas_script( $options['tolerance'] );
 		}
-		$text = $text . leafext_hoverlap_script( $options );
+		$text .= leafext_hoverlap_script( $options );
 		return $text;
 	}
 }

@@ -18,7 +18,15 @@ function leafext_multieleparams_init() {
 		}
 		add_settings_field( 'leafext_multieleparams[' . $field['param'] . ']', $trenn . $field['shortdesc'], 'leafext_form_multielevation', 'leafext_settings_multieleparams', 'multieleparams_settings', $field['param'] );
 	}
-	register_setting( 'leafext_settings_multieleparams', 'leafext_multieleparams', 'leafext_validate_multiele_options' );
+	register_setting(
+		'leafext_settings_multieleparams',
+		'leafext_multieleparams',
+		array(
+			'type'              => 'array',
+			'sanitize_callback' => 'leafext_validate_multiele_options',
+			'default'           => array(),
+		)
+	);
 }
 add_action( 'admin_init', 'leafext_multieleparams_init' );
 

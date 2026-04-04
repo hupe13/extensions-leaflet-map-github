@@ -8,9 +8,9 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-require LEAFEXT_PLUGIN_DIR . '/admin/hover/hover.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/hover/hoverlap.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/hover/settings.php';
+require __DIR__ . '/hover.php';
+require __DIR__ . '/hoverlap.php';
+require __DIR__ . '/settings.php';
 
 function leafext_hover_tab() {
 	$tabs = array(

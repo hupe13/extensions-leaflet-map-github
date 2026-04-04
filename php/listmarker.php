@@ -115,7 +115,7 @@ function leafext_listmarker_function( $atts, $content, $shortcode ) {
 		$options['update']   = filter_var( $options['update'], FILTER_VALIDATE_BOOLEAN );
 		$options['hover']    = filter_var( $options['hover'], FILTER_VALIDATE_BOOLEAN );
 		if ( $options['background'] !== $defaults['background'] ) {
-			$text = $text . '<style>ul.list-markers-ul {background-color: ' . $options['background'] . '}</style>';
+			$text .= '<style>ul.list-markers-ul {background-color: ' . $options['background'] . '}</style>';
 		}
 
 		leafext_enqueue_listmarker();

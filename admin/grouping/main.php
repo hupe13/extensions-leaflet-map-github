@@ -8,9 +8,9 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-require LEAFEXT_PLUGIN_DIR . '/admin/grouping/featuregroup.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/grouping/parentgroup.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/grouping/settings.php';
+require __DIR__ . '/featuregroup.php';
+require __DIR__ . '/parentgroup.php';
+require __DIR__ . '/settings.php';
 
 function leafext_grouping_tab() {
 	$tabs = array(

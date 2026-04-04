@@ -172,7 +172,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 		$text = $shortcode . ' ';
 		if ( is_array( $atts ) ) {
 			foreach ( $atts as $key => $item ) {
-				$text .= "$key=$item ";
+				$text .= esc_html( "$key=$item " );
 			}
 		}
 		$text .= ' - something is wrong. ' . $error;

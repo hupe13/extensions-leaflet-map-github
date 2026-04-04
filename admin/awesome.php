@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || die();
 
 // Init settings fuer awesome
 function leafext_awesome_init() {
-	add_settings_section( 'awesome_settings', '', '', 'leafext_settings_awesome' );
+	add_settings_section( 'awesome_settings', '', '__return_empty_string', 'leafext_settings_awesome' );
 	add_settings_field(
 		'leafext_awesome',
 		__(
@@ -21,13 +21,21 @@ function leafext_awesome_init() {
 		'leafext_settings_awesome',
 		'awesome_settings'
 	);
-	register_setting( 'leafext_settings_awesome', 'leafext_awesome', 'leafext_validate_awesome' );
+	register_setting(
+		'leafext_settings_awesome',
+		'leafext_awesome',
+		array(
+			'type'              => 'string',
+			'sanitize_callback' => 'leafext_validate_awesome',
+			'default'           => '1',
+		)
+	);
 }
 add_action( 'admin_init', 'leafext_awesome_init' );
 
 // Baue Abfrage der Params
 function leafext_form_awesome() {
-	$setting = get_option( 'leafext_awesome' );
+	$setting = get_option( 'leafext_awesome', '1' );
 	if ( ! current_user_can( 'manage_options' ) ) {
 		$disabled = ' disabled ';
 	} else {

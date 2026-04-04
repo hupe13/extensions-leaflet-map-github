@@ -11,8 +11,16 @@ defined( 'ABSPATH' ) || die();
 // init settings fuer tile switching
 function leafext_maps_init() {
 	add_settings_section( 'maps_settings', __( 'Extra Tile Server', 'extensions-leaflet-map' ), 'leafext_maps_help_text', 'leafext_settings_maps' );
-	add_settings_field( 'leafext_form_maps_id', 'mapid:', 'leafext_form_maps', 'leafext_settings_maps', 'maps_settings', 'mapid' );
-	register_setting( 'leafext_settings_maps', 'leafext_maps', 'leafext_validate_mapswitch' );
+	add_settings_field( 'leafext_form_maps_id', 'mapid:', 'leafext_form_maps', 'leafext_settings_maps', 'maps_settings' );
+	register_setting(
+		'leafext_settings_maps',
+		'leafext_maps',
+		array(
+			'type'              => 'array',
+			'sanitize_callback' => 'leafext_validate_mapswitch',
+			'default'           => array(),
+		)
+	);
 }
 add_action( 'admin_init', 'leafext_maps_init' );
 
@@ -64,7 +72,7 @@ function leafext_form_maps() {
 		echo '<input ' . esc_attr( $disabled ) . ' type="text" size="80"
 			placeholder="' .
 			esc_attr( 'minZoom: 1, maxZoom: 16, subdomains: "abcd", opacity: 0.5, bounds: [[22, -132], [51, -56]]' ) . '"
-			name="leafext_maps[' . esc_html( $i ) . '][options]"
+			name="leafext_maps[' . esc_html( (string) $i ) . '][options]"
 			pattern=' . "'" . '[a-zA-Z0-9_: ",\[\]\-.\{\}]*' . "'" . ' value="' . esc_attr( $option['options'] ) . '" /></td>';
 		echo '</tr>';
 

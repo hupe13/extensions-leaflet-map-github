@@ -8,8 +8,8 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-require LEAFEXT_PLUGIN_DIR . '/admin/tiles/layerswitch.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/tiles/providers.php';
+require __DIR__ . '/layerswitch.php';
+require __DIR__ . '/providers.php';
 
 function leafext_tiles_tab() {
 	$tabs = array(
@@ -46,7 +46,7 @@ function leafext_tiles_tab() {
 function leafext_admin_tiles( $active_tab ) {
 	if ( $active_tab === 'tiles' ) {
 		echo '<h2>' . wp_kses_post( leafext_tiles_tab() ) . '</h2>';
-		include LEAFEXT_PLUGIN_DIR . '/admin/tiles/help.php';
+		include __DIR__ . '/help.php';
 		leafext_help_tiles();
 	} elseif ( $active_tab === 'tileswitch' ) {
 		echo '<h2>' . wp_kses_post( leafext_tiles_tab() ) . '</h2>';

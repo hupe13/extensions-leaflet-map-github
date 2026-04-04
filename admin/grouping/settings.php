@@ -9,7 +9,7 @@
 defined( 'ABSPATH' ) || die();
 
 function leafext_parentgroup_init() {
-	add_settings_section( 'parentgroup_settings', '', '', 'leafext_settings_parentgroup' );
+	add_settings_section( 'parentgroup_settings', '', '__return_empty_string', 'leafext_settings_parentgroup' );
 	$fields = leafext_parentgroup_params();
 	foreach ( $fields as $field ) {
 		// if ( $field['size'] > 0 ) {
@@ -23,7 +23,15 @@ function leafext_parentgroup_init() {
 			);
 		// }
 	}
-	register_setting( 'leafext_settings_parentgroup', 'leafext_parentgroup', 'leafext_validate_parentgroup' );
+	register_setting(
+		'leafext_settings_parentgroup',
+		'leafext_parentgroup',
+		array(
+			'type'              => 'array',
+			'sanitize_callback' => 'leafext_validate_parentgroup',
+			'default'           => array(),
+		)
+	);
 }
 add_action( 'admin_init', 'leafext_parentgroup_init' );
 

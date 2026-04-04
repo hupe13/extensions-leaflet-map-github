@@ -14,7 +14,15 @@ function leafext_elevation_init() {
 	add_settings_section( 'theme_settings', '', 'leafext_elevation_help_text', 'leafext_settings_theme' );
 	add_settings_field( 'leafext_values_1', 'Theme', 'leafext_form_owntheme', 'leafext_settings_theme', 'theme_settings' );
 	add_settings_field( 'leafext_values_2', __( 'Other Theme', 'extensions-leaflet-map' ), 'leafext_form_other_theme', 'leafext_settings_theme', 'theme_settings' );
-	register_setting( 'leafext_settings_theme', 'leafext_values', 'leafext_validate_elevationtheme' );
+	register_setting(
+		'leafext_settings_theme',
+		'leafext_values',
+		array(
+			'type'              => 'string',
+			'sanitize_callback' => 'leafext_validate_elevationtheme',
+			'default'           => 'lime-theme',
+		)
+	);
 }
 add_action( 'admin_init', 'leafext_elevation_init' );
 

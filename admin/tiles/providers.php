@@ -12,7 +12,15 @@ function leafext_providers_init() {
 	// Create Setting
 	$section_group = 'leafext_providers';
 	$section_name  = 'leafext_providers';
-	register_setting( $section_group, $section_name, 'leafext_validate_providers' );
+	register_setting(
+		$section_group,
+		$section_name,
+		array(
+			'type'              => 'array',
+			'sanitize_callback' => 'leafext_validate_providers',
+			'default'           => array(),
+		)
+	);
 
 	// Create section of Page
 	$settings_section = 'leafext_providers_main';
@@ -48,7 +56,7 @@ function leafext_providers_form() {
 		$size = max( array_map( 'strlen', $regtiles[ $i ]['keys'] ) );
 		foreach ( $regtiles[ $i ]['keys'] as $key => $value ) {
 			echo '<p>' . esc_html( $key ) . ': ';
-			echo '<input type="text" size=' . esc_attr( $size ) . ' name="' . esc_attr( 'leafext_providers[' . $i . '][keys][' . $key . ']' ) . '" value="' . esc_attr( $value ) . '"></p>' . "\n";
+			echo '<input type="text" size=' . esc_attr( (string) $size ) . ' name="' . esc_attr( 'leafext_providers[' . $i . '][keys][' . $key . ']' ) . '" value="' . esc_attr( $value ) . '"></p>' . "\n";
 		}
 	}
 	$i = $count;
@@ -59,7 +67,7 @@ function leafext_providers_form() {
 		$size = max( array_map( 'strlen', $require_registration[ $id ]['keys'] ) );
 		foreach ( $require_registration[ $id ]['keys'] as $key => $value ) {
 			echo '<p>' . esc_html( $key ) . ': ';
-			echo '<input type="text" size=' . esc_attr( $size ) . ' name="' . esc_attr( 'leafext_providers[' . $i . '][keys][' . $key . ']' ) . '" placeholder="' . esc_attr( $value ) . '" value=""></p>' . "\n";
+			echo '<input type="text" size=' . esc_attr( (string) $size ) . ' name="' . esc_attr( 'leafext_providers[' . $i . '][keys][' . $key . ']' ) . '" placeholder="' . esc_attr( $value ) . '" value=""></p>' . "\n";
 		}
 		++$i;
 	}
@@ -69,6 +77,7 @@ function leafext_providers_form() {
 function leafext_validate_providers( $options ) {
 	if ( ! empty( $_POST ) && check_admin_referer( 'leafext_tiles', 'leafext_tiles_nonce' ) ) {
 		if ( isset( $_POST['submit'] ) ) {
+			$providers = array();
 			foreach ( $options as $option ) {
 				foreach ( $option['keys'] as $key => $value ) {
 					if ( $value !== '' ) {

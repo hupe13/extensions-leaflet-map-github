@@ -8,13 +8,13 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-require LEAFEXT_PLUGIN_DIR . '/admin/marker/markercluster.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/marker/placementstrategies.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/marker/extramarker.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/marker/geojsonmarker.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/marker/targetmarker.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/marker/hidemarkers.php';
-require LEAFEXT_PLUGIN_DIR . '/admin/marker/listmarker.php';
+require __DIR__ . '/markercluster.php';
+require __DIR__ . '/placementstrategies.php';
+require __DIR__ . '/extramarker.php';
+require __DIR__ . '/geojsonmarker.php';
+require __DIR__ . '/targetmarker.php';
+require __DIR__ . '/hidemarkers.php';
+require __DIR__ . '/listmarker.php';
 
 function leafext_marker_tab() {
 	$tabs = array(
@@ -77,7 +77,7 @@ function leafext_admin_marker( $active_tab ) {
 		leafext_admin_markercluster();
 	} elseif ( $active_tab === 'markerclustergroup' ) {
 		echo '<h2>' . wp_kses_post( leafext_marker_tab() ) . '</h2>';
-		include LEAFEXT_PLUGIN_DIR . '/admin/marker/clustergroup.php';
+		include __DIR__ . '/clustergroup.php';
 	} elseif ( $active_tab === 'extramarker' ) {
 		echo '<h2>' . wp_kses_post( leafext_marker_tab() ) . '</h2>';
 		leafext_help_awesome();

@@ -30,7 +30,15 @@ function leafext_placementparams_init() {
 	foreach ( $fields as $field ) {
 		add_settings_field( 'leafext_placementparams[' . $field[0] . ']', $field[1], 'leafext_form_placement', 'leafext_settings_placementparams', 'placementparams_settings', $field[0] );
 	}
-	register_setting( 'leafext_settings_placementparams', 'leafext_placementparams', 'leafext_validate_placement_options' );
+	register_setting(
+		'leafext_settings_placementparams',
+		'leafext_placementparams',
+		array(
+			'type'              => 'array',
+			'sanitize_callback' => 'leafext_validate_placement_options',
+			'default'           => array(),
+		)
+	);
 }
 add_action( 'admin_init', 'leafext_placementparams_init' );
 

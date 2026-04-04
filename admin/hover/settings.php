@@ -9,7 +9,7 @@
 defined( 'ABSPATH' ) || die();
 
 function leafext_hover_init() {
-	add_settings_section( 'hover_settings', '', '', 'leafext_settings_hover' );
+	add_settings_section( 'hover_settings', '', '__return_empty_string', 'leafext_settings_hover' );
 	$fields = leafext_hover_params();
 	foreach ( $fields as $field ) {
 		if ( $field['changeable'] ) {
@@ -23,7 +23,15 @@ function leafext_hover_init() {
 			);
 		}
 	}
-	register_setting( 'leafext_settings_hover', 'leafext_hover', 'leafext_validate_hover' );
+	register_setting(
+		'leafext_settings_hover',
+		'leafext_hover',
+		array(
+			'type'              => 'array',
+			'sanitize_callback' => 'leafext_validate_hover',
+			'default'           => array(),
+		)
+	);
 }
 add_action( 'admin_init', 'leafext_hover_init' );
 

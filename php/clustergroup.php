@@ -71,10 +71,10 @@ function leafext_clustergroup_function( $atts, $content, $shortcode ) {
 		) {
 			$text = '[markerclustergroup ';
 			foreach ( $atts as $key => $item ) {
-				$text = $text . "$key=$item ";
+				$text .= esc_html( "$key=$item " );
 			}
-			$text = $text . ']';
-			$text = $text . ' - strings and groups (and visible) do not match. ';
+			$text .= ']';
+			$text .= ' - strings and groups (and visible) do not match. ';
 			return esc_attr( $text );
 		}
 

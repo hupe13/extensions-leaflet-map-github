@@ -1,3 +1,9 @@
+### 4.2 / 26040x
+
+* Tested up to WordPress 7.0
+* PHPStan checks - a few issues have been fixed
+* Fixed XSS Vulnerability
+
 ### 4.14 / 260307
 
 * layerswitch: new option visible - a list of mapids of Overlay Layers that should be displayed from the start

@@ -3,9 +3,9 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 6.9
-Stable tag: 4.14-260307
+Stable tag: 4.2-260404
 Requires at least: 6.2
-Requires PHP: 8.1
+Requires PHP: 8.2
 License: GPLv2 or later
 
 Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.

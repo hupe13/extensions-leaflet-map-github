@@ -235,7 +235,7 @@ function leafext_extramarkers_params( $params ) {
 		if ( $v === '' ) {
 			continue;
 		}
-		$text = $text . "$k: ";
+		$text .= "$k: ";
 		switch ( $filters[ $k ] ) {
 			case 'FILTER_VALIDATE_BOOLEAN':
 				$value = filter_var( $v, FILTER_VALIDATE_BOOLEAN ) ? 'true' : 'false';
@@ -249,8 +249,8 @@ function leafext_extramarkers_params( $params ) {
 			default:
 				$value = '"' . $v . '"';
 		}
-		$text = $text . $value;
-		$text = $text . ",\n";
+		$text .= $value;
+		$text .= ",\n";
 	}
 	// var_dump($text); wp_die();
 	return $text;

@@ -138,6 +138,8 @@ function leafext_featuredmap_function( $atts, $content, $shortcode ) {
 	if ( $text !== '' ) {
 		return $text;
 	}
+	$lat = null;
+	$lng = null;
 	if ( ! array_key_exists( 'latlngs', $atts ) || $atts['latlngs'] === '' || $atts['latlngs'] === 'codex' ) {
 		$lat = get_post_meta( get_the_ID(), 'geo_latitude', true );
 		$lng = get_post_meta( get_the_ID(), 'geo_longitude', true );
@@ -197,6 +199,7 @@ function leafext_featuredmap_function( $atts, $content, $shortcode ) {
 	$marker        = 'leaflet-marker';
 	$markerend     = 'leaflet-marker';
 	$markeroptions = '';
+	$params        = array();
 	if ( array_key_exists( 'marker', $atts ) ) {
 		$marker = get_post_meta( get_the_ID(), $atts['marker'], true );
 		if ( $marker !== '' ) {

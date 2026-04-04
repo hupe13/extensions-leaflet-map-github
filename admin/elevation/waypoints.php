@@ -10,12 +10,17 @@ defined( 'ABSPATH' ) || die();
 
 // init settings fuer extra waypoint options
 function leafext_waypoints_init() {
-	$section_group = 'leafext_waypoints';
-	$section_name  = 'leafext_waypoints';
-	register_setting( $section_group, $section_name, 'leafext_validate_waypoints' );
-	$settings_section = 'leafext_waypoints_main';
-	add_settings_section( $settings_section, leafext_elevation_tab(), 'leafext_waypoints_help_text', $section_group );
-	add_settings_field( $section_name, '<span style="color: #4f94d4">' . __( 'Text of GPS symbol name', 'extensions-leaflet-map' ) . '</span>:', 'leafext_form_waypoints', $section_group, $settings_section );
+	add_settings_section( 'leafext_waypoints_main', leafext_elevation_tab(), 'leafext_waypoints_help_text', 'leafext_waypoints' );
+	add_settings_field( 'leafext_waypoints', '<span style="color: #4f94d4">' . __( 'Text of GPS symbol name', 'extensions-leaflet-map' ) . '</span>:', 'leafext_form_waypoints', 'leafext_waypoints', 'leafext_waypoints_main' );
+	register_setting(
+		'leafext_waypoints',
+		'leafext_waypoints',
+		array(
+			'type'              => 'array',
+			'sanitize_callback' => 'leafext_validate_waypoints',
+			'default'           => array(),
+		)
+	);
 }
 add_action( 'admin_init', 'leafext_waypoints_init' );
 

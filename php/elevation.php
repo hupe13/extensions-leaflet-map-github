@@ -829,14 +829,14 @@ function leafext_ele_java_params( $settings ) {
 				break;
 			case 'wptIcons':
 				if ( strpos( $v, '{' ) !== false ) {
-					$text = $text . "$k: " . $v . ',';
+					$text .= "$k: " . $v . ',';
 					unset( $settings[ $k ] );
 				}
 				break;
 			case 'distanceMarkers':
 				// distanceMarkers: { lazy: true, distance: true, direction: true },
 				if ( $settings[ $k ] === true ) {
-					$text = $text . 'distanceMarkers: {'; // }
+					$text .= 'distanceMarkers: {'; // }
 					// if ( $settings['imperial'] == true) {
 					// $text = $text.
 					// 'offset: 1000/0.621371,
@@ -845,27 +845,27 @@ function leafext_ele_java_params( $settings ) {
 					// },';
 					// }
 					if ( $settings['direction'] === true ) {
-						$text = $text . 'lazy: true, distance: true, direction: true,';
+						$text .= 'lazy: true, distance: true, direction: true,';
 					} else {
-						$text = $text . 'lazy: true, distance: true, direction: false,';
+						$text .= 'lazy: true, distance: true, direction: false,';
 					}
-					$text = $text . '},';
+					$text .= '},';
 				} elseif ( $settings['direction'] === true ) {
-						$text = $text . 'distanceMarkers: { lazy: true, distance: false, direction: true },';
+						$text .= 'distanceMarkers: { lazy: true, distance: false, direction: true },';
 				} else {
-					$text = $text . 'distanceMarkers: false,';
+					$text .= 'distanceMarkers: false,';
 				}
 				unset( $settings[ $k ] );
 				unset( $settings['direction'] );
 				break;
 			case 'handlers':
 			case 'margins':
-				$text = $text . "$k: " . $v . ',';
+				$text .= "$k: " . $v . ',';
 				unset( $settings[ $k ] );
 				break;
 			case 'linearGradient':
 				if ( $settings['linearGradient'] === true ) {
-					$text = $text . "$k: {
+					$text .= "$k: {
 					attr: 'z',
 					path: 'altitude',
 					range: { 0.0: '#008800', 0.5: '#ffff00', 1.0: '#ff0000' },
@@ -984,7 +984,7 @@ function leafext_elevation_script( $gpx, $settings ) {
 	});
 	<?php
 	$javascript = ob_get_clean();
-	$text       = $text . $javascript . '//-->' . "\n" . '</script>';
+	$text       .= $javascript . '//-->' . "\n" . '</script>';
 	$text       = \JShrink\Minifier::minify( $text );
 	return "\n" . $text . "\n";
 }
@@ -1030,31 +1030,31 @@ function leafext_elevation_color( $options ) {
 						break;
 					case 'polyline':
 						if ( isset( $options['polyline'] ) ) {
-							$text = $text . '<style>' .
+							$text .= '<style>' .
 							'.' . $options['theme'] . '.elevation-polyline {stroke: ' . $typ . ';stroke-width: ' . $options['polyline'] . ';}' .
 							'</style>';
 						}
 						break;
 					case 'altitude':
-						$text = $text . '<style>' .
+						$text .= '<style>' .
 						'.' . $options['theme'] . '.elevation-control .area path.' . $key . ',
 					.' . $options['theme'] . ' .legend-' . $key . ' rect.area {fill: ' . $typ . '; }' .
 						'.' . $options['theme'] . '.height-focus.circle-lower {fill: ' . $typ . '; }' .
 						'</style>';
 						break;
 					case 'background':
-						$text = $text . '<style>' .
+						$text .= '<style>' .
 						'.elevation-control .background {background-color: ' . $typ . ' !important;}' .
 						'</style>';
 						break;
 					case 'heart':
-						$text = $text . '<style>' .
+						$text .= '<style>' .
 						'.heart {stroke: ' . $typ . ' !important;}' .
 						'.legend-' . $key . ' rect {fill: ' . $typ . ' !important; fill-opacity: 0.7; }' .
 						'</style>';
 						break;
 					default:
-						$text = $text . '<style>' .
+						$text .= '<style>' .
 						'.' . $options['theme'] . '.elevation-control .area path.' . $key . ',' .
 						'.' . $options['theme'] . ' .legend-' . $key . ' rect {fill: ' . $typ . ';}' .
 						'</style>';
@@ -1075,9 +1075,9 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 		if ( ! isset( $atts['gpx'] ) ) {
 			$text = '[elevation ';
 			foreach ( $atts as $key => $item ) {
-				$text = $text . "$key=$item ";
+				$text .= esc_html( "$key=$item " );
 			}
-			$text = $text . ']';
+			$text .= ']';
 			return esc_attr( $text );
 		}
 

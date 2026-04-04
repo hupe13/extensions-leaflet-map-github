@@ -73,7 +73,6 @@ function leafext_providers_regnames() {
 // [leaflet-map mapid=" "]
 // Shortcodes:
 // [layerswitch mapids= providers= tiles= opacity=]
-
 function leafext_layerswitch_begin_script() {
 	$text = '<script><!--';
 	ob_start();
@@ -209,26 +208,26 @@ function leafext_providers_script( $mapids, $providers, $visible ) {
 	foreach ( $providers as $provider ) {
 		$id = array_search( explode( '.', $provider )[0], array_column( $regtiles, 'name' ), true );
 		if ( $id !== false ) {
-			$text = $text . 'var layer = L.tileLayer.provider("' . $provider . '", {';
+			$text .= 'var layer = L.tileLayer.provider("' . $provider . '", {';
 			foreach ( $regtiles[ $id ]['keys'] as $key => $value ) {
-				$text = $text . $key . ': "';
-				$text = $text . $value . '",';
+				$text .= $key . ': "';
+				$text .= $value . '",';
 			}
-				$text = $text . '
+				$text .= '
 			} );';
 		} else {
-			$text = $text . 'var layer = L.tileLayer.provider("' . $provider . '");';
+			$text .= 'var layer = L.tileLayer.provider("' . $provider . '");';
 		}
-		$text = $text . '
+		$text .= '
 		if (isOverlay("' . $provider . '", layer)) {
 			overlays["' . $names[ $provider ] . '"] = layer;
 			';
 		if ( in_array( $names[ $provider ], $visible, true ) ) {
-			$text = $text . '
+			$text .= '
 			layer.addTo(map);
 			';
 		}
-			$text = $text . '
+			$text .= '
 		} else {
 			baselayers["' . $names[ $provider ] . '"] = layer;
 		}';
@@ -311,9 +310,6 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 				$defined_tileservers = $only;
 			}
 			if ( array_key_exists( 'providers', $atts ) ) {
-				if ( ! array_key_exists( 'tiles', $atts ) ) {
-					$defined_tileservers = array();
-				}
 				leafext_enqueue_providers();
 				$providers = explode( ',', $atts['providers'] );
 				if ( array_key_exists( 'mapids', $atts ) ) {
@@ -398,11 +394,11 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 
 		$text = leafext_layerswitch_begin_script();
 		if ( count( $tiles ) > 0 ) {
-			$text = $text . leafext_layerswitch_tiles_script( $tiles );
+			$text .= leafext_layerswitch_tiles_script( $tiles );
 		}
 		if ( count( $providers ) > 0 ) {
-			$text = $text . leafext_providers_fkt_script();
-			$text = $text . leafext_providers_script( $mapids, $providers, $visible );
+			$text .= leafext_providers_fkt_script();
+			$text .= leafext_providers_script( $mapids, $providers, $visible );
 		}
 		if ( is_array( $atts ) ) {
 			if ( array_key_exists( 'opacity', $atts ) ) {
@@ -419,7 +415,7 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 		if ( ! leafext_check_position_control( $options['position'] ) ) {
 			$options['position'] = 'topright';
 		}
-		$text = $text . leafext_layerswitch_end_script( $options );
+		$text .= leafext_layerswitch_end_script( $options );
 		$text = \JShrink\Minifier::minify( $text );
 		return "\n" . $text . "\n";
 	}

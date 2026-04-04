@@ -251,7 +251,7 @@ function leafext_hover_function( $atts, $content, $shortcode ) {
 
 		$text = '';
 		if ( $options['tolerance'] !== 0 ) {
-			$text = $text . leafext_canvas_script( $options['tolerance'] );
+			$text .= leafext_canvas_script( $options['tolerance'] );
 		}
 
 		$do_tooltip = array( true, 'tooltip' );
@@ -273,7 +273,7 @@ function leafext_hover_function( $atts, $content, $shortcode ) {
 			$options['geojsontooltip'] = filter_var( $options['geojsontooltip'], FILTER_SANITIZE_SPECIAL_CHARS );
 		}
 
-		$text = $text . '<script><!--';
+		$text .= '<script><!--';
 		ob_start();
 		?>
 		/*<script>*/

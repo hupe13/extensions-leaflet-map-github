@@ -16,7 +16,15 @@ function leafext_gesture_init() {
 	foreach ( $fields as $field ) {
 		add_settings_field( 'leafext_gesture[' . $field['param'] . ']', $field['shortdesc'], 'leafext_form_gesture', 'leafext_settings_gesture', 'gesture_settings', $field['param'] );
 	}
-	register_setting( 'leafext_settings_gesture', 'leafext_gesture', 'leafext_validate_gesture' );
+	register_setting(
+		'leafext_settings_gesture',
+		'leafext_gesture',
+		array(
+			'type'              => 'array',
+			'sanitize_callback' => 'leafext_validate_gesture',
+			'default'           => array(),
+		)
+	);
 }
 add_action( 'admin_init', 'leafext_gesture_init' );
 
