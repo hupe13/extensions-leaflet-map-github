@@ -2,8 +2,8 @@
 
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
-Tested up to: 6.9
-Stable tag: 4.2-260404
+Tested up to: 7.0
+Stable tag: 4.15-260405
 Requires at least: 6.2
 Requires PHP: 8.2
 License: GPLv2 or later
@@ -15,6 +15,14 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
 
 This is the Plugins Github Version.
+
+= Documentation =
+
+Detailed documentation and examples in <a href="https://leafext.de/">German</a> and <a href="https://leafext.de/en/">English</a>.
+
+= Thank you =
+
+Many thanks to everyone who found errors and provided ideas for new functions.
 
 == Installation ==
 
@@ -34,6 +42,8 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 
 == Changelog ==
 
-Many thanks to everyone who found errors and provided ideas for new functions.
+= 4.15 / 26040x =
 
-* layerswitch: new option visible - a list of mapids of Overlay Layers that should be displayed from the start
+* Tested up to WordPress 7.0
+* PHPStan checks - a few issues have been fixed
+* Fixed XSS Vulnerability

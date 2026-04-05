@@ -1,15 +1,5 @@
 # Extensions for Leaflet Map Github Version
 
-Contributors: hupe13    
-Tags: leaflet, gpx, geojson, hover, marker   
-Tested up to: 6.9  
-Stable tag: 4.14    
-Requires at least: 6.2     
-Requires PHP: 8.2     
-License: GPLv2 or later
-
-Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
-
 ## Description
 
 Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
@@ -117,15 +107,6 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 
 * [Font Awesome 6](https://fontawesome.com/download)
 
-## Screenshots
-
-1. Track with elevation and speed profiles <br>![Track with elevation profile](.wordpress-org/screenshot-1.png)
-2. ExtraMarkers <br>![ExtraMarkers](.wordpress-org/screenshot-2.png)
-3. Grouping and Tree View <br>![Grouping and Tree View](.wordpress-org/screenshot-3.png)
-4. Markercluster PlacementStrategies <br>![Markercluster PlacementStrategies](.wordpress-org/screenshot-4.png)
-5. Tooltip on Hover <br>![Tooltip on Hover](.wordpress-org/screenshot-5.png)
-6. Manage Leaflet Map files <br>![Manage Leaflet Map files](.wordpress-org/screenshot-6.png)
-
 ## Documentation
 
 Detailed documentation and examples in <a href="https://leafext.de/">German</a> and <a href="https://leafext.de/en/">English</a>.
@@ -183,6 +164,15 @@ RewriteRule .*\.gpx$ - [L,T=application/gpx+xml]
 * If you use [Complianz | GDPR/CCPA Cookie Consent](https://wordpress.org/plugins/complianz-gdpr/) see [here](https://complianz.io/leaflet-maps/).
 </details>
 </p>
+
+## Screenshots
+
+1. Track with elevation and speed profiles <br>![Track with elevation profile](.wordpress-org/screenshot-1.png)
+2. ExtraMarkers <br>![ExtraMarkers](.wordpress-org/screenshot-2.png)
+3. Grouping and Tree View <br>![Grouping and Tree View](.wordpress-org/screenshot-3.png)
+4. Markercluster PlacementStrategies <br>![Markercluster PlacementStrategies](.wordpress-org/screenshot-4.png)
+5. Tooltip on Hover <br>![Tooltip on Hover](.wordpress-org/screenshot-5.png)
+6. Manage Leaflet Map files <br>![Manage Leaflet Map files](.wordpress-org/screenshot-6.png)
 
 ## Installation
 
