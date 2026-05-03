@@ -1,8 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* Tested up to WordPress 7.0
-* PHPStan checks - a few issues have been fixed
-* Fixed XSS Vulnerability
+* removed breaks after </script> (shortcode block)
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

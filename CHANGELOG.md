@@ -1,3 +1,7 @@
+### 4.2.1 / 26050x
+
+* removed breaks after </script> (shortcode block)
+
 ### 4.2 / 26040x
 
 * Tested up to WordPress 7.0

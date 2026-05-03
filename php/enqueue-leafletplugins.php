@@ -560,17 +560,6 @@ add_filter(
 	3
 );
 
-// remove </script>*< br/> in Classic Editor
-if ( ! is_admin() ) {
-	function leafext_remove_script_br( $content ) {
-		$script_br = '/<\/script>\r?\n?<br \/>/';
-		$script    = '</script>';
-		$content   = preg_replace( $script_br, $script, $content );
-		return $content;
-	}
-	add_filter( 'the_content', 'leafext_remove_script_br', 11 );
-}
-
 /**
  * Enqueue css for Extensions Leaflet Map
  */
@@ -663,4 +652,30 @@ function leafext_enqueue_admin() {
 		LEAFEXT_VERSION,
 		true
 	);
+}
+
+// remove breaks in shortcode block
+add_filter(
+	'render_block',
+	function ( $block_content, $block ) {
+		if ( $block['blockName'] === 'core/shortcode' ) {
+			$shortcodes = array( 'leaflet-map', 'elevation' );
+			$match      = ( str_replace( $shortcodes, '', $block['innerHTML'] ) !== $block['innerHTML'] );
+			if ( $match ) {
+				return preg_replace( '/\](\r|\n)*\[/', '][', $block['innerHTML'] );
+			}
+		}
+		return $block_content;
+	},
+	10,
+	2
+);
+
+// remove </script>*< br/>
+if ( ! is_admin() ) {
+       function leafext_remove_script_br( $content ) {
+               $content   = preg_replace( '/<\/script>(\r|\n|<br \/>|<\/p>)*/', '</script>', $content );
+               return $content;
+       }
+       add_filter( 'the_content', 'leafext_remove_script_br', 11 );
 }
