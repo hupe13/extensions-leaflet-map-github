@@ -1,4 +1,4 @@
-### 4.2 / 260504
+### 5.0 / 260504
 
 * removed breaks in shortcode block
 
