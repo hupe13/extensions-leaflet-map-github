@@ -42,6 +42,6 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 
 == Changelog ==
 
-### 4.2 / 260504
+### 5.0 / 260504
 
 * removed breaks in shortcode block
