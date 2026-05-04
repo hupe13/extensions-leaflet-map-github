@@ -1,8 +1,8 @@
-### 4.2.1 / 26050x
+### 4.2 / 260504
 
-* removed breaks after </script> (shortcode block)
+* removed breaks in shortcode block
 
-### 4.2 / 26040x
+### 4.15 / 260407
 
 * Tested up to WordPress 7.0
 * PHPStan checks - a few issues have been fixed

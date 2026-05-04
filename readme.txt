@@ -42,8 +42,6 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 
 == Changelog ==
 
-= 4.15 / 26040x =
+### 4.2 / 260504
 
-* Tested up to WordPress 7.0
-* PHPStan checks - a few issues have been fixed
-* Fixed XSS Vulnerability
+* removed breaks in shortcode block
