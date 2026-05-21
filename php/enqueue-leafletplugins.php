@@ -653,29 +653,3 @@ function leafext_enqueue_admin() {
 		true
 	);
 }
-
-// remove breaks in shortcode block
-add_filter(
-	'render_block',
-	function ( $block_content, $block ) {
-		if ( $block['blockName'] === 'core/shortcode' ) {
-			$shortcodes = array( 'leaflet-map', 'elevation' );
-			$match      = ( str_replace( $shortcodes, '', $block['innerHTML'] ) !== $block['innerHTML'] );
-			if ( $match ) {
-				return preg_replace( '/\](\r|\n)*\[/', '][', $block['innerHTML'] );
-			}
-		}
-		return $block_content;
-	},
-	10,
-	2
-);
-
-// remove </script>*< br/>
-if ( ! is_admin() ) {
-       function leafext_remove_script_br( $content ) {
-               $content   = preg_replace( '/<\/script>(\r|\n|<br \/>|<\/p>)*/', '</script>', $content );
-               return $content;
-       }
-       add_filter( 'the_content', 'leafext_remove_script_br', 11 );
-}

@@ -9,7 +9,8 @@
  */
 
 function leafext_listmarker_js(propertyName,overiconurl,collapse,update,hover,highlight,maxheight,maxwidth) {
-	var map = window.WPLeafletMapPlugin.getCurrentMap();
+	var map    = window.WPLeafletMapPlugin.getCurrentMap();
+	var map_id = map._leaflet_id;
 
 	map.on(
 		"update-end",
@@ -17,7 +18,7 @@ function leafext_listmarker_js(propertyName,overiconurl,collapse,update,hover,hi
 			// console.log("update-end", map.options._collapse);
 			// console.log(markersLayer);
 			if (leafext_map_popups( map ) ) {
-				markersLayer.eachLayer(
+				markersLayers[map_id].eachLayer(
 					function (layer) {
 						if (layer.getPopup()) {
 							if (layer.getPopup().isOpen()) {
@@ -55,31 +56,36 @@ function leafext_listmarker_js(propertyName,overiconurl,collapse,update,hover,hi
 		}
 	);
 
-	markersLayer = new L.LayerGroup();	// global layer contain searched elements
-	map.addLayer( markersLayer );
+	var markersLayers     = [];
+	markersLayers[map_id] = new L.LayerGroup();	// global layer contain searched elements
+	map.addLayer( markersLayers[map_id] );
 
-	leafext_list_menu( map,markersLayer,collapse,update,highlight,maxheight,maxwidth );
+	leafext_list_menu( map,markersLayers[map_id],collapse,update,highlight,maxheight,maxwidth );
 
 	let markerlength = WPLeafletMapPlugin.markers.length;
 	if ( markerlength > 0 ) {
 		for (var i = 0; i < markerlength; i++) {
-			let thismarker = WPLeafletMapPlugin.markers[i];
-			// console.log("thismarker",thismarker);
-			thismarker.options.riseOnHover = true;
-			leafext_define_overicon( thismarker,overiconurl );
-			thismarker.options.listtitle = thismarker.options.title;
+			if ( WPLeafletMapPlugin.markers[i]._map !== null ) {
+				if (map_id == WPLeafletMapPlugin.markers[i]._map._leaflet_id) {
+					let thismarker = WPLeafletMapPlugin.markers[i];
+					// console.log("thismarker",thismarker);
+					thismarker.options.riseOnHover = true;
+					leafext_define_overicon( thismarker,overiconurl );
+					thismarker.options.listtitle = thismarker.options.title;
 
-			// hide default tooltip
-			thismarker.unbindTooltip();
-			thismarker.bindTooltip( "", {visibility: 'hidden', opacity: 0} ).closeTooltip();
-			thismarker.options.title = "";
+					// hide default tooltip
+					thismarker.unbindTooltip();
+					thismarker.bindTooltip( "", {visibility: 'hidden', opacity: 0} ).closeTooltip();
+					thismarker.options.title = "";
 
-			markersLayer.addLayer( thismarker );
-			map.removeLayer( thismarker );
+					markersLayers[map_id].addLayer( thismarker );
+					map.removeLayer( thismarker );
+				}
+			}
+			map.removeLayer( markersLayers[map_id] );
+			map.addLayer( markersLayers[map_id] );
+			leafext_events_markerLayer( map, markersLayers[map_id], hover, highlight );
 		}
-		map.removeLayer( markersLayer );
-		map.addLayer( markersLayer );
-		leafext_events_markerLayer( map, markersLayer, hover, highlight );
 	}
 
 	var geojsons      = window.WPLeafletMapPlugin.geojsons;
@@ -89,38 +95,40 @@ function leafext_listmarker_js(propertyName,overiconurl,collapse,update,hover,hi
 		for (var j = 0, len = geojsonlength; j < len; j++) {
 			// console.log("geojson");
 			// console.log(geojsons[j]);
-			var geojson = geojsons[j];
-			geojson.on(
-				"ready",
-				function () {
-					this.layer.eachLayer(
-						function (layer) {
-							if (layer.feature.geometry.type == "Point" ) {
-								// console.log(layer);
-								if (layer.feature.properties[propertyName]) {
-									// console.log("found");
-									length++;
-									layer.riseOnHover = true;
-									leafext_define_overicon( layer,overiconurl );
-									layer.options.listtitle = layer.feature.properties[propertyName];
-									markersLayer.addLayer( layer );
-									map.removeLayer( layer );
-								} else {
-									console.log( "not in list" );
-									console.log( layer.feature.properties );
+			if (map_id == geojsons[j]._map._leaflet_id) {
+				var geojson = geojsons[j];
+				geojson.on(
+					"ready",
+					function () {
+						this.layer.eachLayer(
+							function (layer) {
+								if (layer.feature.geometry.type == "Point" ) {
+									// console.log(layer);
+									if (layer.feature.properties[propertyName]) {
+										// console.log("found");
+										length++;
+										layer.riseOnHover = true;
+										leafext_define_overicon( layer,overiconurl );
+										layer.options.listtitle = layer.feature.properties[propertyName];
+										markersLayers[map_id].addLayer( layer );
+										map.removeLayer( layer );
+									} else {
+										console.log( "not in list" );
+										console.log( layer.feature.properties );
+									}
+									// } else {
+									// console.log(layer);
 								}
-								// } else {
-								// console.log(layer);
 							}
-						}
-					);
-					map.removeLayer( markersLayer );
-					map.addLayer( markersLayer );
-					// console.log(markersLayer);
-					leafext_events_markerLayer( map, markersLayer, hover, highlight );
-					map.fire( "moveend" );
-				}
-			);
+						);
+						map.removeLayer( markersLayers[map_id] );
+						map.addLayer( markersLayers[map_id] );
+						// console.log( markersLayers[map_id] );
+						leafext_events_markerLayer( map, markersLayers[map_id], hover, highlight );
+						map.fire( "moveend" );
+					}
+				);
+			}
 		}
 	}
 }
@@ -284,7 +292,7 @@ function leafext_list_menu(map,markersLayer,collapse,update,highlight,maxheight,
 			let thistitle = e.layer.options.listtitle + " ";
 			// console.log("item-click",thistitle);
 			thismapbounds = [];
-			leafext_jumpto_marker( map,e.layer.getLatLng().lat,e.layer.getLatLng().lng,e.layer.getPopup(),map.getZoom(),false );
+			leafext_jumpto_marker( map,markersLayer,e.layer.getLatLng().lat,e.layer.getLatLng().lng,e.layer.getPopup(),map.getZoom(),false );
 			leafext_set_overicon( e.layer );
 			leafext_set_list_background( highlight, thistitle, false, map );
 		}
@@ -296,29 +304,30 @@ function leafext_define_overicon(marker,overiconurl) {
 	marker.options._origicon = "";
 	marker.options._overicon = "";
 	if (overiconurl != "") {
-		// console.log(marker.getIcon());
 		marker.options._overicon = "";
-		if (marker.getIcon().options.iconUrl) {
-			if (marker.getIcon().options.iconUrl.includes( '/' )) {
-				let markeroptions        = marker.getIcon().options;
-				var markericon           = L.Icon.extend(
-					{
-						options: markeroptions,
-					}
-				);
-				overicon                 = new markericon(
-					{
-						iconUrl: overiconurl,
-					}
-				);
-				marker.options._overicon = overicon;
-				marker.options._origicon = marker.getIcon();
+		if (typeof marker.getIcon === "function" ) {
+			if ( marker.getIcon().options.iconUrl) {
+				if (marker.getIcon().options.iconUrl.includes( '/' )) {
+					let markeroptions        = marker.getIcon().options;
+					var markericon           = L.Icon.extend(
+						{
+							options: markeroptions,
+						}
+					);
+					overicon                 = new markericon(
+						{
+							iconUrl: overiconurl,
+						}
+					);
+					marker.options._overicon = overicon;
+					marker.options._origicon = marker.getIcon();
+				}
 			}
 		}
 	}
 }
 
-function leafext_jumpto_marker(map,lat,lng,target,zoom,debug){
+function leafext_jumpto_marker(map,markersLayer,lat,lng,target,zoom,debug){
 	if (debug) {
 		console.log( 'leafext_jumpto_marker',lat,lng,target,zoom,debug );
 	}

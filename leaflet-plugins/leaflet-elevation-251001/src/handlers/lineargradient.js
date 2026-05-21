@@ -80,8 +80,10 @@ export function LinearGradient() {
     const { defs } = chart._chart.utils;
 
     const palette = get_palette({
-      min: isFinite(this.track_info[min]) ? this.track_info[min] : 0,
-      max: isFinite(this.track_info[max]) ? this.track_info[max] : 1,
+      // min: isFinite(this.track_info[min]) ? this.track_info[min] : 0,
+      // max: isFinite(this.track_info[max]) ? this.track_info[max] : 1,
+      min: isFinite(min) ? Number(min) : (isFinite(this.track_info[min]) ? this.track_info[min] : 0),
+      max: isFinite(max) ? Number(max) : (isFinite(this.track_info[max]) ? this.track_info[max] : 1),
       range,
     });
 
@@ -98,8 +100,16 @@ export function LinearGradient() {
     }
 
     // Generate gradient for each segment picking colors from palette
-    for (let i = 0, data = this._data; i < data.length; i++) {
-      gradient.addColorStop((i) / data.length, palette.getRGBColor(data[i][attr]));
+    // for (let i = 0, data = this._data; i < data.length; i++) {
+      // gradient.addColorStop((i) / data.length, palette.getRGBColor(data[i][attr]));
+    // }
+    const data = this._data;
+    const minDist = data[0].dist;
+    const maxDist = data[data.length - 1].dist;
+
+    for (let i = 0; i < data.length; i++) {
+      const offset = (data[i].dist - minDist) / (maxDist - minDist);
+      gradient.addColorStop(offset, palette.getRGBColor(data[i][attr]));
     }
 
   });

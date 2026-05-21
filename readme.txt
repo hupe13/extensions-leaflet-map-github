@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 7.0
-Stable tag: 5.0-260504
+Stable tag: 5.0-260521
 Requires at least: 6.2
 Requires PHP: 8.2
 License: GPLv2 or later
@@ -42,6 +42,7 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 
 == Changelog ==
 
-### 5.0 / 260504
+* elevation: fixes on lineargradient (https://github.com/Raruto/leaflet-elevation/issues/306#issuecomment-4420914053)
+* listmarker: work on multiple maps on one page now
 
-* removed breaks in shortcode block
+[more ...](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/CHANGELOG.md)
