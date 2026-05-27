@@ -43,7 +43,7 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 == Changelog ==
 
 * elevation: fixes on lineargradient (https://github.com/Raruto/leaflet-elevation/issues/306#issuecomment-4420914053)
-* listmarker: work on multiple maps on one page now
+* listmarker: works on multiple maps on one page now
 * custom icons in media library for gpx, kml, geojson
 
 [more ...](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/CHANGELOG.md)
