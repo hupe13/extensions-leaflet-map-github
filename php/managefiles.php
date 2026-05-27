@@ -69,7 +69,7 @@ function leafext_media_library_content( $content ) {
 		);
 		$content  = $content . leafext_html_table( $fields );
 	}
-		return $content;
+	return $content;
 }
 add_filter( 'the_content', 'leafext_media_library_content' );
 

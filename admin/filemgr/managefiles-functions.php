@@ -272,10 +272,28 @@ function leafext_files_table( $track_files ) {
 	return $text;
 }
 
-// Bug https://core.trac.wordpress.org/ticket/36418
-// add_filter( 'wp_mime_type_icon', function( $icon, $mime, $post_id )
-// {
-// if( 'application/gpx+xml' === $mime && $post_id > 0 )
-// $icon = LEAFEXT_PLUGIN_URL . '/icons/gpx-file.svg';
-// return $icon;
-// }, 10, 3 );
+// see https://core.trac.wordpress.org/ticket/36418
+function leafext_get_custom_icon( $icon, $mime, $post_id ) {
+	if ( $post_id > 0 ) {
+		switch ( $mime ) {
+			case 'application/gpx+xml':
+				$icon = LEAFEXT_PLUGIN_URL . '/pict/gpx-file-svgrepo-com.svg';
+				break;
+			case 'application/vnd.google-earth.kml+xml':
+				$icon = LEAFEXT_PLUGIN_URL . '/pict/kml-file-svgrepo-com.svg';
+				break;
+			case 'application/geo+json':
+				$icon = LEAFEXT_PLUGIN_URL . '/pict/geojson-file-svgrepo-com.svg';
+				break;
+			default:
+		}
+	}
+	return $icon;
+}
+add_filter( 'wp_mime_type_icon', 'leafext_get_custom_icon', 10, 3 );
+
+function leafext_custom_icon_dir( $path ) {
+	$path = LEAFEXT_PLUGIN_DIR . '/pict/';
+	return $path;
+}
+add_filter( 'icon_dir', 'leafext_custom_icon_dir', 10, 1 );
