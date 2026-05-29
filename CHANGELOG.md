@@ -1,4 +1,4 @@
-### 5.1 / 26052x
+### 5.1 / 260529
 
 * elevation: fixes on lineargradient (https://github.com/Raruto/leaflet-elevation/issues/306#issuecomment-4420914053)
 * listmarker: works on multiple maps on one page now

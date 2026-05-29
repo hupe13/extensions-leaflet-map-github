@@ -1,8 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* elevation: fixes on lineargradient (https://github.com/Raruto/leaflet-elevation/issues/306#issuecomment-4420914053)
-* listmarker: works on multiple maps on one page now
-* custom icons in media library for gpx, kml, geojson
+* none
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
