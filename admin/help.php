@@ -17,7 +17,7 @@ function leafext_help_entries() {
 			'shortcode' => 'elevation',
 			'tab'       => 'elevation',
 			'plugins'   => '<a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>,
-      <a href="https://github.com/yohanboniface/Leaflet.i18n">Leaflet.i18n</a>',
+							<a href="https://github.com/yohanboniface/Leaflet.i18n">Leaflet.i18n</a>',
 			'doku'      => '/doku/elevation/',
 			'moredoku'  => array(
 				array(
@@ -33,7 +33,7 @@ function leafext_help_entries() {
 			'shortcode' => 'elevation-track, elevation-tracks, multielevation',
 			'tab'       => 'multielevation',
 			'plugins'   => '<a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>,
-      								<a href="https://github.com/makinacorpus/Leaflet.GeometryUtil">Leaflet.GeometryUtil</a>',
+							<a href="https://github.com/makinacorpus/Leaflet.GeometryUtil">Leaflet.GeometryUtil</a>',
 			'doku'      => '/doku/multielevation/',
 			'kategorie' => 'multielevation',
 			'examples'  => '',
@@ -276,7 +276,8 @@ function leafext_help_entries() {
 			'function'  => __( 'Hovering overlapping elements', 'extensions-leaflet-map' ),
 			'shortcode' => 'hoverlap',
 			'tab'       => 'hoverlap',
-			'plugins'   => '<a href="https://github.com/Turfjs/turf">Turf</a>, <a href="https://github.com/makinacorpus/Leaflet.GeometryUtil">Leaflet.GeometryUtil</a>',
+			'plugins'   => '<a href="https://github.com/Turfjs/turf">Turf</a>, 
+							<a href="https://github.com/makinacorpus/Leaflet.GeometryUtil">Leaflet.GeometryUtil</a>',
 			'doku'      => '/doku/hoverlap/',
 			'kategorie' => 'hoverlap',
 			'examples'  => '',
