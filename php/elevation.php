@@ -984,7 +984,7 @@ function leafext_elevation_script( $gpx, $settings ) {
 	});
 	<?php
 	$javascript = ob_get_clean();
-	$text       .= $javascript . '//-->' . "\n" . '</script>';
+	$text      .= $javascript . '//-->' . "\n" . '</script>';
 	$text       = \JShrink\Minifier::minify( $text );
 	return "\n" . $text . "\n";
 }

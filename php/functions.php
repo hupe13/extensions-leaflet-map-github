@@ -96,7 +96,7 @@ function leafext_java_params( $params ) {
 				$value = $v;
 				break;
 			default:
-			  // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_dump
+				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_dump
 				var_dump( $k, $v, gettype( $v ) );
 				wp_die( 'Type' );
 		}

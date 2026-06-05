@@ -132,7 +132,7 @@ function leafext_directory_function( $atts, $content, $shortcode ) {
 					$ext = 'geojson';
 				}
 				if ( ! in_array( $ext, array( 'gpx', 'kml', 'geojson' ), true ) ) {
-					$text = '[leaflet-directory ... ';
+					$text  = '[leaflet-directory ... ';
 					$text .= $ext . ' not valid ... ';
 					foreach ( $options as $key => $item ) {
 						$text .= $key . '="' . $item . '" ';

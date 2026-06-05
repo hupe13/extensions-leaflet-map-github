@@ -259,9 +259,9 @@ function leafext_zoomhome_js(maps,map_id,allfit,position,all_options) {
 	);
 
 	// maps[map_id].on(
-	// "zoomend",
-	// function (e) {
-	// console.log( "zoomend zoom " + map_id + " " + maps[map_id].getZoom() );
-	// }
+		// "zoomend",
+		// function (e) {
+			// console.log( "zoomend zoom " + map_id + " " + maps[map_id].getZoom() );
+		// }
 	// );
 }

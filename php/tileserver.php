@@ -416,7 +416,7 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 			$options['position'] = 'topright';
 		}
 		$text .= leafext_layerswitch_end_script( $options );
-		$text = \JShrink\Minifier::minify( $text );
+		$text  = \JShrink\Minifier::minify( $text );
 		return "\n" . $text . "\n";
 	}
 }

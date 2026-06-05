@@ -103,7 +103,7 @@ function leafext_extramarker_help() {
 
 	$text = $text . '<p><a href="https://fontawesome.com/search?o=r&m=free">' . esc_html__( 'More icons', 'extensions-leaflet-map' ) . ' ...</a></p>';
 
-	$text = $text . '<h2>' . esc_html__( 'Options', 'extensions-leaflet-map' ) . '</h2>';
+	$text = $text . '<h2 id="op">' . esc_html__( 'Options', 'extensions-leaflet-map' ) . '</h2>';
 
 	$text = $text . '<p>' . wp_sprintf(
 		/* translators: %1$s are options, %2$s is a link. */

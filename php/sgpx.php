@@ -178,7 +178,7 @@ function leafext_sgpx_function( $atts, $content, $shortcode ) {
 				wp_dequeue_script( 'leaflet.Photo' );
 				$text = wpgpxmaps_handle_shortcodes( $atts );
 			} else {
-				$text = __( 'You are using the sgpx shortcode from plugin wp-gpx-maps. But the script cannot detect how to handle it. Please ask in the forum.', 'extensions-leaflet-map' );
+				$text  = __( 'You are using the sgpx shortcode from plugin wp-gpx-maps. But the script cannot detect how to handle it. Please ask in the forum.', 'extensions-leaflet-map' );
 				$text .= '<p>&#91;sgpx ';
 				foreach ( $atts as $key => $item ) {
 					$text .= "$key = $item ";
@@ -259,7 +259,7 @@ function leafext_sgpx_function( $atts, $content, $shortcode ) {
 						}
 						break;
 					default:
-					// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_dump
+						// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_dump
 						var_dump( $k, $v, gettype( $v ) );
 						wp_die( 'Type' );
 				}

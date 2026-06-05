@@ -154,7 +154,7 @@ function leafext_files_table( $track_files ) {
 		'<b>' . __( 'Date', 'extensions-leaflet-map' ) . '</b>',
 		'<b>' . __( 'Name', 'extensions-leaflet-map' ) . '</b>',
 		'<b>' . __( 'Preview', 'extensions-leaflet-map' ) . '</b>',
-		'<b>' . __( 'Media Library', 'extensions-leaflet-map' ) . '</b>',
+		'<b>' . __( 'Media Library', 'extensions-leaflet-map' ) . '<sup>3</sup></b>',
 		'<b>leaflet Shortcode</b>',
 		'<b>elevation<sup>1</sup> Shortcode</b>',
 		/* translators: %s is a shortcode. */
@@ -203,14 +203,14 @@ function leafext_files_table( $track_files ) {
 				$entry['post_title'] = $key->post_title;
 				if ( current_user_can( 'edit_post', $key->ID ) ) {
 					// View as thickbox
-					$entry['view']                     = '<a href="' . esc_url( get_admin_url( null, 'admin.php?page=' . $page ) ) . '&tab=' . $tab . '&track='
+					$entry['view'] = '<a href="' . esc_url( get_admin_url( null, 'admin.php?page=' . $page ) ) . '&tab=' . $tab . '&track='
 					. $myfile . '&TB_iframe=true" class="thickbox">' . __( 'Preview', 'extensions-leaflet-map' ) . '</a>';
-										$entry['edit'] = '<a href ="' . get_admin_url() . 'post.php?post=' . $key->ID . '&action=edit">' . __( 'Edit', 'extensions-leaflet-map' ) . '</a>';
+					$entry['edit'] = '<a href ="' . get_admin_url() . 'post.php?post=' . $key->ID . '&action=edit">' . __( 'Edit', 'extensions-leaflet-map' ) . '</a>';
 				} elseif ( current_user_can( 'read', $key->ID ) ) {
 					// View as thickbox
-					$entry['view']                     = '<a href="' . esc_url( get_admin_url( null, 'admin.php?page=' . $page ) ) . '&tab=' . $tab . '&track='
+					$entry['view'] = '<a href="' . esc_url( get_admin_url( null, 'admin.php?page=' . $page ) ) . '&tab=' . $tab . '&track='
 					. $myfile . '&TB_iframe=true" class="thickbox">' . __( 'Preview', 'extensions-leaflet-map' ) . '</a>';
-										$entry['edit'] = '<a href ="' . get_admin_url() . 'upload.php?item=' . $key->ID . '">' . __( 'View', 'extensions-leaflet-map' ) . '</a>';
+					$entry['edit'] = '<a href ="' . get_admin_url() . 'upload.php?item=' . $key->ID . '">' . __( 'View', 'extensions-leaflet-map' ) . '</a>';
 				} else {
 					$entry['view'] = 'none';
 					$entry['edit'] = 'none';
@@ -269,6 +269,15 @@ function leafext_files_table( $track_files ) {
 	$text = $text . '<br><small>&nbsp;&nbsp;<sup>2</sup> - ' . __( 'It works with gpx and kml files.', 'extensions-leaflet-map' ) . ' ';
 	/* translators: %s is a shortcode. */
 	$text = $text . wp_sprintf( __( "Don't forget to declare %s at last statement.", 'extensions-leaflet-map' ), '<code>[multielevation]</code>' ) . '</small>';
+	$text = $text . '<br><small>&nbsp;&nbsp;<sup>3</sup> - ';
+	if ( get_option( 'wp_attachment_pages_enabled' ) ) {
+		/* translators: %s is a href. */
+		$text = $text . wp_sprintf( __( '%1$sAttachment pages%2$s are enabled.', 'extensions-leaflet-map' ), '<a href="https://make.wordpress.org/core/2023/10/16/changes-to-attachment-pages/">', '</a>' );
+	} else {
+		/* translators: %s is a href. */
+		$text = $text . wp_sprintf( __( '%1$sAttachment pages%2$s are disabled.', 'extensions-leaflet-map' ), '<a href="https://make.wordpress.org/core/2023/10/16/changes-to-attachment-pages/">', '</a>' );
+	}
+	$text = $text . '</small>';
 	return $text;
 }
 

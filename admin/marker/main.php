@@ -39,6 +39,18 @@ function leafext_marker_tab() {
 			'plugin' => 'Leaflet.ExtraMarkers',
 		),
 		array(
+			'tab'    => 'geojsonextramarker',
+			'title'  => wp_sprintf(
+				/* translators: %s is a shortcode. */
+				__(
+					'Use %s for marker in geojson files',
+					'extensions-leaflet-map'
+				),
+				'leaflet-extramarker'
+			),
+			'plugin' => 'Leaflet.ExtraMarkers',
+		),
+		array(
 			'tab'   => 'geojsonmarker',
 			'title' => __( 'Design and Group markers from geojson files', 'extensions-leaflet-map' ),
 		),
@@ -67,8 +79,7 @@ function leafext_marker_tab() {
 		$textheader = $textheader . $active;
 		$textheader = $textheader . '">' . $tab['title'] . '</a>' . "\n";
 	}
-
-		$textheader = $textheader . '</div>';
+	$textheader = $textheader . '</div>';
 	return $textheader;
 }
 
@@ -90,6 +101,10 @@ function leafext_admin_marker( $active_tab ) {
 		}
 		echo '</form>';
 		leafext_extramarker_help();
+	} elseif ( $active_tab === 'geojsonextramarker' ) {
+		echo '<h2>' . wp_kses_post( leafext_marker_tab() ) . '</h2>';
+		require __DIR__ . '/extramarker-geojson.php';
+		leafext_help_geojsonextramarker();
 	} elseif ( $active_tab === 'markerclusterplacementstrategies' ) {
 		leafext_admin_placementstrategies();
 	} elseif ( $active_tab === 'geojsonmarker' ) {

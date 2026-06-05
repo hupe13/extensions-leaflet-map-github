@@ -54,7 +54,7 @@ function leafext_choropleth_script( $atts, $content ) {
 	});
 	<?php
 	$javascript = ob_get_clean();
-	$text       .= $javascript . '//-->' . "\n" . '</script>';
+	$text      .= $javascript . '//-->' . "\n" . '</script>';
 	$text       = \JShrink\Minifier::minify( $text );
 	return "\n" . $text . "\n";
 }

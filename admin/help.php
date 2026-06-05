@@ -33,7 +33,7 @@ function leafext_help_entries() {
 			'shortcode' => 'elevation-track, elevation-tracks, multielevation',
 			'tab'       => 'multielevation',
 			'plugins'   => '<a href="https://github.com/Raruto/leaflet-elevation">leaflet-elevation</a>,
-      <a href="https://github.com/makinacorpus/Leaflet.GeometryUtil">Leaflet.GeometryUtil</a>',
+      								<a href="https://github.com/makinacorpus/Leaflet.GeometryUtil">Leaflet.GeometryUtil</a>',
 			'doku'      => '/doku/multielevation/',
 			'kategorie' => 'multielevation',
 			'examples'  => '',
@@ -89,6 +89,23 @@ function leafext_help_entries() {
 			'doku'      => '/doku/extramarker/',
 			'kategorie' => '',
 			'examples'  => '',
+			'strpos'    => 'marker',
+		),
+		array(
+			'function'  => wp_sprintf(
+				/* translators: %s is a shortcode. */
+				__(
+					'Use %s for marker in geojson files',
+					'extensions-leaflet-map'
+				),
+				'leaflet-extramarker'
+			),
+			'shortcode' => 'leaflet-geojson-extramarker',
+			'tab'       => 'geojsonextramarker',
+			'plugins'   => '<a href="https://github.com/coryasilva/Leaflet.ExtraMarkers">Leaflet.ExtraMarkers</a>',
+			'doku'      => '/doku/geojsonextramarker/',
+			'kategorie' => '',
+			'examples'  => '/extramarker/extrageojson/',
 			'strpos'    => 'marker',
 		),
 		array(

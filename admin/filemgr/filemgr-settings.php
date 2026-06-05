@@ -14,14 +14,14 @@ function leafext_filemgr_params() {
 		array(
 			'param'     => 'types',
 			'shortdesc' => __( 'Types', 'extensions-leaflet-map' ),
-			'desc'      => esc_html__( 'Allow upload to media library', 'extensions-leaflet-map' ),
+			'desc'      => __( 'Allow upload to media library', 'extensions-leaflet-map' ),
 			'default'   => array(),
 			'values'    => array( 'gpx', 'kml', 'geojson', 'json', 'tcx' ),
 		),
 		array(
 			'param'     => 'gpxupload',
 			'shortdesc' => __( 'Upload gpx files into the directory', 'extensions-leaflet-map' ) . ' /upload_dir()/gpx/',
-			'desc'      => esc_html__( 'This may be of interest if you have used wp-gpx-maps.', 'extensions-leaflet-map' ),
+			'desc'      => __( 'This may be of interest if you have used wp-gpx-maps.', 'extensions-leaflet-map' ),
 			'default'   => '0',
 			'values'    => 1,
 		),
@@ -30,7 +30,7 @@ function leafext_filemgr_params() {
 			'shortdesc' => __( 'Allow non admin', 'extensions-leaflet-map' ),
 			'desc'      => wp_sprintf(
 				/* translators: %s is code */
-				esc_html__(
+				__(
 					'Allow all users who have access to the backend to see the files. A permission check %s only done if the files are registered in the media library.',
 					'extensions-leaflet-map'
 				),
@@ -91,8 +91,7 @@ function leafext_form_filemgr( $field ) {
 	$settings = leafext_filemgr_settings();
 	$setting  = $settings[ $field ];
 	if ( $option['desc'] !== '' ) {
-		//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- esc_html__ used
-		echo '<p>' . $option['desc'] . '</p>';
+		echo '<p>' . wp_kses_post( $option['desc'] ) . '</p>';
 	}
 
 	if ( $field === 'types' ) {

@@ -58,8 +58,8 @@ function leafext_help_tiles() {
   <tr class="alternate"><td>' . __( 'Map Tile URL', 'extensions-leaflet-map' ) . '</td><td>tileurl</td><td>' . get_option( 'leaflet_map_tile_url' ) . '</td></tr>
   <tr><td>' . __( 'Map Tile URL Subdomains', 'extensions-leaflet-map' ) . '</td><td>subdomains</td><td>' . get_option( 'leaflet_map_tile_url_subdomains' ) . '</td></tr>
   <tr class="alternate"><td>' . __( 'Default Attribution', 'extensions-leaflet-map' ) . '</td><td></td><td>' . get_option( 'leaflet_default_attribution' ) . '</td></tr>
-  <tr><td>' . __( 'Default Min Zoom', 'extensions-leaflet-map' ) . '</td><td>min_zoom</td><td>' . get_option( 'leaflet_default_min_zoom' ) . '</td></tr>
-  <tr class="alternate"><td>' . __( 'Default Max Zoom', 'extensions-leaflet-map' ) . '</td><td>max_zoom</td><td>' . get_option( 'leaflet_default_max_zoom' ) . '</td></tr>
+  <tr><td>' . __( 'Default Min Zoom', 'extensions-leaflet-map' ) . '</td><td>min_zoom</td><td>' . get_option( 'leaflet_default_min_zoom', '0' ) . '</td></tr>
+  <tr class="alternate"><td>' . __( 'Default Max Zoom', 'extensions-leaflet-map' ) . '</td><td>max_zoom</td><td>' . get_option( 'leaflet_default_max_zoom', '18' ) . '</td></tr>
   </table></figure>';
 
 	$text = $text . '<p>';

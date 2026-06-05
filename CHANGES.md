@@ -1,6 +1,7 @@
 # Differences to the Plugins WordPress version
 
-* none
+* new shortcode: leaflet-geojson-extramarker - a mix of leaflet-geojson and leaflet-extramarker
+* fixed XSS in targetmarker
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

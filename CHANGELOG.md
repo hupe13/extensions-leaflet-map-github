@@ -1,3 +1,8 @@
+### 5.2 / 26060x
+
+* new shortcode: leaflet-geojson-extramarker - a mix of leaflet-geojson and leaflet-extramarker
+* fixed XSS in targetmarker
+
 ### 5.1 / 260529
 
 * elevation: fixes on lineargradient (https://github.com/Raruto/leaflet-elevation/issues/306#issuecomment-4420914053)
