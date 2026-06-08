@@ -2,6 +2,7 @@
 
 * new shortcode: leaflet-geojson-extramarker - a mix of leaflet-geojson and leaflet-extramarker
 * fixed XSS in targetmarker
+* improvements on thickbox
 
 ### 5.1 / 260529
 

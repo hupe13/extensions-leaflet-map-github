@@ -182,7 +182,6 @@ function leafext_managefiles() {
 	$track = isset( $get['track'] ) ? filter_input( INPUT_GET, 'track', FILTER_SANITIZE_SPECIAL_CHARS ) : '';
 
 	if ( $track !== '' ) {
-		include __DIR__ . '/thickbox.php';
 		leafext_thickbox( $track );
 	} else {
 		// echo '<pre>';

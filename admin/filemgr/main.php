@@ -11,6 +11,7 @@ defined( 'ABSPATH' ) || die();
 require __DIR__ . '/uploader.php';
 require __DIR__ . '/filemgr-settings.php';
 require __DIR__ . '/filemgr.php';
+require __DIR__ . '/thickbox.php';
 require __DIR__ . '/managefiles-functions.php';
 
 function leafext_filemgr_tab() {
