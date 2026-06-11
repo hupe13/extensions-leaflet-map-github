@@ -1,4 +1,4 @@
-### 5.2 / 26060x
+### 5.2 / 260609
 
 * new shortcode: leaflet-geojson-extramarker - a mix of leaflet-geojson and leaflet-extramarker
 * fixed XSS in targetmarker
