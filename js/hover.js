@@ -81,154 +81,66 @@ function leafext_hover_geojsonstyle_js(all_options) {
 				}
 				// console.log( exclude );
 				if (exclude == -1) {
-					// mouseover
-					geojson.layer.on(
-						"mouseover mousemove",
-						function (e) {
-							if (leafext_map_popups( map ) == false) {
-									let i = 0;
-									e.target.eachLayer(
-										function () {
-											i += 1;
-										}
-									);
-									// console.log("mouseover has", i, "layers.");
-								if (i > 1) {
-									// z.B leaflet-gpx mit Track und Marker
-									leafext_make_overstyle( e.sourceTarget );
-									if (all_options['opacity']) {
-										leafext_make_transparent_geojson( map, e.sourceTarget, 1, all_options['opacity'] );
-									}
-								} else {
-									e.target.eachLayer(
-										function (layer) {
-											// console.log(layer);
-											leafext_make_overstyle( layer );
-											if (all_options['opacity']) {
-												leafext_make_transparent_geojson( map, layer, 1, all_options['opacity'] );
+					geojson.on(
+						"ready",
+						function () {
+							var a = this.layer;
+							a.eachLayer(
+								function (layer) {
+
+									// mouseover
+									layer.on(
+										"mouseover",
+										function (e) {
+											// console.log( "leafext_hover_geojsonstyle_js " + e.type );
+											// console.log( e.sourceTarget.setStyle );
+											if (leafext_map_popups( map ) == false) {
+												if (e.sourceTarget.setStyle) {
+													leafext_make_overstyle( e.sourceTarget );
+												}
 											}
 										}
 									);
-								} //end else i
-							}
-						}
-					);
-					// mouseover end
+									// mouseover end
 
-					// mouseout
-					geojson.layer.on(
-						"mouseout",
-						function (e) {
-							if (leafext_map_popups( map ) == false) {
-
-								e.target.eachLayer(
-									function (layer) {
-										leafext_make_styleback( layer );
-									}
-								);
-
-								let i = 0;
-								e.target.eachLayer(
-									function () {
-										i += 1;
-									}
-								);
-								// console.log("mouseout has", i, "layers.");
-								if (i == 1) {
-									geojson.resetStyle();
-								}
-
-								if (all_options['opacity']) {
-									e.target.eachLayer(
-										function (layer) {
-											leafext_make_transparent_geojson( map, layer, 0, all_options['opacity'] );
+									// mouseout
+									layer.on(
+										"mouseout",
+										function (e) {
+											if (e.sourceTarget.setStyle) {
+												if (leafext_map_popups( map ) == false) {
+													leafext_make_styleback( e.sourceTarget );
+												}
+											}
 										}
 									);
-								}
-							}
-						}
-					);
-					// mouseout end
+									// mouseout end
 
-					geojson.layer.on(
-						"click",
-						function (e) {
-								let i = 0;
-								e.target.eachLayer(
-									function () {
-										i += 1; }
-								);
-								// console.log("mouseclick has", i, "layers.");
-							if (i > 1) {
-								// z.B leaflet-gpx mit Track und Marker
-								leafext_make_overstyle( e.sourceTarget );
-								if (all_options['opacity']) {
-									leafext_make_transparent_geojson( map, e.sourceTarget, 1, all_options['opacity'] );
-								}
-							} else {
-								map.eachLayer(
-									function (layer) {
-										leafext_make_styleback( layer );
-										if (all_options['opacity']) {
-											leafext_make_transparent_geojson( map, layer, 0, all_options['opacity'] );
+									// mouseclick
+									layer.on(
+										"click",
+										function (e) {
+											// console.log( "leafext_hover_geojsonstyle_js " + e.type );
+											// console.log( e.sourceTarget.setStyle );
+											if (e.sourceTarget.setStyle) {
+												leafext_make_overstyle( e.sourceTarget );
+											}
 										}
-									}
-								);
-								e.target.eachLayer(
-									function (layer) {
-										leafext_make_overstyle( layer );
-										if (all_options['opacity']) {
-											leafext_make_transparent_geojson( map, layer, 1, all_options['opacity'] );
-										}
-									}
-								);
-							} //end else i
-						}
-					);
-					// mouseclick end
+									);
+									// mouseclick end
 
-					geojson.layer.on(
-						"popupclose",
-						function (e) {
-							e.target.eachLayer(
-								function (layer) {
-									leafext_make_styleback( layer );
+									layer.on(
+										"popupclose",
+										function (e) {
+											// console.log( "leafext_hover_geojsonstyle_js " + e.type );
+											// console.log( e.sourceTarget.setStyle );
+											if (e.sourceTarget.setStyle) {
+												leafext_make_styleback( e.sourceTarget );
+											}
+										}
+									);
 								}
 							);
-
-							if (all_options['opacity']) {
-								let i = 0;
-								e.target.eachLayer(
-									function () {
-										i += 1;
-									}
-								);
-								// console.log( "popupclose has", i, "layers." );
-								if (i > 1) {
-									// z.B leaflet-gpx mit Track und Marker
-									leafext_make_transparent_geojson( map, e.sourceTarget, 0, all_options['opacity'] );
-								} else {
-									map.eachLayer(
-										function (layer) {
-											leafext_make_transparent_geojson( map, layer, 0, all_options['opacity'] );
-										}
-									);
-									e.target.eachLayer(
-										function (layer) {
-											leafext_make_transparent_geojson( map, layer, 0, all_options['opacity'] );
-										}
-									);
-								} //end else i
-							}
-
-						}
-					);
-
-				} else { // exclude
-					geojson.layer.on(
-						'mouseout',
-						function () {
-							this.bringToBack();
 						}
 					);
 				}
@@ -263,7 +175,7 @@ function leafext_hover_markergroupstyle_js(all_options) {
 							) {
 								// console.log("is_Polygon or circle or polyline");
 								layer.on(
-									"mouseover mousemove",
+									"mouseover",
 									function (e) {
 										// console.log("mouseover");
 										if (leafext_map_popups( map ) == false) {
@@ -271,34 +183,12 @@ function leafext_hover_markergroupstyle_js(all_options) {
 										}
 									}
 								);
-								layer.on(
-									"mouseover",
-									function (e) {
-										if (all_options['opacity']) {
-											if (leafext_map_popups( map ) == false) {
-												markergroups[key].eachLayer(
-													function (layer) {
-														if (layer != e.sourceTarget) {
-															leafext_make_transparent( map, layer, 1, all_options['opacity'] );
-														}
-													}
-												);
-											}
-										}
-									}
-								);
+
 								layer.on(
 									"mouseout",
 									function (e) {
 										if (leafext_map_popups( map ) == false) {
 											leafext_make_styleback( e.sourceTarget );
-											if (all_options['opacity']) {
-												markergroups[key].eachLayer(
-													function (layer) {
-														leafext_make_transparent( map, layer, 0, all_options['opacity'] );
-													}
-												);
-											}
 										}
 									}
 								);
@@ -311,28 +201,12 @@ function leafext_hover_markergroupstyle_js(all_options) {
 											}
 										);
 										leafext_make_overstyle( e.sourceTarget );
-										if (all_options['opacity']) {
-											markergroups[key].eachLayer(
-												function (layer) {
-													if (layer != e.sourceTarget) {
-														leafext_make_transparent( map, layer, 1, all_options['opacity'] );
-													}
-												}
-											);
-										}
 									}
 								);
 								layer.on(
 									"popupclose",
 									function (e) {
 										leafext_make_styleback( e.sourceTarget );
-										if (all_options['opacity']) {
-											markergroups[key].eachLayer(
-												function (layer) {
-													leafext_make_transparent( map, layer, 0, all_options['opacity'] );
-												}
-											);
-										}
 									}
 								);
 
@@ -363,45 +237,32 @@ function leafext_hover_geojsontooltip_js(tooltip,all_options) {
 			var geojson = geojsons[j];
 			// console.log(geojson);
 			if (map_id == geojsons[j]._map._leaflet_id) {
+				geojson.on(
+					"ready",
+					function () {
+						// console.log("ready");
+						var a = this.layer;
+						// console.log(a);
 
-				geojson.layer.on(
-					"click",
-					function (e) {
-						// console.log("click");
-						e.target.eachLayer(
+						a.eachLayer(
 							function (layer) {
-								layer.unbindTooltip();
-								layer.bindTooltip( "", {visibility: 'hidden', opacity: 0} ).closeTooltip();
+								layer.on(
+									"click",
+									function (e) {
+										e.target.unbindTooltip();
+										e.target.bindTooltip( "", {visibility: 'hidden', opacity: 0} ).closeTooltip();
+									}
+								);
+								layer.on(
+									"mousemove",
+									function (e) {
+										leafext_hover_geojsonlayer( e,map,e.target,tooltip,all_options );
+									}
+								);
 							}
 						);
 					}
 				);
-				// mouse click end
-
-				// mousemove
-				geojson.layer.on(
-					"mousemove",
-					function (e) {
-						// console.log("geojson mousemove");
-						let i = 0;
-						e.target.eachLayer(
-							function () {
-								i += 1;
-							}
-						);
-						// console.log("mousemove has", i, "layers.");
-
-						e.target.eachLayer(
-							function (layer) {
-								if (i == 1) {
-									leafext_hover_geojsonlayer( e,map,layer,tooltip,all_options );
-								} else {
-									leafext_hover_geojsonlayer( e,map,e.sourceTarget,tooltip,all_options );
-								}
-							}
-						);
-					}
-				); // mousemove end
 			} //geojson foreach
 		}
 	} //geojson end
@@ -537,7 +398,7 @@ function leafext_hover_markertooltip_js(all_options) {
 				}
 				// console.log(a);
 				a.on(
-					"mouseover mousemove",
+					"mouseover",
 					function (e) {
 						// console.log("marker mouseover");
 						// console.log(e);
@@ -559,7 +420,7 @@ function leafext_hover_markertooltip_js(all_options) {
 						}
 					}
 				);
-				// mousemove
+				// mouseover
 
 				a.on(
 					"click",
@@ -575,107 +436,6 @@ function leafext_hover_markertooltip_js(all_options) {
 					}
 				);
 
-				if (all_options['opacity']) {
-					a.on(
-						"mouseover",
-						function (e) {
-							if (leafext_map_popups( map ) == false) {
-								// console.log(e);
-								// console.log( "make marker transparent" )
-								map.getPane( 'overlayPane' ).style.opacity = all_options['opacity'];
-								// map.getPane('shadowPane').style.opacity = 1;
-								// map.getPane('markerPane').style.opacity = 1;
-
-								var markergroups = window.WPLeafletMapPlugin.markergroups;
-								Object.entries( markergroups ).forEach(
-									([key, value]) =>
-									{
-										if ( markergroups[key]._map !== null ) {
-											if (map_id == markergroups[key]._map._leaflet_id) {
-												// console.log("markergroups loop");
-												markergroups[key].eachLayer(
-													function (layer) {
-														// console.log(layer);
-														if (layer instanceof L.Marker) {
-															if (layer != e.sourceTarget) {
-																layer.setOpacity( all_options['opacity'] );
-															}
-														}
-													}
-												);
-											}
-										}
-									}
-								);
-							}
-						}
-					);
-					// mousemove
-					a.on(
-						"mouseout",
-						function (e) {
-							if (leafext_map_popups( map ) == false) {
-								// console.log( "make marker back" )
-								// console.log(e);
-								map.getPane( 'overlayPane' ).style.opacity = 1;
-								// map.getPane('shadowPane').style.opacity = 1;
-								// map.getPane('markerPane').style.opacity = 1;
-
-								var markergroups = window.WPLeafletMapPlugin.markergroups;
-								Object.entries( markergroups ).forEach(
-									([key, value]) =>
-									{
-										if ( markergroups[key]._map !== null ) {
-											if (map_id == markergroups[key]._map._leaflet_id) {
-												// console.log("markergroups loop");
-												markergroups[key].eachLayer(
-													function (layer) {
-														// console.log(layer);
-														if (layer instanceof L.Marker) {
-															if (layer != e.sourceTarget) {
-																layer.setOpacity( 1 );
-															}
-														}
-													}
-												);
-											}
-										}
-									}
-								);
-							}
-						}
-					);
-					a.on(
-						"popupclose",
-						function (e) {
-							map.getPane( 'overlayPane' ).style.opacity = 1;
-							// map.getPane('shadowPane').style.opacity = 1;
-							// map.getPane('markerPane').style.opacity = 1;
-
-							var markergroups = window.WPLeafletMapPlugin.markergroups;
-							Object.entries( markergroups ).forEach(
-								([key, value]) =>
-								{
-									if ( markergroups[key]._map !== null ) {
-										if (map_id == markergroups[key]._map._leaflet_id) {
-											// console.log("markergroups loop");
-											markergroups[key].eachLayer(
-												function (layer) {
-													// console.log(layer);
-													if (layer instanceof L.Marker) {
-														if (layer != e.sourceTarget) {
-															layer.setOpacity( 1 );
-														}
-													}
-												}
-											);
-										}
-									}
-								}
-							);
-						}
-					);
-				}
 			}
 		}
 	}
@@ -683,8 +443,9 @@ function leafext_hover_markertooltip_js(all_options) {
 
 function leafext_hover_geojsonlayer(e,map,layer,tooltip,all_options) {
 	if ( layer.getPopup() && layer.getPopup().isOpen()) {
-		// console.log("geojson is open");
+		// console.log( "geojson is open" );
 	} else {
+		// console.log( "geojson no popup" );
 		if (leafext_map_popups( map )) {
 			layer.unbindTooltip();
 			layer.bindTooltip( "", {visibility: 'hidden', opacity: 0} ).closeTooltip();
@@ -725,199 +486,5 @@ function leafext_tooltip_snap(e,map,snap) {
 	// console.log(result.distance,snap);
 	if (result.distance > snap) {
 		map.closePopup();
-	}
-}
-
-// mapPane 	HTMLElement 	'auto' 	Pane that contains all other map panes
-// tilePane 	HTMLElement 	200 	Pane for GridLayers and TileLayers
-// overlayPane 	HTMLElement 	400 	Pane for vectors (Paths, like Polylines and Polygons), ImageOverlays and VideoOverlays
-// shadowPane 	HTMLElement 	500 	Pane for overlay shadows (e.g. Marker shadows)
-// markerPane 	HTMLElement 	600 	Pane for Icons of Markers
-// tooltipPane 	HTMLElement 	650 	Pane for Tooltips.
-// popupPane 	HTMLElement 	700 	Pane for Popups.
-
-function leafext_make_transparent_geojson( map, layer, onoff, opacity ) {
-	var map_id = map._leaflet_id;
-	// console.log(map_id);
-
-	var markergroups = window.WPLeafletMapPlugin.markergroups;
-	Object.entries( markergroups ).forEach(
-		([key, value]) =>
-		{
-			if ( markergroups[key]._map !== null ) {
-				if (map_id == markergroups[key]._map._leaflet_id) {
-					// console.log("markergroups loop");
-					markergroups[key].eachLayer(
-						function (layer) {
-							// console.log(layer);
-							if (layer instanceof L.Marker) {
-								// console.log("is_marker");
-								if (onoff) {
-									layer.setOpacity( opacity );
-								} else {
-									layer.setOpacity( 1 );
-								}
-							} else if (
-								layer instanceof L.Polygon ||
-								layer instanceof L.Circle ||
-								layer instanceof L.Polyline
-							) {
-								// console.log( "is_Polygon or circle or polyline" );
-								if (onoff) {
-									if ( layer.setStyle ) {
-										layer.setStyle(
-											{
-												'opacity' : opacity,
-											}
-										);
-									}
-								} else {
-									if ( layer.setStyle ) {
-										layer.setStyle(
-											{
-												'opacity' : 1,
-											}
-										);
-									}
-								}
-							} else {
-								// console.log( "other" );
-								// console.log( layer );
-							}
-						}
-					);
-				}
-			}
-		}
-	);
-
-	if ( WPLeafletMapPlugin.geojsons.length > 0 ) {
-		var thisgeojsons = window.WPLeafletMapPlugin.geojsons;
-		var thisgeocount = thisgeojsons.length;
-
-		for (var j = 0, len = thisgeocount; j < len; j++) {
-			var geojson = thisgeojsons[j];
-			// console.log(geojson);
-
-			if (map_id == geojson._map._leaflet_id) {
-				// console.log(j, layer._leaflet_id, geojson);
-
-				let i = 0;
-				geojson.eachLayer(
-					function () {
-						i += 1;
-					}
-				);
-
-				if (i > 1) {
-					// z.B leaflet-gpx mit Track und Marker
-					// console.log( geojson._leaflet_id, layer._leaflet_id );
-					geojson.eachLayer(
-						function (geolayer) {
-							// console.log( "make geojson layer > 1 transparent " + onoff );
-							if ( geolayer.setStyle ) {
-								if (onoff) {
-									if (geolayer._leaflet_id != layer._leaflet_id) {
-										// console.log( "geolayer.leaflet_id style unterschiedlich" );
-										geolayer.setStyle(
-											{
-												'opacity' : opacity,
-												}
-										);
-									} else {
-										// console.log( "leaflet_id gleich - bleibt" );
-									}
-								} else {
-									geolayer.setStyle(
-										{
-											'opacity' : 1,
-											}
-									);
-								}
-
-							} else {
-								// console.log( "no style" );
-								// console.log(geolayer);
-								// console.log( geolayer._leaflet_id, layer._leaflet_id );
-								if (onoff) {
-									if (geolayer._leaflet_id != layer._leaflet_id) {
-										// console.log( "geolayer.leaflet_id unterschiedlich" );
-										geolayer.setOpacity( opacity );
-									} else {
-										// console.log( "geolayer.leaflet_id gleich" );
-										geolayer.setOpacity( 1 );
-									}
-								} else {
-									geolayer.setOpacity( 1 );
-								}
-							}
-
-						}
-					);
-				} else {
-					geojson.eachLayer(
-						function (alllayers) {
-							// console.log(layer);
-							// console.log( alllayers._leaflet_id, layer._leaflet_id );
-							if (alllayers._leaflet_id != layer._leaflet_id) {
-								// console.log( "make geojson layer transparent " + onoff );
-								if ( alllayers.setStyle ) {
-									if (onoff) {
-										alllayers.setStyle(
-											{
-												'opacity' : opacity,
-											}
-										);
-									} else {
-										alllayers.setStyle(
-											{
-												'opacity' : 1,
-											}
-										);
-									}
-								}
-							} else {
-								// console.log( "make geojson layer transparent equal" );
-							}
-						}
-					);
-				} //end else i
-
-			}//map_id
-		}//geojson foreach
-	}//geojson end
-}
-
-function leafext_make_transparent( map, element, onoff, opacity ) {
-	if (onoff) {
-		// map.getPane('overlayPane').style.opacity = opacity;
-		map.getPane( 'shadowPane' ).style.opacity = opacity;
-		map.getPane( 'markerPane' ).style.opacity = opacity;
-		if ( element.setStyle ) {
-			// console.log(element.options);
-			if ( ! element.options.mouseover) {
-				element.options.mouseover = true;
-				element.setStyle(
-					{
-						'opacity' : opacity,
-					}
-				);
-				element.bringToFront();
-			}
-		}
-	} else {
-		// map.getPane('overlayPane').style.opacity = opacity;
-		map.getPane( 'shadowPane' ).style.opacity = 1;
-		map.getPane( 'markerPane' ).style.opacity = 1;
-		if ( element.setStyle ) {
-			if (element.options.mouseover) {
-				element.options.mouseover = false;
-				element.setStyle(
-					{
-						'opacity' : 1,
-					}
-				);
-			}
-		}
 	}
 }

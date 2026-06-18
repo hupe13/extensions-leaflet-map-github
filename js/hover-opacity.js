@@ -1,0 +1,518 @@
+/**
+ * Javascript functions for Shortcode hover opacity.
+ *
+ * @package Extensions for Leaflet Map
+ */
+
+// mapPane 		HTMLElement 	'auto' 	Pane that contains all other map panes
+// tilePane 	HTMLElement 	200 	Pane for GridLayers and TileLayers
+// overlayPane 	HTMLElement 	400 	Pane for vectors (Paths, like Polylines and Polygons), ImageOverlays and VideoOverlays
+// shadowPane 	HTMLElement 	500 	Pane for overlay shadows (e.g. Marker shadows)
+// markerPane 	HTMLElement 	600 	Pane for Icons of Markers
+// tooltipPane 	HTMLElement 	650 	Pane for Tooltips.
+// popupPane 	HTMLElement 	700 	Pane for Popups.
+
+function leafext_opacity_geojson_marker_js( all_options ) {
+	var map    = window.WPLeafletMapPlugin.getCurrentMap();
+	var map_id = map._leaflet_id;
+
+	// geojsons
+	var geojsons = window.WPLeafletMapPlugin.geojsons;
+	if (geojsons.length > 0) {
+		var geocount = geojsons.length;
+		for (var i = 0, len = geocount; i < len; i++) {
+			var geojson = geojsons[i];
+			// console.log(geojson);
+			if (map_id == geojson._map._leaflet_id) {
+
+				geojson.on(
+					"ready",
+					function () {
+						// console.log( "ready marker", geojson );
+						this.layer.eachLayer(
+							function (geolayer) {
+								// console.log( geolayer );
+								if (geolayer.feature.geometry.type == "Point" && geolayer.options.pane != 'overlayPane') {
+									geolayer.on(
+										"mouseover click",
+										function (e) {
+											if (leafext_map_popups( map ) == false || e.type == "click") {
+												map.getPane( 'overlayPane' ).style.opacity = all_options['opacity'];
+
+												var markers_length = WPLeafletMapPlugin.markers.length;
+												if (markers_length > 0) {
+													for (var j = 0; j < markers_length; j++) {
+														if ( WPLeafletMapPlugin.markers[j]._map !== null ) {
+															if (map_id == WPLeafletMapPlugin.markers[j]._map._leaflet_id) {
+																WPLeafletMapPlugin.markers[j].setOpacity( all_options['opacity'] );
+															}
+														}
+													}
+												}
+
+												var allgeojsons = window.WPLeafletMapPlugin.geojsons;
+												for (var j = 0, len = geocount; j < len; j++) {
+													var othergeojson = geojsons[j];
+
+													if (map_id == othergeojson._map._leaflet_id) {
+														othergeojson.eachLayer(
+															function (othergeolayer) {
+																if (othergeolayer.options.pane != "overlayPane") {
+																	if (othergeolayer._leaflet_id != geolayer._leaflet_id) {
+																		othergeolayer.setOpacity( all_options['opacity'] );
+																	}
+																}
+															}
+														);
+													}
+												}
+											}
+										}
+									);
+
+									geolayer.on(
+										"mouseout popupclose",
+										function (e) {
+											if (leafext_map_popups( map ) == false || e.type == "popupclose") {
+												map.getPane( 'overlayPane' ).style.opacity = 1;
+
+												var markers_length = WPLeafletMapPlugin.markers.length;
+												if (markers_length > 0) {
+													for (var j = 0; j < markers_length; j++) {
+														if ( WPLeafletMapPlugin.markers[j]._map !== null ) {
+															if (map_id == WPLeafletMapPlugin.markers[j]._map._leaflet_id) {
+																WPLeafletMapPlugin.markers[j].setOpacity( 1 );
+															}
+														}
+													}
+												}
+
+												var allgeojsons = window.WPLeafletMapPlugin.geojsons;
+												for (var j = 0, len = geocount; j < len; j++) {
+													var othergeojson = geojsons[j];
+
+													if (map_id == othergeojson._map._leaflet_id) {
+														othergeojson.eachLayer(
+															function (othergeolayer) {
+																if (othergeolayer.options.pane != "overlayPane") {
+																	othergeolayer.setOpacity( 1 );
+																}
+															}
+														);
+													}
+												}
+											}
+										}
+									);
+
+								}
+							}
+						);
+					}
+				);
+			}
+		}
+	}
+}
+
+function leafext_opacity_marker_js(all_options) {
+	// console.log(all_options);
+	var map    = window.WPLeafletMapPlugin.getCurrentMap();
+	var map_id = map._leaflet_id;
+	// console.log(map_id);
+	var maps     = [];
+	maps[map_id] = map;
+
+	var markers        = window.WPLeafletMapPlugin.markers;
+	var markers_length = WPLeafletMapPlugin.markers.length;
+	if (markers_length > 0) {
+		for (var i = 0; i < markers_length; i++) {
+			var a = WPLeafletMapPlugin.markers[i];
+			if (( a._map != null && a._map._leaflet_id == map_id) || a._map == null ) {
+				// console.log(a);
+
+				a.on(
+					"mouseover click",
+					function (e) {
+						if (leafext_map_popups( map ) == false || e.type == "click") {
+							map.getPane( 'overlayPane' ).style.opacity = all_options['opacity'];
+
+							for (var j = 0; j < markers_length; j++) {
+								if ( WPLeafletMapPlugin.markers[j]._map !== null ) {
+									if (map_id == WPLeafletMapPlugin.markers[j]._map._leaflet_id) {
+										var m = WPLeafletMapPlugin.markers[j];
+										if (m != e.sourceTarget) {
+											m.setOpacity( all_options['opacity'] );
+										}
+									}
+								}
+							}
+
+							var allgeojsons = window.WPLeafletMapPlugin.geojsons;
+							for (var j = 0, len = allgeojsons.length; j < len; j++) {
+								var othergeojson = allgeojsons[j];
+
+								if (map_id == othergeojson._map._leaflet_id) {
+									othergeojson.eachLayer(
+										function (othergeolayer) {
+											if (othergeolayer.options.pane != "overlayPane") {
+												// console.log(othergeolayer);
+												othergeolayer.setOpacity( all_options['opacity'] );
+											}
+										}
+									);
+								}
+							}
+						}
+					}
+				);
+
+				a.on(
+					"mouseout popupclose",
+					function (e) {
+						if (leafext_map_popups( map ) == false || e.type == "popupclose") {
+							map.getPane( 'overlayPane' ).style.opacity = 1;
+
+							for (var j = 0; j < markers_length; j++) {
+								if ( WPLeafletMapPlugin.markers[j]._map !== null ) {
+									if (map_id == WPLeafletMapPlugin.markers[j]._map._leaflet_id) {
+										WPLeafletMapPlugin.markers[j].setOpacity( 1 );
+									}
+								}
+							}
+
+							var allgeojsons = window.WPLeafletMapPlugin.geojsons;
+							for (var j = 0, len = allgeojsons.length; j < len; j++) {
+								var othergeojson = allgeojsons[j];
+
+								if (map_id == othergeojson._map._leaflet_id) {
+									othergeojson.eachLayer(
+										function (othergeolayer) {
+											if (othergeolayer.options.pane != "overlayPane") {
+												// console.log(othergeolayer);
+												othergeolayer.setOpacity( 1 );
+											}
+										}
+									);
+								}
+							}
+
+						}
+					}
+				);
+			}
+		}
+	}
+}
+
+function leafext_opacity_geojson_js(all_options) {
+	var map      = window.WPLeafletMapPlugin.getCurrentMap();
+	var map_id   = map._leaflet_id;
+	var maps     = [];
+	maps[map_id] = map;
+
+	if ( WPLeafletMapPlugin.geojsons.length > 0 ) {
+		var geojsons = window.WPLeafletMapPlugin.geojsons;
+		var geocount = geojsons.length;
+		for (var j = 0, len = geocount; j < len; j++) {
+			var geojson = geojsons[j];
+			// console.log(geojson);
+
+			if (map_id == geojsons[j]._map._leaflet_id) {
+				geojson.on(
+					"ready",
+					function () {
+						var a = this.layer;
+						a.eachLayer(
+							function (layer) {
+								// console.log( layer.feature.geometry.type , layer.options.pane );
+								if ( layer.options.pane == 'overlayPane') {
+									if (map_id == layer._map._leaflet_id) {
+										if ( layer.options.fillOpacity ) {
+											layer.options.transfillOpacity = layer.options.fillOpacity;
+										} else {
+											layer.options.transfillOpacity = null;
+										}
+									}
+
+									layer.on(
+										"mouseover click",
+										function (e) {
+											map.getPane( 'shadowPane' ).style.opacity = all_options['opacity'];
+											map.getPane( 'markerPane' ).style.opacity = all_options['opacity'];
+
+											// console.log( e.sourceTarget.setStyle );
+											if (leafext_map_popups( map ) == false || e.type == "click") {
+
+												var allgeojsons = window.WPLeafletMapPlugin.geojsons;
+												for (var j = 0, len = allgeojsons.length; j < len; j++) {
+													var othergeojson = allgeojsons[j];
+
+													if (map_id == othergeojson._map._leaflet_id) {
+														othergeojson.eachLayer(
+															function (othergeolayer) {
+																if (othergeolayer.options.pane == "overlayPane") {
+																	// console.log( othergeolayer );
+																	if (othergeolayer._leaflet_id != e.sourceTarget._leaflet_id) {
+																		othergeolayer.setStyle(
+																			{
+																				'opacity' : all_options['opacity'],
+																				"fillOpacity" : all_options['opacity'],
+																			}
+																		);
+																	}
+																}
+															}
+														);
+													}
+												}
+
+												var markergroups = window.WPLeafletMapPlugin.markergroups;
+												Object.entries( markergroups ).forEach(
+													([key, value]) =>
+													{
+														if ( markergroups[key]._map !== null ) {
+															if (map_id == markergroups[key]._map._leaflet_id) {
+																// console.log("markergroups loop");
+																markergroups[key].eachLayer(
+																	function (layer) {
+																		if (layer instanceof L.Polygon || layer instanceof L.Circle || layer instanceof L.Polyline ) {
+																			// console.log("make transparent markergroup", layer);
+																			layer.setStyle(
+																				{
+																					'opacity' : all_options['opacity'],
+																					'fillOpacity' : all_options['opacity'],
+																				}
+																			);
+																			// layer.bringToFront();
+																		}
+																	}
+																);
+															}
+														}
+													}
+												);
+
+											}
+										}
+									);
+
+									layer.on(
+										"mouseout popupclose",
+										function (e) {
+											if (leafext_map_popups( map ) == false || e.type == "popupclose") {
+												map.getPane( 'shadowPane' ).style.opacity = 1;
+												map.getPane( 'markerPane' ).style.opacity = 1;
+
+												var allgeojsons = window.WPLeafletMapPlugin.geojsons;
+												for (var j = 0, len = allgeojsons.length; j < len; j++) {
+													var othergeojson = allgeojsons[j];
+
+													if (map_id == othergeojson._map._leaflet_id) {
+														othergeojson.eachLayer(
+															function (othergeolayer) {
+																if (othergeolayer.options.pane == "overlayPane") {
+																	// console.log( othergeolayer );
+																	if (othergeolayer._leaflet_id != e.sourceTarget._leaflet_id) {
+																		othergeolayer.setStyle(
+																			{
+																				'opacity' : 1,
+																				"fillOpacity" : othergeolayer.options.transfillOpacity,
+																			}
+																		);
+																	}
+																}
+															}
+														);
+													}
+												}
+
+												var markergroups = window.WPLeafletMapPlugin.markergroups;
+												Object.entries( markergroups ).forEach(
+													([key, value]) =>
+													{
+														if ( markergroups[key]._map !== null ) {
+															if (map_id == markergroups[key]._map._leaflet_id) {
+																// console.log("markergroups loop");
+																markergroups[key].eachLayer(
+																	function (layer) {
+																		if (layer instanceof L.Polygon || layer instanceof L.Circle || layer instanceof L.Polyline ) {
+																			// console.log("make bak markergroup", layer);
+																			layer.setStyle(
+																				{
+																					'opacity' : 1,
+																					'fillOpacity' : layer.options.transfillOpacity,
+																				}
+																			);
+																		}
+																	}
+																);
+															}
+														}
+													}
+												);
+
+											}
+										}
+									);
+
+								}
+							}
+						);
+					}
+				);
+
+			}//geojson foreach
+		}
+	}//geojson end
+}
+
+function leafext_opacity_markergroup_js(all_options) {
+	var map    = window.WPLeafletMapPlugin.getCurrentMap();
+	var map_id = map._leaflet_id;
+	// console.log(map_id);
+	var maps     = [];
+	maps[map_id] = map;
+
+	var markergroups = window.WPLeafletMapPlugin.markergroups;
+	Object.entries( markergroups ).forEach(
+		([key, value]) =>
+		{
+			if ( markergroups[key]._map !== null ) {
+				if (map_id == markergroups[key]._map._leaflet_id) {
+					// console.log("markergroups loop");
+					markergroups[key].eachLayer(
+						function (layer) {
+							if (layer instanceof L.Polygon || layer instanceof L.Circle || layer instanceof L.Polyline ) {
+								if (map_id == layer._map._leaflet_id) {
+									// console.log( layer.options.transfillOpacity );
+									if ( ! layer.options.transfillOpacity ) {
+										if ( layer.options.fillOpacity ) {
+											layer.options.transfillOpacity = layer.options.fillOpacity;
+										} else {
+											layer.options.transfillOpacity = null;
+										}
+
+									}
+								}
+
+								layer.on(
+									"mouseover click",
+									function (e) {
+
+										if (leafext_map_popups( map ) == false || e.type == "click") {
+											map.getPane( 'shadowPane' ).style.opacity = all_options['opacity'];
+											map.getPane( 'markerPane' ).style.opacity = all_options['opacity'];
+
+											Object.entries( markergroups ).forEach(
+												([key, value]) =>
+												{
+													if ( markergroups[key]._map !== null ) {
+														if (map_id == markergroups[key]._map._leaflet_id) {
+															// console.log("markergroups loop");
+															markergroups[key].eachLayer(
+																function (otherlayer) {
+																	if (otherlayer instanceof L.Polygon || otherlayer instanceof L.Circle || otherlayer instanceof L.Polyline ) {
+																		// console.log("make transparent markergroup", layer);
+																		if (otherlayer != e.sourceTarget) {
+																			otherlayer.setStyle(
+																				{
+																					'opacity' : all_options['opacity'],
+																					'fillOpacity' : all_options['opacity'],
+																				}
+																			);
+																		}
+																	}
+																}
+															);
+														}
+													}
+												}
+											);
+
+											var allgeojsons = window.WPLeafletMapPlugin.geojsons;
+											for (var j = 0, len = allgeojsons.length; j < len; j++) {
+												var othergeojson = allgeojsons[j];
+												if (map_id == othergeojson._map._leaflet_id) {
+													othergeojson.eachLayer(
+														function (othergeolayer) {
+															if (othergeolayer.options.pane == "overlayPane") {
+																othergeolayer.setStyle(
+																	{
+																		'opacity' : all_options['opacity'],
+																		"fillOpacity" : all_options['opacity'],
+																	}
+																);
+															}
+														}
+													);
+												}
+											}
+
+										}
+									}
+								);
+								// "mouseover click",
+
+								layer.on(
+									"mouseout popupclose",
+									function (e) {
+										if (leafext_map_popups( map ) == false || e.type == "popupclose") {
+											map.getPane( 'shadowPane' ).style.opacity = 1;
+											map.getPane( 'markerPane' ).style.opacity = 1;
+
+											Object.entries( markergroups ).forEach(
+												([key, value]) =>
+												{
+													if ( markergroups[key]._map !== null ) {
+														if (map_id == markergroups[key]._map._leaflet_id) {
+															// console.log("markergroups loop");
+															markergroups[key].eachLayer(
+																function (otherlayer) {
+																	if (otherlayer instanceof L.Polygon || otherlayer instanceof L.Circle || otherlayer instanceof L.Polyline ) {
+																			otherlayer.setStyle(
+																				{
+																					'opacity' : 1,
+																					'fillOpacity' : otherlayer.options.transfillOpacity,
+																				}
+																			);
+
+																	}
+																}
+															);
+														}
+													}
+												}
+											);
+
+											var allgeojsons = window.WPLeafletMapPlugin.geojsons;
+											for (var j = 0, len = allgeojsons.length; j < len; j++) {
+												var othergeojson = allgeojsons[j];
+												if (map_id == othergeojson._map._leaflet_id) {
+													othergeojson.eachLayer(
+														function (othergeolayer) {
+															if (othergeolayer.options.pane == "overlayPane") {
+																othergeolayer.setStyle(
+																	{
+																		'opacity' : 1,
+																		"fillOpacity" : othergeolayer.options.transfillOpacity,
+																	}
+																);
+															}
+														}
+													);
+												}
+											}
+
+										}
+									}
+								);
+								// "mouseout popupclose",
+							}
+						}
+					);
+				}
+			}
+		}
+	);
+}

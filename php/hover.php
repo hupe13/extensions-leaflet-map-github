@@ -137,7 +137,7 @@ function leafext_hover_params( $typ = '' ) {
 		),
 		array(
 			'param'      => 'opacity',
-			'desc'       => __( 'If an element is hovered over, the other elements become transparent. If you specify any other option as the default, the effect may not be consistent.', 'extensions-leaflet-map' ),
+			'desc'       => __( 'If an element is hovered over, the other elements become transparent. If this option is specified, the options mentioned above do not apply.', 'extensions-leaflet-map' ),
 			'default'    => false,
 			'values'     => '0.1 ... 0.9',
 			'element'    => false,
@@ -238,6 +238,7 @@ function leafext_hover_function( $atts, $content, $shortcode ) {
 		leafext_enqueue_geometry();
 		leafext_enqueue_js();
 		leafext_enqueue_leafext( 'hover' );
+		leafext_enqueue_leafext( 'hover-opacity' );
 		$defaults = array();
 		$params   = leafext_hover_params();
 		foreach ( $params as $param ) {
@@ -271,6 +272,17 @@ function leafext_hover_function( $atts, $content, $shortcode ) {
 
 		if ( is_string( $options['geojsontooltip'] ) ) {
 			$options['geojsontooltip'] = filter_var( $options['geojsontooltip'], FILTER_SANITIZE_SPECIAL_CHARS );
+		}
+
+		if ( $options['opacity'] !== false ) {
+			$options['marker']  = true;
+			$options['circle']  = true;
+			$options['polygon'] = true;
+			$options['line']    = true;
+			$options['geojson'] = true;
+			$options['gpx']     = true;
+			$options['kml']     = true;
+			$options['exclude'] = '';
 		}
 
 		$text .= '<script><!--';
@@ -324,9 +336,16 @@ function leafext_hover_function( $atts, $content, $shortcode ) {
 				<?php
 			}
 			if ( $options['marker'] === false ) {
-				// $text = $text.leafext_markertitle_script($options);
 				?>
 				leafext_hover_markertitle_js();
+				<?php
+			}
+			if ( $options['opacity'] !== false ) {
+				?>
+				leafext_opacity_geojson_js(all_options);
+				leafext_opacity_markergroup_js( all_options );
+				leafext_opacity_marker_js(all_options);
+				leafext_opacity_geojson_marker_js( all_options );
 				<?php
 			}
 			?>

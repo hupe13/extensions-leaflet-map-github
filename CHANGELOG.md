@@ -1,3 +1,7 @@
+### 5.3 / 2606xx
+
+* revised shortcode hover and the hover option opacity
+
 ### 5.2 / 260609
 
 * new shortcode: leaflet-geojson-extramarker - a mix of leaflet-geojson and leaflet-extramarker

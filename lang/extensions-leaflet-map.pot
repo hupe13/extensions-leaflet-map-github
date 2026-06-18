@@ -11,7 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-06-04 18:22+0000\n"
+"POT-Creation-Date: 2026-06-18 16:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: extensions-leaflet-map\n"
@@ -88,13 +88,13 @@ msgid "%1$s, %2$s and %3$s describe the %4$sstart point%5$s and are optional."
 msgstr ""
 
 #. %s is a href.
-#: admin/filemgr/managefiles-functions.php:278
+#: admin/filemgr/managefiles-functions.php:277
 #, php-format
 msgid "%1$sAttachment pages%2$s are disabled."
 msgstr ""
 
 #. %s is a href.
-#: admin/filemgr/managefiles-functions.php:275
+#: admin/filemgr/managefiles-functions.php:274
 #, php-format
 msgid "%1$sAttachment pages%2$s are enabled."
 msgstr ""
@@ -210,19 +210,19 @@ msgid ""
 "translated, like dutch, spanish or german."
 msgstr ""
 
-#: admin/help.php:385
+#: admin/help.php:386
 msgid "A Leaflet Control for listing visible markers in the map."
 msgstr ""
 
-#: admin/help.php:313
+#: admin/help.php:314
 msgid "A Leaflet plugin that allows to add elevation profiles using d3js."
 msgstr ""
 
-#: admin/help.php:331
+#: admin/help.php:332
 msgid "A Leaflet plugin that allows to add rotation functionality to map tiles"
 msgstr ""
 
-#: admin/help.php:428
+#: admin/help.php:429
 msgid ""
 "A Leaflet plugin that allows to prevent default map scroll/touch behaviours."
 msgstr ""
@@ -247,7 +247,7 @@ msgid ""
 "layer. Can also be a comma-separated list of options or properties."
 msgstr ""
 
-#: admin/help.php:397
+#: admin/help.php:398
 msgid "A Tree Layers Control for Leaflet."
 msgstr ""
 
@@ -273,7 +273,7 @@ msgid ""
 "define %2$syour Tile Servers%3$s."
 msgstr ""
 
-#: admin/help.php:434
+#: admin/help.php:435
 msgid "Advanced geospatial analysis for browsers and Node.js"
 msgstr ""
 
@@ -319,7 +319,7 @@ msgstr ""
 msgid "Altitude chart profile"
 msgstr ""
 
-#: admin/help.php:355
+#: admin/help.php:356
 msgid "An extension that contains configurations for various tile providers."
 msgstr ""
 
@@ -476,7 +476,7 @@ msgstr ""
 msgid "child names"
 msgstr ""
 
-#: admin/help.php:409
+#: admin/help.php:410
 msgid "Choropleth plugin for Leaflet (color scale based on value)."
 msgstr ""
 
@@ -608,7 +608,7 @@ msgstr ""
 msgid "Conversion factor to meters, will be ignored if %1$s is %2$s"
 msgstr ""
 
-#: admin/help.php:343
+#: admin/help.php:344
 msgid "Convert KML, GPX, and TCX to GeoJSON."
 msgstr ""
 
@@ -691,7 +691,7 @@ msgstr ""
 msgid "Customize waypoints"
 msgstr ""
 
-#: admin/filemgr/managefiles-functions.php:154
+#: admin/filemgr/managefiles-functions.php:151
 msgid "Date"
 msgstr ""
 
@@ -814,13 +814,13 @@ msgid "Detailed documentation and examples"
 msgstr ""
 
 #. %s are hrefs.
-#: admin/help.php:465
+#: admin/help.php:466
 #, php-format
 msgid ""
 "Detailed documentation and examples in %1$sGerman%2$s and %3$sEnglish%4$s"
 msgstr ""
 
-#: admin/filemgr/thickbox.php:30
+#: admin/filemgr/thickbox.php:33
 msgid "Details"
 msgstr ""
 
@@ -829,11 +829,11 @@ msgid ""
 "determines how much to extend click tolerance round an object on the map"
 msgstr ""
 
-#: admin/filemgr/filemgr-settings.php:144
+#: admin/filemgr/filemgr-settings.php:143
 msgid "direct in the Media Library."
 msgstr ""
 
-#: admin/filemgr/filemgr.php:258
+#: admin/filemgr/filemgr.php:257
 msgid "Directory"
 msgstr ""
 
@@ -898,16 +898,16 @@ msgstr ""
 msgid "do not show tooltip but show %s"
 msgstr ""
 
-#: admin/help.php:449
+#: admin/help.php:450
 msgid "Documentation"
 msgstr ""
 
-#: admin/filemgr/filemgr.php:273
+#: admin/filemgr/filemgr.php:272
 msgid "does only work with gpx files"
 msgstr ""
 
 #. %s is a shortcode.
-#: admin/filemgr/managefiles-functions.php:271
+#: admin/filemgr/managefiles-functions.php:270
 #, php-format
 msgid "Don't forget to declare %s at last statement."
 msgstr ""
@@ -948,7 +948,7 @@ msgid ""
 "%s and are fixed."
 msgstr ""
 
-#: php/overview-map.php:625 admin/filemgr/managefiles-functions.php:208
+#: php/overview-map.php:625 admin/filemgr/managefiles-functions.php:207
 msgid "Edit"
 msgstr ""
 
@@ -1023,7 +1023,7 @@ msgstr ""
 msgid "example URL for the link"
 msgstr ""
 
-#: admin/help.php:502 admin/help.php:504
+#: admin/help.php:503 admin/help.php:505
 msgid "Examples"
 msgstr ""
 
@@ -1067,11 +1067,11 @@ msgstr ""
 msgid "Featured Map"
 msgstr ""
 
-#: admin/filemgr/thickbox.php:34
+#: admin/filemgr/thickbox.php:37
 msgid "File name:"
 msgstr ""
 
-#: admin/filemgr/thickbox.php:41
+#: admin/filemgr/thickbox.php:40
 msgid "File size: "
 msgstr ""
 
@@ -1154,7 +1154,7 @@ msgid ""
 "For popup content: a custom field named %1$s or any other name (optional)"
 msgstr ""
 
-#: admin/filemgr/filemgr.php:260
+#: admin/filemgr/filemgr.php:259
 msgid "for showing all files of this directory on a map"
 msgstr ""
 
@@ -1174,7 +1174,7 @@ msgstr ""
 msgid "for the popup content, optional."
 msgstr ""
 
-#: admin/help.php:443
+#: admin/help.php:444
 msgid "Found an issue? Do you have a question?"
 msgstr ""
 
@@ -1182,7 +1182,7 @@ msgstr ""
 msgid "Fullscreen"
 msgstr ""
 
-#: admin/help.php:479 admin/help.php:480
+#: admin/help.php:480 admin/help.php:481
 msgid "Function"
 msgstr ""
 
@@ -1239,7 +1239,7 @@ msgstr ""
 msgid "Grouping by options and features"
 msgstr ""
 
-#: admin/help.php:391
+#: admin/help.php:392
 msgid "Grouping of Leaflet elements by options and features."
 msgstr ""
 
@@ -1259,7 +1259,7 @@ msgstr ""
 msgid "Help me, if I'm wrong."
 msgstr ""
 
-#: admin/help.php:531
+#: admin/help.php:532
 msgid "Helper Plugins"
 msgstr ""
 
@@ -1273,7 +1273,7 @@ msgid ""
 "opacity should be regulated."
 msgstr ""
 
-#: admin/filemgr/filemgr-settings.php:135
+#: admin/filemgr/filemgr-settings.php:134
 msgid ""
 "Here you can display all gpx, kml, geojson, json and tcx files in "
 "subdirectories of uploads directory."
@@ -1466,8 +1466,8 @@ msgstr ""
 
 #: php/hover.php:140
 msgid ""
-"If an element is hovered over, the other elements become transparent. If you "
-"specify any other option as the default, the effect may not be consistent."
+"If an element is hovered over, the other elements become transparent. If "
+"this option is specified, the options mentioned above do not apply."
 msgstr ""
 
 #: php/parentgroup.php:57 php/parentgroup.php:64
@@ -1895,7 +1895,7 @@ msgstr ""
 msgid "In your elevation.css put the styles like the theme styles in"
 msgstr ""
 
-#: admin/help.php:520
+#: admin/help.php:521
 msgid "Included and used Leaflet Plugins"
 msgstr ""
 
@@ -1924,7 +1924,7 @@ msgid ""
 "set icon: 'fa-number'"
 msgstr ""
 
-#: admin/help.php:325
+#: admin/help.php:326
 msgid "Internationalisation module for Leaflet plugins."
 msgstr ""
 
@@ -1979,7 +1979,7 @@ msgstr ""
 msgid "It is enabled on both desktop and touch device by default."
 msgstr ""
 
-#: admin/filemgr/managefiles-functions.php:268
+#: admin/filemgr/managefiles-functions.php:267
 msgid ""
 "It is not checked whether the file contains a track with elevation data."
 msgstr ""
@@ -1999,7 +1999,7 @@ msgid ""
 "kml) and a track (elevation)."
 msgstr ""
 
-#: admin/filemgr/managefiles-functions.php:269
+#: admin/filemgr/managefiles-functions.php:268
 msgid "It works with gpx and kml files."
 msgstr ""
 
@@ -2083,11 +2083,11 @@ msgstr ""
 msgid "Link to the marker on a map"
 msgstr ""
 
-#: admin/filemgr/main.php:32
+#: admin/filemgr/main.php:33
 msgid "List Files"
 msgstr ""
 
-#: admin/filemgr/filemgr.php:248
+#: admin/filemgr/filemgr.php:247
 msgid "List files"
 msgstr ""
 
@@ -2123,12 +2123,12 @@ msgstr ""
 msgid "Longitude"
 msgstr ""
 
-#: admin/help.php:361
+#: admin/help.php:362
 msgid "Makes multiple tile layers transparent."
 msgstr ""
 
-#: admin.php:161 admin.php:165 admin/help.php:286 admin/help.php:288
-#: admin/help.php:289 admin/filemgr/main.php:27
+#: admin.php:161 admin.php:165 admin/help.php:287 admin/help.php:289
+#: admin/help.php:290 admin/filemgr/main.php:28
 msgid "Manage Leaflet Map files"
 msgstr ""
 
@@ -2206,7 +2206,7 @@ msgstr ""
 msgid "means"
 msgstr ""
 
-#: admin/filemgr/managefiles-functions.php:157
+#: admin/filemgr/managefiles-functions.php:154
 msgid "Media Library"
 msgstr ""
 
@@ -2280,7 +2280,7 @@ msgstr ""
 msgid "My own %1$s based on the %2$swork%3$s of Stefano Cudini."
 msgstr ""
 
-#: admin/filemgr/managefiles-functions.php:155
+#: admin/filemgr/managefiles-functions.php:152
 msgid "Name"
 msgstr ""
 
@@ -2551,7 +2551,7 @@ msgstr ""
 msgid "or in the directory"
 msgstr ""
 
-#: admin/filemgr/filemgr-settings.php:156
+#: admin/filemgr/filemgr-settings.php:155
 msgid "or in your own way."
 msgstr ""
 
@@ -2643,7 +2643,7 @@ msgstr ""
 #: admin/elevation/multielevation.php:103 admin/elevation/sgpx.php:51
 #: admin/elevation/elevation.php:69 admin/overviewmap/overview-map.php:50
 #: admin/marker/placementstrategies.php:69 admin/marker/markercluster.php:65
-#: admin/filemgr/filemgr-settings.php:107 admin/grouping/settings.php:64
+#: admin/filemgr/filemgr-settings.php:106 admin/grouping/settings.php:64
 #: admin/hover/settings.php:59
 msgid "Plugins Default"
 msgstr ""
@@ -2699,7 +2699,7 @@ msgstr ""
 msgid "Possible values"
 msgstr ""
 
-#: admin/help.php:445
+#: admin/help.php:446
 msgid "Post it to the support forum"
 msgstr ""
 
@@ -2707,10 +2707,10 @@ msgstr ""
 msgid "Preparation"
 msgstr ""
 
-#: admin/filemgr/managefiles-functions.php:156
-#: admin/filemgr/managefiles-functions.php:207
-#: admin/filemgr/managefiles-functions.php:212
-#: admin/filemgr/managefiles-functions.php:224
+#: admin/filemgr/thickbox.php:27 admin/filemgr/managefiles-functions.php:153
+#: admin/filemgr/managefiles-functions.php:206
+#: admin/filemgr/managefiles-functions.php:211
+#: admin/filemgr/managefiles-functions.php:223
 msgid "Preview"
 msgstr ""
 
@@ -2727,12 +2727,12 @@ msgid "Providers requiring registration"
 msgstr ""
 
 #. %s is an href.
-#: admin/help.php:416
+#: admin/help.php:417
 #, php-format
 msgid "Provides a zoom control with a %1$sHome%2$s button to reset the view."
 msgstr ""
 
-#: admin/help.php:367
+#: admin/help.php:368
 msgid "Provides Beautiful Animated Marker Clustering functionality."
 msgstr ""
 
@@ -2794,7 +2794,7 @@ msgstr ""
 #: admin/elevation/main.php:117 admin/elevation/main.php:163
 #: admin/elevation/main.php:178 admin/overviewmap/featured-map.php:24
 #: admin/marker/placementstrategies.php:22 admin/marker/markercluster.php:22
-#: admin/filemgr/filemgr.php:249 admin/filemgr/main.php:62
+#: admin/filemgr/filemgr.php:248 admin/filemgr/main.php:63
 #: admin/grouping/settings.php:103 admin/hover/settings.php:101
 #: admin/tiles/main.php:73 admin/tiles/providers.php:177
 msgid "Reset"
@@ -2825,7 +2825,7 @@ msgstr ""
 msgid "Search markers/features"
 msgstr ""
 
-#: admin/help.php:403
+#: admin/help.php:404
 msgid "Search Markers/Features location by option or custom property."
 msgstr ""
 
@@ -2920,7 +2920,7 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: admin/help.php:379
+#: admin/help.php:380
 msgid "Shameless copy of Awesome-Markers with more shapes and colors."
 msgstr ""
 
@@ -3022,7 +3022,7 @@ msgid ""
 "Show waypoint labels in map and in chart / only in map / only in chart / none"
 msgstr ""
 
-#: admin/help.php:422
+#: admin/help.php:423
 msgid "Simple plugin for Leaflet that adds fullscreen button to your maps."
 msgstr ""
 
@@ -3097,7 +3097,7 @@ msgstr ""
 msgid "Styling Markercluster"
 msgstr ""
 
-#: admin/help.php:373
+#: admin/help.php:374
 msgid "Styling Markerclusters."
 msgstr ""
 
@@ -3447,7 +3447,7 @@ msgstr ""
 msgid "This page helps you to migrate from %1$s to %2$s."
 msgstr ""
 
-#: admin/help.php:337
+#: admin/help.php:338
 msgid ""
 "This plugin allows to detect mouse click and overing events on lines, with a "
 "tolerance distance."
@@ -3585,7 +3585,7 @@ msgid "track control collapsed"
 msgstr ""
 
 #. %s is a shortcode.
-#: admin/filemgr/managefiles-functions.php:161
+#: admin/filemgr/managefiles-functions.php:158
 #, php-format
 msgid "track in %s"
 msgstr ""
@@ -3594,7 +3594,7 @@ msgstr ""
 msgid "Track with an elevation profile"
 msgstr ""
 
-#: admin/help.php:297 admin/filemgr/main.php:36
+#: admin/help.php:298 admin/filemgr/main.php:37
 #: admin/filemgr/leaflet-directory.php:18
 msgid "Tracks from all files in a directory"
 msgstr ""
@@ -3633,7 +3633,7 @@ msgstr ""
 msgid "Upload gpx files into the directory"
 msgstr ""
 
-#: admin/filemgr/thickbox.php:32
+#: admin/filemgr/thickbox.php:35
 msgid "Uploaded on:"
 msgstr ""
 
@@ -3726,7 +3726,7 @@ msgstr ""
 msgid "Values"
 msgstr ""
 
-#: admin/filemgr/managefiles-functions.php:213
+#: admin/filemgr/managefiles-functions.php:212
 msgid "View"
 msgstr ""
 
@@ -3788,15 +3788,15 @@ msgid ""
 "be regulated."
 msgstr ""
 
-#: admin/filemgr/filemgr-settings.php:147
+#: admin/filemgr/filemgr-settings.php:146
 msgid "with any (S)FTP-Client,"
 msgstr ""
 
-#: admin/filemgr/filemgr-settings.php:150
+#: admin/filemgr/filemgr-settings.php:149
 msgid "with any File Manager plugin,"
 msgstr ""
 
-#: admin/filemgr/filemgr-settings.php:153
+#: admin/filemgr/filemgr-settings.php:152
 msgid "with any plugin for importing uploaded files to the Media Library."
 msgstr ""
 
@@ -3883,7 +3883,7 @@ msgstr ""
 msgid "You can delete all settings on this page."
 msgstr ""
 
-#: admin/filemgr/filemgr-settings.php:133
+#: admin/filemgr/filemgr-settings.php:132
 msgid ""
 "You can display all gpx, kml, geojson, json and tcx files in subdirectories "
 "of uploads directory."
@@ -3893,11 +3893,11 @@ msgstr ""
 msgid "You can enable it for all maps or for individual maps."
 msgstr ""
 
-#: admin/filemgr/filemgr-settings.php:140
+#: admin/filemgr/filemgr-settings.php:139
 msgid "You can manage these"
 msgstr ""
 
-#: admin/filemgr/filemgr-settings.php:138
+#: admin/filemgr/filemgr-settings.php:137
 msgid "You can manage these according to your permissions"
 msgstr ""
 
@@ -4017,7 +4017,7 @@ msgid ""
 msgstr ""
 
 #. %s is a link.
-#: admin/help.php:455
+#: admin/help.php:456
 #, php-format
 msgid ""
 "You may be interested in %1$sDSGVO snippet for Leaflet Map and its "

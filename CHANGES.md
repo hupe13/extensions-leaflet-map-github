@@ -1,6 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* none
+* revised shortcode hover and the hover option opacity
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 
