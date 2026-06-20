@@ -1,4 +1,4 @@
-### 5.3 / 2606xx
+### 5.3 / 260619
 
 * revised shortcode hover and the hover option opacity
 
