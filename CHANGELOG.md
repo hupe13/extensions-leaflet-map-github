@@ -1,3 +1,10 @@
+### 5.4 / 2608xx
+
+* leaflet-elevation-2.6.0 with changes in linear-gradient.js
+* latest leaflet-providers.js
+* latest Leaflet Control FullScreen
+* latest JShrink
+
 ### 5.3 / 260619
 
 * revised shortcode hover and the hover option opacity

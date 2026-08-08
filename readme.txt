@@ -2,8 +2,8 @@
 
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
-Tested up to: 7.0
-Stable tag: 5.1-260618
+Tested up to: 7.1
+Stable tag: 5.1-260808
 Requires at least: 6.2
 Requires PHP: 8.2
 License: GPLv2 or later
@@ -42,6 +42,9 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 
 == Changelog ==
 
-* revised shortcode hover and the hover option opacity
+* leaflet-elevation-2.6.0 with changes in linear-gradient.js
+* latest leaflet-providers.js
+* latest Leaflet Control FullScreen
+* latest JShrink
 
 [more ...](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/CHANGELOG.md)

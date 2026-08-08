@@ -1,6 +1,9 @@
 # Differences to the Plugins WordPress version
 
-* none
+* leaflet-elevation-2.6.0 with changes in linear-gradient.js
+* latest leaflet-providers.js
+* latest Leaflet Control FullScreen
+* latest JShrink
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

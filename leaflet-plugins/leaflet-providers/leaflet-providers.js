@@ -186,13 +186,6 @@
 				attribution: 'Map data: {attribution.OpenStreetMap} | Map style: &copy; <a href="https://www.OpenRailwayMap.org">OpenRailwayMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
 			}
 		},
-		OpenFireMap: {
-			url: 'http://openfiremap.org/hytiles/{z}/{x}/{y}.png',
-			options: {
-				maxZoom: 19,
-				attribution: 'Map data: {attribution.OpenStreetMap} | Map style: &copy; <a href="http://www.openfiremap.org">OpenFireMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
-			}
-		},
 		SafeCast: {
 			url: 'https://s3.amazonaws.com/te512.safecast.org/{z}/{x}/{y}.png',
 			options: {
@@ -363,7 +356,7 @@
 			}
 		},
 		Thunderforest: {
-			url: 'https://{s}.tile.thunderforest.com/{variant}/{z}/{x}/{y}{r}.png?apikey={apikey}',
+			url: 'https://api.thunderforest.com/{variant}/{z}/{x}/{y}{r}.png?apikey={apikey}',
 			options: {
 				attribution:
 					'&copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, {attribution.OpenStreetMap}',
@@ -392,7 +385,8 @@
 				Outdoors: 'outdoors',
 				Pioneer: 'pioneer',
 				MobileAtlas: 'mobile-atlas',
-				Neighbourhood: 'neighbourhood'
+				Neighbourhood: 'neighbourhood',
+				Atlas: 'atlas'
 			}
 		},
 		BaseMapDE: {
@@ -934,9 +928,10 @@
 		},
 		JusticeMap: {
 			// Justice Map (http://www.justicemap.org/)
+			// Raster map tiles migrated to (https://maptile3.org/) in 2023
 			// Visualize race and income data for your community, county and country.
 			// Includes tools for data journalists, bloggers and community activists.
-			url: 'https://www.justicemap.org/tile/{size}/{variant}/{z}/{x}/{y}.png',
+			url: 'https://maptile3.org/2020/{size}/{variant}/{z}/{x}/{y}.png',
 			options: {
 				attribution: '<a href="http://www.justicemap.org/terms.php">Justice Map</a>',
 				// one of 'county', 'tract', 'block'

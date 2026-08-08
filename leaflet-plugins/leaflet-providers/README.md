@@ -4,37 +4,46 @@ An extension to [Leaflet](http://leafletjs.com/) that contains configurations fo
 
 # Installation
 
-Download [leaflet-providers.js](https://raw.githubusercontent.com/leaflet-extras/leaflet-providers/master/leaflet-providers.js) and include it in your page after including Leaflet, e.g.:
+## Bundler
 
-    <head>
-      ...
-      <script src="http://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
-      <script src="js/leaflet-providers.js"></script>
-    </head>
+```shell
+npm install leaflet-providers
+```
+
+## CDN
+
+Include `leaflet-providers.js` in your page after including Leaflet, e.g.:
+
+```html
+<head>
+  <script src="https://unpkg.com/leaflet@latest/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-providers@latest/leaflet-providers.js"></script>
+</head>
+```
 
 # Usage
 
-Leaflet-providers [providers](#providers) are referred to with a `provider[.<variant>]`-string. Let's say you want to add the nice [Watercolor](http://maps.stamen.com/#watercolor/) style from Stamen to your map, you pass `Stamen.Watercolor` to the `L.tileLayer.provider`-constructor, which will return a [L.TileLayer](http://leafletjs.com/reference.html#tilelayer) instance for Stamens Watercolor tile layer.
+Leaflet-providers [providers](#providers) are referred to with a `provider[.<variant>]`-string. Let's say you want to add the nice [Watercolor](http://maps.stamen.com/#watercolor/) style from Stamen to your map, you pass `Stadia.StamenWatercolor` to the `L.tileLayer.provider`-constructor, which will return a [L.TileLayer](http://leafletjs.com/reference.html#tilelayer) instance for Stamens Watercolor tile layer.
 
 ```Javascript
 // add Stamen Watercolor to map.
-L.tileLayer.provider('Stamen.Watercolor').addTo(map);
+L.tileLayer.provider('Stadia.StamenWatercolor').addTo(map);
 ```
 
 # Providers
 
-Leaflet-providers provides tile layers from different providers, including *OpenStreetMap*, *Stamen*, *Esri* and *OpenWeatherMap*. The full listing of free to use layers can be [previewed](http://leaflet-extras.github.io/leaflet-providers/preview/index.html). The page will show you the name to use with `leaflet-providers.js` and the code to use it without dependencies.
+Leaflet-providers provides tile layers from different providers, including *OpenStreetMap*, *Esri* and *OpenWeatherMap*. The full listing of free to use layers can be [previewed](http://leaflet-extras.github.io/leaflet-providers/preview/index.html). The page will show you the name to use with `leaflet-providers.js` and the code to use it without dependencies.
 
 ## Providers requiring registration
 
 In addition to the providers you are free<b id="what-is-free">1</b> to use, we support some layers which require registration.
 
-### HERE and HEREv3 (formerly Nokia).
+### HERE
 
-In order to use HEREv3 layers, you must [register](http://developer.here.com/). Once registered, you can create an `apiKey` which you have to pass to `L.tileLayer.provider` in the options:
+In order to use HERE layers, you must [register](https://platform.here.com/portal/). Once registered, you can create an `apiKey` which you have to pass to `L.tileLayer.provider` in the options:
 
 ```Javascript
-L.tileLayer.provider('HEREv3.terrainDay', {
+L.tileLayer.provider('HERE.liteDay', {
     apiKey: '<insert apiKey here>'
 }).addTo(map);
 ```
@@ -104,7 +113,7 @@ In order to use ArcGIS maps, you must [register](https://developers.arcgis.com/e
 
 ### TomTom
 
-In order to use TomTom layers, you must [register](https://developer.tomtom.com/user/register). Once registered, you can create an `apikey` which you have to pass to `L.tileLayer.provider` in the options:
+In order to use TomTom layers, you must [register](https://my.tomtom.com). Once registered, you can create an `apikey` which you have to pass to `L.tileLayer.provider` in the options:
 
 ```Javascript
 L.tileLayer.provider('TomTom', {
@@ -112,23 +121,16 @@ L.tileLayer.provider('TomTom', {
 }).addTo(map);
 ```
 
-### Geoportail France
+### Stadia Maps
 
-In order to use Geoportail France resources, you need to obtain an [api key]( http://professionnels.ign.fr/ign/contrats/) that allows you to access the [resources](https://geoservices.ign.fr/documentation/donnees-ressources-wmts.html#ressources-servies-en-wmts-en-projection-web-mercator) you need. Pass this api key and the ID of the resource to display to `L.tileLayer.provider` in the options:
-```JavaScript
-L.tileLayer.provider('GeoportailFrance', {
-    variant: '<insert resource ID here>',
-    apikey: '<insert api key here>'
-}).addTo(map);
-```
+In order to use Stadia maps, you must [register](https://client.stadiamaps.com/signup/). Once registered, you can whitelist your domain within your account settings.
 
-Please note that a public api key (`choisirgeoportail`) is used by default and comes with no guarantee.
+#### Stamen Design
 
-4 aliases are also provided for common Geoportail resources : `GeoportailFrance`, `GeoportailFrance.orthos`, `GeoportailFrance.ignMaps` and `GeoportailFrance.parcels` (See index.html demo).
-
- ### Stadia Maps
-
- In order to use Stadia maps, you must [register](https://client.stadiamaps.com/signup/). Once registered, you can whitelist your domain within your account settings.
+As of July 31, 2023, Stamen's map styles are now hosted by [Stadia Maps](#stadia-maps). You can read the full
+announcement from Stamen [here](http://maps.stamen.com/stadia-partnership/). No code changes are required to continue
+using Stamen map styles hosted by Stadia Maps. Simply [register](https://client.stadiamaps.com/signup/) and whitelist
+your domain.
 
 # Attribution
 

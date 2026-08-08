@@ -1,5 +1,8 @@
 # leaflet-elevation.js
 
+This ist leaflet-elevation version 2.6.0 with the changes in linear-gradient.js from 
+https://github.com/Raruto/leaflet-elevation/issues/306
+
 [![NPM version](https://img.shields.io/npm/v/@raruto/leaflet-elevation.svg?color=red)](https://www.npmjs.com/package/@raruto/leaflet-elevation)
 [![License](https://img.shields.io/badge/license-GPL%203-blue.svg?style=flat)](LICENSE)
 
