@@ -125,8 +125,7 @@ function leafext_help_hover() {
 		'className',
 		'"leafext-tooltip"'
 	);
-	$text = $text . '<pre>
-.leafext-tooltip {
+	$text = $text . '<pre' . $codestyle . '><code' . $codestyle . '>.leafext-tooltip {
   background-color: #eee !important;
   border: 1px solid #eee !important;
   white-space: normal !important;
@@ -140,7 +139,7 @@ function leafext_help_hover() {
 .leaflet-tooltip-right.leafext-tooltip::before {
   border-right-color: #eee;
 }
-</pre>';
+</code></pre>';
 	$text = $text . '</p>';
 
 	if ( is_singular() || is_archive() ) {

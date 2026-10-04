@@ -157,10 +157,13 @@ add_filter("pre_do_shortcode_tag", function ( &#36;output, &#36;shortcode ) {
 </code></pre></section>'
 
 	. '<p>' .
-	__( 'In your elevation.css put the styles like the theme styles in', 'extensions-leaflet-map' )
-	. ' <a href="https://unpkg.com/@raruto/leaflet-elevation@' . LEAFEXT_ELEVATION_VERSION . '/dist/leaflet-elevation.css"
->https://unpkg.com/@raruto/leaflet-elevation@' . LEAFEXT_ELEVATION_VERSION . '/dist/leaflet-elevation.css</a> ' .
 	wp_sprintf(
+		/* translators: %s is a link. */
+		__( 'In your elevation.css put the styles like the theme styles in %s', 'extensions-leaflet-map' ),
+		// phpcs:ignore PluginCheck.CodeAnalysis.Offloading.OffloadedContent -- is documentation
+		' <a href="https://unpkg.com/@raruto/leaflet-elevation@latest/dist/leaflet-elevation.css">https://unpkg.com/@raruto/leaflet-elevation@latest/dist/leaflet-elevation.css</a>'
+	)
+	. ' ' . wp_sprintf(
 	/* translators: %s is a href. */
 		__( 'or check out Raruto\'s %1$sexamples%2$s', 'extensions-leaflet-map' ),
 		'<a href="https://github.com/Raruto/leaflet-elevation">',

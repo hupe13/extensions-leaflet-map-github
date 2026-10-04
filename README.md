@@ -30,8 +30,6 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 * Erhalte einen Tooltip beim Überfahren eines Elementes mit der Maus.
 
-* Du kannst eine Choropleth-Karte gestalten.
-
 * Du kannst dir die Karte im Vollbildmodus anzeigen lassen.
 
 * Setze die Karte zurück.
@@ -61,8 +59,6 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 * Create an overview map with geo-locations provided in the pages and posts.
 
 * Get a tooltip when hovering over an element.
-
-* You can design a choropleth map.
 
 * You can display the map in fullscreen mode.
 
@@ -96,11 +92,14 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 * [Leaflet.FeatureGroup.SubGroup](https://github.com/ghybs/Leaflet.FeatureGroup.SubGroup): Grouping of Leaflet elements by options and features.
 * [Leaflet.Control.Layers.Tree](https://github.com/jjimenezshaw/Leaflet.Control.Layers.Tree): A Tree Layers Control for Leaflet.
 * [Leaflet Control Search](https://github.com/stefanocudini/leaflet-search): Search Markers/Features location by option or custom property.
-* [leaflet-choropleth](https://github.com/timwis/leaflet-choropleth): Choropleth plugin for Leaflet (color scale based on value).
 * [leaflet.zoomhome](https://github.com/torfsen/leaflet.zoomhome): Provides a zoom control with a "Home" button to reset the view.
 * [leaflet.fullscreen](https://github.com/brunob/leaflet.fullscreen): Simple plugin for Leaflet that adds fullscreen button to your maps.
 * [Leaflet.GestureHandling](https://github.com/Raruto/leaflet-gesture-handling): A Leaflet plugin that allows to prevent default map scroll/touch behaviours.
 * [turf](https://github.com/Turfjs/turf): Advanced geospatial analysis for browsers and Node.js
+
+#### Removed
+
+* [leaflet-choropleth](https://github.com/timwis/leaflet-choropleth): Choropleth plugin for Leaflet (color scale based on value) - see [Choropleth for Leaflet Map](https://github.com/hupe13/chloropleth-leaflet-map)
 
 #### Included Font
 

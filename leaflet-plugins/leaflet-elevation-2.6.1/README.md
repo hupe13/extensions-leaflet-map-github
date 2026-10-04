@@ -1,8 +1,5 @@
 # leaflet-elevation.js
 
-This ist leaflet-elevation version 2.6.0 with the changes in linear-gradient.js from 
-https://github.com/Raruto/leaflet-elevation/issues/306
-
 [![NPM version](https://img.shields.io/npm/v/@raruto/leaflet-elevation.svg?color=red)](https://www.npmjs.com/package/@raruto/leaflet-elevation)
 [![License](https://img.shields.io/badge/license-GPL%203-blue.svg?style=flat)](LICENSE)
 
@@ -50,6 +47,7 @@ _For a working example see one of the following demos:_
 - [slope chart](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_slope-chart.html)
 - [speed chart](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_speed-chart.html)
 - [temperature chart](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_temperature-chart.html)
+- [bathymetry data](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_bathymetry.html)
 - [walking marker](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_dynamic-runner.html)
 
 ---

@@ -1,4 +1,11 @@
-### 5.4 / 2608xx
+### 6.0 / 2610xx
+
+* fixed XSS ( leafext_clear_params )
+* leaflet-elevation-2.6.1 with changes in linear-gradient.js
+* latest leaflet-providers.js
+* removed shortcode choropleth because of XSS, it is an extra plugin now (XSS is fixed)
+
+### 5.4 / 260808
 
 * leaflet-elevation-2.6.0 with changes in linear-gradient.js
 * latest leaflet-providers.js

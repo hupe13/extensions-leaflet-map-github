@@ -103,41 +103,26 @@ function leafext_cluster_script( $params ) {
 	return "\n" . $text . "\n";
 }
 
-function leafext_cluster_settings() {
+function leafext_cluster_atts( $atts ) {
 	$defaults = array();
 	$params   = leafext_cluster_params();
 	foreach ( $params as $param ) {
 		$defaults[ $param['param'] ] = $param['default'];
 	}
-	$options = shortcode_atts(
-		$defaults,
-		leafext_array_replace_keys(
-			get_option( 'leafext_cluster' ),
-			array(
-				'zoom'     => 'disableClusteringAtZoom',
-				'radius'   => 'maxClusterRadius',
-				'spiderfy' => 'spiderfyOnMaxZoom',
-			)
-		)
-	);
-	return $options;
-}
-
-function leafext_cluster_atts( $atts ) {
-	// Ersetze alt - neu, vorher interpretiere "parameter" als true und "!parameter" als false
-	$atts1 = leafext_array_replace_keys(
-		leafext_clear_params( $atts ),
-		array(
-			'zoom'     => 'disableClusteringAtZoom',
-			'radius'   => 'maxClusterRadius',
-			'spiderfy' => 'spiderfyOnMaxZoom',
-		)
-	);
+	$settings = shortcode_atts( $defaults, get_option( 'leafext_cluster' ) );
 	// bereinige die nur Kleinbuchstaben vom Shortcode zu gross und klein wie der Java-Parameter ist
-	$atts2 = leafext_case( array_keys( leafext_cluster_settings() ), $atts1 );
+	$atts1 = leafext_case( array_keys( $defaults ), $atts );
 	// gleiche mit eigenen settings und Plugin defaults ab
-	$options = shortcode_atts( leafext_cluster_settings(), $atts2 );
-	// if ($options['disableClusteringAtZoom'] == "0") unset($options['disableClusteringAtZoom'] );
+	$options = shortcode_atts( $settings, $atts1 );
+
+	foreach ( $options as $option => $value ) {
+		if ( is_bool( $defaults[ $option ] ) ) {
+			$options[ $option ] = (bool) $value;
+		} elseif ( ! is_numeric( $value ) ) {
+			unset( $options[ $option ] );
+		}
+	}
+	// var_dump( $options );
 	return( $options );
 }
 

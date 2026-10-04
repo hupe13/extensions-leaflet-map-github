@@ -119,7 +119,6 @@ function leafext_do_page() {
 			echo wp_kses_post( leafext_help_fullscreen() );
 		} elseif ( $active_tab === 'choropleth' ) {
 			include __DIR__ . '/admin/choropleth.php';
-			echo wp_kses_post( leafext_choropleth_help() );
 		} elseif ( strpos( $active_tab, 'group' ) !== false ) {
 			leafext_admin_grouping( $active_tab );
 		} elseif ( $active_tab === 'leafletsearch' ) {

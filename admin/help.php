@@ -251,15 +251,6 @@ function leafext_help_entries() {
 			'kategorie' => '',
 			'examples'  => '',
 		),
-		array(
-			'function'  => __( 'Leaflet Choropleth', 'extensions-leaflet-map' ),
-			'shortcode' => 'choropleth',
-			'tab'       => 'choropleth',
-			'plugins'   => '<a href="https://github.com/timwis/leaflet-choropleth">Leaflet Choropleth</a>',
-			'doku'      => '/doku/choropleth/',
-			'kategorie' => '',
-			'examples'  => '',
-		),
 	);
 
 	$table[ __( 'Hovering', 'extensions-leaflet-map' ) ] = array(
@@ -404,12 +395,6 @@ function leafext_plugins() {
 		'desc'      => __( 'Search Markers/Features location by option or custom property.', 'extensions-leaflet-map' ),
 		'link'      => 'https://github.com/stefanocudini/leaflet-search',
 		'shortcode' => 'leaflet-search',
-	);
-	$plugins[] = array(
-		'name'      => 'leaflet-choropleth',
-		'desc'      => __( 'Choropleth plugin for Leaflet (color scale based on value).', 'extensions-leaflet-map' ),
-		'link'      => 'https://github.com/timwis/leaflet-choropleth',
-		'shortcode' => 'choropleth',
 	);
 	$plugins[] = array(
 		'name'      => 'leaflet.zoomhome',

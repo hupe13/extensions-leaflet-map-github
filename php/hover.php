@@ -252,7 +252,7 @@ function leafext_hover_function( $atts, $content, $shortcode ) {
 
 		$text = '';
 		if ( $options['tolerance'] !== 0 ) {
-			$text .= leafext_canvas_script( $options['tolerance'] );
+			$text .= leafext_canvas_script( (int) $options['tolerance'] );
 		}
 
 		$do_tooltip = array( true, 'tooltip' );
@@ -282,6 +282,7 @@ function leafext_hover_function( $atts, $content, $shortcode ) {
 			$options['geojson'] = true;
 			$options['gpx']     = true;
 			$options['kml']     = true;
+			// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- is not a WP_Query
 			$options['exclude'] = '';
 		}
 

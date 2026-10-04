@@ -11,19 +11,84 @@ defined( 'ABSPATH' ) || die();
 // Interpretiere !parameter und parameter als false und true
 function leafext_clear_params( $atts ) {
 	if ( is_array( $atts ) ) {
-		$count_atts = count( $atts );
-		for ( $i = 0; $i < $count_atts; $i++ ) {
-			if ( isset( $atts[ $i ] ) ) {
-				if ( strpos( $atts[ $i ], '!' ) === false ) {
-					$atts[ $atts[ $i ] ] = true;
+		foreach ( $atts as $attr => $value ) {
+			if ( is_int( $attr ) ) {
+				if ( strpos( $atts[ $attr ], '!' ) === false ) {
+					$atts[ $atts[ $attr ] ] = true;
 				} else {
-					$atts[ substr( $atts[ $i ], 1 ) ] = false;
+					$atts[ substr( $atts[ $attr ], 1 ) ] = false;
 				}
-				unset( $atts[ $i ] );
+				unset( $atts[ $attr ] );
+			} else {
+				$validicon     = array(
+					// leaflet-search default icon
+					// https://github.com/stefanocudini/leaflet-search/blob/d29c5392b33cc31b338c3d17b5f8532fef5eae48/src/leaflet-search.js#L88-L97
+					'icon:',
+					'animate:',
+					'circle:',
+					'radius:',
+					'weight:',
+					'color:',
+					'stroke:',
+					'fill:',
+					//
+					// from L.Icon: https://leafletjs.com/reference.html#icon
+					'iconUrl:',
+					'iconSize:',
+					'iconAnchor:',
+					'popupAnchor:',
+					'tooltipAnchor:',
+					'shadowUrl:',
+					'shadowSize:',
+					'shadowAnchor:',
+				);
+				$valid_chars   = array( '(', ')', '|', '.', '*' );
+				$invalid_chars = array( '{', '}', ':', '<', '>', 'script', '(', ')' );
+				if ( $attr === 'marker' ) {
+					if ( strpos( str_replace( $validicon, '', $value ), ':' ) === false ) {
+						$atts[ $attr ] = leafext_esc_js( $value );
+					} else {
+						unset( $atts[ $attr ] );
+					}
+				} elseif ( $attr === 'geojsontooltip' ) {
+					// none
+					$atts[ $attr ] = $value;
+				} elseif ( $attr === 'width' && ctype_alnum( str_replace( $valid_chars, '', $value ) ) ) {
+					$atts[ $attr ] = leafext_esc_js( $value );
+				} elseif ( str_replace( $invalid_chars, '', $value ) !== $value ) {
+					$atts[ $attr ] = wp_json_encode( str_replace( $invalid_chars, '', $value ) );
+				} else {
+					$atts[ $attr ] = esc_js( $value );
+				}
+				// echo '<pre>';
+				// var_dump($attr,$value,$atts[ $attr ]);
+				// echo '</pre>';
 			}
 		}
 	}
 	return( $atts );
+}
+
+function leafext_esc_js( $text ) {
+	$safe_text = $text;
+	$safe_text = wp_check_invalid_utf8( $safe_text );
+	$safe_text = _wp_specialchars( $safe_text, ENT_COMPAT );
+	$safe_text = preg_replace( '/&#(x)?0*(?(1)27|39);?/i', "'", stripslashes( $safe_text ) );
+	$safe_text = str_replace( "\r", '', $safe_text );
+	//$safe_text = str_replace( "\n", '\\n', addslashes( $safe_text ) );
+	$safe_text = str_replace( "\n", '\\n', $safe_text );
+	/**
+	 * Filters a string cleaned and escaped for output in JavaScript.
+	 *
+	 * Text passed to esc_js() is stripped of invalid or special characters,
+	 * and properly slashed for output.
+	 *
+	 * @since 2.0.6
+	 *
+	 * @param string $safe_text The text after it has been escaped.
+	 * @param string $text      The text prior to being escaped.
+	 */
+	return $safe_text;
 }
 
 // shortcode_atts gibt nur Kleinbuchstaben zurueck, Javascript braucht aber gross und klein

@@ -20,8 +20,8 @@ function leafext_help_geojsonextramarker() {
 		$geojsonextramarker = $lang . '/doku/geojsonextramarker/';
 	} else {
 		leafext_enqueue_admin();
-		// $codestyle    = ' class="language-coffeescript"';
-		$codestyle          = '';
+		$codestyle    = ' class="language-coffeescript"';
+		// $codestyle          = '';
 		$geojsonextramarker = '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=geojsonextramarker';
 	}
 	$text = '<h3>' .
@@ -35,7 +35,7 @@ function leafext_help_geojsonextramarker() {
 	) . '</h3>';
 
 	$text .= '<h3>Shortcode</h3>';
-	$text .= '<pre class="leafext-prismatic"><code class="leafext-prismatic-bg">&#091;leaflet-geojson-extramarker <i>leaflet-geojson-options</i> <i>leaflet-extramarker-options</i>]</code ></pre>';
+	$text .= '<pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-geojson-extramarker leaflet-geojson-options leaflet-extramarker-options]</code></pre>';
 
 	$text .= '<h3>' . __(
 		'Options',

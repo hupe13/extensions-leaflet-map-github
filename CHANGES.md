@@ -1,9 +1,9 @@
 # Differences to the Plugins WordPress version
 
-* leaflet-elevation-2.6.0 with changes in linear-gradient.js
+* fixed XSS ( leafext_clear_params )
+* leaflet-elevation-2.6.1 with changes in linear-gradient.js
 * latest leaflet-providers.js
-* latest Leaflet Control FullScreen
-* latest JShrink
+* removed shortcode choropleth because of XSS, it is an extra plugin now (XSS is fixed)
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

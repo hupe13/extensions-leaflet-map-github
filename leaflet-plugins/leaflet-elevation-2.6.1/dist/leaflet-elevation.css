@@ -263,6 +263,7 @@
 }
 
 /* LIME THEME ///////////////////////////////////////////////////// */
+
 .lime-theme {
   --ele-bg: rgba(156, 194, 34, 0.2);
   --ele-axis: #566B13;
@@ -274,6 +275,7 @@
 }
 
 /* STEELBLUE THEME //////////////////////////////////////////////// */
+
 .steelblue-theme {
   --ele-axis: #0D1821;
   --ele-area: #4682B4;
@@ -282,6 +284,7 @@
 }
 
 /* PURPLE THEME /////////////////////////////////////////////////// */
+
 .purple-theme {
   --ele-bg: rgba(115, 44, 123, 0.2);
   --ele-area: #732C7B;
@@ -290,22 +293,26 @@
 }
 
 /* YELLOW THEME /////////////////////////////////////////////////// */
+
 .yellow-theme {
   --ele-area: #FF0;
 }
 
 /* RED THEME ////////////////////////////////////////////////////// */
+
 .red-theme {
   --ele-area: #F00;
 }
 
 /* MAGENTA THEME ////////////////////////////////////////////////// */
+
 .magenta-theme {
   --ele-bg: rgba(255, 255, 255, 0.47);
   --ele-area: #FF005E;
 }
 
 /* LIGHTBLUE THEME //////////////////////////////////////////////// */
+
 .lightblue-theme {
   --ele-area: #3366CC;
   --ele-alpha: 0.45;
@@ -319,6 +326,7 @@
 }
 
 /* leaflet-distance-markers */
+
 .dist-marker {
   font-size: 0.5rem;
   border: 1px solid #777;

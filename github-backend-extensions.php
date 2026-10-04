@@ -12,6 +12,7 @@ defined( 'ABSPATH' ) || die();
  * For translating
  */
 function leafext_extensions_load_textdomain() {
+	// phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound
 	load_plugin_textdomain( 'extensions-leaflet-map', false, LEAFEXT_PLUGIN_DIR . '/lang' );
 }
 add_action( 'plugins_loaded', 'leafext_extensions_load_textdomain' );

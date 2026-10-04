@@ -16,7 +16,7 @@ define( 'LEAFEXT_MINI', '.min' );
  */
 
 // elevation, multielevation
-define( 'LEAFEXT_ELEVATION_VERSION', '260726' );
+define( 'LEAFEXT_ELEVATION_VERSION', '2.6.1' );
 define( 'LEAFEXT_ELEVATION_URL', LEAFEXT_PLUGIN_URL . '/leaflet-plugins/leaflet-elevation-' . LEAFEXT_ELEVATION_VERSION . '/' );
 define( 'LEAFEXT_ELEVATION_DIR', LEAFEXT_PLUGIN_DIR . '/leaflet-plugins/leaflet-elevation-' . LEAFEXT_ELEVATION_VERSION . '/' );
 function leafext_enqueue_elevation() {
@@ -362,29 +362,6 @@ function leafext_enqueue_extramarker() {
 		LEAFEXT_VERSION
 	);
 	leafext_enqueue_awesome();
-}
-
-// Choropleth
-function leafext_enqueue_choropleth() {
-	wp_enqueue_script(
-		'choropleth',
-		plugins_url(
-			'leaflet-plugins/leaflet-choropleth/choropleth.js',
-			LEAFEXT_PLUGIN_FILE
-		),
-		array( 'wp_leaflet_map' ),
-		LEAFEXT_VERSION,
-		true
-	);
-	wp_enqueue_style(
-		'leafext_css',
-		plugins_url(
-			'css/choropleth.min.css',
-			LEAFEXT_PLUGIN_FILE
-		),
-		array( 'leaflet_stylesheet' ),
-		LEAFEXT_VERSION
-	);
 }
 
 // leafletsearch

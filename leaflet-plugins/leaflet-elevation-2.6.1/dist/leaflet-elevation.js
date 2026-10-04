@@ -3,7 +3,6 @@
 	factory();
 })((function () { 'use strict';
 
-	var _documentCurrentScript = typeof document !== 'undefined' ? document.currentScript : null;
 	/**
 	 * TODO: exget computed styles of theese values from actual "CSS vars"
 	 **/
@@ -331,7 +330,7 @@
 		yAxisMin: undefined,
 
 		// Prevent CORS issues for relative locations (dynamic import)
-		srcFolder: ((document.currentScript && document.currentScript.src) || (({ url: (typeof document === 'undefined' && typeof location === 'undefined' ? require('u' + 'rl').pathToFileURL(__filename).href : typeof document === 'undefined' ? location.href : (_documentCurrentScript && _documentCurrentScript.tagName.toUpperCase() === 'SCRIPT' && _documentCurrentScript.src || new URL('leaflet-elevation.js', document.baseURI).href)) }) && (typeof document === 'undefined' && typeof location === 'undefined' ? require('u' + 'rl').pathToFileURL(__filename).href : typeof document === 'undefined' ? location.href : (_documentCurrentScript && _documentCurrentScript.tagName.toUpperCase() === 'SCRIPT' && _documentCurrentScript.src || new URL('leaflet-elevation.js', document.baseURI).href)))).split("/").slice(0,-1).join("/") + '/',
+		srcFolder: ((document.currentScript && document.currentScript.src) || (({ url: (typeof document === 'undefined' && typeof location === 'undefined' ? require('u' + 'rl').pathToFileURL(__filename).href : typeof document === 'undefined' ? location.href : (document.currentScript && document.currentScript.src || new URL('leaflet-elevation.js', document.baseURI).href)) }) && (typeof document === 'undefined' && typeof location === 'undefined' ? require('u' + 'rl').pathToFileURL(__filename).href : typeof document === 'undefined' ? location.href : (document.currentScript && document.currentScript.src || new URL('leaflet-elevation.js', document.baseURI).href)))).split("/").slice(0,-1).join("/") + '/',
 	};
 
 	// "leaflet-i18n" fallback
@@ -404,6 +403,8 @@
 
 			this._data      = [];
 			this.track_info = {};
+			this._yCoordMin = 0;
+			this._yCoordMax = -Infinity;
 
 			this._fireEvt("eledata_clear");
 
@@ -519,6 +520,7 @@
 			this._start          = L.circleMarker([0,0], (opts.trkStart || Options.trkStart));
 			this._end            = L.circleMarker([0,0], (opts.trkEnd || Options.trkEnd));
 			this._chartEnabled   = true;
+			this._yCoordMin      = 0;
 			this._yCoordMax      = -Infinity;
 			this.track_info      = {};
 			//  this.handlers        = [];
@@ -695,6 +697,7 @@
 
 				this.fire("elepoint_added", { point: point, index: this._data.length - 1 });
 
+				if (this._yCoordMin > this._data[this._data.length - 1][this.options.yAttr]) this._yCoordMin = this._data[this._data.length - 1][this.options.yAttr];
 				if (this._yCoordMax < this._data[this._data.length - 1][this.options.yAttr]) this._yCoordMax = this._data[this._data.length - 1][this.options.yAttr];
 			});
 
@@ -1594,6 +1597,7 @@
 				this._marker.update({
 					map         : this._map,
 					item        : item,
+					yCoordMin   : this._yCoordMin,
 					yCoordMax   : this._yCoordMax || 0,
 					options     : this.options
 				});
@@ -1701,7 +1705,6 @@
 	 *     NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
 	 *     CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 	 */
-
 
 	Elevation.Utils = _;
 

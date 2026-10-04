@@ -630,7 +630,7 @@
 			url:
 				'https://maps.hereapi.com/v3/base/mc/' + // new base url for HERE maptile v3 api
 				'{z}/{x}/{y}/{format}?style={variant}&size={size}' + // slightly modified parameters
-				'&apiKey={apiKey}&lg={language}', // replacing app-id with apikey
+				'&apiKey={apiKey}&lang={language}', // replacing app-id with apikey; HERE v3 expects `lang`, not `lg` (issue #685)
 			options: {
 				attribution:
 					'Map &copy; 1987-' + new Date().getFullYear() + ' <a href="http://platform.here.com">HERE</a>',
@@ -641,7 +641,7 @@
 				variant: 'explore.day',
 				maxZoom: 20,
 				type: 'maptile',
-				language: 'eng',
+				language: 'en',
 				format: 'png8',
 				size: '256'
 			},
@@ -740,12 +740,13 @@
 			}
 		},
 		CartoDB: {
-			url: 'https://{s}.basemaps.cartocdn.com/{variant}/{z}/{x}/{y}{r}.png',
+			url: 'https://{s}.basemaps.cartocdn.com/{variant}/{z}/{x}/{y}{r}.png?key={apikey}',
 			options: {
 				attribution: '{attribution.OpenStreetMap} &copy; <a href="https://carto.com/attributions">CARTO</a>',
 				subdomains: 'abcd',
 				maxZoom: 20,
-				variant: 'light_all'
+				variant: 'light_all',
+				apikey: '<insert your API key here>',
 			},
 			variants: {
 				Positron: 'light_all',
@@ -1000,7 +1001,7 @@
 		USGS: {
 			url: 'https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}',
 			options: {
-				maxZoom: 20,
+				maxZoom: 16,
 				attribution: 'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>'
 			},
 			variants: {
