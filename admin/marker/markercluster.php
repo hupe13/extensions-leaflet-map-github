@@ -49,7 +49,12 @@ function leafext_form_markercluster( $field ) {
 	// var_dump($options);
 	$option = leafext_array_find2( $field, $options );
 	// var_dump($option);echo '<br>';
-	$settings = leafext_cluster_settings();
+	$defaults = array();
+	$params   = leafext_cluster_params();
+	foreach ( $params as $param ) {
+		$defaults[ $param['param'] ] = $param['default'];
+	}
+	$settings = shortcode_atts( $defaults, get_option( 'leafext_cluster' ) );
 	$setting  = $settings[ $field ];
 
 	if ( ! current_user_can( 'manage_options' ) ) {
