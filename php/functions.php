@@ -42,27 +42,18 @@ function leafext_clear_params( $atts ) {
 					'shadowSize:',
 					'shadowAnchor:',
 				);
-				$valid_chars   = array( '(', ')', '|', '.', '*' );
-				$invalid_chars = array( '{', '}', ':', '<', '>', 'script', '(', ')' );
 				if ( $attr === 'marker' ) {
 					if ( strpos( str_replace( $validicon, '', $value ), ':' ) === false ) {
 						$atts[ $attr ] = leafext_esc_js( $value );
 					} else {
 						unset( $atts[ $attr ] );
 					}
-				} elseif ( $attr === 'geojsontooltip' ) {
-					// none
-					$atts[ $attr ] = $value;
-				} elseif ( $attr === 'width' && ctype_alnum( str_replace( $valid_chars, '', $value ) ) ) {
-					$atts[ $attr ] = leafext_esc_js( $value );
-				} elseif ( str_replace( $invalid_chars, '', $value ) !== $value ) {
-					$atts[ $attr ] = wp_json_encode( str_replace( $invalid_chars, '', $value ) );
 				} else {
-					$atts[ $attr ] = esc_js( $value );
+					$atts[ $attr ] = wp_kses_post( $value );
 				}
-				// echo '<pre>';
-				// var_dump($attr,$value,$atts[ $attr ]);
-				// echo '</pre>';
+				//echo '<pre>';
+				//var_dump( $attr, $value, $atts[ $attr ] );
+				//echo '</pre>';
 			}
 		}
 	}
