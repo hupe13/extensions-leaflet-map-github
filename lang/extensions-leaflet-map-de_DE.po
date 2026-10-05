@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-10-04 15:38+0000\n"
+"PO-Revision-Date: 2026-10-05 19:36+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-12 16:42+0000\n"
 "Last-Translator: hupe13\n"
-"X-Loco-Version: 2.8.5; wp-7.0; php-8.3.29-nmm1"
+"X-Loco-Version: 2.8.9; wp-7.1.2; php-8.4.24-nmm1"
 
 #: admin/marker/placementstrategies.php:61
 msgid ""
@@ -378,7 +378,7 @@ msgstr "und lade beliebige leaflet-Elemente"
 msgid "and markers with %1$s and %2$s option and / or %3$s"
 msgstr "und Marker mit %1$s und der Option %2$s und / oder %3$s"
 
-#: admin/marker/markercluster.php:132
+#: admin/marker/markercluster.php:137
 msgid "and markers with leaflet-marker"
 msgstr "und Marker mit leaflet-marker"
 
@@ -390,7 +390,7 @@ msgstr "und evtl. noch andere Dinge."
 msgid "and show at the same time"
 msgstr "und zeige gleichzeitig"
 
-#: admin/marker/markercluster.php:139
+#: admin/marker/markercluster.php:144
 msgid "and/or with leaflet-gpx and/or leaflet-kml and/or leaflet-geojson"
 msgstr "und/oder mit leaflet-gpx und/oder leaflet-kml und/oder leaflet-geojson"
 
@@ -455,7 +455,7 @@ msgstr "Achsenanzeige"
 msgid "background color for the list"
 msgstr "Hintergrundfarbe der Liste"
 
-#: admin/marker/markercluster.php:193
+#: admin/marker/markercluster.php:198
 msgid ""
 "Before you click the submit button, please compare your settings with the "
 "new ones and change them if they are different."
@@ -528,7 +528,7 @@ msgstr "Namen der Kinder"
 msgid "className for the tooltip"
 msgstr "className für den Tooltip"
 
-#: php/functions.php:226
+#: php/functions.php:217
 msgid "Click to interpret shortcodes."
 msgstr "Klicke, um die Shortcodes auszuführen."
 
@@ -682,7 +682,7 @@ msgstr "Konvertiere KML, GPX und TCX zu GeoJSON."
 msgid "Create a source page with a link to the target page."
 msgstr "Erstelle eine Quellseite mit einem Link zur Zielseite."
 
-#: admin/marker/markercluster.php:146
+#: admin/marker/markercluster.php:151
 msgid "Create cluster"
 msgstr "Erstelle das Cluster"
 
@@ -705,7 +705,7 @@ msgstr ""
 "benutzerdefinierten Felder."
 
 #: admin/grouping/featuregroup.php:51 admin/hover/hover.php:24
-#: admin/hover/hoverlap.php:22 admin/marker/markercluster.php:129
+#: admin/hover/hoverlap.php:22 admin/marker/markercluster.php:134
 #: admin/marker/listmarker.php:31
 msgid "Create Map"
 msgstr "Erstelle die Karte"
@@ -1219,7 +1219,7 @@ msgstr "Für %s kannst du jede Option des Leaflet Elements verwenden."
 msgid "For a list of providers see"
 msgstr "Für eine Liste der Anbieter siehe"
 
-#: admin/hover/hover.php:116 admin/marker/markercluster.php:170
+#: admin/hover/hover.php:116 admin/marker/markercluster.php:175
 #: admin/elevation/elevation.php:195 admin/elevation/multielevation.php:294
 msgid "For boolean values applies"
 msgstr "Für boolesche Werte gilt"
@@ -1516,7 +1516,7 @@ msgstr ""
 "der Dateiname (ohne Erweiterung) verwendet, unabhängig davon, wie %2$s ist."
 
 #. %s are options.
-#: admin/marker/markercluster.php:178 admin/marker/markercluster.php:202
+#: admin/marker/markercluster.php:183 admin/marker/markercluster.php:207
 #, php-format
 msgid "If %1$s and %2$s are %3$s, spiderfy each time the cluster is clicked."
 msgstr ""
@@ -2104,14 +2104,12 @@ msgctxt "In Frontend: Abbreviation for time in the chart"
 msgid "t"
 msgstr "t"
 
-#. %s is a link.
-#: admin/elevation/owntheme.php:162
-#, php-format
-#| msgid "In your elevation.css put the styles like the theme styles in"
-msgid "In your elevation.css put the styles like the theme styles in %s"
+#: admin/elevation/owntheme.php:159
+#| msgid "In your elevation.css put the styles like the theme styles in %s"
+msgid "In your elevation.css put the styles like the theme styles in"
 msgstr ""
 "Definiere die Styles in deinem elevation.css. Nimm als Vorlage das Original "
-"CSS von %s"
+"CSS von"
 
 #: admin/help.php:506
 msgid "Included and used Leaflet Plugins"
@@ -2358,7 +2356,7 @@ msgstr "Macht Kartenkacheln transparent."
 msgid "Manage Leaflet Map files"
 msgstr "Leaflet Map Dateien verwalten"
 
-#: admin/marker/markercluster.php:126
+#: admin/marker/markercluster.php:131
 msgid "Many markers on a map become confusing. That is why they are clustered"
 msgstr ""
 "Viele Marker auf einer Karte werden unübersichtlich. Deshalb werden sie "
@@ -2736,7 +2734,7 @@ msgstr ""
 #: admin.php:92 admin/zoomhome.php:122 admin/leaflet-search.php:45
 #: admin/grouping/parentgroup.php:34 admin/hover/hover.php:56
 #: admin/hover/hoverlap.php:43 admin/marker/extramarker.php:106
-#: admin/marker/markercluster.php:153 admin/marker/markercluster.php:199
+#: admin/marker/markercluster.php:158 admin/marker/markercluster.php:204
 #: admin/marker/extramarker-geojson.php:40
 #: admin/marker/extramarker-geojson.php:56 admin/marker/listmarker.php:61
 #: admin/marker/placementstrategies.php:146
@@ -2782,7 +2780,7 @@ msgid "or"
 msgstr "oder"
 
 #. %s is a href.
-#: admin/elevation/owntheme.php:168
+#: admin/elevation/owntheme.php:164
 #, php-format
 msgid "or check out Raruto's %1$sexamples%2$s"
 msgstr "oder sieh dir Rarutos %1$sBeispiele%2$s an"
@@ -2857,7 +2855,7 @@ msgstr "Standardmäßig werden alle definierten Kachelserver angezeigt."
 msgid "placeholder value"
 msgstr "Platzhalter"
 
-#: admin/elevation/owntheme.php:177
+#: admin/elevation/owntheme.php:173
 msgid "Please change this only, if you want to use your own theme."
 msgstr ""
 "Bitte ändere diese Einstellung nur, wenn du dein eigenes Theme verwendest."
@@ -2870,14 +2868,14 @@ msgstr ""
 "Bitte installiere und aktiviere %1$sLeaflet Map%2$s, bevor du %3$s "
 "verwendest."
 
-#: admin/elevation/owntheme.php:180
+#: admin/elevation/owntheme.php:176
 msgid "Please reset these settings, if you are not using an own theme!"
 msgstr ""
 "Bitte setze diese Einstellungen zurück, wenn du kein eigenes Theme "
 "verwendest!"
 
 #. %s is a link.
-#: admin/marker/markercluster.php:158
+#: admin/marker/markercluster.php:163
 #, php-format
 msgid ""
 "Please see the %s page for options. If you want to change other ones, please "
@@ -2896,14 +2894,14 @@ msgstr "Bitte auswählen"
 
 #: admin/gesture.php:51 admin/filemgr/filemgr-settings.php:106
 #: admin/grouping/settings.php:64 admin/hover/settings.php:59
-#: admin/marker/markercluster.php:65 admin/marker/placementstrategies.php:69
+#: admin/marker/markercluster.php:70 admin/marker/placementstrategies.php:69
 #: admin/overviewmap/overview-map.php:50 admin/elevation/sgpx.php:51
 #: admin/elevation/elevation.php:69 admin/elevation/multielevation.php:89
 #: admin/elevation/multielevation.php:103
 msgid "Plugins Default"
 msgstr "Plugins Standard"
 
-#: admin/gesture.php:66 admin/marker/markercluster.php:80
+#: admin/gesture.php:66 admin/marker/markercluster.php:85
 #: admin/marker/placementstrategies.php:85 admin/elevation/sgpx.php:68
 #: admin/elevation/elevation.php:60 admin/elevation/elevation.php:84
 #: admin/elevation/multielevation.php:61
@@ -3585,7 +3583,7 @@ msgid "The options are case sensitive."
 msgstr ""
 "Bei den Optionen wird zwischen Groß- und Kleinschreibung unterschieden."
 
-#: admin/marker/markercluster.php:190
+#: admin/marker/markercluster.php:195
 msgid ""
 "The options zoom, radius and spiderfy have been renamed to "
 "disableClusteringAtZoom, maxClusterRadius and spiderfyOnMaxZoom, but they "
@@ -3845,7 +3843,7 @@ msgstr ""
 "Um deine Tracks nun zu verwalten, kannst du %1$sDateien für Leaflet Map%2$s "
 "verwenden."
 
-#: admin/marker/markercluster.php:164
+#: admin/marker/markercluster.php:169
 msgid "To reset all values to their defaults, simply click the Reset button"
 msgstr ""
 "Um alle Werte auf ihre Standardwerte zurückzusetzen, drücke einfach "
@@ -4135,6 +4133,23 @@ msgstr ""
 "Wenn man mit der Maus über ein Cluster fährt, wird die Grenze seiner Marker "
 "angezeigt."
 
+#: admin/choropleth.php:14
+#| msgid ""
+#| "While fixing an XSS vulnerability in this shortcode, I discovered a bug "
+#| "that has been there for at least two years. For that reason, and since no "
+#| "one has complained, I decided to remove that part and I made an "
+#| "additional plugin."
+msgid ""
+"While fixing an XSS vulnerability in this shortcode, I discovered a bug that "
+"has been there for at least two years. For that reason, and since no one has "
+"complained, I decided to remove this shortcode and I made an additional "
+"plugin."
+msgstr ""
+"Bei der Behebung einer XSS-Sicherheitslücke in diesem Shortcode habe ich "
+"einen Fehler entdeckt, der dort seit mindestens zwei Jahren bestand. Aus "
+"diesem Grund und da sich niemand darüber beschwert hat, habe ich entschieden,"
+" den Shortcode zu entfernen und habe ein zusätzliches Plugin erstellt."
+
 #. %s is an option.
 #: admin/tiles/help.php:127
 #, php-format
@@ -4237,7 +4252,7 @@ msgstr ""
 "Du kannst die Diagramme jederzeit einzeln umschalten, indem du auf %s "
 "klickst."
 
-#: admin/hover/settings.php:57 admin/marker/markercluster.php:61
+#: admin/hover/settings.php:57 admin/marker/markercluster.php:66
 #: admin/marker/placementstrategies.php:64
 #: admin/overviewmap/featured-map.php:62 admin/elevation/elevation.php:48
 msgid "You can change it for each map with"
@@ -4263,6 +4278,12 @@ msgstr ""
 #: admin/gesture.php:106
 msgid "You can enable it for all maps or for individual maps."
 msgstr "Du kannst sie für alle Karten aktivieren oder für eine einzelne Karte."
+
+#. %s is a link
+#: admin/choropleth.php:19
+#, php-format
+msgid "You can get it %1$shere%2$s."
+msgstr "Du kannst es %1$shier%2$s bekommen."
 
 #: admin/filemgr/filemgr-settings.php:139
 msgid "You can manage these"
