@@ -55,6 +55,7 @@ function leafext_do_page() {
 	echo '</div>' . "\n";
 
 	if ( leafext_plugin_active( 'leaflet-map' ) ) {
+		echo '<div class="maxwidth1000">';
 		leafext_admin_tabs();
 		if ( strpos( $active_tab, 'elevation' ) !== false ) {
 			leafext_admin_elevation( $active_tab );
@@ -136,6 +137,7 @@ function leafext_do_page() {
 		} elseif ( $active_tab === 'featuredmap' ) {
 			leafext_featuredmap_admin();
 		}
+		echo '</div>';
 	}
 }
 

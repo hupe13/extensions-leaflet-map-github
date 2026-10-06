@@ -20,7 +20,7 @@ function leafext_clear_params( $atts ) {
 				}
 				unset( $atts[ $attr ] );
 			} else {
-				$validicon     = array(
+				$validicon = array(
 					// leaflet-search default icon
 					// https://github.com/stefanocudini/leaflet-search/blob/d29c5392b33cc31b338c3d17b5f8532fef5eae48/src/leaflet-search.js#L88-L97
 					'icon:',

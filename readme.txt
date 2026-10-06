@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 7.1
-Stable tag: 6.0-261005
+Stable tag: 6.0-261006
 Requires at least: 6.8
 Requires PHP: 8.2
 License: GPLv2 or later

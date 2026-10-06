@@ -111,7 +111,7 @@ function leafext_cluster_atts( $atts ) {
 	}
 	$settings = shortcode_atts( $defaults, get_option( 'leafext_cluster' ) );
 	// bereinige die nur Kleinbuchstaben vom Shortcode zu gross und klein wie der Java-Parameter ist
-	$atts1 = leafext_case( array_keys( $defaults ), $atts );
+	$atts1 = leafext_case( array_keys( $defaults ), leafext_clear_params( $atts ) );
 	// gleiche mit eigenen settings und Plugin defaults ab
 	$options = shortcode_atts( $settings, $atts1 );
 

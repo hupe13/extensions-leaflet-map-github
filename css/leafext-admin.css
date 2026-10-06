@@ -16,6 +16,10 @@ pre[class=leafext-prismatic]>code {
 	/* white-space: pre-wrap; */
 }
 
+.maxwidth1000 {
+	max-width: 1000px;
+}
+
 .leafext-prismatic {
 	background-color:#fdfdfd;
 	background-attachment:local;
