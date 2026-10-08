@@ -99,7 +99,7 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 #### Removed
 
-* [leaflet-choropleth](https://github.com/timwis/leaflet-choropleth): Choropleth plugin for Leaflet (color scale based on value) - see [Choropleth for Leaflet Map](https://github.com/hupe13/chloropleth-leaflet-map)
+* [leaflet-choropleth](https://github.com/timwis/leaflet-choropleth): Choropleth plugin for Leaflet (color scale based on value) - see [Choropleth for Leaflet Map](https://github.com/hupe13/choropleth-leaflet-map)
 
 #### Included Font
 
