@@ -1,4 +1,4 @@
-### 6.0 / 2610xx
+### 6.0 / 261017
 
 * fixed XSS ( leafext_clear_params )
 * leaflet-elevation-2.6.1 with changes in linear-gradient.js
