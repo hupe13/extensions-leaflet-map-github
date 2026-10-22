@@ -1,6 +1,8 @@
 # Differences to the Plugins WordPress version
 
-* none
+* fixed XSS collapsed
+* leaflet-elevation-2.7.1 - detached fix
+* black track elevation legend fixed
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

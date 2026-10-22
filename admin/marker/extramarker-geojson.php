@@ -20,7 +20,7 @@ function leafext_help_geojsonextramarker() {
 		$geojsonextramarker = $lang . '/doku/geojsonextramarker/';
 	} else {
 		leafext_enqueue_admin();
-		$codestyle    = ' class="language-coffeescript"';
+		$codestyle = ' class="language-coffeescript"';
 		// $codestyle          = '';
 		$geojsonextramarker = '?page=' . LEAFEXT_PLUGIN_SETTINGS . '&tab=geojsonextramarker';
 	}

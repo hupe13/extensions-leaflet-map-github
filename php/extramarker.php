@@ -121,7 +121,7 @@ function leafext_extramarker_params() {
 				'extensions-leaflet-map'
 			),
 			'default' => 'false',
-			'filter'  => 'FILTER_VALIDATE_BOOLEAN',
+			'filter'  => 'FILTER_VALIDATE_BOOL',
 		),
 		// tooltipAnchor
 		// array(
@@ -237,8 +237,8 @@ function leafext_extramarkers_params( $params ) {
 		}
 		$text .= "$k: ";
 		switch ( $filters[ $k ] ) {
-			case 'FILTER_VALIDATE_BOOLEAN':
-				$value = filter_var( $v, FILTER_VALIDATE_BOOLEAN ) ? 'true' : 'false';
+			case 'FILTER_VALIDATE_BOOL':
+				$value = filter_var( $v, FILTER_VALIDATE_BOOL ) ? 'true' : 'false';
 				break;
 			case 'FILTER_SANITIZE_NUMBER_INT':
 				$value = filter_var( $v, FILTER_SANITIZE_NUMBER_INT );

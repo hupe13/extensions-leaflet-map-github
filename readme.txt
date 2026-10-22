@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 7.1
-Stable tag: 6.0-261017
+Stable tag: 6.0-261022
 Requires at least: 6.8
 Requires PHP: 8.2
 License: GPLv2 or later
@@ -42,9 +42,8 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 
 == Changelog ==
 
-* fixed XSS ( leafext_clear_params )
-* leaflet-elevation-2.6.1 with changes in linear-gradient.js
-* latest leaflet-providers.js
-* removed shortcode choropleth because of XSS, it is an extra plugin now (XSS is fixed)
+* fixed XSS collapsed
+* leaflet-elevation-2.7.1 - detached fix
+* black track elevation legend fixed
 
 [more ...](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/CHANGELOG.md)

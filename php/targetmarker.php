@@ -197,7 +197,7 @@ function leafext_target_get_latlng_script( $options ) {
 		let target = <?php echo wp_json_encode( $options['popup'] ); ?>;
 		let mapid = <?php echo wp_json_encode( $options['mapid'] ); ?>;
 		let zoom = <?php echo esc_js( $options['zoom'] ); ?>;
-		let debug = <?php echo wp_json_encode( $options['debug'] ); ?>;
+		let debug = <?php echo wp_json_encode( filter_var( $options['debug'], FILTER_VALIDATE_BOOL ) ); ?>;
 		leafext_target_get_lanlng_js(lat,lng,target,mapid,zoom,debug);
 	});
 	<?php

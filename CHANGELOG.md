@@ -1,3 +1,9 @@
+### 6.1 / 2610xx
+
+* fixed XSS collapsed
+* leaflet-elevation-2.7.1 - detached fix
+* black track elevation legend fixed
+
 ### 6.0 / 261017
 
 * fixed XSS ( leafext_clear_params )

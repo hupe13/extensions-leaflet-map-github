@@ -47,7 +47,7 @@ function leafext_geojsonmarker_script( $propertyoptions, $extramarkericon, $clus
 		let extramarkericon = <?php echo wp_json_encode( $extramarkericon ); ?>;
 		//
 		let position = <?php echo wp_json_encode( $options['position'] ); ?>;
-		let collapsed = <?php echo wp_json_encode( $options['collapsed'] ); ?>;
+		let collapsed = <?php echo wp_json_encode( filter_var( $options['collapsed'], FILTER_VALIDATE_BOOL ) ); ?>;
 		leafext_geojsonmarker_js(property,iconprops,icondefault,auto,groups,visible,clmarkers,extramarkericon,position,collapsed);
 	});
 	<?php

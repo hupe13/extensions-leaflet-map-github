@@ -931,8 +931,7 @@ function leafext_elevation_script( $gpx, $settings ) {
 		if ( $settings['track'] ) {
 			echo 'var switchtrack = L.control.layers(null, null, {';
 			if ( $settings['trackcollapsed'] ) {
-				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
-				echo 'collapsed:' . $settings['trackcollapsed'] . ',';
+				echo 'collapsed:' . wp_json_encode( filter_var( $settings['trackcollapsed'], FILTER_VALIDATE_BOOL ) ) . ',';
 			}
 			if ( $settings['trackposition'] ) {
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
@@ -952,6 +951,16 @@ function leafext_elevation_script( $gpx, $settings ) {
 			echo 'switchtrack.addTo(map);';
 		}
 		?>
+
+		// https://github.com/Raruto/leaflet-elevation/issues/272#issuecomment-6335701997
+		controlElevation.on('elechart_init', function() {  // ← this listener might be superfluous (it depends on how/when you initialize your code)
+			controlElevation._chart.on('elepath_toggle', function() {
+				controlElevation._layers.eachLayer(layer => {
+					layer?.getElement?.().classList.toggle('elevation-polyline', true);
+					layer?.getElement?.().classList.toggle(controlElevation.options.theme, true);
+				});
+			});
+		});
 
 		// https://github.com/Raruto/leaflet-elevation/issues/232#issuecomment-1443554554
 		var is_chrome = navigator.userAgent.indexOf("Chrome") > -1;

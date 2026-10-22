@@ -38,7 +38,7 @@ function leafext_featuregroup_script( $options, $params ) {
 			<?php echo leafext_java_params( $params ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 		});
 		let position = <?php echo wp_json_encode( $options['position'] ); ?>;
-		let collapsed = <?php echo $options['collapsed']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>;
+		let collapsed = <?php echo wp_json_encode( filter_var( $options['collapsed'], FILTER_VALIDATE_BOOL ) ); ?>;
 		leafext_featuregroup_js(att_property,att_option,groups,grouptext,visible,substr,alle,position,collapsed);
 	});
 	<?php
