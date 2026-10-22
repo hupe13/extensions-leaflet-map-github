@@ -265,12 +265,12 @@ function leafext_layerswitch_end_script( $settings ) {
 	//console.log(overlays);
 
 	L.control.layers(baselayers,overlays,{
-		collapsed:<?php echo esc_attr( leafext_js_truefalse( $settings['collapsed'] ) ); ?>,
+		collapsed:<?php echo wp_json_encode( filter_var( $settings['collapsed'], FILTER_VALIDATE_BOOL ) ); ?>,
 		position:"<?php echo esc_js( $settings['position'] ); ?>",
 	}).addTo(map);
 	if ( Object.entries(opacity).length !==  0) {
 		L.control.opacity(opacity,{
-			collapsed:<?php echo esc_attr( leafext_js_truefalse( $settings['collapsed'] ) ); ?>,
+			collapsed:<?php echo wp_json_encode( filter_var( $settings['collapsed'], FILTER_VALIDATE_BOOL ) ); ?>,
 			position:"<?php echo esc_js( $settings['position'] ); ?>",
 		}).addTo(map);
 	}

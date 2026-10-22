@@ -18,7 +18,7 @@ function leafext_parentgroup_script( $parentgroup, $childs, $grouptext, $expanda
 		let childs = <?php echo wp_json_encode( $childs ); ?>;
 		let grouptext = <?php echo wp_json_encode( $grouptext ); ?>;
 		let expandall = <?php echo wp_json_encode( $expandall ); ?>;
-		let collapseall = <?php echo wp_json_encode( $collapseall ); ?>; 
+		let collapseall = <?php echo wp_json_encode( $collapseall ); ?>;
 		let closedSymbol = <?php echo wp_json_encode( $closedsymbol ); ?>;
 		let openedSymbol = <?php echo wp_json_encode( $openedsymbol ); ?>;
 
