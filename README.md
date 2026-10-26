@@ -119,7 +119,7 @@ Many thanks to everyone who found errors and provided ideas for new functions.
 <b>Is there a widget or other support for the editor?</b>
 </summary>
 
-* Unfortunately both plugins - Leaflet Map and Extensions for Leaflet Map - only work with shortcodes.
+* Yes there is! Take a look to [CartoBlocks for Leaflet](https://wordpress.org/plugins/cartoblocks-for-leaflet/)! This handles shortcodes for Leaflet Map, but then you can use the shortcodes from Extensions!
 * If you have any questions please ask in the [forum](https://wordpress.org/support/plugin/extensions-leaflet-map/).
 </details>
 
