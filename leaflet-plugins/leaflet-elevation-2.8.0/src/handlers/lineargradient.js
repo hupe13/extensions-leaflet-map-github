@@ -1,3 +1,5 @@
+import { create } from '../utils.js';
+
 /**
  * @see https://github.com/Raruto/leaflet-elevation/issues/251
  * 
@@ -16,6 +18,7 @@
  *   },
  * })
  * ```
+ * `min` and `max` can also be numeric bounds.
  */
 export function LinearGradient() {
 
@@ -80,8 +83,6 @@ export function LinearGradient() {
     const { defs } = chart._chart.utils;
 
     const palette = get_palette({
-      // min: isFinite(this.track_info[min]) ? this.track_info[min] : 0,
-      // max: isFinite(this.track_info[max]) ? this.track_info[max] : 1,
       min: isFinite(min) ? Number(min) : (isFinite(this.track_info[min]) ? this.track_info[min] : 0),
       max: isFinite(max) ? Number(max) : (isFinite(this.track_info[max]) ? this.track_info[max] : 1),
       range,
@@ -93,22 +94,21 @@ export function LinearGradient() {
       /** ref: `path.__fillStyle` within L.Control.Elevation.Utils::drawCanvas(ctx, path) */
       path.__fillStyle = gradient = chart._context.createLinearGradient(0, 0, chart._width(), 0);
     } else {
-      defs.select('#' + gradient_id).remove();
-      gradient = defs.append('svg:linearGradient').attr('id', gradient_id);
-      gradient.addColorStop = function(offset, color) { gradient.append('svg:stop').attr('offset', offset).attr('stop-color', color) };
-      path.attr('fill', 'url(#' + gradient_id + ')').classed('area', false);
+      defs.querySelector('#' + gradient_id)?.remove();
+      gradient = create('svg:linearGradient', '', { id: gradient_id }, defs);
+      gradient.addColorStop = (offset, color) => create('svg:stop', '', { offset, 'stop-color': color }, gradient);
+      path.setAttribute('fill', 'url(#' + gradient_id + ')');
+      path.classList.remove('area');
     }
 
     // Generate gradient for each segment picking colors from palette
-    // for (let i = 0, data = this._data; i < data.length; i++) {
-      // gradient.addColorStop((i) / data.length, palette.getRGBColor(data[i][attr]));
-    // }
     const data = this._data;
-    const minDist = data[0].dist;
-    const maxDist = data[data.length - 1].dist;
+    const xAttr = chart._props.areas[path_name].xAttr;
+    const minX = data[0][xAttr];
+    const xRange = data[data.length - 1][xAttr] - minX;
 
     for (let i = 0; i < data.length; i++) {
-      const offset = (data[i].dist - minDist) / (maxDist - minDist);
+      const offset = xRange ? (data[i][xAttr] - minX) / xRange : 0;
       gradient.addColorStop(offset, palette.getRGBColor(data[i][attr]));
     }
 
@@ -118,14 +118,15 @@ export function LinearGradient() {
   this.on('elechart_updated', () => {
     const chart = this._chart;
     const { defs } = chart._chart.utils;
-    defs.select('#' + legend_id).remove();
-    const legendGradient = defs.append('svg:linearGradient').attr('id', legend_id);
-    Object.keys(range).sort().forEach(i => legendGradient.append('svg:stop').attr('offset', i).attr('stop-color', range[i]));
+    defs.querySelector('#' + legend_id)?.remove();
+    const legendGradient = create('svg:linearGradient', '', { id: legend_id }, defs);
+    Object.keys(range).sort().forEach(i => create('svg:stop', '', { offset: i, 'stop-color': range[i] }, legendGradient));
 
-    chart._container
-      .select('.legend-' + path_name + ' > rect')
-      .attr('fill', 'url(#' + legend_id + ')')
-      .classed('area', false);
+    const rect = chart._container.querySelector('.legend-' + path_name + ' > rect');
+    if (rect) {
+      rect.setAttribute('fill', 'url(#' + legend_id + ')');
+      rect.classList.remove('area');
+    }
   });
 
   return { };

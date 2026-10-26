@@ -8,7 +8,7 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
-// Interpretiere !parameter und parameter als false und true
+// Interpretiere !parameter und parameter als false und true and validate
 function leafext_clear_params( $atts ) {
 	if ( is_array( $atts ) ) {
 		foreach ( $atts as $attr => $value ) {

@@ -40,7 +40,7 @@ export function Time() {
 			if (!point.meta || !point.meta.time) {
 				point.meta = point.meta || {};
 				if (i > 0) {
-					let dx = (this._data[i].dist - this._data[i - 1].dist);
+					let dx = this._data[i].latlng.distanceTo(this._data[i - 1].latlng) / 1000;
 					let t0 = this._data[i - 1].time.getTime();
 					point.meta.time = new Date(t0 + ( dx / this._timeAVGSpeed) * this.options.timeFactor * 1000);
 				} else {
@@ -57,27 +57,34 @@ export function Time() {
 		scale: (opts.time && opts.time != "summary" && !L.Browser.mobile) && {
 			axis       : "x",
 			position   : "top",
-			scale      : {
-				attr       : "duration",
-				min        : 0,
-			},
+			scale      : "x",
 			label      : time.label,
 			labelY     : -10,
 			labelX     : () => this._width(),
 			name       : "time",
 			ticks      : () => _.clamp(this._chart._xTicks() / 2, [4, +Infinity]),
-			tickFormat : (d)  => (d == 0 ? '' : opts.xTimeFormat(d)),
+			tickFormat : (distance) => {
+				const data = this._data;
+				if (!data.length) return '';
+				const i = _.bisect(data, distance, opts.xAttr, true);
+				const start = data[Math.max(0, i - 1)];
+				const end = data[Math.min(i, data.length - 1)];
+				const span = end[opts.xAttr] - start[opts.xAttr];
+				// Time is only linear between consecutive recorded points, not across the whole track.
+				const fraction = span ? _.clamp((distance - start[opts.xAttr]) / span, [0, 1]) : 0;
+				const duration = start.duration + fraction * (end.duration - start.duration);
+				return duration == 0 ? '' : opts.xTimeFormat(duration);
+			},
 			onAxisMount: axis => {
-				axis.select(".domain")
-					.remove();
-				axis.selectAll("text")
-					.attr('opacity', 0.65)
-					.style('font-family', 'Monospace')
-					.style('font-size', '110%');
-				axis.selectAll(".tick line")
-					.attr('y2', this._height())
-					.attr('stroke-dasharray', 2)
-					.attr('opacity', 0.75);
+				axis.querySelector(".domain").remove();
+				axis.querySelectorAll("text").forEach(text => {
+					text.setAttribute('opacity', 0.65);
+					text.style.fontFamily = 'Monospace';
+					text.style.fontSize = '110%';
+				});
+				axis.querySelectorAll(".tick line").forEach(line => _.setAttributes(line, {
+					y2: this._height(), 'stroke-dasharray': 2, opacity: 0.75,
+				}));
 				}
 		},
 		tooltips: [

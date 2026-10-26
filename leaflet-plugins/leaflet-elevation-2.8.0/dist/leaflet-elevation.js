@@ -11,6 +11,7 @@
     Colors: () => Colors,
     addClass: () => addClass,
     append: () => append,
+    bisect: () => bisect,
     clamp: () => clamp,
     cloneDeep: () => cloneDeep,
     coordPropsToMeta: () => coordPropsToMeta,
@@ -29,6 +30,7 @@
     on: () => on,
     parseDate: () => parseDate,
     parseNumeric: () => parseNumeric,
+    pointer: () => pointer,
     randomId: () => randomId,
     removeClass: () => removeClass,
     replaceClass: () => replaceClass,
@@ -98,17 +100,17 @@
     b.removeChild(a);
   }
   function drawCanvas(ctx, path) {
-    path.classed("canvas-path", true);
+    path.classList.add("canvas-path");
     ctx.beginPath();
     ctx.moveTo(0, 0);
-    let p = new Path2D(path.attr("d"));
-    ctx.strokeStyle = path.__strokeStyle || path.attr("stroke");
-    ctx.fillStyle = path.__fillStyle || path.attr("fill");
+    let p = new Path2D(path.getAttribute("d"));
+    ctx.strokeStyle = path.__strokeStyle || path.getAttribute("stroke");
+    ctx.fillStyle = path.__fillStyle || path.getAttribute("fill");
     ctx.lineWidth = 1.25;
     ctx.globalCompositeOperation = "source-over";
-    ctx.globalAlpha = path.attr("stroke-opacity") || 0.3;
+    ctx.globalAlpha = path.getAttribute("stroke-opacity") || 0.3;
     ctx.stroke(p);
-    ctx.globalAlpha = path.attr("fill-opacity") || 0.45;
+    ctx.globalAlpha = path.getAttribute("fill-opacity") || 0.45;
     ctx.fill(p);
     ctx.globalAlpha = 1;
     ctx.closePath();
@@ -135,16 +137,19 @@
   var toggleStyle = (n, k, v, cond) => style(n, k, cond ? v : "");
   var setAttributes = (n, attrs) => {
     for (let k in attrs) {
-      n.setAttribute(k, attrs[k]);
+      if (attrs[k] != null) n.setAttribute(k, attrs[k]);
+      else n.removeAttribute(k);
     }
   };
   var toggleEvent = (el, e, fn, cond) => el[cond ? "on" : "off"](e, fn);
-  var create = (tag, str, attrs, n) => {
-    let elem = L.DomUtil.create(tag, str || "");
+  function create(tag, str, attrs, n) {
+    const svg = tag.startsWith("svg:");
+    const elem = svg ? document.createElementNS("http://www.w3.org/2000/svg", tag.slice(4)) : L.DomUtil.create(tag, str || "");
+    if (svg && str) elem.setAttribute("class", str);
     if (attrs) setAttributes(elem, attrs);
     if (n) append(n, elem);
     return elem;
-  };
+  }
   var append = (n, c) => n.appendChild(c);
   var insert = (n, c, pos) => n.insertAdjacentElement(pos, c);
   var select = (str, n) => (n || document).querySelector(str);
@@ -152,6 +157,14 @@
     for (let i in obj) fn(obj[i], i);
   };
   var randomId = () => Math.random().toString(36).substr(2, 9);
+  function pointer(event, element) {
+    const svg = element.ownerSVGElement || element;
+    const point = svg.createSVGPoint();
+    point.x = event.clientX;
+    point.y = event.clientY;
+    const local = point.matrixTransform(element.getScreenCTM().inverse());
+    return [local.x, local.y];
+  }
   var iMax = (iVal, max = -Infinity) => iVal > max ? iVal : max;
   var iMin = (iVal, min = Infinity) => iVal < min ? iVal : min;
   var iAvg = (iVal, avg = 0, idx = 1) => (iVal + avg * (idx - 1)) / idx;
@@ -161,6 +174,15 @@
   var { hasClass } = L.DomUtil;
   var round = L.Util.formatNum;
   var clamp = (val, range) => range ? val < range[0] ? range[0] : val > range[1] ? range[1] : val : val;
+  function bisect(data, value, attr, right = false) {
+    let low = 0, high = data.length;
+    while (low < high) {
+      const middle = Math.floor((low + high) / 2);
+      if (data[middle][attr] < value || right && data[middle][attr] === value) low = middle + 1;
+      else high = middle;
+    }
+    return low;
+  }
   var wrapDelta = (curr, prev, deltaMax) => Math.abs(curr - prev) > deltaMax ? prev + deltaMax * Math.sign(curr - prev) : curr;
   function cloneDeep(o, skipProps = [], cache = []) {
     switch (!o || typeof o) {
@@ -290,7 +312,6 @@
     // 1 km = (0.621371 mi)
     __footFactor: 3.28084,
     // 1 m  = (3.28084 ft)
-    __D3: "https://unpkg.com/d3@7.8.4/dist/d3.min.js",
     __TOGEOJSON: "https://unpkg.com/@tmcw/togeojson@5.6.2/dist/togeojson.umd.js",
     __LGEOMUTIL: "https://unpkg.com/leaflet-geometryutil@0.10.1/src/leaflet.geometryutil.js",
     __LALMOSTOVER: "https://unpkg.com/leaflet-almostover@1.0.1/src/leaflet.almostover.js",
@@ -306,15 +327,14 @@
      * Add data to the diagram either from GPX or GeoJSON and update the axis domain and data
      */
     addData(d, layer) {
-      this.import(this.__D3).then(() => {
-        if (this._modulesLoaded) {
-          layer = layer ?? (d.on && d);
-          this._addData(d);
-          this._addLayer(layer);
-          this._fireEvt("eledata_added", { data: d, layer, track_info: this.track_info });
-        } else {
-          this.once("modules_loaded", () => this.addData(d, layer));
+      return Promise.resolve().then(() => {
+        if (!this._modulesLoaded) {
+          return new Promise((resolve) => this.once("modules_loaded", () => resolve(this.addData(d, layer))));
         }
+        layer = layer ?? (d.on && d);
+        this._addData(d);
+        this._addLayer(layer);
+        this._fireEvt("eledata_added", { data: d, layer, track_info: this.track_info });
       });
     },
     /**
@@ -353,7 +373,7 @@
         this._events.elechart_updated.forEach(({ fn, ctx }) => this.off("elechart_updated", fn, ctx));
       }
       if (this._chart && this._chart._container) {
-        this._chart._container.selectAll("g.point .point").remove();
+        this._chart._container.querySelectorAll("g.point .point").forEach((node) => node.remove());
         this._chart.clear();
       }
     },
@@ -464,9 +484,6 @@
         return Promise.all(src.map((m) => this.import(m)));
       }
       switch (src) {
-        case this.__D3:
-          condition = typeof d3 !== "object";
-          break;
         case this.__TOGEOJSON:
           condition = typeof toGeoJSON !== "object";
           break;
@@ -501,7 +518,7 @@
     onAdd(map) {
       this._map = map;
       let container = this._container = create("div", "elevation-control " + this.options.theme + " " + (this.options.detached ? "elevation-detached" : "leaflet-control"), this.options.detached ? { id: "elevation-" + randomId() } : {});
-      if (!this.eleDiv) this.eleDiv = container;
+      this.eleDiv = container;
       this._loadModules(this.options.handlers).then(() => {
         this._initChart(container);
         this._initButton(container);
@@ -732,7 +749,7 @@
         _fillStroke(ctx, layer) {
           if (control._layers.hasLayer(layer)) {
             let options = layer.options;
-            options.color = color.line || color.area || theme;
+            options.color = control._chartEnabled ? color.line || color.area || theme : "#000";
             options.stroke = !!options.color;
             oldProto.call(this, ctx, layer);
             if (options.stroke && options.weight !== 0) {
@@ -789,7 +806,7 @@
      * Hides the position/height indicator marker drawn onto the map
      */
     _hideMarker() {
-      if (this.options.autohideMarker) {
+      if (this.options.autohideMarker && this._marker) {
         this._marker.remove();
       }
     },
@@ -809,11 +826,11 @@
         this._container.style.maxWidth = opts._maxWidth + "px";
         if (opts._maxWidth > clientWidth) opts.width = clientWidth - 30;
       }
-      this.import([this.__D3, this.__LCHART]).then((m) => {
-        let chart = this._chart = new (m[1] || Elevation).Chart(opts, this);
+      this.import(this.__LCHART).then((m) => {
+        let chart = this._chart = new (m || Elevation).Chart(opts, this);
         this._x = this._chart._x;
         this._y = this._chart._y;
-        d3.select(container).call(chart.render());
+        chart.render()(container);
         chart.on("reset_drag", this._hideMarker, this).on("mouse_enter", this._onMouseEnter, this).on("dragged", this._onDragEnd, this).on("mouse_move", this._onMouseMove, this).on("mouse_out", this._onMouseOut, this).on("ruler_filter", this._onRulerFilter, this).on("zoom", this._updateChart, this).on("elepath_toggle", this._onToggleChart, this).on("margins_updated", this._resizeChart, this);
         this.fire("elechart_init");
         map.on("zoom viewreset zoomanim", this._hideMarker, this).on("resize", this._resetView, this).on("resize", this._resizeChart, this).on("rotate", this._rotateMarker, this).on("mousedown", this._resetDrag, this);
@@ -823,6 +840,7 @@
         this.on("eledata_added eledata_loaded", this._updateChart, this).on("eledata_added eledata_loaded", this._updateSummary, this);
         this._updateChart();
         this._updateSummary();
+        map.invalidateSize();
       });
     },
     _initLayer() {
@@ -842,8 +860,8 @@
       }
       if (this._renderer) this._renderer.remove();
       this._renderer = L.svg({ pane: "elevationPane" }).addTo(this._map);
-      this.import([this.__D3, this.__LMARKER]).then((m) => {
-        this._marker = new (m[1] || Elevation).Marker(this.options, this);
+      this.import(this.__LMARKER).then((m) => {
+        this._marker = new (m || Elevation).Marker(this.options, this);
         this.fire("elechart_marker");
       });
     },
@@ -869,9 +887,12 @@
     _initSummary(container) {
       this.import(this.__LSUMMARY).then((m) => {
         this._summary = new (m || Elevation).Summary({ summary: this.options.summary }, this);
-        this.on("elechart_init", () => {
-          d3.select(container).call(this._summary.render());
-        });
+        const render = () => {
+          this._summary.render()(container);
+          this._updateSummary();
+        };
+        if (this._chart && container.contains(this._chart._container)) render();
+        else this.once("elechart_init", render);
       });
     },
     /**
@@ -905,6 +926,7 @@
     _loadLayer(geojson) {
       let { polyline, theme, waypoints, wptIcons, wptLabels, distanceMarkers } = this.options;
       let style2 = L.extend({}, polyline);
+      let dataAdded = [];
       if (theme) {
         style2.className += " " + theme;
       }
@@ -934,9 +956,9 @@
             }
           }
         },
-        onEachFeature: (feature, layer2) => feature.geometry && feature.geometry.type != "Point" && this.addData(feature, layer2)
+        onEachFeature: (feature, layer2) => feature.geometry && feature.geometry.type != "Point" && dataAdded.push(this.addData(feature, layer2))
       });
-      this.import(this.__D3).then(() => {
+      Promise.all(dataAdded).then(() => {
         this._initMapIntegrations(layer);
         const event_data = { data: geojson, layer, name: this.track_info.name, track_info: this.track_info };
         if (this._modulesLoaded) {
@@ -1020,7 +1042,10 @@
      */
     _onToggleChart({ name, enabled }) {
       this._chartEnabled = this._chart._hasActiveLayers();
-      this._layers.eachLayer((layer) => toggleClass(layer.getElement && layer.getElement(), this.options.polyline.className + " " + this.options.theme, this._chartEnabled));
+      this._layers.eachLayer((layer) => {
+        toggleClass(layer.getElement && layer.getElement(), this.options.polyline.className + " " + this.options.theme, this._chartEnabled);
+        if (layer._renderer instanceof L.Canvas) layer.redraw();
+      });
       this.options[name] = !enabled && this.options[name] == "disabled" ? "enabled" : "disabled";
       if (!this._chartEnabled) {
         this._chart._hideDiagramIndicator();

@@ -3,7 +3,7 @@
 [![NPM version](https://img.shields.io/npm/v/@raruto/leaflet-elevation.svg?color=red)](https://www.npmjs.com/package/@raruto/leaflet-elevation)
 [![License](https://img.shields.io/badge/license-GPL%203-blue.svg?style=flat)](LICENSE)
 
-A Leaflet plugin that allows to add elevation profiles using d3js
+A Leaflet plugin that allows to add elevation profiles using native SVG and Canvas elements.
 
 <p align="center">
     <a href="https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_hoverable-tracks.html"><img src="https://raruto.github.io/img/leaflet-elevation.png" alt="Leaflet elevation viewer" /></a>
@@ -27,6 +27,7 @@ _For a working example see one of the following demos:_
 - [stacking multiple charts (elevation, slope, speed)](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_multiple-charts.html)
 - [translating plugin labels](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_i18n-strings.html)
 - [rotating chart labels](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_chart_labels.html)
+- [updating a track continuously (live tracking)](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_live-tracking.html)
 - [using custom colors](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_custom-theme.html)
 - [using .gpx extensions (cadence, heart, pace)](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_extended-ui.html)
 - [using .gpx waypoint icons](https://raruto.github.io/leaflet-elevation/examples/leaflet-elevation_gpx-waypoints.html)
@@ -214,7 +215,7 @@ cd ./leaflet-elevation
 npm i         # install dependencies
 npm run dev   # start dev server at: http://localhost:8080
 npm run build # generate "dist" files (once)
-npm run test  # test all "*.spec.js" files (once)
+npm test      # run all cucumber tests 
 ```
 
 After that you can start developing inside the `src` and `test` folders (eg. open "http://localhost:8080/test" in your browser to preview changes). Check also [CONTRIBUTING.md](.github/CONTRIBUTING.md) file for some information about it.
@@ -289,6 +290,9 @@ const controlElevation = L.control.elevation({
 controlElevation.load("https://raruto.github.io/leaflet-elevation/examples/via-emilia.gpx");
 ```
 
+For more info about disabling the built-in lazy see also [#280](https://github.com/Raruto/leaflet-elevation/issues/280) and [track-loading.steps.js](.\test\steps\track-loading.steps.js)
+
+
 </details>
 
 <details>
@@ -315,7 +319,6 @@ All notable changes to this project are documented in the [releases](https://git
 
 **Compatibile with:**
 [![Leaflet 1.x compatible!](https://img.shields.io/badge/Leaflet-1.7.0-1EB300.svg?style=flat)](http://leafletjs.com/reference.html)
-[![d3.js v7 compatibile!](https://img.shields.io/badge/d3.js-7.8-1EB300.svg?style=flat)](https://www.npmjs.com/package/d3)
 [![@tmcw/togeojson v5 compatibile!](https://img.shields.io/badge/@tmcw/togeojson-5.6-1EB300.svg?style=flat)](https://www.npmjs.com/package/@tmcw/togeojson)
 
 

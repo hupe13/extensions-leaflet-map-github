@@ -560,7 +560,7 @@ function leafext_elevation_params( $typ = array() ) {
 		array(
 			'param'     => 'preferCanvas',
 			'shortdesc' => __( 'Render chart profiles as Canvas or SVG Paths.', 'extensions-leaflet-map' ),
-			'desc'      => __( 'Due to a problem in MacOS and iOS, it is automatically set to false in Safari.', 'extensions-leaflet-map' ),
+			'desc'      => '',
 			'default'   => true,
 			'values'    => 1,
 			'typ'       => array( 'changeable', 'other' ), // 'multielevation'
@@ -930,12 +930,9 @@ function leafext_elevation_script( $gpx, $settings ) {
 		<?php
 		if ( $settings['track'] ) {
 			echo 'var switchtrack = L.control.layers(null, null, {';
-			if ( $settings['trackcollapsed'] ) {
-				echo 'collapsed:' . wp_json_encode( filter_var( $settings['trackcollapsed'], FILTER_VALIDATE_BOOL ) ) . ',';
-			}
+			echo 'collapsed:' . wp_json_encode( filter_var( $settings['trackcollapsed'], FILTER_VALIDATE_BOOL ) ) . ',';
 			if ( $settings['trackposition'] ) {
-				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
-				echo 'position:"' . $settings['trackposition'] . '"';
+				echo 'position:' . wp_json_encode( $settings['trackposition'] );
 			}
 			echo '});';
 		}
@@ -961,14 +958,6 @@ function leafext_elevation_script( $gpx, $settings ) {
 				});
 			});
 		});
-
-		// https://github.com/Raruto/leaflet-elevation/issues/232#issuecomment-1443554554
-		var is_chrome = navigator.userAgent.indexOf("Chrome") > -1;
-		var is_safari = navigator.userAgent.indexOf("Safari") > -1;
-		if ( !is_chrome && is_safari && controlElevation.options.preferCanvas != false ) {
-			console.log("is_safari - setting preferCanvas to false");
-			controlElevation.options.preferCanvas = false;
-		}
 
 		// Load track from url (allowed data types: "*.geojson", "*.gpx")
 		controlElevation.load(track_options.url);
@@ -1216,6 +1205,7 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 					interactive: false,
 				}';
 			}
+			// does not work with true!
 			$options['preferCanvas'] = 'false';
 		}
 

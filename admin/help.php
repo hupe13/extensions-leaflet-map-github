@@ -302,7 +302,7 @@ function leafext_plugins() {
 	$plugins   = array();
 	$plugins[] = array(
 		'name'      => 'leaflet-elevation',
-		'desc'      => __( 'A Leaflet plugin that allows to add elevation profiles using d3js.', 'extensions-leaflet-map' ),
+		'desc'      => __( 'A Leaflet plugin that allows to add elevation profiles using native SVG and Canvas elements.', 'extensions-leaflet-map' ),
 		'link'      => 'https://github.com/Raruto/leaflet-elevation',
 		'shortcode' => 'elevation, multielevation, elevation-track, elevation-tracks',
 	);
@@ -334,12 +334,6 @@ function leafext_plugins() {
 		'name'      => '@tmcw/togeojson',
 		'desc'      => __( 'Convert KML, GPX, and TCX to GeoJSON.', 'extensions-leaflet-map' ),
 		'link'      => 'https://www.npmjs.com/package/@tmcw/togeojson',
-		'shortcode' => '',
-	);
-	$plugins[] = array(
-		'name'      => 'd3js',
-		'desc'      => 'Data-Driven Documents',
-		'link'      => 'https://github.com/d3/d3',
 		'shortcode' => '',
 	);
 	$plugins[] = array(

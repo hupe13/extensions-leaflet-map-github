@@ -141,7 +141,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 				. filter_var( $options['lng'], FILTER_VALIDATE_FLOAT ) . ','
 				. '\'' . $options['popup'] . '\','
 				. '\'' . $options['mapid'] . '\','
-				. $options['zoom'] . ','
+				. filter_var( $options['zoom'], FILTER_VALIDATE_INT ) . ','
 				. wp_json_encode( $options['debug'] )
 				. ')">' . $options['linktext'] . '</a>';
 				return $text;
@@ -153,7 +153,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 				. '\'' . $options['value'] . '\','
 				. '\'' . $options['popup'] . '\','
 				. '\'' . $options['mapid'] . '\','
-				. $options['zoom'] . ','
+				. filter_var( $options['zoom'], FILTER_VALIDATE_INT ) . ','
 				. wp_json_encode( $options['debug'] )
 				. ')">' . $options['linktext'] . '</a>';
 				return $text;
@@ -164,7 +164,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 				. '\'' . $options['title'] . '\','
 				. '\'' . $options['popup'] . '\','
 				. '\'' . $options['mapid'] . '\','
-				. $options['zoom'] . ','
+				. filter_var( $options['zoom'], FILTER_VALIDATE_INT ) . ','
 				. wp_json_encode( $options['debug'] )
 				. ')">' . $options['linktext'] . '</a>';
 				return $text;
@@ -196,7 +196,7 @@ function leafext_target_get_latlng_script( $options ) {
 		let lng = <?php echo wp_json_encode( $options['lng'] ); ?>;
 		let target = <?php echo wp_json_encode( $options['popup'] ); ?>;
 		let mapid = <?php echo wp_json_encode( $options['mapid'] ); ?>;
-		let zoom = <?php echo esc_js( $options['zoom'] ); ?>;
+		let zoom = <?php echo wp_json_encode( filter_var( $options['zoom'], FILTER_VALIDATE_INT ) ); ?>;
 		let debug = <?php echo wp_json_encode( filter_var( $options['debug'], FILTER_VALIDATE_BOOL ) ); ?>;
 		leafext_target_get_lanlng_js(lat,lng,target,mapid,zoom,debug);
 	});
@@ -217,8 +217,8 @@ function leafext_target_post_title_script( $options ) {
 		let title = <?php echo wp_json_encode( $options['title'] ); ?>;
 		let popup = <?php echo wp_json_encode( $options['popup'] ); ?>;
 		let mapid = <?php echo wp_json_encode( $options['mapid'] ); ?>;
-		let zoom = <?php echo esc_js( $options['zoom'] ); ?>;
-		let debug = <?php echo wp_json_encode( $options['debug'] ); ?>;
+		let zoom = <?php echo wp_json_encode( filter_var( $options['zoom'], FILTER_VALIDATE_INT ) ); ?>;
+		let debug = <?php echo wp_json_encode( filter_var( $options['debug'], FILTER_VALIDATE_BOOL ) ); ?>;
 		leafext_target_post_title_js(title,popup,mapid,zoom,debug);
 	});
 	<?php
@@ -239,8 +239,8 @@ function leafext_target_post_geojson_script( $options ) {
 		let value = <?php echo wp_json_encode( $options['value'] ); ?>;
 		let popup = <?php echo wp_json_encode( $options['popup'] ); ?>;
 		let mapid = <?php echo wp_json_encode( $options['mapid'] ); ?>;
-		let zoom = <?php echo wp_json_encode( $options['zoom'] ); ?>;
-		let debug = <?php echo wp_json_encode( $options['debug'] ); ?>;
+		let zoom = <?php echo wp_json_encode( filter_var( $options['zoom'], FILTER_VALIDATE_INT ) ); ?>;
+		let debug = <?php echo wp_json_encode( filter_var( $options['debug'], FILTER_VALIDATE_BOOL ) ); ?>;
 		leafext_target_post_geojson_js(property,value,popup,mapid,zoom,debug);
 	});
 	<?php

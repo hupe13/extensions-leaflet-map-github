@@ -64,15 +64,16 @@ function leafext_extramarker_params() {
 			'filter'  => 'FILTER_SANITIZE_NUMBER_INT',
 		),
 		// innerHTML    Custom HTML code    ''  <svg>, images, or other HTML; a truthy assignment will override the default html icon creation behavior
-		array(
-			'param'   => 'innerHTML',
-			'desc'    => __(
-				'Custom HTML code, Possible values: &lt;svg&gt;, images, or other HTML; a truthy assignment will override the default html icon creation behavior',
-				'extensions-leaflet-map'
-			),
-			'default' => '',
-			'filter'  => '',
-		),
+		// removed due to the risk of a potential XSS attack
+		// array(
+			// 'param'   => 'innerHTML',
+			// 'desc'    => __(
+				// 'Custom HTML code, Possible values: &lt;svg&gt;, images, or other HTML; a truthy assignment will override the default html icon creation behavior',
+				// 'extensions-leaflet-map'
+			// ),
+			// 'default' => '',
+			// 'filter'  => '',
+		// ),
 		// markerColor  Color of the marker (css class)     'blue'  'red', 'orange-dark', 'orange', 'yellow', 'blue-dark', 'cyan', 'purple', 'violet', 'pink', 'green-dark', 'green', 'green-light', 'black', 'white', or color hex code if svg is true
 		array(
 			'param'   => 'markerColor',

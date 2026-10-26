@@ -16,7 +16,7 @@ define( 'LEAFEXT_MINI', '.min' );
  */
 
 // elevation, multielevation
-define( 'LEAFEXT_ELEVATION_VERSION', '2.7.1' );
+define( 'LEAFEXT_ELEVATION_VERSION', '2.8.0' );
 define( 'LEAFEXT_ELEVATION_URL', LEAFEXT_PLUGIN_URL . '/leaflet-plugins/leaflet-elevation-' . LEAFEXT_ELEVATION_VERSION . '/' );
 define( 'LEAFEXT_ELEVATION_DIR', LEAFEXT_PLUGIN_DIR . '/leaflet-plugins/leaflet-elevation-' . LEAFEXT_ELEVATION_VERSION . '/' );
 function leafext_enqueue_elevation() {
@@ -48,16 +48,6 @@ function leafext_enqueue_elevation() {
 			LEAFEXT_PLUGIN_FILE
 		),
 		array( 'Leaflet_GeometryUtil', 'wp_leaflet_map' ),
-		LEAFEXT_VERSION,
-		true
-	);
-	wp_enqueue_script(
-		'd3',
-		plugins_url(
-			'leaflet-plugins/d3/d3.min.js',
-			LEAFEXT_PLUGIN_FILE
-		),
-		array( 'elevation_js' ),
 		LEAFEXT_VERSION,
 		true
 	);
