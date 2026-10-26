@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-10-05 19:36+0000\n"
+"PO-Revision-Date: 2026-10-26 19:19+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-12 16:42+0000\n"
 "Last-Translator: hupe13\n"
-"X-Loco-Version: 2.8.9; wp-7.1.2; php-8.4.24-nmm1"
+"X-Loco-Version: 2.8.9; wp-7.1.3; php-8.4.27-nmm1"
 
 #: admin/marker/placementstrategies.php:61
 msgid ""
@@ -223,21 +223,24 @@ msgstr ""
 "Ein Sprachpaket wird generiert, wenn mindestens 90 % aller Zeichenfolgen "
 "übersetzt sind, wie z.B. niederländisch, spanisch oder deutsch."
 
-#: admin/help.php:377
+#: admin/help.php:371
 msgid "A Leaflet Control for listing visible markers in the map."
 msgstr ""
 "Ein Leaflet Kontrollfeld zur Auflistung der sichtbaren Marker in der Karte."
 
 #: admin/help.php:305
-msgid "A Leaflet plugin that allows to add elevation profiles using d3js."
+msgid ""
+"A Leaflet plugin that allows to add elevation profiles using native SVG and "
+"Canvas elements."
 msgstr ""
-"Ein Leaflet-Plugin, das das Hinzufügen von Höhenprofilen mit d3js ermöglicht."
+"Ein Leaflet-Plugin, mit dem sich Höhenprofile mithilfe nativer SVG- und "
+"Canvas-Elemente erstellen lassen."
 
 #: admin/help.php:323
 msgid "A Leaflet plugin that allows to add rotation functionality to map tiles"
 msgstr "Ein Leaflet-Plugin, das die Rotation von Kartenkacheln ermöglicht"
 
-#: admin/help.php:414
+#: admin/help.php:408
 msgid ""
 "A Leaflet plugin that allows to prevent default map scroll/touch behaviours."
 msgstr ""
@@ -267,7 +270,7 @@ msgstr ""
 "Geojson-Layer. Kann auch eine durch Kommas getrennte Liste von Optionen oder "
 "Eigenschaften sein."
 
-#: admin/help.php:389
+#: admin/help.php:383
 msgid "A Tree Layers Control for Leaflet."
 msgstr "Baumstruktur für das Leaflet-Auswahlmenü."
 
@@ -297,7 +300,7 @@ msgstr ""
 "Zusätzlich kannst du einige vordefinierte Kachelanbieter mit %1$s verwenden "
 "oder du kannst selbst %2$sKachelserver%3$s definieren."
 
-#: admin/help.php:420
+#: admin/help.php:414
 msgid "Advanced geospatial analysis for browsers and Node.js"
 msgstr "Erweiterte Geodatenanalyse für Browser und Node.js"
 
@@ -346,7 +349,7 @@ msgstr "Erlaube das Hochladen in die Mediathek"
 msgid "Altitude chart profile"
 msgstr "Höhenprofil"
 
-#: admin/help.php:347
+#: admin/help.php:341
 msgid "An extension that contains configurations for various tile providers."
 msgstr ""
 "Eine Erweiterung, die Konfigurationen für verschiedene Kacheldienste enthält."
@@ -560,7 +563,7 @@ msgstr ""
 "Farbe des Icons, mögliche Werte: 'white', 'black' oder css-Code (hex, rgba "
 "usw.)"
 
-#: php/extramarker.php:79
+#: php/extramarker.php:80
 msgid ""
 "Color of the marker (css class), Possible values: 'red', 'orange-dark', "
 "'orange', 'yellow', 'blue-dark', 'cyan', 'purple', 'violet', 'pink', 'green-"
@@ -759,15 +762,6 @@ msgstr ""
 msgid "Custom fields"
 msgstr "Benutzerdefinierte Felder"
 
-#: php/extramarker.php:69
-msgid ""
-"Custom HTML code, Possible values: &lt;svg&gt;, images, or other HTML; a "
-"truthy assignment will override the default html icon creation behavior"
-msgstr ""
-"Benutzerdefinierter HTML-Code, mögliche Werte: &lt;svg&gt;, Bilder oder "
-"anderes HTML; eine gültige Zuweisung setzt das Standardverhalten bei der "
-"Erstellung von HTML-Icons außer Kraft"
-
 #: admin/help.php:24 admin/elevation/main.php:30
 msgid "Customize waypoints"
 msgstr "Wegpunkte anpassen"
@@ -904,7 +898,7 @@ msgid "Detailed documentation and examples"
 msgstr "Ausführliche Dokumentation und Beispiele"
 
 #. %s are hrefs.
-#: admin/help.php:451
+#: admin/help.php:445
 #, php-format
 msgid ""
 "Detailed documentation and examples in %1$sGerman%2$s and %3$sEnglish%4$s"
@@ -994,7 +988,7 @@ msgstr "Zeige weder Tooltip noch %s"
 msgid "do not show tooltip but show %s"
 msgstr "Zeige keinen Tooltip, aber zeige %s"
 
-#: admin/help.php:435
+#: admin/help.php:429
 msgid "Documentation"
 msgstr "Dokumentation"
 
@@ -1017,14 +1011,6 @@ msgstr "Download-Link"
 #, php-format
 msgid "draw the content with %scommands "
 msgstr "stelle den Inhalt mit %sBefehlen dar "
-
-#: php/elevation.php:563
-msgid ""
-"Due to a problem in MacOS and iOS, it is automatically set to false in "
-"Safari."
-msgstr ""
-"Aufgrund eines Fehlers in MacOS und iOS, wird es in Safari automatisch auf "
-"false gesetzt."
 
 #: admin/marker/clustergroup.php:22
 msgid "Dynamically add/remove groups of markers from Marker Cluster"
@@ -1065,7 +1051,7 @@ msgstr "entweder der Dateiname des Icons"
 msgid "Elevation Profile"
 msgstr "Höhenprofil"
 
-#: admin.php:170 admin/help.php:14
+#: admin.php:172 admin/help.php:14
 msgid "Elevation Profiles"
 msgstr "Höhenprofile"
 
@@ -1127,7 +1113,7 @@ msgstr "Beispiel"
 msgid "example URL for the link"
 msgstr "Beispiel-URL für den Link"
 
-#: admin/help.php:488 admin/help.php:490
+#: admin/help.php:482 admin/help.php:484
 msgid "Examples"
 msgstr "Beispiele"
 
@@ -1153,7 +1139,7 @@ msgstr ""
 "org/plugins/leaflet-map/\">Leaflet Map</a> um Leaflet-Plugins und weitere "
 "Funktionen."
 
-#: admin.php:32 admin.php:262
+#: admin.php:32 admin.php:264
 msgid "Extensions for Leaflet Map"
 msgstr "Erweiterungen für Leaflet Map"
 
@@ -1173,7 +1159,7 @@ msgstr "Erweiterungen für Leaflet Map - Optionen"
 msgid "Extra Tile Server"
 msgstr "Zusätzliche Kachelserver"
 
-#: admin.php:202 admin/help.php:136 admin/overviewmap/featured-map.php:89
+#: admin.php:204 admin/help.php:136 admin/overviewmap/featured-map.php:89
 msgid "Featured Map"
 msgstr "Featured Map"
 
@@ -1299,15 +1285,15 @@ msgstr "für das Marker Icon, optional."
 msgid "for the popup content, optional."
 msgstr "für den Inhalt des Popups, optional."
 
-#: admin/help.php:429
+#: admin/help.php:423
 msgid "Found an issue? Do you have a question?"
 msgstr "Hast du einen Fehler gefunden? Hast du eine Frage?"
 
-#: admin.php:210 admin/fullscreen.php:18 admin/help.php:237
+#: admin.php:212 admin/fullscreen.php:18 admin/help.php:237
 msgid "Fullscreen"
 msgstr "Vollbildmodus"
 
-#: admin/help.php:465 admin/help.php:466
+#: admin/help.php:459 admin/help.php:460
 msgid "Function"
 msgstr "Funktion"
 
@@ -1339,7 +1325,7 @@ msgstr ""
 msgid "Geojson GeometryCollections do not (yet) work in all senses."
 msgstr "Geojson GeometryCollections funktionieren nicht in jeder Hinsicht."
 
-#: admin.php:214 admin/help.php:246 admin/gesture.php:13
+#: admin.php:216 admin/help.php:246 admin/gesture.php:13
 msgid "Gesture Handling"
 msgstr "Gestensteuerung"
 
@@ -1362,11 +1348,11 @@ msgid "Group elements and dynamically add/remove from map"
 msgstr ""
 "Gruppieren von Elementen und dynamisches Hinzufügen/Entfernen aus der Karte"
 
-#: admin.php:180 admin/help.php:180
+#: admin.php:182 admin/help.php:180
 msgid "Grouping by options and features"
 msgstr "Gruppieren nach Optionen und Eigenschaften"
 
-#: admin/help.php:383
+#: admin/help.php:377
 msgid "Grouping of Leaflet elements by options and features."
 msgstr "Gruppieren von Leaflet-Elementen nach Optionen und Eigenschaften."
 
@@ -1378,11 +1364,11 @@ msgstr "Profil der Herzfrequenz"
 msgid "Height of the chart"
 msgstr "Höhe des Diagramms"
 
-#: admin.php:154
+#: admin.php:156
 msgid "Help"
 msgstr "Hilfe"
 
-#: admin/help.php:517
+#: admin/help.php:511
 msgid "Helper Plugins"
 msgstr "Hilfsplugins"
 
@@ -1430,7 +1416,7 @@ msgstr "Reagiere auf Mauszeigerkontakt nur bei geojsons, gpx, kml:"
 msgid "Hovering"
 msgstr "Hovering"
 
-#: admin.php:193 admin/help.php:258
+#: admin.php:195 admin/help.php:258
 msgid "Hovering and Tooltips"
 msgstr "Reaktion bei Mauszeigerkontakt und Tooltips"
 
@@ -2111,7 +2097,7 @@ msgstr ""
 "Definiere die Styles in deinem elevation.css. Nimm als Vorlage das Original "
 "CSS von"
 
-#: admin/help.php:506
+#: admin/help.php:500
 msgid "Included and used Leaflet Plugins"
 msgstr "Enthaltene und verwendete Leaflet-Plugins"
 
@@ -2137,7 +2123,7 @@ msgstr ""
 "(gültig für alle Gruppen) oder eine durch Komma getrennte Liste von %3$s und "
 "%4$s, wobei die Zahl mit der von %5$s übereinstimmen muss."
 
-#: php/extramarker.php:89
+#: php/extramarker.php:90
 msgid ""
 "Instead of an icon, define a plain text, Possible values: '1' or 'A', must "
 "set icon: 'fa-number'"
@@ -2347,11 +2333,11 @@ msgstr "Standort nicht gefunden"
 msgid "Longitude"
 msgstr "Längengrad"
 
-#: admin/help.php:353
+#: admin/help.php:347
 msgid "Makes multiple tile layers transparent."
 msgstr "Macht Kartenkacheln transparent."
 
-#: admin.php:160 admin.php:164 admin/help.php:278 admin/help.php:280
+#: admin.php:162 admin.php:166 admin/help.php:278 admin/help.php:280
 #: admin/help.php:281 admin/filemgr/main.php:28
 msgid "Manage Leaflet Map files"
 msgstr "Leaflet Map Dateien verwalten"
@@ -2414,7 +2400,7 @@ msgstr "Markercluster"
 msgid "Marker with icon"
 msgstr "Marker mit Icon"
 
-#: admin.php:175
+#: admin.php:177
 msgid "Markers and Icons"
 msgstr "Marker und Icons"
 
@@ -2731,7 +2717,7 @@ msgstr ""
 "oder tagge sie. Das Wort \"Kategorie\" bedeutet in dieser Dokumentation "
 "Kategorie oder Tag."
 
-#: admin.php:92 admin/zoomhome.php:122 admin/leaflet-search.php:45
+#: admin.php:93 admin/zoomhome.php:122 admin/leaflet-search.php:45
 #: admin/grouping/parentgroup.php:34 admin/hover/hover.php:56
 #: admin/hover/hoverlap.php:43 admin/marker/extramarker.php:106
 #: admin/marker/markercluster.php:158 admin/marker/markercluster.php:204
@@ -2825,7 +2811,7 @@ msgstr "Anderes Theme"
 msgid "Overview"
 msgstr "Übersicht"
 
-#: admin.php:198 admin/help.php:146 admin/overviewmap/overview-map.php:83
+#: admin.php:200 admin/help.php:146 admin/overviewmap/overview-map.php:83
 msgid "Overview Map"
 msgstr "Übersichtskarte"
 
@@ -2861,7 +2847,7 @@ msgstr ""
 "Bitte ändere diese Einstellung nur, wenn du dein eigenes Theme verwendest."
 
 #. %s is a link.
-#: admin.php:259
+#: admin.php:261
 #, php-format
 msgid "Please install and activate %1$sLeaflet Map%2$s before using %3$s."
 msgstr ""
@@ -2950,7 +2936,7 @@ msgstr "mögliche sinnvolle Werte"
 msgid "Possible values"
 msgstr "Mögliche Werte"
 
-#: admin/help.php:431
+#: admin/help.php:425
 msgid "Post it to the support forum"
 msgstr "Besuche das Support Forum"
 
@@ -2978,13 +2964,13 @@ msgid "Providers requiring registration"
 msgstr "Provider, die eine Registrierung erfordern"
 
 #. %s is an href.
-#: admin/help.php:402
+#: admin/help.php:396
 #, php-format
 msgid "Provides a zoom control with a %1$sHome%2$s button to reset the view."
 msgstr ""
 "Zoome und setze mit einer %1$sHome%2$s-Schaltfläche die Ansicht zurück."
 
-#: admin/help.php:359
+#: admin/help.php:353
 msgid "Provides Beautiful Animated Marker Clustering functionality."
 msgstr "Animiere Markercluster."
 
@@ -3036,7 +3022,7 @@ msgstr "Erforderlich, wenn Quellseite und Zielseite verschieden sind:"
 msgid "required: one of these"
 msgstr "Erforderlich: eins von diesen"
 
-#: admin.php:99 admin/tiles/providers.php:177 admin/tiles/main.php:73
+#: admin.php:100 admin/tiles/providers.php:177 admin/tiles/main.php:73
 #: admin/filemgr/filemgr.php:248 admin/filemgr/main.php:63
 #: admin/grouping/settings.php:103 admin/hover/settings.php:101
 #: admin/marker/markercluster.php:22 admin/marker/placementstrategies.php:22
@@ -3046,7 +3032,7 @@ msgstr "Erforderlich: eins von diesen"
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: admin.php:206 admin/help.php:228
+#: admin.php:208 admin/help.php:228
 msgid "Reset the map"
 msgstr "Karte zurücksetzen"
 
@@ -3067,11 +3053,11 @@ msgstr "Speichere Abfrage"
 msgid "Scroll Wheel Zoom"
 msgstr "Zoomen mit dem Mausrad"
 
-#: admin.php:184 admin/help.php:198
+#: admin.php:186 admin/help.php:198
 msgid "Search markers/features"
 msgstr "Suche von Markern / Features"
 
-#: admin/help.php:395
+#: admin/help.php:389
 msgid "Search Markers/Features location by option or custom property."
 msgstr ""
 "Suche nach Marker/Features nach Optionen oder benutzerdefinierter Property."
@@ -3175,11 +3161,11 @@ msgstr "Einstellung"
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: admin/help.php:371
+#: admin/help.php:365
 msgid "Shameless copy of Awesome-Markers with more shapes and colors."
 msgstr "Schamlose Kopie von Awesome-Markers mit mehr Formen und Farben."
 
-#: php/extramarker.php:109
+#: php/extramarker.php:110
 msgid ""
 "Shape of the marker (css class), Possible values: 'circle', 'square', 'star',"
 " or 'penta'"
@@ -3283,7 +3269,7 @@ msgstr ""
 "Zeige Beschriftungen der Wegpunkte auf der Karte und im Diagramm / nur auf "
 "der Karte / nur im Diagramm / nicht anzeigen"
 
-#: admin/help.php:408
+#: admin/help.php:402
 msgid "Simple plugin for Leaflet that adds fullscreen button to your maps."
 msgstr ""
 "Einfaches Plugin für Leaflet, das den Karten eine Schaltfläche für den "
@@ -3372,7 +3358,7 @@ msgstr "Strategie der Platzierung von Markern im Markercluster"
 msgid "Styling Markercluster"
 msgstr "Styling Markercluster"
 
-#: admin/help.php:365
+#: admin/help.php:359
 msgid "Styling Markerclusters."
 msgstr "Styling Markerclusters."
 
@@ -3396,7 +3382,7 @@ msgstr "Zeige Kreis-Hilfsmarkierungen"
 msgid "Switch Track on and off"
 msgstr "Schalte die Anzeige des Tracks um"
 
-#: admin.php:188 admin/help.php:207
+#: admin.php:190 admin/help.php:207
 msgid "Switching Tile Servers"
 msgstr "Umschalten von Kachelservern"
 
@@ -3506,7 +3492,7 @@ msgstr ""
 msgid "the featured image"
 msgstr "das Beitragsbild"
 
-#: php/extramarker.php:99
+#: php/extramarker.php:100
 msgid ""
 "The icon library's base class, Possible values: fa (see icon library's "
 "documentation)"
@@ -4018,7 +4004,7 @@ msgstr ""
 "Verwende es, um ein %s-Element hervorzuheben und einen Tooltip bei "
 "Mauszeigerkontakt zu erhalten."
 
-#: php/extramarker.php:119
+#: php/extramarker.php:120
 msgid "Use SVG version, Possible values: true or false"
 msgstr "SVG-Version verwenden, Mögliche Werte: true oder false"
 
@@ -4431,7 +4417,7 @@ msgstr ""
 "Datenbank noch vorhanden. Du solltest sie löschen."
 
 #. %s is a link.
-#: admin/help.php:441
+#: admin/help.php:435
 #, php-format
 msgid ""
 "You may be interested in %1$sDSGVO snippet for Leaflet Map and its "
