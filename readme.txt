@@ -42,7 +42,7 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 
 == Changelog ==
 
-* [XSS fix (not yet confirmed)](https://www.wordfence.com/threat-intel/vulnerabilities/wordpress-plugins/extensions-leaflet-map/extensions-for-leaflet-map-60-authenticated-contributor-stored-cross-site-scripting)
+* XSS fix (not yet confirmed)
 * leaflet-elevation-2.8.0 - fixes problems: detached, canvas and Safari, and more.
 * elevation option legend: black track and chart off fixed
 * leaflet-extramarker: removed option innerHTML due to the risk of a potential XSS attack
