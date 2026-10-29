@@ -148,7 +148,7 @@ function leafext_sgpx_help_text() {
 
 function leafext_sgpx_help_text_0() {
 	echo '<h2>WP GPX Maps</h2><p>';
-	printf(
+	echo wp_sprintf(
 		/* translators: %1$s - a name ,%2$s %3$s - href, %4$s %5$s - shortcodes  */
 		esc_html__( 'Many thanks to %1$s for his %2$sexcellent plugin%3$s, which I used myself for a long time. Unfortunately it needed some rework, especially to make WP GPX Maps and Leaflet Map work together. At some point it didn\'t work for me at all. So some of its features are included in the shortcode %4$s. Since version 2.2. it interprets the shortcode %5$s.', 'extensions-leaflet-map' ),
 		'<a href="https://profiles.wordpress.org/bastianonm/">Bastianon Massimo</a>',
@@ -156,20 +156,21 @@ function leafext_sgpx_help_text_0() {
 		'</a>',
 		'<code>elevation</code>',
 		'<code>sgpx</code>'
-	);
+	) . '</p>';
+	echo '<p>' . esc_html__( 'A new version has been available since the end of October 2026, and now both plugins can be active and it works.', 'extensions-leaflet-map' );
 	echo '</p>';
 }
 
 function leafext_sgpx_help_text_1() {
 	echo '<p>';
-	printf(
+	echo wp_sprintf(
 		/* translators: %s are shortcodes. */
 		esc_html__( 'This page helps you to migrate from %1$s to %2$s.', 'extensions-leaflet-map' ),
 		'<code>sgpx</code>',
 		'<code>elevation</code>'
 	);
 	echo ' ';
-	printf(
+	echo wp_sprintf(
 		/* translators: %s is a href. */
 		esc_html__(
 			'See documentation and examples %1$shere%2$s.',
@@ -183,13 +184,13 @@ function leafext_sgpx_help_text_1() {
 
 function leafext_sgpx_help_text_2() {
 	echo '<li>';
-	printf(
+	echo wp_sprintf(
 		/* translators: %s is a link. */
 		esc_html__( 'Configure your default %s settings.', 'extensions-leaflet-map' ),
 		is_admin() ? '<a href="?page=' . esc_html( LEAFEXT_PLUGIN_SETTINGS ) . '&tab=elevation"><code>elevation</code></a>' : '<code>elevation</code>'
 	);
 	echo '</li><li>';
-	printf(
+	echo wp_sprintf(
 		/* translators: %s are values. */
 		esc_html__( 'Select %1$s to interpret the %2$s parameters as %3$s.', 'extensions-leaflet-map' ),
 		'"1"',
@@ -197,21 +198,21 @@ function leafext_sgpx_help_text_2() {
 		'<code>elevation</code>'
 	);
 	echo '</li><li>';
-	printf(
+	echo wp_sprintf(
 		/* translators: %s are shortcodes / values. */
 		esc_html__( 'If you want to test it first: select %1$s and write in your test page / post %2$s.', 'extensions-leaflet-map' ),
 		'"leaflet"',
 		'<code>&#091;leaflet-map height="1"]</code>'
 	);
 	echo '</li><li>';
-	printf(
+	echo wp_sprintf(
 		/* translators: %s are a plugin name. */
 		esc_html__( 'If you are happy with this and if you don\'t use the track management of %1$s, you can deactivate and delete the plugin %1$s.', 'extensions-leaflet-map' ),
 		'WP GPX Maps'
 	);
 	echo '</li>';
 	echo '<li>';
-	printf(
+	echo wp_sprintf(
 		/* translators: %s is a link. */
 		esc_html__( 'To manage your tracks now, you can use %1$sManage Leaflet Map files%2$s.', 'extensions-leaflet-map' ),
 		is_admin() ? '<a href="?page=' . esc_html( LEAFEXT_PLUGIN_SETTINGS ) . '&tab=filemgr">' : '<a href="https://leafext.de/doku/filemgr/">',
@@ -225,7 +226,7 @@ function leafext_sgpx_help_text_2() {
 
 function leafext_sgpx_help_text_3() {
 	echo '<li>';
-	printf(
+	echo wp_sprintf(
 		/* translators: %s are plugin names / option. */
 		esc_html__( '%1$s is not active, %2$s parameters will interpreted with %3$s.', 'extensions-leaflet-map' ),
 		'WP GPX Maps',

@@ -24,44 +24,6 @@ if ( is_admin() ) {
 }
 define( 'LEAFEXT_SGPX_SGPX', is_bool( get_option( 'leafext_sgpxparams', false ) ) === true ? false : true );
 
-// Erstmal alles von wp-gpx-map entfernen
-if ( LEAFEXT_SGPX_ACTIVE ) {
-	function leafext_dequeue_sgpx() {
-		wp_dequeue_script( 'chartjs' );
-		wp_dequeue_script( 'jquery' );
-		wp_dequeue_script( 'leaflet.fullscreen' );
-		wp_dequeue_script( 'leaflet.markercluster' );
-		wp_dequeue_script( 'leaflet.Photo' );
-		wp_dequeue_script( 'leaflet' );
-		wp_dequeue_script( 'output-style' );
-		wp_dequeue_script( 'wp-gpx-maps' );
-		wp_dequeue_style( 'leaflet.fullscreen' );
-		wp_dequeue_style( 'leaflet.markercluster' );
-		wp_dequeue_style( 'leaflet.Photo' );
-		wp_dequeue_style( 'leaflet' );
-		wp_dequeue_style( 'output-style' );
-		wp_deregister_script( 'chartjs' );
-		wp_deregister_script( 'leaflet.fullscreen' );
-		wp_deregister_script( 'leaflet.markercluster' );
-		wp_deregister_script( 'leaflet.Photo' );
-		wp_deregister_script( 'leaflet' );
-		wp_deregister_script( 'wp-gpx-maps' );
-		wp_deregister_style( 'leaflet.fullscreen' );
-		wp_deregister_style( 'leaflet.markercluster' );
-		wp_deregister_style( 'leaflet.Photo' );
-		wp_deregister_style( 'leaflet' );
-		wp_deregister_style( 'output-style' );
-		unload_textdomain( 'wp-gpx-maps' );
-	}
-	add_action( 'wp_enqueue_scripts', 'leafext_dequeue_sgpx', 100 );
-
-	function leafext_remove_sgpx_shortcode() {
-		remove_shortcode( 'sgpx' );
-	}
-	add_action( 'init', 'leafext_remove_sgpx_shortcode', 20 );
-
-} //if ( LEAFEXT_SGPX_ACTIVE )
-
 // $folder         = wpgpxmaps_findValue( $attr, 'folder', '', '' );
 // $pointsoffset   = wpgpxmaps_findValue( $attr, 'pointsoffset', 'wpgpxmaps_pointsoffset', 10 );
 // $distanceType   = wpgpxmaps_findValue( $attr, 'distanceType', 'wpgpxmaps_distance_type', 0 );
@@ -301,11 +263,3 @@ function leafext_change_sgpx_shortcode() {
 	add_shortcode( 'sgpx', 'leafext_sgpx_function' );
 }
 add_action( 'init', 'leafext_change_sgpx_shortcode', 20 );
-
-function leafext_insert_jquery() {
-	$options = get_option( 'leafext_sgpxparams' );
-	if ( LEAFEXT_SGPX_ACTIVE && LEAFEXT_SGPX_SGPX && $options['sgpx'] === 'leaflet' && ! wp_script_is( 'wp_leaflet_map', 'enqueued' ) ) {
-		wp_enqueue_script( 'jquery-core', '/wp-includes/js/jquery/jquery/jquery.min.js', array(), LEAFEXT_VERSION, false );
-	}
-}
-add_filter( 'wp_enqueue_scripts', 'leafext_insert_jquery', 1 );

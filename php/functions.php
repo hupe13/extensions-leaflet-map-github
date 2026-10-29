@@ -8,6 +8,23 @@
 // Direktzugriff auf diese Datei verhindern.
 defined( 'ABSPATH' ) || die();
 
+// Interpretiere !parameter und parameter als false und true
+function leafext_clear_params_true_false( $atts ) {
+	if ( is_array( $atts ) ) {
+		foreach ( $atts as $attr => $value ) {
+			if ( is_int( $attr ) ) {
+				if ( strpos( $atts[ $attr ], '!' ) === false ) {
+					$atts[ $atts[ $attr ] ] = true;
+				} else {
+					$atts[ substr( $atts[ $attr ], 1 ) ] = false;
+				}
+				unset( $atts[ $attr ] );
+			}
+		}
+	}
+	return( $atts );
+}
+
 // Interpretiere !parameter und parameter als false und true and validate
 function leafext_clear_params( $atts ) {
 	if ( is_array( $atts ) ) {

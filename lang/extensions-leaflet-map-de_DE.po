@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-10-26 19:19+0000\n"
+"PO-Revision-Date: 2026-10-29 20:26+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-08-12 16:42+0000\n"
 "Last-Translator: hupe13\n"
-"X-Loco-Version: 2.8.9; wp-7.1.3; php-8.4.27-nmm1"
+"X-Loco-Version: 2.8.9; wp-7.1.4; php-8.4.27-nmm1"
 
 #: admin/marker/placementstrategies.php:61
 msgid ""
@@ -46,13 +46,13 @@ msgstr ""
 "kurzen Zeichenfolgen."
 
 #. %1$s is zoom, %2$s is targetmarker.
-#: admin/marker/targetmarker.php:218
+#: admin/marker/targetmarker.php:222
 #, php-format
 msgid "%1$s in %2$s"
 msgstr "%1$s in %2$s"
 
 #. %1$s is zoom, %2$s is targetlink.
-#: admin/marker/targetmarker.php:212
+#: admin/marker/targetmarker.php:216
 #, php-format
 msgid "%1$s in querystring or in %2$s"
 msgstr "%1$s in Querystring oder in %2$s"
@@ -68,7 +68,7 @@ msgstr ""
 "muss sich im Verzeichnis der %2$s befinden."
 
 #. %s are plugin names / option.
-#: admin/elevation/sgpx.php:230
+#: admin/elevation/sgpx.php:231
 #, php-format
 msgid "%1$s is not active, %2$s parameters will interpreted with %3$s."
 msgstr ""
@@ -251,6 +251,14 @@ msgstr ""
 msgid "A link similar to this one is created:"
 msgstr "Ein Link ähnlich diesem wird erzeugt:"
 
+#: admin/elevation/sgpx.php:160
+msgid ""
+"A new version has been available since the end of October 2026, and now both "
+"plugins can be active and it works."
+msgstr ""
+"Seit Ende Oktober 2026 ist eine neue Version verfügbar, und nun können beide "
+"Plugins aktiv sein, und es läuft."
+
 #: php/hover.php:161 php/hover.php:170 php/hoverlap.php:25
 msgid "a number"
 msgstr "eine Zahl"
@@ -317,7 +325,7 @@ msgstr "Alle Farben"
 msgid "All Shapes without (1) / with (2) SVG"
 msgstr "Alle Formen ohne (1) / mit (2) SVG"
 
-#: admin/marker/targetmarker.php:183
+#: admin/marker/targetmarker.php:181
 msgid "All these options are optional."
 msgstr "All diese Optionen sind optional."
 
@@ -420,7 +428,13 @@ msgstr ""
 "erscheint im Menü. Um einen Kachelserver zu löschen, lösche den Text im Feld "
 "mapid."
 
-#: admin/marker/targetmarker.php:154
+#: admin/marker/targetmarker.php:200
+msgid "Applies to both shortcodes on the target page. Must be specified first."
+msgstr ""
+"Gilt auf der Zielseite für beide Shortcodes. Muss als erstes angegeben "
+"werden."
+
+#: admin/marker/targetmarker.php:152
 msgid "are required!"
 msgstr "sind erforderlich!"
 
@@ -531,7 +545,7 @@ msgstr "Namen der Kinder"
 msgid "className for the tooltip"
 msgstr "className für den Tooltip"
 
-#: php/functions.php:217
+#: php/functions.php:234
 msgid "Click to interpret shortcodes."
 msgstr "Klicke, um die Shortcodes auszuführen."
 
@@ -649,7 +663,7 @@ msgid "Configure a mapid, attribution and a tile url for each tile server."
 msgstr "Definiere ein mapid, das Copyright und die URL für jeden Kachelserver."
 
 #. %s is a link.
-#: admin/elevation/sgpx.php:188
+#: admin/elevation/sgpx.php:189
 #, php-format
 msgid "Configure your default %s settings."
 msgstr "Konfiguriere deine Standardeinstellungen für %s."
@@ -681,7 +695,7 @@ msgstr "Umrechnungsfaktor in Meter, wird ignoriert, wenn %1$s %2$s ist"
 msgid "Convert KML, GPX, and TCX to GeoJSON."
 msgstr "Konvertiere KML, GPX und TCX zu GeoJSON."
 
-#: admin/marker/targetmarker.php:126
+#: admin/marker/targetmarker.php:124
 msgid "Create a source page with a link to the target page."
 msgstr "Erstelle eine Quellseite mit einem Link zur Zielseite."
 
@@ -831,7 +845,7 @@ msgstr "Standardposition:"
 msgid "Default: %1$s if %2$s is %3$s, %4$s otherwise."
 msgstr "Standard: %1$s wenn %2$s %3$s ist, sonst %4$s."
 
-#: admin/marker/targetmarker.php:222
+#: admin/marker/targetmarker.php:226
 msgid "Default: actual zoom level of the map"
 msgstr "Standard: aktueller Zoomlevel der Karte"
 
@@ -1109,7 +1123,7 @@ msgstr "Jeder Marker mit einem Icon hat die Option %s als Standard."
 msgid "Example"
 msgstr "Beispiel"
 
-#: admin/marker/targetmarker.php:129
+#: admin/marker/targetmarker.php:127
 msgid "example URL for the link"
 msgstr "Beispiel-URL für den Link"
 
@@ -1716,7 +1730,7 @@ msgstr ""
 "enthalten sind."
 
 #. %s is targetmarker.
-#: admin/marker/targetmarker.php:167
+#: admin/marker/targetmarker.php:165
 #, php-format
 msgid "If the page is the same, %s does not need to be defined."
 msgstr "Wenn die Seite dieselbe ist, braucht %s nicht angegeben zu werden."
@@ -1727,15 +1741,7 @@ msgid "If this is not available, the filename (without extension) is used."
 msgstr ""
 "Ist das nicht möglich, wird der Dateiname (ohne Erweiterung) verwendet."
 
-#: admin/marker/targetmarker.php:114
-msgid ""
-"if true, log some infos to the developer console and add circles about the "
-"target on the map"
-msgstr ""
-"wenn true, logge einige Infos in der Entwicklerkonsole und zeichne Kreise um "
-"das Ziel auf der Karte"
-
-#: admin/marker/targetmarker.php:199
+#: admin/marker/targetmarker.php:203
 msgid ""
 "if true, log some infos to the developer console and add circles about the "
 "target on the map."
@@ -1744,7 +1750,7 @@ msgstr ""
 "das Ziel auf der Karte."
 
 #. %s are a plugin name.
-#: admin/elevation/sgpx.php:209
+#: admin/elevation/sgpx.php:210
 #, php-format
 #| msgid ""
 #| "If you are happy with this and if you don't use the track management of "
@@ -1770,12 +1776,12 @@ msgid "If you don't use this shortcode yet, start %1$sthere%2$s."
 msgstr ""
 "Wenn du diesen Shortcode noch nicht verwendet hast, verwende %1$sdiese%2$s."
 
-#: admin/elevation/sgpx.php:222
+#: admin/elevation/sgpx.php:223
 msgid "If you have deleted the plugin, call this page again."
 msgstr "Wenn du das Plugin gelöscht hast, rufe diese Seite erneut auf."
 
 #. %s is targetmarker.
-#: admin/marker/targetmarker.php:176
+#: admin/marker/targetmarker.php:174
 #, php-format
 msgid ""
 "If you have more than one map on a page: %s may only appear exactly once and "
@@ -1843,7 +1849,7 @@ msgstr ""
 "Wenn du einen Track mit einem Höhenprofil anzeigen möchtest, verwende %2$s."
 
 #. %s are shortcodes / values.
-#: admin/elevation/sgpx.php:202
+#: admin/elevation/sgpx.php:203
 #, php-format
 msgid ""
 "If you want to test it first: select %1$s and write in your test page / post "
@@ -2143,20 +2149,20 @@ msgstr "Einleitung"
 msgid "is"
 msgstr "ist"
 
-#: admin/marker/targetmarker.php:206
+#: admin/marker/targetmarker.php:210
 msgid "is considered only, if the target marker is not in a cluster."
-msgstr "wird nur berücksichtigt, wenn der Zielmarker nicht gecluster ist."
+msgstr "wird nur berücksichtigt, wenn der Zielmarker nicht geclustert ist."
 
-#: admin/marker/targetmarker.php:128
+#: admin/marker/targetmarker.php:126
 msgid "is optional."
 msgstr "ist wahlweise."
 
-#: admin/marker/targetmarker.php:164
+#: admin/marker/targetmarker.php:162
 msgid "is required, if source page and target page are different."
 msgstr "ist erforderlich, wenn Quellseite und Zielseite verschieden sind."
 
 #. %1$s is a targetmarker, %2$s is title.
-#: admin/marker/targetmarker.php:158
+#: admin/marker/targetmarker.php:156
 #, php-format
 msgid "is required, if you use %1$s with option %2$s."
 msgstr "muss angegeben werden, wenn du %1$s mit der Option %2$s verwendest."
@@ -2534,7 +2540,7 @@ msgid "no"
 msgstr "nein"
 
 #. %s is an option.
-#: php/sgpx.php:143
+#: php/sgpx.php:105
 #, php-format
 msgid "No / Yes / Only, when %s is used, e.g. for testing."
 msgstr "Nein / Ja / Nur wenn %s verwendet wird, z.B. zum Testen."
@@ -2633,7 +2639,7 @@ msgid "Open page, post or category links in a new tab"
 msgstr "Öffne den Link zur Seite, Beitrag oder Kategorie in einem neuen Tab"
 
 #: admin/zoomhome.php:124 admin/leaflet-search.php:76
-#: admin/marker/targetmarker.php:202 admin/marker/listmarker.php:66
+#: admin/marker/targetmarker.php:206 admin/marker/listmarker.php:66
 msgid "Option"
 msgstr "Option"
 
@@ -2756,7 +2762,7 @@ msgstr "Optionen für Marker"
 msgid "Options for overviewmap"
 msgstr "Optionen für overviewmap"
 
-#: admin/marker/targetmarker.php:117
+#: admin/marker/targetmarker.php:115
 msgid "Options for query string"
 msgstr "Optionen für den Querystring"
 
@@ -2899,14 +2905,14 @@ msgid "Polyline weight"
 msgstr "Linienstärke"
 
 #. %1$s is title, %2$s is Target.
-#: admin/marker/targetmarker.php:95 admin/marker/targetmarker.php:187
+#: admin/marker/targetmarker.php:95 admin/marker/targetmarker.php:185
 #, php-format
 msgid ""
 "popup content, if the target marker has not a popup text. Default: content "
 "of %1$s, if the marker has one or %2$s"
 msgstr ""
 "Inhalt des Popups, wenn der Zielmarker keinen Popuptext hat. Standard: %1$s, "
-"wenn der Marker diesen hat, oder %2$s."
+"wenn der Marker diesen hat, oder %2$s"
 
 #: admin/hover/hoverlap.php:18
 msgid "Popups and highlighting overlapping elements"
@@ -2955,7 +2961,7 @@ msgstr "Vorschau"
 msgid "Previous"
 msgstr "Zurück"
 
-#: admin/marker/targetmarker.php:208
+#: admin/marker/targetmarker.php:212
 msgid "Priority:"
 msgstr "Reihenfolge:"
 
@@ -2993,7 +2999,7 @@ msgid "Render chart profiles as Canvas or SVG Paths."
 msgstr "Diagramme als Canvas oder SVG rendern."
 
 #. %s are shortcodes.
-#: php/sgpx.php:141
+#: php/sgpx.php:103
 #, php-format
 msgid "Replace %1$s with %2$s."
 msgstr "Ersetze %1$s durch %2$s."
@@ -3014,7 +3020,7 @@ msgstr "erforderlich für Marker mit %s"
 msgid "required if you want to group like with %s"
 msgstr "erforderlich wenn wie in %s gruppiert werden soll"
 
-#: admin/marker/targetmarker.php:148
+#: admin/marker/targetmarker.php:146
 msgid "Required, if source page and target page are not the same:"
 msgstr "Erforderlich, wenn Quellseite und Zielseite verschieden sind:"
 
@@ -3114,12 +3120,12 @@ msgstr "Siehe auch"
 msgid "see below"
 msgstr "siehe unten"
 
-#: admin/marker/targetmarker.php:195
+#: admin/marker/targetmarker.php:193
 msgid "see below."
 msgstr "siehe unten."
 
 #. %s is a href.
-#: admin/elevation/sgpx.php:174
+#: admin/elevation/sgpx.php:175
 #, php-format
 #| msgid "See documentation and examples in %1$shere%2$s."
 msgid "See documentation and examples %1$shere%2$s."
@@ -3134,7 +3140,7 @@ msgid "see table"
 msgstr "siehe Tabelle"
 
 #. %s are values.
-#: admin/elevation/sgpx.php:194
+#: admin/elevation/sgpx.php:195
 #, php-format
 msgid "Select %1$s to interpret the %2$s parameters as %3$s."
 msgstr "Wähle %1$s, um die %2$s-Parameter als %3$s zu interpretieren."
@@ -3174,7 +3180,7 @@ msgstr ""
 "oder 'penta'"
 
 #: admin/marker/targetmarker.php:37 admin/marker/targetmarker.php:42
-#: admin/marker/targetmarker.php:181
+#: admin/marker/targetmarker.php:179 admin/marker/targetmarker.php:197
 msgid "Shortcode"
 msgstr "Shortcode"
 
@@ -3186,7 +3192,7 @@ msgstr "Shortcode um leaflet-markers zu gruppieren"
 msgid "Shortcode for grouping markers (points) in leaflet-geojson"
 msgstr "Shortcode um Punkte (Points) in leaflet-geojson zu gruppieren"
 
-#: admin/marker/targetmarker.php:133
+#: admin/marker/targetmarker.php:131
 msgid "Shortcodes on target map"
 msgstr "Shortcodes auf der Zielkarte"
 
@@ -3579,7 +3585,7 @@ msgstr ""
 "disableClusteringAtZoom, maxClusterRadius und spiderfyOnMaxZoom, sind aber "
 "weiterhin gültig. Deine Einstellungen:"
 
-#: admin/marker/targetmarker.php:172
+#: admin/marker/targetmarker.php:170
 msgid "The order of the shortcodes is fixed!"
 msgstr "Die Reihenfolge der Shortcodes ist bindend!"
 
@@ -3595,7 +3601,7 @@ msgstr "Die Parameter und Einstellungen für %s sind ebenfalls gültig."
 msgid "The parameter maxZoom has been removed, please use %s instead."
 msgstr "Der Parameter maxZoom wurde entfernt, bitte nutze stattdessen %s."
 
-#: admin/marker/targetmarker.php:127
+#: admin/marker/targetmarker.php:125
 msgid "The parameters (querystring) from this link should be:"
 msgstr "Die Parameter (querystring) von diesem Link sollten sein:"
 
@@ -3667,7 +3673,7 @@ msgstr ""
 "Der Tooltip hat einen %1$s, dessen Standard ist %2$s. Du kannst den Tooltip "
 "mit css stylen, z.B."
 
-#: admin/marker/targetmarker.php:130
+#: admin/marker/targetmarker.php:128
 msgid "The URL can be link to a page on your website or to a remote one."
 msgstr ""
 "Die URL kann ein Link zu einer Seite auf deiner Website oder zu einer "
@@ -3731,7 +3737,7 @@ msgstr ""
 "%4$s."
 
 #. %s is styling
-#: admin/marker/targetmarker.php:121
+#: admin/marker/targetmarker.php:119
 #, php-format
 msgid ""
 "This is the only way to link to a marker on your map from an "
@@ -3740,7 +3746,7 @@ msgstr ""
 "Dies ist die einzige Möglichkeit, einen Link zu einem Marker auf deiner "
 "Karte auf einer %1$sexternen%2$s Webseite zu erstellen."
 
-#: admin/marker/targetmarker.php:204
+#: admin/marker/targetmarker.php:208
 msgid "This is the zoom level for zooming to the target marker."
 msgstr "Das ist der Zoomlevel für das Zoomen auf den Zielmarker."
 
@@ -3753,7 +3759,7 @@ msgid "This means for you:"
 msgstr "Das bedeutet für dich:"
 
 #. %s are shortcodes.
-#: admin/elevation/sgpx.php:167
+#: admin/elevation/sgpx.php:168
 #, php-format
 msgid "This page helps you to migrate from %1$s to %2$s."
 msgstr "Diese Seite hilft dir, von %1$s zu %2$s zu migrieren."
@@ -3821,7 +3827,7 @@ msgstr ""
 "festzulegen, definiere das %2$s im Customizer oder mit einer anderen Methode:"
 
 #. %s is a link.
-#: admin/elevation/sgpx.php:216
+#: admin/elevation/sgpx.php:217
 #, php-format
 msgid ""
 "To manage your tracks now, you can use %1$sManage Leaflet Map files%2$s."
@@ -4199,7 +4205,7 @@ msgstr "ja"
 msgid "You are using %1$s, there is a %2$sbug%3$s."
 msgstr "Du verwendest %1$s, hier gibt es einen %2$sBug%3$s."
 
-#: php/sgpx.php:181
+#: php/sgpx.php:143
 msgid ""
 "You are using the sgpx shortcode from plugin wp-gpx-maps. But the script "
 "cannot detect how to handle it. Please ask in the forum."
@@ -4207,7 +4213,7 @@ msgstr ""
 "Du verwendest den Shortcode sgpx vom Plugin wp-gpx-maps. Aber das Skript "
 "kann nicht erkennen, was zu tun ist. Bitte frage im Forum."
 
-#: php/sgpx.php:191
+#: php/sgpx.php:153
 msgid ""
 "You are using the sgpx shortcode from plugin wp-gpx-maps. wp-gpx-maps and "
 "leaflet-map don't work together."
@@ -4249,7 +4255,7 @@ msgstr "Du kannst es für jede Karte ändern mit"
 msgid "You can change it with"
 msgstr "Du kannst es ändern mit"
 
-#: admin/elevation/sgpx.php:238
+#: admin/elevation/sgpx.php:239
 msgid "You can delete all settings on this page."
 msgstr "Du kannst alle Einstellungen auf dieser Seite löschen."
 
@@ -4405,7 +4411,7 @@ msgstr "Du kannst diesen Shortcode irgendwo in deinem Text schreiben."
 msgid "You can't use the character %s allone."
 msgstr "Das Zeichen %s kann nicht allein verwendet werden."
 
-#: admin/elevation/sgpx.php:236
+#: admin/elevation/sgpx.php:237
 #| msgid ""
 #| "You have wp-gpx-maps uninstalled, but some of its options exist in the "
 #| "database. You should delete them."

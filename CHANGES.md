@@ -1,9 +1,10 @@
 # Differences to the Plugins WordPress version
 
-* XSS fix (not yet confirmed)
-* leaflet-elevation-2.8.0 - fixes problems: detached, canvas and Safari, and more.
+* XSS fixes (not yet confirmed)
+* leaflet-elevation-2.9.2 - fixes problems: detached, canvas and Safari, and more. Thank you to Raruto.
 * elevation option legend: black track and chart off fixed
 * leaflet-extramarker: removed option innerHTML due to the risk of a potential XSS attack
+* targetmarker/targetlink: debugging changed. New shortcode targetdebug, see documentation
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

@@ -30,7 +30,7 @@ function leafext_directory_function( $atts, $content, $shortcode ) {
 	if ( $text !== '' ) {
 		return $text;
 	} else {
-		$defaults = array(
+		$defaults        = array(
 			'src'       => '',
 			'url'       => '',
 			'type'      => 'gpx',
@@ -38,11 +38,13 @@ function leafext_directory_function( $atts, $content, $shortcode ) {
 			'elevation' => true,
 			'leaflet'   => false,
 		);
-		$options  = shortcode_atts( $defaults, leafext_clear_params( $atts ) );
+		$options         = shortcode_atts( $defaults, leafext_clear_params_true_false( $atts ) );
+		$options['src']  = $options['src'] !== '' ? validate_file( $options['src'] ) : '';
+		$options['url']  = $options['url'] !== '' ? esc_url( $options['url'] ) : '';
+		$options['type'] = wp_strip_all_tags( $options['type'] );
 		if ( $options['leaflet'] ) {
 			$options['elevation'] = false;
 		}
-		// var_dump($options);
 
 		if ( $options['src'] === '' ) {
 			$options['src'] = '...missing...';

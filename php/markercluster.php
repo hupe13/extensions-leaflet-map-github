@@ -111,10 +111,11 @@ function leafext_cluster_atts( $atts ) {
 	}
 	$settings = shortcode_atts( $defaults, get_option( 'leafext_cluster' ) );
 	// bereinige die nur Kleinbuchstaben vom Shortcode zu gross und klein wie der Java-Parameter ist
-	$atts1 = leafext_case( array_keys( $defaults ), leafext_clear_params( $atts ) );
+	$atts1 = leafext_case( array_keys( $defaults ), leafext_clear_params_true_false( $atts ) );
 	// gleiche mit eigenen settings und Plugin defaults ab
 	$options = shortcode_atts( $settings, $atts1 );
 
+	// Shortcode cluster options are bool, integer or numeric strings only
 	foreach ( $options as $option => $value ) {
 		if ( is_bool( $defaults[ $option ] ) ) {
 			$options[ $option ] = (bool) $value;

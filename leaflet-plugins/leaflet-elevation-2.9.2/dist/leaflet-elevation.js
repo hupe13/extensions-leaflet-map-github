@@ -129,11 +129,11 @@
   }
   var parseNumeric = (property, id) => parseInt(typeof property === "object" ? property[id] : property);
   var parseDate = (property, id) => new Date(Date.parse(typeof property === "object" ? property[id] : property));
-  var addClass = (n, str) => n && str.split(" ").every((s) => s && L.DomUtil.addClass(n, s));
-  var removeClass = (n, str) => n && str.split(" ").every((s) => s && L.DomUtil.removeClass(n, s));
+  var addClass = (n, str) => n && str.split(" ").every((s) => s && n.classList.add(s));
+  var removeClass = (n, str) => n && str.split(" ").every((s) => s && n.classList.remove(s));
   var toggleClass = (n, str, cond) => (cond ? addClass : removeClass)(n, str);
   var replaceClass = (n, rem, add) => rem && removeClass(n, rem) || add && addClass(n, add);
-  var style = (n, k, v) => typeof v === "undefined" && L.DomUtil.getStyle(n, k) || n.style.setProperty(k, v);
+  var style = (n, k, v) => typeof v === "undefined" && getComputedStyle(n)[k] || n.style.setProperty(k, v);
   var toggleStyle = (n, k, v, cond) => style(n, k, cond ? v : "");
   var setAttributes = (n, attrs) => {
     for (let k in attrs) {
@@ -142,14 +142,14 @@
     }
   };
   var toggleEvent = (el, e, fn, cond) => el[cond ? "on" : "off"](e, fn);
-  function create(tag, str, attrs, n) {
+  var create = (tag, str, attrs, n) => {
     const svg = tag.startsWith("svg:");
     const elem = svg ? document.createElementNS("http://www.w3.org/2000/svg", tag.slice(4)) : L.DomUtil.create(tag, str || "");
     if (svg && str) elem.setAttribute("class", str);
     if (attrs) setAttributes(elem, attrs);
     if (n) append(n, elem);
     return elem;
-  }
+  };
   var append = (n, c) => n.appendChild(c);
   var insert = (n, c, pos) => n.insertAdjacentElement(pos, c);
   var select = (str, n) => (n || document).querySelector(str);
@@ -171,7 +171,7 @@
   var iSum = (iVal, sum = 0) => iVal + sum;
   var { on, off } = L.DomEvent;
   var { throttle, wrapNum } = L.Util;
-  var { hasClass } = L.DomUtil;
+  var hasClass = (n, str) => n && str.split(" ").every((s) => s && n.classList.contains(s));
   var round = L.Util.formatNum;
   var clamp = (val, range) => range ? val < range[0] ? range[0] : val > range[1] ? range[1] : val : val;
   function bisect(data, value, attr, right = false) {
@@ -221,7 +221,7 @@
     autofitBounds: true,
     autohide: false,
     autohideMarker: true,
-    almostover: true,
+    almostOver: true,
     altitude: true,
     closeBtn: true,
     collapsed: false,
@@ -238,7 +238,7 @@
     handlers: ["Distance", "Time", "Altitude", "Slope", "Speed", "Acceleration"],
     hotline: "elevation",
     marker: "elevation-line",
-    markerIcon: L.divIcon({
+    markerIcon: new L.DivIcon({
       className: "elevation-position-marker",
       html: '<i class="elevation-position-icon"></i>',
       iconSize: [32, 32],
@@ -271,7 +271,7 @@
     trkEnd: { className: "end-marker", radius: 6, weight: 2, color: "#fff", fillColor: "#ff0606", fillOpacity: 1, interactive: false },
     waypoints: true,
     wptIcons: {
-      "": L.divIcon({
+      "": new L.DivIcon({
         className: "elevation-waypoint-marker",
         html: '<i class="elevation-waypoint-icon default"></i>',
         iconSize: [30, 30],
@@ -284,7 +284,7 @@
     yAttr: "z",
     yLabel: "m",
     zFollow: false,
-    zooming: !L.Browser.Mobile,
+    zooming: !L.Browser.mobile,
     // Quite uncommon and undocumented options
     margins: { top: 30, right: 30, bottom: 30, left: 40 },
     height: screen.height * 0.3 || 200,
@@ -306,15 +306,12 @@
     L._ = L.i18n = (string, data) => string;
   }
   var Elevation = L.Control.Elevation = L.Control.extend({
-    includes: L.Evented ? L.Evented.prototype : L.Mixin.Events,
     options: Options,
     __mileFactor: 0.621371,
     // 1 km = (0.621371 mi)
     __footFactor: 3.28084,
     // 1 m  = (3.28084 ft)
     __TOGEOJSON: "https://unpkg.com/@tmcw/togeojson@5.6.2/dist/togeojson.umd.js",
-    __LGEOMUTIL: "https://unpkg.com/leaflet-geometryutil@0.10.1/src/leaflet.geometryutil.js",
-    __LALMOSTOVER: "https://unpkg.com/leaflet-almostover@1.0.1/src/leaflet.almostover.js",
     __LHOTLINE: "../libs/leaflet-hotline.min.js",
     __LDISTANCEM: "../libs/leaflet-distance-marker.min.js",
     __LEDGESCALE: "../libs/leaflet-edgescale.min.js",
@@ -389,7 +386,7 @@
      * 
      * @link https://leafletjs.com/examples/extending/extending-3-controls.html#handlers
      */
-    // addHandler: function (name, HandlerClass) {
+    // addHandler(name, HandlerClass) {
     // 	if (HandlerClass) {
     // 		let handler = this[name] = new HandlerClass(this);
     // 		this.handlers.push(handler);
@@ -433,7 +430,7 @@
       if (this._map && bounds.isValid()) this._map.fitBounds(bounds);
     },
     getBounds(data) {
-      return L.latLngBounds((data || this._data).map((d) => d.latlng));
+      return new L.LatLngBounds((data || this._data).map((d) => d.latlng));
     },
     /**
      * Get default zoom level (followMarker: true).
@@ -451,15 +448,15 @@
      * Initialize chart control "options" and "container".
      */
     initialize(opts) {
-      opts = L.setOptions(this, L.extend({}, cloneDeep(Options), opts));
+      opts = L.Util.setOptions(this, Object.assign({}, cloneDeep(Options), opts));
       this._data = [];
-      this._layers = L.featureGroup();
-      this._markers = L.featureGroup();
-      this._hotline = L.featureGroup();
-      this._circleMarkers = L.featureGroup();
-      this._markedSegments = L.polyline([]);
-      this._start = L.circleMarker([0, 0], opts.trkStart || Options.trkStart);
-      this._end = L.circleMarker([0, 0], opts.trkEnd || Options.trkEnd);
+      this._layers = new L.FeatureGroup();
+      this._markers = new L.FeatureGroup();
+      this._hotline = new L.FeatureGroup();
+      this._circleMarkers = new L.FeatureGroup();
+      this._markedSegments = new L.Polyline([]);
+      this._start = new L.CircleMarker([0, 0], opts.trkStart || Options.trkStart);
+      this._end = new L.CircleMarker([0, 0], opts.trkEnd || Options.trkEnd);
       this._chartEnabled = true;
       this._yCoordMin = 0;
       this._yCoordMax = -Infinity;
@@ -472,7 +469,7 @@
       if (opts.trkStart) this._start.addTo(this._circleMarkers);
       if (opts.trkEnd) this._end.addTo(this._circleMarkers);
       this._markedSegments.setStyle(opts.polylineSegments);
-      L.extend(Colors, opts.colors || {});
+      Object.assign(Colors, opts.colors || {});
       this._fixCanvasPaths();
       this._fixTooltipSize();
     },
@@ -486,12 +483,6 @@
       switch (src) {
         case this.__TOGEOJSON:
           condition = typeof toGeoJSON !== "object";
-          break;
-        case this.__LGEOMUTIL:
-          condition = typeof L.GeometryUtil !== "object";
-          break;
-        case this.__LALMOSTOVER:
-          condition = typeof L.Handler.AlmostOver !== "function";
           break;
         case this.__LDISTANCEM:
           condition = typeof L.DistanceMarkers !== "function";
@@ -620,7 +611,7 @@
         x,
         y,
         z,
-        latlng: L.latLng(x, y, z)
+        latlng: new L.LatLng(x, y, z)
       });
       this.fire("eledata_updated", { index: this._data.length - 1 });
     },
@@ -637,25 +628,142 @@
     },
     /**
      * Initialize "L.AlmostOver" integration
+     * 
+     * Inspired by: https://github.com/makinacorpus/Leaflet.AlmostOver
      */
     _initAlmostOverHandler(map, layer) {
-      return map && this.options.almostOver && !L.Browser.mobile ? this.import([this.__LGEOMUTIL, this.__LALMOSTOVER]).then(() => {
-        map.addHandler("almostOver", L.Handler.AlmostOver);
-        if (L.GeometryUtil && map.almostOver && map.almostOver.enabled()) {
-          map.almostOver.addLayer(layer);
-          map.on("almost:move", this._onMouseMoveLayer, this).on("almost:out", this._onMouseOut, this);
-          this.once("eledata_clear", () => {
-            map.almostOver.removeLayer(layer);
-            map.off("almost:move", this._onMouseMoveLayer, this).off("almost:out", this._onMouseOut, this);
-          });
+      if (!map || !this.options.almostOver || L.Browser.mobile) return Promise.resolve();
+      map.almostOver = map.almostOver || {
+        _map: map,
+        _projectedLayers: /* @__PURE__ */ new WeakMap(),
+        _layers: [],
+        _previous: null,
+        _lastSample: 0,
+        enabled() {
+          return !!this._enabled;
+        },
+        enable() {
+          if (this.enabled()) return;
+          this._enabled = true;
+          if (this._map.options.almostOnMouseMove !== false) this._map.on("mousemove", this._sampleMouseMove, this);
+          this._map.on("click dblclick", this._onMouseClick, this);
+        },
+        disable() {
+          if (!this.enabled()) return;
+          this._map.off("mousemove", this._sampleMouseMove, this);
+          this._map.off("click dblclick", this._onMouseClick, this);
+          if (this._previous) this._map.fire("almost:out", { layer: this._previous.layer });
+          this._previous = null;
+          this._enabled = false;
+        },
+        addLayer(layer2) {
+          if (layer2.eachLayer) layer2.eachLayer((child) => this.addLayer(child));
+          else if (!this._layers.includes(layer2)) {
+            this._layers.push(layer2);
+            this._projectedLayers.delete(layer2);
+          }
+        },
+        removeLayer(layer2) {
+          if (layer2.eachLayer) layer2.eachLayer((child) => this.removeLayer(child));
+          else {
+            this._layers = this._layers.filter((item) => item !== layer2);
+            this._projectedLayers.delete(layer2);
+          }
+          this._previous = null;
+        },
+        getClosest(latlng) {
+          let closest;
+          const maxDistance = this._map.options.almostDistance ?? 25;
+          const closestPointOnLayer = (map2, layer2, latlng2, maxDistance2, cache) => {
+            let closest2;
+            const zoom = map2.getZoom();
+            const target = map2.project(latlng2, zoom);
+            function checkPath(points) {
+              let closestSquared = closest2 ? closest2.distance * closest2.distance : maxDistance2 * maxDistance2;
+              for (let i = 1; i < points.length; i++) {
+                const start = points[i - 1];
+                const end = points[i];
+                const point = L.LineUtil.closestPointOnSegment(target, start, end);
+                const distanceSquared = (target.x - point.x) ** 2 + (target.y - point.y) ** 2;
+                if (distanceSquared <= maxDistance2 * maxDistance2 && distanceSquared < closestSquared) {
+                  closestSquared = distanceSquared;
+                  closest2 = {
+                    layer: layer2,
+                    latlng: map2.unproject(point, zoom),
+                    distance: Math.sqrt(distanceSquared)
+                  };
+                }
+              }
+            }
+            if (layer2.eachLayer) {
+              layer2.eachLayer((child) => {
+                const match = closestPointOnLayer(map2, child, latlng2, closest2?.distance ?? maxDistance2, cache);
+                if (match && (!closest2 || match.distance < closest2.distance)) closest2 = match;
+              });
+            } else if (layer2.getLatLngs) {
+              const cached = cache.get(layer2);
+              if (cached?.zoom === zoom) {
+                cached.paths.forEach(checkPath);
+              } else {
+                const paths = [];
+                const collectPaths = (coords) => {
+                  if (!Array.isArray(coords)) return;
+                  if (coords.length && Number.isFinite(coords[0]?.lat)) paths.push(coords.map((point) => map2.project(point, zoom)));
+                  else coords.forEach(collectPaths);
+                };
+                collectPaths(layer2.getLatLngs());
+                cache.set(layer2, { zoom, paths });
+                paths.forEach(checkPath);
+              }
+            }
+            return closest2;
+          };
+          for (const layer2 of this._layers) {
+            const match = closestPointOnLayer(this._map, layer2, latlng, closest?.distance ?? maxDistance, this._projectedLayers);
+            if (match && (!closest || match.distance < closest.distance)) closest = match;
+          }
+          return closest;
+        },
+        _sampleMouseMove(event) {
+          const now = Date.now();
+          if (this._map._animatingZoom || this._map._panAnim?._inProgress || now - this._lastSample < (this._map.options.almostSamplingPeriod ?? 50) || !this._layers.length) return;
+          this._lastSample = now;
+          this._onMouseMove(event);
+        },
+        _onMouseMove(event) {
+          const closest = this.getClosest(event.latlng);
+          if (closest) {
+            if (!this._previous || this._previous.layer !== closest.layer) {
+              if (this._previous) this._map.fire("almost:out", { layer: this._previous.layer });
+              this._map.fire("almost:over", closest);
+            }
+            this._map.fire("almost:move", closest);
+          } else if (this._previous) {
+            this._map.fire("almost:out", { layer: this._previous.layer });
+          }
+          this._previous = closest;
+        },
+        _onMouseClick(event) {
+          const closest = this.getClosest(event.latlng);
+          if (closest) this._map.fire(`almost:${event.type}`, closest);
         }
-      }) : Promise.resolve();
+      };
+      if (!map.almostOver.enabled() && map.options.almostOver !== false) map.almostOver.enable();
+      if (map.almostOver.enabled()) {
+        map.almostOver.addLayer(layer);
+        map.on("almost:move", this._onMouseMoveLayer, this).on("almost:out", this._onMouseOut, this);
+        this.once("eledata_clear", () => {
+          map.almostOver.removeLayer(layer);
+          map.off("almost:move", this._onMouseMoveLayer, this).off("almost:out", this._onMouseOut, this);
+        });
+      }
+      return Promise.resolve();
     },
     /**
      * Initialize "L.DistanceMarkers" integration
      */
     _initDistanceMarkers() {
-      return this.options.distanceMarkers ? this.import([this.__LGEOMUTIL, this.__LDISTANCEM]) : Promise.resolve();
+      return this.options.distanceMarkers ? this.import(this.__LDISTANCEM) : Promise.resolve();
     },
     /**
      * Initialize "L.Control.EdgeScale" integration
@@ -670,7 +778,7 @@
       return this.options.hotline ? this.import(this.__LHOTLINE).then(() => {
         layer.eachLayer((trkseg) => {
           if (trkseg.feature.geometry.type != "Point") {
-            let geo = L.geoJson(trkseg.toGeoJSON(), { coordsToLatLng: (coords) => L.latLng(coords[0], coords[1], coords[2] * (this.options.altitudeFactor || 1)) });
+            let geo = new L.GeoJSON(trkseg.toGeoJSON(), { coordsToLatLng: (coords) => new L.LatLng(coords[0], coords[1], coords[2] * (this.options.altitudeFactor || 1)) });
             let line = L.hotline(geo.toGeoJSON().features[0].geometry.coordinates, {
               renderer: L.Hotline.renderer(),
               min: isFinite(this.track_info[prop + "_min"]) ? this.track_info[prop + "_min"] : 0,
@@ -859,7 +967,7 @@
         pane.style.pointerEvents = "none";
       }
       if (this._renderer) this._renderer.remove();
-      this._renderer = L.svg({ pane: "elevationPane" }).addTo(this._map);
+      this._renderer = new L.SVG({ pane: "elevationPane" }).addTo(this._map);
       this.import(this.__LMARKER).then((m) => {
         this._marker = new (m || Elevation).Marker(this.options, this);
         this.fire("elechart_marker");
@@ -925,7 +1033,7 @@
      */
     _loadLayer(geojson) {
       let { polyline, theme, waypoints, wptIcons, wptLabels, distanceMarkers } = this.options;
-      let style2 = L.extend({}, polyline);
+      let style2 = Object.assign({}, polyline);
       let dataAdded = [];
       if (theme) {
         style2.className += " " + theme;
@@ -933,7 +1041,7 @@
       if (geojson.name) {
         this.track_info.name = geojson.name;
       }
-      let layer = L.geoJson(geojson, {
+      let layer = new L.GeoJSON(geojson, {
         distanceMarkers,
         style: style2,
         pointToLayer: (feature, latlng) => {
@@ -971,7 +1079,7 @@
     },
     _onDragEnd({ dragstart, dragend }) {
       this._hideMarker();
-      this.fitBounds(L.latLngBounds([dragstart.latlng, dragend.latlng]));
+      this.fitBounds(new L.LatLngBounds([dragstart.latlng, dragend.latlng]));
       this.fire("elechart_dragged");
     },
     _onKeyDown({ key }) {
@@ -1216,17 +1324,17 @@
           statsName
         });
         if (grid) {
-          this._registerAxisGrid(L.extend({ name }, grid));
+          this._registerAxisGrid(Object.assign({ name }, grid));
         }
         if (this.options[name] !== "summary") {
-          if (scale) this._registerAxisScale(L.extend({ name, label: unit }, scale));
-          if (path) this._registerAreaPath(L.extend({ name }, path));
+          if (scale) this._registerAxisScale(Object.assign({ name, label: unit }, scale));
+          if (path) this._registerAreaPath(Object.assign({ name }, path));
         }
         if (tooltip || props.tooltips) {
-          each([tooltip, ...props.tooltips || []], (t) => t && this._registerTooltip(L.extend({ name }, t)));
+          each([tooltip, ...props.tooltips || []], (t) => t && this._registerTooltip(Object.assign({ name }, t)));
         }
         if (summary) {
-          each(summary, (s, k) => summary[k] = L.extend({ unit }, s));
+          each(summary, (s, k) => summary[k] = Object.assign({ unit }, s));
           this._registerSummary(summary);
         }
       }
@@ -1234,9 +1342,9 @@
     _registerMarker({ latlng, sym, content }) {
       let { wptIcons } = this.options;
       if (!wptIcons.hasOwnProperty(sym)) {
-        wptIcons[sym] = L.divIcon(L.extend({}, wptIcons[""].options, { html: '<i class="elevation-waypoint-icon ' + sym + '"></i>' }));
+        wptIcons[sym] = new L.DivIcon(Object.assign({}, wptIcons[""].options, { html: '<i class="elevation-waypoint-icon ' + sym + '"></i>' }));
       }
-      let marker = L.marker(latlng, { icon: wptIcons[sym] });
+      let marker = new L.Marker(latlng, { icon: wptIcons[sym] });
       if (content) {
         marker.bindPopup(content, { className: "elevation-popup", keepInView: true }).openPopup();
         marker.bindTooltip(content, { className: "elevation-tooltip", direction: "auto", sticky: true, opacity: 1 }).openTooltip();
@@ -1247,8 +1355,8 @@
      * Add chart or marker tooltip info
      */
     _registerTooltip(props) {
-      props.chart && this.on("elechart_init", () => this._chart._registerTooltip(L.extend({}, props, { value: props.chart })));
-      props.marker && this.on("elechart_marker", () => this._marker._registerTooltip(L.extend({}, props, { value: props.marker })));
+      props.chart && this.on("elechart_init", () => this._chart._registerTooltip(Object.assign({}, props, { value: props.chart })));
+      props.marker && this.on("elechart_marker", () => this._marker._registerTooltip(Object.assign({}, props, { value: props.marker })));
     },
     /**
      * Add summary info to diagram
@@ -1396,9 +1504,17 @@
       return height - margins.top - margins.bottom;
     }
   });
+  if (!("on" in Elevation.prototype)) {
+    for (const name of Object.getOwnPropertyNames(L.Evented.prototype)) {
+      if (name !== "constructor") {
+        Object.defineProperty(Elevation.prototype, name, Object.getOwnPropertyDescriptor(L.Evented.prototype, name));
+      }
+    }
+  }
 
   // src/index.js
   Elevation.Utils = utils_exports;
+  L.control = L.control || {};
   L.control.elevation = (options) => new Elevation(options);
 })();
 //# sourceMappingURL=leaflet-elevation.js.map

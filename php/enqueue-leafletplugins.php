@@ -16,7 +16,7 @@ define( 'LEAFEXT_MINI', '.min' );
  */
 
 // elevation, multielevation
-define( 'LEAFEXT_ELEVATION_VERSION', '2.8.0' );
+define( 'LEAFEXT_ELEVATION_VERSION', '2.9.2' );
 define( 'LEAFEXT_ELEVATION_URL', LEAFEXT_PLUGIN_URL . '/leaflet-plugins/leaflet-elevation-' . LEAFEXT_ELEVATION_VERSION . '/' );
 define( 'LEAFEXT_ELEVATION_DIR', LEAFEXT_PLUGIN_DIR . '/leaflet-plugins/leaflet-elevation-' . LEAFEXT_ELEVATION_VERSION . '/' );
 function leafext_enqueue_elevation() {

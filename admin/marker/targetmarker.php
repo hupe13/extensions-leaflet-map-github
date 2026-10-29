@@ -109,9 +109,7 @@ function leafext_targetmarker_help() {
 	)
 	. '</li>';
 	$text .= '<li> zoom - '
-	. __( 'see below', 'extensions-leaflet-map' ) . '</li>
-	<li> debug - '
-	. __( 'if true, log some infos to the developer console and add circles about the target on the map', 'extensions-leaflet-map' ) . '</li>';
+	. __( 'see below', 'extensions-leaflet-map' ) . '</li>';
 	$text .= '</ul></p></li></ul></p>' . "\n";
 
 	$text .= '<h3>' . __( 'Options for query string', 'extensions-leaflet-map' ) . '</h3>' . "\n";
@@ -148,8 +146,8 @@ function leafext_targetmarker_help() {
 	$text .= __( 'Required, if source page and target page are not the same:', 'extensions-leaflet-map' );
 
 	$text .= '<pre' . $codestyle . '><code' . $codestyle . '>';
-	$text .= '// popup, zoom, debug are optional' . "\n";
-	$text .= '&#091;targetmarker popup=... zoom=... debug=...]</code></pre>';
+	$text .= '// popup, zoom are optional' . "\n";
+	$text .= '&#091;targetmarker popup=... zoom=... ]</code></pre>';
 
 	$text .= '<p><ul><li><code>fitbounds</code>, <code>zoomhomemap</code> ' . __( 'are required!', 'extensions-leaflet-map' ) . '</li>' . "\n";
 	$text .= '<li><code>title</code> ' .
@@ -194,8 +192,14 @@ function leafext_targetmarker_help() {
 	<li> zoom - '
 	. __( 'see below.', 'extensions-leaflet-map' )
 	. '</li>' . "\n";
-	$text .= '
-	<li> debug - '
+	$text .= '</ul>';
+
+	$text .= '<h3>' . __( 'Shortcode', 'extensions-leaflet-map' ) . ' <code>targetdebug</code></h3>' . "\n";
+
+	$text .= '<p>'
+	. __( 'Applies to both shortcodes on the target page. Must be specified first.', 'extensions-leaflet-map' ) . '</p>';
+
+	$text .= '<ul><li> debug - '
 	. __( 'if true, log some infos to the developer console and add circles about the target on the map.', 'extensions-leaflet-map' ) .
 	'</li></ul>';
 
