@@ -47,5 +47,6 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 * elevation option legend: black track and chart off fixed
 * leaflet-extramarker: removed option innerHTML due to the risk of a potential XSS attack
 * targetmarker/targetlink: debugging changed. New shortcode targetdebug, see documentation
+* sgpx: Updated the code for the new version of wp-gpx-maps
 
 [more ...](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/CHANGELOG.md)
