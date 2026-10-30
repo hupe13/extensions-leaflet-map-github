@@ -129,7 +129,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 				$rand  = wp_rand( 1, 2000 );
 				$text  = '<form id=targetlink_' . $rand . ' style="display: inline-block;" method="post" action=' . $options['link'] . '>';
 				$text .= '<input type="hidden" name="property" value=' . wp_json_encode( $options['property'] ) . '>';
-				$text .= '<input type="hidden" name="value" value="' . $options['value'] . '">';
+				$text .= '<input type="hidden" name="value" value="' . esc_attr( $options['value'] ) . '">';
 				$text .= '<input type="hidden" name="zoom" value=' . wp_json_encode( $options['zoom'] ) . '>';
 				$text .= '<input type="hidden" name="mapid" value=' . wp_json_encode( $options['mapid'] ) . '>';
 				$text .= '<input type="hidden" name="debug" value=' . wp_json_encode( $options['debug'] ) . '>';
