@@ -199,20 +199,6 @@ function leafext_sgpx_help_text_2() {
 	);
 	echo '</li><li>';
 	echo wp_sprintf(
-		/* translators: %s are shortcodes / values. */
-		esc_html__( 'If you want to test it first: select %1$s and write in your test page / post %2$s.', 'extensions-leaflet-map' ),
-		'"leaflet"',
-		'<code>&#091;leaflet-map height="1"]</code>'
-	);
-	echo '</li><li>';
-	echo wp_sprintf(
-		/* translators: %s are a plugin name. */
-		esc_html__( 'If you are happy with this and if you don\'t use the track management of %1$s, you can deactivate and delete the plugin %1$s.', 'extensions-leaflet-map' ),
-		'WP GPX Maps'
-	);
-	echo '</li>';
-	echo '<li>';
-	echo wp_sprintf(
 		/* translators: %s is a link. */
 		esc_html__( 'To manage your tracks now, you can use %1$sManage Leaflet Map files%2$s.', 'extensions-leaflet-map' ),
 		is_admin() ? '<a href="?page=' . esc_html( LEAFEXT_PLUGIN_SETTINGS ) . '&tab=filemgr">' : '<a href="https://leafext.de/doku/filemgr/">',

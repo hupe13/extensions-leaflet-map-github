@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 7.1
-Stable tag: 6.0-261029
+Stable tag: 6.0-261030
 Requires at least: 6.8
 Requires PHP: 8.2
 License: GPLv2 or later
@@ -47,6 +47,6 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 * elevation option legend: black track and chart off fixed
 * leaflet-extramarker: removed option innerHTML due to the risk of a potential XSS attack
 * targetmarker/targetlink: debugging changed. New shortcode targetdebug, see documentation
-* sgpx: Updated the code for the new version of wp-gpx-maps
+* sgpx: Updated the code for the new version of wp-gpx-maps, see documentation.
 
 [more ...](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/CHANGELOG.md)
