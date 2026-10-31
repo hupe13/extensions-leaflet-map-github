@@ -101,11 +101,8 @@ function leafext_sgpx_params() {
 			'param'     => 'sgpx',
 			/* translators: %s are shortcodes. */
 			'shortdesc' => wp_sprintf( __( 'Replace %1$s with %2$s.', 'extensions-leaflet-map' ), '<code>sgpx</code> (wp-gpx-maps)', '<code>elevation</code>' ),
-			/* translators: %s is an option. */
 			'desc'      => wp_sprintf( __( 'No / Yes', 'extensions-leaflet-map' ), '<code>[leaflet-map height="1"]</code>' ),
-			// 'desc'      => wp_sprintf( __( 'No / Yes / Only, when %s is used, e.g. for testing.', 'extensions-leaflet-map' ), '<code>[leaflet-map height="1"]</code>' ),
 			'default'   => false,
-			// 'values'    => array( false, true, 'leaflet' ),
 			'values'    => array( false, true ),
 			'next'      => '0',
 		),

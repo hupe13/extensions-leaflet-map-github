@@ -89,8 +89,15 @@ function leafext_cluster_script( $params ) {
 		var clmarkers               = L.markerClusterGroup(
 			{
 				<?php
-				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
-				echo leafext_java_params( $params );
+				foreach ( $params as $k => $v ) {
+					echo wp_json_encode( $k ) . ': ';
+					if ( is_bool( $v ) ) {
+						echo $v ? esc_attr( 'true' ) : esc_attr( 'false' );
+					} elseif ( is_numeric( $v ) ) {
+						echo esc_attr( $v );
+					}
+					echo ',';
+				}
 				?>
 			}
 		);
@@ -123,7 +130,6 @@ function leafext_cluster_atts( $atts ) {
 			unset( $options[ $option ] );
 		}
 	}
-	// var_dump( $options );
 	return( $options );
 }
 
@@ -134,7 +140,6 @@ function leafext_cluster_function( $atts, $content, $shortcode ) {
 	} else {
 		leafext_enqueue_markercluster();
 		leafext_enqueue_leafext( 'markercluster' );
-		// erzeuge Javascript
 		return leafext_cluster_script( leafext_cluster_atts( $atts ) );
 	}
 }
