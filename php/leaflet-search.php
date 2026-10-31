@@ -152,7 +152,7 @@ function leafext_leafletsearch_function( $atts, $content, $shortcode ) {
 		foreach ( $params as $param ) {
 			$defaults[ $param['param'] ] = $param['default'];
 		}
-		$atts1   = leafext_case( array_keys( $defaults ), leafext_clear_params( $atts ) );
+		$atts1   = leafext_case( array_keys( $defaults ), leafext_clear_params_true_false( $atts ) );
 		$options = shortcode_atts( $defaults, $atts1 );
 		// var_dump($options);wp_die();
 		if ( $options['marker'] === 'false' ) {
@@ -174,13 +174,50 @@ function leafext_leafletsearch_function( $atts, $content, $shortcode ) {
 		$allproperties           = array_map( 'trim', explode( ',', $options['propertyName'] ) );
 		$options['propertyName'] = implode( $allproperties ) . wp_rand( 1, 20 ); // "leafextsearch";
 		leafext_enqueue_leafletsearch();
-		// var_dump(leafext_java_params($options));wp_die();
-		return leafext_leafletsearch_script( $options, trim( preg_replace( '/\s+/', ' ', leafext_java_params( $options ) ) ), $allproperties );
+		// var_dump( $options );
+		$javascript_params = '';
+		foreach ( $options as $k => $v ) {
+			switch ( $k ) {
+				//bool
+				case 'collapsed':
+				case 'hideMarkerOnCollapse':
+				case 'openPopup':
+					$javascript_params .= wp_json_encode( $k ) . ': ';
+					$javascript_params .= ( $v ? esc_attr( 'true' ) : esc_attr( 'false' ) ) . ',' . "\n";
+					break;
+				// number
+				case 'autoCollapseTime':
+					$javascript_params .= wp_json_encode( $k ) . ': ';
+					$javascript_params .= filter_var( $v, FILTER_VALIDATE_INT ) . ',' . "\n";
+					break;
+				// float
+				case 'zoom':
+					$javascript_params .= wp_json_encode( $k ) . ': ';
+					$javascript_params .= filter_var( $v, FILTER_VALIDATE_FLOAT ) . ',' . "\n";
+					break;
+				// string
+				case 'propertyName':
+				case 'container':
+				case 'textErr':
+				case 'textPlaceholder':
+				case 'position':
+					$javascript_params .= wp_json_encode( $k ) . ': ';
+					$javascript_params .= wp_json_encode( wp_strip_all_tags( $v ) ) . ',' . "\n";
+					break;
+				// markerdef or false
+				case 'marker':
+					$javascript_params .= wp_json_encode( $k ) . ': ';
+					$javascript_params .= leafext_valid_icon( $v ) . ',' . "\n";
+					break;
+				default:
+			}
+		}
+		return leafext_leafletsearch_script( $options, $javascript_params, $allproperties );
 	}
 }
-	add_shortcode( 'leaflet-search', 'leafext_leafletsearch_function' );
+add_shortcode( 'leaflet-search', 'leafext_leafletsearch_function' );
 
-function leafext_leafletsearch_script( $options, $jsoptions, $allproperties ) {
+function leafext_leafletsearch_script( $options, $javascript_params, $allproperties ) {
 	$text = '<script><!--';
 	ob_start();
 	?>/*<script>*/
@@ -204,7 +241,7 @@ function leafext_leafletsearch_script( $options, $jsoptions, $allproperties ) {
 				searchcontrol[map_id][att_propertyName] = att_propertyName;
 				console.log("mapid: "+map_id);
 				console.log(all_properties);
-				console.log(<?php echo wp_json_encode( $jsoptions ); ?>);
+				console.log(<?php echo wp_json_encode( $javascript_params ); ?>);
 				searchLayer = new L.LayerGroup(); //layer contain searched elements
 				var duplicates = [];
 			}
@@ -441,8 +478,8 @@ function leafext_leafletsearch_script( $options, $jsoptions, $allproperties ) {
 				var SearchControl = new L.Control.Search({
 					layer: searchLayer,
 					<?php
-					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					echo $jsoptions;
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- see lines 178-210 
+					echo $javascript_params;
 					?>
 					initial: false,
 					moveToLocation: function(latlng, title, map) {

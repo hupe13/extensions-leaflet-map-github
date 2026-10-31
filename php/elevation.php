@@ -812,11 +812,11 @@ function leafext_ele_java_params( $settings ) {
 			case 'polyline':
 				$v     = filter_var( $v, FILTER_SANITIZE_NUMBER_INT );
 				$value = '{className: "elevation-polyline",
-				color: "#000",
-				opacity: 0.75,
-				lineCap: "round",
-				weight: ' . $v . '
-			}';
+					color: "#000",
+					opacity: 0.75,
+					lineCap: "round",
+					weight: ' . $v . '
+				}';
 				$text  = $text . "$k: " . $value . ',' . "\n";
 				unset( $settings[ $k ] );
 				break;
@@ -824,12 +824,6 @@ function leafext_ele_java_params( $settings ) {
 			case 'trkStart':
 			case 'trkEnd':
 				if ( $v ) {
-					unset( $settings[ $k ] );
-				}
-				break;
-			case 'wptIcons':
-				if ( strpos( $v, '{' ) !== false ) {
-					$text .= "$k: " . $v . ',';
 					unset( $settings[ $k ] );
 				}
 				break;
@@ -894,6 +888,18 @@ function leafext_ele_java_params( $settings ) {
 				if ( $settings[ $k ] === '' ) {
 					unset( $settings[ $k ] );
 				}
+				break;
+			case 'width':
+				// "^[0-9]{2,4}$|^\(screen.width \* 0.[1-9]\) \|\| [0-9]{2,4}$"
+				$pattern = array(
+					'%\(screen.width \* 0.[1-9]\) \|\| [0-9]{2,4}%',
+					'%\(screen.width \* 0.[1-9]\)%',
+					'%[0-9]{2,4}%',
+				);
+				if ( preg_replace( $pattern, '', $v ) === '' ) {
+					$text .= "$k: " . $v . ',';
+				}
+				unset( $settings[ $k ] );
 				break;
 			default:
 		}

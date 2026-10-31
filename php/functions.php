@@ -37,44 +37,42 @@ function leafext_clear_params( $atts ) {
 				}
 				unset( $atts[ $attr ] );
 			} else {
-				$validicon = array(
-					// leaflet-search default icon
-					// https://github.com/stefanocudini/leaflet-search/blob/d29c5392b33cc31b338c3d17b5f8532fef5eae48/src/leaflet-search.js#L88-L97
-					'icon:',
-					'animate:',
-					'circle:',
-					'radius:',
-					'weight:',
-					'color:',
-					'stroke:',
-					'fill:',
-					//
-					// from L.Icon: https://leafletjs.com/reference.html#icon
-					'iconUrl:',
-					'iconSize:',
-					'iconAnchor:',
-					'popupAnchor:',
-					'tooltipAnchor:',
-					'shadowUrl:',
-					'shadowSize:',
-					'shadowAnchor:',
-				);
-				if ( $attr === 'marker' ) {
-					if ( strpos( str_replace( $validicon, '', $value ), ':' ) === false ) {
-						$atts[ $attr ] = leafext_esc_js( $value );
-					} else {
-						unset( $atts[ $attr ] );
-					}
-				} else {
-					$atts[ $attr ] = wp_kses_post( $value );
-				}
-				//echo '<pre>';
-				//var_dump( $attr, $value, $atts[ $attr ] );
-				//echo '</pre>';
+				$atts[ $attr ] = wp_kses_post( $value );
 			}
 		}
 	}
 	return( $atts );
+}
+
+function leafext_valid_icon( $icon ) {
+	$validicon = array(
+		// leaflet-search default icon
+		// https://github.com/stefanocudini/leaflet-search/blob/d29c5392b33cc31b338c3d17b5f8532fef5eae48/src/leaflet-search.js#L88-L97
+		'icon:',
+		'animate:',
+		'circle:',
+		'radius:',
+		'weight:',
+		'color:',
+		'stroke:',
+		'fill:',
+		//
+		// from L.Icon: https://leafletjs.com/reference.html#icon
+		'iconUrl:',
+		'iconSize:',
+		'iconAnchor:',
+		'popupAnchor:',
+		'tooltipAnchor:',
+		'shadowUrl:',
+		'shadowSize:',
+		'shadowAnchor:',
+	);
+
+	if ( strpos( str_replace( $validicon, '', $icon ), ':' ) === false ) {
+		return leafext_esc_js( $icon );
+	} else {
+		return '{}';
+	}
 }
 
 function leafext_esc_js( $text ) {

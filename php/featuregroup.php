@@ -35,7 +35,17 @@ function leafext_featuregroup_script( $options, $params ) {
 		let visible = <?php echo wp_json_encode( $options['visible'] ); ?>;
 		let substr = <?php echo wp_json_encode( $options['substr'] ); ?>;
 		let	alle = new L.markerClusterGroup({
-			<?php echo leafext_java_params( $params ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+			<?php
+			foreach ( $params as $k => $v ) {
+				echo wp_json_encode( $k ) . ': ';
+				if ( is_bool( $v ) ) {
+					echo $v ? esc_attr( 'true' ) : esc_attr( 'false' );
+				} elseif ( is_numeric( $v ) ) {
+					echo esc_attr( $v );
+				}
+				echo ',';
+			}
+			?>
 		});
 		let position = <?php echo wp_json_encode( $options['position'] ); ?>;
 		let collapsed = <?php echo wp_json_encode( filter_var( $options['collapsed'], FILTER_VALIDATE_BOOL ) ); ?>;

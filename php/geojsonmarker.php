@@ -40,8 +40,15 @@ function leafext_geojsonmarker_script( $propertyoptions, $extramarkericon, $clus
 		//
 		let clmarkers = L.markerClusterGroup({
 			<?php
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-			echo leafext_java_params( $clusteroptions );
+			foreach ( $clusteroptions as $k => $v ) {
+				echo wp_json_encode( $k ) . ': ';
+				if ( is_bool( $v ) ) {
+					echo $v ? esc_attr( 'true' ) : esc_attr( 'false' );
+				} elseif ( is_numeric( $v ) ) {
+					echo esc_attr( $v );
+				}
+				echo ',';
+			}
 			?>
 		});
 		let extramarkericon = <?php echo wp_json_encode( $extramarkericon ); ?>;
