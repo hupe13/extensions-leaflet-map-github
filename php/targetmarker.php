@@ -110,7 +110,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 			if ( $options['link'] !== '' && $options['title'] !== '' ) {
 				// sanitize see lines 51 - 61
 				$rand  = wp_rand( 1, 2000 );
-				$text  = '<form id=targetlink_' . $rand . ' style="display: inline-block;" method="post" action=' . $options['link'] . '>';
+				$text  = '<form id=targetlink_' . $rand . ' style="display: inline-block;" method="post" action="' . esc_attr( $options['link'] ) . '">';
 				$text .= '<input type="hidden" name="title" value="' . esc_attr( $options['title'] ) . '">';
 				$text .= '<input type="hidden" name="zoom" value=' . wp_json_encode( $options['zoom'] ) . '>';
 				$text .= '<input type="hidden" name="mapid" value="' . esc_attr( $options['mapid'] ) . '">';
@@ -127,7 +127,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 			} elseif ( $options['link'] !== '' && $options['property'] !== '' && $options['value'] !== '' ) {
 				// sanitize see lines 51 - 61
 				$rand  = wp_rand( 1, 2000 );
-				$text  = '<form id=targetlink_' . $rand . ' style="display: inline-block;" method="post" action=' . $options['link'] . '>';
+				$text  = '<form id=targetlink_' . $rand . ' style="display: inline-block;" method="post" action="' . esc_attr( $options['link'] ) . '">';
 				$text .= '<input type="hidden" name="property" value="' . esc_attr( $options['property'] ) . '">';
 				$text .= '<input type="hidden" name="value" value="' . esc_attr( $options['value'] ) . '">';
 				$text .= '<input type="hidden" name="zoom" value=' . wp_json_encode( $options['zoom'] ) . '>';
@@ -146,7 +146,7 @@ function leafext_targetmarker_function( $atts, $content, $shortcode ) {
 				// lat and lng post
 				// sanitize see lines 51 - 61
 				$rand  = wp_rand( 1, 2000 );
-				$text  = '<form id=targetlink_' . $rand . ' style="display: inline-block;" method="post" action=' . $options['link'] . '>';
+				$text  = '<form id=targetlink_' . $rand . ' style="display: inline-block;" method="post" action="' . esc_attr( $options['link'] ) . '">';
 				$text .= '<input type="hidden" name="lat" value=' . wp_json_encode( $options['lat'] ) . '>';
 				$text .= '<input type="hidden" name="lng" value=' . wp_json_encode( $options['lng'] ) . '>';
 				$text .= '<input type="hidden" name="zoom" value=' . wp_json_encode( $options['zoom'] ) . '>';
