@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || die();
 
 // Shortcode: [geojsonmarker]
 function leafext_geojsonmarker_script( $propertyoptions, $extramarkericon, $clusteroptions, $featuregroupoptions, $options ) {
-	$text = '<script><!--';
+	$text = '<script>';
 	ob_start();
 	?>/*<script>*/
 	function leafext_geojsonmarker_extramarker_js(markerColor) {
@@ -59,7 +59,7 @@ function leafext_geojsonmarker_script( $propertyoptions, $extramarkericon, $clus
 	});
 	<?php
 	$javascript = ob_get_clean();
-	$text       = $text . $javascript . '//-->' . "\n" . '</script>';
+	$text       = $text . $javascript . "\n" . '</script>';
 	$text       = \JShrink\Minifier::minify( $text );
 	return "\n" . $text . "\n";
 }

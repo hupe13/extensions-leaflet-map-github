@@ -107,7 +107,7 @@ function leafext_gestures_script( $lang ) {
 
 // For use with one map on a webpage
 function leafext_gesture_script( $lang ) {
-	$text = '<script><!--';
+	$text = '<script>';
 	ob_start();
 	?>
 	/*<script>*/
@@ -131,7 +131,7 @@ function leafext_gesture_script( $lang ) {
 	});
 	<?php
 	$javascript = ob_get_clean();
-	$text       = $text . $javascript . '//-->' . "\n" . '</script>';
+	$text       = $text . $javascript . "\n" . '</script>';
 	$text       = \JShrink\Minifier::minify( $text );
 	return "\n" . $text . "\n";
 }

@@ -73,7 +73,7 @@ add_shortcode( 'hoverlap', 'leafext_hoverlap_function' );
 
 // Shortcode: [hoverlap]
 function leafext_hoverlap_script( $options ) {
-	$text = '<script><!--';
+	$text = '<script>';
 	ob_start();
 	?>/*<script>*/
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -85,7 +85,7 @@ function leafext_hoverlap_script( $options ) {
 	});
 	<?php
 	$javascript = ob_get_clean();
-	$text       = $text . $javascript . '//-->' . "\n" . '</script>';
+	$text       = $text . $javascript . "\n" . '</script>';
 	$text       = \JShrink\Minifier::minify( $text );
 	return "\n" . $text . "\n";
 }

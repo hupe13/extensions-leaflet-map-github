@@ -219,7 +219,7 @@ function leafext_target_get_latlng_script( $options ) {
 	global $leafext_targetdebug;
 	// var_dump( (bool) $leafext_targetdebug );
 	// sanitize see lines 51 - 61, 90 - 93
-	$text = '<script><!--';
+	$text = '<script>';
 	ob_start();
 	?>
 	/*<script>*/
@@ -235,7 +235,7 @@ function leafext_target_get_latlng_script( $options ) {
 	});
 	<?php
 	$javascript = ob_get_clean();
-	$text       = $text . $javascript . '//-->' . "\n" . '</script>';
+	$text       = $text . $javascript . "\n" . '</script>';
 	$text       = \JShrink\Minifier::minify( $text );
 	return "\n" . $text . "\n";
 }
@@ -244,7 +244,7 @@ function leafext_target_post_title_script( $options ) {
 	global $leafext_targetdebug;
 	// var_dump( (bool) $leafext_targetdebug );
 	// sanitize see lines 51 - 61
-	$text = '<script><!--';
+	$text = '<script>';
 	ob_start();
 	?>
 	/*<script>*/
@@ -259,14 +259,14 @@ function leafext_target_post_title_script( $options ) {
 	});
 	<?php
 	$javascript = ob_get_clean();
-	$text       = $text . $javascript . '//-->' . "\n" . '</script>';
+	$text       = $text . $javascript . "\n" . '</script>';
 	$text       = \JShrink\Minifier::minify( $text );
 	return "\n" . $text . "\n";
 }
 
 function leafext_target_post_geojson_script( $options ) {
 	// sanitize see lines 68 - 74
-	$text = '<script><!--';
+	$text = '<script>';
 	ob_start();
 	?>
 	/*<script>*/
@@ -282,7 +282,7 @@ function leafext_target_post_geojson_script( $options ) {
 	});
 	<?php
 	$javascript = ob_get_clean();
-	$text       = $text . $javascript . '//-->' . "\n" . '</script>';
+	$text       = $text . $javascript . "\n" . '</script>';
 	$text       = \JShrink\Minifier::minify( $text );
 	return "\n" . $text . "\n";
 }

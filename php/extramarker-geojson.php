@@ -45,7 +45,7 @@ function leafext_extramarker_geojson_function( $atts, $content, $shortcode ) {
 add_shortcode( 'leaflet-geojson-extramarker', 'leafext_extramarker_geojson_function' );
 
 function leafext_extramarker_geojson_script( $file, $icon ) {
-	$text = '<script><!--';
+	$text = '<script>';
 	ob_start();
 	?>/*<script>*/
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -85,7 +85,7 @@ function leafext_extramarker_geojson_script( $file, $icon ) {
 	});
 	<?php
 	$javascript = ob_get_clean();
-	$text       = $text . $javascript . '//-->' . "\n" . '</script>';
+	$text       = $text . $javascript . "\n" . '</script>';
 	$text       = \JShrink\Minifier::minify( $text );
 	return "\n" . $text . "\n";
 }

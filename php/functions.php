@@ -36,8 +36,14 @@ function leafext_clear_params( $atts ) {
 					$atts[ substr( $atts[ $attr ], 1 ) ] = false;
 				}
 				unset( $atts[ $attr ] );
+			} elseif ( preg_match( '%^[a-zA-Z0-9:\-/\._\ ,]+$%', $value ) ) {
+					$atts[ $attr ] = $value;
+			} elseif ( $attr === 'width' ) {
+				$atts[ $attr ] = $value; // checked in php/elevation.php 892ff
 			} else {
-				$atts[ $attr ] = wp_kses_post( $value );
+				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_dump
+				var_dump( 'ERROR:', $attr, $value );
+				unset( $atts[ $attr ] );
 			}
 		}
 	}

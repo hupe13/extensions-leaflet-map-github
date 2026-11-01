@@ -218,7 +218,7 @@ function leafext_leafletsearch_function( $atts, $content, $shortcode ) {
 add_shortcode( 'leaflet-search', 'leafext_leafletsearch_function' );
 
 function leafext_leafletsearch_script( $options, $javascript_params, $allproperties ) {
-	$text = '<script><!--';
+	$text = '<script>';
 	ob_start();
 	?>/*<script>*/
 		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -569,7 +569,7 @@ function leafext_leafletsearch_script( $options, $javascript_params, $allpropert
 
 		<?php
 		$javascript = ob_get_clean();
-		$text       = $text . $javascript . '//-->' . "\n" . '</script>';
+		$text       = $text . $javascript . "\n" . '</script>';
 		$text       = \JShrink\Minifier::minify( $text );
 		return "\n" . $text . "\n";
 }

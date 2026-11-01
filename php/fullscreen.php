@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || die();
 
 // Shortcode: [fullscreen]
 function leafext_fullscreen_script( $position ) {
-	$text = '<script><!--';
+	$text = '<script>';
 	ob_start();
 	?>/*<script>*/
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -25,7 +25,7 @@ function leafext_fullscreen_script( $position ) {
 	});
 	<?php
 	$javascript = ob_get_clean();
-	$text       = $text . $javascript . '//-->' . "\n" . '</script>';
+	$text       = $text . $javascript . "\n" . '</script>';
 	$text       = \JShrink\Minifier::minify( $text );
 	return "\n" . $text . "\n";
 }

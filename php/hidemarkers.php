@@ -14,7 +14,7 @@ function leafext_hidemarkers_function() {
 	if ( $text !== '' ) {
 		return $text;
 	} else {
-		$text = '<script><!--';
+		$text = '<script>';
 		ob_start();
 		?>/*<script>*/
 		window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -37,7 +37,7 @@ function leafext_hidemarkers_function() {
 		});
 		<?php
 		$javascript = ob_get_clean();
-		$text       = $text . $javascript . '//-->' . "\n" . '</script>';
+		$text       = $text . $javascript . "\n" . '</script>';
 		$text       = \JShrink\Minifier::minify( $text );
 		return $text;
 	}

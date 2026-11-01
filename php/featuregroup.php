@@ -23,7 +23,7 @@ add_filter(
 
 // both Shortcodes
 function leafext_featuregroup_script( $options, $params ) {
-	$text = '<script><!--';
+	$text = '<script>';
 	ob_start();
 	?>/*<script>*/
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -53,7 +53,7 @@ function leafext_featuregroup_script( $options, $params ) {
 	});
 	<?php
 	$javascript = ob_get_clean();
-	$text       = $text . $javascript . '//-->' . "\n" . '</script>';
+	$text       = $text . $javascript . "\n" . '</script>';
 
 	$text = \JShrink\Minifier::minify( $text );
 	return "\n" . $text . "\n";

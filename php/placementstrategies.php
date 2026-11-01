@@ -92,7 +92,7 @@ function leafext_placementstrategies_params() {
 function leafext_placementstrategies_script( $params ) {
 	// var_dump($params);wp_die();
 	// var_dump($params['elementsPlacementStrategy']);wp_die();
-	$text = '<script><!--';
+	$text = '<script>';
 	ob_start();
 	?>/*<script>*/
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -102,7 +102,7 @@ function leafext_placementstrategies_script( $params ) {
 	});
 	<?php
 	$javascript = ob_get_clean();
-	$text       = $text . $javascript . '//-->' . "\n" . '</script>';
+	$text       = $text . $javascript . "\n" . '</script>';
 	$text       = \JShrink\Minifier::minify( $text );
 	return "\n" . $text . "\n";
 }

@@ -896,10 +896,9 @@ function leafext_ele_java_params( $settings ) {
 					'%\(screen.width \* 0.[1-9]\)%',
 					'%[0-9]{2,4}%',
 				);
-				if ( preg_replace( $pattern, '', $v ) === '' ) {
-					$text .= "$k: " . $v . ',';
+				if ( preg_replace( $pattern, '', $v ) !== '' ) {
+					unset( $settings[ $k ] );
 				}
-				unset( $settings[ $k ] );
 				break;
 			default:
 		}
@@ -907,10 +906,65 @@ function leafext_ele_java_params( $settings ) {
 	return array( $text, $settings );
 }
 
+function leafext_java_params_elevation( $params ) {
+	// var_dump($params); wp_die();
+	$text = '';
+	foreach ( $params as $k => $v ) {
+		if ( $k === 'polylineSegments' ) {
+			$text .= $k . ': ' . $v;
+		} elseif ( $k === 'width' ) {
+			// $text .= $k . ': ' . wp_json_encode( $v ); // does not work!
+			$text .= $k . ': ' . $v;
+		} else {
+			switch ( gettype( $v ) ) {
+				case 'string':
+					switch ( $v ) {
+						case 'false':
+						case '0':
+							$value = 'false';
+							break;
+						case 'true':
+						case '1':
+							$value = 'true';
+							break;
+						case is_numeric( $v ):
+							$value = $v;
+							break;
+						default:
+							$pattern = array(
+								'%[0-9a-zA-Z\-#]+%',
+							);
+							if ( preg_replace( $pattern, '', $v ) === '' ) {
+								$value = wp_json_encode( $v );
+							} else {
+								// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_dump
+								var_dump( 'invalidChars', $k, $v );
+								wp_die( 'value has invalid characters' );
+							}
+					}
+					break;
+				case 'boolean':
+					$value = $v ? 'true' : 'false';
+					break;
+				case 'integer':
+					$value = $v;
+					break;
+				default:
+					// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_dump
+					var_dump( 'Type', $k, $v );
+					wp_die( 'Type' );
+			}
+			$text .= $k . ': ' . $value;
+		}
+		$text .= ",\n";
+	}
+	return $text;
+}
+
 // Shortcode: [elevation gpx="...url..."]
 function leafext_elevation_script( $gpx, $settings ) {
 	list($elevation_settings, $settings) = leafext_ele_java_params( $settings );
-	$text                                = '<script><!--';
+	$text                                = '<script>';
 	ob_start();
 	?>/*<script>*/
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -921,7 +975,7 @@ function leafext_elevation_script( $gpx, $settings ) {
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
 			echo $elevation_settings;
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
-			echo leafext_java_params( $settings );
+			echo leafext_java_params_elevation( $settings );
 			?>
 		};
 
@@ -988,7 +1042,7 @@ function leafext_elevation_script( $gpx, $settings ) {
 	});
 	<?php
 	$javascript = ob_get_clean();
-	$text      .= $javascript . '//-->' . "\n" . '</script>';
+	$text      .= $javascript . "\n" . '</script>';
 	$text       = \JShrink\Minifier::minify( $text );
 	return "\n" . $text . "\n";
 }

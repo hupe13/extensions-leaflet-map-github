@@ -174,6 +174,53 @@ function leafext_eleparams_for_multi( $options = array() ) {
 	}
 }
 
+function leafext_java_params_multi( $params ) {
+	// var_dump($params); wp_die();
+	$text = '';
+	foreach ( $params as $k => $v ) {
+		if ( $k === 'highlight' ) {
+			$text .= $k . ': ' . $v;
+		} else {
+			$text .= $k . ': ';
+			switch ( gettype( $v ) ) {
+				case 'string':
+					switch ( $v ) {
+						case 'false':
+						case '0':
+							$value = 'false';
+							break;
+						case 'true':
+						case '1':
+							$value = 'true';
+							break;
+						default:
+							$pattern = array(
+								'%[a-zA-Z]+%',
+							);
+							if ( preg_replace( $pattern, '', $v ) === '' ) {
+								$value = wp_json_encode( $v );
+							} else {
+								// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_dump
+								var_dump( 'invalidChars', $k, $v );
+								wp_die( 'value has invalid characters' );
+							}
+					}
+					break;
+				case 'boolean':
+					$value = $v ? 'true' : 'false';
+					break;
+				default:
+					// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_dump
+					var_dump( 'Type', $k, $v );
+					wp_die( 'Type' );
+			}
+			$text .= $value;
+		}
+		$text .= ",\n";
+	}
+	return $text;
+}
+
 function leafext_multielevation_settings( $typ = array( 'changeable' ) ) {
 	$defaults = array();
 	$params   = leafext_multielevation_params( $typ );
@@ -403,6 +450,7 @@ function leafext_multielevation( $atts, $content, $shortcode ) {
 
 			$multioptions = shortcode_atts( leafext_multielevation_settings( array( 'multielevation', 'fixed' ) ), leafext_clear_params( $atts ) );
 			if ( isset( $multioptions['highlight'] ) ) {
+				// wp_json_encode does not apply here
 				$multioptions['highlight'] = "{color: '" . $multioptions['highlight'] . "',opacity: 1,}";
 			}
 
@@ -430,6 +478,7 @@ function leafext_multielevation( $atts, $content, $shortcode ) {
 
 		// var_dump($leafext_all_files, $leafext_all_points, $options, $multioptions); wp_die();
 		// var_dump($options,$multioptions);
+
 		$rand = wp_rand( 1, 20 );
 		$text = $style . leafext_multielevation_script( $leafext_all_files, $leafext_all_points, $options, $multioptions, $rand );
 
@@ -446,7 +495,7 @@ add_shortcode( 'multielevation', 'leafext_multielevation' );
 function leafext_multielevation_script( $leafext_all_files, $leafext_all_points, $settings, $multioptions, $rand ) {
 	// var_dump($settings,$multioptions); wp_die();
 	list($elevation_settings, $settings) = leafext_ele_java_params( $settings );
-	$text                                = '<script><!--';
+	$text                                = '<script>';
 	ob_start();
 	?>/*<script>*/
 	window.WPLeafletMapPlugin = window.WPLeafletMapPlugin || [];
@@ -474,7 +523,7 @@ function leafext_multielevation_script( $leafext_all_files, $leafext_all_points,
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
 				echo $elevation_settings;
 				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
-				echo leafext_java_params( $settings );
+				echo leafext_java_params_elevation( $settings );
 				?>
 			},
 			distanceMarkers:
@@ -530,7 +579,7 @@ function leafext_multielevation_script( $leafext_all_files, $leafext_all_points,
 			},
 			<?php
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
-			echo leafext_java_params( $multioptions );
+			echo leafext_java_params_multi( $multioptions );
 			?>
 		});
 		// console.log(routes);
@@ -570,7 +619,7 @@ function leafext_multielevation_script( $leafext_all_files, $leafext_all_points,
 	});
 	<?php
 	$javascript = ob_get_clean();
-	$text       = $text . $javascript . '//-->' . "\n" . '</script>';
+	$text       = $text . $javascript . "\n" . '</script>';
 	$text       = \JShrink\Minifier::minify( $text );
 	return "\n" . $text . "\n";
 }

@@ -1,4 +1,4 @@
-### 6.1 / 2610xx
+### 6.1 / 2611xx
 
 * XSS fixes (not yet confirmed)
 * leaflet-elevation-2.9.2 - fixes problems: detached, canvas and Safari, and more. Thank you to Raruto.
@@ -6,6 +6,7 @@
 * leaflet-extramarker: removed option innerHTML due to the risk of a potential XSS attack
 * targetmarker/targetlink: debugging changed. New shortcode targetdebug, see documentation
 * sgpx: Updated the code for the new version of wp-gpx-maps, see documentation.
+* removed '<!--' and  '//-->' for <script>
 
 ### 6.0 / 261017
 
