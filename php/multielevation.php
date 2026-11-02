@@ -240,7 +240,9 @@ function leafext_elevation_track( $atts, $content, $shortcode ) {
 	if ( $text !== '' ) {
 		return $text;
 	} else {
-		if ( $atts['file'] === '' ) {
+		if ( $atts['file'] === '' ||
+		( wp_http_validate_url( $atts['file'] ) === false
+		&& wp_http_validate_url( get_site_url() . $atts['file'] ) === false ) ) {
 			$text = '[elevation-track ';
 			foreach ( $atts as $key => $item ) {
 				$text .= esc_html( "$key=$item " );

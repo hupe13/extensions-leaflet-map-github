@@ -746,63 +746,63 @@ function leafext_elevation_colors() {
 		);
 	}
 
-		$params = array(
-			array(
-				'param'     => 'altitude',
-				'shortdesc' => __( 'Altitude chart profile', 'extensions-leaflet-map' ),
-				'desc'      => '',
-				'default'   => isset( $themes[ $theme ]['altitude'] ) ? $themes[ $theme ]['altitude'] : '',
-			),
-			array(
-				'param'     => 'speed',
-				'shortdesc' => __( 'Speed chart profile', 'extensions-leaflet-map' ),
-				'desc'      => '',
-				'default'   => isset( $themes[ $theme ]['speed'] ) ? $themes[ $theme ]['speed'] : '#03ffff',
-			),
-			array(
-				'param'     => 'acceleration',
-				'shortdesc' => __( 'Acceleration chart profile', 'extensions-leaflet-map' ),
-				'desc'      => '',
-				'default'   => isset( $themes[ $theme ]['acceleration'] ) ? $themes[ $theme ]['acceleration'] : '#050402',
-			),
-			array(
-				'param'     => 'slope',
-				'shortdesc' => __( 'Slope chart profile', 'extensions-leaflet-map' ),
-				'desc'      => '',
-				'default'   => isset( $themes[ $theme ]['slope'] ) ? $themes[ $theme ]['slope'] : '#FF0000',
-			),
-			array(
-				'param'     => 'pace',
-				'shortdesc' => __( 'Pace profile - time per distance', 'extensions-leaflet-map' ),
-				'desc'      => '',
-				'default'   => isset( $themes[ $theme ]['pace'] ) ? $themes[ $theme ]['pace'] : '#03ffff',
-			),
-			array(
-				'param'     => 'heart',
-				'shortdesc' => __( 'Line color of the heart rate', 'extensions-leaflet-map' ),
-				'desc'      => '',
-				'default'   => isset( $themes[ $theme ]['heart'] ) ? $themes[ $theme ]['heart'] : '#ff0000',
-			),
-			array(
-				'param'     => 'polyline',
-				'shortdesc' => __( 'Track color', 'extensions-leaflet-map' ),
-				'desc'      => '',
-				'default'   => isset( $themes[ $theme ]['polyline'] ) ? $themes[ $theme ]['polyline'] : '#000',
-			),
-			array(
-				'param'     => 'polylineSegments',
-				'shortdesc' => __( 'Track color over the ruler filter', 'extensions-leaflet-map' ),
-				'desc'      => '',
-				'default'   => '#F00',
-			),
-			array(
-				'param'     => 'background',
-				'shortdesc' => __( 'Chart background color', 'extensions-leaflet-map' ),
-				'desc'      => '',
-				'default'   => isset( $themes[ $theme ]['background'] ) ? $themes[ $theme ]['background'] : '',
-			),
-		);
-		return $params;
+	$params = array(
+		array(
+			'param'     => 'altitude',
+			'shortdesc' => __( 'Altitude chart profile', 'extensions-leaflet-map' ),
+			'desc'      => '',
+			'default'   => isset( $themes[ $theme ]['altitude'] ) ? $themes[ $theme ]['altitude'] : '',
+		),
+		array(
+			'param'     => 'speed',
+			'shortdesc' => __( 'Speed chart profile', 'extensions-leaflet-map' ),
+			'desc'      => '',
+			'default'   => isset( $themes[ $theme ]['speed'] ) ? $themes[ $theme ]['speed'] : '#03ffff',
+		),
+		array(
+			'param'     => 'acceleration',
+			'shortdesc' => __( 'Acceleration chart profile', 'extensions-leaflet-map' ),
+			'desc'      => '',
+			'default'   => isset( $themes[ $theme ]['acceleration'] ) ? $themes[ $theme ]['acceleration'] : '#050402',
+		),
+		array(
+			'param'     => 'slope',
+			'shortdesc' => __( 'Slope chart profile', 'extensions-leaflet-map' ),
+			'desc'      => '',
+			'default'   => isset( $themes[ $theme ]['slope'] ) ? $themes[ $theme ]['slope'] : '#FF0000',
+		),
+		array(
+			'param'     => 'pace',
+			'shortdesc' => __( 'Pace profile - time per distance', 'extensions-leaflet-map' ),
+			'desc'      => '',
+			'default'   => isset( $themes[ $theme ]['pace'] ) ? $themes[ $theme ]['pace'] : '#03ffff',
+		),
+		array(
+			'param'     => 'heart',
+			'shortdesc' => __( 'Line color of the heart rate', 'extensions-leaflet-map' ),
+			'desc'      => '',
+			'default'   => isset( $themes[ $theme ]['heart'] ) ? $themes[ $theme ]['heart'] : '#ff0000',
+		),
+		array(
+			'param'     => 'polyline',
+			'shortdesc' => __( 'Track color', 'extensions-leaflet-map' ),
+			'desc'      => '',
+			'default'   => isset( $themes[ $theme ]['polyline'] ) ? $themes[ $theme ]['polyline'] : '#000',
+		),
+		array(
+			'param'     => 'polylineSegments',
+			'shortdesc' => __( 'Track color over the ruler filter', 'extensions-leaflet-map' ),
+			'desc'      => '',
+			'default'   => '#F00',
+		),
+		array(
+			'param'     => 'background',
+			'shortdesc' => __( 'Chart background color', 'extensions-leaflet-map' ),
+			'desc'      => '',
+			'default'   => isset( $themes[ $theme ]['background'] ) ? $themes[ $theme ]['background'] : '',
+		),
+	);
+	return $params;
 }
 
 function leafext_ele_java_params( $settings ) {
@@ -911,7 +911,7 @@ function leafext_java_params_elevation( $params ) {
 	$text = '';
 	foreach ( $params as $k => $v ) {
 		if ( $k === 'polylineSegments' ) {
-			$text .= $k . ': ' . $v;
+			$text .= $k . ': ' . $v; // is a fixed (not changeable) option
 		} elseif ( $k === 'width' ) {
 			// $text .= $k . ': ' . wp_json_encode( $v ); // does not work!
 			$text .= $k . ': ' . $v;
@@ -1130,7 +1130,10 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 	if ( $text !== '' ) {
 		return $text;
 	} else {
-		if ( ! isset( $atts['gpx'] ) ) {
+		if ( ! isset( $atts['gpx'] ) ||
+		( wp_http_validate_url( $atts['gpx'] ) === false
+		&& wp_http_validate_url( get_site_url() . $atts['gpx'] ) === false )
+		) {
 			$text = '[elevation ';
 			foreach ( $atts as $key => $item ) {
 				$text .= esc_html( "$key=$item " );
@@ -1149,6 +1152,12 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 			$atts['legend']       = 0;
 			$atts['summary']      = 'inline';
 			$atts['legend']       = false;
+		}
+
+		foreach ( array_keys( leafext_elevation_settings( array( 'fixed' ) ) ) as $param ) {
+			if ( array_key_exists( strtolower( $param ), $atts ) ) {
+				unset( $atts[ strtolower( $param ) ] );
+			}
 		}
 
 		$atts1   = leafext_case( array_keys( leafext_elevation_settings( array( 'changeable', 'fixed' ) ) ), leafext_clear_params( $atts ) );
@@ -1261,7 +1270,7 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 		if ( is_array( $owncolors ) ) {
 			if ( isset( $owncolors['polylineSegments'] ) ) {
 				$options['polylineSegments'] = '{className: "elevation-polyline-segments",
-					color: "' . $owncolors['polylineSegments'] . '",
+					color: ' . wp_json_encode( $owncolors['polylineSegments'] ) . ',
 					interactive: false,
 				}';
 			}

@@ -41,8 +41,8 @@ function leafext_clear_params( $atts ) {
 			} elseif ( $attr === 'width' ) {
 				$atts[ $attr ] = $value; // checked in php/elevation.php 892ff
 			} else {
-				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_dump
-				var_dump( 'ERROR:', $attr, $value );
+				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
+				print_r( 'ERROR: ' . esc_html( $attr ) . '=' . esc_html( $value ) );
 				unset( $atts[ $attr ] );
 			}
 		}
@@ -133,55 +133,6 @@ function leafext_array_find2( $needle, $haystack ) {
 			return $item;
 		}
 	}
-}
-
-// Trage php array keys und values in javascript script ein.
-function leafext_java_params( $params ) {
-	// var_dump($params); wp_die();
-	$text = '';
-	foreach ( $params as $k => $v ) {
-		// var_dump($v,gettype($v),strpos($v,"["));
-		$text .= "$k: ";
-		switch ( gettype( $v ) ) {
-			case 'string':
-				switch ( $v ) {
-					case 'false':
-					case '0':
-						$value = 'false';
-						break;
-					case 'true':
-					case '1':
-						$value = 'true';
-						break;
-					case strpos( $v, '{' ) !== false:
-					case strpos( $v, '}' ) !== false:
-					case strpos( $v, '[' ) !== false:
-					case strpos( $v, ']' ) !== false:
-					case strpos( $v, 'screen.width' ) !== false:
-					case is_numeric( $v ):
-						$value = $v;
-						break;
-					default:
-						$value = '"' . $v . '"';
-				}
-				break;
-			case 'boolean':
-				$value = $v ? 'true' : 'false';
-				break;
-			case 'integer':
-			case 'double':
-				$value = $v;
-				break;
-			default:
-				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_dump
-				var_dump( $k, $v, gettype( $v ) );
-				wp_die( 'Type' );
-		}
-		$text .= $value;
-		$text .= ",\n";
-	}
-	// var_dump($text); wp_die();
-	return $text;
 }
 
 /**
