@@ -1026,7 +1026,7 @@ function leafext_elevation_script( $gpx, $settings ) {
 		if ( $settings['track'] ) {
 			if ( $settings['track'] === 'filename' ) {
 				$path_parts = pathinfo( $gpx );
-				$switchname = '"' . $path_parts['filename'] . '"';
+				$switchname = wp_json_encode( $path_parts['filename'] );
 			} else {
 				$switchname = 'e.name';
 			}
@@ -1224,32 +1224,32 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 		$handlers = array();
 
 		if ( (bool) $options['pace'] ) {
-			$handlers[] = '"Pace"';
+			$handlers[] = wp_json_encode( 'Pace' );
 			if ( ! (bool) $options['time'] ) {
 				$options['time'] = 'summary';
 			}
 			if ( (bool) $options['speed'] ) {
-				$handlers[] = '"Speed"';
+				$handlers[] = wp_json_encode( 'Speed' );
 			}
 			if ( (bool) $options['acceleration'] ) {
-				$handlers[] = '"Acceleration"';
+				$handlers[] = wp_json_encode( 'Acceleration' );
 			}
 			if ( (bool) $options['slope'] ) {
-				$handlers[] = '"Slope"';
+				$handlers[] = wp_json_encode( 'Slope' );
 			}
 		}
 		if ( (bool) $options['heart'] ) {
-			$handlers[] = '"Heart"';
+			$handlers[] = wp_json_encode( 'Heart' );
 			if ( ! (bool) $options['time'] ) {
 				$options['time'] = 'summary';
 			}
 		}
 		if ( (bool) $options['labelsRotation'] || $options['labelsAlign'] !== 'start' ) {
-			$handlers[] = '"Labels"';
+			$handlers[] = wp_json_encode( 'Labels' );
 		}
 		if ( (bool) $options['linearGradient'] ) {
-			$handlers[] = '"Slope"';
-			$handlers[] = '"LinearGradient"';
+			$handlers[] = wp_json_encode( 'Slope' );
+			$handlers[] = wp_json_encode( 'LinearGradient' );
 		}
 
 		$handlers = array_unique( $handlers );

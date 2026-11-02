@@ -37,12 +37,11 @@ function leafext_clear_params( $atts ) {
 				}
 				unset( $atts[ $attr ] );
 			} elseif ( preg_match( '%^[a-zA-Z0-9:\-/\._\ ,]+$%', $value ) ) {
-					$atts[ $attr ] = $value;
+				$atts[ $attr ] = $value;
 			} elseif ( $attr === 'width' ) {
 				$atts[ $attr ] = $value; // checked in php/elevation.php 892ff
 			} else {
-				// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
-				print_r( 'ERROR: ' . esc_html( $attr ) . '=' . esc_html( $value ) );
+				echo '<script>console.log(' . wp_json_encode( esc_js( 'elevation ERROR ' . $attr . '=' . $value ) ) . ')</script>';
 				unset( $atts[ $attr ] );
 			}
 		}

@@ -179,7 +179,7 @@ function leafext_java_params_multi( $params ) {
 	$text = '';
 	foreach ( $params as $k => $v ) {
 		if ( $k === 'highlight' ) {
-			$text .= $k . ': ' . $v;
+			$text .= $k . ': ' . $v; // see line 456
 		} else {
 			$text .= $k . ': ';
 			switch ( gettype( $v ) ) {
@@ -431,18 +431,18 @@ function leafext_multielevation( $atts, $content, $shortcode ) {
 				// $options = leafext_elevation_pace($options);
 				$handlers = array();
 				if ( (bool) $options['pace'] ) {
-					$handlers[] = '"Pace"';
+					$handlers[] = wp_json_encode( 'Pace' );
 					if ( ! (bool) $options['time'] ) {
 						$options['time'] = 'summary';
 					}
 					if ( (bool) $options['speed'] ) {
-						$handlers[] = '"Speed"';
+						$handlers[] = wp_json_encode( 'Speed' );
 					}
 					if ( (bool) $options['acceleration'] ) {
-						$handlers[] = '"Acceleration"';
+						$handlers[] = wp_json_encode( 'Acceleration' );
 					}
 					if ( (bool) $options['slope'] ) {
-						$handlers[] = '"Slope"';
+						$handlers[] = wp_json_encode( 'Slope' );
 					}
 				}
 				if ( count( $handlers ) > 0 ) {
