@@ -49,35 +49,79 @@ function leafext_clear_params( $atts ) {
 	return( $atts );
 }
 
-function leafext_valid_icon( $icon ) {
-	$validicon = array(
-		// leaflet-search default icon
-		// https://github.com/stefanocudini/leaflet-search/blob/d29c5392b33cc31b338c3d17b5f8532fef5eae48/src/leaflet-search.js#L88-L97
-		'icon:',
-		'animate:',
-		'circle:',
-		'radius:',
-		'weight:',
-		'color:',
-		'stroke:',
-		'fill:',
-		//
-		// from L.Icon: https://leafletjs.com/reference.html#icon
-		'iconUrl:',
-		'iconSize:',
-		'iconAnchor:',
-		'popupAnchor:',
-		'tooltipAnchor:',
-		'shadowUrl:',
-		'shadowSize:',
-		'shadowAnchor:',
+function leafext_parens_pairs( $test_string ) {
+	$opening = array(
+		'}' => '{',
+		//']' => '[',
+		//')' => '(',
 	);
-
-	if ( strpos( str_replace( $validicon, '', $icon ), ':' ) === false ) {
-		return leafext_esc_js( $icon );
-	} else {
-		return '{}';
+	$parens = array();
+	foreach ( str_split( $test_string ) as $char ) {
+		switch ( $char ) {
+			case '{':
+				//case '[':
+				//case '(':
+				$parens[] = $char;
+				break;
+			case '}':
+				//case ']':
+				//case ')':
+				if ( ! count( $parens ) || array_pop( $parens ) !== $opening[ $char ] ) {
+					return false;
+				}
+				break;
+			default:
+				break;
+		}
 	}
+	return count( $parens ) === 0;
+}
+
+function leafext_valid_icon( $icon ) {
+	// leaflet-search default icon
+	// https://github.com/stefanocudini/leaflet-search/blob/d29c5392b33cc31b338c3d17b5f8532fef5eae48/src/leaflet-search.js#L88-L97
+	// 'icon:',
+	// 'animate:',
+	// 'circle:',
+	// 'radius:',
+	// 'weight:',
+	// 'color:',
+	// 'stroke:',
+	// 'fill:',
+	//
+	// from L.Icon: https://leafletjs.com/reference.html#icon
+	// 'iconUrl:',
+	// 'iconSize:',
+	// 'iconAnchor:',
+	// 'popupAnchor:',
+	// 'tooltipAnchor:',
+	// 'shadowUrl:',
+	// 'shadowSize:',
+	// 'shadowAnchor:',
+
+	$test_icon = trim( $icon );
+	if ( strpos( $test_icon, ':' ) === false ) {
+		return false;
+	}
+	if ( ! str_starts_with( $test_icon, '{' ) || ! str_ends_with( $test_icon, '}' ) ) {
+		return false;
+	}
+	if ( ! leafext_parens_pairs( $test_icon ) ) {
+		return false;
+	}
+	$test_icon = trim( $icon, '{}' );
+	$test_icon = preg_replace( '/^icon:[ ]?new[ ]*L.Icon\(\{(.*)\}\)$/', '${1}', $test_icon );
+	if ( strpos( $test_icon, '(' ) !== false || strpos( $test_icon, ')' ) !== false ) {
+		return false;
+	}
+
+	$validicon = '/(icon:|animate:|circle:|radius:|weight:|color:|stroke:|fill:|iconUrl:|iconSize:|iconAnchor:|popupAnchor:|tooltipAnchor:|shadowUrl:|shadowSize:|shadowAnchor:)/';
+	$test_icon = implode( '', preg_split( $validicon, $test_icon ) );
+	if ( strpos( $test_icon, ':' ) !== false ) {
+		return false;
+	}
+
+	return $icon;
 }
 
 function leafext_esc_js( $text ) {

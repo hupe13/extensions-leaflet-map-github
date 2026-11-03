@@ -206,8 +206,10 @@ function leafext_leafletsearch_function( $atts, $content, $shortcode ) {
 					break;
 				// markerdef or false
 				case 'marker':
-					$javascript_params .= wp_json_encode( $k ) . ': ';
-					$javascript_params .= leafext_valid_icon( $v ) . ',' . "\n";
+					if ( leafext_valid_icon( $v ) ) {
+						$javascript_params .= wp_json_encode( $k ) . ': ';
+						$javascript_params .= leafext_esc_js( $v ) . ',' . "\n";
+					}
 					break;
 				default:
 			}
