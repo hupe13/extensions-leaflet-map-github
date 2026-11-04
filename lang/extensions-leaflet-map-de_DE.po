@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-10-30 16:57+0000\n"
+"PO-Revision-Date: 2026-11-04 20:22+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -545,7 +545,7 @@ msgstr "Namen der Kinder"
 msgid "className for the tooltip"
 msgstr "className für den Tooltip"
 
-#: php/functions.php:234
+#: php/functions.php:135
 msgid "Click to interpret shortcodes."
 msgstr "Klicke, um die Shortcodes auszuführen."
 
@@ -1557,6 +1557,16 @@ msgstr ""
 "Elemente, deren %6$s nicht bekannt ist, werden in der Gruppe %7$s platziert. "
 "Siehe auch die Entwicklerkonsole."
 
+#. %s are options and a link
+#: php/leaflet-search.php:130
+#, php-format
+msgid ""
+"If %1$s contains %2$s, you can specify the options %3$s and %4$s to define a "
+"custom icon, see %5$sexample page%6$s."
+msgstr ""
+"Wenn %1$s %2$s enthält, kannst du die Optionen %3$s und %4$s angeben, um ein "
+"benutzerdefiniertes Icon zu definieren, siehe %5$sBeispielseite%6$s."
+
 #. %s are options.
 #: admin/elevation/multielevation.php:206
 #, php-format
@@ -2454,7 +2464,7 @@ msgstr "Mehr Optionen"
 msgid "More options see"
 msgstr "Weitere Optionen siehe die"
 
-#: php/multielevation.php:437
+#: php/multielevation.php:488
 msgid "move mouse over a track or select one in control panel ..."
 msgstr ""
 "Bewege die Maus über einen Track oder wähle einen im Control Panel aus ..."
@@ -2516,8 +2526,7 @@ msgstr "Weiter"
 msgid "no"
 msgstr "nein"
 
-#. %s is an option.
-#: php/sgpx.php:105
+#: php/sgpx.php:104
 msgid "No / Yes"
 msgstr "Nein / Ja"
 
@@ -3210,7 +3219,7 @@ msgstr "Zeige Dateien vom Typ"
 msgid "show or hide marker at the position found"
 msgstr "Zeige Marker an der gefundenen Position oder nicht"
 
-#: php/leaflet-search.php:136
+#: php/leaflet-search.php:145
 msgid "show or hide popup when position found"
 msgstr "Zeige Popup an der gefundenen Position oder nicht"
 

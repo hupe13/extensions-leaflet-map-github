@@ -195,13 +195,22 @@ function leafext_leafletsearch_function( $atts, $content, $shortcode ) {
 				'shadowsize' => '',
 			);
 			$custom_icon   = shortcode_atts( $icon_defaults, $atts );
-			if ( $custom_icon['iconurl'] !== '' ) {
+			$size_regex    = '/^(\d+), ?(\d+)$/';
+			$size_string   = '${1},${2}';
+			// Fix: Parse iconsize, iconanchor and shadowsize as two integers each (for example with absint on an explode), then emit them with wp_json_encode() instead of esc_html().
+			// wp_json_encode inserts " on begin an end -> JavaScript does not work!!!
+			if ( $custom_icon['iconurl'] !== '' &&
+				$custom_icon['shadowurl'] !== '' &&
+				preg_match( $size_regex, $custom_icon['iconsize'] ) &&
+				preg_match( $size_regex, $custom_icon['iconanchor'] ) &&
+				preg_match( $size_regex, $custom_icon['shadowsize'] )
+				) {
 				$custom_icondef    = 'icon:new L.Icon(' .
 				'{iconUrl:' . wp_json_encode( filter_var( $custom_icon['iconurl'], FILTER_SANITIZE_URL ) ) . ',' .
 				'shadowUrl:' . wp_json_encode( filter_var( $custom_icon['shadowurl'], FILTER_SANITIZE_URL ) ) . ',' .
-				'iconSize:[' . esc_html( $custom_icon['iconsize'] ) . '],' .
-				'iconAnchor:[' . esc_html( $custom_icon['iconanchor'] ) . '],' .
-				'shadowSize:[' . esc_html( $custom_icon['shadowsize'] ) . ']' .
+				'iconSize:[' . preg_replace( $size_regex, $size_string, $custom_icon['iconsize'] ) . '],' .
+				'iconAnchor:[' . preg_replace( $size_regex, $size_string, $custom_icon['iconanchor'] ) . '],' .
+				'shadowSize:[' . preg_replace( $size_regex, $size_string, $custom_icon['shadowsize'] ) . ']' .
 				'})';
 				$options['marker'] = str_replace( 'icon:true', $custom_icondef, $options['marker'] );
 			}
@@ -523,6 +532,7 @@ function leafext_leafletsearch_script( $options, $javascript_params, $allpropert
 				var SearchControl = new L.Control.Search({
 					layer: searchLayer,
 					<?php
+					// every escaping or any other function results in invalid JavaScript!!!
 					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					echo $javascript_params;
 					?>
