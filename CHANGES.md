@@ -5,6 +5,7 @@
 * elevation option legend: black track and chart off fixed
 * leaflet-extramarker: removed option innerHTML due to the risk of a potential XSS attack
 * targetmarker/targetlink: debugging changed. New shortcode targetdebug, see documentation
+* leaflet-search: please see documentation how to specify a custom icon.
 * sgpx: Updated the code for the new version of wp-gpx-maps, see documentation.
 * removed '<!--' and  '//-->' for <script>
 

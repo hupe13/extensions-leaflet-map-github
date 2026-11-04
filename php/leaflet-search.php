@@ -125,6 +125,15 @@ function leafext_search_params() {
 				'false',
 				'<a href="https://leafext.de/leafletsearch/leafletsearchmarker/">',
 				'</a>'
+			) . '<p>' . wp_sprintf(
+				/* translators: %s are options and a link */
+				__( 'If %1$s contains %2$s, you can specify the options %3$s and %4$s to define a custom icon, see %5$sexample page%6$s.', 'extensions-leaflet-map' ),
+				'<code>marker</code>',
+				'<code>icon:true</code>',
+				'<code>iconurl</code>, <code>iconsize</code>, <code>iconanchor</code>',
+				'<code>shadowurl</code>, <code>shadowsize</code>',
+				'<a href="https://leafext.de/leafletsearch/leafletsearchmarker/">',
+				'</a>'
 			),
 		),
 		// | marker.icon      | false    | custom L.Icon for maker location or false for hide |
@@ -137,9 +146,26 @@ function leafext_search_params() {
 			'default' => true,
 			'values'  => 'true, false',
 		),
-
 	);
 	return $params;
+}
+
+function leafext_valid_search_marker( $icon ) {
+	$test_icon = trim( $icon );
+	if ( strpos( $test_icon, '(' ) !== false || strpos( $test_icon, ')' ) !== false ) {
+		return '{}';
+	}
+	if ( strpos( $test_icon, ':' ) === false ) {
+		return '{}';
+	}
+	if ( ! str_starts_with( $test_icon, '{' ) || ! str_ends_with( $test_icon, '}' ) ) {
+		return '{}';
+	}
+	$all_chars = count_chars( $icon, 1 );
+	if ( $all_chars[ ord( '{' ) ] !== $all_chars[ ord( '}' ) ] ) {
+		return '{}';
+	}
+	return str_replace( ' ', '', $icon );
 }
 
 function leafext_leafletsearch_function( $atts, $content, $shortcode ) {
@@ -156,12 +182,29 @@ function leafext_leafletsearch_function( $atts, $content, $shortcode ) {
 		$options = shortcode_atts( $defaults, $atts1 );
 		// var_dump($options);wp_die();
 		if ( $options['marker'] === 'false' ) {
-			$options['marker'] = '{icon:false, circle:{radius:0,weight:0}}';
+			$options['marker'] = '{icon:false,circle:{radius:0,weight:0}}';
+		} else {
+			$options['marker'] = leafext_valid_search_marker( $options['marker'] );
 		}
-		if ( $options['marker'] !== '{}' ) {
-			$pattern           = array( "/:\s*'\s*(-?\d+)\s*,\s*(-?\d+)\s*'/" );
-			$replacement       = array( ':[$1,$2]' );
-			$options['marker'] = preg_replace( $pattern, $replacement, $options['marker'] );
+		if ( strpos( $options['marker'], 'icon:true' ) !== false ) {
+			$icon_defaults = array(
+				'iconurl'    => '',
+				'shadowurl'  => '',
+				'iconsize'   => '',
+				'iconanchor' => '',
+				'shadowsize' => '',
+			);
+			$custom_icon   = shortcode_atts( $icon_defaults, $atts );
+			if ( $custom_icon['iconurl'] !== '' ) {
+				$custom_icondef    = 'icon:new L.Icon(' .
+				'{iconUrl:' . wp_json_encode( filter_var( $custom_icon['iconurl'], FILTER_SANITIZE_URL ) ) . ',' .
+				'shadowUrl:' . wp_json_encode( filter_var( $custom_icon['shadowurl'], FILTER_SANITIZE_URL ) ) . ',' .
+				'iconSize:[' . esc_html( $custom_icon['iconsize'] ) . '],' .
+				'iconAnchor:[' . esc_html( $custom_icon['iconanchor'] ) . '],' .
+				'shadowSize:[' . esc_html( $custom_icon['shadowsize'] ) . ']' .
+				'})';
+				$options['marker'] = str_replace( 'icon:true', $custom_icondef, $options['marker'] );
+			}
 		}
 		if ( $options['container'] === '' ) {
 			unset( $options['container'] );
@@ -206,10 +249,10 @@ function leafext_leafletsearch_function( $atts, $content, $shortcode ) {
 					break;
 				// markerdef or false
 				case 'marker':
-					if ( leafext_valid_icon( $v ) ) {
-						$javascript_params .= wp_json_encode( $k ) . ': ';
-						$javascript_params .= leafext_esc_js( $v ) . ',' . "\n";
-					}
+					// var_dump( $v );
+					$javascript_params .= wp_json_encode( $k ) . ': ';
+					// is constructed from shortcode
+					$javascript_params .= $v . ',' . "\n";
 					break;
 				default:
 			}
@@ -480,12 +523,12 @@ function leafext_leafletsearch_script( $options, $javascript_params, $allpropert
 				var SearchControl = new L.Control.Search({
 					layer: searchLayer,
 					<?php
-					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- see lines 178-210 
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 					echo $javascript_params;
 					?>
 					initial: false,
 					moveToLocation: function(latlng, title, map) {
-						//console.log("moveToLocation");
+						// console.log("moveToLocation");
 						// console.log(latlng, title);
 						// console.log(latlng.layer);
 						if (latlng.layer.feature && latlng.layer.feature.geometry && latlng.layer.feature.geometry.type == "Point") {

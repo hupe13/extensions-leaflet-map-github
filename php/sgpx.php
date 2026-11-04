@@ -219,6 +219,8 @@ function leafext_change_sgpx_shortcode() {
 	if ( $options['sgpx'] === '1' ) {
 		remove_shortcode( 'sgpx' );
 		add_shortcode( 'sgpx', 'leafext_sgpx_function' );
+	} elseif ( ! LEAFEXT_SGPX_ACTIVE ) {
+		add_shortcode( 'sgpx', 'leafext_sgpx_function' );
 	}
 }
 add_action( 'init', 'leafext_change_sgpx_shortcode', 20 );
