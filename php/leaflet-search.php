@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || die();
 */
 
 // Parameter and Values
-function leafext_search_params() {
+function leafext_search_params( $type = 'all' ) {
 	$params = array(
 		// | url             | ''       | url for search by ajax request, ex: "search.php?q={s}". Can be function to returns string for dynamic parameter setting | |
 		// | layer            | null     | layer where search markers(is a L.LayerGroup)                 |
@@ -41,6 +41,7 @@ function leafext_search_params() {
 				'feature.property',
 				'popupContent'
 			),
+			'typ'     => 'general',
 		),
 		// | formatData   | null     | callback for reformat all data from source to indexed data object |
 		// | filterData   | null     | callback for filtering data from text searched, params: textSearch, allRecords |
@@ -52,6 +53,7 @@ function leafext_search_params() {
 			'desc'    => __( 'container id to style the control panel (outside the map) with custom css', 'extensions-leaflet-map' ),
 			'default' => '',
 			'values'  => __( 'see below', 'extensions-leaflet-map' ),
+			'typ'     => 'general',
 		),
 		// | zoom             | null     | default zoom level for move to location |
 		array(
@@ -59,6 +61,7 @@ function leafext_search_params() {
 			'desc'    => __( 'zoom level for move to location for searching markers', 'extensions-leaflet-map' ),
 			'default' => get_option( 'leaflet_default_zoom', '15' ),
 			'values'  => __( 'The default value is the same as the setting for the Leaflet Map plugin.', 'extensions-leaflet-map' ),
+			'typ'     => 'general',
 		),
 		// | minLength        | 1        | minimal text length for autocomplete |
 		// | initial          | true     | search elements only by initial text |
@@ -75,6 +78,7 @@ function leafext_search_params() {
 			'desc'    => __( 'collapse search control at startup', 'extensions-leaflet-map' ),
 			'default' => true,
 			'values'  => 'true, false',
+			'typ'     => 'general',
 		),
 		// | autoCollapse     | false    | collapse search control after submit(on button or on tips if enabled tipAutoSubmit) |
 		// | autoCollapseTime| 1200  | delay for autoclosing alert and collapse after blur |
@@ -83,6 +87,7 @@ function leafext_search_params() {
 			'desc'    => __( 'delay for autoclosing alert and collapse after blur', 'extensions-leaflet-map' ),
 			'default' => '1200',
 			'values'  => '',
+			'typ'     => 'general',
 		),
 		// | textErr          | 'Location not found' |  error message |
 		array(
@@ -90,6 +95,7 @@ function leafext_search_params() {
 			'desc'    => __( 'error message', 'extensions-leaflet-map' ),
 			'default' => __( 'Location not found', 'extensions-leaflet-map' ),
 			'values'  => '',
+			'typ'     => 'general',
 		),
 		// | textCancel   | 'Cancel  | title in cancel button        |
 		// | textPlaceholder | 'Search' | placeholder value          |
@@ -98,7 +104,9 @@ function leafext_search_params() {
 			'desc'    => __( 'placeholder value', 'extensions-leaflet-map' ),
 			'default' => __( 'Search...', 'extensions-leaflet-map' ),
 			'values'  => '',
+			'typ'     => 'general',
 		),
+
 		// // | hideMarkerOnCollapse         | false     | remove circle and marker on search control collapsed      |
 		// hupe13: default true
 		array(
@@ -106,6 +114,7 @@ function leafext_search_params() {
 			'desc'    => __( 'remove circle and marker on search control collapsed or search canceled', 'extensions-leaflet-map' ),
 			'default' => true,
 			'values'  => 'true, false',
+			'typ'     => 'general',
 		),
 		// // | position          | 'topleft'| position in the map       |
 		array(
@@ -113,59 +122,123 @@ function leafext_search_params() {
 			'desc'    => __( 'position in the map', 'extensions-leaflet-map' ),
 			'default' => 'topleft',
 			'values'  => 'topleft, topright, bottomleft, bottomright',
+			'typ'     => 'general',
 		),
-		// // | marker        | {}       | custom L.Marker or false for hide |
-		array(
-			'param'   => 'marker',
-			'desc'    => __( 'show or hide marker at the position found', 'extensions-leaflet-map' ),
-			'default' => '{}',
-			'values'  => wp_sprintf(
-				/* translators: %1$s is an option, %2$s and %3$s is a href */
-				__( 'not specified for default (red circle), %1$s for no marker, or a definition like on an %2$sexample page%3$s.', 'extensions-leaflet-map' ),
-				'false',
-				'<a href="https://leafext.de/leafletsearch/leafletsearchmarker/">',
-				'</a>'
-			) . '<p>' . wp_sprintf(
-				/* translators: %s are options and a link */
-				__( 'If %1$s contains %2$s, you can specify the options %3$s and %4$s to define a custom icon, see %5$sexample page%6$s.', 'extensions-leaflet-map' ),
-				'<code>marker</code>',
-				'<code>icon:true</code>',
-				'<code>iconurl</code>, <code>iconsize</code>, <code>iconanchor</code>',
-				'<code>shadowurl</code>, <code>shadowsize</code>',
-				'<a href="https://leafext.de/leafletsearch/leafletsearchmarker/">',
-				'</a>'
-			),
-		),
-		// | marker.icon      | false    | custom L.Icon for maker location or false for hide |
-		// | marker.animate  | true  | animate a circle over location found |
-		// | marker.circle    | L.CircleMarker options |    draw a circle in location found |
 		// hupe13 open popup when location found
 		array(
 			'param'   => 'openPopup',
 			'desc'    => __( 'show or hide popup when position found', 'extensions-leaflet-map' ),
 			'default' => true,
 			'values'  => 'true, false',
+			'typ'     => 'general',
 		),
-	);
-	return $params;
-}
+		// | marker        | {}       | custom L.Marker or false for hide |
+		// | marker.icon      | false    | custom L.Icon for marker location or false for hide |
+		array(
+			'param'   => 'icon',
+			'desc'    => __( 'show default or custom marker icon (true) on location found or hide it (false)', 'extensions-leaflet-map' ),
+			'default' => false,
+			'values'  => 'true, false',
+			'typ'     => 'general',
+		),
+		array(
+			'param'   => 'iconUrl',
+			'desc'    => __( 'Give a url for the marker image file', 'extensions-leaflet-map' ),
+			'default' => '',
+			'values'  => wp_sprintf(
+				/* translators: %s is an option */
+				__( 'see %1$s. Please specify all customs marker options.', 'extensions-leaflet-map' ),
+				'<code>leaflet-marker</code>'
+			),
+			'typ'     => 'icon',
+		),
+		array(
+			'param'   => 'iconSize',
+			'desc'    => wp_sprintf(
+				/* translators: %1$s is an option */
+				__( 'Set the size of the icon', 'extensions-leaflet-map' ),
+				'<code>iconsize</code>'
+			),
+			'default' => '',
+			'values'  => __( 'for example "80,50" for 80px width 50px height', 'extensions-leaflet-map' ),
+			'typ'     => 'icon',
+		),
+		array(
+			'param'   => 'iconAnchor',
+			'desc'    => __( 'Set the anchor position of the icon', 'extensions-leaflet-map' ),
+			'default' => '',
+			'values'  => __( 'for example "40,60" for 40px left 60px top', 'extensions-leaflet-map' ),
+			'typ'     => 'icon',
+		),
+		array(
+			'param'   => 'shadowUrl',
+			'desc'    => __( 'Give a url for the marker shadow image file', 'extensions-leaflet-map' ),
+			'default' => '',
+			'values'  => '',
+			'typ'     => 'icon',
+		),
+		array(
+			'param'   => 'shadowSize',
+			'desc'    => __( 'Set the size of the shadow', 'extensions-leaflet-map' ),
+			'default' => '',
+			'values'  => __( 'for example "80,50" for 80px width 50px height', 'extensions-leaflet-map' ),
+			'typ'     => 'icon',
+		),
+		array(
+			'param'   => 'shadowAnchor',
+			'desc'    => __( 'Set the anchor position of the shadow', 'extensions-leaflet-map' ),
+			'default' => '',
+			'values'  => __( 'for example "40,60" for 40px left 60px top', 'extensions-leaflet-map' ),
+			'typ'     => 'icon',
+		),
+		// | marker.circle    | L.CircleMarker options |    draw a circle in location found |
+		// circle: { // draw a circle in location found
+		array(
+			'param'   => 'circle',
+			'desc'    => __( 'draw a circle in location found', 'extensions-leaflet-map' ),
+			'default' => true,
+			'values'  => 'true, false',
+			'typ'     => 'general',
+		),
+		// radius: 10, weight: 3, color: '#e03', stroke: true, fill: false
+		array(
+			'param'   => 'radius',
+			'desc'    => __( 'circle radius', 'extensions-leaflet-map' ),
+			'default' => '10',
+			'values'  => '',
+			'typ'     => 'circle',
+		),
+		array(
+			'param'   => 'weight',
+			'desc'    => __( 'circle stroke width in pixels', 'extensions-leaflet-map' ),
+			'default' => '3',
+			'values'  => '',
+			'typ'     => 'circle',
+		),
+		array(
+			'param'   => 'color',
+			'desc'    => __( 'circle stroke color', 'extensions-leaflet-map' ),
+			'default' => '#e03',
+			'values'  => '',
+			'typ'     => 'circle',
+		),
+		// | marker.animate  | true  | animate a circle over location found |
+		array(
+			'param'   => 'animate',
+			'desc'    => __( 'animate the circle over location found', 'extensions-leaflet-map' ),
+			'default' => true,
+			'values'  => 'true, false',
+			'typ'     => 'circle',
+		),
 
-function leafext_valid_search_marker( $icon ) {
-	$test_icon = trim( $icon );
-	if ( strpos( $test_icon, '(' ) !== false || strpos( $test_icon, ')' ) !== false ) {
-		return '{}';
+	);
+	$options = array();
+	foreach ( $params as $key => $param ) {
+		if ( $type === $params[ $key ]['typ'] || $type === 'all' ) {
+			$options[] = $params[ $key ];
+		}
 	}
-	if ( strpos( $test_icon, ':' ) === false ) {
-		return '{}';
-	}
-	if ( ! str_starts_with( $test_icon, '{' ) || ! str_ends_with( $test_icon, '}' ) ) {
-		return '{}';
-	}
-	$all_chars = count_chars( $icon, 1 );
-	if ( $all_chars[ ord( '{' ) ] !== $all_chars[ ord( '}' ) ] ) {
-		return '{}';
-	}
-	return str_replace( ' ', '', $icon );
+	return $options;
 }
 
 function leafext_leafletsearch_function( $atts, $content, $shortcode ) {
@@ -180,41 +253,66 @@ function leafext_leafletsearch_function( $atts, $content, $shortcode ) {
 		}
 		$atts1   = leafext_case( array_keys( $defaults ), leafext_clear_params_true_false( $atts ) );
 		$options = shortcode_atts( $defaults, $atts1 );
-		// var_dump($options);wp_die();
-		if ( $options['marker'] === 'false' ) {
-			$options['marker'] = '{icon:false,circle:{radius:0,weight:0}}';
-		} else {
-			$options['marker'] = leafext_valid_search_marker( $options['marker'] );
-		}
-		if ( strpos( $options['marker'], 'icon:true' ) !== false ) {
-			$icon_defaults = array(
-				'iconurl'    => '',
-				'shadowurl'  => '',
-				'iconsize'   => '',
-				'iconanchor' => '',
-				'shadowsize' => '',
-			);
-			$custom_icon   = shortcode_atts( $icon_defaults, $atts );
-			$size_regex    = '/^(\d+), ?(\d+)$/';
-			$size_string   = '${1},${2}';
-			// Fix: Parse iconsize, iconanchor and shadowsize as two integers each (for example with absint on an explode), then emit them with wp_json_encode() instead of esc_html().
-			// wp_json_encode inserts " on begin an end -> JavaScript does not work!!!
-			if ( $custom_icon['iconurl'] !== '' &&
-				$custom_icon['shadowurl'] !== '' &&
-				preg_match( $size_regex, $custom_icon['iconsize'] ) &&
-				preg_match( $size_regex, $custom_icon['iconanchor'] ) &&
-				preg_match( $size_regex, $custom_icon['shadowsize'] )
-				) {
-				$custom_icondef    = 'icon:new L.Icon(' .
-				'{iconUrl:' . wp_json_encode( filter_var( $custom_icon['iconurl'], FILTER_SANITIZE_URL ) ) . ',' .
-				'shadowUrl:' . wp_json_encode( filter_var( $custom_icon['shadowurl'], FILTER_SANITIZE_URL ) ) . ',' .
-				'iconSize:[' . preg_replace( $size_regex, $size_string, $custom_icon['iconsize'] ) . '],' .
-				'iconAnchor:[' . preg_replace( $size_regex, $size_string, $custom_icon['iconanchor'] ) . '],' .
-				'shadowSize:[' . preg_replace( $size_regex, $size_string, $custom_icon['shadowsize'] ) . ']' .
-				'})';
-				$options['marker'] = str_replace( 'icon:true', $custom_icondef, $options['marker'] );
+
+		// the marker icon
+		$options['icon'] = filter_var( $options['icon'], FILTER_VALIDATE_BOOL );
+		$marker_icon     = 'icon:false';
+		if ( $options['icon'] ) {
+
+			$size_regex  = '/^(\d+), ?(\d+)$/';
+			$size_string = '${1},${2}';
+
+			if ( $options['iconUrl'] !== '' ) {
+				$marker_icon = '';
+				foreach ( $options as $k => $value ) {
+					switch ( $k ) {
+						case 'iconUrl':
+						case 'shadowUrl':
+							if ( $value !== '' ) {
+								$marker_icon .= $k . ':' . wp_json_encode( filter_var( $value, FILTER_SANITIZE_URL ) ) . ',';
+							}
+							break;
+						case 'iconSize':
+						case 'iconAnchor':
+						case 'shadowSize':
+						case 'shadowAnchor':
+							if ( $value !== '' ) {
+								if ( preg_match( $size_regex, $value ) ) {
+									$marker_icon .=
+									$k . ':[' . preg_replace( $size_regex, $size_string, $value ) . '],';
+								}
+							}
+							break;
+						default:
+					}
+				}
+				$marker_icon = 'icon: new L.Icon({' . rtrim( $marker_icon, ',' ) . '})';
+			} else {
+				$marker_icon = 'icon:true';
 			}
 		}
+		// var_dump( $marker_icon );
+
+		// the circle
+		$options['circle'] = filter_var( $options['circle'], FILTER_VALIDATE_BOOL );
+		if ( $options['circle'] ) {
+			if ( preg_match( '/^#[a-f0-9]$/i', $options['color'] ) || preg_match( '/^[a-z]*$/', $options['color'] ) ) {
+				$options['color'] = $options['color'];
+			} else {
+				$options['color'] = '#e03';
+			}
+			$circle_marker =
+			'circle:{' .
+			'radius:' . filter_var( $options['radius'], FILTER_VALIDATE_INT ) . ',' .
+			'weight:' . filter_var( $options['weight'], FILTER_VALIDATE_INT ) . ',' .
+			'color:' . wp_json_encode( $options['color'] ) .
+			'},' .
+			'animate:' . wp_json_encode( filter_var( $options['animate'], FILTER_VALIDATE_BOOL ) ) . "\n";
+		} else {
+			$circle_marker = 'circle:{radius:0,weight:0}';
+		}
+		// var_dump( $circle_marker );
+
 		if ( $options['container'] === '' ) {
 			unset( $options['container'] );
 		} else {
@@ -235,7 +333,8 @@ function leafext_leafletsearch_function( $atts, $content, $shortcode ) {
 				case 'hideMarkerOnCollapse':
 				case 'openPopup':
 					$javascript_params .= wp_json_encode( $k ) . ': ';
-					$javascript_params .= ( $v ? esc_attr( 'true' ) : esc_attr( 'false' ) ) . ',' . "\n";
+					// $javascript_params .= ( $v ? esc_attr( 'true' ) : esc_attr( 'false' ) ) . ',' . "\n";
+					$javascript_params .= wp_json_encode( filter_var( $v, FILTER_VALIDATE_BOOL ) ) . ',' . "\n";
 					break;
 				// number
 				case 'autoCollapseTime':
@@ -256,16 +355,25 @@ function leafext_leafletsearch_function( $atts, $content, $shortcode ) {
 					$javascript_params .= wp_json_encode( $k ) . ': ';
 					$javascript_params .= wp_json_encode( wp_strip_all_tags( $v ) ) . ',' . "\n";
 					break;
-				// markerdef or false
-				case 'marker':
-					// var_dump( $v );
-					$javascript_params .= wp_json_encode( $k ) . ': ';
-					// is constructed from shortcode
-					$javascript_params .= $v . ',' . "\n";
-					break;
 				default:
+					// var_dump("***",$k,);
 			}
 		}
+
+		// marker: { // custom L.Marker or false for hide
+			// icon: false, // custom L.Icon for maker location or false for hide
+			// animate: true, // animate a circle over location found
+			// circle: { // draw a circle in location found
+				// radius: 10,
+				// weight: 3,
+				// color: '#e03',
+				// stroke: true,
+				// fill: false
+			// }
+		// }
+
+		$javascript_params .= 'marker:{' . $marker_icon . ',' . $circle_marker . '},' . "\n";
+
 		return leafext_leafletsearch_script( $options, $javascript_params, $allproperties );
 	}
 }

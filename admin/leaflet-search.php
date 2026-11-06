@@ -44,34 +44,47 @@ function leafext_leafletsearch_help() {
 
 	$text = $text . '<h2>' . esc_html__( 'Options', 'extensions-leaflet-map' ) . '</h2>';
 
-	$options = leafext_search_params();
-	$new     = array();
-	$new[]   = array(
-		'param'   => '<strong>Option</strong>',
-		'desc'    => '<strong>' . esc_html__( 'Description', 'extensions-leaflet-map' ) . '</strong>',
-		'default' => '<strong>' . esc_html__( 'Default', 'extensions-leaflet-map' ) . '</strong>',
-		'values'  => '<strong>' . esc_html__( 'Values', 'extensions-leaflet-map' ) . '</strong>',
+	$parts = array(
+		'general' => array(
+			'title' => __( 'General Options', 'extensions-leaflet-map' ),
+			'hint'  => '',
+		),
+		'icon'    => array(
+			'title' => __( 'Marker Icon', 'extensions-leaflet-map' ),
+			'hint'  => 'icon=true (default: false)',
+		),
+		'circle'  => array(
+			'title' => __( 'Circle Marker', 'extensions-leaflet-map' ),
+			'hint'  => 'circle=true (default: true)',
+		),
 	);
-	foreach ( $options as $option ) {
-		if ( $option['default'] === '' && $option['param'] === 'marker' ) {
-			$option['default'] = '(' . esc_html__( 'red circle', 'extensions-leaflet-map' ) . ')';
-		}
-		$new[] = array(
-			'param'   => $option['param'],
-			'desc'    => $option['desc'],
-			'default' => ( gettype( $option['default'] ) === 'boolean' ) ? ( $option['default'] ? 'true' : 'false' ) : $option['default'],
-			'values'  => $option['values'],
-		);
-	}
-	$text = $text . leafext_html_table( $new );
 
-	$text = $text . '<p>' . wp_sprintf(
-		/* translators: %1$s and %2$s is a href, %3$s is an option */
-		esc_html__( 'See %1$sLeaflet Map Github page%2$s for more or less useful and possible options for %3$s.', 'extensions-leaflet-map' ),
-		'<a href="https://github.com/bozdoz/wp-plugin-leaflet-map#leaflet-marker">',
-		'</a>',
-		'propertyName'
-	) . '</p>';
+	foreach ( $parts as $part => $value ) {
+		$text .= '<h4>' . $value['title'] . '</h4>';
+		if ( $value['hint'] !== '' ) {
+			$text .= $value['hint'];
+		}
+		$types   = array();
+		$types[] = array(
+			'param'   => '<strong>' . esc_html__( 'Option', 'extensions-leaflet-map' ) . '</strong>',
+			'desc'    => '<strong>' . esc_html__( 'Description', 'extensions-leaflet-map' ) . '</strong>',
+			'default' => '<strong>' . esc_html__( 'Default', 'extensions-leaflet-map' ) . '</strong>',
+			'values'  => '<strong>' . esc_html__( 'Values', 'extensions-leaflet-map' ) . '</strong>',
+		);
+		$options = leafext_search_params( $part );
+		foreach ( $options as $option ) {
+			if ( $option['default'] === '' && $option['param'] === 'marker' ) {
+				$option['default'] = '(' . esc_html__( 'red circle', 'extensions-leaflet-map' ) . ')';
+			}
+			$types[] = array(
+				'param'   => $option['param'],
+				'desc'    => $option['desc'],
+				'default' => ( gettype( $option['default'] ) === 'boolean' ) ? ( $option['default'] ? 'true' : 'false' ) : $option['default'],
+				'values'  => $option['values'],
+			);
+		}
+		$text = $text . leafext_html_table( $types );
+	}
 
 	$text = $text . '<h3>' . esc_html__( 'Option', 'extensions-leaflet-map' ) . ' container</h3>';
 	/* translators: %s is a div element. */

@@ -11,7 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-04 20:19+0000\n"
+"POT-Creation-Date: 2026-11-06 20:23+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: extensions-leaflet-map\n"
@@ -369,6 +369,10 @@ msgstr ""
 msgid "and/or with leaflet-gpx and/or leaflet-kml and/or leaflet-geojson"
 msgstr ""
 
+#: php/leaflet-search.php:228
+msgid "animate the circle over location found"
+msgstr ""
+
 #. %s is styling.
 #: admin/elevation/waypoints.php:224
 #, php-format
@@ -483,6 +487,22 @@ msgstr ""
 msgid "child names"
 msgstr ""
 
+#: admin/leaflet-search.php:57
+msgid "Circle Marker"
+msgstr ""
+
+#: php/leaflet-search.php:206
+msgid "circle radius"
+msgstr ""
+
+#: php/leaflet-search.php:220
+msgid "circle stroke color"
+msgstr ""
+
+#: php/leaflet-search.php:213
+msgid "circle stroke width in pixels"
+msgstr ""
+
 #: php/hover.php:149 php/hoverlap.php:31
 msgid "className for the tooltip"
 msgstr ""
@@ -505,7 +525,7 @@ msgstr ""
 msgid "Code on source page"
 msgstr ""
 
-#: php/leaflet-search.php:75
+#: php/leaflet-search.php:78
 msgid "collapse search control at startup"
 msgstr ""
 
@@ -590,7 +610,7 @@ msgstr ""
 msgid "Configure your default %s settings."
 msgstr ""
 
-#: php/leaflet-search.php:52
+#: php/leaflet-search.php:53
 msgid ""
 "container id to style the control panel (outside the map) with custom css"
 msgstr ""
@@ -692,7 +712,7 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: admin/zoomhome.php:126 admin/leaflet-search.php:52 php/elevation.php:619
+#: admin/zoomhome.php:126 admin/leaflet-search.php:71 php/elevation.php:619
 #: php/elevation.php:632 php/elevation.php:657 admin/tiles/help.php:145
 #: admin/tiles/help.php:152 admin/grouping/featuregroup.php:302
 #: admin/grouping/featuregroup.php:309 admin/hover/hover.php:65
@@ -763,15 +783,15 @@ msgstr ""
 msgid "Defaults from %1$s settings:"
 msgstr ""
 
-#: admin/leaflet-search.php:86
+#: admin/leaflet-search.php:99
 msgid "Define a leaflet-search command with the option container:"
 msgstr ""
 
-#: admin/leaflet-search.php:80
+#: admin/leaflet-search.php:93
 msgid "Define some css:"
 msgstr ""
 
-#: php/leaflet-search.php:83
+#: php/leaflet-search.php:87
 msgid "delay for autoclosing alert and collapse after blur"
 msgstr ""
 
@@ -791,7 +811,7 @@ msgstr ""
 msgid "Demo and Documentation"
 msgstr ""
 
-#: admin/zoomhome.php:125 admin/leaflet-search.php:51 admin/hover/hover.php:64
+#: admin/zoomhome.php:125 admin/leaflet-search.php:70 admin/hover/hover.php:64
 #: admin/marker/extramarker.php:121 admin/marker/listmarker.php:67
 #: admin/overviewmap/overview-map.php:153
 msgid "Description"
@@ -913,6 +933,10 @@ msgstr ""
 msgid "Download Link"
 msgstr ""
 
+#: php/leaflet-search.php:198
+msgid "draw a circle in location found"
+msgstr ""
+
 #. %s is a shortcode.
 #: admin/filemgr/leaflet-directory.php:39
 #, php-format
@@ -992,7 +1016,7 @@ msgstr ""
 msgid "Error detecting lanlngs"
 msgstr ""
 
-#: php/leaflet-search.php:90
+#: php/leaflet-search.php:95
 msgid "error message"
 msgstr ""
 
@@ -1099,6 +1123,14 @@ msgstr ""
 msgid "For boolean values applies"
 msgstr ""
 
+#: php/leaflet-search.php:170 php/leaflet-search.php:191
+msgid "for example \"40,60\" for 40px left 60px top"
+msgstr ""
+
+#: php/leaflet-search.php:163 php/leaflet-search.php:184
+msgid "for example \"80,50\" for 80px width 50px height"
+msgstr ""
+
 #. %s are properties.
 #: php/leaflet-search.php:37
 #, php-format
@@ -1181,6 +1213,10 @@ msgstr ""
 msgid "Functions implemented with Leaflet Plugins"
 msgstr ""
 
+#: admin/leaflet-search.php:49
+msgid "General Options"
+msgstr ""
+
 #: admin/elevation/waypoints.php:254
 msgid "Generated Javascript"
 msgstr ""
@@ -1200,6 +1236,14 @@ msgstr ""
 
 #: admin.php:216 admin/help.php:246 admin/gesture.php:13
 msgid "Gesture Handling"
+msgstr ""
+
+#: php/leaflet-search.php:146
+msgid "Give a url for the marker image file"
+msgstr ""
+
+#: php/leaflet-search.php:175
+msgid "Give a url for the marker shadow image file"
 msgstr ""
 
 #. %s is a shortcode.
@@ -1385,14 +1429,6 @@ msgid ""
 "property specified in %4$s does not apply, are placed in the %5$s group. "
 "Elements whose %6$s is not known are placed in the %7$s group. See also the "
 "developer console."
-msgstr ""
-
-#. %s are options and a link
-#: php/leaflet-search.php:130
-#, php-format
-msgid ""
-"If %1$s contains %2$s, you can specify the options %3$s and %4$s to define a "
-"custom icon, see %5$sexample page%6$s."
 msgstr ""
 
 #. %s are options.
@@ -1608,7 +1644,7 @@ msgid "If you want more options see %1$shere%2$s."
 msgstr ""
 
 #. %s is a div element.
-#: admin/leaflet-search.php:78
+#: admin/leaflet-search.php:91
 #, php-format
 msgid ""
 "If you want the search field to be outside the map, define a div element "
@@ -2072,7 +2108,7 @@ msgstr ""
 msgid "Load any elements with any %s shortcode."
 msgstr ""
 
-#: php/leaflet-search.php:91
+#: php/leaflet-search.php:96
 msgid "Location not found"
 msgstr ""
 
@@ -2127,6 +2163,10 @@ msgstr ""
 
 #: admin/help.php:55 admin/marker/main.php:24
 msgid "Marker Clustering"
+msgstr ""
+
+#: admin/leaflet-search.php:53
+msgid "Marker Icon"
 msgstr ""
 
 #: admin/marker/geojsonmarker.php:68
@@ -2302,14 +2342,6 @@ msgstr ""
 msgid "not for markers with iconUrl"
 msgstr ""
 
-#. %1$s is an option, %2$s and %3$s is a href
-#: php/leaflet-search.php:124
-#, php-format
-msgid ""
-"not specified for default (red circle), %1$s for no marker, or a definition "
-"like on an %2$sexample page%3$s."
-msgstr ""
-
 #: admin/leaflet-search.php:37 admin/grouping/featuregroup.php:87
 #: admin/marker/clustergroup.php:24 admin/marker/clustergroup.php:39
 #: admin/elevation/elevation.php:167
@@ -2356,8 +2388,9 @@ msgstr ""
 msgid "Open page, post or category links in a new tab"
 msgstr ""
 
-#: admin/zoomhome.php:124 admin/leaflet-search.php:76
-#: admin/marker/targetmarker.php:206 admin/marker/listmarker.php:66
+#: admin/zoomhome.php:124 admin/leaflet-search.php:69
+#: admin/leaflet-search.php:89 admin/marker/targetmarker.php:206
+#: admin/marker/listmarker.php:66
 msgid "Option"
 msgstr ""
 
@@ -2552,7 +2585,7 @@ msgstr ""
 msgid "Per default all defined tile servers appear."
 msgstr ""
 
-#: php/leaflet-search.php:98
+#: php/leaflet-search.php:104
 msgid "placeholder value"
 msgstr ""
 
@@ -2618,7 +2651,7 @@ msgstr ""
 msgid "Popups and highlighting overlapping elements"
 msgstr ""
 
-#: php/leaflet-search.php:113
+#: php/leaflet-search.php:122
 msgid "position in the map"
 msgstr ""
 
@@ -2683,11 +2716,11 @@ msgstr ""
 msgid "query string in an URL"
 msgstr ""
 
-#: admin/leaflet-search.php:57
+#: admin/leaflet-search.php:77
 msgid "red circle"
 msgstr ""
 
-#: php/leaflet-search.php:106
+#: php/leaflet-search.php:114
 msgid "remove circle and marker on search control collapsed or search canceled"
 msgstr ""
 
@@ -2770,7 +2803,7 @@ msgstr ""
 msgid "search substring %1$s or the exact string %2$s in %3$s."
 msgstr ""
 
-#: php/leaflet-search.php:99
+#: php/leaflet-search.php:105
 msgid "Search..."
 msgstr ""
 
@@ -2780,19 +2813,17 @@ msgstr ""
 msgid "see %1$s, default: %2$s"
 msgstr ""
 
+#. %s is an option
+#: php/leaflet-search.php:150
+#, php-format
+msgid "see %1$s. Please specify all customs marker options."
+msgstr ""
+
 #. %s is an href.
 #: admin/overviewmap/overview-map.php:192
 #: admin/overviewmap/featured-map.php:158
 #, php-format
 msgid "See %1$sexamples%2$s."
-msgstr ""
-
-#. %1$s and %2$s is a href, %3$s is an option
-#: admin/leaflet-search.php:70
-#, php-format
-msgid ""
-"See %1$sLeaflet Map Github page%2$s for more or less useful and possible "
-"options for %3$s."
 msgstr ""
 
 #. %s is a href.
@@ -2807,7 +2838,7 @@ msgstr ""
 msgid "See also"
 msgstr ""
 
-#: php/leaflet-search.php:54 admin/marker/targetmarker.php:112
+#: php/leaflet-search.php:55 admin/marker/targetmarker.php:112
 msgid "see below"
 msgstr ""
 
@@ -2837,6 +2868,23 @@ msgstr ""
 
 #: php/overview-map.php:95
 msgid "Select only pages / posts from these categories"
+msgstr ""
+
+#: php/leaflet-search.php:168
+msgid "Set the anchor position of the icon"
+msgstr ""
+
+#: php/leaflet-search.php:189
+msgid "Set the anchor position of the shadow"
+msgstr ""
+
+#. %1$s is an option
+#: php/leaflet-search.php:159
+msgid "Set the size of the icon"
+msgstr ""
+
+#: php/leaflet-search.php:182
+msgid "Set the size of the shadow"
 msgstr ""
 
 #. %s is "false".
@@ -2902,6 +2950,12 @@ msgid ""
 "chart and toggle %2$s to show"
 msgstr ""
 
+#: php/leaflet-search.php:139
+msgid ""
+"show default or custom marker icon (true) on location found or hide it "
+"(false)"
+msgstr ""
+
 #: php/elevation.php:387
 msgid ""
 "show distance data in graph and summary / show distance data in summary only "
@@ -2912,11 +2966,7 @@ msgstr ""
 msgid "Show files of type"
 msgstr ""
 
-#: php/leaflet-search.php:120
-msgid "show or hide marker at the position found"
-msgstr ""
-
-#: php/leaflet-search.php:145
+#: php/leaflet-search.php:130
 msgid "show or hide popup when position found"
 msgstr ""
 
@@ -3131,7 +3181,7 @@ msgstr ""
 msgid "The default Map Tiles are defined in the Leaflet Map Settings."
 msgstr ""
 
-#: php/leaflet-search.php:61
+#: php/leaflet-search.php:63
 msgid ""
 "The default value is the same as the setting for the Leaflet Map plugin."
 msgstr ""
@@ -3260,7 +3310,7 @@ msgid "The shortcode %1$s is a special case of %2$s respectively %3$s."
 msgstr ""
 
 #. %s is an href.
-#: admin/leaflet-search.php:95
+#: admin/leaflet-search.php:108
 #, php-format
 msgid "The specific style and css depends on your %1$stheme and taste%2$s"
 msgstr ""
@@ -3646,7 +3696,7 @@ msgstr ""
 msgid "Value to be added to each new circle distance value"
 msgstr ""
 
-#: admin/leaflet-search.php:53 admin/hover/hover.php:66
+#: admin/leaflet-search.php:72 admin/hover/hover.php:66
 msgid "Values"
 msgstr ""
 
@@ -3971,6 +4021,6 @@ msgstr ""
 msgid "zFollow zoom"
 msgstr ""
 
-#: php/leaflet-search.php:59
+#: php/leaflet-search.php:61
 msgid "zoom level for move to location for searching markers"
 msgstr ""
