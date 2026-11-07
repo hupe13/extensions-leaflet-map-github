@@ -38,8 +38,6 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 
 * Verwalte deine Dateien für Leaflet Map.
 
-* Hilfe zum Migrieren von [WP GPX Maps](https://wordpress.org/plugins/wp-gpx-maps/).
-
 * und weitere Funktionen.
 
 ### English
@@ -67,8 +65,6 @@ Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/
 * Gesture handling
 
 * Manage your files for Leaflet Map.
-
-* Help to migrate from [WP GPX Maps](https://wordpress.org/plugins/wp-gpx-maps/).
 
 * and more functions.
 
