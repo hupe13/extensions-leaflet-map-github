@@ -1,6 +1,6 @@
-### 6.1 / 2611xx
+### 6.1 / 261107
 
-* XSS fixes (not yet confirmed)
+* XSS fixes in some shortcodes
 * Please let me know if something isn't working!!
 * leaflet-elevation-2.9.2 - fixes problems: detached, canvas and Safari, and more. Thank you to Raruto.
 * elevation option legend: black track and chart off fixed
