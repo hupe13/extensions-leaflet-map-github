@@ -39,7 +39,7 @@ function leafext_elevation_params( $typ = array() ) {
 			'desc'      => '',
 			'default'   => '3',
 			'values'    => array( '2', '3', '4', '5', '6', '7', '8' ),
-			'typ'       => array( 'changeable', 'look', 'multielevation' ),
+			'typ'       => array( 'changeable', 'look' ),
 		),
 
 		// hotline
@@ -132,7 +132,7 @@ function leafext_elevation_params( $typ = array() ) {
 			'desc'      => '',
 			'default'   => false,
 			'values'    => 1,
-			'typ'       => array( 'changeable', 'look', 'multielevation' ),
+			'typ'       => array( 'changeable', 'look' ),
 		),
 
 		// Quite uncommon and undocumented options

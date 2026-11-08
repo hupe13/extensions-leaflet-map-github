@@ -1,3 +1,7 @@
+### 6.1.1 / 26110x
+
+* fixed: distanceMarkers in multielevation
+
 ### 6.1 / 261107
 
 * XSS fixes in some shortcodes

@@ -1,17 +1,6 @@
 # Differences to the Plugins WordPress version
 
-* none
-
-Version 6.1:
-* XSS fixes (confirmed!)
-* Please let me know if something isn't working!!
-* leaflet-elevation-2.9.2 - fixes problems: detached, canvas and Safari, and more. Thank you to Raruto.
-* elevation option legend: black track and chart off fixed
-* leaflet-extramarker: removed option innerHTML due to the risk of a potential XSS attack
-* targetmarker/targetlink: debugging changed. New shortcode targetdebug, see documentation
-* leaflet-search: CHANGED! Please see documentation how to specify the new options.
-* sgpx: Updated the code for the new version of wp-gpx-maps, see documentation.
-* removed '<!--' and  '//-->' for <script>
+* fixed: distanceMarkers in multielevation
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

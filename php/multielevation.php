@@ -180,6 +180,8 @@ function leafext_java_params_multi( $params ) {
 	foreach ( $params as $k => $v ) {
 		if ( $k === 'highlight' ) {
 			$text .= $k . ': ' . $v; // see line 456
+		} elseif ( $k === 'distanceMarkers_options' ) {
+			$text .= $k . ': ' . wp_json_encode($v); // see php/elevation.php line 848
 		} else {
 			$text .= $k . ': ';
 			switch ( gettype( $v ) ) {

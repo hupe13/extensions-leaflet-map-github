@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 7.1
-Stable tag: 6.1-261107
+Stable tag: 6.1-261108
 Requires at least: 6.8
 Requires PHP: 8.2
 License: GPLv2 or later
@@ -42,14 +42,6 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 
 == Changelog ==
 
-* XSS fixes (not yet confirmed)
-* Please let me know if something isn't working!!
-* leaflet-elevation-2.9.2 - fixes problems: detached, canvas and Safari, and more. Thank you to Raruto.
-* elevation option legend: black track and chart off fixed
-* leaflet-extramarker: removed option innerHTML due to the risk of a potential XSS attack
-* targetmarker/targetlink: debugging changed. New shortcode targetdebug, see documentation
-* leaflet-search: CHANGED! Please see documentation how to specify the new options.
-* sgpx: Updated the code for the new version of wp-gpx-maps, see documentation.
-* removed '<!--' and  '//-->' for <script>
+* fixed: distanceMarkers in multielevation
 
 [more ...](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/CHANGELOG.md)
