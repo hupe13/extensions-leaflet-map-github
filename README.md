@@ -5,7 +5,7 @@
 Extends the WordPress Plugin <a href="https://wordpress.org/plugins/leaflet-map/">Leaflet Map</a> with Leaflet Plugins and other functions.
 
 * This is the Github Version.
-* [Differences](changes.md) to the <a href="https://wordpress.org/plugins/extensions-leaflet-map/">WordPress version</a>.
+* [Differences](CHANGES.md) to the <a href="https://wordpress.org/plugins/extensions-leaflet-map/">WordPress version</a>.
 * Releases are the same as the WordPress versions.
 * If you want test the Github version, download from [tags](https://github.com/hupe13/extensions-leaflet-map-github/tags).
 * Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get updates and keep an eye on this repository in case I've made any mistakes.
