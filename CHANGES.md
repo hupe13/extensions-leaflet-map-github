@@ -1,6 +1,9 @@
 # Differences to the Plugins WordPress version
 
+Since 6.1:
+
 * fixed: distanceMarkers in multielevation
+* fixed some options escaping (for example geojsonmarker)
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

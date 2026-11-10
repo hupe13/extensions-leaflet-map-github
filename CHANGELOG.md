@@ -1,4 +1,8 @@
-### 6.1.1 / 26110x
+### 6.1.2 / 261111
+
+* fixed some options escaping (for example geojsonmarker)
+
+### 6.1.1 / 261109
 
 * fixed: distanceMarkers in multielevation
 

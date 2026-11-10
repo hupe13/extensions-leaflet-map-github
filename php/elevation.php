@@ -911,10 +911,10 @@ function leafext_java_params_elevation( $params ) {
 	$text = '';
 	foreach ( $params as $k => $v ) {
 		if ( $k === 'polylineSegments' ) {
-			$text .= $k . ': ' . $v; // is a fixed (not changeable) option
+			$text .= $k . ': ' . $v . ",\n"; // is a fixed (not changeable) option
 		} elseif ( $k === 'width' ) {
 			// $text .= $k . ': ' . wp_json_encode( $v ); // does not work!
-			$text .= $k . ': ' . $v;
+			$text .= $k . ': ' . $v . ",\n";
 		} else {
 			switch ( gettype( $v ) ) {
 				case 'string':
@@ -937,9 +937,7 @@ function leafext_java_params_elevation( $params ) {
 							if ( preg_replace( $pattern, '', $v ) === '' ) {
 								$value = wp_json_encode( $v );
 							} else {
-								// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_dump
-								var_dump( 'invalidChars', $k, $v );
-								wp_die( 'value has invalid characters' );
+								$value = 'invalidChars';
 							}
 					}
 					break;
@@ -954,9 +952,10 @@ function leafext_java_params_elevation( $params ) {
 					var_dump( 'Type', $k, $v );
 					wp_die( 'Type' );
 			}
-			$text .= $k . ': ' . $value;
+			if ( $value !== 'invalidChars' ) {
+				$text .= $k . ': ' . $value . ",\n";
+			}
 		}
-		$text .= ",\n";
 	}
 	return $text;
 }

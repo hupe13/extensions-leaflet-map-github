@@ -206,9 +206,9 @@ function leafext_sgpx_function( $atts, $content, $shortcode ) {
 		}
 
 		$text = '[leaflet-map zoomcontrol ' . $maptext . '][elevation gpx="' . $atts['gpx'] . '" marker="position-marker"' . $eletext . '][fullscreen]';
-		if ( is_single() || is_page() ) {
-			echo '<script>console.log(' . wp_json_encode( $text ) . ')</script>';
-		}
+		// if ( is_single() || is_page() ) {
+			// echo '<script>console.log(' . wp_json_encode ( $text ) . ')</script>';
+		// }
 		return do_shortcode( $text );
 	}
 }

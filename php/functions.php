@@ -41,8 +41,8 @@ function leafext_clear_params( $atts ) {
 			} elseif ( $attr === 'width' ) {
 				$atts[ $attr ] = $value; // checked in php/elevation.php 892ff
 			} else {
-				echo '<script>console.log(' . wp_json_encode( esc_js( 'elevation ERROR ' . $attr . '=' . $value ) ) . ')</script>';
-				unset( $atts[ $attr ] );
+				// echo '<script>console.log(' . wp_json_encode( esc_js( 'wp_kses_post ' . $attr . '=' . $value ) ) . ')</script>';
+				$atts[ $attr ] = wp_kses_post( $value );
 			}
 		}
 	}
