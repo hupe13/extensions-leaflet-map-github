@@ -100,7 +100,7 @@ function leafext_form_maps() {
 
 // Sanitize and validate input. Accepts an array, return a sanitized array.
 function leafext_validate_mapswitch( $options ) {
-		$maps = array();
+	$maps = array();
 	foreach ( $options as $option ) {
 		if ( $option['mapid'] !== '' ) {
 			$map            = array();

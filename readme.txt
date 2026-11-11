@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 7.1
-Stable tag: 6.1-261110
+Stable tag: 6.1-261111
 Requires at least: 6.8
 Requires PHP: 8.2
 License: GPLv2 or later
@@ -43,5 +43,6 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 == Changelog ==
 
 * fixed some options escaping (for example geojsonmarker)
+* fixed layerswitch
 
 [more ...](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/CHANGELOG.md)

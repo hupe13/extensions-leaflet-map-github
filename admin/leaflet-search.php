@@ -99,7 +99,7 @@ function leafext_leafletsearch_help() {
 	$text = $text . '<p>' . esc_html__( 'Define a leaflet-search command with the option container:', 'extensions-leaflet-map' ) . '</p>';
 	$text = $text . '<p><pre' . $codestyle . '><code' . $codestyle . '>&#091;leaflet-search propertyname=... ... container=myId ...]</code></pre></p>';
 	$text = $text . '<div id="myId" style="height:3em; border:2px solid gray; width:200px;"></div>';
-	$text = $text . do_shortcode( '[leaflet-map !boxZoom !doubleClickZoom !dragging !keyboard !scrollwheel !attribution !touchZoom !show_scale height=200 width=200 fitbounds min_zoom=12 max_zoom=16]' );
+	$text = $text . '<p>' . do_shortcode( '[leaflet-map !boxZoom !doubleClickZoom !dragging !keyboard !scrollwheel !attribution !touchZoom !show_scale height=200 width=200 fitbounds min_zoom=12 max_zoom=16]' ) . '</p>';
 	$text = $text . do_shortcode( '[leaflet-marker lat=0.0 lng=0.0]Marker[/leaflet-marker]' );
 	$text = $text . do_shortcode( '[leaflet-search container=myId propertyName=popupContent textPlaceholder="M ..."]' );
 	$text = $text . '<p>' .

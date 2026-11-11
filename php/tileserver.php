@@ -166,7 +166,7 @@ function leafext_layerswitch_tiles_script( $tiles ) {
 }
 
 function leafext_providers_fkt_script() {
-	// https://github.com/leaflet-extras/leaflet-providers/blob/65df099ba50665242c954cf2be411d6babd96a75/preview/preview.js#L56C2-L74C4
+	// https://github.com/leaflet-extras/leaflet-providers/blob/master/preview/preview.js#L56
 	ob_start();
 	?>
 	/*<script>*/
@@ -182,10 +182,10 @@ function leafext_providers_fkt_script() {
 			'^JusticeMap',
 			'OpenAIP',
 			'OpenRailwayMap',
-			'OpenFireMap',
 			'SafeCast',
 			'WaymarkedTrails.(hiking|cycling|mtb|slopes|riding|skating)'
 		];
+
 		return providerName.match('(' + overlayPatterns.join('|') + ')') !== null;
 	};
 	<?php
@@ -206,19 +206,18 @@ function leafext_providers_script( $mapids, $providers, $visible ) {
 	foreach ( $providers as $provider ) {
 		$id = array_search( explode( '.', $provider )[0], array_column( $regtiles, 'name' ), true );
 		if ( $id !== false ) {
-			$text .= 'var layer = L.tileLayer.provider("' . $provider . '", {';
+			$text .= 'var layer = L.tileLayer.provider(' . wp_json_encode( $provider ) . ', {';
 			foreach ( $regtiles[ $id ]['keys'] as $key => $value ) {
-				$text .= $key . ': "';
-				$text .= $value . '",';
+				$text .= $key . ': ' . wp_json_encode( $value ) . ',';
 			}
-				$text .= '
+			$text .= '
 			} );';
 		} else {
-			$text .= 'var layer = L.tileLayer.provider("' . $provider . '");';
+			$text .= 'var layer = L.tileLayer.provider(' . wp_json_encode( $provider ) . ');';
 		}
 		$text .= '
-		if (isOverlay("' . $provider . '", layer)) {
-			overlays["' . $names[ $provider ] . '"] = layer;
+		if (isOverlay(' . wp_json_encode( $provider ) . ', layer)) {
+			overlays[' . wp_json_encode( $names[ $provider ] ) . '] = layer;
 			';
 		if ( in_array( $names[ $provider ], $visible, true ) ) {
 			$text .= '
@@ -227,7 +226,7 @@ function leafext_providers_script( $mapids, $providers, $visible ) {
 		}
 			$text .= '
 		} else {
-			baselayers["' . $names[ $provider ] . '"] = layer;
+			baselayers[' . wp_json_encode( $names[ $provider ] ) . '] = layer;
 		}';
 	}
 	return $text;
@@ -277,12 +276,38 @@ function leafext_layerswitch_end_script( $settings ) {
 	return "\n" . $text . "\n";
 }
 
+function leafext_check_atts_layerswitch( $atts ) {
+	$params  = array(
+		'tiles',
+		'mapids', // z.B. id: 'mapbox/streets-v11',
+		'providers',
+		'opacities',
+		'visible', // bool
+		'position', // topleft, topright, bottomleft, bottomright
+		'collapsed', // bool
+	);
+	$options = array();
+	$atts1   = leafext_clear_params_true_false( $atts );
+	foreach ( $params as $param ) {
+		if ( array_key_exists( $param, $atts1 ) ) {
+			if ( preg_match( '%^[a-zA-Z0-9\-,\/\._]+$%', $atts1[ $param ] )
+			|| is_bool( $atts1[ $param ] )
+			|| $atts1[ $param ] === ''
+			) {
+				$options[ $param ] = $atts1[ $param ];
+			}
+		}
+	}
+	return $options;
+}
+
 function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 	// var_dump($atts,$content,$shortcode);
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
 	if ( $text !== '' ) {
 		return $text;
 	} else {
+		$atts                = leafext_check_atts_layerswitch( $atts );
 		$tiles               = array();
 		$mapids              = array();
 		$providers           = array();

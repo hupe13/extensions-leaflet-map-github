@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-11-06 20:23+0000\n"
+"PO-Revision-Date: 2026-11-11 20:38+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,6 +14,12 @@ msgstr ""
 "POT-Creation-Date: 2025-08-12 16:42+0000\n"
 "Last-Translator: hupe13\n"
 "X-Loco-Version: 2.8.9; wp-7.1.4; php-8.4.27-nmm1"
+
+#: admin/tiles/help.php:104
+msgid " If it is an empty string, your defined tile servers are not used."
+msgstr ""
+"Wenn es eine leere Zeichenkette ist, werden deine definierten Kachelserver "
+"nicht verwendet."
 
 #: admin/marker/placementstrategies.php:61
 msgid ""
@@ -184,7 +190,7 @@ msgid "a className"
 msgstr "ein className"
 
 #. %s is a href.
-#: admin/tiles/help.php:107
+#: admin/tiles/help.php:108
 #, php-format
 msgid "a comma separated list of any %1$sproviders%2$s"
 msgstr "durch Komma getrennte Liste von %1$sProvidern%2$s"
@@ -805,8 +811,8 @@ msgid "Date"
 msgstr "Datum"
 
 #: admin/zoomhome.php:126 admin/leaflet-search.php:71 php/elevation.php:619
-#: php/elevation.php:632 php/elevation.php:657 admin/tiles/help.php:145
-#: admin/tiles/help.php:152 admin/grouping/featuregroup.php:302
+#: php/elevation.php:632 php/elevation.php:657 admin/tiles/help.php:146
+#: admin/tiles/help.php:153 admin/grouping/featuregroup.php:302
 #: admin/grouping/featuregroup.php:309 admin/hover/hover.php:65
 #: admin/marker/extramarker.php:120 admin/marker/clustergroup.php:199
 #: admin/marker/clustergroup.php:206 admin/marker/listmarker.php:68
@@ -2502,7 +2508,7 @@ msgstr "Mehr Optionen"
 msgid "More options see"
 msgstr "Weitere Optionen siehe die"
 
-#: php/multielevation.php:488
+#: php/multielevation.php:490
 msgid "move mouse over a track or select one in control panel ..."
 msgstr ""
 "Bewege die Maus über einen Track oder wähle einen im Control Panel aus ..."
@@ -2667,7 +2673,7 @@ msgid "optional"
 msgstr "optional"
 
 #. %s is an option.
-#: admin/tiles/help.php:114
+#: admin/tiles/help.php:115
 #, php-format
 msgid ""
 "optional: %s - a comma separated list with shortnames for providers. These "
@@ -2677,7 +2683,7 @@ msgstr ""
 "diese werden im Auswahlmenü angezeigt."
 
 #. %s is an option.
-#: admin/tiles/help.php:134
+#: admin/tiles/help.php:135
 #, php-format
 msgid ""
 "optional: %s - a comma-separated list of the mapids of Overlay Layers that "
@@ -2701,7 +2707,7 @@ msgid "optional: %s - position of group control"
 msgstr "optional: %s - Position des Gruppen-Auswahlmenüs"
 
 #. %s is an option
-#: admin/tiles/help.php:142
+#: admin/tiles/help.php:143
 #, php-format
 msgid "optional: %s - position of tiles control"
 msgstr "optional: %s - Position des Auswahlmenüs"
@@ -2713,7 +2719,7 @@ msgid "optional: %s - This appears in the switching control."
 msgstr "optional: %s - Dies erscheint im Auswahlmenü."
 
 #. %s are options
-#: admin/tiles/help.php:149
+#: admin/tiles/help.php:150
 #, php-format
 msgid "optional: %s - tiles control collapsed or not:"
 msgstr "optional: %s - Auswahlmenü geschlossen oder nicht:"
@@ -3580,7 +3586,7 @@ msgid "The name of the %1$sstart point%2$s is determined in this order:"
 msgstr "Der Name vom %1$sStartpunkt%2$s wird wie folgt bestimmt:"
 
 #. %s are options
-#: admin/tiles/help.php:121 admin/grouping/featuregroup.php:237
+#: admin/tiles/help.php:122 admin/grouping/featuregroup.php:237
 #: admin/marker/clustergroup.php:70 admin/marker/clustergroup.php:132
 #, php-format
 msgid "The number of %1$s and %2$s must match."
@@ -4172,7 +4178,7 @@ msgstr ""
 " den Shortcode zu entfernen und habe ein zusätzliches Plugin erstellt."
 
 #. %s is an option.
-#: admin/tiles/help.php:127
+#: admin/tiles/help.php:128
 #, php-format
 msgid ""
 "with %s you can specify the mapids and/or providers for which opacity should "

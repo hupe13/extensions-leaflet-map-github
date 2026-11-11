@@ -100,7 +100,8 @@ function leafext_help_tiles() {
 		__( 'a comma separated list of any your defined %1$stile servers%2$s', 'extensions-leaflet-map' ),
 		'<a href="' . $tileswitch . '">',
 		'</a>.'
-	) .
+	) . ' ' .
+	__( ' If it is an empty string, your defined tile servers are not used.', 'extensions-leaflet-map' ) .
 	'</li>';
 	$text = $text . '<li> <code>providers</code>: ' . wp_sprintf(
 		/* translators: %s is a href. */
