@@ -282,7 +282,7 @@ function leafext_check_atts_layerswitch( $atts ) {
 		'mapids', // z.B. id: 'mapbox/streets-v11',
 		'providers',
 		'opacities',
-		'visible', // bool
+		'visible', // comma separated list
 		'position', // topleft, topright, bottomleft, bottomright
 		'collapsed', // bool
 	);
@@ -290,11 +290,10 @@ function leafext_check_atts_layerswitch( $atts ) {
 	$atts1   = leafext_clear_params_true_false( $atts );
 	foreach ( $params as $param ) {
 		if ( array_key_exists( $param, $atts1 ) ) {
-			if ( preg_match( '%^[a-zA-Z0-9\-,\/\._]+$%', $atts1[ $param ] )
-			|| is_bool( $atts1[ $param ] )
-			|| $atts1[ $param ] === ''
-			) {
+			if ( is_bool( $atts1[ $param ] ) || $atts1[ $param ] === '' ) {
 				$options[ $param ] = $atts1[ $param ];
+			} else {
+				$options[ $param ] = esc_attr ( $atts1[ $param ] );
 			}
 		}
 	}
@@ -431,8 +430,7 @@ function leafext_layerswitch_function( $atts, $content, $shortcode ) {
 			'position'  => 'topright',
 			'collapsed' => true,
 		);
-		$atts1   = leafext_clear_params( $atts );
-		$options = shortcode_atts( $control, $atts1 );
+		$options = shortcode_atts( $control, $atts );
 		if ( ! leafext_check_position_control( $options['position'] ) ) {
 			$options['position'] = 'topright';
 		}

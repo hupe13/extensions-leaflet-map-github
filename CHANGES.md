@@ -4,7 +4,7 @@ Since 6.1:
 
 * fixed: distanceMarkers in multielevation
 * fixed some options escaping (for example geojsonmarker)
-* fixed layerswitch
+* fixed layerswitch escaping
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

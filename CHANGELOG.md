@@ -1,3 +1,7 @@
+### 6.1.3 / 261115
+
+* escaping layerswitch
+
 ### 6.1.2 / 261111
 
 * fixed some options escaping (for example geojsonmarker)

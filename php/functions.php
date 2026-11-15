@@ -81,26 +81,6 @@ function leafext_array_find2( $needle, $haystack ) {
 	}
 }
 
-/**
- * This function replaces the keys of an associate array by those supplied in the keys array
- *
- * @param array  $atts_array target associative array in which the keys are intended to be replaced
- * @param string $keys associate array where search key => replace by key, for replacing respective keys
- * @return array with replaced keys
- * from https://www.php.net/manual/de/function.array-replace.php
- */
-function leafext_array_replace_keys( $atts_array, $keys ) {
-	if ( is_array( $keys ) ) {
-		foreach ( $keys as $search => $replace ) {
-			if ( isset( $atts_array[ $search ] ) ) {
-				$atts_array[ $replace ] = $atts_array[ $search ];
-				unset( $atts_array[ $search ] );
-			}
-		}
-	}
-	return $atts_array;
-}
-
 // check position
 function leafext_check_position_control( $value ) {
 	$valid = array( 'topright', 'topleft', 'bottomleft', 'bottomright' );
