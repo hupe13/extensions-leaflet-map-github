@@ -202,13 +202,21 @@ function leafext_files_table( $track_files ) {
 				$entry['post_title'] = $key->post_title;
 				if ( current_user_can( 'edit_post', $key->ID ) ) {
 					// View as thickbox
-					$entry['view'] = '<a href="' . esc_url( get_admin_url( null, 'admin.php?action=' . $tab ) ) . '&track='
-					. $myfile . '&TB_iframe=true" class="thickbox">' . __( 'Preview', 'extensions-leaflet-map' ) . '</a>';
+					$entry['view'] = '<a href="' . wp_nonce_url(
+						get_admin_url( null, 'admin.php?action=' . $tab ) .
+						'&track=' . $myfile . '&TB_iframe=true',
+						'leafext-thickbox',
+						'leafext-thickbox_nonce'
+					) . '" class="thickbox">' . __( 'Preview', 'extensions-leaflet-map' ) . '</a>';
 					$entry['edit'] = '<a href ="' . get_admin_url() . 'post.php?post=' . $key->ID . '&action=edit">' . __( 'Edit', 'extensions-leaflet-map' ) . '</a>';
 				} elseif ( current_user_can( 'read', $key->ID ) ) {
 					// View as thickbox
-					$entry['view'] = '<a href="' . esc_url( get_admin_url( null, 'admin.php?action=' . $tab ) ) . '&track='
-					. $myfile . '&TB_iframe=true" class="thickbox">' . __( 'Preview', 'extensions-leaflet-map' ) . '</a>';
+					$entry['view'] = '<a href="' . wp_nonce_url(
+						get_admin_url( null, 'admin.php?action=' . $tab )
+						. '&track=' . $myfile . '&TB_iframe=true',
+						'leafext-thickbox',
+						'leafext-thickbox_nonce'
+					) . '" class="thickbox">' . __( 'Preview', 'extensions-leaflet-map' ) . '</a>';
 					$entry['edit'] = '<a href ="' . get_admin_url() . 'upload.php?item=' . $key->ID . '">' . __( 'View', 'extensions-leaflet-map' ) . '</a>';
 				} else {
 					$entry['view'] = 'none';
@@ -219,8 +227,13 @@ function leafext_files_table( $track_files ) {
 			$entry['post_date']  = get_date_from_gmt( gmdate( 'Y-m-d G:i:s', filemtime( $file ) ) );
 			$entry['post_title'] = $myfile;
 			if ( $type !== '' ) {
-				$entry['view'] = '<a href="' . esc_url( get_admin_url( null, 'admin.php?action=' . $tab ) ) . '&track='
-				. $myfile . '&TB_iframe=true" class="thickbox">' . __( 'Preview', 'extensions-leaflet-map' ) . '</a>';
+				$entry['view'] = '<a href="' . wp_nonce_url(
+					get_admin_url( null, 'admin.php?action=' . $tab )
+					. '&track=' . $myfile . '&TB_iframe=true',
+					'leafext-thickbox',
+					'leafext-thickbox_nonce'
+				) . '" class="thickbox">' . __( 'Preview', 'extensions-leaflet-map' ) .
+				'</a>';
 			} else {
 				$entry['view'] = 'none';
 			}

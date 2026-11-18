@@ -248,7 +248,7 @@ function leafext_extramarkers_params( $params ) {
 				$value = '[' . $v . ']';
 				break;
 			default:
-				$value = '"' . $v . '"';
+				$value = wp_json_encode( $v );
 		}
 		$text .= $value;
 		$text .= ",\n";

@@ -1,4 +1,8 @@
-### 6.1.3 / 261115
+### 6.2 /2611xx
+
+* fixed XSS thickbox
+
+### 6.1.3 / 261116
 
 * escaping layerswitch
 

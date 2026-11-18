@@ -293,7 +293,7 @@ function leafext_check_atts_layerswitch( $atts ) {
 			if ( is_bool( $atts1[ $param ] ) || $atts1[ $param ] === '' ) {
 				$options[ $param ] = $atts1[ $param ];
 			} else {
-				$options[ $param ] = esc_attr ( $atts1[ $param ] );
+				$options[ $param ] = esc_attr( $atts1[ $param ] );
 			}
 		}
 	}
