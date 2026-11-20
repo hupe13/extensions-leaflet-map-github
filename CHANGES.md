@@ -1,6 +1,9 @@
 # Differences to the Plugins WordPress version
 
 * fixed XSS thickbox
+* reviewed options in elevation, multielevation
+* bug fixed in multielevation options direction, distanceMarkers
+* reviewed listmarker background color 
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

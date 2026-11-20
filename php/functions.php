@@ -38,8 +38,6 @@ function leafext_clear_params( $atts ) {
 				unset( $atts[ $attr ] );
 			} elseif ( preg_match( '%^[a-zA-Z0-9:\-/\._\ ,]+$%', $value ) ) {
 				$atts[ $attr ] = $value;
-			} elseif ( $attr === 'width' ) {
-				$atts[ $attr ] = $value; // checked in php/elevation.php 892ff
 			} else {
 				// echo '<script>console.log(' . wp_json_encode( esc_js( 'wp_kses_post ' . $attr . '=' . $value ) ) . ')</script>';
 				$atts[ $attr ] = wp_kses_post( $value );
@@ -179,4 +177,54 @@ if ( ! is_admin() ) {
 		return $content;
 	}
 	add_filter( 'the_content', 'leafext_remove_script_br', 11 );
+}
+
+/**
+ * Convert rgb() or rgba() to #rrggbbaa for hex codes.
+ *
+ * @param   string $color The RGB(A) color
+ * @return  string The color hex code
+ *
+ * https://epiph.yt/blog/2023/rgb-rgba-in-php-zu-hex-werten-transformieren/
+ */
+function leafext_rgb_to_hex( string $color ): string {
+	$has_alpha = false;
+	if ( strpos( $color, 'rgba' ) === 0 ) {
+		$has_alpha = true;
+	}
+	$color = preg_replace( '/^rgba?\(/', '', $color );
+	$color = preg_replace( '/\)$/', '', $color );
+	if ( strpos( $color, ',' ) !== false ) {
+		$color  = str_replace( ' ', '', $color );
+		$values = explode( ',', $color );
+	} else {
+		$color  = str_replace( '/', ' ', $color );
+		$color  = preg_replace( '/\s{2,}/', ' ', $color );
+		$values = explode( ' ', $color );
+	}
+	if ( $has_alpha && count( $values ) === 4 ) {
+		$color = sprintf( '%02x%02x%02x%02x', $values[0], $values[1], $values[2], (float) $values[3] * 255 );
+	} elseif ( ! $has_alpha && count( $values ) === 3 ) {
+		$color = sprintf( '%02x%02x%02x', $values[0], $values[1], $values[2] ) . 'ff';
+	} else {
+		$color = '';
+	}
+	if ( empty( $color ) ) {
+		return '';
+		// throw new Exception( 'Color could not be transformed into hex.' );
+	}
+	return '#' . $color;
+}
+
+function leafext_valid_color( $color ) {
+	if ( sanitize_hex_color( $color ) !== null ) {
+		return $color;
+	}
+	if ( leafext_rgb_to_hex( $color ) !== '' ) {
+		return $color;
+	}
+	if ( preg_match( '/^[a-z]*$/', $color ) === 1 ) {
+		return $color;
+	}
+	return '';
 }

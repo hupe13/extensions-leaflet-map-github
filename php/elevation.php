@@ -830,14 +830,10 @@ function leafext_ele_java_params( $settings ) {
 			case 'distanceMarkers':
 				// distanceMarkers: { lazy: true, distance: true, direction: true },
 				if ( $settings[ $k ] === true ) {
-					$text .= 'distanceMarkers: {'; // }
-					// if ( $settings['imperial'] == true) {
-					// $text = $text.
-					// 'offset: 1000/0.621371,
-					// textFunction: function(distance, i, offset) {
-					// return Math.round(distance*0.621371/1000);
-					// },';
-					// }
+					$text .= 'distanceMarkers: {';
+					if ( $settings['imperial'] === true ) {
+						$text .= 'offset:1609.34,';
+					}
 					if ( $settings['direction'] === true ) {
 						$text .= 'lazy: true, distance: true, direction: true,';
 					} else {
@@ -854,7 +850,7 @@ function leafext_ele_java_params( $settings ) {
 				break;
 			case 'handlers':
 			case 'margins':
-				$text .= "$k: " . $v . ',';
+				$text .= '$k: ' . $v . ',';
 				unset( $settings[ $k ] );
 				break;
 			case 'linearGradient':
@@ -948,9 +944,9 @@ function leafext_java_params_elevation( $params ) {
 					$value = $v;
 					break;
 				default:
-					// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_dump
-					var_dump( 'Type', $k, $v );
-					wp_die( 'Type' );
+					// var_dump( 'Type', $k, $v );
+					// wp_die( 'Type' );
+					$value = 'invalidChars';
 			}
 			if ( $value !== 'invalidChars' ) {
 				$text .= $k . ': ' . $value . ",\n";
@@ -1124,6 +1120,30 @@ function leafext_elevation_color( $options ) {
 	return array( $options, $text );
 }
 
+// Interpretiere !parameter und parameter als false und true and validate
+function leafext_clear_params_elevation( $atts ) {
+	if ( is_array( $atts ) ) {
+		foreach ( $atts as $attr => $value ) {
+			if ( is_int( $attr ) ) {
+				if ( strpos( $atts[ $attr ], '!' ) === false ) {
+					$atts[ $atts[ $attr ] ] = true;
+				} else {
+					$atts[ substr( $atts[ $attr ], 1 ) ] = false;
+				}
+				unset( $atts[ $attr ] );
+			} elseif ( preg_match( '%^[a-zA-Z0-9:\-/\._\ ,]+$%', $value ) ) {
+				$atts[ $attr ] = $value;
+			} elseif ( $attr === 'width' ) {
+				$atts[ $attr ] = $value; // checked line 888ff
+			} else {
+				// var_dump( $attr, $value );
+				unset( $atts[ $attr ] );
+			}
+		}
+	}
+	return( $atts );
+}
+
 function leafext_elevation_function( $atts, $content, $shortcode ) {
 	$text = leafext_should_interpret_shortcode( $shortcode, $atts );
 	if ( $text !== '' ) {
@@ -1159,7 +1179,7 @@ function leafext_elevation_function( $atts, $content, $shortcode ) {
 			}
 		}
 
-		$atts1   = leafext_case( array_keys( leafext_elevation_settings( array( 'changeable', 'fixed' ) ) ), leafext_clear_params( $atts ) );
+		$atts1   = leafext_case( array_keys( leafext_elevation_settings( array( 'changeable', 'fixed' ) ) ), leafext_clear_params_elevation( $atts ) );
 		$options = shortcode_atts( leafext_elevation_settings( array( 'changeable', 'fixed' ) ), $atts1 );
 
 		leafext_enqueue_elevation();

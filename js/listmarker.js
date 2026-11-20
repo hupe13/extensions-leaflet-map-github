@@ -109,7 +109,12 @@ function leafext_listmarker_js(propertyName,overiconurl,collapse,update,hover,hi
 										length++;
 										layer.riseOnHover = true;
 										leafext_define_overicon( layer,overiconurl );
-										layer.options.listtitle = layer.feature.properties[propertyName];
+										layer.options.listtitle = layer.feature.properties[propertyName].replace( /&/g, '&amp;' )
+										.replace( /</g, '&lt;' )
+										.replace( />/g, '&gt;' )
+										.replace( /"/g, '&quot;' )
+										.replace( /'/g, '&#039;' )
+										.replace( /`/g, '&#96;' );
 										markersLayers[map_id].addLayer( layer );
 										map.removeLayer( layer );
 									} else {

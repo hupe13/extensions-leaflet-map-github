@@ -104,22 +104,11 @@ function leafext_multielevation_params( $typ = array( 'changeable' ) ) {
 			'values'    => 1,
 			'typ'       => array( 'changeable', 'multielevation' ),
 		),
-
-		// Toggle "leaflet-almostover" integration
-		// almostOver: true,
-		array(
-			'param'     => 'almostOver',
-			'shortdesc' => __( 'Toggle "leaflet-almostover" integration', 'extensions-leaflet-map' ),
-			'desc'      => '',
-			'default'   => true,
-			'values'    => 1,
-			'typ'       => array( 'fixed' ),
-		),
 	);
 
 	if ( count( $typ ) > 0 ) {
 		$options = array();
-		foreach ( $typ as $type ) { // "fixed", "changeable", ""
+		foreach ( $typ as $type ) { // "changeable",
 			foreach ( $params as $key => $param ) {
 				if ( in_array( $type, $params[ $key ]['typ'], true ) ) {
 					$options[] = $params[ $key ];
@@ -130,6 +119,8 @@ function leafext_multielevation_params( $typ = array( 'changeable' ) ) {
 	}
 	return $params;
 }
+
+// almostOver: true,
 
 // immer true, oder?
 // points: [],
@@ -174,55 +165,6 @@ function leafext_eleparams_for_multi( $options = array() ) {
 	}
 }
 
-function leafext_java_params_multi( $params ) {
-	// var_dump($params); wp_die();
-	$text = '';
-	foreach ( $params as $k => $v ) {
-		if ( $k === 'highlight' ) {
-			$text .= $k . ': ' . $v; // see line 456
-		} elseif ( $k === 'distanceMarkers_options' ) {
-			$text .= $k . ': ' . wp_json_encode( $v ); // see php/elevation.php line 848
-		} else {
-			$text .= $k . ': ';
-			switch ( gettype( $v ) ) {
-				case 'string':
-					switch ( $v ) {
-						case 'false':
-						case '0':
-							$value = 'false';
-							break;
-						case 'true':
-						case '1':
-							$value = 'true';
-							break;
-						default:
-							$pattern = array(
-								'%[a-zA-Z]+%',
-							);
-							if ( preg_replace( $pattern, '', $v ) === '' ) {
-								$value = wp_json_encode( $v );
-							} else {
-								// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_dump
-								var_dump( 'invalidChars', $k, $v );
-								wp_die( 'value has invalid characters' );
-							}
-					}
-					break;
-				case 'boolean':
-					$value = $v ? 'true' : 'false';
-					break;
-				default:
-					// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_var_dump
-					var_dump( 'Type', $k, $v );
-					wp_die( 'Type' );
-			}
-			$text .= $value;
-		}
-		$text .= ",\n";
-	}
-	return $text;
-}
-
 function leafext_multielevation_settings( $typ = array( 'changeable' ) ) {
 	$defaults = array();
 	$params   = leafext_multielevation_params( $typ );
@@ -263,7 +205,7 @@ function leafext_elevation_track( $atts, $content, $shortcode ) {
 		);
 		$params   = shortcode_atts( $defaults, $atts );
 
-		$multioptions = shortcode_atts( leafext_multielevation_settings( array( 'point' ) ), leafext_clear_params( $atts ) ); // filename or not?
+		$multioptions = shortcode_atts( leafext_multielevation_settings( array( 'point' ) ), leafext_clear_params_elevation( $atts ) ); // filename or not?
 		$path_parts   = pathinfo( $atts['file'] );
 		if ( boolval( $multioptions['filename'] ) ) {
 			$params['name'] = $path_parts['filename'];
@@ -412,7 +354,7 @@ function leafext_multielevation( $atts, $content, $shortcode ) {
 				'time'         => false,
 				'height'       => 200,
 			);
-			$multioptions = shortcode_atts( leafext_multielevation_settings( array( 'tracks' ) ), leafext_clear_params( $atts ) );
+			$multioptions = shortcode_atts( leafext_multielevation_settings( array( 'tracks' ) ), leafext_clear_params_elevation( $atts ) );
 			if ( $multioptions['summary'] ) {
 				$options['summary'] = 'inline';
 				// $options['slope'] = "summary";
@@ -426,8 +368,12 @@ function leafext_multielevation( $atts, $content, $shortcode ) {
 		}
 
 		if ( $shortcode === 'multielevation' ) {
-			$atts1   = leafext_case( array_keys( leafext_elevation_settings( array( 'multielevation' ) ) ), leafext_clear_params( $atts ) );
+			$atts1   = leafext_case( array_keys( leafext_elevation_settings( array( 'multielevation' ) ) ), leafext_clear_params_elevation( $atts ) );
 			$options = shortcode_atts( leafext_elevation_settings( array( 'multielevation' ) ), $atts1 );
+
+			$multioptions               = shortcode_atts( leafext_multielevation_settings( array( 'multielevation' ) ), leafext_clear_params_true_false( $atts ) );
+			$options['distanceMarkers'] = false;
+			$options['direction']       = false;
 
 			if ( isset( $options['pace'] ) ) {
 				// $options = leafext_elevation_pace($options);
@@ -451,22 +397,6 @@ function leafext_multielevation( $atts, $content, $shortcode ) {
 					$options['handlers'] = '[...L.Control.Elevation.prototype.options.handlers,' . implode( ',', $handlers ) . ']';
 				}
 			}
-
-			$multioptions = shortcode_atts( leafext_multielevation_settings( array( 'multielevation', 'fixed' ) ), leafext_clear_params( $atts ) );
-			if ( isset( $multioptions['highlight'] ) ) {
-				// wp_json_encode does not apply here
-				$multioptions['highlight'] = "{color: '" . $multioptions['highlight'] . "',opacity: 1,}";
-			}
-
-			$opts_distance_marker                   = array(
-				'distanceMarkers' => $multioptions['distanceMarkers'],
-				'direction'       => $multioptions['direction'],
-				'imperial'        => $options['imperial'],
-			);
-			list($multi_dist_settings, $not_needed) = leafext_ele_java_params( $opts_distance_marker );
-			// var_dump($multi_dist_settings);
-			$multioptions['distanceMarkers_options'] = str_replace( 'distanceMarkers: ', '', trim( $multi_dist_settings, ',' ) );
-			$multioptions['distanceMarkers']         = true;
 			leafext_enqueue_rotate();
 		}
 
@@ -530,11 +460,6 @@ function leafext_multielevation_script( $leafext_all_files, $leafext_all_points,
 				echo leafext_java_params_elevation( $settings );
 				?>
 			},
-			distanceMarkers:
-			<?php
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
-			echo $multioptions['distanceMarkers_options'];
-			?>
 		};
 		console.log(opts.elevation);
 		leafext_elevation_locale_js();
@@ -570,7 +495,6 @@ function leafext_multielevation_script( $leafext_all_files, $leafext_all_points,
 				position: "topright",
 				collapsed: true,
 				<?php
-				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
 				if ( $multioptions['sort'] !== false ) {
 					echo 'sortLayers: true,';
 					if ( $multioptions['sort'] === 'name' ) {
@@ -581,9 +505,34 @@ function leafext_multielevation_script( $leafext_all_files, $leafext_all_points,
 				}
 				?>
 			},
+			almostOver: true,
 			<?php
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- destroys javascript
-			echo leafext_java_params_multi( $multioptions );
+			if ( leafext_valid_color( $multioptions['highlight'] ) !== '' ) {
+				echo 'highlight: {color:' . wp_json_encode( $multioptions['highlight'] ) . ',opacity: 1,},' . "\n";
+			}
+			echo 'flyToBounds:' . wp_json_encode( (bool) $multioptions['flyToBounds'] ) . ',' . "\n";
+
+			// default:
+			// distanceMarkers: true,
+			// distanceMarkers_options: {
+			// lazy: true
+			// },
+			if ( (bool) $multioptions['distanceMarkers'] === true ) {
+				echo 'distanceMarkers:true,distanceMarkers_options:{';
+				if ( $settings['imperial'] === true ) {
+					echo 'offset:1609.34,';
+				}
+				if ( (bool) $multioptions['direction'] === true ) {
+					echo 'lazy:true,distance:true,direction:true,';
+				} else {
+					echo 'lazy:true,distance:true,direction:false,';
+				}
+				echo '},' . "\n";
+			} elseif ( (bool) $multioptions['direction'] === true ) {
+				echo 'distanceMarkers:true,distanceMarkers_options:{lazy:true,distance:false,direction:true},';
+			} else {
+				echo 'distanceMarkers:false,';
+			}
 			?>
 		});
 		// console.log(routes);

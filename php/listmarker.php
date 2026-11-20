@@ -109,12 +109,12 @@ function leafext_listmarker_function( $atts, $content, $shortcode ) {
 		foreach ( $params as $param ) {
 			$defaults[ $param['param'] ] = $param['default'];
 		}
-		$atts1               = leafext_case( array_keys( $defaults ), leafext_clear_params( $atts ) );
-		$options             = shortcode_atts( $defaults, $atts1 );
-		$options['collapse'] = filter_var( $options['collapse'], FILTER_VALIDATE_BOOL );
-		$options['update']   = filter_var( $options['update'], FILTER_VALIDATE_BOOL );
-		$options['hover']    = filter_var( $options['hover'], FILTER_VALIDATE_BOOL );
-		if ( $options['background'] !== $defaults['background'] ) {
+		$atts1                 = leafext_case( array_keys( $defaults ), leafext_clear_params( $atts ) );
+		$options               = shortcode_atts( $defaults, $atts1 );
+		$options['collapse']   = filter_var( $options['collapse'], FILTER_VALIDATE_BOOL );
+		$options['update']     = filter_var( $options['update'], FILTER_VALIDATE_BOOL );
+		$options['hover']      = filter_var( $options['hover'], FILTER_VALIDATE_BOOL );
+		if ( leafext_valid_color( $options['background'] ) !== '' && $options['background'] !== $defaults['background'] ) {
 			$text .= '<style>ul.list-markers-ul {background-color: ' . $options['background'] . '}</style>';
 		}
 
