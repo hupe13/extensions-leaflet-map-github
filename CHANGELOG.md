@@ -1,9 +1,9 @@
-### 6.2 /2611xx
+### 6.2 /261120
 
 * fixed XSS thickbox
 * reviewed options in elevation, multielevation
 * bug fixed in multielevation options direction, distanceMarkers
-* reviewed listmarker background color 
+* reviewed listmarker background color
 
 ### 6.1.3 / 261116
 

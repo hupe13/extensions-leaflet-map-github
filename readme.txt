@@ -45,6 +45,6 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 * fixed XSS thickbox
 * reviewed options in elevation, multielevation
 * bug fixed in multielevation options direction, distanceMarkers
-* reviewed listmarker background color 
+* reviewed listmarker background color
 
 [more ...](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/CHANGELOG.md)
