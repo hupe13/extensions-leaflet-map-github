@@ -3,7 +3,7 @@
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
 Tested up to: 7.1
-Stable tag: 6.2-261120
+Stable tag: 6.2-261122
 Requires at least: 6.8
 Requires PHP: 8.2
 License: GPLv2 or later
@@ -42,9 +42,16 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 
 == Changelog ==
 
+6.2.1:
+
+* fixed bug in elevation
+
+6.2:
+
 * fixed XSS thickbox
 * reviewed options in elevation, multielevation
 * bug fixed in multielevation options direction, distanceMarkers
 * reviewed listmarker background color
+
 
 [more ...](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/CHANGELOG.md)

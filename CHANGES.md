@@ -1,6 +1,8 @@
 # Differences to the Plugins WordPress version
 
-* none
+6.2.1:
+
+* fixed bug in elevation
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

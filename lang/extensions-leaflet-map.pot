@@ -11,16 +11,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-11 20:36+0000\n"
+"POT-Creation-Date: 2026-11-22 15:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: extensions-leaflet-map\n"
 "Language: \n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;"
-
-#: admin/tiles/help.php:104
-msgid " If it is an empty string, your defined tile servers are not used."
-msgstr ""
 
 #: admin/marker/placementstrategies.php:61
 msgid ""
@@ -92,13 +88,13 @@ msgid "%1$s, %2$s and %3$s describe the %4$sstart point%5$s and are optional."
 msgstr ""
 
 #. %s is a href.
-#: admin/filemgr/managefiles-functions.php:277
+#: admin/filemgr/managefiles-functions.php:290
 #, php-format
 msgid "%1$sAttachment pages%2$s are disabled."
 msgstr ""
 
 #. %s is a href.
-#: admin/filemgr/managefiles-functions.php:274
+#: admin/filemgr/managefiles-functions.php:287
 #, php-format
 msgid "%1$sAttachment pages%2$s are enabled."
 msgstr ""
@@ -511,7 +507,7 @@ msgstr ""
 msgid "className for the tooltip"
 msgstr ""
 
-#: php/functions.php:135
+#: php/functions.php:113
 msgid "Click to interpret shortcodes."
 msgstr ""
 
@@ -841,7 +837,7 @@ msgid ""
 "Detailed documentation and examples in %1$sGerman%2$s and %3$sEnglish%4$s"
 msgstr ""
 
-#: admin/filemgr/thickbox.php:33
+#: admin/filemgr/thickbox.php:50
 msgid "Details"
 msgstr ""
 
@@ -928,7 +924,7 @@ msgid "does only work with gpx files"
 msgstr ""
 
 #. %s is a shortcode.
-#: admin/filemgr/managefiles-functions.php:270
+#: admin/filemgr/managefiles-functions.php:283
 #, php-format
 msgid "Don't forget to declare %s at last statement."
 msgstr ""
@@ -967,7 +963,7 @@ msgid ""
 "%s and are fixed."
 msgstr ""
 
-#: php/overview-map.php:625 admin/filemgr/managefiles-functions.php:207
+#: php/overview-map.php:625 admin/filemgr/managefiles-functions.php:211
 msgid "Edit"
 msgstr ""
 
@@ -1082,11 +1078,11 @@ msgstr ""
 msgid "Featured Map"
 msgstr ""
 
-#: admin/filemgr/thickbox.php:37
+#: admin/filemgr/thickbox.php:54
 msgid "File name:"
 msgstr ""
 
-#: admin/filemgr/thickbox.php:40
+#: admin/filemgr/thickbox.php:57
 msgid "File size: "
 msgstr ""
 
@@ -1504,6 +1500,10 @@ msgstr ""
 #: admin/overviewmap/overview-map.php:170
 msgid ""
 "If it does not work as expected, see the developer console of your browser."
+msgstr ""
+
+#: admin/tiles/help.php:104
+msgid "If it is an empty string, your defined tile servers are not used."
 msgstr ""
 
 #: admin/elevation/multielevation.php:245
@@ -1984,7 +1984,7 @@ msgstr ""
 msgid "It is enabled on both desktop and touch device by default."
 msgstr ""
 
-#: admin/filemgr/managefiles-functions.php:267
+#: admin/filemgr/managefiles-functions.php:280
 msgid ""
 "It is not checked whether the file contains a track with elevation data."
 msgstr ""
@@ -2004,7 +2004,7 @@ msgid ""
 "kml) and a track (elevation)."
 msgstr ""
 
-#: admin/filemgr/managefiles-functions.php:268
+#: admin/filemgr/managefiles-functions.php:281
 msgid "It works with gpx and kml files."
 msgstr ""
 
@@ -2247,7 +2247,7 @@ msgstr ""
 msgid "More options see"
 msgstr ""
 
-#: php/multielevation.php:490
+#: php/multielevation.php:420
 msgid "move mouse over a track or select one in control panel ..."
 msgstr ""
 
@@ -2687,10 +2687,10 @@ msgstr ""
 msgid "Preparation"
 msgstr ""
 
-#: admin/filemgr/thickbox.php:27 admin/filemgr/managefiles-functions.php:153
-#: admin/filemgr/managefiles-functions.php:206
-#: admin/filemgr/managefiles-functions.php:211
-#: admin/filemgr/managefiles-functions.php:223
+#: admin/filemgr/thickbox.php:44 admin/filemgr/managefiles-functions.php:153
+#: admin/filemgr/managefiles-functions.php:210
+#: admin/filemgr/managefiles-functions.php:219
+#: admin/filemgr/managefiles-functions.php:235
 msgid "Preview"
 msgstr ""
 
@@ -3498,7 +3498,7 @@ msgstr ""
 msgid "To reset all values to their defaults, simply click the Reset button"
 msgstr ""
 
-#: php/elevation.php:551 php/multielevation.php:112
+#: php/elevation.php:551
 msgid "Toggle \"leaflet-almostover\" integration"
 msgstr ""
 
@@ -3618,7 +3618,7 @@ msgstr ""
 msgid "Upload gpx files into the directory"
 msgstr ""
 
-#: admin/filemgr/thickbox.php:35
+#: admin/filemgr/thickbox.php:52
 msgid "Uploaded on:"
 msgstr ""
 
@@ -3704,7 +3704,7 @@ msgstr ""
 msgid "Values"
 msgstr ""
 
-#: admin/filemgr/managefiles-functions.php:212
+#: admin/filemgr/managefiles-functions.php:220
 msgid "View"
 msgstr ""
 

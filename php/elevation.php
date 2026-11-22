@@ -850,7 +850,7 @@ function leafext_ele_java_params( $settings ) {
 				break;
 			case 'handlers':
 			case 'margins':
-				$text .= '$k: ' . $v . ',';
+				$text .= "$k:" . $v . ',';
 				unset( $settings[ $k ] );
 				break;
 			case 'linearGradient':

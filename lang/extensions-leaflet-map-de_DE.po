@@ -1,25 +1,20 @@
+# Translation of Plugins - Extensions for Leaflet Map Github Version in German
+# This file is distributed under the same license as the Plugins - Extensions for Leaflet Map Github Version package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-11-11 20:38+0000\n"
+"PO-Revision-Date: 2026-11-22 15:52+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Loco https://localise.biz/\n"
 "Language: de_DE\n"
-"Project-Id-Version: Plugins - Extensions for Leaflet Map - Development "
-"(trunk)\n"
+"Project-Id-Version: Plugins - Extensions for Leaflet Map Github Version\n"
 "Language-Team: Deutsch\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-12 16:42+0000\n"
+"POT-Creation-Date: 2026-11-22 15:51+0000\n"
 "Last-Translator: hupe13\n"
-"X-Loco-Version: 2.8.9; wp-7.1.4; php-8.4.27-nmm1"
-
-#: admin/tiles/help.php:104
-msgid " If it is an empty string, your defined tile servers are not used."
-msgstr ""
-"Wenn es eine leere Zeichenkette ist, werden deine definierten Kachelserver "
-"nicht verwendet."
+"X-Loco-Version: 2.8.10; wp-7.1.5; php-8.4.28-nmm1"
 
 #: admin/marker/placementstrategies.php:61
 msgid ""
@@ -100,16 +95,16 @@ msgstr ""
 "%1$s, %2$s und %3$s beschreiben den %4$sStartpunkt%5$s und sind optional."
 
 #. %s is a href.
-#: admin/filemgr/managefiles-functions.php:277
+#: admin/filemgr/managefiles-functions.php:290
 #, php-format
 msgid "%1$sAttachment pages%2$s are disabled."
-msgstr "%1$sAnhangseiten%2$s sind abgeschaltet."
+msgstr "%1$sAnhangseiten%2$s sind deaktiviert."
 
 #. %s is a href.
-#: admin/filemgr/managefiles-functions.php:274
+#: admin/filemgr/managefiles-functions.php:287
 #, php-format
 msgid "%1$sAttachment pages%2$s are enabled."
-msgstr "%1$sAnhangseiten%2$s sind erlaubt."
+msgstr "%1$sAnhangseiten%2$s sind aktiviert."
 
 #. %s is styling (bold).
 #: admin/tiles/providers.php:139
@@ -413,7 +408,7 @@ msgstr "und/oder mit leaflet-gpx und/oder leaflet-kml und/oder leaflet-geojson"
 
 #: php/leaflet-search.php:228
 msgid "animate the circle over location found"
-msgstr ""
+msgstr "Animiere einen Kreis an der gefundenen Position"
 
 #. %s is styling.
 #: admin/elevation/waypoints.php:224
@@ -553,25 +548,25 @@ msgstr "Namen der Kinder"
 
 #: admin/leaflet-search.php:57
 msgid "Circle Marker"
-msgstr ""
+msgstr "Kreismarker"
 
 #: php/leaflet-search.php:206
 msgid "circle radius"
-msgstr ""
+msgstr "Radius des Kreises"
 
 #: php/leaflet-search.php:220
 msgid "circle stroke color"
-msgstr ""
+msgstr "Farbe des Kreismarkers"
 
 #: php/leaflet-search.php:213
 msgid "circle stroke width in pixels"
-msgstr ""
+msgstr "Breite des Kreisrandes in Pixeln"
 
 #: php/hover.php:149 php/hoverlap.php:31
 msgid "className for the tooltip"
 msgstr "className für den Tooltip"
 
-#: php/functions.php:135
+#: php/functions.php:113
 msgid "Click to interpret shortcodes."
 msgstr "Klicke, um die Shortcodes auszuführen."
 
@@ -739,8 +734,6 @@ msgstr ""
 "Erstelle folgende benutzerdefinierten Felder für die Seite / den Beitrag:"
 
 #: admin/overviewmap/overview-map.php:89
-#| msgid ""
-#| "Create for every desired page or post the below mentioned customs fields."
 msgid ""
 "Create for every desired page or post the below mentioned custom fields."
 msgstr ""
@@ -908,7 +901,6 @@ msgid "Delete all plugin settings when deleting the plugin?"
 msgstr "Alle Plugin-Einstellungen löschen, wenn das Plugin gelöscht wird?"
 
 #: admin/elevation/sgpx.php:121 admin/elevation/main.php:138
-#| msgid "Delete all settings from wp-gpx-maps!"
 msgid "Delete all settings from WP GPX Maps!"
 msgstr "Lösche alle Einstellungen von WP GPX Maps!"
 
@@ -946,7 +938,7 @@ msgstr ""
 "Ausführliche Dokumentation und Beispiele in %1$sDeutsch%2$s und "
 "%3$sEnglisch%4$s"
 
-#: admin/filemgr/thickbox.php:33
+#: admin/filemgr/thickbox.php:50
 msgid "Details"
 msgstr "Details"
 
@@ -1037,7 +1029,7 @@ msgid "does only work with gpx files"
 msgstr "funktioniert nur mit gpx Dateien"
 
 #. %s is a shortcode.
-#: admin/filemgr/managefiles-functions.php:270
+#: admin/filemgr/managefiles-functions.php:283
 #, php-format
 msgid "Don't forget to declare %s at last statement."
 msgstr "Vergiss nicht, %s als letzte Anweisung anzugeben."
@@ -1048,7 +1040,7 @@ msgstr "Download-Link"
 
 #: php/leaflet-search.php:198
 msgid "draw a circle in location found"
-msgstr ""
+msgstr "Zeichne einen Kreis an der gefundenen Position"
 
 #. %s is a shortcode.
 #: admin/filemgr/leaflet-directory.php:39
@@ -1078,7 +1070,7 @@ msgstr ""
 "Jedes der oben genannten leaflet-Elemente hat Optionen. Diese stammen aus "
 "dem Shortcode %s und sind vorgegeben."
 
-#: php/overview-map.php:625 admin/filemgr/managefiles-functions.php:207
+#: php/overview-map.php:625 admin/filemgr/managefiles-functions.php:211
 msgid "Edit"
 msgstr "Bearbeiten"
 
@@ -1111,9 +1103,6 @@ msgstr "aktivieren (Standard)"
 #. %s are leaflet-marker, leaflet-extramarker, lat, lng
 #: php/featured-map.php:49
 #, php-format
-#| msgid ""
-#| "Enter here either the default icons custom name or a shortcode for %1$s "
-#| "or %2$s without brackets and the options for %3$s and %4$s."
 msgid ""
 "Enter here either the default icons custom field name or a shortcode for "
 "%1$s or %2$s without brackets and the options for %3$s and %4$s."
@@ -1141,7 +1130,7 @@ msgstr "Fehler beim Erkennen von latlngs"
 
 #: php/leaflet-search.php:95
 msgid "error message"
-msgstr "Fehlernachricht"
+msgstr "Fehlermeldung"
 
 #. %s is an option.
 #: admin/grouping/featuregroup.php:126
@@ -1163,7 +1152,7 @@ msgstr "Beispiele"
 
 #: admin/marker/extramarker-geojson.php:60
 msgid "except"
-msgstr "außer"
+msgstr "ausgenommen"
 
 #: php/hover.php:131 php/hoverlap.php:15
 msgid ""
@@ -1207,11 +1196,11 @@ msgstr "Zusätzliche Kachelserver"
 msgid "Featured Map"
 msgstr "Featured Map"
 
-#: admin/filemgr/thickbox.php:37
+#: admin/filemgr/thickbox.php:54
 msgid "File name:"
 msgstr "Dateiname:"
 
-#: admin/filemgr/thickbox.php:40
+#: admin/filemgr/thickbox.php:57
 msgid "File size: "
 msgstr "Dateigröße: "
 
@@ -1228,7 +1217,6 @@ msgid "fit map to all tracks"
 msgstr "Passe den Kartenausschnitt an alle Tracks an"
 
 #: php/zoomhome.php:34
-#| msgid "Font-Awesome icon name for the home button (without %s)."
 msgid "Font-Awesome icon name for the home button without prefix"
 msgstr "Font-Awesome-Symbolname für den Home-Button ohne Prefix"
 
@@ -1256,11 +1244,11 @@ msgstr "Für boolesche Werte gilt"
 
 #: php/leaflet-search.php:170 php/leaflet-search.php:191
 msgid "for example \"40,60\" for 40px left 60px top"
-msgstr ""
+msgstr "zum Beispiel \"40,60\" für 40px links 60px oben"
 
 #: php/leaflet-search.php:163 php/leaflet-search.php:184
 msgid "for example \"80,50\" for 80px width 50px height"
-msgstr ""
+msgstr "zum Beispiel \"80,50\" für 80px Breite 50px Höhe"
 
 #. %s are properties.
 #: php/leaflet-search.php:37
@@ -1306,9 +1294,6 @@ msgstr "Informationen zu sich überlappenden Markern siehe %1$s oder %2$s."
 #. %s are options and a link
 #: admin/overviewmap/featured-map.php:123
 #, php-format
-#| msgid ""
-#| "For popup content: either a custom field named %1$s or any other name "
-#| "(optional)"
 msgid ""
 "For popup content: a custom field named %1$s or any other name (optional)"
 msgstr ""
@@ -1359,14 +1344,13 @@ msgstr "Mit Leaflet-Plugins implementierte Funktionen"
 
 #: admin/leaflet-search.php:49
 msgid "General Options"
-msgstr ""
+msgstr "Allgemeine Optionen"
 
 #: admin/elevation/waypoints.php:254
 msgid "Generated Javascript"
 msgstr "Generiertes Javascript"
 
 #: admin/overviewmap/featured-map.php:94
-#| msgid "Generates a map from codex geo information in pages and posts."
 msgid "Generates a map from geo information in pages and posts."
 msgstr "Erstellt eine Karte aus Geodaten auf Seiten und in Beiträgen."
 
@@ -1387,11 +1371,11 @@ msgstr "Gestensteuerung"
 
 #: php/leaflet-search.php:146
 msgid "Give a url for the marker image file"
-msgstr ""
+msgstr "Definiere die URL des Icons"
 
 #: php/leaflet-search.php:175
 msgid "Give a url for the marker shadow image file"
-msgstr ""
+msgstr "Definiere die URL des Schattenmarkers"
 
 #. %s is a shortcode.
 #: admin/grouping/featuregroup.php:153
@@ -1470,7 +1454,7 @@ msgstr "Highlight-Farbe"
 
 #: admin/hover/main.php:19
 msgid "hover"
-msgstr "Bei Mauszeigerkontakt"
+msgstr "Mauszeigerkontakt"
 
 #: admin/hover/hover.php:110
 msgid "hover only for geojsons, gpx, kml:"
@@ -1691,6 +1675,12 @@ msgid ""
 msgstr ""
 "Wenn es nicht wie erwartet funktioniert, sieh in der Entwicklerkonsole des "
 "Browsers nach."
+
+#: admin/tiles/help.php:104
+msgid "If it is an empty string, your defined tile servers are not used."
+msgstr ""
+"Bei einer leeren Zeichenfolge werden deine definierten Kachelserver nicht "
+"verwendet."
 
 #: admin/elevation/multielevation.php:245
 msgid "If it is false, an attempt is made to read the trackname from the file."
@@ -1926,205 +1916,204 @@ msgstr ""
 #: js/elevation.js:119
 msgctxt "In Frontend"
 msgid "Acceleration"
-msgstr "Beschleunigung"
+msgstr ""
 
 #: js/elevation.js:120
 msgctxt "In Frontend"
 msgid "Altitude"
-msgstr "Höhe"
+msgstr ""
 
 #: js/elevation.js:138
 msgctxt "In Frontend"
 msgid "Avg Acceleration"
-msgstr "durchschnittliche Beschleunigung"
+msgstr ""
 
 #: js/elevation.js:146
 msgctxt "In Frontend"
 msgid "Avg BPM"
-msgstr "durchschnittliche Herzfrequenz"
+msgstr ""
 
 #: js/elevation.js:127
 msgctxt "In Frontend"
 msgid "Avg Elevation"
-msgstr "durchschnittliche Höhe"
+msgstr ""
 
 #: js/elevation.js:142
 msgctxt "In Frontend"
 msgid "Avg Pace"
-msgstr "durchschnittliches Tempo"
+msgstr ""
 
 #: js/elevation.js:132
 msgctxt "In Frontend"
 msgid "Avg Slope"
-msgstr "durchschnittliche Steigung"
+msgstr ""
 
 #: js/elevation.js:135
 msgctxt "In Frontend"
 msgid "Avg Speed"
-msgstr "Durchschnittsgeschwindigkeit"
+msgstr ""
 
 #: js/elevation.js:147
 msgctxt "In Frontend"
 msgid "Download"
-msgstr "Herunterladen"
+msgstr ""
 
 #: js/elevation.js:143
 msgctxt "In Frontend"
 msgid "ECG"
-msgstr "Herzfrequenz"
+msgstr ""
 
 #: js/elevation.js:148
 msgctxt "In Frontend"
 msgid "Elevation"
-msgstr "Höhe"
+msgstr ""
 
 #: js/elevation.js:137
 msgctxt "In Frontend"
 msgid "Max Acceleration"
-msgstr "maximale Beschleunigung"
+msgstr ""
 
 #: js/elevation.js:145
 msgctxt "In Frontend"
 msgid "Max BPM"
-msgstr "Maximale Herzfrequenz"
+msgstr ""
 
 #: js/elevation.js:125
 msgctxt "In Frontend"
 msgid "Max Elevation"
-msgstr "maximale Höhe"
+msgstr ""
 
 #: js/elevation.js:141
 msgctxt "In Frontend"
 msgid "Max Pace"
-msgstr "schnellstes Tempo"
+msgstr ""
 
 #: js/elevation.js:131
 msgctxt "In Frontend"
 msgid "Max Slope"
-msgstr "maximale Steigung"
+msgstr ""
 
 #: js/elevation.js:134
 msgctxt "In Frontend"
 msgid "Max Speed"
-msgstr "maximale Geschwindigkeit"
+msgstr ""
 
 #: js/elevation.js:136
 msgctxt "In Frontend"
 msgid "Min Acceleration"
-msgstr "minimale Beschleunigung"
+msgstr ""
 
 #: js/elevation.js:144
 msgctxt "In Frontend"
 msgid "Min BPM"
-msgstr "Minimale Herzfrequenz"
+msgstr ""
 
 #: js/elevation.js:126
 msgctxt "In Frontend"
 msgid "Min Elevation"
-msgstr "minimale Höhe"
+msgstr ""
 
 #: js/elevation.js:140
 msgctxt "In Frontend"
 msgid "Min Pace"
-msgstr "langsamstes Tempo"
+msgstr ""
 
 #: js/elevation.js:130
 msgctxt "In Frontend"
 msgid "Min Slope"
-msgstr "maximales Gefälle"
+msgstr ""
 
 #: js/elevation.js:133
 msgctxt "In Frontend"
 msgid "Min Speed"
-msgstr "langsamste Geschwindigkeit"
+msgstr ""
 
 #: js/elevation.js:139
 msgctxt "In Frontend"
 msgid "Pace"
-msgstr "Tempo"
+msgstr ""
 
 #: js/elevation.js:121
 msgctxt "In Frontend"
 msgid "Slope"
-msgstr "Steigung"
+msgstr ""
 
 #: js/elevation.js:122
 msgctxt "In Frontend"
 msgid "Speed"
-msgstr "Geschwindigkeit"
+msgstr ""
 
 #: js/elevation.js:128
 msgctxt "In Frontend"
 msgid "Total Ascent"
-msgstr "Gesamtanstieg"
+msgstr ""
 
 #: js/elevation.js:129
 msgctxt "In Frontend"
 msgid "Total Descent"
-msgstr "Gesamtabstieg"
+msgstr ""
 
 #: js/elevation.js:124
 msgctxt "In Frontend"
 msgid "Total Length"
-msgstr "Gesamtstrecke"
+msgstr ""
 
 #: js/elevation.js:123
 msgctxt "In Frontend"
 msgid "Total Time"
-msgstr "Gesamtzeit"
+msgstr ""
 
 #: js/elevation.js:150
 msgctxt "In Frontend: Abbreviation for acceleration in the chart"
 msgid "a"
-msgstr "a"
+msgstr ""
 
 #: js/elevation.js:159
 msgctxt "In Frontend: Abbreviation for altitude in the chart"
 msgid "y"
-msgstr "y"
+msgstr ""
 
 #: js/elevation.js:151
 msgctxt "In Frontend: Abbreviation for cadence in the chart"
 msgid "cad"
-msgstr "cad"
+msgstr ""
 
 #: js/elevation.js:156
 msgctxt "In Frontend: Abbreviation for duration in the chart"
 msgid "T"
-msgstr "T"
+msgstr ""
 
 #: js/elevation.js:152
 msgctxt "In Frontend: Abbreviation for heart rate in the chart"
 msgid "hr"
-msgstr "hr"
+msgstr ""
 
 #: js/elevation.js:158
 msgctxt "In Frontend: Abbreviation for length in the chart"
 msgid "x"
-msgstr "x"
+msgstr ""
 
 #: js/elevation.js:154
 msgctxt "In Frontend: Abbreviation for pace in the chart"
 msgid "pace"
-msgstr "Tempo"
+msgstr ""
 
 #: js/elevation.js:153
 msgctxt "In Frontend: Abbreviation for slope in the chart"
 msgid "m"
-msgstr "m"
+msgstr ""
 
 #: js/elevation.js:157
 msgctxt "In Frontend: Abbreviation for speed in the chart"
 msgid "v"
-msgstr "v"
+msgstr ""
 
 #: js/elevation.js:155
 msgctxt "In Frontend: Abbreviation for time in the chart"
 msgid "t"
-msgstr "t"
+msgstr ""
 
 #: admin/elevation/owntheme.php:159
-#| msgid "In your elevation.css put the styles like the theme styles in %s"
 msgid "In your elevation.css put the styles like the theme styles in"
 msgstr ""
 "Definiere die Styles in deinem elevation.css. Nimm als Vorlage das Original "
@@ -2178,7 +2167,7 @@ msgstr "ist"
 
 #: admin/marker/targetmarker.php:210
 msgid "is considered only, if the target marker is not in a cluster."
-msgstr "wird nur berücksichtigt, wenn der Zielmarker nicht geclustert ist."
+msgstr "wird nur berücksichtigt, wenn der Zielmarker nicht gecluster ist."
 
 #: admin/marker/targetmarker.php:126
 msgid "is optional."
@@ -2224,7 +2213,7 @@ msgstr ""
 "Sie ist sowohl auf dem Desktop als auch auf Mobilgeräten standardmäßig "
 "aktiviert."
 
-#: admin/filemgr/managefiles-functions.php:267
+#: admin/filemgr/managefiles-functions.php:280
 msgid ""
 "It is not checked whether the file contains a track with elevation data."
 msgstr ""
@@ -2249,7 +2238,7 @@ msgstr ""
 "line), Kreise (leaflet-circle), Geojsons (leaflet-geojson, leaflet-gpx, "
 "leaflet-kml) und einen Track (elevation) zurück."
 
-#: admin/filemgr/managefiles-functions.php:268
+#: admin/filemgr/managefiles-functions.php:281
 msgid "It works with gpx and kml files."
 msgstr "Es funktioniert mit gpx- und kml-Dateien."
 
@@ -2314,7 +2303,6 @@ msgid "like in"
 msgstr "wie bei"
 
 #: php/elevation.php:782
-#| msgid "Line color of the heart rate profile"
 msgid "Line color of the heart rate"
 msgstr "Farbe der Linie der Herzfrequenz"
 
@@ -2384,12 +2372,6 @@ msgstr ""
 #. %1$s - a name ,%2$s %3$s - href, %4$s %5$s - shortcodes
 #: admin/elevation/sgpx.php:153
 #, php-format
-#| msgid ""
-#| "Many thanks to %1$s for his %2$sexcellent plugin%3$s, which I used myself "
-#| "for a long time. Unfortunately it needed some rework, especially to make "
-#| "wp-gpx-maps and leaflet-map work together. At some point it didn't work "
-#| "for me at all. So some of its features are included in the shortcode %4$s."
-#| " Since version 2.2. it interprets the shortcode %5$s."
 msgid ""
 "Many thanks to %1$s for his %2$sexcellent plugin%3$s, which I used myself "
 "for a long time. Unfortunately it needed some rework, especially to make WP "
@@ -2431,7 +2413,7 @@ msgstr "Markercluster"
 
 #: admin/leaflet-search.php:53
 msgid "Marker Icon"
-msgstr ""
+msgstr "Marker Icon"
 
 #: admin/marker/geojsonmarker.php:68
 msgid "Marker with icon"
@@ -2502,13 +2484,13 @@ msgstr "Mehr Icons"
 
 #: admin/marker/clustergroup.php:187
 msgid "More options"
-msgstr "Mehr Optionen"
+msgstr "Weitere Optionen"
 
 #: admin/elevation/waypoints.php:256
 msgid "More options see"
 msgstr "Weitere Optionen siehe die"
 
-#: php/multielevation.php:490
+#: php/multielevation.php:420
 msgid "move mouse over a track or select one in control panel ..."
 msgstr ""
 "Bewege die Maus über einen Track oder wähle einen im Control Panel aus ..."
@@ -2823,7 +2805,7 @@ msgstr "oder der Name des benutzerdefinierten Feldes für das Popup"
 
 #: php/overview-map.php:21
 msgid "or the word"
-msgstr "oder das Word"
+msgstr "oder das Wort"
 
 #: admin/elevation/elevation.php:358
 msgid "Other settings"
@@ -2948,7 +2930,7 @@ msgstr "Position des Track-Auswahlmenüs"
 
 #: php/zoomhome.php:49
 msgid "position on the map:"
-msgstr "Position auf der Karte:"
+msgstr "Position in der Karte:"
 
 #: php/elevation.php:73
 msgid "position/height indicator marker drawn onto the map"
@@ -2970,10 +2952,10 @@ msgstr "Besuche das Support Forum"
 msgid "Preparation"
 msgstr "Vorbereitung"
 
-#: admin/filemgr/thickbox.php:27 admin/filemgr/managefiles-functions.php:153
-#: admin/filemgr/managefiles-functions.php:206
-#: admin/filemgr/managefiles-functions.php:211
-#: admin/filemgr/managefiles-functions.php:223
+#: admin/filemgr/thickbox.php:44 admin/filemgr/managefiles-functions.php:153
+#: admin/filemgr/managefiles-functions.php:210
+#: admin/filemgr/managefiles-functions.php:219
+#: admin/filemgr/managefiles-functions.php:235
 msgid "Preview"
 msgstr "Vorschau"
 
@@ -3109,7 +3091,7 @@ msgstr "siehe %1$s, Standard: %2$s"
 #: php/leaflet-search.php:150
 #, php-format
 msgid "see %1$s. Please specify all customs marker options."
-msgstr ""
+msgstr "siehe %1$s. Bitte gib alle Optionen für individuelle Marker an."
 
 #. %s is an href.
 #: admin/overviewmap/overview-map.php:192
@@ -3143,7 +3125,6 @@ msgstr "siehe unten."
 #. %s is a href.
 #: admin/elevation/sgpx.php:175
 #, php-format
-#| msgid "See documentation and examples in %1$shere%2$s."
 msgid "See documentation and examples %1$shere%2$s."
 msgstr "Siehe %1$sDokumentation und Beispiele%2$s."
 
@@ -3167,20 +3148,20 @@ msgstr "Wähle nur Seiten/Beiträge aus diesen Kategorien aus"
 
 #: php/leaflet-search.php:168
 msgid "Set the anchor position of the icon"
-msgstr ""
+msgstr "Definiere die Position des Icons"
 
 #: php/leaflet-search.php:189
 msgid "Set the anchor position of the shadow"
-msgstr ""
+msgstr "Definiere die Position des Schattenmarkers"
 
 #. %1$s is an option
 #: php/leaflet-search.php:159
 msgid "Set the size of the icon"
-msgstr ""
+msgstr "Definiere die Größe des Icons"
 
 #: php/leaflet-search.php:182
 msgid "Set the size of the shadow"
-msgstr ""
+msgstr "Definiere die Größe des Schattenmarkers"
 
 #. %s is "false".
 #: php/overview-map.php:133
@@ -3256,6 +3237,8 @@ msgid ""
 "show default or custom marker icon (true) on location found or hide it "
 "(false)"
 msgstr ""
+"zeige das Standardicon oder ein eigenes Icon (true) an der gefundenen "
+"Position oder nicht (false)"
 
 #: php/elevation.php:387
 msgid ""
@@ -3364,10 +3347,6 @@ msgstr ""
 #. %s are leaflet-marker, leaflet-extramarker, lat, lng
 #: php/featured-map.php:59
 #, php-format
-#| msgid ""
-#| "Write in %1$s shortcode either the icons custom field name or %2$s "
-#| "respectively %3$s and all options for the marker shortcode as usual but "
-#| "without %4$s and %5$s."
 msgid ""
 "Specify in %1$s shortcode either the icons custom field name or %2$s "
 "respectively %3$s and all options for the marker shortcode as usual but "
@@ -3577,7 +3556,7 @@ msgstr "Der Name vom %1$sTrack%2$s wird wie folgt bestimmt:"
 
 #: php/overview-map.php:52
 msgid "the name of custom field is"
-msgstr "Der Name des benutzerdefinierten Feldes ist"
+msgstr "Der Name des individuellen Feldes ist"
 
 #. %s is styling.
 #: admin/elevation/multielevation.php:186
@@ -3760,9 +3739,6 @@ msgstr ""
 #. %s are link and options
 #: admin/overviewmap/featured-map.php:99
 #, php-format
-#| msgid ""
-#| "There is a %1$s for %2$s. The codex lists metadata, of which the "
-#| "shortcode uses the following: %3$s and %4$s."
 msgid ""
 "There is a %1$s for %2$s. The codex lists metadata, of which the shortcode "
 "uses the following in custom fields: %3$s and %4$s."
@@ -3876,7 +3852,7 @@ msgstr ""
 "Um alle Werte auf ihre Standardwerte zurückzusetzen, drücke einfach "
 "\"Zurücksetzen\""
 
-#: php/elevation.php:551 php/multielevation.php:112
+#: php/elevation.php:551
 msgid "Toggle \"leaflet-almostover\" integration"
 msgstr "Umschalten der \"leaflet-almostover\"-Integration"
 
@@ -3924,12 +3900,10 @@ msgstr "Anzeige Tooltip"
 #. %s is "zoom out".
 #: php/zoomhome.php:18 php/zoomhome.php:27
 #, php-format
-#| msgid "Tooltip text of the %s button."
 msgid "Tooltip text of the %s button"
 msgstr "Tooltip-Text der Schaltfläche %s"
 
 #: php/zoomhome.php:39
-#| msgid "Tooltip text of the home button."
 msgid "Tooltip text of the home button"
 msgstr "Tooltip-Text des Home Buttons"
 
@@ -4001,7 +3975,7 @@ msgstr "Einheiten"
 msgid "Upload gpx files into the directory"
 msgstr "Lade gpx-Dateien in das Verzeichnis"
 
-#: admin/filemgr/thickbox.php:35
+#: admin/filemgr/thickbox.php:52
 msgid "Uploaded on:"
 msgstr "Hochgeladen am:"
 
@@ -4098,7 +4072,7 @@ msgstr "Wert, der zu jedem neuen Kreisabstandswert addiert wird"
 msgid "Values"
 msgstr "Werte"
 
-#: admin/filemgr/managefiles-functions.php:212
+#: admin/filemgr/managefiles-functions.php:220
 msgid "View"
 msgstr "Anzeigen"
 
@@ -4161,11 +4135,6 @@ msgstr ""
 "angezeigt."
 
 #: admin/choropleth.php:14
-#| msgid ""
-#| "While fixing an XSS vulnerability in this shortcode, I discovered a bug "
-#| "that has been there for at least two years. For that reason, and since no "
-#| "one has complained, I decided to remove that part and I made an "
-#| "additional plugin."
 msgid ""
 "While fixing an XSS vulnerability in this shortcode, I discovered a bug that "
 "has been there for at least two years. For that reason, and since no one has "
@@ -4333,7 +4302,6 @@ msgstr ""
 #. %s are options.
 #: admin/elevation/multielevation.php:252
 #, php-format
-#| msgid "You can sort the tracks in legend by name or by date: %s or %s"
 msgid "You can sort the tracks in legend by name or by date: %1$s or %2$s"
 msgstr ""
 "Du kannst in der Legende die Tracks nach Namen oder Datum sortieren: %1$s or "
@@ -4431,9 +4399,6 @@ msgid "You can't use the character %s allone."
 msgstr "Das Zeichen %s kann nicht allein verwendet werden."
 
 #: admin/elevation/sgpx.php:223
-#| msgid ""
-#| "You have wp-gpx-maps uninstalled, but some of its options exist in the "
-#| "database. You should delete them."
 msgid ""
 "You have WP GPX Maps uninstalled, but some of its options exist in the "
 "database. You should delete them."

@@ -1,4 +1,8 @@
-### 6.2 /261120
+### 6.2.1 / 261122
+
+* fixed bug in elevation
+
+### 6.2 / 261120
 
 * fixed XSS thickbox
 * reviewed options in elevation, multielevation
