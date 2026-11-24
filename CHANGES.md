@@ -1,8 +1,9 @@
 # Differences to the Plugins WordPress version
 
-6.2.1:
+6.3:
 
-* fixed bug in elevation
+* fixed XSS leaflet-extramarker
+* fixed XSS overviewmap
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

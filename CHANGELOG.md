@@ -1,3 +1,8 @@
+### 6.3 / 26112x
+
+* fixed XSS leaflet-extramarker
+* fixed XSS overviewmap
+
 ### 6.2.1 / 261122
 
 * fixed bug in elevation

@@ -149,7 +149,7 @@ if ( ! function_exists( 'leafext_html_table' ) ) {
 		}
 		$head = '<div style="width:' . ( ( is_singular() || is_archive() ) ? '100' : '80' ) . '%;">';
 		$head = $head . '<figure class="wp-block-table aligncenter is-style-stripes"><table border=1>';
-		return $head . implode( '', $rows ) . '</table></figure></div>';
+		return $head . wp_kses_post( implode( '', $rows ) ) . '</table></figure></div>';
 	}
 }
 

@@ -407,12 +407,20 @@ function leafext_get_overview_data( $post, $overview_options ) {
 			$latlng_atts = shortcode_parse_atts( $leaflet_latlng );
 			// var_dump($latlng_atts);
 			if ( isset( $latlng_atts['lat'] ) && isset( $latlng_atts['lng'] ) ) {
-				$leaflet_latlng = 'lat=' . trim( $latlng_atts['lat'], ', ' ) . ' lng=' . trim( $latlng_atts['lng'], ', ' );
+				$leaflet_latlng =
+				'lat=' . filter_var( trim( $latlng_atts['lat'], ', ' ), FILTER_VALIDATE_FLOAT ) .
+				' lng=' . filter_var( trim( $latlng_atts['lng'], ', ' ), FILTER_VALIDATE_FLOAT );
 			} else {
 				$leaflet_latlng = '*';
 			}
 		} else {
-			$leaflet_latlng = 'lat=' . trim( $latlng[0], ', ' ) . ' lng=' . trim( $latlng[1], ', ' );
+			// var_dump( $latlng );
+			$leaflet_latlng =
+			'lat=' . filter_var( str_replace( ',', '.', trim( $latlng[0], ', ' ) ), FILTER_VALIDATE_FLOAT ) .
+			' lng=' . filter_var( str_replace( ',', '.', trim( $latlng[1], ', ' ) ), FILTER_VALIDATE_FLOAT );
+		}
+		if ( $leaflet_latlng === 'lat= lng=' ) {
+			$leaflet_latlng = '*';
 		}
 	} else {
 		$leaflet_latlng = '*';

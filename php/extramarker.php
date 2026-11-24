@@ -51,7 +51,7 @@ function leafext_extramarker_params() {
 				'extensions-leaflet-map'
 			),
 			'default' => 'white',
-			'filter'  => '',
+			'filter'  => 'color',
 		),
 		// iconRotate   Rotates the icon with css transformations   0   numeric degrees
 		array(
@@ -82,7 +82,7 @@ function leafext_extramarker_params() {
 				'extensions-leaflet-map'
 			),
 			'default' => 'red',
-			'filter'  => '',
+			'filter'  => 'color',
 		),
 		// number   Instead of an icon, define a plain text     ''  '1' or 'A', must set icon: 'fa-number'
 		array(
@@ -197,7 +197,7 @@ function leafext_extramarker_function( $atts, $content, $shortcode ) {
 		// var_dump( $marker_shortcode );
 
 		$text    = \JShrink\Minifier::minify( $text );
-		$atts1   = leafext_case( array_keys( leafext_extramarker_defaults() ), leafext_clear_params( $atts ) );
+		$atts1   = leafext_case( array_keys( leafext_extramarker_defaults() ), leafext_clear_params_true_false( $atts ) );
 		$options = shortcode_atts( leafext_extramarker_defaults(), $atts1 );
 
 		// var_dump($options);//wp_die();
@@ -236,22 +236,28 @@ function leafext_extramarkers_params( $params ) {
 		if ( $v === '' ) {
 			continue;
 		}
-		$text .= "$k: ";
 		switch ( $filters[ $k ] ) {
 			case 'FILTER_VALIDATE_BOOL':
 				$value = filter_var( $v, FILTER_VALIDATE_BOOL ) ? 'true' : 'false';
+				$text .= "$k: " . $value . ",\n";
 				break;
 			case 'FILTER_SANITIZE_NUMBER_INT':
 				$value = filter_var( $v, FILTER_SANITIZE_NUMBER_INT );
+				$text .= "$k: " . $value . ",\n";
 				break;
-			case 'latlon':
-				$value = '[' . $v . ']';
+			// case 'latlon':
+				// $text .= "$k: " . '[' . $v . ']' . ",\n";
+				// break;
+			case 'color':
+				if ( leafext_valid_color( $v ) !== '' ) {
+					$text .= "$k: " . wp_json_encode( $v ) . ",\n";
+				}
 				break;
 			default:
-				$value = wp_json_encode( $v );
+				if ( preg_match( '%^[a-zA-Z0-9:\-/\._\ ]+$%', $v ) ) {
+					$text .= "$k: " . wp_json_encode( $v ) . ",\n";
+				}
 		}
-		$text .= $value;
-		$text .= ",\n";
 	}
 	// var_dump($text); wp_die();
 	return $text;
