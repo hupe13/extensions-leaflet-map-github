@@ -2,8 +2,8 @@
 
 Contributors: hupe13
 Tags: leaflet, gpx, geojson, hover, marker
-Tested up to: 7.1
-Stable tag: 6.2-261124
+Tested up to: 7.2
+Stable tag: 6.2-261125
 Requires at least: 6.8
 Requires PHP: 8.2
 License: GPLv2 or later
@@ -46,5 +46,6 @@ Please install [ghu-update-puc](https://github.com/hupe13/ghu-update-puc) to get
 
 * fixed XSS leaflet-extramarker
 * fixed XSS overviewmap
+* fixed bugs in multielevation
 
 [more ...](https://github.com/hupe13/extensions-leaflet-map-github/blob/main/CHANGELOG.md)

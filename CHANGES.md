@@ -4,6 +4,7 @@
 
 * fixed XSS leaflet-extramarker
 * fixed XSS overviewmap
+* fixed bugs in multielevation
 
 Please note the [install instructions](https://leafext.de/en/doku/about/versions/).
 

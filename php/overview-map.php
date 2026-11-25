@@ -408,8 +408,8 @@ function leafext_get_overview_data( $post, $overview_options ) {
 			// var_dump($latlng_atts);
 			if ( isset( $latlng_atts['lat'] ) && isset( $latlng_atts['lng'] ) ) {
 				$leaflet_latlng =
-				'lat=' . filter_var( trim( $latlng_atts['lat'], ', ' ), FILTER_VALIDATE_FLOAT ) .
-				' lng=' . filter_var( trim( $latlng_atts['lng'], ', ' ), FILTER_VALIDATE_FLOAT );
+				'lat=' . filter_var( str_replace( ',', '.', trim( $latlng_atts['lat'], ', ' ) ), FILTER_VALIDATE_FLOAT ) .
+				' lng=' . filter_var( str_replace( ',', '.', trim( $latlng_atts['lng'], ', ' ) ), FILTER_VALIDATE_FLOAT );
 			} else {
 				$leaflet_latlng = '*';
 			}

@@ -365,6 +365,9 @@ function leafext_multielevation( $atts, $content, $shortcode ) {
 			$multioptions['distanceMarkers']         = false;
 			$multioptions['distanceMarkers_options'] = 'false';
 			$multioptions['sort']                    = false;
+			$multioptions['highlight']               = '#ffff00';
+			$multioptions['flyToBounds']             = true;
+			$multioptions['direction']             	 = false;
 		}
 
 		if ( $shortcode === 'multielevation' ) {
@@ -511,6 +514,7 @@ function leafext_multielevation_script( $leafext_all_files, $leafext_all_points,
 				echo 'highlight: {color:' . wp_json_encode( $multioptions['highlight'] ) . ',opacity: 1,},' . "\n";
 			}
 			echo 'flyToBounds:' . wp_json_encode( (bool) $multioptions['flyToBounds'] ) . ',' . "\n";
+			echo 'filename:' . wp_json_encode( (bool) $multioptions['filename'] ) . ',' . "\n";
 
 			// default:
 			// distanceMarkers: true,

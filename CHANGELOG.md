@@ -2,6 +2,7 @@
 
 * fixed XSS leaflet-extramarker
 * fixed XSS overviewmap
+* fixed bugs in multielevation
 
 ### 6.2.1 / 261122
 
