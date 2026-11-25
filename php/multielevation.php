@@ -367,7 +367,7 @@ function leafext_multielevation( $atts, $content, $shortcode ) {
 			$multioptions['sort']                    = false;
 			$multioptions['highlight']               = '#ffff00';
 			$multioptions['flyToBounds']             = true;
-			$multioptions['direction']             	 = false;
+			$multioptions['direction']               = false;
 		}
 
 		if ( $shortcode === 'multielevation' ) {
